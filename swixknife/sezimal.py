@@ -206,8 +206,8 @@ class Sezimal:
             '5': {'0': '5', '1': '10', '2': '11', '3': '12', '4': '13', '5': '14', '10': '15', '11': '20', '12': '21', '13': '22', '14': '23'},
         }
 
-        digits_a = self._digits
-        digits_b = other_number._digits
+        digits_a = list(self._digits)
+        digits_b = list(other_number._digits)
 
         #
         # Normalizes the fractional part between the two values,
@@ -292,8 +292,8 @@ class Sezimal:
             '5': '4',
         }
 
-        digits_a = self._digits
-        digits_b = other_number._digits
+        digits_a = list(self._digits)
+        digits_b = list(other_number._digits)
 
         #
         # Normalizes the fractional part between the two values,
@@ -508,8 +508,8 @@ class Sezimal:
             '5': {'0': '0', '1': '5', '2': '14', '3': '23', '4': '32', '5': '41'},
         }
 
-        digits_a = self._digits[::-1]
-        digits_b = other_number._digits[::-1]
+        digits_a = list(self._digits)[::-1]
+        digits_b = list(other_number._digits)[::-1]
         final_precision = self._precision + other_number._precision
         sums = []
 
@@ -640,8 +640,8 @@ class Sezimal:
 
         max_precision = int(SezimalInteger(max_precision))
 
-        digits_a = self._digits
-        digits_b = other_number._digits
+        digits_a = list(self._digits)
+        digits_b = list(other_number._digits)
 
         #
         # Normalizes the fractional part between the two values,
