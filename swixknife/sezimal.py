@@ -29,6 +29,9 @@ class Sezimal:
         elif type(number) == SezimalFraction:
             number = number.sezimal
 
+        elif type(number) == str and ('/' in number or '⁄' in number or '÷' in number):
+            number = SezimalFraction(number).sezimal
+
         cleaned_number = validate_clean_sezimal(number)
 
         if cleaned_number[0] == '-':
