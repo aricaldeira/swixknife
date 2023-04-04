@@ -3,6 +3,8 @@
 from typing import TypeVar
 
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
+SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
+SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
@@ -70,10 +72,10 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
     return number
 
 
-_VALID_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-5]+\.?$|^[+\-]?[0-5]*\.[0-5]+$|^[+\-]?[0-5]+\.?[Ee][+\-]?[1-5][0-5]*$|^[+\-]?[0-5]*\.[0-5]+[Ee][+\-]?[1-5][0-5]*$')
+_VALID_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-5]+\.?$|^[+\-]?[0-5]*\.[0-5]+$|^[+\-]?[0-5]+\.?[Ee][+\-]?[0-5]*$|^[+\-]?[0-5]*\.[0-5]+[Ee][+\-]?[0-5]*$')
 
 
-def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal) -> str:
+def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger) -> str:
     number = str(number)
 
     if not number:
@@ -109,7 +111,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal) -> str
     return cleaned_number
 
 
-_VALID_DECIMAL_FORMAT = re.compile(r'^[+\-]?[0-9]+\.?$|^[+\-]?[0-9]*\.[0-9]+$|^[+\-]?[0-9]+\.?[Ee][+\-]?[1-9][0-9]*$|^[+\-]?[0-9]*\.[0-9]+[Ee][+\-]?[1-9][0-9]*$')
+_VALID_DECIMAL_FORMAT = re.compile(r'^[+\-]?[0-9]+\.?$|^[+\-]?[0-9]*\.[0-9]+$|^[+\-]?[0-9]+\.?[Ee][+\-]?[0-9]*$|^[+\-]?[0-9]*\.[0-9]+[Ee][+\-]?[0-9]*$')
 
 
 def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str:
@@ -154,7 +156,7 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
 # when regular sezimal numbers don’t specify a sign,
 # a positive sign + is assumed
 #
-_VALID_COMPRESSED_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-9A-Z]+\.?$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+$|^[+\-]?[0-9A-Z]+\.?[Ee][+\-][1-9A-Z][0-9A-Z]*$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+[Ee][+\-][1-9A-Z][0-9A-Z]*$')
+_VALID_COMPRESSED_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-9A-Z]+\.?$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+$|^[+\-]?[0-9A-Z]+\.?[Ee][+\-][0-9A-Z]*$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+[Ee][+\-][0-9A-Z]*$')
 
 
 def validate_clean_compressed_sezimal(number: int | float | str | Decimal | Sezimal) -> str:
