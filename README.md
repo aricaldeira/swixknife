@@ -27,7 +27,7 @@ Operators + - * / % are all evaluated without converting back and forth to Decim
 
 Operator ** uses Decimal only for fractional exponents (roots).
 
-*Functions exp, ln, log, log2, log14, sqrt, all use Decimal to execute the actual calculations, and convert back to Sezimal for the answer, because they all use calculus methods to aproximate the answers, and those are yet to be converted to use pure Sezimal operations.*
+*Functions exp, ln, log, log2, log14, sqrt, all use Decimal to execute the actual calculations, and convert back to Sezimal for the answer, because they all use calculus methods to approximate the answers, and those are yet to be converted to use pure Sezimal operations.*
 
 The basic operators work as expected:
 
@@ -37,7 +37,7 @@ The basic operators work as expected:
     >>> z = Sezimal(0.6789)  # This gives an error, 6789 are not Sezimal digits
     ValueError: The number 0.6789 has an invalid format for a sezimal number
     >>> from decimal import Decimal
-    >>> z = Sezimal(Decimal('0.6789'))  # This works, we explicity know that 0.6789 is a Decimal
+    >>> z = Sezimal(Decimal('0.6789'))  # This works, we explicitly know that 0.6789 is a Decimal
     >>> f = SezimalFraction(3.2)  # or
     >>> f = SezimalFraction(14, 3)  # or
     >>> f = SezimalFraction('14/3')
