@@ -9,7 +9,7 @@ Self = TypeVar('Self', bound='Sezimal')
 IntegerSelf = TypeVar('IntegerSelf', bound='SezimalInteger')
 FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 
-from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format
+from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
 # from .logarithm_table import LOGARITHM_TABLE
 
 
@@ -75,7 +75,7 @@ class Sezimal:
         return res
 
     def __repr__(self) -> str:
-        return f"Sezimal('{self.formatted_number}') == Decimal('{self.decimal}')"
+        return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=30, group_separator='_', fraction_group_separator='_')}')"
 
     @property
     def formatted_number(self) -> str:
@@ -856,9 +856,17 @@ class Sezimal:
         if other_number.is_integer():
             result = self
 
+            negative = other_number < 0
+
+            if negative:
+                other_number *= -1
+
             while other_number > 1:
                 result *= self
                 other_number -= 1
+
+            if negative:
+                return 1 / result
 
             return result
 
