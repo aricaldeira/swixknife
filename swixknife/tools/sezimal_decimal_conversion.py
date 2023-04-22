@@ -47,19 +47,24 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
     if not fraction:
         return ''
 
-    sezimal_precision = len(fraction)
-
     if decimal_precision is None:
         # decimal_precision = sezimal_exponent_to_decimal(sezimal_precision * -1) * -1
         decimal_precision = getcontext().prec
 
     with localcontext() as context:
         context.prec = decimal_precision * 2
-        decimal_fraction = Decimal(int(fraction, 6))
-        decimal_fraction *= Decimal(1) / (Decimal(6) ** Decimal(sezimal_precision))
-        decimal_fraction *= Decimal(10) ** decimal_precision
 
-    decimal_fraction = str(int(decimal_fraction))
+        decimal_fraction = Decimal('0')
+
+        i = -1
+        for d in fraction:
+            decimal_fraction += int(d, 6) * Decimal('6') ** i
+            i -= 1
+
+    decimal_fraction = str(decimal_fraction).split('.')[1]
+
+    if len(decimal_fraction) > decimal_precision:
+        decimal_fraction = decimal_fraction[:decimal_precision]
 
     return decimal_fraction
 
