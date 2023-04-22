@@ -10,7 +10,6 @@ IntegerSelf = TypeVar('IntegerSelf', bound='SezimalInteger')
 FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 
 from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
-# from .logarithm_table import LOGARITHM_TABLE
 
 
 MAX_PRECISION = 100
@@ -91,7 +90,7 @@ class Sezimal:
         return self._value
 
     def __int__(self) -> int:
-        return int(sezimal_to_decimal(self._integer))
+        return int(sezimal_to_decimal(self._integer)) * self._sign
 
     def __float__(self) -> float:
         return float(sezimal_to_decimal(str(self)))
@@ -136,13 +135,23 @@ class Sezimal:
 
         precision = max(len(self._integer), len(other_number._integer))
 
-        if self._integer.zfill(precision) > other_number._integer.zfill(precision):
-            return False
+        if self._sign == 1:
+            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
+                return False
+
+        else:
+            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
+                return False
 
         precision = max(len(self._fraction), len(other_number._fraction))
 
-        if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
-            return False
+        if self._sign == 1:
+            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
+                return False
+
+        else:
+            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
+                return False
 
         return True
 
@@ -164,13 +173,23 @@ class Sezimal:
 
         precision = max(len(self._integer), len(other_number._integer))
 
-        if self._integer.zfill(precision) < other_number._integer.zfill(precision):
-            return False
+        if self._sign == 1:
+            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
+                return False
+
+        else:
+            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
+                return False
 
         precision = max(len(self._fraction), len(other_number._fraction))
 
-        if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
-            return False
+        if self._sign == 1:
+            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
+                return False
+
+        else:
+            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
+                return False
 
         return True
 
