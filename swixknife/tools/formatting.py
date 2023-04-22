@@ -6,8 +6,9 @@ Sezimal = TypeVar('Sezimal', bound='Sezimal')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
-from .validation import validate_clean_sezimal
+from .validation import validate_clean_sezimal, validate_clean_decimal
 from .decimal_sezimal_conversion import decimal_to_sezimal
+from .sezimal_decimal_conversion import sezimal_to_decimal
 from .digit_conversion import (
     default_to_dedicated_digits,
     default_to_numerator_digits, default_to_denominator_digits,
@@ -16,6 +17,7 @@ from .digit_conversion import (
 
 _GROUP_FORMAT = re.compile('([0-5]{4})')
 _SUBGROUP_FORMAT = re.compile('([0-5]{2})')
+_DECIMAL_GROUP_FORMAT = re.compile('([0-9]{3})')
 
 SEPARATOR_COMMA = ','
 SEPARATOR_DOT = '.'
@@ -48,7 +50,7 @@ def sezimal_format(number: str | int | float | Decimal | Sezimal,
         integer, fraction = number, ''
 
     if sezimal_places:
-        fraction = fraction.zfill(sezimal_places)[:sezimal_places]
+        fraction = fraction.ljust(sezimal_places, '0')[:sezimal_places]
     else:
         fraction = ''
 
@@ -111,3 +113,42 @@ def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal, de
         denominator = default_to_denominator_digits(denominator)
 
     return numerator + TYPOGRAPHICAL_FRACTION_SLASH + denominator
+
+
+def decimal_format(number: str | int | float | Decimal | Sezimal,
+                   decimal_places: int = 2,
+                   decimal_separator: str = SEPARATOR_DOT,
+                   group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
+                   fraction_group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
+                   typographical_negative: bool = False) -> str:
+    if str(type(number)) == 'Sezimal':
+        number = sezimal_to_decimal(number)
+
+    number = validate_clean_decimal(str(number))
+
+    if '.' in number:
+        integer, fraction = number.split('.')
+    else:
+        integer, fraction = number, ''
+
+    if decimal_places:
+        fraction = fraction.ljust(decimal_places, '0')[:decimal_places]
+    else:
+        fraction = ''
+
+    if group_separator:
+        integer = _apply_format(integer, group_separator, _DECIMAL_GROUP_FORMAT)
+
+    if fraction_group_separator and fraction:
+        fraction = _apply_format(fraction[::-1], fraction_group_separator, _DECIMAL_GROUP_FORMAT)[::-1]
+
+    formatted_number = integer
+
+    if fraction:
+        formatted_number += decimal_separator
+        formatted_number += fraction
+
+    if formatted_number[0] == '-' and typographical_negative:
+        formatted_number = TYPOGRAPHICAL_NEGATIVE + formatted_number[1:]
+
+    return formatted_number
