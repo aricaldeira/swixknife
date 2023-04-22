@@ -14,7 +14,7 @@ from .digit_conversion import (
 )
 from .digit_compression import sezimal_compression, sezimal_decompression
 from .formatting import (
-    sezimal_format, sezimal_format_fraction,
+    sezimal_format, sezimal_format_fraction, decimal_format,
     SEPARATOR_COMMA, SEPARATOR_DOT,
     SEPARATOR_NARROW_NOBREAK_SPACE, SEPARATOR_NOBREAK_SPACE, SEPARATOR_HAIR_SPACE,
     SEPARATOR_DOT_ABOVE, SEPARATOR_ZERO_WIDTH_JOINER,
