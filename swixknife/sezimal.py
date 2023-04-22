@@ -75,7 +75,10 @@ class Sezimal:
         return res
 
     def __repr__(self) -> str:
-        return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=30, group_separator='_', fraction_group_separator='_')}')"
+        if not self._fraction:
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0, group_separator='_', fraction_group_separator='_')}')"
+        else:
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=30, group_separator='_', fraction_group_separator='_')}')"
 
     @property
     def formatted_number(self) -> str:
@@ -972,6 +975,9 @@ class SezimalInteger(Sezimal):
             self._value *= self._sign
         else:
             self._value = original_decimal
+
+    def __index__(self):
+        return int(self._integer, 6)
 
 
 class SezimalFraction(Sezimal):
