@@ -72,6 +72,17 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
     return number
 
 
+_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f]')
+
+
+def _clean_separators(number: str) -> str:
+    number = number.replace('_', '')
+    number = number.replace(',', '.')
+    number = number.replace('\u02d9', '')
+    number = _SPACES.sub('', number)
+    return number
+
+
 _VALID_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-5]+\.?$|^[+\-]?[0-5]*\.[0-5]+$|^[+\-]?[0-5]+\.?[Ee][+\-]?[0-5]*$|^[+\-]?[0-5]*\.[0-5]+[Ee][+\-]?[0-5]*$')
 
 
@@ -82,8 +93,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
         raise ValueError(f'An empty string is not a valid sezimal number')
 
     cleaned_number = dedicated_to_default_digits(number)
-    cleaned_number = cleaned_number.replace('_', '')
-    cleaned_number = cleaned_number.replace(',', '.')
+    cleaned_number = _clean_separators(cleaned_number)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -120,8 +130,7 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
     if not number:
         raise ValueError(f'An empty string is not a valid decimal number')
 
-    cleaned_number = number.replace('_', '')
-    cleaned_number = cleaned_number.replace(',', '.')
+    cleaned_number = _clean_separators(number)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -166,8 +175,7 @@ def validate_clean_compressed_sezimal(number: int | float | str | Decimal | Sezi
         raise ValueError(f'An empty string is not a valid compressed sezimal number')
 
     cleaned_number = dedicated_compressed_to_default_digits(number)
-    cleaned_number = cleaned_number.replace('_', '')
-    cleaned_number = cleaned_number.replace(',', '.')
+    cleaned_number = _clean_separators(cleaned_number)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
