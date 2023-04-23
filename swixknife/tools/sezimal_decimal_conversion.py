@@ -5,7 +5,7 @@ Sezimal = TypeVar('Sezimal', bound='Sezimal')
 
 from decimal import Decimal, localcontext, getcontext
 
-from .validation import validate_clean_sezimal
+from .validation import validate_clean_sezimal, validate_clean_decimal
 
 
 def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal, decimal_precision: int = None) -> str:
@@ -58,10 +58,11 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
 
         i = -1
         for d in fraction:
-            decimal_fraction += int(d, 6) * Decimal('6') ** i
+            decimal_fraction += int(d, 6) * (Decimal('6') ** i)
             i -= 1
 
-    decimal_fraction = str(decimal_fraction).split('.')[1]
+    decimal_fraction = validate_clean_decimal(decimal_fraction)
+    decimal_fraction = decimal_fraction.split('.')[-1]
 
     if len(decimal_fraction) > decimal_precision:
         decimal_fraction = decimal_fraction[:decimal_precision]
