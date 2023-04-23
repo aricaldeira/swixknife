@@ -66,9 +66,9 @@ def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -
     sezimal_fraction = ''
 
     with localcontext() as context:
-        context.prec = sezimal_precision * 2
+        # context.prec = sezimal_precision * 2
 
-        for i in range(sezimal_precision + 1):
+        for i in range(sezimal_precision):
             fraction = fraction * 6
             digit = int(fraction % 10)
             sezimal_fraction += str(digit)
@@ -76,6 +76,25 @@ def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -
 
             if fraction <= 0:
                 break
+
+    #
+    # Let’s adjust for recurring 5s at the end of fractional parts
+    #
+    while sezimal_fraction.endswith('5555'):
+        sezimal_fraction = sezimal_fraction[:-4]
+        size = len(sezimal_fraction)
+        sezimal_fraction = _decimal_integer_to_sezimal(int(sezimal_fraction, 6) + 1)
+        sezimal_fraction = sezimal_fraction.zfill(size)
+
+    #
+    # Remove trailing zeroes
+    #
+    sezimal_fraction = sezimal_fraction[::-1]
+
+    while sezimal_fraction[0] == '0':
+        sezimal_fraction = sezimal_fraction[1:]
+
+    sezimal_fraction = sezimal_fraction[::-1]
 
     return sezimal_fraction
 
