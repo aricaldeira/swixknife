@@ -21,6 +21,7 @@ _DECIMAL_GROUP_FORMAT = re.compile('([0-9]{3})')
 
 SEPARATOR_COMMA = ','
 SEPARATOR_DOT = '.'
+SEPARATOR_UNDERSCORE = '_'
 SEPARATOR_NARROW_NOBREAK_SPACE = '\u202f'
 SEPARATOR_NOBREAK_SPACE = '\u00a0'
 SEPARATOR_HAIR_SPACE = '\u200a'
@@ -33,9 +34,9 @@ TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
 def sezimal_format(number: str | int | float | Decimal | Sezimal,
                    sezimal_places: int = 3,
                    sezimal_separator: str = SEPARATOR_DOT,
-                   group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
+                   group_separator: str = SEPARATOR_UNDERSCORE,
                    subgroup_separator: str = '',
-                   fraction_group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
+                   fraction_group_separator: str = SEPARATOR_UNDERSCORE,
                    fraction_subgroup_separator: str = '',
                    dedicated_digits: bool = False,
                    typographical_negative: bool = False) -> str:
@@ -118,8 +119,8 @@ def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal, de
 def decimal_format(number: str | int | float | Decimal | Sezimal,
                    decimal_places: int = 2,
                    decimal_separator: str = SEPARATOR_DOT,
-                   group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
-                   fraction_group_separator: str = SEPARATOR_NARROW_NOBREAK_SPACE,
+                   group_separator: str = SEPARATOR_UNDERSCORE,
+                   fraction_group_separator: str = SEPARATOR_UNDERSCORE,
                    typographical_negative: bool = False) -> str:
     if str(type(number)) == 'Sezimal':
         number = sezimal_to_decimal(number)
