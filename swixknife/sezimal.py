@@ -1,5 +1,5 @@
 
-from decimal import Decimal, localcontext
+from decimal import Decimal, localcontext, getcontext
 import re
 
 from typing import TypeVar
@@ -12,7 +12,9 @@ FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
 
 
-MAX_PRECISION = 100
+_DECIMAL_PRECISION = 34
+getcontext().prec = _DECIMAL_PRECISION
+MAX_PRECISION = 105
 
 
 class Sezimal:
@@ -55,7 +57,7 @@ class Sezimal:
         if original_decimal is None:
             with localcontext() as context:
                 context.prec = int(MAX_PRECISION * 2)
-                self._value = Decimal(sezimal_to_decimal(cleaned_number))
+                self._value = Decimal(sezimal_to_decimal(cleaned_number)).quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
                 self._value *= self._sign
 
         else:
@@ -75,15 +77,13 @@ class Sezimal:
 
     def __repr__(self) -> str:
         if not self._fraction:
-            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0, group_separator='_', fraction_group_separator='_')}')"
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0)}')"
         else:
-            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=30, group_separator='_', fraction_group_separator='_')}')"
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=_DECIMAL_PRECISION)}')"
 
     @property
     def formatted_number(self) -> str:
-        return sezimal_format(
-            str(self), sezimal_places=self._precision,
-            sezimal_separator='.', group_separator='_', fraction_group_separator='_')
+        return sezimal_format(str(self), sezimal_places=self._precision)
 
     @property
     def decimal(self) -> Decimal:
