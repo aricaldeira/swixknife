@@ -6,11 +6,11 @@ DEDICATED_DIGITS = '󱨀󱨁󱨂󱨃󱨄󱨅󱨤󱨥󱨦󱨧󱨨󱨩󱩈󱩉󱩊
 DEFAULT_COMPRESSED_DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 DEDICATED_COMPRESSED_DIGITS = '󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫'
 
-DEFAULT_NUMERATOR_DIGITS = '⁰¹²³⁴⁵⁰¹²³⁴⁵⁰¹²³⁴⁵'
-DEDICATED_NUMERATOR_DIGITS = '󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩'
+DEFAULT_NUMERATOR_DIGITS = '⁰¹²³⁴⁵⁰¹²³⁴⁵⁰¹²³⁴⁵‍⁺⁻'
+DEDICATED_NUMERATOR_DIGITS = '󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩⁺⁻'
 
-DEFAULT_DENOMINATOR_DIGITS = '₀₁₂₃₄₅₀₁₂₃₄₅₀₁₂₃₄₅'
-DEDICATED_DENOMINATOR_DIGITS = '󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍'
+DEFAULT_DENOMINATOR_DIGITS = '₀₁₂₃₄₅₀₁₂₃₄₅₀₁₂₃₄₅₊₋'
+DEDICATED_DENOMINATOR_DIGITS = '󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍₊₋'
 
 
 def _change_digits(number: str, digits_from: str, digits_to: str) -> str:
