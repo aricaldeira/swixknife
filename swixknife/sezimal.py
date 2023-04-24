@@ -14,7 +14,7 @@ from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decima
 
 _DECIMAL_PRECISION = 34
 getcontext().prec = _DECIMAL_PRECISION
-MAX_PRECISION = 105
+MAX_PRECISION = 112
 
 
 class Sezimal:
@@ -56,8 +56,8 @@ class Sezimal:
         #
         if original_decimal is None:
             with localcontext() as context:
-                context.prec = int(MAX_PRECISION * 2)
-                self._value = Decimal(sezimal_to_decimal(cleaned_number)).quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
+                context.prec = _DECIMAL_PRECISION
+                self._value = Decimal(sezimal_to_decimal(cleaned_number)) ## .quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
                 self._value *= self._sign
 
         else:
@@ -511,7 +511,12 @@ class Sezimal:
         return self == self.trunc(0)
 
     def _mult_div_finalizing(self):
-        return round(self, MAX_PRECISION)
+        res = round(self, MAX_PRECISION)
+
+        if str(res).endswith('5555'):
+            res += Sezimal(f'1E-{decimal_to_sezimal(res._precision)}')
+
+        return res
 
     def __multiplication(self, other_number: Self) -> str:
         if self == 0 or other_number == 0:
