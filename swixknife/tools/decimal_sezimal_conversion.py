@@ -9,7 +9,7 @@ from .validation import validate_clean_decimal
 
 
 def decimal_to_sezimal(number: int | float | Decimal | str | Sezimal, sezimal_precision: int = None) -> str:
-    if str(type(number)) == 'Sezimal':
+    if type(number).__name__ == 'Sezimal':
         return str(number)
 
     number = validate_clean_decimal(str(number))
@@ -91,52 +91,12 @@ def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -
     #
     sezimal_fraction = sezimal_fraction[::-1]
 
-    while sezimal_fraction[0] == '0':
+    while sezimal_fraction and sezimal_fraction[0] == '0':
         sezimal_fraction = sezimal_fraction[1:]
 
     sezimal_fraction = sezimal_fraction[::-1]
 
+    if not sezimal_fraction:
+        sezimal_fraction = '0'
+
     return sezimal_fraction
-
-
-def decimal_exponent_to_sezimal(exponent: int) -> int:
-    if exponent == 0:
-        return 0
-
-    exponent_10 = Decimal(10) ** Decimal(exponent)
-
-    if exponent > 0:
-        start = 1
-        finish = exponent * 3
-        step = 1
-    else:
-        start = -1
-        finish = exponent * 3
-        step = -1
-
-    for i in range(start, finish, step):
-        exponent_6 = Decimal(6) ** Decimal(i)
-
-        if exponent > 0:
-            if exponent_6 >= exponent_10:
-                return i
-
-        else:
-            if exponent_6 <= exponent_10:
-                return i
-
-    return 0
-
-
-def decimal_exponent_to_sezimal_factor(decimal_exponent: int, sezimal_exponent: int = None, precision: int = None) -> Decimal:
-    if sezimal_exponent is None:
-        sezimal_exponent = decimal_exponent_to_sezimal(decimal_exponent)
-
-    if precision is None:
-        precision = getcontext().prec
-
-    with localcontext() as context:
-        context.prec = precision
-        conversion = (Decimal(10) ** decimal_exponent) / (Decimal(6) ** sezimal_exponent)
-
-    return conversion

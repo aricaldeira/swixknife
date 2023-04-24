@@ -40,7 +40,7 @@ def sezimal_format(number: str | int | float | Decimal | Sezimal,
                    fraction_subgroup_separator: str = '',
                    dedicated_digits: bool = False,
                    typographical_negative: bool = False) -> str:
-    if str(type(number)) == 'Decimal':
+    if type(number).__name__ == 'Decimal':
         number = decimal_to_sezimal(number)
 
     number = validate_clean_sezimal(str(number))
@@ -95,12 +95,12 @@ def _apply_format(number: str, separator: str, format_patter: re.Pattern) -> str
 
 
 def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal, denominator: str | int | float | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
-    if str(type(numerator)) == 'Decimal':
+    if type(numerator).__name__ == 'Decimal':
         numerator = decimal_to_sezimal(numerator)
 
     numerator = validate_clean_sezimal(str(numerator))
 
-    if str(type(denominator)) == 'Decimal':
+    if type(denominator).__name__ == 'Decimal':
         denominator = decimal_to_sezimal(denominator)
 
     denominator = validate_clean_sezimal(str(denominator))
@@ -122,7 +122,7 @@ def decimal_format(number: str | int | float | Decimal | Sezimal,
                    group_separator: str = SEPARATOR_UNDERSCORE,
                    fraction_group_separator: str = SEPARATOR_UNDERSCORE,
                    typographical_negative: bool = False) -> str:
-    if str(type(number)) == 'Sezimal':
+    if type(number).__name__ == 'Sezimal':
         number = sezimal_to_decimal(number)
 
     number = validate_clean_decimal(str(number))

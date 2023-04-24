@@ -12,7 +12,7 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal, decimal_pr
     if type(number) == Decimal:
         return str(number)
 
-    if str(type(number)) == 'Sezimal':
+    if type(number).__name__ == 'Sezimal':
         return str(number.decimal)
 
     number = validate_clean_sezimal(str(number))
@@ -68,32 +68,3 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
         decimal_fraction = decimal_fraction[:decimal_precision]
 
     return decimal_fraction
-
-
-def sezimal_exponent_to_decimal(exponent: int) -> int:
-    if exponent == 0:
-        return 0
-
-    exponent_6 = Decimal(6) ** Decimal(exponent)
-
-    if exponent > 0:
-        start = 1
-        finish = exponent * 3
-        step = 1
-    else:
-        start = -1
-        finish = exponent * 3
-        step = -1
-
-    for i in range(start, finish, step):
-        exponent_10 = Decimal(10) ** Decimal(i)
-
-        if exponent > 0:
-            if exponent_10 >= exponent_6:
-                return i
-
-        else:
-            if exponent_10 <= exponent_6:
-                return i
-
-    return 0
