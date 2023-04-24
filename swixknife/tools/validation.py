@@ -108,6 +108,9 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     if cleaned_number.startswith('.'):
         cleaned_number = '0' + cleaned_number
 
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+        cleaned_number = '0' + cleaned_number
+
     if not cleaned_number:
         cleaned_number = '0'
 
@@ -143,6 +146,9 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
             cleaned_number = cleaned_number[1:]
 
     if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
@@ -188,6 +194,9 @@ def validate_clean_compressed_sezimal(number: int | float | str | Decimal | Sezi
             cleaned_number = cleaned_number[1:]
 
     if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
