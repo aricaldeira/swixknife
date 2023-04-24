@@ -2,8 +2,8 @@
 
 from .validation import (validate_clean_sezimal, validate_clean_decimal,
     validate_clean_compressed_sezimal)
-from .decimal_sezimal_conversion import decimal_to_sezimal, decimal_exponent_to_sezimal, decimal_exponent_to_sezimal_factor
-from .sezimal_decimal_conversion import sezimal_to_decimal, sezimal_exponent_to_decimal
+from .decimal_sezimal_conversion import decimal_to_sezimal
+from .sezimal_decimal_conversion import sezimal_to_decimal
 from .digit_conversion import (
     default_to_dedicated_digits, default_compressed_to_dedicated_digits,
     dedicated_to_default_digits, dedicated_compressed_to_default_digits,
