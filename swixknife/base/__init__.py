@@ -1,7 +1,15 @@
 
+#
+# This is the base functions for the Sezimal classes and functions;
+# All functions in here explicit don’t use the Sezimal classes,
+# using only strings or indirect methods for converting, validating etc.
+#
 
-from .validation import (validate_clean_sezimal, validate_clean_decimal,
-    validate_clean_compressed_sezimal)
+from .validation import (
+    validate_clean_sezimal,
+    validate_clean_decimal,
+    validate_clean_compressed_sezimal,
+)
 from .decimal_sezimal_conversion import decimal_to_sezimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .digit_conversion import (
@@ -15,7 +23,7 @@ from .digit_conversion import (
 from .digit_compression import sezimal_compression, sezimal_decompression
 from .formatting import (
     sezimal_format, sezimal_format_fraction, decimal_format,
-    SEPARATOR_COMMA, SEPARATOR_DOT,
+    SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_UNDERSCORE,
     SEPARATOR_NARROW_NOBREAK_SPACE, SEPARATOR_NOBREAK_SPACE, SEPARATOR_HAIR_SPACE,
     SEPARATOR_DOT_ABOVE, SEPARATOR_ZERO_WIDTH_JOINER,
 )

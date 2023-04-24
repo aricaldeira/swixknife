@@ -9,7 +9,7 @@ Self = TypeVar('Self', bound='Sezimal')
 IntegerSelf = TypeVar('IntegerSelf', bound='SezimalInteger')
 FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 
-from .tools import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
+from .base import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
 
 
 _DECIMAL_PRECISION = 34
