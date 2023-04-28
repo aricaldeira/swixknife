@@ -30,6 +30,7 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal, decimal_pr
         fraction = ''
 
     decimal_integer = str(int(integer, 6))
+    # decimal_integer = _sezimal_integer_to_decimal(integer)
     decimal_fraction = _sezimal_fraction_to_decimal(fraction, decimal_precision)
 
     decimal = decimal_integer
@@ -43,12 +44,28 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal, decimal_pr
     return decimal
 
 
+def _sezimal_integer_to_decimal(integer: str) -> str:
+    if not integer:
+        return ''
+
+    decimal_integer = Decimal(0)
+    integer = integer[::-1]
+
+    i = 0
+    for d in integer:
+        decimal_integer += int(d, 6) * (Decimal('6') ** i)
+        i += 1
+
+    decimal_integer = validate_clean_decimal(decimal_integer)
+
+    return decimal_integer
+
+
 def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -> str:
     if not fraction:
         return ''
 
     if decimal_precision is None:
-        # decimal_precision = sezimal_exponent_to_decimal(sezimal_precision * -1) * -1
         decimal_precision = getcontext().prec
 
     with localcontext() as context:
