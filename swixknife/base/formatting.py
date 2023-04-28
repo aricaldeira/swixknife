@@ -15,9 +15,9 @@ from .digit_conversion import (
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
 )
 
-_GROUP_FORMAT = re.compile('([0-5]{4})')
-_SUBGROUP_FORMAT = re.compile('([0-5]{2})')
-_DECIMAL_GROUP_FORMAT = re.compile('([0-9]{3})')
+_TWO_DIGITS_GROUP_FORMAT = re.compile('([0-5]{2})')
+_THREE_DIGITS_GROUP_FORMAT = re.compile('([0-9]{3})')
+_FOUR_DIGITS_GROUP_FORMAT = re.compile('([0-5]{4})')
 
 SEPARATOR_COMMA = ','
 SEPARATOR_DOT = '.'
@@ -56,18 +56,18 @@ def sezimal_format(number: str | int | float | Decimal | Sezimal,
         fraction = ''
 
     if group_separator:
-        integer = _apply_format(integer, group_separator, _GROUP_FORMAT)
+        integer = _apply_format(integer, group_separator, _FOUR_DIGITS_GROUP_FORMAT)
 
         if subgroup_separator:
-            integer = _apply_format(integer, subgroup_separator, _SUBGROUP_FORMAT)
+            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
             integer = integer.replace(subgroup_separator + group_separator, group_separator)
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
-    if fraction_group_separator and fraction:
-        fraction = _apply_format(fraction[::-1], fraction_group_separator, _GROUP_FORMAT)[::-1]
+    if fraction and fraction_group_separator:
+        fraction = _apply_format(fraction[::-1], fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)[::-1]
 
         if fraction_subgroup_separator:
-            fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _SUBGROUP_FORMAT)[::-1]
+            fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
             fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
             fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
@@ -138,10 +138,10 @@ def decimal_format(number: str | int | float | Decimal | Sezimal,
         fraction = ''
 
     if group_separator:
-        integer = _apply_format(integer, group_separator, _DECIMAL_GROUP_FORMAT)
+        integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT)
 
     if fraction_group_separator and fraction:
-        fraction = _apply_format(fraction[::-1], fraction_group_separator, _DECIMAL_GROUP_FORMAT)[::-1]
+        fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
 
     formatted_number = integer
 
