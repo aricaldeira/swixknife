@@ -59,8 +59,7 @@ def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -
     decimal_precision = len(fraction)
 
     if sezimal_precision is None:
-        # sezimal_precision = decimal_exponent_to_sezimal(decimal_precision * -1) * -1
-        sezimal_precision = decimal_exponent_to_sezimal(getcontext().prec)
+        sezimal_precision = _decimal_exponent_to_sezimal(getcontext().prec)
 
     fraction = Decimal('0.' + fraction)
     sezimal_fraction = ''
@@ -100,3 +99,32 @@ def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -
         sezimal_fraction = '0'
 
     return sezimal_fraction
+
+
+def _decimal_exponent_to_sezimal(exponent: int) -> int:
+    if exponent == 0:
+        return 0
+
+    exponent_ten = Decimal(10) ** exponent
+
+    if exponent > 0:
+        start = ((exponent // 3) * 4) + 4
+        finish = 1
+        step = -1
+    else:
+        start = ((exponent // 3) * 4) - 4
+        finish = -1
+        step = 1
+
+    for i in range(start, finish, step):
+        exponent_six = Decimal(6) ** i
+
+        if exponent > 0:
+            if exponent_six <= exponent_ten:
+                return i + 1
+
+        else:
+            if exponent_six >= exponent_ten:
+                return i - 1
+
+    return 0
