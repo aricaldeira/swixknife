@@ -12,8 +12,8 @@ FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 from .base import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
 
 
-_DECIMAL_PRECISION = 34
-getcontext().prec = _DECIMAL_PRECISION
+MAX_DECIMAL_PRECISION = 34
+getcontext().prec = MAX_DECIMAL_PRECISION
 MAX_PRECISION = 112
 
 
@@ -56,7 +56,7 @@ class Sezimal:
         #
         if original_decimal is None:
             with localcontext() as context:
-                context.prec = _DECIMAL_PRECISION
+                context.prec = MAX_DECIMAL_PRECISION
                 self._value = Decimal(sezimal_to_decimal(cleaned_number)) ## .quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
                 self._value *= self._sign
 
@@ -79,7 +79,7 @@ class Sezimal:
         if not self._fraction:
             return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0)}')"
         else:
-            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=_DECIMAL_PRECISION)}')"
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=MAX_DECIMAL_PRECISION)}')"
 
     @property
     def formatted_number(self) -> str:
