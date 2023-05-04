@@ -5,8 +5,8 @@
   font-style: italic;
 /*  src: local('Gentium Plus Bold Italic');
   src: local('Gentium Plus Bold Italic'),*/
-  src: url("static/font/GentiumPlus-BoldItalic.woff2") format("woff2"),
-       url("static/font/GentiumPlus-BoldItalic.ttf") format("truetype");
+  src: url("../font/GentiumPlus-BoldItalic.woff2") format("woff2"),
+       url("../font/GentiumPlus-BoldItalic.ttf") format("truetype");
 }
 
 @font-face {
@@ -15,8 +15,8 @@
   font-style: italic;
 /*  src: local('Gentium Plus Italic');
   src: local('Gentium Plus Italic'),*/
-  src: url("static/font/GentiumPlus-Italic.woff2") format("woff2"),
-       url("static/font/GentiumPlus-Italic.ttf") format("truetype");
+  src: url("../font/GentiumPlus-Italic.woff2") format("woff2"),
+       url("../font/GentiumPlus-Italic.ttf") format("truetype");
 }
 
 @font-face {
@@ -25,8 +25,8 @@
   font-style: normal;
 /*  src: local('Gentium Plus Bold');
   src: local('Gentium Plus Bold'),*/
-  src: url("static/font/GentiumPlus-Bold.woff2") format("woff2"),
-       url("static/font/GentiumPlus-Bold.ttf") format("truetype");
+  src: url("../font/GentiumPlus-Bold.woff2") format("woff2"),
+       url("../font/GentiumPlus-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -35,6 +35,6 @@
   font-style: normal;
 /*  src: local('Gentium Plus Regular');
   src: local('Gentium Plus Regular'),*/
-  src: url("static/font/GentiumPlus-Regular.woff2") format("woff2"),
-       url("static/font/GentiumPlus-Regular.ttf") format("truetype");
+  src: url("../font/GentiumPlus-Regular.woff2") format("woff2"),
+       url("../font/GentiumPlus-Regular.ttf") format("truetype");
 }
