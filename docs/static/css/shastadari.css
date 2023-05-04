@@ -53,7 +53,7 @@ footer {
 }
 
 ol {
-    type: none;
+    list-style-type: none;
 }
 
 a {
