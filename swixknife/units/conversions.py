@@ -1,0 +1,238 @@
+
+
+from ..sezimal import Sezimal
+
+
+#
+# Time and Frequency
+#
+AGRIMA_TO_SECOND = Sezimal('1.504')
+SECOND_TO_AGRIMA = Sezimal('0.3123_5012_3501_2350_1235_0123_5012_3501_2350_1235_0123_5013')
+
+#
+# Avrita = agrima⁻¹
+#
+AVRITA_TO_HERTZ = Sezimal('1.504')
+HERTZ_TO_AVRITA = Sezimal('0.3123_5012_3501_2350_1235_0123_5012_3501_2350_1235_0123_5013')
+
+#
+# Civil time
+#
+UTA_TO_HOUR = Sezimal('0.4')
+HOURT_TO_UTA = Sezimal('1.3')
+POSHA_TO_MINUTE = Sezimal('1.04')
+MINUTE_TO_POSHA = Sezimal('0.5222_2222_2222_2222_2222_2222_2222_2222_2222_2222_2222_2223')
+ANUGA_TO_SECOND = Sezimal('0.0150_4')
+SECOND_TO_ANUGA = Sezimal('31.2350_1235_0123_5012_3501_2350_1235_0123_5012_3501_2350_1234')
+BODA_TO_SECOND = Sezimal('0.0015_04')
+SECOND_TO_BODA = Sezimal('3123.5012_3501_2350_1235_0123_5012_3501_2350_1235_0123_5012_3500')
+
+
+DAY_TO_AGRIMA = Sezimal('100_0000')
+UTA_TO_AGRIMA = Sezimal('1_0000')
+POSHA_TO_AGRIMA = Sezimal('100')
+ANUGA_TO_AGRIMA = Sezimal('0.01')
+BODA_TO_AGRIMA = Sezimal('0.0001')
+
+UTA_TO_DAY = Sezimal('0.01')
+POSHA_TO_DAY = Sezimal('0.0001')
+AGRIMA_TO_DAY = Sezimal('0.0000_01')
+ANUGA_TO_DAY = Sezimal('0.0000_0001')
+BODA_TO_DAY = Sezimal('0.0000_0000_01')
+
+#
+# Length, Speed, Acceleration, Area, Volume
+#
+PADA_TO_METER = Sezimal('0.532')
+METER_TO_PADA = Sezimal('1.0251_4025_1402_5140_2514_0251_4025_1402_5140_2514_0251_4024')
+
+#
+# Vega = pada × agrima⁻¹
+# Vega = pada × avrita
+#
+# 1 km/h = 0.32 vg
+# 1 vg = 1 ÷ 0.32 km/h
+#
+VEGA_TO_METER_PER_SECOND = Sezimal('0.3')
+METER_PER_SECOND_TO_VEGA = Sezimal('2')
+VEGA_TO_KILOMETER_PER_HOUR = Sezimal('1.4444_4444_4444_4444_4444_4444_4444_4444_4444_4444_4444_4445')
+KILOMETER_PER_HOUR_TO_VEGA = Sezimal('0.32')
+PADA_PER_AGRIMA_TO_METER_PER_SECOND = VEGA_TO_METER_PER_SECOND
+PADA_PER_AGRIMA_TO_KILOMETER_PER_HOUR = VEGA_TO_KILOMETER_PER_HOUR
+
+#
+# Tevara = pada × agrima⁻²
+#
+# 1 m/s² = 3.412 tv = 3.412 pd/ag²
+# 1 tv = 1 ÷ 3.412 m/s²
+#
+TEVARA_TO_METER_PER_SQUARE_SECOND = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
+METER_PER_SQUARE_SECOND_TO_TEVARA = Sezimal('3.412')
+PADA_PER_SQUARE_AGRIMA_TO_METER_PER_SQUARE_SECOND = TEVARA_TO_METER_PER_SQUARE_SECOND
+
+#
+# Keshe = pada²
+#
+KESHE_TO_SQUARE_METER = Sezimal('0.5051_04')  # 0.532²
+SQUARE_METER_TO_KESHE = Sezimal('1.0555_3532_0340_4132_4023_1123_2544_4242_0522_5302_1251_2000')
+SQUARE_PADA_TO_SQUARE_METER = KESHE_TO_SQUARE_METER
+
+#
+# Ekadimakeshe = EDksh = EDpd² = 1_0000_0000 pd²
+#
+# 1 km² = 0.41 EDksh = 0.41 Cpd²
+# 1 EDksh = 1 Cpd² = 1 ÷ 0.41
+#
+EKADIMAKESHE_TO_SQUARE_KILOMETER = Sezimal('1.2350_1235_0123_5012_3501_2350_1235_0123_5012_3501_2350_1234')
+SQUARE_KILOMETER_TO_EKADIMAKESHE = Sezimal('0.41')
+SQUARE_CHAMAPADA_TO_SQUARE_KILOMETER = EKADIMAKESHE_TO_SQUARE_KILOMETER
+SQUARE_KILOMETER_TO_SQUARE_CHAMAPADA = SQUARE_KILOMETER_TO_EKADIMAKESHE
+
+#
+# Aytan = pada³
+# Varti = ayta ÷ 1_0000 = pada³ ÷ 1_0000
+#
+AYTAN_TO_CUBIC_METER = Sezimal('0.4432_4501_2')  # 0.532³
+CUBIC_METER_TO_AYTAN = Sezimal('1.1320_3304_2330_0141_1135_3423_1432_5434_2521_1220_3011_5310')
+CUBIC_PADA_TO_CUBIC_METER = AYTAN_TO_CUBIC_METER
+CUBIC_METER_TO_CUBIC_PADA = CUBIC_METER_TO_AYTAN
+
+AYTAN_TO_LITER = Sezimal('3401.4554_3301_2')  # 0.532³ × 4344
+LITER_TO_AYTAN = Sezimal('0.0001_3443_4554_4551_4240_3400_3551_3435_0450_1422_5022_2514')
+CUBIC_PADA_TO_LITER = AYTAN_TO_LITER
+LITER_TO_CUBIC_PADA = LITER_TO_AYTAN
+
+VARTI_TO_CUBIC_METER = Sezimal('0.0000_4432_4501_2')  # 0.532³ ÷ 1_0000
+CUBIC_METER_TO_VARTI = Sezimal('1_1320.3304_2330_0141_1135_3423_1432_5434_2521_1220_3011_5305_4514')
+VARTI_TO_LITER = Sezimal('0.3401_4554_3301_2')  # 0.532³ ÷ 1_0000 × 4344
+LITER_TO_VARTI = Sezimal('1.3443_4554_4551_4240_3400_3551_3435_0450_1422_5022_2513_5510')
+
+#
+# Mass and Density
+#
+# 1 kg = 0.532 dv
+# 1 dv = 1 ÷ 0.532 kg
+#
+DRAVYA_TO_KILOGRAM = Sezimal('1.0251_4025_1402_5140_2514_0251_4025_1402_5140_2514_0251_4024')
+KILOGRAMA_TO_DRAVYA = Sezimal('0.532')
+
+#
+# Gana = dravya ÷ ayta = dravya ÷ pada³
+#
+# 1 kg/m³ = 0.4224_3331_5224 gn = 0.4224_3331_5224 dv/pd³ = 0.4224_3331_5224 dv/ay
+# 1 gn = 1 ÷ 0.4224_3331_5224 kg/m³
+#
+GANA_TO_KILOGRAM_PER_CUBIC_METER = Sezimal('1.2055_1055_0052_2412_3020_3152_2051_1401_1240_2120_0222_1515')
+KILOGRAM_PER_CUBIC_METER_TO_GANA = Sezimal('0.4224_3331_5224')
+DRAVYA_PER_AYTA_TO_KILOGRAM_PER_CUBIC_METER = GANA_TO_KILOGRAM_PER_CUBIC_METER
+DRAVYA_PER_CUBIC_PADA_TO_KILOGRAM_PER_CUBIC_METER = GANA_TO_KILOGRAM_PER_CUBIC_METER
+
+#
+# Force/Weight, Pressure, Energy/Work/Heat, Power
+#
+
+#
+# Force / Weight
+#
+# Bara = dravya × pada × agrima⁻²
+# Bara = dravya × tevara
+#
+# 1 Newton = 3.2324_24 br
+# 1 br = 1 ÷ 3.2324_24 N
+#
+BARA_TO_NEWTON = Sezimal('0.1425_5252_0053_1022_1003_4450_5124_1040_3120_4213_3212_0000')
+NEWTON_TO_BARA = Sezimal('3.2324_24')
+
+#
+# Pressure
+#
+# Daba = dravya × pada⁻¹ × agrima⁻²
+# Daba = bara × pada⁻² = bara × keshe⁻¹
+# Daba = karya × pada⁻³ = karya × ayta⁻¹
+#
+# 1 Pascal = 2.5350_2211_3344 db
+# 1 db = 1 ÷ 2.5350_2211_3344 Pa
+#
+DABA_TO_PASCAL = Sezimal('0.2012_4442_4312_0402_0433_0455_0311_4530_1510_0320_0033_3300')
+PASCAL_TO_DABA = Sezimal('2.5350_2211_3344')
+
+#
+# Energy/Work/Heat
+#
+# Karya = dravya × pada² × agrima⁻²
+# Karya = bara × pada
+# Karya = daba × aytan
+#
+# 1 J = 3.412 kr
+# 1 kr = 1 ÷ 3.412 J
+#
+KARYA_TO_JOULE = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
+JOULE_TO_KARYA = Sezimal('3.412')
+
+#
+# Power
+#
+# Shati = dravya × pada² × agrima⁻³ = dravya × keshe × agrima⁻³
+# Shati = karya × agrima⁻¹
+# Shati = bara × pada × agrima⁻¹
+# Shati = daba × pada³ × agrima⁻¹ = daba × aytan × agrima⁻¹
+#
+# 1 W = 10.5052_52 sht
+# 1 sht = 1 ÷ 10.5052_52 W
+#
+SHATI_TO_WATT = Sezimal('0.0512_5424_0024_3311_0301_5223_2342_0320_1340_2104_4403_5400')
+WATT_TO_SHATI = Sezimal('10.5052_52')
+
+#
+# Electric Current
+#
+DARA_TO_AMPERE = Sezimal('0.3123_5012_3501_2350_1235_0123_5012_3501_2350_1235_0123_5013')
+AMPERE_TO_DARA = Sezimal('1.504')
+
+#
+# Electric Charge
+#
+AVESHA_TO_COULOMB = Sezimal('1')
+COULOMB_TO_AVESHA = Sezimal('1')
+
+#
+# Electric Potential Difference
+#
+VIBAVA_TO_VOLT = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
+VOLT_TO_VIBAVA = Sezimal('3.412')
+
+#
+# Electrical Resistance
+#
+PRATIRODA_TO_OHM = Sezimal('0.3')
+OHM_TO_PRATIRODA = Sezimal('2')
+
+#
+# Electrical Conductance
+#
+CHALANA_TO_SIEMENS = Sezimal('2')
+SIEMENS_TO_CHALANA = Sezimal('0.3')
+
+#
+# Electrical Inductance
+#
+PRERAKA_TO_HENRY = Sezimal('0.532')
+HENRY_TO_PRERAKA = Sezimal('1.0251_4025_1402_5140_2514_0251_4025_1402_5140_2514_0251_4024')
+
+#
+# Electrical Capacitance
+#
+SAMAI_TO_FARAD = Sezimal('3.412')
+FARAD_TO_SAMAI = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
+
+#
+# Magnetic Flux
+#
+ABIVA_TO_WEBER = Sezimal('0.3')
+WEBER_TO_ABIVA = Sezimal('2')
+
+#
+# Magnetic Flux Density
+#
+VISTARA_TO_TESLA = Sezimal('0.3255_4544_0150_2044_2011_3341_4252_2121_0241_2431_0423_4001')
+TESLA_TO_VISTARA = Sezimal('1.4142_12')
