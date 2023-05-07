@@ -1,4 +1,10 @@
 
+__all__ = (
+    'Sezimal',
+    'SezimalInteger',
+    'SezimalFraction',
+)
+
 from decimal import Decimal, localcontext, getcontext
 import re
 
@@ -12,9 +18,9 @@ FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 from .base import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
 
 
-MAX_DECIMAL_PRECISION = 34
+MAX_DECIMAL_PRECISION = 37
 getcontext().prec = MAX_DECIMAL_PRECISION
-MAX_PRECISION = 112
+MAX_PRECISION = 120
 
 
 class Sezimal:
@@ -83,7 +89,7 @@ class Sezimal:
 
     @property
     def formatted_number(self) -> str:
-        return sezimal_format(str(self), sezimal_places=self._precision)
+        return sezimal_format(str(self), sezimal_places=Decimal(self._precision))
 
     @property
     def decimal(self) -> Decimal:
@@ -136,24 +142,24 @@ class Sezimal:
         precision = max(len(self._integer), len(other_number._integer))
 
         if self._sign == 1:
-            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
-                return False
+            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
+                return True
 
         else:
-            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
-                return False
+            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
+                return True
 
         precision = max(len(self._fraction), len(other_number._fraction))
 
         if self._sign == 1:
-            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
-                return False
+            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
+                return True
 
         else:
-            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
-                return False
+            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
+                return True
 
-        return True
+        return False
 
     def __ge__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> bool:
         return not self.__lt__(other_number)
@@ -174,24 +180,24 @@ class Sezimal:
         precision = max(len(self._integer), len(other_number._integer))
 
         if self._sign == 1:
-            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
-                return False
+            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
+                return True
 
         else:
-            if self._integer.zfill(precision) > other_number._integer.zfill(precision):
-                return False
+            if self._integer.zfill(precision) < other_number._integer.zfill(precision):
+                return True
 
         precision = max(len(self._fraction), len(other_number._fraction))
 
         if self._sign == 1:
-            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
-                return False
+            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
+                return True
 
         else:
-            if self._fraction.ljust(precision, '0') > other_number._fraction.ljust(precision, '0'):
-                return False
+            if self._fraction.ljust(precision, '0') < other_number._fraction.ljust(precision, '0'):
+                return True
 
-        return True
+        return False
 
     def __le__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> bool:
         return not self.__gt__(other_number)
@@ -407,7 +413,7 @@ class Sezimal:
         elif self._sign == 1 and other_number._sign == -1:
             res = self.__subtraction(other_number)
 
-            if abs(other_number) > abs(self):
+            if abs(other_number) > abs(self) and res[0] != '-':
                 res = '-' + res
 
         elif self._sign == -1 and other_number._sign == -1:
@@ -417,7 +423,7 @@ class Sezimal:
         elif self._sign == -1 and other_number._sign == 1:
             res = self.__subtraction(other_number)
 
-            if abs(self) > abs(other_number):
+            if abs(self) > abs(other_number) and res[0] != '-':
                 res = '-' + res
 
         return Sezimal(res)
@@ -438,7 +444,7 @@ class Sezimal:
         if self._sign == 1 and other_number._sign == 1:
             res = self.__subtraction(other_number)
 
-            if abs(other_number) > abs(self):
+            if abs(other_number) > abs(self) and res[0] != '-':
                 res = '-' + res
 
         elif self._sign == 1 and other_number._sign == -1:
@@ -447,7 +453,7 @@ class Sezimal:
         elif self._sign == -1 and other_number._sign == -1:
             res = self.__subtraction(other_number)
 
-            if abs(self) > abs(other_number):
+            if abs(self) > abs(other_number) and res[0] != '-':
                 res = '-' + res
 
         elif self._sign == -1 and other_number._sign == 1:
@@ -999,6 +1005,9 @@ class SezimalInteger(Sezimal):
             self._value *= self._sign
         else:
             self._value = original_decimal
+
+    def __repr__(self) -> str:
+        return super().__repr__().replace('Sezimal', 'SezimalInteger')
 
     def __index__(self):
         return int(self._integer, 6)
