@@ -3,6 +3,7 @@
 from typing import TypeVar
 
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
+SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
@@ -31,19 +32,31 @@ TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
 
 
-def sezimal_format(number: str | int | float | Decimal | Sezimal,
-                   sezimal_places: int = 3,
+def sezimal_format(number: str | int | float | Decimal | Sezimal | SezimalInteger,
+                   sezimal_places: str | int | Decimal | SezimalInteger = 3,
                    sezimal_separator: str = SEPARATOR_DOT,
                    group_separator: str = SEPARATOR_UNDERSCORE,
                    subgroup_separator: str = '',
                    fraction_group_separator: str = SEPARATOR_UNDERSCORE,
                    fraction_subgroup_separator: str = '',
                    dedicated_digits: bool = False,
-                   typographical_negative: bool = False) -> str:
+                   typographical_negative: bool = False,
+                   minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0) -> str:
     if type(number).__name__ == 'Decimal':
         number = decimal_to_sezimal(number)
 
+    if type(sezimal_places).__name__ == 'Decimal':
+        sezimal_places = decimal_to_sezimal(sezimal_places)
+
+    if type(minimum_size).__name__ == 'Decimal':
+        minimum_size = decimal_to_sezimal(minimum_size)
+
     number = validate_clean_sezimal(str(number))
+    sezimal_places = validate_clean_sezimal(sezimal_places)
+    minimum_size = validate_clean_sezimal(minimum_size)
+
+    sezimal_places = int(sezimal_to_decimal(sezimal_places))
+    minimum_size = int(sezimal_to_decimal(minimum_size))
 
     if '.' in number:
         integer, fraction = number.split('.')
@@ -56,6 +69,8 @@ def sezimal_format(number: str | int | float | Decimal | Sezimal,
         fraction = ''
 
     if group_separator:
+        if minimum_size > 0:
+            integer = integer.rjust(minimum_size, '0')
         integer = _apply_format(integer, group_separator, _FOUR_DIGITS_GROUP_FORMAT)
 
         if subgroup_separator:
