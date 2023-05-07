@@ -9,7 +9,7 @@ from .validation import validate_clean_decimal
 
 
 def decimal_to_sezimal(number: int | float | Decimal | str | Sezimal, sezimal_precision: int = None) -> str:
-    if type(number).__name__ == 'Sezimal':
+    if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         return str(number)
 
     number = validate_clean_decimal(str(number))
@@ -29,7 +29,7 @@ def decimal_to_sezimal(number: int | float | Decimal | str | Sezimal, sezimal_pr
     sezimal_integer = _decimal_integer_to_sezimal(integer)
     sezimal_fraction = _decimal_fraction_to_sezimal(fraction, sezimal_precision)
 
-    sezimal = sezimal_integer
+    sezimal = sezimal_integer or '0'
 
     if sezimal_fraction:
         sezimal += '.' + sezimal_fraction
