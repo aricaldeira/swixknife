@@ -24,7 +24,7 @@ MAX_PRECISION = 120
 
 
 class Sezimal:
-    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits']
+    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', 'reciprocal']
 
     def __init__(self, number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> Self:
         original_decimal = None
@@ -206,7 +206,7 @@ class Sezimal:
         return self.decimal.__hash__()
 
     def __bool__(self) -> bool:
-        return self.decimal.__bool__()
+        return not self == 0
 
     def __pos__(self) -> Self:
         return Sezimal(self)
@@ -726,6 +726,16 @@ class Sezimal:
             other_number = Sezimal(other_number)
 
         #
+        # Calculate the reciprocal first
+        #
+        if hasattr(other_number, 'reciprocal'):
+            reciprocal = other_number.reciprocal
+        else:
+            reciprocal = Sezimal('1').__division(other_number) * other_number._sign
+
+        return self * reciprocal
+
+        #
         # Deals with the signs
         #
         if self._sign == 1 and other_number._sign == 1:
@@ -986,7 +996,8 @@ class SezimalInteger(Sezimal):
 
         if '.' in cleaned_number:
             self._integer = str(int(cleaned_number.split('.')[0]))
-            self._fraction = cleaned_number.split('.')[1].replace('0', '')
+            # self._fraction = cleaned_number.split('.')[1].replace('0', '')
+            self._fraction = ''
         else:
             self._integer = str(int(cleaned_number))
             self._fraction = ''
