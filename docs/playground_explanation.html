@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title>Swixknife Playground</title>
+        <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-gentium.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/shastadari.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Swixknife Playground - Explanations and Examples</h1>
+        </header>
+        <main>
+            <p>We use <a href="https://pyodide.org" target="_blank">Pyodide</a> and <a href="https://terminal.jcubic.pl" target="_blank">JQueryTerminal</a> for all of this;</p>
+            <p>In <a href="playground.html" target="_blank">this prompt</a>, you can type Python expressions, then press ENTER to evaluate then and see the results;</p>
+            <p>TAB triggers completion as usual for terminals;</p>
+            <p>Type <pre>clear</pre> to clear the terminal;</p>
+            <p>All of <a href="https://github.com/aricaldeira/swixknife" target="_blank">Swixknife’s classes, functions ans constants</a> are already available, along with the following shortcuts:</p>
+<pre>
+from swixknife import Sezimal as S, SezimalInteger as SI, SezimalFraction as SF
+from swixknife import SezimalDate as SD, SezimalTime as ST
+from swixknife import SezimalRange as SR
+from decimal import Decimal as D
+from datetime import date
+</pre>
+            <p>Examples to type below (remember to press ENTER to execute):</p>
+<pre>
+#
+# Sezimal is “transparent” and “greedy”,
+# all number classes are treated as if they were Sezimal aswell,
+# except Decimal;
+# Mix number types, and all will be treated as Sezimal at the end
+#
+S(14) / 13   # 13 is technicaly a decimal integer, but is treated as if it were Sezimal
+S(14) * 1.3  # 1.3 is technicaly a decimal float, but is treated as if it were Sezimal
+S(14) * 1.6  # This gives an error, because 6 is not a sezimal digit
+S(14) * D('1.6')  # This is fine, since Decimals are converted to Sezimals
+
+#
+# This SezimalDate uses the Symmetric Sezimal Calendar
+#
+SD.today()
+SD.today().gregorian_date
+
+#
+# %_Y formats the year using _ as a separator, that then you can replace
+# for something more suitable;
+# SHE - Sezimal Human Era
+#
+SD.today().strftime('Today is %A, %-d %B %_Y SHE').replace('_', SEPARATOR_NARROW_NOBREAK_SPACE)
+
+#
+# Sezimal Time
+#
+# Default format uses ' as separator: #*d #u'#p'#a.#n#b#e #t #V
+#
+# #u / #-u / #*u / #*-u = utas with 2 digits, utas with at least 1 digit, * means blank if zero
+# #p / #-p / #*p / #*-p = poshas
+# #a / #-a / #*a / #*-a = agrimas
+# #n / #-n / #*n / #*-n = anugas
+# #b / #-b / #*b / #*-b = bodas
+# #e / #-e / #*e / #*-e = ekaditibodas
+# #d / #*d = days
+# #t = time zone offset (formatted)
+# #T = time zone name
+# #z = time zone offset (unformatted)
+# #v = DST (boolean)
+# #V = DST (string, empty when not DST)
+#
+ST.now()
+str(ST.now())
+ST.now('UTC')
+str(ST.now('UTC'))
+ST.now('America/Sao_Paulo')
+str(ST.now('America/Sao_Paulo'))
+ST.now('Europe/Rome')
+str(ST.now('Europe/Rome'))
+
+#
+# This is just a range like class, but returns SezimalIntegers instead
+#
+for i in SezimalRange(20):
+    print(f'This is Sezimal: {i}, and this is decimal: {i.decimal}')
+
+#
+# All Sezimal numbers have a property that returns a string with
+# the number formatted using _ as a separator (on both sides of the . if there is one)
+#
+S(12345).formatted_number
+
+#
+# If you need some more fine-grained formatting, use the function sezimal_format;
+# pass the number as a string if you want to avoid limitations on the number of digits
+# allowed on floats, otherwise, any other number class will do;
+# remember that ints and floats will be validated as if they where Sezimal
+#
+sezimal_format(123_4501_2345.0123_4512, sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_DOT, sezimal_separator=SEPARATOR_COMMA, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+
+#
+# Units conversions
+#
+PADA_TO_METER
+1_0000 * PADA_TO_METER / 4344
+0.0001 * PADA_TO_METER * 4344
+(PADA_TO_METER / 100 * 4344) - D('25.4')  # Difference from the ditipada to an inch
+(PADA_TO_METER / 100 * 4344).decimal - D('25.4')
+</pre>
+        </main>
+        <footer>
+            <p>Revised on the 15<sup>th</sup> of May 13,1355 SHE (13,1355-05-15 <span class="decimal">2023-05-11</span>)</p>
+        </footer>
+    </body>
+</html>

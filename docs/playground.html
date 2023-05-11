@@ -4,100 +4,273 @@
         <meta charset="utf-8">
         <title>Swixknife Playground</title>
         <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+
         <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
         <link rel="stylesheet" type="text/css" href="static/css/font-gentium.css" />
-        <link rel="stylesheet" type="text/css" href="static/css/shastadari.css" />
+<!--         <link rel="stylesheet" type="text/css" href="static/css/shastadari.css" /> -->
 
-        <!--
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.35.2/js/jquery.terminal.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.35.2/js/unix_formatting.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.35.2/css/jquery.terminal.min.css" rel="stylesheet" />
+        <style>
+            .terminal {
+                --size: 2;
+                --color: rgba(255, 255, 255, 0.8);
+/*                 --glow: 1; */
+            }
+            .noblink {
+                --animation: terminal-none;
+            }
+            body {
+                background-color: black;
+                color: rgba(255, 255, 255, 0.8);
+            }
+            #loading {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                border: 3px solid rgba(172, 237, 255, 0.5);
+                border-radius: 50%;
+                border-top-color: #fff;
+                animation: spin 1s ease-in-out infinite;
+                -webkit-animation: spin 1s ease-in-out infinite;
+            }
 
-            PyScript
-
-        -->
-        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+            @keyframes spin {
+                to {
+                -webkit-transform: rotate(360deg);
+                }
+            }
+            @-webkit-keyframes spin {
+                to {
+                -webkit-transform: rotate(360deg);
+                }
+            }
+        </style>
     </head>
     <body>
-        <py-config>
-            packages = ['pytz', 'static/python/swixknife-1.0.0-py3-none-any.whl']
-        </py-config>
         <header>
             <h1>Swixknife Playground</h1>
         </header>
-        <main>
-            <p>We use <a href="https://pyscript.net/">PyScript</a> for all of this;</p>
-            <p>In the blue prompt below, you can type Python expressions, then press Shift+ENTER to evaluate then and see the results;</p>
-            <p>All of Swixknife’s classes are already available, along with the following shortcuts:</p>
-<pre>
+        <div id="loading" />
+    <script>
+      "use strict";
+
+      function sleep(s) {
+        return new Promise((resolve) => setTimeout(resolve, s));
+      }
+
+      async function main() {
+        let indexURL = "https://cdn.jsdelivr.net/pyodide/dev/full/";
+        const urlParams = new URLSearchParams(window.location.search);
+        const buildParam = urlParams.get("build");
+        if (buildParam) {
+          if (["full", "debug", "pyc"].includes(buildParam)) {
+            indexURL = indexURL.replace(
+              "/full/",
+              "/" + urlParams.get("build") + "/",
+            );
+          } else {
+            console.warn(
+              'Invalid URL parameter: build="' +
+                buildParam +
+                '". Using default "full".',
+            );
+          }
+        }
+        const { loadPyodide } = await import(indexURL + "pyodide.mjs");
+
+        let term;
+        globalThis.pyodide = await loadPyodide({
+          stdin: () => {
+            let result = prompt();
+            echo(result);
+            return result;
+          },
+        });
+
+        //
+        // Carregando dependências e imports automáticos
+        //
+        await pyodide.loadPackage('pytz');
+        await pyodide.loadPackage('static/python/swixknife-1.0.0-py3-none-any.whl');
+
+        pyodide.runPython(
+`
+from swixknife import *
+from swixknife.constants import *
+from swixknife.units.conversions import *
+from decimal import *
+from decimal import Decimal
 from swixknife import Sezimal as S, SezimalInteger as SI, SezimalFraction as SF
 from swixknife import SezimalDate as SD
+from swixknife.date_time.time import SezimalTime, SezimalTime as ST
 from swixknife import SezimalRange as SR
 from decimal import Decimal as D
 from datetime import date
-</pre>
-            <p>Examples to type below (remember to press Shift+ENTER to execute):</p>
-<pre>
-#
-# Sezimal is “transparent”, all number classes are treated as base six, except Decimal
-#
-S(14) / 13
-#
-# Pass a Decimal to convert from decimal to sezimal;
-#
-S(D(1286))
-#
-# Mix types, all will be treated as sezimal at the end
-#
-S(10) * 10 * D(6)
-S(1.4) * 10
-SF(122, 43)
+`
+        );
 
-SD.today()
-SD.today().gregorian_date
-#
-# %_Y formats the year using _ as a separator, that then you can replace
-# for something more suitable;
-# SHE - Sezimal Human Era
-#
-SD.today().strftime('Today is %A, %-d %B %_Y SHE').replace('_', SEPARATOR_NARROW_NOBREAK_SPACE)
+        let namespace = pyodide.globals.get("dict")();
+        pyodide.runPython(
+          `
+import sys
+from pyodide.ffi import to_js
+from pyodide.console import PyodideConsole, repr_shorten, BANNER
+import __main__
+BANNER = "Welcome to the Swixknife terminal emulator 6🧰🐍\\n" + BANNER
+BANNER = BANNER.replace('May  9 2023 17:38:21', "13,1355 May 13 42'24'30 (2023-05-09 17:38:21)")
+pyconsole = PyodideConsole(__main__.__dict__)
+import builtins
+async def await_fut(fut):
+    res = await fut
+    if res is not None:
+        builtins._ = res
+    return to_js([res], depth=1)
+def clear_console():
+    pyconsole.buffer = []
+        `,
+          { globals: namespace },
+        );
+        let repr_shorten = namespace.get("repr_shorten");
+        let banner = namespace.get("BANNER");
+        let await_fut = namespace.get("await_fut");
+        let pyconsole = namespace.get("pyconsole");
+        let clear_console = namespace.get("clear_console");
+        const echo = (msg, ...opts) =>
+          term.echo(
+            msg
+              .replaceAll("]]", "&rsqb;&rsqb;")
+              .replaceAll("[[", "&lsqb;&lsqb;"),
+            ...opts,
+          );
+        namespace.destroy();
 
-for i in SezimalRange(20):
-    print(f'This is Sezimal: {i}, and this is decimal: {i.decimal}')
+        let ps1 = ">>> ",
+          ps2 = "... ";
 
-S(12345).formatted_number
-#
-# Pass the number as a string if you want to avoid limitations on the number of digits
-# allowed on floats
-#
-sezimal_format(123_4501_2345.0123_4512, sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
-sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
-sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_DOT, sezimal_separator=SEPARATOR_COMMA, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+        async function lock() {
+          let resolve;
+          let ready = term.ready;
+          term.ready = new Promise((res) => (resolve = res));
+          await ready;
+          return resolve;
+        }
 
-#
-# Units conversions
-#
-PADA_TO_METER
-1_0000 * PADA_TO_METER / 4344
-0.0001 * PADA_TO_METER * 4344
-(PADA_TO_METER / 100 * 4344) - D('25.4')  # Difference from the ditipada to an inch
-(PADA_TO_METER / 100 * 4344).decimal - D('25.4')
-</pre>
-        </main>
-            <py-script>
-                from swixknife import *
-                from swixknife.units.conversions import *
-                from swixknife.constants import *
-                from decimal import *
-                from swixknife import Sezimal as S, SezimalInteger as SI, SezimalFraction as SF
-                from swixknife import SezimalDate as SD # , SezimalTime as ST
-                from decimal import Decimal as D
-                from datetime import date
-            </py-script>
-            <div style="margin-right: 3rem">
-                <py-repl id="my-repl" auto-generate="true">
-                </py-repl>
-            </div>
-        <footer>
-            <p>Revised on the 14<sup>th</sup> of May 13,1355 HE (13,1355-05-14 <span class="decimal">2023-05-10</span>)</p>
-        </footer>
+        async function interpreter(command) {
+          let unlock = await lock();
+          term.pause();
+          // multiline should be split (useful when pasting)
+          for (const c of command.split("\n")) {
+            const escaped = c.replaceAll(/\u00a0/g, " ");
+            let fut = pyconsole.push(escaped);
+            term.set_prompt(fut.syntax_check === "incomplete" ? ps2 : ps1);
+            switch (fut.syntax_check) {
+              case "syntax-error":
+                term.error(fut.formatted_error.trimEnd());
+                continue;
+              case "incomplete":
+                continue;
+              case "complete":
+                break;
+              default:
+                throw new Error(`Unexpected type ${ty}`);
+            }
+            // In JavaScript, await automatically also awaits any results of
+            // awaits, so if an async function returns a future, it will await
+            // the inner future too. This is not what we want so we
+            // temporarily put it into a list to protect it.
+            let wrapped = await_fut(fut);
+            // complete case, get result / error and print it.
+            try {
+              let [value] = await wrapped;
+              if (value !== undefined) {
+                echo(
+                  repr_shorten.callKwargs(value, {
+                    separator: "\n<long output truncated>\n",
+                  }),
+                );
+              }
+              if (value instanceof pyodide.ffi.PyProxy) {
+                value.destroy();
+              }
+            } catch (e) {
+              if (e.constructor.name === "PythonError") {
+                const message = fut.formatted_error || e.message;
+                term.error(message.trimEnd());
+              } else {
+                throw e;
+              }
+            } finally {
+              fut.destroy();
+              wrapped.destroy();
+            }
+          }
+          term.resume();
+          await sleep(10);
+          unlock();
+        }
+
+        term = $("body").terminal(interpreter, {
+          greetings: banner,
+          prompt: ps1,
+          completionEscape: false,
+          completion: function (command, callback) {
+            callback(pyconsole.complete(command).toJs()[0]);
+          },
+          keymap: {
+            "CTRL+C": async function (event, original) {
+              clear_console();
+              term.enter();
+              echo("KeyboardInterrupt");
+              term.set_command("");
+              term.set_prompt(ps1);
+            },
+            TAB: (event, original) => {
+              const command = term.before_cursor();
+              // Disable completion for whitespaces.
+              if (command.trim() === "") {
+                term.insert("\t");
+                return false;
+              }
+              return original(event);
+            },
+          },
+        });
+        window.term = term;
+        pyconsole.stdout_callback = (s) => echo(s, { newline: false });
+        pyconsole.stderr_callback = (s) => {
+          term.error(s.trimEnd());
+        };
+        term.ready = Promise.resolve();
+        pyodide._api.on_fatal = async (e) => {
+          if (e.name === "Exit") {
+            term.error(e);
+            term.error("Pyodide exited and can no longer be used.");
+          } else {
+            term.error(
+              "Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers.",
+            );
+            term.error("The cause of the fatal error was:");
+            term.error(e);
+            term.error("Look in the browser console for more details.");
+          }
+          await term.ready;
+          term.pause();
+          await sleep(15);
+          term.pause();
+        };
+
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has("noblink")) {
+          $(".cmd-cursor").addClass("noblink");
+        }
+      }
+      window.console_ready = main();
+    </script>
     </body>
 </html>
