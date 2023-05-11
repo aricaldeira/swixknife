@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title>Swixknife Playground</title>
+        <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-gentium.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/shastadari.css" />
+
+        <!--
+
+            PyScript
+
+        -->
+        <link rel="stylesheet" href="static/python/pyscript.css" />
+        <script defer src="static/python/pyscript.js"></script>
+    </head>
+    <body>
+        <py-config>
+            packages = ['static/python/swixknife-1.0.0-py3-none-any.whl']
+        </py-config>
+        <header>
+            <h1>Swixknife Playground</h1>
+        </header>
+        <main>
+            <p>We use <a href="https://pyscript.net/">PyScript</a> for all of this;</p>
+            <p>In the prompt below, you can type Python expressions, then press Shift+ENTER to evaluate then and see the results;</p>
+            <p>All of Swixknife’s classes are already available, along with the following shortcuts:</p>
+<pre>
+from swixknife import Sezimal as S, SezimalInteger as SI, SezimalFraction as SF
+from swixknife import SezimalDate as SD
+from swixknife import SezimalRange as SR
+from decimal import Decimal as D
+from datetime import date
+</pre>
+            <p>Examples to type below (remember to press Shift+ENTER to execute):</p>
+<pre>
+#
+# Sezimal is “transparent”, all number classes are treated as base six, except Decimal
+#
+S(14) / 13
+#
+# Pass a Decimal to convert from decimal to sezimal;
+#
+S(D(1286))
+#
+# Mix types, all will be treated as sezimal at the end
+#
+S(10) * 10 * D(6)
+S(1.4) * 10
+SF(122, 43)
+
+SD.today()
+SD.today().gregorian_date
+#
+# %_Y formats the year using _ as a separator, that then you can replace
+# for something more suitable;
+# SHE - Sezimal Human Era
+#
+SD.today().strftime('Today is %A, %-d %B %_Y SHE').replace('_', SEPARATOR_NARROW_NOBREAK_SPACE)
+
+for i in SezimalRange(20):
+    print(f'This is Sezimal: {i}, and this is decimal: {i.decimal}')
+
+S(12345).formatted_number
+#
+# Pass the number as a string if you want to avoid limitations on the number of digits
+# allowed on floats
+#
+sezimal_format(123_4501_2345.0123_4512, sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_DOT, sezimal_separator=SEPARATOR_COMMA, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+
+#
+# Units conversions
+#
+PADA_TO_METER
+1_0000 * PADA_TO_METER / 4344
+0.0001 * PADA_TO_METER * 4344
+(PADA_TO_METER / 100 * 4344) - D('25.4')  # Difference from the ditipada to an inch
+(PADA_TO_METER / 100 * 4344).decimal - D('25.4')
+</pre>
+        </main>
+            <py-script>
+                from swixknife import *
+                from swixknife.units.conversions import *
+                from swixknife.constants import *
+                from decimal import *
+                from swixknife import Sezimal as S, SezimalInteger as SI, SezimalFraction as SF
+                from swixknife import SezimalDate as SD # , SezimalTime as ST
+                from decimal import Decimal as D
+                from datetime import date
+            </py-script>
+            <div style="margin-right: 3rem">
+                <py-repl id="my-repl" auto-generate="true">
+                </py-repl>
+            </div>
+        <footer>
+            <p>Revised on the 14<sup>th</sup> of May 13,1355 HE (13,1355-05-14 <span class="decimal">2023-05-10</span>)</p>
+        </footer>
+    </body>
+</html>
