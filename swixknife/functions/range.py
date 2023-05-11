@@ -33,7 +33,7 @@ class SezimalRange:
             x = SezimalInteger(str(self.start))
 
             while x < self.stop:
-                yield x
+                yield SezimalInteger(x)
                 x += self.step
 
         else:
@@ -43,5 +43,5 @@ class SezimalRange:
             x = SezimalInteger(str(self.start))
 
             while x > self.stop:
-                yield x
+                yield SezimalInteger(x)
                 x += self.step
