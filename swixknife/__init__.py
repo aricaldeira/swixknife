@@ -21,3 +21,4 @@ from .functions import *
 from .exponents import *
 from .units import *
 from .date_time import *
+from .text import *

@@ -1,0 +1,147 @@
+^0 zero
+1 um
+2 dois
+3 três
+4 quatro
+5 cinco
+
+10 seis
+20 dusseis
+30 tresseis
+40 quasseis
+50 quinseis
+(\d)(\d) $(\10) e $2
+
+100 zem
+110 zem e seis
+200 duzém
+210 duzém e seis
+300 trezém
+310 trezém e seis
+400 quazém
+410 quazém e seis
+500 quinzém
+510 quinzém e seis
+(\d)0(\d) $(\100) e $2
+(\d)(\d)0 $(\100) e $(\20)
+(\d)(\d\d) $(\100) $2
+
+1000 seis zem
+100(\d) seis zem e $1
+10(\d)0 seis zem e $(\10)
+10(\d\d) seis zem $1
+
+(\d\d)10 $1 zem e seis
+(\d\d)0(\d) $1 zem e $2
+(\d\d)(\d)0 $1 zem e $(\20)
+(\d\d)(\d\d) $1 zem $2
+
+#
+# Nas regras abaixo, o número que entra
+# é os próximos 4 dígitos depois de um
+# grupo
+#
+:0+
+:0*[12345] " e "
+:0*[12345]0*(,?\.?\d+) " e "
+:\d+ ", "
+
+pl:1	ão			# milhão
+pl:.*	ões			# milhões
+
+1(\d\d\d\d) zil$(:\1)$1
+(\d{1,4})(\d\d\d\d) $1 zil$(:\2)$2
+
+(\d{1,4})(\d{8})  $1 zilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{12}) $1 duzilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{16}) $1 trezilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{20}) $1 quazilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{24}) $1 quinlh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{28}) $1 sezilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{32}) $1 seziunzilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{36}) $1 seziduzilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{40}) $1 sezitrezilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{44}) $1 seziquazilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{48}) $1 seziquinzilh$(pl:\1)$(:\2)$2
+(\d{1,4})(\d{52}) $1 dussezilh$(pl:\1)$(:\2)$2
+
+#
+# Números negativos
+#
+[-−](\d\d*) menos |$1
+
+#
+# Frações
+#
+#([-−]?\d+)[,.] $1| ponto
+([-−]?\d+)[,.] $1| vírgula
+([-−]?\d+[.,])([^0]\d{1,4}) $1| |$2
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11
+"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11 |$12
+([-−]?\d+[.,]\d*)(\d) $1| |$2
+
+### UNITS_AND_PREFIXES ###
+
+== feminine ==
+
+([-−]?\d+) $(feminine $1)
+
+(.*)um \1uma
+(.*)dois(.*)	$(feminine \1duas\2)
+(.*) \1
+
+== masculine ==
+
+([-−]?\d+) $1
+
+== ordinal(-masculine)? ==
+
+0 zerésimo
+1 primeiro
+2 segundo
+3 terceiro
+4 quarto
+5 quinto
+10 sexto
+20 dussexto
+30 tressexto
+40 quassexto
+50 quinsexto
+(\d)(\d) $(ordinal \20) $(ordinal \3)
+100 zenhésimo
+200 duzenhésimo
+300 trezenhésimo
+400 quazenhésimo
+500 quinzenhésimo
+(\d)(\d\d) $(ordinal \200) $(ordinal \3)
+1(\d{4}) zilésimo[ $(ordinal \2)]
+(\d)(\d{4}) $2 zilésimo[ $(ordinal \3)]
+1(\d{8}) zilionésimo[ $(ordinal \2)]
+(\d{1,7})(\d{8}) $2 zilionésimo[ $(ordinal \3)]
+1(\d{12}) duzilionésimo[ $(ordinal \2)]
+(\d{1,4})(\d{12}) $2 duzilionésimo[ $(ordinal \3)]
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine $(ordinal-masculine \1))
+(.*)o\b(.*)  $(ordinal-feminine \1a\2)
+(.*)   \1
+
+== (ordinal)-number(-feminine|-masculine)? ==
+
+([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
+.*a ª    # [:pt-BR:]
+.*a .ª
+.*o º    # [:pt-BR:]
+.*o .º
+
+== help ==
+
+"" $(1)|, $(2), $(3)\n$(\0 feminine)$(\0 masculine)$(\0 ordinal-feminine)$(\0 ordinal-masculine)$(\0 ordinal-number-feminine)$(\0 ordinal-number-masculine)
+(feminine|masculine|ordinal(-number)?(-feminine|-masculine)?) \1: $(\1 1), $(\1 2), $(\1 3)\n
