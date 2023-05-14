@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="regua_130_dpd.svg"
+   sodipodi:docname="regua_130_dpad.svg"
    inkscape:export-filename="ruler_130_dpd.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.52337894"
-     inkscape:cx="663.95487"
-     inkscape:cy="402.19425"
+     inkscape:zoom="1.4803392"
+     inkscape:cx="465.43387"
+     inkscape:cy="220.55756"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -114,7 +114,7 @@
          style="stroke-width:0.072"
          x="17.506044"
          y="119.37555"
-         id="tspan73699">Formato SVG original https://github.com/aricaldeira/swixknife/blob/main/misc/regua_130_dpd.svg</tspan><tspan
+         id="tspan73699">Formato SVG original https://github.com/aricaldeira/swixknife/blob/main/misc/regua_130_dpad.svg</tspan><tspan
          sodipodi:role="line"
          style="stroke-width:0.072"
          x="17.506044"
@@ -3631,51 +3631,51 @@
                  id="tspan45475-6-5"
                  x="-14.30546"
                  y="188.32512"
-                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">1,3 pd;</tspan></text>
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">1,3 pad;</tspan></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.00684215;-inkscape-stroke:none;stop-color:#000000"
-               x="116.8152"
+               x="131.15627"
                y="188.54889"
                id="text4862-2-3"><tspan
                  sodipodi:role="line"
                  id="tspan4860-7-5"
                  style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.00684215"
-                 x="116.8152"
-                 y="188.54889">1.3000 cpd</tspan></text>
+                 x="131.15627"
+                 y="188.54889">1.3000 cpad</tspan></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0136843;-inkscape-stroke:none;stop-color:#000000"
-               x="94.139915"
+               x="107.0591"
                y="188.52493"
                id="text4770-9-6"><tspan
                  sodipodi:role="line"
                  id="tspan4768-1-2"
                  style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0136843"
-                 x="94.139915"
-                 y="188.52493">1300 tpd;</tspan></text>
+                 x="107.0591"
+                 y="188.52493">1300 tpad;</tspan></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0273685;-inkscape-stroke:none;stop-color:#000000"
-               x="57.664463"
+               x="66.958336"
                y="188.55637"
                id="text4955-6-9"><tspan
                  sodipodi:role="line"
                  id="tspan4953-2-1"
                  style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0273685"
-                 x="57.664463"
-                 y="188.55637">130 dpd;</tspan></text>
+                 x="66.958336"
+                 y="188.55637">130 dpad;</tspan></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0328422;-inkscape-stroke:none;stop-color:#000000"
-               x="21.336531"
+               x="26.12372"
                y="188.32512"
                id="text13338"><tspan
                  sodipodi:role="line"
                  id="tspan13336"
-                 x="21.336531"
+                 x="26.12372"
                  y="188.32512"
-                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">13 epd;</tspan></text>
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">13 epad;</tspan></text>
           </g>
           <rect
              style="fill:#3bff46;fill-opacity:0.116992;stroke-width:0.195143;stroke-opacity:0.265092;stop-color:#000000"
