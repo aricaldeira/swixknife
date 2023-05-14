@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.5"
-     inkscape:cx="6"
-     inkscape:cy="565"
+     inkscape:zoom="1"
+     inkscape:cx="553.5"
+     inkscape:cy="624.5"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -92,18 +92,18 @@
          y="145.2618"
          id="tspan36728" /></text>
     <g
-       id="g66708"
-       transform="rotate(90,197.72103,280.40602)">
+       id="g10234"
+       transform="rotate(90,202.16603,255.00602)">
       <rect
          style="fill:#ffffff;stroke-width:0.331659;-inkscape-stroke:none;stop-color:#000000"
          id="rect234-1"
          width="293.21039"
          height="30.864"
-         x="25.715834"
-         y="260.52902" />
+         x="55.560837"
+         y="239.57402" />
       <g
          id="g39661"
-         transform="translate(-5.3290004,151.25549)">
+         transform="translate(24.516005,130.30049)">
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0273685;-inkscape-stroke:none;stop-color:#000000"
@@ -3584,52 +3584,96 @@
          id="rect7721-9"
          width="293.13849"
          height="30.792093"
-         x="25.751783"
-         y="260.56497" />
+         x="55.596786"
+         y="239.60997" />
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.00684215;-inkscape-stroke:none;stop-color:#000000"
-         x="142.12408"
-         y="288.30942"
+         x="171.96909"
+         y="267.35443"
          id="text4862-2-3-3"><tspan
            sodipodi:role="line"
            id="tspan4860-7-5-6"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.00684215"
-           x="142.12408"
-           y="288.30942">1300 cpad</tspan></text>
+           x="171.96909"
+           y="267.35443">1300 cpad</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0136843;-inkscape-stroke:none;stop-color:#000000"
-         x="116.96098"
-         y="288.28546"
+         x="146.80598"
+         y="267.33047"
          id="text4770-9-6-0"><tspan
            sodipodi:role="line"
            id="tspan4768-1-2-5"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0136843"
-           x="116.96098"
-           y="288.28546">130 tpad;</tspan></text>
+           x="146.80598"
+           y="267.33047">130 tpad;</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0273685;-inkscape-stroke:none;stop-color:#000000"
-         x="78.093506"
-         y="288.31689"
+         x="107.93851"
+         y="267.36191"
          id="text4955-6-9-0"><tspan
            sodipodi:role="line"
            id="tspan4953-2-1-2"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0273685"
-           x="78.093506"
-           y="288.31689">13 dpad;</tspan></text>
+           x="107.93851"
+           y="267.36191">13 dpad;</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0328422;-inkscape-stroke:none;stop-color:#000000"
-         x="30.95071"
-         y="288.08566"
+         x="60.795715"
+         y="267.13068"
          id="text13338-9"><tspan
            sodipodi:role="line"
            id="tspan13336-4"
-           x="30.95071"
-           y="288.08566"
+           x="60.795715"
+           y="267.13068"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">1.3 epad;</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="246.20096"
+         y="264.10184"
+         id="text672"><tspan
+           sodipodi:role="line"
+           id="tspan670"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="246.20096"
+           y="264.10184">six</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="279.26257"
+         y="264.10184"
+         id="text2264"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="279.26257"
+           y="264.10184"
+           id="tspan2503">seven</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="310.08557"
+         y="264.10184"
+         id="text2559"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="310.08557"
+           y="264.10184"
+           id="tspan2557">eight</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="340.95197"
+         y="264.10184"
+         id="text2565"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="340.95197"
+           y="264.10184"
+           id="tspan2563">nine</tspan></text>
     </g>
   </g>
 </svg>

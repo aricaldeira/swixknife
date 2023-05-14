@@ -28,8 +28,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="2"
-     inkscape:cx="322"
-     inkscape:cy="353.25"
+     inkscape:cx="488.75"
+     inkscape:cy="348.75"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -2483,5 +2483,16 @@
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">1 epad;</tspan></text>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+       x="216.35596"
+       y="184.36748"
+       id="text672"><tspan
+         sodipodi:role="line"
+         id="tspan670"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:0.072"
+         x="216.35596"
+         y="184.36748">six</tspan></text>
   </g>
 </svg>

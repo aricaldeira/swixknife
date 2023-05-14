@@ -28,8 +28,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="528"
-     inkscape:cy="385.5"
+     inkscape:cx="521.5"
+     inkscape:cy="386.5"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -87,63 +87,63 @@
          y="138.54059"
          id="tspan6476">https://github.com/aricaldeira/swixknife/blob/main/misc/ruler_20_dpad.svg</tspan></text>
     <g
-       id="g6470"
-       transform="rotate(-33.109622,169.88871,211.62931)">
+       id="g13437"
+       transform="rotate(-33.177439,178.99815,208.92102)">
       <rect
          style="fill:#ffffff;stroke-width:0.380461;-inkscape-stroke:none;stop-color:#000000"
          id="rect13341"
          width="385.8468"
          height="30.864"
-         x="-14.02303"
-         y="198.98657"
-         transform="rotate(-0.026201)" />
+         x="-13.574708"
+         y="193.18817"
+         transform="rotate(0.09620473)" />
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.00684215;-inkscape-stroke:none;stop-color:#000000"
-         x="101.63799"
-         y="226.12877"
+         x="102.08632"
+         y="220.33037"
          id="text13345"
-         transform="rotate(-0.026201)"><tspan
+         transform="rotate(0.09620473)"><tspan
            sodipodi:role="line"
            id="tspan13343"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.96201px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.00684215"
-           x="101.63799"
-           y="226.12877">2000 cpad</tspan></text>
+           x="102.08632"
+           y="220.33037">2000 cpad</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0136843;-inkscape-stroke:none;stop-color:#000000"
-         x="74.666809"
-         y="226.09041"
+         x="75.115135"
+         y="220.29201"
          id="text13349"
-         transform="rotate(-0.026201)"><tspan
+         transform="rotate(0.09620473)"><tspan
            sodipodi:role="line"
            id="tspan13347"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92402px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0136843"
-           x="74.666809"
-           y="226.09041">200 tpad;</tspan></text>
+           x="75.115135"
+           y="220.29201">200 tpad;</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0273685;-inkscape-stroke:none;stop-color:#000000"
-         x="33.877205"
-         y="226.10406"
+         x="34.325527"
+         y="220.30566"
          id="text13353"
-         transform="rotate(-0.026201)"><tspan
+         transform="rotate(0.09620473)"><tspan
            sodipodi:role="line"
            id="tspan13351"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.0273685"
-           x="33.877205"
-           y="226.10406">20 dpad;</tspan></text>
+           x="34.325527"
+           y="220.30566">20 dpad;</tspan></text>
       <rect
          style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.0824751;stroke-dasharray:none;stroke-opacity:0.265092;stop-color:#000000"
          id="rect14441"
          width="385.76431"
          height="30.781527"
-         x="-13.981796"
-         y="199.0278"
-         transform="rotate(-0.026201)" />
+         x="-13.533474"
+         y="193.2294"
+         transform="rotate(0.09620473)" />
       <g
          id="g19062"
-         transform="rotate(-0.026201,253817.04,32350.652)">
+         transform="rotate(0.09620473,-65663.609,-8614.4356)">
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.84804px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0273685;-inkscape-stroke:none;stop-color:#000000"
@@ -4774,14 +4774,92 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;stroke-width:0.0328422;-inkscape-stroke:none;stop-color:#000000"
-         x="-6.8487182"
-         y="226.01416"
-         id="text13338-9"><tspan
+         x="-6.4030471"
+         y="220.21556"
+         id="text13338-9"
+         transform="rotate(0.12240573)"><tspan
            sodipodi:role="line"
            id="tspan13336-4"
-           x="-6.8487182"
-           y="226.01416"
+           x="-6.4030471"
+           y="220.21556"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.41765px;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.0328422">2 epad;</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="302.35226"
+         y="218.01695"
+         id="text26232"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="302.35226"
+           y="218.01695"
+           id="tspan26230">ten</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="333.21866"
+         y="218.01695"
+         id="text26238"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="333.21866"
+           y="218.01695"
+           id="tspan26236">eleven</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="364.05902"
+         y="218.16579"
+         id="text26244"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="364.05902"
+           y="218.16579"
+           id="tspan26242">twelve</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="176.7101"
+         y="218.01692"
+         id="text672"><tspan
+           sodipodi:role="line"
+           id="tspan670"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="176.7101"
+           y="218.01692">six</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="209.77171"
+         y="218.01692"
+         id="text2264"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="209.77171"
+           y="218.01692"
+           id="tspan2503">seven</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="240.59471"
+         y="218.01692"
+         id="text2559"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="240.59471"
+           y="218.01692"
+           id="tspan2557">eight</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.0720001;stroke-opacity:0.265092;stop-color:#000000"
+         x="271.46112"
+         y="218.01692"
+         id="text2565"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.54px;font-family:Andika;-inkscape-font-specification:'Andika, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.072"
+           x="271.46112"
+           y="218.01692"
+           id="tspan2563">nine</tspan></text>
     </g>
   </g>
 </svg>
