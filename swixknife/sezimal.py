@@ -479,16 +479,24 @@ class Sezimal:
         if self._sign == -1:
             to_round = '-' + to_round
 
-        to_discard = self._fraction[int(precision):]
-
-        if to_discard[0] in '345':
-            adjust = Sezimal(f'1e-{precision}')
-
-        elif to_discard.replace('0', '') == '':
-            adjust = Sezimal(0)
+        if precision == 0:
+            last_digit = self._integer[-1]
+            next_digit = self._fraction[0]
+            to_discard = self._fraction[1:]
 
         else:
-            adjust = Sezimal(f'1e-{precision}') * -1
+            last_digit = self._fraction[int(precision) - 1]
+            next_digit = self._fraction[int(precision)]
+            to_discard = self._fraction[int(precision) + 1:]
+
+        adjust = Sezimal(0)
+
+        if next_digit == '3':
+            if to_discard.replace('0', '') != '' or last_digit in '024':
+                adjust = Sezimal(f'1e-{precision}') * self._sign
+
+        elif next_digit in '45':
+            adjust = Sezimal(f'1e-{precision}') * self._sign
 
         rounded = Sezimal(to_round) + adjust
 
