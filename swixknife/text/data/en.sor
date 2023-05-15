@@ -29,9 +29,9 @@
 (\d{1,2})(\d\d) $1 nif $2
 
 # separator function
-#:0+			# one million
-#:0*\d?\d " and "	# one million and twenty-two
-#:\d+ ", "		# one million, one thousand
+:0+			# one million
+:0*\d?\d " and "	# one million and twenty-two
+:\d+ ", "		# one million, one thousand
 
 (\d{1,4})(\d{4}) $1 unexian$(:\2)$2
 (\d{1,4})(\d{8})  $1 biexian$(:\2)$2
