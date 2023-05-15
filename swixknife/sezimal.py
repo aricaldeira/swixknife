@@ -492,7 +492,7 @@ class Sezimal:
         adjust = Sezimal(0)
 
         if next_digit == '3':
-            if to_discard.replace('0', '') != '' or last_digit in '024':
+            if to_discard.replace('0', '') != '' or last_digit in '135':
                 adjust = Sezimal(f'1e-{precision}') * self._sign
 
         elif next_digit in '45':
