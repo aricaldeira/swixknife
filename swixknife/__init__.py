@@ -22,3 +22,4 @@ from .exponents import *
 from .units import *
 from .date_time import *
 from .text import *
+from .calculator import *
