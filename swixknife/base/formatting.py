@@ -4,6 +4,7 @@ from typing import TypeVar
 
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
 SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
+SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
@@ -32,7 +33,7 @@ TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
 
 
-def sezimal_format(number: str | int | float | Decimal | Sezimal | SezimalInteger,
+def sezimal_format(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
                    sezimal_places: str | int | Decimal | SezimalInteger = 3,
                    sezimal_separator: str = SEPARATOR_DOT,
                    group_separator: str = SEPARATOR_UNDERSCORE,
@@ -109,7 +110,7 @@ def _apply_format(number: str, separator: str, format_patter: re.Pattern) -> str
     return formatted_number[::-1]
 
 
-def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal, denominator: str | int | float | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
+def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal | SezimalInteger, denominator: str | int | float | Decimal | Sezimal | SezimalInteger, dedicated_digits: bool = False) -> str:
     if type(numerator).__name__ == 'Decimal':
         numerator = decimal_to_sezimal(numerator)
 
@@ -131,16 +132,20 @@ def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal, de
     return numerator + TYPOGRAPHICAL_FRACTION_SLASH + denominator
 
 
-def decimal_format(number: str | int | float | Decimal | Sezimal,
-                   decimal_places: int = 2,
+def decimal_format(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
+                   decimal_places: str | int | Decimal | SezimalInteger = 2,
                    decimal_separator: str = SEPARATOR_DOT,
                    group_separator: str = SEPARATOR_UNDERSCORE,
                    fraction_group_separator: str = SEPARATOR_UNDERSCORE,
                    typographical_negative: bool = False) -> str:
-    if type(number).__name__ == 'Sezimal':
+    if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         number = sezimal_to_decimal(number)
 
+    if type(decimal_places).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
+        decimal_places = sezimal_to_decimal(decimal_places)
+
     number = validate_clean_decimal(str(number))
+    decimal_places = int(validate_clean_decimal(str(decimal_places)))
 
     if '.' in number:
         integer, fraction = number.split('.')
