@@ -468,6 +468,32 @@ class Sezimal:
 
         return other_number.__sub__(self)
 
+    def __round_half_up__(self, precision: IntegerSelf, last_digit: str, next_digit: str, to_discard: str) -> Self:
+        adjust = Sezimal(0)
+
+        if next_digit == '3':
+            if to_discard.replace('0', '') != '':
+                adjust = Sezimal(f'1e-{precision}') * self._sign
+            elif last_digit in '135':
+                adjust = Sezimal(f'1e-{precision}') * self._sign
+
+        elif next_digit in '45':
+            adjust = Sezimal(f'1e-{precision}') * self._sign
+
+        return adjust
+
+    def __round_half_down__(self, precision: IntegerSelf, last_digit: str, next_digit: str, to_discard: str) -> Self:
+        adjust = Sezimal(0)
+
+        if next_digit == '3':
+            if to_discard.replace('0', '') != '':
+                adjust = Sezimal(f'1e-{precision}') * self._sign
+
+        elif next_digit in '45':
+            adjust = Sezimal(f'1e-{precision}') * self._sign
+
+        return adjust
+
     def __round__(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
         precision = SezimalInteger(precision)
 
@@ -489,14 +515,7 @@ class Sezimal:
             next_digit = self._fraction[int(precision)]
             to_discard = self._fraction[int(precision) + 1:]
 
-        adjust = Sezimal(0)
-
-        if next_digit == '3':
-            if to_discard.replace('0', '') != '' or last_digit in '135':
-                adjust = Sezimal(f'1e-{precision}') * self._sign
-
-        elif next_digit in '45':
-            adjust = Sezimal(f'1e-{precision}') * self._sign
+        adjust = self.__round_half_up__(precision, last_digit, next_digit, to_discard)
 
         rounded = Sezimal(to_round) + adjust
 
