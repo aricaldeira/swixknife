@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title>Swixknife Calculator</title>
+        <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-gentium.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/calculator.css" />
+<!--        <link rel="stylesheet" href="/static/python/pyscript.css" />
+        <script defer src="/static/python/pyscript.js"></script>-->
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.min.js"></script>
+    </head>
+    <body>
+        <py-config>
+packages = ['pytz', 'static/python/swixknife-1.0.0-py3-none-any.whl']
+
+[splashscreen]
+enabled = true
+</py-config>
+        <header>
+            <h1>Swixknife Calculator</h1>
+            <h2>Sezimal Calculator and Unit Conversions</h2>
+        </header>
+        <main>
+            <div id="calculator" class="calculator">
+                <div id="display" class="display"></div>
+                <div id="decimal_display" class="decimal_display"></div>
+                <table id="regular_buttons" class="regular">
+                    <tr>
+                        <td><button id="button-clear" class="calc-button" accesskey="C" py-click="button_clear()">C</button></td>
+                        <td><button id="button-backspace" class="calc-button" accesskey="d" py-click="button_backspace()">←</button></td>
+<!--                         <td><button class="calc-button" py-click="button_click('%')">%</button></td> -->
+                        <td><button id="button-persixsif" class="calc-button" accesskey="%" py-click="button_click('‰')">‰</button></td>
+<!--                         <td><button class="calc-button" py-click="button_click('‱')">‱</button></td> -->
+                        <td><button id="button-division" class="calc-button" accesskey="/" py-click="button_click('÷')">÷</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="button-parenthesis-left" class="calc-button" accesskey="(" py-click="button_click('(')">(</button></td>
+                        <td><button id="button-parenthesis-right" class="calc-button" accesskey=")" py-click="button_click(')')">)</button></td>
+                        <td><button id="button-exponentiaton" class="calc-button" accesskey="^" py-click="button_click('^')">x<sup style="font-size: 50%;">y</sup></button></td>
+                        <td><button id="button-multiplication" class="calc-button" accesskey="*" py-click="button_click('×')">×</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="button-four" class="calc-button" accesskey="4" py-click="button_click('4')">4</button></td>
+                        <td><button id="button-five" class="calc-button" accesskey="5" py-click="button_click('5')">5</button></td>
+                        <td><button id="button-zerozero" class="calc-button" py-click="button_click('00')">00</button></td>
+                        <td><button id="button-subtraction" class="calc-button" accesskey="-" py-click="button_click('-')">−</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="button-one" class="calc-button" accesskey="1" py-click="button_click('1')">1</button></td>
+                        <td><button id="button-two" class="calc-button" accesskey="2" py-click="button_click('2')">2</button></td>
+                        <td><button id="button-three" class="calc-button" accesskey="3" py-click="button_click('3')">3</button></td>
+                        <td><button id="button-addition" class="calc-button" accesskey="+" py-click="button_click('+')">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="button-plus-minus" class="calc-button" py-click="button_negative()">‍‍‍‍<sup>+</sup>⁄<sub>−</sub></button></td>
+                        <td><button id="button-zero" class="calc-button" accesskey="0" py-click="button_click('0')">0</button></td>
+                        <td><button id="button-sezimal-separator" class="calc-button" accesskey="." py-click="button_click('.')">.</button></td>
+                        <td><button id="button-equal" class="calc-button" py-click="button_eval()">=</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="expression" class="expression" hidden></div>
+            <div id="prepared_expression" class="prepared_expression" hidden></div>
+        </main>
+<py-script>
+import js
+from pyscript import Element
+from swixknife import SezimalCalculator
+
+calc = SezimalCalculator()
+Element('expression').write(calc.expression)
+
+try:
+    calc.lang = js.navigator.language
+    Element('button-sezimal-separator').element.textContent = calc.sezimal_separator
+except:
+    pass
+
+def update_display():
+    Element('expression').element.textContent = calc.expression
+    Element('prepared_expression').element.textContent = calc._prepared_expression
+    Element('display').element.textContent = calc.display
+    Element('decimal_display').element.textContent = calc.decimal_display
+
+def button_click(button_text):
+    calc.expression += str(button_text)
+    update_display()
+
+def button_negative():
+    if calc.expression:
+        if calc.expression[-1] in '−-':
+            button_backspace()
+        else:
+            calc.expression += '−'
+    else:
+        calc.expression += '−'
+
+    update_display()
+
+def button_backspace():
+    if calc.expression:
+        calc.expression = calc.expression[:-1]
+        update_display()
+
+def button_clear():
+    calc.expression = ''
+    update_display()
+
+def button_eval():
+    calc.eval_expression()
+    update_display()
+
+update_display()
+</py-script>
+    </body>
+<script>
+
+keypress_keydown_to_button_click = function(e) {
+    e.preventDefault();
+    var keycode = (e.keyCode ? e.keyCode : e.which);
+    // console.log(keycode);
+    if (keycode == '13' || keycode == '61') {
+      document.getElementById('button-equal').click();
+    }
+    else if (keycode == '8' || keycode == '46') {
+      document.getElementById('button-backspace').click();
+    }
+    else if (keycode == '48') {
+      document.getElementById('button-zero').click();
+    }
+    else if (keycode == '49') {
+      document.getElementById('button-one').click();
+    }
+    else if (keycode == '50') {
+      document.getElementById('button-two').click();
+    }
+    else if (keycode == '51') {
+      document.getElementById('button-three').click();
+    }
+    else if (keycode == '52') {
+      document.getElementById('button-four').click();
+    }
+    else if (keycode == '53') {
+      document.getElementById('button-five').click();
+    }
+    else if (keycode == '54') {
+      document.getElementById('button-zerozero').click();
+    }
+    else if (keycode == '55') {
+      document.getElementById('button-zerozero').click();
+    }
+    else if (keycode == '56') {
+      document.getElementById('button-zerozero').click();
+    }
+    else if (keycode == '57') {
+      document.getElementById('button-zerozero').click();
+    }
+    else if (keycode == '42' || keycode == '215' || keycode == '106') {
+      document.getElementById('button-multiplication').click();
+    }
+    else if (keycode == '43' || keycode == '107') {
+      document.getElementById('button-addition').click();
+    }
+    else if (keycode == '45' || keycode == '8722' || keycode == '109') {
+      document.getElementById('button-subtraction').click();
+    }
+    else if (keycode == '44' || keycode == '46' || keycode == '188' || keycode == '190' || keycode == '110') {
+      document.getElementById('button-sezimal-separator').click();
+    }
+    else if (keycode == '47' || keycode == '247' || keycode == '111' || keycode == '191') {
+      document.getElementById('button-division').click();
+    }
+    else if (keycode == '40') {
+      document.getElementById('button-parenthesis-left').click();
+    }
+    else if (keycode == '41') {
+      document.getElementById('button-parenthesis-right').click();
+    }
+    else if (keycode == '37' ||  keycode == '220') {
+      document.getElementById('button-persixsif').click();
+    }
+    else if (keycode == '99' || keycode == '67' || keycode == '27') {
+      document.getElementById('button-clear').click();
+    }
+    else if (keycode == '120' || keycode == '88' || keycode == '121' || keycode == '89' || keycode == '222') {
+      document.getElementById('button-exponentiaton').click();
+    }
+};
+
+document.body.onkeydown = keypress_keydown_to_button_click;
+// document.body.onkeypress = keypress_keydown_to_button_click;
+</script>
+</html>
