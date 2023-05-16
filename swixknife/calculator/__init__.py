@@ -1,7 +1,7 @@
 
 
 __all__ = (
-    'calculator',
+    'SezimalCalculator',
 )
 
-from .calculator import calculator
+from .calculator import SezimalCalculator
