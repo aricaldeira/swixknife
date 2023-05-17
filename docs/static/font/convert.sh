@@ -14,3 +14,8 @@ woff2_compress GentiumPlus-Bold.ttf
 woff2_compress GentiumPlus-BoldItalic.ttf
 woff2_compress GentiumPlus-Italic.ttf
 woff2_compress GentiumPlus-Regular.ttf
+
+woff2_compress NotoSans-Regular.ttf
+woff2_compress NotoSansMath-Regular.ttf
+woff2_compress NotoSansSymbols-Regular.ttf
+woff2_compress NotoSansSymbols2-Regular.ttf

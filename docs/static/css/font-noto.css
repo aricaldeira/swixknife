@@ -1,0 +1,40 @@
+
+@font-face {
+  font-family: 'Noto Sans Math';
+  font-weight: normal;
+  font-style: normal;
+  src: local('NotoSansMath-Regular');
+  src: local('NotoSansMath-Regular'),
+       url("../font/NotoSansMath-Regular.woff2") format("woff2"),
+       url("../font/NotoSansMath-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans Symbols';
+  font-weight: normal;
+  font-style: normal;
+  src: local('NotoSansSymbols-Regular');
+  src: local('NotoSansSymbols-Regular'),
+       url("../font/NotoSansSymbols-Regular.woff2") format("woff2"),
+       url("../font/NotoSansSymbols-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans Symbols2';
+  font-weight: normal;
+  font-style: normal;
+  src: local('NotoSansSymbols2-Regular');
+  src: local('NotoSansSymbols2-Regular'),
+       url("../font/NotoSansSymbols2-Regular.woff2") format("woff2"),
+       url("../font/NotoSansSymbols2-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: normal;
+  font-style: normal;
+  src: local('NotoSans-Regular');
+  src: local('NotoSans-Regular'),
+       url("../font/NotoSans-Regular.woff2") format("woff2"),
+       url("../font/NotoSans-Regular.ttf") format("truetype");
+}
