@@ -5,6 +5,7 @@
         <title>Swixknife Calculator</title>
         <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-noto.css" />
         <link rel="stylesheet" type="text/css" href="static/css/font-gentium.css" />
         <link rel="stylesheet" type="text/css" href="static/css/calculator.css" />
 <!--        <link rel="stylesheet" href="/static/python/pyscript.css" />
@@ -30,35 +31,35 @@ enabled = true
                 <table id="regular_buttons" class="regular">
                     <tr>
                         <td><button id="button-clear" class="calc-button" accesskey="C" py-click="button_clear()">C</button></td>
-                        <td><button id="button-backspace" class="calc-button" accesskey="d" py-click="button_backspace()">←</button></td>
+                        <td><button id="button-backspace" class="calc-button calc-button-backspace" accesskey="d" py-click="button_backspace()">⌫</button></td>
 <!--                         <td><button class="calc-button" py-click="button_click('%')">%</button></td> -->
                         <td><button id="button-persixsif" class="calc-button" accesskey="%" py-click="button_click('‰')">‰</button></td>
 <!--                         <td><button class="calc-button" py-click="button_click('‱')">‱</button></td> -->
-                        <td><button id="button-division" class="calc-button" accesskey="/" py-click="button_click('÷')">÷</button></td>
+                        <td><button id="button-division" class="calc-button calc-button-operator" accesskey="/" py-click="button_click('÷')">÷</button></td>
                     </tr>
                     <tr>
                         <td><button id="button-parenthesis-left" class="calc-button" accesskey="(" py-click="button_click('(')">(</button></td>
                         <td><button id="button-parenthesis-right" class="calc-button" accesskey=")" py-click="button_click(')')">)</button></td>
                         <td><button id="button-exponentiaton" class="calc-button" accesskey="^" py-click="button_click('^')">x<sup style="font-size: 50%;">y</sup></button></td>
-                        <td><button id="button-multiplication" class="calc-button" accesskey="*" py-click="button_click('×')">×</button></td>
+                        <td><button id="button-multiplication" class="calc-button calc-button-operator" accesskey="*" py-click="button_click('×')">×</button></td>
                     </tr>
                     <tr>
                         <td><button id="button-four" class="calc-button" accesskey="4" py-click="button_click('4')">4</button></td>
                         <td><button id="button-five" class="calc-button" accesskey="5" py-click="button_click('5')">5</button></td>
                         <td><button id="button-zerozero" class="calc-button" py-click="button_click('00')">00</button></td>
-                        <td><button id="button-subtraction" class="calc-button" accesskey="-" py-click="button_click('-')">−</button></td>
+                        <td><button id="button-subtraction" class="calc-button calc-button-operator" accesskey="-" py-click="button_click('-')">−</button></td>
                     </tr>
                     <tr>
                         <td><button id="button-one" class="calc-button" accesskey="1" py-click="button_click('1')">1</button></td>
                         <td><button id="button-two" class="calc-button" accesskey="2" py-click="button_click('2')">2</button></td>
                         <td><button id="button-three" class="calc-button" accesskey="3" py-click="button_click('3')">3</button></td>
-                        <td><button id="button-addition" class="calc-button" accesskey="+" py-click="button_click('+')">+</button></td>
+                        <td><button id="button-addition" class="calc-button calc-button-operator" accesskey="+" py-click="button_click('+')">+</button></td>
                     </tr>
                     <tr>
                         <td><button id="button-plus-minus" class="calc-button" py-click="button_negative()">‍‍‍‍<sup>+</sup>⁄<sub>−</sub></button></td>
                         <td><button id="button-zero" class="calc-button" accesskey="0" py-click="button_click('0')">0</button></td>
                         <td><button id="button-sezimal-separator" class="calc-button" accesskey="." py-click="button_click('.')">.</button></td>
-                        <td><button id="button-equal" class="calc-button" py-click="button_eval()">=</button></td>
+                        <td><button id="button-equal" class="calc-button calc-button-operator" py-click="button_eval()">=</button></td>
                     </tr>
                 </table>
             </div>

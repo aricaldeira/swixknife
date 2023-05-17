@@ -15,7 +15,7 @@
     /*
      / Font Andika
     */
-    font-family: 'Gentium Plus', 'Andika', 'Noto Sans', sans-serif;
+    font-family: 'Gentium Plus', 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
     font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
     -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
     -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
@@ -28,7 +28,10 @@ html, body {
 }
 
 .calculator{
-    font-family: 'Andika', 'Noto Sans', sans-serif;
+    font-family: 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
     margin: 0;
 /*     position: absolute; */
     text-align: center;
@@ -82,12 +85,26 @@ table {
     border: none;
     background-color: #3E2723;
     color: white;
+    border-radius: 30px;
     font-weight: bold;
-    border-radius: 10px;
+    /*
+     * Setting font-weight to bold cancels font-feature-settings, have to re-set here
+     */
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
 }
 
 .calc-button:hover{
     background-color: #F44336;
+}
+
+.calc-button-operator {
+    font-size: 50px;
+}
+
+.calc-button-backspace {
+    font-size: 30px;
 }
 
 .calc-button-constant {
