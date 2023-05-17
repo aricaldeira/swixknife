@@ -3,8 +3,8 @@
   font-family: 'Andika';
   font-weight: bold;
   font-style: italic;
-  src: local('Andika Bold Italic');
-  src: local('Andika Bold Italic'),
+  src: local('Andika-BoldItalic');
+  src: local('Andika-BoldItalic'),
        url("../font/Andika-BoldItalic.woff2") format("woff2"),
        url("../font/Andika-BoldItalic.ttf") format("truetype");
 }
@@ -13,8 +13,8 @@
   font-family: 'Andika';
   font-weight: normal;
   font-style: italic;
-  src: local('Andika Italic');
-  src: local('Andika Italic'),
+  src: local('Andika-Italic');
+  src: local('Andika-Italic'),
        url("../font/Andika-Italic.woff2") format("woff2"),
        url("../font/Andika-Italic.ttf") format("truetype");
 }
@@ -23,8 +23,8 @@
   font-family: 'Andika';
   font-weight: bold;
   font-style: normal;
-  src: local('Andika Bold');
-  src: local('Andika Bold'),
+  src: local('Andika-Bold');
+  src: local('Andika-Bold'),
        url("../font/Andika-Bold.woff2") format("woff2"),
        url("../font/Andika-Bold.ttf") format("truetype");
 }
@@ -33,8 +33,8 @@
   font-family: 'Andika';
   font-weight: normal;
   font-style: normal;
-  src: local('Andika Regular');
-  src: local('Andika Regular'),
+  src: local('Andika');
+  src: local('Andika'),
        url("../font/Andika-Regular.woff2") format("woff2"),
        url("../font/Andika-Regular.ttf") format("truetype");
 }
