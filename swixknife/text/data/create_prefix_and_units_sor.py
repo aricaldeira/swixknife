@@ -8,6 +8,8 @@ def create_units(lang='en'):
         text = '''#
 # Units
 #
+UNIT-dia dia
+UNIT-day dia
 UNIT-uta uta
 UNIT-psh poxa
 UNIT-agm agrima
@@ -43,6 +45,8 @@ UNIT-vst vistara
         text = '''#
 # Units
 #
+UNIT-dia dia
+UNIT-day dia
 UNIT-uta uta
 UNIT-psh pòxa
 UNIT-agm agrima
@@ -78,6 +82,7 @@ UNIT-vst vistara
         text = '''#
 # Units
 #
+UNIT-day day
 UNIT-uta uta
 UNIT-psh posha
 UNIT-agm agrima

@@ -1,6 +1,7 @@
 #
 # Units
 #
+UNIT-day day
 UNIT-uta uta
 UNIT-psh posha
 UNIT-agm agrima
