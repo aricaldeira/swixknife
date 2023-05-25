@@ -6,7 +6,6 @@ __all__ = (
 )
 
 from decimal import Decimal, localcontext, getcontext
-import re
 
 from typing import TypeVar
 import numbers as _numbers
