@@ -222,6 +222,13 @@ class SezimalTime():
         total_agrimas = _date_time_to_agrima(traditional_utc_now)
         tz_offset, dst_offset = _tz_agrimas_offset(time_zone)
         total_agrimas += tz_offset # + dst_offset
+
+        #
+        # Date has shifted?
+        #
+        if total_agrimas < 0:
+            total_agrimas = total_agrimas + Sezimal('100_0000')
+
         return cls(agrima=total_agrimas, time_zone=time_zone)
 
     def to_time_zone(self, time_zone: str = 'UTC'):
