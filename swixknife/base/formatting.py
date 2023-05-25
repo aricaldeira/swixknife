@@ -103,11 +103,21 @@ def sezimal_format(number: str | int | float | Decimal | Sezimal | SezimalIntege
 
 
 def _apply_format(number: str, separator: str, format_patter: re.Pattern) -> str:
+    is_negative = number[0] in '-−⁻₋'
+
+    if is_negative:
+        number = number[1:]
+
     formatted_number = number[::-1]
     parts = re.split(format_patter, formatted_number)
     parts = list(filter(bool, parts))
     formatted_number = separator.join(parts)
-    return formatted_number[::-1]
+    formatted_number = formatted_number[::-1]
+
+    if is_negative:
+        formatted_number = '-' + formatted_number
+
+    return formatted_number
 
 
 def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal | SezimalInteger, denominator: str | int | float | Decimal | Sezimal | SezimalInteger, dedicated_digits: bool = False) -> str:
