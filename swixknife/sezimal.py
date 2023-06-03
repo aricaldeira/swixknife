@@ -603,7 +603,7 @@ class Sezimal:
 
         return other_number.__mul__(self)
 
-    def __basic_division(self, dividend: Self, divisor: Self) -> list[Self]:
+    def __basic_division(self, dividend: Self, divisor: Self) -> tuple[Self]:
         remainder = dividend
         quotient = Sezimal('0')
 
@@ -613,7 +613,7 @@ class Sezimal:
 
         return quotient, remainder
 
-    def new_division(self, dividend: Self, divisor: Self) -> list[Self]:
+    def new_division(self, dividend: Self, divisor: Self) -> tuple[Self]:
         if dividend < divisor:
             return Sezimal(0), dividend
 
@@ -635,14 +635,14 @@ class Sezimal:
 
         return quotient, remainder
 
-        # Convert quotient and remainder to strings
-        remainder_str = ''
-        while remainder:
-            remainder_str += str(remainder % base)
-            remainder //= base
-
-        # Return quotient and remainder as strings
-        return quotient_str, int(remainder_str[::-1])
+        # # Convert quotient and remainder to strings
+        # remainder_str = ''
+        # while remainder:
+        #     remainder_str += str(remainder % base)
+        #     remainder //= base
+        #
+        # # Return quotient and remainder as strings
+        # return quotient_str, int(remainder_str[::-1])
 
     def __division(self, other_number: Self, max_precision: IntegerSelf = MAX_PRECISION) -> str:
         #
@@ -719,24 +719,24 @@ class Sezimal:
 
         return self * reciprocal
 
+        # #
+        # # Deals with the signs
+        # #
+        # if self._sign == 1 and other_number._sign == 1:
+        #     res = self.__division(other_number)
         #
-        # Deals with the signs
+        # elif self._sign == 1 and other_number._sign == -1:
+        #     res = self.__division(other_number)
+        #     res = '-' + res
         #
-        if self._sign == 1 and other_number._sign == 1:
-            res = self.__division(other_number)
-
-        elif self._sign == 1 and other_number._sign == -1:
-            res = self.__division(other_number)
-            res = '-' + res
-
-        elif self._sign == -1 and other_number._sign == -1:
-            res = self.__division(other_number)
-
-        elif self._sign == -1 and other_number._sign == 1:
-            res = self.__division(other_number)
-            res = '-' + res
-
-        return Sezimal(res)._mult_div_finalizing()
+        # elif self._sign == -1 and other_number._sign == -1:
+        #     res = self.__division(other_number)
+        #
+        # elif self._sign == -1 and other_number._sign == 1:
+        #     res = self.__division(other_number)
+        #     res = '-' + res
+        #
+        # return Sezimal(res)._mult_div_finalizing()
 
     def __rtruediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> Self:
         if type(other_number) != Sezimal:
@@ -744,7 +744,7 @@ class Sezimal:
 
         return other_number.__truediv__(self)
 
-    def __divmod__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> list[Self]:
+    def __divmod__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf) -> tuple[Self]:
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -831,21 +831,21 @@ class Sezimal:
         result = Sezimal(result)
         return result._mult_div_finalizing()
 
-    def calculus_ln(self) -> Self:
-        result = Sezimal(0)
-
-        if str(self) in LOGARITHM_TABLE:
-            return Sezimal(LOGARITHM_TABLE[str(self)])._mult_div_finalizing()
-
-        term = (self - 1) * (Sezimal(1) / self)
-
-        i = Sezimal(1)
-
-        while i <= 200:
-            result += (term ** i) * (Sezimal(1) / i)
-            i += 1
-
-        return result
+    # def calculus_ln(self) -> Self:
+    #     result = Sezimal(0)
+    #
+    #     if str(self) in LOGARITHM_TABLE:
+    #         return Sezimal(LOGARITHM_TABLE[str(self)])._mult_div_finalizing()
+    #
+    #     term = (self - 1) * (Sezimal(1) / self)
+    #
+    #     i = Sezimal(1)
+    #
+    #     while i <= 200:
+    #         result += (term ** i) * (Sezimal(1) / i)
+    #         i += 1
+    #
+    #     return result
 
     def ln(self) -> Self:
         result = self.decimal.ln()
