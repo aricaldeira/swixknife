@@ -2073,12 +2073,16 @@ static PyObject *__pyx_builtin_round;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_[] = ") - ";
 static const char __pyx_k_0[] = "0";
+static const char __pyx_k_H[] = "%H";
+static const char __pyx_k_M[] = "%M";
+static const char __pyx_k_S[] = "%S";
 static const char __pyx_k_T[] = "#T";
 static const char __pyx_k_V[] = "#V";
 static const char __pyx_k_a[] = "a";
 static const char __pyx_k_b[] = "b";
 static const char __pyx_k_d[] = "d";
 static const char __pyx_k_e[] = "e";
+static const char __pyx_k_f[] = "%f";
 static const char __pyx_k_n[] = "n";
 static const char __pyx_k_p[] = "#p";
 static const char __pyx_k_t[] = "#t";
@@ -2096,6 +2100,9 @@ static const char __pyx_k__8[] = "#";
 static const char __pyx_k__9[] = "#!*-$";
 static const char __pyx_k_td[] = "td";
 static const char __pyx_k_DST[] = "DST";
+static const char __pyx_k_H_2[] = "%-H";
+static const char __pyx_k_M_2[] = "%-M";
+static const char __pyx_k_S_2[] = "%-S";
 static const char __pyx_k_UTC[] = "UTC";
 static const char __pyx_k__10[] = "#!*";
 static const char __pyx_k__11[] = "#!-";
@@ -2110,9 +2117,11 @@ static const char __pyx_k__19[] = "#@!-";
 static const char __pyx_k__20[] = "#@!";
 static const char __pyx_k__21[] = "+";
 static const char __pyx_k__22[] = "\342\210\222";
-static const char __pyx_k__24[] = ".";
-static const char __pyx_k__25[] = ":";
-static const char __pyx_k__73[] = "?";
+static const char __pyx_k__23[] = "%";
+static const char __pyx_k__24[] = "%%";
+static const char __pyx_k__26[] = ".";
+static const char __pyx_k__27[] = ":";
+static const char __pyx_k__75[] = "?";
 static const char __pyx_k_a_2[] = "#a";
 static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_cls[] = "cls";
@@ -2134,6 +2143,7 @@ static const char __pyx_k_00_2[] = "00";
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_boda[] = "boda";
+static const char __pyx_k_bool[] = "bool";
 static const char __pyx_k_days[] = "days";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_diff[] = "diff";
@@ -2178,6 +2188,7 @@ static const char __pyx_k_tzinfo[] = "tzinfo";
 static const char __pyx_k_Decimal[] = "Decimal";
 static const char __pyx_k_Etc_GMT[] = "Etc/GMT-";
 static const char __pyx_k_HASHTAG[] = "__HASHTAG__";
+static const char __pyx_k_PERCENT[] = "__PERCENT__";
 static const char __pyx_k_Sezimal[] = "Sezimal";
 static const char __pyx_k_anuga_2[] = "_anuga";
 static const char __pyx_k_anuga_3[] = ", anuga=";
@@ -2238,6 +2249,7 @@ static const char __pyx_k_ekaditiboda_2[] = "_ekaditiboda";
 static const char __pyx_k_ekaditiboda_3[] = ", ekaditiboda=";
 static const char __pyx_k_fromisoformat[] = "fromisoformat";
 static const char __pyx_k_init_subclass[] = "__init_subclass__";
+static const char __pyx_k_skip_strftime[] = "skip_strftime";
 static const char __pyx_k_total_agrimas[] = "_total_agrimas";
 static const char __pyx_k_total_seconds[] = "total_seconds";
 static const char __pyx_k_SezimalInteger[] = "SezimalInteger";
@@ -2293,6 +2305,7 @@ static const char __pyx_k_SezimalTime_iso_microsecond[] = "SezimalTime.iso_micro
 static const char __pyx_k_default_to_dedicated_digits[] = "default_to_dedicated_digits";
 static const char __pyx_k_swixknife_date_time_time_py[] = "swixknife/date_time/time.py";
 static const char __pyx_k_default_compressed_to_dedicated[] = "default_compressed_to_dedicated_digits";
+static const char __pyx_k_default_compressed_to_regularize[] = "default_compressed_to_regularized_digits";
 static const char __pyx_k_str_int_float_Decimal_Sezimal_Se[] = "str | int | float | Decimal | Sezimal | SezimalInteger";
 static const char __pyx_k_swixknife_swixknife_date_time_ti[] = "swixknife.swixknife.date_time.time";
 /* #### Code section: decls ### */
@@ -2322,7 +2335,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
 static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_40to_time_zone(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_time_zone); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_42_apply_format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt, PyObject *__pyx_v_token, PyObject *__pyx_v_value, PyObject *__pyx_v_size, PyObject *__pyx_v_compressed, PyObject *__pyx_v_dedicated_digits); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_6__defaults__(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt, PyObject *__pyx_v_skip_strftime); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_46strftime(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_48julian_date(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 /* #### Code section: late_includes ### */
@@ -2365,9 +2378,16 @@ typedef struct {
   PyObject *__pyx_n_s_Decimal;
   PyObject *__pyx_kp_u_Etc_GMT;
   PyObject *__pyx_kp_u_Etc_GMT_2;
+  PyObject *__pyx_kp_u_H;
   PyObject *__pyx_n_u_HASHTAG;
+  PyObject *__pyx_kp_u_H_2;
+  PyObject *__pyx_kp_u_M;
+  PyObject *__pyx_kp_u_M_2;
   PyObject *__pyx_kp_u_None;
+  PyObject *__pyx_n_u_PERCENT;
+  PyObject *__pyx_kp_u_S;
   PyObject *__pyx_n_s_SECOND_TO_AGRIMA;
+  PyObject *__pyx_kp_u_S_2;
   PyObject *__pyx_n_s_Sezimal;
   PyObject *__pyx_n_u_SezimalDate;
   PyObject *__pyx_n_s_SezimalInteger;
@@ -2420,14 +2440,16 @@ typedef struct {
   PyObject *__pyx_kp_u__20;
   PyObject *__pyx_kp_u__21;
   PyObject *__pyx_kp_u__22;
+  PyObject *__pyx_kp_u__23;
   PyObject *__pyx_kp_u__24;
-  PyObject *__pyx_kp_u__25;
+  PyObject *__pyx_kp_u__26;
+  PyObject *__pyx_kp_u__27;
   PyObject *__pyx_kp_u__3;
   PyObject *__pyx_kp_u__4;
   PyObject *__pyx_kp_u__5;
   PyObject *__pyx_kp_u__6;
   PyObject *__pyx_kp_u__7;
-  PyObject *__pyx_n_s__73;
+  PyObject *__pyx_n_s__75;
   PyObject *__pyx_kp_u__8;
   PyObject *__pyx_kp_u__9;
   PyObject *__pyx_n_u_a;
@@ -2456,6 +2478,7 @@ typedef struct {
   PyObject *__pyx_n_s_boda_2;
   PyObject *__pyx_n_u_boda_2;
   PyObject *__pyx_kp_u_boda_3;
+  PyObject *__pyx_n_s_bool;
   PyObject *__pyx_n_s_character;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_cls;
@@ -2476,6 +2499,7 @@ typedef struct {
   PyObject *__pyx_n_s_decimal;
   PyObject *__pyx_n_s_dedicated_digits;
   PyObject *__pyx_n_s_default_compressed_to_dedicated;
+  PyObject *__pyx_n_s_default_compressed_to_regularize;
   PyObject *__pyx_n_s_default_to_dedicated_digits;
   PyObject *__pyx_n_s_dict;
   PyObject *__pyx_n_s_diff;
@@ -2491,6 +2515,7 @@ typedef struct {
   PyObject *__pyx_n_s_ekaditiboda_2;
   PyObject *__pyx_n_u_ekaditiboda_2;
   PyObject *__pyx_kp_u_ekaditiboda_3;
+  PyObject *__pyx_kp_u_f;
   PyObject *__pyx_n_s_fmt;
   PyObject *__pyx_n_s_format;
   PyObject *__pyx_n_s_fromisoformat;
@@ -2546,6 +2571,7 @@ typedef struct {
   PyObject *__pyx_n_s_sezimal_format;
   PyObject *__pyx_n_s_sezimal_places;
   PyObject *__pyx_n_s_size;
+  PyObject *__pyx_n_s_skip_strftime;
   PyObject *__pyx_n_s_slots;
   PyObject *__pyx_n_s_spec;
   PyObject *__pyx_n_s_str;
@@ -2605,6 +2631,7 @@ typedef struct {
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_2;
   PyObject *__pyx_int_4;
+  PyObject *__pyx_int_6;
   PyObject *__pyx_int_10;
   PyObject *__pyx_int_12;
   PyObject *__pyx_int_60;
@@ -2614,32 +2641,30 @@ typedef struct {
   PyObject *__pyx_int_1000000;
   PyObject *__pyx_int_100000000;
   PyObject *__pyx_int_neg_1;
-  PyObject *__pyx_tuple__23;
-  PyObject *__pyx_tuple__26;
+  PyObject *__pyx_tuple__25;
   PyObject *__pyx_tuple__28;
   PyObject *__pyx_tuple__30;
   PyObject *__pyx_tuple__32;
-  PyObject *__pyx_tuple__33;
   PyObject *__pyx_tuple__34;
+  PyObject *__pyx_tuple__35;
   PyObject *__pyx_tuple__36;
-  PyObject *__pyx_tuple__37;
-  PyObject *__pyx_tuple__53;
-  PyObject *__pyx_tuple__56;
+  PyObject *__pyx_tuple__38;
+  PyObject *__pyx_tuple__39;
+  PyObject *__pyx_tuple__55;
   PyObject *__pyx_tuple__58;
   PyObject *__pyx_tuple__60;
-  PyObject *__pyx_tuple__61;
+  PyObject *__pyx_tuple__62;
   PyObject *__pyx_tuple__63;
-  PyObject *__pyx_tuple__64;
+  PyObject *__pyx_tuple__65;
   PyObject *__pyx_tuple__66;
-  PyObject *__pyx_tuple__67;
+  PyObject *__pyx_tuple__68;
   PyObject *__pyx_tuple__69;
   PyObject *__pyx_tuple__71;
-  PyObject *__pyx_codeobj__27;
+  PyObject *__pyx_tuple__73;
   PyObject *__pyx_codeobj__29;
   PyObject *__pyx_codeobj__31;
-  PyObject *__pyx_codeobj__35;
-  PyObject *__pyx_codeobj__38;
-  PyObject *__pyx_codeobj__39;
+  PyObject *__pyx_codeobj__33;
+  PyObject *__pyx_codeobj__37;
   PyObject *__pyx_codeobj__40;
   PyObject *__pyx_codeobj__41;
   PyObject *__pyx_codeobj__42;
@@ -2653,15 +2678,17 @@ typedef struct {
   PyObject *__pyx_codeobj__50;
   PyObject *__pyx_codeobj__51;
   PyObject *__pyx_codeobj__52;
+  PyObject *__pyx_codeobj__53;
   PyObject *__pyx_codeobj__54;
-  PyObject *__pyx_codeobj__55;
+  PyObject *__pyx_codeobj__56;
   PyObject *__pyx_codeobj__57;
   PyObject *__pyx_codeobj__59;
-  PyObject *__pyx_codeobj__62;
-  PyObject *__pyx_codeobj__65;
-  PyObject *__pyx_codeobj__68;
+  PyObject *__pyx_codeobj__61;
+  PyObject *__pyx_codeobj__64;
+  PyObject *__pyx_codeobj__67;
   PyObject *__pyx_codeobj__70;
   PyObject *__pyx_codeobj__72;
+  PyObject *__pyx_codeobj__74;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2715,9 +2742,16 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Decimal);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Etc_GMT);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Etc_GMT_2);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_H);
   Py_CLEAR(clear_module_state->__pyx_n_u_HASHTAG);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_H_2);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_M);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_M_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_None);
+  Py_CLEAR(clear_module_state->__pyx_n_u_PERCENT);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_S);
   Py_CLEAR(clear_module_state->__pyx_n_s_SECOND_TO_AGRIMA);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_S_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_Sezimal);
   Py_CLEAR(clear_module_state->__pyx_n_u_SezimalDate);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalInteger);
@@ -2770,14 +2804,16 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u__20);
   Py_CLEAR(clear_module_state->__pyx_kp_u__21);
   Py_CLEAR(clear_module_state->__pyx_kp_u__22);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__23);
   Py_CLEAR(clear_module_state->__pyx_kp_u__24);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__25);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__26);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__27);
   Py_CLEAR(clear_module_state->__pyx_kp_u__3);
   Py_CLEAR(clear_module_state->__pyx_kp_u__4);
   Py_CLEAR(clear_module_state->__pyx_kp_u__5);
   Py_CLEAR(clear_module_state->__pyx_kp_u__6);
   Py_CLEAR(clear_module_state->__pyx_kp_u__7);
-  Py_CLEAR(clear_module_state->__pyx_n_s__73);
+  Py_CLEAR(clear_module_state->__pyx_n_s__75);
   Py_CLEAR(clear_module_state->__pyx_kp_u__8);
   Py_CLEAR(clear_module_state->__pyx_kp_u__9);
   Py_CLEAR(clear_module_state->__pyx_n_u_a);
@@ -2806,6 +2842,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_boda_2);
   Py_CLEAR(clear_module_state->__pyx_n_u_boda_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_boda_3);
+  Py_CLEAR(clear_module_state->__pyx_n_s_bool);
   Py_CLEAR(clear_module_state->__pyx_n_s_character);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_cls);
@@ -2826,6 +2863,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal);
   Py_CLEAR(clear_module_state->__pyx_n_s_dedicated_digits);
   Py_CLEAR(clear_module_state->__pyx_n_s_default_compressed_to_dedicated);
+  Py_CLEAR(clear_module_state->__pyx_n_s_default_compressed_to_regularize);
   Py_CLEAR(clear_module_state->__pyx_n_s_default_to_dedicated_digits);
   Py_CLEAR(clear_module_state->__pyx_n_s_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_diff);
@@ -2841,6 +2879,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_ekaditiboda_2);
   Py_CLEAR(clear_module_state->__pyx_n_u_ekaditiboda_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_ekaditiboda_3);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_f);
   Py_CLEAR(clear_module_state->__pyx_n_s_fmt);
   Py_CLEAR(clear_module_state->__pyx_n_s_format);
   Py_CLEAR(clear_module_state->__pyx_n_s_fromisoformat);
@@ -2896,6 +2935,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_sezimal_format);
   Py_CLEAR(clear_module_state->__pyx_n_s_sezimal_places);
   Py_CLEAR(clear_module_state->__pyx_n_s_size);
+  Py_CLEAR(clear_module_state->__pyx_n_s_skip_strftime);
   Py_CLEAR(clear_module_state->__pyx_n_s_slots);
   Py_CLEAR(clear_module_state->__pyx_n_s_spec);
   Py_CLEAR(clear_module_state->__pyx_n_s_str);
@@ -2955,6 +2995,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_2);
   Py_CLEAR(clear_module_state->__pyx_int_4);
+  Py_CLEAR(clear_module_state->__pyx_int_6);
   Py_CLEAR(clear_module_state->__pyx_int_10);
   Py_CLEAR(clear_module_state->__pyx_int_12);
   Py_CLEAR(clear_module_state->__pyx_int_60);
@@ -2964,32 +3005,30 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_int_1000000);
   Py_CLEAR(clear_module_state->__pyx_int_100000000);
   Py_CLEAR(clear_module_state->__pyx_int_neg_1);
-  Py_CLEAR(clear_module_state->__pyx_tuple__23);
-  Py_CLEAR(clear_module_state->__pyx_tuple__26);
+  Py_CLEAR(clear_module_state->__pyx_tuple__25);
   Py_CLEAR(clear_module_state->__pyx_tuple__28);
   Py_CLEAR(clear_module_state->__pyx_tuple__30);
   Py_CLEAR(clear_module_state->__pyx_tuple__32);
-  Py_CLEAR(clear_module_state->__pyx_tuple__33);
   Py_CLEAR(clear_module_state->__pyx_tuple__34);
+  Py_CLEAR(clear_module_state->__pyx_tuple__35);
   Py_CLEAR(clear_module_state->__pyx_tuple__36);
-  Py_CLEAR(clear_module_state->__pyx_tuple__37);
-  Py_CLEAR(clear_module_state->__pyx_tuple__53);
-  Py_CLEAR(clear_module_state->__pyx_tuple__56);
+  Py_CLEAR(clear_module_state->__pyx_tuple__38);
+  Py_CLEAR(clear_module_state->__pyx_tuple__39);
+  Py_CLEAR(clear_module_state->__pyx_tuple__55);
   Py_CLEAR(clear_module_state->__pyx_tuple__58);
   Py_CLEAR(clear_module_state->__pyx_tuple__60);
-  Py_CLEAR(clear_module_state->__pyx_tuple__61);
+  Py_CLEAR(clear_module_state->__pyx_tuple__62);
   Py_CLEAR(clear_module_state->__pyx_tuple__63);
-  Py_CLEAR(clear_module_state->__pyx_tuple__64);
+  Py_CLEAR(clear_module_state->__pyx_tuple__65);
   Py_CLEAR(clear_module_state->__pyx_tuple__66);
-  Py_CLEAR(clear_module_state->__pyx_tuple__67);
+  Py_CLEAR(clear_module_state->__pyx_tuple__68);
   Py_CLEAR(clear_module_state->__pyx_tuple__69);
   Py_CLEAR(clear_module_state->__pyx_tuple__71);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__27);
+  Py_CLEAR(clear_module_state->__pyx_tuple__73);
   Py_CLEAR(clear_module_state->__pyx_codeobj__29);
   Py_CLEAR(clear_module_state->__pyx_codeobj__31);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__35);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__38);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__39);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__33);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__37);
   Py_CLEAR(clear_module_state->__pyx_codeobj__40);
   Py_CLEAR(clear_module_state->__pyx_codeobj__41);
   Py_CLEAR(clear_module_state->__pyx_codeobj__42);
@@ -3003,15 +3042,17 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__50);
   Py_CLEAR(clear_module_state->__pyx_codeobj__51);
   Py_CLEAR(clear_module_state->__pyx_codeobj__52);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__53);
   Py_CLEAR(clear_module_state->__pyx_codeobj__54);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__55);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__56);
   Py_CLEAR(clear_module_state->__pyx_codeobj__57);
   Py_CLEAR(clear_module_state->__pyx_codeobj__59);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__62);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__65);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__68);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__61);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__64);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__67);
   Py_CLEAR(clear_module_state->__pyx_codeobj__70);
   Py_CLEAR(clear_module_state->__pyx_codeobj__72);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__74);
   return 0;
 }
 #endif
@@ -3043,9 +3084,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Decimal);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Etc_GMT);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Etc_GMT_2);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_H);
   Py_VISIT(traverse_module_state->__pyx_n_u_HASHTAG);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_H_2);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_M);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_M_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_None);
+  Py_VISIT(traverse_module_state->__pyx_n_u_PERCENT);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_S);
   Py_VISIT(traverse_module_state->__pyx_n_s_SECOND_TO_AGRIMA);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_S_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_Sezimal);
   Py_VISIT(traverse_module_state->__pyx_n_u_SezimalDate);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalInteger);
@@ -3098,14 +3146,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u__20);
   Py_VISIT(traverse_module_state->__pyx_kp_u__21);
   Py_VISIT(traverse_module_state->__pyx_kp_u__22);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__23);
   Py_VISIT(traverse_module_state->__pyx_kp_u__24);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__25);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__26);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__27);
   Py_VISIT(traverse_module_state->__pyx_kp_u__3);
   Py_VISIT(traverse_module_state->__pyx_kp_u__4);
   Py_VISIT(traverse_module_state->__pyx_kp_u__5);
   Py_VISIT(traverse_module_state->__pyx_kp_u__6);
   Py_VISIT(traverse_module_state->__pyx_kp_u__7);
-  Py_VISIT(traverse_module_state->__pyx_n_s__73);
+  Py_VISIT(traverse_module_state->__pyx_n_s__75);
   Py_VISIT(traverse_module_state->__pyx_kp_u__8);
   Py_VISIT(traverse_module_state->__pyx_kp_u__9);
   Py_VISIT(traverse_module_state->__pyx_n_u_a);
@@ -3134,6 +3184,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_boda_2);
   Py_VISIT(traverse_module_state->__pyx_n_u_boda_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_boda_3);
+  Py_VISIT(traverse_module_state->__pyx_n_s_bool);
   Py_VISIT(traverse_module_state->__pyx_n_s_character);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_cls);
@@ -3154,6 +3205,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal);
   Py_VISIT(traverse_module_state->__pyx_n_s_dedicated_digits);
   Py_VISIT(traverse_module_state->__pyx_n_s_default_compressed_to_dedicated);
+  Py_VISIT(traverse_module_state->__pyx_n_s_default_compressed_to_regularize);
   Py_VISIT(traverse_module_state->__pyx_n_s_default_to_dedicated_digits);
   Py_VISIT(traverse_module_state->__pyx_n_s_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_diff);
@@ -3169,6 +3221,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_ekaditiboda_2);
   Py_VISIT(traverse_module_state->__pyx_n_u_ekaditiboda_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_ekaditiboda_3);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_f);
   Py_VISIT(traverse_module_state->__pyx_n_s_fmt);
   Py_VISIT(traverse_module_state->__pyx_n_s_format);
   Py_VISIT(traverse_module_state->__pyx_n_s_fromisoformat);
@@ -3224,6 +3277,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_sezimal_format);
   Py_VISIT(traverse_module_state->__pyx_n_s_sezimal_places);
   Py_VISIT(traverse_module_state->__pyx_n_s_size);
+  Py_VISIT(traverse_module_state->__pyx_n_s_skip_strftime);
   Py_VISIT(traverse_module_state->__pyx_n_s_slots);
   Py_VISIT(traverse_module_state->__pyx_n_s_spec);
   Py_VISIT(traverse_module_state->__pyx_n_s_str);
@@ -3283,6 +3337,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_int_1);
   Py_VISIT(traverse_module_state->__pyx_int_2);
   Py_VISIT(traverse_module_state->__pyx_int_4);
+  Py_VISIT(traverse_module_state->__pyx_int_6);
   Py_VISIT(traverse_module_state->__pyx_int_10);
   Py_VISIT(traverse_module_state->__pyx_int_12);
   Py_VISIT(traverse_module_state->__pyx_int_60);
@@ -3292,32 +3347,30 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_int_1000000);
   Py_VISIT(traverse_module_state->__pyx_int_100000000);
   Py_VISIT(traverse_module_state->__pyx_int_neg_1);
-  Py_VISIT(traverse_module_state->__pyx_tuple__23);
-  Py_VISIT(traverse_module_state->__pyx_tuple__26);
+  Py_VISIT(traverse_module_state->__pyx_tuple__25);
   Py_VISIT(traverse_module_state->__pyx_tuple__28);
   Py_VISIT(traverse_module_state->__pyx_tuple__30);
   Py_VISIT(traverse_module_state->__pyx_tuple__32);
-  Py_VISIT(traverse_module_state->__pyx_tuple__33);
   Py_VISIT(traverse_module_state->__pyx_tuple__34);
+  Py_VISIT(traverse_module_state->__pyx_tuple__35);
   Py_VISIT(traverse_module_state->__pyx_tuple__36);
-  Py_VISIT(traverse_module_state->__pyx_tuple__37);
-  Py_VISIT(traverse_module_state->__pyx_tuple__53);
-  Py_VISIT(traverse_module_state->__pyx_tuple__56);
+  Py_VISIT(traverse_module_state->__pyx_tuple__38);
+  Py_VISIT(traverse_module_state->__pyx_tuple__39);
+  Py_VISIT(traverse_module_state->__pyx_tuple__55);
   Py_VISIT(traverse_module_state->__pyx_tuple__58);
   Py_VISIT(traverse_module_state->__pyx_tuple__60);
-  Py_VISIT(traverse_module_state->__pyx_tuple__61);
+  Py_VISIT(traverse_module_state->__pyx_tuple__62);
   Py_VISIT(traverse_module_state->__pyx_tuple__63);
-  Py_VISIT(traverse_module_state->__pyx_tuple__64);
+  Py_VISIT(traverse_module_state->__pyx_tuple__65);
   Py_VISIT(traverse_module_state->__pyx_tuple__66);
-  Py_VISIT(traverse_module_state->__pyx_tuple__67);
+  Py_VISIT(traverse_module_state->__pyx_tuple__68);
   Py_VISIT(traverse_module_state->__pyx_tuple__69);
   Py_VISIT(traverse_module_state->__pyx_tuple__71);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__27);
+  Py_VISIT(traverse_module_state->__pyx_tuple__73);
   Py_VISIT(traverse_module_state->__pyx_codeobj__29);
   Py_VISIT(traverse_module_state->__pyx_codeobj__31);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__35);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__38);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__39);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__33);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__37);
   Py_VISIT(traverse_module_state->__pyx_codeobj__40);
   Py_VISIT(traverse_module_state->__pyx_codeobj__41);
   Py_VISIT(traverse_module_state->__pyx_codeobj__42);
@@ -3331,15 +3384,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__50);
   Py_VISIT(traverse_module_state->__pyx_codeobj__51);
   Py_VISIT(traverse_module_state->__pyx_codeobj__52);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__53);
   Py_VISIT(traverse_module_state->__pyx_codeobj__54);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__55);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__56);
   Py_VISIT(traverse_module_state->__pyx_codeobj__57);
   Py_VISIT(traverse_module_state->__pyx_codeobj__59);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__62);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__65);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__68);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__61);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__64);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__67);
   Py_VISIT(traverse_module_state->__pyx_codeobj__70);
   Py_VISIT(traverse_module_state->__pyx_codeobj__72);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__74);
   return 0;
 }
 #endif
@@ -3381,9 +3436,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Decimal __pyx_mstate_global->__pyx_n_s_Decimal
 #define __pyx_kp_u_Etc_GMT __pyx_mstate_global->__pyx_kp_u_Etc_GMT
 #define __pyx_kp_u_Etc_GMT_2 __pyx_mstate_global->__pyx_kp_u_Etc_GMT_2
+#define __pyx_kp_u_H __pyx_mstate_global->__pyx_kp_u_H
 #define __pyx_n_u_HASHTAG __pyx_mstate_global->__pyx_n_u_HASHTAG
+#define __pyx_kp_u_H_2 __pyx_mstate_global->__pyx_kp_u_H_2
+#define __pyx_kp_u_M __pyx_mstate_global->__pyx_kp_u_M
+#define __pyx_kp_u_M_2 __pyx_mstate_global->__pyx_kp_u_M_2
 #define __pyx_kp_u_None __pyx_mstate_global->__pyx_kp_u_None
+#define __pyx_n_u_PERCENT __pyx_mstate_global->__pyx_n_u_PERCENT
+#define __pyx_kp_u_S __pyx_mstate_global->__pyx_kp_u_S
 #define __pyx_n_s_SECOND_TO_AGRIMA __pyx_mstate_global->__pyx_n_s_SECOND_TO_AGRIMA
+#define __pyx_kp_u_S_2 __pyx_mstate_global->__pyx_kp_u_S_2
 #define __pyx_n_s_Sezimal __pyx_mstate_global->__pyx_n_s_Sezimal
 #define __pyx_n_u_SezimalDate __pyx_mstate_global->__pyx_n_u_SezimalDate
 #define __pyx_n_s_SezimalInteger __pyx_mstate_global->__pyx_n_s_SezimalInteger
@@ -3436,14 +3498,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u__20 __pyx_mstate_global->__pyx_kp_u__20
 #define __pyx_kp_u__21 __pyx_mstate_global->__pyx_kp_u__21
 #define __pyx_kp_u__22 __pyx_mstate_global->__pyx_kp_u__22
+#define __pyx_kp_u__23 __pyx_mstate_global->__pyx_kp_u__23
 #define __pyx_kp_u__24 __pyx_mstate_global->__pyx_kp_u__24
-#define __pyx_kp_u__25 __pyx_mstate_global->__pyx_kp_u__25
+#define __pyx_kp_u__26 __pyx_mstate_global->__pyx_kp_u__26
+#define __pyx_kp_u__27 __pyx_mstate_global->__pyx_kp_u__27
 #define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
 #define __pyx_kp_u__4 __pyx_mstate_global->__pyx_kp_u__4
 #define __pyx_kp_u__5 __pyx_mstate_global->__pyx_kp_u__5
 #define __pyx_kp_u__6 __pyx_mstate_global->__pyx_kp_u__6
 #define __pyx_kp_u__7 __pyx_mstate_global->__pyx_kp_u__7
-#define __pyx_n_s__73 __pyx_mstate_global->__pyx_n_s__73
+#define __pyx_n_s__75 __pyx_mstate_global->__pyx_n_s__75
 #define __pyx_kp_u__8 __pyx_mstate_global->__pyx_kp_u__8
 #define __pyx_kp_u__9 __pyx_mstate_global->__pyx_kp_u__9
 #define __pyx_n_u_a __pyx_mstate_global->__pyx_n_u_a
@@ -3472,6 +3536,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_boda_2 __pyx_mstate_global->__pyx_n_s_boda_2
 #define __pyx_n_u_boda_2 __pyx_mstate_global->__pyx_n_u_boda_2
 #define __pyx_kp_u_boda_3 __pyx_mstate_global->__pyx_kp_u_boda_3
+#define __pyx_n_s_bool __pyx_mstate_global->__pyx_n_s_bool
 #define __pyx_n_s_character __pyx_mstate_global->__pyx_n_s_character
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_cls __pyx_mstate_global->__pyx_n_s_cls
@@ -3492,6 +3557,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_decimal __pyx_mstate_global->__pyx_n_s_decimal
 #define __pyx_n_s_dedicated_digits __pyx_mstate_global->__pyx_n_s_dedicated_digits
 #define __pyx_n_s_default_compressed_to_dedicated __pyx_mstate_global->__pyx_n_s_default_compressed_to_dedicated
+#define __pyx_n_s_default_compressed_to_regularize __pyx_mstate_global->__pyx_n_s_default_compressed_to_regularize
 #define __pyx_n_s_default_to_dedicated_digits __pyx_mstate_global->__pyx_n_s_default_to_dedicated_digits
 #define __pyx_n_s_dict __pyx_mstate_global->__pyx_n_s_dict
 #define __pyx_n_s_diff __pyx_mstate_global->__pyx_n_s_diff
@@ -3507,6 +3573,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_ekaditiboda_2 __pyx_mstate_global->__pyx_n_s_ekaditiboda_2
 #define __pyx_n_u_ekaditiboda_2 __pyx_mstate_global->__pyx_n_u_ekaditiboda_2
 #define __pyx_kp_u_ekaditiboda_3 __pyx_mstate_global->__pyx_kp_u_ekaditiboda_3
+#define __pyx_kp_u_f __pyx_mstate_global->__pyx_kp_u_f
 #define __pyx_n_s_fmt __pyx_mstate_global->__pyx_n_s_fmt
 #define __pyx_n_s_format __pyx_mstate_global->__pyx_n_s_format
 #define __pyx_n_s_fromisoformat __pyx_mstate_global->__pyx_n_s_fromisoformat
@@ -3562,6 +3629,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_sezimal_format __pyx_mstate_global->__pyx_n_s_sezimal_format
 #define __pyx_n_s_sezimal_places __pyx_mstate_global->__pyx_n_s_sezimal_places
 #define __pyx_n_s_size __pyx_mstate_global->__pyx_n_s_size
+#define __pyx_n_s_skip_strftime __pyx_mstate_global->__pyx_n_s_skip_strftime
 #define __pyx_n_s_slots __pyx_mstate_global->__pyx_n_s_slots
 #define __pyx_n_s_spec __pyx_mstate_global->__pyx_n_s_spec
 #define __pyx_n_s_str __pyx_mstate_global->__pyx_n_s_str
@@ -3621,6 +3689,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
 #define __pyx_int_2 __pyx_mstate_global->__pyx_int_2
 #define __pyx_int_4 __pyx_mstate_global->__pyx_int_4
+#define __pyx_int_6 __pyx_mstate_global->__pyx_int_6
 #define __pyx_int_10 __pyx_mstate_global->__pyx_int_10
 #define __pyx_int_12 __pyx_mstate_global->__pyx_int_12
 #define __pyx_int_60 __pyx_mstate_global->__pyx_int_60
@@ -3630,32 +3699,30 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_int_1000000 __pyx_mstate_global->__pyx_int_1000000
 #define __pyx_int_100000000 __pyx_mstate_global->__pyx_int_100000000
 #define __pyx_int_neg_1 __pyx_mstate_global->__pyx_int_neg_1
-#define __pyx_tuple__23 __pyx_mstate_global->__pyx_tuple__23
-#define __pyx_tuple__26 __pyx_mstate_global->__pyx_tuple__26
+#define __pyx_tuple__25 __pyx_mstate_global->__pyx_tuple__25
 #define __pyx_tuple__28 __pyx_mstate_global->__pyx_tuple__28
 #define __pyx_tuple__30 __pyx_mstate_global->__pyx_tuple__30
 #define __pyx_tuple__32 __pyx_mstate_global->__pyx_tuple__32
-#define __pyx_tuple__33 __pyx_mstate_global->__pyx_tuple__33
 #define __pyx_tuple__34 __pyx_mstate_global->__pyx_tuple__34
+#define __pyx_tuple__35 __pyx_mstate_global->__pyx_tuple__35
 #define __pyx_tuple__36 __pyx_mstate_global->__pyx_tuple__36
-#define __pyx_tuple__37 __pyx_mstate_global->__pyx_tuple__37
-#define __pyx_tuple__53 __pyx_mstate_global->__pyx_tuple__53
-#define __pyx_tuple__56 __pyx_mstate_global->__pyx_tuple__56
+#define __pyx_tuple__38 __pyx_mstate_global->__pyx_tuple__38
+#define __pyx_tuple__39 __pyx_mstate_global->__pyx_tuple__39
+#define __pyx_tuple__55 __pyx_mstate_global->__pyx_tuple__55
 #define __pyx_tuple__58 __pyx_mstate_global->__pyx_tuple__58
 #define __pyx_tuple__60 __pyx_mstate_global->__pyx_tuple__60
-#define __pyx_tuple__61 __pyx_mstate_global->__pyx_tuple__61
+#define __pyx_tuple__62 __pyx_mstate_global->__pyx_tuple__62
 #define __pyx_tuple__63 __pyx_mstate_global->__pyx_tuple__63
-#define __pyx_tuple__64 __pyx_mstate_global->__pyx_tuple__64
+#define __pyx_tuple__65 __pyx_mstate_global->__pyx_tuple__65
 #define __pyx_tuple__66 __pyx_mstate_global->__pyx_tuple__66
-#define __pyx_tuple__67 __pyx_mstate_global->__pyx_tuple__67
+#define __pyx_tuple__68 __pyx_mstate_global->__pyx_tuple__68
 #define __pyx_tuple__69 __pyx_mstate_global->__pyx_tuple__69
 #define __pyx_tuple__71 __pyx_mstate_global->__pyx_tuple__71
-#define __pyx_codeobj__27 __pyx_mstate_global->__pyx_codeobj__27
+#define __pyx_tuple__73 __pyx_mstate_global->__pyx_tuple__73
 #define __pyx_codeobj__29 __pyx_mstate_global->__pyx_codeobj__29
 #define __pyx_codeobj__31 __pyx_mstate_global->__pyx_codeobj__31
-#define __pyx_codeobj__35 __pyx_mstate_global->__pyx_codeobj__35
-#define __pyx_codeobj__38 __pyx_mstate_global->__pyx_codeobj__38
-#define __pyx_codeobj__39 __pyx_mstate_global->__pyx_codeobj__39
+#define __pyx_codeobj__33 __pyx_mstate_global->__pyx_codeobj__33
+#define __pyx_codeobj__37 __pyx_mstate_global->__pyx_codeobj__37
 #define __pyx_codeobj__40 __pyx_mstate_global->__pyx_codeobj__40
 #define __pyx_codeobj__41 __pyx_mstate_global->__pyx_codeobj__41
 #define __pyx_codeobj__42 __pyx_mstate_global->__pyx_codeobj__42
@@ -3669,18 +3736,20 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__50 __pyx_mstate_global->__pyx_codeobj__50
 #define __pyx_codeobj__51 __pyx_mstate_global->__pyx_codeobj__51
 #define __pyx_codeobj__52 __pyx_mstate_global->__pyx_codeobj__52
+#define __pyx_codeobj__53 __pyx_mstate_global->__pyx_codeobj__53
 #define __pyx_codeobj__54 __pyx_mstate_global->__pyx_codeobj__54
-#define __pyx_codeobj__55 __pyx_mstate_global->__pyx_codeobj__55
+#define __pyx_codeobj__56 __pyx_mstate_global->__pyx_codeobj__56
 #define __pyx_codeobj__57 __pyx_mstate_global->__pyx_codeobj__57
 #define __pyx_codeobj__59 __pyx_mstate_global->__pyx_codeobj__59
-#define __pyx_codeobj__62 __pyx_mstate_global->__pyx_codeobj__62
-#define __pyx_codeobj__65 __pyx_mstate_global->__pyx_codeobj__65
-#define __pyx_codeobj__68 __pyx_mstate_global->__pyx_codeobj__68
+#define __pyx_codeobj__61 __pyx_mstate_global->__pyx_codeobj__61
+#define __pyx_codeobj__64 __pyx_mstate_global->__pyx_codeobj__64
+#define __pyx_codeobj__67 __pyx_mstate_global->__pyx_codeobj__67
 #define __pyx_codeobj__70 __pyx_mstate_global->__pyx_codeobj__70
 #define __pyx_codeobj__72 __pyx_mstate_global->__pyx_codeobj__72
+#define __pyx_codeobj__74 __pyx_mstate_global->__pyx_codeobj__74
 /* #### Code section: module_code ### */
 
-/* "swixknife/swixknife/date_time/time.py":28
+/* "swixknife/swixknife/date_time/time.py":29
  * 
  * 
  * def _system_time_zone():             # <<<<<<<<<<<<<<
@@ -3717,16 +3786,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_system_time_zone", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":29
+  /* "swixknife/swixknife/date_time/time.py":30
  * 
  * def _system_time_zone():
  *     diff = int(_time.strftime('%z')) // 100             # <<<<<<<<<<<<<<
  * 
  *     if diff == 0:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_strftime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_strftime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3745,30 +3814,30 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_kp_u_z};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_3, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_3, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_diff = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":31
+  /* "swixknife/swixknife/date_time/time.py":32
  *     diff = int(_time.strftime('%z')) // 100
  * 
  *     if diff == 0:             # <<<<<<<<<<<<<<
  *         return 'UTC'
  * 
  */
-  __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_diff, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_diff, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 32, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "swixknife/swixknife/date_time/time.py":32
+    /* "swixknife/swixknife/date_time/time.py":33
  * 
  *     if diff == 0:
  *         return 'UTC'             # <<<<<<<<<<<<<<
@@ -3780,7 +3849,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
     __pyx_r = __pyx_n_u_UTC;
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/date_time/time.py":31
+    /* "swixknife/swixknife/date_time/time.py":32
  *     diff = int(_time.strftime('%z')) // 100
  * 
  *     if diff == 0:             # <<<<<<<<<<<<<<
@@ -3789,19 +3858,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":34
+  /* "swixknife/swixknife/date_time/time.py":35
  *         return 'UTC'
  * 
  *     if diff > 0:             # <<<<<<<<<<<<<<
  *         return 'Etc/GMT-' + str(diff)
  * 
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_diff, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_diff, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_5) {
 
-    /* "swixknife/swixknife/date_time/time.py":35
+    /* "swixknife/swixknife/date_time/time.py":36
  * 
  *     if diff > 0:
  *         return 'Etc/GMT-' + str(diff)             # <<<<<<<<<<<<<<
@@ -3809,16 +3878,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
  *     return 'Etc/GMT+' + str(diff * -1)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_Str(__pyx_v_diff); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Str(__pyx_v_diff); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyNumber_Add(__pyx_kp_u_Etc_GMT, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_kp_u_Etc_GMT, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/date_time/time.py":34
+    /* "swixknife/swixknife/date_time/time.py":35
  *         return 'UTC'
  * 
  *     if diff > 0:             # <<<<<<<<<<<<<<
@@ -3827,7 +3896,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":37
+  /* "swixknife/swixknife/date_time/time.py":38
  *         return 'Etc/GMT-' + str(diff)
  * 
  *     return 'Etc/GMT+' + str(diff * -1)             # <<<<<<<<<<<<<<
@@ -3835,19 +3904,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_diff, __pyx_int_neg_1, -1L, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_diff, __pyx_int_neg_1, -1L, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_kp_u_Etc_GMT_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_kp_u_Etc_GMT_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":28
+  /* "swixknife/swixknife/date_time/time.py":29
  * 
  * 
  * def _system_time_zone():             # <<<<<<<<<<<<<<
@@ -3869,7 +3938,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time__system_time_zo
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":40
+/* "swixknife/swixknife/date_time/time.py":41
  * 
  * 
  * def _date_time_to_agrima(date_time: _datetime.datetime):             # <<<<<<<<<<<<<<
@@ -3919,12 +3988,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_date_time)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_date_time_to_agrima") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_date_time_to_agrima") < 0)) __PYX_ERR(0, 41, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3935,7 +4004,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_date_time_to_agrima", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 40, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_date_time_to_agrima", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 41, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time._date_time_to_agrima", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3963,61 +4032,20 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_date_time_to_agrima", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":41
+  /* "swixknife/swixknife/date_time/time.py":42
  * 
  * def _date_time_to_agrima(date_time: _datetime.datetime):
  *     total_seconds = Decimal(str(date_time.hour * 60 * 60))             # <<<<<<<<<<<<<<
  *     total_seconds += Decimal(str(date_time.minute * 60))
  *     total_seconds += Decimal(str(date_time.second))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_hour); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_4, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  __pyx_v_total_seconds = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":42
- * def _date_time_to_agrima(date_time: _datetime.datetime):
- *     total_seconds = Decimal(str(date_time.hour * 60 * 60))
- *     total_seconds += Decimal(str(date_time.minute * 60))             # <<<<<<<<<<<<<<
- *     total_seconds += Decimal(str(date_time.second))
- *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
- */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_minute); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_hour); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_4, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4045,24 +4073,65 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_v_total_seconds = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":43
+ * def _date_time_to_agrima(date_time: _datetime.datetime):
+ *     total_seconds = Decimal(str(date_time.hour * 60 * 60))
+ *     total_seconds += Decimal(str(date_time.minute * 60))             # <<<<<<<<<<<<<<
+ *     total_seconds += Decimal(str(date_time.second))
+ *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_minute); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_4, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
+  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":43
+  /* "swixknife/swixknife/date_time/time.py":44
  *     total_seconds = Decimal(str(date_time.hour * 60 * 60))
  *     total_seconds += Decimal(str(date_time.minute * 60))
  *     total_seconds += Decimal(str(date_time.second))             # <<<<<<<<<<<<<<
  *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_second); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_second); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -4082,31 +4151,31 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":44
+  /* "swixknife/swixknife/date_time/time.py":45
  *     total_seconds += Decimal(str(date_time.minute * 60))
  *     total_seconds += Decimal(str(date_time.second))
  *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))             # <<<<<<<<<<<<<<
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA
  *     return total_agrimas
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_microsecond); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_date_time, __pyx_n_s_microsecond); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -4126,32 +4195,32 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":45
+  /* "swixknife/swixknife/date_time/time.py":46
  *     total_seconds += Decimal(str(date_time.second))
  *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA             # <<<<<<<<<<<<<<
  *     return total_agrimas
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_total_agrimas = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":46
+  /* "swixknife/swixknife/date_time/time.py":47
  *     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA
  *     return total_agrimas             # <<<<<<<<<<<<<<
@@ -4163,7 +4232,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
   __pyx_r = __pyx_v_total_agrimas;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":40
+  /* "swixknife/swixknife/date_time/time.py":41
  * 
  * 
  * def _date_time_to_agrima(date_time: _datetime.datetime):             # <<<<<<<<<<<<<<
@@ -4187,7 +4256,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_2_date_time_to_
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":49
+/* "swixknife/swixknife/date_time/time.py":50
  * 
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):             # <<<<<<<<<<<<<<
@@ -4244,19 +4313,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_time_zone);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_base_date);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "tz_agrimas_offset") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "tz_agrimas_offset") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -4273,13 +4342,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("tz_agrimas_offset", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 49, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("tz_agrimas_offset", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.tz_agrimas_offset", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_base_date), (&PyUnicode_Type), 1, "base_date", 1))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_base_date), (&PyUnicode_Type), 1, "base_date", 1))) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_offset(__pyx_self, __pyx_v_time_zone, __pyx_v_base_date);
 
   /* function exit code */
@@ -4314,25 +4383,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   __Pyx_RefNannySetupContext("tz_agrimas_offset", 0);
   __Pyx_INCREF(__pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":50
+  /* "swixknife/swixknife/date_time/time.py":51
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):
  *     if not time_zone:             # <<<<<<<<<<<<<<
  *         time_zone = _system_time_zone()
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_time_zone); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_time_zone); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 51, __pyx_L1_error)
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":51
+    /* "swixknife/swixknife/date_time/time.py":52
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):
  *     if not time_zone:
  *         time_zone = _system_time_zone()             # <<<<<<<<<<<<<<
  * 
  *     elif time_zone == 'UTC':
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -4350,14 +4419,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       PyObject *__pyx_callargs[1] = {__pyx_t_5, };
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_time_zone, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":50
+    /* "swixknife/swixknife/date_time/time.py":51
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):
  *     if not time_zone:             # <<<<<<<<<<<<<<
@@ -4367,17 +4436,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     goto __pyx_L3;
   }
 
-  /* "swixknife/swixknife/date_time/time.py":53
+  /* "swixknife/swixknife/date_time/time.py":54
  *         time_zone = _system_time_zone()
  * 
  *     elif time_zone == 'UTC':             # <<<<<<<<<<<<<<
  *         return Sezimal('0'), Sezimal('0')
  * 
  */
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_time_zone, __pyx_n_u_UTC, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_time_zone, __pyx_n_u_UTC, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 54, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":54
+    /* "swixknife/swixknife/date_time/time.py":55
  * 
  *     elif time_zone == 'UTC':
  *         return Sezimal('0'), Sezimal('0')             # <<<<<<<<<<<<<<
@@ -4385,7 +4454,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
  *     time_zone = timezone(time_zone)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -4403,11 +4472,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_kp_u_0};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_7 = NULL;
     __pyx_t_6 = 0;
@@ -4425,11 +4494,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_kp_u_0};
       __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -4441,7 +4510,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/date_time/time.py":53
+    /* "swixknife/swixknife/date_time/time.py":54
  *         time_zone = _system_time_zone()
  * 
  *     elif time_zone == 'UTC':             # <<<<<<<<<<<<<<
@@ -4451,14 +4520,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   }
   __pyx_L3:;
 
-  /* "swixknife/swixknife/date_time/time.py":56
+  /* "swixknife/swixknife/date_time/time.py":57
  *         return Sezimal('0'), Sezimal('0')
  * 
  *     time_zone = timezone(time_zone)             # <<<<<<<<<<<<<<
  * 
  *     if base_date:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_timezone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_timezone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   __pyx_t_6 = 0;
@@ -4476,14 +4545,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_time_zone};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_time_zone, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":58
+  /* "swixknife/swixknife/date_time/time.py":59
  *     time_zone = timezone(time_zone)
  * 
  *     if base_date:             # <<<<<<<<<<<<<<
@@ -4493,24 +4562,24 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   __pyx_t_2 = (__pyx_v_base_date != Py_None)&&(__Pyx_PyUnicode_IS_TRUE(__pyx_v_base_date) != 0);
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":59
+    /* "swixknife/swixknife/date_time/time.py":60
  * 
  *     if base_date:
  *         dt_tz = _datetime.datetime.fromisoformat(f'{base_date}T12:00:00')             # <<<<<<<<<<<<<<
  *         dt_tz = time_zone.localize(dt_tz)
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fromisoformat); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fromisoformat); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_base_date); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_base_date); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyUnicode_ConcatInPlace(__pyx_t_3, __pyx_kp_u_T12_00_00); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyUnicode_ConcatInPlace(__pyx_t_3, __pyx_kp_u_T12_00_00); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -4530,21 +4599,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __pyx_v_dt_tz = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":60
+    /* "swixknife/swixknife/date_time/time.py":61
  *     if base_date:
  *         dt_tz = _datetime.datetime.fromisoformat(f'{base_date}T12:00:00')
  *         dt_tz = time_zone.localize(dt_tz)             # <<<<<<<<<<<<<<
  *     else:
  *         dt_tz = _datetime.datetime.now(time_zone)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_time_zone, __pyx_n_s_localize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_time_zone, __pyx_n_s_localize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = NULL;
     __pyx_t_6 = 0;
@@ -4562,14 +4631,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_dt_tz};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_dt_tz, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":58
+    /* "swixknife/swixknife/date_time/time.py":59
  *     time_zone = timezone(time_zone)
  * 
  *     if base_date:             # <<<<<<<<<<<<<<
@@ -4579,7 +4648,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     goto __pyx_L4;
   }
 
-  /* "swixknife/swixknife/date_time/time.py":62
+  /* "swixknife/swixknife/date_time/time.py":63
  *         dt_tz = time_zone.localize(dt_tz)
  *     else:
  *         dt_tz = _datetime.datetime.now(time_zone)             # <<<<<<<<<<<<<<
@@ -4587,12 +4656,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
  *     td = dt_tz.utcoffset()
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_now); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_now); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -4611,7 +4680,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
       PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_time_zone};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -4620,14 +4689,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   }
   __pyx_L4:;
 
-  /* "swixknife/swixknife/date_time/time.py":64
+  /* "swixknife/swixknife/date_time/time.py":65
  *         dt_tz = _datetime.datetime.now(time_zone)
  * 
  *     td = dt_tz.utcoffset()             # <<<<<<<<<<<<<<
  *     total_seconds = Decimal(str(td.days * 86_400))
  *     total_seconds += Decimal(str(td.seconds))
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt_tz, __pyx_n_s_utcoffset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt_tz, __pyx_n_s_utcoffset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   __pyx_t_6 = 0;
@@ -4645,28 +4714,28 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     PyObject *__pyx_callargs[1] = {__pyx_t_7, };
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_td = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":65
+  /* "swixknife/swixknife/date_time/time.py":66
  * 
  *     td = dt_tz.utcoffset()
  *     total_seconds = Decimal(str(td.days * 86_400))             # <<<<<<<<<<<<<<
  *     total_seconds += Decimal(str(td.seconds))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_td, __pyx_n_s_days); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_td, __pyx_n_s_days); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_7, __pyx_int_86400, 0x15180, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_7, __pyx_int_86400, 0x15180, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4686,25 +4755,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_total_seconds = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":66
+  /* "swixknife/swixknife/date_time/time.py":67
  *     td = dt_tz.utcoffset()
  *     total_seconds = Decimal(str(td.days * 86_400))
  *     total_seconds += Decimal(str(td.seconds))             # <<<<<<<<<<<<<<
  * 
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_td, __pyx_n_s_seconds); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_td, __pyx_n_s_seconds); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -4724,39 +4793,39 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_total_seconds, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":68
+  /* "swixknife/swixknife/date_time/time.py":69
  *     total_seconds += Decimal(str(td.seconds))
  * 
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA             # <<<<<<<<<<<<<<
  * 
  *     td_dst = dt_tz.dst()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_v_total_seconds, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_v_total_seconds, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_total_agrimas = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":70
+  /* "swixknife/swixknife/date_time/time.py":71
  *     total_agrimas = total_seconds * SECOND_TO_AGRIMA
  * 
  *     td_dst = dt_tz.dst()             # <<<<<<<<<<<<<<
  *     total_seconds_dst = Decimal(str(td_dst.days * 86_400))
  *     total_seconds_dst += Decimal(str(td_dst.seconds))
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt_tz, __pyx_n_s_dst); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt_tz, __pyx_n_s_dst); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   __pyx_t_6 = 0;
@@ -4774,28 +4843,28 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_td_dst = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":71
+  /* "swixknife/swixknife/date_time/time.py":72
  * 
  *     td_dst = dt_tz.dst()
  *     total_seconds_dst = Decimal(str(td_dst.days * 86_400))             # <<<<<<<<<<<<<<
  *     total_seconds_dst += Decimal(str(td_dst.seconds))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_td_dst, __pyx_n_s_days); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_td_dst, __pyx_n_s_days); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_86400, 0x15180, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_86400, 0x15180, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -4815,25 +4884,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_total_seconds_dst = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":72
+  /* "swixknife/swixknife/date_time/time.py":73
  *     td_dst = dt_tz.dst()
  *     total_seconds_dst = Decimal(str(td_dst.days * 86_400))
  *     total_seconds_dst += Decimal(str(td_dst.seconds))             # <<<<<<<<<<<<<<
  * 
  *     total_agrimas_dst = total_seconds_dst * SECOND_TO_AGRIMA
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_td_dst, __pyx_n_s_seconds); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_td_dst, __pyx_n_s_seconds); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4853,32 +4922,32 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_total_seconds_dst, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_total_seconds_dst, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds_dst, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":74
+  /* "swixknife/swixknife/date_time/time.py":75
  *     total_seconds_dst += Decimal(str(td_dst.seconds))
  * 
  *     total_agrimas_dst = total_seconds_dst * SECOND_TO_AGRIMA             # <<<<<<<<<<<<<<
  * 
  *     return total_agrimas, total_agrimas_dst
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SECOND_TO_AGRIMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_v_total_seconds_dst, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_v_total_seconds_dst, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_total_agrimas_dst = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":76
+  /* "swixknife/swixknife/date_time/time.py":77
  *     total_agrimas_dst = total_seconds_dst * SECOND_TO_AGRIMA
  * 
  *     return total_agrimas, total_agrimas_dst             # <<<<<<<<<<<<<<
@@ -4886,7 +4955,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_total_agrimas);
   __Pyx_GIVEREF(__pyx_v_total_agrimas);
@@ -4898,7 +4967,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":49
+  /* "swixknife/swixknife/date_time/time.py":50
  * 
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):             # <<<<<<<<<<<<<<
@@ -4928,7 +4997,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_4tz_agrimas_off
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":82
+/* "swixknife/swixknife/date_time/time.py":83
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  *     def __new__(cls,             # <<<<<<<<<<<<<<
@@ -4982,7 +5051,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     values[6] = ((PyObject *)((PyObject *)__pyx_int_0));
     values[7] = ((PyObject *)((PyObject *)__pyx_int_0));
 
-    /* "swixknife/swixknife/date_time/time.py":90
+    /* "swixknife/swixknife/date_time/time.py":91
  *                 ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  *                 day: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  *                 time_zone: str = None,             # <<<<<<<<<<<<<<
@@ -5018,68 +5087,68 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cls)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_uta);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_posha);
           if (value) { values[2] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_agrima);
           if (value) { values[3] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_anuga);
           if (value) { values[4] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_boda);
           if (value) { values[5] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ekaditiboda);
           if (value) { values[6] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_day);
           if (value) { values[7] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_time_zone);
           if (value) { values[8] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__new__") < 0)) __PYX_ERR(0, 82, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__new__") < 0)) __PYX_ERR(0, 83, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -5116,16 +5185,16 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__new__", 0, 1, 9, __pyx_nargs); __PYX_ERR(0, 82, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__new__", 0, 1, 9, __pyx_nargs); __PYX_ERR(0, 83, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.__new__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 1, "time_zone", 1))) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 1, "time_zone", 1))) __PYX_ERR(0, 91, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime___new__(__pyx_self, __pyx_v_cls, __pyx_v_uta, __pyx_v_posha, __pyx_v_agrima, __pyx_v_anuga, __pyx_v_boda, __pyx_v_ekaditiboda, __pyx_v_day, __pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":82
+  /* "swixknife/swixknife/date_time/time.py":83
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  *     def __new__(cls,             # <<<<<<<<<<<<<<
@@ -5176,14 +5245,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __Pyx_INCREF(__pyx_v_day);
   __Pyx_INCREF(__pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":92
+  /* "swixknife/swixknife/date_time/time.py":93
  *                 time_zone: str = None,
  *                 ):
  *         day = Sezimal(day)             # <<<<<<<<<<<<<<
  *         uta = Sezimal(uta)
  *         posha = Sezimal(posha)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5201,21 +5270,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_day};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_day, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":93
+  /* "swixknife/swixknife/date_time/time.py":94
  *                 ):
  *         day = Sezimal(day)
  *         uta = Sezimal(uta)             # <<<<<<<<<<<<<<
  *         posha = Sezimal(posha)
  *         agrima = Sezimal(agrima)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5233,21 +5302,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_uta};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_uta, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":94
+  /* "swixknife/swixknife/date_time/time.py":95
  *         day = Sezimal(day)
  *         uta = Sezimal(uta)
  *         posha = Sezimal(posha)             # <<<<<<<<<<<<<<
  *         agrima = Sezimal(agrima)
  *         anuga = Sezimal(anuga)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5265,21 +5334,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_posha};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_posha, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":95
+  /* "swixknife/swixknife/date_time/time.py":96
  *         uta = Sezimal(uta)
  *         posha = Sezimal(posha)
  *         agrima = Sezimal(agrima)             # <<<<<<<<<<<<<<
  *         anuga = Sezimal(anuga)
  *         boda = Sezimal(boda)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5297,21 +5366,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_agrima};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_agrima, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":96
+  /* "swixknife/swixknife/date_time/time.py":97
  *         posha = Sezimal(posha)
  *         agrima = Sezimal(agrima)
  *         anuga = Sezimal(anuga)             # <<<<<<<<<<<<<<
  *         boda = Sezimal(boda)
  *         ekaditiboda = Sezimal(ekaditiboda)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5329,21 +5398,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_anuga};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_anuga, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":97
+  /* "swixknife/swixknife/date_time/time.py":98
  *         agrima = Sezimal(agrima)
  *         anuga = Sezimal(anuga)
  *         boda = Sezimal(boda)             # <<<<<<<<<<<<<<
  *         ekaditiboda = Sezimal(ekaditiboda)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5361,21 +5430,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_boda};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_boda, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":98
+  /* "swixknife/swixknife/date_time/time.py":99
  *         anuga = Sezimal(anuga)
  *         boda = Sezimal(boda)
  *         ekaditiboda = Sezimal(ekaditiboda)             # <<<<<<<<<<<<<<
  * 
  *         total_agrimas = day * 100_0000
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5393,123 +5462,123 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_ekaditiboda};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_ekaditiboda, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":100
+  /* "swixknife/swixknife/date_time/time.py":101
  *         ekaditiboda = Sezimal(ekaditiboda)
  * 
  *         total_agrimas = day * 100_0000             # <<<<<<<<<<<<<<
  *         total_agrimas += uta * 1_0000
  *         total_agrimas += posha * 100
  */
-  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_day, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_day, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_total_agrimas = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":101
+  /* "swixknife/swixknife/date_time/time.py":102
  * 
  *         total_agrimas = day * 100_0000
  *         total_agrimas += uta * 1_0000             # <<<<<<<<<<<<<<
  *         total_agrimas += posha * 100
  *         total_agrimas += agrima
  */
-  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_uta, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_uta, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":102
+  /* "swixknife/swixknife/date_time/time.py":103
  *         total_agrimas = day * 100_0000
  *         total_agrimas += uta * 1_0000
  *         total_agrimas += posha * 100             # <<<<<<<<<<<<<<
  *         total_agrimas += agrima
  *         total_agrimas += anuga / 100
  */
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_posha, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_posha, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":103
+  /* "swixknife/swixknife/date_time/time.py":104
  *         total_agrimas += uta * 1_0000
  *         total_agrimas += posha * 100
  *         total_agrimas += agrima             # <<<<<<<<<<<<<<
  *         total_agrimas += anuga / 100
  *         total_agrimas += boda / 1_0000
  */
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_v_agrima); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_v_agrima); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":104
+  /* "swixknife/swixknife/date_time/time.py":105
  *         total_agrimas += posha * 100
  *         total_agrimas += agrima
  *         total_agrimas += anuga / 100             # <<<<<<<<<<<<<<
  *         total_agrimas += boda / 1_0000
  *         total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000
  */
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_anuga, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_anuga, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":105
+  /* "swixknife/swixknife/date_time/time.py":106
  *         total_agrimas += agrima
  *         total_agrimas += anuga / 100
  *         total_agrimas += boda / 1_0000             # <<<<<<<<<<<<<<
  *         total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_boda, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_boda, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":106
- *         total_agrimas += anuga / 100
- *         total_agrimas += boda / 1_0000
- *         total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000             # <<<<<<<<<<<<<<
- * 
- *         self = object.__new__(cls)
- */
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_ekaditiboda, __pyx_int_100000000, 0x5F5E100, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":108
+  /* "swixknife/swixknife/date_time/time.py":107
+ *         total_agrimas += anuga / 100
+ *         total_agrimas += boda / 1_0000
+ *         total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000             # <<<<<<<<<<<<<<
+ * 
+ *         self = object.__new__(cls)
+ */
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_ekaditiboda, __pyx_int_100000000, 0x5F5E100, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":109
  *         total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000
  * 
  *         self = object.__new__(cls)             # <<<<<<<<<<<<<<
  * 
  *         self._day = SezimalInteger(total_agrimas // 100_0000)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5527,23 +5596,23 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_cls};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_self = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":110
+  /* "swixknife/swixknife/date_time/time.py":111
  *         self = object.__new__(cls)
  * 
  *         self._day = SezimalInteger(total_agrimas // 100_0000)             # <<<<<<<<<<<<<<
  *         total_agrimas -= self._day * 100_0000
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -5562,41 +5631,41 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_day_2, __pyx_t_1) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_day_2, __pyx_t_1) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":111
+  /* "swixknife/swixknife/date_time/time.py":112
  * 
  *         self._day = SezimalInteger(total_agrimas // 100_0000)
  *         total_agrimas -= self._day * 100_0000             # <<<<<<<<<<<<<<
  * 
  *         self._uta = SezimalInteger(total_agrimas // 1_0000)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":113
+  /* "swixknife/swixknife/date_time/time.py":114
  *         total_agrimas -= self._day * 100_0000
  * 
  *         self._uta = SezimalInteger(total_agrimas // 1_0000)             # <<<<<<<<<<<<<<
  *         total_agrimas -= self._uta * 1_0000
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -5615,41 +5684,41 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_uta_2, __pyx_t_1) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_uta_2, __pyx_t_1) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":114
+  /* "swixknife/swixknife/date_time/time.py":115
  * 
  *         self._uta = SezimalInteger(total_agrimas // 1_0000)
  *         total_agrimas -= self._uta * 1_0000             # <<<<<<<<<<<<<<
  * 
  *         self._posha = SezimalInteger(total_agrimas // 100)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":116
+  /* "swixknife/swixknife/date_time/time.py":117
  *         total_agrimas -= self._uta * 1_0000
  * 
  *         self._posha = SezimalInteger(total_agrimas // 100)             # <<<<<<<<<<<<<<
  *         total_agrimas -= self._posha * 100
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -5668,69 +5737,37 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_posha_2, __pyx_t_1) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_posha_2, __pyx_t_1) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":117
+  /* "swixknife/swixknife/date_time/time.py":118
  * 
  *         self._posha = SezimalInteger(total_agrimas // 100)
  *         total_agrimas -= self._posha * 100             # <<<<<<<<<<<<<<
  * 
  *         self._agrima = SezimalInteger(total_agrimas)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":119
+  /* "swixknife/swixknife/date_time/time.py":120
  *         total_agrimas -= self._posha * 100
  * 
  *         self._agrima = SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
  *         total_agrimas -= SezimalInteger(total_agrimas)
  * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  __pyx_t_4 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_4 = 1;
-    }
-  }
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2, __pyx_t_1) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":120
- * 
- *         self._agrima = SezimalInteger(total_agrimas)
- *         total_agrimas -= SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
- * 
- *         total_agrimas *= 100
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -5754,91 +5791,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2, __pyx_t_1) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
-  __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":122
- *         total_agrimas -= SezimalInteger(total_agrimas)
+  /* "swixknife/swixknife/date_time/time.py":121
  * 
- *         total_agrimas *= 100             # <<<<<<<<<<<<<<
- *         self._anuga = SezimalInteger(total_agrimas)
- *         total_agrimas -= self._anuga
- */
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":123
- * 
- *         total_agrimas *= 100
- *         self._anuga = SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
- *         total_agrimas -= self._anuga
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = NULL;
-  __pyx_t_4 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
-      __pyx_t_4 = 1;
-    }
-  }
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
-    __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2, __pyx_t_2) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":124
- *         total_agrimas *= 100
- *         self._anuga = SezimalInteger(total_agrimas)
- *         total_agrimas -= self._anuga             # <<<<<<<<<<<<<<
+ *         self._agrima = SezimalInteger(total_agrimas)
+ *         total_agrimas -= SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
  * 
  *         total_agrimas *= 100
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":126
- *         total_agrimas -= self._anuga
- * 
- *         total_agrimas *= 100             # <<<<<<<<<<<<<<
- *         self._boda = SezimalInteger(total_agrimas)
- *         total_agrimas -= self._boda
- */
-  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":127
- * 
- *         total_agrimas *= 100
- *         self._boda = SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
- *         total_agrimas -= self._boda
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5856,48 +5819,36 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_boda_2, __pyx_t_1) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":128
+  /* "swixknife/swixknife/date_time/time.py":123
+ *         total_agrimas -= SezimalInteger(total_agrimas)
+ * 
+ *         total_agrimas *= 100             # <<<<<<<<<<<<<<
+ *         self._anuga = SezimalInteger(total_agrimas)
+ *         total_agrimas -= self._anuga
+ */
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":124
+ * 
  *         total_agrimas *= 100
- *         self._boda = SezimalInteger(total_agrimas)
- *         total_agrimas -= self._boda             # <<<<<<<<<<<<<<
- * 
- *         total_agrimas *= 1_0000_0000
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":130
- *         total_agrimas -= self._boda
- * 
- *         total_agrimas *= 1_0000_0000             # <<<<<<<<<<<<<<
- *         self._ekaditiboda = round(Sezimal(total_agrimas), 0)
+ *         self._anuga = SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
+ *         total_agrimas -= self._anuga
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100000000, 0x5F5E100, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":131
- * 
- *         total_agrimas *= 1_0000_0000
- *         self._ekaditiboda = round(Sezimal(total_agrimas), 0)             # <<<<<<<<<<<<<<
- * 
- *         total_agrimas = self._day * 100_0000
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5915,11 +5866,129 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2, __pyx_t_2) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":125
+ *         total_agrimas *= 100
+ *         self._anuga = SezimalInteger(total_agrimas)
+ *         total_agrimas -= self._anuga             # <<<<<<<<<<<<<<
+ * 
+ *         total_agrimas *= 100
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":127
+ *         total_agrimas -= self._anuga
+ * 
+ *         total_agrimas *= 100             # <<<<<<<<<<<<<<
+ *         self._boda = SezimalInteger(total_agrimas)
+ *         total_agrimas -= self._boda
+ */
+  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":128
+ * 
+ *         total_agrimas *= 100
+ *         self._boda = SezimalInteger(total_agrimas)             # <<<<<<<<<<<<<<
+ *         total_agrimas -= self._boda
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  __pyx_t_4 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_4 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_boda_2, __pyx_t_1) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":129
+ *         total_agrimas *= 100
+ *         self._boda = SezimalInteger(total_agrimas)
+ *         total_agrimas -= self._boda             # <<<<<<<<<<<<<<
+ * 
+ *         total_agrimas *= 1_0000_0000
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":131
+ *         total_agrimas -= self._boda
+ * 
+ *         total_agrimas *= 1_0000_0000             # <<<<<<<<<<<<<<
+ *         self._ekaditiboda = round(Sezimal(total_agrimas), 0)
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_agrimas, __pyx_int_100000000, 0x5F5E100, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":132
+ * 
+ *         total_agrimas *= 1_0000_0000
+ *         self._ekaditiboda = round(Sezimal(total_agrimas), 0)             # <<<<<<<<<<<<<<
+ * 
+ *         total_agrimas = self._day * 100_0000
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = NULL;
+  __pyx_t_4 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __pyx_t_4 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_total_agrimas};
+    __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  }
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -5927,55 +5996,37 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __Pyx_GIVEREF(__pyx_int_0);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_0);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2, __pyx_t_2) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2, __pyx_t_2) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":133
+  /* "swixknife/swixknife/date_time/time.py":134
  *         self._ekaditiboda = round(Sezimal(total_agrimas), 0)
  * 
  *         total_agrimas = self._day * 100_0000             # <<<<<<<<<<<<<<
  *         total_agrimas += self._uta * 1_0000
  *         total_agrimas += self._posha * 100
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":134
- * 
- *         total_agrimas = self._day * 100_0000
- *         total_agrimas += self._uta * 1_0000             # <<<<<<<<<<<<<<
- *         total_agrimas += self._posha * 100
- *         total_agrimas += self._agrima
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "swixknife/swixknife/date_time/time.py":135
+ * 
  *         total_agrimas = self._day * 100_0000
- *         total_agrimas += self._uta * 1_0000
- *         total_agrimas += self._posha * 100             # <<<<<<<<<<<<<<
+ *         total_agrimas += self._uta * 1_0000             # <<<<<<<<<<<<<<
+ *         total_agrimas += self._posha * 100
  *         total_agrimas += self._agrima
- *         total_agrimas += self._anuga / 100
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
@@ -5985,32 +6036,32 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_t_1 = 0;
 
   /* "swixknife/swixknife/date_time/time.py":136
+ *         total_agrimas = self._day * 100_0000
+ *         total_agrimas += self._uta * 1_0000
+ *         total_agrimas += self._posha * 100             # <<<<<<<<<<<<<<
+ *         total_agrimas += self._agrima
+ *         total_agrimas += self._anuga / 100
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":137
  *         total_agrimas += self._uta * 1_0000
  *         total_agrimas += self._posha * 100
  *         total_agrimas += self._agrima             # <<<<<<<<<<<<<<
  *         total_agrimas += self._anuga / 100
  *         total_agrimas += self._boda / 1_0000
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "swixknife/swixknife/date_time/time.py":137
- *         total_agrimas += self._posha * 100
- *         total_agrimas += self._agrima
- *         total_agrimas += self._anuga / 100             # <<<<<<<<<<<<<<
- *         total_agrimas += self._boda / 1_0000
- *         total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6018,15 +6069,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_t_2 = 0;
 
   /* "swixknife/swixknife/date_time/time.py":138
+ *         total_agrimas += self._posha * 100
  *         total_agrimas += self._agrima
- *         total_agrimas += self._anuga / 100
- *         total_agrimas += self._boda / 1_0000             # <<<<<<<<<<<<<<
+ *         total_agrimas += self._anuga / 100             # <<<<<<<<<<<<<<
+ *         total_agrimas += self._boda / 1_0000
  *         total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000
- * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
@@ -6036,36 +6087,54 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_t_2 = 0;
 
   /* "swixknife/swixknife/date_time/time.py":139
+ *         total_agrimas += self._agrima
+ *         total_agrimas += self._anuga / 100
+ *         total_agrimas += self._boda / 1_0000             # <<<<<<<<<<<<<<
+ *         total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/date_time/time.py":140
  *         total_agrimas += self._anuga / 100
  *         total_agrimas += self._boda / 1_0000
  *         total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000             # <<<<<<<<<<<<<<
  * 
  *         self._total_agrimas = total_agrimas
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_100000000, 0x5F5E100, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_100000000, 0x5F5E100, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_10000, 0x2710, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":141
+  /* "swixknife/swixknife/date_time/time.py":142
  *         total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000
  * 
  *         self._total_agrimas = total_agrimas             # <<<<<<<<<<<<<<
  * 
  *         if not time_zone:
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas, __pyx_v_total_agrimas) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas, __pyx_v_total_agrimas) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":143
+  /* "swixknife/swixknife/date_time/time.py":144
  *         self._total_agrimas = total_agrimas
  * 
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -6076,14 +6145,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "swixknife/swixknife/date_time/time.py":144
+    /* "swixknife/swixknife/date_time/time.py":145
  * 
  *         if not time_zone:
  *             time_zone = _system_time_zone()             # <<<<<<<<<<<<<<
  * 
  *         self._time_zone = time_zone
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = NULL;
     __pyx_t_4 = 0;
@@ -6101,15 +6170,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
       PyObject *__pyx_callargs[1] = {__pyx_t_3, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_1))) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_1))) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_time_zone, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":143
+    /* "swixknife/swixknife/date_time/time.py":144
  *         self._total_agrimas = total_agrimas
  * 
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -6118,23 +6187,23 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":146
+  /* "swixknife/swixknife/date_time/time.py":147
  *             time_zone = _system_time_zone()
  * 
  *         self._time_zone = time_zone             # <<<<<<<<<<<<<<
  *         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone)
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_2, __pyx_v_time_zone) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_2, __pyx_v_time_zone) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":147
+  /* "swixknife/swixknife/date_time/time.py":148
  * 
  *         self._time_zone = time_zone
  *         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone)             # <<<<<<<<<<<<<<
  * 
  *         total_seconds = self._total_agrimas
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -6152,7 +6221,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_time_zone};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -6162,7 +6231,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 147, __pyx_L1_error)
+      __PYX_ERR(0, 148, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -6175,15 +6244,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5);
@@ -6191,7 +6260,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __Pyx_GOTREF(__pyx_t_2);
     index = 1; __pyx_t_3 = __pyx_t_8(__pyx_t_5); if (unlikely(!__pyx_t_3)) goto __pyx_L4_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_5), 2) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_5), 2) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
     __pyx_t_8 = NULL;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L5_unpacking_done;
@@ -6199,183 +6268,183 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_8 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 147, __pyx_L1_error)
+    __PYX_ERR(0, 148, __pyx_L1_error)
     __pyx_L5_unpacking_done:;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset, __pyx_t_2) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset, __pyx_t_2) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dst_offset, __pyx_t_3) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dst_offset, __pyx_t_3) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":149
+  /* "swixknife/swixknife/date_time/time.py":150
  *         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone)
  * 
  *         total_seconds = self._total_agrimas             # <<<<<<<<<<<<<<
  *         total_seconds -= self._day * 100_0000
  *         total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_total_seconds = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":150
+  /* "swixknife/swixknife/date_time/time.py":151
  * 
  *         total_seconds = self._total_agrimas
  *         total_seconds -= self._day * 100_0000             # <<<<<<<<<<<<<<
  *         total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_t_1, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":151
+  /* "swixknife/swixknife/date_time/time.py":152
  *         total_seconds = self._total_agrimas
  *         total_seconds -= self._day * 100_0000
  *         total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal             # <<<<<<<<<<<<<<
  * 
  *         hour = int(total_seconds // 60 // 60)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_total_seconds, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_total_seconds, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_AGRIMA_TO_SECOND); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_AGRIMA_TO_SECOND); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_decimal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":153
+  /* "swixknife/swixknife/date_time/time.py":154
  *         total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal
  * 
  *         hour = int(total_seconds // 60 // 60)             # <<<<<<<<<<<<<<
  *         total_seconds -= hour * 60 * 60
  * 
  */
-  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_seconds, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_seconds, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_hour = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":154
+  /* "swixknife/swixknife/date_time/time.py":155
  * 
  *         hour = int(total_seconds // 60 // 60)
  *         total_seconds -= hour * 60 * 60             # <<<<<<<<<<<<<<
  * 
  *         minute = int(total_seconds // 60)
  */
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_hour, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_hour, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_t_3, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":156
+  /* "swixknife/swixknife/date_time/time.py":157
  *         total_seconds -= hour * 60 * 60
  * 
  *         minute = int(total_seconds // 60)             # <<<<<<<<<<<<<<
  *         total_seconds -= minute * 60
  * 
  */
-  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_seconds, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_total_seconds, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_minute = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":157
+  /* "swixknife/swixknife/date_time/time.py":158
  * 
  *         minute = int(total_seconds // 60)
  *         total_seconds -= minute * 60             # <<<<<<<<<<<<<<
  * 
  *         second = int(total_seconds)
  */
-  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_minute, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_MultiplyObjC(__pyx_v_minute, __pyx_int_60, 60, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":159
+  /* "swixknife/swixknife/date_time/time.py":160
  *         total_seconds -= minute * 60
  * 
  *         second = int(total_seconds)             # <<<<<<<<<<<<<<
  *         total_seconds -= second
  * 
  */
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_v_total_seconds); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_v_total_seconds); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_second = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":160
+  /* "swixknife/swixknife/date_time/time.py":161
  * 
  *         second = int(total_seconds)
  *         total_seconds -= second             # <<<<<<<<<<<<<<
  * 
  *         microssecond = int(total_seconds * 1_000_000)
  */
-  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_v_second); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_InPlaceSubtract(__pyx_v_total_seconds, __pyx_v_second); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF_SET(__pyx_v_total_seconds, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":162
+  /* "swixknife/swixknife/date_time/time.py":163
  *         total_seconds -= second
  * 
  *         microssecond = int(total_seconds * 1_000_000)             # <<<<<<<<<<<<<<
  * 
  *         iso_time = _datetime.time(hour, minute, second, microssecond, tzinfo=timezone(time_zone))
  */
-  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_seconds, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_MultiplyObjC(__pyx_v_total_seconds, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_microssecond = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":164
+  /* "swixknife/swixknife/date_time/time.py":165
  *         microssecond = int(total_seconds * 1_000_000)
  * 
  *         iso_time = _datetime.time(hour, minute, second, microssecond, tzinfo=timezone(time_zone))             # <<<<<<<<<<<<<<
  * 
  *         self._iso_time = iso_time
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_datetime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_datetime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_time_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_time_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_hour);
   __Pyx_GIVEREF(__pyx_v_hour);
@@ -6389,9 +6458,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __Pyx_INCREF(__pyx_v_microssecond);
   __Pyx_GIVEREF(__pyx_v_microssecond);
   PyTuple_SET_ITEM(__pyx_t_2, 3, __pyx_v_microssecond);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_timezone); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_timezone); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_10 = NULL;
   __pyx_t_4 = 0;
@@ -6409,13 +6478,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
     PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_v_time_zone};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_tzinfo, __pyx_t_5) < 0) __PYX_ERR(0, 164, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_tzinfo, __pyx_t_5) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6423,16 +6492,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_v_iso_time = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":166
+  /* "swixknife/swixknife/date_time/time.py":167
  *         iso_time = _datetime.time(hour, minute, second, microssecond, tzinfo=timezone(time_zone))
  * 
  *         self._iso_time = iso_time             # <<<<<<<<<<<<<<
  * 
  *         return self
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_iso_time, __pyx_v_iso_time) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_iso_time, __pyx_v_iso_time) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":168
+  /* "swixknife/swixknife/date_time/time.py":169
  *         self._iso_time = iso_time
  * 
  *         return self             # <<<<<<<<<<<<<<
@@ -6444,7 +6513,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":82
+  /* "swixknife/swixknife/date_time/time.py":83
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  *     def __new__(cls,             # <<<<<<<<<<<<<<
@@ -6484,7 +6553,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime__
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":170
+/* "swixknife/swixknife/date_time/time.py":171
  *         return self
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6534,12 +6603,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "day") < 0)) __PYX_ERR(0, 170, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "day") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6550,7 +6619,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("day", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 170, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("day", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 171, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.day", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6572,7 +6641,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("day", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":172
+  /* "swixknife/swixknife/date_time/time.py":173
  *     @property
  *     def day(self):
  *         return self._day             # <<<<<<<<<<<<<<
@@ -6580,13 +6649,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":170
+  /* "swixknife/swixknife/date_time/time.py":171
  *         return self
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6605,7 +6674,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":174
+/* "swixknife/swixknife/date_time/time.py":175
  *         return self._day
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6655,12 +6724,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 174, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "uta") < 0)) __PYX_ERR(0, 174, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "uta") < 0)) __PYX_ERR(0, 175, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6671,7 +6740,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("uta", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 174, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("uta", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 175, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.uta", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6693,7 +6762,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("uta", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":176
+  /* "swixknife/swixknife/date_time/time.py":177
  *     @property
  *     def uta(self):
  *         return self._uta             # <<<<<<<<<<<<<<
@@ -6701,13 +6770,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":174
+  /* "swixknife/swixknife/date_time/time.py":175
  *         return self._day
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6726,7 +6795,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":178
+/* "swixknife/swixknife/date_time/time.py":179
  *         return self._uta
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6776,12 +6845,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 179, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "posha") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "posha") < 0)) __PYX_ERR(0, 179, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6792,7 +6861,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("posha", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 178, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("posha", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 179, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.posha", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6814,7 +6883,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("posha", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":180
+  /* "swixknife/swixknife/date_time/time.py":181
  *     @property
  *     def posha(self):
  *         return self._posha             # <<<<<<<<<<<<<<
@@ -6822,13 +6891,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_6
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":178
+  /* "swixknife/swixknife/date_time/time.py":179
  *         return self._uta
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6847,7 +6916,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_6
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":182
+/* "swixknife/swixknife/date_time/time.py":183
  *         return self._posha
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6897,12 +6966,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "agrima") < 0)) __PYX_ERR(0, 182, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "agrima") < 0)) __PYX_ERR(0, 183, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6913,7 +6982,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("agrima", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 182, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("agrima", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 183, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.agrima", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6935,7 +7004,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_8
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("agrima", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":184
+  /* "swixknife/swixknife/date_time/time.py":185
  *     @property
  *     def agrima(self):
  *         return self._agrima             # <<<<<<<<<<<<<<
@@ -6943,13 +7012,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_8
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":182
+  /* "swixknife/swixknife/date_time/time.py":183
  *         return self._posha
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6968,7 +7037,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_8
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":186
+/* "swixknife/swixknife/date_time/time.py":187
  *         return self._agrima
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7018,12 +7087,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "anuga") < 0)) __PYX_ERR(0, 186, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "anuga") < 0)) __PYX_ERR(0, 187, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7034,7 +7103,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("anuga", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 186, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("anuga", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 187, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.anuga", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7056,7 +7125,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("anuga", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":188
+  /* "swixknife/swixknife/date_time/time.py":189
  *     @property
  *     def anuga(self):
  *         return self._anuga             # <<<<<<<<<<<<<<
@@ -7064,13 +7133,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":186
+  /* "swixknife/swixknife/date_time/time.py":187
  *         return self._agrima
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7089,7 +7158,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":190
+/* "swixknife/swixknife/date_time/time.py":191
  *         return self._anuga
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7139,12 +7208,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "boda") < 0)) __PYX_ERR(0, 190, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "boda") < 0)) __PYX_ERR(0, 191, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7155,7 +7224,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("boda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 190, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("boda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 191, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.boda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7177,7 +7246,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("boda", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":192
+  /* "swixknife/swixknife/date_time/time.py":193
  *     @property
  *     def boda(self):
  *         return self._boda             # <<<<<<<<<<<<<<
@@ -7185,13 +7254,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":190
+  /* "swixknife/swixknife/date_time/time.py":191
  *         return self._anuga
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7210,7 +7279,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":194
+/* "swixknife/swixknife/date_time/time.py":195
  *         return self._boda
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7260,12 +7329,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "ekaditiboda") < 0)) __PYX_ERR(0, 194, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "ekaditiboda") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7276,7 +7345,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("ekaditiboda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 194, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("ekaditiboda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 195, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.ekaditiboda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7298,7 +7367,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ekaditiboda", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":196
+  /* "swixknife/swixknife/date_time/time.py":197
  *     @property
  *     def ekaditiboda(self):
  *         return self._ekaditiboda             # <<<<<<<<<<<<<<
@@ -7306,13 +7375,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":194
+  /* "swixknife/swixknife/date_time/time.py":195
  *         return self._boda
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7331,7 +7400,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":198
+/* "swixknife/swixknife/date_time/time.py":199
  *         return self._ekaditiboda
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7381,12 +7450,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "time_zone") < 0)) __PYX_ERR(0, 198, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "time_zone") < 0)) __PYX_ERR(0, 199, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7397,7 +7466,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("time_zone", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 198, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("time_zone", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 199, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.time_zone", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7419,7 +7488,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("time_zone", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":200
+  /* "swixknife/swixknife/date_time/time.py":201
  *     @property
  *     def time_zone(self):
  *         return self._time_zone             # <<<<<<<<<<<<<<
@@ -7427,13 +7496,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":198
+  /* "swixknife/swixknife/date_time/time.py":199
  *         return self._ekaditiboda
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7452,7 +7521,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":202
+/* "swixknife/swixknife/date_time/time.py":203
  *         return self._time_zone
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7502,12 +7571,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 202, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "is_dst") < 0)) __PYX_ERR(0, 202, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "is_dst") < 0)) __PYX_ERR(0, 203, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7518,7 +7587,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("is_dst", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 202, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("is_dst", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 203, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.is_dst", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7541,7 +7610,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_dst", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":204
+  /* "swixknife/swixknife/date_time/time.py":205
  *     @property
  *     def is_dst(self):
  *         return self._dst_offset != 0             # <<<<<<<<<<<<<<
@@ -7549,16 +7618,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dst_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dst_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_NeObjC(__pyx_t_1, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_NeObjC(__pyx_t_1, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":202
+  /* "swixknife/swixknife/date_time/time.py":203
  *         return self._time_zone
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7578,7 +7647,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":206
+/* "swixknife/swixknife/date_time/time.py":207
  *         return self._dst_offset != 0
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7628,12 +7697,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_time") < 0)) __PYX_ERR(0, 206, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_time") < 0)) __PYX_ERR(0, 207, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7644,7 +7713,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iso_time", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 206, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iso_time", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 207, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.iso_time", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7666,7 +7735,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("iso_time", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":208
+  /* "swixknife/swixknife/date_time/time.py":209
  *     @property
  *     def iso_time(self):
  *         return self._iso_time             # <<<<<<<<<<<<<<
@@ -7674,13 +7743,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":206
+  /* "swixknife/swixknife/date_time/time.py":207
  *         return self._dst_offset != 0
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7699,7 +7768,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":210
+/* "swixknife/swixknife/date_time/time.py":211
  *         return self._iso_time
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7749,12 +7818,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_hour") < 0)) __PYX_ERR(0, 210, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_hour") < 0)) __PYX_ERR(0, 211, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7765,7 +7834,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iso_hour", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 210, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iso_hour", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 211, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.iso_hour", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7788,7 +7857,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("iso_hour", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":212
+  /* "swixknife/swixknife/date_time/time.py":213
  *     @property
  *     def iso_hour(self):
  *         return self._iso_time.hour             # <<<<<<<<<<<<<<
@@ -7796,16 +7865,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_hour); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_hour); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":210
+  /* "swixknife/swixknife/date_time/time.py":211
  *         return self._iso_time
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7825,7 +7894,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":214
+/* "swixknife/swixknife/date_time/time.py":215
  *         return self._iso_time.hour
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7875,12 +7944,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_minute") < 0)) __PYX_ERR(0, 214, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_minute") < 0)) __PYX_ERR(0, 215, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7891,7 +7960,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iso_minute", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 214, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iso_minute", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 215, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.iso_minute", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7914,7 +7983,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("iso_minute", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":216
+  /* "swixknife/swixknife/date_time/time.py":217
  *     @property
  *     def iso_minute(self):
  *         return self._iso_time.minute             # <<<<<<<<<<<<<<
@@ -7922,16 +7991,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_minute); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_minute); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":214
+  /* "swixknife/swixknife/date_time/time.py":215
  *         return self._iso_time.hour
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -7951,7 +8020,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":218
+/* "swixknife/swixknife/date_time/time.py":219
  *         return self._iso_time.minute
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8001,12 +8070,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_second") < 0)) __PYX_ERR(0, 218, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_second") < 0)) __PYX_ERR(0, 219, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8017,7 +8086,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iso_second", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 218, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iso_second", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 219, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.iso_second", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8040,7 +8109,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("iso_second", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":220
+  /* "swixknife/swixknife/date_time/time.py":221
  *     @property
  *     def iso_second(self):
  *         return self._iso_time.second             # <<<<<<<<<<<<<<
@@ -8048,16 +8117,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_second); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_second); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":218
+  /* "swixknife/swixknife/date_time/time.py":219
  *         return self._iso_time.minute
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8077,7 +8146,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":222
+/* "swixknife/swixknife/date_time/time.py":223
  *         return self._iso_time.second
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8127,12 +8196,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_microsecond") < 0)) __PYX_ERR(0, 222, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "iso_microsecond") < 0)) __PYX_ERR(0, 223, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8143,7 +8212,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iso_microsecond", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 222, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iso_microsecond", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 223, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.iso_microsecond", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8166,7 +8235,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("iso_microsecond", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":224
+  /* "swixknife/swixknife/date_time/time.py":225
  *     @property
  *     def iso_microsecond(self):
  *         return self._iso_time.microsecond             # <<<<<<<<<<<<<<
@@ -8174,16 +8243,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_microsecond); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_microsecond); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":222
+  /* "swixknife/swixknife/date_time/time.py":223
  *         return self._iso_time.second
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8203,7 +8272,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_2
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":226
+/* "swixknife/swixknife/date_time/time.py":227
  *         return self._iso_time.microsecond
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8253,12 +8322,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "as_agrimas") < 0)) __PYX_ERR(0, 226, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "as_agrimas") < 0)) __PYX_ERR(0, 227, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8269,7 +8338,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("as_agrimas", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 226, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("as_agrimas", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 227, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.as_agrimas", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8291,7 +8360,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("as_agrimas", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":228
+  /* "swixknife/swixknife/date_time/time.py":229
  *     @property
  *     def as_agrimas(self):
  *         return self._total_agrimas             # <<<<<<<<<<<<<<
@@ -8299,13 +8368,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_total_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":226
+  /* "swixknife/swixknife/date_time/time.py":227
  *         return self._iso_time.microsecond
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8324,7 +8393,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":230
+/* "swixknife/swixknife/date_time/time.py":231
  *         return self._total_agrimas
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8374,12 +8443,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "as_seconds") < 0)) __PYX_ERR(0, 230, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "as_seconds") < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8390,7 +8459,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("as_seconds", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 230, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("as_seconds", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 231, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.as_seconds", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8415,25 +8484,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("as_seconds", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":232
+  /* "swixknife/swixknife/date_time/time.py":233
  *     @property
  *     def as_seconds(self):
  *         seconds = self.as_agrimas * AGRIMA_TO_SECOND             # <<<<<<<<<<<<<<
  *         return seconds.decimal
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_AGRIMA_TO_SECOND); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_AGRIMA_TO_SECOND); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_seconds = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":233
+  /* "swixknife/swixknife/date_time/time.py":234
  *     def as_seconds(self):
  *         seconds = self.as_agrimas * AGRIMA_TO_SECOND
  *         return seconds.decimal             # <<<<<<<<<<<<<<
@@ -8441,13 +8510,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  *     def __repr__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_seconds, __pyx_n_s_decimal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_seconds, __pyx_n_s_decimal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":230
+  /* "swixknife/swixknife/date_time/time.py":231
  *         return self._total_agrimas
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -8469,7 +8538,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":235
+/* "swixknife/swixknife/date_time/time.py":236
  *         return seconds.decimal
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8519,12 +8588,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__repr__") < 0)) __PYX_ERR(0, 235, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__repr__") < 0)) __PYX_ERR(0, 236, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8535,7 +8604,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__repr__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 235, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__repr__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 236, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8563,7 +8632,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":236
+  /* "swixknife/swixknife/date_time/time.py":237
  * 
  *     def __repr__(self):
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"             # <<<<<<<<<<<<<<
@@ -8571,7 +8640,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  *     def __str__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(18); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(18); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
@@ -8579,9 +8648,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 16;
   __Pyx_GIVEREF(__pyx_kp_u_SezimalTime_uta);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_SezimalTime_uta);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_uta); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -8593,9 +8662,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 8;
   __Pyx_GIVEREF(__pyx_kp_u_posha_3);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_posha_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_posha); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -8607,9 +8676,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 9;
   __Pyx_GIVEREF(__pyx_kp_u_agrima_3);
   PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_agrima_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_agrima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -8621,9 +8690,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 8;
   __Pyx_GIVEREF(__pyx_kp_u_anuga_3);
   PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_anuga_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_anuga); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -8635,9 +8704,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 7;
   __Pyx_GIVEREF(__pyx_kp_u_boda_3);
   PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u_boda_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_boda); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -8649,9 +8718,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 14;
   __Pyx_GIVEREF(__pyx_kp_u_ekaditiboda_3);
   PyTuple_SET_ITEM(__pyx_t_1, 10, __pyx_kp_u_ekaditiboda_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ekaditiboda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -8663,9 +8732,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_day_3);
   PyTuple_SET_ITEM(__pyx_t_1, 12, __pyx_kp_u_day_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_day); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -8677,9 +8746,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 12;
   __Pyx_GIVEREF(__pyx_kp_u_time_zone_3);
   PyTuple_SET_ITEM(__pyx_t_1, 14, __pyx_kp_u_time_zone_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -8691,9 +8760,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 += 4;
   __Pyx_GIVEREF(__pyx_kp_u_);
   PyTuple_SET_ITEM(__pyx_t_1, 16, __pyx_kp_u_);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_repr); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_repr); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -8712,11 +8781,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     PyObject *__pyx_callargs[1] = {__pyx_t_5, };
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_6) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_6) : __pyx_t_3;
@@ -8724,14 +8793,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_1, 17, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_1, 18, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_1, 18, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":235
+  /* "swixknife/swixknife/date_time/time.py":236
  *         return seconds.decimal
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8753,7 +8822,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":238
+/* "swixknife/swixknife/date_time/time.py":239
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -8803,12 +8872,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 238, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__str__") < 0)) __PYX_ERR(0, 238, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__str__") < 0)) __PYX_ERR(0, 239, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8819,7 +8888,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__str__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 238, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__str__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 239, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8849,16 +8918,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":239
+  /* "swixknife/swixknife/date_time/time.py":240
  * 
  *     def __str__(self):
  *         res = self.format(f'#*d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')             # <<<<<<<<<<<<<<
  *         return res.strip()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 0;
   __pyx_t_5 = 127;
@@ -8866,9 +8935,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_4 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_d_u);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_u_d_u);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_5 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_5) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_5;
@@ -8880,9 +8949,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_4 += 2;
   __Pyx_GIVEREF(__pyx_kp_u_p);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_p);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_5 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_6) > __pyx_t_5) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_6) : __pyx_t_5;
@@ -8894,7 +8963,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_4 += 15;
   __Pyx_GIVEREF(__pyx_kp_u_a_n_b_e_t_V);
   PyTuple_SET_ITEM(__pyx_t_3, 4, __pyx_kp_u_a_n_b_e_t_V);
-  __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_3, 5, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_3, 5, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8914,14 +8983,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_res = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":240
+  /* "swixknife/swixknife/date_time/time.py":241
  *     def __str__(self):
  *         res = self.format(f'#*d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
  *         return res.strip()             # <<<<<<<<<<<<<<
@@ -8929,7 +8998,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  *     @classmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_res, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_res, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_8 = 0;
@@ -8947,7 +9016,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     PyObject *__pyx_callargs[1] = {__pyx_t_6, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -8955,7 +9024,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":238
+  /* "swixknife/swixknife/date_time/time.py":239
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -8979,7 +9048,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":242
+/* "swixknife/swixknife/date_time/time.py":243
  *         return res.strip()
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
@@ -9019,7 +9088,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     PyObject **__pyx_pyargnames[] = {&__pyx_n_s_cls,&__pyx_n_s_time_zone,0};
     PyObject* values[2] = {0,0};
 
-    /* "swixknife/swixknife/date_time/time.py":243
+    /* "swixknife/swixknife/date_time/time.py":244
  * 
  *     @classmethod
  *     def now(cls, time_zone: str = None):             # <<<<<<<<<<<<<<
@@ -9041,19 +9110,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cls)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 242, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 243, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_time_zone);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 242, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 243, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "now") < 0)) __PYX_ERR(0, 242, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "now") < 0)) __PYX_ERR(0, 243, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -9069,16 +9138,16 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("now", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 242, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("now", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 243, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.now", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 1, "time_zone", 1))) __PYX_ERR(0, 243, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 1, "time_zone", 1))) __PYX_ERR(0, 244, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_38now(__pyx_self, __pyx_v_cls, __pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":242
+  /* "swixknife/swixknife/date_time/time.py":243
  *         return res.strip()
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
@@ -9116,7 +9185,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __Pyx_RefNannySetupContext("now", 0);
   __Pyx_INCREF(__pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":244
+  /* "swixknife/swixknife/date_time/time.py":245
  *     @classmethod
  *     def now(cls, time_zone: str = None):
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -9127,14 +9196,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":245
+    /* "swixknife/swixknife/date_time/time.py":246
  *     def now(cls, time_zone: str = None):
  *         if not time_zone:
  *             time_zone = _system_time_zone()             # <<<<<<<<<<<<<<
  * 
  *         traditional_utc_now = _datetime.datetime.now(UTC)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_system_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -9152,15 +9221,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
       PyObject *__pyx_callargs[1] = {__pyx_t_5, };
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_3))) __PYX_ERR(0, 245, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_3))) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_time_zone, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":244
+    /* "swixknife/swixknife/date_time/time.py":245
  *     @classmethod
  *     def now(cls, time_zone: str = None):
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -9169,22 +9238,22 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":247
+  /* "swixknife/swixknife/date_time/time.py":248
  *             time_zone = _system_time_zone()
  * 
  *         traditional_utc_now = _datetime.datetime.now(UTC)             # <<<<<<<<<<<<<<
  *         total_agrimas = _date_time_to_agrima(traditional_utc_now)
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_datetime_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_now); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_now); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_UTC); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_UTC); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_7 = NULL;
   __pyx_t_6 = 0;
@@ -9203,21 +9272,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_traditional_utc_now = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":248
+  /* "swixknife/swixknife/date_time/time.py":249
  * 
  *         traditional_utc_now = _datetime.datetime.now(UTC)
  *         total_agrimas = _date_time_to_agrima(traditional_utc_now)             # <<<<<<<<<<<<<<
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
  *         total_agrimas += tz_offset # + dst_offset
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_date_time_to_agrima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_date_time_to_agrima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -9235,21 +9304,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_traditional_utc_now};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_total_agrimas = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":249
+  /* "swixknife/swixknife/date_time/time.py":250
  *         traditional_utc_now = _datetime.datetime.now(UTC)
  *         total_agrimas = _date_time_to_agrima(traditional_utc_now)
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)             # <<<<<<<<<<<<<<
  *         total_agrimas += tz_offset # + dst_offset
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -9267,7 +9336,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_time_zone};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -9277,7 +9346,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 249, __pyx_L1_error)
+      __PYX_ERR(0, 250, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -9290,15 +9359,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_7);
@@ -9306,7 +9375,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     __Pyx_GOTREF(__pyx_t_4);
     index = 1; __pyx_t_5 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_5)) goto __pyx_L4_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 250, __pyx_L1_error)
     __pyx_t_8 = NULL;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     goto __pyx_L5_unpacking_done;
@@ -9314,7 +9383,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 249, __pyx_L1_error)
+    __PYX_ERR(0, 250, __pyx_L1_error)
     __pyx_L5_unpacking_done:;
   }
   __pyx_v_tz_offset = __pyx_t_4;
@@ -9322,38 +9391,38 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   __pyx_v_dst_offset = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":250
+  /* "swixknife/swixknife/date_time/time.py":251
  *         total_agrimas = _date_time_to_agrima(traditional_utc_now)
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
  *         total_agrimas += tz_offset # + dst_offset             # <<<<<<<<<<<<<<
  * 
  *         #
  */
-  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_total_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":255
+  /* "swixknife/swixknife/date_time/time.py":256
  *         # Date has shifted?
  *         #
  *         if total_agrimas < 0:             # <<<<<<<<<<<<<<
  *             total_agrimas = total_agrimas + Sezimal('100_0000')
  * 
  */
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_total_agrimas, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 255, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_total_agrimas, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":256
+    /* "swixknife/swixknife/date_time/time.py":257
  *         #
  *         if total_agrimas < 0:
  *             total_agrimas = total_agrimas + Sezimal('100_0000')             # <<<<<<<<<<<<<<
  * 
  *         return cls(agrima=total_agrimas, time_zone=time_zone)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_4 = NULL;
     __pyx_t_6 = 0;
@@ -9371,17 +9440,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_kp_u_100_0000};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __pyx_t_5 = PyNumber_Add(__pyx_v_total_agrimas, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_v_total_agrimas, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":255
+    /* "swixknife/swixknife/date_time/time.py":256
  *         # Date has shifted?
  *         #
  *         if total_agrimas < 0:             # <<<<<<<<<<<<<<
@@ -9390,7 +9459,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":258
+  /* "swixknife/swixknife/date_time/time.py":259
  *             total_agrimas = total_agrimas + Sezimal('100_0000')
  * 
  *         return cls(agrima=total_agrimas, time_zone=time_zone)             # <<<<<<<<<<<<<<
@@ -9398,18 +9467,18 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
  *     def to_time_zone(self, time_zone: str = 'UTC'):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_agrima, __pyx_v_total_agrimas) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_time_zone, __pyx_v_time_zone) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_cls, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_agrima, __pyx_v_total_agrimas) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_time_zone, __pyx_v_time_zone) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_cls, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":242
+  /* "swixknife/swixknife/date_time/time.py":243
  *         return res.strip()
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
@@ -9436,7 +9505,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":260
+/* "swixknife/swixknife/date_time/time.py":261
  *         return cls(agrima=total_agrimas, time_zone=time_zone)
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):             # <<<<<<<<<<<<<<
@@ -9490,19 +9559,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_time_zone);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "to_time_zone") < 0)) __PYX_ERR(0, 260, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "to_time_zone") < 0)) __PYX_ERR(0, 261, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -9518,13 +9587,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("to_time_zone", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 260, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("to_time_zone", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 261, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.to_time_zone", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 0, "time_zone", 1))) __PYX_ERR(0, 260, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_time_zone), (&PyUnicode_Type), 0, "time_zone", 1))) __PYX_ERR(0, 261, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_40to_time_zone(__pyx_self, __pyx_v_self, __pyx_v_time_zone);
 
   /* function exit code */
@@ -9557,7 +9626,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_RefNannySetupContext("to_time_zone", 0);
   __Pyx_INCREF(__pyx_v_time_zone);
 
-  /* "swixknife/swixknife/date_time/time.py":261
+  /* "swixknife/swixknife/date_time/time.py":262
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -9568,7 +9637,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":262
+    /* "swixknife/swixknife/date_time/time.py":263
  *     def to_time_zone(self, time_zone: str = 'UTC'):
  *         if not time_zone:
  *             time_zone = 'UTC'             # <<<<<<<<<<<<<<
@@ -9578,7 +9647,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_INCREF(__pyx_n_u_UTC);
     __Pyx_DECREF_SET(__pyx_v_time_zone, __pyx_n_u_UTC);
 
-    /* "swixknife/swixknife/date_time/time.py":261
+    /* "swixknife/swixknife/date_time/time.py":262
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):
  *         if not time_zone:             # <<<<<<<<<<<<<<
@@ -9587,32 +9656,32 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":264
+  /* "swixknife/swixknife/date_time/time.py":265
  *             time_zone = 'UTC'
  * 
  *         utc_agrimas = self.as_agrimas - self._time_zone_offset # - self._dst_offset             # <<<<<<<<<<<<<<
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
  *         tz_agrimas = utc_agrimas + tz_offset # + dst_offset
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_utc_agrimas = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":265
+  /* "swixknife/swixknife/date_time/time.py":266
  * 
  *         utc_agrimas = self.as_agrimas - self._time_zone_offset # - self._dst_offset
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)             # <<<<<<<<<<<<<<
  *         tz_agrimas = utc_agrimas + tz_offset # + dst_offset
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   __pyx_t_6 = 0;
@@ -9630,7 +9699,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_time_zone};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -9640,7 +9709,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 265, __pyx_L1_error)
+      __PYX_ERR(0, 266, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -9653,15 +9722,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_7 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_7 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_7);
@@ -9669,7 +9738,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GOTREF(__pyx_t_4);
     index = 1; __pyx_t_3 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_3)) goto __pyx_L4_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
     __pyx_t_8 = NULL;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     goto __pyx_L5_unpacking_done;
@@ -9677,7 +9746,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 265, __pyx_L1_error)
+    __PYX_ERR(0, 266, __pyx_L1_error)
     __pyx_L5_unpacking_done:;
   }
   __pyx_v_tz_offset = __pyx_t_4;
@@ -9685,19 +9754,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __pyx_v_dst_offset = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":266
+  /* "swixknife/swixknife/date_time/time.py":267
  *         utc_agrimas = self.as_agrimas - self._time_zone_offset # - self._dst_offset
  *         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
  *         tz_agrimas = utc_agrimas + tz_offset # + dst_offset             # <<<<<<<<<<<<<<
  * 
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
  */
-  __pyx_t_5 = PyNumber_Add(__pyx_v_utc_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_v_utc_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_v_tz_agrimas = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":268
+  /* "swixknife/swixknife/date_time/time.py":269
  *         tz_agrimas = utc_agrimas + tz_offset # + dst_offset
  * 
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)             # <<<<<<<<<<<<<<
@@ -9705,13 +9774,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_SezimalTime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_SezimalTime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_agrima, __pyx_v_tz_agrimas) < 0) __PYX_ERR(0, 268, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_time_zone, __pyx_v_time_zone) < 0) __PYX_ERR(0, 268, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 268, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_agrima, __pyx_v_tz_agrimas) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_time_zone, __pyx_v_time_zone) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9719,7 +9788,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":260
+  /* "swixknife/swixknife/date_time/time.py":261
  *         return cls(agrima=total_agrimas, time_zone=time_zone)
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):             # <<<<<<<<<<<<<<
@@ -9746,7 +9815,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":270
+/* "swixknife/swixknife/date_time/time.py":271
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):             # <<<<<<<<<<<<<<
@@ -9817,54 +9886,54 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fmt)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 1); __PYX_ERR(0, 270, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 1); __PYX_ERR(0, 271, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_token)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 2); __PYX_ERR(0, 270, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 2); __PYX_ERR(0, 271, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_value)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 3); __PYX_ERR(0, 270, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, 3); __PYX_ERR(0, 271, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_size);
           if (value) { values[4] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_compressed);
           if (value) { values[5] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dedicated_digits);
           if (value) { values[6] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_apply_format") < 0)) __PYX_ERR(0, 270, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_apply_format") < 0)) __PYX_ERR(0, 271, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -9892,7 +9961,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, __pyx_nargs); __PYX_ERR(0, 270, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_apply_format", 0, 4, 7, __pyx_nargs); __PYX_ERR(0, 271, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime._apply_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9924,17 +9993,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_INCREF(__pyx_v_fmt);
   __Pyx_INCREF(__pyx_v_value);
 
-  /* "swixknife/swixknife/date_time/time.py":271
+  /* "swixknife/swixknife/date_time/time.py":272
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):
  *         if token not in fmt:             # <<<<<<<<<<<<<<
  *             return fmt
  * 
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_fmt, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_fmt, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 272, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "swixknife/swixknife/date_time/time.py":272
+    /* "swixknife/swixknife/date_time/time.py":273
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):
  *         if token not in fmt:
  *             return fmt             # <<<<<<<<<<<<<<
@@ -9946,7 +10015,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_r = __pyx_v_fmt;
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/date_time/time.py":271
+    /* "swixknife/swixknife/date_time/time.py":272
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):
  *         if token not in fmt:             # <<<<<<<<<<<<<<
@@ -9955,45 +10024,45 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":274
+  /* "swixknife/swixknife/date_time/time.py":275
  *             return fmt
  * 
  *         value = getattr(self, value, 0)             # <<<<<<<<<<<<<<
  * 
  *         if '*' in token and (not value):
  */
-  __pyx_t_2 = __Pyx_GetAttr3(__pyx_v_self, __pyx_v_value, __pyx_int_0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetAttr3(__pyx_v_self, __pyx_v_value, __pyx_int_0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":276
+  /* "swixknife/swixknife/date_time/time.py":277
  *         value = getattr(self, value, 0)
  * 
  *         if '*' in token and (not value):             # <<<<<<<<<<<<<<
  *             fmt = fmt.replace(token, '')
  *         else:
  */
-  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_kp_u__2, __pyx_v_token, Py_EQ)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_kp_u__2, __pyx_v_token, Py_EQ)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 277, __pyx_L1_error)
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 277, __pyx_L1_error)
   __pyx_t_4 = (!__pyx_t_3);
   __pyx_t_1 = __pyx_t_4;
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "swixknife/swixknife/date_time/time.py":277
+    /* "swixknife/swixknife/date_time/time.py":278
  * 
  *         if '*' in token and (not value):
  *             fmt = fmt.replace(token, '')             # <<<<<<<<<<<<<<
  *         else:
  *             if compressed:
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -10011,14 +10080,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_token, __pyx_kp_u__3};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_fmt, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":276
+    /* "swixknife/swixknife/date_time/time.py":277
  *         value = getattr(self, value, 0)
  * 
  *         if '*' in token and (not value):             # <<<<<<<<<<<<<<
@@ -10028,7 +10097,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     goto __pyx_L4;
   }
 
-  /* "swixknife/swixknife/date_time/time.py":279
+  /* "swixknife/swixknife/date_time/time.py":280
  *             fmt = fmt.replace(token, '')
  *         else:
  *             if compressed:             # <<<<<<<<<<<<<<
@@ -10036,41 +10105,41 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  * 
  */
   /*else*/ {
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_compressed); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 279, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_compressed); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 280, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "swixknife/swixknife/date_time/time.py":280
+      /* "swixknife/swixknife/date_time/time.py":281
  *         else:
  *             if compressed:
  *                 value = str(value)             # <<<<<<<<<<<<<<
  * 
  *                 if size:
  */
-      __pyx_t_2 = __Pyx_PyObject_Str(__pyx_v_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Str(__pyx_v_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":282
+      /* "swixknife/swixknife/date_time/time.py":283
  *                 value = str(value)
  * 
  *                 if size:             # <<<<<<<<<<<<<<
  *                     value = value.zfill(int(SezimalInteger(size)))
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_size); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 282, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_size); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 283, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "swixknife/swixknife/date_time/time.py":283
+        /* "swixknife/swixknife/date_time/time.py":284
  * 
  *                 if size:
  *                     value = value.zfill(int(SezimalInteger(size)))             # <<<<<<<<<<<<<<
  * 
  *                 value = sezimal_compression(value)
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_value, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 283, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_value, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 283, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 284, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_t_9 = NULL;
         __pyx_t_7 = 0;
@@ -10088,11 +10157,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           PyObject *__pyx_callargs[2] = {__pyx_t_9, __pyx_v_size};
           __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 283, __pyx_L1_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 284, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
-        __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 283, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 284, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_6 = NULL;
@@ -10112,14 +10181,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "swixknife/swixknife/date_time/time.py":282
+        /* "swixknife/swixknife/date_time/time.py":283
  *                 value = str(value)
  * 
  *                 if size:             # <<<<<<<<<<<<<<
@@ -10128,14 +10197,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       }
 
-      /* "swixknife/swixknife/date_time/time.py":285
+      /* "swixknife/swixknife/date_time/time.py":286
  *                     value = value.zfill(int(SezimalInteger(size)))
  * 
  *                 value = sezimal_compression(value)             # <<<<<<<<<<<<<<
  * 
  *                 if dedicated_digits:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_sezimal_compression); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_sezimal_compression); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_8 = NULL;
       __pyx_t_7 = 0;
@@ -10153,31 +10222,31 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_value};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":287
+      /* "swixknife/swixknife/date_time/time.py":288
  *                 value = sezimal_compression(value)
  * 
  *                 if dedicated_digits:             # <<<<<<<<<<<<<<
  *                     value = default_compressed_to_dedicated_digits(value)
- * 
+ *                 else:
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dedicated_digits); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 287, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dedicated_digits); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 288, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "swixknife/swixknife/date_time/time.py":288
+        /* "swixknife/swixknife/date_time/time.py":289
  * 
  *                 if dedicated_digits:
  *                     value = default_compressed_to_dedicated_digits(value)             # <<<<<<<<<<<<<<
- * 
- *             else:
+ *                 else:
+ *                     value = default_compressed_to_regularized_digits(value)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_default_compressed_to_dedicated); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_default_compressed_to_dedicated); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_8 = NULL;
         __pyx_t_7 = 0;
@@ -10195,23 +10264,59 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_value};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "swixknife/swixknife/date_time/time.py":287
+        /* "swixknife/swixknife/date_time/time.py":288
  *                 value = sezimal_compression(value)
  * 
  *                 if dedicated_digits:             # <<<<<<<<<<<<<<
  *                     value = default_compressed_to_dedicated_digits(value)
- * 
+ *                 else:
  */
+        goto __pyx_L9;
       }
 
-      /* "swixknife/swixknife/date_time/time.py":279
+      /* "swixknife/swixknife/date_time/time.py":291
+ *                     value = default_compressed_to_dedicated_digits(value)
+ *                 else:
+ *                     value = default_compressed_to_regularized_digits(value)             # <<<<<<<<<<<<<<
+ * 
+ *             else:
+ */
+      /*else*/ {
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_default_compressed_to_regularize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 291, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_8 = NULL;
+        __pyx_t_7 = 0;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+          if (likely(__pyx_t_8)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+            __Pyx_INCREF(__pyx_t_8);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_5, function);
+            __pyx_t_7 = 1;
+          }
+        }
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_value};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+          __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        }
+        __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
+        __pyx_t_2 = 0;
+      }
+      __pyx_L9:;
+
+      /* "swixknife/swixknife/date_time/time.py":280
  *             fmt = fmt.replace(token, '')
  *         else:
  *             if compressed:             # <<<<<<<<<<<<<<
@@ -10221,7 +10326,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       goto __pyx_L7;
     }
 
-    /* "swixknife/swixknife/date_time/time.py":291
+    /* "swixknife/swixknife/date_time/time.py":294
  * 
  *             else:
  *                 value = str(value)             # <<<<<<<<<<<<<<
@@ -10229,31 +10334,31 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *                 if size:
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_PyObject_Str(__pyx_v_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Str(__pyx_v_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":293
+      /* "swixknife/swixknife/date_time/time.py":296
  *                 value = str(value)
  * 
  *                 if size:             # <<<<<<<<<<<<<<
  *                     value = value.zfill(int(SezimalInteger(size)))
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_size); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 293, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_size); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 296, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "swixknife/swixknife/date_time/time.py":294
+        /* "swixknife/swixknife/date_time/time.py":297
  * 
  *                 if size:
  *                     value = value.zfill(int(SezimalInteger(size)))             # <<<<<<<<<<<<<<
  * 
  *                 if dedicated_digits:
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_value, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_value, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_9 = NULL;
         __pyx_t_7 = 0;
@@ -10271,11 +10376,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           PyObject *__pyx_callargs[2] = {__pyx_t_9, __pyx_v_size};
           __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 294, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 297, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
-        __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_8 = NULL;
@@ -10295,14 +10400,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "swixknife/swixknife/date_time/time.py":293
+        /* "swixknife/swixknife/date_time/time.py":296
  *                 value = str(value)
  * 
  *                 if size:             # <<<<<<<<<<<<<<
@@ -10311,24 +10416,24 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       }
 
-      /* "swixknife/swixknife/date_time/time.py":296
+      /* "swixknife/swixknife/date_time/time.py":299
  *                     value = value.zfill(int(SezimalInteger(size)))
  * 
  *                 if dedicated_digits:             # <<<<<<<<<<<<<<
  *                     value = default_to_dedicated_digits(value)
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dedicated_digits); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dedicated_digits); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 299, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "swixknife/swixknife/date_time/time.py":297
+        /* "swixknife/swixknife/date_time/time.py":300
  * 
  *                 if dedicated_digits:
  *                     value = default_to_dedicated_digits(value)             # <<<<<<<<<<<<<<
  * 
  *             fmt = fmt.replace(token, value)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_default_to_dedicated_digits); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_default_to_dedicated_digits); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = NULL;
         __pyx_t_7 = 0;
@@ -10346,14 +10451,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
           PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_v_value};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "swixknife/swixknife/date_time/time.py":296
+        /* "swixknife/swixknife/date_time/time.py":299
  *                     value = value.zfill(int(SezimalInteger(size)))
  * 
  *                 if dedicated_digits:             # <<<<<<<<<<<<<<
@@ -10364,14 +10469,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     }
     __pyx_L7:;
 
-    /* "swixknife/swixknife/date_time/time.py":299
+    /* "swixknife/swixknife/date_time/time.py":302
  *                     value = default_to_dedicated_digits(value)
  * 
  *             fmt = fmt.replace(token, value)             # <<<<<<<<<<<<<<
  * 
  *         return fmt
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -10389,7 +10494,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_token, __pyx_v_value};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -10398,19 +10503,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   }
   __pyx_L4:;
 
-  /* "swixknife/swixknife/date_time/time.py":301
+  /* "swixknife/swixknife/date_time/time.py":304
  *             fmt = fmt.replace(token, value)
  * 
  *         return fmt             # <<<<<<<<<<<<<<
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_fmt);
   __pyx_r = __pyx_v_fmt;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":270
+  /* "swixknife/swixknife/date_time/time.py":271
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):             # <<<<<<<<<<<<<<
@@ -10435,10 +10540,10 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":303
+/* "swixknife/swixknife/date_time/time.py":306
  *         return fmt
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):             # <<<<<<<<<<<<<<
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):             # <<<<<<<<<<<<<<
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  */
@@ -10453,12 +10558,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_6__defaults__(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_fmt);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_fmt);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_fmt);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_INCREF(((PyObject *)Py_False));
+  __Pyx_GIVEREF(((PyObject *)Py_False));
+  PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)Py_False));
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -10500,6 +10608,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 ) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_fmt = 0;
+  PyObject *__pyx_v_skip_strftime = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   #endif
@@ -10511,13 +10620,16 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("format (wrapper)", 0);
   {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_fmt,0};
-    PyObject* values[2] = {0,0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_fmt,&__pyx_n_s_skip_strftime,0};
+    PyObject* values[3] = {0,0,0};
     __pyx_defaults *__pyx_dynamic_args = __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self);
     values[1] = __pyx_dynamic_args->__pyx_arg_fmt;
+    values[2] = ((PyObject *)((PyObject *)Py_False));
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
@@ -10529,22 +10641,31 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fmt);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_skip_strftime);
+          if (value) { values[2] = value; kw_args--; }
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "format") < 0)) __PYX_ERR(0, 303, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "format") < 0)) __PYX_ERR(0, 306, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
@@ -10554,17 +10675,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     }
     __pyx_v_self = values[0];
     __pyx_v_fmt = ((PyObject*)values[1]);
+    __pyx_v_skip_strftime = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("format", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 303, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("format", 0, 1, 3, __pyx_nargs); __PYX_ERR(0, 306, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.format", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fmt), (&PyUnicode_Type), 0, "fmt", 1))) __PYX_ERR(0, 303, __pyx_L1_error)
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(__pyx_self, __pyx_v_self, __pyx_v_fmt);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fmt), (&PyUnicode_Type), 0, "fmt", 1))) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(__pyx_self, __pyx_v_self, __pyx_v_fmt, __pyx_v_skip_strftime);
 
   /* function exit code */
   goto __pyx_L0;
@@ -10575,7 +10697,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_44format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_fmt, PyObject *__pyx_v_skip_strftime) {
   PyObject *__pyx_v_character = NULL;
   PyObject *__pyx_v_value = NULL;
   PyObject *__pyx_v_size = NULL;
@@ -10600,26 +10722,26 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_RefNannySetupContext("format", 0);
   __Pyx_INCREF(__pyx_v_fmt);
 
-  /* "swixknife/swixknife/date_time/time.py":304
+  /* "swixknife/swixknife/date_time/time.py":307
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):
  *         fmt = fmt.replace('##', '__HASHTAG__')             # <<<<<<<<<<<<<<
  * 
  *         for character, value, size in [
  */
-  __pyx_t_1 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u__4, __pyx_n_u_HASHTAG, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u__4, __pyx_n_u_HASHTAG, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":307
+  /* "swixknife/swixknife/date_time/time.py":310
  * 
  *         for character, value, size in [
  *             ['d', 'day', 1],             # <<<<<<<<<<<<<<
  *             ['u', 'uta', 2],
  *             ['p', 'posha', 2],
  */
-  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_u_d);
   __Pyx_GIVEREF(__pyx_n_u_d);
@@ -10631,14 +10753,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_1);
   PyList_SET_ITEM(__pyx_t_1, 2, __pyx_int_1);
 
-  /* "swixknife/swixknife/date_time/time.py":308
+  /* "swixknife/swixknife/date_time/time.py":311
  *         for character, value, size in [
  *             ['d', 'day', 1],
  *             ['u', 'uta', 2],             # <<<<<<<<<<<<<<
  *             ['p', 'posha', 2],
  *             ['a', 'agrima', 2],
  */
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_u);
   __Pyx_GIVEREF(__pyx_n_u_u);
@@ -10650,14 +10772,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_2);
   PyList_SET_ITEM(__pyx_t_2, 2, __pyx_int_2);
 
-  /* "swixknife/swixknife/date_time/time.py":309
+  /* "swixknife/swixknife/date_time/time.py":312
  *             ['d', 'day', 1],
  *             ['u', 'uta', 2],
  *             ['p', 'posha', 2],             # <<<<<<<<<<<<<<
  *             ['a', 'agrima', 2],
  *             ['b', 'boda', 2],
  */
-  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_u_p_2);
   __Pyx_GIVEREF(__pyx_n_u_p_2);
@@ -10669,14 +10791,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_2);
   PyList_SET_ITEM(__pyx_t_3, 2, __pyx_int_2);
 
-  /* "swixknife/swixknife/date_time/time.py":310
+  /* "swixknife/swixknife/date_time/time.py":313
  *             ['u', 'uta', 2],
  *             ['p', 'posha', 2],
  *             ['a', 'agrima', 2],             # <<<<<<<<<<<<<<
  *             ['b', 'boda', 2],
  *             ['n', 'anuga', 2],
  */
-  __pyx_t_4 = PyList_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_u_a);
   __Pyx_GIVEREF(__pyx_n_u_a);
@@ -10688,14 +10810,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_2);
   PyList_SET_ITEM(__pyx_t_4, 2, __pyx_int_2);
 
-  /* "swixknife/swixknife/date_time/time.py":311
+  /* "swixknife/swixknife/date_time/time.py":314
  *             ['p', 'posha', 2],
  *             ['a', 'agrima', 2],
  *             ['b', 'boda', 2],             # <<<<<<<<<<<<<<
  *             ['n', 'anuga', 2],
  *             ['e', 'ekaditiboda', 12],
  */
-  __pyx_t_5 = PyList_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_n_u_b);
   __Pyx_GIVEREF(__pyx_n_u_b);
@@ -10707,14 +10829,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_2);
   PyList_SET_ITEM(__pyx_t_5, 2, __pyx_int_2);
 
-  /* "swixknife/swixknife/date_time/time.py":312
+  /* "swixknife/swixknife/date_time/time.py":315
  *             ['a', 'agrima', 2],
  *             ['b', 'boda', 2],
  *             ['n', 'anuga', 2],             # <<<<<<<<<<<<<<
  *             ['e', 'ekaditiboda', 12],
  *         ]:
  */
-  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_n_u_n);
   __Pyx_GIVEREF(__pyx_n_u_n);
@@ -10726,14 +10848,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_2);
   PyList_SET_ITEM(__pyx_t_6, 2, __pyx_int_2);
 
-  /* "swixknife/swixknife/date_time/time.py":313
+  /* "swixknife/swixknife/date_time/time.py":316
  *             ['b', 'boda', 2],
  *             ['n', 'anuga', 2],
  *             ['e', 'ekaditiboda', 12],             # <<<<<<<<<<<<<<
  *         ]:
  *             fmt = self._apply_format(fmt, f'#*-${character}', value)
  */
-  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 313, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_n_u_e);
   __Pyx_GIVEREF(__pyx_n_u_e);
@@ -10745,14 +10867,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_12);
   PyList_SET_ITEM(__pyx_t_7, 2, __pyx_int_12);
 
-  /* "swixknife/swixknife/date_time/time.py":306
+  /* "swixknife/swixknife/date_time/time.py":309
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  *         for character, value, size in [             # <<<<<<<<<<<<<<
  *             ['d', 'day', 1],
  *             ['u', 'uta', 2],
  */
-  __pyx_t_8 = PyTuple_New(7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1);
@@ -10780,9 +10902,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   for (;;) {
     if (__pyx_t_9 >= 7) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 306, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 309, __pyx_L1_error)
     #else
-    __pyx_t_8 = PySequence_ITEM(__pyx_t_7, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(__pyx_t_7, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     #endif
     if (likely(__pyx_t_8 != Py_None)) {
@@ -10791,7 +10913,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 306, __pyx_L1_error)
+        __PYX_ERR(0, 309, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       __pyx_t_6 = PyList_GET_ITEM(sequence, 0); 
@@ -10801,16 +10923,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_4);
       #else
-      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 306, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 309, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 306, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 309, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else {
-      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 306, __pyx_L1_error)
+      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 309, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_character, __pyx_t_6);
     __pyx_t_6 = 0;
@@ -10819,154 +10941,37 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_XDECREF_SET(__pyx_v_size, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":315
+    /* "swixknife/swixknife/date_time/time.py":318
  *             ['e', 'ekaditiboda', 12],
  *         ]:
  *             fmt = self._apply_format(fmt, f'#*-${character}', value)             # <<<<<<<<<<<<<<
  *             fmt = self._apply_format(fmt, f'#*{character}', value, size)
  *             fmt = self._apply_format(fmt, f'#-{character}', value)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 315, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 315, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_kp_u__5, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 315, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = NULL;
-    __pyx_t_10 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_10 = 1;
-      }
-    }
-    {
-      PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_fmt, __pyx_t_6, __pyx_v_value};
-      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 3+__pyx_t_10);
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 315, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 315, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
-
-    /* "swixknife/swixknife/date_time/time.py":316
- *         ]:
- *             fmt = self._apply_format(fmt, f'#*-${character}', value)
- *             fmt = self._apply_format(fmt, f'#*{character}', value, size)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#-{character}', value)
- *             fmt = self._apply_format(fmt, f'#{character}', value, size)
- */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 316, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__6, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 316, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = NULL;
-    __pyx_t_10 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_6)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_6);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_10 = 1;
-      }
-    }
-    {
-      PyObject *__pyx_callargs[5] = {__pyx_t_6, __pyx_v_fmt, __pyx_t_5, __pyx_v_value, __pyx_v_size};
-      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 4+__pyx_t_10);
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 316, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 316, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
-
-    /* "swixknife/swixknife/date_time/time.py":317
- *             fmt = self._apply_format(fmt, f'#*-${character}', value)
- *             fmt = self._apply_format(fmt, f'#*{character}', value, size)
- *             fmt = self._apply_format(fmt, f'#-{character}', value)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#{character}', value, size)
- * 
- */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_kp_u__7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 317, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = NULL;
-    __pyx_t_10 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_10 = 1;
-      }
-    }
-    {
-      PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_fmt, __pyx_t_6, __pyx_v_value};
-      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 3+__pyx_t_10);
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 317, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
-
-    /* "swixknife/swixknife/date_time/time.py":318
- *             fmt = self._apply_format(fmt, f'#*{character}', value, size)
- *             fmt = self._apply_format(fmt, f'#-{character}', value)
- *             fmt = self._apply_format(fmt, f'#{character}', value, size)             # <<<<<<<<<<<<<<
- * 
- *             fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
- */
     __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 318, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__8, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = NULL;
+    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_kp_u__5, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = NULL;
     __pyx_t_10 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_6)) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_4, function);
         __pyx_t_10 = 1;
       }
     }
     {
-      PyObject *__pyx_callargs[5] = {__pyx_t_6, __pyx_v_fmt, __pyx_t_5, __pyx_v_value, __pyx_v_size};
-      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 4+__pyx_t_10);
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_fmt, __pyx_t_6, __pyx_v_value};
+      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 3+__pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10975,21 +10980,138 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
+    /* "swixknife/swixknife/date_time/time.py":319
+ *         ]:
+ *             fmt = self._apply_format(fmt, f'#*-${character}', value)
+ *             fmt = self._apply_format(fmt, f'#*{character}', value, size)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#-{character}', value)
+ *             fmt = self._apply_format(fmt, f'#{character}', value, size)
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__6, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = NULL;
+    __pyx_t_10 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_10 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[5] = {__pyx_t_6, __pyx_v_fmt, __pyx_t_5, __pyx_v_value, __pyx_v_size};
+      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 4+__pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 319, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 319, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
+    __pyx_t_8 = 0;
+
     /* "swixknife/swixknife/date_time/time.py":320
+ *             fmt = self._apply_format(fmt, f'#*-${character}', value)
+ *             fmt = self._apply_format(fmt, f'#*{character}', value, size)
+ *             fmt = self._apply_format(fmt, f'#-{character}', value)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#{character}', value, size)
+ * 
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_kp_u__7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = NULL;
+    __pyx_t_10 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_10 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_fmt, __pyx_t_6, __pyx_v_value};
+      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 3+__pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 320, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 320, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
+    __pyx_t_8 = 0;
+
+    /* "swixknife/swixknife/date_time/time.py":321
+ *             fmt = self._apply_format(fmt, f'#*{character}', value, size)
+ *             fmt = self._apply_format(fmt, f'#-{character}', value)
+ *             fmt = self._apply_format(fmt, f'#{character}', value, size)             # <<<<<<<<<<<<<<
+ * 
+ *             fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__8, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = NULL;
+    __pyx_t_10 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_10 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[5] = {__pyx_t_6, __pyx_v_fmt, __pyx_t_5, __pyx_v_value, __pyx_v_size};
+      __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_10, 4+__pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
+    __pyx_t_8 = 0;
+
+    /* "swixknife/swixknife/date_time/time.py":323
  *             fmt = self._apply_format(fmt, f'#{character}', value, size)
  * 
  *             fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)             # <<<<<<<<<<<<<<
  *             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
  *             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11000,33 +11122,33 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 320, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 323, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 320, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":321
+    /* "swixknife/swixknife/date_time/time.py":324
  * 
  *             fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
  *             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)             # <<<<<<<<<<<<<<
  *             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
  *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__10, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__10, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11040,107 +11162,30 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_size);
     PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 321, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":322
+    /* "swixknife/swixknife/date_time/time.py":325
  *             fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
  *             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
  *             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)             # <<<<<<<<<<<<<<
  *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
  * 
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__11, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_INCREF(__pyx_v_fmt);
-    __Pyx_GIVEREF(__pyx_v_fmt);
-    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_fmt);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_5);
-    __Pyx_INCREF(__pyx_v_value);
-    __Pyx_GIVEREF(__pyx_v_value);
-    PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
-    __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 322, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_6));
-    __pyx_t_6 = 0;
-
-    /* "swixknife/swixknife/date_time/time.py":323
- *             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)             # <<<<<<<<<<<<<<
- * 
- *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
- */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__12, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_INCREF(__pyx_v_fmt);
-    __Pyx_GIVEREF(__pyx_v_fmt);
-    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_fmt);
-    __Pyx_GIVEREF(__pyx_t_4);
-    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
-    __Pyx_INCREF(__pyx_v_value);
-    __Pyx_GIVEREF(__pyx_v_value);
-    PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_value);
-    __Pyx_INCREF(__pyx_v_size);
-    __Pyx_GIVEREF(__pyx_v_size);
-    PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
-    __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 323, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 323, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
-
-    /* "swixknife/swixknife/date_time/time.py":325
- *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
- * 
- *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
- */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__13, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__11, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 325, __pyx_L1_error)
@@ -11156,7 +11201,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_t_5 = 0;
     __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 325, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 325, __pyx_L1_error)
     __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11167,17 +11212,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_t_6 = 0;
 
     /* "swixknife/swixknife/date_time/time.py":326
+ *             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)             # <<<<<<<<<<<<<<
  * 
  *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
  */
     __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__14, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__12, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
@@ -11196,7 +11241,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_t_4 = 0;
     __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
     __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11206,21 +11251,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":327
- *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
+    /* "swixknife/swixknife/date_time/time.py":328
+ *             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
  * 
+ *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__15, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__13, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11231,33 +11276,33 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 327, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":328
- *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
- *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)             # <<<<<<<<<<<<<<
+    /* "swixknife/swixknife/date_time/time.py":329
  * 
- *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__16, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__14, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11271,30 +11316,30 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_size);
     PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 328, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 328, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
     /* "swixknife/swixknife/date_time/time.py":330
+ *             fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)             # <<<<<<<<<<<<<<
  *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
  * 
- *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
  */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__17, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__15, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 330, __pyx_L1_error)
@@ -11308,10 +11353,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 330, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 330, __pyx_L1_error)
     __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11322,17 +11366,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_t_6 = 0;
 
     /* "swixknife/swixknife/date_time/time.py":331
+ *             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
+ *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)             # <<<<<<<<<<<<<<
  * 
  *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
  */
     __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 331, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 331, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__18, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__16, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 331, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 331, __pyx_L1_error)
@@ -11349,10 +11393,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_size);
     PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 331, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 331, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 331, __pyx_L1_error)
     __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 331, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11362,21 +11405,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":332
- *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
- *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
+    /* "swixknife/swixknife/date_time/time.py":333
+ *             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
  * 
+ *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__19, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__17, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11387,34 +11430,34 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 332, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 332, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 333, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 332, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":333
- *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
- *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
+    /* "swixknife/swixknife/date_time/time.py":334
  * 
- *         if '#t' in fmt:
+ *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__20, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__18, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_fmt);
     __Pyx_GIVEREF(__pyx_v_fmt);
@@ -11428,20 +11471,99 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __Pyx_GIVEREF(__pyx_v_size);
     PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 333, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 333, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 333, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":306
+    /* "swixknife/swixknife/date_time/time.py":335
+ *             fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
+ *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
+ * 
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__19, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_v_fmt);
+    __Pyx_GIVEREF(__pyx_v_fmt);
+    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_fmt);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_5);
+    __Pyx_INCREF(__pyx_v_value);
+    __Pyx_GIVEREF(__pyx_v_value);
+    PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_value);
+    __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 335, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 335, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_6))) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_6));
+    __pyx_t_6 = 0;
+
+    /* "swixknife/swixknife/date_time/time.py":336
+ *             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
+ *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)             # <<<<<<<<<<<<<<
+ * 
+ *         if '#t' in fmt:
+ */
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_apply_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_character, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_kp_u__20, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_v_fmt);
+    __Pyx_GIVEREF(__pyx_v_fmt);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_fmt);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
+    __Pyx_INCREF(__pyx_v_value);
+    __Pyx_GIVEREF(__pyx_v_value);
+    PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_value);
+    __Pyx_INCREF(__pyx_v_size);
+    __Pyx_GIVEREF(__pyx_v_size);
+    PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_size);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_compressed, Py_True) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dedicated_digits, Py_True) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_8))) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_8));
+    __pyx_t_8 = 0;
+
+    /* "swixknife/swixknife/date_time/time.py":309
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  *         for character, value, size in [             # <<<<<<<<<<<<<<
@@ -11451,7 +11573,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":335
+  /* "swixknife/swixknife/date_time/time.py":338
  *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
  * 
  *         if '#t' in fmt:             # <<<<<<<<<<<<<<
@@ -11460,25 +11582,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 335, __pyx_L1_error)
+    __PYX_ERR(0, 338, __pyx_L1_error)
   }
-  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_t, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 335, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_t, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 338, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "swixknife/swixknife/date_time/time.py":336
+    /* "swixknife/swixknife/date_time/time.py":339
  * 
  *         if '#t' in fmt:
  *             if self._time_zone_offset == 0:             # <<<<<<<<<<<<<<
  *                 fmt = fmt.replace('#t', f'+00{TIME_SEPARATOR}00')
  *             else:
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_11 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_7, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_11 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_7, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_11) {
 
-      /* "swixknife/swixknife/date_time/time.py":337
+      /* "swixknife/swixknife/date_time/time.py":340
  *         if '#t' in fmt:
  *             if self._time_zone_offset == 0:
  *                 fmt = fmt.replace('#t', f'+00{TIME_SEPARATOR}00')             # <<<<<<<<<<<<<<
@@ -11487,9 +11609,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       if (unlikely(__pyx_v_fmt == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-        __PYX_ERR(0, 337, __pyx_L1_error)
+        __PYX_ERR(0, 340, __pyx_L1_error)
       }
-      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_9 = 0;
       __pyx_t_12 = 127;
@@ -11497,9 +11619,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __pyx_t_9 += 3;
       __Pyx_GIVEREF(__pyx_kp_u_00);
       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_kp_u_00);
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_8, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_8, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_12;
@@ -11511,16 +11633,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __pyx_t_9 += 2;
       __Pyx_GIVEREF(__pyx_kp_u_00_2);
       PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_kp_u_00_2);
-      __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_7, 3, __pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_7, 3, __pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_t, __pyx_t_4, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
+      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_t, __pyx_t_4, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":336
+      /* "swixknife/swixknife/date_time/time.py":339
  * 
  *         if '#t' in fmt:
  *             if self._time_zone_offset == 0:             # <<<<<<<<<<<<<<
@@ -11530,7 +11652,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       goto __pyx_L7;
     }
 
-    /* "swixknife/swixknife/date_time/time.py":339
+    /* "swixknife/swixknife/date_time/time.py":342
  *                 fmt = fmt.replace('#t', f'+00{TIME_SEPARATOR}00')
  *             else:
  *                 if self._time_zone_offset > 0:             # <<<<<<<<<<<<<<
@@ -11538,15 +11660,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *                 else:
  */
     /*else*/ {
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_11) {
 
-        /* "swixknife/swixknife/date_time/time.py":340
+        /* "swixknife/swixknife/date_time/time.py":343
  *             else:
  *                 if self._time_zone_offset > 0:
  *                     text = '+'             # <<<<<<<<<<<<<<
@@ -11556,7 +11678,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         __Pyx_INCREF(__pyx_kp_u__21);
         __pyx_v_text = __pyx_kp_u__21;
 
-        /* "swixknife/swixknife/date_time/time.py":339
+        /* "swixknife/swixknife/date_time/time.py":342
  *                 fmt = fmt.replace('#t', f'+00{TIME_SEPARATOR}00')
  *             else:
  *                 if self._time_zone_offset > 0:             # <<<<<<<<<<<<<<
@@ -11566,7 +11688,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         goto __pyx_L8;
       }
 
-      /* "swixknife/swixknife/date_time/time.py":342
+      /* "swixknife/swixknife/date_time/time.py":345
  *                     text = '+'
  *                 else:
  *                     text = ''             # <<<<<<<<<<<<<<
@@ -11579,100 +11701,100 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       }
       __pyx_L8:;
 
-      /* "swixknife/swixknife/date_time/time.py":344
+      /* "swixknife/swixknife/date_time/time.py":347
  *                     text = ''
  * 
  *                 text += sezimal_format(             # <<<<<<<<<<<<<<
  *                     abs(self._time_zone_offset / 100),
  *                     sezimal_places=0,
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_sezimal_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_sezimal_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 347, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "swixknife/swixknife/date_time/time.py":345
+      /* "swixknife/swixknife/date_time/time.py":348
  * 
  *                 text += sezimal_format(
  *                     abs(self._time_zone_offset / 100),             # <<<<<<<<<<<<<<
  *                     sezimal_places=0,
  *                     minimum_size=4,
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 345, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_7, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 345, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_7, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyNumber_Absolute(__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 345, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyNumber_Absolute(__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":344
+      /* "swixknife/swixknife/date_time/time.py":347
  *                     text = ''
  * 
  *                 text += sezimal_format(             # <<<<<<<<<<<<<<
  *                     abs(self._time_zone_offset / 100),
  *                     sezimal_places=0,
  */
-      __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 344, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 347, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":346
+      /* "swixknife/swixknife/date_time/time.py":349
  *                 text += sezimal_format(
  *                     abs(self._time_zone_offset / 100),
  *                     sezimal_places=0,             # <<<<<<<<<<<<<<
  *                     minimum_size=4,
  *                     group_separator=TIME_SEPARATOR,
  */
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 349, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_sezimal_places, __pyx_int_0) < 0) __PYX_ERR(0, 346, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_minimum_size, __pyx_int_4) < 0) __PYX_ERR(0, 346, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_sezimal_places, __pyx_int_0) < 0) __PYX_ERR(0, 349, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_minimum_size, __pyx_int_4) < 0) __PYX_ERR(0, 349, __pyx_L1_error)
 
-      /* "swixknife/swixknife/date_time/time.py":348
+      /* "swixknife/swixknife/date_time/time.py":351
  *                     sezimal_places=0,
  *                     minimum_size=4,
  *                     group_separator=TIME_SEPARATOR,             # <<<<<<<<<<<<<<
  *                     subgroup_separator=TIME_SEPARATOR,
  *                 )
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 348, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_group_separator, __pyx_t_5) < 0) __PYX_ERR(0, 346, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_group_separator, __pyx_t_5) < 0) __PYX_ERR(0, 349, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":349
+      /* "swixknife/swixknife/date_time/time.py":352
  *                     minimum_size=4,
  *                     group_separator=TIME_SEPARATOR,
  *                     subgroup_separator=TIME_SEPARATOR,             # <<<<<<<<<<<<<<
  *                 )
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_subgroup_separator, __pyx_t_5) < 0) __PYX_ERR(0, 346, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_subgroup_separator, __pyx_t_5) < 0) __PYX_ERR(0, 349, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":344
+      /* "swixknife/swixknife/date_time/time.py":347
  *                     text = ''
  * 
  *                 text += sezimal_format(             # <<<<<<<<<<<<<<
  *                     abs(self._time_zone_offset / 100),
  *                     sezimal_places=0,
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_text, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 344, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_text, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 347, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_text, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":352
+      /* "swixknife/swixknife/date_time/time.py":355
  *                 )
  * 
  *                 fmt = fmt.replace('#t', text)             # <<<<<<<<<<<<<<
@@ -11681,16 +11803,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       if (unlikely(__pyx_v_fmt == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-        __PYX_ERR(0, 352, __pyx_L1_error)
+        __PYX_ERR(0, 355, __pyx_L1_error)
       }
-      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_t, __pyx_v_text, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_t, __pyx_v_text, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
     }
     __pyx_L7:;
 
-    /* "swixknife/swixknife/date_time/time.py":335
+    /* "swixknife/swixknife/date_time/time.py":338
  *             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
  * 
  *         if '#t' in fmt:             # <<<<<<<<<<<<<<
@@ -11699,7 +11821,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":354
+  /* "swixknife/swixknife/date_time/time.py":357
  *                 fmt = fmt.replace('#t', text)
  * 
  *         if '#T' in fmt:             # <<<<<<<<<<<<<<
@@ -11708,12 +11830,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 354, __pyx_L1_error)
+    __PYX_ERR(0, 357, __pyx_L1_error)
   }
-  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_T, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_T, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 357, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "swixknife/swixknife/date_time/time.py":355
+    /* "swixknife/swixknife/date_time/time.py":358
  * 
  *         if '#T' in fmt:
  *             fmt = fmt.replace('#T', self.time_zone)             # <<<<<<<<<<<<<<
@@ -11722,17 +11844,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
     if (unlikely(__pyx_v_fmt == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-      __PYX_ERR(0, 355, __pyx_L1_error)
+      __PYX_ERR(0, 358, __pyx_L1_error)
     }
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 358, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_T, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_T, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 358, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":354
+    /* "swixknife/swixknife/date_time/time.py":357
  *                 fmt = fmt.replace('#t', text)
  * 
  *         if '#T' in fmt:             # <<<<<<<<<<<<<<
@@ -11741,7 +11863,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":357
+  /* "swixknife/swixknife/date_time/time.py":360
  *             fmt = fmt.replace('#T', self.time_zone)
  * 
  *         if '#z' in fmt:             # <<<<<<<<<<<<<<
@@ -11750,25 +11872,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 357, __pyx_L1_error)
+    __PYX_ERR(0, 360, __pyx_L1_error)
   }
-  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_z_2, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_z_2, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 360, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "swixknife/swixknife/date_time/time.py":358
+    /* "swixknife/swixknife/date_time/time.py":361
  * 
  *         if '#z' in fmt:
  *             if self._time_zone_offset == 0:             # <<<<<<<<<<<<<<
  *                 fmt = fmt.replace('#z', '+0000')
  *             else:
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 361, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_11 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_5, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_11 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_5, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 361, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_11) {
 
-      /* "swixknife/swixknife/date_time/time.py":359
+      /* "swixknife/swixknife/date_time/time.py":362
  *         if '#z' in fmt:
  *             if self._time_zone_offset == 0:
  *                 fmt = fmt.replace('#z', '+0000')             # <<<<<<<<<<<<<<
@@ -11777,14 +11899,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       if (unlikely(__pyx_v_fmt == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-        __PYX_ERR(0, 359, __pyx_L1_error)
+        __PYX_ERR(0, 362, __pyx_L1_error)
       }
-      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_z_2, __pyx_kp_u_0000, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 359, __pyx_L1_error)
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_z_2, __pyx_kp_u_0000, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 362, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":358
+      /* "swixknife/swixknife/date_time/time.py":361
  * 
  *         if '#z' in fmt:
  *             if self._time_zone_offset == 0:             # <<<<<<<<<<<<<<
@@ -11794,7 +11916,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       goto __pyx_L11;
     }
 
-    /* "swixknife/swixknife/date_time/time.py":361
+    /* "swixknife/swixknife/date_time/time.py":364
  *                 fmt = fmt.replace('#z', '+0000')
  *             else:
  *                 if self._time_zone_offset > 0:             # <<<<<<<<<<<<<<
@@ -11802,15 +11924,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *                 else:
  */
     /*else*/ {
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 361, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 361, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 361, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_11) {
 
-        /* "swixknife/swixknife/date_time/time.py":362
+        /* "swixknife/swixknife/date_time/time.py":365
  *             else:
  *                 if self._time_zone_offset > 0:
  *                     text = '+'             # <<<<<<<<<<<<<<
@@ -11820,7 +11942,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         __Pyx_INCREF(__pyx_kp_u__21);
         __Pyx_XDECREF_SET(__pyx_v_text, __pyx_kp_u__21);
 
-        /* "swixknife/swixknife/date_time/time.py":361
+        /* "swixknife/swixknife/date_time/time.py":364
  *                 fmt = fmt.replace('#z', '+0000')
  *             else:
  *                 if self._time_zone_offset > 0:             # <<<<<<<<<<<<<<
@@ -11830,7 +11952,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         goto __pyx_L12;
       }
 
-      /* "swixknife/swixknife/date_time/time.py":364
+      /* "swixknife/swixknife/date_time/time.py":367
  *                     text = '+'
  *                 else:
  *                     text = ''             # <<<<<<<<<<<<<<
@@ -11843,21 +11965,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       }
       __pyx_L12:;
 
-      /* "swixknife/swixknife/date_time/time.py":366
+      /* "swixknife/swixknife/date_time/time.py":369
  *                     text = ''
  * 
  *                 text += str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)             # <<<<<<<<<<<<<<
  * 
  *                 fmt = fmt.replace('#z', text)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_4, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_4, __pyx_int_100, 0x64, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyNumber_Absolute(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyNumber_Absolute(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -11877,14 +11999,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 366, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
-      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_8 = NULL;
@@ -11903,17 +12025,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
         PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_int_4};
         __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 366, __pyx_L1_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 369, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_text, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_text, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_text, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "swixknife/swixknife/date_time/time.py":368
+      /* "swixknife/swixknife/date_time/time.py":371
  *                 text += str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)
  * 
  *                 fmt = fmt.replace('#z', text)             # <<<<<<<<<<<<<<
@@ -11922,16 +12044,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
       if (unlikely(__pyx_v_fmt == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-        __PYX_ERR(0, 368, __pyx_L1_error)
+        __PYX_ERR(0, 371, __pyx_L1_error)
       }
-      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_z_2, __pyx_v_text, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 368, __pyx_L1_error)
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_z_2, __pyx_v_text, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
     }
     __pyx_L11:;
 
-    /* "swixknife/swixknife/date_time/time.py":357
+    /* "swixknife/swixknife/date_time/time.py":360
  *             fmt = fmt.replace('#T', self.time_zone)
  * 
  *         if '#z' in fmt:             # <<<<<<<<<<<<<<
@@ -11940,7 +12062,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":370
+  /* "swixknife/swixknife/date_time/time.py":373
  *                 fmt = fmt.replace('#z', text)
  * 
  *         if '#v' in fmt:             # <<<<<<<<<<<<<<
@@ -11949,12 +12071,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 370, __pyx_L1_error)
+    __PYX_ERR(0, 373, __pyx_L1_error)
   }
-  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_v, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_v, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 373, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "swixknife/swixknife/date_time/time.py":371
+    /* "swixknife/swixknife/date_time/time.py":374
  * 
  *         if '#v' in fmt:
  *             fmt = fmt.replace('#v', str(self.is_dst))             # <<<<<<<<<<<<<<
@@ -11963,20 +12085,20 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
     if (unlikely(__pyx_v_fmt == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-      __PYX_ERR(0, 371, __pyx_L1_error)
+      __PYX_ERR(0, 374, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_dst); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_dst); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_v, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_v, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":370
+    /* "swixknife/swixknife/date_time/time.py":373
  *                 fmt = fmt.replace('#z', text)
  * 
  *         if '#v' in fmt:             # <<<<<<<<<<<<<<
@@ -11985,7 +12107,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":373
+  /* "swixknife/swixknife/date_time/time.py":376
  *             fmt = fmt.replace('#v', str(self.is_dst))
  * 
  *         if '#V' in fmt:             # <<<<<<<<<<<<<<
@@ -11994,12 +12116,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 373, __pyx_L1_error)
+    __PYX_ERR(0, 376, __pyx_L1_error)
   }
-  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_V, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_V, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 376, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "swixknife/swixknife/date_time/time.py":374
+    /* "swixknife/swixknife/date_time/time.py":377
  * 
  *         if '#V' in fmt:
  *             fmt = fmt.replace('#V', 'DST' if self.is_dst else '')             # <<<<<<<<<<<<<<
@@ -12008,11 +12130,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
     if (unlikely(__pyx_v_fmt == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-      __PYX_ERR(0, 374, __pyx_L1_error)
+      __PYX_ERR(0, 377, __pyx_L1_error)
     }
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_dst); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_dst); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 374, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 377, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_11) {
       __Pyx_INCREF(__pyx_n_u_DST);
@@ -12021,13 +12143,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __Pyx_INCREF(__pyx_kp_u__3);
       __pyx_t_5 = __pyx_kp_u__3;
     }
-    __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_V, __pyx_t_5, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
+    __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_V, __pyx_t_5, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":373
+    /* "swixknife/swixknife/date_time/time.py":376
  *             fmt = fmt.replace('#v', str(self.is_dst))
  * 
  *         if '#V' in fmt:             # <<<<<<<<<<<<<<
@@ -12036,33 +12158,510 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":376
+  /* "swixknife/swixknife/date_time/time.py":379
  *             fmt = fmt.replace('#V', 'DST' if self.is_dst else '')
  * 
  *         fmt = fmt.replace('__HASHTAG__', '#')             # <<<<<<<<<<<<<<
  * 
- *         return self.iso_time.strftime(fmt)
+ *         #
  */
   if (unlikely(__pyx_v_fmt == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
-    __PYX_ERR(0, 376, __pyx_L1_error)
+    __PYX_ERR(0, 379, __pyx_L1_error)
   }
-  __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_n_u_HASHTAG, __pyx_kp_u__8, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_n_u_HASHTAG, __pyx_kp_u__8, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
   __pyx_t_7 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":378
- *         fmt = fmt.replace('__HASHTAG__', '#')
+  /* "swixknife/swixknife/date_time/time.py":384
+ *         # Some very basic formatting for ISO time
+ *         #
+ *         if '%' in fmt:             # <<<<<<<<<<<<<<
+ *             fmt = fmt.replace('%%', '__PERCENT__')
+ * 
+ */
+  if (unlikely(__pyx_v_fmt == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+    __PYX_ERR(0, 384, __pyx_L1_error)
+  }
+  __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u__23, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 384, __pyx_L1_error)
+  if (__pyx_t_11) {
+
+    /* "swixknife/swixknife/date_time/time.py":385
+ *         #
+ *         if '%' in fmt:
+ *             fmt = fmt.replace('%%', '__PERCENT__')             # <<<<<<<<<<<<<<
+ * 
+ *             if '%H' in fmt:
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+      __PYX_ERR(0, 385, __pyx_L1_error)
+    }
+    __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u__24, __pyx_n_u_PERCENT, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
+    __pyx_t_7 = 0;
+
+    /* "swixknife/swixknife/date_time/time.py":387
+ *             fmt = fmt.replace('%%', '__PERCENT__')
+ * 
+ *             if '%H' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 387, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_H, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 387, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":388
+ * 
+ *             if '%H' in fmt:
+ *                 fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%-H' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 388, __pyx_L1_error)
+      }
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_hour); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = NULL;
+      __pyx_t_10 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_5, function);
+          __pyx_t_10 = 1;
+        }
+      }
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_int_2};
+        __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      }
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_H, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
+      __pyx_t_5 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":387
+ *             fmt = fmt.replace('%%', '__PERCENT__')
+ * 
+ *             if '%H' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":390
+ *                 fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+ * 
+ *             if '%-H' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-H', str(self.iso_hour))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 390, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_H_2, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 390, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":391
+ * 
+ *             if '%-H' in fmt:
+ *                 fmt = fmt.replace('%-H', str(self.iso_hour))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%M' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 391, __pyx_L1_error)
+      }
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_hour); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_H_2, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
+      __pyx_t_5 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":390
+ *                 fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+ * 
+ *             if '%-H' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-H', str(self.iso_hour))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":393
+ *                 fmt = fmt.replace('%-H', str(self.iso_hour))
+ * 
+ *             if '%M' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 393, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_M, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":394
+ * 
+ *             if '%M' in fmt:
+ *                 fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%-M' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 394, __pyx_L1_error)
+      }
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_minute); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = NULL;
+      __pyx_t_10 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_7, function);
+          __pyx_t_10 = 1;
+        }
+      }
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_int_2};
+        __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      }
+      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_M, __pyx_t_5, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
+      __pyx_t_7 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":393
+ *                 fmt = fmt.replace('%-H', str(self.iso_hour))
+ * 
+ *             if '%M' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":396
+ *                 fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+ * 
+ *             if '%-M' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-M', str(self.iso_minute))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 396, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_M_2, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 396, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":397
+ * 
+ *             if '%-M' in fmt:
+ *                 fmt = fmt.replace('%-M', str(self.iso_minute))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%S' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 397, __pyx_L1_error)
+      }
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_minute); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_5 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_M_2, __pyx_t_5, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
+      __pyx_t_7 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":396
+ *                 fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+ * 
+ *             if '%-M' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-M', str(self.iso_minute))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":399
+ *                 fmt = fmt.replace('%-M', str(self.iso_minute))
+ * 
+ *             if '%S' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 399, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_S, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 399, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":400
+ * 
+ *             if '%S' in fmt:
+ *                 fmt = fmt.replace('%S', str(self.iso_second).zfill(2))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%-S' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 400, __pyx_L1_error)
+      }
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_second); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 400, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = NULL;
+      __pyx_t_10 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_5, function);
+          __pyx_t_10 = 1;
+        }
+      }
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_int_2};
+        __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 400, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      }
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_S, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
+      __pyx_t_5 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":399
+ *                 fmt = fmt.replace('%-M', str(self.iso_minute))
+ * 
+ *             if '%S' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":402
+ *                 fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
+ * 
+ *             if '%-S' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-S', str(self.iso_second))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 402, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_S_2, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 402, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":403
+ * 
+ *             if '%-S' in fmt:
+ *                 fmt = fmt.replace('%-S', str(self.iso_second))             # <<<<<<<<<<<<<<
+ * 
+ *             if '%f' in fmt:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 403, __pyx_L1_error)
+      }
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_second); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_7 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_S_2, __pyx_t_7, -1L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_5));
+      __pyx_t_5 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":402
+ *                 fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
+ * 
+ *             if '%-S' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%-S', str(self.iso_second))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":405
+ *                 fmt = fmt.replace('%-S', str(self.iso_second))
+ * 
+ *             if '%f' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
+ * 
+ */
+    if (unlikely(__pyx_v_fmt == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+      __PYX_ERR(0, 405, __pyx_L1_error)
+    }
+    __pyx_t_11 = (__Pyx_PyUnicode_ContainsTF(__pyx_kp_u_f, __pyx_v_fmt, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 405, __pyx_L1_error)
+    if (__pyx_t_11) {
+
+      /* "swixknife/swixknife/date_time/time.py":406
+ * 
+ *             if '%f' in fmt:
+ *                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))             # <<<<<<<<<<<<<<
+ * 
+ *         if skip_strftime:
+ */
+      if (unlikely(__pyx_v_fmt == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "replace");
+        __PYX_ERR(0, 406, __pyx_L1_error)
+      }
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_microsecond); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 406, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_8 = __Pyx_PyObject_Str(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 406, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zfill); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 406, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = NULL;
+      __pyx_t_10 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_7, function);
+          __pyx_t_10 = 1;
+        }
+      }
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_int_6};
+        __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 406, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      }
+      __pyx_t_7 = PyUnicode_Replace(__pyx_v_fmt, __pyx_kp_u_f, __pyx_t_5, -1L); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 406, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF_SET(__pyx_v_fmt, ((PyObject*)__pyx_t_7));
+      __pyx_t_7 = 0;
+
+      /* "swixknife/swixknife/date_time/time.py":405
+ *                 fmt = fmt.replace('%-S', str(self.iso_second))
+ * 
+ *             if '%f' in fmt:             # <<<<<<<<<<<<<<
+ *                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
+ * 
+ */
+    }
+
+    /* "swixknife/swixknife/date_time/time.py":384
+ *         # Some very basic formatting for ISO time
+ *         #
+ *         if '%' in fmt:             # <<<<<<<<<<<<<<
+ *             fmt = fmt.replace('%%', '__PERCENT__')
+ * 
+ */
+  }
+
+  /* "swixknife/swixknife/date_time/time.py":408
+ *                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
+ * 
+ *         if skip_strftime:             # <<<<<<<<<<<<<<
+ *             return fmt
+ * 
+ */
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_skip_strftime); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 408, __pyx_L1_error)
+  if (__pyx_t_11) {
+
+    /* "swixknife/swixknife/date_time/time.py":409
+ * 
+ *         if skip_strftime:
+ *             return fmt             # <<<<<<<<<<<<<<
+ * 
+ *         return self.iso_time.strftime(fmt)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_fmt);
+    __pyx_r = __pyx_v_fmt;
+    goto __pyx_L0;
+
+    /* "swixknife/swixknife/date_time/time.py":408
+ *                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
+ * 
+ *         if skip_strftime:             # <<<<<<<<<<<<<<
+ *             return fmt
+ * 
+ */
+  }
+
+  /* "swixknife/swixknife/date_time/time.py":411
+ *             return fmt
  * 
  *         return self.iso_time.strftime(fmt)             # <<<<<<<<<<<<<<
  * 
  *     def strftime(self, fmt):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 378, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_strftime); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_strftime); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -12081,7 +12680,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_fmt};
     __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 411, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -12089,10 +12688,10 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":303
+  /* "swixknife/swixknife/date_time/time.py":306
  *         return fmt
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):             # <<<<<<<<<<<<<<
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):             # <<<<<<<<<<<<<<
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  */
@@ -12120,7 +12719,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":380
+/* "swixknife/swixknife/date_time/time.py":413
  *         return self.iso_time.strftime(fmt)
  * 
  *     def strftime(self, fmt):             # <<<<<<<<<<<<<<
@@ -12173,19 +12772,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 413, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fmt)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 413, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("strftime", 1, 2, 2, 1); __PYX_ERR(0, 380, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("strftime", 1, 2, 2, 1); __PYX_ERR(0, 413, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "strftime") < 0)) __PYX_ERR(0, 380, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "strftime") < 0)) __PYX_ERR(0, 413, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -12198,7 +12797,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("strftime", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 380, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("strftime", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 413, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.strftime", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -12223,7 +12822,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("strftime", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":381
+  /* "swixknife/swixknife/date_time/time.py":414
  * 
  *     def strftime(self, fmt):
  *         return self.format(fmt)             # <<<<<<<<<<<<<<
@@ -12231,7 +12830,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 414, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -12249,7 +12848,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_fmt};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -12257,7 +12856,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":380
+  /* "swixknife/swixknife/date_time/time.py":413
  *         return self.iso_time.strftime(fmt)
  * 
  *     def strftime(self, fmt):             # <<<<<<<<<<<<<<
@@ -12278,7 +12877,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/date_time/time.py":383
+/* "swixknife/swixknife/date_time/time.py":416
  *         return self.format(fmt)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -12328,12 +12927,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 383, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 416, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "julian_date") < 0)) __PYX_ERR(0, 383, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "julian_date") < 0)) __PYX_ERR(0, 416, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -12344,7 +12943,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("julian_date", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 383, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("julian_date", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 416, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.date_time.time.SezimalTime.julian_date", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -12375,41 +12974,41 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("julian_date", 0);
 
-  /* "swixknife/swixknife/date_time/time.py":385
+  /* "swixknife/swixknife/date_time/time.py":418
  *     @property
  *     def julian_date(self):
  *         total_agrimas = self.as_agrimas             # <<<<<<<<<<<<<<
  * 
  *         if self.time_zone:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_as_agrimas); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_total_agrimas = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":387
+  /* "swixknife/swixknife/date_time/time.py":420
  *         total_agrimas = self.as_agrimas
  * 
  *         if self.time_zone:             # <<<<<<<<<<<<<<
  *             tz_offset, dst_offset = tz_agrimas_offset(self.time_zone)
  *             total_agrimas -= tz_offset # + dst_offset
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 387, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/date_time/time.py":388
+    /* "swixknife/swixknife/date_time/time.py":421
  * 
  *         if self.time_zone:
  *             tz_offset, dst_offset = tz_agrimas_offset(self.time_zone)             # <<<<<<<<<<<<<<
  *             total_agrimas -= tz_offset # + dst_offset
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tz_agrimas_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_time_zone); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -12428,7 +13027,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -12438,7 +13037,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 388, __pyx_L1_error)
+        __PYX_ERR(0, 421, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -12451,15 +13050,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_4);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5);
@@ -12467,7 +13066,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __Pyx_GOTREF(__pyx_t_3);
       index = 1; __pyx_t_4 = __pyx_t_7(__pyx_t_5); if (unlikely(!__pyx_t_4)) goto __pyx_L4_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 2) < 0) __PYX_ERR(0, 388, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 2) < 0) __PYX_ERR(0, 421, __pyx_L1_error)
       __pyx_t_7 = NULL;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L5_unpacking_done;
@@ -12475,7 +13074,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_7 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 388, __pyx_L1_error)
+      __PYX_ERR(0, 421, __pyx_L1_error)
       __pyx_L5_unpacking_done:;
     }
     __pyx_v_tz_offset = __pyx_t_3;
@@ -12483,19 +13082,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
     __pyx_v_dst_offset = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":389
+    /* "swixknife/swixknife/date_time/time.py":422
  *         if self.time_zone:
  *             tz_offset, dst_offset = tz_agrimas_offset(self.time_zone)
  *             total_agrimas -= tz_offset # + dst_offset             # <<<<<<<<<<<<<<
  * 
  *         return round(total_agrimas / 100_0000, 10)
  */
-    __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_InPlaceSubtract(__pyx_v_total_agrimas, __pyx_v_tz_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_total_agrimas, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "swixknife/swixknife/date_time/time.py":387
+    /* "swixknife/swixknife/date_time/time.py":420
  *         total_agrimas = self.as_agrimas
  * 
  *         if self.time_zone:             # <<<<<<<<<<<<<<
@@ -12504,7 +13103,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  */
   }
 
-  /* "swixknife/swixknife/date_time/time.py":391
+  /* "swixknife/swixknife/date_time/time.py":424
  *             total_agrimas -= tz_offset # + dst_offset
  * 
  *         return round(total_agrimas / 100_0000, 10)             # <<<<<<<<<<<<<<
@@ -12512,9 +13111,9 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_total_agrimas, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_total_agrimas, __pyx_int_1000000, 0xF4240, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -12522,14 +13121,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_9date_time_4time_11SezimalTime_4
   __Pyx_GIVEREF(__pyx_int_10);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_10);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/date_time/time.py":383
+  /* "swixknife/swixknife/date_time/time.py":416
  *         return self.format(fmt)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -12581,9 +13180,16 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Decimal, __pyx_k_Decimal, sizeof(__pyx_k_Decimal), 0, 0, 1, 1},
     {&__pyx_kp_u_Etc_GMT, __pyx_k_Etc_GMT, sizeof(__pyx_k_Etc_GMT), 0, 1, 0, 0},
     {&__pyx_kp_u_Etc_GMT_2, __pyx_k_Etc_GMT_2, sizeof(__pyx_k_Etc_GMT_2), 0, 1, 0, 0},
+    {&__pyx_kp_u_H, __pyx_k_H, sizeof(__pyx_k_H), 0, 1, 0, 0},
     {&__pyx_n_u_HASHTAG, __pyx_k_HASHTAG, sizeof(__pyx_k_HASHTAG), 0, 1, 0, 1},
+    {&__pyx_kp_u_H_2, __pyx_k_H_2, sizeof(__pyx_k_H_2), 0, 1, 0, 0},
+    {&__pyx_kp_u_M, __pyx_k_M, sizeof(__pyx_k_M), 0, 1, 0, 0},
+    {&__pyx_kp_u_M_2, __pyx_k_M_2, sizeof(__pyx_k_M_2), 0, 1, 0, 0},
     {&__pyx_kp_u_None, __pyx_k_None, sizeof(__pyx_k_None), 0, 1, 0, 0},
+    {&__pyx_n_u_PERCENT, __pyx_k_PERCENT, sizeof(__pyx_k_PERCENT), 0, 1, 0, 1},
+    {&__pyx_kp_u_S, __pyx_k_S, sizeof(__pyx_k_S), 0, 1, 0, 0},
     {&__pyx_n_s_SECOND_TO_AGRIMA, __pyx_k_SECOND_TO_AGRIMA, sizeof(__pyx_k_SECOND_TO_AGRIMA), 0, 0, 1, 1},
+    {&__pyx_kp_u_S_2, __pyx_k_S_2, sizeof(__pyx_k_S_2), 0, 1, 0, 0},
     {&__pyx_n_s_Sezimal, __pyx_k_Sezimal, sizeof(__pyx_k_Sezimal), 0, 0, 1, 1},
     {&__pyx_n_u_SezimalDate, __pyx_k_SezimalDate, sizeof(__pyx_k_SezimalDate), 0, 1, 0, 1},
     {&__pyx_n_s_SezimalInteger, __pyx_k_SezimalInteger, sizeof(__pyx_k_SezimalInteger), 0, 0, 1, 1},
@@ -12636,14 +13242,16 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 1, 0, 0},
     {&__pyx_kp_u__21, __pyx_k__21, sizeof(__pyx_k__21), 0, 1, 0, 0},
     {&__pyx_kp_u__22, __pyx_k__22, sizeof(__pyx_k__22), 0, 1, 0, 0},
+    {&__pyx_kp_u__23, __pyx_k__23, sizeof(__pyx_k__23), 0, 1, 0, 0},
     {&__pyx_kp_u__24, __pyx_k__24, sizeof(__pyx_k__24), 0, 1, 0, 0},
-    {&__pyx_kp_u__25, __pyx_k__25, sizeof(__pyx_k__25), 0, 1, 0, 0},
+    {&__pyx_kp_u__26, __pyx_k__26, sizeof(__pyx_k__26), 0, 1, 0, 0},
+    {&__pyx_kp_u__27, __pyx_k__27, sizeof(__pyx_k__27), 0, 1, 0, 0},
     {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
     {&__pyx_kp_u__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0, 0},
     {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
     {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
     {&__pyx_kp_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 0},
-    {&__pyx_n_s__73, __pyx_k__73, sizeof(__pyx_k__73), 0, 0, 1, 1},
+    {&__pyx_n_s__75, __pyx_k__75, sizeof(__pyx_k__75), 0, 0, 1, 1},
     {&__pyx_kp_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 0},
     {&__pyx_kp_u__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 1, 0, 0},
     {&__pyx_n_u_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 1, 0, 1},
@@ -12672,6 +13280,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_boda_2, __pyx_k_boda_2, sizeof(__pyx_k_boda_2), 0, 0, 1, 1},
     {&__pyx_n_u_boda_2, __pyx_k_boda_2, sizeof(__pyx_k_boda_2), 0, 1, 0, 1},
     {&__pyx_kp_u_boda_3, __pyx_k_boda_3, sizeof(__pyx_k_boda_3), 0, 1, 0, 0},
+    {&__pyx_n_s_bool, __pyx_k_bool, sizeof(__pyx_k_bool), 0, 0, 1, 1},
     {&__pyx_n_s_character, __pyx_k_character, sizeof(__pyx_k_character), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_cls, __pyx_k_cls, sizeof(__pyx_k_cls), 0, 0, 1, 1},
@@ -12692,6 +13301,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_decimal, __pyx_k_decimal, sizeof(__pyx_k_decimal), 0, 0, 1, 1},
     {&__pyx_n_s_dedicated_digits, __pyx_k_dedicated_digits, sizeof(__pyx_k_dedicated_digits), 0, 0, 1, 1},
     {&__pyx_n_s_default_compressed_to_dedicated, __pyx_k_default_compressed_to_dedicated, sizeof(__pyx_k_default_compressed_to_dedicated), 0, 0, 1, 1},
+    {&__pyx_n_s_default_compressed_to_regularize, __pyx_k_default_compressed_to_regularize, sizeof(__pyx_k_default_compressed_to_regularize), 0, 0, 1, 1},
     {&__pyx_n_s_default_to_dedicated_digits, __pyx_k_default_to_dedicated_digits, sizeof(__pyx_k_default_to_dedicated_digits), 0, 0, 1, 1},
     {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
     {&__pyx_n_s_diff, __pyx_k_diff, sizeof(__pyx_k_diff), 0, 0, 1, 1},
@@ -12707,6 +13317,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_ekaditiboda_2, __pyx_k_ekaditiboda_2, sizeof(__pyx_k_ekaditiboda_2), 0, 0, 1, 1},
     {&__pyx_n_u_ekaditiboda_2, __pyx_k_ekaditiboda_2, sizeof(__pyx_k_ekaditiboda_2), 0, 1, 0, 1},
     {&__pyx_kp_u_ekaditiboda_3, __pyx_k_ekaditiboda_3, sizeof(__pyx_k_ekaditiboda_3), 0, 1, 0, 0},
+    {&__pyx_kp_u_f, __pyx_k_f, sizeof(__pyx_k_f), 0, 1, 0, 0},
     {&__pyx_n_s_fmt, __pyx_k_fmt, sizeof(__pyx_k_fmt), 0, 0, 1, 1},
     {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
     {&__pyx_n_s_fromisoformat, __pyx_k_fromisoformat, sizeof(__pyx_k_fromisoformat), 0, 0, 1, 1},
@@ -12762,6 +13373,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_sezimal_format, __pyx_k_sezimal_format, sizeof(__pyx_k_sezimal_format), 0, 0, 1, 1},
     {&__pyx_n_s_sezimal_places, __pyx_k_sezimal_places, sizeof(__pyx_k_sezimal_places), 0, 0, 1, 1},
     {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
+    {&__pyx_n_s_skip_strftime, __pyx_k_skip_strftime, sizeof(__pyx_k_skip_strftime), 0, 0, 1, 1},
     {&__pyx_n_s_slots, __pyx_k_slots, sizeof(__pyx_k_slots), 0, 0, 1, 1},
     {&__pyx_n_s_spec, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
     {&__pyx_n_s_str, __pyx_k_str, sizeof(__pyx_k_str), 0, 0, 1, 1},
@@ -12823,9 +13435,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 170, __pyx_L1_error)
-  __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 108, __pyx_L1_error)
-  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(0, 132, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -12843,326 +13455,326 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * import time as _time
  */
-  __pyx_tuple__23 = PyTuple_Pack(3, __pyx_n_u_SezimalDate, __pyx_n_u_TIME_SEPARATOR, __pyx_n_u_tz_agrimas_offset); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_u_SezimalDate, __pyx_n_u_TIME_SEPARATOR, __pyx_n_u_tz_agrimas_offset); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "swixknife/swixknife/date_time/time.py":28
+  /* "swixknife/swixknife/date_time/time.py":29
  * 
  * 
  * def _system_time_zone():             # <<<<<<<<<<<<<<
  *     diff = int(_time.strftime('%z')) // 100
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_n_s_diff); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_system_time_zone, 28, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_diff); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_system_time_zone, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":40
+  /* "swixknife/swixknife/date_time/time.py":41
  * 
  * 
  * def _date_time_to_agrima(date_time: _datetime.datetime):             # <<<<<<<<<<<<<<
  *     total_seconds = Decimal(str(date_time.hour * 60 * 60))
  *     total_seconds += Decimal(str(date_time.minute * 60))
  */
-  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_n_s_date_time, __pyx_n_s_total_seconds, __pyx_n_s_total_agrimas_2); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_date_time_to_agrima, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_date_time, __pyx_n_s_total_seconds, __pyx_n_s_total_agrimas_2); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_date_time_to_agrima, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 41, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":49
+  /* "swixknife/swixknife/date_time/time.py":50
  * 
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):             # <<<<<<<<<<<<<<
  *     if not time_zone:
  *         time_zone = _system_time_zone()
  */
-  __pyx_tuple__30 = PyTuple_Pack(9, __pyx_n_s_time_zone, __pyx_n_s_base_date, __pyx_n_s_dt_tz, __pyx_n_s_td, __pyx_n_s_total_seconds, __pyx_n_s_total_agrimas_2, __pyx_n_s_td_dst, __pyx_n_s_total_seconds_dst, __pyx_n_s_total_agrimas_dst); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_tz_agrimas_offset, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_tuple__32 = PyTuple_Pack(2, ((PyObject*)__pyx_n_u_UTC), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(9, __pyx_n_s_time_zone, __pyx_n_s_base_date, __pyx_n_s_dt_tz, __pyx_n_s_td, __pyx_n_s_total_seconds, __pyx_n_s_total_agrimas_2, __pyx_n_s_td_dst, __pyx_n_s_total_seconds_dst, __pyx_n_s_total_agrimas_dst); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_tz_agrimas_offset, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(2, ((PyObject*)__pyx_n_u_UTC), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
 
-  /* "swixknife/swixknife/date_time/time.py":80
+  /* "swixknife/swixknife/date_time/time.py":81
  * 
  * class SezimalTime():
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'             # <<<<<<<<<<<<<<
  * 
  *     def __new__(cls,
  */
-  __pyx_tuple__33 = PyTuple_Pack(12, __pyx_n_u_uta_2, __pyx_n_u_posha_2, __pyx_n_u_agrima_2, __pyx_n_u_anuga_2, __pyx_n_u_boda_2, __pyx_n_u_ekaditiboda_2, __pyx_n_u_day_2, __pyx_n_u_time_zone_2, __pyx_n_u_total_agrimas, __pyx_n_u_iso_time, __pyx_n_u_time_zone_offset, __pyx_n_u_dst_offset); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_tuple__35 = PyTuple_Pack(12, __pyx_n_u_uta_2, __pyx_n_u_posha_2, __pyx_n_u_agrima_2, __pyx_n_u_anuga_2, __pyx_n_u_boda_2, __pyx_n_u_ekaditiboda_2, __pyx_n_u_day_2, __pyx_n_u_time_zone_2, __pyx_n_u_total_agrimas, __pyx_n_u_iso_time, __pyx_n_u_time_zone_offset, __pyx_n_u_dst_offset); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
 
-  /* "swixknife/swixknife/date_time/time.py":82
+  /* "swixknife/swixknife/date_time/time.py":83
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  *     def __new__(cls,             # <<<<<<<<<<<<<<
  *                 uta: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  *                 posha: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  */
-  __pyx_tuple__34 = PyTuple_Pack(17, __pyx_n_s_cls, __pyx_n_s_uta, __pyx_n_s_posha, __pyx_n_s_agrima, __pyx_n_s_anuga, __pyx_n_s_boda, __pyx_n_s_ekaditiboda, __pyx_n_s_day, __pyx_n_s_time_zone, __pyx_n_s_total_agrimas_2, __pyx_n_s_self, __pyx_n_s_total_seconds, __pyx_n_s_hour, __pyx_n_s_minute, __pyx_n_s_second, __pyx_n_s_microssecond, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 82, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_new, 82, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_tuple__36 = PyTuple_Pack(8, ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(17, __pyx_n_s_cls, __pyx_n_s_uta, __pyx_n_s_posha, __pyx_n_s_agrima, __pyx_n_s_anuga, __pyx_n_s_boda, __pyx_n_s_ekaditiboda, __pyx_n_s_day, __pyx_n_s_time_zone, __pyx_n_s_total_agrimas_2, __pyx_n_s_self, __pyx_n_s_total_seconds, __pyx_n_s_hour, __pyx_n_s_minute, __pyx_n_s_second, __pyx_n_s_microssecond, __pyx_n_s_iso_time_2); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_new, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(8, ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_0), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
 
-  /* "swixknife/swixknife/date_time/time.py":170
+  /* "swixknife/swixknife/date_time/time.py":171
  *         return self
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def day(self):
  *         return self._day
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_day, 170, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_day, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 171, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":174
+  /* "swixknife/swixknife/date_time/time.py":175
  *         return self._day
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def uta(self):
  *         return self._uta
  */
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_uta, 174, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_uta, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 175, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":178
+  /* "swixknife/swixknife/date_time/time.py":179
  *         return self._uta
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def posha(self):
  *         return self._posha
  */
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_posha, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_posha, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":182
+  /* "swixknife/swixknife/date_time/time.py":183
  *         return self._posha
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def agrima(self):
  *         return self._agrima
  */
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_agrima, 182, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_agrima, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 183, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":186
+  /* "swixknife/swixknife/date_time/time.py":187
  *         return self._agrima
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def anuga(self):
  *         return self._anuga
  */
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_anuga, 186, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_anuga, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":190
+  /* "swixknife/swixknife/date_time/time.py":191
  *         return self._anuga
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def boda(self):
  *         return self._boda
  */
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_boda, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_boda, 191, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 191, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":194
+  /* "swixknife/swixknife/date_time/time.py":195
  *         return self._boda
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def ekaditiboda(self):
  *         return self._ekaditiboda
  */
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_ekaditiboda, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_ekaditiboda, 195, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":198
+  /* "swixknife/swixknife/date_time/time.py":199
  *         return self._ekaditiboda
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def time_zone(self):
  *         return self._time_zone
  */
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_time_zone, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_time_zone, 199, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 199, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":202
+  /* "swixknife/swixknife/date_time/time.py":203
  *         return self._time_zone
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def is_dst(self):
  *         return self._dst_offset != 0
  */
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_is_dst, 202, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_is_dst, 203, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 203, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":206
+  /* "swixknife/swixknife/date_time/time.py":207
  *         return self._dst_offset != 0
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_time(self):
  *         return self._iso_time
  */
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_time_2, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_time_2, 207, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 207, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":210
+  /* "swixknife/swixknife/date_time/time.py":211
  *         return self._iso_time
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_hour(self):
  *         return self._iso_time.hour
  */
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_hour, 210, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_hour, 211, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 211, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":214
+  /* "swixknife/swixknife/date_time/time.py":215
  *         return self._iso_time.hour
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_minute(self):
  *         return self._iso_time.minute
  */
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_minute, 214, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_minute, 215, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 215, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":218
+  /* "swixknife/swixknife/date_time/time.py":219
  *         return self._iso_time.minute
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_second(self):
  *         return self._iso_time.second
  */
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_second, 218, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_second, 219, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 219, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":222
+  /* "swixknife/swixknife/date_time/time.py":223
  *         return self._iso_time.second
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_microsecond(self):
  *         return self._iso_time.microsecond
  */
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_microsecond, 222, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_iso_microsecond, 223, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 223, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":226
+  /* "swixknife/swixknife/date_time/time.py":227
  *         return self._iso_time.microsecond
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def as_agrimas(self):
  *         return self._total_agrimas
  */
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_as_agrimas, 226, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_as_agrimas, 227, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 227, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":230
+  /* "swixknife/swixknife/date_time/time.py":231
  *         return self._total_agrimas
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def as_seconds(self):
  *         seconds = self.as_agrimas * AGRIMA_TO_SECOND
  */
-  __pyx_tuple__53 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_seconds); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 230, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__53);
-  __Pyx_GIVEREF(__pyx_tuple__53);
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_as_seconds, 230, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_tuple__55 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_seconds); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__55);
+  __Pyx_GIVEREF(__pyx_tuple__55);
+  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_as_seconds, 231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 231, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":235
+  /* "swixknife/swixknife/date_time/time.py":236
  *         return seconds.decimal
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  */
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_repr, 235, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_repr, 236, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 236, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":238
+  /* "swixknife/swixknife/date_time/time.py":239
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
  *         res = self.format(f'#*d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
  *         return res.strip()
  */
-  __pyx_tuple__56 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_res); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 238, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_str_2, 238, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_res); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_str_2, 239, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 239, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":242
+  /* "swixknife/swixknife/date_time/time.py":243
  *         return res.strip()
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
  *     def now(cls, time_zone: str = None):
  *         if not time_zone:
  */
-  __pyx_tuple__58 = PyTuple_Pack(6, __pyx_n_s_cls, __pyx_n_s_time_zone, __pyx_n_s_traditional_utc_now, __pyx_n_s_total_agrimas_2, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 242, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__58);
-  __Pyx_GIVEREF(__pyx_tuple__58);
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_now, 242, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 242, __pyx_L1_error)
-  __pyx_tuple__60 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_tuple__60 = PyTuple_Pack(6, __pyx_n_s_cls, __pyx_n_s_time_zone, __pyx_n_s_traditional_utc_now, __pyx_n_s_total_agrimas_2, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__60);
   __Pyx_GIVEREF(__pyx_tuple__60);
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_now, 243, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
 
-  /* "swixknife/swixknife/date_time/time.py":260
+  /* "swixknife/swixknife/date_time/time.py":261
  *         return cls(agrima=total_agrimas, time_zone=time_zone)
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):             # <<<<<<<<<<<<<<
  *         if not time_zone:
  *             time_zone = 'UTC'
  */
-  __pyx_tuple__61 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_time_zone, __pyx_n_s_utc_agrimas, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2, __pyx_n_s_tz_agrimas); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 260, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__61);
-  __Pyx_GIVEREF(__pyx_tuple__61);
-  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_to_time_zone, 260, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 260, __pyx_L1_error)
-  __pyx_tuple__63 = PyTuple_Pack(1, ((PyObject*)__pyx_n_u_UTC)); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_tuple__63 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_time_zone, __pyx_n_s_utc_agrimas, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2, __pyx_n_s_tz_agrimas); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__63);
   __Pyx_GIVEREF(__pyx_tuple__63);
+  __pyx_codeobj__64 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__63, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_to_time_zone, 261, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__64)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_tuple__65 = PyTuple_Pack(1, ((PyObject*)__pyx_n_u_UTC)); if (unlikely(!__pyx_tuple__65)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__65);
+  __Pyx_GIVEREF(__pyx_tuple__65);
 
-  /* "swixknife/swixknife/date_time/time.py":270
+  /* "swixknife/swixknife/date_time/time.py":271
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):             # <<<<<<<<<<<<<<
  *         if token not in fmt:
  *             return fmt
  */
-  __pyx_tuple__64 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_fmt, __pyx_n_s_token, __pyx_n_s_value, __pyx_n_s_size, __pyx_n_s_compressed, __pyx_n_s_dedicated_digits); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 270, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__64);
-  __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(7, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_apply_format, 270, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 270, __pyx_L1_error)
-  __pyx_tuple__66 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_tuple__66 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_fmt, __pyx_n_s_token, __pyx_n_s_value, __pyx_n_s_size, __pyx_n_s_compressed, __pyx_n_s_dedicated_digits); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__66);
   __Pyx_GIVEREF(__pyx_tuple__66);
+  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(7, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_apply_format, 271, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_tuple__68 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__68);
+  __Pyx_GIVEREF(__pyx_tuple__68);
 
-  /* "swixknife/swixknife/date_time/time.py":303
+  /* "swixknife/swixknife/date_time/time.py":306
  *         return fmt
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):             # <<<<<<<<<<<<<<
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):             # <<<<<<<<<<<<<<
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  */
-  __pyx_tuple__67 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_fmt, __pyx_n_s_character, __pyx_n_s_value, __pyx_n_s_size, __pyx_n_s_text); if (unlikely(!__pyx_tuple__67)) __PYX_ERR(0, 303, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__67);
-  __Pyx_GIVEREF(__pyx_tuple__67);
-  __pyx_codeobj__68 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_format, 303, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__68)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_tuple__69 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_fmt, __pyx_n_s_skip_strftime, __pyx_n_s_character, __pyx_n_s_value, __pyx_n_s_size, __pyx_n_s_text); if (unlikely(!__pyx_tuple__69)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__69);
+  __Pyx_GIVEREF(__pyx_tuple__69);
+  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__69, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_format, 306, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 306, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":380
+  /* "swixknife/swixknife/date_time/time.py":413
  *         return self.iso_time.strftime(fmt)
  * 
  *     def strftime(self, fmt):             # <<<<<<<<<<<<<<
  *         return self.format(fmt)
  * 
  */
-  __pyx_tuple__69 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_fmt); if (unlikely(!__pyx_tuple__69)) __PYX_ERR(0, 380, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__69);
-  __Pyx_GIVEREF(__pyx_tuple__69);
-  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__69, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_strftime, 380, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_tuple__71 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_fmt); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__71);
+  __Pyx_GIVEREF(__pyx_tuple__71);
+  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_strftime, 413, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 413, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":383
+  /* "swixknife/swixknife/date_time/time.py":416
  *         return self.format(fmt)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def julian_date(self):
  *         total_agrimas = self.as_agrimas
  */
-  __pyx_tuple__71 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_total_agrimas_2, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 383, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__71);
-  __Pyx_GIVEREF(__pyx_tuple__71);
-  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_julian_date, 383, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_tuple__73 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_total_agrimas_2, __pyx_n_s_tz_offset, __pyx_n_s_dst_offset_2); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 416, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__73);
+  __Pyx_GIVEREF(__pyx_tuple__73);
+  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_date_time_time_py, __pyx_n_s_julian_date, 416, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 416, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -13177,6 +13789,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_4 = PyInt_FromLong(4); if (unlikely(!__pyx_int_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_6 = PyInt_FromLong(6); if (unlikely(!__pyx_int_6)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_12 = PyInt_FromLong(12); if (unlikely(!__pyx_int_12)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_60 = PyInt_FromLong(60); if (unlikely(!__pyx_int_60)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -13555,7 +14168,7 @@ if (!__Pyx_RefNanny) {
  * 
  * import time as _time
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_tuple__23) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_tuple__25) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
 
   /* "swixknife/swixknife/date_time/time.py":15
  * __all__ = ('SezimalDate', 'TIME_SEPARATOR', 'tz_agrimas_offset')
@@ -13635,7 +14248,7 @@ if (!__Pyx_RefNanny) {
  * 
  * from ..sezimal import Sezimal, SezimalInteger             # <<<<<<<<<<<<<<
  * from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
- * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, default_compressed_to_dedicated_digits
+ * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, \
  */
   __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -13662,8 +14275,8 @@ if (!__Pyx_RefNanny) {
  * 
  * from ..sezimal import Sezimal, SezimalInteger
  * from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA             # <<<<<<<<<<<<<<
- * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, default_compressed_to_dedicated_digits
- * 
+ * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, \
+ *     default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits
  */
   __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -13689,11 +14302,11 @@ if (!__Pyx_RefNanny) {
   /* "swixknife/swixknife/date_time/time.py":23
  * from ..sezimal import Sezimal, SezimalInteger
  * from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
- * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, default_compressed_to_dedicated_digits             # <<<<<<<<<<<<<<
+ * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, \             # <<<<<<<<<<<<<<
+ *     default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits
  * 
- * TIME_SEPARATOR = ":"
  */
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_sezimal_format);
   __Pyx_GIVEREF(__pyx_n_s_sezimal_format);
@@ -13707,6 +14320,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_default_compressed_to_dedicated);
   __Pyx_GIVEREF(__pyx_n_s_default_compressed_to_dedicated);
   PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_default_compressed_to_dedicated);
+  __Pyx_INCREF(__pyx_n_s_default_compressed_to_regularize);
+  __Pyx_GIVEREF(__pyx_n_s_default_compressed_to_regularize);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_default_compressed_to_regularize);
   __pyx_t_3 = __Pyx_Import(__pyx_n_s_base, __pyx_t_2, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -13724,441 +14340,446 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_default_compressed_to_dedicated); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_default_compressed_to_dedicated, __pyx_t_2) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_default_compressed_to_dedicated, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_default_compressed_to_regularize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_default_compressed_to_regularize, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":25
- * from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, default_compressed_to_dedicated_digits
+  /* "swixknife/swixknife/date_time/time.py":26
+ *     default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits
  * 
  * TIME_SEPARATOR = ":"             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_TIME_SEPARATOR, __pyx_kp_u__25) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_TIME_SEPARATOR, __pyx_kp_u__27) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":28
+  /* "swixknife/swixknife/date_time/time.py":29
  * 
  * 
  * def _system_time_zone():             # <<<<<<<<<<<<<<
  *     diff = int(_time.strftime('%z')) // 100
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_1_system_time_zone, 0, __pyx_n_s_system_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_1_system_time_zone, 0, __pyx_n_s_system_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_system_time_zone, __pyx_t_3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_system_time_zone, __pyx_t_3) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":40
+  /* "swixknife/swixknife/date_time/time.py":41
  * 
  * 
  * def _date_time_to_agrima(date_time: _datetime.datetime):             # <<<<<<<<<<<<<<
  *     total_seconds = Decimal(str(date_time.hour * 60 * 60))
  *     total_seconds += Decimal(str(date_time.minute * 60))
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_date_time, __pyx_kp_s_datetime_datetime) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_3_date_time_to_agrima, 0, __pyx_n_s_date_time_to_agrima, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_date_time, __pyx_kp_s_datetime_datetime) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_3_date_time_to_agrima, 0, __pyx_n_s_date_time_to_agrima, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_date_time_to_agrima, __pyx_t_2) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_date_time_to_agrima, __pyx_t_2) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":49
+  /* "swixknife/swixknife/date_time/time.py":50
  * 
  * 
  * def tz_agrimas_offset(time_zone: str | _datetime.tzinfo = 'UTC', base_date: str = None):             # <<<<<<<<<<<<<<
  *     if not time_zone:
  *         time_zone = _system_time_zone()
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_time_zone, __pyx_kp_s_str__datetime_tzinfo) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_base_date, __pyx_n_s_str) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_5tz_agrimas_offset, 0, __pyx_n_s_tz_agrimas_offset, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_time_zone, __pyx_kp_s_str__datetime_tzinfo) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_base_date, __pyx_n_s_str) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_5tz_agrimas_offset, 0, __pyx_n_s_tz_agrimas_offset, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__32);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__34);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tz_agrimas_offset, __pyx_t_3) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tz_agrimas_offset, __pyx_t_3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":79
+  /* "swixknife/swixknife/date_time/time.py":80
  * 
  * 
  * class SezimalTime():             # <<<<<<<<<<<<<<
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  */
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_SezimalTime, __pyx_n_s_SezimalTime, (PyObject *) NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_SezimalTime, __pyx_n_s_SezimalTime, (PyObject *) NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "swixknife/swixknife/date_time/time.py":80
+  /* "swixknife/swixknife/date_time/time.py":81
  * 
  * class SezimalTime():
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'             # <<<<<<<<<<<<<<
  * 
  *     def __new__(cls,
  */
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_slots, __pyx_tuple__33) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_slots, __pyx_tuple__35) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
 
-  /* "swixknife/swixknife/date_time/time.py":82
+  /* "swixknife/swixknife/date_time/time.py":83
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  *     def __new__(cls,             # <<<<<<<<<<<<<<
  *                 uta: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  *                 posha: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_uta, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_posha, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_agrima, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_anuga, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_boda, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_ekaditiboda, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_day, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1__new__, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_SezimalTime___new, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_uta, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_posha, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_agrima, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_anuga, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_boda, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_ekaditiboda, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_day, __pyx_kp_s_str_int_float_Decimal_Sezimal_Se) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_1__new__, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_SezimalTime___new, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__36);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__38);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNewInClass(__pyx_t_3, __pyx_n_s_new, __pyx_t_4) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (__Pyx_SetNewInClass(__pyx_t_3, __pyx_n_s_new, __pyx_t_4) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":170
+  /* "swixknife/swixknife/date_time/time.py":171
  *         return self
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def day(self):
  *         return self._day
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3day, 0, __pyx_n_s_SezimalTime_day, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_3day, 0, __pyx_n_s_SezimalTime_day, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_day, __pyx_t_2) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_day, __pyx_t_2) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":174
+  /* "swixknife/swixknife/date_time/time.py":175
  *         return self._day
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def uta(self):
  *         return self._uta
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_5uta, 0, __pyx_n_s_SezimalTime_uta_2, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_5uta, 0, __pyx_n_s_SezimalTime_uta_2, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_uta, __pyx_t_4) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_uta, __pyx_t_4) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":178
+  /* "swixknife/swixknife/date_time/time.py":179
  *         return self._uta
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def posha(self):
  *         return self._posha
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_7posha, 0, __pyx_n_s_SezimalTime_posha, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_7posha, 0, __pyx_n_s_SezimalTime_posha, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_posha, __pyx_t_2) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_posha, __pyx_t_2) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":182
+  /* "swixknife/swixknife/date_time/time.py":183
  *         return self._posha
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def agrima(self):
  *         return self._agrima
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_9agrima, 0, __pyx_n_s_SezimalTime_agrima, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_9agrima, 0, __pyx_n_s_SezimalTime_agrima, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_agrima, __pyx_t_4) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_agrima, __pyx_t_4) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":186
+  /* "swixknife/swixknife/date_time/time.py":187
  *         return self._agrima
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def anuga(self):
  *         return self._anuga
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_11anuga, 0, __pyx_n_s_SezimalTime_anuga, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_11anuga, 0, __pyx_n_s_SezimalTime_anuga, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_anuga, __pyx_t_2) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_anuga, __pyx_t_2) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":190
+  /* "swixknife/swixknife/date_time/time.py":191
  *         return self._anuga
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def boda(self):
  *         return self._boda
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_13boda, 0, __pyx_n_s_SezimalTime_boda, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_13boda, 0, __pyx_n_s_SezimalTime_boda, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_boda, __pyx_t_4) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_boda, __pyx_t_4) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":194
+  /* "swixknife/swixknife/date_time/time.py":195
  *         return self._boda
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def ekaditiboda(self):
  *         return self._ekaditiboda
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_15ekaditiboda, 0, __pyx_n_s_SezimalTime_ekaditiboda, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_15ekaditiboda, 0, __pyx_n_s_SezimalTime_ekaditiboda, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_ekaditiboda, __pyx_t_2) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_ekaditiboda, __pyx_t_2) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":198
+  /* "swixknife/swixknife/date_time/time.py":199
  *         return self._ekaditiboda
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def time_zone(self):
  *         return self._time_zone
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_17time_zone, 0, __pyx_n_s_SezimalTime_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_17time_zone, 0, __pyx_n_s_SezimalTime_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_time_zone, __pyx_t_4) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_time_zone, __pyx_t_4) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":202
+  /* "swixknife/swixknife/date_time/time.py":203
  *         return self._time_zone
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def is_dst(self):
  *         return self._dst_offset != 0
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_19is_dst, 0, __pyx_n_s_SezimalTime_is_dst, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_19is_dst, 0, __pyx_n_s_SezimalTime_is_dst, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_dst, __pyx_t_2) < 0) __PYX_ERR(0, 202, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_dst, __pyx_t_2) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":206
+  /* "swixknife/swixknife/date_time/time.py":207
  *         return self._dst_offset != 0
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_time(self):
  *         return self._iso_time
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_21iso_time, 0, __pyx_n_s_SezimalTime_iso_time, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_21iso_time, 0, __pyx_n_s_SezimalTime_iso_time, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_time_2, __pyx_t_4) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_time_2, __pyx_t_4) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":210
+  /* "swixknife/swixknife/date_time/time.py":211
  *         return self._iso_time
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_hour(self):
  *         return self._iso_time.hour
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_23iso_hour, 0, __pyx_n_s_SezimalTime_iso_hour, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_23iso_hour, 0, __pyx_n_s_SezimalTime_iso_hour, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_hour, __pyx_t_2) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_hour, __pyx_t_2) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":214
+  /* "swixknife/swixknife/date_time/time.py":215
  *         return self._iso_time.hour
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_minute(self):
  *         return self._iso_time.minute
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_25iso_minute, 0, __pyx_n_s_SezimalTime_iso_minute, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_25iso_minute, 0, __pyx_n_s_SezimalTime_iso_minute, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_minute, __pyx_t_4) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_minute, __pyx_t_4) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":218
+  /* "swixknife/swixknife/date_time/time.py":219
  *         return self._iso_time.minute
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_second(self):
  *         return self._iso_time.second
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_27iso_second, 0, __pyx_n_s_SezimalTime_iso_second, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_27iso_second, 0, __pyx_n_s_SezimalTime_iso_second, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_second, __pyx_t_2) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_second, __pyx_t_2) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":222
+  /* "swixknife/swixknife/date_time/time.py":223
  *         return self._iso_time.second
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def iso_microsecond(self):
  *         return self._iso_time.microsecond
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_29iso_microsecond, 0, __pyx_n_s_SezimalTime_iso_microsecond, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_29iso_microsecond, 0, __pyx_n_s_SezimalTime_iso_microsecond, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_microsecond, __pyx_t_4) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iso_microsecond, __pyx_t_4) < 0) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":226
+  /* "swixknife/swixknife/date_time/time.py":227
  *         return self._iso_time.microsecond
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def as_agrimas(self):
  *         return self._total_agrimas
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_31as_agrimas, 0, __pyx_n_s_SezimalTime_as_agrimas, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_31as_agrimas, 0, __pyx_n_s_SezimalTime_as_agrimas, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_as_agrimas, __pyx_t_2) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_as_agrimas, __pyx_t_2) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":230
+  /* "swixknife/swixknife/date_time/time.py":231
  *         return self._total_agrimas
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def as_seconds(self):
  *         seconds = self.as_agrimas * AGRIMA_TO_SECOND
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_33as_seconds, 0, __pyx_n_s_SezimalTime_as_seconds, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_33as_seconds, 0, __pyx_n_s_SezimalTime_as_seconds, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_as_seconds, __pyx_t_4) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_as_seconds, __pyx_t_4) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":235
+  /* "swixknife/swixknife/date_time/time.py":236
  *         return seconds.decimal
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_35__repr__, 0, __pyx_n_s_SezimalTime___repr, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_35__repr__, 0, __pyx_n_s_SezimalTime___repr, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_repr, __pyx_t_4) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_repr, __pyx_t_4) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":238
+  /* "swixknife/swixknife/date_time/time.py":239
  *         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
  *         res = self.format(f'#*d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
  *         return res.strip()
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_37__str__, 0, __pyx_n_s_SezimalTime___str, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_37__str__, 0, __pyx_n_s_SezimalTime___str, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_str_2, __pyx_t_4) < 0) __PYX_ERR(0, 238, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_str_2, __pyx_t_4) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":242
+  /* "swixknife/swixknife/date_time/time.py":243
  *         return res.strip()
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
  *     def now(cls, time_zone: str = None):
  *         if not time_zone:
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_39now, __Pyx_CYFUNCTION_CLASSMETHOD, __pyx_n_s_SezimalTime_now, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 242, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_39now, __Pyx_CYFUNCTION_CLASSMETHOD, __pyx_n_s_SezimalTime_now, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__60);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__62);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_Method_ClassMethod(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Method_ClassMethod(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_now, __pyx_t_4) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_now, __pyx_t_4) < 0) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":260
+  /* "swixknife/swixknife/date_time/time.py":261
  *         return cls(agrima=total_agrimas, time_zone=time_zone)
  * 
  *     def to_time_zone(self, time_zone: str = 'UTC'):             # <<<<<<<<<<<<<<
  *         if not time_zone:
  *             time_zone = 'UTC'
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 260, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_41to_time_zone, 0, __pyx_n_s_SezimalTime_to_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_time_zone, __pyx_n_s_str) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_41to_time_zone, 0, __pyx_n_s_SezimalTime_to_time_zone, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__64)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__63);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__65);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_to_time_zone, __pyx_t_2) < 0) __PYX_ERR(0, 260, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_to_time_zone, __pyx_t_2) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":270
+  /* "swixknife/swixknife/date_time/time.py":271
  *         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
  * 
  *     def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):             # <<<<<<<<<<<<<<
  *         if token not in fmt:
  *             return fmt
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_43_apply_format, 0, __pyx_n_s_SezimalTime__apply_format, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_43_apply_format, 0, __pyx_n_s_SezimalTime__apply_format, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__66);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_apply_format, __pyx_t_2) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__68);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_apply_format, __pyx_t_2) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":303
+  /* "swixknife/swixknife/date_time/time.py":306
  *         return fmt
  * 
- *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a'):             # <<<<<<<<<<<<<<
+ *     def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):             # <<<<<<<<<<<<<<
  *         fmt = fmt.replace('##', '__HASHTAG__')
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_fmt, __pyx_n_s_str) < 0) __PYX_ERR(0, 303, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_45format, 0, __pyx_n_s_SezimalTime_format, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__68)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_fmt, __pyx_n_s_str) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_skip_strftime, __pyx_n_s_bool) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_45format, 0, __pyx_n_s_SezimalTime_format, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__70)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_4, sizeof(__pyx_defaults), 1)) __PYX_ERR(0, 303, __pyx_L1_error)
-  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 303, __pyx_L1_error)
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_4, sizeof(__pyx_defaults), 1)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 0;
   __pyx_t_7 = 127;
@@ -14166,9 +14787,9 @@ if (!__Pyx_RefNanny) {
   __pyx_t_6 += 2;
   __Pyx_GIVEREF(__pyx_kp_u_u_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_kp_u_u_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_t_8, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_t_8, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_7 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_7) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_7;
@@ -14180,9 +14801,9 @@ if (!__Pyx_RefNanny) {
   __pyx_t_6 += 2;
   __Pyx_GIVEREF(__pyx_kp_u_p);
   PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_kp_u_p);
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_TIME_SEPARATOR); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_9, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_9, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_7 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_7) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_7;
@@ -14194,7 +14815,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_6 += 2;
   __Pyx_GIVEREF(__pyx_kp_u_a_2);
   PyTuple_SET_ITEM(__pyx_t_5, 4, __pyx_kp_u_a_2);
-  __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_5, 5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_5, 5, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_t_4)->__pyx_arg_fmt = ((PyObject*)__pyx_t_8);
@@ -14203,46 +14824,46 @@ if (!__Pyx_RefNanny) {
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_4, __pyx_pf_9swixknife_9swixknife_9date_time_4time_6__defaults__);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_format, __pyx_t_4) < 0) __PYX_ERR(0, 303, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_format, __pyx_t_4) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":380
+  /* "swixknife/swixknife/date_time/time.py":413
  *         return self.iso_time.strftime(fmt)
  * 
  *     def strftime(self, fmt):             # <<<<<<<<<<<<<<
  *         return self.format(fmt)
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_47strftime, 0, __pyx_n_s_SezimalTime_strftime, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__70)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_47strftime, 0, __pyx_n_s_SezimalTime_strftime, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__72)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_strftime, __pyx_t_4) < 0) __PYX_ERR(0, 380, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_strftime, __pyx_t_4) < 0) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":383
+  /* "swixknife/swixknife/date_time/time.py":416
  *         return self.format(fmt)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def julian_date(self):
  *         total_agrimas = self.as_agrimas
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_49julian_date, 0, __pyx_n_s_SezimalTime_julian_date, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__72)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_9date_time_4time_11SezimalTime_49julian_date, 0, __pyx_n_s_SezimalTime_julian_date, NULL, __pyx_n_s_swixknife_swixknife_date_time_ti, __pyx_d, ((PyObject *)__pyx_codeobj__74)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 416, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_julian_date, __pyx_t_2) < 0) __PYX_ERR(0, 383, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_julian_date, __pyx_t_2) < 0) __PYX_ERR(0, 416, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/date_time/time.py":79
+  /* "swixknife/swixknife/date_time/time.py":80
  * 
  * 
  * class SezimalTime():             # <<<<<<<<<<<<<<
  *     __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
  * 
  */
-  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&PyType_Type), __pyx_n_s_SezimalTime, __pyx_empty_tuple, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&PyType_Type), __pyx_n_s_SezimalTime, __pyx_empty_tuple, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SezimalTime, __pyx_t_2) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SezimalTime, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
@@ -16158,7 +16779,7 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
         if (unlikely(!module_name_str)) { goto modbad; }
         module_name = PyUnicode_FromString(module_name_str);
         if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__24);
+        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__26);
         if (unlikely(!module_dot)) { goto modbad; }
         full_name = PyUnicode_Concat(module_dot, name);
         if (unlikely(!full_name)) { goto modbad; }
@@ -17901,7 +18522,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
                                                __pyx_n_s_name);
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
-        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__73));
+        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__75));
     }
     return name;
 }

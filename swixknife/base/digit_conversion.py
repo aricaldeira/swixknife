@@ -40,7 +40,7 @@ DEFAULT_DENOMINATOR_DIGITS = tuple('₀₁₂₃₄₅₀₁₂₃₄₅₀₁�
 DEDICATED_DENOMINATOR_DIGITS = tuple('󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍₊₋')
 
 
-def _change_digits(number: str, digits_from: str, digits_to: str) -> str:
+def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
     for i in range(len(digits_from)):
         df = digits_from[i]
         dt = digits_to[i]
