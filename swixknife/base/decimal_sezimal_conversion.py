@@ -57,7 +57,7 @@ def _decimal_integer_to_sezimal(integer: int | str) -> str:
     return sezimal
 
 
-def _decimal_fraction_to_sezimal(fraction: str, sezimal_precision: int = None) -> str:
+def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int = None) -> str:
     if not fraction:
         return ''
 
