@@ -1,16 +1,43 @@
 
 
-DEFAULT_DIGITS = '012345⁰¹²³⁴⁵₀₁₂₃₄₅'
-DEDICATED_DIGITS = '󱨀󱨁󱨂󱨃󱨄󱨅󱨤󱨥󱨦󱨧󱨨󱨩󱩈󱩉󱩊󱩋󱩌󱩍'
+DEFAULT_DIGITS = tuple('012345⁰¹²³⁴⁵₀₁₂₃₄₅')
+DEDICATED_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨤󱨥󱨦󱨧󱨨󱨩󱩈󱩉󱩊󱩋󱩌󱩍')
 
-DEFAULT_COMPRESSED_DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-DEDICATED_COMPRESSED_DIGITS = '󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫'
+DEFAULT_COMPRESSED_DIGITS = tuple('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+DEDICATED_COMPRESSED_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫')
 
-DEFAULT_NUMERATOR_DIGITS = '⁰¹²³⁴⁵⁰¹²³⁴⁵⁰¹²³⁴⁵‍⁺⁻'
-DEDICATED_NUMERATOR_DIGITS = '󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩⁺⁻'
+_PLUS_00 = ''
+_PLUS_10 = '\u0306'
+_PLUS_20 = '\u0309'
+# _PLUS_20 = '\u1DCE'
+_PLUS_30 = '\u030A'
+_PLUS_40 = '\u0304'
+_PLUS_50 = '\u0314'
 
-DEFAULT_DENOMINATOR_DIGITS = '₀₁₂₃₄₅₀₁₂₃₄₅₀₁₂₃₄₅₊₋'
-DEDICATED_DENOMINATOR_DIGITS = '󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍₊₋'
+REGULARIZED_COMPRESSED_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
+0{_PLUS_10}\n1{_PLUS_10}\n2{_PLUS_10}\n3{_PLUS_10}\n4{_PLUS_10}\n5{_PLUS_10}
+0{_PLUS_20}\n1{_PLUS_20}\n2{_PLUS_20}\n3{_PLUS_20}\n4{_PLUS_20}\n5{_PLUS_20}
+0{_PLUS_30}\n1{_PLUS_30}\n2{_PLUS_30}\n3{_PLUS_30}\n4{_PLUS_30}\n5{_PLUS_30}
+0{_PLUS_40}\n1{_PLUS_40}\n2{_PLUS_40}\n3{_PLUS_40}\n4{_PLUS_40}\n5{_PLUS_40}
+0{_PLUS_50}\n1{_PLUS_50}\n2{_PLUS_50}\n3{_PLUS_50}\n4{_PLUS_50}\n5{_PLUS_50}
+⁰{_PLUS_00}\n¹{_PLUS_00}\n²{_PLUS_00}\n³{_PLUS_00}\n⁴{_PLUS_00}\n⁵{_PLUS_00}
+⁰{_PLUS_10}\n¹{_PLUS_10}\n²{_PLUS_10}\n³{_PLUS_10}\n⁴{_PLUS_10}\n⁵{_PLUS_10}
+⁰{_PLUS_20}\n¹{_PLUS_20}\n²{_PLUS_20}\n³{_PLUS_20}\n⁴{_PLUS_20}\n⁵{_PLUS_20}
+⁰{_PLUS_30}\n¹{_PLUS_30}\n²{_PLUS_30}\n³{_PLUS_30}\n⁴{_PLUS_30}\n⁵{_PLUS_30}
+⁰{_PLUS_40}\n¹{_PLUS_40}\n²{_PLUS_40}\n³{_PLUS_40}\n⁴{_PLUS_40}\n⁵{_PLUS_40}
+⁰{_PLUS_50}\n¹{_PLUS_50}\n²{_PLUS_50}\n³{_PLUS_50}\n⁴{_PLUS_50}\n⁵{_PLUS_50}
+₀{_PLUS_00}\n₁{_PLUS_00}\n₂{_PLUS_00}\n₃{_PLUS_00}\n₄{_PLUS_00}\n₅{_PLUS_00}
+₀{_PLUS_10}\n₁{_PLUS_10}\n₂{_PLUS_10}\n₃{_PLUS_10}\n₄{_PLUS_10}\n₅{_PLUS_10}
+₀{_PLUS_20}\n₁{_PLUS_20}\n₂{_PLUS_20}\n₃{_PLUS_20}\n₄{_PLUS_20}\n₅{_PLUS_20}
+₀{_PLUS_30}\n₁{_PLUS_30}\n₂{_PLUS_30}\n₃{_PLUS_30}\n₄{_PLUS_30}\n₅{_PLUS_30}
+₀{_PLUS_40}\n₁{_PLUS_40}\n₂{_PLUS_40}\n₃{_PLUS_40}\n₄{_PLUS_40}\n₅{_PLUS_40}
+₀{_PLUS_50}\n₁{_PLUS_50}\n₂{_PLUS_50}\n₃{_PLUS_50}\n₄{_PLUS_50}\n₅{_PLUS_50}'''.split('\n'))
+
+DEFAULT_NUMERATOR_DIGITS = tuple('⁰¹²³⁴⁵⁰¹²³⁴⁵⁰¹²³⁴⁵‍⁺⁻')
+DEDICATED_NUMERATOR_DIGITS = tuple('󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩⁺⁻')
+
+DEFAULT_DENOMINATOR_DIGITS = tuple('₀₁₂₃₄₅₀₁₂₃₄₅₀₁₂₃₄₅₊₋')
+DEDICATED_DENOMINATOR_DIGITS = tuple('󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍₊₋')
 
 
 def _change_digits(number: str, digits_from: str, digits_to: str) -> str:
@@ -28,6 +55,10 @@ def default_to_dedicated_digits(number: str) -> str:
 
 def default_compressed_to_dedicated_digits(number:str) -> str:
     return _change_digits(number, DEFAULT_COMPRESSED_DIGITS, DEDICATED_COMPRESSED_DIGITS)
+
+
+def default_compressed_to_regularized_digits(number:str) -> str:
+    return _change_digits(number, DEFAULT_COMPRESSED_DIGITS, REGULARIZED_COMPRESSED_DIGITS)
 
 
 def dedicated_to_default_digits(number: str) -> str:
