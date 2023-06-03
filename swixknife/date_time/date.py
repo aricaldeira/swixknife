@@ -20,8 +20,16 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..functions import floor, ceil
-from ..base import decimal_format
+from ..base import decimal_format, sezimal_format, \
+    sezimal_compression, default_to_dedicated_digits, \
+    default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
+from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+
+#
+# Translations without using the SO locale
+#
+from . import lang as _ALL_LANG
 
 #
 # Epoch
@@ -32,7 +40,7 @@ EPOCH = SezimalInteger('-2_1014_1212')  # -3_652_424_dec
 EPOCH_JULIAN_DATE = Sezimal('-1_0521_5450.3')  # -1_930_998.5_dec
 
 ISO_EPOCH = SezimalInteger('1')
-ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 01-01-01_dec GREGORIAN
+ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
 # ISO_YEAR_DIFF = SezimalInteger('10_0000')  # 7_776_dec
 ISO_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
 # ISO_YEAR_DIFF = SezimalInteger('12_0000')  # 10_368_dec
@@ -219,7 +227,7 @@ def _ordinal_to_year_month_day(ordinal_date):
 
     year += ISO_YEAR_DIFF
 
-    return year, month, day, day_in_year, week_in_year
+    return year, month, day, day_in_year, week_in_year, quarter, day_in_quarter, week_in_quarter, month_in_quarter
 
 
 def _check_date_fields(year, month, day):
@@ -240,13 +248,15 @@ def _check_date_fields(year, month, day):
 
 
 class SezimalDate():
-    __slots__ = '_year', '_month', '_day', '_hashcode', '_gregorian_date', '_is_leap', '_ordinal_date', '_weekday'
+    __slots__ = '_year', '_month', '_day', '_hashcode', '_gregorian_date', '_is_leap', '_ordinal_date', '_weekday', \
+        '_day_in_year', '_day_in_week', '_week_in_year', \
+        '_quarter', '_day_in_quarter', '_week_in_quarter', '_month_in_quarter'
 
     def __new__(cls, year: str | int | float | Decimal | Sezimal | SezimalInteger | _datetime.date,
                 month: str | int | float | Decimal | Sezimal | SezimalInteger = None,
                 day: str | int | float | Decimal | Sezimal | SezimalInteger = None):
         if month is None:
-            if type(year) in (_datetime.date, cls):
+            if type(year) in (_datetime.date, _datetime.datetime, cls):
                 return cls.fromordinal(Decimal(year.toordinal()))
 
             elif type(year) == str:
@@ -267,17 +277,26 @@ class SezimalDate():
         self._day = day
         self._ordinal_date = _year_month_day_to_ordinal(year, month, day)
 
+        y, m, d, diy, wiy, q, diq, wiq, miq = _ordinal_to_year_month_day(self._ordinal_date)
+
+        self._day_in_year = diy
+        self._week_in_year = wiy
+        self._quarter = q
+        self._day_in_quarter = diq
+        self._week_in_quarter = wiq
+        self._month_in_quarter = miq
+
         if self._ordinal_date <= 0:
-            self._weekday = SezimalInteger((self._ordinal_date.decimal - EPOCH.decimal) % SezimalInteger('11').decimal)
+            self._weekday = SezimalInteger(((self._ordinal_date.decimal - EPOCH.decimal) % SezimalInteger('11').decimal) + 1)
         else:
-            self._weekday = SezimalInteger((self._ordinal_date.decimal - 1) % SezimalInteger('11').decimal)
+            self._weekday = SezimalInteger(((self._ordinal_date.decimal - 1) % SezimalInteger('11').decimal) + 1)
 
         self._hashcode = -1
         self._is_leap = _is_leap(year)
 
         gregorian_date = ordinal_date_to_gregorian_year_month_day(int(self._ordinal_date.decimal))
 
-        if gregorian_date[0] >= 1 and gregorian_date[0] <= 10_000:
+        if gregorian_date[0] >= 1 and gregorian_date[0] <= 9_999:
             self._gregorian_date = _datetime.date(*gregorian_date)
         else:
             self._gregorian_date = gregorian_date
@@ -287,23 +306,24 @@ class SezimalDate():
     # Additional constructors
 
     @classmethod
-    def fromtimestamp(cls, timestamp):
+    def from_timestamp(cls, timestamp):
         "Construct a date from a POSIX timestamp (like time.time())."
         y, m, d, hh, mm, ss, weekday, jday, dst = _time.localtime(timestamp)
         x = _datetime.date(y, m, d)
         return cls.fromordinal(x.toordinal())
 
+    @property
     def timestamp(self):
         ordinal_date = self.toordinal()
-        timestamp = ordinal_date - POSIX_EPOCH
+        timestamp = ordinal_date.decimal - POSIX_EPOCH.decimal
         timestamp *= 24 * 60 * 60
-        return timestamp
+        return int(timestamp)
 
     @classmethod
     def today(cls):
         "Construct a date from time.time()."
         t = _time.time()
-        return cls.fromtimestamp(t)
+        return cls.from_timestamp(t)
 
     @classmethod
     def fromordinal(cls, ordinal_date):
@@ -312,7 +332,7 @@ class SezimalDate():
         except:
             ordinal_date = SezimalInteger(Decimal(ordinal_date))
 
-        y, m, d, diy, wiy = _ordinal_to_year_month_day(ordinal_date)
+        y, m, d, *x = _ordinal_to_year_month_day(ordinal_date)
         return cls(y, m, d)
 
     @classmethod
@@ -333,206 +353,11 @@ class SezimalDate():
     def ctime(self):
         return self.gregorian_date.ctime()
 
-    def _strftime_locale(self, format='%a'):
-        if format == '%a' or format == '%A':
-            weekday_names = {
-                SezimalInteger('0'): (locale.ABDAY_2, locale.DAY_2),
-                SezimalInteger('1'): (locale.ABDAY_3, locale.DAY_3),
-                SezimalInteger('2'): (locale.ABDAY_4, locale.DAY_4),
-                SezimalInteger('3'): (locale.ABDAY_5, locale.DAY_5),
-                SezimalInteger('4'): (locale.ABDAY_6, locale.DAY_6),
-                SezimalInteger('5'): (locale.ABDAY_7, locale.DAY_7),
-                SezimalInteger('10'): (locale.ABDAY_1, locale.DAY_1),
-            }
-
-            if format == '%a':
-                return locale.nl_langinfo(weekday_names[self.weekday()][0])
-            else:
-                return locale.nl_langinfo(weekday_names[self.weekday()][1])
-
-        elif format == '%b' or format == '%B':
-            month_names = {
-                SezimalInteger('1'): (locale.ABMON_1, locale.MON_1),
-                SezimalInteger('2'): (locale.ABMON_2, locale.MON_2),
-                SezimalInteger('3'): (locale.ABMON_3, locale.MON_3),
-                SezimalInteger('4'): (locale.ABMON_4, locale.MON_4),
-                SezimalInteger('5'): (locale.ABMON_5, locale.MON_5),
-                SezimalInteger('10'): (locale.ABMON_6, locale.MON_6),
-                SezimalInteger('11'): (locale.ABMON_7, locale.MON_7),
-                SezimalInteger('12'): (locale.ABMON_8, locale.MON_8),
-                SezimalInteger('13'): (locale.ABMON_9, locale.MON_9),
-                SezimalInteger('14'): (locale.ABMON_10, locale.MON_10),
-                SezimalInteger('15'): (locale.ABMON_11, locale.MON_11),
-                SezimalInteger('20'): (locale.ABMON_12, locale.MON_12),
-            }
-
-            if format == '%b':
-                return locale.nl_langinfo(month_names[self._month][0])
-            else:
-                return locale.nl_langinfo(month_names[self._month][1])
-
-        elif format == '%E' or format == '%EC':
-            used_locale = locale.getlocale()[0]
-
-            if 'pt_' in used_locale:
-                if self.year >= 0:
-                    return 'EHS'
-                else:
-                    return 'aEHS'
-
-            if self.year >= 0:
-                return 'SHE'
-            else:
-                return 'BSHE'
-
-    def _strftime_day_in_year(self):
-        y, m, d, diy, wiy = _ordinal_to_year_month_day(self.toordinal())
-        return str(diy)
-
-    def _strftime_week_in_year(self):
-        y, m, d, diy, wiy = _ordinal_to_year_month_day(self.toordinal())
-        return str(wiy)
-
-    def _strftime_weekday_number(self):
-        return str(self.weekday() + 1)
-
-    def _strftime_ordinal_suffix(self):
-        used_locale = locale.getlocale()[0]
-
-        if 'pt_' in used_locale:
-            if self.day != 1:
-                return ''
-
-            if used_locale == 'pt_BR':
-                return 'º'
-            else:
-                return '.º'
-
-        if str(self.day)[-1] == '1':
-            return 'st'
-        elif str(self.day)[-1] == '2':
-            return 'nd'
-        elif str(self.day)[-1] == '3':
-            return 'rd'
-        else:
-            return 'th'
-
-    def strftime(self, fmt):
-        #
-        # Deals with what is or may be different from the Gregorian Calendar
-        #
-        fmt = fmt.replace('%%', '__PERCENT__')
-
-        if '%a' in fmt:
-            fmt = fmt.replace('%a', self._strftime_locale('%a'))
-
-        if '%A' in fmt:
-            fmt = fmt.replace('%A', self._strftime_locale('%A'))
-
-        if '%d' in fmt:
-            fmt = fmt.replace('%d', str(self.day).zfill(2))
-
-        if '%-d' in fmt:
-            fmt = fmt.replace('%-d', str(self.day))
-
-        if '%e' in fmt:
-            fmt = fmt.replace('%e', str(self.day).rjust(2))
-
-        if '%-e' in fmt:
-            fmt = fmt.replace('%-e', str(self.day))
-
-        if '%o' in fmt:
-            fmt = fmt.replace('%o', self._strftime_ordinal_suffix())
-
-        if '%m' in fmt:
-            fmt = fmt.replace('%m', str(self.month).zfill(2))
-
-        if '%-m' in fmt:
-            fmt = fmt.replace('%-m', str(self.month))
-
-        if '%b' in fmt:
-            fmt = fmt.replace('%b', self._strftime_locale('%b'))
-
-        if '%h' in fmt:
-            fmt = fmt.replace('%h', self._strftime_locale('%b'))
-
-        if '%B' in fmt:
-            fmt = fmt.replace('%B', self._strftime_locale('%B'))
-
-        if '%y' in fmt:
-            fmt = fmt.replace('%y', str(self.year)[-2:])
-
-        if '%Y' in fmt:
-            fmt = fmt.replace('%Y', str(self.year))
-
-        if '%_Y' in fmt:
-            fmt = fmt.replace('%_Y', self.year.formatted_number)
-
-        if '%EC' in fmt:
-            fmt = fmt.replace('%EC', self._strftime_locale('%EC'))
-
-        if '%E' in fmt:
-            fmt = fmt.replace('%E', self._strftime_locale('%E'))
-
-        if '%j' in fmt:
-            fmt = fmt.replace('%j', self._strftime_day_in_year().zfill(4))
-
-        if '%-j' in fmt:
-            fmt = fmt.replace('%j', self._strftime_day_in_year())
-
-        if '%w' in fmt:
-            fmt = fmt.replace('%w', self._strftime_weekday_number())
-
-        if '%U' in fmt:
-            fmt = fmt.replace('%U', self._strftime_week_in_year().zfill(3))
-
-        if '%-U' in fmt:
-            fmt = fmt.replace('%U', self._strftime_week_in_year())
-
-        if '%W' in fmt:
-            fmt = fmt.replace('%W', self._strftime_week_in_year().zfill(3))
-
-        if '%-W' in fmt:
-            fmt = fmt.replace('%W', self._strftime_week_in_year())
-
-        if '%c' in fmt:
-            fmt = fmt.replace('%c', self.strftime(locale.nl_langinfo(locale.D_T_FMT)))
-            fmt = self.strftime(fmt)
-
-        if '%x' in fmt:
-            fmt = fmt.replace('%x', self.strftime(locale.nl_langinfo(locale.D_FMT)))
-            fmt = self.strftime(fmt)
-
-        if '%X' in fmt:
-            fmt = fmt.replace('%X', self.strftime(locale.nl_langinfo(locale.T_FMT)))
-            fmt = self.strftime(fmt)
-
-        if '%D' in fmt:
-            fmt = fmt.replace('%D', '%Y-%m-%d')
-            fmt = self.strftime(fmt)
-
-        if '%F' in fmt:
-            fmt = fmt.replace('%F', '%Y-%m-%d')
-            fmt = self.strftime(fmt)
-
-        if '%n' in fmt:
-            fmt = fmt.replace('%n', '\n')
-
-        if '%t' in fmt:
-            fmt = fmt.replace('%t', '\n')
-
-        fmt = fmt.replace('__PERCENT__', '%%')
-
-        if '%' not in fmt:
-            return fmt
-
-        return self.gregorian_date.strftime(fmt)
-
     def __format__(self, fmt):
         if not isinstance(fmt, str):
             raise TypeError("must be str, not %s" % type(fmt).__name__)
         if len(fmt) != 0:
-            return self.strftime(fmt)
+            return self.format(fmt)
         return str(self)
 
     def isoformat(self):
@@ -560,6 +385,403 @@ class SezimalDate():
         return bool(self._is_leap)
 
     @property
+    def weekday(self):
+        return self._weekday
+
+    @property
+    def week_in_month(self):
+        if self.day <= 11:
+            return SezimalInteger(1)
+        elif self.day <= 22:
+            return SezimalInteger(2)
+        elif self.day <= 33:
+            return SezimalInteger(3)
+        elif self.day <= 44:
+            return SezimalInteger(4)
+
+        return SezimalInteger(5)
+
+    @property
+    def day_in_year(self):
+        return self._day_in_year
+
+    @property
+    def week_in_year(self):
+        return self._week_in_year
+
+    @property
+    def quarter(self):
+        return self._quarter
+
+    @property
+    def day_in_quarter(self):
+        return self._day_in_quarter
+
+    @property
+    def week_in_quarter(self):
+        return self._week_in_quarter
+
+    @property
+    def month_in_quarter(self):
+        return self._month_in_quarter
+
+    @property
+    def weekday_name(self):
+        weekday = self.weekday
+
+        if weekday == 1:
+            return locale.nl_langinfo(locale.DAY_2)
+        elif weekday == 2:
+            return locale.nl_langinfo(locale.DAY_3)
+        elif weekday == 3:
+            return locale.nl_langinfo(locale.DAY_4)
+        elif weekday == 4:
+            return locale.nl_langinfo(locale.DAY_5)
+        elif weekday == 5:
+            return locale.nl_langinfo(locale.DAY_6)
+        elif weekday == 10:
+            return locale.nl_langinfo(locale.DAY_7)
+        elif weekday == 11:
+            return locale.nl_langinfo(locale.DAY_1)
+
+    @property
+    def weekday_abbreviated_name(self):
+        weekday = self.weekday
+
+        if weekday == 1:
+            return locale.nl_langinfo(locale.ABDAY_2)
+        elif weekday == 2:
+            return locale.nl_langinfo(locale.ABDAY_3)
+        elif weekday == 3:
+            return locale.nl_langinfo(locale.ABDAY_4)
+        elif weekday == 4:
+            return locale.nl_langinfo(locale.ABDAY_5)
+        elif weekday == 5:
+            return locale.nl_langinfo(locale.ABDAY_6)
+        elif weekday == 10:
+            return locale.nl_langinfo(locale.ABDAY_7)
+        elif weekday == 11:
+            return locale.nl_langinfo(locale.ABDAY_1)
+
+    def _month_name(self, month):
+        if month == 1:
+            return locale.nl_langinfo(locale.MON_1)
+        elif month == 2:
+            return locale.nl_langinfo(locale.MON_2)
+        elif month == 3:
+            return locale.nl_langinfo(locale.MON_3)
+        elif month == 4:
+            return locale.nl_langinfo(locale.MON_4)
+        elif month == 5:
+            return locale.nl_langinfo(locale.MON_5)
+        elif month == 10:
+            return locale.nl_langinfo(locale.MON_6)
+        elif month == 11:
+            return locale.nl_langinfo(locale.MON_7)
+        elif month == 12:
+            return locale.nl_langinfo(locale.MON_8)
+        elif month == 13:
+            return locale.nl_langinfo(locale.MON_9)
+        elif month == 14:
+            return locale.nl_langinfo(locale.MON_10)
+        elif month == 15:
+            return locale.nl_langinfo(locale.MON_11)
+        elif month == 20:
+            return locale.nl_langinfo(locale.MON_12)
+
+    @property
+    def month_name(self):
+        return self._month_name(self.month)
+
+    def _month_abbreviated_name(self, month):
+        if month == 1:
+            return locale.nl_langinfo(locale.ABMON_1)
+        elif month == 2:
+            return locale.nl_langinfo(locale.ABMON_2)
+        elif month == 3:
+            return locale.nl_langinfo(locale.ABMON_3)
+        elif month == 4:
+            return locale.nl_langinfo(locale.ABMON_4)
+        elif month == 5:
+            return locale.nl_langinfo(locale.ABMON_5)
+        elif month == 10:
+            return locale.nl_langinfo(locale.ABMON_6)
+        elif month == 11:
+            return locale.nl_langinfo(locale.ABMON_7)
+        elif month == 12:
+            return locale.nl_langinfo(locale.ABMON_8)
+        elif month == 13:
+            return locale.nl_langinfo(locale.ABMON_9)
+        elif month == 14:
+            return locale.nl_langinfo(locale.ABMON_10)
+        elif month == 15:
+            return locale.nl_langinfo(locale.ABMON_11)
+        elif month == 20:
+            return locale.nl_langinfo(locale.ABMON_12)
+
+    @property
+    def month_abbreviated_name(self):
+        return self._month_abbreviated_name(self.month)
+
+    @property
+    def era_name(self):
+        used_locale = locale.getlocale()[0]
+
+        if 'pt_' in used_locale:
+            if self.year >= 0:
+                return 'EHS'
+            else:
+                return 'aEHS'
+
+        elif 'bz_' in used_locale:
+            if self.year >= 0:
+                return 'ÈUS'
+            else:
+                return 'aÈUS'
+
+        if self.year >= 0:
+            return 'SHE'
+        else:
+            return 'BSHE'
+
+    def _day_ordinal_suffix(self, day):
+        used_locale = locale.getlocale()[0]
+
+        if 'pt_' in used_locale:
+            if day != 1:
+                return ''
+
+            if used_locale == 'pt_BR':
+                return 'º'
+            else:
+                return '.º'
+
+        elif 'bz_' in used_locale:
+            if day != 1:
+                return ''
+
+            return 'ᵘ̱'
+
+        if str(day).endswith('1'):
+            return 'st'
+        elif str(day).endswith('2'):
+            return 'nd'
+        elif str(day).endswith('3'):
+            return 'rd'
+
+        return 'th'
+
+    @property
+    def day_ordinal_suffix(self):
+        return self._day_ordinal_suffix(self.day)
+
+    def _apply_format(self, fmt, token, value, size=None, compressed=False, dedicated_digits=False):
+        if token not in fmt:
+            return fmt
+
+        value = getattr(self, value, 0)
+
+        if '*' in token and (not value):
+            fmt = fmt.replace(token, '')
+        else:
+            if compressed:
+                value = str(value)
+
+                if size:
+                    value = value.zfill(int(SezimalInteger(size)))
+
+                value = sezimal_compression(value)
+
+                if dedicated_digits:
+                    value = default_compressed_to_dedicated_digits(value)
+                else:
+                    value = default_compressed_to_regularized_digits(value)
+
+            else:
+                value = str(value)
+
+                if size:
+                    value = value.zfill(int(SezimalInteger(size)))
+
+                if dedicated_digits:
+                    value = default_to_dedicated_digits(value)
+
+            fmt = fmt.replace(token, value)
+
+        return fmt
+
+    def format(self, fmt: str = '#y-#m-#d', lang=None, skip_strftime=False):
+        fmt = fmt.replace('##', '__HASHTAG__')
+
+        _LANG = None
+        if lang:
+            lang = lang.lower().replace('-', '_')
+
+            if hasattr(_ALL_LANG, lang):
+                _LANG = getattr(_ALL_LANG, lang)
+            elif hasattr(_ALL_LANG, lang[:2]):
+                _LANG = getattr(_ALL_LANG, lang[:2])
+
+        #
+        # Let’s deal first with the numeric formats
+        #
+        for character, value, size in [
+            ['wM', 'week_in_month', 1],
+            ['dQ', 'day_in_quarter', 3],
+            ['wQ', 'week_in_quarter', 2],
+            ['mQ', 'month_in_quarter', 1],
+            ['dY', 'day_in_year', 4],
+            ['wY', 'week_in_year', 3],
+
+            ['d', 'day', 2],
+            ['m', 'month', 2],
+            ['y', 'year', 10],
+            ['w', 'weekday', 1],
+            ['q', 'quarter', 1],
+        ]:
+            fmt = self._apply_format(fmt, f'#*-${character}', value)
+            fmt = self._apply_format(fmt, f'#*{character}', value, size)
+            fmt = self._apply_format(fmt, f'#-{character}', value)
+            fmt = self._apply_format(fmt, f'#{character}', value, size)
+
+            fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
+
+            fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
+            fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
+            fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
+            fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
+
+            fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
+
+        #
+        # Formatted year number
+        #
+        for separator in '''_,.'’ʼ˙\u0020\u00a0\u2022\u2009\u200f\u200a\u202f''':
+            if f'#{separator}y' in fmt:
+                fmt = fmt.replace(f'#{separator}y', self.year.formatted_number.replace('_', separator))
+
+            if f'#!{separator}y' in fmt:
+                fmt = fmt.replace(f'#!{separator}y', default_to_dedicated_digits( self.year.formatted_number.replace('_', separator)))
+
+        #
+        # And now, the text formats
+        #
+        if '#M' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#M', self.month_name)
+            else:
+                fmt = fmt.replace('#M', _LANG.month_name(self.month))
+
+        if '#@M' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#@M', self.month_abbreviated_name)
+            else:
+                fmt = fmt.replace('#@M', _LANG.month_abbreviated_name(self.month))
+
+        if '#W' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#W', self.weekday_name)
+            else:
+                fmt = fmt.replace('#W', _LANG.weekday_name(self.weekday))
+
+        if '#@W' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#@W', self.weekday_abbreviated_name)
+            else:
+                fmt = fmt.replace('#@W', _LANG.weekday_abbreviated_name(self.weekday))
+
+        if '#o' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#o', self.day_ordinal_suffix)
+            else:
+                fmt = fmt.replace('#o', _LANG.day_ordinal_suffix(self.day))
+
+        if '#E' in fmt:
+            if _LANG is None:
+                fmt = fmt.replace('#E', self.era_name)
+            else:
+                fmt = fmt.replace('#E', _LANG.era_name(self.year))
+
+        fmt = fmt.replace('__HASHTAG__', '#')
+
+        #
+        # Some very basic formatting for Gregorian years below
+        # Python’s minimum year number
+        #
+        if '%' in fmt:
+            fmt = fmt.replace('%%', '__PERCENT__')
+
+            if '%A' in fmt:
+                if _LANG is None:
+                    fmt = fmt.replace('%A', self.weekday_name)
+                else:
+                    fmt = fmt.replace('%A', _LANG.weekday_name(self.weekday))
+
+            if '%a' in fmt:
+                if _LANG is None:
+                    fmt = fmt.replace('%a', self.weekday_abbreviated_name)
+                else:
+                    fmt = fmt.replace('%a', _LANG.weekday_abbreviated_name(self.weekday))
+
+            if '%d' in fmt:
+                fmt = fmt.replace('%d', str(self.gregorian_day).zfill(2))
+
+            if '%-d' in fmt:
+                fmt = fmt.replace('%-d', str(self.gregorian_day))
+
+            if '%e' in fmt:
+                fmt = fmt.replace('%e', str(self.gregorian_day).rjust(2))
+
+            if '%-e' in fmt:
+                fmt = fmt.replace('%-e', str(self.gregorian_day))
+
+            if '%o' in fmt:
+                if _LANG is None:
+                    fmt = fmt.replace('%o', self._day_ordinal_suffix(Decimal(self.gregorian_day)))
+                else:
+                    fmt = fmt.replace('%o', _LANG.day_ordinal_suffix(Decimal(self.gregorian_day)))
+
+            if '%m' in fmt:
+                fmt = fmt.replace('%m', str(self.gregorian_month).zfill(2))
+
+            if '%-m' in fmt:
+                fmt = fmt.replace('%-m', str(self.gregorian_month))
+
+            if '%B' in fmt:
+                if _LANG is None:
+                    fmt = fmt.replace('%B', self._month_name(Decimal(self.gregorian_month)))
+                else:
+                    fmt = fmt.replace('%B', _LANG.month_name(Decimal(self.gregorian_month)))
+
+            if '%b' in fmt:
+                if _LANG is None:
+                    fmt = fmt.replace('%b', self._month_abbreviated_name(Decimal(self.gregorian_month)))
+                else:
+                    fmt = fmt.replace('%b', _LANG.month_abbreviated_name(Decimal(self.gregorian_month)))
+
+            if '%y' in fmt:
+                fmt = fmt.replace('%y', str(self.gregorian_year))
+
+            if '%Y' in fmt:
+                fmt = fmt.replace('%Y', str(self.gregorian_year).zfill(4))
+
+            fmt = fmt.replace('__PERCENT__', '%%')
+
+            if not skip_strftime:
+                if type(self.gregorian_date) == _datetime.date:
+                    return self.gregorian_date.strftime(fmt)
+                else:
+                    fmt = fmt.replace('__PERCENT__', '%')
+
+        return fmt
+
+    @property
     def gregorian_year(self):
         if type(self._gregorian_date) in (list, tuple):
             return self._gregorian_date[0]
@@ -580,12 +802,14 @@ class SezimalDate():
 
         return self.gregorian_date.day
 
+    @property
     def gregorian_isoformat(self):
         if self.gregorian_year > 9_999:
             return f'+{str(self.gregorian_year).zfill(4)}-{str(self.gregorian_month).zfill(2)}-{str(self.gregorian_day).zfill(2)}'
         else:
             return f'{str(self.gregorian_year).zfill(4)}-{str(self.gregorian_month).zfill(2)}-{str(self.gregorian_day).zfill(2)}'
 
+    @property
     def gregorian_holocene_date(self):
         return (self.gregorian_holocene_year, self.gregorian_holocene_month, self.gregorian_holocene_day)
 
@@ -601,9 +825,11 @@ class SezimalDate():
     def gregorian_holocene_day(self):
         return self.gregorian_day
 
+    @property
     def gregorian_holocene_isoformat(self):
         return f'{str(self.gregorian_holocene_year).zfill(5)}-{str(self.gregorian_holocene_month).zfill(2)}-{str(self.gregorian_holocene_day).zfill(2)}'
 
+    @property
     def symmetric_date(self):
         return (self.symmetric_year, self.symmetric_month, self.symmetric_day)
 
@@ -619,9 +845,11 @@ class SezimalDate():
     def symmetric_day(self):
         return int(self.day)
 
+    @property
     def symmetric_isoformat(self):
         return f'{str(self.symmetric_year).zfill(4)}-{str(self.symmetric_month).zfill(2)}-{str(self.symmetric_day).zfill(2)}'
 
+    @property
     def symmetric_holocene_date(self):
         return (self.symmetric_holocene_year, self.symmetric_holocene_month, self.symmetric_holocene_day)
 
@@ -637,6 +865,7 @@ class SezimalDate():
     def symmetric_holocene_day(self):
         return int(self.day)
 
+    @property
     def symmetric_holocene_isoformat(self):
         return f'{str(self.symmetric_holocene_year).zfill(5)}-{str(self.symmetric_holocene_month).zfill(2)}-{str(self.symmetric_holocene_day).zfill(2)}'
 
@@ -649,6 +878,14 @@ class SezimalDate():
     @property
     def ordinal_date(self):
         return self._ordinal_date
+
+    @property
+    def isocalendar(self):
+        return self.gregorian_date.isocalendar()
+
+    @property
+    def julian_date(self):
+        return self.ordinal_date + ISO_EPOCH_JULIAN_DATE
 
     def replace(self, year=None, month=None, day=None):
         """Return a new date with new values for the specified fields."""
@@ -726,14 +963,6 @@ class SezimalDate():
             return timedelta(days1 - days2)
         return NotImplemented
 
-    def weekday(self):
-        return self._weekday
-
-    def isoweekday(self):
-        return self._weekday + 1
-
-    def isocalendar(self):
-        return self.gregorian_date.isocalendar()
 
     # Pickle support.
 
@@ -747,8 +976,14 @@ class SezimalDate():
     def __reduce__(self):
         return (self.__class__, self._getstate())
 
-    def to_julian_date(self):
-        return self.ordinal_date + ISO_EPOCH_JULIAN_DATE
+    @property
+    def as_agrimas(self):
+        return self.ordinal_date * 100_0000
+
+    @property
+    def as_seconds(self):
+        seconds = self.as_agrimas * AGRIMA_TO_SECOND
+        return seconds.decimal
 
 
 SezimalDate.min = SezimalDate(1, 1, 1)
