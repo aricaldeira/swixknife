@@ -19,3 +19,5 @@ woff2_compress NotoSans-Regular.ttf
 woff2_compress NotoSansMath-Regular.ttf
 woff2_compress NotoSansSymbols-Regular.ttf
 woff2_compress NotoSansSymbols2-Regular.ttf
+
+woff2_compress DSEG14Classic-Regular.ttf
