@@ -2059,44 +2059,58 @@ static const char __pyx_k_36[] = " \303\267 36";
 static const char __pyx_k__2[] = "_";
 static const char __pyx_k__3[] = "-";
 static const char __pyx_k__4[] = "%";
-static const char __pyx_k__6[] = "\342\200\260";
-static const char __pyx_k__8[] = "\342\200\261";
+static const char __pyx_k__5[] = "\363\261\250\200";
+static const char __pyx_k__6[] = "\342\240\277";
+static const char __pyx_k__8[] = "\363\261\250\201";
+static const char __pyx_k__9[] = "\342\241\246";
+static const char __pyx_k_bz[] = "bz";
 static const char __pyx_k_eo[] = "eo";
 static const char __pyx_k_ln[] = "ln";
 static const char __pyx_k_216[] = " \303\267 216";
 static const char __pyx_k_ADD[] = " __ADD__ ";
 static const char __pyx_k_MOD[] = "__MOD__";
-static const char __pyx_k__10[] = ".";
-static const char __pyx_k__11[] = "'";
-static const char __pyx_k__12[] = "')";
-static const char __pyx_k__13[] = ")";
-static const char __pyx_k__15[] = "*";
-static const char __pyx_k__16[] = "+";
-static const char __pyx_k__17[] = "\342\210\222";
-static const char __pyx_k__18[] = "\303\267";
-static const char __pyx_k__19[] = "/";
-static const char __pyx_k__20[] = "^";
-static const char __pyx_k__21[] = "**";
-static const char __pyx_k__22[] = "\303\227";
-static const char __pyx_k__23[] = "\302\262";
-static const char __pyx_k__24[] = "\302\263";
-static const char __pyx_k__25[] = "(";
-static const char __pyx_k__26[] = "\317\200";
-static const char __pyx_k__27[] = "\317\204";
-static const char __pyx_k__28[] = "\317\206";
-static const char __pyx_k__29[] = "|";
-static const char __pyx_k__30[] = " + ";
-static const char __pyx_k__31[] = " \342\210\222 ";
-static const char __pyx_k__32[] = " \303\267 ";
-static const char __pyx_k__33[] = " \303\227 ";
-static const char __pyx_k__34[] = " ^ ";
-static const char __pyx_k__66[] = "?";
+static const char __pyx_k__11[] = "\363\261\250\202";
+static const char __pyx_k__12[] = "\342\241\223";
+static const char __pyx_k__14[] = "\363\261\250\203";
+static const char __pyx_k__15[] = "\342\241\253";
+static const char __pyx_k__17[] = "\363\261\250\204";
+static const char __pyx_k__18[] = "\342\241\233";
+static const char __pyx_k__20[] = "\363\261\250\205";
+static const char __pyx_k__21[] = "\342\241\273";
+static const char __pyx_k__23[] = ".";
+static const char __pyx_k__25[] = "\342\200\260";
+static const char __pyx_k__27[] = "\342\200\261";
+static const char __pyx_k__32[] = "'";
+static const char __pyx_k__33[] = "')";
+static const char __pyx_k__34[] = ")";
+static const char __pyx_k__36[] = "*";
+static const char __pyx_k__37[] = "+";
+static const char __pyx_k__38[] = "\342\210\222";
+static const char __pyx_k__39[] = "\303\267";
+static const char __pyx_k__40[] = "/";
+static const char __pyx_k__41[] = "^";
+static const char __pyx_k__42[] = "**";
+static const char __pyx_k__43[] = "\303\227";
+static const char __pyx_k__44[] = "\302\262";
+static const char __pyx_k__45[] = "\302\263";
+static const char __pyx_k__46[] = "(";
+static const char __pyx_k__47[] = "\317\200";
+static const char __pyx_k__48[] = "\317\204";
+static const char __pyx_k__49[] = "\317\206";
+static const char __pyx_k__50[] = "|";
+static const char __pyx_k__51[] = " + ";
+static const char __pyx_k__52[] = " \342\210\222 ";
+static const char __pyx_k__53[] = " \303\267 ";
+static const char __pyx_k__54[] = " \303\227 ";
+static const char __pyx_k__55[] = " ^ ";
+static const char __pyx_k__94[] = "?";
 static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_exp[] = "exp";
 static const char __pyx_k_o_2[] = "|o";
 static const char __pyx_k_str[] = "str";
 static const char __pyx_k_1296[] = " \303\267 1296";
+static const char __pyx_k_36_2[] = " / 36";
 static const char __pyx_k_CUBE[] = " __CUBE__ ";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_bool[] = "bool";
@@ -2109,12 +2123,14 @@ static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_text[] = "text";
+static const char __pyx_k_216_2[] = " / 216";
 static const char __pyx_k_ADD_2[] = "__ADD__";
 static const char __pyx_k_POWER[] = " __POWER__ ";
 static const char __pyx_k_az_AZ[] = "az-AZ";
 static const char __pyx_k_be_BY[] = "be-BY";
 static const char __pyx_k_bg_BG[] = "bg-BG";
 static const char __pyx_k_bs_BA[] = "bs-BA";
+static const char __pyx_k_bz_BR[] = "bz-BR";
 static const char __pyx_k_ca_ES[] = "ca-ES";
 static const char __pyx_k_cs_CZ[] = "cs-CZ";
 static const char __pyx_k_da_DK[] = "da-DK";
@@ -2180,6 +2196,7 @@ static const char __pyx_k_tt_RU[] = "tt-RU";
 static const char __pyx_k_uk_UA[] = "uk-UA";
 static const char __pyx_k_vi_VN[] = "vi-VN";
 static const char __pyx_k_wo_SN[] = "wo-SN";
+static const char __pyx_k_1296_2[] = " / 1296";
 static const char __pyx_k_CUBE_2[] = "__CUBE__";
 static const char __pyx_k_DIVIDE[] = " __DIVIDE__ ";
 static const char __pyx_k_PERNIF[] = " __PERNIF__ ";
@@ -2229,7 +2246,8 @@ static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_precision[] = "precision";
 static const char __pyx_k_CONSTANT_E[] = " __CONSTANT_E__ ";
 static const char __pyx_k_MULTIPLY_2[] = "__MULTIPLY__";
-static const char __pyx_k_PERUNEXIAN[] = " __PERUNEXIAN__ ";
+static const char __pyx_k_PERSIXNIFF[] = "_PERSIXNIFF";
+static const char __pyx_k_PERUNEXIAN[] = "_PERUNEXIAN";
 static const char __pyx_k_SUBTRACT_2[] = "__SUBTRACT__";
 static const char __pyx_k_calculator[] = "calculator";
 static const char __pyx_k_expression[] = "expression";
@@ -2240,7 +2258,8 @@ static const char __pyx_k_Sezimal_2_2[] = "**Sezimal('2')";
 static const char __pyx_k_decimal_exp[] = "decimal_exp";
 static const char __pyx_k_precision_2[] = "_precision";
 static const char __pyx_k_CONSTANT_TAU[] = "__CONSTANT_TAU__";
-static const char __pyx_k_PERUNEXIAN_2[] = "__PERUNEXIAN__";
+static const char __pyx_k_PERUNEXIAN_2[] = " __PERUNEXIAN__ ";
+static const char __pyx_k_PERUNEXIAN_3[] = "__PERUNEXIAN__";
 static const char __pyx_k_Sezimal_1000[] = "/Sezimal('1000')";
 static const char __pyx_k_expression_2[] = "_expression";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
@@ -2276,23 +2295,30 @@ static const char __pyx_k_units_conversions[] = "units.conversions";
 static const char __pyx_k_LEFT_PARENTHESIS_2[] = " __LEFT_PARENTHESIS__ ";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_decimal_expression[] = "_decimal_expression";
+static const char __pyx_k_display_11_segment[] = "display_11_segment";
 static const char __pyx_k_parenthesis_opened[] = "parenthesis_opened";
 static const char __pyx_k_prepare_expression[] = "_prepare_expression";
 static const char __pyx_k_RIGHT_PARENTHESIS_2[] = " __RIGHT_PARENTHESIS__ ";
 static const char __pyx_k_prepared_expression[] = "_prepared_expression";
+static const char __pyx_k_decimal_expression_2[] = "decimal_expression";
 static const char __pyx_k_CONSTANT_GOLDEN_RATIO[] = "__CONSTANT_GOLDEN_RATIO__";
 static const char __pyx_k_prepared_expression_2[] = "prepared_expression";
 static const char __pyx_k_SezimalCalculator_lang[] = "SezimalCalculator.lang";
 static const char __pyx_k_typographical_negative[] = "typographical_negative";
 static const char __pyx_k_LOCALES_COMMA_SEPARATOR[] = "_LOCALES_COMMA_SEPARATOR";
 static const char __pyx_k_SezimalCalculator___init[] = "SezimalCalculator.__init__";
+static const char __pyx_k_display_dedicated_digits[] = "display_dedicated_digits";
 static const char __pyx_k_fraction_group_separator[] = "fraction_group_separator";
 static const char __pyx_k_SezimalCalculator_decimal[] = "SezimalCalculator.decimal";
 static const char __pyx_k_SezimalCalculator_display[] = "SezimalCalculator.display";
+static const char __pyx_k_format_decimal_expression[] = "_format_decimal_expression";
+static const char __pyx_k_decimal_display_11_segment[] = "decimal_display_11_segment";
 static const char __pyx_k_decimal_formatted_response[] = "decimal_formatted_response";
 static const char __pyx_k_sezimal_formatted_response[] = "sezimal_formatted_response";
 static const char __pyx_k_SezimalCalculator_calculate[] = "SezimalCalculator.calculate";
 static const char __pyx_k_SezimalCalculator_precision[] = "SezimalCalculator.precision";
+static const char __pyx_k_default_to_dedicated_digits[] = "default_to_dedicated_digits";
 static const char __pyx_k_SezimalCalculator_expression[] = "SezimalCalculator.expression";
 static const char __pyx_k_LOCALES_SPACE_GROUP_SEPARATOR[] = "_LOCALES_SPACE_GROUP_SEPARATOR";
 static const char __pyx_k_SEPARATOR_NARROW_NOBREAK_SPACE[] = "SEPARATOR_NARROW_NOBREAK_SPACE";
@@ -2301,9 +2327,15 @@ static const char __pyx_k_SezimalCalculator__format_decima[] = "SezimalCalculato
 static const char __pyx_k_SezimalCalculator__format_sezima[] = "SezimalCalculator._format_sezimal";
 static const char __pyx_k_SezimalCalculator__prepare_expre[] = "SezimalCalculator._prepare_expression";
 static const char __pyx_k_SezimalCalculator_decimal_displa[] = "SezimalCalculator.decimal_display";
+static const char __pyx_k_SezimalCalculator_display_11_seg[] = "SezimalCalculator.display_11_segment";
+static const char __pyx_k_SezimalCalculator_display_dedica[] = "SezimalCalculator.display_dedicated_digits";
 static const char __pyx_k_SezimalCalculator_eval_expressio[] = "SezimalCalculator.eval_expression";
+static const char __pyx_k_display_11_segment_dedicated_dig[] = "display_11_segment_dedicated_digits";
 static const char __pyx_k_int_str_Decimal_Sezimal_SezimalI[] = "int | str | Decimal | Sezimal | SezimalInteger";
 static const char __pyx_k_swixknife_swixknife_calculator_c[] = "swixknife.swixknife.calculator.calculator";
+static const char __pyx_k_SezimalCalculator__format_decima_2[] = "SezimalCalculator._format_decimal_expression";
+static const char __pyx_k_SezimalCalculator_decimal_displa_2[] = "SezimalCalculator.decimal_display_11_segment";
+static const char __pyx_k_SezimalCalculator_display_11_seg_2[] = "SezimalCalculator.display_11_segment_dedicated_digits";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_expression, PyObject *__pyx_v_lang); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_2expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
@@ -2315,12 +2347,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
 static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_14lang(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_16lang(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lang); /* proto */
 static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_18display(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20decimal_display(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22calculate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24_format_sezimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26_format_decimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28_prepare_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30eval_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20display_dedicated_digits(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22display_11_segment(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24display_11_segment_dedicated_digits(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26decimal_display(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28decimal_display_11_segment(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30calculate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_32_format_sezimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_34_format_decimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_36_format_decimal_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_38_prepare_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_40eval_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2352,9 +2389,12 @@ typedef struct {
   #endif
   PyObject *__pyx_kp_u_;
   PyObject *__pyx_kp_u_1296;
+  PyObject *__pyx_kp_u_1296_2;
   PyObject *__pyx_kp_u_1e;
   PyObject *__pyx_kp_u_216;
+  PyObject *__pyx_kp_u_216_2;
   PyObject *__pyx_kp_u_36;
+  PyObject *__pyx_kp_u_36_2;
   PyObject *__pyx_kp_u_ADD;
   PyObject *__pyx_n_u_ADD_2;
   PyObject *__pyx_kp_u_CONSTANT_E;
@@ -2382,9 +2422,11 @@ typedef struct {
   PyObject *__pyx_kp_u_PERNIF;
   PyObject *__pyx_n_u_PERNIF_2;
   PyObject *__pyx_kp_u_PERSIXNIF;
+  PyObject *__pyx_n_s_PERSIXNIFF;
   PyObject *__pyx_n_u_PERSIXNIF_2;
-  PyObject *__pyx_kp_u_PERUNEXIAN;
-  PyObject *__pyx_n_u_PERUNEXIAN_2;
+  PyObject *__pyx_n_s_PERUNEXIAN;
+  PyObject *__pyx_kp_u_PERUNEXIAN_2;
+  PyObject *__pyx_n_u_PERUNEXIAN_3;
   PyObject *__pyx_kp_u_POWER;
   PyObject *__pyx_n_u_POWER_2;
   PyObject *__pyx_n_u_RIGHT_PARENTHESIS;
@@ -2401,12 +2443,17 @@ typedef struct {
   PyObject *__pyx_n_u_SezimalCalculator;
   PyObject *__pyx_n_s_SezimalCalculator___init;
   PyObject *__pyx_n_s_SezimalCalculator__format_decima;
+  PyObject *__pyx_n_s_SezimalCalculator__format_decima_2;
   PyObject *__pyx_n_s_SezimalCalculator__format_sezima;
   PyObject *__pyx_n_s_SezimalCalculator__prepare_expre;
   PyObject *__pyx_n_s_SezimalCalculator_calculate;
   PyObject *__pyx_n_s_SezimalCalculator_decimal;
   PyObject *__pyx_n_s_SezimalCalculator_decimal_displa;
+  PyObject *__pyx_n_s_SezimalCalculator_decimal_displa_2;
   PyObject *__pyx_n_s_SezimalCalculator_display;
+  PyObject *__pyx_n_s_SezimalCalculator_display_11_seg;
+  PyObject *__pyx_n_s_SezimalCalculator_display_11_seg_2;
+  PyObject *__pyx_n_s_SezimalCalculator_display_dedica;
   PyObject *__pyx_n_s_SezimalCalculator_eval_expressio;
   PyObject *__pyx_n_s_SezimalCalculator_expression;
   PyObject *__pyx_n_s_SezimalCalculator_lang;
@@ -2418,37 +2465,49 @@ typedef struct {
   PyObject *__pyx_kp_u_Sezimal_2;
   PyObject *__pyx_kp_u_Sezimal_2_2;
   PyObject *__pyx_kp_u_Sezimal_3;
-  PyObject *__pyx_kp_u__10;
   PyObject *__pyx_kp_u__11;
   PyObject *__pyx_kp_u__12;
-  PyObject *__pyx_kp_u__13;
-  PyObject *__pyx_n_s__15;
+  PyObject *__pyx_kp_u__14;
   PyObject *__pyx_kp_u__15;
-  PyObject *__pyx_kp_u__16;
   PyObject *__pyx_kp_u__17;
   PyObject *__pyx_kp_u__18;
-  PyObject *__pyx_kp_u__19;
   PyObject *__pyx_n_u__2;
   PyObject *__pyx_kp_u__20;
   PyObject *__pyx_kp_u__21;
-  PyObject *__pyx_kp_u__22;
-  PyObject *__pyx_n_u__23;
-  PyObject *__pyx_n_u__24;
+  PyObject *__pyx_kp_u__23;
   PyObject *__pyx_kp_u__25;
-  PyObject *__pyx_n_u__26;
-  PyObject *__pyx_n_u__27;
-  PyObject *__pyx_n_u__28;
-  PyObject *__pyx_kp_u__29;
+  PyObject *__pyx_kp_u__27;
   PyObject *__pyx_kp_u__3;
-  PyObject *__pyx_kp_u__30;
-  PyObject *__pyx_kp_u__31;
   PyObject *__pyx_kp_u__32;
   PyObject *__pyx_kp_u__33;
   PyObject *__pyx_kp_u__34;
+  PyObject *__pyx_n_s__36;
+  PyObject *__pyx_kp_u__36;
+  PyObject *__pyx_kp_u__37;
+  PyObject *__pyx_kp_u__38;
+  PyObject *__pyx_kp_u__39;
   PyObject *__pyx_kp_u__4;
+  PyObject *__pyx_kp_u__40;
+  PyObject *__pyx_kp_u__41;
+  PyObject *__pyx_kp_u__42;
+  PyObject *__pyx_kp_u__43;
+  PyObject *__pyx_n_u__44;
+  PyObject *__pyx_n_u__45;
+  PyObject *__pyx_kp_u__46;
+  PyObject *__pyx_n_u__47;
+  PyObject *__pyx_n_u__48;
+  PyObject *__pyx_n_u__49;
+  PyObject *__pyx_kp_u__5;
+  PyObject *__pyx_kp_u__50;
+  PyObject *__pyx_kp_u__51;
+  PyObject *__pyx_kp_u__52;
+  PyObject *__pyx_kp_u__53;
+  PyObject *__pyx_kp_u__54;
+  PyObject *__pyx_kp_u__55;
   PyObject *__pyx_kp_u__6;
-  PyObject *__pyx_n_s__66;
   PyObject *__pyx_kp_u__8;
+  PyObject *__pyx_kp_u__9;
+  PyObject *__pyx_n_s__94;
   PyObject *__pyx_n_s_all;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_kp_u_az_AZ;
@@ -2457,6 +2516,8 @@ typedef struct {
   PyObject *__pyx_kp_u_bg_BG;
   PyObject *__pyx_n_s_bool;
   PyObject *__pyx_kp_u_bs_BA;
+  PyObject *__pyx_n_u_bz;
+  PyObject *__pyx_kp_u_bz_BR;
   PyObject *__pyx_kp_u_c;
   PyObject *__pyx_kp_u_ca_ES;
   PyObject *__pyx_n_s_calculate;
@@ -2471,8 +2532,11 @@ typedef struct {
   PyObject *__pyx_n_s_decimal;
   PyObject *__pyx_n_s_decimal_2;
   PyObject *__pyx_n_s_decimal_display;
+  PyObject *__pyx_n_s_decimal_display_11_segment;
   PyObject *__pyx_n_s_decimal_display_2;
   PyObject *__pyx_n_s_decimal_exp;
+  PyObject *__pyx_n_s_decimal_expression;
+  PyObject *__pyx_n_s_decimal_expression_2;
   PyObject *__pyx_n_s_decimal_format;
   PyObject *__pyx_n_s_decimal_formatted_response;
   PyObject *__pyx_n_u_decimal_places;
@@ -2481,9 +2545,13 @@ typedef struct {
   PyObject *__pyx_n_u_decimal_separator;
   PyObject *__pyx_n_s_dedicated_digits;
   PyObject *__pyx_n_u_dedicated_digits;
+  PyObject *__pyx_n_s_default_to_dedicated_digits;
   PyObject *__pyx_n_s_dict;
   PyObject *__pyx_n_s_display;
+  PyObject *__pyx_n_s_display_11_segment;
+  PyObject *__pyx_n_s_display_11_segment_dedicated_dig;
   PyObject *__pyx_n_s_display_2;
+  PyObject *__pyx_n_s_display_dedicated_digits;
   PyObject *__pyx_n_s_doc;
   PyObject *__pyx_n_u_e;
   PyObject *__pyx_kp_u_el_CY;
@@ -2506,6 +2574,7 @@ typedef struct {
   PyObject *__pyx_kp_u_fi_FI;
   PyObject *__pyx_n_s_final_exp;
   PyObject *__pyx_n_s_format_decimal;
+  PyObject *__pyx_n_s_format_decimal_expression;
   PyObject *__pyx_n_s_format_sezimal;
   PyObject *__pyx_kp_u_fr_BE;
   PyObject *__pyx_kp_u_fr_FR;
@@ -2617,41 +2686,57 @@ typedef struct {
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_3;
   PyObject *__pyx_int_4;
-  PyObject *__pyx_tuple__5;
   PyObject *__pyx_tuple__7;
-  PyObject *__pyx_tuple__9;
-  PyObject *__pyx_tuple__14;
+  PyObject *__pyx_tuple__10;
+  PyObject *__pyx_tuple__13;
+  PyObject *__pyx_tuple__16;
+  PyObject *__pyx_tuple__19;
+  PyObject *__pyx_tuple__22;
+  PyObject *__pyx_tuple__24;
+  PyObject *__pyx_tuple__26;
+  PyObject *__pyx_tuple__28;
+  PyObject *__pyx_tuple__29;
+  PyObject *__pyx_tuple__30;
+  PyObject *__pyx_tuple__31;
   PyObject *__pyx_tuple__35;
-  PyObject *__pyx_tuple__37;
-  PyObject *__pyx_tuple__38;
-  PyObject *__pyx_tuple__40;
-  PyObject *__pyx_tuple__43;
-  PyObject *__pyx_tuple__45;
-  PyObject *__pyx_tuple__47;
-  PyObject *__pyx_tuple__50;
-  PyObject *__pyx_tuple__52;
-  PyObject *__pyx_tuple__55;
-  PyObject *__pyx_tuple__57;
+  PyObject *__pyx_tuple__56;
+  PyObject *__pyx_tuple__58;
   PyObject *__pyx_tuple__59;
   PyObject *__pyx_tuple__61;
-  PyObject *__pyx_tuple__62;
   PyObject *__pyx_tuple__64;
-  PyObject *__pyx_codeobj__36;
-  PyObject *__pyx_codeobj__39;
-  PyObject *__pyx_codeobj__41;
-  PyObject *__pyx_codeobj__42;
-  PyObject *__pyx_codeobj__44;
-  PyObject *__pyx_codeobj__46;
-  PyObject *__pyx_codeobj__48;
-  PyObject *__pyx_codeobj__49;
-  PyObject *__pyx_codeobj__51;
-  PyObject *__pyx_codeobj__53;
-  PyObject *__pyx_codeobj__54;
-  PyObject *__pyx_codeobj__56;
-  PyObject *__pyx_codeobj__58;
+  PyObject *__pyx_tuple__66;
+  PyObject *__pyx_tuple__68;
+  PyObject *__pyx_tuple__71;
+  PyObject *__pyx_tuple__73;
+  PyObject *__pyx_tuple__77;
+  PyObject *__pyx_tuple__81;
+  PyObject *__pyx_tuple__83;
+  PyObject *__pyx_tuple__85;
+  PyObject *__pyx_tuple__87;
+  PyObject *__pyx_tuple__89;
+  PyObject *__pyx_tuple__90;
+  PyObject *__pyx_tuple__92;
+  PyObject *__pyx_codeobj__57;
   PyObject *__pyx_codeobj__60;
+  PyObject *__pyx_codeobj__62;
   PyObject *__pyx_codeobj__63;
   PyObject *__pyx_codeobj__65;
+  PyObject *__pyx_codeobj__67;
+  PyObject *__pyx_codeobj__69;
+  PyObject *__pyx_codeobj__70;
+  PyObject *__pyx_codeobj__72;
+  PyObject *__pyx_codeobj__74;
+  PyObject *__pyx_codeobj__75;
+  PyObject *__pyx_codeobj__76;
+  PyObject *__pyx_codeobj__78;
+  PyObject *__pyx_codeobj__79;
+  PyObject *__pyx_codeobj__80;
+  PyObject *__pyx_codeobj__82;
+  PyObject *__pyx_codeobj__84;
+  PyObject *__pyx_codeobj__86;
+  PyObject *__pyx_codeobj__88;
+  PyObject *__pyx_codeobj__91;
+  PyObject *__pyx_codeobj__93;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2696,9 +2781,12 @@ static int __pyx_m_clear(PyObject *m) {
   #endif
   Py_CLEAR(clear_module_state->__pyx_kp_u_);
   Py_CLEAR(clear_module_state->__pyx_kp_u_1296);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_1296_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_1e);
   Py_CLEAR(clear_module_state->__pyx_kp_u_216);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_216_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_36);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_36_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_ADD);
   Py_CLEAR(clear_module_state->__pyx_n_u_ADD_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_CONSTANT_E);
@@ -2726,9 +2814,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_PERNIF);
   Py_CLEAR(clear_module_state->__pyx_n_u_PERNIF_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_PERSIXNIF);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PERSIXNIFF);
   Py_CLEAR(clear_module_state->__pyx_n_u_PERSIXNIF_2);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_PERUNEXIAN);
-  Py_CLEAR(clear_module_state->__pyx_n_u_PERUNEXIAN_2);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PERUNEXIAN);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_PERUNEXIAN_2);
+  Py_CLEAR(clear_module_state->__pyx_n_u_PERUNEXIAN_3);
   Py_CLEAR(clear_module_state->__pyx_kp_u_POWER);
   Py_CLEAR(clear_module_state->__pyx_n_u_POWER_2);
   Py_CLEAR(clear_module_state->__pyx_n_u_RIGHT_PARENTHESIS);
@@ -2745,12 +2835,17 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_u_SezimalCalculator);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator___init);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator__format_decima);
+  Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator__format_decima_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator__format_sezima);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator__prepare_expre);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_calculate);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_decimal);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_decimal_displa);
+  Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_decimal_displa_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_display);
+  Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_display_11_seg);
+  Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_display_11_seg_2);
+  Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_display_dedica);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_eval_expressio);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_expression);
   Py_CLEAR(clear_module_state->__pyx_n_s_SezimalCalculator_lang);
@@ -2762,37 +2857,49 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_Sezimal_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Sezimal_2_2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Sezimal_3);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__10);
   Py_CLEAR(clear_module_state->__pyx_kp_u__11);
   Py_CLEAR(clear_module_state->__pyx_kp_u__12);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__13);
-  Py_CLEAR(clear_module_state->__pyx_n_s__15);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__14);
   Py_CLEAR(clear_module_state->__pyx_kp_u__15);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__16);
   Py_CLEAR(clear_module_state->__pyx_kp_u__17);
   Py_CLEAR(clear_module_state->__pyx_kp_u__18);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__19);
   Py_CLEAR(clear_module_state->__pyx_n_u__2);
   Py_CLEAR(clear_module_state->__pyx_kp_u__20);
   Py_CLEAR(clear_module_state->__pyx_kp_u__21);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__22);
-  Py_CLEAR(clear_module_state->__pyx_n_u__23);
-  Py_CLEAR(clear_module_state->__pyx_n_u__24);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__23);
   Py_CLEAR(clear_module_state->__pyx_kp_u__25);
-  Py_CLEAR(clear_module_state->__pyx_n_u__26);
-  Py_CLEAR(clear_module_state->__pyx_n_u__27);
-  Py_CLEAR(clear_module_state->__pyx_n_u__28);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__29);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__27);
   Py_CLEAR(clear_module_state->__pyx_kp_u__3);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__30);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__31);
   Py_CLEAR(clear_module_state->__pyx_kp_u__32);
   Py_CLEAR(clear_module_state->__pyx_kp_u__33);
   Py_CLEAR(clear_module_state->__pyx_kp_u__34);
+  Py_CLEAR(clear_module_state->__pyx_n_s__36);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__36);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__37);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__38);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__39);
   Py_CLEAR(clear_module_state->__pyx_kp_u__4);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__40);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__41);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__42);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__43);
+  Py_CLEAR(clear_module_state->__pyx_n_u__44);
+  Py_CLEAR(clear_module_state->__pyx_n_u__45);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__46);
+  Py_CLEAR(clear_module_state->__pyx_n_u__47);
+  Py_CLEAR(clear_module_state->__pyx_n_u__48);
+  Py_CLEAR(clear_module_state->__pyx_n_u__49);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__5);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__50);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__51);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__52);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__53);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__54);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__55);
   Py_CLEAR(clear_module_state->__pyx_kp_u__6);
-  Py_CLEAR(clear_module_state->__pyx_n_s__66);
   Py_CLEAR(clear_module_state->__pyx_kp_u__8);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__9);
+  Py_CLEAR(clear_module_state->__pyx_n_s__94);
   Py_CLEAR(clear_module_state->__pyx_n_s_all);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_kp_u_az_AZ);
@@ -2801,6 +2908,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_bg_BG);
   Py_CLEAR(clear_module_state->__pyx_n_s_bool);
   Py_CLEAR(clear_module_state->__pyx_kp_u_bs_BA);
+  Py_CLEAR(clear_module_state->__pyx_n_u_bz);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_bz_BR);
   Py_CLEAR(clear_module_state->__pyx_kp_u_c);
   Py_CLEAR(clear_module_state->__pyx_kp_u_ca_ES);
   Py_CLEAR(clear_module_state->__pyx_n_s_calculate);
@@ -2815,8 +2924,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_display);
+  Py_CLEAR(clear_module_state->__pyx_n_s_decimal_display_11_segment);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_display_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_exp);
+  Py_CLEAR(clear_module_state->__pyx_n_s_decimal_expression);
+  Py_CLEAR(clear_module_state->__pyx_n_s_decimal_expression_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_format);
   Py_CLEAR(clear_module_state->__pyx_n_s_decimal_formatted_response);
   Py_CLEAR(clear_module_state->__pyx_n_u_decimal_places);
@@ -2825,9 +2937,13 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_u_decimal_separator);
   Py_CLEAR(clear_module_state->__pyx_n_s_dedicated_digits);
   Py_CLEAR(clear_module_state->__pyx_n_u_dedicated_digits);
+  Py_CLEAR(clear_module_state->__pyx_n_s_default_to_dedicated_digits);
   Py_CLEAR(clear_module_state->__pyx_n_s_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_display);
+  Py_CLEAR(clear_module_state->__pyx_n_s_display_11_segment);
+  Py_CLEAR(clear_module_state->__pyx_n_s_display_11_segment_dedicated_dig);
   Py_CLEAR(clear_module_state->__pyx_n_s_display_2);
+  Py_CLEAR(clear_module_state->__pyx_n_s_display_dedicated_digits);
   Py_CLEAR(clear_module_state->__pyx_n_s_doc);
   Py_CLEAR(clear_module_state->__pyx_n_u_e);
   Py_CLEAR(clear_module_state->__pyx_kp_u_el_CY);
@@ -2850,6 +2966,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_fi_FI);
   Py_CLEAR(clear_module_state->__pyx_n_s_final_exp);
   Py_CLEAR(clear_module_state->__pyx_n_s_format_decimal);
+  Py_CLEAR(clear_module_state->__pyx_n_s_format_decimal_expression);
   Py_CLEAR(clear_module_state->__pyx_n_s_format_sezimal);
   Py_CLEAR(clear_module_state->__pyx_kp_u_fr_BE);
   Py_CLEAR(clear_module_state->__pyx_kp_u_fr_FR);
@@ -2961,41 +3078,57 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_3);
   Py_CLEAR(clear_module_state->__pyx_int_4);
-  Py_CLEAR(clear_module_state->__pyx_tuple__5);
   Py_CLEAR(clear_module_state->__pyx_tuple__7);
-  Py_CLEAR(clear_module_state->__pyx_tuple__9);
-  Py_CLEAR(clear_module_state->__pyx_tuple__14);
+  Py_CLEAR(clear_module_state->__pyx_tuple__10);
+  Py_CLEAR(clear_module_state->__pyx_tuple__13);
+  Py_CLEAR(clear_module_state->__pyx_tuple__16);
+  Py_CLEAR(clear_module_state->__pyx_tuple__19);
+  Py_CLEAR(clear_module_state->__pyx_tuple__22);
+  Py_CLEAR(clear_module_state->__pyx_tuple__24);
+  Py_CLEAR(clear_module_state->__pyx_tuple__26);
+  Py_CLEAR(clear_module_state->__pyx_tuple__28);
+  Py_CLEAR(clear_module_state->__pyx_tuple__29);
+  Py_CLEAR(clear_module_state->__pyx_tuple__30);
+  Py_CLEAR(clear_module_state->__pyx_tuple__31);
   Py_CLEAR(clear_module_state->__pyx_tuple__35);
-  Py_CLEAR(clear_module_state->__pyx_tuple__37);
-  Py_CLEAR(clear_module_state->__pyx_tuple__38);
-  Py_CLEAR(clear_module_state->__pyx_tuple__40);
-  Py_CLEAR(clear_module_state->__pyx_tuple__43);
-  Py_CLEAR(clear_module_state->__pyx_tuple__45);
-  Py_CLEAR(clear_module_state->__pyx_tuple__47);
-  Py_CLEAR(clear_module_state->__pyx_tuple__50);
-  Py_CLEAR(clear_module_state->__pyx_tuple__52);
-  Py_CLEAR(clear_module_state->__pyx_tuple__55);
-  Py_CLEAR(clear_module_state->__pyx_tuple__57);
+  Py_CLEAR(clear_module_state->__pyx_tuple__56);
+  Py_CLEAR(clear_module_state->__pyx_tuple__58);
   Py_CLEAR(clear_module_state->__pyx_tuple__59);
   Py_CLEAR(clear_module_state->__pyx_tuple__61);
-  Py_CLEAR(clear_module_state->__pyx_tuple__62);
   Py_CLEAR(clear_module_state->__pyx_tuple__64);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__36);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__39);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__41);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__42);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__44);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__46);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__48);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__49);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__51);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__53);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__54);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__56);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__58);
+  Py_CLEAR(clear_module_state->__pyx_tuple__66);
+  Py_CLEAR(clear_module_state->__pyx_tuple__68);
+  Py_CLEAR(clear_module_state->__pyx_tuple__71);
+  Py_CLEAR(clear_module_state->__pyx_tuple__73);
+  Py_CLEAR(clear_module_state->__pyx_tuple__77);
+  Py_CLEAR(clear_module_state->__pyx_tuple__81);
+  Py_CLEAR(clear_module_state->__pyx_tuple__83);
+  Py_CLEAR(clear_module_state->__pyx_tuple__85);
+  Py_CLEAR(clear_module_state->__pyx_tuple__87);
+  Py_CLEAR(clear_module_state->__pyx_tuple__89);
+  Py_CLEAR(clear_module_state->__pyx_tuple__90);
+  Py_CLEAR(clear_module_state->__pyx_tuple__92);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__57);
   Py_CLEAR(clear_module_state->__pyx_codeobj__60);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__62);
   Py_CLEAR(clear_module_state->__pyx_codeobj__63);
   Py_CLEAR(clear_module_state->__pyx_codeobj__65);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__67);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__69);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__70);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__72);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__74);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__75);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__76);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__78);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__79);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__80);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__82);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__84);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__86);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__88);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__91);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__93);
   return 0;
 }
 #endif
@@ -3018,9 +3151,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #endif
   Py_VISIT(traverse_module_state->__pyx_kp_u_);
   Py_VISIT(traverse_module_state->__pyx_kp_u_1296);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_1296_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_1e);
   Py_VISIT(traverse_module_state->__pyx_kp_u_216);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_216_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_36);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_36_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_ADD);
   Py_VISIT(traverse_module_state->__pyx_n_u_ADD_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_CONSTANT_E);
@@ -3048,9 +3184,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_PERNIF);
   Py_VISIT(traverse_module_state->__pyx_n_u_PERNIF_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_PERSIXNIF);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PERSIXNIFF);
   Py_VISIT(traverse_module_state->__pyx_n_u_PERSIXNIF_2);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_PERUNEXIAN);
-  Py_VISIT(traverse_module_state->__pyx_n_u_PERUNEXIAN_2);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PERUNEXIAN);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_PERUNEXIAN_2);
+  Py_VISIT(traverse_module_state->__pyx_n_u_PERUNEXIAN_3);
   Py_VISIT(traverse_module_state->__pyx_kp_u_POWER);
   Py_VISIT(traverse_module_state->__pyx_n_u_POWER_2);
   Py_VISIT(traverse_module_state->__pyx_n_u_RIGHT_PARENTHESIS);
@@ -3067,12 +3205,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_u_SezimalCalculator);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator___init);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator__format_decima);
+  Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator__format_decima_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator__format_sezima);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator__prepare_expre);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_calculate);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_decimal);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_decimal_displa);
+  Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_decimal_displa_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_display);
+  Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_display_11_seg);
+  Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_display_11_seg_2);
+  Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_display_dedica);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_eval_expressio);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_expression);
   Py_VISIT(traverse_module_state->__pyx_n_s_SezimalCalculator_lang);
@@ -3084,37 +3227,49 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_Sezimal_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Sezimal_2_2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Sezimal_3);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__10);
   Py_VISIT(traverse_module_state->__pyx_kp_u__11);
   Py_VISIT(traverse_module_state->__pyx_kp_u__12);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__13);
-  Py_VISIT(traverse_module_state->__pyx_n_s__15);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__14);
   Py_VISIT(traverse_module_state->__pyx_kp_u__15);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__16);
   Py_VISIT(traverse_module_state->__pyx_kp_u__17);
   Py_VISIT(traverse_module_state->__pyx_kp_u__18);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__19);
   Py_VISIT(traverse_module_state->__pyx_n_u__2);
   Py_VISIT(traverse_module_state->__pyx_kp_u__20);
   Py_VISIT(traverse_module_state->__pyx_kp_u__21);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__22);
-  Py_VISIT(traverse_module_state->__pyx_n_u__23);
-  Py_VISIT(traverse_module_state->__pyx_n_u__24);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__23);
   Py_VISIT(traverse_module_state->__pyx_kp_u__25);
-  Py_VISIT(traverse_module_state->__pyx_n_u__26);
-  Py_VISIT(traverse_module_state->__pyx_n_u__27);
-  Py_VISIT(traverse_module_state->__pyx_n_u__28);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__29);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__27);
   Py_VISIT(traverse_module_state->__pyx_kp_u__3);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__30);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__31);
   Py_VISIT(traverse_module_state->__pyx_kp_u__32);
   Py_VISIT(traverse_module_state->__pyx_kp_u__33);
   Py_VISIT(traverse_module_state->__pyx_kp_u__34);
+  Py_VISIT(traverse_module_state->__pyx_n_s__36);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__36);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__37);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__38);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__39);
   Py_VISIT(traverse_module_state->__pyx_kp_u__4);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__40);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__41);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__42);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__43);
+  Py_VISIT(traverse_module_state->__pyx_n_u__44);
+  Py_VISIT(traverse_module_state->__pyx_n_u__45);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__46);
+  Py_VISIT(traverse_module_state->__pyx_n_u__47);
+  Py_VISIT(traverse_module_state->__pyx_n_u__48);
+  Py_VISIT(traverse_module_state->__pyx_n_u__49);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__5);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__50);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__51);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__52);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__53);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__54);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__55);
   Py_VISIT(traverse_module_state->__pyx_kp_u__6);
-  Py_VISIT(traverse_module_state->__pyx_n_s__66);
   Py_VISIT(traverse_module_state->__pyx_kp_u__8);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__9);
+  Py_VISIT(traverse_module_state->__pyx_n_s__94);
   Py_VISIT(traverse_module_state->__pyx_n_s_all);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_kp_u_az_AZ);
@@ -3123,6 +3278,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_bg_BG);
   Py_VISIT(traverse_module_state->__pyx_n_s_bool);
   Py_VISIT(traverse_module_state->__pyx_kp_u_bs_BA);
+  Py_VISIT(traverse_module_state->__pyx_n_u_bz);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_bz_BR);
   Py_VISIT(traverse_module_state->__pyx_kp_u_c);
   Py_VISIT(traverse_module_state->__pyx_kp_u_ca_ES);
   Py_VISIT(traverse_module_state->__pyx_n_s_calculate);
@@ -3137,8 +3294,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_display);
+  Py_VISIT(traverse_module_state->__pyx_n_s_decimal_display_11_segment);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_display_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_exp);
+  Py_VISIT(traverse_module_state->__pyx_n_s_decimal_expression);
+  Py_VISIT(traverse_module_state->__pyx_n_s_decimal_expression_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_format);
   Py_VISIT(traverse_module_state->__pyx_n_s_decimal_formatted_response);
   Py_VISIT(traverse_module_state->__pyx_n_u_decimal_places);
@@ -3147,9 +3307,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_u_decimal_separator);
   Py_VISIT(traverse_module_state->__pyx_n_s_dedicated_digits);
   Py_VISIT(traverse_module_state->__pyx_n_u_dedicated_digits);
+  Py_VISIT(traverse_module_state->__pyx_n_s_default_to_dedicated_digits);
   Py_VISIT(traverse_module_state->__pyx_n_s_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_display);
+  Py_VISIT(traverse_module_state->__pyx_n_s_display_11_segment);
+  Py_VISIT(traverse_module_state->__pyx_n_s_display_11_segment_dedicated_dig);
   Py_VISIT(traverse_module_state->__pyx_n_s_display_2);
+  Py_VISIT(traverse_module_state->__pyx_n_s_display_dedicated_digits);
   Py_VISIT(traverse_module_state->__pyx_n_s_doc);
   Py_VISIT(traverse_module_state->__pyx_n_u_e);
   Py_VISIT(traverse_module_state->__pyx_kp_u_el_CY);
@@ -3172,6 +3336,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_fi_FI);
   Py_VISIT(traverse_module_state->__pyx_n_s_final_exp);
   Py_VISIT(traverse_module_state->__pyx_n_s_format_decimal);
+  Py_VISIT(traverse_module_state->__pyx_n_s_format_decimal_expression);
   Py_VISIT(traverse_module_state->__pyx_n_s_format_sezimal);
   Py_VISIT(traverse_module_state->__pyx_kp_u_fr_BE);
   Py_VISIT(traverse_module_state->__pyx_kp_u_fr_FR);
@@ -3283,41 +3448,57 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_int_1);
   Py_VISIT(traverse_module_state->__pyx_int_3);
   Py_VISIT(traverse_module_state->__pyx_int_4);
-  Py_VISIT(traverse_module_state->__pyx_tuple__5);
   Py_VISIT(traverse_module_state->__pyx_tuple__7);
-  Py_VISIT(traverse_module_state->__pyx_tuple__9);
-  Py_VISIT(traverse_module_state->__pyx_tuple__14);
+  Py_VISIT(traverse_module_state->__pyx_tuple__10);
+  Py_VISIT(traverse_module_state->__pyx_tuple__13);
+  Py_VISIT(traverse_module_state->__pyx_tuple__16);
+  Py_VISIT(traverse_module_state->__pyx_tuple__19);
+  Py_VISIT(traverse_module_state->__pyx_tuple__22);
+  Py_VISIT(traverse_module_state->__pyx_tuple__24);
+  Py_VISIT(traverse_module_state->__pyx_tuple__26);
+  Py_VISIT(traverse_module_state->__pyx_tuple__28);
+  Py_VISIT(traverse_module_state->__pyx_tuple__29);
+  Py_VISIT(traverse_module_state->__pyx_tuple__30);
+  Py_VISIT(traverse_module_state->__pyx_tuple__31);
   Py_VISIT(traverse_module_state->__pyx_tuple__35);
-  Py_VISIT(traverse_module_state->__pyx_tuple__37);
-  Py_VISIT(traverse_module_state->__pyx_tuple__38);
-  Py_VISIT(traverse_module_state->__pyx_tuple__40);
-  Py_VISIT(traverse_module_state->__pyx_tuple__43);
-  Py_VISIT(traverse_module_state->__pyx_tuple__45);
-  Py_VISIT(traverse_module_state->__pyx_tuple__47);
-  Py_VISIT(traverse_module_state->__pyx_tuple__50);
-  Py_VISIT(traverse_module_state->__pyx_tuple__52);
-  Py_VISIT(traverse_module_state->__pyx_tuple__55);
-  Py_VISIT(traverse_module_state->__pyx_tuple__57);
+  Py_VISIT(traverse_module_state->__pyx_tuple__56);
+  Py_VISIT(traverse_module_state->__pyx_tuple__58);
   Py_VISIT(traverse_module_state->__pyx_tuple__59);
   Py_VISIT(traverse_module_state->__pyx_tuple__61);
-  Py_VISIT(traverse_module_state->__pyx_tuple__62);
   Py_VISIT(traverse_module_state->__pyx_tuple__64);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__36);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__39);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__41);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__42);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__44);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__46);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__48);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__49);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__51);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__53);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__54);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__56);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__58);
+  Py_VISIT(traverse_module_state->__pyx_tuple__66);
+  Py_VISIT(traverse_module_state->__pyx_tuple__68);
+  Py_VISIT(traverse_module_state->__pyx_tuple__71);
+  Py_VISIT(traverse_module_state->__pyx_tuple__73);
+  Py_VISIT(traverse_module_state->__pyx_tuple__77);
+  Py_VISIT(traverse_module_state->__pyx_tuple__81);
+  Py_VISIT(traverse_module_state->__pyx_tuple__83);
+  Py_VISIT(traverse_module_state->__pyx_tuple__85);
+  Py_VISIT(traverse_module_state->__pyx_tuple__87);
+  Py_VISIT(traverse_module_state->__pyx_tuple__89);
+  Py_VISIT(traverse_module_state->__pyx_tuple__90);
+  Py_VISIT(traverse_module_state->__pyx_tuple__92);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__57);
   Py_VISIT(traverse_module_state->__pyx_codeobj__60);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__62);
   Py_VISIT(traverse_module_state->__pyx_codeobj__63);
   Py_VISIT(traverse_module_state->__pyx_codeobj__65);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__67);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__69);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__70);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__72);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__74);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__75);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__76);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__78);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__79);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__80);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__82);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__84);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__86);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__88);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__91);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__93);
   return 0;
 }
 #endif
@@ -3350,9 +3531,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #define __pyx_kp_u_ __pyx_mstate_global->__pyx_kp_u_
 #define __pyx_kp_u_1296 __pyx_mstate_global->__pyx_kp_u_1296
+#define __pyx_kp_u_1296_2 __pyx_mstate_global->__pyx_kp_u_1296_2
 #define __pyx_kp_u_1e __pyx_mstate_global->__pyx_kp_u_1e
 #define __pyx_kp_u_216 __pyx_mstate_global->__pyx_kp_u_216
+#define __pyx_kp_u_216_2 __pyx_mstate_global->__pyx_kp_u_216_2
 #define __pyx_kp_u_36 __pyx_mstate_global->__pyx_kp_u_36
+#define __pyx_kp_u_36_2 __pyx_mstate_global->__pyx_kp_u_36_2
 #define __pyx_kp_u_ADD __pyx_mstate_global->__pyx_kp_u_ADD
 #define __pyx_n_u_ADD_2 __pyx_mstate_global->__pyx_n_u_ADD_2
 #define __pyx_kp_u_CONSTANT_E __pyx_mstate_global->__pyx_kp_u_CONSTANT_E
@@ -3380,9 +3564,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_PERNIF __pyx_mstate_global->__pyx_kp_u_PERNIF
 #define __pyx_n_u_PERNIF_2 __pyx_mstate_global->__pyx_n_u_PERNIF_2
 #define __pyx_kp_u_PERSIXNIF __pyx_mstate_global->__pyx_kp_u_PERSIXNIF
+#define __pyx_n_s_PERSIXNIFF __pyx_mstate_global->__pyx_n_s_PERSIXNIFF
 #define __pyx_n_u_PERSIXNIF_2 __pyx_mstate_global->__pyx_n_u_PERSIXNIF_2
-#define __pyx_kp_u_PERUNEXIAN __pyx_mstate_global->__pyx_kp_u_PERUNEXIAN
-#define __pyx_n_u_PERUNEXIAN_2 __pyx_mstate_global->__pyx_n_u_PERUNEXIAN_2
+#define __pyx_n_s_PERUNEXIAN __pyx_mstate_global->__pyx_n_s_PERUNEXIAN
+#define __pyx_kp_u_PERUNEXIAN_2 __pyx_mstate_global->__pyx_kp_u_PERUNEXIAN_2
+#define __pyx_n_u_PERUNEXIAN_3 __pyx_mstate_global->__pyx_n_u_PERUNEXIAN_3
 #define __pyx_kp_u_POWER __pyx_mstate_global->__pyx_kp_u_POWER
 #define __pyx_n_u_POWER_2 __pyx_mstate_global->__pyx_n_u_POWER_2
 #define __pyx_n_u_RIGHT_PARENTHESIS __pyx_mstate_global->__pyx_n_u_RIGHT_PARENTHESIS
@@ -3399,12 +3585,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_u_SezimalCalculator __pyx_mstate_global->__pyx_n_u_SezimalCalculator
 #define __pyx_n_s_SezimalCalculator___init __pyx_mstate_global->__pyx_n_s_SezimalCalculator___init
 #define __pyx_n_s_SezimalCalculator__format_decima __pyx_mstate_global->__pyx_n_s_SezimalCalculator__format_decima
+#define __pyx_n_s_SezimalCalculator__format_decima_2 __pyx_mstate_global->__pyx_n_s_SezimalCalculator__format_decima_2
 #define __pyx_n_s_SezimalCalculator__format_sezima __pyx_mstate_global->__pyx_n_s_SezimalCalculator__format_sezima
 #define __pyx_n_s_SezimalCalculator__prepare_expre __pyx_mstate_global->__pyx_n_s_SezimalCalculator__prepare_expre
 #define __pyx_n_s_SezimalCalculator_calculate __pyx_mstate_global->__pyx_n_s_SezimalCalculator_calculate
 #define __pyx_n_s_SezimalCalculator_decimal __pyx_mstate_global->__pyx_n_s_SezimalCalculator_decimal
 #define __pyx_n_s_SezimalCalculator_decimal_displa __pyx_mstate_global->__pyx_n_s_SezimalCalculator_decimal_displa
+#define __pyx_n_s_SezimalCalculator_decimal_displa_2 __pyx_mstate_global->__pyx_n_s_SezimalCalculator_decimal_displa_2
 #define __pyx_n_s_SezimalCalculator_display __pyx_mstate_global->__pyx_n_s_SezimalCalculator_display
+#define __pyx_n_s_SezimalCalculator_display_11_seg __pyx_mstate_global->__pyx_n_s_SezimalCalculator_display_11_seg
+#define __pyx_n_s_SezimalCalculator_display_11_seg_2 __pyx_mstate_global->__pyx_n_s_SezimalCalculator_display_11_seg_2
+#define __pyx_n_s_SezimalCalculator_display_dedica __pyx_mstate_global->__pyx_n_s_SezimalCalculator_display_dedica
 #define __pyx_n_s_SezimalCalculator_eval_expressio __pyx_mstate_global->__pyx_n_s_SezimalCalculator_eval_expressio
 #define __pyx_n_s_SezimalCalculator_expression __pyx_mstate_global->__pyx_n_s_SezimalCalculator_expression
 #define __pyx_n_s_SezimalCalculator_lang __pyx_mstate_global->__pyx_n_s_SezimalCalculator_lang
@@ -3416,37 +3607,49 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_Sezimal_2 __pyx_mstate_global->__pyx_kp_u_Sezimal_2
 #define __pyx_kp_u_Sezimal_2_2 __pyx_mstate_global->__pyx_kp_u_Sezimal_2_2
 #define __pyx_kp_u_Sezimal_3 __pyx_mstate_global->__pyx_kp_u_Sezimal_3
-#define __pyx_kp_u__10 __pyx_mstate_global->__pyx_kp_u__10
 #define __pyx_kp_u__11 __pyx_mstate_global->__pyx_kp_u__11
 #define __pyx_kp_u__12 __pyx_mstate_global->__pyx_kp_u__12
-#define __pyx_kp_u__13 __pyx_mstate_global->__pyx_kp_u__13
-#define __pyx_n_s__15 __pyx_mstate_global->__pyx_n_s__15
+#define __pyx_kp_u__14 __pyx_mstate_global->__pyx_kp_u__14
 #define __pyx_kp_u__15 __pyx_mstate_global->__pyx_kp_u__15
-#define __pyx_kp_u__16 __pyx_mstate_global->__pyx_kp_u__16
 #define __pyx_kp_u__17 __pyx_mstate_global->__pyx_kp_u__17
 #define __pyx_kp_u__18 __pyx_mstate_global->__pyx_kp_u__18
-#define __pyx_kp_u__19 __pyx_mstate_global->__pyx_kp_u__19
 #define __pyx_n_u__2 __pyx_mstate_global->__pyx_n_u__2
 #define __pyx_kp_u__20 __pyx_mstate_global->__pyx_kp_u__20
 #define __pyx_kp_u__21 __pyx_mstate_global->__pyx_kp_u__21
-#define __pyx_kp_u__22 __pyx_mstate_global->__pyx_kp_u__22
-#define __pyx_n_u__23 __pyx_mstate_global->__pyx_n_u__23
-#define __pyx_n_u__24 __pyx_mstate_global->__pyx_n_u__24
+#define __pyx_kp_u__23 __pyx_mstate_global->__pyx_kp_u__23
 #define __pyx_kp_u__25 __pyx_mstate_global->__pyx_kp_u__25
-#define __pyx_n_u__26 __pyx_mstate_global->__pyx_n_u__26
-#define __pyx_n_u__27 __pyx_mstate_global->__pyx_n_u__27
-#define __pyx_n_u__28 __pyx_mstate_global->__pyx_n_u__28
-#define __pyx_kp_u__29 __pyx_mstate_global->__pyx_kp_u__29
+#define __pyx_kp_u__27 __pyx_mstate_global->__pyx_kp_u__27
 #define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
-#define __pyx_kp_u__30 __pyx_mstate_global->__pyx_kp_u__30
-#define __pyx_kp_u__31 __pyx_mstate_global->__pyx_kp_u__31
 #define __pyx_kp_u__32 __pyx_mstate_global->__pyx_kp_u__32
 #define __pyx_kp_u__33 __pyx_mstate_global->__pyx_kp_u__33
 #define __pyx_kp_u__34 __pyx_mstate_global->__pyx_kp_u__34
+#define __pyx_n_s__36 __pyx_mstate_global->__pyx_n_s__36
+#define __pyx_kp_u__36 __pyx_mstate_global->__pyx_kp_u__36
+#define __pyx_kp_u__37 __pyx_mstate_global->__pyx_kp_u__37
+#define __pyx_kp_u__38 __pyx_mstate_global->__pyx_kp_u__38
+#define __pyx_kp_u__39 __pyx_mstate_global->__pyx_kp_u__39
 #define __pyx_kp_u__4 __pyx_mstate_global->__pyx_kp_u__4
+#define __pyx_kp_u__40 __pyx_mstate_global->__pyx_kp_u__40
+#define __pyx_kp_u__41 __pyx_mstate_global->__pyx_kp_u__41
+#define __pyx_kp_u__42 __pyx_mstate_global->__pyx_kp_u__42
+#define __pyx_kp_u__43 __pyx_mstate_global->__pyx_kp_u__43
+#define __pyx_n_u__44 __pyx_mstate_global->__pyx_n_u__44
+#define __pyx_n_u__45 __pyx_mstate_global->__pyx_n_u__45
+#define __pyx_kp_u__46 __pyx_mstate_global->__pyx_kp_u__46
+#define __pyx_n_u__47 __pyx_mstate_global->__pyx_n_u__47
+#define __pyx_n_u__48 __pyx_mstate_global->__pyx_n_u__48
+#define __pyx_n_u__49 __pyx_mstate_global->__pyx_n_u__49
+#define __pyx_kp_u__5 __pyx_mstate_global->__pyx_kp_u__5
+#define __pyx_kp_u__50 __pyx_mstate_global->__pyx_kp_u__50
+#define __pyx_kp_u__51 __pyx_mstate_global->__pyx_kp_u__51
+#define __pyx_kp_u__52 __pyx_mstate_global->__pyx_kp_u__52
+#define __pyx_kp_u__53 __pyx_mstate_global->__pyx_kp_u__53
+#define __pyx_kp_u__54 __pyx_mstate_global->__pyx_kp_u__54
+#define __pyx_kp_u__55 __pyx_mstate_global->__pyx_kp_u__55
 #define __pyx_kp_u__6 __pyx_mstate_global->__pyx_kp_u__6
-#define __pyx_n_s__66 __pyx_mstate_global->__pyx_n_s__66
 #define __pyx_kp_u__8 __pyx_mstate_global->__pyx_kp_u__8
+#define __pyx_kp_u__9 __pyx_mstate_global->__pyx_kp_u__9
+#define __pyx_n_s__94 __pyx_mstate_global->__pyx_n_s__94
 #define __pyx_n_s_all __pyx_mstate_global->__pyx_n_s_all
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_kp_u_az_AZ __pyx_mstate_global->__pyx_kp_u_az_AZ
@@ -3455,6 +3658,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_bg_BG __pyx_mstate_global->__pyx_kp_u_bg_BG
 #define __pyx_n_s_bool __pyx_mstate_global->__pyx_n_s_bool
 #define __pyx_kp_u_bs_BA __pyx_mstate_global->__pyx_kp_u_bs_BA
+#define __pyx_n_u_bz __pyx_mstate_global->__pyx_n_u_bz
+#define __pyx_kp_u_bz_BR __pyx_mstate_global->__pyx_kp_u_bz_BR
 #define __pyx_kp_u_c __pyx_mstate_global->__pyx_kp_u_c
 #define __pyx_kp_u_ca_ES __pyx_mstate_global->__pyx_kp_u_ca_ES
 #define __pyx_n_s_calculate __pyx_mstate_global->__pyx_n_s_calculate
@@ -3469,8 +3674,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_decimal __pyx_mstate_global->__pyx_n_s_decimal
 #define __pyx_n_s_decimal_2 __pyx_mstate_global->__pyx_n_s_decimal_2
 #define __pyx_n_s_decimal_display __pyx_mstate_global->__pyx_n_s_decimal_display
+#define __pyx_n_s_decimal_display_11_segment __pyx_mstate_global->__pyx_n_s_decimal_display_11_segment
 #define __pyx_n_s_decimal_display_2 __pyx_mstate_global->__pyx_n_s_decimal_display_2
 #define __pyx_n_s_decimal_exp __pyx_mstate_global->__pyx_n_s_decimal_exp
+#define __pyx_n_s_decimal_expression __pyx_mstate_global->__pyx_n_s_decimal_expression
+#define __pyx_n_s_decimal_expression_2 __pyx_mstate_global->__pyx_n_s_decimal_expression_2
 #define __pyx_n_s_decimal_format __pyx_mstate_global->__pyx_n_s_decimal_format
 #define __pyx_n_s_decimal_formatted_response __pyx_mstate_global->__pyx_n_s_decimal_formatted_response
 #define __pyx_n_u_decimal_places __pyx_mstate_global->__pyx_n_u_decimal_places
@@ -3479,9 +3687,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_u_decimal_separator __pyx_mstate_global->__pyx_n_u_decimal_separator
 #define __pyx_n_s_dedicated_digits __pyx_mstate_global->__pyx_n_s_dedicated_digits
 #define __pyx_n_u_dedicated_digits __pyx_mstate_global->__pyx_n_u_dedicated_digits
+#define __pyx_n_s_default_to_dedicated_digits __pyx_mstate_global->__pyx_n_s_default_to_dedicated_digits
 #define __pyx_n_s_dict __pyx_mstate_global->__pyx_n_s_dict
 #define __pyx_n_s_display __pyx_mstate_global->__pyx_n_s_display
+#define __pyx_n_s_display_11_segment __pyx_mstate_global->__pyx_n_s_display_11_segment
+#define __pyx_n_s_display_11_segment_dedicated_dig __pyx_mstate_global->__pyx_n_s_display_11_segment_dedicated_dig
 #define __pyx_n_s_display_2 __pyx_mstate_global->__pyx_n_s_display_2
+#define __pyx_n_s_display_dedicated_digits __pyx_mstate_global->__pyx_n_s_display_dedicated_digits
 #define __pyx_n_s_doc __pyx_mstate_global->__pyx_n_s_doc
 #define __pyx_n_u_e __pyx_mstate_global->__pyx_n_u_e
 #define __pyx_kp_u_el_CY __pyx_mstate_global->__pyx_kp_u_el_CY
@@ -3504,6 +3716,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_fi_FI __pyx_mstate_global->__pyx_kp_u_fi_FI
 #define __pyx_n_s_final_exp __pyx_mstate_global->__pyx_n_s_final_exp
 #define __pyx_n_s_format_decimal __pyx_mstate_global->__pyx_n_s_format_decimal
+#define __pyx_n_s_format_decimal_expression __pyx_mstate_global->__pyx_n_s_format_decimal_expression
 #define __pyx_n_s_format_sezimal __pyx_mstate_global->__pyx_n_s_format_sezimal
 #define __pyx_kp_u_fr_BE __pyx_mstate_global->__pyx_kp_u_fr_BE
 #define __pyx_kp_u_fr_FR __pyx_mstate_global->__pyx_kp_u_fr_FR
@@ -3615,49 +3828,65 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
 #define __pyx_int_3 __pyx_mstate_global->__pyx_int_3
 #define __pyx_int_4 __pyx_mstate_global->__pyx_int_4
-#define __pyx_tuple__5 __pyx_mstate_global->__pyx_tuple__5
 #define __pyx_tuple__7 __pyx_mstate_global->__pyx_tuple__7
-#define __pyx_tuple__9 __pyx_mstate_global->__pyx_tuple__9
-#define __pyx_tuple__14 __pyx_mstate_global->__pyx_tuple__14
+#define __pyx_tuple__10 __pyx_mstate_global->__pyx_tuple__10
+#define __pyx_tuple__13 __pyx_mstate_global->__pyx_tuple__13
+#define __pyx_tuple__16 __pyx_mstate_global->__pyx_tuple__16
+#define __pyx_tuple__19 __pyx_mstate_global->__pyx_tuple__19
+#define __pyx_tuple__22 __pyx_mstate_global->__pyx_tuple__22
+#define __pyx_tuple__24 __pyx_mstate_global->__pyx_tuple__24
+#define __pyx_tuple__26 __pyx_mstate_global->__pyx_tuple__26
+#define __pyx_tuple__28 __pyx_mstate_global->__pyx_tuple__28
+#define __pyx_tuple__29 __pyx_mstate_global->__pyx_tuple__29
+#define __pyx_tuple__30 __pyx_mstate_global->__pyx_tuple__30
+#define __pyx_tuple__31 __pyx_mstate_global->__pyx_tuple__31
 #define __pyx_tuple__35 __pyx_mstate_global->__pyx_tuple__35
-#define __pyx_tuple__37 __pyx_mstate_global->__pyx_tuple__37
-#define __pyx_tuple__38 __pyx_mstate_global->__pyx_tuple__38
-#define __pyx_tuple__40 __pyx_mstate_global->__pyx_tuple__40
-#define __pyx_tuple__43 __pyx_mstate_global->__pyx_tuple__43
-#define __pyx_tuple__45 __pyx_mstate_global->__pyx_tuple__45
-#define __pyx_tuple__47 __pyx_mstate_global->__pyx_tuple__47
-#define __pyx_tuple__50 __pyx_mstate_global->__pyx_tuple__50
-#define __pyx_tuple__52 __pyx_mstate_global->__pyx_tuple__52
-#define __pyx_tuple__55 __pyx_mstate_global->__pyx_tuple__55
-#define __pyx_tuple__57 __pyx_mstate_global->__pyx_tuple__57
+#define __pyx_tuple__56 __pyx_mstate_global->__pyx_tuple__56
+#define __pyx_tuple__58 __pyx_mstate_global->__pyx_tuple__58
 #define __pyx_tuple__59 __pyx_mstate_global->__pyx_tuple__59
 #define __pyx_tuple__61 __pyx_mstate_global->__pyx_tuple__61
-#define __pyx_tuple__62 __pyx_mstate_global->__pyx_tuple__62
 #define __pyx_tuple__64 __pyx_mstate_global->__pyx_tuple__64
-#define __pyx_codeobj__36 __pyx_mstate_global->__pyx_codeobj__36
-#define __pyx_codeobj__39 __pyx_mstate_global->__pyx_codeobj__39
-#define __pyx_codeobj__41 __pyx_mstate_global->__pyx_codeobj__41
-#define __pyx_codeobj__42 __pyx_mstate_global->__pyx_codeobj__42
-#define __pyx_codeobj__44 __pyx_mstate_global->__pyx_codeobj__44
-#define __pyx_codeobj__46 __pyx_mstate_global->__pyx_codeobj__46
-#define __pyx_codeobj__48 __pyx_mstate_global->__pyx_codeobj__48
-#define __pyx_codeobj__49 __pyx_mstate_global->__pyx_codeobj__49
-#define __pyx_codeobj__51 __pyx_mstate_global->__pyx_codeobj__51
-#define __pyx_codeobj__53 __pyx_mstate_global->__pyx_codeobj__53
-#define __pyx_codeobj__54 __pyx_mstate_global->__pyx_codeobj__54
-#define __pyx_codeobj__56 __pyx_mstate_global->__pyx_codeobj__56
-#define __pyx_codeobj__58 __pyx_mstate_global->__pyx_codeobj__58
+#define __pyx_tuple__66 __pyx_mstate_global->__pyx_tuple__66
+#define __pyx_tuple__68 __pyx_mstate_global->__pyx_tuple__68
+#define __pyx_tuple__71 __pyx_mstate_global->__pyx_tuple__71
+#define __pyx_tuple__73 __pyx_mstate_global->__pyx_tuple__73
+#define __pyx_tuple__77 __pyx_mstate_global->__pyx_tuple__77
+#define __pyx_tuple__81 __pyx_mstate_global->__pyx_tuple__81
+#define __pyx_tuple__83 __pyx_mstate_global->__pyx_tuple__83
+#define __pyx_tuple__85 __pyx_mstate_global->__pyx_tuple__85
+#define __pyx_tuple__87 __pyx_mstate_global->__pyx_tuple__87
+#define __pyx_tuple__89 __pyx_mstate_global->__pyx_tuple__89
+#define __pyx_tuple__90 __pyx_mstate_global->__pyx_tuple__90
+#define __pyx_tuple__92 __pyx_mstate_global->__pyx_tuple__92
+#define __pyx_codeobj__57 __pyx_mstate_global->__pyx_codeobj__57
 #define __pyx_codeobj__60 __pyx_mstate_global->__pyx_codeobj__60
+#define __pyx_codeobj__62 __pyx_mstate_global->__pyx_codeobj__62
 #define __pyx_codeobj__63 __pyx_mstate_global->__pyx_codeobj__63
 #define __pyx_codeobj__65 __pyx_mstate_global->__pyx_codeobj__65
+#define __pyx_codeobj__67 __pyx_mstate_global->__pyx_codeobj__67
+#define __pyx_codeobj__69 __pyx_mstate_global->__pyx_codeobj__69
+#define __pyx_codeobj__70 __pyx_mstate_global->__pyx_codeobj__70
+#define __pyx_codeobj__72 __pyx_mstate_global->__pyx_codeobj__72
+#define __pyx_codeobj__74 __pyx_mstate_global->__pyx_codeobj__74
+#define __pyx_codeobj__75 __pyx_mstate_global->__pyx_codeobj__75
+#define __pyx_codeobj__76 __pyx_mstate_global->__pyx_codeobj__76
+#define __pyx_codeobj__78 __pyx_mstate_global->__pyx_codeobj__78
+#define __pyx_codeobj__79 __pyx_mstate_global->__pyx_codeobj__79
+#define __pyx_codeobj__80 __pyx_mstate_global->__pyx_codeobj__80
+#define __pyx_codeobj__82 __pyx_mstate_global->__pyx_codeobj__82
+#define __pyx_codeobj__84 __pyx_mstate_global->__pyx_codeobj__84
+#define __pyx_codeobj__86 __pyx_mstate_global->__pyx_codeobj__86
+#define __pyx_codeobj__88 __pyx_mstate_global->__pyx_codeobj__88
+#define __pyx_codeobj__91 __pyx_mstate_global->__pyx_codeobj__91
+#define __pyx_codeobj__93 __pyx_mstate_global->__pyx_codeobj__93
 /* #### Code section: module_code ### */
 
-/* "swixknife/swixknife/calculator/calculator.py":171
+/* "swixknife/swixknife/calculator/calculator.py":178
  * 
  * class SezimalCalculator:
  *     def __init__(self, expression: str = '', lang: str = ''):             # <<<<<<<<<<<<<<
- *         self.expression = expression
  *         self.dedicated_digits = False
+ *         self.sezimal_separator = SEPARATOR_DOT
  */
 
 /* Python wrapper */
@@ -3710,26 +3939,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_expression);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_lang);
           if (value) { values[2] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3748,14 +3977,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 3, __pyx_nargs); __PYX_ERR(0, 171, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 3, __pyx_nargs); __PYX_ERR(0, 178, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_expression), (&PyUnicode_Type), 0, "expression", 1))) __PYX_ERR(0, 171, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lang), (&PyUnicode_Type), 0, "lang", 1))) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_expression), (&PyUnicode_Type), 0, "expression", 1))) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lang), (&PyUnicode_Type), 0, "lang", 1))) __PYX_ERR(0, 178, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator___init__(__pyx_self, __pyx_v_self, __pyx_v_expression, __pyx_v_lang);
 
   /* function exit code */
@@ -3776,93 +4005,93 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":172
+  /* "swixknife/swixknife/calculator/calculator.py":179
  * class SezimalCalculator:
  *     def __init__(self, expression: str = '', lang: str = ''):
- *         self.expression = expression             # <<<<<<<<<<<<<<
- *         self.dedicated_digits = False
- *         self.sezimal_separator = SEPARATOR_DOT
- */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_v_expression) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
-
-  /* "swixknife/swixknife/calculator/calculator.py":173
- *     def __init__(self, expression: str = '', lang: str = ''):
- *         self.expression = expression
  *         self.dedicated_digits = False             # <<<<<<<<<<<<<<
  *         self.sezimal_separator = SEPARATOR_DOT
  *         self.group_separator = SEPARATOR_COMMA
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dedicated_digits, Py_False) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dedicated_digits, Py_False) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":174
- *         self.expression = expression
+  /* "swixknife/swixknife/calculator/calculator.py":180
+ *     def __init__(self, expression: str = '', lang: str = ''):
  *         self.dedicated_digits = False
  *         self.sezimal_separator = SEPARATOR_DOT             # <<<<<<<<<<<<<<
  *         self.group_separator = SEPARATOR_COMMA
  *         self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_DOT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_DOT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator, __pyx_t_1) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator, __pyx_t_1) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":175
+  /* "swixknife/swixknife/calculator/calculator.py":181
  *         self.dedicated_digits = False
  *         self.sezimal_separator = SEPARATOR_DOT
  *         self.group_separator = SEPARATOR_COMMA             # <<<<<<<<<<<<<<
  *         self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  *         self.decimal = False
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_COMMA); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_COMMA); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_1) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_1) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":176
+  /* "swixknife/swixknife/calculator/calculator.py":182
  *         self.sezimal_separator = SEPARATOR_DOT
  *         self.group_separator = SEPARATOR_COMMA
  *         self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE             # <<<<<<<<<<<<<<
  *         self.decimal = False
  *         self.precision = 4
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator, __pyx_t_1) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator, __pyx_t_1) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":177
+  /* "swixknife/swixknife/calculator/calculator.py":183
  *         self.group_separator = SEPARATOR_COMMA
  *         self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  *         self.decimal = False             # <<<<<<<<<<<<<<
  *         self.precision = 4
  *         self.lang = lang
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal, Py_False) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal, Py_False) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":178
+  /* "swixknife/swixknife/calculator/calculator.py":184
  *         self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  *         self.decimal = False
  *         self.precision = 4             # <<<<<<<<<<<<<<
  *         self.lang = lang
- * 
+ *         self.expression = expression
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_precision, __pyx_int_4) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_precision, __pyx_int_4) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":179
+  /* "swixknife/swixknife/calculator/calculator.py":185
  *         self.decimal = False
  *         self.precision = 4
  *         self.lang = lang             # <<<<<<<<<<<<<<
+ *         self.expression = expression
+ * 
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_lang, __pyx_v_lang) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":186
+ *         self.precision = 4
+ *         self.lang = lang
+ *         self.expression = expression             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_lang, __pyx_v_lang) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_v_expression) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":171
+  /* "swixknife/swixknife/calculator/calculator.py":178
  * 
  * class SezimalCalculator:
  *     def __init__(self, expression: str = '', lang: str = ''):             # <<<<<<<<<<<<<<
- *         self.expression = expression
  *         self.dedicated_digits = False
+ *         self.sezimal_separator = SEPARATOR_DOT
  */
 
   /* function exit code */
@@ -3878,8 +4107,8 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":181
- *         self.lang = lang
+/* "swixknife/swixknife/calculator/calculator.py":188
+ *         self.expression = expression
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def expression(self):
@@ -3928,12 +4157,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "expression") < 0)) __PYX_ERR(0, 181, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "expression") < 0)) __PYX_ERR(0, 188, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3944,7 +4173,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 181, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 188, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3966,7 +4195,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("expression", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":183
+  /* "swixknife/swixknife/calculator/calculator.py":190
  *     @property
  *     def expression(self):
  *         return self._expression             # <<<<<<<<<<<<<<
@@ -3974,14 +4203,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     @expression.setter
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":181
- *         self.lang = lang
+  /* "swixknife/swixknife/calculator/calculator.py":188
+ *         self.expression = expression
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def expression(self):
@@ -3999,7 +4228,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":185
+/* "swixknife/swixknife/calculator/calculator.py":192
  *         return self._expression
  * 
  *     @expression.setter             # <<<<<<<<<<<<<<
@@ -4052,19 +4281,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_text)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("expression", 1, 2, 2, 1); __PYX_ERR(0, 185, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("expression", 1, 2, 2, 1); __PYX_ERR(0, 192, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "expression") < 0)) __PYX_ERR(0, 185, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "expression") < 0)) __PYX_ERR(0, 192, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -4077,13 +4306,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("expression", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 185, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("expression", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 192, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_text), (&PyUnicode_Type), 0, "text", 1))) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_text), (&PyUnicode_Type), 0, "text", 1))) __PYX_ERR(0, 193, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_4expression(__pyx_self, __pyx_v_self, __pyx_v_text);
 
   /* function exit code */
@@ -4107,23 +4336,23 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("expression", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":187
+  /* "swixknife/swixknife/calculator/calculator.py":194
  *     @expression.setter
  *     def expression(self, text: str):
  *         self._expression = text             # <<<<<<<<<<<<<<
  *         self._prepare_expression()
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression_2, __pyx_v_text) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression_2, __pyx_v_text) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":188
+  /* "swixknife/swixknife/calculator/calculator.py":195
  *     def expression(self, text: str):
  *         self._expression = text
  *         self._prepare_expression()             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_prepare_expression); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_prepare_expression); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -4141,13 +4370,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":185
+  /* "swixknife/swixknife/calculator/calculator.py":192
  *         return self._expression
  * 
  *     @expression.setter             # <<<<<<<<<<<<<<
@@ -4170,7 +4399,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":190
+/* "swixknife/swixknife/calculator/calculator.py":197
  *         self._prepare_expression()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4220,12 +4449,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal") < 0)) __PYX_ERR(0, 190, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal") < 0)) __PYX_ERR(0, 197, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4236,7 +4465,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decimal", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 190, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decimal", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 197, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.decimal", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4258,7 +4487,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decimal", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":192
+  /* "swixknife/swixknife/calculator/calculator.py":199
  *     @property
  *     def decimal(self):
  *         return self._decimal             # <<<<<<<<<<<<<<
@@ -4266,13 +4495,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     @decimal.setter
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":190
+  /* "swixknife/swixknife/calculator/calculator.py":197
  *         self._prepare_expression()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4291,7 +4520,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":194
+/* "swixknife/swixknife/calculator/calculator.py":201
  *         return self._decimal
  * 
  *     @decimal.setter             # <<<<<<<<<<<<<<
@@ -4331,7 +4560,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_decimal,0};
     PyObject* values[2] = {0,0};
 
-    /* "swixknife/swixknife/calculator/calculator.py":195
+    /* "swixknife/swixknife/calculator/calculator.py":202
  * 
  *     @decimal.setter
  *     def decimal(self, decimal: bool = False):             # <<<<<<<<<<<<<<
@@ -4353,19 +4582,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_decimal);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal") < 0)) __PYX_ERR(0, 194, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal") < 0)) __PYX_ERR(0, 201, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -4381,7 +4610,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decimal", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 194, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decimal", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 201, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.decimal", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4389,7 +4618,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_8decimal(__pyx_self, __pyx_v_self, __pyx_v_decimal);
 
-  /* "swixknife/swixknife/calculator/calculator.py":194
+  /* "swixknife/swixknife/calculator/calculator.py":201
  *         return self._decimal
  * 
  *     @decimal.setter             # <<<<<<<<<<<<<<
@@ -4410,16 +4639,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decimal", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":196
+  /* "swixknife/swixknife/calculator/calculator.py":203
  *     @decimal.setter
  *     def decimal(self, decimal: bool = False):
  *         self._decimal = decimal             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_2, __pyx_v_decimal) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_2, __pyx_v_decimal) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":194
+  /* "swixknife/swixknife/calculator/calculator.py":201
  *         return self._decimal
  * 
  *     @decimal.setter             # <<<<<<<<<<<<<<
@@ -4439,7 +4668,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":198
+/* "swixknife/swixknife/calculator/calculator.py":205
  *         self._decimal = decimal
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4489,12 +4718,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "precision") < 0)) __PYX_ERR(0, 198, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "precision") < 0)) __PYX_ERR(0, 205, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4505,7 +4734,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("precision", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 198, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("precision", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 205, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.precision", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4528,20 +4757,20 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("precision", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":200
+  /* "swixknife/swixknife/calculator/calculator.py":207
  *     @property
  *     def precision(self):
  *         if self.decimal:             # <<<<<<<<<<<<<<
  *             return self._decimal_precision
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":201
+    /* "swixknife/swixknife/calculator/calculator.py":208
  *     def precision(self):
  *         if self.decimal:
  *             return self._decimal_precision             # <<<<<<<<<<<<<<
@@ -4549,13 +4778,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *         return self._sezimal_precision
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":200
+    /* "swixknife/swixknife/calculator/calculator.py":207
  *     @property
  *     def precision(self):
  *         if self.decimal:             # <<<<<<<<<<<<<<
@@ -4564,7 +4793,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":203
+  /* "swixknife/swixknife/calculator/calculator.py":210
  *             return self._decimal_precision
  * 
  *         return self._sezimal_precision             # <<<<<<<<<<<<<<
@@ -4572,13 +4801,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     @precision.setter
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":198
+  /* "swixknife/swixknife/calculator/calculator.py":205
  *         self._decimal = decimal
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4597,7 +4826,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":205
+/* "swixknife/swixknife/calculator/calculator.py":212
  *         return self._sezimal_precision
  * 
  *     @precision.setter             # <<<<<<<<<<<<<<
@@ -4650,19 +4879,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_precision)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("precision", 1, 2, 2, 1); __PYX_ERR(0, 205, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("precision", 1, 2, 2, 1); __PYX_ERR(0, 212, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "precision") < 0)) __PYX_ERR(0, 205, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "precision") < 0)) __PYX_ERR(0, 212, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -4675,7 +4904,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("precision", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 205, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("precision", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 212, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.precision", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4702,14 +4931,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_RefNannySetupContext("precision", 0);
   __Pyx_INCREF(__pyx_v_precision);
 
-  /* "swixknife/swixknife/calculator/calculator.py":207
+  /* "swixknife/swixknife/calculator/calculator.py":214
  *     @precision.setter
  *     def precision(self, precision: int | str | Decimal | Sezimal | SezimalInteger):
  *         precision = SezimalInteger(precision)             # <<<<<<<<<<<<<<
  * 
  *         if self.decimal:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -4727,51 +4956,51 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_precision};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF_SET(__pyx_v_precision, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":209
+  /* "swixknife/swixknife/calculator/calculator.py":216
  *         precision = SezimalInteger(precision)
  * 
  *         if self.decimal:             # <<<<<<<<<<<<<<
  *             self._decimal_precision = precision
  *             self._sezimal_precision = round(self._decimal_precision / 3 * 4, 0)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_5) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":210
+    /* "swixknife/swixknife/calculator/calculator.py":217
  * 
  *         if self.decimal:
  *             self._decimal_precision = precision             # <<<<<<<<<<<<<<
  *             self._sezimal_precision = round(self._decimal_precision / 3 * 4, 0)
  * 
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision, __pyx_v_precision) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision, __pyx_v_precision) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":211
+    /* "swixknife/swixknife/calculator/calculator.py":218
  *         if self.decimal:
  *             self._decimal_precision = precision
  *             self._sezimal_precision = round(self._decimal_precision / 3 * 4, 0)             # <<<<<<<<<<<<<<
  * 
  *         else:
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -4779,13 +5008,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_int_0);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision, __pyx_t_1) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision, __pyx_t_1) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":209
+    /* "swixknife/swixknife/calculator/calculator.py":216
  *         precision = SezimalInteger(precision)
  * 
  *         if self.decimal:             # <<<<<<<<<<<<<<
@@ -4795,7 +5024,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     goto __pyx_L3;
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":214
+  /* "swixknife/swixknife/calculator/calculator.py":221
  * 
  *         else:
  *             self._sezimal_precision = precision             # <<<<<<<<<<<<<<
@@ -4803,24 +5032,24 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  * 
  */
   /*else*/ {
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision, __pyx_v_precision) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision, __pyx_v_precision) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":215
+    /* "swixknife/swixknife/calculator/calculator.py":222
  *         else:
  *             self._sezimal_precision = precision
  *             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_MultiplyObjC(__pyx_t_2, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -4828,15 +5057,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_int_0);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision, __pyx_t_1) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision, __pyx_t_1) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "swixknife/swixknife/calculator/calculator.py":205
+  /* "swixknife/swixknife/calculator/calculator.py":212
  *         return self._sezimal_precision
  * 
  *     @precision.setter             # <<<<<<<<<<<<<<
@@ -4860,7 +5089,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":217
+/* "swixknife/swixknife/calculator/calculator.py":224
  *             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4910,12 +5139,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lang") < 0)) __PYX_ERR(0, 217, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lang") < 0)) __PYX_ERR(0, 224, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4926,7 +5155,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lang", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 217, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lang", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 224, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.lang", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4948,7 +5177,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lang", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":219
+  /* "swixknife/swixknife/calculator/calculator.py":226
  *     @property
  *     def lang(self):
  *         return self._lang             # <<<<<<<<<<<<<<
@@ -4956,13 +5185,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     @lang.setter
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lang_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lang_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":217
+  /* "swixknife/swixknife/calculator/calculator.py":224
  *             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -4981,7 +5210,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":221
+/* "swixknife/swixknife/calculator/calculator.py":228
  *         return self._lang
  * 
  *     @lang.setter             # <<<<<<<<<<<<<<
@@ -5035,19 +5264,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_lang);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lang") < 0)) __PYX_ERR(0, 221, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lang") < 0)) __PYX_ERR(0, 228, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -5063,13 +5292,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lang", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 221, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lang", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 228, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.lang", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lang), (&PyUnicode_Type), 0, "lang", 1))) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lang), (&PyUnicode_Type), 0, "lang", 1))) __PYX_ERR(0, 229, __pyx_L1_error)
   __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_16lang(__pyx_self, __pyx_v_self, __pyx_v_lang);
 
   /* function exit code */
@@ -5093,7 +5322,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lang", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":223
+  /* "swixknife/swixknife/calculator/calculator.py":230
  *     @lang.setter
  *     def lang(self, lang: str = ''):
  *         if not lang:             # <<<<<<<<<<<<<<
@@ -5104,16 +5333,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":224
+    /* "swixknife/swixknife/calculator/calculator.py":231
  *     def lang(self, lang: str = ''):
  *         if not lang:
  *             self._lang = lang             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_lang_2, __pyx_v_lang) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_lang_2, __pyx_v_lang) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":225
+    /* "swixknife/swixknife/calculator/calculator.py":232
  *         if not lang:
  *             self._lang = lang
  *             return             # <<<<<<<<<<<<<<
@@ -5124,7 +5353,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":223
+    /* "swixknife/swixknife/calculator/calculator.py":230
  *     @lang.setter
  *     def lang(self, lang: str = ''):
  *         if not lang:             # <<<<<<<<<<<<<<
@@ -5133,58 +5362,58 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":230
+  /* "swixknife/swixknife/calculator/calculator.py":237
  *         # Locales that use comma as the sezimal separador
  *         #
  *         if lang in _LOCALES_COMMA_SEPARATOR or lang.replace('_', '-') in _LOCALES_COMMA_SEPARATOR:             # <<<<<<<<<<<<<<
  *             self.sezimal_separator = SEPARATOR_COMMA
  *             self.group_separator = SEPARATOR_DOT
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LOCALES_COMMA_SEPARATOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LOCALES_COMMA_SEPARATOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_lang, __pyx_t_3, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_lang, __pyx_t_3, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_3 = PyUnicode_Replace(__pyx_v_lang, __pyx_n_u__2, __pyx_kp_u__3, -1L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_3 = PyUnicode_Replace(__pyx_v_lang, __pyx_n_u__2, __pyx_kp_u__3, -1L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LOCALES_COMMA_SEPARATOR); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LOCALES_COMMA_SEPARATOR); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_4, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_4, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":231
+    /* "swixknife/swixknife/calculator/calculator.py":238
  *         #
  *         if lang in _LOCALES_COMMA_SEPARATOR or lang.replace('_', '-') in _LOCALES_COMMA_SEPARATOR:
  *             self.sezimal_separator = SEPARATOR_COMMA             # <<<<<<<<<<<<<<
  *             self.group_separator = SEPARATOR_DOT
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SEPARATOR_COMMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SEPARATOR_COMMA); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator, __pyx_t_4) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator, __pyx_t_4) < 0) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":232
+    /* "swixknife/swixknife/calculator/calculator.py":239
  *         if lang in _LOCALES_COMMA_SEPARATOR or lang.replace('_', '-') in _LOCALES_COMMA_SEPARATOR:
  *             self.sezimal_separator = SEPARATOR_COMMA
  *             self.group_separator = SEPARATOR_DOT             # <<<<<<<<<<<<<<
  * 
  *         if lang in _LOCALES_SPACE_GROUP_SEPARATOR or lang.replace('_', '-') in _LOCALES_SPACE_GROUP_SEPARATOR:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SEPARATOR_DOT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_SEPARATOR_DOT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_4) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_4) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":230
+    /* "swixknife/swixknife/calculator/calculator.py":237
  *         # Locales that use comma as the sezimal separador
  *         #
  *         if lang in _LOCALES_COMMA_SEPARATOR or lang.replace('_', '-') in _LOCALES_COMMA_SEPARATOR:             # <<<<<<<<<<<<<<
@@ -5193,46 +5422,46 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":234
+  /* "swixknife/swixknife/calculator/calculator.py":241
  *             self.group_separator = SEPARATOR_DOT
  * 
  *         if lang in _LOCALES_SPACE_GROUP_SEPARATOR or lang.replace('_', '-') in _LOCALES_SPACE_GROUP_SEPARATOR:             # <<<<<<<<<<<<<<
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_lang, __pyx_t_4, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_lang, __pyx_t_4, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L8_bool_binop_done;
   }
-  __pyx_t_4 = PyUnicode_Replace(__pyx_v_lang, __pyx_n_u__2, __pyx_kp_u__3, -1L); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_4 = PyUnicode_Replace(__pyx_v_lang, __pyx_n_u__2, __pyx_kp_u__3, -1L); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_t_3, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_t_3, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":235
+    /* "swixknife/swixknife/calculator/calculator.py":242
  * 
  *         if lang in _LOCALES_SPACE_GROUP_SEPARATOR or lang.replace('_', '-') in _LOCALES_SPACE_GROUP_SEPARATOR:
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":234
+    /* "swixknife/swixknife/calculator/calculator.py":241
  *             self.group_separator = SEPARATOR_DOT
  * 
  *         if lang in _LOCALES_SPACE_GROUP_SEPARATOR or lang.replace('_', '-') in _LOCALES_SPACE_GROUP_SEPARATOR:             # <<<<<<<<<<<<<<
@@ -5241,7 +5470,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":221
+  /* "swixknife/swixknife/calculator/calculator.py":228
  *         return self._lang
  * 
  *     @lang.setter             # <<<<<<<<<<<<<<
@@ -5263,7 +5492,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":237
+/* "swixknife/swixknife/calculator/calculator.py":244
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -5313,12 +5542,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "display") < 0)) __PYX_ERR(0, 237, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "display") < 0)) __PYX_ERR(0, 244, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5329,7 +5558,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("display", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 237, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("display", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 244, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5351,7 +5580,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("display", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":239
+  /* "swixknife/swixknife/calculator/calculator.py":246
  *     @property
  *     def display(self):
  *         return self._display             # <<<<<<<<<<<<<<
@@ -5359,13 +5588,13 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_display); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_display); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":237
+  /* "swixknife/swixknife/calculator/calculator.py":244
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -5384,8 +5613,652 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":241
+/* "swixknife/swixknife/calculator/calculator.py":248
  *         return self._display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_dedicated_digits(self):
+ *         return default_to_dedicated_digits(self._display)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21display_dedicated_digits(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21display_dedicated_digits = {"display_dedicated_digits", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21display_dedicated_digits, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21display_dedicated_digits(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_self = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("display_dedicated_digits (wrapper)", 0);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,0};
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "display_dedicated_digits") < 0)) __PYX_ERR(0, 248, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_self = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("display_dedicated_digits", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 248, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_dedicated_digits", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20display_dedicated_digits(__pyx_self, __pyx_v_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20display_dedicated_digits(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("display_dedicated_digits", 0);
+
+  /* "swixknife/swixknife/calculator/calculator.py":250
+ *     @property
+ *     def display_dedicated_digits(self):
+ *         return default_to_dedicated_digits(self._display)             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_default_to_dedicated_digits); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_display); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":248
+ *         return self._display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_dedicated_digits(self):
+ *         return default_to_dedicated_digits(self._display)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_dedicated_digits", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "swixknife/swixknife/calculator/calculator.py":252
+ *         return default_to_dedicated_digits(self._display)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment(self):
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23display_11_segment(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23display_11_segment = {"display_11_segment", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23display_11_segment, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23display_11_segment(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_self = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("display_11_segment (wrapper)", 0);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,0};
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "display_11_segment") < 0)) __PYX_ERR(0, 252, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_self = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("display_11_segment", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 252, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_11_segment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22display_11_segment(__pyx_self, __pyx_v_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22display_11_segment(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("display_11_segment", 0);
+
+  /* "swixknife/swixknife/calculator/calculator.py":254
+ *     @property
+ *     def display_11_segment(self):
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_PERSIXNIFF); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_6 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[3] = {__pyx_t_5, __pyx_t_3, __pyx_kp_u__4};
+    __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 2+__pyx_t_6);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PERUNEXIAN); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  __pyx_t_6 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_6 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_t_2, __pyx_kp_u__4};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 2+__pyx_t_6);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":252
+ *         return default_to_dedicated_digits(self._display)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment(self):
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_11_segment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "swixknife/swixknife/calculator/calculator.py":256
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25display_11_segment_dedicated_digits(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25display_11_segment_dedicated_digits = {"display_11_segment_dedicated_digits", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25display_11_segment_dedicated_digits, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25display_11_segment_dedicated_digits(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_self = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("display_11_segment_dedicated_digits (wrapper)", 0);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,0};
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "display_11_segment_dedicated_digits") < 0)) __PYX_ERR(0, 256, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_self = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("display_11_segment_dedicated_digits", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 256, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_11_segment_dedicated_digits", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24display_11_segment_dedicated_digits(__pyx_self, __pyx_v_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24display_11_segment_dedicated_digits(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_v_display = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("display_11_segment_dedicated_digits", 0);
+
+  /* "swixknife/swixknife/calculator/calculator.py":258
+ *     @property
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u283f')
+ *         display = display.replace('', '\u2866')
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_default_to_dedicated_digits); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_replace); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_PERSIXNIFF); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_7 = NULL;
+  __pyx_t_8 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_7)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+      __pyx_t_8 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[3] = {__pyx_t_7, __pyx_t_5, __pyx_kp_u__4};
+    __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_replace); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_PERUNEXIAN); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = NULL;
+  __pyx_t_8 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+      __pyx_t_8 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[3] = {__pyx_t_5, __pyx_t_4, __pyx_kp_u__4};
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __pyx_t_6 = NULL;
+  __pyx_t_8 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_8 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
+  __pyx_v_display = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":259
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ *         display = display.replace('', '\u283f')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":260
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ *         display = display.replace('', '\u283f')
+ *         display = display.replace('', '\u2866')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":261
+ *         display = display.replace('', '\u283f')
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":262
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u285b')
+ *         display = display.replace('', '\u287b')
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":263
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u287b')
+ *         return display
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":264
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')
+ *         display = display.replace('', '\u287b')             # <<<<<<<<<<<<<<
+ *         return display
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":265
+ *         display = display.replace('', '\u285b')
+ *         display = display.replace('', '\u287b')
+ *         return display             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_display);
+  __pyx_r = __pyx_v_display;
+  goto __pyx_L0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":256
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.display_11_segment_dedicated_digits", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_display);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "swixknife/swixknife/calculator/calculator.py":267
+ *         return display
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal_display(self):
@@ -5393,15 +6266,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21decimal_display(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27decimal_display(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21decimal_display = {"decimal_display", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21decimal_display, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21decimal_display(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27decimal_display = {"decimal_display", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27decimal_display, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27decimal_display(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5434,12 +6307,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 267, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal_display") < 0)) __PYX_ERR(0, 241, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal_display") < 0)) __PYX_ERR(0, 267, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5450,20 +6323,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decimal_display", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 241, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decimal_display", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 267, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.decimal_display", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20decimal_display(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26decimal_display(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_20decimal_display(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26decimal_display(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5472,22 +6345,22 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decimal_display", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":243
+  /* "swixknife/swixknife/calculator/calculator.py":269
  *     @property
  *     def decimal_display(self):
  *         return self._decimal_display             # <<<<<<<<<<<<<<
  * 
- *     def calculate(self):
+ *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":241
- *         return self._display
+  /* "swixknife/swixknife/calculator/calculator.py":267
+ *         return display
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal_display(self):
@@ -5505,8 +6378,129 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":245
+/* "swixknife/swixknife/calculator/calculator.py":271
  *         return self._decimal_display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def decimal_display_11_segment(self):
+ *         return self._decimal_expression
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29decimal_display_11_segment(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29decimal_display_11_segment = {"decimal_display_11_segment", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29decimal_display_11_segment, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29decimal_display_11_segment(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_self = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("decimal_display_11_segment (wrapper)", 0);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,0};
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decimal_display_11_segment") < 0)) __PYX_ERR(0, 271, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_self = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("decimal_display_11_segment", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 271, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.decimal_display_11_segment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28decimal_display_11_segment(__pyx_self, __pyx_v_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28decimal_display_11_segment(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("decimal_display_11_segment", 0);
+
+  /* "swixknife/swixknife/calculator/calculator.py":273
+ *     @property
+ *     def decimal_display_11_segment(self):
+ *         return self._decimal_expression             # <<<<<<<<<<<<<<
+ * 
+ *     def calculate(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":271
+ *         return self._decimal_display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def decimal_display_11_segment(self):
+ *         return self._decimal_expression
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.decimal_display_11_segment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "swixknife/swixknife/calculator/calculator.py":275
+ *         return self._decimal_expression
  * 
  *     def calculate(self):             # <<<<<<<<<<<<<<
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
@@ -5514,15 +6508,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23calculate(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31calculate(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23calculate = {"calculate", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23calculate, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23calculate(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31calculate = {"calculate", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31calculate, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31calculate(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5555,12 +6549,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 245, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "calculate") < 0)) __PYX_ERR(0, 245, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "calculate") < 0)) __PYX_ERR(0, 275, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5571,20 +6565,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calculate", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 245, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calculate", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 275, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.calculate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22calculate(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30calculate(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_22calculate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30calculate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *__pyx_v_final_exp = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_nice_exp = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_decimal_exp = NULL;
@@ -5610,16 +6604,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":246
+  /* "swixknife/swixknife/calculator/calculator.py":276
  * 
  *     def calculate(self):
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)             # <<<<<<<<<<<<<<
  * 
  *         self.expression = str(sezimal_response)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_calculator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_calculator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -5638,7 +6632,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -5648,7 +6642,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     if (unlikely(size != 7)) {
       if (size > 7) __Pyx_RaiseTooManyValuesError(7);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 246, __pyx_L1_error)
+      __PYX_ERR(0, 276, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -5680,7 +6674,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       Py_ssize_t i;
       PyObject** temps[7] = {&__pyx_t_2,&__pyx_t_3,&__pyx_t_4,&__pyx_t_6,&__pyx_t_7,&__pyx_t_8,&__pyx_t_9};
       for (i=0; i < 7; i++) {
-        PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 246, __pyx_L1_error)
+        PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 276, __pyx_L1_error)
         __Pyx_GOTREF(item);
         *(temps[i]) = item;
       }
@@ -5690,7 +6684,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   } else {
     Py_ssize_t index = -1;
     PyObject** temps[7] = {&__pyx_t_2,&__pyx_t_3,&__pyx_t_4,&__pyx_t_6,&__pyx_t_7,&__pyx_t_8,&__pyx_t_9};
-    __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10);
@@ -5699,7 +6693,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       __Pyx_GOTREF(item);
       *(temps[index]) = item;
     }
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 7) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 7) < 0) __PYX_ERR(0, 276, __pyx_L1_error)
     __pyx_t_11 = NULL;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     goto __pyx_L4_unpacking_done;
@@ -5707,7 +6701,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_11 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 246, __pyx_L1_error)
+    __PYX_ERR(0, 276, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
   __pyx_v_final_exp = __pyx_t_2;
@@ -5725,20 +6719,20 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_v_decimal_formatted_response = __pyx_t_9;
   __pyx_t_9 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":248
+  /* "swixknife/swixknife/calculator/calculator.py":278
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
  * 
  *         self.expression = str(sezimal_response)             # <<<<<<<<<<<<<<
  * 
  *     def _format_sezimal(self, number, precision=None):
  */
-  __pyx_t_1 = __Pyx_PyObject_Str(__pyx_v_sezimal_response); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Str(__pyx_v_sezimal_response); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_t_1) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_t_1) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":245
- *         return self._decimal_display
+  /* "swixknife/swixknife/calculator/calculator.py":275
+ *         return self._decimal_expression
  * 
  *     def calculate(self):             # <<<<<<<<<<<<<<
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
@@ -5773,7 +6767,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":250
+/* "swixknife/swixknife/calculator/calculator.py":280
  *         self.expression = str(sezimal_response)
  * 
  *     def _format_sezimal(self, number, precision=None):             # <<<<<<<<<<<<<<
@@ -5782,15 +6776,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25_format_sezimal(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_33_format_sezimal(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25_format_sezimal = {"_format_sezimal", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25_format_sezimal, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25_format_sezimal(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_33_format_sezimal = {"_format_sezimal", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_33_format_sezimal, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_33_format_sezimal(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5830,26 +6824,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_number)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_format_sezimal", 0, 2, 3, 1); __PYX_ERR(0, 250, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_format_sezimal", 0, 2, 3, 1); __PYX_ERR(0, 280, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_precision);
           if (value) { values[2] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_format_sezimal") < 0)) __PYX_ERR(0, 250, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_format_sezimal") < 0)) __PYX_ERR(0, 280, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -5867,20 +6861,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_format_sezimal", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 250, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_format_sezimal", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 280, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator._format_sezimal", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24_format_sezimal(__pyx_self, __pyx_v_self, __pyx_v_number, __pyx_v_precision);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_32_format_sezimal(__pyx_self, __pyx_v_self, __pyx_v_number, __pyx_v_precision);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_24_format_sezimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_32_format_sezimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision) {
   PyObject *__pyx_v_params = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -5895,7 +6889,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_RefNannySetupContext("_format_sezimal", 0);
   __Pyx_INCREF(__pyx_v_precision);
 
-  /* "swixknife/swixknife/calculator/calculator.py":251
+  /* "swixknife/swixknife/calculator/calculator.py":281
  * 
  *     def _format_sezimal(self, number, precision=None):
  *         if precision is None:             # <<<<<<<<<<<<<<
@@ -5905,19 +6899,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_1 = (__pyx_v_precision == Py_None);
   if (__pyx_t_1) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":252
+    /* "swixknife/swixknife/calculator/calculator.py":282
  *     def _format_sezimal(self, number, precision=None):
  *         if precision is None:
  *             precision = self._sezimal_precision             # <<<<<<<<<<<<<<
  * 
  *         params = {
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 282, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_precision, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":251
+    /* "swixknife/swixknife/calculator/calculator.py":281
  * 
  *     def _format_sezimal(self, number, precision=None):
  *         if precision is None:             # <<<<<<<<<<<<<<
@@ -5926,77 +6920,77 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":255
+  /* "swixknife/swixknife/calculator/calculator.py":285
  * 
  *         params = {
  *             'sezimal_places': precision,             # <<<<<<<<<<<<<<
  *             'sezimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sezimal_places, __pyx_v_precision) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sezimal_places, __pyx_v_precision) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":256
+  /* "swixknife/swixknife/calculator/calculator.py":286
  *         params = {
  *             'sezimal_places': precision,
  *             'sezimal_separator': self.sezimal_separator,             # <<<<<<<<<<<<<<
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sezimal_separator, __pyx_t_3) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sezimal_separator, __pyx_t_3) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":257
+  /* "swixknife/swixknife/calculator/calculator.py":287
  *             'sezimal_places': precision,
  *             'sezimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,             # <<<<<<<<<<<<<<
  *             'fraction_group_separator': self.fraction_group_separator,
  *             'typographical_negative': True,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":258
+  /* "swixknife/swixknife/calculator/calculator.py":288
  *             'sezimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,             # <<<<<<<<<<<<<<
  *             'typographical_negative': True,
  *             'dedicated_digits': self.dedicated_digits,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_fraction_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_fraction_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":259
+  /* "swixknife/swixknife/calculator/calculator.py":289
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,
  *             'typographical_negative': True,             # <<<<<<<<<<<<<<
  *             'dedicated_digits': self.dedicated_digits,
  *         }
  */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_typographical_negative, Py_True) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_typographical_negative, Py_True) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":260
+  /* "swixknife/swixknife/calculator/calculator.py":290
  *             'fraction_group_separator': self.fraction_group_separator,
  *             'typographical_negative': True,
  *             'dedicated_digits': self.dedicated_digits,             # <<<<<<<<<<<<<<
  *         }
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dedicated_digits); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dedicated_digits); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_dedicated_digits, __pyx_t_3) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_dedicated_digits, __pyx_t_3) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_params = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":263
+  /* "swixknife/swixknife/calculator/calculator.py":293
  *         }
  * 
  *         return sezimal_format(number, **params)             # <<<<<<<<<<<<<<
@@ -6004,16 +6998,16 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *     def _format_decimal(self, number, precision=None):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sezimal_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sezimal_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_number);
   __Pyx_GIVEREF(__pyx_v_number);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_number);
-  __pyx_t_4 = PyDict_Copy(__pyx_v_params); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_4 = PyDict_Copy(__pyx_v_params); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6022,7 +7016,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":250
+  /* "swixknife/swixknife/calculator/calculator.py":280
  *         self.expression = str(sezimal_response)
  * 
  *     def _format_sezimal(self, number, precision=None):             # <<<<<<<<<<<<<<
@@ -6046,7 +7040,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":265
+/* "swixknife/swixknife/calculator/calculator.py":295
  *         return sezimal_format(number, **params)
  * 
  *     def _format_decimal(self, number, precision=None):             # <<<<<<<<<<<<<<
@@ -6055,15 +7049,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27_format_decimal(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_35_format_decimal(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27_format_decimal = {"_format_decimal", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27_format_decimal, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27_format_decimal(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_35_format_decimal = {"_format_decimal", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_35_format_decimal, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_35_format_decimal(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -6103,26 +7097,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_number)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_format_decimal", 0, 2, 3, 1); __PYX_ERR(0, 265, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_format_decimal", 0, 2, 3, 1); __PYX_ERR(0, 295, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_precision);
           if (value) { values[2] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_format_decimal") < 0)) __PYX_ERR(0, 265, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_format_decimal") < 0)) __PYX_ERR(0, 295, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -6140,20 +7134,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_format_decimal", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 265, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_format_decimal", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 295, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator._format_decimal", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26_format_decimal(__pyx_self, __pyx_v_self, __pyx_v_number, __pyx_v_precision);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_34_format_decimal(__pyx_self, __pyx_v_self, __pyx_v_number, __pyx_v_precision);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_26_format_decimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_34_format_decimal(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision) {
   PyObject *__pyx_v_params = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -6172,7 +7166,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_RefNannySetupContext("_format_decimal", 0);
   __Pyx_INCREF(__pyx_v_precision);
 
-  /* "swixknife/swixknife/calculator/calculator.py":266
+  /* "swixknife/swixknife/calculator/calculator.py":296
  * 
  *     def _format_decimal(self, number, precision=None):
  *         if precision is None:             # <<<<<<<<<<<<<<
@@ -6182,19 +7176,19 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_1 = (__pyx_v_precision == Py_None);
   if (__pyx_t_1) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":267
+    /* "swixknife/swixknife/calculator/calculator.py":297
  *     def _format_decimal(self, number, precision=None):
  *         if precision is None:
  *             precision = self._decimal_precision             # <<<<<<<<<<<<<<
  * 
  *         params = {
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_precision, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":266
+    /* "swixknife/swixknife/calculator/calculator.py":296
  * 
  *     def _format_decimal(self, number, precision=None):
  *         if precision is None:             # <<<<<<<<<<<<<<
@@ -6203,84 +7197,84 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":270
+  /* "swixknife/swixknife/calculator/calculator.py":300
  * 
  *         params = {
  *             'decimal_places': precision,             # <<<<<<<<<<<<<<
  *             'decimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_places, __pyx_v_precision) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_places, __pyx_v_precision) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":271
+  /* "swixknife/swixknife/calculator/calculator.py":301
  *         params = {
  *             'decimal_places': precision,
  *             'decimal_separator': self.sezimal_separator,             # <<<<<<<<<<<<<<
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_separator, __pyx_t_3) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_separator, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":272
+  /* "swixknife/swixknife/calculator/calculator.py":302
  *             'decimal_places': precision,
  *             'decimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,             # <<<<<<<<<<<<<<
  *             'fraction_group_separator': self.fraction_group_separator,
  *             'typographical_negative': True,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":273
+  /* "swixknife/swixknife/calculator/calculator.py":303
  *             'decimal_separator': self.sezimal_separator,
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,             # <<<<<<<<<<<<<<
  *             'typographical_negative': True,
  *         }
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_fraction_group_separator); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_fraction_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_fraction_group_separator, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":274
+  /* "swixknife/swixknife/calculator/calculator.py":304
  *             'group_separator': self.group_separator,
  *             'fraction_group_separator': self.fraction_group_separator,
  *             'typographical_negative': True,             # <<<<<<<<<<<<<<
  *         }
  * 
  */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_typographical_negative, Py_True) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_typographical_negative, Py_True) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __pyx_v_params = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":277
+  /* "swixknife/swixknife/calculator/calculator.py":307
  *         }
  * 
  *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)             # <<<<<<<<<<<<<<
  * 
- *     def _prepare_expression(self):
+ *     def _format_decimal_expression(self, number, precision=None):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_decimal_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_decimal_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_number, __pyx_n_s_quantize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_number, __pyx_n_s_quantize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_v_precision); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_v_precision); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyUnicode_Concat(__pyx_kp_u_1e, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyUnicode_Concat(__pyx_kp_u_1e, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -6300,7 +7294,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -6321,18 +7315,18 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_Copy(__pyx_v_params); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_3 = PyDict_Copy(__pyx_v_params); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6341,7 +7335,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":265
+  /* "swixknife/swixknife/calculator/calculator.py":295
  *         return sezimal_format(number, **params)
  * 
  *     def _format_decimal(self, number, precision=None):             # <<<<<<<<<<<<<<
@@ -6368,7 +7362,296 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":279
+/* "swixknife/swixknife/calculator/calculator.py":309
+ *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):             # <<<<<<<<<<<<<<
+ *         if precision is None:
+ *             precision = self._decimal_precision
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_37_format_decimal_expression(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_37_format_decimal_expression = {"_format_decimal_expression", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_37_format_decimal_expression, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_37_format_decimal_expression(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_number = 0;
+  PyObject *__pyx_v_precision = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_format_decimal_expression (wrapper)", 0);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_number,&__pyx_n_s_precision,0};
+    PyObject* values[3] = {0,0,0};
+    values[2] = ((PyObject *)((PyObject *)Py_None));
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_number)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("_format_decimal_expression", 0, 2, 3, 1); __PYX_ERR(0, 309, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_precision);
+          if (value) { values[2] = value; kw_args--; }
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_format_decimal_expression") < 0)) __PYX_ERR(0, 309, __pyx_L3_error)
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_number = values[1];
+    __pyx_v_precision = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("_format_decimal_expression", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 309, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator._format_decimal_expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_36_format_decimal_expression(__pyx_self, __pyx_v_self, __pyx_v_number, __pyx_v_precision);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_36_format_decimal_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_number, PyObject *__pyx_v_precision) {
+  PyObject *__pyx_v_params = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_format_decimal_expression", 0);
+  __Pyx_INCREF(__pyx_v_precision);
+
+  /* "swixknife/swixknife/calculator/calculator.py":310
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):
+ *         if precision is None:             # <<<<<<<<<<<<<<
+ *             precision = self._decimal_precision
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_precision == Py_None);
+  if (__pyx_t_1) {
+
+    /* "swixknife/swixknife/calculator/calculator.py":311
+ *     def _format_decimal_expression(self, number, precision=None):
+ *         if precision is None:
+ *             precision = self._decimal_precision             # <<<<<<<<<<<<<<
+ * 
+ *         params = {
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF_SET(__pyx_v_precision, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "swixknife/swixknife/calculator/calculator.py":310
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):
+ *         if precision is None:             # <<<<<<<<<<<<<<
+ *             precision = self._decimal_precision
+ * 
+ */
+  }
+
+  /* "swixknife/swixknife/calculator/calculator.py":314
+ * 
+ *         params = {
+ *             'decimal_places': precision,             # <<<<<<<<<<<<<<
+ *             'decimal_separator': '.',
+ *             'group_separator': '',
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_places, __pyx_v_precision) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_decimal_separator, __pyx_kp_u__23) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_group_separator, __pyx_kp_u_) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_fraction_group_separator, __pyx_kp_u_) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":318
+ *             'group_separator': '',
+ *             'fraction_group_separator': '',
+ *             'typographical_negative': False,             # <<<<<<<<<<<<<<
+ *         }
+ * 
+ */
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_typographical_negative, Py_False) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_v_params = ((PyObject*)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":321
+ *         }
+ * 
+ *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)             # <<<<<<<<<<<<<<
+ * 
+ *     def _prepare_expression(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_decimal_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_number, __pyx_n_s_quantize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_v_precision); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_PyUnicode_Concat(__pyx_kp_u_1e, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = NULL;
+  __pyx_t_9 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_8)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+      __pyx_t_9 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_t_7};
+    __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __pyx_t_6 = NULL;
+  __pyx_t_9 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_9 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = PyDict_Copy(__pyx_v_params); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = 0;
+  goto __pyx_L0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":309
+ *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):             # <<<<<<<<<<<<<<
+ *         if precision is None:
+ *             precision = self._decimal_precision
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator._format_decimal_expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_params);
+  __Pyx_XDECREF(__pyx_v_precision);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "swixknife/swixknife/calculator/calculator.py":323
  *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
  * 
  *     def _prepare_expression(self):             # <<<<<<<<<<<<<<
@@ -6377,15 +7660,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29_prepare_expression(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_39_prepare_expression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29_prepare_expression = {"_prepare_expression", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29_prepare_expression, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29_prepare_expression(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_39_prepare_expression = {"_prepare_expression", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_39_prepare_expression, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_39_prepare_expression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -6418,12 +7701,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_prepare_expression") < 0)) __PYX_ERR(0, 279, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_prepare_expression") < 0)) __PYX_ERR(0, 323, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6434,20 +7717,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_prepare_expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 279, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_prepare_expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 323, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator._prepare_expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28_prepare_expression(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_38_prepare_expression(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_28_prepare_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_38_prepare_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_exp = NULL;
   PyObject *__pyx_v_o = NULL;
   PyObject *__pyx_v_text = NULL;
@@ -6456,6 +7739,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   PyObject *__pyx_v_prepared_expression = NULL;
   PyObject *__pyx_v_display = NULL;
   PyObject *__pyx_v_decimal_display = NULL;
+  PyObject *__pyx_v_decimal_expression = NULL;
   PyObject *__pyx_v_p = NULL;
   PyObject *__pyx_v_n = NULL;
   PyObject *__pyx_v_i = NULL;
@@ -6483,50 +7767,59 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_prepare_expression", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":280
+  /* "swixknife/swixknife/calculator/calculator.py":324
  * 
  *     def _prepare_expression(self):
  *         if not self.expression:             # <<<<<<<<<<<<<<
  *             self._display = ''
  *             self._decimal_display = ''
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":281
+    /* "swixknife/swixknife/calculator/calculator.py":325
  *     def _prepare_expression(self):
  *         if not self.expression:
  *             self._display = ''             # <<<<<<<<<<<<<<
  *             self._decimal_display = ''
  *             self._prepared_expression = ''
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_display, __pyx_kp_u_) < 0) __PYX_ERR(0, 281, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_display, __pyx_kp_u_) < 0) __PYX_ERR(0, 325, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":282
+    /* "swixknife/swixknife/calculator/calculator.py":326
  *         if not self.expression:
  *             self._display = ''
  *             self._decimal_display = ''             # <<<<<<<<<<<<<<
  *             self._prepared_expression = ''
- *             return
+ *             self._decimal_expression = ''
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display, __pyx_kp_u_) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display, __pyx_kp_u_) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":283
+    /* "swixknife/swixknife/calculator/calculator.py":327
  *             self._display = ''
  *             self._decimal_display = ''
  *             self._prepared_expression = ''             # <<<<<<<<<<<<<<
+ *             self._decimal_expression = ''
+ *             return
+ */
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression, __pyx_kp_u_) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+
+    /* "swixknife/swixknife/calculator/calculator.py":328
+ *             self._decimal_display = ''
+ *             self._prepared_expression = ''
+ *             self._decimal_expression = ''             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression, __pyx_kp_u_) < 0) __PYX_ERR(0, 283, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_expression, __pyx_kp_u_) < 0) __PYX_ERR(0, 328, __pyx_L1_error)
 
-    /* "swixknife/swixknife/calculator/calculator.py":284
- *             self._decimal_display = ''
+    /* "swixknife/swixknife/calculator/calculator.py":329
  *             self._prepared_expression = ''
+ *             self._decimal_expression = ''
  *             return             # <<<<<<<<<<<<<<
  * 
  *         exp = self.expression
@@ -6535,7 +7828,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":280
+    /* "swixknife/swixknife/calculator/calculator.py":324
  * 
  *     def _prepare_expression(self):
  *         if not self.expression:             # <<<<<<<<<<<<<<
@@ -6544,34 +7837,34 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":286
+  /* "swixknife/swixknife/calculator/calculator.py":331
  *             return
  * 
  *         exp = self.expression             # <<<<<<<<<<<<<<
  * 
  *         #
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_exp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":291
+  /* "swixknife/swixknife/calculator/calculator.py":336
  *         # Replace operators first
  *         #
  *         for o in _OPERATOR:             # <<<<<<<<<<<<<<
  *             text = _OPERATOR[o]
  *             exp = exp.replace(o, text)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_OPERATOR); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_OPERATOR); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_4 = __pyx_t_1; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 291, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 336, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -6579,17 +7872,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 291, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 336, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 291, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 336, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -6599,7 +7892,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 291, __pyx_L1_error)
+          else __PYX_ERR(0, 336, __pyx_L1_error)
         }
         break;
       }
@@ -6608,29 +7901,29 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __Pyx_XDECREF_SET(__pyx_v_o, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":292
+    /* "swixknife/swixknife/calculator/calculator.py":337
  *         #
  *         for o in _OPERATOR:
  *             text = _OPERATOR[o]             # <<<<<<<<<<<<<<
  *             exp = exp.replace(o, text)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_OPERATOR); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_OPERATOR); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_o); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_o); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_text, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":293
+    /* "swixknife/swixknife/calculator/calculator.py":338
  *         for o in _OPERATOR:
  *             text = _OPERATOR[o]
  *             exp = exp.replace(o, text)             # <<<<<<<<<<<<<<
  * 
  *         parts = exp.split()
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_exp, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_exp, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     __pyx_t_9 = 0;
@@ -6648,14 +7941,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       PyObject *__pyx_callargs[3] = {__pyx_t_8, __pyx_v_o, __pyx_v_text};
       __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_9, 2+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 293, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_exp, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":291
+    /* "swixknife/swixknife/calculator/calculator.py":336
  *         # Replace operators first
  *         #
  *         for o in _OPERATOR:             # <<<<<<<<<<<<<<
@@ -6665,14 +7958,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":295
+  /* "swixknife/swixknife/calculator/calculator.py":340
  *             exp = exp.replace(o, text)
  * 
  *         parts = exp.split()             # <<<<<<<<<<<<<<
  * 
  *         parenthesis_opened = 0
  */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_exp, __pyx_n_s_split); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_exp, __pyx_n_s_split); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_1 = NULL;
   __pyx_t_9 = 0;
@@ -6690,14 +7983,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     PyObject *__pyx_callargs[1] = {__pyx_t_1, };
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_9, 0+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __pyx_v_parts = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":297
+  /* "swixknife/swixknife/calculator/calculator.py":342
  *         parts = exp.split()
  * 
  *         parenthesis_opened = 0             # <<<<<<<<<<<<<<
@@ -6707,7 +8000,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_parenthesis_opened = __pyx_int_0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":299
+  /* "swixknife/swixknife/calculator/calculator.py":344
  *         parenthesis_opened = 0
  * 
  *         prepared_expression = ''             # <<<<<<<<<<<<<<
@@ -6717,28 +8010,38 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_INCREF(__pyx_kp_u_);
   __pyx_v_prepared_expression = __pyx_kp_u_;
 
-  /* "swixknife/swixknife/calculator/calculator.py":300
+  /* "swixknife/swixknife/calculator/calculator.py":345
  * 
  *         prepared_expression = ''
  *         display = ''             # <<<<<<<<<<<<<<
  *         decimal_display = ''
- * 
+ *         decimal_expression = ''
  */
   __Pyx_INCREF(__pyx_kp_u_);
   __pyx_v_display = __pyx_kp_u_;
 
-  /* "swixknife/swixknife/calculator/calculator.py":301
+  /* "swixknife/swixknife/calculator/calculator.py":346
  *         prepared_expression = ''
  *         display = ''
  *         decimal_display = ''             # <<<<<<<<<<<<<<
+ *         decimal_expression = ''
  * 
- *         for p in parts:
  */
   __Pyx_INCREF(__pyx_kp_u_);
   __pyx_v_decimal_display = __pyx_kp_u_;
 
-  /* "swixknife/swixknife/calculator/calculator.py":303
+  /* "swixknife/swixknife/calculator/calculator.py":347
+ *         display = ''
  *         decimal_display = ''
+ *         decimal_expression = ''             # <<<<<<<<<<<<<<
+ * 
+ *         for p in parts:
+ */
+  __Pyx_INCREF(__pyx_kp_u_);
+  __pyx_v_decimal_expression = __pyx_kp_u_;
+
+  /* "swixknife/swixknife/calculator/calculator.py":349
+ *         decimal_expression = ''
  * 
  *         for p in parts:             # <<<<<<<<<<<<<<
  *             p = p.strip()
@@ -6748,26 +8051,26 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_t_4 = __pyx_v_parts; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_parts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_parts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 349, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 303, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 349, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 303, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 349, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 303, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 349, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 303, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 349, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -6777,7 +8080,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 303, __pyx_L1_error)
+          else __PYX_ERR(0, 349, __pyx_L1_error)
         }
         break;
       }
@@ -6786,14 +8089,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":304
+    /* "swixknife/swixknife/calculator/calculator.py":350
  * 
  *         for p in parts:
  *             p = p.strip()             # <<<<<<<<<<<<<<
  * 
  *             if not p:
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     __pyx_t_9 = 0;
@@ -6811,25 +8114,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       PyObject *__pyx_callargs[1] = {__pyx_t_8, };
       __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_9, 0+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 304, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_p, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":306
+    /* "swixknife/swixknife/calculator/calculator.py":352
  *             p = p.strip()
  * 
  *             if not p:             # <<<<<<<<<<<<<<
  *                 continue
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_p); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 306, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_p); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 352, __pyx_L1_error)
     __pyx_t_2 = (!__pyx_t_3);
     if (__pyx_t_2) {
 
-      /* "swixknife/swixknife/calculator/calculator.py":307
+      /* "swixknife/swixknife/calculator/calculator.py":353
  * 
  *             if not p:
  *                 continue             # <<<<<<<<<<<<<<
@@ -6838,7 +8141,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
       goto __pyx_L7_continue;
 
-      /* "swixknife/swixknife/calculator/calculator.py":306
+      /* "swixknife/swixknife/calculator/calculator.py":352
  *             p = p.strip()
  * 
  *             if not p:             # <<<<<<<<<<<<<<
@@ -6847,151 +8150,214 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
     }
 
-    /* "swixknife/swixknife/calculator/calculator.py":309
+    /* "swixknife/swixknife/calculator/calculator.py":355
  *                 continue
  * 
  *             if p in _OPERATION:             # <<<<<<<<<<<<<<
  *                 prepared_expression += _OPERATION[p]
  *                 display += _NICE_OPERATION[p]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_p, __pyx_t_7, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_p, __pyx_t_7, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_2) {
 
-      /* "swixknife/swixknife/calculator/calculator.py":310
+      /* "swixknife/swixknife/calculator/calculator.py":356
  * 
  *             if p in _OPERATION:
  *                 prepared_expression += _OPERATION[p]             # <<<<<<<<<<<<<<
  *                 display += _NICE_OPERATION[p]
  *                 decimal_display += _NICE_OPERATION[p]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_prepared_expression, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":311
+      /* "swixknife/swixknife/calculator/calculator.py":357
  *             if p in _OPERATION:
  *                 prepared_expression += _OPERATION[p]
  *                 display += _NICE_OPERATION[p]             # <<<<<<<<<<<<<<
  *                 decimal_display += _NICE_OPERATION[p]
  *                 decimal_display = decimal_display.replace('%', '  36')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_NICE_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_NICE_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":312
+      /* "swixknife/swixknife/calculator/calculator.py":358
  *                 prepared_expression += _OPERATION[p]
  *                 display += _NICE_OPERATION[p]
  *                 decimal_display += _NICE_OPERATION[p]             # <<<<<<<<<<<<<<
  *                 decimal_display = decimal_display.replace('%', '  36')
  *                 decimal_display = decimal_display.replace('', '  216')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_NICE_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 312, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_NICE_OPERATION); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 358, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 358, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_decimal_display, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 312, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_decimal_display, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 358, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":313
+      /* "swixknife/swixknife/calculator/calculator.py":359
  *                 display += _NICE_OPERATION[p]
  *                 decimal_display += _NICE_OPERATION[p]
  *                 decimal_display = decimal_display.replace('%', '  36')             # <<<<<<<<<<<<<<
  *                 decimal_display = decimal_display.replace('', '  216')
  *                 decimal_display = decimal_display.replace('', '  1296')
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 359, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":314
+      /* "swixknife/swixknife/calculator/calculator.py":360
  *                 decimal_display += _NICE_OPERATION[p]
  *                 decimal_display = decimal_display.replace('%', '  36')
  *                 decimal_display = decimal_display.replace('', '  216')             # <<<<<<<<<<<<<<
  *                 decimal_display = decimal_display.replace('', '  1296')
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 360, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":315
+      /* "swixknife/swixknife/calculator/calculator.py":361
  *                 decimal_display = decimal_display.replace('%', '  36')
  *                 decimal_display = decimal_display.replace('', '  216')
  *                 decimal_display = decimal_display.replace('', '  1296')             # <<<<<<<<<<<<<<
  * 
- *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
+ *                 decimal_expression += _OPERATION[p]
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 315, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 361, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "swixknife/swixknife/calculator/calculator.py":317
+      /* "swixknife/swixknife/calculator/calculator.py":363
  *                 decimal_display = decimal_display.replace('', '  1296')
+ * 
+ *                 decimal_expression += _OPERATION[p]             # <<<<<<<<<<<<<<
+ *                 decimal_display = decimal_display.replace('%', ' / 36')
+ *                 decimal_display = decimal_display.replace('', ' / 216')
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_OPERATION); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_p); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 363, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_decimal_expression, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_decimal_expression, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "swixknife/swixknife/calculator/calculator.py":364
+ * 
+ *                 decimal_expression += _OPERATION[p]
+ *                 decimal_display = decimal_display.replace('%', ' / 36')             # <<<<<<<<<<<<<<
+ *                 decimal_display = decimal_display.replace('', ' / 216')
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
+ */
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "swixknife/swixknife/calculator/calculator.py":365
+ *                 decimal_expression += _OPERATION[p]
+ *                 decimal_display = decimal_display.replace('%', ' / 36')
+ *                 decimal_display = decimal_display.replace('', ' / 216')             # <<<<<<<<<<<<<<
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
+ * 
+ */
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "swixknife/swixknife/calculator/calculator.py":366
+ *                 decimal_display = decimal_display.replace('%', ' / 36')
+ *                 decimal_display = decimal_display.replace('', ' / 216')
+ *                 decimal_display = decimal_display.replace('', ' / 1296')             # <<<<<<<<<<<<<<
+ * 
+ *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
+ */
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_decimal_display, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "swixknife/swixknife/calculator/calculator.py":368
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
  * 
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':             # <<<<<<<<<<<<<<
  *                     parenthesis_opened += 1
  *                 elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':
  */
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_parenthesis_opened); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_parenthesis_opened); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 368, __pyx_L1_error)
       __pyx_t_10 = (!__pyx_t_3);
       if (__pyx_t_10) {
       } else {
         __pyx_t_2 = __pyx_t_10;
         goto __pyx_L12_bool_binop_done;
       }
-      __pyx_t_10 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_n_u_LEFT_PARENTHESIS, Py_EQ)); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_10 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_n_u_LEFT_PARENTHESIS, Py_EQ)); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 368, __pyx_L1_error)
       __pyx_t_2 = __pyx_t_10;
       __pyx_L12_bool_binop_done:;
       if (__pyx_t_2) {
 
-        /* "swixknife/swixknife/calculator/calculator.py":318
+        /* "swixknife/swixknife/calculator/calculator.py":369
  * 
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
  *                     parenthesis_opened += 1             # <<<<<<<<<<<<<<
  *                 elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':
  *                     parenthesis_opened -= 1
  */
-        __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_parenthesis_opened, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF_SET(__pyx_v_parenthesis_opened, __pyx_t_1);
-        __pyx_t_1 = 0;
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_parenthesis_opened, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF_SET(__pyx_v_parenthesis_opened, __pyx_t_7);
+        __pyx_t_7 = 0;
 
-        /* "swixknife/swixknife/calculator/calculator.py":317
- *                 decimal_display = decimal_display.replace('', '  1296')
+        /* "swixknife/swixknife/calculator/calculator.py":368
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
  * 
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':             # <<<<<<<<<<<<<<
  *                     parenthesis_opened += 1
@@ -7000,37 +8366,37 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         goto __pyx_L11;
       }
 
-      /* "swixknife/swixknife/calculator/calculator.py":319
+      /* "swixknife/swixknife/calculator/calculator.py":370
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
  *                     parenthesis_opened += 1
  *                 elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':             # <<<<<<<<<<<<<<
  *                     parenthesis_opened -= 1
  * 
  */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_parenthesis_opened); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 319, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_parenthesis_opened); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 370, __pyx_L1_error)
       if (__pyx_t_10) {
       } else {
         __pyx_t_2 = __pyx_t_10;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_10 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_n_u_RIGHT_PARENTHESIS, Py_EQ)); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 319, __pyx_L1_error)
+      __pyx_t_10 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_n_u_RIGHT_PARENTHESIS, Py_EQ)); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 370, __pyx_L1_error)
       __pyx_t_2 = __pyx_t_10;
       __pyx_L14_bool_binop_done:;
       if (__pyx_t_2) {
 
-        /* "swixknife/swixknife/calculator/calculator.py":320
+        /* "swixknife/swixknife/calculator/calculator.py":371
  *                     parenthesis_opened += 1
  *                 elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':
  *                     parenthesis_opened -= 1             # <<<<<<<<<<<<<<
  * 
  *                 continue
  */
-        __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_parenthesis_opened, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF_SET(__pyx_v_parenthesis_opened, __pyx_t_1);
-        __pyx_t_1 = 0;
+        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_parenthesis_opened, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF_SET(__pyx_v_parenthesis_opened, __pyx_t_7);
+        __pyx_t_7 = 0;
 
-        /* "swixknife/swixknife/calculator/calculator.py":319
+        /* "swixknife/swixknife/calculator/calculator.py":370
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
  *                     parenthesis_opened += 1
  *                 elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':             # <<<<<<<<<<<<<<
@@ -7040,7 +8406,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       }
       __pyx_L11:;
 
-      /* "swixknife/swixknife/calculator/calculator.py":322
+      /* "swixknife/swixknife/calculator/calculator.py":373
  *                     parenthesis_opened -= 1
  * 
  *                 continue             # <<<<<<<<<<<<<<
@@ -7049,7 +8415,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
       goto __pyx_L7_continue;
 
-      /* "swixknife/swixknife/calculator/calculator.py":309
+      /* "swixknife/swixknife/calculator/calculator.py":355
  *                 continue
  * 
  *             if p in _OPERATION:             # <<<<<<<<<<<<<<
@@ -7058,17 +8424,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
     }
 
-    /* "swixknife/swixknife/calculator/calculator.py":324
+    /* "swixknife/swixknife/calculator/calculator.py":375
  *                 continue
  * 
  *             if p == '.':             # <<<<<<<<<<<<<<
  *                 continue
  * 
  */
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_kp_u__10, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_p, __pyx_kp_u__23, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 375, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "swixknife/swixknife/calculator/calculator.py":325
+      /* "swixknife/swixknife/calculator/calculator.py":376
  * 
  *             if p == '.':
  *                 continue             # <<<<<<<<<<<<<<
@@ -7077,7 +8443,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
       goto __pyx_L7_continue;
 
-      /* "swixknife/swixknife/calculator/calculator.py":324
+      /* "swixknife/swixknife/calculator/calculator.py":375
  *                 continue
  * 
  *             if p == '.':             # <<<<<<<<<<<<<<
@@ -7086,130 +8452,133 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
     }
 
-    /* "swixknife/swixknife/calculator/calculator.py":327
+    /* "swixknife/swixknife/calculator/calculator.py":378
  *                 continue
  * 
  *             n = eval(f"'{p}'")             # <<<<<<<<<<<<<<
  * 
  *             if type(n) != Sezimal:
  */
-    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_11 = 0;
     __pyx_t_12 = 127;
-    __Pyx_INCREF(__pyx_kp_u__11);
+    __Pyx_INCREF(__pyx_kp_u__32);
     __pyx_t_11 += 1;
-    __Pyx_GIVEREF(__pyx_kp_u__11);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u__11);
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_v_p, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_12;
-    __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_7);
-    __Pyx_GIVEREF(__pyx_t_7);
-    PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_7);
-    __pyx_t_7 = 0;
-    __Pyx_INCREF(__pyx_kp_u__11);
-    __pyx_t_11 += 1;
-    __Pyx_GIVEREF(__pyx_kp_u__11);
-    PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u__11);
-    __pyx_t_7 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_Globals(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __Pyx_GIVEREF(__pyx_kp_u__32);
+    PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_kp_u__32);
+    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_p, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_12;
+    __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_1);
+    __pyx_t_1 = 0;
+    __Pyx_INCREF(__pyx_kp_u__32);
+    __pyx_t_11 += 1;
+    __Pyx_GIVEREF(__pyx_kp_u__32);
+    PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_kp_u__32);
+    __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_7, 3, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_Globals(); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_v_decimal_display) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_decimal_display_2, __pyx_v_decimal_display) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_decimal_display_2, __pyx_v_decimal_display) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
+    }
+    if (__pyx_v_decimal_expression) {
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_decimal_expression_2, __pyx_v_decimal_expression) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_display) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_display_2, __pyx_v_display) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_display_2, __pyx_v_display) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_exp) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_exp, __pyx_v_exp) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_exp, __pyx_v_exp) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_i) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_i, __pyx_v_i) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_i, __pyx_v_i) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_n) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_n, __pyx_v_n) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_n, __pyx_v_n) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_o) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_o, __pyx_v_o) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_o, __pyx_v_o) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_p) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_p, __pyx_v_p) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_p, __pyx_v_p) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_parenthesis_opened) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_parenthesis_opened, __pyx_v_parenthesis_opened) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_parenthesis_opened, __pyx_v_parenthesis_opened) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_parts) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_parts, __pyx_v_parts) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_parts, __pyx_v_parts) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_prepared_expression) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_prepared_expression_2, __pyx_v_prepared_expression) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_prepared_expression_2, __pyx_v_prepared_expression) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_self) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
     if (__pyx_v_text) {
-      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_text, __pyx_v_text) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_text, __pyx_v_text) < 0) __PYX_ERR(0, 378, __pyx_L1_error)
     }
-    __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 378, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __Pyx_GIVEREF(__pyx_t_7);
-    PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_7);
+    PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_t_8);
-    __pyx_t_7 = 0;
     __pyx_t_1 = 0;
+    __pyx_t_7 = 0;
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_XDECREF_SET(__pyx_v_n, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":329
+    /* "swixknife/swixknife/calculator/calculator.py":380
  *             n = eval(f"'{p}'")
  * 
  *             if type(n) != Sezimal:             # <<<<<<<<<<<<<<
  *                 if self.decimal:
  *                     n = Sezimal(Decimal(p).quantize(Decimal(f'1e-{int(self._decimal_precision)}')))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 380, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_13 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_n)), __pyx_t_8, Py_NE); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_13 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_n)), __pyx_t_8, Py_NE); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 380, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 380, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     if (__pyx_t_2) {
 
-      /* "swixknife/swixknife/calculator/calculator.py":330
+      /* "swixknife/swixknife/calculator/calculator.py":381
  * 
  *             if type(n) != Sezimal:
  *                 if self.decimal:             # <<<<<<<<<<<<<<
  *                     n = Sezimal(Decimal(p).quantize(Decimal(f'1e-{int(self._decimal_precision)}')))
  *                 else:
  */
-      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 330, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 330, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       if (__pyx_t_2) {
 
-        /* "swixknife/swixknife/calculator/calculator.py":331
+        /* "swixknife/swixknife/calculator/calculator.py":382
  *             if type(n) != Sezimal:
  *                 if self.decimal:
  *                     n = Sezimal(Decimal(p).quantize(Decimal(f'1e-{int(self._decimal_precision)}')))             # <<<<<<<<<<<<<<
  *                 else:
  *                     n = Sezimal(p)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __pyx_t_15 = NULL;
         __pyx_t_9 = 0;
@@ -7225,26 +8594,26 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         }
         {
           PyObject *__pyx_callargs[2] = {__pyx_t_15, __pyx_v_p};
-          __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 331, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_quantize); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_quantize); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_decimal_precision); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = __Pyx_PyNumber_Int(__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyNumber_Int(__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        __pyx_t_16 = __Pyx_PyObject_FormatSimple(__pyx_t_17, __pyx_empty_unicode); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyObject_FormatSimple(__pyx_t_17, __pyx_empty_unicode); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-        __pyx_t_17 = __Pyx_PyUnicode_Concat(__pyx_kp_u_1e, __pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyUnicode_Concat(__pyx_kp_u_1e, __pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 382, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_16 = NULL;
@@ -7261,11 +8630,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         }
         {
           PyObject *__pyx_callargs[2] = {__pyx_t_16, __pyx_t_17};
-          __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_15, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_15, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
           __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 331, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
         __pyx_t_15 = NULL;
@@ -7281,12 +8650,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
           }
         }
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_15, __pyx_t_7};
-          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+          PyObject *__pyx_callargs[2] = {__pyx_t_15, __pyx_t_1};
+          __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
         __pyx_t_14 = NULL;
@@ -7302,18 +8671,18 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
           }
         }
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_1};
+          PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_7};
           __pyx_t_13 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 331, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 382, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_n, __pyx_t_13);
         __pyx_t_13 = 0;
 
-        /* "swixknife/swixknife/calculator/calculator.py":330
+        /* "swixknife/swixknife/calculator/calculator.py":381
  * 
  *             if type(n) != Sezimal:
  *                 if self.decimal:             # <<<<<<<<<<<<<<
@@ -7323,7 +8692,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
         goto __pyx_L18;
       }
 
-      /* "swixknife/swixknife/calculator/calculator.py":333
+      /* "swixknife/swixknife/calculator/calculator.py":384
  *                     n = Sezimal(Decimal(p).quantize(Decimal(f'1e-{int(self._decimal_precision)}')))
  *                 else:
  *                     n = Sezimal(p)             # <<<<<<<<<<<<<<
@@ -7331,25 +8700,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  *             # n = round(n, sezimal_precision)
  */
       /*else*/ {
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 384, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = NULL;
+        __pyx_t_7 = NULL;
         __pyx_t_9 = 0;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
-          __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_8);
-          if (likely(__pyx_t_1)) {
+          __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_8);
+          if (likely(__pyx_t_7)) {
             PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-            __Pyx_INCREF(__pyx_t_1);
+            __Pyx_INCREF(__pyx_t_7);
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_8, function);
             __pyx_t_9 = 1;
           }
         }
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_p};
+          PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_p};
           __pyx_t_13 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 333, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 384, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -7358,7 +8727,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       }
       __pyx_L18:;
 
-      /* "swixknife/swixknife/calculator/calculator.py":329
+      /* "swixknife/swixknife/calculator/calculator.py":380
  *             n = eval(f"'{p}'")
  * 
  *             if type(n) != Sezimal:             # <<<<<<<<<<<<<<
@@ -7367,14 +8736,14 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
     }
 
-    /* "swixknife/swixknife/calculator/calculator.py":337
+    /* "swixknife/swixknife/calculator/calculator.py":388
  *             # n = round(n, sezimal_precision)
  * 
  *             prepared_expression += f"Sezimal('{n}')"             # <<<<<<<<<<<<<<
  *             display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))
  *             decimal_display += self._format_decimal(n.decimal)
  */
-    __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 337, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __pyx_t_11 = 0;
     __pyx_t_12 = 127;
@@ -7382,42 +8751,42 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_t_11 += 9;
     __Pyx_GIVEREF(__pyx_kp_u_Sezimal_2);
     PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_kp_u_Sezimal_2);
-    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_v_n, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_v_n, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_12 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_12) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_12;
     __pyx_t_11 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_8);
     __pyx_t_8 = 0;
-    __Pyx_INCREF(__pyx_kp_u__12);
+    __Pyx_INCREF(__pyx_kp_u__33);
     __pyx_t_11 += 2;
-    __Pyx_GIVEREF(__pyx_kp_u__12);
-    PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_kp_u__12);
-    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_13, 3, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
+    __Pyx_GIVEREF(__pyx_kp_u__33);
+    PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_kp_u__33);
+    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_13, 3, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 337, __pyx_L1_error)
+    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF_SET(__pyx_v_prepared_expression, __pyx_t_13);
     __pyx_t_13 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":338
+    /* "swixknife/swixknife/calculator/calculator.py":389
  * 
  *             prepared_expression += f"Sezimal('{n}')"
  *             display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))             # <<<<<<<<<<<<<<
  *             decimal_display += self._format_decimal(n.decimal)
- * 
+ *             decimal_expression += self._format_decimal_expression(n.decimal)
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format_sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format_sezimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SezimalInteger); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_Decimal); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_precision_2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_precision_2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
-    __pyx_t_16 = __Pyx_PyObject_Str(__pyx_t_17); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_Str(__pyx_t_17); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
     __pyx_t_17 = NULL;
@@ -7434,11 +8803,11 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     }
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_17, __pyx_t_16};
-      __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_15, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_15, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     }
     __pyx_t_15 = NULL;
@@ -7454,12 +8823,12 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       }
     }
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_15, __pyx_t_7};
-      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+      PyObject *__pyx_callargs[2] = {__pyx_t_15, __pyx_t_1};
+      __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_14, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 389, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
     __pyx_t_14 = NULL;
@@ -7475,31 +8844,31 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       }
     }
     {
-      PyObject *__pyx_callargs[3] = {__pyx_t_14, __pyx_v_n, __pyx_t_1};
+      PyObject *__pyx_callargs[3] = {__pyx_t_14, __pyx_v_n, __pyx_t_7};
       __pyx_t_13 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_9, 2+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 338, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 389, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
-    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":339
+    /* "swixknife/swixknife/calculator/calculator.py":390
  *             prepared_expression += f"Sezimal('{n}')"
  *             display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))
  *             decimal_display += self._format_decimal(n.decimal)             # <<<<<<<<<<<<<<
+ *             decimal_expression += self._format_decimal_expression(n.decimal)
  * 
- *         if exp[-1] == '.':
  */
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format_decimal); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format_decimal); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_decimal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_decimal); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_14 = NULL;
     __pyx_t_9 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_13))) {
@@ -7513,22 +8882,60 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
       }
     }
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_1};
+      PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_7};
       __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_13, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 339, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     }
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_decimal_display, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_decimal_display, __pyx_t_8); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF_SET(__pyx_v_decimal_display, __pyx_t_13);
     __pyx_t_13 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":303
- *         decimal_display = ''
+    /* "swixknife/swixknife/calculator/calculator.py":391
+ *             display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))
+ *             decimal_display += self._format_decimal(n.decimal)
+ *             decimal_expression += self._format_decimal_expression(n.decimal)             # <<<<<<<<<<<<<<
+ * 
+ *         if exp[-1] == '.':
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_format_decimal_expression); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_n, __pyx_n_s_decimal); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_14 = NULL;
+    __pyx_t_9 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_14 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_14)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_14);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+        __pyx_t_9 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_7};
+      __pyx_t_13 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
+      __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    }
+    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_decimal_expression, __pyx_t_13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __Pyx_DECREF_SET(__pyx_v_decimal_expression, __pyx_t_8);
+    __pyx_t_8 = 0;
+
+    /* "swixknife/swixknife/calculator/calculator.py":349
+ *         decimal_expression = ''
  * 
  *         for p in parts:             # <<<<<<<<<<<<<<
  *             p = p.strip()
@@ -7538,36 +8945,36 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":341
- *             decimal_display += self._format_decimal(n.decimal)
+  /* "swixknife/swixknife/calculator/calculator.py":393
+ *             decimal_expression += self._format_decimal_expression(n.decimal)
  * 
  *         if exp[-1] == '.':             # <<<<<<<<<<<<<<
  *             display += self.sezimal_separator
  * 
  */
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_exp, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_exp, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_kp_u__10, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_kp_u__23, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_2) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":342
+    /* "swixknife/swixknife/calculator/calculator.py":394
  * 
  *         if exp[-1] == '.':
  *             display += self.sezimal_separator             # <<<<<<<<<<<<<<
  * 
  *         for i in range(parenthesis_opened):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_separator); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 342, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_13);
+    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_display, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 394, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_13);
-    __pyx_t_13 = 0;
+    __Pyx_DECREF_SET(__pyx_v_display, __pyx_t_8);
+    __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":341
- *             decimal_display += self._format_decimal(n.decimal)
+    /* "swixknife/swixknife/calculator/calculator.py":393
+ *             decimal_expression += self._format_decimal_expression(n.decimal)
  * 
  *         if exp[-1] == '.':             # <<<<<<<<<<<<<<
  *             display += self.sezimal_separator
@@ -7575,71 +8982,71 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":344
+  /* "swixknife/swixknife/calculator/calculator.py":396
  *             display += self.sezimal_separator
  * 
  *         for i in range(parenthesis_opened):             # <<<<<<<<<<<<<<
  *             prepared_expression += ')'
  *             # display += ')'
  */
-  __pyx_t_13 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_parenthesis_opened); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 344, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  if (likely(PyList_CheckExact(__pyx_t_13)) || PyTuple_CheckExact(__pyx_t_13)) {
-    __pyx_t_4 = __pyx_t_13; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
+  __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_parenthesis_opened); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 396, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  if (likely(PyList_CheckExact(__pyx_t_8)) || PyTuple_CheckExact(__pyx_t_8)) {
+    __pyx_t_4 = __pyx_t_8; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 396, __pyx_L1_error)
   }
-  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_13 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_13); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 344, __pyx_L1_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 396, __pyx_L1_error)
         #else
-        __pyx_t_13 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 344, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_13);
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_13 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_13); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 344, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 396, __pyx_L1_error)
         #else
-        __pyx_t_13 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 344, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_13);
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 396, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         #endif
       }
     } else {
-      __pyx_t_13 = __pyx_t_6(__pyx_t_4);
-      if (unlikely(!__pyx_t_13)) {
+      __pyx_t_8 = __pyx_t_6(__pyx_t_4);
+      if (unlikely(!__pyx_t_8)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 344, __pyx_L1_error)
+          else __PYX_ERR(0, 396, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_13);
+      __Pyx_GOTREF(__pyx_t_8);
     }
-    __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_13);
-    __pyx_t_13 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_8);
+    __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":345
+    /* "swixknife/swixknife/calculator/calculator.py":397
  * 
  *         for i in range(parenthesis_opened):
  *             prepared_expression += ')'             # <<<<<<<<<<<<<<
  *             # display += ')'
  *             # decimal_display += ')'
  */
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_kp_u__13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 345, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_13);
-    __Pyx_DECREF_SET(__pyx_v_prepared_expression, __pyx_t_13);
-    __pyx_t_13 = 0;
+    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_prepared_expression, __pyx_kp_u__34); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 397, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF_SET(__pyx_v_prepared_expression, __pyx_t_8);
+    __pyx_t_8 = 0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":344
+    /* "swixknife/swixknife/calculator/calculator.py":396
  *             display += self.sezimal_separator
  * 
  *         for i in range(parenthesis_opened):             # <<<<<<<<<<<<<<
@@ -7649,34 +9056,43 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":349
+  /* "swixknife/swixknife/calculator/calculator.py":401
  *             # decimal_display += ')'
  * 
  *         self._prepared_expression = prepared_expression             # <<<<<<<<<<<<<<
  *         self._display = display
  *         self._decimal_display = decimal_display
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression, __pyx_v_prepared_expression) < 0) __PYX_ERR(0, 349, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression, __pyx_v_prepared_expression) < 0) __PYX_ERR(0, 401, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":350
+  /* "swixknife/swixknife/calculator/calculator.py":402
  * 
  *         self._prepared_expression = prepared_expression
  *         self._display = display             # <<<<<<<<<<<<<<
  *         self._decimal_display = decimal_display
- * 
+ *         self._decimal_expression = decimal_expression
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_display, __pyx_v_display) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_display, __pyx_v_display) < 0) __PYX_ERR(0, 402, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":351
+  /* "swixknife/swixknife/calculator/calculator.py":403
  *         self._prepared_expression = prepared_expression
  *         self._display = display
  *         self._decimal_display = decimal_display             # <<<<<<<<<<<<<<
+ *         self._decimal_expression = decimal_expression
+ * 
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display, __pyx_v_decimal_display) < 0) __PYX_ERR(0, 403, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":404
+ *         self._display = display
+ *         self._decimal_display = decimal_display
+ *         self._decimal_expression = decimal_expression             # <<<<<<<<<<<<<<
  * 
  *     def eval_expression(self):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_display, __pyx_v_decimal_display) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_decimal_expression, __pyx_v_decimal_expression) < 0) __PYX_ERR(0, 404, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":279
+  /* "swixknife/swixknife/calculator/calculator.py":323
  *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
  * 
  *     def _prepare_expression(self):             # <<<<<<<<<<<<<<
@@ -7708,6 +9124,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_XDECREF(__pyx_v_prepared_expression);
   __Pyx_XDECREF(__pyx_v_display);
   __Pyx_XDECREF(__pyx_v_decimal_display);
+  __Pyx_XDECREF(__pyx_v_decimal_expression);
   __Pyx_XDECREF(__pyx_v_p);
   __Pyx_XDECREF(__pyx_v_n);
   __Pyx_XDECREF(__pyx_v_i);
@@ -7716,8 +9133,8 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   return __pyx_r;
 }
 
-/* "swixknife/swixknife/calculator/calculator.py":353
- *         self._decimal_display = decimal_display
+/* "swixknife/swixknife/calculator/calculator.py":406
+ *         self._decimal_expression = decimal_expression
  * 
  *     def eval_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
@@ -7725,15 +9142,15 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31eval_expression(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_41eval_expression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31eval_expression = {"eval_expression", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31eval_expression, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31eval_expression(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_41eval_expression = {"eval_expression", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_41eval_expression, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_41eval_expression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -7766,12 +9183,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_self)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 353, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 406, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "eval_expression") < 0)) __PYX_ERR(0, 353, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "eval_expression") < 0)) __PYX_ERR(0, 406, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -7782,20 +9199,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("eval_expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 353, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("eval_expression", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 406, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("swixknife.swixknife.calculator.calculator.SezimalCalculator.eval_expression", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30eval_expression(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_40eval_expression(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_30eval_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_40eval_expression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_sezimal_response = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -7810,21 +9227,21 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("eval_expression", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":354
+  /* "swixknife/swixknife/calculator/calculator.py":407
  * 
  *     def eval_expression(self):
  *         if not self.expression:             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "swixknife/swixknife/calculator/calculator.py":355
+    /* "swixknife/swixknife/calculator/calculator.py":408
  *     def eval_expression(self):
  *         if not self.expression:
  *             return             # <<<<<<<<<<<<<<
@@ -7835,7 +9252,7 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "swixknife/swixknife/calculator/calculator.py":354
+    /* "swixknife/swixknife/calculator/calculator.py":407
  * 
  *     def eval_expression(self):
  *         if not self.expression:             # <<<<<<<<<<<<<<
@@ -7844,25 +9261,25 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
  */
   }
 
-  /* "swixknife/swixknife/calculator/calculator.py":357
+  /* "swixknife/swixknife/calculator/calculator.py":410
  *             return
  * 
  *         sezimal_response = eval(self._prepared_expression)             # <<<<<<<<<<<<<<
  *         self.expression = str(round(sezimal_response, self._sezimal_precision))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_prepared_expression); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_Globals(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Globals(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (__pyx_v_self) {
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 410, __pyx_L1_error)
   }
   if (__pyx_v_sezimal_response) {
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sezimal_response, __pyx_v_sezimal_response) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sezimal_response, __pyx_v_sezimal_response) < 0) __PYX_ERR(0, 410, __pyx_L1_error)
   }
-  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -7873,20 +9290,20 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_sezimal_response = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":358
+  /* "swixknife/swixknife/calculator/calculator.py":411
  * 
  *         sezimal_response = eval(self._prepared_expression)
  *         self.expression = str(round(sezimal_response, self._sezimal_precision))             # <<<<<<<<<<<<<<
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sezimal_precision); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_v_sezimal_response);
   __Pyx_GIVEREF(__pyx_v_sezimal_response);
@@ -7894,17 +9311,17 @@ static PyObject *__pyx_pf_9swixknife_9swixknife_10calculator_10calculator_17Sezi
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_round, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Str(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_t_6) < 0) __PYX_ERR(0, 358, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_expression, __pyx_t_6) < 0) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":353
- *         self._decimal_display = decimal_display
+  /* "swixknife/swixknife/calculator/calculator.py":406
+ *         self._decimal_expression = decimal_expression
  * 
  *     def eval_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
@@ -8074,9 +9491,12 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
     {&__pyx_kp_u_, __pyx_k_, sizeof(__pyx_k_), 0, 1, 0, 0},
     {&__pyx_kp_u_1296, __pyx_k_1296, sizeof(__pyx_k_1296), 0, 1, 0, 0},
+    {&__pyx_kp_u_1296_2, __pyx_k_1296_2, sizeof(__pyx_k_1296_2), 0, 1, 0, 0},
     {&__pyx_kp_u_1e, __pyx_k_1e, sizeof(__pyx_k_1e), 0, 1, 0, 0},
     {&__pyx_kp_u_216, __pyx_k_216, sizeof(__pyx_k_216), 0, 1, 0, 0},
+    {&__pyx_kp_u_216_2, __pyx_k_216_2, sizeof(__pyx_k_216_2), 0, 1, 0, 0},
     {&__pyx_kp_u_36, __pyx_k_36, sizeof(__pyx_k_36), 0, 1, 0, 0},
+    {&__pyx_kp_u_36_2, __pyx_k_36_2, sizeof(__pyx_k_36_2), 0, 1, 0, 0},
     {&__pyx_kp_u_ADD, __pyx_k_ADD, sizeof(__pyx_k_ADD), 0, 1, 0, 0},
     {&__pyx_n_u_ADD_2, __pyx_k_ADD_2, sizeof(__pyx_k_ADD_2), 0, 1, 0, 1},
     {&__pyx_kp_u_CONSTANT_E, __pyx_k_CONSTANT_E, sizeof(__pyx_k_CONSTANT_E), 0, 1, 0, 0},
@@ -8104,9 +9524,11 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_PERNIF, __pyx_k_PERNIF, sizeof(__pyx_k_PERNIF), 0, 1, 0, 0},
     {&__pyx_n_u_PERNIF_2, __pyx_k_PERNIF_2, sizeof(__pyx_k_PERNIF_2), 0, 1, 0, 1},
     {&__pyx_kp_u_PERSIXNIF, __pyx_k_PERSIXNIF, sizeof(__pyx_k_PERSIXNIF), 0, 1, 0, 0},
+    {&__pyx_n_s_PERSIXNIFF, __pyx_k_PERSIXNIFF, sizeof(__pyx_k_PERSIXNIFF), 0, 0, 1, 1},
     {&__pyx_n_u_PERSIXNIF_2, __pyx_k_PERSIXNIF_2, sizeof(__pyx_k_PERSIXNIF_2), 0, 1, 0, 1},
-    {&__pyx_kp_u_PERUNEXIAN, __pyx_k_PERUNEXIAN, sizeof(__pyx_k_PERUNEXIAN), 0, 1, 0, 0},
-    {&__pyx_n_u_PERUNEXIAN_2, __pyx_k_PERUNEXIAN_2, sizeof(__pyx_k_PERUNEXIAN_2), 0, 1, 0, 1},
+    {&__pyx_n_s_PERUNEXIAN, __pyx_k_PERUNEXIAN, sizeof(__pyx_k_PERUNEXIAN), 0, 0, 1, 1},
+    {&__pyx_kp_u_PERUNEXIAN_2, __pyx_k_PERUNEXIAN_2, sizeof(__pyx_k_PERUNEXIAN_2), 0, 1, 0, 0},
+    {&__pyx_n_u_PERUNEXIAN_3, __pyx_k_PERUNEXIAN_3, sizeof(__pyx_k_PERUNEXIAN_3), 0, 1, 0, 1},
     {&__pyx_kp_u_POWER, __pyx_k_POWER, sizeof(__pyx_k_POWER), 0, 1, 0, 0},
     {&__pyx_n_u_POWER_2, __pyx_k_POWER_2, sizeof(__pyx_k_POWER_2), 0, 1, 0, 1},
     {&__pyx_n_u_RIGHT_PARENTHESIS, __pyx_k_RIGHT_PARENTHESIS, sizeof(__pyx_k_RIGHT_PARENTHESIS), 0, 1, 0, 1},
@@ -8123,12 +9545,17 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_u_SezimalCalculator, __pyx_k_SezimalCalculator, sizeof(__pyx_k_SezimalCalculator), 0, 1, 0, 1},
     {&__pyx_n_s_SezimalCalculator___init, __pyx_k_SezimalCalculator___init, sizeof(__pyx_k_SezimalCalculator___init), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator__format_decima, __pyx_k_SezimalCalculator__format_decima, sizeof(__pyx_k_SezimalCalculator__format_decima), 0, 0, 1, 1},
+    {&__pyx_n_s_SezimalCalculator__format_decima_2, __pyx_k_SezimalCalculator__format_decima_2, sizeof(__pyx_k_SezimalCalculator__format_decima_2), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator__format_sezima, __pyx_k_SezimalCalculator__format_sezima, sizeof(__pyx_k_SezimalCalculator__format_sezima), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator__prepare_expre, __pyx_k_SezimalCalculator__prepare_expre, sizeof(__pyx_k_SezimalCalculator__prepare_expre), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_calculate, __pyx_k_SezimalCalculator_calculate, sizeof(__pyx_k_SezimalCalculator_calculate), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_decimal, __pyx_k_SezimalCalculator_decimal, sizeof(__pyx_k_SezimalCalculator_decimal), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_decimal_displa, __pyx_k_SezimalCalculator_decimal_displa, sizeof(__pyx_k_SezimalCalculator_decimal_displa), 0, 0, 1, 1},
+    {&__pyx_n_s_SezimalCalculator_decimal_displa_2, __pyx_k_SezimalCalculator_decimal_displa_2, sizeof(__pyx_k_SezimalCalculator_decimal_displa_2), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_display, __pyx_k_SezimalCalculator_display, sizeof(__pyx_k_SezimalCalculator_display), 0, 0, 1, 1},
+    {&__pyx_n_s_SezimalCalculator_display_11_seg, __pyx_k_SezimalCalculator_display_11_seg, sizeof(__pyx_k_SezimalCalculator_display_11_seg), 0, 0, 1, 1},
+    {&__pyx_n_s_SezimalCalculator_display_11_seg_2, __pyx_k_SezimalCalculator_display_11_seg_2, sizeof(__pyx_k_SezimalCalculator_display_11_seg_2), 0, 0, 1, 1},
+    {&__pyx_n_s_SezimalCalculator_display_dedica, __pyx_k_SezimalCalculator_display_dedica, sizeof(__pyx_k_SezimalCalculator_display_dedica), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_eval_expressio, __pyx_k_SezimalCalculator_eval_expressio, sizeof(__pyx_k_SezimalCalculator_eval_expressio), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_expression, __pyx_k_SezimalCalculator_expression, sizeof(__pyx_k_SezimalCalculator_expression), 0, 0, 1, 1},
     {&__pyx_n_s_SezimalCalculator_lang, __pyx_k_SezimalCalculator_lang, sizeof(__pyx_k_SezimalCalculator_lang), 0, 0, 1, 1},
@@ -8140,37 +9567,49 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_Sezimal_2, __pyx_k_Sezimal_2, sizeof(__pyx_k_Sezimal_2), 0, 1, 0, 0},
     {&__pyx_kp_u_Sezimal_2_2, __pyx_k_Sezimal_2_2, sizeof(__pyx_k_Sezimal_2_2), 0, 1, 0, 0},
     {&__pyx_kp_u_Sezimal_3, __pyx_k_Sezimal_3, sizeof(__pyx_k_Sezimal_3), 0, 1, 0, 0},
-    {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
     {&__pyx_kp_u__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 1, 0, 0},
     {&__pyx_kp_u__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 1, 0, 0},
-    {&__pyx_kp_u__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 1, 0, 0},
-    {&__pyx_n_s__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 0, 1, 1},
+    {&__pyx_kp_u__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 1, 0, 0},
     {&__pyx_kp_u__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 1, 0, 0},
-    {&__pyx_kp_u__16, __pyx_k__16, sizeof(__pyx_k__16), 0, 1, 0, 0},
     {&__pyx_kp_u__17, __pyx_k__17, sizeof(__pyx_k__17), 0, 1, 0, 0},
     {&__pyx_kp_u__18, __pyx_k__18, sizeof(__pyx_k__18), 0, 1, 0, 0},
-    {&__pyx_kp_u__19, __pyx_k__19, sizeof(__pyx_k__19), 0, 1, 0, 0},
     {&__pyx_n_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 1},
     {&__pyx_kp_u__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 1, 0, 0},
     {&__pyx_kp_u__21, __pyx_k__21, sizeof(__pyx_k__21), 0, 1, 0, 0},
-    {&__pyx_kp_u__22, __pyx_k__22, sizeof(__pyx_k__22), 0, 1, 0, 0},
-    {&__pyx_n_u__23, __pyx_k__23, sizeof(__pyx_k__23), 0, 1, 0, 1},
-    {&__pyx_n_u__24, __pyx_k__24, sizeof(__pyx_k__24), 0, 1, 0, 1},
+    {&__pyx_kp_u__23, __pyx_k__23, sizeof(__pyx_k__23), 0, 1, 0, 0},
     {&__pyx_kp_u__25, __pyx_k__25, sizeof(__pyx_k__25), 0, 1, 0, 0},
-    {&__pyx_n_u__26, __pyx_k__26, sizeof(__pyx_k__26), 0, 1, 0, 1},
-    {&__pyx_n_u__27, __pyx_k__27, sizeof(__pyx_k__27), 0, 1, 0, 1},
-    {&__pyx_n_u__28, __pyx_k__28, sizeof(__pyx_k__28), 0, 1, 0, 1},
-    {&__pyx_kp_u__29, __pyx_k__29, sizeof(__pyx_k__29), 0, 1, 0, 0},
+    {&__pyx_kp_u__27, __pyx_k__27, sizeof(__pyx_k__27), 0, 1, 0, 0},
     {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
-    {&__pyx_kp_u__30, __pyx_k__30, sizeof(__pyx_k__30), 0, 1, 0, 0},
-    {&__pyx_kp_u__31, __pyx_k__31, sizeof(__pyx_k__31), 0, 1, 0, 0},
     {&__pyx_kp_u__32, __pyx_k__32, sizeof(__pyx_k__32), 0, 1, 0, 0},
     {&__pyx_kp_u__33, __pyx_k__33, sizeof(__pyx_k__33), 0, 1, 0, 0},
     {&__pyx_kp_u__34, __pyx_k__34, sizeof(__pyx_k__34), 0, 1, 0, 0},
+    {&__pyx_n_s__36, __pyx_k__36, sizeof(__pyx_k__36), 0, 0, 1, 1},
+    {&__pyx_kp_u__36, __pyx_k__36, sizeof(__pyx_k__36), 0, 1, 0, 0},
+    {&__pyx_kp_u__37, __pyx_k__37, sizeof(__pyx_k__37), 0, 1, 0, 0},
+    {&__pyx_kp_u__38, __pyx_k__38, sizeof(__pyx_k__38), 0, 1, 0, 0},
+    {&__pyx_kp_u__39, __pyx_k__39, sizeof(__pyx_k__39), 0, 1, 0, 0},
     {&__pyx_kp_u__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0, 0},
+    {&__pyx_kp_u__40, __pyx_k__40, sizeof(__pyx_k__40), 0, 1, 0, 0},
+    {&__pyx_kp_u__41, __pyx_k__41, sizeof(__pyx_k__41), 0, 1, 0, 0},
+    {&__pyx_kp_u__42, __pyx_k__42, sizeof(__pyx_k__42), 0, 1, 0, 0},
+    {&__pyx_kp_u__43, __pyx_k__43, sizeof(__pyx_k__43), 0, 1, 0, 0},
+    {&__pyx_n_u__44, __pyx_k__44, sizeof(__pyx_k__44), 0, 1, 0, 1},
+    {&__pyx_n_u__45, __pyx_k__45, sizeof(__pyx_k__45), 0, 1, 0, 1},
+    {&__pyx_kp_u__46, __pyx_k__46, sizeof(__pyx_k__46), 0, 1, 0, 0},
+    {&__pyx_n_u__47, __pyx_k__47, sizeof(__pyx_k__47), 0, 1, 0, 1},
+    {&__pyx_n_u__48, __pyx_k__48, sizeof(__pyx_k__48), 0, 1, 0, 1},
+    {&__pyx_n_u__49, __pyx_k__49, sizeof(__pyx_k__49), 0, 1, 0, 1},
+    {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
+    {&__pyx_kp_u__50, __pyx_k__50, sizeof(__pyx_k__50), 0, 1, 0, 0},
+    {&__pyx_kp_u__51, __pyx_k__51, sizeof(__pyx_k__51), 0, 1, 0, 0},
+    {&__pyx_kp_u__52, __pyx_k__52, sizeof(__pyx_k__52), 0, 1, 0, 0},
+    {&__pyx_kp_u__53, __pyx_k__53, sizeof(__pyx_k__53), 0, 1, 0, 0},
+    {&__pyx_kp_u__54, __pyx_k__54, sizeof(__pyx_k__54), 0, 1, 0, 0},
+    {&__pyx_kp_u__55, __pyx_k__55, sizeof(__pyx_k__55), 0, 1, 0, 0},
     {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
-    {&__pyx_n_s__66, __pyx_k__66, sizeof(__pyx_k__66), 0, 0, 1, 1},
     {&__pyx_kp_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 0},
+    {&__pyx_kp_u__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 1, 0, 0},
+    {&__pyx_n_s__94, __pyx_k__94, sizeof(__pyx_k__94), 0, 0, 1, 1},
     {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_kp_u_az_AZ, __pyx_k_az_AZ, sizeof(__pyx_k_az_AZ), 0, 1, 0, 0},
@@ -8179,6 +9618,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_bg_BG, __pyx_k_bg_BG, sizeof(__pyx_k_bg_BG), 0, 1, 0, 0},
     {&__pyx_n_s_bool, __pyx_k_bool, sizeof(__pyx_k_bool), 0, 0, 1, 1},
     {&__pyx_kp_u_bs_BA, __pyx_k_bs_BA, sizeof(__pyx_k_bs_BA), 0, 1, 0, 0},
+    {&__pyx_n_u_bz, __pyx_k_bz, sizeof(__pyx_k_bz), 0, 1, 0, 1},
+    {&__pyx_kp_u_bz_BR, __pyx_k_bz_BR, sizeof(__pyx_k_bz_BR), 0, 1, 0, 0},
     {&__pyx_kp_u_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 1, 0, 0},
     {&__pyx_kp_u_ca_ES, __pyx_k_ca_ES, sizeof(__pyx_k_ca_ES), 0, 1, 0, 0},
     {&__pyx_n_s_calculate, __pyx_k_calculate, sizeof(__pyx_k_calculate), 0, 0, 1, 1},
@@ -8193,8 +9634,11 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_decimal, __pyx_k_decimal, sizeof(__pyx_k_decimal), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_2, __pyx_k_decimal_2, sizeof(__pyx_k_decimal_2), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_display, __pyx_k_decimal_display, sizeof(__pyx_k_decimal_display), 0, 0, 1, 1},
+    {&__pyx_n_s_decimal_display_11_segment, __pyx_k_decimal_display_11_segment, sizeof(__pyx_k_decimal_display_11_segment), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_display_2, __pyx_k_decimal_display_2, sizeof(__pyx_k_decimal_display_2), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_exp, __pyx_k_decimal_exp, sizeof(__pyx_k_decimal_exp), 0, 0, 1, 1},
+    {&__pyx_n_s_decimal_expression, __pyx_k_decimal_expression, sizeof(__pyx_k_decimal_expression), 0, 0, 1, 1},
+    {&__pyx_n_s_decimal_expression_2, __pyx_k_decimal_expression_2, sizeof(__pyx_k_decimal_expression_2), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_format, __pyx_k_decimal_format, sizeof(__pyx_k_decimal_format), 0, 0, 1, 1},
     {&__pyx_n_s_decimal_formatted_response, __pyx_k_decimal_formatted_response, sizeof(__pyx_k_decimal_formatted_response), 0, 0, 1, 1},
     {&__pyx_n_u_decimal_places, __pyx_k_decimal_places, sizeof(__pyx_k_decimal_places), 0, 1, 0, 1},
@@ -8203,9 +9647,13 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_u_decimal_separator, __pyx_k_decimal_separator, sizeof(__pyx_k_decimal_separator), 0, 1, 0, 1},
     {&__pyx_n_s_dedicated_digits, __pyx_k_dedicated_digits, sizeof(__pyx_k_dedicated_digits), 0, 0, 1, 1},
     {&__pyx_n_u_dedicated_digits, __pyx_k_dedicated_digits, sizeof(__pyx_k_dedicated_digits), 0, 1, 0, 1},
+    {&__pyx_n_s_default_to_dedicated_digits, __pyx_k_default_to_dedicated_digits, sizeof(__pyx_k_default_to_dedicated_digits), 0, 0, 1, 1},
     {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
     {&__pyx_n_s_display, __pyx_k_display, sizeof(__pyx_k_display), 0, 0, 1, 1},
+    {&__pyx_n_s_display_11_segment, __pyx_k_display_11_segment, sizeof(__pyx_k_display_11_segment), 0, 0, 1, 1},
+    {&__pyx_n_s_display_11_segment_dedicated_dig, __pyx_k_display_11_segment_dedicated_dig, sizeof(__pyx_k_display_11_segment_dedicated_dig), 0, 0, 1, 1},
     {&__pyx_n_s_display_2, __pyx_k_display_2, sizeof(__pyx_k_display_2), 0, 0, 1, 1},
+    {&__pyx_n_s_display_dedicated_digits, __pyx_k_display_dedicated_digits, sizeof(__pyx_k_display_dedicated_digits), 0, 0, 1, 1},
     {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
     {&__pyx_n_u_e, __pyx_k_e, sizeof(__pyx_k_e), 0, 1, 0, 1},
     {&__pyx_kp_u_el_CY, __pyx_k_el_CY, sizeof(__pyx_k_el_CY), 0, 1, 0, 0},
@@ -8228,6 +9676,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_fi_FI, __pyx_k_fi_FI, sizeof(__pyx_k_fi_FI), 0, 1, 0, 0},
     {&__pyx_n_s_final_exp, __pyx_k_final_exp, sizeof(__pyx_k_final_exp), 0, 0, 1, 1},
     {&__pyx_n_s_format_decimal, __pyx_k_format_decimal, sizeof(__pyx_k_format_decimal), 0, 0, 1, 1},
+    {&__pyx_n_s_format_decimal_expression, __pyx_k_format_decimal_expression, sizeof(__pyx_k_format_decimal_expression), 0, 0, 1, 1},
     {&__pyx_n_s_format_sezimal, __pyx_k_format_sezimal, sizeof(__pyx_k_format_sezimal), 0, 0, 1, 1},
     {&__pyx_kp_u_fr_BE, __pyx_k_fr_BE, sizeof(__pyx_k_fr_BE), 0, 1, 0, 0},
     {&__pyx_kp_u_fr_FR, __pyx_k_fr_FR, sizeof(__pyx_k_fr_FR), 0, 1, 0, 0},
@@ -8341,10 +9790,10 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 181, __pyx_L1_error)
-  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(0, 211, __pyx_L1_error)
-  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 327, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 378, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 396, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8355,38 +9804,137 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "swixknife/swixknife/calculator/calculator.py":313
+  /* "swixknife/swixknife/calculator/calculator.py":259
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ *         display = display.replace('', '\u283f')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')
+ */
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_kp_u__5, __pyx_kp_u__6); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+
+  /* "swixknife/swixknife/calculator/calculator.py":260
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ *         display = display.replace('', '\u283f')
+ *         display = display.replace('', '\u2866')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')
+ */
+  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_kp_u__8, __pyx_kp_u__9); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+
+  /* "swixknife/swixknife/calculator/calculator.py":261
+ *         display = display.replace('', '\u283f')
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')
+ */
+  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_kp_u__11, __pyx_kp_u__12); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+
+  /* "swixknife/swixknife/calculator/calculator.py":262
+ *         display = display.replace('', '\u2866')
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u285b')
+ *         display = display.replace('', '\u287b')
+ */
+  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_kp_u__14, __pyx_kp_u__15); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+
+  /* "swixknife/swixknife/calculator/calculator.py":263
+ *         display = display.replace('', '\u2853')
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')             # <<<<<<<<<<<<<<
+ *         display = display.replace('', '\u287b')
+ *         return display
+ */
+  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_kp_u__17, __pyx_kp_u__18); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+
+  /* "swixknife/swixknife/calculator/calculator.py":264
+ *         display = display.replace('', '\u286b')
+ *         display = display.replace('', '\u285b')
+ *         display = display.replace('', '\u287b')             # <<<<<<<<<<<<<<
+ *         return display
+ * 
+ */
+  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_kp_u__20, __pyx_kp_u__21); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+
+  /* "swixknife/swixknife/calculator/calculator.py":359
  *                 display += _NICE_OPERATION[p]
  *                 decimal_display += _NICE_OPERATION[p]
  *                 decimal_display = decimal_display.replace('%', '  36')             # <<<<<<<<<<<<<<
  *                 decimal_display = decimal_display.replace('', '  216')
  *                 decimal_display = decimal_display.replace('', '  1296')
  */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_kp_u__4, __pyx_kp_u_36); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 313, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_kp_u__4, __pyx_kp_u_36); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
 
-  /* "swixknife/swixknife/calculator/calculator.py":314
+  /* "swixknife/swixknife/calculator/calculator.py":360
  *                 decimal_display += _NICE_OPERATION[p]
  *                 decimal_display = decimal_display.replace('%', '  36')
  *                 decimal_display = decimal_display.replace('', '  216')             # <<<<<<<<<<<<<<
  *                 decimal_display = decimal_display.replace('', '  1296')
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_kp_u__6, __pyx_kp_u_216); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 314, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_tuple__26 = PyTuple_Pack(2, __pyx_kp_u__25, __pyx_kp_u_216); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
 
-  /* "swixknife/swixknife/calculator/calculator.py":315
+  /* "swixknife/swixknife/calculator/calculator.py":361
  *                 decimal_display = decimal_display.replace('%', '  36')
  *                 decimal_display = decimal_display.replace('', '  216')
  *                 decimal_display = decimal_display.replace('', '  1296')             # <<<<<<<<<<<<<<
  * 
+ *                 decimal_expression += _OPERATION[p]
+ */
+  __pyx_tuple__28 = PyTuple_Pack(2, __pyx_kp_u__27, __pyx_kp_u_1296); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+
+  /* "swixknife/swixknife/calculator/calculator.py":364
+ * 
+ *                 decimal_expression += _OPERATION[p]
+ *                 decimal_display = decimal_display.replace('%', ' / 36')             # <<<<<<<<<<<<<<
+ *                 decimal_display = decimal_display.replace('', ' / 216')
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
+ */
+  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_kp_u__4, __pyx_kp_u_36_2); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+
+  /* "swixknife/swixknife/calculator/calculator.py":365
+ *                 decimal_expression += _OPERATION[p]
+ *                 decimal_display = decimal_display.replace('%', ' / 36')
+ *                 decimal_display = decimal_display.replace('', ' / 216')             # <<<<<<<<<<<<<<
+ *                 decimal_display = decimal_display.replace('', ' / 1296')
+ * 
+ */
+  __pyx_tuple__30 = PyTuple_Pack(2, __pyx_kp_u__25, __pyx_kp_u_216_2); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+
+  /* "swixknife/swixknife/calculator/calculator.py":366
+ *                 decimal_display = decimal_display.replace('%', ' / 36')
+ *                 decimal_display = decimal_display.replace('', ' / 216')
+ *                 decimal_display = decimal_display.replace('', ' / 1296')             # <<<<<<<<<<<<<<
+ * 
  *                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
  */
-  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_kp_u__8, __pyx_kp_u_1296); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 315, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_kp_u__27, __pyx_kp_u_1296_2); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 366, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
 
   /* "swixknife/swixknife/calculator/calculator.py":3
  * 
@@ -8395,198 +9943,249 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * from ..sezimal import Sezimal, SezimalInteger
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_n_u_SezimalCalculator); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_u_SezimalCalculator); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
 
-  /* "swixknife/swixknife/calculator/calculator.py":171
+  /* "swixknife/swixknife/calculator/calculator.py":178
  * 
  * class SezimalCalculator:
  *     def __init__(self, expression: str = '', lang: str = ''):             # <<<<<<<<<<<<<<
- *         self.expression = expression
  *         self.dedicated_digits = False
+ *         self.sezimal_separator = SEPARATOR_DOT
  */
-  __pyx_tuple__35 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_expression, __pyx_n_s_lang); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_init, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __pyx_tuple__37 = PyTuple_Pack(2, ((PyObject*)__pyx_kp_u_), ((PyObject*)__pyx_kp_u_)); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_expression, __pyx_n_s_lang); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__56);
+  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_init, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(2, ((PyObject*)__pyx_kp_u_), ((PyObject*)__pyx_kp_u_)); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
 
-  /* "swixknife/swixknife/calculator/calculator.py":181
- *         self.lang = lang
+  /* "swixknife/swixknife/calculator/calculator.py":188
+ *         self.expression = expression
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def expression(self):
  *         return self._expression
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 181, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_expression, 181, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_tuple__59 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__59);
+  __Pyx_GIVEREF(__pyx_tuple__59);
+  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_expression, 188, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 188, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":185
+  /* "swixknife/swixknife/calculator/calculator.py":192
  *         return self._expression
  * 
  *     @expression.setter             # <<<<<<<<<<<<<<
  *     def expression(self, text: str):
  *         self._expression = text
  */
-  __pyx_tuple__40 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_text); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 185, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_expression, 185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_tuple__61 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_text); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__61);
+  __Pyx_GIVEREF(__pyx_tuple__61);
+  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_expression, 192, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 192, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":190
+  /* "swixknife/swixknife/calculator/calculator.py":197
  *         self._prepare_expression()
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal(self):
  *         return self._decimal
  */
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal, 197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 197, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":194
+  /* "swixknife/swixknife/calculator/calculator.py":201
  *         return self._decimal
  * 
  *     @decimal.setter             # <<<<<<<<<<<<<<
  *     def decimal(self, decimal: bool = False):
  *         self._decimal = decimal
  */
-  __pyx_tuple__43 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_decimal); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __pyx_tuple__45 = PyTuple_Pack(1, ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_tuple__64 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_decimal); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal, 201, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_tuple__66 = PyTuple_Pack(1, ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__66);
+  __Pyx_GIVEREF(__pyx_tuple__66);
 
-  /* "swixknife/swixknife/calculator/calculator.py":198
+  /* "swixknife/swixknife/calculator/calculator.py":205
  *         self._decimal = decimal
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def precision(self):
  *         if self.decimal:
  */
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_precision, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_precision, 205, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 205, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":205
+  /* "swixknife/swixknife/calculator/calculator.py":212
  *         return self._sezimal_precision
  * 
  *     @precision.setter             # <<<<<<<<<<<<<<
  *     def precision(self, precision: int | str | Decimal | Sezimal | SezimalInteger):
  *         precision = SezimalInteger(precision)
  */
-  __pyx_tuple__47 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_precision); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_precision, 205, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_tuple__68 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_precision); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__68);
+  __Pyx_GIVEREF(__pyx_tuple__68);
+  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__68, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_precision, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 212, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":217
+  /* "swixknife/swixknife/calculator/calculator.py":224
  *             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def lang(self):
  *         return self._lang
  */
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_lang, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_lang, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 224, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":221
+  /* "swixknife/swixknife/calculator/calculator.py":228
  *         return self._lang
  * 
  *     @lang.setter             # <<<<<<<<<<<<<<
  *     def lang(self, lang: str = ''):
  *         if not lang:
  */
-  __pyx_tuple__50 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lang); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
-  __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_lang, 221, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __pyx_tuple__52 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_u_)); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 221, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
+  __pyx_tuple__71 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lang); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__71);
+  __Pyx_GIVEREF(__pyx_tuple__71);
+  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_lang, 228, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_tuple__73 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_u_)); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__73);
+  __Pyx_GIVEREF(__pyx_tuple__73);
 
-  /* "swixknife/swixknife/calculator/calculator.py":237
+  /* "swixknife/swixknife/calculator/calculator.py":244
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def display(self):
  *         return self._display
  */
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_display_2, 237, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_display_2, 244, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 244, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":241
+  /* "swixknife/swixknife/calculator/calculator.py":248
  *         return self._display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_dedicated_digits(self):
+ *         return default_to_dedicated_digits(self._display)
+ */
+  __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_display_dedicated_digits, 248, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(0, 248, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":252
+ *         return default_to_dedicated_digits(self._display)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment(self):
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ */
+  __pyx_codeobj__76 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_display_11_segment, 252, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__76)) __PYX_ERR(0, 252, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":256
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ */
+  __pyx_tuple__77 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_display_2); if (unlikely(!__pyx_tuple__77)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__77);
+  __Pyx_GIVEREF(__pyx_tuple__77);
+  __pyx_codeobj__78 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_display_11_segment_dedicated_dig, 256, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__78)) __PYX_ERR(0, 256, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":267
+ *         return display
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal_display(self):
  *         return self._decimal_display
  */
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal_display_2, 241, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal_display_2, 267, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(0, 267, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":245
+  /* "swixknife/swixknife/calculator/calculator.py":271
  *         return self._decimal_display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def decimal_display_11_segment(self):
+ *         return self._decimal_expression
+ */
+  __pyx_codeobj__80 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_decimal_display_11_segment, 271, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__80)) __PYX_ERR(0, 271, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":275
+ *         return self._decimal_expression
  * 
  *     def calculate(self):             # <<<<<<<<<<<<<<
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
  * 
  */
-  __pyx_tuple__55 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_final_exp, __pyx_n_s_nice_exp, __pyx_n_s_decimal_exp, __pyx_n_s_sezimal_response, __pyx_n_s_sezimal_formatted_response, __pyx_n_s_decimal_response, __pyx_n_s_decimal_formatted_response); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 245, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__55);
-  __Pyx_GIVEREF(__pyx_tuple__55);
-  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_calculate, 245, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_tuple__81 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_final_exp, __pyx_n_s_nice_exp, __pyx_n_s_decimal_exp, __pyx_n_s_sezimal_response, __pyx_n_s_sezimal_formatted_response, __pyx_n_s_decimal_response, __pyx_n_s_decimal_formatted_response); if (unlikely(!__pyx_tuple__81)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__81);
+  __Pyx_GIVEREF(__pyx_tuple__81);
+  __pyx_codeobj__82 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__81, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_calculate, 275, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__82)) __PYX_ERR(0, 275, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":250
+  /* "swixknife/swixknife/calculator/calculator.py":280
  *         self.expression = str(sezimal_response)
  * 
  *     def _format_sezimal(self, number, precision=None):             # <<<<<<<<<<<<<<
  *         if precision is None:
  *             precision = self._sezimal_precision
  */
-  __pyx_tuple__57 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_number, __pyx_n_s_precision, __pyx_n_s_params); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 250, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__57);
-  __Pyx_GIVEREF(__pyx_tuple__57);
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_format_sezimal, 250, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 250, __pyx_L1_error)
-  __pyx_tuple__59 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 250, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__59);
-  __Pyx_GIVEREF(__pyx_tuple__59);
+  __pyx_tuple__83 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_number, __pyx_n_s_precision, __pyx_n_s_params); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__83);
+  __Pyx_GIVEREF(__pyx_tuple__83);
+  __pyx_codeobj__84 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_format_sezimal, 280, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__84)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_tuple__85 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__85)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__85);
+  __Pyx_GIVEREF(__pyx_tuple__85);
 
-  /* "swixknife/swixknife/calculator/calculator.py":265
+  /* "swixknife/swixknife/calculator/calculator.py":295
  *         return sezimal_format(number, **params)
  * 
  *     def _format_decimal(self, number, precision=None):             # <<<<<<<<<<<<<<
  *         if precision is None:
  *             precision = self._decimal_precision
  */
-  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_format_decimal, 265, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 265, __pyx_L1_error)
-  __pyx_tuple__61 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 265, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__61);
-  __Pyx_GIVEREF(__pyx_tuple__61);
+  __pyx_codeobj__86 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_format_decimal, 295, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__86)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_tuple__87 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__87);
+  __Pyx_GIVEREF(__pyx_tuple__87);
 
-  /* "swixknife/swixknife/calculator/calculator.py":279
+  /* "swixknife/swixknife/calculator/calculator.py":309
+ *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):             # <<<<<<<<<<<<<<
+ *         if precision is None:
+ *             precision = self._decimal_precision
+ */
+  __pyx_codeobj__88 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_format_decimal_expression, 309, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__88)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_tuple__89 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__89);
+  __Pyx_GIVEREF(__pyx_tuple__89);
+
+  /* "swixknife/swixknife/calculator/calculator.py":323
  *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
  * 
  *     def _prepare_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
  *             self._display = ''
  */
-  __pyx_tuple__62 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_exp, __pyx_n_s_o, __pyx_n_s_text, __pyx_n_s_parts, __pyx_n_s_parenthesis_opened, __pyx_n_s_prepared_expression_2, __pyx_n_s_display_2, __pyx_n_s_decimal_display_2, __pyx_n_s_p, __pyx_n_s_n, __pyx_n_s_i); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 279, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__62);
-  __Pyx_GIVEREF(__pyx_tuple__62);
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_prepare_expression, 279, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_tuple__90 = PyTuple_Pack(13, __pyx_n_s_self, __pyx_n_s_exp, __pyx_n_s_o, __pyx_n_s_text, __pyx_n_s_parts, __pyx_n_s_parenthesis_opened, __pyx_n_s_prepared_expression_2, __pyx_n_s_display_2, __pyx_n_s_decimal_display_2, __pyx_n_s_decimal_expression_2, __pyx_n_s_p, __pyx_n_s_n, __pyx_n_s_i); if (unlikely(!__pyx_tuple__90)) __PYX_ERR(0, 323, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__90);
+  __Pyx_GIVEREF(__pyx_tuple__90);
+  __pyx_codeobj__91 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__90, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_prepare_expression, 323, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__91)) __PYX_ERR(0, 323, __pyx_L1_error)
 
-  /* "swixknife/swixknife/calculator/calculator.py":353
- *         self._decimal_display = decimal_display
+  /* "swixknife/swixknife/calculator/calculator.py":406
+ *         self._decimal_expression = decimal_expression
  * 
  *     def eval_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
  *             return
  */
-  __pyx_tuple__64 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_sezimal_response); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 353, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__64);
-  __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_eval_expression, 353, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 353, __pyx_L1_error)
+  __pyx_tuple__92 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_sezimal_response); if (unlikely(!__pyx_tuple__92)) __PYX_ERR(0, 406, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__92);
+  __Pyx_GIVEREF(__pyx_tuple__92);
+  __pyx_codeobj__93 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__92, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_swixknife_calculator_calculator, __pyx_n_s_eval_expression, 406, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__93)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8968,7 +10567,7 @@ if (!__Pyx_RefNanny) {
  * 
  * from ..sezimal import Sezimal, SezimalInteger
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_tuple__14) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_tuple__35) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
 
   /* "swixknife/swixknife/calculator/calculator.py":5
  * __all__ = ('SezimalCalculator',)
@@ -9003,7 +10602,7 @@ if (!__Pyx_RefNanny) {
  * from ..sezimal import Sezimal, SezimalInteger
  * from decimal import Decimal             # <<<<<<<<<<<<<<
  * from ..units.conversions import  *
- * from ..base import decimal_format, sezimal_format, SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE
+ * from ..base import decimal_format, sezimal_format, \
  */
   __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -9023,14 +10622,14 @@ if (!__Pyx_RefNanny) {
  * from ..sezimal import Sezimal, SezimalInteger
  * from decimal import Decimal
  * from ..units.conversions import  *             # <<<<<<<<<<<<<<
- * from ..base import decimal_format, sezimal_format, SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE
- * 
+ * from ..base import decimal_format, sezimal_format, \
+ *     SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE, \
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s__15);
-  __Pyx_GIVEREF(__pyx_n_s__15);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__15);
+  __Pyx_INCREF(__pyx_n_s__36);
+  __Pyx_GIVEREF(__pyx_n_s__36);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__36);
   __pyx_t_3 = __Pyx_Import(__pyx_n_s_units_conversions, __pyx_t_2, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9040,11 +10639,11 @@ if (!__Pyx_RefNanny) {
   /* "swixknife/swixknife/calculator/calculator.py":8
  * from decimal import Decimal
  * from ..units.conversions import  *
- * from ..base import decimal_format, sezimal_format, SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE             # <<<<<<<<<<<<<<
- * 
- * 
+ * from ..base import decimal_format, sezimal_format, \             # <<<<<<<<<<<<<<
+ *     SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE, \
+ *     default_to_dedicated_digits
  */
-  __pyx_t_3 = PyList_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_decimal_format);
   __Pyx_GIVEREF(__pyx_n_s_decimal_format);
@@ -9061,6 +10660,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE);
   __Pyx_GIVEREF(__pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE);
+  __Pyx_INCREF(__pyx_n_s_default_to_dedicated_digits);
+  __Pyx_GIVEREF(__pyx_n_s_default_to_dedicated_digits);
+  PyList_SET_ITEM(__pyx_t_3, 5, __pyx_n_s_default_to_dedicated_digits);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_base, __pyx_t_3, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9074,110 +10676,132 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_SEPARATOR_DOT); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_DOT, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_DOT, __pyx_t_3) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_SEPARATOR_COMMA); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_COMMA, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_COMMA, __pyx_t_3) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SEPARATOR_NARROW_NOBREAK_SPACE, __pyx_t_3) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_default_to_dedicated_digits); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_default_to_dedicated_digits, __pyx_t_3) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":15
+  /* "swixknife/swixknife/calculator/calculator.py":13
+ * 
+ * 
+ * _PERSIXNIFF = ''             # <<<<<<<<<<<<<<
+ * _PERUNEXIAN = ''
+ * 
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PERSIXNIFF, __pyx_kp_u__25) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":14
+ * 
+ * _PERSIXNIFF = ''
+ * _PERUNEXIAN = ''             # <<<<<<<<<<<<<<
+ * 
+ * _OPERATOR = {
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PERUNEXIAN, __pyx_kp_u__27) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+
+  /* "swixknife/swixknife/calculator/calculator.py":20
  *     # Operators
  *     #
  *     '+': ' __ADD__ ',             # <<<<<<<<<<<<<<
  *     '': ' __SUBTRACT__ ',
  *     '-': ' __SUBTRACT__ ',
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(23); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(23); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__16, __pyx_kp_u_ADD) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__17, __pyx_kp_u_SUBTRACT) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__3, __pyx_kp_u_SUBTRACT) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__18, __pyx_kp_u_DIVIDE) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__19, __pyx_kp_u_DIVIDE) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__20, __pyx_kp_u_POWER) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__21, __pyx_kp_u_POWER) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__22, __pyx_kp_u_MULTIPLY) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__15, __pyx_kp_u_MULTIPLY) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__4, __pyx_kp_u_PERNIF) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__6, __pyx_kp_u_PERSIXNIF) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__8, __pyx_kp_u_PERUNEXIAN) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__23, __pyx_kp_u_SQUARE) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__24, __pyx_kp_u_CUBE) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_e, __pyx_kp_u_CONSTANT_E) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ln, __pyx_kp_u_NATURAL_LOGARITHM) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__25, __pyx_kp_u_LEFT_PARENTHESIS_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__13, __pyx_kp_u_RIGHT_PARENTHESIS_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_o_2, __pyx_n_u_MOD_OPEN) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_c, __pyx_n_u_MOD_CLOSE) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__26, __pyx_n_u_CONSTANT_PI) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__27, __pyx_n_u_CONSTANT_TAU) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__28, __pyx_n_u_CONSTANT_GOLDEN_RATIO) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OPERATOR, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__37, __pyx_kp_u_ADD) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__38, __pyx_kp_u_SUBTRACT) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__3, __pyx_kp_u_SUBTRACT) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__39, __pyx_kp_u_DIVIDE) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__40, __pyx_kp_u_DIVIDE) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__41, __pyx_kp_u_POWER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__42, __pyx_kp_u_POWER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__43, __pyx_kp_u_MULTIPLY) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__36, __pyx_kp_u_MULTIPLY) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__4, __pyx_kp_u_PERNIF) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__25, __pyx_kp_u_PERSIXNIF) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__27, __pyx_kp_u_PERUNEXIAN_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__44, __pyx_kp_u_SQUARE) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__45, __pyx_kp_u_CUBE) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_e, __pyx_kp_u_CONSTANT_E) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ln, __pyx_kp_u_NATURAL_LOGARITHM) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__46, __pyx_kp_u_LEFT_PARENTHESIS_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__34, __pyx_kp_u_RIGHT_PARENTHESIS_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_o_2, __pyx_n_u_MOD_OPEN) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_c, __pyx_n_u_MOD_CLOSE) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__47, __pyx_n_u_CONSTANT_PI) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__48, __pyx_n_u_CONSTANT_TAU) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__49, __pyx_n_u_CONSTANT_GOLDEN_RATIO) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OPERATOR, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":45
+  /* "swixknife/swixknife/calculator/calculator.py":50
  * 
  * _OPERATION = {
  *     '__ADD__': '+',             # <<<<<<<<<<<<<<
  *     '__SUBTRACT__': '-',
  *     '__DIVIDE__': '/',
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ADD_2, __pyx_kp_u__16) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SUBTRACT_2, __pyx_kp_u__3) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_DIVIDE_2, __pyx_kp_u__19) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MULTIPLY_2, __pyx_kp_u__15) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_POWER_2, __pyx_kp_u__21) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERNIF_2, __pyx_kp_u_Sezimal_100) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERSIXNIF_2, __pyx_kp_u_Sezimal_1000) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERUNEXIAN_2, __pyx_kp_u_Sezimal_1_0000) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SQUARE_2, __pyx_kp_u_Sezimal_2_2) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_CUBE_2, __pyx_kp_u_Sezimal_3) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_LEFT_PARENTHESIS, __pyx_kp_u__25) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_RIGHT_PARENTHESIS, __pyx_kp_u__13) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MOD, __pyx_kp_u__29) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OPERATION, __pyx_t_2) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ADD_2, __pyx_kp_u__37) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SUBTRACT_2, __pyx_kp_u__3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_DIVIDE_2, __pyx_kp_u__40) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MULTIPLY_2, __pyx_kp_u__36) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_POWER_2, __pyx_kp_u__42) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERNIF_2, __pyx_kp_u_Sezimal_100) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERSIXNIF_2, __pyx_kp_u_Sezimal_1000) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERUNEXIAN_3, __pyx_kp_u_Sezimal_1_0000) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SQUARE_2, __pyx_kp_u_Sezimal_2_2) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_CUBE_2, __pyx_kp_u_Sezimal_3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_LEFT_PARENTHESIS, __pyx_kp_u__46) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_RIGHT_PARENTHESIS, __pyx_kp_u__34) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MOD, __pyx_kp_u__50) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OPERATION, __pyx_t_2) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":61
+  /* "swixknife/swixknife/calculator/calculator.py":66
  * 
  * _NICE_OPERATION = {
  *     '__ADD__': ' + ',             # <<<<<<<<<<<<<<
  *     '__SUBTRACT__': '  ',
  *     '__DIVIDE__': '  ',
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ADD_2, __pyx_kp_u__30) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SUBTRACT_2, __pyx_kp_u__31) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_DIVIDE_2, __pyx_kp_u__32) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MULTIPLY_2, __pyx_kp_u__33) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_POWER_2, __pyx_kp_u__34) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERNIF_2, __pyx_kp_u__4) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERSIXNIF_2, __pyx_kp_u__6) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERUNEXIAN_2, __pyx_kp_u__8) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SQUARE_2, __pyx_n_u__23) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_CUBE_2, __pyx_n_u__24) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_LEFT_PARENTHESIS, __pyx_kp_u__25) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_RIGHT_PARENTHESIS, __pyx_kp_u__13) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_NICE_OPERATION, __pyx_t_2) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ADD_2, __pyx_kp_u__51) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SUBTRACT_2, __pyx_kp_u__52) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_DIVIDE_2, __pyx_kp_u__53) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_MULTIPLY_2, __pyx_kp_u__54) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_POWER_2, __pyx_kp_u__55) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERNIF_2, __pyx_kp_u__4) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERSIXNIF_2, __pyx_kp_u__25) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_PERUNEXIAN_3, __pyx_kp_u__27) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_SQUARE_2, __pyx_n_u__44) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_CUBE_2, __pyx_n_u__45) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_LEFT_PARENTHESIS, __pyx_kp_u__46) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_RIGHT_PARENTHESIS, __pyx_kp_u__34) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_NICE_OPERATION, __pyx_t_2) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":75
+  /* "swixknife/swixknife/calculator/calculator.py":80
  * }
  * 
  * _LOCALES_COMMA_SEPARATOR = [             # <<<<<<<<<<<<<<
  *     'az-AZ',
  *     'be-BY',
  */
-  __pyx_t_2 = PyList_New(65); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(67); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_u_az_AZ);
   __Pyx_GIVEREF(__pyx_kp_u_az_AZ);
@@ -9191,200 +10815,206 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_kp_u_bs_BA);
   __Pyx_GIVEREF(__pyx_kp_u_bs_BA);
   PyList_SET_ITEM(__pyx_t_2, 3, __pyx_kp_u_bs_BA);
+  __Pyx_INCREF(__pyx_n_u_bz);
+  __Pyx_GIVEREF(__pyx_n_u_bz);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_u_bz);
+  __Pyx_INCREF(__pyx_kp_u_bz_BR);
+  __Pyx_GIVEREF(__pyx_kp_u_bz_BR);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_kp_u_bz_BR);
   __Pyx_INCREF(__pyx_kp_u_ca_ES);
   __Pyx_GIVEREF(__pyx_kp_u_ca_ES);
-  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_kp_u_ca_ES);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_kp_u_ca_ES);
   __Pyx_INCREF(__pyx_kp_u_crh_UA);
   __Pyx_GIVEREF(__pyx_kp_u_crh_UA);
-  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_kp_u_crh_UA);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_kp_u_crh_UA);
   __Pyx_INCREF(__pyx_kp_u_cs_CZ);
   __Pyx_GIVEREF(__pyx_kp_u_cs_CZ);
-  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_kp_u_cs_CZ);
+  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_kp_u_cs_CZ);
   __Pyx_INCREF(__pyx_kp_u_da_DK);
   __Pyx_GIVEREF(__pyx_kp_u_da_DK);
-  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_kp_u_da_DK);
+  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_kp_u_da_DK);
   __Pyx_INCREF(__pyx_kp_u_de_DE);
   __Pyx_GIVEREF(__pyx_kp_u_de_DE);
-  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_kp_u_de_DE);
+  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_kp_u_de_DE);
   __Pyx_INCREF(__pyx_kp_u_el_CY);
   __Pyx_GIVEREF(__pyx_kp_u_el_CY);
-  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_kp_u_el_CY);
+  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_kp_u_el_CY);
   __Pyx_INCREF(__pyx_kp_u_el_GR);
   __Pyx_GIVEREF(__pyx_kp_u_el_GR);
-  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_kp_u_el_GR);
+  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_kp_u_el_GR);
   __Pyx_INCREF(__pyx_kp_u_en_DK);
   __Pyx_GIVEREF(__pyx_kp_u_en_DK);
-  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_kp_u_en_DK);
+  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_kp_u_en_DK);
   __Pyx_INCREF(__pyx_n_u_eo);
   __Pyx_GIVEREF(__pyx_n_u_eo);
-  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_n_u_eo);
+  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_n_u_eo);
   __Pyx_INCREF(__pyx_kp_u_es_AR);
   __Pyx_GIVEREF(__pyx_kp_u_es_AR);
-  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_kp_u_es_AR);
+  PyList_SET_ITEM(__pyx_t_2, 15, __pyx_kp_u_es_AR);
   __Pyx_INCREF(__pyx_kp_u_es_CR);
   __Pyx_GIVEREF(__pyx_kp_u_es_CR);
-  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_kp_u_es_CR);
+  PyList_SET_ITEM(__pyx_t_2, 16, __pyx_kp_u_es_CR);
   __Pyx_INCREF(__pyx_kp_u_es_CU);
   __Pyx_GIVEREF(__pyx_kp_u_es_CU);
-  PyList_SET_ITEM(__pyx_t_2, 15, __pyx_kp_u_es_CU);
+  PyList_SET_ITEM(__pyx_t_2, 17, __pyx_kp_u_es_CU);
   __Pyx_INCREF(__pyx_kp_u_es_ES);
   __Pyx_GIVEREF(__pyx_kp_u_es_ES);
-  PyList_SET_ITEM(__pyx_t_2, 16, __pyx_kp_u_es_ES);
+  PyList_SET_ITEM(__pyx_t_2, 18, __pyx_kp_u_es_ES);
   __Pyx_INCREF(__pyx_kp_u_et_EE);
   __Pyx_GIVEREF(__pyx_kp_u_et_EE);
-  PyList_SET_ITEM(__pyx_t_2, 17, __pyx_kp_u_et_EE);
+  PyList_SET_ITEM(__pyx_t_2, 19, __pyx_kp_u_et_EE);
   __Pyx_INCREF(__pyx_kp_u_eu_ES);
   __Pyx_GIVEREF(__pyx_kp_u_eu_ES);
-  PyList_SET_ITEM(__pyx_t_2, 18, __pyx_kp_u_eu_ES);
+  PyList_SET_ITEM(__pyx_t_2, 20, __pyx_kp_u_eu_ES);
   __Pyx_INCREF(__pyx_kp_u_ff_SN);
   __Pyx_GIVEREF(__pyx_kp_u_ff_SN);
-  PyList_SET_ITEM(__pyx_t_2, 19, __pyx_kp_u_ff_SN);
+  PyList_SET_ITEM(__pyx_t_2, 21, __pyx_kp_u_ff_SN);
   __Pyx_INCREF(__pyx_kp_u_fi_FI);
   __Pyx_GIVEREF(__pyx_kp_u_fi_FI);
-  PyList_SET_ITEM(__pyx_t_2, 20, __pyx_kp_u_fi_FI);
+  PyList_SET_ITEM(__pyx_t_2, 22, __pyx_kp_u_fi_FI);
   __Pyx_INCREF(__pyx_kp_u_fr_BE);
   __Pyx_GIVEREF(__pyx_kp_u_fr_BE);
-  PyList_SET_ITEM(__pyx_t_2, 21, __pyx_kp_u_fr_BE);
+  PyList_SET_ITEM(__pyx_t_2, 23, __pyx_kp_u_fr_BE);
   __Pyx_INCREF(__pyx_kp_u_fr_FR);
   __Pyx_GIVEREF(__pyx_kp_u_fr_FR);
-  PyList_SET_ITEM(__pyx_t_2, 22, __pyx_kp_u_fr_FR);
+  PyList_SET_ITEM(__pyx_t_2, 24, __pyx_kp_u_fr_FR);
   __Pyx_INCREF(__pyx_kp_u_fr_LU);
   __Pyx_GIVEREF(__pyx_kp_u_fr_LU);
-  PyList_SET_ITEM(__pyx_t_2, 23, __pyx_kp_u_fr_LU);
+  PyList_SET_ITEM(__pyx_t_2, 25, __pyx_kp_u_fr_LU);
   __Pyx_INCREF(__pyx_kp_u_gl_ES);
   __Pyx_GIVEREF(__pyx_kp_u_gl_ES);
-  PyList_SET_ITEM(__pyx_t_2, 24, __pyx_kp_u_gl_ES);
+  PyList_SET_ITEM(__pyx_t_2, 26, __pyx_kp_u_gl_ES);
   __Pyx_INCREF(__pyx_kp_u_hr_HR);
   __Pyx_GIVEREF(__pyx_kp_u_hr_HR);
-  PyList_SET_ITEM(__pyx_t_2, 25, __pyx_kp_u_hr_HR);
+  PyList_SET_ITEM(__pyx_t_2, 27, __pyx_kp_u_hr_HR);
   __Pyx_INCREF(__pyx_kp_u_ht_HT);
   __Pyx_GIVEREF(__pyx_kp_u_ht_HT);
-  PyList_SET_ITEM(__pyx_t_2, 26, __pyx_kp_u_ht_HT);
+  PyList_SET_ITEM(__pyx_t_2, 28, __pyx_kp_u_ht_HT);
   __Pyx_INCREF(__pyx_kp_u_hu_HU);
   __Pyx_GIVEREF(__pyx_kp_u_hu_HU);
-  PyList_SET_ITEM(__pyx_t_2, 27, __pyx_kp_u_hu_HU);
+  PyList_SET_ITEM(__pyx_t_2, 29, __pyx_kp_u_hu_HU);
   __Pyx_INCREF(__pyx_kp_u_id_ID);
   __Pyx_GIVEREF(__pyx_kp_u_id_ID);
-  PyList_SET_ITEM(__pyx_t_2, 28, __pyx_kp_u_id_ID);
+  PyList_SET_ITEM(__pyx_t_2, 30, __pyx_kp_u_id_ID);
   __Pyx_INCREF(__pyx_kp_u_is_IS);
   __Pyx_GIVEREF(__pyx_kp_u_is_IS);
-  PyList_SET_ITEM(__pyx_t_2, 29, __pyx_kp_u_is_IS);
+  PyList_SET_ITEM(__pyx_t_2, 31, __pyx_kp_u_is_IS);
   __Pyx_INCREF(__pyx_kp_u_it_IT);
   __Pyx_GIVEREF(__pyx_kp_u_it_IT);
-  PyList_SET_ITEM(__pyx_t_2, 30, __pyx_kp_u_it_IT);
+  PyList_SET_ITEM(__pyx_t_2, 32, __pyx_kp_u_it_IT);
   __Pyx_INCREF(__pyx_kp_u_ka_GE);
   __Pyx_GIVEREF(__pyx_kp_u_ka_GE);
-  PyList_SET_ITEM(__pyx_t_2, 31, __pyx_kp_u_ka_GE);
+  PyList_SET_ITEM(__pyx_t_2, 33, __pyx_kp_u_ka_GE);
   __Pyx_INCREF(__pyx_kp_u_kab_DZ);
   __Pyx_GIVEREF(__pyx_kp_u_kab_DZ);
-  PyList_SET_ITEM(__pyx_t_2, 32, __pyx_kp_u_kab_DZ);
+  PyList_SET_ITEM(__pyx_t_2, 34, __pyx_kp_u_kab_DZ);
   __Pyx_INCREF(__pyx_kp_u_kk_KZ);
   __Pyx_GIVEREF(__pyx_kp_u_kk_KZ);
-  PyList_SET_ITEM(__pyx_t_2, 33, __pyx_kp_u_kk_KZ);
+  PyList_SET_ITEM(__pyx_t_2, 35, __pyx_kp_u_kk_KZ);
   __Pyx_INCREF(__pyx_kp_u_ky_KG);
   __Pyx_GIVEREF(__pyx_kp_u_ky_KG);
-  PyList_SET_ITEM(__pyx_t_2, 34, __pyx_kp_u_ky_KG);
+  PyList_SET_ITEM(__pyx_t_2, 36, __pyx_kp_u_ky_KG);
   __Pyx_INCREF(__pyx_kp_u_ln_CD);
   __Pyx_GIVEREF(__pyx_kp_u_ln_CD);
-  PyList_SET_ITEM(__pyx_t_2, 35, __pyx_kp_u_ln_CD);
+  PyList_SET_ITEM(__pyx_t_2, 37, __pyx_kp_u_ln_CD);
   __Pyx_INCREF(__pyx_kp_u_lt_LT);
   __Pyx_GIVEREF(__pyx_kp_u_lt_LT);
-  PyList_SET_ITEM(__pyx_t_2, 36, __pyx_kp_u_lt_LT);
+  PyList_SET_ITEM(__pyx_t_2, 38, __pyx_kp_u_lt_LT);
   __Pyx_INCREF(__pyx_kp_u_lv_LV);
   __Pyx_GIVEREF(__pyx_kp_u_lv_LV);
-  PyList_SET_ITEM(__pyx_t_2, 37, __pyx_kp_u_lv_LV);
+  PyList_SET_ITEM(__pyx_t_2, 39, __pyx_kp_u_lv_LV);
   __Pyx_INCREF(__pyx_kp_u_mg_MG);
   __Pyx_GIVEREF(__pyx_kp_u_mg_MG);
-  PyList_SET_ITEM(__pyx_t_2, 38, __pyx_kp_u_mg_MG);
+  PyList_SET_ITEM(__pyx_t_2, 40, __pyx_kp_u_mg_MG);
   __Pyx_INCREF(__pyx_kp_u_mk_MK);
   __Pyx_GIVEREF(__pyx_kp_u_mk_MK);
-  PyList_SET_ITEM(__pyx_t_2, 39, __pyx_kp_u_mk_MK);
+  PyList_SET_ITEM(__pyx_t_2, 41, __pyx_kp_u_mk_MK);
   __Pyx_INCREF(__pyx_kp_u_mn_MN);
   __Pyx_GIVEREF(__pyx_kp_u_mn_MN);
-  PyList_SET_ITEM(__pyx_t_2, 40, __pyx_kp_u_mn_MN);
+  PyList_SET_ITEM(__pyx_t_2, 42, __pyx_kp_u_mn_MN);
   __Pyx_INCREF(__pyx_kp_u_nb_NO);
   __Pyx_GIVEREF(__pyx_kp_u_nb_NO);
-  PyList_SET_ITEM(__pyx_t_2, 41, __pyx_kp_u_nb_NO);
+  PyList_SET_ITEM(__pyx_t_2, 43, __pyx_kp_u_nb_NO);
   __Pyx_INCREF(__pyx_kp_u_nl_NL);
   __Pyx_GIVEREF(__pyx_kp_u_nl_NL);
-  PyList_SET_ITEM(__pyx_t_2, 42, __pyx_kp_u_nl_NL);
+  PyList_SET_ITEM(__pyx_t_2, 44, __pyx_kp_u_nl_NL);
   __Pyx_INCREF(__pyx_kp_u_pap_AW);
   __Pyx_GIVEREF(__pyx_kp_u_pap_AW);
-  PyList_SET_ITEM(__pyx_t_2, 43, __pyx_kp_u_pap_AW);
+  PyList_SET_ITEM(__pyx_t_2, 45, __pyx_kp_u_pap_AW);
   __Pyx_INCREF(__pyx_kp_u_pap_CW);
   __Pyx_GIVEREF(__pyx_kp_u_pap_CW);
-  PyList_SET_ITEM(__pyx_t_2, 44, __pyx_kp_u_pap_CW);
+  PyList_SET_ITEM(__pyx_t_2, 46, __pyx_kp_u_pap_CW);
   __Pyx_INCREF(__pyx_kp_u_pl_PL);
   __Pyx_GIVEREF(__pyx_kp_u_pl_PL);
-  PyList_SET_ITEM(__pyx_t_2, 45, __pyx_kp_u_pl_PL);
+  PyList_SET_ITEM(__pyx_t_2, 47, __pyx_kp_u_pl_PL);
   __Pyx_INCREF(__pyx_kp_u_pt_BR);
   __Pyx_GIVEREF(__pyx_kp_u_pt_BR);
-  PyList_SET_ITEM(__pyx_t_2, 46, __pyx_kp_u_pt_BR);
+  PyList_SET_ITEM(__pyx_t_2, 48, __pyx_kp_u_pt_BR);
   __Pyx_INCREF(__pyx_kp_u_pt_PT);
   __Pyx_GIVEREF(__pyx_kp_u_pt_PT);
-  PyList_SET_ITEM(__pyx_t_2, 47, __pyx_kp_u_pt_PT);
+  PyList_SET_ITEM(__pyx_t_2, 49, __pyx_kp_u_pt_PT);
   __Pyx_INCREF(__pyx_kp_u_pt_AO);
   __Pyx_GIVEREF(__pyx_kp_u_pt_AO);
-  PyList_SET_ITEM(__pyx_t_2, 48, __pyx_kp_u_pt_AO);
+  PyList_SET_ITEM(__pyx_t_2, 50, __pyx_kp_u_pt_AO);
   __Pyx_INCREF(__pyx_kp_u_ro_RO);
   __Pyx_GIVEREF(__pyx_kp_u_ro_RO);
-  PyList_SET_ITEM(__pyx_t_2, 49, __pyx_kp_u_ro_RO);
+  PyList_SET_ITEM(__pyx_t_2, 51, __pyx_kp_u_ro_RO);
   __Pyx_INCREF(__pyx_kp_u_ru_RU);
   __Pyx_GIVEREF(__pyx_kp_u_ru_RU);
-  PyList_SET_ITEM(__pyx_t_2, 50, __pyx_kp_u_ru_RU);
+  PyList_SET_ITEM(__pyx_t_2, 52, __pyx_kp_u_ru_RU);
   __Pyx_INCREF(__pyx_kp_u_ru_UA);
   __Pyx_GIVEREF(__pyx_kp_u_ru_UA);
-  PyList_SET_ITEM(__pyx_t_2, 51, __pyx_kp_u_ru_UA);
+  PyList_SET_ITEM(__pyx_t_2, 53, __pyx_kp_u_ru_UA);
   __Pyx_INCREF(__pyx_kp_u_rw_RW);
   __Pyx_GIVEREF(__pyx_kp_u_rw_RW);
-  PyList_SET_ITEM(__pyx_t_2, 52, __pyx_kp_u_rw_RW);
+  PyList_SET_ITEM(__pyx_t_2, 54, __pyx_kp_u_rw_RW);
   __Pyx_INCREF(__pyx_kp_u_se_NO);
   __Pyx_GIVEREF(__pyx_kp_u_se_NO);
-  PyList_SET_ITEM(__pyx_t_2, 53, __pyx_kp_u_se_NO);
+  PyList_SET_ITEM(__pyx_t_2, 55, __pyx_kp_u_se_NO);
   __Pyx_INCREF(__pyx_kp_u_sk_SK);
   __Pyx_GIVEREF(__pyx_kp_u_sk_SK);
-  PyList_SET_ITEM(__pyx_t_2, 54, __pyx_kp_u_sk_SK);
+  PyList_SET_ITEM(__pyx_t_2, 56, __pyx_kp_u_sk_SK);
   __Pyx_INCREF(__pyx_kp_u_sl_SI);
   __Pyx_GIVEREF(__pyx_kp_u_sl_SI);
-  PyList_SET_ITEM(__pyx_t_2, 55, __pyx_kp_u_sl_SI);
+  PyList_SET_ITEM(__pyx_t_2, 57, __pyx_kp_u_sl_SI);
   __Pyx_INCREF(__pyx_kp_u_sq_AL);
   __Pyx_GIVEREF(__pyx_kp_u_sq_AL);
-  PyList_SET_ITEM(__pyx_t_2, 56, __pyx_kp_u_sq_AL);
+  PyList_SET_ITEM(__pyx_t_2, 58, __pyx_kp_u_sq_AL);
   __Pyx_INCREF(__pyx_kp_u_sr_RS);
   __Pyx_GIVEREF(__pyx_kp_u_sr_RS);
-  PyList_SET_ITEM(__pyx_t_2, 57, __pyx_kp_u_sr_RS);
+  PyList_SET_ITEM(__pyx_t_2, 59, __pyx_kp_u_sr_RS);
   __Pyx_INCREF(__pyx_kp_u_sv_SE);
   __Pyx_GIVEREF(__pyx_kp_u_sv_SE);
-  PyList_SET_ITEM(__pyx_t_2, 58, __pyx_kp_u_sv_SE);
+  PyList_SET_ITEM(__pyx_t_2, 60, __pyx_kp_u_sv_SE);
   __Pyx_INCREF(__pyx_kp_u_tg_TJ);
   __Pyx_GIVEREF(__pyx_kp_u_tg_TJ);
-  PyList_SET_ITEM(__pyx_t_2, 59, __pyx_kp_u_tg_TJ);
+  PyList_SET_ITEM(__pyx_t_2, 61, __pyx_kp_u_tg_TJ);
   __Pyx_INCREF(__pyx_kp_u_tr_TR);
   __Pyx_GIVEREF(__pyx_kp_u_tr_TR);
-  PyList_SET_ITEM(__pyx_t_2, 60, __pyx_kp_u_tr_TR);
+  PyList_SET_ITEM(__pyx_t_2, 62, __pyx_kp_u_tr_TR);
   __Pyx_INCREF(__pyx_kp_u_tt_RU);
   __Pyx_GIVEREF(__pyx_kp_u_tt_RU);
-  PyList_SET_ITEM(__pyx_t_2, 61, __pyx_kp_u_tt_RU);
+  PyList_SET_ITEM(__pyx_t_2, 63, __pyx_kp_u_tt_RU);
   __Pyx_INCREF(__pyx_kp_u_uk_UA);
   __Pyx_GIVEREF(__pyx_kp_u_uk_UA);
-  PyList_SET_ITEM(__pyx_t_2, 62, __pyx_kp_u_uk_UA);
+  PyList_SET_ITEM(__pyx_t_2, 64, __pyx_kp_u_uk_UA);
   __Pyx_INCREF(__pyx_kp_u_vi_VN);
   __Pyx_GIVEREF(__pyx_kp_u_vi_VN);
-  PyList_SET_ITEM(__pyx_t_2, 63, __pyx_kp_u_vi_VN);
+  PyList_SET_ITEM(__pyx_t_2, 65, __pyx_kp_u_vi_VN);
   __Pyx_INCREF(__pyx_kp_u_wo_SN);
   __Pyx_GIVEREF(__pyx_kp_u_wo_SN);
-  PyList_SET_ITEM(__pyx_t_2, 64, __pyx_kp_u_wo_SN);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LOCALES_COMMA_SEPARATOR, __pyx_t_2) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  PyList_SET_ITEM(__pyx_t_2, 66, __pyx_kp_u_wo_SN);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LOCALES_COMMA_SEPARATOR, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":143
+  /* "swixknife/swixknife/calculator/calculator.py":150
  * ]
  * 
  * _LOCALES_SPACE_GROUP_SEPARATOR = [             # <<<<<<<<<<<<<<
  *     'cs-CZ',
  *     'de-CH',
  */
-  __pyx_t_2 = PyList_New(23); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(23); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_u_cs_CZ);
   __Pyx_GIVEREF(__pyx_kp_u_cs_CZ);
@@ -9455,54 +11085,54 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_kp_u_unm_US);
   __Pyx_GIVEREF(__pyx_kp_u_unm_US);
   PyList_SET_ITEM(__pyx_t_2, 22, __pyx_kp_u_unm_US);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR, __pyx_t_2) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LOCALES_SPACE_GROUP_SEPARATOR, __pyx_t_2) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":170
+  /* "swixknife/swixknife/calculator/calculator.py":177
  * 
  * 
  * class SezimalCalculator:             # <<<<<<<<<<<<<<
  *     def __init__(self, expression: str = '', lang: str = ''):
- *         self.expression = expression
+ *         self.dedicated_digits = False
  */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_SezimalCalculator, __pyx_n_s_SezimalCalculator, (PyObject *) NULL, __pyx_n_s_swixknife_swixknife_calculator_c, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_SezimalCalculator, __pyx_n_s_SezimalCalculator, (PyObject *) NULL, __pyx_n_s_swixknife_swixknife_calculator_c, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "swixknife/swixknife/calculator/calculator.py":171
+  /* "swixknife/swixknife/calculator/calculator.py":178
  * 
  * class SezimalCalculator:
  *     def __init__(self, expression: str = '', lang: str = ''):             # <<<<<<<<<<<<<<
- *         self.expression = expression
  *         self.dedicated_digits = False
+ *         self.sezimal_separator = SEPARATOR_DOT
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_expression, __pyx_n_s_str) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_lang, __pyx_n_s_str) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_1__init__, 0, __pyx_n_s_SezimalCalculator___init, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_expression, __pyx_n_s_str) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_lang, __pyx_n_s_str) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_1__init__, 0, __pyx_n_s_SezimalCalculator___init, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__37);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__58);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":181
- *         self.lang = lang
+  /* "swixknife/swixknife/calculator/calculator.py":188
+ *         self.expression = expression
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def expression(self):
  *         return self._expression
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_3expression, 0, __pyx_n_s_SezimalCalculator_expression, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_3expression, 0, __pyx_n_s_SezimalCalculator_expression, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_expression, __pyx_t_3) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_expression, __pyx_t_3) < 0) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":185
+  /* "swixknife/swixknife/calculator/calculator.py":192
  *         return self._expression
  * 
  *     @expression.setter             # <<<<<<<<<<<<<<
@@ -9514,15 +11144,15 @@ if (!__Pyx_RefNanny) {
     PyErr_Clear();
     __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_expression);
   }
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_setter); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_setter); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_text, __pyx_n_s_str) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_5expression, 0, __pyx_n_s_SezimalCalculator_expression, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_text, __pyx_n_s_str) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_5expression, 0, __pyx_n_s_SezimalCalculator_expression, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9543,29 +11173,29 @@ if (!__Pyx_RefNanny) {
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_expression, __pyx_t_3) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_expression, __pyx_t_3) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":190
+  /* "swixknife/swixknife/calculator/calculator.py":197
  *         self._prepare_expression()
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal(self):
  *         return self._decimal
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_7decimal, 0, __pyx_n_s_SezimalCalculator_decimal, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_7decimal, 0, __pyx_n_s_SezimalCalculator_decimal, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal, __pyx_t_5) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal, __pyx_t_5) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":194
+  /* "swixknife/swixknife/calculator/calculator.py":201
  *         return self._decimal
  * 
  *     @decimal.setter             # <<<<<<<<<<<<<<
@@ -9577,17 +11207,17 @@ if (!__Pyx_RefNanny) {
     PyErr_Clear();
     __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_decimal);
   }
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_setter); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_setter); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_decimal, __pyx_n_s_bool) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_9decimal, 0, __pyx_n_s_SezimalCalculator_decimal, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_decimal, __pyx_n_s_bool) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_9decimal, 0, __pyx_n_s_SezimalCalculator_decimal, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__45);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__66);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -9607,29 +11237,29 @@ if (!__Pyx_RefNanny) {
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 201, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal, __pyx_t_5) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal, __pyx_t_5) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":198
+  /* "swixknife/swixknife/calculator/calculator.py":205
  *         self._decimal = decimal
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def precision(self):
  *         if self.decimal:
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_11precision, 0, __pyx_n_s_SezimalCalculator_precision, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_11precision, 0, __pyx_n_s_SezimalCalculator_precision, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_precision, __pyx_t_6) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_precision, __pyx_t_6) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":205
+  /* "swixknife/swixknife/calculator/calculator.py":212
  *         return self._sezimal_precision
  * 
  *     @precision.setter             # <<<<<<<<<<<<<<
@@ -9641,15 +11271,15 @@ if (!__Pyx_RefNanny) {
     PyErr_Clear();
     __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_precision);
   }
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_setter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_setter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_precision, __pyx_kp_s_int_str_Decimal_Sezimal_SezimalI) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_13precision, 0, __pyx_n_s_SezimalCalculator_precision, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_precision, __pyx_kp_s_int_str_Decimal_Sezimal_SezimalI) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_13precision, 0, __pyx_n_s_SezimalCalculator_precision, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -9670,29 +11300,29 @@ if (!__Pyx_RefNanny) {
     __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_precision, __pyx_t_6) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_precision, __pyx_t_6) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":217
+  /* "swixknife/swixknife/calculator/calculator.py":224
  *             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def lang(self):
  *         return self._lang
  */
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_15lang, 0, __pyx_n_s_SezimalCalculator_lang, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_15lang, 0, __pyx_n_s_SezimalCalculator_lang, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__70)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_lang, __pyx_t_4) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_lang, __pyx_t_4) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":221
+  /* "swixknife/swixknife/calculator/calculator.py":228
  *         return self._lang
  * 
  *     @lang.setter             # <<<<<<<<<<<<<<
@@ -9704,17 +11334,17 @@ if (!__Pyx_RefNanny) {
     PyErr_Clear();
     __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_lang);
   }
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_setter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_setter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lang, __pyx_n_s_str) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_17lang, 0, __pyx_n_s_SezimalCalculator_lang, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lang, __pyx_n_s_str) < 0) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_17lang, 0, __pyx_n_s_SezimalCalculator_lang, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__72)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__52);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__73);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -9734,115 +11364,188 @@ if (!__Pyx_RefNanny) {
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 221, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_lang, __pyx_t_4) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_lang, __pyx_t_4) < 0) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":237
+  /* "swixknife/swixknife/calculator/calculator.py":244
  *             self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def display(self):
  *         return self._display
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_19display, 0, __pyx_n_s_SezimalCalculator_display, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_19display, 0, __pyx_n_s_SezimalCalculator_display, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__74)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_display_2, __pyx_t_3) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_display_2, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":241
+  /* "swixknife/swixknife/calculator/calculator.py":248
  *         return self._display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_dedicated_digits(self):
+ *         return default_to_dedicated_digits(self._display)
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21display_dedicated_digits, 0, __pyx_n_s_SezimalCalculator_display_dedica, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__75)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_display_dedicated_digits, __pyx_t_4) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":252
+ *         return default_to_dedicated_digits(self._display)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment(self):
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ */
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23display_11_segment, 0, __pyx_n_s_SezimalCalculator_display_11_seg, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__76)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_display_11_segment, __pyx_t_3) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":256
+ *         return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def display_11_segment_dedicated_digits(self):
+ *         display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25display_11_segment_dedicated_digits, 0, __pyx_n_s_SezimalCalculator_display_11_seg_2, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__78)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_display_11_segment_dedicated_dig, __pyx_t_4) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":267
+ *         return display
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def decimal_display(self):
  *         return self._decimal_display
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_21decimal_display, 0, __pyx_n_s_SezimalCalculator_decimal_displa, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27decimal_display, 0, __pyx_n_s_SezimalCalculator_decimal_displa, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__79)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal_display_2, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":271
+ *         return self._decimal_display
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def decimal_display_11_segment(self):
+ *         return self._decimal_expression
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29decimal_display_11_segment, 0, __pyx_n_s_SezimalCalculator_decimal_displa_2, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__80)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal_display_2, __pyx_t_4) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_decimal_display_11_segment, __pyx_t_4) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":245
- *         return self._decimal_display
+  /* "swixknife/swixknife/calculator/calculator.py":275
+ *         return self._decimal_expression
  * 
  *     def calculate(self):             # <<<<<<<<<<<<<<
  *         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_23calculate, 0, __pyx_n_s_SezimalCalculator_calculate, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31calculate, 0, __pyx_n_s_SezimalCalculator_calculate, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__82)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_calculate, __pyx_t_4) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_calculate, __pyx_t_4) < 0) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":250
+  /* "swixknife/swixknife/calculator/calculator.py":280
  *         self.expression = str(sezimal_response)
  * 
  *     def _format_sezimal(self, number, precision=None):             # <<<<<<<<<<<<<<
  *         if precision is None:
  *             precision = self._sezimal_precision
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_25_format_sezimal, 0, __pyx_n_s_SezimalCalculator__format_sezima, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_33_format_sezimal, 0, __pyx_n_s_SezimalCalculator__format_sezima, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__84)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__59);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_format_sezimal, __pyx_t_4) < 0) __PYX_ERR(0, 250, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__85);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_format_sezimal, __pyx_t_4) < 0) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":265
+  /* "swixknife/swixknife/calculator/calculator.py":295
  *         return sezimal_format(number, **params)
  * 
  *     def _format_decimal(self, number, precision=None):             # <<<<<<<<<<<<<<
  *         if precision is None:
  *             precision = self._decimal_precision
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_27_format_decimal, 0, __pyx_n_s_SezimalCalculator__format_decima, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_35_format_decimal, 0, __pyx_n_s_SezimalCalculator__format_decima, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__86)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__61);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_format_decimal, __pyx_t_4) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__87);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_format_decimal, __pyx_t_4) < 0) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":279
+  /* "swixknife/swixknife/calculator/calculator.py":309
+ *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+ * 
+ *     def _format_decimal_expression(self, number, precision=None):             # <<<<<<<<<<<<<<
+ *         if precision is None:
+ *             precision = self._decimal_precision
+ */
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_37_format_decimal_expression, 0, __pyx_n_s_SezimalCalculator__format_decima_2, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__88)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__89);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_format_decimal_expression, __pyx_t_4) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "swixknife/swixknife/calculator/calculator.py":323
  *         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
  * 
  *     def _prepare_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
  *             self._display = ''
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_29_prepare_expression, 0, __pyx_n_s_SezimalCalculator__prepare_expre, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_39_prepare_expression, 0, __pyx_n_s_SezimalCalculator__prepare_expre, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__91)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_prepare_expression, __pyx_t_4) < 0) __PYX_ERR(0, 279, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_prepare_expression, __pyx_t_4) < 0) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":353
- *         self._decimal_display = decimal_display
+  /* "swixknife/swixknife/calculator/calculator.py":406
+ *         self._decimal_expression = decimal_expression
  * 
  *     def eval_expression(self):             # <<<<<<<<<<<<<<
  *         if not self.expression:
  *             return
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_31eval_expression, 0, __pyx_n_s_SezimalCalculator_eval_expressio, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 353, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9swixknife_9swixknife_10calculator_10calculator_17SezimalCalculator_41eval_expression, 0, __pyx_n_s_SezimalCalculator_eval_expressio, NULL, __pyx_n_s_swixknife_swixknife_calculator_c, __pyx_d, ((PyObject *)__pyx_codeobj__93)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_eval_expression, __pyx_t_4) < 0) __PYX_ERR(0, 353, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_eval_expression, __pyx_t_4) < 0) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "swixknife/swixknife/calculator/calculator.py":170
+  /* "swixknife/swixknife/calculator/calculator.py":177
  * 
  * 
  * class SezimalCalculator:             # <<<<<<<<<<<<<<
  *     def __init__(self, expression: str = '', lang: str = ''):
- *         self.expression = expression
+ *         self.dedicated_digits = False
  */
-  __pyx_t_4 = __Pyx_Py3ClassCreate(((PyObject*)&PyType_Type), __pyx_n_s_SezimalCalculator, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Py3ClassCreate(((PyObject*)&PyType_Type), __pyx_n_s_SezimalCalculator, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SezimalCalculator, __pyx_t_4) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SezimalCalculator, __pyx_t_4) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
@@ -11629,7 +13332,7 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
         if (unlikely(!module_name_str)) { goto modbad; }
         module_name = PyUnicode_FromString(module_name_str);
         if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__10);
+        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__23);
         if (unlikely(!module_dot)) { goto modbad; }
         full_name = PyUnicode_Concat(module_dot, name);
         if (unlikely(!full_name)) { goto modbad; }
@@ -13366,7 +15069,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
                                                __pyx_n_s_name);
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
-        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__66));
+        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__94));
     }
     return name;
 }

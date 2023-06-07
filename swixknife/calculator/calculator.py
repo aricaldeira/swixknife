@@ -5,8 +5,13 @@ __all__ = ('SezimalCalculator',)
 from ..sezimal import Sezimal, SezimalInteger
 from decimal import Decimal
 from ..units.conversions import  *
-from ..base import decimal_format, sezimal_format, SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE
+from ..base import decimal_format, sezimal_format, \
+    SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE, \
+    default_to_dedicated_digits
 
+
+_PERSIXNIFF = '‰'
+_PERUNEXIAN = '‱'
 
 _OPERATOR = {
     #
@@ -77,6 +82,8 @@ _LOCALES_COMMA_SEPARATOR = [
     'be-BY',
     'bg-BG',
     'bs-BA',
+    'bz',
+    'bz-BR',
     'ca-ES',
     'crh-UA',
     'cs-CZ',
@@ -169,7 +176,6 @@ _LOCALES_SPACE_GROUP_SEPARATOR = [
 
 class SezimalCalculator:
     def __init__(self, expression: str = '', lang: str = ''):
-        self.expression = expression
         self.dedicated_digits = False
         self.sezimal_separator = SEPARATOR_DOT
         self.group_separator = SEPARATOR_COMMA
@@ -177,6 +183,7 @@ class SezimalCalculator:
         self.decimal = False
         self.precision = 4
         self.lang = lang
+        self.expression = expression
 
     @property
     def expression(self):
@@ -239,8 +246,31 @@ class SezimalCalculator:
         return self._display
 
     @property
+    def display_dedicated_digits(self):
+        return default_to_dedicated_digits(self._display)
+
+    @property
+    def display_11_segment(self):
+        return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
+
+    @property
+    def display_11_segment_dedicated_digits(self):
+        display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
+        display = display.replace('󱨀', '\u283f')
+        display = display.replace('󱨁', '\u2866')
+        display = display.replace('󱨂', '\u2853')
+        display = display.replace('󱨃', '\u286b')
+        display = display.replace('󱨄', '\u285b')
+        display = display.replace('󱨅', '\u287b')
+        return display
+
+    @property
     def decimal_display(self):
         return self._decimal_display
+
+    @property
+    def decimal_display_11_segment(self):
+        return self._decimal_expression
 
     def calculate(self):
         final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
@@ -276,11 +306,26 @@ class SezimalCalculator:
 
         return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
 
+    def _format_decimal_expression(self, number, precision=None):
+        if precision is None:
+            precision = self._decimal_precision
+
+        params = {
+            'decimal_places': precision,
+            'decimal_separator': '.',
+            'group_separator': '',
+            'fraction_group_separator': '',
+            'typographical_negative': False,
+        }
+
+        return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+
     def _prepare_expression(self):
         if not self.expression:
             self._display = ''
             self._decimal_display = ''
             self._prepared_expression = ''
+            self._decimal_expression = ''
             return
 
         exp = self.expression
@@ -299,6 +344,7 @@ class SezimalCalculator:
         prepared_expression = ''
         display = ''
         decimal_display = ''
+        decimal_expression = ''
 
         for p in parts:
             p = p.strip()
@@ -313,6 +359,11 @@ class SezimalCalculator:
                 decimal_display = decimal_display.replace('%', ' ÷ 36')
                 decimal_display = decimal_display.replace('‰', ' ÷ 216')
                 decimal_display = decimal_display.replace('‱', ' ÷ 1296')
+
+                decimal_expression += _OPERATION[p]
+                decimal_display = decimal_display.replace('%', ' / 36')
+                decimal_display = decimal_display.replace('‰', ' / 216')
+                decimal_display = decimal_display.replace('‱', ' / 1296')
 
                 if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
                     parenthesis_opened += 1
@@ -337,6 +388,7 @@ class SezimalCalculator:
             prepared_expression += f"Sezimal('{n}')"
             display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))
             decimal_display += self._format_decimal(n.decimal)
+            decimal_expression += self._format_decimal_expression(n.decimal)
 
         if exp[-1] == '.':
             display += self.sezimal_separator
@@ -349,6 +401,7 @@ class SezimalCalculator:
         self._prepared_expression = prepared_expression
         self._display = display
         self._decimal_display = decimal_display
+        self._decimal_expression = decimal_expression
 
     def eval_expression(self):
         if not self.expression:
