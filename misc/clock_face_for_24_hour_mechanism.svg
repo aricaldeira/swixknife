@@ -28,9 +28,9 @@
      inkscape:deskcolor="#ffffff"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.125"
-     inkscape:cx="2600"
-     inkscape:cy="1364"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="1119.35"
+     inkscape:cy="1416.3349"
      inkscape:window-width="1920"
      inkscape:window-height="1006"
      inkscape:window-x="0"
@@ -5131,12 +5131,7 @@
              id="tspan30447"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.5635px;line-height:normal;font-family:Andika;-inkscape-font-specification:'Andika, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:normal;vector-effect:none;fill:#999999;fill-opacity:1;stroke:none;stroke-width:8.02347;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
              x="153.01503"
-             y="713.02118">9</tspan></text></g></g><circle
-       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.26907;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-       id="path25144"
-       cx="210"
-       cy="297"
-       r="3.1614456" /><g
+             y="713.02118">9</tspan></text></g></g><g
        id="g21575"
        style="font-variation-settings:normal;vector-effect:none;fill:#000000;fill-opacity:1;stroke-width:4.41556;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
        transform="rotate(-159.99999,23.268634,219.96674)" /><g
@@ -5155,4 +5150,9 @@
          id="tspan8780"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:normal;vector-effect:none;fill:#d60056;fill-opacity:1;stroke:none;stroke-width:3.47956;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
          x="237.60817"
-         y="122.01186" /></text></g></svg>
+         y="122.01186" /></text><circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.26907;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="path25144"
+       cx="210"
+       cy="297"
+       r="3.1614456" /></g></svg>
