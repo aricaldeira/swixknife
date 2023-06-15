@@ -8,8 +8,8 @@ __pycache__/
 #
 # C extensions
 #
-swixknife/*.so
-swixknife/*.c
+*.so
+*.c
 
 #
 # Distribution / packaging
