@@ -34,7 +34,7 @@ TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
 
 
 def sezimal_format(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
-                   sezimal_places: str | int | Decimal | SezimalInteger = 3,
+                   sezimal_places: str | int | Decimal | SezimalInteger = 4,
                    sezimal_separator: str = SEPARATOR_DOT,
                    group_separator: str = SEPARATOR_UNDERSCORE,
                    subgroup_separator: str = '',
