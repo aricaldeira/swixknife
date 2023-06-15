@@ -14,7 +14,7 @@ from .decimal_sezimal_conversion import decimal_to_sezimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .digit_conversion import (
     default_to_dedicated_digits, default_compressed_to_dedicated_digits,
-    default_compressed_to_regularized_digits,
+    default_compressed_to_regularized_digits, default_compressed_to_regularized_dedicated_digits,
     dedicated_to_default_digits, dedicated_compressed_to_default_digits,
     default_to_numerator_digits, default_to_denominator_digits,
     dedicated_to_numerator_digits, dedicated_to_denominator_digits,
