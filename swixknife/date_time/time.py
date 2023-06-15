@@ -19,9 +19,12 @@ from pytz import timezone, UTC
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
-from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..base import sezimal_format, sezimal_compression, default_to_dedicated_digits, \
-    default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits
+    default_compressed_to_dedicated_digits, default_compressed_to_regularized_digits, \
+    default_compressed_to_regularized_dedicated_digits
+from ..text import sezimal_spellout
+
 
 TIME_SEPARATOR = ":"
 
@@ -286,7 +289,7 @@ class SezimalTime():
                 value = sezimal_compression(value)
 
                 if dedicated_digits:
-                    value = default_compressed_to_dedicated_digits(value)
+                    value = default_compressed_to_regularized_dedicated_digits(value)
                 else:
                     value = default_compressed_to_regularized_digits(value)
 
@@ -303,7 +306,7 @@ class SezimalTime():
 
         return fmt
 
-    def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', skip_strftime: bool = False):
+    def format(self, fmt: str = f'#u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', lang=None, skip_strftime: bool = False):
         fmt = fmt.replace('##', '__HASHTAG__')
 
         for character, value, size in [
@@ -311,29 +314,43 @@ class SezimalTime():
             ['u', 'uta', 2],
             ['p', 'posha', 2],
             ['a', 'agrima', 2],
-            ['b', 'boda', 2],
             ['n', 'anuga', 2],
+            ['b', 'boda', 2],
             ['e', 'ekaditiboda', 12],
         ]:
-            fmt = self._apply_format(fmt, f'#*-${character}', value)
+            fmt = self._apply_format(fmt, f'#*-{character}', value)
             fmt = self._apply_format(fmt, f'#*{character}', value, size)
             fmt = self._apply_format(fmt, f'#-{character}', value)
             fmt = self._apply_format(fmt, f'#{character}', value, size)
 
-            fmt = self._apply_format(fmt, f'#!*-${character}', value, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#!*-{character}', value, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#!*{character}', value, size, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#!-{character}', value, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#!{character}', value, size, dedicated_digits=True)
 
-            fmt = self._apply_format(fmt, f'#@*-${character}', value, compressed=True)
+            fmt = self._apply_format(fmt, f'#@*-{character}', value, compressed=True)
             fmt = self._apply_format(fmt, f'#@*{character}', value, size, compressed=True)
             fmt = self._apply_format(fmt, f'#@-{character}', value, compressed=True)
             fmt = self._apply_format(fmt, f'#@{character}', value, size, compressed=True)
 
-            fmt = self._apply_format(fmt, f'#@!*-${character}', value, compressed=True, dedicated_digits=True)
+            fmt = self._apply_format(fmt, f'#@!*-{character}', value, compressed=True, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#@!*{character}', value, size, compressed=True, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#@!-{character}', value, compressed=True, dedicated_digits=True)
             fmt = self._apply_format(fmt, f'#@!{character}', value, size, compressed=True, dedicated_digits=True)
+
+        for character, value, unit in [
+            ['d', 'day', 'SH-day'],
+            ['u', 'uta', 'SH-uta'],
+            ['p', 'posha', 'SH-psh'],
+            ['a', 'agrima', 'SH-agm'],
+            ['b', 'boda', 'SH-bda'],
+            ['n', 'anuga', 'SH-ang'],
+            ['e', 'ekaditiboda', 'SH-edbda'],
+        ]:
+            if f'#&{character}' in fmt:
+                fmt = fmt.replace(f'#&{character}', sezimal_spellout(unit + ' ' + str(getattr(self, value, 0)), lang or 'en'))
+            elif f'#&@{character}' in fmt:
+                fmt = fmt.replace(f'#&@{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
 
         if '#t' in fmt:
             if self._time_zone_offset == 0:
@@ -405,6 +422,27 @@ class SezimalTime():
             if '%f' in fmt:
                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
 
+            if '%z' in fmt:
+                if self._time_zone_offset == 0:
+                    fmt = fmt.replace('%z', '+0000')
+                else:
+                    if self._time_zone_offset > 0:
+                        text = '+'
+                    else:
+                        text = '−'
+
+                    tzo = SezimalInteger(abs(self._time_zone_offset / 100))
+                    tzo /= 100
+                    tzo *= UTA_TO_HOUR
+                    tzo_hour = int(tzo.decimal)
+                    tzo_minute = int((tzo.decimal - tzo_hour) * 60)
+                    text += str(tzo_hour).zfill(2) + str(tzo_minute).zfill(2)
+
+                    fmt = fmt.replace('%z', text)
+
+            if '%Z' in fmt:
+                fmt = fmt.replace('%Z', self.time_zone)
+
         if skip_strftime:
             return fmt
 
@@ -422,6 +460,3 @@ class SezimalTime():
             total_agrimas -= tz_offset # + dst_offset
 
         return round(total_agrimas / 100_0000, 10)
-
-
-
