@@ -8,7 +8,8 @@ __pycache__/
 #
 # C extensions
 #
-*.so
+swixknife/*.so
+swixknife/*.c
 
 #
 # Distribution / packaging
@@ -73,3 +74,8 @@ coverage.xml
 #
 venv/
 ENV/
+
+#
+# Briefcase
+#
+logs
