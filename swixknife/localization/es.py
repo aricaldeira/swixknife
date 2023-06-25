@@ -86,6 +86,38 @@ class SezimalLocaleES(SezimalLocale):
         'aEHS',
     ]
 
+    DATE_FORMAT = '#d/#m/#Y'
+    DATE_LONG_FORMAT = '#-d#O de #M de #Y'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d#O de #M de #Y, #u:#p:#a'
+    DST_NAME = 'Horário de Invierno'
+    DST_SHORT_NAME = 'HI'
+
+    DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
+
+    SEASON_NAME = {
+        'spring_cross_quarter': 'Transición Invierno – Primavera',
+        'spring_equinox': 'Primavera',
+        'summer_cross_quarter': 'Transición Primavera – Verano',
+        'summer_solstice': 'Verano',
+        'autumn_cross_quarter': 'Transición Verano – Otoño',
+        'autumn_equinox': 'Otoño',
+        'winter_cross_quarter': 'Transición Otoño – Invierno',
+        'winter_solstice': 'Invierno',
+    }
+
+    MOON_PHASE = {
+        'new': 'Nueva',
+        'waxing crescent': 'Creciente',
+        'first quarter': 'Cuarto Creciente',
+        'waxing gibbous': 'Cuarto Creciente para Llena',
+        'full': 'Llena',
+        'waning gibbous': 'Minguante',
+        'third quarter': 'Cuarto Minguante',
+        'waning crescent': 'Cuarto Minguante para Nueva',
+    }
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

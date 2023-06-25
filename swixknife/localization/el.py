@@ -276,6 +276,12 @@ class SezimalLocaleEL(SezimalLocale):
         'aSHE',
     ]
 
+    DATE_FORMAT = '#d/#m/#Y'
+    DATE_LONG_FORMAT = '#-d#O #M #Y'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 
@@ -502,9 +508,9 @@ class SezimalLocaleEL(SezimalLocale):
                 ['ΑΥΤΌΣ', self.DEMONSTRATIVE_PRONOUN_MASCULINE],
                 ['ΑΥΤΟΣ', self.DEMONSTRATIVE_PRONOUN_MASCULINE],
             ]:
-                if f'#${case}{word}W' in fmt:
+                if f'#${case}{word}M' in fmt:
                     declension = self._article_declension_month(masculine, case, date.month)
-                    fmt = fmt.replace(f'#${case}{word}W', declension)
+                    fmt = fmt.replace(f'#${case}{word}M', declension)
 
             if f'#${case}O' in fmt:
                 fmt = fmt.replace(f'#${case}O', self.day_ordinal_suffix(date.day, case))

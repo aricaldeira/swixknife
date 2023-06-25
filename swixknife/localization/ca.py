@@ -86,6 +86,12 @@ class SezimalLocaleCA(SezimalLocale):
         'aEHS',
     ]
 
+    DATE_FORMAT = '#d/#m/#Y'
+    DATE_LONG_FORMAT = '#-d#O #$DEM#M del #Y'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d#O #$DEM#M del #Y, #u:#p:#a'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

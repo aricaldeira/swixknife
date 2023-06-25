@@ -271,6 +271,12 @@ class SezimalLocalePL(SezimalLocale):
         'aSHE',
     ]
 
+    DATE_FORMAT = '#d #$RM #Y'
+    DATE_LONG_FORMAT = '#-d. #M #Y r.'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d #$RM #Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 

@@ -25,6 +25,13 @@ class SezimalLocaleEN(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
 
+    DATE_FORMAT = '#d/#m/#Y'
+    DATE_LONG_FORMAT = '#-d #M #Y'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, the #-d#O #M #Y, #u:#p:#a'
+
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

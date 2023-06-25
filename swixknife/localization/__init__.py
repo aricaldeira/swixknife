@@ -1,54 +1,30 @@
 
 
-__all__ = ('sezimal_locale', 'DEFAULT_LOCALE')
+__all__ = ('sezimal_locale', 'DEFAULT_LOCALE', 'SezimalLocale')
 
 
 import locale as system_locale
-
-from .bz import SezimalLocaleBZ
-from .ca import SezimalLocaleCA
-from .de import SezimalLocaleDE
-from .el import SezimalLocaleEL
-from .en import SezimalLocaleEN
-from .eo import SezimalLocaleEO
-from .es import SezimalLocaleES
-from .fr import SezimalLocaleFR
-from .it import SezimalLocaleIT
-from .pl import SezimalLocalePL
-from .pt import SezimalLocalePT
-from .ro import SezimalLocaleRO
-from .ru import SezimalLocaleRU
+import importlib
 
 from .lokale import SezimalLocale
 
 
-_LOCALES = {
-    'bz': SezimalLocaleBZ,
-    'ca': SezimalLocaleCA,
-    'de': SezimalLocaleDE,
-    'el': SezimalLocaleEL,
-    'en': SezimalLocaleEN,
-    'eo': SezimalLocaleEO,
-    'es': SezimalLocaleES,
-    'fr': SezimalLocaleFR,
-    'it': SezimalLocaleIT,
-    'pl': SezimalLocalePL,
-    'pt': SezimalLocalePT,
-    'ro': SezimalLocaleRO,
-    'ru': SezimalLocaleRU,
-}
+LOCALE_CACHE = {}
 
 
 def _get_system_locale():
     locale = system_locale.getlocale()[0]
 
-    if locale == 'C':
+    if locale == 'C' or (not locale):
         locale = 'en'
 
     return locale
 
 
-def sezimal_locale(locale: str = None) -> SezimalLocale:
+def sezimal_locale(locale: str | SezimalLocale = None) -> SezimalLocale:
+    if isinstance(locale, SezimalLocale):
+        return locale
+
     if not locale:
         locale = _get_system_locale()
 
@@ -58,14 +34,28 @@ def sezimal_locale(locale: str = None) -> SezimalLocale:
 
     locale = locale.lower()
 
-    if locale in _LOCALES:
-        return _LOCALES[locale]()
+    if locale in LOCALE_CACHE:
+        return LOCALE_CACHE[locale]()
 
     if len(locale) >= 2:
-        locale = locale[:2]
+        if locale[:2] in LOCALE_CACHE:
+            return LOCALE_CACHE[locale[:2]]()
 
-        if locale in _LOCALES:
-            return _LOCALES[locale]()
+    try:
+        module = importlib.import_module('swixknife.localization.' + locale)
+        locale_class = getattr(module, 'SezimalLocale' + locale.upper())
+        LOCALE_CACHE[locale] = locale_class
+        return locale_class()
+
+    except:
+        try:
+            module = importlib.import_module('swixknife.localization.' + locale[:2])
+            locale_class = getattr(module, 'SezimalLocale' + locale[:2].upper())
+            LOCALE_CACHE[locale[:2]] = locale_class
+            return locale_class()
+
+        except:
+            pass
 
     return _create_locale_from_icu(original_locale) or _create_locale_from_system(original_locale)
 
@@ -103,7 +93,7 @@ def _create_locale_from_icu(locale: str) -> SezimalLocale:
     new_locale.MONTH_NAME = dfs.getMonths()
     new_locale.MONTH_ABBREVIATED_NAME = dfs.getShortMonths()
 
-    _LOCALES[locale] = new_locale
+    LOCALE_CACHE[locale] = new_locale
 
     return new_locale()
 
@@ -169,7 +159,7 @@ def _create_locale_from_system(locale: str) -> SezimalLocale:
         system_locale.nl_langinfo(system_locale.ABMON_12),
     ]
 
-    _LOCALES[locale] = new_locale
+    LOCALE_CACHE[locale] = new_locale
 
     return new_locale()
 

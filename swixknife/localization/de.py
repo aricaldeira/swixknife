@@ -86,5 +86,11 @@ class SezimalLocaleDE(SezimalLocale):
         'v. SZM',
     ]
 
+    DATE_FORMAT = '#d.#m.#Y'
+    DATE_LONG_FORMAT = '#-d#O #M #Y'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         return '.'
