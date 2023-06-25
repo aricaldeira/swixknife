@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Shows the sezimal date and time')
+parser.add_argument('-f', '--format', default=None, nargs='?', help='Formato')
+parser.add_argument('-l', '--locale', default=None, nargs='?', help='Idioma')
+parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date and time')
+parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zone')
+parser.add_argument('-dd', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+
+
+from swixknife.date_time import SezimalDateTime as SDT
+import datetime as _datetime
+from zoneinfo import ZoneInfo
+
+
+if __name__ == '__main__':
+    arguments = parser.parse_args()
+
+    formato = arguments.format
+    locale = arguments.locale
+
+    if arguments.timezone:
+        time_zone = ZoneInfo(arguments.timezone)
+    else:
+        time_zone = None
+
+    if arguments.iso:
+        dt = _datetime.datetime.fromisoformat(arguments.iso)
+        sdt = SDT(dt)
+
+        if time_zone:
+            sdt = sdt.at_time_zone(time_zone)
+
+    else:
+        sdt = SDT.now(time_zone=time_zone)
+
+    dt = sdt.format(formato, locale)
+
+    if arguments.dedicated_digits:
+        dt = dt.replace('0', '󱨀').replace('1', '󱨁').replace('2', '󱨂')
+        dt = dt.replace('3', '󱨃').replace('4', '󱨄').replace('5', '󱨅')
+
+    print(dt)

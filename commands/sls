@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import pathlib
+
+parser = argparse.ArgumentParser(description='List directory content using sezimal numbers and dates')
+parser.add_argument('directory', default=None, nargs='*', help='Directory')
+parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
+parser.add_argument('-dtf', '--date-time_format', dest='date_time_format', nargs='?', default=None, help='Date and time format, use it to get ISO/Gregorian date and time')
+parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal values')
+parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal values')
+parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal values')
+parser.add_argument('-a', '--all', dest='all', action=argparse.BooleanOptionalAction, help='List all, including hidden files/directories')
+parser.add_argument('-n', '--numbers', dest='numbers', action=argparse.BooleanOptionalAction, help='Numbers without prefixes')
+parser.add_argument('-sdd', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Numbers are sezimal dedicated digits')
+
+
+from swixknife import sezimal_locale
+from swixknife.terminal import SezimalDirectoryList
+
+
+if __name__ == '__main__':
+    arguments = parser.parse_args()
+
+    locale = sezimal_locale(arguments.locale)
+
+    original_path = ''
+
+    if arguments.directory and len(arguments.directory) == 1:
+        original_path = arguments.directory[0]
+        original_path = str(pathlib.Path(original_path).absolute()) + '/'
+
+        dl = os.listdir(original_path)
+
+        arguments.directory = []
+
+        for name in dl:
+            arguments.directory.append(str(pathlib.Path(original_path, name).absolute()))
+
+    sdl = SezimalDirectoryList(arguments.directory or None)
+    sdl.original_path = original_path
+    sdl.is_niftimal = arguments.niftimal
+    sdl.is_decimal = arguments.decimal
+    sdl.is_dozenal = arguments.dozenal
+    sdl.show_hidden = arguments.all
+    sdl.locale = locale
+    sdl.date_time_format = arguments.date_time_format or '#d-#@M-#Y #@W #u:#p'
+    sdl.use_prefixes = not arguments.numbers
+    sdl.use_dedicated_digits = arguments.dedicated_digits
+    sdl.terminal_list()
