@@ -313,3 +313,64 @@ def sezimal_symbol_to_exponent(symbol: str) -> SezimalInteger:
         exponent = SezimalInteger(exponent * -1)
 
     return exponent
+
+
+def decimal_exponent_to_symbol(exponent: str | int | SezimalInteger) -> str:
+    exponent = SezimalInteger(exponent)
+
+    if exponent == 0:
+        return ''
+
+    if exponent > 0:
+        if exponent == 1:
+            return 'da'
+        elif exponent == 2:
+            return 'h'
+        elif exponent < 10:
+            return 'k'
+        elif exponent < 13:
+            return 'M'
+        elif exponent < 20:
+            return 'G'
+        elif exponent < 23:
+            return 'T'
+        elif exponent < 30:
+            return 'P'
+        elif exponent < 33:
+            return 'E'
+        elif exponent < 40:
+            return 'Z'
+        elif exponent < 43:
+            return 'Y'
+        elif exponent < 50:
+            return 'R'
+        else:
+            return 'Q'
+
+    else:
+        exponent = abs(exponent)
+
+        if exponent == 1:
+            return 'd'
+        elif exponent == 2:
+            return 'c'
+        elif exponent < 10:
+            return 'm'
+        elif exponent < 13:
+            return 'µ'
+        elif exponent < 20:
+            return 'n'
+        elif exponent < 23:
+            return 'p'
+        elif exponent < 30:
+            return 'f'
+        elif exponent < 33:
+            return 'a'
+        elif exponent < 40:
+            return 'z'
+        elif exponent < 43:
+            return 'y'
+        elif exponent < 50:
+            return 'r'
+        else:
+            return 'q'
