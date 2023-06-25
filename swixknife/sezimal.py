@@ -5,6 +5,7 @@ __all__ = (
     'SezimalFraction',
 )
 
+
 from decimal import Decimal, localcontext, getcontext
 
 from typing import TypeVar
@@ -14,7 +15,11 @@ Self = TypeVar('Self', bound='Sezimal')
 IntegerSelf = TypeVar('IntegerSelf', bound='SezimalInteger')
 FractionSelf = TypeVar('FractionSelf', bound='SezimalFraction')
 
-from .base import validate_clean_sezimal, decimal_to_sezimal, sezimal_to_decimal, sezimal_format, decimal_format
+from .base import validate_clean_sezimal, \
+    decimal_to_sezimal, sezimal_to_decimal, \
+    sezimal_format, decimal_format, \
+    sezimal_to_dozenal, dozenal_format, \
+    sezimal_to_niftimal, niftimal_format
 
 
 MAX_DECIMAL_PRECISION = 37
@@ -94,8 +99,40 @@ class Sezimal:
     def decimal(self) -> Decimal:
         return self._value
 
+    @property
+    def decimal_formatted_number(self) -> str:
+        if not self._fraction:
+            return decimal_format(str(self._value), decimal_places=0)
+        else:
+            return decimal_format(str(self._value), decimal_places=MAX_DECIMAL_PRECISION)
+
+    @property
+    def dozenal(self) -> str:
+        return dozenal_format(self, group_separator='')
+
+    @property
+    def dozenal_formatted_number(self) -> str:
+        if not self._fraction:
+            return dozenal_format(self, dozenal_places=0)
+        else:
+            return dozenal_format(self)
+
+    @property
+    def niftimal(self) -> str:
+        return niftimal_format(self, group_separator='')
+
+    @property
+    def niftimal_formatted_number(self) -> str:
+        if not self._fraction:
+            return niftimal_format(self, niftimal_places=0)
+        else:
+            return niftimal_format(self)
+
     def __int__(self) -> int:
         return int(sezimal_to_decimal(self._integer)) * self._sign
+
+    def __trunc__(self) -> IntegerSelf:
+        return SezimalInteger(self._integer) * self._sign
 
     def __float__(self) -> float:
         return float(sezimal_to_decimal(str(self)))
@@ -481,7 +518,7 @@ class Sezimal:
 
         return rounded
 
-    def trunc(self, precision: IntegerSelf = MAX_PRECISION) -> str:
+    def trunc(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
         if precision is None:
             precision = 0
 
