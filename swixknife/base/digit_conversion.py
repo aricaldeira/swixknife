@@ -3,17 +3,29 @@
 DEFAULT_DIGITS = tuple('012345⁰¹²³⁴⁵₀₁₂₃₄₅')
 DEDICATED_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨤󱨥󱨦󱨧󱨨󱨩󱩈󱩉󱩊󱩋󱩌󱩍')
 
-DEFAULT_COMPRESSED_DIGITS = tuple('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-DEDICATED_COMPRESSED_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫')
+DEFAULT_NIFTIMAL_DIGITS = tuple('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+DEDICATED_NIFTIMAL_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫')
 
 _PLUS_00 = ''
+# _PLUS_10 = '\u0307'
+# _PLUS_20 = '\u0308'
+# _PLUS_30 = '\u0304'
+# _PLUS_10 = '\u0323'
+# _PLUS_20 = '\u0324'
+# _PLUS_30 = '\u0331'
+# _PLUS_10 = '\u030d'
+# _PLUS_20 = '\u030e'
+# _PLUS_30 = '\u0304'
+# _PLUS_40 = _PLUS_30 + _PLUS_10
+# _PLUS_50 = _PLUS_30 + _PLUS_20
+
 _PLUS_10 = '\u0307'
 _PLUS_20 = '\u0308'
-_PLUS_30 = '\u0304'
-_PLUS_40 = _PLUS_30 + _PLUS_10
-_PLUS_50 = _PLUS_30 + _PLUS_20
+_PLUS_30 = '\u030a'
+_PLUS_40 = '\u0304'
+_PLUS_50 = '\u0306'
 
-REGULARIZED_COMPRESSED_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
+REGULARIZED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
 0{_PLUS_10}\n1{_PLUS_10}\n2{_PLUS_10}\n3{_PLUS_10}\n4{_PLUS_10}\n5{_PLUS_10}
 0{_PLUS_20}\n1{_PLUS_20}\n2{_PLUS_20}\n3{_PLUS_20}\n4{_PLUS_20}\n5{_PLUS_20}
 0{_PLUS_30}\n1{_PLUS_30}\n2{_PLUS_30}\n3{_PLUS_30}\n4{_PLUS_30}\n5{_PLUS_30}
@@ -32,7 +44,7 @@ REGULARIZED_COMPRESSED_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00
 ₀{_PLUS_40}\n₁{_PLUS_40}\n₂{_PLUS_40}\n₃{_PLUS_40}\n₄{_PLUS_40}\n₅{_PLUS_40}
 ₀{_PLUS_50}\n₁{_PLUS_50}\n₂{_PLUS_50}\n₃{_PLUS_50}\n₄{_PLUS_50}\n₅{_PLUS_50}'''.split('\n'))
 
-REGULARIZED_DEDICATED_COMPRESSED_DIGITS = tuple(c.replace(' ', '') for c in f'''󱨀{_PLUS_00}\n󱨁{_PLUS_00}\n󱨂{_PLUS_00}\n󱨃{_PLUS_00}\n󱨄{_PLUS_00}\n󱨅{_PLUS_00}
+REGULARIZED_DEDICATED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''󱨀{_PLUS_00}\n󱨁{_PLUS_00}\n󱨂{_PLUS_00}\n󱨃{_PLUS_00}\n󱨄{_PLUS_00}\n󱨅{_PLUS_00}
 󱨀{_PLUS_10}\n󱨁{_PLUS_10}\n󱨂{_PLUS_10}\n󱨃{_PLUS_10}\n󱨄{_PLUS_10}\n󱨅{_PLUS_10}
 󱨀{_PLUS_20}\n󱨁{_PLUS_20}\n󱨂{_PLUS_20}\n󱨃{_PLUS_20}\n󱨄{_PLUS_20}\n󱨅{_PLUS_20}
 󱨀{_PLUS_30}\n󱨁{_PLUS_30}\n󱨂{_PLUS_30}\n󱨃{_PLUS_30}\n󱨄{_PLUS_30}\n󱨅{_PLUS_30}
@@ -71,24 +83,24 @@ def default_to_dedicated_digits(number: str) -> str:
     return _change_digits(number, DEFAULT_DIGITS, DEDICATED_DIGITS)
 
 
-def default_compressed_to_dedicated_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_COMPRESSED_DIGITS, DEDICATED_COMPRESSED_DIGITS)
+def default_niftimal_to_dedicated_digits(number:str) -> str:
+    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, DEDICATED_NIFTIMAL_DIGITS)
 
 
-def default_compressed_to_regularized_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_COMPRESSED_DIGITS, REGULARIZED_COMPRESSED_DIGITS)
+def default_niftimal_to_regularized_digits(number:str) -> str:
+    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_NIFTIMAL_DIGITS)
 
 
-def default_compressed_to_regularized_dedicated_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_COMPRESSED_DIGITS, REGULARIZED_DEDICATED_COMPRESSED_DIGITS)
+def default_niftimal_to_regularized_dedicated_digits(number:str) -> str:
+    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_DEDICATED_NIFTIMAL_DIGITS)
 
 
 def dedicated_to_default_digits(number: str) -> str:
     return _change_digits(number, DEDICATED_DIGITS, DEFAULT_DIGITS)
 
 
-def dedicated_compressed_to_default_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_COMPRESSED_DIGITS, DEFAULT_COMPRESSED_DIGITS)
+def dedicated_niftimal_to_default_digits(number: str) -> str:
+    return _change_digits(number, DEDICATED_NIFTIMAL_DIGITS, DEFAULT_NIFTIMAL_DIGITS)
 
 
 def default_to_numerator_digits(number: str) -> str:

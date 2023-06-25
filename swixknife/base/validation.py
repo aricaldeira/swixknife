@@ -8,20 +8,33 @@ SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
-from .digit_conversion import dedicated_to_default_digits, dedicated_compressed_to_default_digits
+from .digit_conversion import dedicated_to_default_digits, dedicated_niftimal_to_default_digits
 
 
 def _exponent_to_full_form(number: str, base: int = 6) -> str:
     number = number.upper()
 
-    if 'E-' not in number and 'E+' not in number and 'E' not in number:
-        return number
+    if base == 36:
+        if 'E-' not in number and 'E+' not in number:
+            return number
+    else:
+        if 'E-' not in number and 'E+' not in number and 'E' not in number:
+            return number
 
     if '.' in number:
         integer, fraction = number.split('.')
     else:
-        integer, fraction = number.split('E')
-        fraction = 'E' + fraction
+        if base == 36:
+            if 'E+' in number:
+                integer, fraction = number.split('E+')
+                fraction = 'E+' + fraction
+            else:
+                integer, fraction = number.split('E-')
+                fraction = 'E-' + fraction
+
+        else:
+            integer, fraction = number.split('E')
+            fraction = 'E' + fraction
 
     if 'E-' in fraction:
         initial_fraction, exponent = fraction.split('E-')
@@ -165,23 +178,65 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
 
 
 #
-# Compressed sezimal numbers,
+# Niftimal numbers,
 # when using engineering notation (E+, E-),
 # always have to specify the exponent sign;
-# when regular sezimal numbers don’t specify a sign,
+# when sezimal numbers don’t specify a sign,
 # a positive sign + is assumed
 #
-_VALID_COMPRESSED_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-9A-Z]+\.?$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+$|^[+\-]?[0-9A-Z]+\.?[Ee][+\-][0-9A-Z]*$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+[Ee][+\-][0-9A-Z]*$')
+_VALID_NIFTIMAL_FORMAT = re.compile(r'^[+\-]?[0-9A-Z]+\.?$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+$|^[+\-]?[0-9A-Z]+\.?[Ee][+\-][0-9A-Z]*$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+[Ee][+\-][0-9A-Z]*$')
 
 
-def validate_clean_compressed_sezimal(number: int | float | str | Decimal | Sezimal) -> str:
+def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> str:
     number = str(number).upper()
 
     if not number:
-        raise ValueError(f'An empty string is not a valid compressed sezimal number')
+        raise ValueError(f'An empty string is not a valid niftimal number')
 
-    cleaned_number = dedicated_compressed_to_default_digits(number)
+    cleaned_number = dedicated_niftimal_to_default_digits(number)
     cleaned_number = _clean_separators(cleaned_number)
+
+    if cleaned_number.startswith('+'):
+        cleaned_number = cleaned_number[1:]
+
+    while cleaned_number.startswith('-00'):
+        cleaned_number = '-0' + cleaned_number[3:]
+
+    if len(cleaned_number) > 1:
+        while cleaned_number.startswith('0'):
+            cleaned_number = cleaned_number[1:]
+
+    if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E+') or cleaned_number.startswith('e+'):
+        cleaned_number = '0' + cleaned_number
+    elif cleaned_number.startswith('E-') or cleaned_number.startswith('e-'):
+        cleaned_number = '0' + cleaned_number
+
+    if not cleaned_number:
+        cleaned_number = '0'
+
+    invalid = _VALID_NIFTIMAL_FORMAT.sub('', cleaned_number)
+
+    if invalid != '':
+        raise ValueError(f'The number {number} has an invalid format for a niftimal number')
+
+    cleaned_number = _exponent_to_full_form(cleaned_number, 36)
+
+    return cleaned_number
+
+
+_VALID_DOZENAL_FORMAT = re.compile(r'^[+\-]?[0-9↊↋]+\.?$|^[+\-]?[0-9↊↋]*\.[0-9↊↋]+$|^[+\-]?[0-9↊↋]+\.?[Ee][+\-]?[0-9↊↋]*$|^[+\-]?[0-9↊↋]*\.[0-9↊↋]+[Ee][+\-]?[0-9↊↋]*$')
+
+
+def validate_clean_dozenal(number: str) -> str:
+    number = str(number)
+
+    if not number:
+        raise ValueError(f'An empty string is not a valid dozenal number')
+
+    cleaned_number = _clean_separators(number)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -202,11 +257,11 @@ def validate_clean_compressed_sezimal(number: int | float | str | Decimal | Sezi
     if not cleaned_number:
         cleaned_number = '0'
 
-    invalid = _VALID_COMPRESSED_SEZIMAL_FORMAT.sub('', cleaned_number)
+    invalid = _VALID_DOZENAL_FORMAT.sub('', cleaned_number)
 
     if invalid != '':
-        raise ValueError(f'The number {number} has an invalid format for a compressed sezimal number')
+        raise ValueError(f'The number {number} has an invalid format for a dozenal number')
 
-    cleaned_number = _exponent_to_full_form(cleaned_number, 6)
+    cleaned_number = _exponent_to_full_form(cleaned_number, 10)
 
     return cleaned_number

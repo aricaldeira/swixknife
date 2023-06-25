@@ -6,8 +6,8 @@ Sezimal = TypeVar('Sezimal', bound='Sezimal')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
-from .validation import validate_clean_sezimal, validate_clean_compressed_sezimal
-from .digit_conversion import default_compressed_to_dedicated_digits, default_to_dedicated_digits
+from .validation import validate_clean_sezimal, validate_clean_niftimal
+from .digit_conversion import default_niftimal_to_dedicated_digits, default_to_dedicated_digits
 
 
 COMPRESS_PATTERN = re.compile('([0-5]{2})')
@@ -32,7 +32,7 @@ DECOMPRESS = {
 }
 
 
-def sezimal_compression(number: int | float | str | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
+def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
     number = validate_clean_sezimal(number)
 
     if '.' in number:
@@ -40,59 +40,59 @@ def sezimal_compression(number: int | float | str | Decimal | Sezimal, dedicated
     else:
         integer, fraction = number, ''
 
-    compressed_number = ''
+    niftimal_number = ''
 
     parts = re.split(COMPRESS_PATTERN, integer[::-1])
     parts = list(filter(bool, parts))
 
     for part in parts:
         if len(part) == 1:
-            compressed_number += COMPRESS['0' + part]
+            niftimal_number += COMPRESS['0' + part]
         elif len(part) == 2:
-            compressed_number += COMPRESS[part[::-1]]
+            niftimal_number += COMPRESS[part[::-1]]
 
-    compressed_number = compressed_number[::-1]
+    niftimal_number = niftimal_number[::-1]
 
     if fraction:
-        compressed_number += '.'
+        niftimal_number += '.'
 
         parts = re.split(COMPRESS_PATTERN, fraction)
         parts = list(filter(bool, parts))
 
         for part in parts:
             if len(part) == 1:
-                compressed_number += COMPRESS[part + '0']
+                niftimal_number += COMPRESS[part + '0']
             elif len(part) == 2:
-                compressed_number += COMPRESS[part]
+                niftimal_number += COMPRESS[part]
 
     if dedicated_digits:
-        compressed_number = default_compressed_to_dedicated_digits(compressed_number)
+        niftimal_number = default_niftimal_to_dedicated_digits(niftimal_number)
 
-    return compressed_number
+    return niftimal_number
 
 
-def sezimal_decompression(number: str, dedicated_digits: bool = False) -> str:
-    number = validate_clean_compressed_sezimal(number)
+def niftimal_to_sezimal(number: str, dedicated_digits: bool = False) -> str:
+    number = validate_clean_niftimal(number)
 
     if '.' in number:
         integer, fraction = number.split('.')
     else:
         integer, fraction = number, ''
 
-    decompressed_number = ''
+    sezimal_number = ''
 
     for part in integer[::-1]:
-        decompressed_number = DECOMPRESS[part] + decompressed_number
+        sezimal_number = DECOMPRESS[part] + sezimal_number
 
     if fraction:
-        decompressed_number += '.'
+        sezimal_number += '.'
 
         for part in fraction:
-            decompressed_number += DECOMPRESS[part]
+            sezimal_number += DECOMPRESS[part]
 
-    decompressed_number = validate_clean_sezimal(decompressed_number)
+    sezimal_number = validate_clean_sezimal(sezimal_number)
 
     if dedicated_digits:
-        decompressed_number = default_to_dedicated_digits(decompressed_number)
+        sezimal_number = default_to_dedicated_digits(sezimal_number)
 
-    return decompressed_number
+    return sezimal_number
