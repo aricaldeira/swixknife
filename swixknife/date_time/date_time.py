@@ -12,19 +12,26 @@
 
 __all__ = ('SezimalDateTime')
 
+from typing import TypeVar
+
+Self = TypeVar('Self', bound='SezimalDate')
+
 import datetime as _datetime
 import time as _time
-from pytz import timezone
+from zoneinfo import ZoneInfo
+
 
 from decimal import Decimal
 
 from .date import SezimalDate
-from .time import SezimalTime, TIME_SEPARATOR, tz_agrimas_offset
+from .time import SezimalTime
 from ..sezimal import Sezimal, SezimalInteger
 from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
+from .sezimal_functions import *
 
 
-class SezimalDateTime():
+class SezimalDateTime:
     __slots__ = '_date', '_time', '_iso_date_time'
 
     def __new__(
@@ -38,8 +45,8 @@ class SezimalDateTime():
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         boda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
-        time_zone: str = None,
-        ):
+        time_zone: str | ZoneInfo = None,
+        ) -> Self:
         self = object.__new__(cls)
 
         if type(year) == SezimalDate:
@@ -48,7 +55,23 @@ class SezimalDateTime():
             self._date = SezimalDate(year)
         elif type(year) == _datetime.datetime:
             if year.tzinfo:
-                return cls.from_timestamp(year.timestamp(), str(year.tzinfo))
+                time_zone = str(year.tzinfo)
+
+                #
+                # ZoneInfo doesn’t work well
+                # with purelly numeric offset time zones:
+                # UTC[+-]9999
+                # So we try to convert them to Etc/GMT[+-] with a simplified offset
+                #
+                if 'UTC+' in time_zone:
+                    time_zone = time_zone.replace('UTC+', 'Etc/GMT+')[0:10]
+                    time_zone = time_zone.replace('+0', '+')
+
+                elif 'UTC-' in time_zone:
+                    time_zone = time_zone.replace('UTC-', 'Etc/GMT-')[0:10]
+                    time_zone = time_zone.replace('-0', '-')
+
+                return cls.from_timestamp(year.timestamp(), time_zone=time_zone)
 
             return cls.from_timestamp(year.timestamp(), time_zone)
         else:
@@ -62,9 +85,9 @@ class SezimalDateTime():
 
         if type(self._date.gregorian_date) == _datetime.date:
             if time_zone:
-                self._iso_date_time = _datetime.datetime.fromtimestamp(self.timestamp, tz=timezone(self.time_zone))
+                self._iso_date_time = _datetime.datetime.combine(self._date.gregorian_date, self._time.iso_time, ZoneInfo(self.time_zone))
             else:
-                self._iso_date_time = _datetime.datetime.fromtimestamp(self.timestamp)
+                self._iso_date_time = _datetime.datetime.combine(self._date.gregorian_date, self._time.iso_time)
 
         else:
             self._iso_date_time = (
@@ -80,7 +103,7 @@ class SezimalDateTime():
 
         return self
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'{self.__class__.__qualname__}(year={self.year.formatted_number}, month={self.month}, day={self.day}, uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, time_zone={self.time_zone})'
 
     @property
@@ -97,97 +120,101 @@ class SezimalDateTime():
             return self.format(fmt)
         return str(self)
 
-    def isoformat(self):
+    def isoformat(self) -> str:
         return self.format(f'#y-#m-#d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
 
     __str__ = isoformat
 
     @property
-    def year(self):
+    def year(self) -> SezimalInteger:
         return self._date._year
 
     @property
-    def month(self):
+    def month(self) -> SezimalInteger:
         return self._date._month
 
     @property
-    def day(self):
+    def day(self) -> SezimalInteger:
         return self._date._day
 
     @property
-    def is_leap(self):
-        return bool(self._date._is_leap)
+    def is_leap(self) -> bool:
+        return self._date.is_leap
 
     @property
-    def weekday(self):
+    def is_long_month(self) -> bool:
+        return self._date.is_long_month
+
+    @property
+    def weekday(self) -> SezimalInteger:
         return self._date._weekday
 
     @property
-    def week_in_month(self):
+    def week_in_month(self) -> SezimalInteger:
         return self._date.week_in_month
 
     @property
-    def day_in_year(self):
+    def day_in_year(self) -> SezimalInteger:
         return self._date._day_in_year
 
     @property
-    def week_in_year(self):
+    def week_in_year(self) -> SezimalInteger:
         return self._date._week_in_year
 
     @property
-    def quarter(self):
+    def quarter(self) -> SezimalInteger:
         return self._date._quarter
 
     @property
-    def day_in_quarter(self):
+    def day_in_quarter(self) -> SezimalInteger:
         return self._date._day_in_quarter
 
     @property
-    def week_in_quarter(self):
+    def week_in_quarter(self) -> SezimalInteger:
         return self._date._week_in_quarter
 
     @property
-    def month_in_quarter(self):
+    def month_in_quarter(self) -> SezimalInteger:
         return self._date._month_in_quarter
 
     @property
-    def weekday_name(self):
+    def weekday_name(self) -> str:
         return self._date.weekday_name
 
     @property
-    def weekday_abbreviated_name(self):
+    def weekday_abbreviated_name(self) -> str:
         return self._date.weekday_abbreviated_name
 
     @property
-    def month_name(self):
+    def month_name(self) -> str:
         return self._date.month_name
 
     @property
-    def month_abbreviated_name(self):
+    def month_abbreviated_name(self) -> str:
         return self._date.month_abbreviated_name
 
     @property
-    def era_name(self):
+    def era_name(self) -> str:
         return self._date.era_name
 
     @property
-    def day_ordinal_suffix(self):
+    def day_ordinal_suffix(self) -> str:
         return self._date.day_ordinal_suffix
 
     @property
-    def gregorian_year(self):
+    def gregorian_year(self) -> int:
         return self._date.gregorian_year
 
     @property
-    def gregorian_month(self):
+    def gregorian_month(self) -> int:
         return self._date.gregorian_month
 
     @property
-    def gregorian_day(self):
+    def gregorian_day(self) -> int:
         return self._date.gregorian_day
 
     @property
-    def gregorian_isoformat(self):
+    def gregorian_isoformat(self) -> str:
         return self._date.gregorian_isoformat
 
     @property
@@ -195,19 +222,19 @@ class SezimalDateTime():
         return self._date.gregorian_holocene_date
 
     @property
-    def gregorian_holocene_year(self):
+    def gregorian_holocene_year(self) -> int:
         return self._date.gregorian_holocene_year
 
     @property
-    def gregorian_holocene_month(self):
+    def gregorian_holocene_month(self) -> int:
         return self._date.gregorian_holocene_month
 
     @property
-    def gregorian_holocene_day(self):
+    def gregorian_holocene_day(self) -> int:
         return self._date.gregorian_holocene_day
 
     @property
-    def gregorian_holocene_isoformat(self):
+    def gregorian_holocene_isoformat(self) -> str:
         return self._date.gregorian_holocene_isoformat
 
     @property
@@ -215,19 +242,19 @@ class SezimalDateTime():
         return self._date.symmetric_date
 
     @property
-    def symmetric_year(self):
+    def symmetric_year(self) -> int:
         return self._date.symmetric_year
 
     @property
-    def symmetric_month(self):
+    def symmetric_month(self) -> int:
         return self._date.symmetric_month
 
     @property
-    def symmetric_day(self):
+    def symmetric_day(self) -> int:
         return self._date.symmetric_day
 
     @property
-    def symmetric_isoformat(self):
+    def symmetric_isoformat(self) -> str:
         return self._date.symmetric_isoformat
 
     @property
@@ -235,30 +262,30 @@ class SezimalDateTime():
         return self._date.symmetric_holocene_date
 
     @property
-    def symmetric_holocene_year(self):
+    def symmetric_holocene_year(self) -> int:
         return self._date.symmetric_holocene_year
 
     @property
-    def symmetric_holocene_month(self):
+    def symmetric_holocene_month(self) -> int:
         return self._date.symmetric_holocene_month
 
     @property
-    def symmetric_holocene_day(self):
+    def symmetric_holocene_day(self) -> int:
         return self._date.symmetric_holocene_day
 
     @property
-    def symmetric_holocene_isoformat(self):
+    def symmetric_holocene_isoformat(self) -> str:
         return self._date.symmetric_holocene_isoformat
 
     @property
     def timetuple(self):
         return self._date.timetuple
 
-    def toordinal(self):
+    def toordinal(self) -> SezimalInteger:
         return self._date.toordinal()
 
     @property
-    def ordinal_date(self):
+    def ordinal_date(self) -> SezimalInteger:
         return self._date.ordinal_date
 
     @property
@@ -266,39 +293,39 @@ class SezimalDateTime():
         return self._date.isocalendar()
 
     @property
-    def julian_date(self):
+    def julian_date(self) -> Sezimal:
         return round(self._date.julian_date + self._time.julian_date, 10)
 
     @property
-    def uta(self):
+    def uta(self) -> SezimalInteger:
         return self._time.uta
 
     @property
-    def posha(self):
+    def posha(self) -> SezimalInteger:
         return self._time.posha
 
     @property
-    def agrima(self):
+    def agrima(self) -> SezimalInteger:
         return self._time.agrima
 
     @property
-    def anuga(self):
+    def anuga(self) -> SezimalInteger:
         return self._time.anuga
 
     @property
-    def boda(self):
+    def boda(self) -> SezimalInteger:
         return self._time.boda
 
     @property
-    def ekaditiboda(self):
+    def ekaditiboda(self) -> Sezimal:
         return self._time.ekaditiboda
 
     @property
-    def time_zone(self):
+    def time_zone(self) -> str:
         return self._time.time_zone
 
     @property
-    def is_dst(self):
+    def is_dst(self) -> bool:
         return self._time.is_dst
 
     @property
@@ -306,32 +333,46 @@ class SezimalDateTime():
         return self._time.iso_time
 
     @property
-    def iso_hour(self):
+    def iso_hour(self) -> int:
         return self._time.iso_hour
 
     @property
-    def iso_minute(self):
+    def iso_minute(self) -> int:
         return self._time.iso_minute
 
     @property
-    def iso_second(self):
+    def iso_second(self) -> int:
         return self._time.iso_second
 
     @property
-    def iso_microsecond(self):
+    def iso_microsecond(self) -> int:
         return self._time.iso_microsecond
 
     @property
-    def as_agrimas(self):
+    def as_agrimas(self) -> Sezimal:
         return self._date.as_agrimas + self._time.as_agrimas
 
     @property
-    def as_seconds(self):
+    def as_seconds(self) -> Decimal:
         return self._date.as_seconds + self._time.as_seconds
 
-    def format(self, fmt: str = f'#_y-#m-#d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a', lang=None):
-        fmt = self._date.format(fmt, lang=lang, skip_strftime=True)
-        fmt = self._time.format(fmt, skip_strftime=True)
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
+        if locale:
+            if isinstance(locale, SezimalLocale):
+                lang = locale.LANG
+            else:
+                lang = locale
+                locale = sezimal_locale(lang)
+
+        else:
+            locale = DEFAULT_LOCALE
+            lang = locale.LANG
+
+        if not fmt:
+            fmt = locale.DATE_TIME_FORMAT
+
+        fmt = self._date.format(fmt, locale=locale, skip_strftime=True)
+        fmt = self._time.format(fmt, locale=locale, skip_strftime=True)
 
         if type(self.iso_date_time) != tuple and '%' in fmt:
             fmt = self.iso_date_time.strftime(fmt)
@@ -339,46 +380,76 @@ class SezimalDateTime():
         return fmt
 
     @classmethod
-    def now(cls, time_zone: str = None):
+    def now(cls, time_zone: str = None) -> Self:
         time = SezimalTime.now(time_zone=time_zone)
         date = SezimalDate.today()
         return cls(year=date, uta=time)
 
     @classmethod
-    def today(cls):
+    def today(cls) -> Self:
         today = SezimalDate.today()
         return cls(year=today)
 
     @property
-    def timestamp(self):
+    def timestamp(self) -> float:
         timestamp = self._date.timestamp
         timestamp += float(self._time.as_seconds)
         return timestamp
 
     @classmethod
-    def from_timestamp(cls, timestamp: int | float | Decimal | Sezimal | SezimalInteger, time_zone: str = None):
+    def from_timestamp(cls, timestamp: int | float | Decimal | Sezimal | SezimalInteger, time_zone: str | ZoneInfo = None) -> Self:
         if type(timestamp) in (Sezimal, SezimalInteger):
             timestamp = timestamp.decimal
 
-        y, m, d, hh, mm, ss, weekday, jday, dst = _time.localtime(float(timestamp))
+        if not time_zone:
+            time_zone = system_time_zone()
 
-        ordinal_date = _datetime.date(y, m, d).toordinal()
+        time_zone = str(time_zone)
 
-        total_seconds = hh * 60 * 60
-        total_seconds += mm * 60
-        total_seconds += ss
-        total_seconds += timestamp - int(timestamp)
-        total_agrimas = Decimal(total_seconds) * SECOND_TO_AGRIMA
+        ordinal_date, agrimas = timestamp_to_ordinal_date_and_agrima(timestamp, time_zone)
 
-        agrimas_offset, agrimas_dst_offset = tz_agrimas_offset(time_zone)
+        date = SezimalDate.from_ordinal_date(ordinal_date)
+        time = SezimalTime(agrima=agrimas, time_zone=time_zone)
 
-        total_agrimas -= agrimas_offset
-
-        date = SezimalDate.fromordinal(ordinal_date)
-        time = SezimalTime(agrima=total_agrimas, time_zone=time_zone)
-
-        return cls(year=date, uta=time)
+        return cls(year=date, uta=time, time_zone=time_zone)
 
     @property
     def iso_date_time(self):
         return self._iso_date_time
+
+    @property
+    def date(self) -> SezimalDate:
+        return self._date
+
+    @property
+    def time(self) -> SezimalTime:
+        return self._time
+
+    def at_time_zone(self, time_zone: str | ZoneInfo = 'UTC') -> Self:
+        if not time_zone:
+            time_zone = 'UTC'
+
+        if self.time_zone == str(time_zone):
+            return self
+
+        if type(time_zone) == ZoneInfo:
+            dt = self.iso_date_time.astimezone(time_zone)
+        else:
+            dt = self.iso_date_time.astimezone(ZoneInfo(time_zone))
+
+        return SezimalDateTime(dt)
+
+    @classmethod
+    def combine(cls, date: SezimalDate, time: SezimalTime, time_zone: str | ZoneInfo = None) -> Self:
+        return cls(year=date, uta=time, time_zone=time_zone)
+
+    @property
+    def as_days(self) -> Sezimal:
+        return self._date.as_days + self._time.as_days
+
+    @classmethod
+    def from_days(cls, days: Sezimal, time_zone: str | ZoneInfo = None) -> Self:
+        date = SezimalDate.from_days(days)
+        days -= SezimalInteger(days)
+        time = SezimalTime.from_days(days, time_zone)
+        return cls.combine(date, time, time_zone)
