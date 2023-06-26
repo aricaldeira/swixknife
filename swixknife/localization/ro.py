@@ -153,10 +153,10 @@ class SezimalLocaleRO(SezimalLocale):
         'î.e.u.s',
     ]
 
-    DATE_FORMAT = '#d.#m.#Y'
+    DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
 
     SEASON_NAME = {
@@ -175,13 +175,13 @@ class SezimalLocaleRO(SezimalLocale):
     #
     MOON_PHASE = {
         'new': 'Nouă',
-        'waxing crescent': 'Semiluna',
-        'first quarter': 'Primul Pătrar',
-        'waxing gibbous': 'Primul Pătrar în Plină',
+        'waxing_crescent': 'Semiluna',
+        'first_quarter': 'Primul Pătrar',
+        'waxing_gibbous': 'Primul Pătrar în Plină',
         'full': 'Plină',
-        'waning gibbous': 'Plină în Treilea Pătrar',
-        'third quarter': 'Treilea Pătrar',
-        'waning crescent': 'Descreștere',
+        'waning_gibbous': 'Plină în Treilea Pătrar',
+        'third_quarter': 'Treilea Pătrar',
+        'waning_crescent': 'Descreștere',
     }
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

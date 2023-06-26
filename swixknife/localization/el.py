@@ -295,13 +295,13 @@ class SezimalLocaleEL(SezimalLocale):
 
     MOON_PHASE = {
         'new': 'Νέα',
-        'waxing crescent': 'Αύξων Μηνίσκος',
-        'first quarter': 'Πρώτο Τέταρτο',
-        'waxing gibbous': 'Αύξων Αμφίκυρτος',
+        'waxing_crescent': 'Αύξων Μηνίσκος',
+        'first_quarter': 'Πρώτο Τέταρτο',
+        'waxing_gibbous': 'Αύξων Αμφίκυρτος',
         'full': 'Πανσέληνος',
-        'waning gibbous': 'Φθίνων Αμφίκυρτος',
-        'third quarter': 'Τελευταίο Τέταρτο',
-        'waning crescent': 'Φθίνων Μηνίσκος',
+        'waning_gibbous': 'Φθίνων Αμφίκυρτος',
+        'third_quarter': 'Τελευταίο Τέταρτο',
+        'waning_crescent': 'Φθίνων Μηνίσκος',
     }
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:

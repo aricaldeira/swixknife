@@ -86,10 +86,10 @@ class SezimalLocaleDE(SezimalLocale):
         'v. SZM',
     ]
 
-    DATE_FORMAT = '#d.#m.#Y'
+    DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
 
     SEASON_NAME = {
@@ -105,13 +105,13 @@ class SezimalLocaleDE(SezimalLocale):
 
     MOON_PHASE = {
         'new': 'Neumond',
-        'waxing crescent': 'Zunehmender Sichelmond',
-        'first quarter': 'Zunehmender Halbmond',
-        'waxing gibbous': 'Zunehmender Mond',
+        'waxing_crescent': 'Zunehmender Sichelmond',
+        'first_quarter': 'Zunehmender Halbmond',
+        'waxing_gibbous': 'Zunehmender Mond',
         'full': 'Vollmond',
-        'waning gibbous': 'Abnehmender Mond',
-        'third quarter': 'Abnehmender Halbmond',
-        'waning crescent': 'Abnehmender Sichelmond',
+        'waning_gibbous': 'Abnehmender Mond',
+        'third_quarter': 'Abnehmender Halbmond',
+        'waning_crescent': 'Abnehmender Sichelmond',
     }
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

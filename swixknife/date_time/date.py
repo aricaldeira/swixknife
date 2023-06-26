@@ -23,6 +23,7 @@ import datetime as _datetime
 import locale
 
 from decimal import Decimal
+from zoneinfo import ZoneInfo
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..base import decimal_format, sezimal_format, \
@@ -35,13 +36,6 @@ from .date_time_delta import SezimalDateTimeDelta
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
-
-
-try:
-    import ephem
-    EPHEM_AVAILABLE = True
-except:
-    EPHEM_AVAILABLE = False
 
 
 class SezimalDate:
@@ -294,7 +288,7 @@ class SezimalDate:
 
         return fmt
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False) -> str:
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
         if locale:
             if isinstance(locale, SezimalLocale):
                 lang = locale.LANG
@@ -314,7 +308,7 @@ class SezimalDate:
         #
         # Astronomical formats: seasons and moon phases
         #
-        fmt = self._apply_season_format(fmt, locale)
+        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
 
         #
         # Let’s deal first with the numeric formats
@@ -752,25 +746,25 @@ class SezimalDate:
             phase = 'new'
 
         elif persixniff < 130:
-            phase = 'waxing crescent'
+            phase = 'waxing_crescent'
 
         elif persixniff < 140:
-            phase = 'first quarter'
+            phase = 'first_quarter'
 
         elif persixniff < 300:
-            phase = 'waxing gibbous'
+            phase = 'waxing_gibbous'
 
         elif persixniff < 320:
             phase = 'full'
 
         elif persixniff < 430:
-            phase = 'waning gibbous'
+            phase = 'waning_gibbous'
 
         elif persixniff < 440:
-            phase = 'third quarter'
+            phase = 'third_quarter'
 
         else:
-            phase = 'waning crescent'
+            phase = 'waning_crescent'
 
         return phase
 

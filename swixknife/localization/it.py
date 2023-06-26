@@ -105,13 +105,13 @@ class SezimalLocaleIT(SezimalLocale):
 
     MOON_PHASE = {
         'new': 'Nuova',
-        'waxing crescent': 'Crescente',
-        'first quarter': 'Primo Quarto',
-        'waxing gibbous': 'Dal Primo Quarto alla Piena',
+        'waxing_crescent': 'Crescente',
+        'first_quarter': 'Primo Quarto',
+        'waxing_gibbous': 'Dal Primo Quarto alla Piena',
         'full': 'Piena',
-        'waning gibbous': 'Dalla Piena all’Ultimo Quarto',
-        'third quarter': 'Ultimo Quarto',
-        'waning crescent': 'Calante',
+        'waning_gibbous': 'Dalla Piena all’Ultimo Quarto',
+        'third_quarter': 'Ultimo Quarto',
+        'waning_crescent': 'Calante',
     }
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

@@ -97,25 +97,25 @@ class SezimalLocaleBZ(SezimalLocale):
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 
     SEASON_NAME = {
-        'autumn_cross_quarter': 'Tranzisawn Verawn – Owtonu',
+        'autumn_cross_quarter': 'Meyu du Verawn pru Owtonu',
         'autumn_equinox': 'Owtonu',
-        'winter_cross_quarter': 'Tranzisawn Owtonu – Invèrnu',
+        'winter_cross_quarter': 'Meyu du Owtonu pru Invèrnu',
         'winter_solstice': 'Invèrnu',
-        'spring_cross_quarter': 'Tranzisawn Invèrnu – Primavèra',
+        'spring_cross_quarter': 'Meyu du Invèrnu pra Primavèra',
         'spring_equinox': 'Primavèra',
-        'summer_cross_quarter': 'Tranzisawn Primavèra – Verawn',
+        'summer_cross_quarter': 'Meyu da Primavèra pru Verawn',
         'summer_solstice': 'Verawn',
     }
 
     MOON_PHASE = {
         'new': 'Nòva',
-        'waxing crescent': 'Kresenti',
-        'first quarter': 'Kwartu Kresenti',
-        'waxing gibbous': 'Di Kwartu Kresenti pra Xeya',
+        'waxing_crescent': 'Kresenti',
+        'first_quarter': 'Kwartu kresenti',
+        'waxing_gibbous': 'Di kwartu kresenti pra xeya',
         'full': 'Xeya',
-        'waning gibbous': 'Di Xeya pra Kwartu Mingwanti',
-        'third quarter': 'Kwartu Mingwanti',
-        'waning crescent': 'Mingwanti',
+        'waning_gibbous': 'Di xeya pra kwartu mingwanti',
+        'third_quarter': 'Kwartu mingwanti',
+        'waning_crescent': 'Mingwanti',
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'

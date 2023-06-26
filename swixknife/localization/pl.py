@@ -271,10 +271,10 @@ class SezimalLocalePL(SezimalLocale):
         'aSHE',
     ]
 
-    DATE_FORMAT = '#d #$RM #Y'
+    DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d. #M #Y r.'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d #$RM #Y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
 
     SEASON_NAME = {
@@ -293,13 +293,13 @@ class SezimalLocalePL(SezimalLocale):
     #
     MOON_PHASE = {
         'new': 'Nów',
-        'waxing crescent': 'Młody',
-        'first quarter': 'Kwadra Pierwsza',
-        'waxing gibbous': 'Przybywający',
+        'waxing_crescent': 'Młody',
+        'first_quarter': 'Kwadra Pierwsza',
+        'waxing_gibbous': 'Przybywający',
         'full': 'Pełnia',
-        'waning gibbous': 'Ubywający',
-        'third quarter': 'Ostatnia Kwadra',
-        'waning crescent': 'Stary',
+        'waning_gibbous': 'Ubywający',
+        'third_quarter': 'Ostatnia Kwadra',
+        'waning_crescent': 'Stary',
     }
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:

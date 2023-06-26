@@ -97,25 +97,25 @@ class SezimalLocalePT(SezimalLocale):
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 
     SEASON_NAME = {
-        'autumn_cross_quarter': 'Transição Verão – Outono',
+        'autumn_cross_quarter': 'Meio do Verão para o Outono',
         'autumn_equinox': 'Outono',
-        'winter_cross_quarter': 'Transição Outono – Inverno',
+        'winter_cross_quarter': 'Meio do Outono para o Inverno',
         'winter_solstice': 'Inverno',
-        'spring_cross_quarter': 'Transição Inverno – Primavera',
+        'spring_cross_quarter': 'Meio do Inverno para a Primavera',
         'spring_equinox': 'Primavera',
-        'summer_cross_quarter': 'Transição Primavera – Verão',
+        'summer_cross_quarter': 'Meio da Primavera para o Verão',
         'summer_solstice': 'Verão',
     }
 
     MOON_PHASE = {
         'new': 'Nova',
-        'waxing crescent': 'Crescente',
-        'first quarter': 'Quarto Crescente',
-        'waxing gibbous': 'De Quarto Crescente para Cheia',
+        'waxing_crescent': 'Crescente',
+        'first_quarter': 'Quarto crescente',
+        'waxing_gibbous': 'De quarto crescente para cheia',
         'full': 'Cheia',
-        'waning gibbous': 'De Cheia para Quarto Minguante',
-        'third quarter': 'Quarto Minguante',
-        'waning crescent': 'Minguante',
+        'waning_gibbous': 'De cheia para quarto minguante',
+        'third_quarter': 'Quarto minguante',
+        'waning_crescent': 'Minguante',
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'

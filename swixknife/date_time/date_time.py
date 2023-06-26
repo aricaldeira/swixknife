@@ -371,7 +371,7 @@ class SezimalDateTime:
         if not fmt:
             fmt = locale.DATE_TIME_FORMAT
 
-        fmt = self._date.format(fmt, locale=locale, skip_strftime=True)
+        fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone)
         fmt = self._time.format(fmt, locale=locale, skip_strftime=True)
 
         if type(self.iso_date_time) != tuple and '%' in fmt:

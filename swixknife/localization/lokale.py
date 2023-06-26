@@ -142,13 +142,13 @@ class SezimalLocale:
 
     MOON_PHASE = {
         'new': 'New',
-        'waxing crescent': 'Waxing Crescent',
-        'first quarter': 'First Quarter',
-        'waxing gibbous': 'Waxing Gibbous',
+        'waxing_crescent': 'Waxing Crescent',
+        'first_quarter': 'First Quarter',
+        'waxing_gibbous': 'Waxing Gibbous',
         'full': 'Full',
-        'waning gibbous': 'Waning Gibbous',
-        'third quarter': 'Third Quarter',
-        'waning crescent': 'Waning Crescent',
+        'waning_gibbous': 'Waning Gibbous',
+        'third_quarter': 'Third Quarter',
+        'waning_crescent': 'Waning Crescent',
     }
 
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'

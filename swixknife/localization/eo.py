@@ -105,13 +105,13 @@ class SezimalLocaleEO(SezimalLocale):
 
     MOON_PHASE = {
         'new': 'Nova',
-        'waxing crescent': 'Kreskanta',
-        'first quarter': 'Kreskanta Kvarono',
-        'waxing gibbous': 'Kreskanta Kvarono al Plena',
+        'waxing_crescent': 'Kreskanta',
+        'first_quarter': 'Kreskanta Kvarono',
+        'waxing_gibbous': 'Kreskanta Kvarono al Plena',
         'full': 'Plena',
-        'waning gibbous': 'Plena al Malkreskanta Kvarono',
-        'third quarter': 'Malkreskanta Kvarono',
-        'waning crescent': 'Malkreskanta',
+        'waning_gibbous': 'Plena al Malkreskanta Kvarono',
+        'third_quarter': 'Malkreskanta Kvarono',
+        'waning_crescent': 'Malkreskanta',
     }
 
     WEEKDAY_ERROR = 'Nevalida semajntago {weekday}'

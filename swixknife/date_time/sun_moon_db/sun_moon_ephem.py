@@ -152,12 +152,12 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
     previous_first_quarter = _ephem_date_to_date(previous_first_quarter, time_zone)
 
     if previous_first_quarter.ordinal_date not in MOONS:
-        MOONS[previous_first_quarter.ordinal_date] = [previous_first_quarter, 'first quarter']
+        MOONS[previous_first_quarter.ordinal_date] = [previous_first_quarter, 'first_quarter']
 
     previous_waxing_crescent = _middle_date_time(previous_new, previous_first_quarter, time_zone)
 
     if previous_waxing_crescent.ordinal_date not in MOONS:
-        MOONS[previous_waxing_crescent.ordinal_date] = [previous_waxing_crescent, 'waxing crescent']
+        MOONS[previous_waxing_crescent.ordinal_date] = [previous_waxing_crescent, 'waxing_crescent']
 
     previous_full = _ephem_date_to_date(previous_full, time_zone)
 
@@ -167,17 +167,17 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
     previous_waxing_gibbous = _middle_date_time(previous_first_quarter, previous_full, time_zone)
 
     if previous_waxing_gibbous.ordinal_date not in MOONS:
-        MOONS[previous_waxing_gibbous.ordinal_date] = [previous_waxing_gibbous, 'waxing gibbous']
+        MOONS[previous_waxing_gibbous.ordinal_date] = [previous_waxing_gibbous, 'waxing_gibbous']
 
     previous_third_quarter = _ephem_date_to_date(previous_third_quarter, time_zone)
 
     if previous_third_quarter.ordinal_date not in MOONS:
-        MOONS[previous_third_quarter.ordinal_date] = [previous_third_quarter, 'third quarter']
+        MOONS[previous_third_quarter.ordinal_date] = [previous_third_quarter, 'third_quarter']
 
     previous_waning_gibbous = _middle_date_time(previous_full, previous_third_quarter, time_zone)
 
     if previous_waning_gibbous.ordinal_date not in MOONS:
-        MOONS[previous_waning_gibbous.ordinal_date] = [previous_waning_gibbous, 'waning gibbous']
+        MOONS[previous_waning_gibbous.ordinal_date] = [previous_waning_gibbous, 'waning_gibbous']
 
     print('Calculated moon', previous_third_quarter)
 
@@ -201,17 +201,17 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
         previous_waning_crescent = _middle_date_time(previous_third_quarter, next_new, time_zone)
 
         if previous_waning_crescent.ordinal_date not in MOONS:
-            MOONS[previous_waning_crescent.ordinal_date] = [previous_waning_crescent, 'waning crescent']
+            MOONS[previous_waning_crescent.ordinal_date] = [previous_waning_crescent, 'waning_crescent']
 
         next_first_quarter = _ephem_date_to_date(next_first_quarter, time_zone)
 
         if next_first_quarter.ordinal_date not in MOONS:
-            MOONS[next_first_quarter.ordinal_date] = [next_first_quarter, 'first quarter']
+            MOONS[next_first_quarter.ordinal_date] = [next_first_quarter, 'first_quarter']
 
         next_waxing_crescent = _middle_date_time(next_new, next_first_quarter, time_zone)
 
         if next_waxing_crescent.ordinal_date not in MOONS:
-            MOONS[next_waxing_crescent.ordinal_date] = [next_waxing_crescent, 'waxing crescent']
+            MOONS[next_waxing_crescent.ordinal_date] = [next_waxing_crescent, 'waxing_crescent']
 
         next_full = _ephem_date_to_date(next_full, time_zone)
 
@@ -221,17 +221,17 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
         next_waxing_gibbous = _middle_date_time(next_first_quarter, next_full, time_zone)
 
         if next_waxing_gibbous.ordinal_date not in MOONS:
-            MOONS[next_waxing_gibbous.ordinal_date] = [next_waxing_gibbous, 'waxing gibbous']
+            MOONS[next_waxing_gibbous.ordinal_date] = [next_waxing_gibbous, 'waxing_gibbous']
 
         next_third_quarter = _ephem_date_to_date(next_third_quarter, time_zone)
 
         if next_third_quarter.ordinal_date not in MOONS:
-            MOONS[next_third_quarter.ordinal_date] = [next_third_quarter, 'third quarter']
+            MOONS[next_third_quarter.ordinal_date] = [next_third_quarter, 'third_quarter']
 
         next_waning_gibbous = _middle_date_time(next_full, next_third_quarter, time_zone)
 
         if next_waning_gibbous.ordinal_date not in MOONS:
-            MOONS[next_waning_gibbous.ordinal_date] = [next_waning_gibbous, 'waning gibbous']
+            MOONS[next_waning_gibbous.ordinal_date] = [next_waning_gibbous, 'waning_gibbous']
 
         previous_third_quarter = next_third_quarter
         print('Calculated moon', previous_third_quarter, _datetime.datetime.now())
@@ -293,6 +293,8 @@ values (
 
         if date.year < MIN_YEAR or date.year > MAX_YEAR:
             continue
+
+        name = name.replace(' ', '_')
 
         sql = f'''
 insert or ignore into sun_moon (
