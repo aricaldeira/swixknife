@@ -98,9 +98,10 @@ class SezimalLocale:
     DATE_TIME_LONG_FORMAT = '#Y-#m-#d #@W #u:#p:#a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
-    DST_EMOJI = '‍\ufe0f☀\u200d⏳'
+    DST_EMOJI = '‍\ufe0f⏰   \ufe0f🌞'
 
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
+    DEFAULT_TIME_ZONE = 'UTC'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',

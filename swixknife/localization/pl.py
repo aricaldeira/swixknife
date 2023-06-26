@@ -276,6 +276,9 @@ class SezimalLocalePL(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
+    DST_NAME = 'Czas Letni'
+    DST_SHORT_NAME = 'CzL'
+    DEFAULT_TIME_ZONE = 'Europe/Warsaw'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Przejście Zima – Wiosna',

@@ -91,27 +91,30 @@ class SezimalLocaleFR(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+    DST_NAME = 'Heure d’été'
+    DST_SHORT_NAME = 'HÉ'
+    DEFAULT_TIME_ZONE = 'Europe/Paris'
 
     SEASON_NAME = {
-        'spring_cross_quarter': 'Transition Hiver – Printemps',
+        'spring_cross_quarter': 'Transition hiver – printemps',
         'spring_equinox': 'Printemps',
-        'summer_cross_quarter': 'Transition Printemps – Été',
+        'summer_cross_quarter': 'Transition printemps – été',
         'summer_solstice': 'Été',
-        'autumn_cross_quarter': 'Transition Été – Automne',
+        'autumn_cross_quarter': 'Transition été – automne',
         'autumn_equinox': 'Automne',
-        'winter_cross_quarter': 'Transition Automne – Hiver',
+        'winter_cross_quarter': 'Transition automne – hiver',
         'winter_solstice': 'Hiver',
     }
 
     MOON_PHASE = {
         'new': 'Nouvelle',
-        'waxing_crescent': 'Premier Croissant',
-        'first_quarter': 'Premier Quartier',
-        'waxing_gibbous': 'Premier Quartier à la Pleine',
+        'waxing_crescent': 'Premier croissant',
+        'first_quarter': 'Premier quartier',
+        'waxing_gibbous': 'Premier quartier à la pleine',
         'full': 'Pleine',
-        'waning_gibbous': 'Pleine au Dernier Quartier',
-        'third_quarter': 'Dernier Quartier',
-        'waning_crescent': 'Dernier Croissant',
+        'waning_gibbous': 'Pleine au dernier quartier',
+        'third_quarter': 'Dernier quartier',
+        'waning_crescent': 'Dernier croissant',
     }
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

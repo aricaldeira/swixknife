@@ -91,6 +91,8 @@ class SezimalLocaleEO(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d-#m-#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, la #-d-an de #M #Y, #u:#p:#a'
+    DST_NAME = 'Somera Tempo'
+    DST_SHORT_NAME = 'ST'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transiĝo Vintro – Primtempo',

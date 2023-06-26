@@ -158,6 +158,9 @@ class SezimalLocaleRO(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+    DST_NAME = 'Ora de Vară'
+    DST_SHORT_NAME = 'OV'
+    DEFAULT_TIME_ZONE = 'Europe/Bucharest'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Tranziție Iarnă – Primăvară',

@@ -17,13 +17,17 @@ parser.add_argument('-NH', '--northern-hemisphere', dest='northern', action=argp
 parser.add_argument('-mf', '--month-format', dest='month_format', default='', nargs='?', help='Month title format')
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date')
 parser.add_argument('-s', '--date', default=None, nargs='?', help='Sezimal date')
+parser.add_argument('-tz', '--time-zone', dest='time_zone', default=None, nargs='?', help='Time zone')
 parser.add_argument('-dd', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
 
 
-from swixknife.date_time import SezimalDate as SD, SezimalTime as ST
+import os
+
+from swixknife.date_time import SezimalDate as SD, SezimalDateTime as SDT
 from swixknife import sezimal_locale
 from swixknife import SezimalInteger, SezimalRange
 from swixknife.date_time.sun_moon import list_sun_moon
+from swixknife.date_time.sezimal_functions import system_time_zone
 import datetime as _datetime
 
 import colorama
@@ -271,6 +275,16 @@ if __name__ == '__main__':
 
     locale = sezimal_locale(arguments.locale)
 
+    time_zone = arguments.time_zone
+
+    if time_zone == 'locale':
+        time_zone = locale.DEFAULT_TIME_ZONE
+
+    if not time_zone:
+        time_zone = system_time_zone()
+
+    os.environ['TZ'] = time_zone
+
     if arguments.iso:
         dt = _datetime.datetime.fromisoformat(arguments.iso)
         date = SD(dt.date())
@@ -282,7 +296,6 @@ if __name__ == '__main__':
     day = arguments.day or None
     month = arguments.month or None
     year = arguments.year or None
-
 
     if day or month or year:
         date = date.replace(day=day, month=month, year=year)
@@ -309,11 +322,18 @@ if __name__ == '__main__':
         calendar = calendar_date(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
         calendar += '\n'
         calendar += ''.ljust(27) + '\n'
-        now = ST.now()
-        now_line = '\ufe0f⏰ ' + now.format(locale.TIME_FORMAT, locale)
+        now = SDT.now()
+
+        if now.is_dst:
+            now_line = now.format('#@V ' + locale.TIME_FORMAT, locale)
+            now_line = now_line.center(30)
+        else:
+            now_line = '\ufe0f⏰ ' + now.format(locale.TIME_FORMAT, locale)
+            now_line = now_line.center(27)
+
         iso_time = '(ISO ' + now.format('%H:%M:%S)', locale)
         now_line_iso = '[ISO_TIME    ]'
-        calendar += now_line.center(27) + '\n'
+        calendar += now_line + '\n'
         calendar += now_line_iso.center(27) + '\n'
         text = season_and_moon(date, locale, southern)
         calendar = merge_calendar(calendar, text)

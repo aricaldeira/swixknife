@@ -232,6 +232,9 @@ class SezimalLocaleRU(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d #M #Y г., #u:#p:#a'
+    DST_NAME = 'Летнее Время'
+    DST_SHORT_NAME = 'ЛВ'
+    DEFAULT_TIME_ZONE = 'Europe/Moscow'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Переход Зима – Весна',

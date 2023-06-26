@@ -10,6 +10,8 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
     LANG = 'en'
     LANGUAGE = 'Canadian English'
 
+    DEFAULT_TIME_ZONE = 'America/Toronto'
+
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',
         'spring_equinox': 'Spring',

@@ -91,6 +91,9 @@ class SezimalLocaleIT(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+    DST_NAME = 'Ora Legale'
+    DST_SHORT_NAME = 'OL'
+    DEFAULT_TIME_ZONE = 'Europe/Rome'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transizione Inverno – Primavera',

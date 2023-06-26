@@ -314,16 +314,16 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
                 self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, four_phases=True, nearest=True, time_zone=time_zone),
             )
 
-    if f'#TS' in fmt:
+    if '#TS' in fmt:
         fmt = fmt.replace('#TS', self._season_time('#u:#p', locale=locale, time_zone=time_zone))
 
-    if f'#T4S' in fmt:
+    if '#T4S' in fmt:
         fmt = fmt.replace('#T4S', self._season_time('#u:#p', locale=locale, four_seasons=True, time_zone=time_zone))
 
-    if f'#TL' in fmt:
+    if '#TL' in fmt:
         fmt = fmt.replace('#TL', self._moon_time('#u:#p', locale=locale, time_zone=time_zone))
 
-    if f'#T4L' in fmt:
+    if '#T4L' in fmt:
         fmt = fmt.replace('#T4L', self._moon_time('#u:#p', locale=locale, four_phases=True, time_zone=time_zone))
 
     return fmt

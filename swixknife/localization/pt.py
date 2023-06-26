@@ -93,6 +93,7 @@ class SezimalLocalePT(SezimalLocale):
     DATE_TIME_LONG_FORMAT = '#W, #-d#O de #M de #Y, #u:#p:#a'
     DST_NAME = 'Horário de Verão'
     DST_SHORT_NAME = 'HV'
+    DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 

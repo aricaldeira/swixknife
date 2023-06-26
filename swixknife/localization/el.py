@@ -281,6 +281,9 @@ class SezimalLocaleEL(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+    DST_NAME = 'Θερινή Ώρα'
+    DST_SHORT_NAME = 'ΘΏ'
+    DEFAULT_TIME_ZONE = 'Europe/Athens'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Μετάβαση Χειμώνας – Άνοιξη',

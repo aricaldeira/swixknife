@@ -91,10 +91,9 @@ class SezimalLocaleES(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O de #M de #Y, #u:#p:#a'
-    DST_NAME = 'Horário de Invierno'
-    DST_SHORT_NAME = 'HI'
-
-    DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
+    DST_NAME = 'Horario de Verano'
+    DST_SHORT_NAME = 'HV'
+    DEFAULT_TIME_ZONE = 'Europe/Madrid'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transición Invierno – Primavera',

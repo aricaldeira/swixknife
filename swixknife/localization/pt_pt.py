@@ -10,7 +10,5 @@ class SezimalLocalePT_PT(SezimalLocalePT):
     LANG = 'pt'
     LANGUAGE = 'português europeu'
 
-    DST_NAME = 'Horário de Inverno'
-    DST_SHORT_NAME = 'HI'
-
+    DEFAULT_TIME_ZONE = 'Europe/Lisbon'
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern

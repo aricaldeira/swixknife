@@ -10,7 +10,5 @@ class SezimalLocaleES_PE(SezimalLocaleES):
     LANG = 'es'
     LANGUAGE = 'español de Perú'
 
-    DST_NAME = 'Horário de Verano'
-    DST_SHORT_NAME = 'HV'
-
+    DEFAULT_TIME_ZONE = 'America/Lima'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern

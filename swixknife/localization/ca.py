@@ -91,6 +91,9 @@ class SezimalLocaleCA(SezimalLocale):
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #$DEM#M del #Y, #u:#p:#a'
+    DST_NAME = 'Horari d’Estiu'
+    DST_SHORT_NAME = 'HE'
+    DEFAULT_TIME_ZONE = 'Europe/Madrid'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transició Hivern – Primavera',
