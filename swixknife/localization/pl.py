@@ -277,6 +277,31 @@ class SezimalLocalePL(SezimalLocale):
     DATE_TIME_FORMAT = '#@W, #d #$RM #Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
 
+    SEASON_NAME = {
+        'spring_cross_quarter': 'Przejście Zima – Wiosna',
+        'spring_equinox': 'Wiosna',
+        'summer_cross_quarter': 'Przejście Wiosna – Lato',
+        'summer_solstice': 'Lato',
+        'autumn_cross_quarter': 'Przejście Lato – Jesień',
+        'autumn_equinox': 'Jesień',
+        'winter_cross_quarter': 'Przejście Jesień – Zima',
+        'winter_solstice': 'Zima',
+    }
+
+    #
+    # TODO: revise, these are translations from a table on the Russian Wikipedia
+    #
+    MOON_PHASE = {
+        'new': 'Nów',
+        'waxing crescent': 'Młody',
+        'first quarter': 'Kwadra Pierwsza',
+        'waxing gibbous': 'Przybywający',
+        'full': 'Pełnia',
+        'waning gibbous': 'Ubywający',
+        'third quarter': 'Ostatnia Kwadra',
+        'waning crescent': 'Stary',
+    }
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 

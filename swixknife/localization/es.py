@@ -111,11 +111,11 @@ class SezimalLocaleES(SezimalLocale):
         'new': 'Nueva',
         'waxing crescent': 'Creciente',
         'first quarter': 'Cuarto Creciente',
-        'waxing gibbous': 'Cuarto Creciente para Llena',
+        'waxing gibbous': 'De Cuarto Creciente a Llena',
         'full': 'Llena',
-        'waning gibbous': 'Minguante',
+        'waning gibbous': 'De Llena a Cuarto Minguante',
         'third quarter': 'Cuarto Minguante',
-        'waning crescent': 'Cuarto Minguante para Nueva',
+        'waning crescent': 'Minguante',
     }
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

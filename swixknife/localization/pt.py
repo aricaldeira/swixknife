@@ -111,11 +111,11 @@ class SezimalLocalePT(SezimalLocale):
         'new': 'Nova',
         'waxing crescent': 'Crescente',
         'first quarter': 'Quarto Crescente',
-        'waxing gibbous': 'Quarto Crescente para Cheia',
+        'waxing gibbous': 'De Quarto Crescente para Cheia',
         'full': 'Cheia',
-        'waning gibbous': 'Minguante',
+        'waning gibbous': 'De Cheia para Quarto Minguante',
         'third quarter': 'Quarto Minguante',
-        'waning crescent': 'Quarto Minguante para Nova',
+        'waning crescent': 'Minguante',
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'

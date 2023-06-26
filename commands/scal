@@ -200,8 +200,8 @@ def season_and_moon(today, locale, southern=False):
 
     calendar += list_sun_moon(date.year, date.month, locale, 'S' if southern else 'N')
 
-    if calendar.endswith(';\n'):
-        calendar = calendar[:-2]
+    if calendar.endswith('\n'):
+        calendar = calendar[:-1]
 
     return calendar
 

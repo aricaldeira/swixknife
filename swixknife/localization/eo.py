@@ -26,53 +26,53 @@ class SezimalLocaleEO(SezimalLocale):
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     WEEKDAY_NAME = [
-        'lundo',
-        'mardo',
-        'merkredo',
-        'ĵaŭdo',
-        'vendredo',
-        'sabato',
-        'dimanĉo',
+        'Lundo',
+        'Mardo',
+        'Merkredo',
+        'Ĵaŭdo',
+        'Vendredo',
+        'Sabato',
+        'Dimanĉo',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'lun',
-        'mar',
-        'mer',
-        'ĵaŭ',
-        'ven',
-        'sab',
-        'dim',
+        'Lun',
+        'Mar',
+        'Mer',
+        'Ĵaŭ',
+        'Ven',
+        'Sab',
+        'Dim',
     ]
 
     MONTH_NAME= [
-        'januaro',
-        'februaro',
-        'marto',
-        'aprilo',
-        'majo',
-        'junio',
-        'julio',
-        'aŭgusto',
-        'septembro',
-        'oktobro',
-        'novembro',
-        'decembro',
+        'Januaro',
+        'Februaro',
+        'Marto',
+        'Aprilo',
+        'Majo',
+        'Junio',
+        'Julio',
+        'Aŭgusto',
+        'Septembro',
+        'Oktobro',
+        'Novembro',
+        'Decembro',
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        'jan',
-        'feb',
-        'mar',
-        'apr',
-        'maj',
-        'jun',
-        'jul',
-        'aŭg',
-        'sep',
-        'okt',
-        'nov',
-        'dec',
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'Maj',
+        'Jun',
+        'Jul',
+        'Aŭg',
+        'Sep',
+        'Okt',
+        'Nov',
+        'Dec',
     ]
 
     ERA_NAME = [
@@ -109,9 +109,9 @@ class SezimalLocaleEO(SezimalLocale):
         'first quarter': 'Kreskanta Kvarono',
         'waxing gibbous': 'Kreskanta Kvarono al Plena',
         'full': 'Plena',
-        'waning gibbous': 'Malkreskanta',
+        'waning gibbous': 'Plena al Malkreskanta Kvarono',
         'third quarter': 'Malkreskanta Kvarono',
-        'waning crescent': 'Malkreskanta Kvarono al Nova',
+        'waning crescent': 'Malkreskanta',
     }
 
     WEEKDAY_ERROR = 'Nevalida semajntago {weekday}'

@@ -159,6 +159,31 @@ class SezimalLocaleRO(SezimalLocale):
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
 
+    SEASON_NAME = {
+        'spring_cross_quarter': 'Tranziție Iarnă – Primăvară',
+        'spring_equinox': 'Primăvară',
+        'summer_cross_quarter': 'Tranziție Primăvară – Vară',
+        'summer_solstice': 'Vară',
+        'autumn_cross_quarter': 'Tranziție Vară – Toamnă',
+        'autumn_equinox': 'Toamnă',
+        'winter_cross_quarter': 'Tranziție Toamnă – Iarnă',
+        'winter_solstice': 'Iarnă',
+    }
+
+    #
+    # TODO: revise, Romanian Wikipedia is very scant on the matter
+    #
+    MOON_PHASE = {
+        'new': 'Nouă',
+        'waxing crescent': 'Semiluna',
+        'first quarter': 'Primul Pătrar',
+        'waxing gibbous': 'Primul Pătrar în Plină',
+        'full': 'Plină',
+        'waning gibbous': 'Plină în Treilea Pătrar',
+        'third quarter': 'Treilea Pătrar',
+        'waning crescent': 'Descreștere',
+    }
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

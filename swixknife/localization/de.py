@@ -92,5 +92,27 @@ class SezimalLocaleDE(SezimalLocale):
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
 
+    SEASON_NAME = {
+        'spring_cross_quarter': 'Übergang Winter – Frühling',
+        'spring_equinox': 'Frühling',
+        'summer_cross_quarter': 'Übergang Frühling – Sommer',
+        'summer_solstice': 'Sommer',
+        'autumn_cross_quarter': 'Übergang Sommer – Herbst',
+        'autumn_equinox': 'Herbst',
+        'winter_cross_quarter': 'Übergang Herbst – Winter',
+        'winter_solstice': 'Winter',
+    }
+
+    MOON_PHASE = {
+        'new': 'Neumond',
+        'waxing crescent': 'Zunehmender Sichelmond',
+        'first quarter': 'Zunehmender Halbmond',
+        'waxing gibbous': 'Zunehmender Mond',
+        'full': 'Vollmond',
+        'waning gibbous': 'Abnehmender Mond',
+        'third quarter': 'Abnehmender Halbmond',
+        'waning crescent': 'Abnehmender Sichelmond',
+    }
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         return '.'

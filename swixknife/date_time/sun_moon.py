@@ -358,9 +358,9 @@ order by
         date = SezimalDateTime.from_days(date_time_as_days, 'UTC').at_time_zone(time_zone)
 
         if sun_moon == 'sun':
-            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}S #{hemisphere}S (#TS);\n'
+            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}S #{hemisphere}S (#TS)\n'
         else:
-            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}L #{hemisphere}L (#TL);\n'
+            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}L #{hemisphere}L (#TL)\n'
 
         text += date.format(fmt, locale)
 

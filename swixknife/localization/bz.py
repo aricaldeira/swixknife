@@ -111,11 +111,11 @@ class SezimalLocaleBZ(SezimalLocale):
         'new': 'Nòva',
         'waxing crescent': 'Kresenti',
         'first quarter': 'Kwartu Kresenti',
-        'waxing gibbous': 'Kwartu Kresenti pra Xeya',
+        'waxing gibbous': 'Di Kwartu Kresenti pra Xeya',
         'full': 'Xeya',
-        'waning gibbous': 'Minguanti',
-        'third quarter': 'Kwartu Minguanti',
-        'waning crescent': 'Kwartu Minguanti pra Nòva',
+        'waning gibbous': 'Di Xeya pra Kwartu Mingwanti',
+        'third quarter': 'Kwartu Mingwanti',
+        'waning crescent': 'Mingwanti',
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
