@@ -3,11 +3,6 @@
 __all__ = ('SezimalLocaleDE',)
 
 
-from typing import TypeVar
-
-SezimalDate = TypeVar('SezimalDate', bound='SezimalDate')
-
-
 from .lokale import SezimalLocale
 from ..sezimal import SezimalInteger
 from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
