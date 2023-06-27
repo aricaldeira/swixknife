@@ -23,7 +23,7 @@ parser.add_argument('-dd', '--dedicated-digits', dest='dedicated_digits', action
 
 import os
 
-from swixknife.date_time import SezimalDate as SD, SezimalDateTime as SDT
+from swixknife.date_time import SezimalDate as SD, SezimalTime as ST, SezimalDateTime as SDT
 from swixknife import sezimal_locale
 from swixknife import SezimalInteger, SezimalRange
 from swixknife.date_time.sun_moon import list_sun_moon
@@ -287,11 +287,22 @@ if __name__ == '__main__':
 
     if arguments.iso:
         dt = _datetime.datetime.fromisoformat(arguments.iso)
-        date = SD(dt.date())
+        time = SDT(dt)
+        date = time.date
+
+        if ':' not in arguments.iso:
+            time = SDT.combine(date, ST.now(time_zone), time_zone)
+
     elif arguments.date:
-        date = SD(arguments.date)
+        time = SDT(arguments.date)
+        date = time.date
+
+        if ':' not in arguments.date:
+            time = SDT.combine(date, ST.now(time_zone), time_zone)
+
     else:
-        date = SD.today()
+        time = SDT.now()
+        date = time.date
 
     day = arguments.day or None
     month = arguments.month or None
@@ -322,16 +333,15 @@ if __name__ == '__main__':
         calendar = calendar_date(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
         calendar += '\n'
         calendar += ''.ljust(27) + '\n'
-        now = SDT.now()
 
-        if now.is_dst:
-            now_line = now.format('#@V ' + locale.TIME_FORMAT, locale)
+        if time.is_dst:
+            now_line = time.format('#@V ' + locale.TIME_FORMAT, locale)
             now_line = now_line.center(30)
         else:
-            now_line = '\ufe0f⏰ ' + now.format(locale.TIME_FORMAT, locale)
+            now_line = '\ufe0f⏰ ' + time.format(locale.TIME_FORMAT, locale)
             now_line = now_line.center(27)
 
-        iso_time = '(ISO ' + now.format('%H:%M:%S)', locale)
+        iso_time = '(ISO ' + time.format('%H:%M:%S)', locale)
         now_line_iso = '[ISO_TIME    ]'
         calendar += now_line + '\n'
         calendar += now_line_iso.center(27) + '\n'

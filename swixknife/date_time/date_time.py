@@ -19,7 +19,7 @@ Self = TypeVar('Self', bound='SezimalDate')
 import datetime as _datetime
 import time as _time
 from zoneinfo import ZoneInfo
-
+import re
 
 from decimal import Decimal
 
@@ -74,6 +74,26 @@ class SezimalDateTime:
                 return cls.from_timestamp(year.timestamp(), time_zone=time_zone)
 
             return cls.from_timestamp(year.timestamp(), time_zone)
+
+        elif type(year) == str:
+            if re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$').match(year):
+                year, uta = year.strip().split(' ')
+                date = SezimalDate(year)
+                time = SezimalTime(uta)
+                return cls.combine(date, time, time_zone)
+
+            elif re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$').match(year):
+                year, uta = year.strip().split(' ')
+                date = SezimalDate(year)
+                time = SezimalTime(uta)
+                return cls.combine(date, time, time_zone)
+
+            elif re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}$').match(year):
+                self._date = SezimalDate(year)
+
+            else:
+                self._date = SezimalDate(year=year, month=month, day=day)
+
         else:
             self._date = SezimalDate(year=year, month=month, day=day)
 
