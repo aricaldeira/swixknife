@@ -338,7 +338,7 @@ SezimalDate._moon_time = _moon_time
 SezimalDate._apply_season_format = _apply_season_format
 
 
-def list_sun_moon(year: SezimalInteger, month: SezimalInteger, locale: SezimalLocale, hemisphere: str) -> str:
+def list_sun_moon(year: SezimalInteger, month: SezimalInteger, locale: SezimalLocale, hemisphere: str) -> list[str]:
     connection = sqlite3.connect(DB_NAME)
     cursor = connection.cursor()
 
