@@ -18,7 +18,6 @@ Self = TypeVar('Self', bound='SezimalTime')
 
 import datetime as _datetime
 from zoneinfo import ZoneInfo
-import re
 
 from decimal import Decimal
 
@@ -47,9 +46,9 @@ class SezimalTime:
         time_zone: str | ZoneInfo = None,
     ) -> Self:
         if type(uta) == str:
-            if re.compile(r'^[0-5]{2}:[0-5]{2}:[0-5]{2}$').match(uta):
+            if VALID_TIME_STRING.match(uta):
                 uta, posha, agrima = uta.split(':')
-            elif re.compile(r'^[0-5]{2}:[0-5]{2}$').match(uta):
+            elif VALID_PARTIAL_TIME_STRING.match(uta):
                 uta, posha = uta.split(':')
 
         day = Sezimal(day)

@@ -3,6 +3,7 @@
 import time as _time
 import datetime as _datetime
 from zoneinfo import ZoneInfo
+import re
 
 try:
     import tzlocal
@@ -16,6 +17,13 @@ from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..functions import floor, ceil
 
 TIME_SEPARATOR = ":"
+
+VALID_DATE_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}$')
+VALID_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}:[0-5]{2}$')
+VALID_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}$')
+VALID_DATE_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
+VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
+
 
 #
 # Epoch

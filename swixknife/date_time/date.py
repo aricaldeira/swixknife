@@ -20,7 +20,6 @@ SezimalDateTime = TypeVar('SezimalDateTime', bound='SezimalDateTime')
 
 import time as _time
 import datetime as _datetime
-import re
 
 from decimal import Decimal
 from zoneinfo import ZoneInfo
@@ -57,7 +56,7 @@ class SezimalDate:
                 return cls.from_ordinal_date(year.ordinal_date)
 
             elif type(year) == str:
-                if re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}$').match(year):
+                if VALID_DATE_STRING.match(year):
                     year, month, day = year.split('-')
 
         year = SezimalInteger(year)
