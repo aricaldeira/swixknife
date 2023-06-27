@@ -119,6 +119,35 @@ class SezimalLocaleBZ(SezimalLocale):
         'waning_crescent': 'Mingwanti',
     }
 
+    HOLIDAYS = {
+        #
+        # Moving Holidays
+        # Using fixed Easter day according to Symmetry454 original proposal
+        #
+        '02-35': '\ufe0f🎉 Karnavaw',
+        '04-05': '\ufe0f🥀 Payxawn di Kristu',
+        '04-11': '\ufe0f🐣 Paskwa',
+        '10-04': '\ufe0f🍷 Corpus Christi',
+
+        #
+        # National Holidays
+        # I chose not to convert the dates from their original occurrences,
+        # since Holidays from before the adoption of the Gregorian Reform
+        # were also not converted
+        #
+        '01-01': '\ufe0f🕊️  Konfraternizasawn Universaw',
+        '04-33': '\ufe0f🇧🇷 Tiradentis',
+        '05-01': '\ufe0f🐝 Dia du Trabalyu',
+        '13-11': '\ufe0f🇧🇷 Independensya du Braziw',
+        '14-20': '\ufe0f⛪ Nòsa Seỹòra Aparesida',
+        '15-02': '\ufe0f🪦 Finadus',
+        '15-23': '\ufe0f🇧🇷 Proklamasawn da Repúblika',
+        '20-40': '\ufe0f🥂 Véspera di Nataw',
+        '20-41': '\ufe0f👼🏼 Nataw',
+        '20-44': '\ufe0f🎆 Véspera di Anu Novu',
+        '20-55': '\ufe0f🎆 Véspera di Anu Novu',
+    }
+
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
     MONTH_ERROR = 'Mez inválidu {month}'
 

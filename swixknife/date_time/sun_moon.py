@@ -378,20 +378,24 @@ order by
     connection.close()
 
     if res is None:
-        return ''
+        return []
 
     time_zone = system_time_zone()
 
-    text = ''
+    lines = []
 
     for sun_moon, name, date_time_as_days in res:
         date = SezimalDateTime.from_days(date_time_as_days, 'UTC').at_time_zone(time_zone)
 
+        #
+        # The time here next to the day is just for sorting purposes,
+        # it will be stripped latter
+        #
         if sun_moon == 'sun':
-            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}S #{hemisphere}S (#TS)\n'
+            fmt = f'{str(date.day).rjust(2)}.#TS - #@{hemisphere}S #{hemisphere}S (#TS)'
         else:
-            fmt = f'{str(date.day).rjust(2)} - #@{hemisphere}L #{hemisphere}L (#TL)\n'
+            fmt = f'{str(date.day).rjust(2)}.#TL - #@{hemisphere}L #{hemisphere}L (#TL)'
 
-        text += date.format(fmt, locale)
+        lines.append(date.format(fmt, locale))
 
-    return text
+    return lines

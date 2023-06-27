@@ -152,6 +152,8 @@ class SezimalLocale:
         'waning_crescent': 'Waning Crescent',
     }
 
+    HOLIDAYS = {}
+
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
 

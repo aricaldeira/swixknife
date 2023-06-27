@@ -192,6 +192,74 @@ def calendar_date(date, week_header, locale, southern=False, month_format=None, 
     return calendar
 
 
+def list_holidays(today, locale):
+    month = str(today.month).zfill(2) + '-'
+
+    lines = []
+
+    for month_day in locale.HOLIDAYS:
+        if not month_day.startswith(month):
+            continue
+
+        if today.month == 20:
+            if today.is_long_month and month_day.endswith('44'):
+                continue
+            elif (not today.is_long_month) and month_day.endswith('55'):
+                continue
+
+        day = month_day[3:5]
+
+        if day.startswith('0'):
+            day = ' ' + day[1]
+
+        #
+        # The time will be stripped latter, it is here just for sorting purposes
+        #
+        line = f'{day}.00:00 - {locale.HOLIDAYS[month_day]}'
+        lines.append(line)
+
+    return lines
+
+
+def calendar_mark_holidays(calendar, today, locale):
+    month = str(today.month).zfill(2) + '-'
+
+    for month_day in locale.HOLIDAYS:
+        if not month_day.startswith(month):
+            continue
+
+        if today.month == 20:
+            if today.is_long_month and month_day.endswith('44'):
+                continue
+            elif (not today.is_long_month) and month_day.endswith('55'):
+                continue
+
+        day = int(month_day[3:5])
+
+        if day in (10, 21, 32, 43, 54):
+            calendar = calendar.replace(f'[COLOR_SATURDAY]{day}', f'[COLOR_HOLIDAY]{day}')
+            calendar = calendar.replace(f'[COLOR_SATURDAY_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
+
+        elif day in (11, 22, 33, 44, 55):
+            calendar = calendar.replace(f'[COLOR_SUNDAY]{day}', f'[COLOR_HOLIDAY]{day}')
+            calendar = calendar.replace(f'[COLOR_SUNDAY_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
+
+        elif day == 30:
+            if '[COLOR_MIDQUARTER' in calendar:
+                calendar = calendar.replace(f'[COLOR_MIDQUARTER]{day}', f'[COLOR_HOLIDAY]{day}')
+                calendar = calendar.replace(f'[COLOR_MIDQUARTER_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
+            else:
+                calendar = calendar.replace(f' {day} ', f' [COLOR_HOLIDAY]{day}[COLOR_RESET] ')
+                calendar = calendar.replace(f'[COLOR_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
+
+        else:
+            day = str(day).rjust(2)
+            calendar = calendar.replace(f' {day} ', f' [COLOR_HOLIDAY]{day}[COLOR_RESET] ')
+            calendar = calendar.replace(f'[COLOR_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
+
+    return calendar
+
+
 def season_and_moon(today, locale, southern=False):
     if southern:
         season_moon_emoji = today.format('#@~SS #@~SL', locale)
@@ -202,10 +270,13 @@ def season_and_moon(today, locale, southern=False):
 [ISO_DATE]
 '''
 
-    calendar += list_sun_moon(date.year, date.month, locale, 'S' if southern else 'N')
+    lines = list_sun_moon(date.year, date.month, locale, 'S' if southern else 'N')
+    lines += list_holidays(today, locale)
 
-    if calendar.endswith('\n'):
-        calendar = calendar[:-1]
+    lines = sorted(lines, key=locale.sort_key)
+
+    for line in lines:
+        calendar += line[0:2] + line[8:] + '\n'
 
     return calendar
 
@@ -331,6 +402,7 @@ if __name__ == '__main__':
         calendar = calendar_year(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
     else:
         calendar = calendar_date(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
+        calendar = calendar_mark_holidays(calendar, date, locale)
         calendar += '\n'
         calendar += ''.ljust(27) + '\n'
 
@@ -381,6 +453,9 @@ if __name__ == '__main__':
 
     COLOR_TODAY = colorama.ansi.code_to_chars('38;5;231;48;5;16')
 
+    COLOR_HOLIDAY = colorama.ansi.code_to_chars('38;5;201')
+    COLOR_HOLIDAY_MARKED = colorama.ansi.code_to_chars('38;5;231;48;5;201')
+
     calendar = calendar.replace('[COLOR_YEAR]', COLOR_YEAR)
 
     calendar = calendar.replace('[COLOR_SUNDAY]', COLOR_SUNDAY)
@@ -397,6 +472,9 @@ if __name__ == '__main__':
     calendar = calendar.replace('[COLOR_SPRING]', COLOR_SPRING)
 
     calendar = calendar.replace('[COLOR_TODAY]', COLOR_TODAY)
+
+    calendar = calendar.replace('[COLOR_HOLIDAY]', COLOR_HOLIDAY)
+    calendar = calendar.replace('[COLOR_HOLIDAY_MARKED]', COLOR_HOLIDAY_MARKED)
 
     calendar = calendar.replace('[COLOR_RESET]', colorama.Style.RESET_ALL)
 

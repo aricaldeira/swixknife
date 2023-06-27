@@ -119,6 +119,35 @@ class SezimalLocalePT(SezimalLocale):
         'waning_crescent': 'Minguante',
     }
 
+    HOLIDAYS = {
+        #
+        # Moving Holydays
+        # Using fixed Easter day according to Symmetry454 original proposal
+        #
+        '02-35': '\ufe0f🎉 Carnaval',
+        '04-05': '\ufe0f🥀 Paixão de Cristo',
+        '04-11': '\ufe0f🐣 Páscoa',
+        '10-04': '\ufe0f🍷 Corpus Christi',
+
+        #
+        # National Holidays
+        # I chose not to convert the dates from their original occurrences,
+        # since Holidays from before the adoption of the Gregorian Reform
+        # were also not converted
+        #
+        '01-01': '\ufe0f🕊️  Confraternização Universal',
+        '04-33': '\ufe0f🇧🇷 Tiradentes',
+        '05-01': '\ufe0f🐝 Dia do Trabalho',
+        '13-11': '\ufe0f🇧🇷 Independência do Brasil',
+        '14-20': '\ufe0f⛪ Nossa Senhora Aparecida',
+        '15-02': '\ufe0f🪦 Finados',
+        '15-23': '\ufe0f🇧🇷 Proclamação da República',
+        '20-40': '\ufe0f🥂 Véspera de Natal',
+        '20-41': '\ufe0f👼🏼 Natal',
+        '20-44': '\ufe0f🎆 Véspera de Ano Novo',
+        '20-55': '\ufe0f🎆 Véspera de Ano Novo',
+    }
+
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'
     MONTH_ERROR = 'Mês inválido {month}'
 
