@@ -16,5 +16,5 @@ find . -type d -name "__pycache__" -delete
 find . -type f -name "*.py~" -delete
 rm swixknife.egg-info -rf
 
-# rm build -rf
-#rm dist -rf
+rm build -rf
+rm dist -rf
