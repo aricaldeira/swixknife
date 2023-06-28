@@ -124,10 +124,10 @@ class SezimalLocaleBZ(SezimalLocale):
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        '02-35': '\ufe0f🎉 Karnavaw',
-        '04-05': '\ufe0f🥀 Payxawn di Kristu',
-        '04-11': '\ufe0f🐣 Paskwa',
-        '10-04': '\ufe0f🍷 Corpus Christi',
+        '02-35': '\ufe0f🎉🎭 Karnavaw',           # tersa
+        '04-05': '\ufe0f🕇 🥀 Payxawn di Kristu',  # sesta
+        '04-11': '\ufe0f🐣🌱 Paskwa',             # dumingu
+        '10-04': '\ufe0f🥖🍷 Corpus Christi',     # kinta
 
         #
         # National Holidays
@@ -135,17 +135,32 @@ class SezimalLocaleBZ(SezimalLocale):
         # since Holidays from before the adoption of the Gregorian Reform
         # were also not converted
         #
-        '01-01': '\ufe0f🕊️  Konfraternizasawn Universaw',
-        '04-33': '\ufe0f🇧🇷 Tiradentis',
-        '05-01': '\ufe0f🐝 Dia du Trabalyu',
-        '13-11': '\ufe0f🇧🇷 Independensya du Braziw',
-        '14-20': '\ufe0f⛪ Nòsa Seỹòra Aparesida',
-        '15-02': '\ufe0f🪦 Finadus',
-        '15-23': '\ufe0f🇧🇷 Proklamasawn da Repúblika',
-        '20-40': '\ufe0f🥂 Véspera di Nataw',
-        '20-41': '\ufe0f👼🏼 Nataw',
-        '20-44': '\ufe0f🎆 Véspera di Anu Novu',
-        '20-55': '\ufe0f🎆 Véspera di Anu Novu',
+        '01-01': '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw',  # segunda
+        # '01-41': '\ufe0f🏙️ Fundasawn di Sawn Pawlu'        # kinta
+        '04-33': '\ufe0f🇧🇷🔺 Tiradentis',                    # dumingu
+        '05-01': '\ufe0f🐝🐜 Dia du Trabalyu',               # segunda
+        '11-13': '\ufe0f🪖📜 Revolusawn di 13.1124 (1932)',  # tersa
+        '13-11': '\ufe0f🇧🇷🕊️  Independensya du Braziw',       # dumingu
+        '14-20': '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida',         # sesta
+        '15-02': '\ufe0f🪦🕊️  Finadus',                       # tersa
+        '15-23': '\ufe0f🇧🇷📜 Proklamasawn da Repúblika',     # segunda
+        '15-32': '\ufe0f👨🏿 Konsiensya Negra',              # sábadu
+        '20-40': '\ufe0f🥂🍽️  Véspera di Nataw',              # kwarta
+        '20-41': '\ufe0f🌟👼🏼 Nataw',                         # kinta
+        '20-44': '\ufe0f🍾🎆 Véspera di Anu Novu',           # dumingu
+        '20-55': '\ufe0f🍾🎆 Véspera di Anu Novu',           # dumingu
+    }
+
+    #
+    # Leaving those here just for reference
+    #
+    HOLIDAYS_CONVERTED = {
+        '01-34': '\ufe0f🏙️ Fundasawn di Sawn Pawlu',       # segunda 12_5254-01-34 ~ 1554-01-25_dec
+        '04-32': '\ufe0f🇧🇷🔺 Tiradentis',                    # sábadu  13_0332-04-32 ~ 1792-04-21_dec
+        '11-10': '\ufe0f🪖📜 Revolusawn di 13.1124 (1932)',  # sábadu  13_1124-11-10 ~ 1932-07-09_dec
+        '13-10': '\ufe0f🇧🇷🕊️  Independensya du Braziw',       # sábadu  13_0422-13-10 ~ 1822-09-07_dec
+        '15-31': '\ufe0f🇧🇷📜 Proklamasawn da Repúblika',     # sesta   13_1013-15-31 ~ 1889-11-15_dec
+        '15-33': '\ufe0f👨🏿 Konsiensya Negra',              # dumingu 13_0051-15-33 ~ 1695-11-20_dec
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'

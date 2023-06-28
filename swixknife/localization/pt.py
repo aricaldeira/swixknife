@@ -124,10 +124,10 @@ class SezimalLocalePT(SezimalLocale):
         # Moving Holydays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        '02-35': '\ufe0f🎉 Carnaval',
-        '04-05': '\ufe0f🥀 Paixão de Cristo',
-        '04-11': '\ufe0f🐣 Páscoa',
-        '10-04': '\ufe0f🍷 Corpus Christi',
+        '02-35': '\ufe0f🎉🎭 Carnaval',          # terça-feira
+        '04-05': '\ufe0f🕇 🥀 Paixão de Cristo',  # sexta-feira
+        '04-11': '\ufe0f🐣🌱 Páscoa',            # domingo
+        '10-04': '\ufe0f🥖🍷 Corpus Christi',    # quinta-feira
 
         #
         # National Holidays
@@ -135,17 +135,32 @@ class SezimalLocalePT(SezimalLocale):
         # since Holidays from before the adoption of the Gregorian Reform
         # were also not converted
         #
-        '01-01': '\ufe0f🕊️  Confraternização Universal',
-        '04-33': '\ufe0f🇧🇷 Tiradentes',
-        '05-01': '\ufe0f🐝 Dia do Trabalho',
-        '13-11': '\ufe0f🇧🇷 Independência do Brasil',
-        '14-20': '\ufe0f⛪ Nossa Senhora Aparecida',
-        '15-02': '\ufe0f🪦 Finados',
-        '15-23': '\ufe0f🇧🇷 Proclamação da República',
-        '20-40': '\ufe0f🥂 Véspera de Natal',
-        '20-41': '\ufe0f👼🏼 Natal',
-        '20-44': '\ufe0f🎆 Véspera de Ano Novo',
-        '20-55': '\ufe0f🎆 Véspera de Ano Novo',
+        '01-01': '\ufe0f🕊️ 🌎 Confraternização Universal',  # segunda-feira
+        # '01-41': '\ufe0f🏙️ Fundação de São Paulo',         # quinta-feira
+        '04-33': '\ufe0f🇧🇷🔺 Tiradentes',                   # domingo
+        '05-01': '\ufe0f🐝🐜 Dia do Trabalho',              # segunda-feira
+        '11-13': '\ufe0f🪖📜 Revolução de 13.1124 (1932)',  # terça-feira
+        '13-11': '\ufe0f🇧🇷🕊️  Independência do Brasil',      # domingo
+        '14-20': '\ufe0f⛪👸🏿 Nossa Senhora Aparecida',      # sexta-feira
+        '15-02': '\ufe0f🪦🕊️  Finados',                      # terça-feira
+        '15-23': '\ufe0f🇧🇷📜 Proclamação da República',     # segunda-feira
+        '15-32': '\ufe0f👨🏿 Consciência Negra',            # sábado
+        '20-40': '\ufe0f🥂🍽️  Véspera de Natal',             # quarta-feira
+        '20-41': '\ufe0f👼🏼🌟 Natal',                        # quinta-feira
+        '20-44': '\ufe0f🍾🎆 Véspera de Ano Novo',          # domingo
+        '20-55': '\ufe0f🍾🎆 Véspera de Ano Novo',          # domingo
+    }
+
+    #
+    # Leaving those here just for reference
+    #
+    HOLIDAYS_CONVERTED = {
+        '01-34': '\ufe0f🏙️ Fundação de São Paulo',        # segunda-feira 12_5254-01-34 ~ 1554-01-25_dec
+        '04-32': '\ufe0f🇧🇷🔺 Tiradentes',                   # sábado        13_0332-04-32 ~ 1792-04-21_dec
+        '11-10': '\ufe0f🪖📜 Revolução de 13.1124 (1932)',  # sábado        13_1124-11-10 ~ 1932-07-09_dec
+        '13-10': '\ufe0f🇧🇷🕊️  Independência do Brasil',      # sábado        13_0422-13-10 ~ 1822-09-07_dec
+        '15-31': '\ufe0f🇧🇷📜 Proclamação da República',     # sexta-feira   13_1013-15-31 ~ 1889-11-15_dec
+        '15-33': '\ufe0f👨🏿 Consciência Negra',            # domingo       13_0051-15-33 ~ 1695-11-20_dec
     }
 
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'
