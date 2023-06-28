@@ -346,6 +346,19 @@ if __name__ == '__main__':
 
     locale = sezimal_locale(arguments.locale)
 
+    try:
+        arq = open(os.path.expanduser('~/.swixknife.py'), 'r').read()
+        code = compile(arq, '', 'exec')
+        localdict = {}
+        globaldict = {}
+        eval(code, globaldict, localdict)
+
+        if 'PERSONAL_HOLIDAYS' in localdict:
+            locale.HOLIDAYS.update(localdict['PERSONAL_HOLIDAYS'])
+
+    except:
+        pass
+
     time_zone = arguments.time_zone
 
     if time_zone == 'locale':
