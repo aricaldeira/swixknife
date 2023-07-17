@@ -3,11 +3,11 @@
 import argparse
 
 parser = argparse.ArgumentParser(description='Shows the sezimal date and time')
-parser.add_argument('-f', '--format', default=None, nargs='?', help='Formato')
-parser.add_argument('-l', '--locale', default=None, nargs='?', help='Idioma')
+parser.add_argument('-f', '--format', default=None, nargs='?', help='Format')
+parser.add_argument('-l', '--locale', default=None, nargs='?', help='Locale')
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date and time')
 parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zone')
-parser.add_argument('-dd', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
 
 
 from swixknife.date_time import SezimalDateTime as SDT

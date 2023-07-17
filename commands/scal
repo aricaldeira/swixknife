@@ -7,357 +7,35 @@ parser.add_argument('-d', '--day', dest='day', default='', nargs='?', help='Day'
 parser.add_argument('-m', '--month', dest='month', default='', nargs='?', help='Month')
 parser.add_argument('-y', '--year', dest='year', default='', nargs='?', help='Year')
 parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
-parser.add_argument('-q', '--quarterly', dest='quarterly', action=argparse.BooleanOptionalAction, help='Print quarter')
+parser.add_argument('-Q', '--quarterly', dest='quarterly', action=argparse.BooleanOptionalAction, help='Print quarter')
 parser.add_argument('-Y', '--yearly', dest='yearly', action=argparse.BooleanOptionalAction, help='Print year')
 parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
 parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
 parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
 parser.add_argument('-SH', '--southern-hemisphere', dest='southern', action=argparse.BooleanOptionalAction, help='Use southern hemisphere')
 parser.add_argument('-NH', '--northern-hemisphere', dest='northern', action=argparse.BooleanOptionalAction, help='Use northern hemisphere')
-parser.add_argument('-mf', '--month-format', dest='month_format', default='', nargs='?', help='Month title format')
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date')
 parser.add_argument('-s', '--date', default=None, nargs='?', help='Sezimal date')
 parser.add_argument('-tz', '--time-zone', dest='time_zone', default=None, nargs='?', help='Time zone')
-parser.add_argument('-dd', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
-
+parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-LFWD', '--locale-first-weekday', dest='locale_first_weekday', action=argparse.BooleanOptionalAction, help='Use locale’s first weekday')
 
 import os
 
+import swixknife
 from swixknife.date_time import SezimalDate as SD, SezimalTime as ST, SezimalDateTime as SDT
 from swixknife import sezimal_locale
 from swixknife import SezimalInteger, SezimalRange
 from swixknife.date_time.sun_moon import list_sun_moon
 from swixknife.date_time.sezimal_functions import system_time_zone
 import datetime as _datetime
-
-import colorama
-
-colorama.init()
-
-
-def week_header(locale):
-    monday = locale.weekday_abbreviated_name(1)[:3].rjust(3)
-    tuesday = locale.weekday_abbreviated_name(2)[:3].rjust(3)
-    wednesday = locale.weekday_abbreviated_name(3)[:3].rjust(3)
-    thursday = locale.weekday_abbreviated_name(4)[:3].rjust(3)
-    friday = locale.weekday_abbreviated_name(5)[:3].rjust(3)
-    saturday = locale.weekday_abbreviated_name(10)[:3].rjust(3)
-    sunday = locale.weekday_abbreviated_name(11)[:3].rjust(3)
-
-    header = f'{monday} {tuesday} {wednesday} {thursday} {friday} [COLOR_SATURDAY]{saturday}[COLOR_RESET] [COLOR_SUNDAY]{sunday}[COLOR_RESET]'
-
-    return header
-
-
-def calendar_month(year, month, week_header, locale, only_month = False, decimal=False, dozenal=False, southern=False, month_format=None, niftimal=False):
-    date = SD(year, month, 1)
-
-    # if date.format('#$NM', locale) != '#$NM':
-    #     month_year = date.format('#$NM', locale)
-    # else:
-    if month_format:
-        month_year = date.format(month_format, locale)
-    else:
-        month_year = date.format('#M', locale)
-
-    if only_month:
-        month_year = month_year.center(27)
-
-    else:
-        if decimal:
-            month_year = date.format(f'{month_year} #9Y', locale).center(27)
-        elif dozenal:
-            month_year = date.format(f'{month_year} #↋Y', locale).center(27)
-        elif niftimal:
-            month_year = date.format(f'{month_year} #@y', locale).center(31)
-        else:
-            month_year = date.format(f'{month_year} #Y', locale).center(27)
-
-    if southern:
-        if month in (20, 1, 2):
-            calendar = f'[COLOR_SUMMER]{month_year}[COLOR_RESET]\n'
-        elif month in (3, 4, 5):
-            calendar = f'[COLOR_AUTUMN]{month_year}[COLOR_RESET]\n'
-        elif month in (10, 11, 12):
-            calendar = f'[COLOR_WINTER]{month_year}[COLOR_RESET]\n'
-        else:
-            calendar = f'[COLOR_SPRING]{month_year}[COLOR_RESET]\n'
-
-    else:
-        if month in (20, 1, 2):
-            calendar = f'[COLOR_WINTER]{month_year}[COLOR_RESET]\n'
-        elif month in (3, 4, 5):
-            calendar = f'[COLOR_SPRING]{month_year}[COLOR_RESET]\n'
-        elif month in (10, 11, 12):
-            calendar = f'[COLOR_SUMMER]{month_year}[COLOR_RESET]\n'
-        else:
-            calendar = f'[COLOR_AUTUMN]{month_year}[COLOR_RESET]\n'
-
-
-    calendar += f'''{week_header}
-  1   2   3   4   5  [COLOR_SATURDAY]10[COLOR_RESET]  [COLOR_SUNDAY]11[COLOR_RESET]
- 12  13  14  15  20  [COLOR_SATURDAY]21[COLOR_RESET]  [COLOR_SUNDAY]22[COLOR_RESET]
- 23  24  25  30  31  [COLOR_SATURDAY]32[COLOR_RESET]  [COLOR_SUNDAY]33[COLOR_RESET]
- 34  35  40  41  42  [COLOR_SATURDAY]43[COLOR_RESET]  [COLOR_SUNDAY]44[COLOR_RESET]'''
-
-    if date.is_long_month:
-        calendar = calendar.replace('30', f'[COLOR_MIDQUARTER]30[COLOR_RESET]')
-
-        calendar += f'\n 45  50  51  52  53  [COLOR_SATURDAY]54[COLOR_RESET]  [COLOR_SUNDAY]55[COLOR_RESET]'
-
-    return calendar
-
-
-def calendar_mark_date(calendar, day):
-    if day in (10, 21, 32, 43, 54):
-        calendar = calendar.replace(f'[COLOR_SATURDAY]{day}', f'[COLOR_SATURDAY_MARKED]{day}')
-
-    elif day in (11, 22, 33, 44, 55):
-        calendar = calendar.replace(f'[COLOR_SUNDAY]{day}', f'[COLOR_SUNDAY_MARKED]{day}')
-
-    elif day == 30:
-        if '[COLOR_MIDQUARTER]' in calendar:
-            calendar = calendar.replace(f'[COLOR_MIDQUARTER]{day}', f'[COLOR_MIDQUARTER_MARKED]{day}')
-        else:
-            calendar = calendar.replace(f' {day} ', f' [COLOR_MARKED]{day}[COLOR_RESET] ')
-
-    else:
-        day = str(day).rjust(2)
-        calendar = calendar.replace(f' {day} ', f' [COLOR_MARKED]{day}[COLOR_RESET] ')
-
-    return calendar
-
-
-def calendar_change_base(calendar, decimal=False, dozenal=False, niftimal=False):
-    for day in SezimalRange(1, 100):
-        if decimal:
-            day_other_base = int(day.decimal)
-        elif dozenal:
-            day_other_base = day.dozenal_formatted_number
-        elif niftimal:
-            day_other_base = ' ' + day.niftimal_formatted_number
-        else:
-            day_other_base = day
-
-        day_other_base = str(day_other_base).rjust(2)
-
-        if day in (10, 21, 32, 43, 54):
-            calendar = calendar.replace(f'[COLOR_SATURDAY]{day}', f'[COLOR_SATURDAY]{day_other_base}')
-            calendar = calendar.replace(f'[COLOR_SATURDAY_MARKED]{day}', f'[COLOR_SATURDAY_MARKED]{day_other_base}')
-
-        elif day in (11, 22, 33, 44, 55):
-            calendar = calendar.replace(f'[COLOR_SUNDAY]{day}', f'[COLOR_SUNDAY]{day_other_base}')
-            calendar = calendar.replace(f'[COLOR_SUNDAY_MARKED]{day}', f'[COLOR_SUNDAY_MARKED]{day_other_base}')
-
-        elif day == 30:
-            calendar = calendar.replace(f'[COLOR_MIDQUARTER]{day}', f'[COLOR_MIDQUARTER]{day_other_base}')
-            calendar = calendar.replace(f'[COLOR_MIDQUARTER_MARKED]{day}', f'[COLOR_MIDQUARTER_MARKED]{day}')
-            calendar = calendar.replace(f' {str(day).rjust(2)} ', f' {day_other_base} ')
-
-        else:
-            calendar = calendar.replace(f' {str(day).rjust(2)} ', f' {day_other_base} ')
-            calendar = calendar.replace(f'[COLOR_MARKED]{str(day).rjust(2)}', f'[COLOR_MARKED]{day_other_base}')
-
-    return calendar
-
-
-def merge_calendar(cal_1, cal_2, length_empty_line=27):
-    lines_1 = cal_1.splitlines()
-    lines_2 = cal_2.splitlines()
-
-    amount_lines_1 = len(lines_1)
-    amount_lines_2 = len(lines_2)
-
-    calendar = ''
-
-    for i in range(max(amount_lines_1, amount_lines_2)):
-        if i >= amount_lines_1:
-            line_1 = ''.ljust(length_empty_line)
-        else:
-            line_1 = lines_1[i]
-
-        if i >= amount_lines_2:
-            line_2 = ''.ljust(length_empty_line)
-        else:
-            line_2 = lines_2[i]
-
-        calendar += line_1 + '   ' + line_2 + '\n'
-
-    return calendar
-
-
-def calendar_date(date, week_header, locale, southern=False, month_format=None, decimal=False, dozenal=False, niftimal=False):
-    calendar = calendar_month(date.year, date.month, week_header, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
-    calendar = calendar_mark_date(calendar, date.day)
-    return calendar
-
-
-def list_holidays(today, locale):
-    month = str(today.month).zfill(2) + '-'
-
-    lines = []
-
-    for month_day in locale.HOLIDAYS:
-        if not month_day.startswith(month):
-            continue
-
-        if today.month == 20:
-            if today.is_long_month and month_day.endswith('44'):
-                continue
-            elif (not today.is_long_month) and month_day.endswith('55'):
-                continue
-
-        day = month_day[3:5]
-
-        if day.startswith('0'):
-            day = ' ' + day[1]
-
-        #
-        # The time will be stripped latter, it is here just for sorting purposes
-        #
-        line = f'{day}.00:00 - {locale.HOLIDAYS[month_day]}'
-        lines.append(line)
-
-    return lines
-
-
-def calendar_mark_holidays(calendar, today, locale):
-    month = str(today.month).zfill(2) + '-'
-
-    for month_day in locale.HOLIDAYS:
-        if not month_day.startswith(month):
-            continue
-
-        if today.month == 20:
-            if today.is_long_month and month_day.endswith('44'):
-                continue
-            elif (not today.is_long_month) and month_day.endswith('55'):
-                continue
-
-        day = int(month_day[3:5])
-
-        if day in (10, 21, 32, 43, 54):
-            calendar = calendar.replace(f'[COLOR_SATURDAY]{day}', f'[COLOR_HOLIDAY]{day}')
-            calendar = calendar.replace(f'[COLOR_SATURDAY_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
-
-        elif day in (11, 22, 33, 44, 55):
-            calendar = calendar.replace(f'[COLOR_SUNDAY]{day}', f'[COLOR_HOLIDAY]{day}')
-            calendar = calendar.replace(f'[COLOR_SUNDAY_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
-
-        elif day == 30:
-            if '[COLOR_MIDQUARTER' in calendar:
-                calendar = calendar.replace(f'[COLOR_MIDQUARTER]{day}', f'[COLOR_HOLIDAY]{day}')
-                calendar = calendar.replace(f'[COLOR_MIDQUARTER_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
-            else:
-                calendar = calendar.replace(f' {day} ', f' [COLOR_HOLIDAY]{day}[COLOR_RESET] ')
-                calendar = calendar.replace(f'[COLOR_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
-
-        else:
-            day = str(day).rjust(2)
-            calendar = calendar.replace(f' {day} ', f' [COLOR_HOLIDAY]{day}[COLOR_RESET] ')
-            calendar = calendar.replace(f'[COLOR_MARKED]{day}', f'[COLOR_HOLIDAY_MARKED]{day}')
-
-    return calendar
-
-
-def season_and_moon(today, locale, southern=False):
-    if southern:
-        season_moon_emoji = today.format('#@~SS #@~SL', locale)
-    else:
-        season_moon_emoji = today.format('#@~NS #@~NL', locale)
-
-    calendar = f'''[COLOR_TODAY]{today.format(locale.DATE_FORMAT, locale)} ― {season_moon_emoji}[COLOR_RESET]
-[ISO_DATE]
-'''
-
-    lines = list_sun_moon(date.year, date.month, locale, 'S' if southern else 'N')
-    lines += list_holidays(today, locale)
-
-    lines = sorted(lines, key=locale.sort_key)
-
-    for line in lines:
-        calendar += line[0:2] + line[8:] + '\n'
-
-    return calendar
-
-
-def calendar_quarter(date, week_header, locale, southern=False, month_format=None, decimal=False, dozenal=False, niftimal=False):
-    cal_this_month = calendar_date(date, week_header, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
-
-    if date.is_long_month:
-        if date.day >= 45:
-            date = SD.from_ordinal_date(date.ordinal_date - 55)
-        else:
-            date = SD.from_ordinal_date(date.ordinal_date - 44)
-
-        cal_last_month = calendar_month(date.year, date.month, week_header, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
-
-        date = SD.from_ordinal_date(date.ordinal_date + 44 + 55)
-        cal_next_month = calendar_month(date.year, date.month, week_header, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
-
-    else:
-        date = SD.from_ordinal_date(date.ordinal_date - 44)
-        cal_last_month = calendar_month(date.year, date.month, week_header, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
-
-        date = SD.from_ordinal_date(date.ordinal_date + 44 + 44)
-        cal_next_month = calendar_month(date.year, date.month, week_header, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
-
-    calendar = merge_calendar(cal_last_month, cal_this_month)
-
-    if date.is_long_month:
-        calendar = merge_calendar(calendar, cal_next_month, 57)
-    else:
-        calendar = merge_calendar(calendar, cal_next_month)
-
-    return calendar
-
-
-def calendar_year(date, week_header, locale, decimal=False, dozenal=False, southern=False, month_format=None, niftimal=False):
-    if decimal:
-        calendar = '[COLOR_YEAR]' + date.format('#9Y', locale).center(87) + '[COLOR_RESET]\n\n'
-    elif dozenal:
-        calendar = '[COLOR_YEAR]' + date.format('#↋Y', locale).center(87) + '[COLOR_RESET]\n\n'
-    elif niftimal:
-        calendar = '[COLOR_YEAR]' + date.format('#@y', locale).center(90) + '[COLOR_RESET]\n\n'
-    else:
-        calendar = '[COLOR_YEAR]' + date.format('#Y', locale).center(87) + '[COLOR_RESET]\n\n'
-
-    quarter = ''
-    for month in SezimalRange(1, 21):
-        cal_month = calendar_month(date.year, month, week_header, locale, only_month=True, southern=southern, month_format=month_format)
-
-        if month == date.month:
-            cal_month = calendar_mark_date(cal_month, date.day)
-
-        if quarter:
-            quarter = merge_calendar(quarter, cal_month)
-        else:
-            quarter = cal_month
-
-        if month % 3 == 0:
-            calendar += quarter + '\n'
-            quarter = ''
-
-    return calendar[:-2]
+from swixknife.date_time.calendar import SezimalCalendarTerminal
 
 
 if __name__ == '__main__':
     arguments = parser.parse_args()
 
     locale = sezimal_locale(arguments.locale)
-
-    try:
-        arq = open(os.path.expanduser('~/.swixknife.py'), 'r').read()
-        code = compile(arq, '', 'exec')
-        localdict = {}
-        globaldict = {}
-        eval(code, globaldict, localdict)
-
-        if 'PERSONAL_HOLIDAYS' in localdict:
-            locale.HOLIDAYS.update(localdict['PERSONAL_HOLIDAYS'])
-
-    except:
-        pass
 
     time_zone = arguments.time_zone
 
@@ -366,6 +44,8 @@ if __name__ == '__main__':
 
     if not time_zone:
         time_zone = system_time_zone()
+
+    original_tz = system_time_zone()
 
     os.environ['TZ'] = time_zone
 
@@ -393,104 +73,89 @@ if __name__ == '__main__':
     year = arguments.year or None
 
     if day or month or year:
-        date = date.replace(day=day, month=month, year=year)
-
-    wh = week_header(locale)
-
-    niftimal = arguments.niftimal
-    decimal = arguments.decimal
-    dozenal = arguments.dozenal
-    dedicated_digits = arguments.dedicated_digits
+        time = time.replace(day=day, month=month, year=year)
 
     if (arguments.southern or arguments.northern):
         southern = arguments.southern and (not arguments.northern)
     else:
         southern = locale.DEFAULT_HEMISPHERE == 'S'
 
-    month_format = arguments.month_format
+    os.environ['TZ'] = original_tz
+
+    calendar_parameters = {
+        'locale': locale,
+        'hemisphere': 'S' if southern else 'N',
+        'first_weekday': 'LOC' if arguments.locale_first_weekday else 'MON',
+        'use_rtl': locale.RTL,
+    }
+
+    if arguments.decimal:
+        if '?' in locale.DATE_FORMAT:
+            calendar_parameters['day_format'] = '#9?-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#9?Y'
+            calendar_parameters['month_year_format'] = '#M #9?Y'
+            calendar_parameters['time_format'] = '%?H:%?M:%?S'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+
+        else:
+            calendar_parameters['day_format'] = '#9-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#9Y'
+            calendar_parameters['month_year_format'] = '#M #9Y'
+            calendar_parameters['time_format'] = '%H:%M:%S'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+
+    elif arguments.dozenal:
+        if '?' in locale.DATE_FORMAT:
+            calendar_parameters['day_format'] = '#↋?-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#↋?Y'
+            calendar_parameters['month_year_format'] = '#M #↋?Y'
+            calendar_parameters['time_format'] = '#↋↋?u:#↋↋?p:#↋↋?a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
+
+        else:
+            calendar_parameters['day_format'] = '#↋-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#↋Y'
+            calendar_parameters['month_year_format'] = '#M #↋Y'
+            calendar_parameters['time_format'] = '#↋↋u:#↋↋p:#↋↋a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
+
+    elif arguments.niftimal:
+        if arguments.dedicated_digits:
+            calendar_parameters['day_format'] = '#@!-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#@!y'
+            calendar_parameters['month_year_format'] = '#M #@!y'
+            calendar_parameters['time_format'] = '#@!u:#@!p:#@!a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@!')
+
+        else:
+            calendar_parameters['day_format'] = '#@-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#@y'
+            calendar_parameters['month_year_format'] = '#M #@y'
+            calendar_parameters['time_format'] = '#@u:#@p:#@a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@')
+    else:
+        if arguments.dedicated_digits:
+            calendar_parameters['day_format'] = '#!-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#!Y'
+            calendar_parameters['month_year_format'] = '#M #!Y'
+            calendar_parameters['time_format'] = '#!u:#!p:#!a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#!')
+
+    cal = SezimalCalendarTerminal(time, **calendar_parameters)
 
     if arguments.quarterly:
-        calendar = calendar_quarter(date, wh, locale, southern=southern, month_format=month_format, decimal=decimal, dozenal=dozenal, niftimal=niftimal)
+        calendar = cal.quarter()
     elif arguments.yearly:
-        calendar = calendar_year(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
+        calendar = cal.year()
     else:
-        calendar = calendar_date(date, wh, locale, decimal=decimal, dozenal=dozenal, niftimal=niftimal, southern=southern, month_format=month_format)
-        calendar = calendar_mark_holidays(calendar, date, locale)
-        calendar += '\n'
-        calendar += ''.ljust(27) + '\n'
+        calendar = cal.month()
 
-        if time.is_dst:
-            now_line = time.format('#@V ' + locale.TIME_FORMAT, locale)
-            now_line = now_line.center(30)
-        else:
-            now_line = '\ufe0f⏰ ' + time.format(locale.TIME_FORMAT, locale)
-            now_line = now_line.center(27)
-
-        iso_time = '(ISO ' + time.format('%H:%M:%S)', locale)
-        now_line_iso = '[ISO_TIME    ]'
-        calendar += now_line + '\n'
-        calendar += now_line_iso.center(27) + '\n'
-        text = season_and_moon(date, locale, southern)
-        calendar = merge_calendar(calendar, text)
-
-    if niftimal:
-        calendar = calendar_change_base(calendar, niftimal=True)
-    elif decimal:
-        calendar = calendar_change_base(calendar, decimal=True)
-    elif dozenal:
-        calendar = calendar_change_base(calendar, dozenal=True)
-
-    if dedicated_digits:
-        calendar = calendar.replace('0', '󱨀').replace('1', '󱨁').replace('2', '󱨂')
-        calendar = calendar.replace('3', '󱨃').replace('4', '󱨄').replace('5', '󱨅')
-
-    if '[ISO_DATE]' in calendar:
-        calendar = calendar.replace('[ISO_DATE]', '(ISO ' + date.format(locale.DATE_FORMAT.replace('#', '%'), locale) + ')')
-    if '[ISO_TIME    ]' in calendar:
-        calendar = calendar.replace('[ISO_TIME    ]', iso_time)
-
-    COLOR_YEAR = colorama.ansi.code_to_chars('38;5;231;48;5;244')
-
-    COLOR_SUNDAY = colorama.ansi.code_to_chars('38;5;196')
-    COLOR_SUNDAY_MARKED = colorama.ansi.code_to_chars('38;5;231;48;5;160')
-    COLOR_SATURDAY = colorama.ansi.code_to_chars('38;5;214')
-    COLOR_SATURDAY_MARKED = colorama.ansi.code_to_chars('38;5;231;48;5;172')
-    COLOR_MIDQUARTER = colorama.ansi.code_to_chars('38;5;49')
-    COLOR_MIDQUARTER_MARKED = colorama.ansi.code_to_chars('38;5;16;48;5;49')
-    COLOR_MARKED = colorama.ansi.code_to_chars('38;5;233;48;5;231')
-
-    COLOR_SUMMER = colorama.ansi.code_to_chars('38;5;226;48;5;208')
-    COLOR_AUTUMN = colorama.ansi.code_to_chars('38;5;52;48;5;223')
-    COLOR_WINTER = colorama.ansi.code_to_chars('38;5;21;48;5;45')
-    COLOR_SPRING = colorama.ansi.code_to_chars('38;5;28;48;5;156')
-
-    COLOR_TODAY = colorama.ansi.code_to_chars('38;5;231;48;5;16')
-
-    COLOR_HOLIDAY = colorama.ansi.code_to_chars('38;5;201')
-    COLOR_HOLIDAY_MARKED = colorama.ansi.code_to_chars('38;5;231;48;5;201')
-
-    calendar = calendar.replace('[COLOR_YEAR]', COLOR_YEAR)
-
-    calendar = calendar.replace('[COLOR_SUNDAY]', COLOR_SUNDAY)
-    calendar = calendar.replace('[COLOR_SUNDAY_MARKED]', COLOR_SUNDAY_MARKED)
-    calendar = calendar.replace('[COLOR_SATURDAY]', COLOR_SATURDAY)
-    calendar = calendar.replace('[COLOR_SATURDAY_MARKED]', COLOR_SATURDAY_MARKED)
-    calendar = calendar.replace('[COLOR_MIDQUARTER]', COLOR_MIDQUARTER)
-    calendar = calendar.replace('[COLOR_MIDQUARTER_MARKED]', COLOR_MIDQUARTER_MARKED)
-    calendar = calendar.replace('[COLOR_MARKED]', COLOR_MARKED)
-
-    calendar = calendar.replace('[COLOR_SUMMER]', COLOR_SUMMER)
-    calendar = calendar.replace('[COLOR_AUTUMN]', COLOR_AUTUMN)
-    calendar = calendar.replace('[COLOR_WINTER]', COLOR_WINTER)
-    calendar = calendar.replace('[COLOR_SPRING]', COLOR_SPRING)
-
-    calendar = calendar.replace('[COLOR_TODAY]', COLOR_TODAY)
-
-    calendar = calendar.replace('[COLOR_HOLIDAY]', COLOR_HOLIDAY)
-    calendar = calendar.replace('[COLOR_HOLIDAY_MARKED]', COLOR_HOLIDAY_MARKED)
-
-    calendar = calendar.replace('[COLOR_RESET]', colorama.Style.RESET_ALL)
-
-    print()
-    # print(calendar.replace('\ufe0f', ''))
     print(calendar)
+    print()
