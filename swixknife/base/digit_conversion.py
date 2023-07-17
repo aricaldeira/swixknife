@@ -7,23 +7,27 @@ DEFAULT_NIFTIMAL_DIGITS = tuple('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³�
 DEDICATED_NIFTIMAL_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫')
 
 _PLUS_00 = ''
-# _PLUS_10 = '\u0307'
-# _PLUS_20 = '\u0308'
-# _PLUS_30 = '\u0304'
-# _PLUS_10 = '\u0323'
-# _PLUS_20 = '\u0324'
-# _PLUS_30 = '\u0331'
-# _PLUS_10 = '\u030d'
-# _PLUS_20 = '\u030e'
-# _PLUS_30 = '\u0304'
+# _PLUS_10 = '\u0307'  # combining dot above
+# _PLUS_20 = '\u0308'  # combining diaeresis
+# _PLUS_30 = '\u0304'  # combining macron
+# _PLUS_30 = '\u030a'  # combining ring above
+# _PLUS_30 = '\u0306'  # combining breve
+# _PLUS_10 = '\u0323'  # combining dot below
+# _PLUS_20 = '\u0324'  # combining diaeresis below
+# _PLUS_30 = '\u0331'  # combining macron below
+# _PLUS_10 = '\u030d'  # combining vertical line above
+# _PLUS_20 = '\u030e'  # combining double vertical line above
+# _PLUS_30 = '\u0304'  # combining macron
 # _PLUS_40 = _PLUS_30 + _PLUS_10
 # _PLUS_50 = _PLUS_30 + _PLUS_20
+# _PLUS_40 = '\u0310'  # combining candrabindu
+# _PLUS_50 = '\u1ab1'  # combining diaresis-ring
 
-_PLUS_10 = '\u0307'
-_PLUS_20 = '\u0308'
-_PLUS_30 = '\u030a'
-_PLUS_40 = '\u0304'
-_PLUS_50 = '\u0306'
+_PLUS_10 = '\u0307'  # combining dot above
+_PLUS_20 = '\u0308'  # combining diaeresis
+_PLUS_30 = '\u030a'  # combining ring above
+_PLUS_40 = '\u0303'  # combining tilde
+_PLUS_50 = '\u0306'  # combining breve
 
 REGULARIZED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
 0{_PLUS_10}\n1{_PLUS_10}\n2{_PLUS_10}\n3{_PLUS_10}\n4{_PLUS_10}\n5{_PLUS_10}
