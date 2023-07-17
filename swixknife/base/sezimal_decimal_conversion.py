@@ -2,18 +2,20 @@
 from typing import TypeVar
 
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
+SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
+SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 
 from decimal import Decimal, localcontext, getcontext
 
 from .validation import validate_clean_sezimal, validate_clean_decimal
 
 
-def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal, decimal_precision: int = None) -> str:
+def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = None) -> str:
     if type(number) == Decimal:
-        return str(number)
+        return validate_clean_decimal(str(number))
 
-    if type(number).__name__ == 'Sezimal':
-        return str(number.decimal)
+    if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
+        return validate_clean_decimal(str(number.decimal))
 
     number = validate_clean_sezimal(str(number))
 
@@ -69,7 +71,7 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
         decimal_precision = getcontext().prec
 
     with localcontext() as context:
-        context.prec = decimal_precision * 2
+        # context.prec = decimal_precision * 2
 
         decimal_fraction = Decimal('0')
 
