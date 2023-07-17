@@ -108,7 +108,10 @@ class Sezimal:
 
     @property
     def dozenal(self) -> str:
-        return dozenal_format(self, group_separator='')
+        if not self._fraction:
+            return dozenal_format(self, dozenal_places=0, group_separator='')
+        else:
+            return dozenal_format(self, group_separator='')
 
     @property
     def dozenal_formatted_number(self) -> str:
@@ -119,7 +122,10 @@ class Sezimal:
 
     @property
     def niftimal(self) -> str:
-        return niftimal_format(self, group_separator='')
+        if not self._fraction:
+            return niftimal_format(self, niftimal_places=0, group_separator='')
+        else:
+            return niftimal_format(self, group_separator='')
 
     @property
     def niftimal_formatted_number(self) -> str:
