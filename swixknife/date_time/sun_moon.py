@@ -16,6 +16,8 @@ from ..localization import SezimalLocale
 
 NORTHERN_HEMISPHERE = 'N'
 SOUTHERN_HEMISPHERE = 'S'
+NORTHERN_EQUATOR_HEMISPHERE = 'NE'
+SOUTHERN_EQUATOR_HEMISPHERE = 'SE'
 
 
 def _sun_moon_search(self, sun_moon: str, hemisphere: str = '', only_four: bool = False, nearest: bool = False, time_zone: str | ZoneInfo = None):
@@ -113,6 +115,16 @@ where
             name = name.replace('november', 'summer')
             name = name.replace('december', 'summer')
 
+        elif hemisphere == NORTHERN_EQUATOR_HEMISPHERE or hemisphere == SOUTHERN_EQUATOR_HEMISPHERE:
+            name = name.replace('february', 'summer')
+            name = name.replace('march', 'summer')
+            name = name.replace('may', 'summer')
+            name = name.replace('june', 'summer')
+            name = name.replace('august', 'summer')
+            name = name.replace('september', 'summer')
+            name = name.replace('november', 'summer')
+            name = name.replace('december', 'summer')
+
     return name, date_time
 
 
@@ -134,9 +146,11 @@ def _season_emoji(self, hemisphere: str, locale: SezimalLocale, four_seasons: bo
         only_four=four_seasons, nearest=nearest, time_zone=time_zone,
     )
 
-    if hemisphere == NORTHERN_HEMISPHERE and season_name in locale.SEASON_EMOJI_NORTHERN_HEMISPHERE:
+    if hemisphere in (NORTHERN_HEMISPHERE, NORTHERN_EQUATOR_HEMISPHERE) \
+        and season_name in locale.SEASON_EMOJI_NORTHERN_HEMISPHERE:
         return locale.SEASON_EMOJI_NORTHERN_HEMISPHERE[season_name]
-    elif hemisphere == SOUTHERN_HEMISPHERE and season_name in locale.SEASON_EMOJI_SOUTHERN_HEMISPHERE:
+    elif hemisphere in (SOUTHERN_HEMISPHERE, SOUTHERN_EQUATOR_HEMISPHERE) \
+        and season_name in locale.SEASON_EMOJI_SOUTHERN_HEMISPHERE:
         return locale.SEASON_EMOJI_SOUTHERN_HEMISPHERE[season_name]
 
     return season_name
@@ -221,97 +235,97 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
         if f'#{hemisphere}S' in fmt:
             fmt = fmt.replace(
                 f'#{hemisphere}S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, time_zone=time_zone),
+                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
             )
 
         if f'#{hemisphere}4S' in fmt:
             fmt = fmt.replace(
                 f'#{hemisphere}4S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_seasons=True, time_zone=time_zone),
+                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, time_zone=time_zone),
             )
 
         if f'#@{hemisphere}S' in fmt:
             fmt = fmt.replace(
                 f'#@{hemisphere}S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, time_zone=time_zone),
+                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
             )
 
         if f'#@{hemisphere}4S' in fmt:
             fmt = fmt.replace(
                 f'#@{hemisphere}4S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_seasons=True, time_zone=time_zone),
+                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, time_zone=time_zone),
             )
 
         if f'#~{hemisphere}S' in fmt:
             fmt = fmt.replace(
                 f'#~{hemisphere}S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, nearest=True, time_zone=time_zone),
+                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
             )
 
         if f'#~{hemisphere}4S' in fmt:
             fmt = fmt.replace(
                 f'#~{hemisphere}4S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
+                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
             )
 
         if f'#@~{hemisphere}S' in fmt:
             fmt = fmt.replace(
                 f'#@~{hemisphere}S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, nearest=True, time_zone=time_zone),
+                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
             )
 
         if f'#@~{hemisphere}4S' in fmt:
             fmt = fmt.replace(
                 f'#@~{hemisphere}4S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
+                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
             )
 
         if f'#{hemisphere}L' in fmt:
             fmt = fmt.replace(
                 f'#{hemisphere}L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, time_zone=time_zone),
+                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
             )
 
         if f'#{hemisphere}4L' in fmt:
             fmt = fmt.replace(
                 f'#{hemisphere}4L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_phases=True, time_zone=time_zone),
+                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_phases=True, time_zone=time_zone),
             )
 
         if f'#@{hemisphere}L' in fmt:
             fmt = fmt.replace(
                 f'#@{hemisphere}L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, time_zone=time_zone),
+                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], time_zone=time_zone),
             )
 
         if f'#@{hemisphere}4L' in fmt:
             fmt = fmt.replace(
                 f'#@{hemisphere}4L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, four_phases=True, time_zone=time_zone),
+                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], four_phases=True, time_zone=time_zone),
             )
 
         if f'#~{hemisphere}L' in fmt:
             fmt = fmt.replace(
                 f'#~{hemisphere}L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, nearest=True, time_zone=time_zone),
+                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
             )
 
         if f'#~{hemisphere}4L' in fmt:
             fmt = fmt.replace(
                 f'#~{hemisphere}4L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE, locale=locale, four_phases=True, nearest=True, time_zone=time_zone),
+                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_phases=True, nearest=True, time_zone=time_zone),
             )
 
         if f'#@~{hemisphere}L' in fmt:
             fmt = fmt.replace(
                 f'#@~{hemisphere}L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, nearest=True, time_zone=time_zone),
+                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], nearest=True, time_zone=time_zone),
             )
 
         if f'#@~{hemisphere}4L' in fmt:
             fmt = fmt.replace(
                 f'#@~{hemisphere}4L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE, four_phases=True, nearest=True, time_zone=time_zone),
+                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], four_phases=True, nearest=True, time_zone=time_zone),
             )
 
     if '#TS' in fmt:
@@ -338,23 +352,28 @@ SezimalDate._moon_time = _moon_time
 SezimalDate._apply_season_format = _apply_season_format
 
 
-def list_sun_moon(year: SezimalInteger, month: SezimalInteger, locale: SezimalLocale, hemisphere: str) -> list[str]:
+def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone: str | ZoneInfo = None) -> list[str]:
     connection = sqlite3.connect(DB_NAME)
     cursor = connection.cursor()
 
-    time_zone = system_time_zone()
+    if not time_zone:
+        time_zone = system_time_zone()
 
-    date_start = SezimalDate(year, month, 1)
+    if month is None:
+        date_start = SezimalDate(year, 1, 1)
+        days_offset, days_offset_dst = tz_days_offset(time_zone, date_start.gregorian_isoformat)
+        search_start = date_start.as_days - days_offset
+        date_end = SezimalDate(year, 20, 55) if date_start.is_leap else SezimalDate(year, 20, 44)
+        days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
+        search_end = date_end.as_days - days_offset + Sezimal('0.5555_5555_5555_5555_55')
 
-    days_offset, days_offset_dst = tz_days_offset(time_zone, date_start.gregorian_isoformat)
-
-    search_start = date_start.as_days - days_offset
-
-    date_end = SezimalDate(year, month, 55) if date_start.is_long_month else SezimalDate(year, month, 44)
-
-    days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
-
-    search_end = date_end.as_days - days_offset + Sezimal('0.5555_5555_5555_5555_55')
+    else:
+        date_start = SezimalDate(year, month, 1)
+        days_offset, days_offset_dst = tz_days_offset(time_zone, date_start.gregorian_isoformat)
+        search_start = date_start.as_days - days_offset
+        date_end = SezimalDate(year, month, 55) if date_start.is_long_month else SezimalDate(year, month, 44)
+        days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
+        search_end = date_end.as_days - days_offset + Sezimal('0.5555_5555_5555_5555_55')
 
     sql = f'''
 select
@@ -380,22 +399,14 @@ order by
     if res is None:
         return []
 
-    time_zone = system_time_zone()
-
-    lines = []
+    events = []
 
     for sun_moon, name, date_time_as_days in res:
         date = SezimalDateTime.from_days(date_time_as_days, 'UTC').at_time_zone(time_zone)
+        events +=  [[
+            date,
+            sun_moon,
+            name,
+        ]]
 
-        #
-        # The time here next to the day is just for sorting purposes,
-        # it will be stripped latter
-        #
-        if sun_moon == 'sun':
-            fmt = f'{str(date.day).rjust(2)}.#TS - #@{hemisphere}S #{hemisphere}S (#TS)'
-        else:
-            fmt = f'{str(date.day).rjust(2)}.#TL - #@{hemisphere}L #{hemisphere}L (#TL)'
-
-        lines.append(date.format(fmt, locale))
-
-    return lines
+    return events
