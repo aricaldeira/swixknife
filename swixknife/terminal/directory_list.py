@@ -10,7 +10,7 @@ import colorama
 
 from ..localization import sezimal_locale, SezimalLocale
 from .file_info import SezimalFileInfo
-from .utils import sezimal_format, decimal_format
+from .utils import sezimal_format, decimal_format, dozenal_format
 
 
 class SezimalDirectoryList:
@@ -20,6 +20,7 @@ class SezimalDirectoryList:
         self.permissions_simplified = True
         self.date_time_format = None
         self.is_decimal = False
+        self.is_dozenal = False
         self.use_prefixes = True
         self.use_dedicated_digits = False
         self.original_path = ''
@@ -124,6 +125,12 @@ class SezimalDirectoryList:
                     info['size'] = decimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
                 else:
                     info['size'] = decimal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, decimal_places=1)
+
+            elif self.is_dozenal:
+                if file_info.is_directory:
+                    info['size'] = dozenal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
+                else:
+                    info['size'] = dozenal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, dozenal_places=1)
 
             else:
                 if file_info.is_directory:

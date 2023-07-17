@@ -42,3 +42,22 @@ def decimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
     value = value / (Sezimal(14) ** Sezimal(Decimal(power)))
     unit = decimal_exponent_to_symbol(Decimal(power)) + unit
     return locale.format_decimal_number(value, decimal_places, suffix=unit)
+
+
+def dozenal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, dozenal_places: SezimalInteger = 0, use_prefixes: bool = True) -> str:
+    dozenal_places = SezimalInteger(dozenal_places)
+
+    if len(str(value)) <= 4:
+        power = 0
+    else:
+        power = (len(str(value)) // 4) * 4
+
+        if len(str(value)) == power:
+            power -= 4
+
+    if (not use_prefixes) or (power == 0) or (not unit):
+        return locale.format_dozenal_number(value, dozenal_places=0, suffix=unit)
+
+    value = value / (Sezimal(20) ** Sezimal(Decimal(power)))
+    unit = Sezimal(Decimal(power)).dozenal_formatted_number + '↑' + unit
+    return locale.format_dozenal_number(value, dozenal_places, suffix=unit)
