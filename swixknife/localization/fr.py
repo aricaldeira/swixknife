@@ -77,11 +77,11 @@ class SezimalLocaleFR(SezimalLocale):
 
     ERA_NAME = [
         #
-        # Ère Humaine Sezimale
+        # Ère Humaine Sézimale
         #
         'ÈHS',
         #
-        # Avant l’Ère Humaine Sezimale
+        # Avant l’Ère Humaine Sézimale
         #
         'av. l’ÈHS',
     ]

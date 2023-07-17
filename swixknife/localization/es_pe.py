@@ -12,3 +12,5 @@ class SezimalLocaleES_PE(SezimalLocaleES):
 
     DEFAULT_TIME_ZONE = 'America/Lima'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+
+    FIRST_WEEKDAY = 'SUN'

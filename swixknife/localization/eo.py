@@ -116,6 +116,19 @@ class SezimalLocaleEO(SezimalLocale):
         'waning_crescent': 'Malkreskanta',
     }
 
+    HOLIDAYS = [
+        # ('13_0523-20-15', '\ufe0f💚 Zamenhof-Tago (#i)'),  # Ĵaŭdo, 13_0523-20-15 ~ 1859-12-15_dec
+        # ('13_1011-11-35', '\ufe0f📗 Unua Libro (#i)'),     # Mardo, 13_1011-11-35 ~ 1887-07-26_dec
+
+        ('13_0523-20-23', '\ufe0f💚 Zamenhof-Tago (#i)'),  # Lundo,    20-23 ~ 12-15_dec
+        ('13_1011-11-42', '\ufe0f📗 Unua Libro (#i)'),     # Vendredo, 11-42 ~ 07-26_dec
+    ]
+
+    HOLIDAYS_OTHER_CALENDAR = [
+        ('ISO-1859-12-15', '\ufe0f💚 Zamenhof-Tago (%d/%m - %i)'),
+        ('ISO-1887-07-26', '\ufe0f📗 Unua Libro (%d/%m - %i)'),
+    ]
+
     WEEKDAY_ERROR = 'Nevalida semajntago {weekday}'
     MONTH_ERROR = 'Nevalida monato {month}'
 

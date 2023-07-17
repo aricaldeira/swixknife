@@ -119,49 +119,93 @@ class SezimalLocaleBZ(SezimalLocale):
         'waning_crescent': 'Mingwanti',
     }
 
-    HOLIDAYS = {
+    HOLIDAYS = [
         #
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        '02-35': '\ufe0f🎉🎭 Karnavaw',           # tersa
-        '04-05': '\ufe0f🕇 🥀 Payxawn di Kristu',  # sesta
-        '04-11': '\ufe0f🐣🌱 Paskwa',             # dumingu
-        '10-04': '\ufe0f🥖🍷 Corpus Christi',     # kinta
+        ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
+        ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
+        ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
+        ('EASTER-2',   '\ufe0f🕆 🥀 Payxawn di Kristu'),
+        ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
+        ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
 
         #
         # National Holidays
-        # I chose not to convert the dates from their original occurrences,
-        # since Holidays from before the adoption of the Gregorian Reform
-        # were also not converted
+        # that (usually) don’t have a year of reference
         #
-        '01-01': '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw',  # segunda
-        # '01-41': '\ufe0f🏙️ Fundasawn di Sawn Pawlu'        # kinta
-        '04-33': '\ufe0f🇧🇷🔺 Tiradentis',                    # dumingu
-        '05-01': '\ufe0f🐝🐜 Dia du Trabalyu',               # segunda
-        '11-13': '\ufe0f🪖📜 Revolusawn di 13.1124 (1932)',  # tersa
-        '13-11': '\ufe0f🇧🇷🕊️  Independensya du Braziw',       # dumingu
-        '14-20': '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida',         # sesta
-        '15-02': '\ufe0f🪦🕊️  Finadus',                       # tersa
-        '15-23': '\ufe0f🇧🇷📜 Proklamasawn da Repúblika',     # segunda
-        '15-32': '\ufe0f👨🏿 Konsiensya Negra',              # sábadu
-        '20-40': '\ufe0f🥂🍽️  Véspera di Nataw',              # kwarta
-        '20-41': '\ufe0f🌟👼🏼 Nataw',                         # kinta
-        '20-44': '\ufe0f🍾🎆 Véspera di Anu Novu',           # dumingu
-        '20-55': '\ufe0f🍾🎆 Véspera di Anu Novu',           # dumingu
-    }
+        ('01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw'),
+        ('05-01', '\ufe0f🐝🐜 Dia du Trabalyu'),
+        ('14-20', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida'),
+        ('15-02', '\ufe0f🪦🕊️  Finadus'),
+        ('20-40', '\ufe0f🥂🍽️  Véspera di Nataw'),
+        ('20-41', '\ufe0f🌟👼🏼 Nataw'),
+        ('20-55', '\ufe0f🍾🎆 Véspera di Anu Novu'),
 
-    #
-    # Leaving those here just for reference
-    #
-    HOLIDAYS_CONVERTED = {
-        '01-34': '\ufe0f🏙️ Fundasawn di Sawn Pawlu',       # segunda 12_5254-01-34 ~ 1554-01-25_dec
-        '04-32': '\ufe0f🇧🇷🔺 Tiradentis',                    # sábadu  13_0332-04-32 ~ 1792-04-21_dec
-        '11-10': '\ufe0f🪖📜 Revolusawn di 13.1124 (1932)',  # sábadu  13_1124-11-10 ~ 1932-07-09_dec
-        '13-10': '\ufe0f🇧🇷🕊️  Independensya du Braziw',       # sábadu  13_0422-13-10 ~ 1822-09-07_dec
-        '15-31': '\ufe0f🇧🇷📜 Proklamasawn da Repúblika',     # sesta   13_1013-15-31 ~ 1889-11-15_dec
-        '15-33': '\ufe0f👨🏿 Konsiensya Negra',              # dumingu 13_0051-15-33 ~ 1695-11-20_dec
-    }
+        #
+        # National Holidays
+        # that have a year of reference;
+        # There are 2 ways of dealing with them:
+        #     1. converting the original date to the Sezimal calendar
+        #     2. using the original month and day without converting the calendar
+        #
+        # Using 2 here, but leaving 1 commented for reference
+        #
+        # When informing the year, the age is calculated,
+        # and can be shown using #i as a format tag
+        #
+        # ('13_0332-04-32', '\ufe0f🇧🇷🔺 Tiradentis'),                 # sábadu  13_0332-04-32 ~ 1792-04-21_dec
+        # ('13_1124-11-10', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈)'),   # sábadu  13_1124-11-10 ~ 1932-07-09_dec
+        # ('13_0422-13-10', '\ufe0f🇧🇷🕊️  Independensya du Braziw'),   # sábadu  13_0422-13-10 ~ 1822-09-07_dec
+        # ('13_1013-15-31', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika'),  # sesta   13_1013-15-31 ~ 1889-11-15_dec
+        # ('13_0051-15-33', '\ufe0f👨🏿 Konsiensya Negra'),             # dumingu 13_0051-15-33 ~ 1695-11-20_dec
+
+        ('13_0332-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('13_1124-11-13', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈) (#i)'),   # tersa,   11-13 ~ 07-09_dec
+        ('13_0422-13-11', '\ufe0f🇧🇷🕊️  Independensya du Braziw (#i)'),   # dumingu, 13-11 ~ 09-07_dec
+        ('13_1013-15-23', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (#i)'),  # segunda, 15-23 ~ 11-15_dec
+        ('13_0051-15-32', '\ufe0f👨🏿 Konsiensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+    ]
+
+    HOLIDAYS_OTHER_CALENDAR = [
+        #
+        # Moving Holidays
+        #
+        ('ISO-EASTER-120', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
+        ('ISO-EASTER-115', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
+        ('ISO-EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas (%d/%m)'),
+        ('ISO-EASTER-2',   '\ufe0f🕆 🥀 Payxawn di Kristu (%d/%m)'),
+        ('ISO-EASTER',     '\ufe0f🐣🌱 Paskwa (%d/%m)'),
+        ('ISO-EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d/%m)'),
+
+        #
+        # National Holidays
+        # that (usually) don’t have a year of reference
+        #
+        ('ISO-01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw (%d/%m)'),
+        ('ISO-05-01', '\ufe0f🐝🐜 Dia du Trabalyu (%d/%m)'),
+        ('ISO-10-12', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida (%d/%m)'),
+        ('ISO-11-02', '\ufe0f🪦🕊️  Finadus (%d/%m)'),
+        ('ISO-12-24', '\ufe0f🥂🍽️  Véspera di Nataw (%d/%m)'),
+        ('ISO-12-25', '\ufe0f🌟👼🏼 Nataw (%d/%m)'),
+        ('ISO-12-31', '\ufe0f🍾🎆 Véspera di Anu Novu (%d/%m)'),
+
+        #
+        # National Holidays
+        # that have a year of reference
+        #
+        # When informing the year, the age is calculated,
+        # and can be shown using %i as a format tag
+        # Also, the original date in the original calendar can also be shown,
+        # using the tags %Y, %m and %d for year, month and day, respectively
+        #
+        ('ISO-1792-04-21', '\ufe0f🇧🇷🔺 Tiradentis (%d/%m)'),                      # sábadu  13_0332-04-32 ~ 1792-04-21_dec
+        ('ISO-1932-07-09', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈) (%d/%m - %i)'),   # sábadu  13_1124-11-10 ~ 1932-07-09_dec
+        ('ISO-1822-09-07', '\ufe0f🇧🇷🕊️  Independensya du Braziw (%d/%m - %i)'),   # sábadu  13_0422-13-10 ~ 1822-09-07_dec
+        ('ISO-1889-11-15', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (%d/%m - %i)'),  # sesta   13_1013-15-31 ~ 1889-11-15_dec
+        ('ISO-1695-11-20', '\ufe0f👨🏿 Konsiensya Negra (%d/%m)'),                  # dumingu 13_0051-15-33 ~ 1695-11-20_dec
+    ]
 
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
     MONTH_ERROR = 'Mez inválidu {month}'

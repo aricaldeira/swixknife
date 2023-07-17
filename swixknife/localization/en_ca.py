@@ -12,6 +12,8 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
 
     DEFAULT_TIME_ZONE = 'America/Toronto'
 
+    FIRST_WEEKDAY = 'SUN'
+
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',
         'spring_equinox': 'Spring',

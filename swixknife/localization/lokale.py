@@ -3,18 +3,30 @@ from typing import TypeVar
 
 SezimalDate = TypeVar('SezimalDate', bound='SezimalDate')
 
+import itertools
 import locale as system_locale
 
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
-    sezimal_format, decimal_format
+    sezimal_format, decimal_format, dozenal_format, \
+    niftimal_format
 
 
 class SezimalLocale:
     LANG = 'en'
     LANGUAGE = 'English'
+
+    #
+    # Language script is right to left?
+    #
+    RTL = False
+    #
+    # Script is ideographic?
+    #
+    IDEOGRAPHIC = False
+    DIGITS = ''
 
     #
     # Number formatting
@@ -30,6 +42,10 @@ class SezimalLocale:
     #
     # Date and time
     #
+    FIRST_WEEKDAY = 'MON'
+    DAY_OF_REST = 'SUN'
+    OPTIONAL_DAY_OF_REST = 'SAT'
+
     WEEKDAY_NAME: list[str] = [
         'Monday',
         'Tuesday',
@@ -100,6 +116,18 @@ class SezimalLocale:
     DST_SHORT_NAME = 'DST'
     DST_EMOJI = '‍\ufe0f⏰   \ufe0f🌞'
 
+    @property
+    def ISO_DATE_FORMAT(self):
+        return self.DATE_FORMAT.replace('#', '%').replace('y', 'Y')
+
+    @property
+    def ISO_TIME_FORMAT(self):
+        itf = self.TIME_FORMAT.replace('#', '%')
+        itf = itf.replace('u', 'H')
+        itf = itf.replace('p', 'M')
+        itf = itf.replace('a', 'S')
+        return itf
+
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'UTC'
 
@@ -152,7 +180,8 @@ class SezimalLocale:
         'waning_crescent': 'Waning Crescent',
     }
 
-    HOLIDAYS = {}
+    HOLIDAYS = []
+    HOLIDAYS_OTHER_CALENDAR = []
 
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
@@ -162,7 +191,7 @@ class SezimalLocale:
     #
     COLLATION_RULES = ''
     SEZIMAL_COLLATION_RULES = '''
-&0<1<2<3<4<5<6<7<8<9<↊<↋<0̈<1̈<2̈<3̈<4̈<5̈<0̄<1̄<2̄<3̄<4̄<5̄<0̄̇<1̄̇<2̄̇<3̄̇<4̄̇<5̄̇<0̄̈<1̄̈<2̄̈<3̄̈<4̄̈<5̄̈
+&0<1<2<3<4<5<6<7<8<9<↊<↋<0̈<1̈<2̈<3̈<4̈<5̈<0̊<1̊<2̊<3̊<4̊<5̊<0̃<1̃<2̃<3̃<4̃<5̃<0̆<1̆<2̆<3̆<4̆<5̆
 &0<<󱨀<<<⁰<<󱨤<<<₀<<󱩈
 &1<<󱨁<<<¹<<󱨥<<<₁<<󱩉
 &2<<󱨂<<<²<<󱨦<<<₂<<󱩊
@@ -181,24 +210,24 @@ class SezimalLocale:
 &3̈<<󱨏<<󱨃̈<<<³̈<<󱨳<<󱨧̈<<<₃̈<<󱩗<<󱩋̈
 &4̈<<󱨐<<󱨄̈<<<⁴̈<<󱨴<<󱨨̈<<<₄̈<<󱩘<<󱩌̈
 &5̈<<󱨑<<󱨅̈<<<⁵̈<<󱨵<<󱨩̈<<<₅̈<<󱩙<<󱩍̈
-&0̄<<󱨒<<󱨀̄<<<⁰̄<<󱨶<<󱨤̄<<<₀̄<<󱩚<<󱩈̄
-&1̄<<󱨓<<󱨁̄<<<¹̄<<󱨷<<󱨥̄<<<₁̄<<󱩛<<󱩉̄
-&2̄<<󱨔<<󱨂̄<<<²̄<<󱨸<<󱨦̄<<<₂̄<<󱩜<<󱩊̄
-&3̄<<󱨕<<󱨃̄<<<³̄<<󱨹<<󱨧̄<<<₃̄<<󱩝<<󱩋̄
-&4̄<<󱨖<<󱨄̄<<<⁴̄<<󱨺<<󱨨̄<<<₄̄<<󱩞<<󱩌̄
-&5̄<<󱨗<<󱨅̄<<<⁵̄<<󱨻<<󱨩̄<<<₅̄<<󱩟<<󱩍̄
-&0̄̇<<󱨘<<󱨀̄̇<<<⁰̄̇<<󱨼<<󱨤̄̇<<<₀̄̇<<󱩠<<󱩈̄̇
-&1̄̇<<󱨙<<󱨁̄̇<<<¹̄̇<<󱨽<<󱨥̄̇<<<₁̄̇<<󱩡<<󱩉̄̇
-&2̄̇<<󱨚<<󱨂̄̇<<<²̄̇<<󱨾<<󱨦̄̇<<<₂̄̇<<󱩢<<󱩊̄̇
-&3̄̇<<󱨛<<󱨃̄̇<<<³̄̇<<󱨿<<󱨧̄̇<<<₃̄̇<<󱩣<<󱩋̄̇
-&4̄̇<<󱨜<<󱨄̄̇<<<⁴̄̇<<󱩀<<󱨨̄̇<<<₄̄̇<<󱩤<<󱩌̄̇
-&5̄̇<<󱨝<<󱨅̄̇<<<⁵̄̇<<󱩁<<󱨩̄̇<<<₅̄̇<<󱩥<<󱩍̄̇
-&0̄̈<<󱨞<<󱨀̄̈<<<⁰̄̈<<󱩂<<󱨤̄̈<<<₀̄̈<<󱩦<<󱩈̄̈
-&1̄̈<<󱨟<<󱨁̄̈<<<¹̄̈<<󱩃<<󱨥̄̈<<<₁̄̈<<󱩧<<󱩉̄̈
-&2̄̈<<󱨠<<󱨂̄̈<<<²̄̈<<󱩄<<󱨦̄̈<<<₂̄̈<<󱩨<<󱩊̄̈
-&3̄̈<<󱨡<<󱨃̄̈<<<³̄̈<<󱩅<<󱨧̄̈<<<₃̄̈<<󱩩<<󱩋̄̈
-&4̄̈<<󱨢<<󱨄̄̈<<<⁴̄̈<<󱩆<<󱨨̄̈<<<₄̄̈<<󱩪<<󱩌̄̈
-&5̄̈<<󱨣<<󱨅̄̈<<<⁵̄̈<<󱩇<<󱨩̄̈<<<₅̄̈<<󱩫<<󱩍̄̈
+&0̊<<󱨒<<󱨀̊<<<⁰̊<<󱨶<<󱨤̊<<<₀̊<<󱩚<<󱩈̊
+&1̊<<󱨓<<󱨁̊<<<¹̊<<󱨷<<󱨥̊<<<₁̊<<󱩛<<󱩉̊
+&2̊<<󱨔<<󱨂̊<<<²̊<<󱨸<<󱨦̊<<<₂̊<<󱩜<<󱩊̊
+&3̊<<󱨕<<󱨃̊<<<³̊<<󱨹<<󱨧̊<<<₃̊<<󱩝<<󱩋̊
+&4̊<<󱨖<<󱨄̊<<<⁴̊<<󱨺<<󱨨̊<<<₄̊<<󱩞<<󱩌̊
+&5̊<<󱨗<<󱨅̊<<<⁵̊<<󱨻<<󱨩̊<<<₅̊<<󱩟<<󱩍̊
+&0̃<<󱨘<<󱨀̃<<<⁰̃<<󱨼<<󱨤̃<<<₀̃<<󱩠<<󱩈̃
+&1̃<<󱨙<<󱨁̃<<<¹̃<<󱨽<<󱨥̃<<<₁̃<<󱩡<<󱩉̃
+&2̃<<󱨚<<󱨂̃<<<²̃<<󱨾<<󱨦̃<<<₂̃<<󱩢<<󱩊̃
+&3̃<<󱨛<<󱨃̃<<<³̃<<󱨿<<󱨧̃<<<₃̃<<󱩣<<󱩋̃
+&4̃<<󱨜<<󱨄̃<<<⁴̃<<󱩀<<󱨨̃<<<₄̃<<󱩤<<󱩌̃
+&5̃<<󱨝<<󱨅̃<<<⁵̃<<󱩁<<󱨩̃<<<₅̃<<󱩥<<󱩍̃
+&0̆<<󱨞<<󱨀̆<<<⁰̆<<󱩂<<󱨤̆<<<₀̆<<󱩦<<󱩈̆
+&1̆<<󱨟<<󱨁̆<<<¹̆<<󱩃<<󱨥̆<<<₁̆<<󱩧<<󱩉̆
+&2̆<<󱨠<<󱨂̆<<<²̆<<󱩄<<󱨦̆<<<₂̆<<󱩨<<󱩊̆
+&3̆<<󱨡<<󱨃̆<<<³̆<<󱩅<<󱨧̆<<<₃̆<<󱩩<<󱩋̆
+&4̆<<󱨢<<󱨄̆<<<⁴̆<<󱩆<<󱨨̆<<<₄̆<<󱩪<<󱩌̆
+&5̆<<󱨣<<󱨅̆<<<⁵̆<<󱩇<<󱨩̆<<<₅̆<<󱩫<<󱩍̆
 '''
 
     def weekday_name(self, weekday: SezimalInteger, case: str = None) -> str:
@@ -312,6 +341,36 @@ class SezimalLocale:
             negative_format,
         )
 
+    def format_dozenal_number(self,
+        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
+        dozenal_places: str | int | Decimal | SezimalInteger = 4,
+        use_group_separator: bool = True,
+        use_subgroup_separator: bool = False,
+        use_fraction_group_separator: bool = False,
+        use_fraction_subgroup_separator: bool = False,
+        typographical_negative: bool = True,
+        minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
+        prefix: str = '',
+        suffix: str = '',
+        positive_format: str = '{prefix}{value}{suffix}',
+        negative_format: str = '-{prefix}{value}{suffix}',
+    ) -> str:
+        group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
+        subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
+        fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
+        fraction_subgroup_separator = self.FRACTION_SUBGROUP_SEPARATOR if use_fraction_subgroup_separator else ''
+        return dozenal_format(
+            number, dozenal_places, self.SEZIMAL_SEPARATOR,
+            group_separator, subgroup_separator,
+            fraction_group_separator, fraction_subgroup_separator,
+            typographical_negative,
+            minimum_size,
+            prefix,
+            suffix,
+            positive_format,
+            negative_format,
+        )
+
     @property
     def sort_key(self) -> callable:
         #
@@ -332,7 +391,7 @@ class SezimalLocale:
 
             collator = icu.RuleBasedCollator(rules)
 
-            return collator.collator.getSortKey
+            return collator.getSortKey
 
         except:
             pass
@@ -347,3 +406,90 @@ class SezimalLocale:
             return ''
 
         return self.MOON_PHASE[phase_name]
+
+    def digit_replace(self, text: str) -> str:
+        if self.DIGITS:
+            for i in range(len(self.DIGITS)):
+                text = text.replace(str(i), self.DIGITS[i])
+
+        return text
+
+    def strip_unprintable_combining(self, text: str) -> str:
+        if not text:
+            return text
+
+        #
+        # Let’s strip the most common unprintable characters,
+        # and combining diacritics, so that centre, ljust, rjust
+        # work as expected
+        #
+        to_remove = {i: None for i in itertools.chain(
+            #
+            # The first round of unprintable characters
+            #
+            range(0x0000, 0x0020),
+            range(0x007F, 0x00A0),
+            #
+            # Word joiners and markers
+            #
+            range(0x200B, 0x2010),
+            range(0x2028, 0x202F),
+            range(0x2060, 0x2070),
+            #
+            # Combining diacritics
+            #
+            range(0x0300, 0x0370),
+            range(0x1AB0, 0x1ACF),
+            range(0x1DC0, 0x1E00),
+            range(0x20D0, 0x20F1),
+            range(0xFE20, 0xFE30),
+            #
+            # Devanagari combining characters;
+            # we still count the vowel signs that go
+            # on the sides of the letters, since they
+            # occupy horizontal space
+            #
+            range(0x0900, 0x0903),
+            # range(0x0900, 0x0904),
+            range(0x093A, 0x093B),
+            range(0x093C, 0x093D),
+            # range(0x093A, 0x093D),
+            range(0x0941, 0x0949),
+            range(0x094D, 0x094E),
+            # range(0x093E, 0x0950),
+            range(0x0955, 0x0958),
+            range(0x0962, 0x0964),
+            #
+            # Arabic combining
+            #
+            range(0x064B, 0x0600),
+        )}
+
+        return text.translate(to_remove)
+
+    def _size_difference(self, text: str) -> SezimalInteger:
+        cleaned_text = self.strip_unprintable_combining(text)
+
+        size_difference = len(text) - len(cleaned_text)
+
+        return SezimalInteger(Decimal(str(size_difference)))
+
+    def center(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
+        size += self._size_difference(text)
+        return text.center(int(size.decimal), fill_char)
+
+    def ljust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
+        size += self._size_difference(text)
+        return text.ljust(int(size.decimal), fill_char)
+
+    def rjust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
+        size += self._size_difference(text)
+        return text.rjust(int(size.decimal), fill_char)
+
+    def zfill(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = '0') -> str:
+        size += self._size_difference(text)
+        return text.rjust(int(size.decimal), fill_char)
+
+    def len(self, text) -> SezimalInteger:
+        size = SezimalInteger(Decimal(str(len(text)))) - self._size_difference(text)
+        return size

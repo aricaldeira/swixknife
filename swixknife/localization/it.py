@@ -117,20 +117,20 @@ class SezimalLocaleIT(SezimalLocale):
         'waning_crescent': 'Calante',
     }
 
-    HOLIDAYS = {
-        '01-01': '\ufe0f🕊️  Capodanno',
-        '01-10': '\ufe0f🍬 Epifania',
-        #'04-11': 'Pasqua',
-        '04-12': '\ufe0f🧺 Pasquetta',
-        '04-41': '\ufe0f🇮🇹 Festa della Liberazione',
-        '05-01': '\ufe0f🐝 Festa del Lavoro',
-        '10-02': '\ufe0f🇮🇹 Festa della Repubblica Italiana',
-        '12-21': '\ufe0f🏖️ Ferragosto',
-        '15-01': '\ufe0f🪦 Ognissanti',
-        '20-12': '\ufe0f⛪ Immacolata Concezione',
-        '20-41': '\ufe0f👼🏼 Natale',
-        '20-42': '\ufe0f⛪ Santo Stefano',
-    }
+    HOLIDAYS = [
+        ('01-01', '\ufe0f🕊️  Capodanno'),
+        ('01-10', '\ufe0f🍬 Epifania'),
+        # ('EASTER', 'Pasqua'),
+        ('04-12', '\ufe0f🧺 Pasquetta'),
+        ('04-41', '\ufe0f🇮🇹 Festa della Liberazione'),
+        ('05-01', '\ufe0f🐝 Festa del Lavoro'),
+        ('10-02', '\ufe0f🇮🇹 Festa della Repubblica Italiana'),
+        ('12-21', '\ufe0f🏖️ Ferragosto'),
+        ('15-01', '\ufe0f🪦 Ognissanti'),
+        ('20-12', '\ufe0f⛪ Immacolata Concezione'),
+        ('20-41', '\ufe0f👼🏼 Natale'),
+        ('20-42', '\ufe0f⛪ Santo Stefano'),
+    ]
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

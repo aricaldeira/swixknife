@@ -11,3 +11,5 @@ class SezimalLocaleES_CO(SezimalLocaleES):
     LANGUAGE = 'español de Colombia'
 
     DEFAULT_TIME_ZONE = 'America/Bogota'
+
+    FIRST_WEEKDAY = 'SUN'

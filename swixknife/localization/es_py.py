@@ -12,3 +12,5 @@ class SezimalLocaleES_PY(SezimalLocaleES):
 
     DEFAULT_TIME_ZONE = 'America/Asuncion'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+
+    FIRST_WEEKDAY = 'SUN'

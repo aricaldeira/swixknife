@@ -21,7 +21,7 @@ def _get_system_locale():
     return locale
 
 
-def sezimal_locale(locale: str | SezimalLocale = None) -> SezimalLocale:
+def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> SezimalLocale:
     if isinstance(locale, SezimalLocale):
         return locale
 
@@ -30,34 +30,59 @@ def sezimal_locale(locale: str | SezimalLocale = None) -> SezimalLocale:
 
     locale = locale.replace('-', '_')
 
-    original_locale = locale
+    if '_' in locale:
+        parts = locale.split('_')
 
-    locale = locale.lower()
+        if len(parts) == 2:
+            language = parts[0].lower()
+            country = parts[1].lower()
+            locale_icu = language.lower() + '_' + country.upper()
+            locale_os = locale_icu
 
-    if locale in LOCALE_CACHE:
-        return LOCALE_CACHE[locale]()
+        else:
+            language = parts[0].lower()
+            script = parts[1].lower()
+            country = parts[2].lower()
+            locale_icu = language.lower() + '_' + script.capitalize() + '_' + country.upper()
+            locale_os = language.lower() + '_' + country.upper()
 
-    if len(locale) >= 2:
-        if locale[:2] in LOCALE_CACHE:
-            return LOCALE_CACHE[locale[:2]]()
+    else:
+        language = locale
+        country = ''
+        locale_icu = language
+        locale_os = language
 
-    try:
-        module = importlib.import_module('swixknife.localization.' + locale)
-        locale_class = getattr(module, 'SezimalLocale' + locale.upper())
-        LOCALE_CACHE[locale] = locale_class
-        return locale_class()
+    if force_icu:
+        return _create_locale_from_icu(locale_icu)
 
-    except:
+    if country:
+        language_country = language.lower() + '_' + country.lower()
+
+        if language_country in LOCALE_CACHE:
+            return LOCALE_CACHE[language_country]()
+
         try:
-            module = importlib.import_module('swixknife.localization.' + locale[:2])
-            locale_class = getattr(module, 'SezimalLocale' + locale[:2].upper())
-            LOCALE_CACHE[locale[:2]] = locale_class
+            module = importlib.import_module('swixknife.localization.' + language_country)
+            locale_class = getattr(module, 'SezimalLocale' + language_country.upper())
+            LOCALE_CACHE[language_country] = locale_class
             return locale_class()
 
         except:
             pass
 
-    return _create_locale_from_icu(original_locale) or _create_locale_from_system(original_locale)
+    if language in LOCALE_CACHE:
+        return LOCALE_CACHE[language]()
+
+    try:
+        module = importlib.import_module('swixknife.localization.' + language)
+        locale_class = getattr(module, 'SezimalLocale' + language.upper())
+        LOCALE_CACHE[language] = locale_class
+        return locale_class()
+
+    except:
+        pass
+
+    return _create_locale_from_icu(locale_icu) or _create_locale_from_system(locale_os)
 
 
 def _create_locale_from_icu(locale: str) -> SezimalLocale:
@@ -67,7 +92,11 @@ def _create_locale_from_icu(locale: str) -> SezimalLocale:
         return None
 
     if locale not in icu.Locale.getAvailableLocales():
-        return None
+        if '_' in locale:
+            locale = locale.split('_')[0]
+
+            if locale not in icu.Locale.getAvailableLocales():
+                return None
 
     new_locale = SezimalLocale
 
@@ -92,6 +121,48 @@ def _create_locale_from_icu(locale: str) -> SezimalLocale:
     new_locale.WEEKDAY_ABBREVIATED_NAME = dfs.getShortWeekdays()[2:] + [dfs.getShortWeekdays()[1]]
     new_locale.MONTH_NAME = dfs.getMonths()
     new_locale.MONTH_ABBREVIATED_NAME = dfs.getShortMonths()
+
+    #
+    # Date and time formats
+    #
+    df = icu.DateFormat.createDateInstance(icu.DateFormat.SHORT, loc)
+    df = df.toLocalizedPattern()
+
+    if 'dd' in df:
+        df = df.replace('dd', '#d')
+    elif 'd' in df:
+        df = df.replace('d', '#d')
+
+    if 'MM' in df:
+        df = df.replace('MM', '#m')
+    elif 'M' in df:
+        df = df.replace('M', '#m')
+
+    if 'yy' in df:
+        df = df.replace('yy', '#Y')
+    elif 'y' in df:
+        df = df.replace('y', '#Y')
+
+    if '.' in df:
+        df = df.replace('#Y', '#y')
+
+    new_locale.DATE_FORMAT = df
+
+    tf = icu.DateFormat.createTimeInstance(icu.DateFormat.LONG, loc)
+    tf = tf.toLocalizedPattern().upper().replace(' Z', '').replace('Z ', '').replace(' A', '').replace('A ', '')
+
+    if tf.startswith('HH'):
+        separator = tf[2]
+    elif tf.startswith('H'):
+        separator = tf[1]
+    else:
+        separator = ':'
+
+    new_locale.TIME_FORMAT = f'#u{separator}#p{separator}#a'
+
+    new_locale.DATE_LONG_FORMAT = new_locale.DATE_FORMAT + ' #@W'
+    new_locale.DATE_TIME_FORMAT = new_locale.DATE_FORMAT + ' ' + new_locale.TIME_FORMAT
+    new_locale.DATE_TIME_LONG_FORMAT = new_locale.DATE_LONG_FORMAT + ' ' + new_locale.TIME_FORMAT
 
     LOCALE_CACHE[locale] = new_locale
 
