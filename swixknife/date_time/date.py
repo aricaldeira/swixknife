@@ -126,7 +126,7 @@ class SezimalDate:
 
     @classmethod
     def from_iso_format(cls, date_string) -> Self:
-        return cls.fromordinal(_datetime.date.fromisoformat(date_string).toordinal())
+        return cls.from_ordinal_date(_datetime.date.fromisoformat(date_string).toordinal())
 
     @classmethod
     def from_iso_calendar(cls, year, week, day) -> Self:
@@ -242,7 +242,7 @@ class SezimalDate:
     def day_ordinal_suffix(self) -> str:
         return DEFAULT_LOCALE.day_ordinal_suffix(self.day)
 
-    def _apply_format(self, fmt: str, token: str, value_name: str, size: int | SezimalInteger = None) -> str:
+    def _apply_format(self, fmt: str, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
         if token not in fmt:
             return fmt
 
@@ -254,8 +254,12 @@ class SezimalDate:
             if '@' in token:
                 value = str(value)
 
-                if size:
-                    value = value.zfill(int(SezimalInteger(size)))
+                #
+                # For the year, using “-”
+                # yields only the last 3 digits
+                #
+                if token.endswith('-y'):
+                    value = value[::-1][0:3][::-1]
 
                 value = sezimal_to_niftimal(value)
 
@@ -263,23 +267,49 @@ class SezimalDate:
                     value = value.zfill(int(SezimalInteger(size)))
 
                 if '!' in token:
-                    value = default_niftimal_to_regularized_dedicated_digits(value)
+                    value = default_niftimal_to_dedicated_digits(value)
                 else:
                     value = default_niftimal_to_regularized_digits(value)
 
             else:
                 if '9' in token:
                     value = str(int(value.decimal))
+
+                    #
+                    # For the year, using “-”
+                    # yields only the last 2 digits
+                    #
+                    if token.endswith('-y'):
+                        value = value[::-1][0:2][::-1]
+
                 elif '↋' in token:
                     value = value.dozenal
+
+                    #
+                    # For the year, using “-”
+                    # yields only the last 2 digits
+                    #
+                    if token.endswith('-y'):
+                        value = value[::-1][0:2][::-1]
+
                 else:
                     value = str(value)
+
+                    #
+                    # For the year, using “-”
+                    # yields only the last 3 digits
+                    #
+                    if token.endswith('-y'):
+                        value = value[::-1][0:3][::-1]
 
                 if size:
                     value = value.zfill(int(SezimalInteger(size)))
 
                 if '!' in token:
                     value = default_to_dedicated_digits(value)
+
+                elif '?' in token:
+                    value = locale.digit_replace(value)
 
             fmt = fmt.replace(token, value)
 
@@ -311,12 +341,6 @@ class SezimalDate:
         # Let’s deal first with the numeric formats
         #
         for character, value, size, size_niftimal, size_decimal in [
-            ['d', 'day', 2, 1, 2],                # 01 – 44/55 (01_dec – 28_dec/35_dec)
-            ['w', 'weekday', 2, 1, 1],            # 01 - 11 (01_dec – 7_dec)
-            ['m', 'month', 2, 1, 2],              # 01 – 20 (01_dec – 12_dec)
-            ['q', 'quarter', 1, 1, 1],            # 1 – 4
-            ['y', 'year', 10, 3, 5],              # 00_0000 – 55_5555 (−10_000_dec – 36_655_dec)
-
             ['dQ', 'day_in_quarter', 3, 2, 2],    # 001 – 231/242 (01_dec – 91_dec/98_dec)
             ['dY', 'day_in_year', 4, 2, 3],       # 0001 – 1404/1415 (001_dec – 364_dec/371_dec)
 
@@ -325,28 +349,65 @@ class SezimalDate:
             ['wY', 'week_in_year', 3, 2, 2],      # 001 – 124/125 (01_dec – 52_dec/53_dec)
 
             ['mQ', 'month_in_quarter', 1, 1, 1],  # 1 – 3
+
+            ['d', 'day', 2, 1, 2],                # 01 – 44/55 (01_dec – 28_dec/35_dec)
+            ['w', 'weekday', 2, 1, 1],            # 01 - 11 (01_dec – 7_dec)
+            ['m', 'month', 2, 1, 2],              # 01 – 20 (01_dec – 12_dec)
+            ['q', 'quarter', 1, 1, 1],            # 1 – 4
+            ['y', 'year', 10, 3, 5],              # 00_0000 – 55_5555 (−10_000_dec – 36_655_dec)
         ]:
             fmt = self._apply_format(fmt, f'#*-{character}', value)
             fmt = self._apply_format(fmt, f'#*{character}', value, size)
             fmt = self._apply_format(fmt, f'#-{character}', value)
             fmt = self._apply_format(fmt, f'#{character}', value, size)
-            fmt = self._apply_format(fmt, f'#9{character}', value, size_decimal)
-            fmt = self._apply_format(fmt, f'#↋{character}', value, size_decimal)
 
-            fmt = self._apply_format(fmt, f'#!*-{character}', value)
-            fmt = self._apply_format(fmt, f'#!*{character}', value, size)
-            fmt = self._apply_format(fmt, f'#!-{character}', value)
-            fmt = self._apply_format(fmt, f'#!{character}', value, size)
+            if '@' in fmt:
+                fmt = self._apply_format(fmt, f'#@*-{character}', value)
+                fmt = self._apply_format(fmt, f'#@*{character}', value, size_niftimal)
+                fmt = self._apply_format(fmt, f'#@-{character}', value)
+                fmt = self._apply_format(fmt, f'#@{character}', value, size_niftimal)
 
-            fmt = self._apply_format(fmt, f'#@*-{character}', value)
-            fmt = self._apply_format(fmt, f'#@*{character}', value, size_niftimal)
-            fmt = self._apply_format(fmt, f'#@-{character}', value)
-            fmt = self._apply_format(fmt, f'#@{character}', value, size_niftimal)
+                if '!' in fmt:
+                    fmt = self._apply_format(fmt, f'#@!*-{character}', value)
+                    fmt = self._apply_format(fmt, f'#@!*{character}', value, size_niftimal)
+                    fmt = self._apply_format(fmt, f'#@!-{character}', value)
+                    fmt = self._apply_format(fmt, f'#@!{character}', value, size_niftimal)
 
-            fmt = self._apply_format(fmt, f'#@!*-{character}', value)
-            fmt = self._apply_format(fmt, f'#@!*{character}', value, size_niftimal)
-            fmt = self._apply_format(fmt, f'#@!-{character}', value)
-            fmt = self._apply_format(fmt, f'#@!{character}', value, size_niftimal)
+            if '!' in fmt:
+                fmt = self._apply_format(fmt, f'#!*-{character}', value)
+                fmt = self._apply_format(fmt, f'#!*{character}', value, size)
+                fmt = self._apply_format(fmt, f'#!-{character}', value)
+                fmt = self._apply_format(fmt, f'#!{character}', value, size)
+
+            if '9' in fmt:
+                fmt = self._apply_format(fmt, f'#9*-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#9*{character}', value, size, locale=locale)
+                fmt = self._apply_format(fmt, f'#9-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#9{character}', value, size, locale=locale)
+
+            if '↋' in fmt:
+                fmt = self._apply_format(fmt, f'#↋*-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#↋*{character}', value, size, locale=locale)
+                fmt = self._apply_format(fmt, f'#↋-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#↋{character}', value, size, locale=locale)
+
+            if '?' in fmt:
+                fmt = self._apply_format(fmt, f'#?*-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#?*{character}', value, size, locale=locale)
+                fmt = self._apply_format(fmt, f'#?-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#?{character}', value, size, locale=locale)
+
+                if '9' in fmt:
+                    fmt = self._apply_format(fmt, f'#9?*-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?*{character}', value, size, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?{character}', value, size, locale=locale)
+
+                if '↋' in fmt:
+                    fmt = self._apply_format(fmt, f'#↋?*-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?*{character}', value, size, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?{character}', value, size, locale=locale)
 
         for character, value in [
             ['wM', 'week_in_month'],
@@ -389,14 +450,29 @@ class SezimalDate:
         if f'#Y' in fmt:
             fmt = fmt.replace(f'#Y', self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR))
 
+        if f'#!Y' in fmt:
+            fmt = fmt.replace(f'#!Y', default_to_dedicated_digits(self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+
+        if f'#@Y' in fmt:
+            fmt = fmt.replace(f'#@Y', self.year.niftimal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
+
+        if f'#@!Y' in fmt:
+            fmt = fmt.replace(f'#@!Y', default_to_dedicated_digits(self.year.niftimal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+
+        if f'#?Y' in fmt:
+            fmt = fmt.replace(f'#?Y', locale.digit_replace(self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+
         if f'#9Y' in fmt:
             fmt = fmt.replace(f'#9Y', self.year.decimal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
 
         if f'#↋Y' in fmt:
             fmt = fmt.replace(f'#↋Y', self.year.dozenal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
 
-        if f'#!Y' in fmt:
-            fmt = fmt.replace(f'#!Y', default_to_dedicated_digits(self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+        if f'#9?Y' in fmt:
+            fmt = fmt.replace(f'#9?Y', locale.digit_replace(self.year.decimal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+
+        if f'#↋?Y' in fmt:
+            fmt = fmt.replace(f'#9?Y', locale.digit_replace(self.year.dozenal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
 
         for separator in '''_.,˙ʼ’'•◦\u0020\u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f''':
             if f'#{separator}Y' in fmt:
@@ -423,6 +499,14 @@ class SezimalDate:
         if '#1M' in fmt:
             fmt = fmt.replace('#1M', locale.month_name(self.month)[0])
 
+        if '#2M' in fmt:
+            month_name = locale.month_name(self.month)
+
+            if locale.len(month_name) > 2:
+                fmt = fmt.replace('#2M', month_name[:2])
+            else:
+                fmt = fmt.replace('#2M', month_name)
+
         if '#W' in fmt:
             fmt = fmt.replace('#W', locale.weekday_name(self.weekday))
 
@@ -431,6 +515,14 @@ class SezimalDate:
 
         if '#1W' in fmt:
             fmt = fmt.replace('#1W', locale.weekday_name(self.weekday)[0])
+
+        if '#2W' in fmt:
+            weekday_name = locale.weekday_name(self.weekday)
+
+            if locale.len(weekday_name) > 2:
+                fmt = fmt.replace('#2W', weekday_name[:2])
+            else:
+                fmt = fmt.replace('#2W', weekday_name)
 
         if '#O' in fmt:
             fmt = fmt.replace('#O', locale.day_ordinal_suffix(self.day))
@@ -467,6 +559,18 @@ class SezimalDate:
             if '%-e' in fmt:
                 fmt = fmt.replace('%-e', str(self.gregorian_day))
 
+            if '%?d' in fmt:
+                fmt = fmt.replace('%?d', locale.digit_replace(str(self.gregorian_day).zfill(2)))
+
+            if '%?-d' in fmt:
+                fmt = fmt.replace('%?-d', locale.digit_replace(str(self.gregorian_day)))
+
+            if '%?e' in fmt:
+                fmt = fmt.replace('%?e', locale.digit_replace(str(self.gregorian_day).rjust(2)))
+
+            if '%?-e' in fmt:
+                fmt = fmt.replace('%?-e', locale.digit_replace(str(self.gregorian_day)))
+
             if '%o' in fmt:
                 fmt = fmt.replace('%o', locale.day_ordinal_suffix(Decimal(self.gregorian_day)))
 
@@ -476,6 +580,12 @@ class SezimalDate:
             if '%-m' in fmt:
                 fmt = fmt.replace('%-m', str(self.gregorian_month))
 
+            if '%?m' in fmt:
+                fmt = fmt.replace('%?m', locale.digit_replace(str(self.gregorian_month).zfill(2)))
+
+            if '%?-m' in fmt:
+                fmt = fmt.replace('%?-m', locale.digit_replace(str(self.gregorian_month)))
+
             if '%B' in fmt:
                 fmt = fmt.replace('%B', locale.month_name(Decimal(self.gregorian_month)))
 
@@ -483,10 +593,16 @@ class SezimalDate:
                 fmt = fmt.replace('%b', locale.month_abbreviated_name(Decimal(self.gregorian_month)))
 
             if '%y' in fmt:
-                fmt = fmt.replace('%y', str(self.gregorian_year))
+                fmt = fmt.replace('%y', str(self.gregorian_year)[::-1][0:2][::-1])
 
             if '%Y' in fmt:
                 fmt = fmt.replace('%Y', str(self.gregorian_year).zfill(4))
+
+            if '%?y' in fmt:
+                fmt = fmt.replace('%?y', locale.digit_replace(str(self.gregorian_year)[::-1][0:2][::-1]))
+
+            if '%?Y' in fmt:
+                fmt = fmt.replace('%?Y', locale.digit_replace(str(self.gregorian_year).zfill(4)))
 
             fmt = fmt.replace('__PERCENT__', '%%')
 
@@ -604,7 +720,11 @@ class SezimalDate:
     def julian_date(self) -> SezimalInteger:
         return self.ordinal_date + ISO_EPOCH_JULIAN_DATE
 
-    def replace(self, year=None, month=None, day=None) -> Self:
+    def replace(self,
+        year: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        month: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
         if year is None:
             year = self._year
 
@@ -764,7 +884,6 @@ class SezimalDate:
             phase = 'waning_crescent'
 
         return phase
-
 
 
 SezimalDate.min = SezimalDate(1, 1, 1)
