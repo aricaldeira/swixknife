@@ -10,7 +10,7 @@
 # http://individual.utoronto.ca/kalendis/symmetry.htm
 #
 
-__all__ = ('SezimalDate', 'TIME_SEPARATOR', 'tz_agrimas_offset', 'system_time_zone')
+__all__ = ('SezimalDate', 'tz_agrimas_offset', 'system_time_zone')
 
 from typing import TypeVar
 
@@ -25,7 +25,8 @@ from ..sezimal import Sezimal, SezimalInteger
 from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
-    default_niftimal_to_regularized_dedicated_digits
+    default_niftimal_to_regularized_dedicated_digits, \
+    sezimal_to_dozenal
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
@@ -198,7 +199,7 @@ class SezimalTime:
         return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
 
     def __str__(self) -> str:
-        res = self.format(f'#*d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
+        res = self.format(f'#*d #u:#p:#a.#n#b#e #t #V')
         return res.strip()
 
     @classmethod
@@ -229,7 +230,7 @@ class SezimalTime:
 
         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
 
-    def _apply_format(self, fmt: str, token: str, value_name: str, size: int | SezimalInteger = None) -> str:
+    def _apply_format(self, fmt: str, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
         if token not in fmt:
             return fmt
 
@@ -250,7 +251,7 @@ class SezimalTime:
                     value = value.zfill(int(SezimalInteger(size)))
 
                 if '!' in token:
-                    value = default_niftimal_to_regularized_dedicated_digits(value)
+                    value = default_niftimal_to_dedicated_digits(value)
                 else:
                     value = default_niftimal_to_regularized_digits(value)
 
@@ -267,6 +268,9 @@ class SezimalTime:
 
                 if '!' in token:
                     value = default_to_dedicated_digits(value)
+
+                elif '?' in token:
+                    value = locale.digit_replace(value)
 
             fmt = fmt.replace(token, value)
 
@@ -302,23 +306,76 @@ class SezimalTime:
             fmt = self._apply_format(fmt, f'#*{character}', value, size)
             fmt = self._apply_format(fmt, f'#-{character}', value)
             fmt = self._apply_format(fmt, f'#{character}', value, size)
-            fmt = self._apply_format(fmt, f'#9{character}', value, size_decimal)
-            fmt = self._apply_format(fmt, f'#↋{character}', value, size_decimal)
 
-            fmt = self._apply_format(fmt, f'#!*-{character}', value)
-            fmt = self._apply_format(fmt, f'#!*{character}', value, size)
-            fmt = self._apply_format(fmt, f'#!-{character}', value)
-            fmt = self._apply_format(fmt, f'#!{character}', value, size)
+            if '@' in fmt:
+                fmt = self._apply_format(fmt, f'#@*-{character}', value)
+                fmt = self._apply_format(fmt, f'#@*{character}', value, size_niftimal)
+                fmt = self._apply_format(fmt, f'#@-{character}', value)
+                fmt = self._apply_format(fmt, f'#@{character}', value, size_niftimal)
 
-            fmt = self._apply_format(fmt, f'#@*-{character}', value)
-            fmt = self._apply_format(fmt, f'#@*{character}', value, size_niftimal)
-            fmt = self._apply_format(fmt, f'#@-{character}', value)
-            fmt = self._apply_format(fmt, f'#@{character}', value, size_niftimal)
+                if '!' in fmt:
+                    fmt = self._apply_format(fmt, f'#@!*-{character}', value)
+                    fmt = self._apply_format(fmt, f'#@!*{character}', value, size_niftimal)
+                    fmt = self._apply_format(fmt, f'#@!-{character}', value)
+                    fmt = self._apply_format(fmt, f'#@!{character}', value, size_niftimal)
 
-            fmt = self._apply_format(fmt, f'#@!*-{character}', value)
-            fmt = self._apply_format(fmt, f'#@!*{character}', value, size_niftimal)
-            fmt = self._apply_format(fmt, f'#@!-{character}', value)
-            fmt = self._apply_format(fmt, f'#@!{character}', value, size_niftimal)
+            if '!' in fmt:
+                fmt = self._apply_format(fmt, f'#!*-{character}', value)
+                fmt = self._apply_format(fmt, f'#!*{character}', value, size)
+                fmt = self._apply_format(fmt, f'#!-{character}', value)
+                fmt = self._apply_format(fmt, f'#!{character}', value, size)
+
+            if '9' in fmt:
+                fmt = self._apply_format(fmt, f'#9*-{character}', value)
+                fmt = self._apply_format(fmt, f'#9*{character}', value, size)
+                fmt = self._apply_format(fmt, f'#9-{character}', value)
+                fmt = self._apply_format(fmt, f'#9{character}', value, size)
+
+            if '↋' in fmt:
+                fmt = self._apply_format(fmt, f'#↋*-{character}', value)
+                fmt = self._apply_format(fmt, f'#↋*{character}', value, size)
+                fmt = self._apply_format(fmt, f'#↋-{character}', value)
+                fmt = self._apply_format(fmt, f'#↋{character}', value, size)
+
+            if '?' in fmt:
+                fmt = self._apply_format(fmt, f'#?*-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#?*{character}', value, size, locale=locale)
+                fmt = self._apply_format(fmt, f'#?-{character}', value, locale=locale)
+                fmt = self._apply_format(fmt, f'#?{character}', value, size, locale=locale)
+
+                if '9' in fmt:
+                    fmt = self._apply_format(fmt, f'#9?*-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?*{character}', value, size, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#9?{character}', value, size, locale=locale)
+
+                if '↋' in fmt:
+                    fmt = self._apply_format(fmt, f'#↋?*-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?*{character}', value, size, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?-{character}', value, locale=locale)
+                    fmt = self._apply_format(fmt, f'#↋?{character}', value, size, locale=locale)
+
+        if '#99' in fmt:
+            decimal_time = self.decimal_time
+
+            fmt = fmt.replace('#99u', decimal_time[0])
+            fmt = fmt.replace('#99p', decimal_time[1])
+            fmt = fmt.replace('#99a', decimal_time[2])
+
+            fmt = fmt.replace('#99?u', locale.digit_replace(decimal_time[0]))
+            fmt = fmt.replace('#99?p', locale.digit_replace(decimal_time[1]))
+            fmt = fmt.replace('#99?a', locale.digit_replace(decimal_time[2]))
+
+        if '#↋↋' in fmt:
+            dozenal_time = self.dozenal_time
+
+            fmt = fmt.replace('#↋↋u', dozenal_time[0])
+            fmt = fmt.replace('#↋↋p', dozenal_time[1])
+            fmt = fmt.replace('#↋↋a', dozenal_time[2])
+
+            fmt = fmt.replace('#↋↋?u', locale.digit_replace(dozenal_time[0]))
+            fmt = fmt.replace('#↋↋?p', locale.digit_replace(dozenal_time[1]))
+            fmt = fmt.replace('#↋↋?a', locale.digit_replace(dozenal_time[2]))
 
         for character, value, unit in [
             ['d', 'day', 'SH-day'],
@@ -336,7 +393,7 @@ class SezimalTime:
 
         if '#t' in fmt:
             if self._time_zone_offset == 0:
-                fmt = fmt.replace('#t', f'+00{TIME_SEPARATOR}00')
+                fmt = fmt.replace('#t', f'+00:00')
             else:
                 if self._time_zone_offset > 0:
                     text = '+'
@@ -347,8 +404,8 @@ class SezimalTime:
                     abs(self._time_zone_offset / 100),
                     sezimal_places=0,
                     minimum_size=4,
-                    group_separator=TIME_SEPARATOR,
-                    subgroup_separator=TIME_SEPARATOR,
+                    group_separator=':',
+                    subgroup_separator=':',
                 )
 
                 fmt = fmt.replace('#t', text)
@@ -413,6 +470,24 @@ class SezimalTime:
             if '%-S' in fmt:
                 fmt = fmt.replace('%-S', str(self.iso_second))
 
+            if '%?H' in fmt:
+                fmt = fmt.replace('%?H', locale.digit_replace(str(self.iso_hour).zfill(2)))
+
+            if '%?-H' in fmt:
+                fmt = fmt.replace('%?-H', locale.digit_replace(str(self.iso_hour)))
+
+            if '%?M' in fmt:
+                fmt = fmt.replace('%?M', locale.digit_replace(str(self.iso_minute).zfill(2)))
+
+            if '%?-M' in fmt:
+                fmt = fmt.replace('%?-M', locale.digit_replace(str(self.iso_minute)))
+
+            if '%?S' in fmt:
+                fmt = fmt.replace('%?S', locale.digit_replace(str(self.iso_second).zfill(2)))
+
+            if '%?-S' in fmt:
+                fmt = fmt.replace('%?-S', locale.digit_replace(str(self.iso_second)))
+
             if '%f' in fmt:
                 fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
 
@@ -463,3 +538,65 @@ class SezimalTime:
     def from_days(cls, days: Sezimal, time_zone: str | ZoneInfo = None) -> Self:
         agrimas = Sezimal(days) * 100_0000
         return cls(agrima=agrimas, time_zone=time_zone)
+
+    def replace(self,
+        uta: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        posha: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        agrima: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        anuga: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        boda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        time_zone: str | ZoneInfo = None,
+    ) -> Self:
+        if uta is None:
+            uta = self._uta
+
+        if posha is None:
+            posha = self._posha
+
+        if agrima is None:
+            agrima = self._agrima
+
+        if anuga is None:
+            anuga = self._anuga
+
+        if boda is None:
+            boda = self._boda
+
+        if ekaditiboda is None:
+            ekaditiboda = self._ekaditiboda
+
+        if day is None:
+            day = self._day
+
+        if time_zone is None:
+            time_zone = self._time_zone
+
+        return type(self)(uta, posha, agrima, anuga, boda, ekaditiboda, day, time_zone)
+
+    @property
+    def dozenal_time(self) -> tuple[str, str, str]:
+        dt = sezimal_to_dozenal(self.as_days.decimal).split('.')[1][:6]
+
+        if len(dt) < 6:
+            dt = dt.ljust(6, '0')
+
+        dozenal_uta = dt[0:2]
+        dozenal_posha = dt[2:4]
+        dozenal_agrima = dt[4:6]
+
+        return dozenal_uta, dozenal_posha, dozenal_agrima
+
+    @property
+    def decimal_time(self) -> tuple[str, str, str]:
+        dt = str(self.as_days.decimal).split('.')[1][:6]
+
+        if len(dt) < 6:
+            dt = dt.ljust(6, '0')
+
+        decimal_uta = dt[0:2]
+        decimal_posha = dt[2:4]
+        decimal_agrima = dt[4:6]
+
+        return decimal_uta, decimal_posha, decimal_agrima
