@@ -547,8 +547,7 @@ class SezimalCalendar:
         events = []
         events_other_calendar = []
 
-        # try:
-        if True:
+        if os.path.isfile(os.path.expanduser('~/.swixknife.py')):
             arq = open(os.path.expanduser('~/.swixknife.py'), 'r').read()
             code = compile(arq, '', 'exec')
             localdict = {}
@@ -568,9 +567,6 @@ class SezimalCalendar:
 
             if 'EVENTS_OTHER_CALENDAR' in localdict:
                 events_other_calendar += localdict['EVENTS_OTHER_CALENDAR']
-
-        # except:
-        #     pass
 
         self._compute_convert_age_holidays_events(self._holidays, holidays)
         self._compute_convert_age_holidays_events(self._holidays_other_calendar, holidays_other_calendar)
