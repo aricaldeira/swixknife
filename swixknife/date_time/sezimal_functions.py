@@ -5,6 +5,7 @@ import datetime as _datetime
 from zoneinfo import ZoneInfo
 import re
 
+
 try:
     import tzlocal
 except:
@@ -15,14 +16,23 @@ from decimal import Decimal
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..functions import floor, ceil
+from .gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
-TIME_SEPARATOR = ":"
 
-VALID_DATE_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}$')
+VALID_DATE_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}$')
 VALID_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}:[0-5]{2}$')
 VALID_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}$')
-VALID_DATE_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
-VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
+VALID_DATE_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
+VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
+
+#
+# Some expressions to validate holidays and events
+# using other calendars
+#
+VALID_MONTH_DAY_STRING = re.compile(r'^[0-5]{2}-[0-5]{2}$')
+VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{2}-[0-9]{2}$')
+VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?')
 
 
 #
