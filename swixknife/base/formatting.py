@@ -270,20 +270,9 @@ def dozenal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
     ) -> str:
-    if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-        number = sezimal_to_dozenal(number)
-    elif type(number).__name__ == 'Decimal':
-        number = sezimal_to_dozenal(decimal_to_sezimal(number))
-
-    if type(dozenal_places).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-        dozenal_places = sezimal_to_dozenal(dozenal_places)
-    elif type(dozenal_places).__name__ == 'Decimal':
-        dozenal_places = sezimal_to_dozenal(decimal_to_sezimal(dozenal_places))
-
-    if type(minimum_size).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-        minimum_size = sezimal_to_dozenal(minimum_size)
-    elif type(number).__name__ == 'Decimal':
-        minimum_size = sezimal_to_dozenal(decimal_to_sezimal(minimum_size))
+    number = sezimal_to_dozenal(number)
+    dozenal_places = sezimal_to_dozenal(dozenal_places)
+    minimum_size = sezimal_to_dozenal(minimum_size)
 
     number = validate_clean_dozenal(str(number))
     dozenal_places = validate_clean_dozenal(dozenal_places)
