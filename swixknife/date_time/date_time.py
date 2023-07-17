@@ -140,7 +140,7 @@ class SezimalDateTime:
         return str(self)
 
     def isoformat(self) -> str:
-        return self.format(f'#y-#m-#d #u{TIME_SEPARATOR}#p{TIME_SEPARATOR}#a.#n#b#e #t #V')
+        return self.format(f'#y-#m-#d #u:#p:#a.#n#b#e #t#-V')
 
     __str__ = isoformat
 
@@ -472,3 +472,19 @@ class SezimalDateTime:
         days -= SezimalInteger(days)
         time = SezimalTime.from_days(days, time_zone)
         return cls.combine(date, time, time_zone)
+
+    def replace(self,
+        year: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        month: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        uta: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        posha: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        agrima: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        anuga: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        boda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        time_zone: str | ZoneInfo = None,
+    ) -> Self:
+        date = self._date.replace(year, month, day)
+        time = self._time.replace(uta, posha, agrima, anuga, boda, ekaditiboda, time_zone=time_zone)
+        return type(self).combine(date, time, time.time_zone)
