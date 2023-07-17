@@ -2,6 +2,8 @@
 from typing import TypeVar
 
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
+SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
+SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 
 
 from decimal import Decimal, localcontext, getcontext
@@ -14,8 +16,11 @@ from .decimal_sezimal_conversion import decimal_to_sezimal
 DOZENAL_DIGITS = '0123456789↊↋'
 
 
-def sezimal_to_dozenal(number: int | float | Decimal | str | Sezimal, dozenal_precision: int = None) -> str:
-    number = sezimal_to_decimal(number)
+def sezimal_to_dozenal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, dozenal_precision: int = None) -> str:
+    if type(number) == Decimal:
+        number = validate_clean_decimal(str(number))
+    else:
+        number = sezimal_to_decimal(number)
 
     if number.startswith('-'):
         negative = True
@@ -43,7 +48,7 @@ def sezimal_to_dozenal(number: int | float | Decimal | str | Sezimal, dozenal_pr
     return dozenal
 
 
-def _decimal_integer_to_dozenal(integer: str) -> str:
+def _decimal_integer_to_dozenal(integer: str | int) -> str:
     if not integer:
         return ''
 
@@ -74,8 +79,8 @@ def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int
         # context.prec = dozenal_precision * 2
 
         for i in range(dozenal_precision):
-            fraction = fraction * 12
-            digit = int(fraction % 10)
+            fraction *= 12
+            digit = int(fraction % 12)
             dozenal_fraction += DOZENAL_DIGITS[digit]
             fraction -= digit
 
