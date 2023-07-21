@@ -257,6 +257,11 @@ def validate_clean_dozenal(number: str) -> str:
     if not cleaned_number:
         cleaned_number = '0'
 
+    cleaned_number = cleaned_number.replace('A', '↊')
+    cleaned_number = cleaned_number.replace('a', '↊')
+    cleaned_number = cleaned_number.replace('B', '↋')
+    cleaned_number = cleaned_number.replace('b', '↋')
+
     invalid = _VALID_DOZENAL_FORMAT.sub('', cleaned_number)
 
     if invalid != '':
