@@ -717,8 +717,12 @@ class SezimalDate:
         return self.gregorian_date.isocalendar()
 
     @property
-    def julian_date(self) -> SezimalInteger:
+    def julian_date(self) -> Sezimal:
         return self.ordinal_date + ISO_EPOCH_JULIAN_DATE
+
+    @property
+    def mars_sol_date(self) -> Sezimal:
+        return mars_sol_date(self.julian_date)
 
     def replace(self,
         year: str | int | float | Decimal | Sezimal | SezimalInteger = None,

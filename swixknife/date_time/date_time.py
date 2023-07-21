@@ -24,7 +24,7 @@ from decimal import Decimal
 
 from .date import SezimalDate
 from .time import SezimalTime
-from ..sezimal import Sezimal, SezimalInteger
+from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
@@ -313,7 +313,11 @@ class SezimalDateTime:
 
     @property
     def julian_date(self) -> Sezimal:
-        return round(self._date.julian_date + self._time.julian_date, 10)
+        return self._date.julian_date + self._time.julian_date
+
+    @property
+    def mars_sol_date(self) -> Sezimal:
+        return mars_sol_date(self.julian_date)
 
     @property
     def uta(self) -> SezimalInteger:
@@ -488,3 +492,10 @@ class SezimalDateTime:
         date = self._date.replace(year, month, day)
         time = self._time.replace(uta, posha, agrima, anuga, boda, ekaditiboda, time_zone=time_zone)
         return type(self).combine(date, time, time.time_zone)
+
+    @classmethod
+    def from_julian_date(cls, julian_date: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, time_zone: str | ZoneInfo = None) -> Self:
+        julian_date = Sezimal(julian_date)
+        ordinal_date = julian_date - ISO_EPOCH_JULIAN_DATE
+
+        return cls.from_days(ordinal_date, time_zone)

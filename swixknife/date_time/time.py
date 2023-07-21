@@ -37,7 +37,7 @@ class SezimalTime:
 
     def __new__(
         cls,
-        uta: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
+        uta: str | int | float | Decimal | Sezimal | SezimalInteger | _datetime.time = 0,
         posha: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
@@ -51,6 +51,15 @@ class SezimalTime:
                 uta, posha, agrima = uta.split(':')
             elif VALID_PARTIAL_TIME_STRING.match(uta):
                 uta, posha = uta.split(':')
+
+        elif type(uta) == _datetime.time:
+            seconds = Decimal(str(uta.hour)) * 60 * 60
+            seconds += Decimal(str(uta.minute)) * 60
+            seconds += Decimal(str(uta.second))
+            seconds += Decimal(str(uta.microsecond)) / 1_000_000
+            days = seconds / 86400
+            time_zone = time_zone or uta.tzinfo
+            return cls.from_days(days, time_zone)
 
         day = Sezimal(day)
         uta = Sezimal(uta)
@@ -105,6 +114,8 @@ class SezimalTime:
 
         if not time_zone:
             time_zone = system_time_zone()
+        elif type(time_zone) == ZoneInfo:
+            time_zone = str(time_zone)
 
         self._time_zone = time_zone
         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone)
@@ -528,7 +539,13 @@ class SezimalTime:
             tz_offset, dst_offset = tz_agrimas_offset(self.time_zone)
             total_agrimas -= tz_offset # + dst_offset
 
-        return round(total_agrimas / 100_0000, 10)
+        jd = total_agrimas / 100_0000
+
+        return jd
+
+    @property
+    def mars_sol_date(self) -> Sezimal:
+        return mars_sol_date(self.julian_date)
 
     @property
     def as_days(self) -> Sezimal:

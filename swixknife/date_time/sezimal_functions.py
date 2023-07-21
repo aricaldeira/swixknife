@@ -329,3 +329,43 @@ def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str =
     total_agrimas, total_agrimas_dst = tz_agrimas_offset(time_zone, base_gregorian_date)
 
     return total_agrimas / 100_0000, total_agrimas_dst / 100_0000
+
+
+def mars_sol_date(julian_date: Sezimal) -> Sezimal:
+    #
+    # Ref. https://en.wikipedia.org/wiki/Timekeeping_on_Mars#Mars_Sol_Date
+    #
+    # MARS_SOL_EPOCH = 2_405_522.002_877_9_dec
+    # This is 13_0550-01-01 30:03:12.520354244205(01_4402_5454_4203_3201_0553_4140_4131)
+    # Equivalent to Gregorian/ISO 1873-12-29 12:03:36.466559
+    #
+    MARS_SOL_EPOCH = Sezimal('1_2332_0402.0003_1252_0354_2442_0501_4402_5454_4203_3201_0553_4140_4131')
+    #
+    # Julian date 13_1315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
+    #
+    JULIAN_DATE_131315 = Sezimal('1_2431_3425')
+
+    #
+    # 37_dec seconds + 32.184_dec seconds
+    # in 86_400_dec seconds in a day
+    #
+    TAI_UTC_OFFSET = (Decimal('37') + Decimal('32.184')) / Decimal('86_400')
+
+    #
+    # Length of Mars sol in ekaditibodas = 100_5534_3442_4322_1121 ~ 88_775.244_dec seconds
+    # Lenght of Earth day in ekaditibodas = 100_0000_0001_2221_5525 ~ 86_400.002_dec seconds
+    #
+    # MARS_SOL_IN_DAYS = SezimalFraction('100_5534_3442_4322_1121', '100_0000_0001_2221_5525')
+    MARS_SOL_IN_DAYS = Sezimal(Decimal('1.027_491_252'))
+
+    #
+    # Formula from:
+    # http://marsclock.com/
+    #
+    julian_date = julian_date + TAI_UTC_OFFSET - JULIAN_DATE_131315
+    mars_sol_date = julian_date - 4.3
+    mars_sol_date /= MARS_SOL_IN_DAYS
+    mars_sol_date += Sezimal('54_3220')  # 44_796_dec
+    mars_sol_date -= Decimal('0.00096')  # adjustment from Mars24
+
+    return mars_sol_date
