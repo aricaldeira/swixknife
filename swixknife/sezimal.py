@@ -1063,6 +1063,9 @@ class SezimalFraction(Sezimal):
             elif '÷' in numerator:
                 numerator, denominator = numerator.split('÷')
 
+        elif type(numerator) == Decimal:
+            numerator = decimal_to_sezimal(str(numerator))
+
         cleaned_numerator = validate_clean_sezimal(numerator)
 
         if denominator is None:
@@ -1070,6 +1073,10 @@ class SezimalFraction(Sezimal):
             numerator, denominator = numerator.as_integer_ratio()
             cleaned_numerator = str(numerator)
             cleaned_denominator = str(denominator)
+
+        elif type(denominator) == Decimal:
+            denominator = decimal_to_sezimal(str(denominator))
+            cleaned_denominator = validate_clean_sezimal(denominator)
 
         else:
             cleaned_denominator = validate_clean_sezimal(denominator)
