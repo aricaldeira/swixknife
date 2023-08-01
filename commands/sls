@@ -27,16 +27,15 @@ if __name__ == '__main__':
 
     original_path = ''
 
-    if arguments.directory and len(arguments.directory) == 1:
+    if len(arguments.directory) == 1:
         original_path = arguments.directory[0]
-        original_path = str(pathlib.Path(original_path).absolute()) + '/'
+        original_path = str(pathlib.Path(original_path).absolute())
 
-        dl = os.listdir(original_path)
+        if os.path.isdir(original_path):
+            dl = os.listdir(original_path)
 
-        arguments.directory = []
-
-        for name in dl:
-            arguments.directory.append(str(pathlib.Path(original_path, name).absolute()))
+            for name in dl:
+                arguments.directory.append(str(pathlib.Path(original_path, name).absolute()))
 
     sdl = SezimalDirectoryList(arguments.directory or None)
     sdl.original_path = original_path
