@@ -440,9 +440,9 @@ class SezimalDate:
             suffix = locale.day_ordinal_suffix(self.day)
 
             if suffix:
-                fmt = fmt.replace('#O&d', sezimal_spellout('ordinal ' + str(self.day), lang or 'en'))
+                fmt = fmt.replace('#&Od', sezimal_spellout('ordinal ' + str(self.day), lang or 'en'))
             else:
-                fmt = fmt.replace('#O&d', sezimal_spellout(str(self.day), lang or 'en'))
+                fmt = fmt.replace('#&Od', sezimal_spellout(str(self.day), lang or 'en'))
 
         #
         # Formatted year number
