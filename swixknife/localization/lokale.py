@@ -442,6 +442,13 @@ class SezimalLocale:
             range(0x1AB0, 0x1ACF),
             range(0x1DC0, 0x1E00),
             range(0x20D0, 0x20F1),
+            #
+            # Variation Selectors
+            #
+            range(0xFE00, 0xFE10),
+            #
+            # Combining half marks
+            #
             range(0xFE20, 0xFE30),
             #
             # Devanagari combining characters;
