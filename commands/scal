@@ -65,7 +65,7 @@ if __name__ == '__main__':
             time = SDT.combine(date, ST.now(time_zone), time_zone)
 
     else:
-        time = SDT.now()
+        time = SDT.now(time_zone)
         date = time.date
 
     day = arguments.day or None
@@ -157,5 +157,9 @@ if __name__ == '__main__':
     else:
         calendar = cal.month()
 
-    print(calendar)
+    if 'KONSOLE_VERSION' in os.environ:
+        print(calendar.replace('\ufe0f', ''))
+    else:
+        print(calendar)
+
     print()
