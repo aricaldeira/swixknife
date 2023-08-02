@@ -50,6 +50,8 @@ if __name__ == '__main__':
         # sdl.date_time_format = arguments.date_time_format or '%d/%m/%y %a %H:%M'
     elif arguments.dozenal:
         sdl.date_time_format = arguments.date_time_format or '#↋d/#↋m/#↋-y #@W #↋↋u:#↋↋p'
+    elif arguments.dedicated_digits:
+        sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!-y #@W #!u:#!p'
     else:
         sdl.date_time_format = arguments.date_time_format or '#d/#m/#-y #@W #u:#p'
 
