@@ -6,6 +6,7 @@
 find . -type f -name "*.cpython-311-x86_64-linux-gnu.so" -delete
 find . -type f -name "*.c" -delete
 rm build -rf
+rm dist -rf
 
 python setup.py build_ext
 
