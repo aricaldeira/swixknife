@@ -1,7 +1,7 @@
 
 
 from setuptools import setup, find_packages
-# from Cython.Build import cythonize
+from Cython.Build import cythonize
 import swixknife
 
 packages = find_packages()
@@ -17,8 +17,8 @@ setup(
             'sun_moon.db',
         ]
     },
-    # ext_modules=cythonize(
-    #     module_list=modules,
-    #     language_level='3',
-    # )
+    ext_modules=cythonize(
+        module_list=modules,
+        language_level='3',
+    )
 )
