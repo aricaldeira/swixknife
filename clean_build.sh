@@ -17,4 +17,4 @@ find . -type f -name "*.py~" -delete
 rm swixknife.egg-info -rf
 
 rm build -rf
-rm dist -rf
+# rm dist -rf

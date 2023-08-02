@@ -20,5 +20,11 @@ setup(
     ext_modules=cythonize(
         module_list=modules,
         language_level='3',
+        embedded_metadata={
+            '': [
+                '*.sor',
+                'sun_moon.db',
+            ]
+        },
     )
 )
