@@ -189,10 +189,10 @@ class SezimalFileInfo:
                 self._color = LS_COLORS['or'] if 'or' in LS_COLORS else ''
 
             else:
-                link_stat_info = os.lstat(self._link_to)
-                self._itens_in_directory = SezimalInteger(Decimal(link_stat_info.st_nlink))
-                self._file_size = SezimalInteger(Decimal(str(link_stat_info.st_size)))
-                self._link_to_suffix, self._link_to_color = self._get_suffix_color(link_stat_info)
+                stat_info = os.lstat(self._link_to)
+                self._itens_in_directory = SezimalInteger(Decimal(stat_info.st_nlink))
+                self._file_size = SezimalInteger(Decimal(str(stat_info.st_size)))
+                self._link_to_suffix, self._link_to_color = self._get_suffix_color(stat_info)
 
                 if os.path.isdir(self.file_name):
                     self._permission = 'd'
