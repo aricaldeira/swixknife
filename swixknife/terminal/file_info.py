@@ -43,7 +43,10 @@ class SezimalFileInfo:
         self._date_time = None
         self._color = ''
         self._suffix = ''
+        self._suffix_color = ''
         self._link_to = ''
+        self._link_to_suffix = ''
+        self._link_to_color = ''
         self.locale = sezimal_locale(locale)
 
         self.file_name = file_name
@@ -94,8 +97,20 @@ class SezimalFileInfo:
         return self._suffix
 
     @property
+    def suffix_color(self) -> str:
+        return self._suffix_color
+
+    @property
     def link_to(self) -> str:
         return self._link_to
+
+    @property
+    def link_to_suffix(self) -> str:
+        return self._link_to_suffix
+
+    @property
+    def link_to_color(self) -> str:
+        return self._link_to_color
 
     @property
     def is_directory(self) -> bool:
@@ -163,17 +178,71 @@ class SezimalFileInfo:
         #
         if stat.S_ISDIR(stat_info.st_mode):
             self._permission = 'd'
-            self._color = LS_COLORS['di'] if 'di' in LS_COLORS else ''
-            self._suffix = '/'
+            self._suffix, self._color = self._get_suffix_color(stat_info)
 
         elif stat.S_ISLNK(stat_info.st_mode):
             self._permission = 'l'
-            self._color = LS_COLORS['li'] if 'li' in LS_COLORS else ''
-            self._suffix = '@ → '
-            self._link_to = ' ' + os.readlink(self.file_name)
+            self._suffix, self._color = self._get_suffix_color(stat_info)
+            self._link_to = os.readlink(self.file_name)
 
             if not os.path.exists(self.file_name):
                 self._color = LS_COLORS['or'] if 'or' in LS_COLORS else ''
+
+            else:
+                link_stat_info = os.lstat(self._link_to)
+                self._itens_in_directory = SezimalInteger(Decimal(link_stat_info.st_nlink))
+                self._file_size = SezimalInteger(Decimal(str(link_stat_info.st_size)))
+                self._link_to_suffix, self._link_to_color = self._get_suffix_color(link_stat_info)
+
+                if os.path.isdir(self.file_name):
+                    self._permission = 'd'
+
+        elif stat.S_ISBLK(stat_info.st_mode):
+            pass
+        elif stat.S_ISDOOR(stat_info.st_mode):
+            pass
+        elif stat.S_ISSOCK(stat_info.st_mode):
+            pass
+        elif stat.S_ISCHR(stat_info.st_mode):
+            pass
+        elif stat.S_ISWHT(stat_info.st_mode):
+            pass
+        elif stat.S_ISFIFO(stat_info.st_mode):
+            pass
+        elif stat.S_ISPORT(stat_info.st_mode):
+            pass
+        # elif stat.S_ISGID(stat_info.st_mode):
+        #     pass
+        # elif stat.S_ISVTX(stat_info.st_mode):
+        #     pass
+
+        #
+        # Is a regular file
+        #
+        elif stat.S_ISREG(stat_info.st_mode):
+            self._suffix, self._color = self._get_suffix_color(stat_info)
+
+        #
+        # Finally, let’s deal with permissions
+        #
+        for who in 'USR', 'GRP', 'OTH':
+            for what in 'R', 'W', 'X':
+                if stat.S_IMODE(stat_info.st_mode) & getattr(stat, 'S_I' + what + who):
+                    self._permission += what.lower()
+                else:
+                    self._permission += '-'
+
+        self._simplify_permissions()
+
+    def _get_suffix_color(self, stat_info) -> list[str, str]:
+        #
+        # Now, let’s deal with the permissions, file type and color
+        #
+        if stat.S_ISDIR(stat_info.st_mode):
+            return ['/', LS_COLORS['di'] if 'di' in LS_COLORS else '']
+
+        elif stat.S_ISLNK(stat_info.st_mode):
+            return [' → ', LS_COLORS['ln'] if 'ln' in LS_COLORS else '']
 
         elif stat.S_ISBLK(stat_info.st_mode):
             pass
@@ -202,31 +271,18 @@ class SezimalFileInfo:
             # Let’s check if it is executable
             #
             if stat_info.st_mode & (stat.S_IXGRP | stat.S_IXUSR | stat.S_IXOTH):
-                self._suffix = '*'
-                self._color = LS_COLORS['ex'] if 'ex' in LS_COLORS else ''
+                return ['*', LS_COLORS['ex'] if 'ex' in LS_COLORS else '']
 
             elif '.' in self.file_name:
                 extension = '*.' + self.file_name.split('.')[-1]
 
                 if extension == '*.py':
-                    self._suffix = ' \ufe0f🐍'
-                    self._color = colorama.ansi.code_to_chars('38:5:106')
+                    return [' \ufe0f🐍', colorama.ansi.code_to_chars('38:5:106')]
 
                 elif extension == '*.sql':
-                    self._suffix = ' \ufe0f🐘'
-                    self._color = colorama.ansi.code_to_chars('38:5:102')
+                    return [' \ufe0f🐘', colorama.ansi.code_to_chars('38:5:102')]
 
                 if extension in LS_COLORS:
-                    self._color = LS_COLORS[extension]
+                    return ['', LS_COLORS[extension]]
 
-        #
-        # Finally, let’s deal with permissions
-        #
-        for who in 'USR', 'GRP', 'OTH':
-            for what in 'R', 'W', 'X':
-                if stat.S_IMODE(stat_info.st_mode) & getattr(stat, 'S_I' + what + who):
-                    self._permission += what.lower()
-                else:
-                    self._permission += '-'
-
-        self._simplify_permissions()
+        return ['', '']

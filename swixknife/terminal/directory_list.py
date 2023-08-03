@@ -108,7 +108,10 @@ class SezimalDirectoryList:
                 'permission': file_info.permission,
                 'file_name': file_info.file_name.replace(self.original_path, ''),
                 'suffix': file_info.suffix,
+                'suffix_color': file_info.suffix_color,
                 'link_to': file_info.link_to,
+                'link_to_suffix': file_info.link_to_suffix,
+                'link_to_color': file_info.link_to_color,
                 'user': file_info.user,
                 'group': file_info.group,
                 'color': file_info.color,
@@ -146,8 +149,8 @@ class SezimalDirectoryList:
 
         for info in lines:
             if use_color:
-                line = f'''{info['permission']} {info['user'].ljust(user_padding)} {info['group'].ljust(group_padding)} {info['size'].rjust(size_padding)} {info['date_time']} {info['color']}{info['file_name']}{colorama.Style.RESET_ALL}{info['suffix']}{info['link_to']}\n'''
+                line = f'''{info['permission']} {info['user'].ljust(user_padding)} {info['group'].ljust(group_padding)} {info['size'].rjust(size_padding)} {info['date_time']} {info['color']}{info['file_name']}{colorama.Style.RESET_ALL}{info['suffix_color']}{info['suffix']}{colorama.Style.RESET_ALL}{info['link_to_color']}{info['link_to']}{colorama.Style.RESET_ALL}{info['link_to_suffix']}\n'''
             else:
-                line = f'''{info['permission']} {info['user'].ljust(user_padding)} {info['group'].ljust(group_padding)} {info['size'].rjust(size_padding)} {info['date_time']} {info['file_name']}{info['suffix']}{info['link_to']}\n'''
+                line = f'''{info['permission']} {info['user'].ljust(user_padding)} {info['group'].ljust(group_padding)} {info['size'].rjust(size_padding)} {info['date_time']} {info['file_name']}{info['suffix']}{info['link_to']}{info['link_to_suffix']}\n'''
 
             terminal.write(line)
