@@ -435,3 +435,145 @@ class SezimalLocaleGA_TRADITIONAL(SezimalLocaleGA):
                     month_name = 'Ṁ' + month_name[1:]
 
         return month_name
+
+    def month_abbreviated_name(self, month: SezimalInteger, mutation: str = '', case: str = '') -> str:
+        month = SezimalInteger(month)
+
+        if month < 1 or month > 20:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        month_abbreviated_name = self.MONTH_ABBREVIATED_NAME[int(month.decimal) - 1]
+
+        mutation = mutation.upper()
+        case = case.upper()
+
+        #
+        # Lenition
+        #
+        if mutation == 'L':
+            if month == 2:
+                month_abbreviated_name = 'Ḟ' + month_abbreviated_name[1:]
+            elif month == 3:
+                month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+            elif month == 5:
+                month_abbreviated_name = 'Ḃ' + month_abbreviated_name[1:]
+            elif month == 10:
+                if case == 'G':
+                    month_abbreviated_name = self.month_abbreviated_name(month, '', 'G')
+                    month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+                else:
+                    month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+            elif month == 13:
+                month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+            elif month == 14:
+                month_abbreviated_name = 'Ḋ' + month_abbreviated_name[1:]
+            elif month == 15:
+                month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+            elif month == 20:
+                month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+
+        #
+        # Eclipsis
+        #
+        elif mutation == 'E':
+            if month == 1:
+                month_abbreviated_name = 'n' + month_abbreviated_name
+            elif month == 2:
+                month_abbreviated_name = 'ḃ' + month_abbreviated_name
+            elif month == 4:
+                month_abbreviated_name = 'n' + month_abbreviated_name
+            elif month == 5:
+                month_abbreviated_name = 'm' + month_abbreviated_name
+            elif month == 11:
+                month_abbreviated_name = 'n' + month_abbreviated_name
+            elif month == 14:
+                month_abbreviated_name = 'n' + month_abbreviated_name
+
+        #
+        # H-Protesis
+        #
+        elif mutation == 'H':
+            if month == 1:
+                month_abbreviated_name = 'h' + month_abbreviated_name
+            elif month == 4:
+                month_abbreviated_name = 'h' + month_abbreviated_name
+            elif month == 11:
+                month_abbreviated_name = 'h' + month_abbreviated_name
+
+        #
+        # T-Protesis
+        #
+        elif mutation == 'T':
+            if month == 1:
+                month_abbreviated_name = 't' + month_abbreviated_name
+            elif month == 4:
+                month_abbreviated_name = 't' + month_abbreviated_name
+            elif month == 11:
+                month_abbreviated_name = 't' + month_abbreviated_name
+
+        #
+        # Definite article
+        #
+        elif mutation == 'AN':
+            if case in ('', 'N', 'D'):
+                if month == 1:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'T', '')
+                elif month == 2:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'L', '')
+                elif month == 4:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'T', '')
+                elif month == 5:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'L', '')
+                elif month == 11:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'T', '')
+                else:
+                    month_abbreviated_name = 'an ' + month_abbreviated_name
+
+            elif case == 'G':
+                if month == 2:
+                    month_abbreviated_name = 'na ' + month_abbreviated_name
+                elif month == 3:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'L', '')
+                elif month == 4:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, '', 'G')
+                elif month == 5:
+                    month_abbreviated_name = 'na ' + month_abbreviated_name
+                elif month == 10:
+                    month_abbreviated_name = 'an ' + self.month_abbreviated_name(month, 'L', 'G')
+                else:
+                    month_abbreviated_name = 'an ' + month_abbreviated_name
+
+        elif mutation == 'MÍ':
+            if month == 2:
+                month_abbreviated_name = 'mí na ' + month_abbreviated_name
+            elif month == 3:
+                month_abbreviated_name = 'mí an ' + self.month_abbreviated_name(month, 'L')
+            elif month == 4:
+                month_abbreviated_name = 'mí ' + self.month_abbreviated_name(month, '', 'G')
+            elif month == 5:
+                month_abbreviated_name = 'mí na ' + month_abbreviated_name
+            elif month == 10:
+                month_abbreviated_name = 'mí an ' + self.month_abbreviated_name(month, 'L', 'G')
+            elif month == 13:
+                month_abbreviated_name = 'mí ' + self.month_abbreviated_name(month, 'L', '')
+            elif month == 14:
+                month_abbreviated_name = 'mí ' + self.month_abbreviated_name(month, 'L', '')
+            elif month != 15 and month != 20:
+                month_abbreviated_name = 'mí ' + month_abbreviated_name
+
+        elif mutation == 'MHÍ':
+            month_abbreviated_name = self.month_abbreviated_name(month, 'MÍ', case)
+            month_abbreviated_name = 'ṁ' + month_abbreviated_name[1:]
+
+        else:
+            if case == 'G':
+                # if month == 4:
+                #     month_abbreviated_name = month_abbreviated_name[:-1] + 'in'
+                # elif month == 10:
+                #     month_abbreviated_name = month_abbreviated_name.replace('ea', 'i').replace('eɑ', 'i')
+                if month == 15:
+                    month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:] # + 'na'
+                elif month == 20:
+                    month_abbreviated_name = 'Ṁ' + month_abbreviated_name[1:]
+
+        return month_abbreviated_name
