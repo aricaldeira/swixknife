@@ -9,6 +9,7 @@ import locale as system_locale
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
+from ..functions import SezimalRange
 from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
     sezimal_format, decimal_format, dozenal_format, \
     niftimal_format
@@ -497,6 +498,49 @@ class SezimalLocale:
         size += self._size_difference(text)
         return text.rjust(int(size.decimal), fill_char)
 
-    def len(self, text) -> SezimalInteger:
+    def len(self, text: str) -> SezimalInteger:
         size = SezimalInteger(Decimal(str(len(text)))) - self._size_difference(text)
         return size
+
+    def slice(self, text: str, start: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction = 0, finish: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction = None) -> str:
+        if start is None:
+            start = SezimalInteger(0)
+
+        if finish is None:
+            finish = self.len(text)
+
+        start = SezimalInteger(start)
+        finish = SezimalInteger(finish)
+
+        if start < 0:
+            start = self.len(text) + start
+
+        if finish < 0:
+            finish = self.len(text) + finish
+
+        sliced_text = ''
+
+        j = start
+        for i in SezimalRange(start, finish):
+            c = text[int(j.decimal)]
+            sliced_text += c
+            j += 1
+
+            while self.strip_unprintable_combining(c) == '':
+                c = text[int(j.decimal)]
+                sliced_text += c
+                j += 1
+
+            if int(j.decimal) >= len(text):
+                break
+
+        #
+        # If the next character is unprintable, get it too
+        #
+        if len(text) > int(j.decimal):
+            c = text[int(j.decimal)]
+
+            if self.strip_unprintable_combining(c) == '':
+                sliced_text += c
+
+        return sliced_text
