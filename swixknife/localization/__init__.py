@@ -36,6 +36,7 @@ def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> Sezim
         if len(parts) == 2:
             language = parts[0].lower()
             country = parts[1].lower()
+            script = ''
             locale_icu = language.lower() + '_' + country.upper()
             locale_os = locale_icu
 
@@ -49,11 +50,25 @@ def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> Sezim
     else:
         language = locale
         country = ''
+        script = ''
         locale_icu = language
         locale_os = language
 
     if force_icu:
         return _create_locale_from_icu(locale_icu)
+
+    if script:
+        if locale_icu in LOCALE_CACHE:
+            return LOCALE_CACHE[language_country]()
+
+        try:
+            module = importlib.import_module('swixknife.localization.' + locale_icu.lower())
+            locale_class = getattr(module, 'SezimalLocale' + locale_icu.upper())
+            LOCALE_CACHE[locale_icu] = locale_class
+            return locale_class()
+
+        except:
+            pass
 
     if country:
         language_country = language.lower() + '_' + country.lower()
