@@ -381,22 +381,22 @@ class SezimalCalendar:
             calendar += ' '.join(header) + '\n'
 
         if self.locale.RTL:
-            monday =    f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[0][:width]}{LTR_MARKER}'
-            tuesday =   f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[1][:width]}{LTR_MARKER}'
-            wednesday = f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[2][:width]}{LTR_MARKER}'
-            thursday =  f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[3][:width]}{LTR_MARKER}'
-            friday =    f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[4][:width]}{LTR_MARKER}'
-            saturday =  f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[5][:width]}{LTR_MARKER}'
-            sunday =    f'{RTL_MARKER}{self.locale.WEEKDAY_ABBREVIATED_NAME[6][:width]}{LTR_MARKER}'
+            monday =    f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[0], 0, width)}{LTR_MARKER}'
+            tuesday =   f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[1], 0, width)}{LTR_MARKER}'
+            wednesday = f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[2], 0, width)}{LTR_MARKER}'
+            thursday =  f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[3], 0, width)}{LTR_MARKER}'
+            friday =    f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[4], 0, width)}{LTR_MARKER}'
+            saturday =  f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[5], 0, width)}{LTR_MARKER}'
+            sunday =    f'{RTL_MARKER}{self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[6], 0, width)}{LTR_MARKER}'
 
         else:
-            monday =    self.locale.WEEKDAY_ABBREVIATED_NAME[0][:width]
-            tuesday =   self.locale.WEEKDAY_ABBREVIATED_NAME[1][:width]
-            wednesday = self.locale.WEEKDAY_ABBREVIATED_NAME[2][:width]
-            thursday =  self.locale.WEEKDAY_ABBREVIATED_NAME[3][:width]
-            friday =    self.locale.WEEKDAY_ABBREVIATED_NAME[4][:width]
-            saturday =  self.locale.WEEKDAY_ABBREVIATED_NAME[5][:width]
-            sunday =    self.locale.WEEKDAY_ABBREVIATED_NAME[6][:width]
+            monday =    self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[0], 0, width)
+            tuesday =   self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[1], 0, width)
+            wednesday = self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[2], 0, width)
+            thursday =  self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[3], 0, width)
+            friday =    self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[4], 0, width)
+            saturday =  self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[5], 0, width)
+            sunday =    self.locale.slice(self.locale.WEEKDAY_ABBREVIATED_NAME[6], 0, width)
 
         calendar = calendar.replace(WEEKDAY_MONDAY,    '[SW_01]' + self.locale.rjust(monday, width) + '[EW_01]')
         calendar = calendar.replace(WEEKDAY_TUESDAY,   '[SW_02]' + self.locale.rjust(tuesday, width) + '[EW_02]')
