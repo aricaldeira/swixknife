@@ -1,6 +1,6 @@
 
 
-__all__ = ('SezimalLocaleGA',)
+__all__ = ('SezimalLocaleGA_CLO_GAELACH',)
 
 
 from typing import TypeVar
