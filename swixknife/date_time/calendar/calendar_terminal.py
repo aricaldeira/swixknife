@@ -199,7 +199,7 @@ class SezimalCalendarTerminal(SezimalCalendar):
                 iso_time_format = '(' + iso_time_format + ' ISO)'
 
                 if time.is_dst:
-                    time_format = RTL_MARKER + time_format + ' @V' + LTR_MARKER
+                    time_format = RTL_MARKER + time_format + ' #@V' + LTR_MARKER
                 else:
                     time_format = RTL_MARKER + time_format + LTR_MARKER + ' \ufe0f⏰'
 
@@ -207,7 +207,7 @@ class SezimalCalendarTerminal(SezimalCalendar):
                 iso_time_format = '(ISO ' + iso_time_format + ')'
 
                 if time.is_dst:
-                    time_format = RTL_MARKER + '@V ' + time_format + LTR_MARKER
+                    time_format = RTL_MARKER + '#@V ' + time_format + LTR_MARKER
                 else:
                     time_format = '\ufe0f⏰ ' + RTL_MARKER + time_format + LTR_MARKER
 
@@ -215,7 +215,7 @@ class SezimalCalendarTerminal(SezimalCalendar):
             iso_time_format = '(ISO ' + iso_time_format + ')'
 
             if time.is_dst:
-                time_format = '@V ' + time_format
+                time_format = '#@V ' + time_format
             else:
                 time_format = '\ufe0f⏰ ' + time_format
 
