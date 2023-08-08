@@ -12,17 +12,17 @@ class SezimalLocaleZH(SezimalLocale):
     LANGUAGE = '中文'  # zhōngwén
 
     IDEOGRAPHIC = True
-    DIGITS = '０１２３４５６７８９'
+    # DIGITS = '０１２３４５６７８９'
 
-    # SEZIMAL_SEPARATOR = SEPARATOR_DOT
-    SEZIMAL_SEPARATOR = '．'
+    SEZIMAL_SEPARATOR = SEPARATOR_DOT
+    # SEZIMAL_SEPARATOR = '．'
 
-    # GROUP_SEPARATOR = SEPARATOR_COMMA
-    GROUP_SEPARATOR = '，'
+    GROUP_SEPARATOR = SEPARATOR_COMMA
+    # GROUP_SEPARATOR = '，'
     SUBGROUP_SEPARATOR = ''
 
-    # FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
-    FRACTION_GROUP_SEPARATOR = '\u3000'
+    FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
+    # FRACTION_GROUP_SEPARATOR = '\u3000'
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     WEEKDAY_NAME = [
@@ -36,13 +36,20 @@ class SezimalLocaleZH(SezimalLocale):
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        '周一',  # zhōuyī
-        '周二',  # zhōu’èr
-        '周三',  # zhōusān
-        '周四',  # zhōusì
-        '周五',  # zhōuwǔ
-        '周六',  # zhōuliù
-        '周日',  # zhōurì
+        # '周一',  # zhōuyī
+        # '周二',  # zhōu’èr
+        # '周三',  # zhōusān
+        # '周四',  # zhōusì
+        # '周五',  # zhōuwǔ
+        # '周六',  # zhōuliù
+        # '周日',  # zhōurì
+        '一',  # zhōuyī
+        '二',  # zhōu’èr
+        '三',  # zhōusān
+        '四',  # zhōusì
+        '五',  # zhōuwǔ
+        '六',  # zhōuliù
+        '日',  # zhōurì
     ]
 
     MONTH_NAME= [
@@ -67,25 +74,25 @@ class SezimalLocaleZH(SezimalLocale):
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        '１月',
-        '２月',
-        '３月',
-        '４月',
-        '５月',
-        '１０月',
-        '１１月',
-        '１２月',
-        '１３月',
-        '１４月',
-        '１５月',
-        '２０月',
+        '1月',
+        '2月',
+        '3月',
+        '4月',
+        '5月',
+        '10月',
+        '11月',
+        '12月',
+        '13月',
+        '14月',
+        '15月',
+        '20月',
     ]
 
-    DATE_FORMAT = '#?Y／#?m／#?d'
+    DATE_FORMAT = '#?Y/#?m/#?d'
     DATE_LONG_FORMAT = '#?Y年#?m月#?d日'
-    TIME_FORMAT = '#?u：#?p：#?a'
-    DATE_TIME_FORMAT = '#?Y／#?m／#?d #@W #?u：#?p：#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u：#?p：#?a'
+    TIME_FORMAT = '#?u:#?p:#?a'
+    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
+    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u:#?p:#?a'
     DST_NAME = '夏时制'  # xià shí zhì
     DST_SHORT_NAME = '夏时制'
 

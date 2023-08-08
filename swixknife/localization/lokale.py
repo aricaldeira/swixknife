@@ -415,7 +415,7 @@ class SezimalLocale:
 
         return text
 
-    def strip_unprintable_combining(self, text: str) -> str:
+    def strip_unprintable_combining(self, text: str, ideographic: bool = False) -> str:
         if not text:
             return text
 
@@ -473,33 +473,56 @@ class SezimalLocale:
             range(0x064B, 0x0600),
         )}
 
-        return text.translate(to_remove)
+        text = text.translate(to_remove)
 
-    def _size_difference(self, text: str) -> SezimalInteger:
-        cleaned_text = self.strip_unprintable_combining(text)
+        if self.IDEOGRAPHIC or ideographic:
+            #
+            # CJK counts as two characters each
+            #
+            to_double = {i: '  ' for i in itertools.chain(
+                #
+                # The first round of unprintable characters
+                #
+                range(0x2E80, 0xA000),
+                range(0xAC00, 0xD800),
+                range(0xF900, 0xFB00),
+                range(0xFE10, 0xFE20),
+                range(0xFE30, 0xFE70),
+                range(0xFF00, 0xFFF0),
+                range(0x1AFF0, 0x1B170),
+                range(0x1D300, 0x1D400),
+                range(0x20000, 0xE0000),
+            )}
+
+            text = text.translate(to_double)
+
+        return text
+
+    def _size_difference(self, text: str, ideographic: bool = False) -> SezimalInteger:
+        cleaned_text = self.strip_unprintable_combining(text, ideographic)
 
         size_difference = len(text) - len(cleaned_text)
 
         return SezimalInteger(Decimal(str(size_difference)))
 
-    def center(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
-        size += self._size_difference(text)
+    def center(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ', ideographic: bool = False) -> str:
+        size += self._size_difference(text, ideographic)
         return text.center(int(size.decimal), fill_char)
 
-    def ljust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
-        size += self._size_difference(text)
+    def ljust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ', ideographic: bool = False) -> str:
+        size += self._size_difference(text, ideographic)
         return text.ljust(int(size.decimal), fill_char)
 
-    def rjust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ') -> str:
-        size += self._size_difference(text)
+    def rjust(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = ' ', ideographic: bool = False) -> str:
+        size += self._size_difference(text, ideographic)
         return text.rjust(int(size.decimal), fill_char)
 
-    def zfill(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = '0') -> str:
-        size += self._size_difference(text)
+    def zfill(self, text: str, size: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction, fill_char: str = '0', ideographic: bool = False) -> str:
+        size += self._size_difference(text, ideographic)
         return text.rjust(int(size.decimal), fill_char)
 
-    def len(self, text: str) -> SezimalInteger:
-        size = SezimalInteger(Decimal(str(len(text)))) - self._size_difference(text)
+    def len(self, text: str, ideographic: bool = False) -> SezimalInteger:
+        size = SezimalInteger(Decimal(str(len(text)))) - self._size_difference(text, ideographic)
         return size
 
     def slice(self, text: str, start: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction = 0, finish: str | int | float | Decimal | SezimalInteger | Sezimal | SezimalFraction = None) -> str:

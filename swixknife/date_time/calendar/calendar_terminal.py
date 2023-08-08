@@ -55,12 +55,12 @@ class SezimalCalendarTerminal(SezimalCalendar):
         for weekday in WEEKDAYS:
             calendar = self._color_weekday(calendar, weekday, '', self.COLOR_TODAY)
 
-        if self._locale.IDEOGRAPHIC:
-            calendar = calendar.replace('\ufe0f', ' \ufe0f')
-            calendar = calendar.replace(' ', '\u3000')
-            calendar = calendar.replace('ISO', 'ＩＳＯ')
-            calendar = calendar.replace('(', '（')
-            calendar = calendar.replace(')', '）')
+        # if self._locale.IDEOGRAPHIC:
+            # calendar = calendar.replace('\ufe0f', ' \ufe0f')
+            # calendar = calendar.replace(' ', '\u3000')
+            # calendar = calendar.replace('ISO', 'ＩＳＯ')
+            # calendar = calendar.replace('(', '（')
+            # calendar = calendar.replace(')', '）')
 
         return calendar
 

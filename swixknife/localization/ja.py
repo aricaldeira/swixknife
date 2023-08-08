@@ -12,17 +12,17 @@ class SezimalLocaleJA(SezimalLocale):
     LANGUAGE = '日本語'  # nihongo
 
     IDEOGRAPHIC = True
-    DIGITS = '０１２３４５６７８９'
+    # DIGITS = '０１２３４５６７８９'
 
-    # SEZIMAL_SEPARATOR = SEPARATOR_DOT
-    SEZIMAL_SEPARATOR = '．'
+    SEZIMAL_SEPARATOR = SEPARATOR_DOT
+    # SEZIMAL_SEPARATOR = '．'
 
-    # GROUP_SEPARATOR = SEPARATOR_COMMA
-    GROUP_SEPARATOR = '，'
+    GROUP_SEPARATOR = SEPARATOR_COMMA
+    # GROUP_SEPARATOR = '，'
     SUBGROUP_SEPARATOR = ''
 
-    # FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
-    FRACTION_GROUP_SEPARATOR = '\u3000'
+    FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
+    # FRACTION_GROUP_SEPARATOR = '\u3000'
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     FIRST_WEEKDAY = 'SUN'
@@ -48,46 +48,46 @@ class SezimalLocaleJA(SezimalLocale):
     ]
 
     MONTH_NAME= [
-        '１月',   # ichigatsu
-        '２月',   # nigatsu
-        '３月',   # sangatsu
-        '４月',   # shigatsu
-        '５月',   # gogatsu
-        '１０月',  # rokugatsu
-        # '７月',    # nanagatsu
-        # '８月',    # hachigatsu
-        # '９月',    # kugatsu
-        # '１０月',   # jūgatsu
-        # '１１月',   # jūichigatsu
-        # '１２月',   # jūnigatsu
-        '１１月',  # muichigatsu
-        '１２月',  # munigatsu
-        '１３月',  # musangatsu
-        '１４月',  # mushigatsu
-        '１５月',  # mugogatsu
-        '２０月',  # nimugatsu
+        '1月',   # ichigatsu
+        '2月',   # nigatsu
+        '3月',   # sangatsu
+        '4月',   # shigatsu
+        '5月',   # gogatsu
+        '10月',  # rokugatsu
+        # '7月',    # nanagatsu
+        # '8月',    # hachigatsu
+        # '9月',    # kugatsu
+        # '10月',   # jūgatsu
+        # '11月',   # jūichigatsu
+        # '12月',   # jūnigatsu
+        '11月',  # muichigatsu
+        '12月',  # munigatsu
+        '13月',  # musangatsu
+        '14月',  # mushigatsu
+        '15月',  # mugogatsu
+        '20月',  # nimugatsu
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        '１月',
-        '２月',
-        '３月',
-        '４月',
-        '５月',
-        '１０月',
-        '１１月',
-        '１２月',
-        '１３月',
-        '１４月',
-        '１５月',
-        '２０月',
+        '1月',
+        '2月',
+        '3月',
+        '4月',
+        '5月',
+        '10月',
+        '11月',
+        '12月',
+        '13月',
+        '14月',
+        '15月',
+        '20月',
     ]
 
-    DATE_FORMAT = '#?Y／#?m／#?d'
+    DATE_FORMAT = '#?Y/#?m/#?d'
     DATE_LONG_FORMAT = '#?Y年#?m月#?d日'
-    TIME_FORMAT = '#?u：#?p：#?a'
-    DATE_TIME_FORMAT = '#?Y／#?m／#?d #@W #?u：#?p：#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u：#?p：#?a'
+    TIME_FORMAT = '#?u:#?p:#?a'
+    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
+    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u:#?p:#?a'
     DEFAULT_TIME_ZONE = 'Asia/Tokyo'
     DST_NAME = '夏時間'  # natsu jikan
     DST_SHORT_NAME = 'DST'

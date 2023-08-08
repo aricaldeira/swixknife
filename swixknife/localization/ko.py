@@ -12,17 +12,17 @@ class SezimalLocaleKO(SezimalLocale):
     LANGUAGE = '한국어'  # han’gugeo
 
     IDEOGRAPHIC = True
-    DIGITS = '０１２３４５６７８９'
+    # DIGITS = '０１２３４５６７８９'
 
-    # SEZIMAL_SEPARATOR = SEPARATOR_DOT
-    SEZIMAL_SEPARATOR = '．'
+    SEZIMAL_SEPARATOR = SEPARATOR_DOT
+    # SEZIMAL_SEPARATOR = '．'
 
-    # GROUP_SEPARATOR = SEPARATOR_COMMA
-    GROUP_SEPARATOR = '，'
+    GROUP_SEPARATOR = SEPARATOR_COMMA
+    # GROUP_SEPARATOR = '，'
     SUBGROUP_SEPARATOR = ''
 
-    # FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
-    FRACTION_GROUP_SEPARATOR = '\u3000'
+    FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
+    # FRACTION_GROUP_SEPARATOR = '\u3000'
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     FIRST_WEEKDAY = 'SUN'
@@ -48,24 +48,24 @@ class SezimalLocaleKO(SezimalLocale):
     ]
 
     MONTH_NAME= [
-        '１월',   # il-wol
-        '２월',   # i-wol
-        '３월',   # sam-wol
-        '４월',   # sa-wol
-        '５월',   # o-wol
-        '１０월',  # yu-wol
-        # '７월',    # chil-wol
-        # '８월',    # pal-wol
-        # '９월',    # gu-wol
-        # '１０월',   # si-wol
-        # '１１월',   # sip-il-wol
-        # '１２월',   # sip-i-wol
-        '１１월',  # yu-il-wol
-        '１２월',  # yu-i-wol
-        '１３월',  # yu-sam-wol
-        '１４월',  # yu-sa-wol
-        '１５월',  # yu-o-wol
-        '２０월',  # i-yu-wol
+        '1월',   # il-wol
+        '2월',   # i-wol
+        '3월',   # sam-wol
+        '4월',   # sa-wol
+        '5월',   # o-wol
+        '10월',  # yu-wol
+        # '7월',    # chil-wol
+        # '8월',    # pal-wol
+        # '9월',    # gu-wol
+        # '10월',   # si-wol
+        # '11월',   # sip-il-wol
+        # '12월',   # sip-i-wol
+        '11월',  # yu-il-wol
+        '12월',  # yu-i-wol
+        '13월',  # yu-sam-wol
+        '14월',  # yu-sa-wol
+        '15월',  # yu-o-wol
+        '20월',  # i-yu-wol
     ]
 
     MONTH_ABBREVIATED_NAME = [
@@ -83,11 +83,11 @@ class SezimalLocaleKO(SezimalLocale):
         '２０월',
     ]
 
-    DATE_FORMAT = '#?Y／#?m／#?d'
+    DATE_FORMAT = '#?Y/#?m/#?d'
     DATE_LONG_FORMAT = '#?Y년 #?m월 #?d일'
-    TIME_FORMAT = '#?u：#?p：#?a'
-    DATE_TIME_FORMAT = '#?Y／#?m／#?d #@W #?u：#?p：#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y년 #?-m월 #?-d일 #W #?u：#?p：#?a'
+    TIME_FORMAT = '#?u:#?p:#?a'
+    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
+    DATE_TIME_LONG_FORMAT = '#?Y년 #?-m월 #?-d일 #W #?u:#?p:#?a'
     DEFAULT_TIME_ZONE = 'Asia/Seoul'
     DST_NAME = '일광 절약 시간제'  # ilgwang jeol-yag siganje
     DST_SHORT_NAME = 'DST'
