@@ -57,29 +57,28 @@ def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> Sezim
     if force_icu:
         return _create_locale_from_icu(locale_icu)
 
-    if script:
-        if locale_icu in LOCALE_CACHE:
-            return LOCALE_CACHE[language_country]()
+    if locale_icu in LOCALE_CACHE:
+        return LOCALE_CACHE[locale_icu]()
+
+    try:
+        module = importlib.import_module('swixknife.localization.' + locale_icu.lower())
+        locale_class = getattr(module, 'SezimalLocale' + locale_icu.upper())
+        LOCALE_CACHE[locale_icu] = locale_class
+        return locale_class()
+
+    except:
+        pass
+
+    if script and country:
+        language_icu = language.lower() + '_' + country.lower()
+
+        if language_icu in LOCALE_CACHE:
+            return LOCALE_CACHE[language_icu]()
 
         try:
-            module = importlib.import_module('swixknife.localization.' + locale_icu.lower())
-            locale_class = getattr(module, 'SezimalLocale' + locale_icu.upper())
-            LOCALE_CACHE[locale_icu] = locale_class
-            return locale_class()
-
-        except:
-            pass
-
-    if country:
-        language_country = language.lower() + '_' + country.lower()
-
-        if language_country in LOCALE_CACHE:
-            return LOCALE_CACHE[language_country]()
-
-        try:
-            module = importlib.import_module('swixknife.localization.' + language_country)
-            locale_class = getattr(module, 'SezimalLocale' + language_country.upper())
-            LOCALE_CACHE[language_country] = locale_class
+            module = importlib.import_module('swixknife.localization.' + language_icu)
+            locale_class = getattr(module, 'SezimalLocale' + language_icu.upper())
+            LOCALE_CACHE[language_icu] = locale_class
             return locale_class()
 
         except:
