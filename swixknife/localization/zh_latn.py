@@ -10,6 +10,8 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
     LANG = 'zh'
     LANGUAGE = 'zhōngwén'  # 中文
 
+    IDEOGRAPHIC = False
+
     WEEKDAY_NAME = [
         'xīngqíyī',   # 星期一
         'xīngqí’èr',  # 星期二
