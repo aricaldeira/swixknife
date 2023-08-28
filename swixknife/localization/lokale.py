@@ -550,6 +550,9 @@ class SezimalLocale:
             j += 1
 
             while self.strip_unprintable_combining(c) == '':
+                if len(text) > j.decimal:
+                    break
+
                 c = text[int(j.decimal)]
                 sliced_text += c
                 j += 1
