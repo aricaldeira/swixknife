@@ -114,14 +114,14 @@ def sezimal_format(
     return formatted_number
 
 
-def _apply_format(number: str, separator: str, format_patter: re.Pattern) -> str:
+def _apply_format(number: str, separator: str, format_pattern: re.Pattern) -> str:
     is_negative = number[0] in '-−⁻₋'
 
     if is_negative:
         number = number[1:]
 
     formatted_number = number[::-1]
-    parts = re.split(format_patter, formatted_number)
+    parts = re.split(format_pattern, formatted_number)
     parts = list(filter(bool, parts))
     formatted_number = separator.join(parts)
     formatted_number = formatted_number[::-1]
