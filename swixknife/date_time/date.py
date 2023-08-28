@@ -738,6 +738,11 @@ class SezimalDate:
         if day is None:
             day = self._day
 
+        if day > 44:
+            if (month not in (2, 5, 12, 15)) \
+                or (month == 20 and not _is_leap(year)):
+                day -= 11
+
         return type(self)(year, month, day)
 
     # Comparisons of date objects with other.
