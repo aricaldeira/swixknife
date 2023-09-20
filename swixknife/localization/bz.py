@@ -32,7 +32,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'kinta',
         'sesta',
         'sábadu',
-        'dumingu',
+        'domingu',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
@@ -42,7 +42,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'kin',
         'ses',
         'sáb',
-        'dum',
+        'dom',
     ]
 
     MONTH_NAME= [
@@ -159,11 +159,11 @@ class SezimalLocaleBZ(SezimalLocale):
         # ('13_1124-11-10', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈)'),   # sábadu  13_1124-11-10 ~ 1932-07-09_dec
         # ('13_0422-13-10', '\ufe0f🇧🇷🕊️  Independensya du Braziw'),   # sábadu  13_0422-13-10 ~ 1822-09-07_dec
         # ('13_1013-15-31', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika'),  # sesta   13_1013-15-31 ~ 1889-11-15_dec
-        # ('13_0051-15-33', '\ufe0f👨🏿 Konsiensya Negra'),             # dumingu 13_0051-15-33 ~ 1695-11-20_dec
+        # ('13_0051-15-33', '\ufe0f👨🏿 Konsiensya Negra'),             # domingu 13_0051-15-33 ~ 1695-11-20_dec
 
-        ('13_0332-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('13_0332-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # domingu, 04-33 ~ 04-21_dec
         ('13_1124-11-13', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈) (#i)'),   # tersa,   11-13 ~ 07-09_dec
-        ('13_0422-13-11', '\ufe0f🇧🇷🕊️  Independensya du Braziw (#i)'),   # dumingu, 13-11 ~ 09-07_dec
+        ('13_0422-13-11', '\ufe0f🇧🇷🕊️  Independensya du Braziw (#i)'),   # domingu, 13-11 ~ 09-07_dec
         ('13_1013-15-23', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (#i)'),  # segunda, 15-23 ~ 11-15_dec
         ('13_0051-15-32', '\ufe0f👨🏿 Konsiensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
     ]
@@ -204,7 +204,7 @@ class SezimalLocaleBZ(SezimalLocale):
         ('ISO-1932-07-09', '\ufe0f🪖📜 Revolusawn di 1932 (3̇1̇4̈) (%d/%m - %i)'),   # sábadu  13_1124-11-10 ~ 1932-07-09_dec
         ('ISO-1822-09-07', '\ufe0f🇧🇷🕊️  Independensya du Braziw (%d/%m - %i)'),   # sábadu  13_0422-13-10 ~ 1822-09-07_dec
         ('ISO-1889-11-15', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (%d/%m - %i)'),  # sesta   13_1013-15-31 ~ 1889-11-15_dec
-        ('ISO-1695-11-20', '\ufe0f👨🏿 Konsiensya Negra (%d/%m)'),                  # dumingu 13_0051-15-33 ~ 1695-11-20_dec
+        ('ISO-1695-11-20', '\ufe0f👨🏿 Konsiensya Negra (%d/%m)'),                  # domingu 13_0051-15-33 ~ 1695-11-20_dec
     ]
 
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
