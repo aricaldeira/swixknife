@@ -1,6 +1,6 @@
 
 
-__all__ = ('SezimalLocaleFR',)
+__all__ = ('SezimalLocaleFR_CA',)
 
 
 from .fr import SezimalLocaleFR
