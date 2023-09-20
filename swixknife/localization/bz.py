@@ -55,7 +55,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'julyu',
         'agostu',
         'setenbru',
-        'owtubru',
+        'otubru',
         'novenbru',
         'dezenbru',
     ]
@@ -70,7 +70,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'jul',
         'ago',
         'set',
-        'owt',
+        'otu',
         'nov',
         'dez',
     ]
@@ -98,9 +98,9 @@ class SezimalLocaleBZ(SezimalLocale):
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 
     SEASON_NAME = {
-        'autumn_cross_quarter': 'Meyu du Verawn pru Owtonu',
-        'autumn_equinox': 'Owtonu',
-        'winter_cross_quarter': 'Meyu du Owtonu pru Invèrnu',
+        'autumn_cross_quarter': 'Meyu du Verawn pru Otonu',
+        'autumn_equinox': 'Otonu',
+        'winter_cross_quarter': 'Meyu du Otonu pru Invèrnu',
         'winter_solstice': 'Invèrnu',
         'spring_cross_quarter': 'Meyu du Invèrnu pra Primavèra',
         'spring_equinox': 'Primavèra',
