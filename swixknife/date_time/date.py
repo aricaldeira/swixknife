@@ -737,6 +737,8 @@ class SezimalDate:
 
         if day is None:
             day = self._day
+        else:
+            day = SezimalInteger(day)
 
         if day > 44:
             if (month not in (2, 5, 12, 15)) \
