@@ -8,6 +8,7 @@ import locale as system_locale
 
 from decimal import Decimal
 
+from .constants import UNPRINTABLE_CHARACTERS, EMOJI_CHARACTERS, IDEOGRAPHIC_CHARACTERS
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..functions import SezimalRange
 from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
@@ -424,77 +425,11 @@ class SezimalLocale:
         # and combining diacritics, so that centre, ljust, rjust
         # work as expected
         #
-        to_remove = {i: None for i in itertools.chain(
-            #
-            # The first round of unprintable characters
-            #
-            range(0x0000, 0x0020),
-            range(0x007F, 0x00A0),
-            #
-            # Word joiners and markers
-            #
-            range(0x200B, 0x2010),
-            range(0x2028, 0x202F),
-            range(0x2060, 0x2070),
-            #
-            # Combining diacritics
-            #
-            range(0x0300, 0x0370),
-            range(0x1AB0, 0x1ACF),
-            range(0x1DC0, 0x1E00),
-            range(0x20D0, 0x20F1),
-            #
-            # Variation Selectors
-            #
-            range(0xFE00, 0xFE10),
-            #
-            # Combining half marks
-            #
-            range(0xFE20, 0xFE30),
-            #
-            # Devanagari combining characters;
-            # we still count the vowel signs that go
-            # on the sides of the letters, since they
-            # occupy horizontal space
-            #
-            range(0x0900, 0x0903),
-            # range(0x0900, 0x0904),
-            range(0x093A, 0x093B),
-            range(0x093C, 0x093D),
-            # range(0x093A, 0x093D),
-            range(0x0941, 0x0949),
-            range(0x094D, 0x094E),
-            # range(0x093E, 0x0950),
-            range(0x0955, 0x0958),
-            range(0x0962, 0x0964),
-            #
-            # Arabic combining
-            #
-            range(0x064B, 0x0600),
-        )}
-
-        text = text.translate(to_remove)
+        text = text.translate(UNPRINTABLE_CHARACTERS)
+        text = text.translate(EMOJI_CHARACTERS)
 
         if self.IDEOGRAPHIC or ideographic:
-            #
-            # CJK counts as two characters each
-            #
-            to_double = {i: '  ' for i in itertools.chain(
-                #
-                # The first round of unprintable characters
-                #
-                range(0x2E80, 0xA000),
-                range(0xAC00, 0xD800),
-                range(0xF900, 0xFB00),
-                range(0xFE10, 0xFE20),
-                range(0xFE30, 0xFE70),
-                range(0xFF00, 0xFFF0),
-                range(0x1AFF0, 0x1B170),
-                range(0x1D300, 0x1D400),
-                range(0x20000, 0xE0000),
-            )}
-
-            text = text.translate(to_double)
+            text = text.translate(IDEOGRAPHIC_CHARACTERS)
 
         return text
 
