@@ -26,23 +26,23 @@ class SezimalLocaleBZ(SezimalLocale):
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     WEEKDAY_NAME = [
-        'segunda',
+        'sigunda',
         'tersa',
         'kwarta',
         'kinta',
         'sesta',
         'sábadu',
-        'domingu',
+        'dumingu',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'seg',
+        'sig',
         'ter',
         'kwa',
         'kin',
         'ses',
         'sáb',
-        'dom',
+        'dum',
     ]
 
     MONTH_NAME= [
