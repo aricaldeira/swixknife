@@ -1,0 +1,182 @@
+
+
+from typing import TypeVar
+
+Self = TypeVar('Self', bound='SezimalWeather')
+ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
+
+
+from ..sezimal import Sezimal, SezimalInteger
+from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
+from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
+
+
+class SezimalWeather:
+    def __new__(
+        cls,
+        locale: str | SezimalLocale = None,
+        time_zone: str | ZoneInfo = None
+    ) -> Self:
+        self = object.__new__(cls)
+
+        if locale:
+            if isinstance(locale, SezimalLocale):
+                lang = locale.LANG
+            else:
+                lang = locale
+                locale = sezimal_locale(lang)
+
+        else:
+            locale = DEFAULT_LOCALE
+            lang = locale.LANG
+
+        self.locale = locale
+        self.lang = lang
+        self.time_zone = time_zone
+        self._reference_date_time = None
+        self._sunrise_date_time = None
+        self._sunset_date_time = None
+        self._wind_speed = SezimalInteger(0)
+        self._wind_gust = SezimalInteger(0)
+        self._wind_direction = Sezimal(0)
+        self._humidity = SezimalInteger(0)
+        self._pressure = SezimalInteger(0)
+        self._pressure_sea_level = SezimalInteger(0)
+        self._temperature = SezimalInteger(0)
+        self._temperature_sensation = SezimalInteger(0)
+        self._temperature_maximum = SezimalInteger(0)
+        self._temperature_minimum = SezimalInteger(0)
+        self._clouds = SezimalInteger(0)
+
+        return self
+
+    @property
+    def reference_date_time(self) -> SezimalDateTime:
+        return self._reference_date_time
+
+    @property
+    def reference_date_time_formatted(self) -> str:
+        return self._reference_date_time.format(locale=self.locale)
+
+    @property
+    def sunrise_date_time(self) -> SezimalDateTime:
+        return self._sunrise_date_time
+
+    @property
+    def sunrise_date_time_formatted(self) -> str:
+        return self._sunrise_date_time.format(self.locale.TIME_FORMAT, locale=self.locale)
+
+    @property
+    def sunset_date_time(self) -> SezimalDateTime:
+        return self._sunset_date_time
+
+    @property
+    def sunset_date_time_formatted(self) -> str:
+        return self._sunrise_date_time.format(self.locale.TIME_FORMAT, locale=self.locale)
+
+    @property
+    def wind_speed(self) -> SezimalInteger:
+        return self._wind_speed
+
+    @property
+    def wind_speed_formatted(self) -> str:
+        return self.locale.format_number(self._wind_speed, sezimal_places=0, suffix='veg')
+
+    @property
+    def wind_gust(self) -> SezimalInteger:
+        return self._wind_gust
+
+    @property
+    def wind_gust_formatted(self) -> str:
+        return self.locale.format_number(self._wind_gust, sezimal_places=0, suffix='veg')
+
+    @property
+    def wind_direction(self) -> Sezimal:
+        return self._wind_direction
+
+    @property
+    def humidity(self) -> SezimalInteger:
+        return self._humidity
+
+    @property
+    def humidity_formatted(self) -> str:
+        return self.locale.format_number(self._humidity, sezimal_places=0, suffix='‰')
+
+    @property
+    def pressure(self) -> SezimalInteger:
+        return self._pressure
+
+    @property
+    def pressure_formatted(self) -> str:
+        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='dab')
+
+    @property
+    def pressure_sea_level(self) -> SezimalInteger:
+        return self._pressure_sea_level
+
+    @property
+    def pressure_sea_level_formatted(self) -> str:
+        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='dab')
+
+    @property
+    def temperature(self) -> SezimalInteger:
+        return self._temperature
+
+    @property
+    def temperature_formatted(self) -> str:
+        return self.locale.format_number(self._temperature, sezimal_places=0, suffix='°S')
+
+    @property
+    def temperature_sensation(self) -> SezimalInteger:
+        return self._temperature_sensation
+
+    @property
+    def temperature_sensation_formatted(self) -> str:
+        return self.locale.format_number(self._temperature_sensation, sezimal_places=0, suffix='°S')
+
+    @property
+    def temperature_maximum(self) -> SezimalInteger:
+        return self._temperature_maximum
+
+    @property
+    def temperature_maximum_formatted(self) -> str:
+        return self.locale.format_number(self._temperature_maximum, sezimal_places=0, suffix='°S')
+
+    @property
+    def temperature_minimum(self) -> SezimalInteger:
+        return self._temperature_minimum
+
+    @property
+    def temperature_minimum_formatted(self) -> str:
+        return self.locale.format_number(self._temperature_minimum, sezimal_places=0, suffix='°S')
+
+    @property
+    def clouds(self) -> SezimalInteger:
+        return self._clouds
+
+    @property
+    def clouds_formatted(self) -> str:
+        return self.locale.format_number(self._clouds, sezimal_places=0, suffix='‰')
+
+    @property
+    def visibility(self) -> SezimalInteger:
+        return self._visibility
+
+    @property
+    def visibility_formatted(self) -> str:
+        return self.locale.format_number(self._visibility, sezimal_places=0, suffix='Cpad')
+
+    def get_openweathermap_conditions(self, api_key: str, location_id: str):
+        from .open_weather_map import get_weather_conditions, fill_sezimal_weather
+
+        lang = self.lang
+
+        if lang == 'bz':
+            lang = 'pt-br'
+
+        conditions = get_weather_conditions(
+            api_key=api_key, location_id=location_id,
+            language=lang, time_zone=self.time_zone,
+        )
+
+        fill_sezimal_weather(self, conditions)
