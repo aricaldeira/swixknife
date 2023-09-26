@@ -8,14 +8,14 @@ from .pt import SezimalLocalePT
 
 class SezimalLocaleYRL(SezimalLocalePT):
     LANG = 'yrl'
-    LANGUAGE = 'yẽgatu'
+    LANGUAGE = 'ỹengatu'
 
     WEEKDAY_NAME = [
-        'murakipi',
-        'muraki-mukũi',
+        'muraki-pi',
+        'muraki-mukuyn',
         'muraki-musapíri',
         'supapa',
-        'yukuaku',
+        'yukwaku',
         'sauru',
         'mituu',
     ]
@@ -32,17 +32,17 @@ class SezimalLocaleYRL(SezimalLocalePT):
 
     MONTH_NAME= [
         'yasi-yepe',
-        'yasi-mukũi',
+        'yasi-mukuyn',
         'yasi-musapíri',
-        'yasi-irũdi',
+        'yasi-irundi',
         'yasi-pu',
         'yasi-pu-yepe',
-        'yasi-pu-mukũi',
+        'yasi-pu-mukuyn',
         'yasi-pu-musapíri',
-        'yasi-pu-irũdi',
-        'yasi-yepe-putimaã',
+        'yasi-pu-irundi',
+        'yasi-yepe-putimaan',
         'yasi-yepe-yepe',
-        'yasi-yepe-mukũi',
+        'yasi-yepe-mukuyn',
     ]
 
     MONTH_ABBREVIATED_NAME = [
