@@ -16,7 +16,7 @@ from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
 
 from ..units.conversions import KILOMETER_PER_HOUR_TO_VEGA, \
     KILOMETER_TO_CHAMAPADA, PASCAL_TO_DABA, METER_TO_PADA, \
-    PERCENTAGE_TO_PERSIXNIFF
+    PERCENTAGE_TO_PERSIXNIFF, MILLIMETER_TO_CHATIPADA
 
 from .weather import SezimalWeather
 
