@@ -1,5 +1,8 @@
 
 
+__all__ = ('SezimalWeather',)
+
+
 from typing import TypeVar
 
 Self = TypeVar('Self', bound='SezimalWeather')
@@ -108,7 +111,7 @@ class SezimalWeather:
 
     @property
     def pressure_formatted(self) -> str:
-        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='dab')
+        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='Cdab')
 
     @property
     def pressure_sea_level(self) -> SezimalInteger:
@@ -116,7 +119,7 @@ class SezimalWeather:
 
     @property
     def pressure_sea_level_formatted(self) -> str:
-        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='dab')
+        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='Cdab')
 
     @property
     def temperature(self) -> SezimalInteger:
@@ -176,6 +179,21 @@ class SezimalWeather:
 
         conditions = get_weather_conditions(
             api_key=api_key, location_id=location_id,
+            language=lang, time_zone=self.time_zone,
+        )
+
+        fill_sezimal_weather(self, conditions)
+
+    def get_weatherapi_conditions(self, api_key: str, location: str = None, latitude: float = None, longitude: float = None):
+        from .weather_api import get_weather_conditions, fill_sezimal_weather
+
+        lang = self.lang
+
+        if lang == 'bz':
+            lang = 'pt'
+
+        conditions = get_weather_conditions(
+            api_key=api_key, location=location, latitude=latitude, longitude=longitude,
             language=lang, time_zone=self.time_zone,
         )
 

@@ -1,5 +1,8 @@
 
 
+__all__ = ('get_weather_conditions', 'fill_sezimal_weather')
+
+
 from typing import TypeVar
 
 ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
@@ -229,3 +232,9 @@ def _convert_pressure(pressure: float) -> Sezimal:
 def _convert_percentage(percentage: float) -> Sezimal:
     percentage = Decimal(str(percentage))
     return round(percentage * PERCENTAGE_TO_PERSIXNIFF, 0)
+
+
+def _convert_precipitation(precipitation: float) -> Sezimal:
+    distance = Decimal(str(precipitation))
+
+    return round(distance * MILLIMETER_TO_CHATIPADA, 0)
