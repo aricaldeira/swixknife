@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Shows the sezimal date and time')
+parser.add_argument('-a', '--api_key', default=None, help='WeatherAPI key')
+parser.add_argument('-c', '--city', default=None, nargs='?', help='City/location')
+parser.add_argument('-lt', '--latitude', default=None, nargs='?', help='Latitude')
+parser.add_argument('-lg', '--longitude', default=None, nargs='?', help='Longitude')
+parser.add_argument('-l', '--locale', default=None, nargs='?', help='Locale')
+parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zone')
+
+
+from swixknife.weather.weather import SezimalWeather
+from zoneinfo import ZoneInfo
+
+
+if __name__ == '__main__':
+    arguments = parser.parse_args()
+
+    locale = arguments.locale
+
+    if arguments.timezone:
+        time_zone = ZoneInfo(arguments.timezone)
+    else:
+        time_zone = None
+
+    location = arguments.city
+    api_key = arguments.api_key
+    latitude = None
+    longitude = None
+
+    try:
+        if arguments.latitude:
+            latitude = float(arguments.latitude)
+    except:
+        raise ValueError(f'Invalid value for latitude: {arguments.latitude}')
+
+    try:
+        if arguments.longitude:
+            longitude = float(arguments.longitude)
+    except:
+        raise ValueError(f'Invalid value for longitude: {arguments.longitude}')
+
+    sw = SezimalWeather(locale, time_zone)
+    sw.get_weatherapi_conditions(
+        api_key=api_key,
+        location=location,
+        latitude=latitude, longitude=longitude,
+    )
+    print(f'\ufe0f🌡️ {round(sw.temperature.decimal, 0)}° / <b>{round(sw.temperature, 0)}°</b> ―')
+    # print(f'{round(sw.temperature, 0)}° ―')
