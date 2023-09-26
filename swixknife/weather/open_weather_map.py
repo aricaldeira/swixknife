@@ -7,23 +7,13 @@ from typing import TypeVar
 
 ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 
-
-from datetime import datetime as _datetime
-from decimal import Decimal
-
-from ..sezimal import Sezimal, SezimalInteger
-from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
-
-from ..units.conversions import KILOMETER_PER_HOUR_TO_VEGA, \
-    KILOMETER_TO_CHAMAPADA, PASCAL_TO_DABA, METER_TO_PADA, \
-    PERCENTAGE_TO_PERSIXNIFF, MILLIMETER_TO_CHATIPADA
-
 from .weather import SezimalWeather
+from . import functions
 
 import pyowm
 
 
-def get_weather_conditions(api_key: str, location_id: str, language: str = 'en', time_zone: str | ZoneInfo = None):
+def get_weather_conditions(api_key: str, location_id: str, language: str = 'en', time_zone: str | ZoneInfo = None) -> dict:
     owm = pyowm.OWM(api_key)
     owm.config['language'] = language or 'en'
 
@@ -33,56 +23,56 @@ def get_weather_conditions(api_key: str, location_id: str, language: str = 'en',
 
     if 'reception_time' in observation:
         observation['reception_time'] = \
-            _convert_time(observation['reception_time'], time_zone=time_zone)
+            functions.convert_time(observation['reception_time'], time_zone=time_zone)
 
     if 'weather' in observation:
         if 'reference_time' in observation['weather']:
             observation['weather']['reference_time'] = \
-                _convert_time(observation['weather']['reference_time'], time_zone=time_zone)
+                functions.convert_time(observation['weather']['reference_time'], time_zone=time_zone)
 
         if 'sunset_time' in observation['weather']:
             observation['weather']['sunset_time'] = \
-                _convert_time(observation['weather']['sunset_time'], time_zone=time_zone)
+                functions.convert_time(observation['weather']['sunset_time'], time_zone=time_zone)
 
         if 'sunrise_time' in observation['weather']:
             observation['weather']['sunrise_time'] = \
-                _convert_time(observation['weather']['sunrise_time'], time_zone=time_zone)
+                functions.convert_time(observation['weather']['sunrise_time'], time_zone=time_zone)
 
         if 'temperature' in observation['weather']:
             for key in ['temp', 'temp_max', 'temp_min', 'feels_like', 'temp_kf']:
                 if key in observation['weather']['temperature']:
                     observation['weather']['temperature'][key] = \
-                        _convert_temperature(observation['weather']['temperature'][key] or 0)
+                        functions.convert_temperature_kelvin(observation['weather']['temperature'][key] or 0)
 
         if 'wind' in observation['weather']:
             if 'speed' in observation['weather']['wind']:
                 observation['weather']['wind']['speed'] = \
-                    _convert_speed(observation['weather']['wind']['speed'])
+                    functions.convert_speed(observation['weather']['wind']['speed'])
 
             if 'gust' in observation['weather']['wind']:
                 observation['weather']['wind']['gust'] = \
-                    _convert_speed(observation['weather']['wind']['gust'])
+                    functions.convert_speed(observation['weather']['wind']['gust'])
 
         if 'pressure' in observation['weather']:
             if 'press' in observation['weather']['pressure']:
                 observation['weather']['pressure']['press'] = \
-                    _convert_pressure(observation['weather']['pressure']['press'])
+                    functions.convert_pressure(observation['weather']['pressure']['press'])
 
             if 'sea_level' in observation['weather']['pressure']:
                 observation['weather']['pressure']['sea_level'] = \
-                    _convert_pressure(observation['weather']['pressure']['sea_level'])
+                    functions.convert_pressure(observation['weather']['pressure']['sea_level'])
 
         if 'humidity' in observation['weather']:
             observation['weather']['humidity'] = \
-                _convert_percentage(observation['weather']['humidity'])
+                functions.convert_percentage(observation['weather']['humidity'])
 
         if 'clouds' in observation['weather']:
             observation['weather']['clouds'] = \
-                _convert_percentage(observation['weather']['clouds'])
+                functions.convert_percentage(observation['weather']['clouds'])
 
         if 'visibility_distance' in observation['weather']:
             observation['weather']['visibility_distance'] = \
-                _convert_distance(observation['weather']['visibility_distance'])
+                functions.convert_distance(observation['weather']['visibility_distance'])
 
     # {
     #     'reception_time': 1685035661,
@@ -193,48 +183,3 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
 
         if 'sea_level' in pressure:
             weather._pressure_sea_level = pressure['sea_level']
-
-
-def _convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> SezimalDateTime:
-    return SezimalDateTime.from_timestamp(time, time_zone=time_zone)
-
-
-def _convert_temperature(kelvin: float, gatika=False) -> Sezimal:
-    celsius = Sezimal(Decimal(str(kelvin))) - Sezimal(Decimal('273.15'))
-
-    if gatika:
-        gatika = celsius / Sezimal('0.244')
-        gatika = round(Sezimal(gatika), 4)
-        return gatika
-
-    else:
-        return round(celsius, 4)
-
-
-def _convert_speed(speed: float) -> Sezimal:
-    speed = Decimal(str(speed))
-
-    return round(speed * KILOMETER_PER_HOUR_TO_VEGA, 0)
-
-
-def _convert_distance(distance: float) -> Sezimal:
-    distance = Decimal(str(distance)) / 10_000
-
-    return round(distance * KILOMETER_TO_CHAMAPADA, 0)
-
-
-def _convert_pressure(pressure: float) -> Sezimal:
-    pressure = Decimal(str(pressure)) * 100
-
-    return round(pressure * PASCAL_TO_DABA / 1_0000, 0)
-
-
-def _convert_percentage(percentage: float) -> Sezimal:
-    percentage = Decimal(str(percentage))
-    return round(percentage * PERCENTAGE_TO_PERSIXNIFF, 0)
-
-
-def _convert_precipitation(precipitation: float) -> Sezimal:
-    distance = Decimal(str(precipitation))
-
-    return round(distance * MILLIMETER_TO_CHATIPADA, 0)
