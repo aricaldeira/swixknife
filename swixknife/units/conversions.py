@@ -77,8 +77,8 @@ INCH_TO_PADA = Sezimal('0.0055_3151_1205_0125_1555_3202_4051_3435_3310_3005_2332
 # Vega = pada × agrima⁻¹
 # Vega = pada × avrita
 #
-# 1 km/h = 0.32 vg
-# 1 vg = 1 ÷ 0.32 km/h
+# 1 km/h = 0.32 veg
+# 1 veg = 1 ÷ 0.32 km/h
 #
 VEGA_TO_METER_PER_SECOND = Sezimal('0.3')
 METER_PER_SECOND_TO_VEGA = Sezimal('2')
@@ -96,8 +96,8 @@ PADA_PER_AGRIMA_TO_MILE_PER_HOUR = VEGA_TO_MILE_PER_HOUR
 #
 # Tevara = pada × agrima⁻²
 #
-# 1 m/s² = 3.412 tv = 3.412 pd/ag²
-# 1 tv = 1 ÷ 3.412 m/s²
+# 1 m/s² = 3.412 tvr = 3.412 pad/agm²
+# 1 tvr = 1 ÷ 3.412 m/s²
 #
 TEVARA_TO_METER_PER_SQUARE_SECOND = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
 METER_PER_SQUARE_SECOND_TO_TEVARA = Sezimal('3.412')
@@ -113,8 +113,8 @@ SQUARE_PADA_TO_SQUARE_METER = KESHE_TO_SQUARE_METER
 #
 # Ekadimakeshe = EDksh = EDpd² = 1_0000_0000 pd²
 #
-# 1 km² = 0.41 EDksh = 0.41 Cpd²
-# 1 EDksh = 1 Cpd² = 1 ÷ 0.41
+# 1 km² = 0.41 EDksh = 0.41 Cpad²
+# 1 EDksh = 1 Cpad² = 1 ÷ 0.41
 #
 EKADIMAKESHE_TO_SQUARE_KILOMETER = Sezimal('1.2350_1235_0123_5012_3501_2350_1235_0123_5012_3501_2350_1234')
 SQUARE_KILOMETER_TO_EKADIMAKESHE = Sezimal('0.41')
@@ -143,8 +143,8 @@ LITER_TO_VARTI = Sezimal('1.3443_4554_4551_4240_3400_3551_3435_0450_1422_5022_25
 #
 # Mass and Density
 #
-# 1 kg = 0.532 dv
-# 1 dv = 1 ÷ 0.532 kg
+# 1 kg = 0.532 drv
+# 1 drv = 1 ÷ 0.532 kg
 #
 DRAVYA_TO_KILOGRAM = Sezimal('1.0251_4025_1402_5140_2514_0251_4025_1402_5140_2514_0251_4024')
 KILOGRAMA_TO_DRAVYA = Sezimal('0.532')
@@ -152,8 +152,8 @@ KILOGRAMA_TO_DRAVYA = Sezimal('0.532')
 #
 # Gana = dravya ÷ ayta = dravya ÷ pada³
 #
-# 1 kg/m³ = 0.4224_3331_5224 gn = 0.4224_3331_5224 dv/pd³ = 0.4224_3331_5224 dv/ay
-# 1 gn = 1 ÷ 0.4224_3331_5224 kg/m³
+# 1 kg/m³ = 0.4224_3331_5224 gan = 0.4224_3331_5224 drv/pad³ = 0.4224_3331_5224 drv/ayt
+# 1 gan = 1 ÷ 0.4224_3331_5224 kg/m³
 #
 GANA_TO_KILOGRAM_PER_CUBIC_METER = Sezimal('1.2055_1055_0052_2412_3020_3152_2051_1401_1240_2120_0222_1515')
 KILOGRAM_PER_CUBIC_METER_TO_GANA = Sezimal('0.4224_3331_5224')
@@ -170,8 +170,8 @@ DRAVYA_PER_CUBIC_PADA_TO_KILOGRAM_PER_CUBIC_METER = GANA_TO_KILOGRAM_PER_CUBIC_M
 # Bara = dravya × pada × agrima⁻²
 # Bara = dravya × tevara
 #
-# 1 Newton = 3.2324_24 br
-# 1 br = 1 ÷ 3.2324_24 N
+# 1 Newton = 3.2324_24 bar
+# 1 bar = 1 ÷ 3.2324_24 N
 #
 BARA_TO_NEWTON = Sezimal('0.1425_5252_0053_1022_1003_4450_5124_1040_3120_4213_3212_0000')
 NEWTON_TO_BARA = Sezimal('3.2324_24')
@@ -183,8 +183,8 @@ NEWTON_TO_BARA = Sezimal('3.2324_24')
 # Daba = bara × pada⁻² = bara × keshe⁻¹
 # Daba = karya × pada⁻³ = karya × ayta⁻¹
 #
-# 1 Pascal = 2.5350_2211_3344 db
-# 1 db = 1 ÷ 2.5350_2211_3344 Pa
+# 1 Pascal = 2.5350_2211_3344 dab
+# 1 dab = 1 ÷ 2.5350_2211_3344 Pa
 #
 DABA_TO_PASCAL = Sezimal('0.2012_4442_4312_0402_0433_0455_0311_4530_1510_0320_0033_3300')
 PASCAL_TO_DABA = Sezimal('2.5350_2211_3344')
@@ -196,8 +196,8 @@ PASCAL_TO_DABA = Sezimal('2.5350_2211_3344')
 # Karya = bara × pada
 # Karya = daba × aytan
 #
-# 1 J = 3.412 kr
-# 1 kr = 1 ÷ 3.412 J
+# 1 J = 3.412 karya
+# 1 karya = 1 ÷ 3.412 J
 #
 KARYA_TO_JOULE = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
 JOULE_TO_KARYA = Sezimal('3.412')
@@ -269,6 +269,15 @@ WEBER_TO_ABIVA = Sezimal('2')
 #
 VISTARA_TO_TESLA = Sezimal('0.3255_4544_0150_2044_2011_3341_4252_2121_0241_2431_0423_4001')
 TESLA_TO_VISTARA = Sezimal('1.4142_12')
+
+#
+# Temperature
+#
+# 1 K = 3.412 gtk
+# 1 gtk = 1 ÷ 3.412 K
+#
+GATIKA_TO_KELVIN = Sezimal('0.1341_5304_1530_4153_0415_3041_5304_1530_4153_0415_3041_5305')
+KELVIN_TO_GATIKA = Sezimal('3.412')
 
 
 #
