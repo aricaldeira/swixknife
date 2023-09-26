@@ -179,10 +179,22 @@ class SezimalCalendarTerminal(SezimalCalendar):
 
         return calendar
 
-    def month(self, month: SezimalInteger = None, year: SezimalInteger = None) -> str:
+    def month(self, month: SezimalInteger = None, year: SezimalInteger = None,
+              include_time: bool = True, include_events: bool = True,
+              appended_text: str = None, return_template: bool = False) -> str:
         calendar = '\n' + self._month_template(month, year)
-        calendar = self._include_time(calendar)
-        calendar = self._include_events(calendar)
+
+        if include_time:
+            calendar = self._include_time(calendar)
+
+        if appended_text:
+            calendar += appended_text
+
+        if include_events:
+            calendar = self._include_events(calendar)
+
+        if return_template:
+            return calendar
 
         return self._color_template(calendar)
 

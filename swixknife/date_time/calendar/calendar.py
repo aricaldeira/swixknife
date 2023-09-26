@@ -527,7 +527,9 @@ class SezimalCalendar:
 
         return calendar
 
-    def month(self, month: SezimalInteger = None, year: SezimalInteger = None) -> str:
+    def month(self, month: SezimalInteger = None, year: SezimalInteger = None,
+              include_time: bool = True, include_events: bool = True,
+              appended_text: str = None, return_template: bool = False) -> str:
         return self._clear_template(self._month_template(month, year))[:-1]
 
     def quarter(self, month: SezimalInteger = None, year: SezimalInteger = None) -> str:

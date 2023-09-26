@@ -12,6 +12,7 @@ parser.add_argument('-Y', '--yearly', dest='yearly', action=argparse.BooleanOpti
 parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
 parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
 parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
+parser.add_argument('-G', '--gregorian', dest='gregorian', action=argparse.BooleanOptionalAction, help='Use Gregorian days')
 parser.add_argument('-SH', '--southern-hemisphere', dest='southern', action=argparse.BooleanOptionalAction, help='Use southern hemisphere')
 parser.add_argument('-NH', '--northern-hemisphere', dest='northern', action=argparse.BooleanOptionalAction, help='Use northern hemisphere')
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date')
@@ -30,6 +31,84 @@ from swixknife.date_time.sun_moon import list_sun_moon
 from swixknife.date_time.sezimal_functions import system_time_zone
 import datetime as _datetime
 from swixknife.date_time.calendar import SezimalCalendarTerminal
+
+
+def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
+    if arguments.decimal:
+        if '?' in locale.DATE_FORMAT:
+            calendar_parameters['day_format'] = '#9?-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#9?Y'
+            calendar_parameters['month_year_format'] = '#M #9?Y'
+            calendar_parameters['time_format'] = '%?H:%?M:%?S'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+
+        else:
+            calendar_parameters['day_format'] = '#9-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#9Y'
+            calendar_parameters['month_year_format'] = '#M #9Y'
+            calendar_parameters['time_format'] = '%H:%M:%S'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+
+    elif arguments.dozenal:
+        if '?' in locale.DATE_FORMAT:
+            calendar_parameters['day_format'] = '#↋?-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#↋?Y'
+            calendar_parameters['month_year_format'] = '#M #↋?Y'
+            calendar_parameters['time_format'] = '#↋↋?u:#↋↋?p:#↋↋?a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
+
+        else:
+            calendar_parameters['day_format'] = '#↋-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#↋Y'
+            calendar_parameters['month_year_format'] = '#M #↋Y'
+            calendar_parameters['time_format'] = '#↋↋u:#↋↋p:#↋↋a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
+
+    elif arguments.niftimal:
+        if arguments.dedicated_digits:
+            calendar_parameters['day_format'] = '#@!-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#@!y'
+            calendar_parameters['month_year_format'] = '#M #@!y'
+            calendar_parameters['time_format'] = '#@!u:#@!p:#@!a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@!')
+
+        else:
+            calendar_parameters['day_format'] = '#@-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#@y'
+            calendar_parameters['month_year_format'] = '#M #@y'
+            calendar_parameters['time_format'] = '#@u:#@p:#@a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@')
+
+    elif arguments.gregorian:
+        calendar_parameters['day_format'] = '%-d'
+        calendar_parameters['month_format'] = '%B'
+        calendar_parameters['year_format'] = '%Y'
+        calendar_parameters['month_year_format'] = '%B %Y'
+        calendar_parameters['time_format'] = '%H:%M:%S'
+        calendar_parameters['date_format'] = locale.ISO_DATE_FORMAT
+
+    else:
+        if arguments.dedicated_digits:
+            calendar_parameters['day_format'] = '#!-d'
+            calendar_parameters['month_format'] = '#M'
+            calendar_parameters['year_format'] = '#!Y'
+            calendar_parameters['month_year_format'] = '#M #!Y'
+            calendar_parameters['time_format'] = '#!u:#!p:#!a'
+            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#!')
+
+        else:
+            calendar_parameters['day_format'] = None
+            calendar_parameters['month_format'] = None
+            calendar_parameters['year_format'] = None
+            calendar_parameters['month_year_format'] = None
+            calendar_parameters['time_format'] = None
+            calendar_parameters['date_format'] = None
 
 
 if __name__ == '__main__':
@@ -89,64 +168,15 @@ if __name__ == '__main__':
         'use_rtl': locale.RTL,
     }
 
-    if arguments.decimal:
-        if '?' in locale.DATE_FORMAT:
-            calendar_parameters['day_format'] = '#9?-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#9?Y'
-            calendar_parameters['month_year_format'] = '#M #9?Y'
-            calendar_parameters['time_format'] = '%?H:%?M:%?S'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+    appended_calendar = ''
 
-        else:
-            calendar_parameters['day_format'] = '#9-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#9Y'
-            calendar_parameters['month_year_format'] = '#M #9Y'
-            calendar_parameters['time_format'] = '%H:%M:%S'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+    if arguments.gregorian:
+        _calendar_formats(calendar_parameters, arguments, locale)
+        cal = SezimalCalendarTerminal(time, **calendar_parameters)
+        appended_calendar = cal.month(include_time=False, include_events=False, return_template=True)
+        arguments.gregorian = False
 
-    elif arguments.dozenal:
-        if '?' in locale.DATE_FORMAT:
-            calendar_parameters['day_format'] = '#↋?-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#↋?Y'
-            calendar_parameters['month_year_format'] = '#M #↋?Y'
-            calendar_parameters['time_format'] = '#↋↋?u:#↋↋?p:#↋↋?a'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
-
-        else:
-            calendar_parameters['day_format'] = '#↋-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#↋Y'
-            calendar_parameters['month_year_format'] = '#M #↋Y'
-            calendar_parameters['time_format'] = '#↋↋u:#↋↋p:#↋↋a'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
-
-    elif arguments.niftimal:
-        if arguments.dedicated_digits:
-            calendar_parameters['day_format'] = '#@!-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#@!y'
-            calendar_parameters['month_year_format'] = '#M #@!y'
-            calendar_parameters['time_format'] = '#@!u:#@!p:#@!a'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@!')
-
-        else:
-            calendar_parameters['day_format'] = '#@-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#@y'
-            calendar_parameters['month_year_format'] = '#M #@y'
-            calendar_parameters['time_format'] = '#@u:#@p:#@a'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@')
-    else:
-        if arguments.dedicated_digits:
-            calendar_parameters['day_format'] = '#!-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#!Y'
-            calendar_parameters['month_year_format'] = '#M #!Y'
-            calendar_parameters['time_format'] = '#!u:#!p:#!a'
-            calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#!')
+    _calendar_formats(calendar_parameters, arguments, locale)
 
     cal = SezimalCalendarTerminal(time, **calendar_parameters)
 
@@ -155,7 +185,7 @@ if __name__ == '__main__':
     elif arguments.yearly:
         calendar = cal.year()
     else:
-        calendar = cal.month()
+        calendar = cal.month(appended_text='\n' + appended_calendar)
 
     if 'KONSOLE_VERSION' in os.environ:
         print(calendar.replace('\ufe0f', ''))
