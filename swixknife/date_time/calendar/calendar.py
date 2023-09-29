@@ -356,7 +356,7 @@ class SezimalCalendar:
         if not year:
             year = self.date_time.year
 
-        date = SezimalDate(year, month, 1)
+        date = SezimalDate(year, month, 30)
 
         calendar = ''
 
@@ -446,20 +446,20 @@ class SezimalCalendar:
         if not month:
             month = self.date_time.month
 
-        this_month_date = SezimalDate(self.date_time.year, month, 1)
-        last_month_date = SezimalDate.from_ordinal_date(this_month_date.ordinal_date - 44).replace(day=1)
-        next_month_date = SezimalDate.from_ordinal_date(this_month_date.ordinal_date + 55).replace(day=1)
+        first_month_date = SezimalDate(self.date_time.year, month, 1)
+        second_month_date = SezimalDate.from_ordinal_date(first_month_date.ordinal_date + 55).replace(day=1)
+        third_month_date = SezimalDate.from_ordinal_date(second_month_date.ordinal_date + 55).replace(day=1)
 
-        this_month_calendar = self._month_template(this_month_date.month, this_month_date.year, with_year=with_year)
-        last_month_calendar = self._month_template(last_month_date.month, last_month_date.year, with_year=with_year)
-        next_month_calendar = self._month_template(next_month_date.month, next_month_date.year, with_year=with_year)
+        first_month_calendar = self._month_template(first_month_date.month, first_month_date.year, with_year=with_year)
+        second_month_calendar = self._month_template(second_month_date.month, second_month_date.year, with_year=with_year)
+        third_month_calendar = self._month_template(third_month_date.month, third_month_date.year, with_year=with_year)
 
         if self._locale.RTL and self._use_rtl:
-            calendar = self._merge_lines(next_month_calendar, this_month_calendar)
-            calendar = self._merge_lines(calendar, last_month_calendar)
+            calendar = self._merge_lines(second_month_calendar, first_month_calendar)
+            calendar = self._merge_lines(third_month_calendar, calendar)
         else:
-            calendar = self._merge_lines(last_month_calendar, this_month_calendar)
-            calendar = self._merge_lines(calendar, next_month_calendar)
+            calendar = self._merge_lines(first_month_calendar, second_month_calendar)
+            calendar = self._merge_lines(calendar, third_month_calendar)
 
         return calendar
 

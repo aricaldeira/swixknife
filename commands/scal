@@ -173,7 +173,14 @@ if __name__ == '__main__':
     if arguments.gregorian:
         _calendar_formats(calendar_parameters, arguments, locale)
         cal = SezimalCalendarTerminal(time, **calendar_parameters)
-        appended_calendar = cal.month(include_time=False, include_events=False, return_template=True)
+
+        if arguments.quarterly:
+            appended_calendar = cal.quarter()
+        elif arguments.yearly:
+            appended_calendar = cal.year()
+        else:
+            appended_calendar = cal.month(include_time=False, include_events=False, return_template=True)
+
         arguments.gregorian = False
 
     _calendar_formats(calendar_parameters, arguments, locale)
@@ -182,8 +189,16 @@ if __name__ == '__main__':
 
     if arguments.quarterly:
         calendar = cal.quarter()
+
+        if appended_calendar:
+            calendar += '\n' + appended_calendar
+
     elif arguments.yearly:
         calendar = cal.year()
+
+        if appended_calendar:
+            calendar += '\n' + appended_calendar
+
     else:
         calendar = cal.month(appended_text='\n' + appended_calendar)
 
