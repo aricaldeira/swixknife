@@ -345,7 +345,7 @@ class SezimalLocale:
 
     def format_dozenal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
-        dozenal_places: str | int | Decimal | SezimalInteger = 4,
+        dozenal_places: str | int | Decimal | SezimalInteger = 2,
         use_group_separator: bool = True,
         use_subgroup_separator: bool = False,
         use_fraction_group_separator: bool = False,
@@ -365,6 +365,38 @@ class SezimalLocale:
             number, dozenal_places, self.SEZIMAL_SEPARATOR,
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
+            typographical_negative,
+            minimum_size,
+            prefix,
+            suffix,
+            positive_format,
+            negative_format,
+        )
+
+    def format_niftmal_number(self,
+        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
+        niftimal_places: str | int | Decimal | SezimalInteger = 2,
+        use_group_separator: bool = True,
+        use_subgroup_separator: bool = False,
+        use_fraction_group_separator: bool = False,
+        use_fraction_subgroup_separator: bool = False,
+        dedicated_digits: bool = False,
+        typographical_negative: bool = True,
+        minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
+        prefix: str = '',
+        suffix: str = '',
+        positive_format: str = '{prefix}{value}{suffix}',
+        negative_format: str = '-{prefix}{value}{suffix}',
+    ) -> str:
+        group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
+        subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
+        fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
+        fraction_subgroup_separator = self.FRACTION_SUBGROUP_SEPARATOR if use_fraction_subgroup_separator else ''
+        return niftimal_format(
+            number, niftimal_places, self.SEZIMAL_SEPARATOR,
+            group_separator, subgroup_separator,
+            fraction_group_separator, fraction_subgroup_separator,
+            dedicated_digits,
             typographical_negative,
             minimum_size,
             prefix,
