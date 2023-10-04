@@ -19,6 +19,7 @@ from ...functions import SezimalRange
 from .conversion import other_calendar_date_to_ordinal_date
 from ...base import default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits
+from ...user_preferences import user_preferences
 
 
 WEEKDAY_MONDAY = 'MON'
@@ -549,26 +550,19 @@ class SezimalCalendar:
         events = []
         events_other_calendar = []
 
-        if os.path.isfile(os.path.expanduser('~/.swixknife.py')):
-            arq = open(os.path.expanduser('~/.swixknife.py'), 'r').read()
-            code = compile(arq, '', 'exec')
-            localdict = {}
-            globaldict = {
-                'locale': self._locale,
-            }
-            eval(code, globaldict, localdict)
+        up = user_preferences(self._locale)
 
-            if 'HOLIDAYS' in localdict:
-                holidays += localdict['HOLIDAYS']
+        if 'HOLIDAYS' in up:
+            holidays += up['HOLIDAYS']
 
-            if 'HOLIDAYS_OTHER_CALENDAR' in localdict:
-                holidays_other_calendar += localdict['HOLIDAYS_OTHER_CALENDAR']
+        if 'HOLIDAYS_OTHER_CALENDAR' in up:
+            holidays_other_calendar += up['HOLIDAYS_OTHER_CALENDAR']
 
-            if 'EVENTS' in localdict:
-                events += localdict['EVENTS']
+        if 'EVENTS' in up:
+            events += up['EVENTS']
 
-            if 'EVENTS_OTHER_CALENDAR' in localdict:
-                events_other_calendar += localdict['EVENTS_OTHER_CALENDAR']
+        if 'EVENTS_OTHER_CALENDAR' in up:
+            events_other_calendar += up['EVENTS_OTHER_CALENDAR']
 
         self._compute_convert_age_holidays_events(self._holidays, holidays)
         self._compute_convert_age_holidays_events(self._holidays_other_calendar, holidays_other_calendar)

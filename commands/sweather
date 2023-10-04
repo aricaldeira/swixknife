@@ -3,7 +3,7 @@
 import argparse
 
 parser = argparse.ArgumentParser(description='Shows the sezimal date and time')
-parser.add_argument('-a', '--api_key', default=None, help='WeatherAPI key')
+parser.add_argument('-a', '--api_key', default=None, nargs='?', help='WeatherAPI key')
 parser.add_argument('-c', '--city', default=None, nargs='?', help='City/location')
 parser.add_argument('-lt', '--latitude', default=None, nargs='?', help='Latitude')
 parser.add_argument('-lg', '--longitude', default=None, nargs='?', help='Longitude')

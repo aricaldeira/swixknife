@@ -12,6 +12,7 @@ ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 from ..sezimal import Sezimal, SezimalInteger
 from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
+from ..user_preferences import user_preferences
 
 
 class SezimalWeather:
@@ -169,13 +170,22 @@ class SezimalWeather:
     def visibility_formatted(self) -> str:
         return self.locale.format_number(self._visibility, sezimal_places=0, suffix='Cpad')
 
-    def get_openweathermap_conditions(self, api_key: str, location_id: str):
+    def get_openweathermap_conditions(self, api_key: str = None, location_id: str = None):
         from .open_weather_map import get_weather_conditions, fill_sezimal_weather
 
         lang = self.lang
 
         if lang == 'bz':
             lang = 'pt-br'
+
+        if not (api_key and location_id):
+            up = user_preferences(self.locale)
+
+            if (not api_key) and 'WEATHER_API_KEY' in up:
+                api_key = up['WEATHER_API_KEY']
+
+            if (not location_id) and 'WEATHER_LOCATION' in up:
+                location_id = up['WEATHER_LOCATION']
 
         conditions = get_weather_conditions(
             api_key=api_key, location_id=location_id,
@@ -184,13 +194,28 @@ class SezimalWeather:
 
         fill_sezimal_weather(self, conditions)
 
-    def get_weatherapi_conditions(self, api_key: str, location: str = None, latitude: float = None, longitude: float = None):
+    def get_weatherapi_conditions(self, api_key: str = None, location: str = None, latitude: float = None, longitude: float = None):
         from .weather_api import get_weather_conditions, fill_sezimal_weather
 
         lang = self.lang
 
         if lang == 'bz':
             lang = 'pt'
+
+        if not (api_key and (location or (latitude and longitude))):
+            up = user_preferences(self.locale)
+
+            if (not api_key) and 'WEATHER_API_KEY' in up:
+                api_key = up['WEATHER_API_KEY']
+
+            if (not latitude) and 'WEATHER_LATITUDE' in up:
+                latitude = up['WEATHER_LATITUDE']
+
+            if (not longitude) and 'WEATHER_LONGITUDE' in up:
+                longitude = up['WEATHER_LONGITUDE']
+
+            if (not location) and 'WEATHER_LOCATION' in up:
+                location = up['WEATHER_LOCATION']
 
         conditions = get_weather_conditions(
             api_key=api_key, location=location, latitude=latitude, longitude=longitude,
