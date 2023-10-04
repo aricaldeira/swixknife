@@ -373,7 +373,7 @@ class SezimalLocale:
             negative_format,
         )
 
-    def format_niftmal_number(self,
+    def format_niftimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
         niftimal_places: str | int | Decimal | SezimalInteger = 2,
         use_group_separator: bool = True,
