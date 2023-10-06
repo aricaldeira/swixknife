@@ -507,10 +507,10 @@ class SezimalCalendar:
 
     def _year_template(self) -> str:
         calendar = '\n[SY]' + self.locale.center(self.date_time.format(self._year_format, self.locale), 222) + '[EY]\n\n'
-        calendar += self._quarter_template(2, with_year=False)
-        calendar += '\n' + self._quarter_template(5, with_year=False)
-        calendar += '\n' + self._quarter_template(12, with_year=False)
-        calendar += '\n' + self._quarter_template(15, with_year=False)[:-1]
+        calendar += self._quarter_template(1, with_year=False)
+        calendar += '\n' + self._quarter_template(4, with_year=False)
+        calendar += '\n' + self._quarter_template(11, with_year=False)
+        calendar += '\n' + self._quarter_template(14, with_year=False)[:-1]
         return calendar
 
     def _clear_template(self, calendar: str) -> str:
