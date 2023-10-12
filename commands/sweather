@@ -48,5 +48,5 @@ if __name__ == '__main__':
         location=location,
         latitude=latitude, longitude=longitude,
     )
-    print(f'\ufe0f🌡️ {round(sw.temperature.decimal, 0)}° / <b>{round(sw.temperature, 0)}°</b> ―')
+    print(f'🌡️ {round(sw.temperature_sensation.decimal, 0)}° / <b>{round(sw.temperature_sensation, 0)}°</b>')
     # print(f'{round(sw.temperature, 0)}° ―')
