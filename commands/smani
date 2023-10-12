@@ -5,12 +5,16 @@ import argparse
 parser = argparse.ArgumentParser(description='List directory content using sezimal numbers and dates')
 parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
 parser.add_argument('-dc', '--decimal-currency', dest='decimal_currency', nargs='?', default=None, help='Decimal currency')
+parser.add_argument('-a', '--amount', dest='amount', nargs='?', default=None, help='Amount in sezimal currency')
+parser.add_argument('-ad', '--amount-decimal', dest='amount_decimal', nargs='?', default=None, help='Amount of sezimal currency in decimal')
+# parser.add_argument('-da', '--decimal-amount', dest='decimal_amount', nargs='?', default=None, help='Amount in decimal currency')
 parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
 parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
 parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
 parser.add_argument('-M', '--misali', dest='misali', action=argparse.BooleanOptionalAction, help='Use misali instead of mani')
 parser.add_argument('-S', '--satoshi', dest='satoshi', action=argparse.BooleanOptionalAction, help='Use satoshi instead of mani')
 parser.add_argument('-B', '--bitcoin', dest='bitcoin', action=argparse.BooleanOptionalAction, help='Use bitcoin instead of mani')
+parser.add_argument('-C', '--bits', dest='bits', action=argparse.BooleanOptionalAction, help='Use bits/microbitcoin instead of mani')
 parser.add_argument('-U', '--usd', dest='usd', action=argparse.BooleanOptionalAction, help='Show also USD rate')
 parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
 
@@ -31,44 +35,107 @@ if __name__ == '__main__':
     mani.update_rates()
 
     if arguments.misali:
-        mani_amount = MISALI_TO_MANI
+        mani_symbol = 'M₷'
 
-        if arguments.niftimal and arguments.dedicated_digits:
-            mani_formatted = 'M₷ 󱨁'
-        elif (not (arguments.decimal or arguments.dozenal)) and arguments.dedicated_digits:
-            mani_formatted = 'M₷ 󱨁'
+        if arguments.amount:
+            mani_amount_to_format = Sezimal(str(arguments.amount))
+            mani_amount = mani_amount_to_format * MISALI_TO_MANI
+
+        elif arguments.amount_decimal:
+            mani_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mani_amount = mani_amount_to_format  * MISALI_TO_MANI
+
         else:
-            mani_formatted = 'M₷ 1'
+            mani_amount_to_format = 1
+            mani_amount = MISALI_TO_MANI
 
     elif arguments.bitcoin:
-        mani_amount = BITCOIN_TO_MANI
+        mani_symbol = '₿'
 
-        if arguments.niftimal and arguments.dedicated_digits:
-            mani_formatted = '₿ 󱨁'
-        elif (not (arguments.decimal or arguments.dozenal)) and arguments.dedicated_digits:
-            mani_formatted = '₿ 󱨁'
+        if arguments.amount:
+            mani_amount_to_format = Sezimal(str(arguments.amount))
+            mani_amount = mani_amount_to_format * BITCOIN_TO_MANI
+
+        elif arguments.amount_decimal:
+            mani_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mani_amount = mani_amount_to_format * BITCOIN_TO_MANI
+
         else:
-            mani_formatted = '₿ 1'
+            mani_amount_to_format = 1
+            mani_amount = BITCOIN_TO_MANI
+
+    elif arguments.bits:
+        mani_symbol = 'µ₿'
+
+        if arguments.amount:
+            mani_amount_to_format = Sezimal(str(arguments.amount))
+            mani_amount = mani_amount_to_format * Decimal(100)
+
+        elif arguments.amount_decimal:
+            mani_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mani_amount = mani_amount_to_format * Decimal(100)
+
+        elif arguments.decimal:
+            mani_amount_to_format = 1
+            mani_amount = SATOSHI_TO_MANI * Decimal(100)
+
+        elif arguments.dozenal:
+            mani_amount_to_format = 1
+            mani_amount = SATOSHI_TO_MANI * Decimal(100) * Decimal(144)
+
+        else:
+            mani_amount_to_format = 1
+            mani_amount = SATOSHI_TO_MANI * 100
 
     else:
-        if arguments.decimal:
+        if arguments.amount:
+            mani_amount = Sezimal(str(arguments.amount))
+            mani_amount_to_format = mani_amount
+
+        elif arguments.amount_decimal:
+            mani_amount = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mani_amount_to_format = mani_amount
+
+        elif arguments.decimal:
             mani_amount = SATOSHI_TO_MANI * Decimal(10_000)
-            mani_formatted = locale.format_decimal_number(Decimal(10_000), decimal_places=0, prefix='₷')
+            mani_amount_to_format = Decimal(10_000)
 
         elif arguments.dozenal:
             mani_amount = SATOSHI_TO_MANI * Decimal(1728)
-            mani_formatted = locale.format_dozenal_number(Decimal(1728), dozenal_places=0, prefix='₷')
-
-        elif arguments.niftimal:
-            mani_amount = SATOSHI_TO_MANI * 100_0000
-            mani_formatted = locale.format_niftimal_number('1000', niftimal_places=0, prefix='₷', dedicated_digits=arguments.dedicated_digits)
+            mani_amount_to_format = Decimal(1728)
 
         else:
             mani_amount = SATOSHI_TO_MANI * 100_0000
-            mani_formatted = locale.format_number(100_0000, sezimal_places=0, prefix='₷', dedicated_digits=arguments.dedicated_digits)
+            mani_amount_to_format = 100_0000
 
         if arguments.satoshi:
-            mani_formatted = mani_formatted.replace('₷', 'ș')
+            mani_symbol = 'ș'
+        else:
+            mani_symbol = '₷'
+
+    if arguments.decimal:
+        if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
+            mani_formatted = locale.format_decimal_number(mani_amount_to_format, decimal_places=0, prefix=mani_symbol)
+        else:
+            mani_formatted = locale.format_decimal_number(mani_amount_to_format, prefix=mani_symbol)
+
+    elif arguments.dozenal:
+        if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
+            mani_formatted = locale.format_dozenal_number(mani_amount_to_format, dozenal_places=0, prefix=mani_symbol)
+        else:
+            mani_formatted = locale.format_dozenal_number(mani_amount_to_format, prefix=mani_symbol)
+
+    elif arguments.niftimal:
+        if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
+            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, niftimal_places=0, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
+        else:
+            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
+
+    else:
+        if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
+            mani_formatted = locale.format_number(mani_amount_to_format, sezimal_places=0, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
+        else:
+            mani_formatted = locale.format_number(mani_amount_to_format, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
 
     dc = mani.mani_to_decimal_currency(mani_amount)
     dc_prefix = mani.decimal_symbol
@@ -93,7 +160,7 @@ if __name__ == '__main__':
         usd_formatted = locale.format_number(usd, prefix='US$', dedicated_digits=arguments.dedicated_digits)
 
     if arguments.usd:
-        print(f'{mani_formatted}: {dc_formatted} / {usd_formatted}')
+        print(f'{mani_formatted}: <b>{dc_formatted}</b> / {usd_formatted}')
     else:
         print(f'{mani_formatted}: {dc_formatted}')
 
