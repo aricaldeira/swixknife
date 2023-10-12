@@ -334,10 +334,21 @@ class SezimalCalendarTerminal(SezimalCalendar):
         lines += self.list_astronomical_events()
 
         lines = sorted(lines, key=self._locale.sort_key)
+        max_length = 0
 
-        for line in lines:
+        for i in range(len(lines)):
+            line = lines[i]
             parts = line.split('|')
-            text += parts[0] + parts[-1] + '\n'
+            line = parts[0] + parts[-1]
+            lines[i] = line
+
+            if self._locale.len(line) > max_length:
+                max_length = self._locale.len(line)
+
+        for i in range(len(lines)):
+            line = lines[i]
+            line = self._locale.ljust(line, max_length)
+            text += line + '\n'
 
         if self._locale.RTL and self._use_rtl:
             return self._merge_lines(text, calendar)[:-1]

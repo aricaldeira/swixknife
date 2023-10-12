@@ -20,6 +20,10 @@ parser.add_argument('-s', '--date', default=None, nargs='?', help='Sezimal date'
 parser.add_argument('-tz', '--time-zone', dest='time_zone', default=None, nargs='?', help='Time zone')
 parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
 parser.add_argument('-LFWD', '--locale-first-weekday', dest='locale_first_weekday', action=argparse.BooleanOptionalAction, help='Use locale’s first weekday')
+parser.add_argument('-ET', '--exclude-time', dest='exclude_time', action=argparse.BooleanOptionalAction, help='Don’t show time')
+parser.add_argument('-EE', '--exclude-events', dest='exclude_events', action=argparse.BooleanOptionalAction, help='Don’t show events')
+parser.add_argument('-H', '--html', dest='html', action=argparse.BooleanOptionalAction, help='HTML mode - replaces spaces for &nbsp;')
+parser.add_argument('-V', '--visible-spaces', dest='visible_spaces', action=argparse.BooleanOptionalAction, help='HTML mode - replaces spaces for dots')
 
 import os
 
@@ -200,11 +204,28 @@ if __name__ == '__main__':
             calendar += '\n' + appended_calendar
 
     else:
-        calendar = cal.month(appended_text='\n' + appended_calendar)
+        calendar = cal.month(
+            appended_text='\n' + appended_calendar,
+            include_time=not arguments.exclude_time,
+            include_events=not arguments.exclude_events,
+        )
 
-    if 'KONSOLE_VERSION' in os.environ:
-        print(calendar.replace('\ufe0f', ''))
-    else:
-        print(calendar)
+    # if 'KONSOLE_VERSION' in os.environ:
+    calendar = calendar.replace('\ufe0f', '')
 
+    if arguments.html or arguments.visible_spaces:
+        c = ''
+
+        first_line = calendar.splitlines()[0]
+        for line in calendar.splitlines():
+            c += f'  {line}  \n'
+
+        c += f'  {first_line}  \n'
+
+        if arguments.visible_spaces:
+            calendar = c.replace(' ', '.')
+        else:
+            calendar = c.replace(' ', '&nbsp;')
+
+    print(calendar)
     print()
