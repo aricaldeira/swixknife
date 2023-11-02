@@ -9,6 +9,9 @@ parser.add_argument('-lt', '--latitude', default=None, nargs='?', help='Latitude
 parser.add_argument('-lg', '--longitude', default=None, nargs='?', help='Longitude')
 parser.add_argument('-l', '--locale', default=None, nargs='?', help='Locale')
 parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zone')
+parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
+parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
+parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
 
 
 from swixknife.weather.weather import SezimalWeather
@@ -48,5 +51,14 @@ if __name__ == '__main__':
         location=location,
         latitude=latitude, longitude=longitude,
     )
-    print(f'🌡️ {round(sw.temperature_sensation.decimal, 0)}° / <b>{round(sw.temperature_sensation, 0)}°</b>')
-    # print(f'{round(sw.temperature, 0)}° ―')
+
+    if arguments.decimal:
+        temperature = f'{round(sw.temperature_sensation.decimal, 0)}°'
+    elif arguments.dozenal:
+        temperature = f'{sw.temperature_sensation.dozenal}°'
+    elif arguments.niftimal:
+        temperature = f'{sw.temperature_sensation.niftimal}°'
+    else:
+        temperature = f'{round(sw.temperature_sensation, 0)}°'
+
+    print(temperature)
