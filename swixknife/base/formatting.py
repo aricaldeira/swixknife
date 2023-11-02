@@ -294,7 +294,7 @@ def dozenal_format(
     if group_separator:
         if minimum_size > 0:
             integer = integer.rjust(minimum_size, '0')
-        integer = _apply_format(integer, group_separator, _FOUR_DIGITS_GROUP_FORMAT)
+        integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT)
 
         if subgroup_separator:
             integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
@@ -302,7 +302,7 @@ def dozenal_format(
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
     if fraction and fraction_group_separator:
-        fraction = _apply_format(fraction[::-1], fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)[::-1]
+        fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
 
         if fraction_subgroup_separator:
             fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
