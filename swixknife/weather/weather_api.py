@@ -7,15 +7,40 @@ from typing import TypeVar
 
 ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 
+from ..sezimal import SezimalInteger
 from .weather import SezimalWeather
 from . import functions
 
 import requests
 import json
 
+# nublado fechado ☁️
+# raios 🌩️
+# raios e chuva ⛈️
+# neve 🌨️
+# chuva 🌧️
+# sol com chuva 🌦️
+# sol bastante nublado 🌥️
+# sol pouco nublado 🌤️
+# sol nublado médio ⛅
+# vento 🌬️
+# sol ☀️
+# lua crescente 🌘
+# chuva ☔
+# neblina 🌫
+# ciclone 🌪
 
-def get_weather_conditions(api_key: str, location: str = None, latitude: float = None, longitude: float = None, language: str = 'en', time_zone: str | ZoneInfo = None) -> dict:
-    url = f'http://api.weatherapi.com/v1/current.json?key={api_key}'
+
+def get_weather_conditions(
+    api_key: str, location: str = None, latitude: float = None, longitude: float = None,
+    language: str = 'en', time_zone: str | ZoneInfo = None, days: str | int | SezimalInteger = 0) -> dict:
+    url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&aqi=yes&alerts=yes'
+
+    days = SezimalInteger(days or 0)
+
+    if days > 0:
+        url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&aqi=yes&alerts=yes'
+        url += f'&days={int(days.decimal)}'
 
     if location:
         url += f'&q={location}'
