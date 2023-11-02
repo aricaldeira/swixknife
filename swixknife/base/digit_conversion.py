@@ -26,7 +26,8 @@ _PLUS_00 = ''
 _PLUS_10 = '\u0307'  # combining dot above
 _PLUS_20 = '\u0308'  # combining diaeresis
 _PLUS_30 = '\u030a'  # combining ring above
-_PLUS_40 = '\u0303'  # combining tilde
+# _PLUS_40 = '\u0303'  # combining tilde
+_PLUS_40 = '\u0304'  # combining macron
 _PLUS_50 = '\u0306'  # combining breve
 
 REGULARIZED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
