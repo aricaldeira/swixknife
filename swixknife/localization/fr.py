@@ -67,7 +67,7 @@ class SezimalLocaleFR(SezimalLocale):
         'avr.',
         'mai',
         'juin',
-        'juill.'
+        'juill.',
         'août',
         'sept.',
         'oct.',
