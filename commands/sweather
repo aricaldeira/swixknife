@@ -53,12 +53,12 @@ if __name__ == '__main__':
     )
 
     if arguments.decimal:
-        temperature = f'{round(sw.temperature_sensation.decimal, 0)}°'
+        temperature = f'{round(sw.temperature_sensation.decimal, 0)} °'
     elif arguments.dozenal:
-        temperature = f'{sw.temperature_sensation.dozenal}°'
+        temperature = f'{sw.temperature_sensation.dozenal} °'
     elif arguments.niftimal:
-        temperature = f'{sw.temperature_sensation.niftimal}°'
+        temperature = f'{sw.temperature_sensation.niftimal} °'
     else:
-        temperature = f'{round(sw.temperature_sensation, 0)}°'
+        temperature = f'{round(sw.temperature_sensation, 0)} °'
 
     print(temperature)
