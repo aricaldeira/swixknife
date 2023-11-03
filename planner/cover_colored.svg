@@ -27,8 +27,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.34857906"
-     inkscape:cx="985.42925"
-     inkscape:cy="705.72226"
+     inkscape:cx="983.99485"
+     inkscape:cy="705.72225"
      inkscape:window-width="1920"
      inkscape:window-height="1007"
      inkscape:window-x="0"
@@ -4938,11 +4938,11 @@
        d="m -102.95458,1.6415386 -35.54458,-1.7e-6 -17.77229,-30.7825089 17.77229,-30.782507 35.54458,2e-6 17.772291,30.782509 z"
        transform="matrix(0.19729402,0,0,-0.19728816,164.85469,-14.36917)" />
     <rect
-       style="fill:#ffffff;stroke:none;stroke-width:0.720852;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:0.699997"
+       style="fill:#ffffff;stroke:none;stroke-width:0.740889;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:0.699997"
        id="rect259"
-       width="55"
+       width="58.099998"
        height="30"
-       x="69"
+       x="66"
        y="-184.60001"
        transform="scale(1,-1)" />
   </g>
