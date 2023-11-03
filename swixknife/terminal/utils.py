@@ -21,12 +21,12 @@ def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
         return locale.format_number(value, sezimal_places=0, suffix=unit, dedicated_digits=dedicated_digits)
 
     value = value / (Sezimal(10) ** Sezimal(Decimal(power)))
-    # unit = sezimal_exponent_to_symbol(Decimal(power)) + unit
+    unit = sezimal_exponent_to_symbol(Decimal(power)) + unit
     # power = Sezimal(Decimal(power)).formatted_number
     # power = power.replace('0', '⁰').replace('1', '¹').replace('2', '²')
     # power = power.replace('3', '³').replace('4', '⁴').replace('5', '⁵')
     # unit = power + unit
-    unit = Sezimal(Decimal(power)).formatted_number + '↑' + unit
+    # unit = Sezimal(Decimal(power)).formatted_number + '↑' + unit
     return locale.format_number(value, sezimal_places, suffix=unit, dedicated_digits=dedicated_digits)
 
 
