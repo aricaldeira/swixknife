@@ -48,7 +48,7 @@ UNIT-vst vistara
 UNIT-dia dia
 UNIT-day dia
 UNIT-uta uta
-UNIT-psh pòxa
+UNIT-psh poxa
 UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bda bòda
