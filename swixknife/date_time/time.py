@@ -399,7 +399,8 @@ class SezimalTime:
         ]:
             if f'#&{character}' in fmt:
                 fmt = fmt.replace(f'#&{character}', sezimal_spellout(unit + ' ' + str(getattr(self, value, 0)), lang or 'en'))
-            elif f'#&@{character}' in fmt:
+
+            if f'#&@{character}' in fmt:
                 fmt = fmt.replace(f'#&@{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
 
         if '#t' in fmt:
