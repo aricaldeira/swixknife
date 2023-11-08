@@ -234,7 +234,7 @@ def decimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction)
+            fixed_part, recurring = _identify_recurring_digits(fraction, max_fraction_size=36)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -322,7 +322,7 @@ def dozenal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction)
+            fixed_part, recurring = _identify_recurring_digits(fraction, max_fraction_size=36)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -472,8 +472,8 @@ def niftimal_format(
     return formatted_number
 
 
-def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_part: str = '', refining: bool = False) -> (str, str):
-    if (not refining) and ((not fraction) or (len(fraction) < 48)):
+def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_part: str = '', refining: bool = False, max_fraction_size: int = 48) -> (str, str):
+    if (not refining) and ((not fraction) or (len(fraction) < max_fraction_size)):
         return fixed_part, recurring_part
 
     max_size = len(fraction)
@@ -492,12 +492,12 @@ def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_pa
         fixed_part = fraction[0:len(fixed_part) + 1]
         recurring_part = ''
 
-        return _identify_recurring_digits(fraction, fixed_part, recurring_part)
+        return _identify_recurring_digits(fraction, fixed_part, recurring_part, max_fraction_size)
 
     test = fixed_part + recurring_part * max_repetitions
 
     if len(test) >= max_size:
-        test = test[:max_size - 1]
+        test = test[:max_size - 2]
 
     if fraction.startswith(test):
         #
@@ -515,7 +515,8 @@ def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_pa
 
         return fixed_part, recurring_part
 
-    return _identify_recurring_digits(fraction, fixed_part, recurring_part)
+    return _identify_recurring_digits(fraction, fixed_part, recurring_part, max_fraction_size)
+
 
 def _apply_recurring_mark(fraction: str, recurring: str) -> str:
     if (not recurring) or (recurring == '0'):
