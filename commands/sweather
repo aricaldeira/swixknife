@@ -12,9 +12,11 @@ parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zon
 parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
 parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
 parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
+parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
 
 
 from swixknife.weather.weather import SezimalWeather
+from swixknife.base import default_to_dedicated_digits, default_niftimal_to_dedicated_digits
 from zoneinfo import ZoneInfo
 
 
@@ -58,7 +60,17 @@ if __name__ == '__main__':
         temperature = f'{sw.temperature_sensation.dozenal} °'
     elif arguments.niftimal:
         temperature = f'{sw.temperature_sensation.niftimal} °'
+
+        if '.' in temperature:
+            temperature = temperature.split('.')[0] + ' °'
+
+        if arguments.dedicated_digits:
+            temperature = default_niftimal_to_dedicated_digits(temperature)
+
     else:
         temperature = f'{round(sw.temperature_sensation, 0)} °'
+
+        if arguments.dedicated_digits:
+            temperature = default_to_dedicated_digits(temperature)
 
     print(temperature)
