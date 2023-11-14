@@ -555,8 +555,11 @@ class Sezimal:
         if self == 0 or other_number == 0:
             return '0'
 
-        if other_number == 1:
-            return str(self)
+        if other_number == 1 or other_number == -1:
+            if self._sign == -1:
+                return str(self)[1:]
+            else:
+                return str(self)
 
         #
         # Multiplies two values;
@@ -757,6 +760,8 @@ class Sezimal:
         #
         if hasattr(other_number, 'reciprocal'):
             reciprocal = other_number.reciprocal
+        elif other_number == 1 or other_number == -1:
+            reciprocal = other_number
         else:
             reciprocal = Sezimal('1').__division(other_number) * other_number._sign
 
