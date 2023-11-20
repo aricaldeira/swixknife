@@ -11,7 +11,7 @@ __author__ = 'Ari Caldeira'
 __copyright__ = 'Copyright 2023, SwixKnife'
 __credits__ = ['Ari Caldeira', 'Irv Bromberg']
 __license__ = 'MIT'
-__version__ = '1.2b2'
+__version__ = '1.3b1'
 __status__ = 'Beta'
 
 
