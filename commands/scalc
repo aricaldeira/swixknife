@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Sezimal Calculator')
+parser.add_argument('expression', help='Expression to calculate')
+parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
+
+import os
+
+import swixknife
+from swixknife.calculator import SezimalCalculator as SC
+from swixknife import sezimal_locale
+
+
+if __name__ == '__main__':
+    arguments = parser.parse_args()
+
+    locale = sezimal_locale(arguments.locale)
+
+    calc = SC(arguments.expression, locale.LANG)
+
+    display = calc.display + ' = '
+    calc.eval_expression()
+    display += calc.display
+
+    print(display)
