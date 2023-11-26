@@ -99,9 +99,17 @@ def _clean_recurring_digits(number: str) -> str:
         number
         and '.' in number
         and len(number) >= 3
-        and number[-1].lower() in ('p', 'ꝑ', 'ꝓ')
+        and number[-1].lower() in ('p', 'ꝑ', 'ꝓ', 'ꝕ')
     ):
         return number
+
+    #
+    # Those special letters are assumed to mean _p;
+    # or, in other words, allways have the underscore before them
+    #
+    if number[-1].lower() in ('ꝑ', 'ꝓ', 'ꝕ'):
+        if number[-2] != '_':
+            number = number[:-1] + '_p'
 
     #
     # Strips the “p” at the end
@@ -146,7 +154,7 @@ def _clean_recurring_digits(number: str) -> str:
 
     times = ((repeating_max_size) // len(recurring)) + 1
 
-    plus_one = recurring == '3' or recurring == '4'
+    plus_one = recurring in ('1', '2', '3', '4')
 
     recurring *= times
     recurring = recurring[:repeating_max_size]
@@ -154,7 +162,11 @@ def _clean_recurring_digits(number: str) -> str:
     number += recurring
 
     if plus_one:
-        if recurring[-1] == '3':
+        if recurring[-1] == '1':
+            number = number[:-1] + '5'
+        # elif recurring[-1] == '2':
+        #     number = number[:-1] + '3'
+        elif recurring[-1] == '3':
             number = number[:-1] + '4'
         elif recurring[-1] == '4':
             number = number[:-1] + '5'
