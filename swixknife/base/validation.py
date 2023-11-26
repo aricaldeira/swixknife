@@ -88,11 +88,79 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
 _SPACES = re.compile('[\u0020\u00a0\u2000-\u206f]')
 
 
+def _clean_recurring_digits(number: str) -> str:
+    #
+    # The recurring digits marker can be used as:
+    # [0].5[_](pꝑꝓ) - at least 3 chars
+    # or
+    # [0].5555_55[_]p
+    if not (
+        number
+        and '.' in number
+        and len(number) >= 3
+        and number[-1].lower() in ('p', 'ꝑ', 'ꝓ')
+    ):
+        return number
+
+    #
+    # Strips the “p” at the end
+    #
+    number = number[:-1]
+
+    #
+    # If there wasn’t any separator,
+    # the recurring digit is just the last digit:
+    #
+    if '_' not in number:
+        recurring = number[-1]
+
+    #
+    # Let’s find where the recurring digit starts
+    #
+    else:
+        if number[-1] == '_':
+            separator = number[-1]
+            number = number[:-1]
+        else:
+            separator = '_'
+
+        while number.endswith(separator[-1]):
+            separator = number[-1] + separator
+            number = number[:-1]
+
+        if separator in number:
+            parts = number.split(separator)
+        else:
+            parts = number.split('.')
+
+        recurring = parts[-1]
+
+    #
+    # How many times do we repeat (limit is 120 48_dec)?
+    #
+    fraction = number.split('.')[-1]
+    fraction = fraction.replace('_', '')
+
+    repeating_max_size = 48 - len(fraction)
+
+    times = ((repeating_max_size) // len(recurring)) + 1
+
+    recurring *= times
+    recurring = recurring[:repeating_max_size]
+
+    number += recurring
+
+    return number
+
+
 def _clean_separators(number: str) -> str:
-    number = number.replace('_', '')
     number = number.replace(',', '.')
-    number = number.replace('\u02d9', '')
+    number = number.replace('\u02d9', '_')
     number = _SPACES.sub('', number)
+
+    number = _clean_recurring_digits(number)
+
+    number = number.replace('_', '')
     return number
 
 
