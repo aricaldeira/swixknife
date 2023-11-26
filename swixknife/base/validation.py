@@ -94,6 +94,7 @@ def _clean_recurring_digits(number: str) -> str:
     # [0].5[_](pꝑꝓ) - at least 3 chars
     # or
     # [0].5555_55[_]p
+    #
     if not (
         number
         and '.' in number
@@ -133,7 +134,7 @@ def _clean_recurring_digits(number: str) -> str:
         else:
             parts = number.split('.')
 
-        recurring = parts[-1]
+        recurring = parts[-1].replace('_', '')
 
     #
     # How many times do we repeat (limit is 120 48_dec)?
