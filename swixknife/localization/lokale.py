@@ -301,6 +301,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -317,6 +318,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             mark_recurring_digits,
+            p_recurring_notation,
         )
 
     def format_decimal_number(self,
@@ -331,6 +333,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
@@ -345,6 +348,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             mark_recurring_digits,
+            p_recurring_notation,
         )
 
     def format_dozenal_number(self,
@@ -361,6 +365,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -377,6 +382,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             mark_recurring_digits,
+            p_recurring_notation,
         )
 
     def format_niftimal_number(self,
@@ -394,6 +400,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -411,6 +418,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             mark_recurring_digits,
+            p_recurring_notation,
         )
 
     @property

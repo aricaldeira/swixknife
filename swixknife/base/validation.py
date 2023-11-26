@@ -146,10 +146,18 @@ def _clean_recurring_digits(number: str) -> str:
 
     times = ((repeating_max_size) // len(recurring)) + 1
 
+    plus_one = recurring == '3' or recurring == '4'
+
     recurring *= times
     recurring = recurring[:repeating_max_size]
 
     number += recurring
+
+    if plus_one:
+        if recurring[-1] == '3':
+            number = number[:-1] + '4'
+        elif recurring[-1] == '4':
+            number = number[:-1] + '5'
 
     return number
 

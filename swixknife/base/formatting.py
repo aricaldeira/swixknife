@@ -56,6 +56,7 @@ def sezimal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
     if type(number).__name__ == 'Decimal':
         number = decimal_to_sezimal(number)
@@ -118,7 +119,11 @@ def sezimal_format(
         formatted_number += sezimal_separator
 
         if mark_recurring_digits and recurring:
-            formatted_number += _apply_recurring_mark(fraction, recurring)
+            formatted_number += _apply_recurring_mark(
+                fraction, recurring,
+                p_recurring_notation or fraction_group_separator == '_',
+                _FOUR_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+            )
         else:
             formatted_number += fraction
 
@@ -204,6 +209,7 @@ def decimal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
         #
         # Lakhs and crores are Indian names for powers of ten
         # https://en.wikipedia.org/wiki/Indian_numbering_system
@@ -277,7 +283,11 @@ def decimal_format(
         formatted_number += decimal_separator
 
         if mark_recurring_digits and recurring:
-            formatted_number += _apply_recurring_mark(fraction, recurring)
+            formatted_number += _apply_recurring_mark(
+                fraction, recurring,
+                p_recurring_notation or fraction_group_separator == '_',
+                _THREE_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+            )
         else:
             formatted_number += fraction
 
@@ -304,6 +314,7 @@ def dozenal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
     number = sezimal_to_dozenal(number)
     dozenal_places = sezimal_to_dozenal(dozenal_places)
@@ -361,7 +372,11 @@ def dozenal_format(
         formatted_number += dozenal_separator
 
         if mark_recurring_digits and recurring:
-            formatted_number += _apply_recurring_mark(fraction, recurring)
+            formatted_number += _apply_recurring_mark(
+                fraction, recurring,
+                p_recurring_notation or fraction_group_separator == '_',
+                _THREE_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+            )
         else:
             formatted_number += fraction
 
@@ -389,6 +404,7 @@ def niftimal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         mark_recurring_digits: bool = False,
+        p_recurring_notation: bool = False,
     ) -> str:
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         number = sezimal_to_niftimal(number)
@@ -457,7 +473,11 @@ def niftimal_format(
         formatted_number += niftimal_separator
 
         if mark_recurring_digits and recurring:
-            formatted_number += _apply_recurring_mark(fraction, recurring)
+            formatted_number += _apply_recurring_mark(
+                fraction, recurring,
+                p_recurring_notation or fraction_group_separator == '_',
+                _FOUR_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+            )
         else:
             formatted_number += fraction
 
@@ -518,7 +538,7 @@ def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_pa
     return _identify_recurring_digits(fraction, fixed_part, recurring_part, max_fraction_size)
 
 
-def _apply_recurring_mark(fraction: str, recurring: str) -> str:
+def _apply_recurring_mark(fraction: str, recurring: str, p_recurring_notation: bool = False, recurring_regrouping: re.Pattern = None) -> str:
     if (not recurring) or (recurring == '0'):
         return fraction
 
@@ -547,5 +567,37 @@ def _apply_recurring_mark(fraction: str, recurring: str) -> str:
         marked_fraction += fraction[j:]
 
     marked_fraction = marked_fraction[::-1]
+
+    if p_recurring_notation:
+        recurring_start = marked_fraction.find(_RECURRING_DIGITS_COMBINING_OVERLINE) - 1
+        formatted_recurring = marked_fraction[recurring_start:].replace(_RECURRING_DIGITS_COMBINING_OVERLINE, '')
+        marked_fraction = marked_fraction[:recurring_start]
+
+        #
+        # Regroup recurring digits, using _ as separator
+        #
+        if recurring_regrouping is not None:
+            formatted_recurring = _apply_format(formatted_recurring.replace('_', '')[::-1], '_', recurring_regrouping)[::-1]
+
+        if len(formatted_recurring) == 1:
+            marked_fraction += formatted_recurring + 'p'
+        else:
+            if not marked_fraction:
+                if '_' in formatted_recurring:
+                    marked_fraction = formatted_recurring + '__p'
+                else:
+                    marked_fraction = formatted_recurring + '_p'
+
+            elif '_' not in formatted_recurring:
+                if '_' in formatted_recurring:
+                    marked_fraction += '__' + formatted_recurring + '__p'
+                else:
+                    marked_fraction += '_' + formatted_recurring + '_p'
+
+            else:
+                if marked_fraction[-1] == '_':
+                    marked_fraction += '_' + formatted_recurring + '__p'
+                else:
+                    marked_fraction += '__' + formatted_recurring + '__p'
 
     return marked_fraction
