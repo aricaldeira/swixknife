@@ -2,13 +2,15 @@
 
 __all__ = ('SezimalCalculator',)
 
-from ..sezimal import Sezimal, SezimalInteger
 from decimal import Decimal
-from ..units.conversions import  *
-from ..base import decimal_format, sezimal_format, \
-    SEPARATOR_DOT, SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE, \
-    default_to_dedicated_digits
 
+from ..sezimal import Sezimal, SezimalInteger
+from ..constants import E, PI, TAU, GOLDEN_RATIO
+from ..base import default_to_dedicated_digits, decimal_to_sezimal, \
+    validate_clean_sezimal, validate_clean_decimal, \
+    sezimal_format, decimal_format
+
+from ..localization import SezimalLocale, sezimal_locale
 
 _PERSIXNIFF = '‰'
 _PERUNEXIAN = '‱'
@@ -60,6 +62,28 @@ _OPERATION = {
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
     '__MOD__': '|',
+    '__CONSTANT_PI__': 'PI',
+    '__CONSTANT_TAU__': 'TAU',
+    '__CONSTANT_GOLDEN_RATIO__': 'GOLDEN_RATIO',
+}
+
+_OPERATION_DECIMAL  = {
+    '__ADD__': '+',
+    '__SUBTRACT__': '-',
+    '__DIVIDE__': '/',
+    '__MULTIPLY__': '*',
+    '__POWER__': '**',
+    '__PERNIF__': "/Sezimal('244')",
+    '__PERSIXNIF__': "/Sezimal('4344')",
+    '__PERUNEXIAN__': "/Sezimal('11_4144')",
+    '__SQUARE__': "**Sezimal('2')",
+    '__CUBE__': "**Sezimal('3')",
+    '__LEFT_PARENTHESIS__': '(',
+    '__RIGHT_PARENTHESIS__': ')',
+    '__MOD__': '|',
+    '__CONSTANT_PI__': 'PI.decimal',
+    '__CONSTANT_TAU__': 'TAU.decimal',
+    '__CONSTANT_GOLDEN_RATIO__': 'GOLDEN_RATIO.decimal',
 }
 
 _NICE_OPERATION = {
@@ -75,114 +99,19 @@ _NICE_OPERATION = {
     '__CUBE__': "³",
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
+    '__CONSTANT_PI__': ' π ',
+    '__CONSTANT_TAU__': ' τ ',
+    '__CONSTANT_GOLDEN_RATIO__': ' φ ',
 }
-
-_LOCALES_COMMA_SEPARATOR = [
-    'az-AZ',
-    'be-BY',
-    'bg-BG',
-    'bs-BA',
-    'bz',
-    'bz-BR',
-    'ca-ES',
-    'crh-UA',
-    'cs-CZ',
-    'da-DK',
-    'de-DE',
-    'el-CY',
-    'el-GR',
-    'en-DK',
-    'eo',
-    'es-AR',
-    'es-CR',
-    'es-CU',
-    'es-ES',
-    'et-EE',
-    'eu-ES',
-    'ff-SN',
-    'fi-FI',
-    'fr-BE',
-    'fr-FR',
-    'fr-LU',
-    'gl-ES',
-    'hr-HR',
-    'ht-HT',
-    'hu-HU',
-    'id-ID',
-    'is-IS',
-    'it-IT',
-    'ka-GE',
-    'kab-DZ',
-    'kk-KZ',
-    'ky-KG',
-    'ln-CD',
-    'lt-LT',
-    'lv-LV',
-    'mg-MG',
-    'mk-MK',
-    'mn-MN',
-    'nb-NO',
-    'nl-NL',
-    'pap-AW',
-    'pap-CW',
-    'pl-PL',
-    'pt-BR',
-    'pt-PT',
-    'pt-AO',
-    'ro-RO',
-    'ru-RU',
-    'ru-UA',
-    'rw-RW',
-    'se-NO',
-    'sk-SK',
-    'sl-SI',
-    'sq-AL',
-    'sr-RS',
-    'sv-SE',
-    'tg-TJ',
-    'tr-TR',
-    'tt-RU',
-    'uk-UA',
-    'vi-VN',
-    'wo-SN'
-]
-
-_LOCALES_SPACE_GROUP_SEPARATOR = [
-    'cs-CZ',
-    'de-CH',
-    'eo',
-    'es-CR',
-    'es-MX',
-    'et-EE',
-    'fi-FI',
-    'fr-FR',
-    'fr-LU',
-    'ht-HT',
-    'kk-KZ',
-    'ky-KG',
-    'lv-LV',
-    'mfe-MU',
-    'mk-MK',
-    'nb-NO',
-    'pl-PL',
-    'ps-AF',
-    'ru-RU',
-    'sk-SK',
-    'sv-SE',
-    'uk-UA',
-    'unm-US',
-]
 
 
 class SezimalCalculator:
-    def __init__(self, expression: str = '', lang: str = ''):
+    def __init__(self, expression: str = '0', locale: str | SezimalLocale = None):
         self.dedicated_digits = False
-        self.sezimal_separator = SEPARATOR_DOT
-        self.group_separator = SEPARATOR_COMMA
-        self.fraction_group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
         self.decimal = False
-        self.precision = 4
-        self.lang = lang
+        self.p_notation = False
+        self.precision = 3
+        self.locale = locale
         self.expression = expression
 
     @property
@@ -193,6 +122,14 @@ class SezimalCalculator:
     def expression(self, text: str):
         self._expression = text
         self._prepare_expression()
+
+    @property
+    def sezimal_expression(self):
+        return self._sezimal_expression
+
+    @property
+    def decimal_expression(self):
+        return self._decimal_expression
 
     @property
     def decimal(self):
@@ -222,109 +159,165 @@ class SezimalCalculator:
             self._decimal_precision = round(self._sezimal_precision / 4 * 3, 0)
 
     @property
-    def lang(self):
-        return self._lang
+    def locale(self):
+        return self._locale
 
-    @lang.setter
-    def lang(self, lang: str = ''):
-        if not lang:
-            self._lang = lang
-            return
-
-        #
-        # Locales that use comma as the sezimal separador
-        #
-        if lang in _LOCALES_COMMA_SEPARATOR or lang.replace('_', '-') in _LOCALES_COMMA_SEPARATOR:
-            self.sezimal_separator = SEPARATOR_COMMA
-            self.group_separator = SEPARATOR_DOT
-
-        if lang in _LOCALES_SPACE_GROUP_SEPARATOR or lang.replace('_', '-') in _LOCALES_SPACE_GROUP_SEPARATOR:
-            self.group_separator = SEPARATOR_NARROW_NOBREAK_SPACE
+    @locale.setter
+    def locale(self, locale: str | SezimalLocale = None):
+        self._locale = sezimal_locale(locale)
 
     @property
     def display(self):
-        return self._display
-
-    @property
-    def display_dedicated_digits(self):
-        return default_to_dedicated_digits(self._display)
-
-    @property
-    def display_11_segment(self):
-        return self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%')
-
-    @property
-    def display_11_segment_dedicated_digits(self):
-        display = default_to_dedicated_digits(self._expression.replace(_PERSIXNIFF, '%').replace(_PERUNEXIAN, '%'))
-        display = display.replace('󱨀', '\u283f')
-        display = display.replace('󱨁', '\u2866')
-        display = display.replace('󱨂', '\u2853')
-        display = display.replace('󱨃', '\u286b')
-        display = display.replace('󱨄', '\u285b')
-        display = display.replace('󱨅', '\u287b')
-        return display
+        if self.dedicated_digits:
+            return default_to_dedicated_digits(self._display)
+        else:
+            return self._display
 
     @property
     def decimal_display(self):
         return self._decimal_display
 
-    @property
-    def decimal_display_11_segment(self):
-        return self._decimal_expression
-
-    def calculate(self):
-        final_exp, nice_exp, decimal_exp, sezimal_response, sezimal_formatted_response, decimal_response, decimal_formatted_response = calculator(self._expression)
-
-        self.expression = str(sezimal_response)
-
-    def _format_sezimal(self, number, precision=None):
-        if precision is None:
-            precision = self._sezimal_precision
-
+    def _format_sezimal(self, number, precision: int = None, display: bool = False):
         params = {
-            'sezimal_places': precision,
-            'sezimal_separator': self.sezimal_separator,
-            'group_separator': self.group_separator,
-            'fraction_group_separator': self.fraction_group_separator,
-            'typographical_negative': True,
+            'sezimal_places': 0,
             'dedicated_digits': self.dedicated_digits,
+            'mark_recurring_digits': True,
+            'p_recurring_notation': True,
         }
 
-        return sezimal_format(number, **params)
+        if not display:
+            params['sezimal_separator'] = '.'
+            params['group_separator'] = '_'
+            params['fraction_group_separator'] = '_'
+            params['dedicated_digits'] = False
+            params['typographical_negative'] = False
+            p_notation = sezimal_format(number, **params)
 
-    def _format_decimal(self, number, precision=None):
-        if precision is None:
-            precision = self._decimal_precision
+        else:
+            params['use_fraction_group_separator'] = True
+            p_notation = self.locale.format_number(number, **params)
 
+        if 'p' in p_notation:
+            if self.p_notation:
+                if not p_notation.endswith('5p'):
+                    return p_notation
+
+                if display:
+                    number = round(number, len(p_notation.split(self.locale.SEZIMAL_SEPARATOR)[1]) - 2)
+                else:
+                    number = round(number, len(p_notation.split('.')[1]) - 2)
+
+            else:
+                precision = None
+
+        if (precision is None) or (precision == -1):
+            number_precision = validate_clean_sezimal(str(number))
+
+            if '.' not in number_precision:
+                number_precision = 0
+            else:
+                number_precision = number_precision.split('.')[1]
+
+                if number_precision.replace('0', '') == '':
+                    number_precision = 0
+                else:
+                    number_precision = len(number_precision)
+
+            if precision is None:
+                precision = min(number_precision, int(self._sezimal_precision))
+            else:
+                precision = number_precision
+
+        else:
+            precision = Decimal(precision)
+
+        params['sezimal_places'] = Decimal(precision)
+        params['mark_recurring_digits'] = False
+        params['p_recurring_notation'] = False
+
+        if not display:
+            return sezimal_format(
+                round(number, params['sezimal_places']),
+                **params
+            )
+        else:
+            return self.locale.format_number(
+                round(number, params['sezimal_places']),
+                **params
+            )
+
+    def _format_decimal(self, number, precision: int = None, display: bool = False):
         params = {
-            'decimal_places': precision,
-            'decimal_separator': self.sezimal_separator,
-            'group_separator': self.group_separator,
-            'fraction_group_separator': self.fraction_group_separator,
-            'typographical_negative': True,
+            'decimal_places': 0,
+            'mark_recurring_digits': True,
+            'p_recurring_notation': True,
         }
 
-        return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+        if not display:
+            params['decimal_separator'] = '.'
+            params['group_separator'] = '_'
+            params['fraction_group_separator'] = '_'
+            params['typographical_negative'] = False
+            p_notation = decimal_format(number, **params)
 
-    def _format_decimal_expression(self, number, precision=None):
-        if precision is None:
-            precision = self._decimal_precision
+        else:
+            params['use_fraction_group_separator'] = True
+            p_notation = self.locale.format_decimal_number(number, **params)
 
-        params = {
-            'decimal_places': precision,
-            'decimal_separator': '.',
-            'group_separator': '',
-            'fraction_group_separator': '',
-            'typographical_negative': False,
-        }
+        if 'p' in p_notation:
+            if self.p_notation:
+                if not p_notation.endswith('9p'):
+                    return p_notation
 
-        return decimal_format(number.quantize(Decimal(f'1e-{int(precision)}')), **params)
+                if display:
+                    number = round(number, len(p_notation.split(self.locale.SEZIMAL_SEPARATOR)[1]) - 2)
+                else:
+                    number = round(number, len(p_notation.split('.')[1]) - 2)
+
+            else:
+                precision = None
+
+        if precision is None or precision == -1:
+            number_precision = validate_clean_decimal(str(number))
+
+            if '.' not in number_precision:
+                number_precision = 0
+            else:
+                number_precision = number_precision.split('.')[1]
+
+                if number_precision.replace('0', '') == '':
+                    number_precision = 0
+                else:
+                    number_precision = len(number_precision)
+
+            if precision is None:
+                precision = min(number_precision, int(self._decimal_precision))
+            else:
+                precision = number_precision
+
+        else:
+            precision = Decimal(precision)
+
+        params['decimal_places'] = precision
+        params['mark_recurring_digits'] = False
+        params['p_recurring_notation'] = False
+
+        if not display:
+            return decimal_format(
+                round(number, int(params['decimal_places'])),
+                **params
+            )
+        return self.locale.format_decimal_number(
+                round(number, int(params['decimal_places'])),
+                **params
+            )
 
     def _prepare_expression(self):
         if not self.expression:
             self._display = ''
             self._decimal_display = ''
             self._prepared_expression = ''
+            self._sezimal_expression = ''
             self._decimal_expression = ''
             return
 
@@ -337,75 +330,147 @@ class SezimalCalculator:
             text = _OPERATOR[o]
             exp = exp.replace(o, text)
 
-        parts = exp.split()
-
         parenthesis_opened = 0
 
         prepared_expression = ''
         display = ''
         decimal_display = ''
+        sezimal_expression = ''
         decimal_expression = ''
 
-        for p in parts:
-            p = p.strip()
+        for part in exp.split():
+            part = part.strip()
 
-            if not p:
+            if not part:
                 continue
 
-            if p in _OPERATION:
-                prepared_expression += _OPERATION[p]
-                display += _NICE_OPERATION[p]
-                decimal_display += _NICE_OPERATION[p]
-                decimal_display = decimal_display.replace('%', ' ÷ 36')
-                decimal_display = decimal_display.replace('‰', ' ÷ 216')
-                decimal_display = decimal_display.replace('‱', ' ÷ 1296')
+            if part in _OPERATION:
+                if self.decimal:
+                    prepared_expression += _OPERATION_DECIMAL[part]
+                    sezimal_expression += f' {_OPERATION_DECIMAL[part]} '
+                    decimal_expression += f' {_OPERATION_DECIMAL[part]} '
+                else:
+                    prepared_expression += _OPERATION[part]
+                    sezimal_expression +=  f' {_OPERATION[part]} '
+                    decimal_expression += f' {_OPERATION[part]} '
 
-                decimal_expression += _OPERATION[p]
-                decimal_display = decimal_display.replace('%', ' / 36')
-                decimal_display = decimal_display.replace('‰', ' / 216')
-                decimal_display = decimal_display.replace('‱', ' / 1296')
+                display += _NICE_OPERATION[part]
+                decimal_display += _NICE_OPERATION[part]
 
-                if (not parenthesis_opened) and p == '__LEFT_PARENTHESIS__':
+                if self.decimal:
+                    display = display.replace('%', ' ÷ 244')
+                    display = display.replace('‰', ' ÷ 4344')
+                    display = display.replace('‱', f' ÷ 11{self.locale.GROUP_SEPARATOR}4144')
+
+                    exp = exp.replace('%', ' / 100')
+                    exp = exp.replace('‰', ' / 1000')
+                    exp = exp.replace('‱', ' / 10_000')
+
+                else:
+                    decimal_display = decimal_display.replace('%', ' ÷ 36')
+                    decimal_display = decimal_display.replace('‰', ' ÷ 216')
+                    decimal_display = decimal_display.replace('‱', f' ÷ 1{self.locale.GROUP_SEPARATOR}296')
+
+                    decimal_expression = decimal_expression.replace('%', ' / 36')
+                    decimal_expression = decimal_expression.replace('‰', ' / 216')
+                    decimal_expression = decimal_expression.replace('‱', ' / 1_296')
+
+                if (not parenthesis_opened) and part == '__LEFT_PARENTHESIS__':
                     parenthesis_opened += 1
-                elif parenthesis_opened and p == '__RIGHT_PARENTHESIS__':
+                elif parenthesis_opened and part == '__RIGHT_PARENTHESIS__':
                     parenthesis_opened -= 1
 
                 continue
 
-            if p == '.':
+            if part == '.':
                 continue
 
-            n = eval(f"'{p}'")
+            number = eval(f"'{part}'")
 
-            if type(n) != Sezimal:
-                if self.decimal:
-                    n = Sezimal(Decimal(p).quantize(Decimal(f'1e-{int(self._decimal_precision)}')))
-                else:
-                    n = Sezimal(p)
+            if self.decimal:
+                number = Decimal(validate_clean_decimal(part))
+                prepared_expression += f"Decimal('{number}')"
 
-            # n = round(n, sezimal_precision)
+                display += self._format_sezimal(Sezimal(number), -1, display=True)
+                decimal_display += self._format_decimal(number, -1, display=True)
 
-            prepared_expression += f"Sezimal('{n}')"
-            display += self._format_sezimal(n, SezimalInteger(Decimal(str(n._precision))))
-            decimal_display += self._format_decimal(n.decimal)
-            decimal_expression += self._format_decimal_expression(n.decimal)
+                sezimal_expression += self._format_sezimal(Sezimal(number), -1)
+                decimal_expression += self._format_decimal(number, -1)
+
+            else:
+                number = Sezimal(part)
+                prepared_expression += f"Sezimal('{part}')"
+
+                display += self._format_sezimal(number, -1, display=True)
+                decimal_display += self._format_decimal(number.decimal, -1, display=True)
+
+                sezimal_expression += self._format_sezimal(number, -1)
+                decimal_expression += self._format_decimal(number.decimal, -1)
 
         if exp[-1] == '.':
-            display += self.sezimal_separator
+            if self.decimal:
+                decimal_display += self.locale.SEZIMAL_SEPARATOR
+                decimal_expression += '.'
+            else:
+                display += self.locale.SEZIMAL_SEPARATOR
+                sezimal_expression += '.'
 
         for i in range(parenthesis_opened):
             prepared_expression += ')'
-            # display += ')'
-            # decimal_display += ')'
 
         self._prepared_expression = prepared_expression
         self._display = display
         self._decimal_display = decimal_display
+
+        sezimal_expression = sezimal_expression.replace('**', '^')
+        decimal_expression = decimal_expression.replace('**', '^')
+
+        if self.decimal:
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('244')", ' / 244')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('4344')", ' / 4344')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('11_4144')", ' / 11_4144')
+
+            decimal_expression = decimal_expression.replace(" /Sezimal('244')", '%')
+            decimal_expression = decimal_expression.replace(" /Sezimal('4344')", '‰')
+            decimal_expression = decimal_expression.replace(" /Sezimal('11_4144')", '‱')
+
+        else:
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('100')", '%')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('1000')", '‰')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('1_000')", '‱')
+
+            decimal_expression = decimal_expression.replace(" /Sezimal('100')", ' / 36')
+            decimal_expression = decimal_expression.replace(" /Sezimal('1000')", ' / 216')
+            decimal_expression = decimal_expression.replace(" /Sezimal('1_000')", ' / 1_296')
+
+        self._sezimal_expression = sezimal_expression
         self._decimal_expression = decimal_expression
+
+        if exp.endswith('_'):
+            if self.decimal:
+                self._decimal_display += '_'
+                self._decimal_expression += '_'
+            else:
+                self._display += '_'
+                self._sezimal_expression += '_'
 
     def eval_expression(self):
         if not self.expression:
             return
 
-        sezimal_response = eval(self._prepared_expression)
-        self.expression = str(round(sezimal_response, self._sezimal_precision))
+        try:
+            response = eval(self._prepared_expression)
+
+            if self.decimal:
+                self.expression = self._format_decimal(response)
+                self._display = self._format_sezimal(Sezimal(response), display=True)
+                self._decimal_display = self._format_decimal(response, display=True)
+            else:
+                self.expression = self._format_sezimal(response)
+                self._display = self._format_sezimal(response, display=True)
+                self._decimal_display = self._format_decimal(response.decimal, display=True)
+
+        except:
+            self.expression = ''
+            self._display = 'ERROR'
+            self._decimal_display = 'ERROR'
