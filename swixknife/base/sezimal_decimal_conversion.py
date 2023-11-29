@@ -31,9 +31,9 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
         integer = number
         fraction = ''
 
-    decimal_integer = str(int(integer, 6))
+    decimal_integer, decimal_fraction = _sezimal_fraction_to_decimal(fraction, decimal_precision)
+    decimal_integer = str(int(integer, 6) + int(decimal_integer or '0'))
     # decimal_integer = _sezimal_integer_to_decimal(integer)
-    decimal_fraction = _sezimal_fraction_to_decimal(fraction, decimal_precision)
 
     decimal = decimal_integer
 
@@ -63,9 +63,9 @@ def _sezimal_integer_to_decimal(integer: str) -> str:
     return decimal_integer
 
 
-def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -> str:
+def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -> tuple[str, str]:
     if not fraction:
-        return ''
+        return '', ''
 
     if decimal_precision is None:
         decimal_precision = getcontext().prec
@@ -81,9 +81,9 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
             i -= 1
 
     decimal_fraction = validate_clean_decimal(decimal_fraction)
-    decimal_fraction = decimal_fraction.split('.')[-1]
+    decimal_integer, decimal_fraction = decimal_fraction.split('.')
 
     if len(decimal_fraction) > decimal_precision:
         decimal_fraction = decimal_fraction[:decimal_precision]
 
-    return decimal_fraction
+    return decimal_integer, decimal_fraction
