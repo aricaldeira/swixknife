@@ -5,23 +5,30 @@ import argparse
 parser = argparse.ArgumentParser(description='Sezimal Calculator')
 parser.add_argument('expression', help='Expression to calculate')
 parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
+parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal values')
 
 import os
 
 import swixknife
 from swixknife.calculator import SezimalCalculator as SC
-from swixknife import sezimal_locale
 
 
 if __name__ == '__main__':
     arguments = parser.parse_args()
 
-    locale = sezimal_locale(arguments.locale)
-
-    calc = SC(arguments.expression, locale.LANG)
+    calc = SC(locale=arguments.locale)
+    calc.decimal = arguments.decimal
+    calc.expression = arguments.expression
 
     display = calc.display + ' = '
+    decimal_display = calc.decimal_display + ' = '
     calc.eval_expression()
     display += calc.display
+    decimal_display += calc.decimal_display
 
-    print(display)
+    if arguments.decimal:
+        print(decimal_display)
+        print(display)
+    else:
+        print(display)
+        print(decimal_display)
