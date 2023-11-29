@@ -109,7 +109,7 @@ class SezimalCalculator:
     def __init__(self, expression: str = '0', locale: str | SezimalLocale = None):
         self.dedicated_digits = False
         self.decimal = False
-        self.p_notation = False
+        self.p_notation = True
         self.precision = 3
         self.locale = locale
         self.expression = expression
