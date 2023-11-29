@@ -161,15 +161,15 @@ def _clean_recurring_digits(number: str) -> str:
 
     number += recurring
 
-    if plus_one:
-        if recurring[-1] == '1':
-            number = number[:-1] + '5'
-        # elif recurring[-1] == '2':
-        #     number = number[:-1] + '3'
-        elif recurring[-1] == '3':
-            number = number[:-1] + '4'
-        elif recurring[-1] == '4':
-            number = number[:-1] + '5'
+    # if plus_one:
+    #     if recurring[-1] == '1':
+    #         number = number[:-1] + '5'
+    #     # elif recurring[-1] == '2':
+    #     #     number = number[:-1] + '3'
+    #     elif recurring[-1] == '3':
+    #         number = number[:-1] + '4'
+    #     elif recurring[-1] == '4':
+    #         number = number[:-1] + '5'
 
     return number
 
