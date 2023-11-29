@@ -377,22 +377,11 @@ You’ll get I, II, III, VI, V, VI, VII, VIII, IX, X, XI, XII for styczeń, luty
 
 So, in the context of the date and time formatting, if you ask for base 100 (36_dec), instead of using letters for the numbers above 13, we use diacritics instead, in the following way:
 
-| Regular Digits | Dedicated Digits | Note |
-|:-:|:-:|-|
-| 012345 | 󱨀󱨁󱨂󱨃󱨄󱨅 ||
-| 0̇1̇2̇3̇4̇5̇ | 󱨀̇󱨁̇󱨂̇󱨃̇󱨄̇󱨅̇ | One dot above  = +10, from 10 to 15 |
-| 0̈1̈2̈3̈4̈5̈ | 󱨀̈󱨁̈󱨂̈󱨃̈󱨄̈󱨅̈ | Two dots above = +20, from 20 to 25 |
-| 0̄1̄2̄3̄4̄5̄ | 󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ | Line above = +30, from 30 to 35 |
-| 0̄̇1̄̇2̄̇3̄̇4̄̇5̄̇ | 󱨀̄̇󱨁̄̇󱨂̄̇󱨃̄̇󱨄̄̇󱨅̄̇ | Line and one dot above = +40, from 40 to 45 |
-| 0̄̈1̄̈2̄̈3̄̈4̄̈5̄̈ | 󱨀̄̈󱨁̄̈󱨂̄̈󱨃̄̈󱨄̄̈󱨅̄̈ | Line and two dots above = +50, from 50 to 55 |
-
-When handwritting, the dots can also be written as vertical lines:
-
-| Regular Digits | Dedicated Digits | Note |
-|:-:|:-:|-|
-| 012345 | 󱨀󱨁󱨂󱨃󱨄󱨅 ||
-| 0̍1̍2̍3̍4̍5̍ | 󱨀̍󱨁̍󱨂̍󱨃̍󱨄̍󱨅̍ | One dot above = +10, from 10 to 15 |
-| 0̎1̎2̎3̎4̎5̎ | 󱨀̎󱨁̎󱨂̎󱨃̎󱨄̎󱨅̎ | Two dots above = +20, from 20 to 25 |
-| 0̄1̄2̄3̄4̄5̄ | 󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ | Line above = +30, from 30 to 35 |
-| 0̄̍1̄̍2̄̍3̄̍4̄̍5̄̍ | 󱨀̄̍󱨁̄̍󱨂̄̍󱨃̄̍󱨄̄̍󱨅̄̍ | Line and one dot above = +40, from 40 to 45 |
-| 0̄̎1̄̎2̄̎3̄̎4̄̎5̄̎ | 󱨀̄̎󱨁̄̎󱨂̄̎󱨃̄̎󱨄̄̎󱨅̄̎ | Line and two dots above = +50, from 50 to 55 |
+| Alpha Digits |  Regular Digits | Dedicated Digits | Note |
+|:-:|:-:|:-:|-|
+| 012345 | 012345 | 󱨀󱨁󱨂󱨃󱨄󱨅 ||
+| 6789AB | 0̇1̇2̇3̇4̇5̇ | 󱨀̇󱨁̇󱨂̇󱨃̇󱨄̇󱨅̇ | One dot above  = +10, from 10 to 15 |
+| CDEFGH | 0̈1̈2̈3̈4̈5̈ | 󱨀̈󱨁̈󱨂̈󱨃̈󱨄̈󱨅̈ | Two dots above = +20, from 20 to 25 |
+| IJKLMN | 0̊1̊2̊3̊4̊5̊ | 󱨀̊󱨁̊󱨂̊󱨃̊󱨄̊󱨅̊ | Ring above (top part of 󱨃) = +30, from 30 to 35 |
+| OPQRST | 0̄1̄2̄3̄4̄5̄ | 󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ | Line above (top part of 󱨄) = +40, from 40 to 45 |
+| UVWXYZ | 0̆1̆2̆3̆4̆5̆ | 󱨀̆󱨁̆󱨂̆󱨃̆󱨄̆󱨅̆ | Breve above (bottom part of 󱨅) = +50, from 50 to 55 |
