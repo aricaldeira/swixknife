@@ -79,3 +79,8 @@ ENV/
 # Briefcase
 #
 logs
+
+#
+# Buildozer dir
+#
+.buildozer
