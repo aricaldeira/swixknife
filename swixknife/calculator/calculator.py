@@ -219,10 +219,10 @@ class SezimalCalculator:
             else:
                 number_precision = number_precision.split('.')[1]
 
-                if number_precision.replace('0', '') == '':
-                    number_precision = 0
-                else:
-                    number_precision = len(number_precision)
+                # if number_precision.replace('0', '') == '':
+                #     number_precision = 0
+                # else:
+                number_precision = len(number_precision)
 
             if precision is None:
                 precision = min(number_precision, int(self._sezimal_precision))
@@ -286,10 +286,10 @@ class SezimalCalculator:
             else:
                 number_precision = number_precision.split('.')[1]
 
-                if number_precision.replace('0', '') == '':
-                    number_precision = 0
-                else:
-                    number_precision = len(number_precision)
+                # if number_precision.replace('0', '') == '':
+                #     number_precision = 0
+                # else:
+                number_precision = len(number_precision)
 
             if precision is None:
                 precision = min(number_precision, int(self._decimal_precision))
@@ -452,7 +452,7 @@ class SezimalCalculator:
                 sezimal_expression += self._format_sezimal(number, -1)
                 decimal_expression += self._format_decimal(number.decimal, -1)
 
-        if exp[-1] == '.':
+        if previous_part.endswith('.'):
             if self.decimal:
                 decimal_display += self.locale.SEZIMAL_SEPARATOR
                 decimal_expression += '.'
