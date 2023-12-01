@@ -15,20 +15,30 @@ LOCALE_CACHE = {}
 
 def _get_system_locale():
     if sys.platform == 'android':
-        try:
-            from jnius import autoclass
-
-            AndroidLocale = autoclass('java.util.Locale')
-
-            return AndroidLocale.getDefault().toString()
-
-        except:
-            pass
+        return _get_android_locale()
 
     locale = system_locale.getlocale()[0]
 
     if locale == 'C' or (not locale):
         locale = 'en'
+
+    return locale
+
+
+def _get_android_locale():
+    #
+    # This is here mainly for documentation purposes
+    # This exact same code has to be put inside the Kivy app file,
+    # otherwise it doesn’t work
+    #
+    from jnius import autoclass
+
+    mActivity = autoclass('org.kivy.android.PythonActivity').mActivity
+
+    try:
+        locale = mActivity.getResources().getConfiguration().getLocales().get(0).toString()
+    except:
+        locale = mActivity.getResources().getConfiguration().locale.toString()
 
     return locale
 
