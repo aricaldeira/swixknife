@@ -33,6 +33,7 @@ _OPERATOR = {
     '‱': ' __PERUNEXIAN__ ',
     '²': ' __SQUARE__ ',
     '³': ' __CUBE__ ',
+    '±': ' __PLUS_MINUS__ ',
 
     #
     # Constants and “punctuation”
@@ -338,7 +339,26 @@ class SezimalCalculator:
         sezimal_expression = ''
         decimal_expression = ''
 
-        for part in exp.split():
+        parts = exp.split()
+
+        if parts and parts[-1] == '__PLUS_MINUS__':
+            parts = parts[:-1]
+
+            if len(parts) >= 2:
+                if parts[-2] == '__SUBTRACT__':
+                    last_part = parts[-1]
+                    parts = parts[0:-2]
+                    parts.append(last_part)
+
+                else:
+                    parts[-1] = '-' + parts[-1]
+
+            else:
+                parts[-1] = '-' + parts[-1]
+
+        previous_part = ''
+
+        for part in parts:
             part = part.strip()
 
             if not part:
@@ -354,8 +374,31 @@ class SezimalCalculator:
                     sezimal_expression +=  f' {_OPERATION[part]} '
                     decimal_expression += f' {_OPERATION[part]} '
 
-                display += _NICE_OPERATION[part]
-                decimal_display += _NICE_OPERATION[part]
+                #
+                # Deals with negative numbers
+                #
+                if part == '__SUBTRACT__':
+                    if previous_part == '':
+                        display += ' −'
+                        decimal_display += ' −'
+
+                    elif previous_part in _OPERATION:
+                        if previous_part in (' __PERNIF__ ', ' __PERSIXNIF__ ', ' __PERUNEXIAN__ '):
+                            display += _NICE_OPERATION[part]
+                            decimal_display += _NICE_OPERATION[part]
+                        else:
+                            display += ' −'
+                            decimal_display += ' −'
+
+                    else:
+                        display += _NICE_OPERATION[part]
+                        decimal_display += _NICE_OPERATION[part]
+
+                else:
+                    display += _NICE_OPERATION[part]
+                    decimal_display += _NICE_OPERATION[part]
+
+                previous_part = part
 
                 if self.decimal:
                     display = display.replace('%', ' ÷ 244')
@@ -384,6 +427,8 @@ class SezimalCalculator:
 
             if part == '.':
                 continue
+
+            previous_part = part
 
             number = eval(f"'{part}'")
 
@@ -454,6 +499,11 @@ class SezimalCalculator:
                 self._display += '_'
                 self._sezimal_expression += '_'
 
+        if self.decimal:
+            self._expression = self._decimal_expression
+        else:
+            self._expression = self._sezimal_expression
+
     def eval_expression(self):
         if not self.expression:
             return
@@ -463,10 +513,16 @@ class SezimalCalculator:
 
             if self.decimal:
                 self.expression = self._format_decimal(response)
+                self._sezimal_expression = self._format_sezimal(Sezimal(response))
+                self._decimal_expression = self._format_decimal(response)
+
                 self._display = self._format_sezimal(Sezimal(response), display=True)
                 self._decimal_display = self._format_decimal(response, display=True)
             else:
                 self.expression = self._format_sezimal(response)
+                self._sezimal_expression = self._format_sezimal(response)
+                self._decimal_expression = self._format_decimal(response.decimal)
+
                 self._display = self._format_sezimal(response, display=True)
                 self._decimal_display = self._format_decimal(response.decimal, display=True)
 
