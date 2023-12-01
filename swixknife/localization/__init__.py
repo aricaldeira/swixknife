@@ -3,6 +3,7 @@
 __all__ = ('sezimal_locale', 'DEFAULT_LOCALE', 'SezimalLocale')
 
 
+import sys
 import locale as system_locale
 import importlib
 
@@ -13,6 +14,17 @@ LOCALE_CACHE = {}
 
 
 def _get_system_locale():
+    if sys.platform == 'android':
+        try:
+            from jnius import autoclass
+
+            AndroidLocale = autoclass('java.util.Locale')
+
+            return AndroidLocale.getDefault().toString()
+
+        except:
+            pass
+
     locale = system_locale.getlocale()[0]
 
     if locale == 'C' or (not locale):
