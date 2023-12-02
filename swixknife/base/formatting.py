@@ -80,7 +80,7 @@ def sezimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:48])
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -240,7 +240,7 @@ def decimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction, max_fraction_size=36)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:36], max_fraction_size=36)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -333,7 +333,7 @@ def dozenal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction, max_fraction_size=36)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:36], max_fraction_size=36)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -434,7 +434,7 @@ def niftimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:48])
 
             if recurring:
                 fraction = fixed_part + recurring
