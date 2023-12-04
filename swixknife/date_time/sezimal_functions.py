@@ -19,21 +19,20 @@ from ..functions import floor, ceil
 from .gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
 
-VALID_DATE_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}$')
+VALID_DATE_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}$')
 VALID_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}:[0-5]{2}$')
 VALID_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}$')
-VALID_DATE_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
-VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}|[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
+VALID_DATE_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
+VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
 
 #
 # Some expressions to validate holidays and events
 # using other calendars
 #
 VALID_MONTH_DAY_STRING = re.compile(r'^[0-5]{2}-[0-5]{2}$')
-VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)--?[0-9]{4}-[0-9]{2}-[0-9]{2}$')
 VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{2}-[0-9]{2}$')
 VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?')
-
 
 #
 # Epoch
@@ -42,18 +41,26 @@ VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|
 #
 EPOCH = SezimalInteger('-2_1014_1212')  # -3_652_424_dec
 EPOCH_JULIAN_DATE = Sezimal('-1_0521_5450.3')  # -1_930_998.5_dec
-
-ISO_EPOCH = SezimalInteger('1')
-ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
-# ISO_YEAR_DIFF = SezimalInteger('10_0000')  # 7_776_dec
 ISO_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
-# ISO_YEAR_DIFF = SezimalInteger('12_0000')  # 10_368_dec
-# ISO_YEAR_DIFF = SezimalInteger('13_0000')  # 11_664_dec
-# ISO_YEAR_DIFF = SezimalInteger('14_0000')  # 12_960_dec
-# ISO_YEAR_DIFF = SezimalInteger('15_0000')  # 14_256_dec
-# ISO_YEAR_DIFF = SezimalInteger('20_0000')  # 15_552_dec
 ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
 
+#
+# The epoch defined on the comments just below
+# lines Sezimal year 0 with the year, on the Holocene Era,
+# where the Perihelion coincides with the Northern Hemisphere
+# Summer Solstice
+#
+# EPOCH = SezimalInteger('-2_0251_0230')  # -3_492_810_dec
+# EPOCH_JULIAN_DATE = Sezimal('-1_0154_4505.3')  # -1_771_385.5_dec
+# ISO_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
+# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
+#
+
+#
+# ISO Epoch
+#
+ISO_EPOCH = SezimalInteger('1')
+ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
 
 #
 # For compatibility with Python’s original date and datetime,
@@ -69,7 +76,7 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
 # 23_2330-20-44 (19_998-12-28_dec) SEZIMAL → 9_998-12-27_dec GREGORIAN → 2_1013_3550 (3_651_690_dec) ORDINAL
 #
 MIN_ISO_YEAR = ISO_YEAR_DIFF + SezimalInteger('1')
-MAX_ISO_YEAR = ISO_YEAR_DIFF + SezimalInteger('11_4144')
+MAX_ISO_YEAR = SezimalInteger('23_2332')
 MINYEAR = SezimalInteger('1')
 MAXYEAR = MAX_ISO_YEAR - SezimalInteger('1')
 MAXORDINAL = SezimalInteger('2_1013_3550')
