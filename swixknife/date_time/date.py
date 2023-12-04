@@ -130,7 +130,7 @@ class SezimalDate:
 
     @classmethod
     def from_iso_calendar(cls, year, week, day) -> Self:
-        return cls.fromordinal(_datetime.date.fromisocalendar(year, week, day).toordinal())
+        return cls.from_ordinal_date(_datetime.date.fromisocalendar(year, week, day).toordinal())
 
     def __repr__(self) -> str:
         return f'{self.__class__.__qualname__}({self.year.formatted_number}, {self.month}, {self.day})'
@@ -788,7 +788,7 @@ class SezimalDate:
         if type(other) != SezimalDateTimeDelta:
             raise ValueError('You can only add a SezimalDate to a SezimalDateTimeDelta')
 
-        return SezimalDate.fromordinal(other._total_days + self.ordinal_date)
+        return SezimalDate.from_ordinal_date(other._total_days + self.ordinal_date)
 
     __radd__ = __add__
 
