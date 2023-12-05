@@ -35,9 +35,29 @@ VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|J
 VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?')
 
 #
-# Epoch
+# ISO Epoch
 #
-# Julian date -1_0521_5450.3 → -1_930_998.5_dec → -9_999-01-03_dec GREGORIAN
+ISO_EPOCH = SezimalInteger('1')
+ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
+
+#
+# Using the same Epoch as the ISO calendar,
+# the implementation matches the Symmetry454 Calendar
+# as created by Dr. Irv Bromberg
+#
+# EPOCH = ISO_EPOCH
+# EPOCH_JULIAN_DATE = ISO_EPOCH_JULIAN_DATE
+# ISO_YEAR_DIFF = 0
+# ISO_HOLOCENE_YEAR_DIFF = 0
+
+#
+# Holocene Epoch
+#
+# Julian date -1_0521_5450.3 → -1_930_998.5_dec → -9_999-01-02_dec ISO
+#
+# The one day difference (actually it should be -9_999-01-01_dec ISO)
+# compensates the fact that the ordinal date / Rada Die starts
+# with 1, not zero
 #
 EPOCH = SezimalInteger('-2_1014_1212')  # -3_652_424_dec
 EPOCH_JULIAN_DATE = Sezimal('-1_0521_5450.3')  # -1_930_998.5_dec
@@ -55,12 +75,16 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
 # ISO_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
 # ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
 #
-
+# The epoch defined on the comments just below
+# lines Sezimal year __1__ with the year, on the Holocene Era,
+# where the Perihelion coincides with the Northern Hemisphere
+# Summer Solstice
 #
-# ISO Epoch
+# EPOCH = SezimalInteger('-2_0251_2034')  # -3_493_174_dec
+# EPOCH_JULIAN_DATE = Sezimal('-1_0155_0313.3')  # -1_771_749.5_dec
+# ISO_YEAR_DIFF = SezimalInteger('11_2134')  # 9_562_dec
+# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_2134')  # 9_562_dec
 #
-ISO_EPOCH = SezimalInteger('1')
-ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
 
 #
 # For compatibility with Python’s original date and datetime,
@@ -90,8 +114,8 @@ CYCLE_MEAN_YEAR = Sezimal('1405') + (Sezimal('155') / Sezimal('1205'))  # 365_de
 POSIX_EPOCH = SezimalInteger('2322_5243')
 POSIX_JULIAN_DATE = Sezimal('1_2415_1003.3')
 
-_LEAP_FACTOR = SezimalInteger('402')
-# _LEAP_FACTOR = SezimalInteger('1005')
+_LEAP_FACTOR = SezimalInteger('402')  # 146_dec
+# _LEAP_FACTOR = SezimalInteger('1005')  # 221_dec
 
 #
 # -1 is just a placeholder, so we don’t need to worry about month number 0
@@ -123,7 +147,21 @@ del days_before_month, days_in_month
 
 
 def is_leap(year):
-    is_leap = ((SezimalInteger('124') * year) + _LEAP_FACTOR).decimal % SezimalInteger('1205').decimal < SezimalInteger('124').decimal
+    if year <= 0:
+        year = abs(year) + 1
+
+    leap = year
+    leap *= SezimalInteger('124')  # 52_dec
+    leap += _LEAP_FACTOR  # 146_dec or 221_dec, see prior constant definition
+
+    #
+    # The modulo is much faster using Decimal
+    #
+    leap = leap.decimal
+    leap %= SezimalInteger('1205').decimal  # 293_dec
+
+    is_leap = leap < SezimalInteger('124').decimal  # 52_dec
+
     return is_leap
 
 
