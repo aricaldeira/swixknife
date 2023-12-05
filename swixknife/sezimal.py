@@ -490,7 +490,9 @@ class Sezimal:
 
         elif self._sign == -1 and other_number._sign == 1:
             res = self.__addition(other_number)
-            res = '-' + res
+
+            if res[0] != '-':
+                res = '-' + res
 
         return Sezimal(res)
 
