@@ -92,7 +92,7 @@ where
         return '', None
 
     name = res[0]
-    date_time = SezimalDateTime.from_days(res[1], time_zone='UTC')
+    date_time = SezimalDateTime.from_days(Sezimal(res[1]), time_zone='UTC')
 
     if sun_moon == 'sun' and hemisphere:
         if hemisphere == NORTHERN_HEMISPHERE:
@@ -402,6 +402,7 @@ order by
     events = []
 
     for sun_moon, name, date_time_as_days in res:
+        date_time_as_days = Sezimal(date_time_as_days)
         date = SezimalDateTime.from_days(date_time_as_days, 'UTC').at_time_zone(time_zone)
         events +=  [[
             date,
