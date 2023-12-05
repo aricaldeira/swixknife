@@ -18,29 +18,17 @@ from ephem import (
     next_spring_equinox, next_summer_solstice, next_autumn_equinox, next_winter_solstice,
     previous_spring_equinox, previous_summer_solstice, previous_autumn_equinox, previous_winter_solstice,
     next_new_moon, next_first_quarter_moon, next_full_moon, next_last_quarter_moon,
-    previous_new_moon, previous_first_quarter_moon, previous_full_moon, previous_last_quarter_moon
+    previous_new_moon, previous_first_quarter_moon, previous_full_moon, previous_last_quarter_moon,
+    julian_date
 )
 
 import sqlite3
 
 
 def _ephem_date_to_date(ed, time_zone) -> SezimalDateTime:
-    #
-    # Ephem dates are floats, the amount of time
-    # passed since:
-    # 13_1031-20-44 30:00:00 UTC
-    # ISO 1899-12-31 12:00:00 UTC
-    # Ordinal date is 2251_1031.3 693_595.5_dec
-    #
-    od = Sezimal('2251_1031.3').decimal + Decimal(str(float(ed)))
-    date = SezimalDate.from_ordinal_date(Decimal(int(od)))
-
-    od -= int(od)
-    od *= Sezimal('100_0000').decimal
-
-    time = SezimalTime(agrima=od, time_zone='UTC')
-
-    return SezimalDateTime.combine(date, time).at_time_zone(time_zone)
+    jd = Decimal(str(julian_date(ed)))
+    date_time = SezimalDateTime.from_julian_date(jd, time_zone='UTC')
+    return date_time.at_time_zone(time_zone)
 
 
 def _middle_date_time(first_date, second_date, time_zone) -> SezimalDateTime:
@@ -60,14 +48,23 @@ class SezimalSun:
         self._year = year
         self._time_zone = str(time_zone)
 
+        gregorian_date = date.gregorian_isoformat
+
+
         #
         # Equinoxes and Solstices
         #
-        self._previous_december_solstice = _ephem_date_to_date(previous_winter_solstice(date.gregorian_isoformat), time_zone)
-        self._march_equinox = _ephem_date_to_date(next_spring_equinox(date.gregorian_isoformat), time_zone)
-        self._june_solstice = _ephem_date_to_date(next_summer_solstice(date.gregorian_isoformat), time_zone)
-        self._september_equinox = _ephem_date_to_date(next_autumn_equinox(date.gregorian_isoformat), time_zone)
-        self._december_solstice = _ephem_date_to_date(next_winter_solstice(date.gregorian_isoformat), time_zone)
+        pws = previous_winter_solstice(gregorian_date)
+        nse = next_spring_equinox(pws)
+        nss = next_summer_solstice(nse)
+        nae = next_autumn_equinox(nss)
+        nws = next_winter_solstice(nae)
+
+        self._previous_december_solstice = _ephem_date_to_date(pws, time_zone)
+        self._march_equinox = _ephem_date_to_date(nse, time_zone)
+        self._june_solstice = _ephem_date_to_date(nss, time_zone)
+        self._september_equinox = _ephem_date_to_date(nae, time_zone)
+        self._december_solstice = _ephem_date_to_date(nws, time_zone)
 
         #
         # Cross-quarters
@@ -234,7 +231,7 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
             MOONS[next_waning_gibbous.ordinal_date] = [next_waning_gibbous, 'waning_gibbous']
 
         previous_third_quarter = next_third_quarter
-        print('Calculated moon', previous_third_quarter, _datetime.datetime.now())
+        print('Calculated moon', previous_third_quarter, previous_third_quarter.iso_date_time)
 
 
 if __name__ == '__main__':
