@@ -313,7 +313,7 @@ class SezimalDateTime:
 
     @property
     def julian_date(self) -> Sezimal:
-        return self._date.julian_date + self._time.julian_date
+        return self.as_days + ISO_EPOCH_JULIAN_DATE
 
     @property
     def mars_sol_date(self) -> Sezimal:
@@ -468,11 +468,15 @@ class SezimalDateTime:
 
     @property
     def as_days(self) -> Sezimal:
-        return self._date.as_days + self._time.as_days
+        if self._date.as_days < 0:
+            return self._date.as_days - self._time.as_days
+        else:
+            return self._date.as_days + self._time.as_days
 
     @classmethod
     def from_days(cls, days: Sezimal, time_zone: str | ZoneInfo = None) -> Self:
         date = SezimalDate.from_days(days)
+        days = abs(days)
         days -= SezimalInteger(days)
         time = SezimalTime.from_days(days, time_zone)
         return cls.combine(date, time, time_zone)
@@ -497,5 +501,4 @@ class SezimalDateTime:
     def from_julian_date(cls, julian_date: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, time_zone: str | ZoneInfo = None) -> Self:
         julian_date = Sezimal(julian_date)
         ordinal_date = julian_date - ISO_EPOCH_JULIAN_DATE
-
         return cls.from_days(ordinal_date, time_zone)

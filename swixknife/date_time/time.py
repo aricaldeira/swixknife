@@ -554,6 +554,7 @@ class SezimalTime:
 
     @classmethod
     def from_days(cls, days: Sezimal, time_zone: str | ZoneInfo = None) -> Self:
+        days = abs(days)
         agrimas = Sezimal(days) * 100_0000
         return cls(agrima=agrimas, time_zone=time_zone)
 
