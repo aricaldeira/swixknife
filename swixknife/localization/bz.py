@@ -127,7 +127,7 @@ class SezimalLocaleBZ(SezimalLocale):
         ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
         ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
         ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '\ufe0f🕆 🥀 Payxawn di Kristu'),
+        ('EASTER-2',   '\ufe0f🕆 🥀 Paxawn di Kristu'),
         ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
         ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
 
