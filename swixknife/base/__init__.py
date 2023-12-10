@@ -18,6 +18,7 @@ from .sezimal_dozenal_conversion import sezimal_to_dozenal, dozenal_to_sezimal
 from .digit_conversion import (
     default_to_dedicated_digits, default_niftimal_to_dedicated_digits,
     default_niftimal_to_regularized_digits, default_niftimal_to_regularized_dedicated_digits,
+    default_niftimal_to_financial_digits, default_niftimal_to_financial_dedicated_digits,
     dedicated_to_default_digits, dedicated_niftimal_to_default_digits,
     default_to_numerator_digits, default_to_denominator_digits,
     dedicated_to_numerator_digits, dedicated_to_denominator_digits,

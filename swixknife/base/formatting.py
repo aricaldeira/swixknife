@@ -18,7 +18,8 @@ from .digit_conversion import (
     default_to_dedicated_digits,
     default_to_numerator_digits, default_to_denominator_digits,
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
-    default_niftimal_to_regularized_digits,
+    default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
+    default_niftimal_to_regularized_dedicated_digits, default_niftimal_to_financial_dedicated_digits,
 )
 
 _TWO_DIGITS_GROUP_FORMAT = re.compile('([0-9↊↋A-Z]{2})')
@@ -396,7 +397,9 @@ def niftimal_format(
         subgroup_separator: str = '',
         fraction_group_separator: str = SEPARATOR_UNDERSCORE,
         fraction_subgroup_separator: str = '',
-        dedicated_digits: bool = True,
+        regularized_digits: bool = True,
+        dedicated_digits: bool = False,
+        financial_digits: bool = False,
         typographical_negative: bool = False,
         minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
         prefix: str = '',
@@ -481,8 +484,17 @@ def niftimal_format(
         else:
             formatted_number += fraction
 
-    if dedicated_digits:
-        formatted_number = default_niftimal_to_regularized_digits(formatted_number)
+    if financial_digits:
+        if dedicated_digits:
+            formatted_number = default_niftimal_to_financial_dedicated_digits(formatted_number)
+        else:
+            formatted_number = default_niftimal_to_financial_digits(formatted_number)
+
+    elif regularized_digits:
+        if dedicated_digits:
+            formatted_number = default_niftimal_to_regularized_dedicated_digits(formatted_number)
+        else:
+            formatted_number = default_niftimal_to_regularized_digits(formatted_number)
 
     formatted_number = _finish_formatting(
         formatted_number, prefix, suffix,
@@ -492,7 +504,7 @@ def niftimal_format(
     return formatted_number
 
 
-def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_part: str = '', refining: bool = False, max_fraction_size: int = 48) -> (str, str):
+def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_part: str = '', refining: bool = False, max_fraction_size: int = 48) -> tuple[str]:
     if (not refining) and ((not fraction) or (len(fraction) < max_fraction_size)):
         return fixed_part, recurring_part
 
