@@ -1,17 +1,16 @@
 
 import sqlite3
-from zoneinfo import ZoneInfo
 
 import pathlib
-
 
 DB_NAME = pathlib.Path.joinpath(pathlib.Path(__file__).parent.resolve(), 'sun_moon.db')
 
 from .date import SezimalDate
 from .date_time import SezimalDateTime
-from .sezimal_functions import system_time_zone, tz_days_offset
+from .sezimal_functions import system_time_zone, tz_days_offset, ZoneInfo
 from ..sezimal import SezimalInteger, Sezimal
 from ..localization import SezimalLocale
+from .format_tokens import SEASON_MOON_TEXT_FORMAT_TOKENS, SEASON_MOON_TIME_FORMAT_TOKENS
 
 
 NORTHERN_HEMISPHERE = 'N'
@@ -231,114 +230,74 @@ def _moon_time(self, fmt: str, locale: SezimalLocale, four_phases: bool = False,
 
 
 def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str | ZoneInfo = None) -> str:
-    for hemisphere in (NORTHERN_HEMISPHERE, SOUTHERN_HEMISPHERE, ''):
-        if f'#{hemisphere}S' in fmt:
-            fmt = fmt.replace(
-                f'#{hemisphere}S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
+    for regex, base, hemisphere, number, case, season_moon in SEASON_MOON_TEXT_FORMAT_TOKENS:
+        if not regex.findall(fmt):
+            continue
+
+        if season_moon == 'S':
+            if '@' in base:
+                text = self._season_emoji(
+                    hemisphere,
+                    locale=locale,
+                    four_seasons=number == '4',
+                    time_zone=time_zone,
+                    nearest='~' in base,
+                )
+            else:
+                text = self._season_name(
+                    hemisphere,
+                    locale=locale,
+                    four_seasons=number == '4',
+                    time_zone=time_zone,
+                    nearest='~' in base,
+                )
+
+        else:
+            if '@' in base:
+                text = self._moon_emoji(
+                    hemisphere,
+                    four_phases=number == '4',
+                    nearest='~' in base,
+                    time_zone=time_zone,
+                )
+            else:
+                text = self._moon_phase(
+                    hemisphere,
+                    locale=locale,
+                    four_phases=number == '4',
+                    nearest='~' in base,
+                    time_zone=time_zone,
+                )
+
+        if case == '!':
+            text = text.upper()
+        elif case == '?':
+            text = text.lower()
+        elif case == '>':
+            text = text[0].upper() + text[1:].lower()
+
+        fmt = regex.sub(text, fmt)
+
+    for regex, base, number, season_moon in SEASON_MOON_TIME_FORMAT_TOKENS:
+        if not regex.findall(fmt):
+            continue
+
+        if season_moon == 'S':
+            text = self._season_time(
+                f'#{base}u:#{base}p',
+                locale=locale,
+                four_seasons=number == '4',
+                time_zone=time_zone,
+            )
+        else:
+            text = self._moon_time(
+                f'#{base}u:#{base}p',
+                locale=locale,
+                four_phases=number == '4',
+                time_zone=time_zone,
             )
 
-        if f'#{hemisphere}4S' in fmt:
-            fmt = fmt.replace(
-                f'#{hemisphere}4S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, time_zone=time_zone),
-            )
-
-        if f'#@{hemisphere}S' in fmt:
-            fmt = fmt.replace(
-                f'#@{hemisphere}S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
-            )
-
-        if f'#@{hemisphere}4S' in fmt:
-            fmt = fmt.replace(
-                f'#@{hemisphere}4S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, time_zone=time_zone),
-            )
-
-        if f'#~{hemisphere}S' in fmt:
-            fmt = fmt.replace(
-                f'#~{hemisphere}S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#~{hemisphere}4S' in fmt:
-            fmt = fmt.replace(
-                f'#~{hemisphere}4S',
-                self._season_name(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#@~{hemisphere}S' in fmt:
-            fmt = fmt.replace(
-                f'#@~{hemisphere}S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#@~{hemisphere}4S' in fmt:
-            fmt = fmt.replace(
-                f'#@~{hemisphere}4S',
-                self._season_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_seasons=True, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#{hemisphere}L' in fmt:
-            fmt = fmt.replace(
-                f'#{hemisphere}L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, time_zone=time_zone),
-            )
-
-        if f'#{hemisphere}4L' in fmt:
-            fmt = fmt.replace(
-                f'#{hemisphere}4L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_phases=True, time_zone=time_zone),
-            )
-
-        if f'#@{hemisphere}L' in fmt:
-            fmt = fmt.replace(
-                f'#@{hemisphere}L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], time_zone=time_zone),
-            )
-
-        if f'#@{hemisphere}4L' in fmt:
-            fmt = fmt.replace(
-                f'#@{hemisphere}4L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], four_phases=True, time_zone=time_zone),
-            )
-
-        if f'#~{hemisphere}L' in fmt:
-            fmt = fmt.replace(
-                f'#~{hemisphere}L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#~{hemisphere}4L' in fmt:
-            fmt = fmt.replace(
-                f'#~{hemisphere}4L',
-                self._moon_phase(hemisphere or locale.DEFAULT_HEMISPHERE[0], locale=locale, four_phases=True, nearest=True, time_zone=time_zone),
-            )
-
-        if f'#@~{hemisphere}L' in fmt:
-            fmt = fmt.replace(
-                f'#@~{hemisphere}L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], nearest=True, time_zone=time_zone),
-            )
-
-        if f'#@~{hemisphere}4L' in fmt:
-            fmt = fmt.replace(
-                f'#@~{hemisphere}4L',
-                self._moon_emoji(hemisphere or locale.DEFAULT_HEMISPHERE[0], four_phases=True, nearest=True, time_zone=time_zone),
-            )
-
-    if '#TS' in fmt:
-        fmt = fmt.replace('#TS', self._season_time('#u:#p', locale=locale, time_zone=time_zone))
-
-    if '#T4S' in fmt:
-        fmt = fmt.replace('#T4S', self._season_time('#u:#p', locale=locale, four_seasons=True, time_zone=time_zone))
-
-    if '#TL' in fmt:
-        fmt = fmt.replace('#TL', self._moon_time('#u:#p', locale=locale, time_zone=time_zone))
-
-    if '#T4L' in fmt:
-        fmt = fmt.replace('#T4L', self._moon_time('#u:#p', locale=locale, four_phases=True, time_zone=time_zone))
+        fmt = regex.sub(text, fmt)
 
     return fmt
 

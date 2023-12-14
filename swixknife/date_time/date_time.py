@@ -394,11 +394,17 @@ class SezimalDateTime:
         if not fmt:
             fmt = locale.DATE_TIME_FORMAT
 
+        fmt = fmt.replace('##', '_|_HASHTAG_|_')
+        fmt = fmt.replace('%%', '_|_PERCENT_|_')
+
         fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone)
         fmt = self._time.format(fmt, locale=locale, skip_strftime=True)
 
         if type(self.iso_date_time) != tuple and '%' in fmt:
             fmt = self.iso_date_time.strftime(fmt)
+
+        fmt = fmt.replace('_|_HASHTAG_|_', '#')
+        fmt = fmt.replace('_|_PERCENT_|_', '%')
 
         return fmt
 
@@ -432,7 +438,7 @@ class SezimalDateTime:
         ordinal_date, agrimas = timestamp_to_ordinal_date_and_agrima(timestamp, time_zone)
 
         date = SezimalDate.from_ordinal_date(ordinal_date)
-        time = SezimalTime(agrima=agrimas, time_zone=time_zone)
+        time = SezimalTime(agrima=agrimas, time_zone=time_zone, base_gregorian_date=date.gregorian_date)
 
         return cls(year=date, uta=time, time_zone=time_zone)
 

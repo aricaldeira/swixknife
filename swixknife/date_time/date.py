@@ -35,6 +35,8 @@ from .date_time_delta import SezimalDateTimeDelta
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
+from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
+    YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKENS
 
 
 class SezimalDate:
@@ -242,78 +244,73 @@ class SezimalDate:
     def day_ordinal_suffix(self) -> str:
         return DEFAULT_LOCALE.day_ordinal_suffix(self.day)
 
-    def _apply_format(self, fmt: str, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
-        if token not in fmt:
-            return fmt
-
+    def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
         value = getattr(self, value_name, 0)
 
         if '*' in token and (not value):
-            fmt = fmt.replace(token, '')
+            return ''
+
+        if '@' in token or 'Z' in token:
+            value = str(value)
+
+            value = sezimal_to_niftimal(value)
+
+            #
+            # For the year, using “>”
+            # yields only the last 2 digits
+            #
+            if token.endswith('>y'):
+                value = value[::-1][0:2][::-1]
+
+            if size:
+                value = value.zfill(int(SezimalInteger(size)))
+
+            if '!' in token:
+                value = default_niftimal_to_regularized_dedicated_digits(value)
+            elif '@' in token:
+                value = default_niftimal_to_regularized_digits(value)
+
         else:
-            if '@' in token:
+            if '9' in token:
+                value = str(int(value.decimal))
+
+                #
+                # For the year, using “>”
+                # yields only the last 2 digits
+                #
+                if token.endswith('>y'):
+                    value = value[::-1][0:2][::-1]
+
+            elif '↋' in token:
+                value = value.dozenal
+
+                #
+                # For the year, using “>”
+                # yields only the last 2 digits
+                #
+                if token.endswith('>y'):
+                    value = value[::-1][0:2][::-1]
+
+            else:
                 value = str(value)
 
                 #
-                # For the year, using “-”
+                # For the year, using “>”
                 # yields only the last 3 digits
                 #
-                if token.endswith('-y'):
+                if token.endswith('>y'):
                     value = value[::-1][0:3][::-1]
 
-                value = sezimal_to_niftimal(value)
+            if size:
+                value = value.zfill(int(SezimalInteger(size)))
 
-                if size:
-                    value = value.zfill(int(SezimalInteger(size)))
+            if '!' in token:
+                value = default_to_dedicated_digits(value)
 
-                if '!' in token:
-                    value = default_niftimal_to_dedicated_digits(value)
-                else:
-                    value = default_niftimal_to_regularized_digits(value)
+            elif '?' in token:
+                value = locale.digit_replace(value)
 
-            else:
-                if '9' in token:
-                    value = str(int(value.decimal))
-
-                    #
-                    # For the year, using “-”
-                    # yields only the last 2 digits
-                    #
-                    if token.endswith('-y'):
-                        value = value[::-1][0:2][::-1]
-
-                elif '↋' in token:
-                    value = value.dozenal
-
-                    #
-                    # For the year, using “-”
-                    # yields only the last 2 digits
-                    #
-                    if token.endswith('-y'):
-                        value = value[::-1][0:2][::-1]
-
-                else:
-                    value = str(value)
-
-                    #
-                    # For the year, using “-”
-                    # yields only the last 3 digits
-                    #
-                    if token.endswith('-y'):
-                        value = value[::-1][0:3][::-1]
-
-                if size:
-                    value = value.zfill(int(SezimalInteger(size)))
-
-                if '!' in token:
-                    value = default_to_dedicated_digits(value)
-
-                elif '?' in token:
-                    value = locale.digit_replace(value)
-
-            fmt = fmt.replace(token, value)
-
-        return fmt
+        return value
 
     def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
         if locale:
@@ -340,189 +337,139 @@ class SezimalDate:
         #
         # Let’s deal first with the numeric formats
         #
-        for character, value, size, size_niftimal, size_decimal in [
-            ['dQ', 'day_in_quarter', 3, 2, 2],    # 001 – 231/242 (01_dec – 91_dec/98_dec)
-            ['dY', 'day_in_year', 4, 2, 3],       # 0001 – 1404/1415 (001_dec – 364_dec/371_dec)
+        for regex, token, base, zero, character, value_name, \
+            size, size_niftimal, size_decimal in DATE_NUMBER_FORMAT_TOKENS:
+            if not regex.findall(fmt):
+                continue
 
-            ['wM', 'week_in_month', 1, 1, 1],     # 1 – 4/5
-            ['wQ', 'week_in_quarter', 2, 1, 2],   # 01 – 21/22 (01_dec – 13_dec/14_dec)
-            ['wY', 'week_in_year', 3, 2, 2],      # 001 – 124/125 (01_dec – 52_dec/53_dec)
-
-            ['mQ', 'month_in_quarter', 1, 1, 1],  # 1 – 3
-
-            ['d', 'day', 2, 1, 2],                # 01 – 44/55 (01_dec – 28_dec/35_dec)
-            ['w', 'weekday', 2, 1, 1],            # 01 - 11 (01_dec – 7_dec)
-            ['m', 'month', 2, 1, 2],              # 01 – 20 (01_dec – 12_dec)
-            ['q', 'quarter', 1, 1, 1],            # 1 – 4
-            ['y', 'year', 10, 3, 5],              # 00_0000 – 55_5555 (−10_000_dec – 36_655_dec)
-        ]:
-            fmt = self._apply_format(fmt, f'#*-{character}', value)
-            fmt = self._apply_format(fmt, f'#*{character}', value, size)
-            fmt = self._apply_format(fmt, f'#-{character}', value)
-            fmt = self._apply_format(fmt, f'#{character}', value, size)
-
-            if '@' in fmt:
-                fmt = self._apply_format(fmt, f'#@*-{character}', value)
-                fmt = self._apply_format(fmt, f'#@*{character}', value, size_niftimal)
-                fmt = self._apply_format(fmt, f'#@-{character}', value)
-                fmt = self._apply_format(fmt, f'#@{character}', value, size_niftimal)
-
-                if '!' in fmt:
-                    fmt = self._apply_format(fmt, f'#@!*-{character}', value)
-                    fmt = self._apply_format(fmt, f'#@!*{character}', value, size_niftimal)
-                    fmt = self._apply_format(fmt, f'#@!-{character}', value)
-                    fmt = self._apply_format(fmt, f'#@!{character}', value, size_niftimal)
-
-            if '!' in fmt:
-                fmt = self._apply_format(fmt, f'#!*-{character}', value)
-                fmt = self._apply_format(fmt, f'#!*{character}', value, size)
-                fmt = self._apply_format(fmt, f'#!-{character}', value)
-                fmt = self._apply_format(fmt, f'#!{character}', value, size)
-
-            if '9' in fmt:
-                fmt = self._apply_format(fmt, f'#9*-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#9*{character}', value, size, locale=locale)
-                fmt = self._apply_format(fmt, f'#9-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#9{character}', value, size, locale=locale)
-
-            if '↋' in fmt:
-                fmt = self._apply_format(fmt, f'#↋*-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#↋*{character}', value, size, locale=locale)
-                fmt = self._apply_format(fmt, f'#↋-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#↋{character}', value, size, locale=locale)
-
-            if '?' in fmt:
-                fmt = self._apply_format(fmt, f'#?*-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#?*{character}', value, size, locale=locale)
-                fmt = self._apply_format(fmt, f'#?-{character}', value, locale=locale)
-                fmt = self._apply_format(fmt, f'#?{character}', value, size, locale=locale)
-
-                if '9' in fmt:
-                    fmt = self._apply_format(fmt, f'#9?*-{character}', value, locale=locale)
-                    fmt = self._apply_format(fmt, f'#9?*{character}', value, size, locale=locale)
-                    fmt = self._apply_format(fmt, f'#9?-{character}', value, locale=locale)
-                    fmt = self._apply_format(fmt, f'#9?{character}', value, size, locale=locale)
-
-                if '↋' in fmt:
-                    fmt = self._apply_format(fmt, f'#↋?*-{character}', value, locale=locale)
-                    fmt = self._apply_format(fmt, f'#↋?*{character}', value, size, locale=locale)
-                    fmt = self._apply_format(fmt, f'#↋?-{character}', value, locale=locale)
-                    fmt = self._apply_format(fmt, f'#↋?{character}', value, size, locale=locale)
-
-        for character, value in [
-            ['wM', 'week_in_month'],
-            ['dQ', 'day_in_quarter'],
-            ['wQ', 'week_in_quarter'],
-            ['mQ', 'month_in_quarter'],
-            ['dY', 'day_in_year'],
-            ['wY', 'week_in_year'],
-
-            ['d', 'day'],
-            ['m', 'month'],
-            ['y', 'year'],
-            ['w', 'weekday'],
-            ['q', 'quarter'],
-        ]:
-            if f'#&{character}' in fmt:
-                fmt = fmt.replace(f'#&{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
-
-            elif f'#&o{character}' in fmt:
-                fmt = fmt.replace(f'#o&{character}', sezimal_spellout('ordinal ' + str(getattr(self, value, 0)), lang or 'en'))
-
-            elif f'#&a{character}' in fmt:
-                fmt = fmt.replace(f'#a&{character}', sezimal_spellout('ordinal-feminine ' + str(getattr(self, value, 0)), lang or 'en'))
-
-        #
-        # Some languages have special rules for using ordinal days,
-        # so, we only use ordinal if there is a suffix for the ordinal day
-        #
-        if '#&Od' in fmt:
-            suffix = locale.day_ordinal_suffix(self.day)
-
-            if suffix:
-                fmt = fmt.replace('#&Od', sezimal_spellout('ordinal ' + str(self.day), lang or 'en'))
+            if base in ['@', '@!', 'Z']:
+                value = self._apply_number_format(token, value_name, size_niftimal, locale)
+            elif base in ['9', '9?', '↋', '↋?']:
+                value = self._apply_number_format(token, value_name, size_decimal, locale)
             else:
-                fmt = fmt.replace('#&Od', sezimal_spellout(str(self.day), lang or 'en'))
+                value = self._apply_number_format(token, value_name, size, locale)
+
+            fmt = regex.sub(value, fmt)
+
+        # for character, value in [
+        #     ['wM', 'week_in_month'],
+        #     ['dQ', 'day_in_quarter'],
+        #     ['wQ', 'week_in_quarter'],
+        #     ['mQ', 'month_in_quarter'],
+        #     ['dY', 'day_in_year'],
+        #     ['wY', 'week_in_year'],
+        #
+        #     ['d', 'day'],
+        #     ['m', 'month'],
+        #     ['y', 'year'],
+        #     ['w', 'weekday'],
+        #     ['q', 'quarter'],
+        # ]:
+        #     if f'#&{character}' in fmt:
+        #         fmt = fmt.replace(f'#&{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
+        #
+        #     elif f'#&o{character}' in fmt:
+        #         fmt = fmt.replace(f'#o&{character}', sezimal_spellout('ordinal ' + str(getattr(self, value, 0)), lang or 'en'))
+        #
+        #     elif f'#&a{character}' in fmt:
+        #         fmt = fmt.replace(f'#a&{character}', sezimal_spellout('ordinal-feminine ' + str(getattr(self, value, 0)), lang or 'en'))
+
+        # #
+        # # Some languages have special rules for using ordinal days,
+        # # so, we only use ordinal if there is a suffix for the ordinal day
+        # #
+        # if '#&Od' in fmt:
+        #     suffix = locale.day_ordinal_suffix(self.day)
+        #
+        #     if suffix:
+        #         fmt = fmt.replace('#&Od', sezimal_spellout('ordinal ' + str(self.day), lang or 'en'))
+        #     else:
+        #         fmt = fmt.replace('#&Od', sezimal_spellout(str(self.day), lang or 'en'))
 
         #
         # Formatted year number
         #
-        if f'#Y' in fmt:
-            fmt = fmt.replace(f'#Y', self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR))
+        for regex, token, base, separator in YEAR_NUMBER_FORMAT_TOKENS:
+            if not regex.findall(fmt):
+                continue
 
-        if f'#!Y' in fmt:
-            fmt = fmt.replace(f'#!Y', default_to_dedicated_digits(self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+            year = self.year
 
-        if f'#@Y' in fmt:
-            fmt = fmt.replace(f'#@Y', self.year.niftimal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
+            if base in ['', '!', '?']:
+                year = locale.format_number(
+                    year,
+                    dedicated_digits='!' in base,
+                    use_group_separator=True,
+                    sezimal_places=0,
+                )
 
-        if f'#@!Y' in fmt:
-            fmt = fmt.replace(f'#@!Y', default_to_dedicated_digits(self.year.niftimal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+            elif base in ['@', '@!', 'Z', 'Z?']:
+                year = locale.format_niftimal_number(
+                    year,
+                    dedicated_digits='!' in base,
+                    regularized_digits='@' in base,
+                    use_group_separator=True,
+                    niftimal_places=0,
+                )
 
-        if f'#?Y' in fmt:
-            fmt = fmt.replace(f'#?Y', locale.digit_replace(self.year.formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+            elif base in ['9', '9?']:
+                year = locale.format_decimal_number(
+                    year,
+                    use_group_separator=True,
+                    decimal_places=0,
+                )
 
-        if f'#9Y' in fmt:
-            fmt = fmt.replace(f'#9Y', self.year.decimal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
+            elif base in ['↋', '↋?']:
+                year = locale.format_dozenal_number(
+                    year,
+                    use_group_separator=True,
+                    dozenal_places=0,
+                )
 
-        if f'#↋Y' in fmt:
-            fmt = fmt.replace(f'#↋Y', self.year.dozenal_formatted_number.replace('_', locale.GROUP_SEPARATOR))
+            if '?' in base:
+                year = locale.digit_replace(year)
 
-        if f'#9?Y' in fmt:
-            fmt = fmt.replace(f'#9?Y', locale.digit_replace(self.year.decimal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
+            if separator and separator != locale.GROUP_SEPARATOR:
+                year = year.replace(locale.GROUP_SEPARATOR, separator)
 
-        if f'#↋?Y' in fmt:
-            fmt = fmt.replace(f'#9?Y', locale.digit_replace(self.year.dozenal_formatted_number.replace('_', locale.GROUP_SEPARATOR)))
-
-        for separator in '''_.,˙ʼ’'•◦\u0020\u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f''':
-            if f'#{separator}Y' in fmt:
-                fmt = fmt.replace(f'#{separator}Y', self.year.formatted_number.replace('_', separator))
-
-            if f'#9{separator}Y' in fmt:
-                fmt = fmt.replace(f'#9{separator}Y', self.year.decimal_formatted_number.replace('_', separator))
-
-            if f'#↋{separator}Y' in fmt:
-                fmt = fmt.replace(f'#↋{separator}Y', self.year.dozenal_formatted_number.replace('_', separator))
-
-            if f'#!{separator}Y' in fmt:
-                fmt = fmt.replace(f'#!{separator}Y', default_to_dedicated_digits( self.year.formatted_number.replace('_', separator)))
+            fmt = regex.sub(year, fmt)
 
         #
         # And now, the text formats
         #
-        if '#M' in fmt:
-            fmt = fmt.replace('#M', locale.month_name(self.month))
+        for regex, token, base, case, month_week in DATE_TEXT_FORMAT_TOKENS:
+            if not regex.findall(fmt):
+                continue
 
-        if '#@M' in fmt:
-            fmt = fmt.replace('#@M', locale.month_abbreviated_name(self.month))
+            if month_week == 'M':
+                if base == '@':
+                    text = locale.month_abbreviated_name(self.month)
+                else:
+                    text = locale.month_name(self.month)
 
-        if '#1M' in fmt:
-            fmt = fmt.replace('#1M', locale.month_name(self.month)[0])
-
-        if '#2M' in fmt:
-            month_name = locale.month_name(self.month)
-
-            if locale.len(month_name) > 2:
-                fmt = fmt.replace('#2M', month_name[:2])
             else:
-                fmt = fmt.replace('#2M', month_name)
+                if base == '@':
+                    text = locale.weekday_abbreviated_name(self.weekday)
+                else:
+                    text = locale.weekday_name(self.weekday)
 
-        if '#W' in fmt:
-            fmt = fmt.replace('#W', locale.weekday_name(self.weekday))
+            if base == '1':
+                text = text[0]
+            elif base == '2':
+                if len(text) > 2:
+                    text = text[0:2]
+            elif base == '3':
+                if len(text) > 3:
+                    text = text[0:3]
 
-        if '#@W' in fmt:
-            fmt = fmt.replace('#@W', locale.weekday_abbreviated_name(self.weekday))
+            if case == '!':
+                text = text.upper()
+            elif case == '?':
+                text = text.lower()
+            elif case == '>':
+                text = text[0].upper() + text[1:].lower()
 
-        if '#1W' in fmt:
-            fmt = fmt.replace('#1W', locale.weekday_name(self.weekday)[0])
-
-        if '#2W' in fmt:
-            weekday_name = locale.weekday_name(self.weekday)
-
-            if locale.len(weekday_name) > 2:
-                fmt = fmt.replace('#2W', weekday_name[:2])
-            else:
-                fmt = fmt.replace('#2W', weekday_name)
+            fmt = regex.sub(text, fmt)
 
         if '#O' in fmt:
             fmt = fmt.replace('#O', locale.day_ordinal_suffix(self.day))
@@ -604,13 +551,12 @@ class SezimalDate:
             if '%?Y' in fmt:
                 fmt = fmt.replace('%?Y', locale.digit_replace(str(self.gregorian_year).zfill(4)))
 
-            fmt = fmt.replace('__PERCENT__', '%%')
-
             if not skip_strftime:
                 if type(self.gregorian_date) == _datetime.date:
-                    return self.gregorian_date.strftime(fmt)
-                else:
-                    fmt = fmt.replace('__PERCENT__', '%')
+                    fmt = fmt.replace('__PERCENT__', '%%')
+                    fmt = self.gregorian_date.strftime(fmt)
+
+            fmt = fmt.replace('__PERCENT__', '%')
 
         return fmt
 
@@ -661,6 +607,11 @@ class SezimalDate:
     @property
     def gregorian_holocene_isoformat(self) -> str:
         return f'{str(self.gregorian_holocene_year).zfill(5)}-{str(self.gregorian_holocene_month).zfill(2)}-{str(self.gregorian_holocene_day).zfill(2)}'
+
+    @property
+    def gregorian_is_leap(self):
+        year = self.gregorian_year
+        return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
     @property
     def symmetric_date(self):
