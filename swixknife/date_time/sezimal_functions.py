@@ -202,7 +202,7 @@ def year_month_day_to_ordinal(year, month, day):
 
     days_in_month = _days_in_month(year, month)
 
-    assert 1 <= day <= days_in_month, (f'day must be in 1..{days_in_month}: day')
+    assert 1 <= day <= days_in_month, (f'day must be in 1..{days_in_month}: {day}, month {month}, year {year + ISO_YEAR_DIFF}')
 
     ordinal_date = _days_before_year(year)
     ordinal_date += _days_before_month(month)
