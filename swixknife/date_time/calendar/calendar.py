@@ -576,6 +576,9 @@ class SezimalCalendar:
 
             date = SezimalDate.from_ordinal_date(ordinal_date)
 
+            if age < 0:
+                continue
+
             if date.year != self._date_time.year:
                 continue
 
