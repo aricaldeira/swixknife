@@ -116,7 +116,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         # move date day to the corresponding weekday of the last
         # week of the year
         #
-        if month == 20 and day > 44 and (not is_leap(year)):
+        if month == 20 and day > 44 and (not is_leap(year - ISO_YEAR_DIFF)):
             day -= 11
 
         ymd = (year, month, day)
@@ -127,14 +127,14 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
     year_start_ordinal = year_month_day_to_ordinal(reference_year, SezimalInteger('1'), SezimalInteger('1'))
 
-    if is_leap(reference_year):
+    if is_leap(reference_year - ISO_YEAR_DIFF):
         year_end_ordinal = year_month_day_to_ordinal(reference_year, SezimalInteger('20'), SezimalInteger('55'))
         year_middle_ordinal = year_start_ordinal + SezimalInteger('505')
     else:
         year_end_ordinal = year_month_day_to_ordinal(reference_year, SezimalInteger('20'), SezimalInteger('44'))
         year_middle_ordinal = year_start_ordinal + SezimalInteger('502')
 
-    iso_reference = _datetime.date.fromordinal(int(year_start_ordinal.decimal))
+    iso_reference = _datetime.date.fromordinal(int(year_middle_ordinal.decimal))
 
     if year:
         year = int(year)
