@@ -55,6 +55,7 @@ class SezimalCalendar:
         '_time_format', '_date_format',
         '_use_rtl', '_hemisphere',
         '_holidays', '_events',
+        '_holidays_other_calendar', '_events_other_calendar',
     )
     def __new__(
         cls,
@@ -102,12 +103,12 @@ class SezimalCalendar:
             else:
                 year = SezimalInteger(date_time)
                 date_time = SezimalDateTime.now()
-                date_time = _date_time.replace(year=year)
+                date_time = date_time.replace(year=year)
 
         else:
             year = SezimalInteger(date_time)
             date_time = SezimalDateTime.now()
-            date_time = _date_time.replace(year=year)
+            date_time = date_time.replace(year=year)
 
         if type(locale) != SezimalLocale:
             locale = sezimal_locale(locale)
