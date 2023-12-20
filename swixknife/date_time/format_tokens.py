@@ -119,3 +119,44 @@ SEASON_MOON_TIME_FORMAT_TOKENS = tuple(
         ('L', 'S'),  # season or moon phase
     )
 )
+
+
+ISO_DATE_NUMBER_FORMAT_TOKENS = tuple(
+    (
+        re.compile(f'\%{base}{zero}{value[0]}'),
+        f'%{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
+    )
+    for base, zero, value in product(
+        ('', '5', '5\\!', '@', '\\!', '@\\!', 'Z', '↋', '\\?', '↋\\?', 'Z\\?'),
+        ('\\*\\-', '\\-', '\\*\\>', '\\>', '\\*', ''),
+        (
+            ('d', 'gregorian_day', 2, 1, 2),
+            ('m', 'gregorian_month', 2, 1, 2),
+            ('Y', 'gregorian_year', 4, 3, 5),
+            ('y', 'gregorian_year', 4, 3, 5),
+            ('e', 'gregorian_day', 2, 1, 2),
+            ('w', 'weekday', 1, 1, 2),
+            ('W', 'weekday', 1, 1, 2),
+        ),
+    )
+)
+
+
+ISO_TIME_NUMBER_FORMAT_TOKENS = tuple(
+    (
+        re.compile(f'\%{base}{zero}{value[0]}'),
+        f'%{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
+    )
+    for base, zero, value in product(
+        ('', '5', '5\\!', '@', '\\!', '@\\!', 'Z', '↋', '\\?', 'Z\\?', '5\\?', '↋\\?'),
+        ('\\*\\-', '\\-', '\\*', ''),
+        (
+            ('d', 'gregorian_day', 2, 1, 2),
+            ('H', 'iso_hour', 2, 1, 2),
+            ('M', 'iso_minute', 2, 1, 2),
+            ('S', 'iso_second', 2, 1, 2),
+            ('f', 'iso_microsecond', 6, 1, 2),
+        ),
+    )
+)
+

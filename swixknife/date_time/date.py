@@ -25,6 +25,7 @@ from decimal import Decimal
 from zoneinfo import ZoneInfo
 
 from ..sezimal import Sezimal, SezimalInteger
+from ..dozenal import Dozenal, DozenalInteger
 from ..base import decimal_format, sezimal_format, \
     sezimal_to_niftimal, default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
@@ -36,7 +37,8 @@ from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
-    YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKENS
+    YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKENS, \
+    ISO_DATE_NUMBER_FORMAT_TOKENS
 
 
 class SezimalDate:
@@ -244,13 +246,19 @@ class SezimalDate:
     def day_ordinal_suffix(self) -> str:
         return DEFAULT_LOCALE.day_ordinal_suffix(self.day)
 
-    def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
+    def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None, from_decimal: bool = False) -> str:
         value = getattr(self, value_name, 0)
+
+        if from_decimal:
+            value = Decimal(str(value))
 
         if '*' in token and (not value):
             return ''
 
         if '@' in token or 'Z' in token:
+            if from_decimal:
+                value = SezimalInteger(value)
+
             value = str(value)
 
             value = sezimal_to_niftimal(value)
@@ -271,7 +279,17 @@ class SezimalDate:
                 value = default_niftimal_to_regularized_digits(value)
 
         else:
-            if '9' in token:
+            if '5' in token:
+                value = str(SezimalInteger(value))
+
+                #
+                # For the year, using “>”
+                # yields only the last 3 digits
+                #
+                if token.endswith('>y'):
+                    value = value[::-1][0:3][::-1]
+
+            elif '9' in token:
                 value = str(int(value.decimal))
 
                 #
@@ -282,7 +300,7 @@ class SezimalDate:
                     value = value[::-1][0:2][::-1]
 
             elif '↋' in token:
-                value = value.dozenal
+                value = str(DozenalInteger(value))
 
                 #
                 # For the year, using “>”
@@ -488,68 +506,34 @@ class SezimalDate:
         if '%' in fmt:
             fmt = fmt.replace('%%', '__PERCENT__')
 
+            for regex, token, base, zero, character, value_name, \
+                size_decimal, size_niftimal, size_sezimal in ISO_DATE_NUMBER_FORMAT_TOKENS:
+                if not regex.findall(fmt):
+                    continue
+
+                if base in ['@', '@!', 'Z']:
+                    value = self._apply_number_format(token, value_name, size_niftimal, locale, from_decimal=True)
+                elif base in ['↋', '↋?']:
+                    value = self._apply_number_format(token, value_name, size_decimal, locale, from_decimal=True)
+                else:
+                    value = self._apply_number_format(token, value_name, size_sezimal, locale, from_decimal=True)
+
+                fmt = regex.sub(value, fmt)
+
             if '%A' in fmt:
                 fmt = fmt.replace('%A', locale.weekday_name(self.weekday))
 
             if '%a' in fmt:
                 fmt = fmt.replace('%a', locale.weekday_abbreviated_name(self.weekday))
 
-            if '%d' in fmt:
-                fmt = fmt.replace('%d', str(self.gregorian_day).zfill(2))
-
-            if '%-d' in fmt:
-                fmt = fmt.replace('%-d', str(self.gregorian_day))
-
-            if '%e' in fmt:
-                fmt = fmt.replace('%e', str(self.gregorian_day).rjust(2))
-
-            if '%-e' in fmt:
-                fmt = fmt.replace('%-e', str(self.gregorian_day))
-
-            if '%?d' in fmt:
-                fmt = fmt.replace('%?d', locale.digit_replace(str(self.gregorian_day).zfill(2)))
-
-            if '%?-d' in fmt:
-                fmt = fmt.replace('%?-d', locale.digit_replace(str(self.gregorian_day)))
-
-            if '%?e' in fmt:
-                fmt = fmt.replace('%?e', locale.digit_replace(str(self.gregorian_day).rjust(2)))
-
-            if '%?-e' in fmt:
-                fmt = fmt.replace('%?-e', locale.digit_replace(str(self.gregorian_day)))
-
             if '%o' in fmt:
                 fmt = fmt.replace('%o', locale.day_ordinal_suffix(Decimal(self.gregorian_day)))
-
-            if '%m' in fmt:
-                fmt = fmt.replace('%m', str(self.gregorian_month).zfill(2))
-
-            if '%-m' in fmt:
-                fmt = fmt.replace('%-m', str(self.gregorian_month))
-
-            if '%?m' in fmt:
-                fmt = fmt.replace('%?m', locale.digit_replace(str(self.gregorian_month).zfill(2)))
-
-            if '%?-m' in fmt:
-                fmt = fmt.replace('%?-m', locale.digit_replace(str(self.gregorian_month)))
 
             if '%B' in fmt:
                 fmt = fmt.replace('%B', locale.month_name(Decimal(self.gregorian_month)))
 
             if '%b' in fmt:
                 fmt = fmt.replace('%b', locale.month_abbreviated_name(Decimal(self.gregorian_month)))
-
-            if '%y' in fmt:
-                fmt = fmt.replace('%y', str(self.gregorian_year)[::-1][0:2][::-1])
-
-            if '%Y' in fmt:
-                fmt = fmt.replace('%Y', str(self.gregorian_year).zfill(4))
-
-            if '%?y' in fmt:
-                fmt = fmt.replace('%?y', locale.digit_replace(str(self.gregorian_year)[::-1][0:2][::-1]))
-
-            if '%?Y' in fmt:
-                fmt = fmt.replace('%?Y', locale.digit_replace(str(self.gregorian_year).zfill(4)))
 
             if not skip_strftime:
                 if type(self.gregorian_date) == _datetime.date:

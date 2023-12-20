@@ -22,6 +22,7 @@ from zoneinfo import ZoneInfo
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
+from ..dozenal import Dozenal, DozenalInteger
 from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
@@ -30,7 +31,8 @@ from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_dig
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
-from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, TIME_ZONE_OFFSET_FORMAT_TOKENS
+from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, \
+    TIME_ZONE_OFFSET_FORMAT_TOKENS, ISO_TIME_NUMBER_FORMAT_TOKENS
 
 
 class SezimalTime:
@@ -246,8 +248,11 @@ class SezimalTime:
 
         return SezimalTime(agrima=tz_agrimas, time_zone=time_zone)
 
-    def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None) -> str:
+    def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None, from_decimal: bool = False) -> str:
         value = getattr(self, value_name, 0)
+
+        if from_decimal:
+            value = Decimal(str(value))
 
         if '*' in token and (not value):
             return ''
@@ -287,6 +292,9 @@ class SezimalTime:
                 value = locale.digit_replace(value)
 
         elif '@' in token or 'Z' in token:
+            if from_decimal:
+                value = SezimalInteger(value)
+
             value = str(value)
 
             if size:
@@ -303,10 +311,12 @@ class SezimalTime:
                 value = default_niftimal_to_regularized_digits(value)
 
         else:
-            if '9' in token:
+            if '5' in token:
+                value = str(SezimalInteger(value))
+            elif '9' in token:
                 value = str(int(value.decimal))
             elif '↋' in token:
-                value = value.dozenal
+                value = str(DozenalInteger(value))
             else:
                 value = str(value)
 
@@ -479,44 +489,58 @@ class SezimalTime:
         if '%' in fmt:
             fmt = fmt.replace('%%', '__PERCENT__')
 
-            if '%H' in fmt:
-                fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+            for regex, token, base, zero, character, value_name, \
+                size_decimal, size_niftimal, size_sezimal in ISO_TIME_NUMBER_FORMAT_TOKENS:
+                if not regex.findall(fmt):
+                    continue
 
-            if '%-H' in fmt:
-                fmt = fmt.replace('%-H', str(self.iso_hour))
+                if base in ['@', '@!', 'Z']:
+                    value = self._apply_number_format(token, value_name, size_niftimal, locale, from_decimal=True)
+                elif base in ['', '?', '↋', '↋?']:
+                    value = self._apply_number_format(token, value_name, size_decimal, locale, from_decimal=True)
+                else:
+                    value = self._apply_number_format(token, value_name, size_sezimal, locale, from_decimal=True)
 
-            if '%M' in fmt:
-                fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+                fmt = regex.sub(value, fmt)
 
-            if '%-M' in fmt:
-                fmt = fmt.replace('%-M', str(self.iso_minute))
-
-            if '%S' in fmt:
-                fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
-
-            if '%-S' in fmt:
-                fmt = fmt.replace('%-S', str(self.iso_second))
-
-            if '%?H' in fmt:
-                fmt = fmt.replace('%?H', locale.digit_replace(str(self.iso_hour).zfill(2)))
-
-            if '%?-H' in fmt:
-                fmt = fmt.replace('%?-H', locale.digit_replace(str(self.iso_hour)))
-
-            if '%?M' in fmt:
-                fmt = fmt.replace('%?M', locale.digit_replace(str(self.iso_minute).zfill(2)))
-
-            if '%?-M' in fmt:
-                fmt = fmt.replace('%?-M', locale.digit_replace(str(self.iso_minute)))
-
-            if '%?S' in fmt:
-                fmt = fmt.replace('%?S', locale.digit_replace(str(self.iso_second).zfill(2)))
-
-            if '%?-S' in fmt:
-                fmt = fmt.replace('%?-S', locale.digit_replace(str(self.iso_second)))
-
-            if '%f' in fmt:
-                fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
+            # if '%H' in fmt:
+            #     fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
+            #
+            # if '%-H' in fmt:
+            #     fmt = fmt.replace('%-H', str(self.iso_hour))
+            #
+            # if '%M' in fmt:
+            #     fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
+            #
+            # if '%-M' in fmt:
+            #     fmt = fmt.replace('%-M', str(self.iso_minute))
+            #
+            # if '%S' in fmt:
+            #     fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
+            #
+            # if '%-S' in fmt:
+            #     fmt = fmt.replace('%-S', str(self.iso_second))
+            #
+            # if '%?H' in fmt:
+            #     fmt = fmt.replace('%?H', locale.digit_replace(str(self.iso_hour).zfill(2)))
+            #
+            # if '%?-H' in fmt:
+            #     fmt = fmt.replace('%?-H', locale.digit_replace(str(self.iso_hour)))
+            #
+            # if '%?M' in fmt:
+            #     fmt = fmt.replace('%?M', locale.digit_replace(str(self.iso_minute).zfill(2)))
+            #
+            # if '%?-M' in fmt:
+            #     fmt = fmt.replace('%?-M', locale.digit_replace(str(self.iso_minute)))
+            #
+            # if '%?S' in fmt:
+            #     fmt = fmt.replace('%?S', locale.digit_replace(str(self.iso_second).zfill(2)))
+            #
+            # if '%?-S' in fmt:
+            #     fmt = fmt.replace('%?-S', locale.digit_replace(str(self.iso_second)))
+            #
+            # if '%f' in fmt:
+            #     fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
 
             if '%z' in fmt:
                 if self._time_zone_offset == 0:
