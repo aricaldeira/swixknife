@@ -30,8 +30,8 @@ VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5
 # using other calendars
 #
 VALID_MONTH_DAY_STRING = re.compile(r'^[0-5]{2}-[0-5]{2}$')
-VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)--?[0-9]{4}-[0-9]{2}-[0-9]{2}$')
-VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{2}-[0-9]{2}$')
+VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)--?[0-9]{4}-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
+VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
 VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?')
 
 #
@@ -202,7 +202,7 @@ def year_month_day_to_ordinal(year, month, day):
 
     days_in_month = _days_in_month(year, month)
 
-    assert 1 <= day <= days_in_month, (f'day must be in 1..{days_in_month}: {day}, month {month}, year {year + ISO_YEAR_DIFF}')
+    assert 1 <= day <= days_in_month, f'day must be in 1..{days_in_month}: {day}, month {month}, year {year + ISO_YEAR_DIFF}'
 
     ordinal_date = _days_before_year(year)
     ordinal_date += _days_before_month(month)

@@ -6,6 +6,7 @@ import datetime as _datetime
 from decimal import Decimal
 
 from ..sezimal_functions import *
+from ..gregorian_functions import ordinal_date_to_gregorian_year_month_day
 from ...sezimal import SezimalInteger
 
 
@@ -91,12 +92,46 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
     parts = date_time.split('-')
 
+    year = None
+    weekday = None
+    weekday_count = SezimalInteger(1)
+    weekday_after = False
+    weekday_nearest = False
+
     if len(parts) == 2:
         month, day = parts
-        year = None
 
-    else:
+        if '+' in day:
+            day, weekday = day.split('+')
+            weekday_after = True
+
+        elif '±' in day:
+            day, weekday = day.split('±')
+            weekday_nearest = True
+
+    elif len(parts) == 3:
         year, month, day = parts
+
+        if not day.isdigit():
+            weekday = day
+            day = month
+            month = year
+            year = None
+
+        if '+' in day:
+            day, weekday = day.split('+')
+            weekday_after = True
+
+        elif '±' in day:
+            day, weekday = day.split('±')
+            weekday_nearest = True
+
+    elif len(parts) == 4:
+        year, month, day, weekday = parts
+
+    if weekday and '_' in weekday:
+        weekday, weekday_count = weekday.split('_')
+        weekday_count = SezimalInteger(weekday_count)
 
     if calendar == 'SEZ':
         if not year:
@@ -153,6 +188,69 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         ymd = (year, month, day)
 
         ordinal_date = gregorian_year_month_day_to_ordinal_date(*ymd)
+
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            def _adjust_weekday(ordinal_date, weekday, weekday_nearest, weekday_after, weekday_count):
+                _, _, day, _, _, _, _, _, _ = ordinal_to_year_month_day(ordinal_date)
+
+                wd = day % SezimalInteger(11)
+
+                if wd == 0:
+                    wd = SezimalInteger(11)
+
+                if weekday_count == 1 and wd == weekday:
+                    return ordinal_date
+
+                if weekday_nearest and weekday_count > 1:
+                    weekday_after = True
+
+                if weekday > wd:
+                    ordinal_date += weekday - wd
+
+                    if weekday_after or weekday_nearest:
+                        ordinal_date += (weekday_count - 1) * 11
+                    else:
+                        ordinal_date -= weekday_count * 11
+
+                elif weekday < wd:
+                    ordinal_date -= wd - weekday
+
+                    if weekday_after:
+                        ordinal_date += weekday_count * 11
+                    else:
+                        ordinal_date -= (weekday_count - 1) * 11
+
+                else:
+                    if weekday_after:
+                        ordinal_date += (weekday_count - 1) * 11
+                    else:
+                        ordinal_date -= (weekday_count - 1) * 11
+
+                return ordinal_date
+
+            if weekday == 'MON':
+                weekday = SezimalInteger(1)
+            elif weekday == 'TUE':
+                weekday = SezimalInteger(2)
+            elif weekday == 'WED':
+                weekday = SezimalInteger(3)
+            elif weekday == 'THU':
+                weekday = SezimalInteger(4)
+            elif weekday == 'FRI':
+                weekday = SezimalInteger(5)
+            elif weekday == 'SAT':
+                weekday = SezimalInteger(10)
+            elif weekday == 'SUN':
+                weekday = SezimalInteger(11)
+
+            ordinal_date = _adjust_weekday(
+                ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            ymd = ordinal_date_to_gregorian_year_month_day(ordinal_date)
 
         return ordinal_date, ymd, age
 
