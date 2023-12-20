@@ -289,8 +289,8 @@ class SezimalDate:
                 if token.endswith('>y'):
                     value = value[::-1][0:3][::-1]
 
-            elif '9' in token:
-                value = str(int(value.decimal))
+            elif '↋' in token:
+                value = str(DozenalInteger(value))
 
                 #
                 # For the year, using “>”
@@ -299,8 +299,11 @@ class SezimalDate:
                 if token.endswith('>y'):
                     value = value[::-1][0:2][::-1]
 
-            elif '↋' in token:
-                value = str(DozenalInteger(value))
+            elif '9' in token or from_decimal:
+                if from_decimal:
+                    value = str(int(value))
+                else:
+                    value = str(int(value.decimal))
 
                 #
                 # For the year, using “>”
@@ -511,12 +514,20 @@ class SezimalDate:
                 if not regex.findall(fmt):
                     continue
 
+                if token.endswith('y'):
+                    token = token[0:-1] + '>y'
+                    size_sezimal -= 2
+                    size_niftimal -= 1
+                    size_decimal -= 2
+
                 if base in ['@', '@!', 'Z']:
                     value = self._apply_number_format(token, value_name, size_niftimal, locale, from_decimal=True)
+                elif base in ['5', '5!', '5?']:
+                    value = self._apply_number_format(token, value_name, size_sezimal, locale, from_decimal=True)
                 elif base in ['↋', '↋?']:
                     value = self._apply_number_format(token, value_name, size_decimal, locale, from_decimal=True)
                 else:
-                    value = self._apply_number_format(token, value_name, size_sezimal, locale, from_decimal=True)
+                    value = self._apply_number_format(token, value_name, size_decimal, locale, from_decimal=True)
 
                 fmt = regex.sub(value, fmt)
 
