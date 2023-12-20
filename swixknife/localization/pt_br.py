@@ -7,14 +7,14 @@ from .pt import SezimalLocalePT
 
 
 class SezimalLocalePT_BR(SezimalLocalePT):
-    HOLIDAYS = [
+    _HOLIDAYS = [
         #
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-120', '\ufe0f🎉🎭 Carnaval'),
+        # ('EASTER-120', '\ufe0f🎉🎭 Carnaval'),
         ('EASTER-115', '\ufe0f🎉🎭 Carnaval'),
-        ('EASTER-114', '\ufe0f🎉🎭 Quarta-feira de Cinzas'),
+        # ('EASTER-114', '\ufe0f🎉🎭 Quarta-feira de Cinzas'),
         ('EASTER-2',   '\ufe0f🕆 🥀 Paixão de Cristo'),
         ('EASTER',     '\ufe0f🐣🌱 Páscoa'),
         ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
@@ -60,9 +60,9 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         #
         # Moving Holidays
         #
-        ('ISO-EASTER-120', '\ufe0f🎉🎭 Carnaval (%d/%m)'),
+        # ('ISO-EASTER-120', '\ufe0f🎉🎭 Carnaval (%d/%m)'),
         ('ISO-EASTER-115', '\ufe0f🎉🎭 Carnaval (%d/%m)'),
-        ('ISO-EASTER-114', '\ufe0f🎉🎭 Quarta-feira de Cinzas (%d/%m)'),
+        # ('ISO-EASTER-114', '\ufe0f🎉🎭 Quarta-feira de Cinzas (%d/%m)'),
         ('ISO-EASTER-2',   '\ufe0f🕆 🥀 Paixão de Cristo (%d/%m)'),
         ('ISO-EASTER',     '\ufe0f🐣🌱 Páscoa (%d/%m)'),
         ('ISO-EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d/%m)'),

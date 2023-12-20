@@ -119,14 +119,14 @@ class SezimalLocaleBZ(SezimalLocale):
         'waning_crescent': 'Mingwanti',
     }
 
-    HOLIDAYS = [
+    _HOLIDAYS = [
         #
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
+        # ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
         ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
-        ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
+        # ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
         ('EASTER-2',   '\ufe0f🕆 🥀 Paxawn di Kristu'),
         ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
         ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
@@ -172,9 +172,9 @@ class SezimalLocaleBZ(SezimalLocale):
         #
         # Moving Holidays
         #
-        ('ISO-EASTER-120', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
+        # ('ISO-EASTER-120', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
         ('ISO-EASTER-115', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
-        ('ISO-EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas (%d/%m)'),
+        # ('ISO-EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas (%d/%m)'),
         ('ISO-EASTER-2',   '\ufe0f🕆 🥀 Payxawn di Kristu (%d/%m)'),
         ('ISO-EASTER',     '\ufe0f🐣🌱 Paskwa (%d/%m)'),
         ('ISO-EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d/%m)'),
