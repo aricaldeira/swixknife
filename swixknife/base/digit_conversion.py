@@ -1,125 +1,49 @@
 
+SEZIMAL_DIGITS_MAP = (
+    ('0', '󱨀'), ('1', '󱨁'), ('2', '󱨂'), ('3', '󱨃'), ('4', '󱨄'), ('5', '󱨅'),
+    ('⁰', '󱨤'), ('¹', '󱨥'), ('²', '󱨦'), ('³', '󱨧'), ('⁴', '󱨨'), ('⁵', '󱨩'),
+    ('₀', '󱩈'), ('₁', '󱩉'), ('₂', '󱩊'), ('₃', '󱩋'), ('₄', '󱩌'), ('₅', '󱩍'),
+)
+DEFAULT_DIGITS = tuple(digit[0] for digit in SEZIMAL_DIGITS_MAP)
+DEDICATED_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
 
-DEFAULT_DIGITS = tuple('012345⁰¹²³⁴⁵₀₁₂₃₄₅')
-DEDICATED_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨤󱨥󱨦󱨧󱨨󱨩󱩈󱩉󱩊󱩋󱩌󱩍')
+NIFTIMAL_DIGITS_MAP = (
+    ('0', '0', '0̃'), ('1', '1', '1̃'), ('2', '2','2̃'), ('3', '3', '3̃'), ('4', '4', '4̃'), ('5', '5','5̃'),
+    ('6', '0̇', '0ͯ'), ('7', '1̇', '1ͯ'), ('8', '2̇','2ͯ'), ('9', '3̇', '3ͯ'), ('A', '4̇', '4ͯ'), ('B', '5̇','5ͯ'),
+    ('C', '0̈', '0̎'), ('D', '1̈', '1̎'), ('E', '2̈','2̎'), ('F', '3̈', '3̎'), ('G', '4̈', '4̎'), ('H', '5̈','5̎'),
+    ('I', '0̊', '0̊'), ('J', '1̊', '1̊'), ('K', '2̊','2̊'), ('L', '3̊', '3̊'), ('M', '4̊', '4̊'), ('N', '5̊','5̊'),
+    ('O', '0̄', '0̄̄'), ('P', '1̄', '1̄̄'), ('Q', '2̄','2̄̄'), ('R', '3̄', '3̄̄'), ('S', '4̄', '4̄̄'), ('T', '5̄','5̄̄'),
+    ('U', '0̆', '0̆̇'), ('V', '1̆', '1̆̇'), ('W', '2̆','2̆̇'), ('X', '3̆', '3̆̇'), ('Y', '4̆', '4̆̇'), ('Z', '5̆','5̆̇'),
+    ('⁰', '⁰', '⁰̃'), ('¹', '¹', '¹̃'), ('²', '²','²̃'), ('³', '³', '³̃'), ('⁴', '⁴', '⁴̃'), ('⁵', '⁵','⁵̃'),
+    ('⁶', '⁰̇', '⁰ͯ'), ('⁷', '¹̇', '¹ͯ'), ('⁸', '²̇','²ͯ'), ('⁹', '³̇', '³ͯ'), ('A', '⁴̇', '⁴ͯ'), ('B', '⁵̇','⁵ͯ'),
+    ('C', '⁰̈', '⁰̎'), ('D', '¹̈', '¹̎'), ('E', '²̈','²̎'), ('F', '³̈', '³̎'), ('G', '⁴̈', '⁴̎'), ('H', '⁵̈','⁵̎'),
+    ('I', '⁰̊', '⁰̊'), ('J', '¹̊', '¹̊'), ('K', '²̊','²̊'), ('L', '³̊', '³̊'), ('M', '⁴̊', '⁴̊'), ('N', '⁵̊','⁵̊'),
+    ('O', '⁰̄', '⁰̄̄'), ('P', '¹̄', '¹̄̄'), ('Q', '²̄','²̄̄'), ('R', '³̄', '³̄̄'), ('S', '⁴̄', '⁴̄̄'), ('T', '⁵̄','⁵̄̄'),
+    ('U', '⁰̆', '⁰̆̇'), ('V', '¹̆', '¹̆̇'), ('W', '²̆','²̆̇'), ('X', '³̆', '³̆̇'), ('Y', '⁴̆', '⁴̆̇'), ('Z', '⁵̆','⁵̆̇'),
+    ('₀', '₀', '₀̃'), ('₁', '₁', '₁̃'), ('₂', '₂','₂̃'), ('₃', '₃', '₃̃'), ('₄', '₄', '₄̃'), ('₅', '₅','₅̃'),
+    ('₆', '₀̇', '₀ͯ'), ('₇', '₁̇', '₁ͯ'), ('₈', '₂̇','₂ͯ'), ('₉', '₃̇', '₃ͯ'), ('A', '₄̇', '₄ͯ'), ('B', '₅̇','₅ͯ'),
+    ('C', '₀̈', '₀̎'), ('D', '₁̈', '₁̎'), ('E', '₂̈','₂̎'), ('F', '₃̈', '₃̎'), ('G', '₄̈', '₄̎'), ('H', '₅̈','₅̎'),
+    ('I', '₀̊', '₀̊'), ('J', '₁̊', '₁̊'), ('K', '₂̊','₂̊'), ('L', '₃̊', '₃̊'), ('M', '₄̊', '₄̊'), ('N', '₅̊','₅̊'),
+    ('O', '₀̄', '₀̄̄'), ('P', '₁̄', '₁̄̄'), ('Q', '₂̄','₂̄̄'), ('R', '₃̄', '₃̄̄'), ('S', '₄̄', '₄̄̄'), ('T', '₅̄','₅̄̄'),
+    ('U', '₀̆', '₀̆̇'), ('V', '₁̆', '₁̆̇'), ('W', '₂̆','₂̆̇'), ('X', '₃̆', '₃̆̇'), ('Y', '₄̆', '₄̆̇'), ('Z', '₅̆','₅̆̇'),
+)
+DEFAULT_NIFTIMAL_DIGITS = tuple(digit[0] for digit in NIFTIMAL_DIGITS_MAP)
+REGULARIZED_NIFTIMAL_DIGITS = tuple(digit[1] for digit in NIFTIMAL_DIGITS_MAP)
+FINANCIAL_NIFTIMAL_DIGITS = tuple(digit[2] for digit in NIFTIMAL_DIGITS_MAP)
 
-DEFAULT_NIFTIMAL_DIGITS = tuple('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ⁰¹²³⁴⁵⁶⁷⁸⁹ABCDEFGHIJKLMNOPQRSTUVWXYZ₀₁₂₃₄₅₆₇₈₉ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-DEDICATED_NIFTIMAL_DIGITS = tuple('󱨀󱨁󱨂󱨃󱨄󱨅󱨆󱨇󱨈󱨉󱨊󱨋󱨌󱨍󱨎󱨏󱨐󱨑󱨒󱨓󱨔󱨕󱨖󱨗󱨘󱨙󱨚󱨛󱨜󱨝󱨞󱨟󱨠󱨡󱨢󱨣󱨤󱨥󱨦󱨧󱨨󱨩󱨪󱨫󱨬󱨭󱨮󱨯󱨰󱨱󱨲󱨳󱨴󱨵󱨶󱨷󱨸󱨹󱨺󱨻󱨼󱨽󱨾󱨿󱩀󱩁󱩂󱩃󱩄󱩅󱩆󱩇󱩈󱩉󱩊󱩋󱩌󱩍󱩎󱩏󱩐󱩑󱩒󱩓󱩔󱩕󱩖󱩗󱩘󱩙󱩚󱩛󱩜󱩝󱩞󱩟󱩠󱩡󱩢󱩣󱩤󱩥󱩦󱩧󱩨󱩩󱩪󱩫')
 
-_PLUS_00 = ''
-# _PLUS_10 = '\u0307'  # combining dot above
-# _PLUS_20 = '\u0308'  # combining diaeresis
-# _PLUS_30 = '\u0304'  # combining macron
-# _PLUS_30 = '\u030a'  # combining ring above
-# _PLUS_30 = '\u0306'  # combining breve
-# _PLUS_10 = '\u0323'  # combining dot below
-# _PLUS_20 = '\u0324'  # combining diaeresis below
-# _PLUS_30 = '\u0331'  # combining macron below
-# _PLUS_10 = '\u030d'  # combining vertical line above
-# _PLUS_20 = '\u030e'  # combining double vertical line above
-# _PLUS_30 = '\u0304'  # combining macron
-# _PLUS_40 = _PLUS_30 + _PLUS_10
-# _PLUS_50 = _PLUS_30 + _PLUS_20
-# _PLUS_40 = '\u0310'  # combining candrabindu
-# _PLUS_50 = '\u1ab1'  # combining diaresis-ring
-
-_PLUS_10 = '\u0307'  # combining dot above
-_PLUS_20 = '\u0308'  # combining diaeresis
-_PLUS_30 = '\u030a'  # combining ring above
-# _PLUS_40 = '\u0303'  # combining tilde
-_PLUS_40 = '\u0304'  # combining macron
-_PLUS_50 = '\u0306'  # combining breve
-
-REGULARIZED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_PLUS_00}\n1{_PLUS_00}\n2{_PLUS_00}\n3{_PLUS_00}\n4{_PLUS_00}\n5{_PLUS_00}
-0{_PLUS_10}\n1{_PLUS_10}\n2{_PLUS_10}\n3{_PLUS_10}\n4{_PLUS_10}\n5{_PLUS_10}
-0{_PLUS_20}\n1{_PLUS_20}\n2{_PLUS_20}\n3{_PLUS_20}\n4{_PLUS_20}\n5{_PLUS_20}
-0{_PLUS_30}\n1{_PLUS_30}\n2{_PLUS_30}\n3{_PLUS_30}\n4{_PLUS_30}\n5{_PLUS_30}
-0{_PLUS_40}\n1{_PLUS_40}\n2{_PLUS_40}\n3{_PLUS_40}\n4{_PLUS_40}\n5{_PLUS_40}
-0{_PLUS_50}\n1{_PLUS_50}\n2{_PLUS_50}\n3{_PLUS_50}\n4{_PLUS_50}\n5{_PLUS_50}
-⁰{_PLUS_00}\n¹{_PLUS_00}\n²{_PLUS_00}\n³{_PLUS_00}\n⁴{_PLUS_00}\n⁵{_PLUS_00}
-⁰{_PLUS_10}\n¹{_PLUS_10}\n²{_PLUS_10}\n³{_PLUS_10}\n⁴{_PLUS_10}\n⁵{_PLUS_10}
-⁰{_PLUS_20}\n¹{_PLUS_20}\n²{_PLUS_20}\n³{_PLUS_20}\n⁴{_PLUS_20}\n⁵{_PLUS_20}
-⁰{_PLUS_30}\n¹{_PLUS_30}\n²{_PLUS_30}\n³{_PLUS_30}\n⁴{_PLUS_30}\n⁵{_PLUS_30}
-⁰{_PLUS_40}\n¹{_PLUS_40}\n²{_PLUS_40}\n³{_PLUS_40}\n⁴{_PLUS_40}\n⁵{_PLUS_40}
-⁰{_PLUS_50}\n¹{_PLUS_50}\n²{_PLUS_50}\n³{_PLUS_50}\n⁴{_PLUS_50}\n⁵{_PLUS_50}
-₀{_PLUS_00}\n₁{_PLUS_00}\n₂{_PLUS_00}\n₃{_PLUS_00}\n₄{_PLUS_00}\n₅{_PLUS_00}
-₀{_PLUS_10}\n₁{_PLUS_10}\n₂{_PLUS_10}\n₃{_PLUS_10}\n₄{_PLUS_10}\n₅{_PLUS_10}
-₀{_PLUS_20}\n₁{_PLUS_20}\n₂{_PLUS_20}\n₃{_PLUS_20}\n₄{_PLUS_20}\n₅{_PLUS_20}
-₀{_PLUS_30}\n₁{_PLUS_30}\n₂{_PLUS_30}\n₃{_PLUS_30}\n₄{_PLUS_30}\n₅{_PLUS_30}
-₀{_PLUS_40}\n₁{_PLUS_40}\n₂{_PLUS_40}\n₃{_PLUS_40}\n₄{_PLUS_40}\n₅{_PLUS_40}
-₀{_PLUS_50}\n₁{_PLUS_50}\n₂{_PLUS_50}\n₃{_PLUS_50}\n₄{_PLUS_50}\n₅{_PLUS_50}'''.split('\n'))
-
-REGULARIZED_DEDICATED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''󱨀{_PLUS_00}\n󱨁{_PLUS_00}\n󱨂{_PLUS_00}\n󱨃{_PLUS_00}\n󱨄{_PLUS_00}\n󱨅{_PLUS_00}
-󱨀{_PLUS_10}\n󱨁{_PLUS_10}\n󱨂{_PLUS_10}\n󱨃{_PLUS_10}\n󱨄{_PLUS_10}\n󱨅{_PLUS_10}
-󱨀{_PLUS_20}\n󱨁{_PLUS_20}\n󱨂{_PLUS_20}\n󱨃{_PLUS_20}\n󱨄{_PLUS_20}\n󱨅{_PLUS_20}
-󱨀{_PLUS_30}\n󱨁{_PLUS_30}\n󱨂{_PLUS_30}\n󱨃{_PLUS_30}\n󱨄{_PLUS_30}\n󱨅{_PLUS_30}
-󱨀{_PLUS_40}\n󱨁{_PLUS_40}\n󱨂{_PLUS_40}\n󱨃{_PLUS_40}\n󱨄{_PLUS_40}\n󱨅{_PLUS_40}
-󱨀{_PLUS_50}\n󱨁{_PLUS_50}\n󱨂{_PLUS_50}\n󱨃{_PLUS_50}\n󱨄{_PLUS_50}\n󱨅{_PLUS_50}
-󱨤{_PLUS_00}\n󱨥{_PLUS_00}\n󱨦{_PLUS_00}\n󱨧{_PLUS_00}\n󱨨{_PLUS_00}\n󱨩{_PLUS_00}
-󱨤{_PLUS_10}\n󱨥{_PLUS_10}\n󱨦{_PLUS_10}\n󱨧{_PLUS_10}\n󱨨{_PLUS_10}\n󱨩{_PLUS_10}
-󱨤{_PLUS_20}\n󱨥{_PLUS_20}\n󱨦{_PLUS_20}\n󱨧{_PLUS_20}\n󱨨{_PLUS_20}\n󱨩{_PLUS_20}
-󱨤{_PLUS_30}\n󱨥{_PLUS_30}\n󱨦{_PLUS_30}\n󱨧{_PLUS_30}\n󱨨{_PLUS_30}\n󱨩{_PLUS_30}
-󱨤{_PLUS_40}\n󱨥{_PLUS_40}\n󱨦{_PLUS_40}\n󱨧{_PLUS_40}\n󱨨{_PLUS_40}\n󱨩{_PLUS_40}
-󱨤{_PLUS_50}\n󱨥{_PLUS_50}\n󱨦{_PLUS_50}\n󱨧{_PLUS_50}\n󱨨{_PLUS_50}\n󱨩{_PLUS_50}
-󱩈{_PLUS_00}\n󱩉{_PLUS_00}\n󱩊{_PLUS_00}\n󱩋{_PLUS_00}\n󱩌{_PLUS_00}\n󱩍{_PLUS_00}
-󱩈{_PLUS_10}\n󱩉{_PLUS_10}\n󱩊{_PLUS_10}\n󱩋{_PLUS_10}\n󱩌{_PLUS_10}\n󱩍{_PLUS_10}
-󱩈{_PLUS_20}\n󱩉{_PLUS_20}\n󱩊{_PLUS_20}\n󱩋{_PLUS_20}\n󱩌{_PLUS_20}\n󱩍{_PLUS_20}
-󱩈{_PLUS_30}\n󱩉{_PLUS_30}\n󱩊{_PLUS_30}\n󱩋{_PLUS_30}\n󱩌{_PLUS_30}\n󱩍{_PLUS_30}
-󱩈{_PLUS_40}\n󱩉{_PLUS_40}\n󱩊{_PLUS_40}\n󱩋{_PLUS_40}\n󱩌{_PLUS_40}\n󱩍{_PLUS_40}
-󱩈{_PLUS_50}\n󱩉{_PLUS_50}\n󱩊{_PLUS_50}\n󱩋{_PLUS_50}\n󱩌{_PLUS_50}\n󱩍{_PLUS_50}'''.split('\n'))
-
-# _FINANCIAL_PLUS_00 = '\u1dc9'  # combining acute-grave-acute accent
-_FINANCIAL_PLUS_00 = '\u0303'  # combining tilde
-_FINANCIAL_PLUS_10 = '\u036f'  # combining latin small letter X
-_FINANCIAL_PLUS_20 = '\u030e'  # combining double vertical line above
-_FINANCIAL_PLUS_30 = '\u030a'  # combining ring above
-_FINANCIAL_PLUS_40 = '\u0304\u0304'  # combining macron + combining macron
-# _FINANCIAL_PLUS_50 = '\u0310'  # combining candrabindu
-_FINANCIAL_PLUS_50 = '\u0306\u0307'  # combining breve + combining dot above
-
-FINANCIAL_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''0{_FINANCIAL_PLUS_00}\n1{_FINANCIAL_PLUS_00}\n2{_FINANCIAL_PLUS_00}\n3{_FINANCIAL_PLUS_00}\n4{_FINANCIAL_PLUS_00}\n5{_FINANCIAL_PLUS_00}
-0{_FINANCIAL_PLUS_10}\n1{_FINANCIAL_PLUS_10}\n2{_FINANCIAL_PLUS_10}\n3{_FINANCIAL_PLUS_10}\n4{_FINANCIAL_PLUS_10}\n5{_FINANCIAL_PLUS_10}
-0{_FINANCIAL_PLUS_20}\n1{_FINANCIAL_PLUS_20}\n2{_FINANCIAL_PLUS_20}\n3{_FINANCIAL_PLUS_20}\n4{_FINANCIAL_PLUS_20}\n5{_FINANCIAL_PLUS_20}
-0{_FINANCIAL_PLUS_30}\n1{_FINANCIAL_PLUS_30}\n2{_FINANCIAL_PLUS_30}\n3{_FINANCIAL_PLUS_30}\n4{_FINANCIAL_PLUS_30}\n5{_FINANCIAL_PLUS_30}
-0{_FINANCIAL_PLUS_40}\n1{_FINANCIAL_PLUS_40}\n2{_FINANCIAL_PLUS_40}\n3{_FINANCIAL_PLUS_40}\n4{_FINANCIAL_PLUS_40}\n5{_FINANCIAL_PLUS_40}
-0{_FINANCIAL_PLUS_50}\n1{_FINANCIAL_PLUS_50}\n2{_FINANCIAL_PLUS_50}\n3{_FINANCIAL_PLUS_50}\n4{_FINANCIAL_PLUS_50}\n5{_FINANCIAL_PLUS_50}
-⁰{_FINANCIAL_PLUS_00}\n¹{_FINANCIAL_PLUS_00}\n²{_FINANCIAL_PLUS_00}\n³{_FINANCIAL_PLUS_00}\n⁴{_FINANCIAL_PLUS_00}\n⁵{_FINANCIAL_PLUS_00}
-⁰{_FINANCIAL_PLUS_10}\n¹{_FINANCIAL_PLUS_10}\n²{_FINANCIAL_PLUS_10}\n³{_FINANCIAL_PLUS_10}\n⁴{_FINANCIAL_PLUS_10}\n⁵{_FINANCIAL_PLUS_10}
-⁰{_FINANCIAL_PLUS_20}\n¹{_FINANCIAL_PLUS_20}\n²{_FINANCIAL_PLUS_20}\n³{_FINANCIAL_PLUS_20}\n⁴{_FINANCIAL_PLUS_20}\n⁵{_FINANCIAL_PLUS_20}
-⁰{_FINANCIAL_PLUS_30}\n¹{_FINANCIAL_PLUS_30}\n²{_FINANCIAL_PLUS_30}\n³{_FINANCIAL_PLUS_30}\n⁴{_FINANCIAL_PLUS_30}\n⁵{_FINANCIAL_PLUS_30}
-⁰{_FINANCIAL_PLUS_40}\n¹{_FINANCIAL_PLUS_40}\n²{_FINANCIAL_PLUS_40}\n³{_FINANCIAL_PLUS_40}\n⁴{_FINANCIAL_PLUS_40}\n⁵{_FINANCIAL_PLUS_40}
-⁰{_FINANCIAL_PLUS_50}\n¹{_FINANCIAL_PLUS_50}\n²{_FINANCIAL_PLUS_50}\n³{_FINANCIAL_PLUS_50}\n⁴{_FINANCIAL_PLUS_50}\n⁵{_FINANCIAL_PLUS_50}
-₀{_FINANCIAL_PLUS_00}\n₁{_FINANCIAL_PLUS_00}\n₂{_FINANCIAL_PLUS_00}\n₃{_FINANCIAL_PLUS_00}\n₄{_FINANCIAL_PLUS_00}\n₅{_FINANCIAL_PLUS_00}
-₀{_FINANCIAL_PLUS_10}\n₁{_FINANCIAL_PLUS_10}\n₂{_FINANCIAL_PLUS_10}\n₃{_FINANCIAL_PLUS_10}\n₄{_FINANCIAL_PLUS_10}\n₅{_FINANCIAL_PLUS_10}
-₀{_FINANCIAL_PLUS_20}\n₁{_FINANCIAL_PLUS_20}\n₂{_FINANCIAL_PLUS_20}\n₃{_FINANCIAL_PLUS_20}\n₄{_FINANCIAL_PLUS_20}\n₅{_FINANCIAL_PLUS_20}
-₀{_FINANCIAL_PLUS_30}\n₁{_FINANCIAL_PLUS_30}\n₂{_FINANCIAL_PLUS_30}\n₃{_FINANCIAL_PLUS_30}\n₄{_FINANCIAL_PLUS_30}\n₅{_FINANCIAL_PLUS_30}
-₀{_FINANCIAL_PLUS_40}\n₁{_FINANCIAL_PLUS_40}\n₂{_FINANCIAL_PLUS_40}\n₃{_FINANCIAL_PLUS_40}\n₄{_FINANCIAL_PLUS_40}\n₅{_FINANCIAL_PLUS_40}
-₀{_FINANCIAL_PLUS_50}\n₁{_FINANCIAL_PLUS_50}\n₂{_FINANCIAL_PLUS_50}\n₃{_FINANCIAL_PLUS_50}\n₄{_FINANCIAL_PLUS_50}\n₅{_FINANCIAL_PLUS_50}'''.split('\n'))
-
-FINANCIAL_DEDICATED_NIFTIMAL_DIGITS = tuple(c.replace(' ', '') for c in f'''󱨀{_FINANCIAL_PLUS_00}\n󱨁{_FINANCIAL_PLUS_00}\n󱨂{_FINANCIAL_PLUS_00}\n󱨃{_FINANCIAL_PLUS_00}\n󱨄{_FINANCIAL_PLUS_00}\n󱨅{_FINANCIAL_PLUS_00}
-󱨀{_FINANCIAL_PLUS_10}\n󱨁{_FINANCIAL_PLUS_10}\n󱨂{_FINANCIAL_PLUS_10}\n󱨃{_FINANCIAL_PLUS_10}\n󱨄{_FINANCIAL_PLUS_10}\n󱨅{_FINANCIAL_PLUS_10}
-󱨀{_FINANCIAL_PLUS_20}\n󱨁{_FINANCIAL_PLUS_20}\n󱨂{_FINANCIAL_PLUS_20}\n󱨃{_FINANCIAL_PLUS_20}\n󱨄{_FINANCIAL_PLUS_20}\n󱨅{_FINANCIAL_PLUS_20}
-󱨀{_FINANCIAL_PLUS_30}\n󱨁{_FINANCIAL_PLUS_30}\n󱨂{_FINANCIAL_PLUS_30}\n󱨃{_FINANCIAL_PLUS_30}\n󱨄{_FINANCIAL_PLUS_30}\n󱨅{_FINANCIAL_PLUS_30}
-󱨀{_FINANCIAL_PLUS_40}\n󱨁{_FINANCIAL_PLUS_40}\n󱨂{_FINANCIAL_PLUS_40}\n󱨃{_FINANCIAL_PLUS_40}\n󱨄{_FINANCIAL_PLUS_40}\n󱨅{_FINANCIAL_PLUS_40}
-󱨀{_FINANCIAL_PLUS_50}\n󱨁{_FINANCIAL_PLUS_50}\n󱨂{_FINANCIAL_PLUS_50}\n󱨃{_FINANCIAL_PLUS_50}\n󱨄{_FINANCIAL_PLUS_50}\n󱨅{_FINANCIAL_PLUS_50}
-󱨤{_FINANCIAL_PLUS_00}\n󱨥{_FINANCIAL_PLUS_00}\n󱨦{_FINANCIAL_PLUS_00}\n󱨧{_FINANCIAL_PLUS_00}\n󱨨{_FINANCIAL_PLUS_00}\n󱨩{_FINANCIAL_PLUS_00}
-󱨤{_FINANCIAL_PLUS_10}\n󱨥{_FINANCIAL_PLUS_10}\n󱨦{_FINANCIAL_PLUS_10}\n󱨧{_FINANCIAL_PLUS_10}\n󱨨{_FINANCIAL_PLUS_10}\n󱨩{_FINANCIAL_PLUS_10}
-󱨤{_FINANCIAL_PLUS_20}\n󱨥{_FINANCIAL_PLUS_20}\n󱨦{_FINANCIAL_PLUS_20}\n󱨧{_FINANCIAL_PLUS_20}\n󱨨{_FINANCIAL_PLUS_20}\n󱨩{_FINANCIAL_PLUS_20}
-󱨤{_FINANCIAL_PLUS_30}\n󱨥{_FINANCIAL_PLUS_30}\n󱨦{_FINANCIAL_PLUS_30}\n󱨧{_FINANCIAL_PLUS_30}\n󱨨{_FINANCIAL_PLUS_30}\n󱨩{_FINANCIAL_PLUS_30}
-󱨤{_FINANCIAL_PLUS_40}\n󱨥{_FINANCIAL_PLUS_40}\n󱨦{_FINANCIAL_PLUS_40}\n󱨧{_FINANCIAL_PLUS_40}\n󱨨{_FINANCIAL_PLUS_40}\n󱨩{_FINANCIAL_PLUS_40}
-󱨤{_FINANCIAL_PLUS_50}\n󱨥{_FINANCIAL_PLUS_50}\n󱨦{_FINANCIAL_PLUS_50}\n󱨧{_FINANCIAL_PLUS_50}\n󱨨{_FINANCIAL_PLUS_50}\n󱨩{_FINANCIAL_PLUS_50}
-󱩈{_FINANCIAL_PLUS_00}\n󱩉{_FINANCIAL_PLUS_00}\n󱩊{_FINANCIAL_PLUS_00}\n󱩋{_FINANCIAL_PLUS_00}\n󱩌{_FINANCIAL_PLUS_00}\n󱩍{_FINANCIAL_PLUS_00}
-󱩈{_FINANCIAL_PLUS_10}\n󱩉{_FINANCIAL_PLUS_10}\n󱩊{_FINANCIAL_PLUS_10}\n󱩋{_FINANCIAL_PLUS_10}\n󱩌{_FINANCIAL_PLUS_10}\n󱩍{_FINANCIAL_PLUS_10}
-󱩈{_FINANCIAL_PLUS_20}\n󱩉{_FINANCIAL_PLUS_20}\n󱩊{_FINANCIAL_PLUS_20}\n󱩋{_FINANCIAL_PLUS_20}\n󱩌{_FINANCIAL_PLUS_20}\n󱩍{_FINANCIAL_PLUS_20}
-󱩈{_FINANCIAL_PLUS_30}\n󱩉{_FINANCIAL_PLUS_30}\n󱩊{_FINANCIAL_PLUS_30}\n󱩋{_FINANCIAL_PLUS_30}\n󱩌{_FINANCIAL_PLUS_30}\n󱩍{_FINANCIAL_PLUS_30}
-󱩈{_FINANCIAL_PLUS_40}\n󱩉{_FINANCIAL_PLUS_40}\n󱩊{_FINANCIAL_PLUS_40}\n󱩋{_FINANCIAL_PLUS_40}\n󱩌{_FINANCIAL_PLUS_40}\n󱩍{_FINANCIAL_PLUS_40}
-󱩈{_FINANCIAL_PLUS_50}\n󱩉{_FINANCIAL_PLUS_50}\n󱩊{_FINANCIAL_PLUS_50}\n󱩋{_FINANCIAL_PLUS_50}\n󱩌{_FINANCIAL_PLUS_50}\n󱩍{_FINANCIAL_PLUS_50}'''.split('\n'))
-
-DEFAULT_NUMERATOR_DIGITS = tuple('⁰¹²³⁴⁵⁰¹²³⁴⁵⁰¹²³⁴⁵‍⁺⁻')
-DEDICATED_NUMERATOR_DIGITS = tuple('󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩󱨤󱨥󱨦󱨧󱨨󱨩⁺⁻')
-
-DEFAULT_DENOMINATOR_DIGITS = tuple('₀₁₂₃₄₅₀₁₂₃₄₅₀₁₂₃₄₅₊₋')
-DEDICATED_DENOMINATOR_DIGITS = tuple('󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍󱩈󱩉󱩊󱩋󱩌󱩍₊₋')
+DEFAULT_NUMERATOR_DIGITS = (
+    '⁰', '¹', '²', '³', '⁴', '⁵',
+    '⁰', '¹', '²', '³', '⁴', '⁵',
+    '⁰', '¹', '²', '³', '⁴', '⁵',
+    '⁺', '⁻',
+)
+DEFAULT_DENOMINATOR_DIGITS = (
+    '₀', '₁', '₂', '₃', '₄', '₅',
+    '₀', '₁', '₂', '₃', '₄', '₅',
+    '₀', '₁', '₂', '₃', '₄', '₅',
+    '⁺', '⁻',
+)
 
 
 def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
@@ -136,7 +60,8 @@ def default_to_dedicated_digits(number: str) -> str:
 
 
 def default_niftimal_to_dedicated_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, DEDICATED_NIFTIMAL_DIGITS)
+    number = default_niftimal_to_regularized_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def default_niftimal_to_regularized_digits(number:str) -> str:
@@ -144,7 +69,8 @@ def default_niftimal_to_regularized_digits(number:str) -> str:
 
 
 def default_niftimal_to_regularized_dedicated_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_DEDICATED_NIFTIMAL_DIGITS)
+    number = default_niftimal_to_regularized_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def default_niftimal_to_financial_digits(number:str) -> str:
@@ -152,7 +78,8 @@ def default_niftimal_to_financial_digits(number:str) -> str:
 
 
 def default_niftimal_to_financial_dedicated_digits(number:str) -> str:
-    return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, FINANCIAL_DEDICATED_NIFTIMAL_DIGITS)
+    number = default_niftimal_to_financial_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def dedicated_to_default_digits(number: str) -> str:
@@ -160,7 +87,8 @@ def dedicated_to_default_digits(number: str) -> str:
 
 
 def dedicated_niftimal_to_default_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_NIFTIMAL_DIGITS, DEFAULT_NIFTIMAL_DIGITS)
+    number = dedicated_to_default_digits(number)
+    return _change_digits(number, REGULARIZED_NIFTIMAL_DIGITS, DEFAULT_NIFTIMAL_DIGITS)
 
 
 def default_to_numerator_digits(number: str) -> str:
@@ -193,3 +121,16 @@ def dedicated_to_default_numerator_digits(number: str) -> str:
 
 def dedicated_to_default_denominator_digits(number: str) -> str:
     return _change_digits(number, DEDICATED_DIGITS, DEFAULT_DENOMINATOR_DIGITS)
+
+
+def dozenal_letters_to_digits(number: str) -> str:
+    number = number.upper()
+    number = number.replace('A', '↊')
+    number = number.replace('B', '↋')
+    return number
+
+def dozenal_digits_to_letters(number: str) -> str:
+    number = number.upper()
+    number = number.replace('↊', 'A')
+    number = number.replace('↋', 'B')
+    return number

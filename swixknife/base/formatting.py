@@ -6,6 +6,9 @@ Sezimal = TypeVar('Sezimal', bound='Sezimal')
 SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
 SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
+Dozenal = TypeVar('Dozenal', bound='Dozenal')
+DozenalInteger = TypeVar('DozenalInteger', bound='DozenalInteger')
+DozenalFraction = TypeVar('DozenalFraction', bound='DozenalFraction')
 
 import re
 from .validation import validate_clean_sezimal, validate_clean_decimal, \
@@ -14,12 +17,14 @@ from .decimal_sezimal_conversion import decimal_to_sezimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .sezimal_niftimal_conversion import sezimal_to_niftimal, niftimal_to_sezimal
 from .sezimal_dozenal_conversion import sezimal_to_dozenal, dozenal_to_sezimal
+from .dozenal_decimal_conversion import dozenal_to_decimal
 from .digit_conversion import (
     default_to_dedicated_digits,
     default_to_numerator_digits, default_to_denominator_digits,
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
     default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
     default_niftimal_to_regularized_dedicated_digits, default_niftimal_to_financial_dedicated_digits,
+    dozenal_letters_to_digits,
 )
 
 _TWO_DIGITS_GROUP_FORMAT = re.compile('([0-9↊↋A-Z]{2})')
@@ -301,15 +306,15 @@ def decimal_format(
 
 
 def dozenal_format(
-        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
-        dozenal_places: str | int | Decimal | Sezimal | SezimalInteger | SezimalFraction = 2,
+        number: str | int | float | Decimal | Dozenal | DozenalInteger | DozenalFraction | Sezimal | SezimalInteger | SezimalFraction,
+        dozenal_places: str | int | Decimal | Dozenal | DozenalInteger | DozenalFraction | Sezimal | SezimalInteger | SezimalFraction = 2,
         dozenal_separator: str = SEPARATOR_DOT,
         group_separator: str = SEPARATOR_UNDERSCORE,
         subgroup_separator: str = '',
         fraction_group_separator: str = SEPARATOR_UNDERSCORE,
         fraction_subgroup_separator: str = '',
         typographical_negative: bool = False,
-        minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
+        minimum_size: str | int | Decimal | Dozenal | DozenalInteger | Sezimal | SezimalInteger = 0,
         prefix: str = '',
         suffix: str = '',
         positive_format: str = '{prefix}{value}{suffix}',
@@ -317,16 +322,27 @@ def dozenal_format(
         mark_recurring_digits: bool = False,
         p_recurring_notation: bool = False,
     ) -> str:
-    number = sezimal_to_dozenal(number)
-    dozenal_places = sezimal_to_dozenal(dozenal_places)
-    minimum_size = sezimal_to_dozenal(minimum_size)
+    if type(number) in (str, Dozenal, DozenalInteger, DozenalFraction):
+        number = dozenal_letters_to_digits(str(number))
+    else:
+        number = sezimal_to_dozenal(number)
+
+    if type(dozenal_places) in (str, Dozenal, DozenalInteger, DozenalFraction):
+        dozenal_places = dozenal_letters_to_digits(str(dozenal_places))
+    else:
+        dozenal_places = sezimal_to_dozenal(dozenal_places)
+
+    if type(minimum_size) in (str, Dozenal, DozenalInteger, DozenalFraction):
+        minimum_size = dozenal_letters_to_digits(str(minimum_size))
+    else:
+        minimum_size = sezimal_to_dozenal(minimum_size)
 
     number = validate_clean_dozenal(str(number))
     dozenal_places = validate_clean_dozenal(dozenal_places)
     minimum_size = validate_clean_dozenal(minimum_size)
 
-    dozenal_places = int(sezimal_to_decimal(dozenal_to_sezimal(dozenal_places)))
-    minimum_size = int(sezimal_to_decimal(dozenal_to_sezimal(minimum_size)))
+    dozenal_places = int(dozenal_to_decimal(dozenal_places))
+    minimum_size = int(dozenal_to_decimal(minimum_size))
 
     recurring: str = ''
 

@@ -31,10 +31,10 @@ def decimal_to_sezimal(number: int | float | Decimal | str | Sezimal | SezimalIn
         integer = number
         fraction = ''
 
-    sezimal_integer = _decimal_integer_to_sezimal(integer)
-    sezimal_fraction = _decimal_fraction_to_sezimal(fraction, sezimal_precision)
+    integer = _decimal_integer_to_sezimal(integer)
+    sezimal_integer, sezimal_fraction = _decimal_fraction_to_sezimal(fraction, sezimal_precision)
 
-    sezimal = sezimal_integer or '0'
+    sezimal = _decimal_integer_to_sezimal(int(integer or '0', 6) + int(sezimal_integer or '0', 6))
 
     if sezimal_fraction:
         sezimal += '.' + sezimal_fraction
@@ -54,12 +54,12 @@ def _decimal_integer_to_sezimal(integer: int | str) -> str:
         integer //= 6
 
     sezimal = sezimal[::-1]
-    return sezimal
+    return sezimal or '0'
 
 
 def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int = None) -> str:
     if not fraction:
-        return ''
+        return '0', ''
 
     decimal_precision = len(fraction)
 
@@ -67,6 +67,7 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
         sezimal_precision = _decimal_exponent_to_sezimal(getcontext().prec)
 
     fraction = Decimal('0.' + fraction)
+    sezimal_integer = '0'
     sezimal_fraction = ''
 
     with localcontext() as context:
@@ -74,6 +75,11 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
 
         for i in range(sezimal_precision):
             fraction = fraction * 6
+
+            if fraction == 6:
+                sezimal_integer = '1'
+                break
+
             digit = int(fraction % 10)
             sezimal_fraction += str(digit)
             fraction -= digit
@@ -81,11 +87,16 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
             if fraction <= 0:
                 break
 
-    #
-    # Let’s adjust for recurring 5s at the end of fractional parts
-    #
-    while sezimal_fraction.endswith('5555'):
+    while sezimal_fraction.endswith('5555') \
+        or sezimal_fraction.endswith('5554') \
+        or sezimal_fraction.endswith('5553'):
         sezimal_fraction = sezimal_fraction[:-4]
+
+        if sezimal_fraction.replace('5', '') == '':
+            sezimal_integer = _decimal_integer_to_sezimal(int(sezimal_integer, 6) + 1)
+            sezimal_fraction = '0'
+            break
+
         size = len(sezimal_fraction)
         sezimal_fraction = _decimal_integer_to_sezimal(int(sezimal_fraction, 6) + 1)
         sezimal_fraction = sezimal_fraction.zfill(size)
@@ -103,7 +114,7 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
     if not sezimal_fraction:
         sezimal_fraction = '0'
 
-    return sezimal_fraction
+    return sezimal_integer, sezimal_fraction
 
 
 def _decimal_exponent_to_sezimal(exponent: int) -> int:

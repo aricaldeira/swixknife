@@ -1,23 +1,26 @@
 
 from typing import TypeVar
 
-Sezimal = TypeVar('Sezimal', bound='Sezimal')
-SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
-SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
+Dozenal = TypeVar('Dozenal', bound='Dozenal')
+DozenalInteger = TypeVar('DozenalInteger', bound='DozenalInteger')
+DozenalFraction = TypeVar('DozenalFraction', bound='DozenalFraction')
 
 from decimal import Decimal, localcontext, getcontext
 
-from .validation import validate_clean_sezimal, validate_clean_decimal
+from .validation import validate_clean_dozenal, validate_clean_decimal
+from .digit_conversion import dozenal_digits_to_letters
 
 
-def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = None) -> str:
+def dozenal_to_decimal(number: int | float | Decimal | str | Dozenal | DozenalInteger | DozenalFraction, decimal_precision: int = None) -> str:
     if type(number) == Decimal:
         return validate_clean_decimal(str(number))
 
-    if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
+    if type(number).__name__ in ('Dozenal', 'DozenalInteger', 'DozenalFraction'):
         return validate_clean_decimal(str(number.decimal))
 
-    number = validate_clean_sezimal(str(number))
+    number = validate_clean_dozenal(str(number))
+
+    number = dozenal_digits_to_letters(number)
 
     if number.startswith('-'):
         negative = True
@@ -31,9 +34,9 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
         integer = number
         fraction = ''
 
-    decimal_integer, decimal_fraction = _sezimal_fraction_to_decimal(fraction, decimal_precision)
-    decimal_integer = str(int(integer, 6) + int(decimal_integer or '0'))
-    # decimal_integer = _sezimal_integer_to_decimal(integer)
+    decimal_integer, decimal_fraction = _dozenal_fraction_to_decimal(fraction, decimal_precision)
+    decimal_integer = str(int(integer, 12) + int(decimal_integer or '0'))
+    # decimal_integer = _dozenal_integer_to_decimal(integer)
 
     decimal = decimal_integer
 
@@ -46,7 +49,7 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
     return decimal
 
 
-def _sezimal_integer_to_decimal(integer: str) -> str:
+def _dozenal_integer_to_decimal(integer: str) -> str:
     if not integer:
         return ''
 
@@ -55,7 +58,7 @@ def _sezimal_integer_to_decimal(integer: str) -> str:
 
     i = 0
     for d in integer:
-        decimal_integer += int(d, 6) * (Decimal('6') ** i)
+        decimal_integer += int(d, 12) * (Decimal('12') ** i)
         i += 1
 
     decimal_integer = validate_clean_decimal(decimal_integer)
@@ -63,7 +66,7 @@ def _sezimal_integer_to_decimal(integer: str) -> str:
     return decimal_integer
 
 
-def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -> tuple[str, str]:
+def _dozenal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -> tuple[str, str]:
     if not fraction:
         return '', ''
 
@@ -77,7 +80,7 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
 
         i = -1
         for d in fraction:
-            decimal_fraction += int(d, 6) * (Decimal('6') ** i)
+            decimal_fraction += int(d, 12) * (Decimal('12') ** i)
             i -= 1
 
     decimal_fraction = validate_clean_decimal(decimal_fraction)

@@ -15,6 +15,8 @@ from .decimal_sezimal_conversion import decimal_to_sezimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .sezimal_niftimal_conversion import sezimal_to_niftimal, niftimal_to_sezimal
 from .sezimal_dozenal_conversion import sezimal_to_dozenal, dozenal_to_sezimal
+from .decimal_dozenal_conversion import decimal_to_dozenal
+from .dozenal_decimal_conversion import dozenal_to_decimal
 from .digit_conversion import (
     default_to_dedicated_digits, default_niftimal_to_dedicated_digits,
     default_niftimal_to_regularized_digits, default_niftimal_to_regularized_dedicated_digits,
@@ -24,6 +26,7 @@ from .digit_conversion import (
     dedicated_to_numerator_digits, dedicated_to_denominator_digits,
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
     dedicated_to_default_numerator_digits, dedicated_to_default_denominator_digits,
+    dozenal_letters_to_digits, dozenal_digits_to_letters,
 )
 from .formatting import (
     sezimal_format, sezimal_format_fraction,
