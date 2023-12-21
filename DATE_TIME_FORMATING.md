@@ -2,163 +2,384 @@
 
 Use the function format from the SezimalDate, SezimalTime, SezimalDateTime classes;
 
-    def format(fmt: str, lang: str = None) -> str:
+    def format(fmt: str, locale: str = None) -> str:
 
 Where:
 
-* **fmt**: is the string with the formatting characters and text;
-* **lang**: an optional parameter, the ISO639-2 language code, used for the text formats; if not informed, the function will try to use either the system default language or English, in that order.
+* fmt: is the string with the formatting characters and text;
+* locale: an optional parameter, the ISO639-2 language code, used for the text formats; if not informed, the function will try to use either the system default language or English, in that order.
 
-# Date and time numeric formats
+The Sezimal Date and Time class gives you:
 
-    #[@][!][*][-]XX
+*   Numbers and values that use sezimal base, except where explicitly indicated;
+*   Sezimal dates on the [Symmetry454 Calendar](http://individual.utoronto.ca/kalendis/symmetry.htm) using the [Holocene Epoch](https://en.wikipedia.org/wiki/Holocene_calendar);
+*   Sezimal times, meaning time of day using sezimal base, where:
 
-    @: uses base 100 (compresses each two digits into base 100, see note below)
-    !: uses dedicated digits 󱨀󱨁󱨂󱨃󱨄󱨅
-    *: renders an empty string if value is zero (most useful with time values)
-    -: don’t pad value with zeroes to the left
+*   1 day is divided into 100 36 utas (sezimal hours);
+*   1 uta is divided into 100 36 poshas (sezimal minutes);
+*   1 posha is divided into 100 36 agrimas (sezimal seconds)
+*   1 agrima is divided into 100 36 anugas (sezimal centiseconds);
+*   1 anuga is divided into 100 36 bodas (sezimal milliseconds)
+*   1 boda is divided into 1 0000 0000 1 679 616 ekaditibodas (sezimal nanoseconds)
 
-**XX** can be:
+Example:
 
-### Date
+     This page was last rendered on 131355-20-25 01:25:30.441524103005 UTC 2023-12-20 00:59:28.123355 UTC
 
-* **d**: day with 2 digits (01 – 44/55)
-* **w**: weekday with 2 digits (01 – 11)
-* **m**: month with 2 digits (01 – 20)
-* **q**: quarter with 1 digit (1 – 4)
-* **y**: month with 10 digits (00_0000 – 55_5555)
-* **dQ**: day in quarter with 3 digits (001 – 231/242)
-* **dY**: day in year with 4 digits (0001 – 1404/1415)
-* **wM**: week in month with 1 digit (1 – 4/5)
-* **wQ**: week in quarter with 2 digits (1 – 21/22)
-* **wY**: week in year with 3 digits (1 – 124/125)
-* **mQ**: month in quarter with 1 digit (1 – 3)
+Sezimal date and time formatting is much like using the [strftime in Python](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior), but uses a extended set of format tags, all starting with #, whereas strftime uses %;
 
-### Time
+1. Numeric formats
+-------------------
 
-* **u**: uta (₂day) with 2 digits (00 – 55)
-* **p**: posha (₄day) with 2 digits (00 – 55)
-* **a**: agrima (₁₀day) with 2 digits (00 – 55)
-* **n**: anuga (₁₂day) with 2 digits (00 – 55)
-* **b**: boda (₁₄day) with 2 digits (00 – 55)
-* **e**: ekaditiboda (₃₀day) with 12 digits (0000_0000 – 5555_5555)
+### 1.1 Basic numeric format
 
-### Special case for formatted years
+    #[@Z9↋][?!][*][-​>]XX
 
-    #[!]Xy
+        # - required, starts all sezimal format tags;
 
-    !: uses dedicated digits 󱨀󱨁󱨂󱨃󱨄󱨅
+        XX - required; can be:
 
-Formats the year with 10 digits, *55***•***5555*, using **•** as separator;
+            Date
 
-**•** can be:
+            d - day number with two digits
+                (01 – 44 28 for short months, 01 – 55 35 for long months);
+            w - weekday number with two digits (01 – 11 7);
+            m - month number with two digits (01 – 20 12);
+            q - quarter number with one digit (1 – 4);
+            y - year number with 10 6 digits and no group separator (-23_2332 -20_000 – 23_2332 20_000);
+            dQ - day within quarter with 3 digits
+                 (001 – 231 91 for regular years, 001 – 242 98 for leap years);
+            dY - day within year with 4 digits (
+                 0001 – 1404 364 for regular years, 0001 – 1415 371 for leap years);
+            wM - week within month with 1 digit
+                 (1 – 4 for short months, 1 – 5 for long months);
+            wQ - week within quarter with 2 digits
+                 (01 – 21 13 for regular years, 01 – 22 14 for the last quarter on leap years);
+            wY - week within year with 3 digits
+                 (001 – 124 52 for regular years, 001 – 125 53 for leap years);
+            mQ - month within quarter with 1 digit (1 – 3);
 
-* **_**: undescore (U+005f);
-* **.**: dot/full stop (U+002e);
-* **,**: comma (U+002c);
-* **˙**: dot above (U+02d9);
-* **ʼ**: modifier letter apostrophe/comma above (U+02bc);
-* **’**: typographical apostrophe/right single quotation mark (U+2019);
-* **'**: apostrophe \[this is the straight apostrophe\] (U+0027);
-* **•**: black circle bullet (U+2022);
-* **◦**: open circle bullet (U+25e6);
+            Time
 
-Or one of the following space characters:
+            u - uta, the first sezimal division of the day, the sezimal hour, with 2 digits (00 - 55 36);
+            p - posha, the second sezimal division of the day, the sezimal minute, with 2 digits (00 - 55 36);
+            a - agrima, the third sezimal division of the day, the sezimal second, with 2 digits (00 - 55 36);
+            n - anuga, the fourth sezimal division of the day, the sezimal centisecond, with 2 digits (00 - 55 36);
+            b - boda, the fifth sezimal division of the day, the sezimal millisecond, with 2 digits (00 - 55 36);
+            e - ekaditiboda, the sezimal nanosecond, with 12 8 digits (0000000000 - 55555555 1 679 616);
 
-* U+0020: space;
-* U+00a0: no-break space;
-* U+2000: en quad;
-* U+2001: em quad;
-* U+2002: en space;
-* U+2003: em space;
-* U+2004: three-per-em space;
-* U+2005: four-per-em space;
-* U+2006: six-per-em space;
-* U+2007: figure space;
-* U+2008: punctuation space;
-* U+2009: thin space;
-* U+200a: hair space
-* U+202f: narrow no-break space
-* U+205f: medium mathematical space
+        @ - optional; uses base 100 36, also known as [niftimal](https://www.seximal.net/hexaseximal);
+            with regularized niftimal digits, using diacritics:
+                012345
+                0̇1̇2̇3̇4̇5̇ (6789AB) ˙ means 1
+                0̈1̈2̈3̈4̈5̈ (CDEFGH) ¨ means 2
+                0̊1̊2̊3̊4̊5̊ (IJKLMN)  ̊ resembles top part of 󱨃, see below
+                0̄1̄2̄3̄4̄5̄ (OPQRST)  ̄ resembles top part of 󱨄, see below
+                0̆1̆2̆3̆4̆5̆ (UVWXYZ)  ̆ resembles bottom part of 󱨅, see below;
 
-### Time zones
+        Z - optional; uses base 100 36, also known as [niftimal](https://www.seximal.net/hexaseximal),
+            using decimal digits from 10 6 up to 13 9,
+            and letters from 14 10 up to 100 36:
+                012345
+                6789AB
+                CDEFGH
+                IJKLMN
+                OPQRST
+                UVWXYZ;
 
-* **#t**: time zone in utas/poshas, in the format \[+-\]uu:pp
-* **#z**: time zone in utas/poshas, in the format \[+-\]uupp
+        9 - optional; uses decimal base;
 
-# Date and time text formats
+        ↋ - optional; uses dozenal (twelve) base with Pitman digits ↊ (14) and ↋ (15);
 
-Those formats depend on the language informed, broadly speaking;
+        ! - optional; uses sezimal dedicated digits 󱨀󱨁󱨂󱨃󱨄󱨅 (012345);
+            can be used alone, or paired with @ to give:
+                󱨀󱨁󱨂󱨃󱨄󱨅 (012345)
+                󱨀̇󱨁̇󱨂̇󱨃̇󱨄̇󱨅̇ (6789AB) ˙ means 1
+                󱨀̈󱨁̈󱨂̈󱨃̈󱨄̈󱨅̈ (CDEFGH) ¨ means 2
+                󱨀̊󱨁̊󱨂̊󱨃̊󱨄̊󱨅̊ (IJKLMN)  ̊ resembles top part of 󱨃
+                󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ (OPQRST)  ̄ resembles top part of 󱨄
+                󱨀̆󱨁̆󱨂̆󱨃̆󱨄̆󱨅̆ (UVWXYZ)  ̆ resembles bottom part of 󱨅;
 
-The formatting function will use the specified language, when informed; otherwise, it will try to use the system default locale for weekday and month names, with varying degrees of success;
+        ? - optional; uses localized digits for some locales (Arabic, Farsi, Hindi etc.);
+            can be used alone, or paired with Z, 9 and ↋;
 
-* **#O**: the ordinal suffix for the day; this is conditioned to language specific rules; for Romance Languages, this is generally used only for the first day of the month; for English: *st*, *nd*, *rd*, *th*; for Portuguese, Spanish, Italian: *º* only for day 1, otherwise empty; for French: *ᵉʳ* only for day 1, otherwise empty;
-* **#W**: the name of the weekday (Monday − Sunday);
-* **#@W**: the abbreviated (generally to three letters) name of the weekday (Mon – Sun);
-* **#M**: the name of the month (January – December);
-* **#@M**: the abbreviated (generally to three letters) name of the month (Jan – Dec);
-* **#E**: the abbreviation of the name of the era; for English, *SHE* - Sezimal Human Era, for years >= 0, *BSHE* - Before Sezimal Human Era, for years < 0
-* **#T**: the name of the time zone;
-* **#V**: *DST* if the time zone is using daylight saving time;
+        * - optional; renders an empty string if value is zero;
 
-# Date spellout formats
+        - - optional; don’t pad value with zeroes to the left;
 
-Those will use the sezimal_spellout function, and depend on the language informed, and if the language is available for the sezimal_spellout function; for the time being, only English and Portuguese are available;
+        > - optional, only paired with y; only the last 3 digits of the year (2 digits for other bases);
 
-    #&[oa]XX
+    Examples:
+        #y-#m-#d #u:#p:#a        → 131355-20-25 01:25:30
+        #>y-#m-#d #u:#p:#a       → 000355-20-25 01:25:30
+        #!y-#!m-#!d #!u:#!p:#!a  → 󱨁󱨃󱨁󱨃󱨅󱨅-󱨂󱨀-󱨂󱨅 󱨀󱨁:󱨂󱨅:󱨃󱨀
+        #@y-#@m-#@d #@u:#@p:#@a  → 3̇3̇5̆-0̈-5̈ 1:5̈:0̊
+        #@>y-#@m-#@d #@u:#@p:#@a → 03̇5̆-0̈-5̈ 1:5̈:0̊
+        #Zy-#Zm-#Zd #Zu:#Zp:#Za  → 99Z-C-H 1:H:I
+        #Z>y-#Zm-#Zd #Zu:#Zp:#Za → 9Z-C-H 1:H:I
+        #9-y-#9m-#9d #9u:#9p:#9a → 12023-12-17 01:17:18
+        #9>y-#9m-#9d #9u:#9p:#9a → 23-12-17 01:17:18
+        #↋-y-#↋m-#↋d #↋u:#↋p:#↋a → 5↋-10-15 29:0↋:20
 
-    o: uses ordinal number (masculine where applicable)
-    a: uses ordinal number (feminine where applicable)
+### 1.2 Year number with group separator
 
-**XX** can be:
+    #[@Z9↋][!?][S]Y
 
-### Date
+        # - required, starts all sezimal format tags;
 
-* **d**: day (01 – 44/55)
-* **w**: weekday (01 – 11)
-* **m**: month (01 – 20)
-* **q**: quarter (1 – 4)
-* **y**: month (00_0000 – 55_5555)
-* **dQ**: day in quarter (001 – 231/242)
-* **dY**: day in year (0001 – 1404/1415)
-* **wM**: week in month (1 – 4/5)
-* **wQ**: week in quarter (1 – 21/22)
-* **wY**: week in year (1 – 124/125)
-* **mQ**: month in quarter (1 – 3)
+        Y - required; means the full year number with group separator;
 
-### Special case for ordinal days depending on language
+        @ - optional; niftimal base with regularized digits, [see above](https://sezimal.tauga.online/index.html#regularized-niftimal-digits);
 
-    #&Od
+        Z - optional; niftimal base, [see above](https://sezimal.tauga.online/index.html#niftimal-digits);
 
-Uses the ordinal number for the day, but only if the language in question uses an ordinal suffix with the day in question; for example, for Portuguese/Spanish/Italian/French, it will render primeiro/primero/primo/premier only for day 1, from day 2 and above, it will render dois/dos/due/deux etc. etc.
+        9 - optional; decimal base, [see above](https://sezimal.tauga.online/index.html#decimal-digits);
 
-# Time spellout formats
+        ↋ - optional; dozenal base [see above](https://sezimal.tauga.online/index.html#dozenal-digits);
 
-Those will use the sezimal_spellout function, and depend on the language informed, and if the language is available for the sezimal_spellout function; for the time being, only English and Portuguese are available;
+        ! - optional; sezimal dedicated digits, [see above](https://sezimal.tauga.online/index.html#dedicated-digits);
 
-Since the time is measured in several units, the units are also spelled out, using singular and plural where applicable;
+        ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
 
-    #&[@]X
+        S - optional; the group separator, specified when not using the locale’s default; can be:
+            _  low line / underscore U+005f
+            .  full stop / period U+002e
+            ,  comma U+002c
+            ˙  dot above U+02d9
+            ʼ  comma above / modifier letter apostrophe U+02bc
+            ’  typographical apostrophe / right single quotation mark U+2019
+            '  apostrophe U+0027
+            •  black circle bullet U+2022
+            ◦  white circle bullet U+25e6
+            or the space characters:
+               space U+0020, no-break space U+00a0,
+               en quad U+2000, em quad U+2001,
+               en space U+2002, em space U+2003,
+               three-per-em space U+2004, four-per-em space U+2005,
+               six-per-em space U+2006,
+               figure space U+2007, punctuation space U+2008,
+               thin space U+2009, hair space U+200a,
+               narrow no-break space U+202f, medium mathematical space U+205f
 
-    @: ignores the unit, spelling out only the number
+    Examples:
+        #Y-#m-#d  → 13,1355-20-25  (English locale’s default)
+        #Y-#m-#d  → 13.1355-20-25  (Brazilian locale’s default)
+        #Y-#m-#d  → 13 1355-20-25  (French locale’s default)
+        #_Y-#m-#d → 13_1355-20-25
+        #,Y-#m-#d → 13,1355-20-25
+        #.Y-#m-#d → 13.1355-20-25
+        #'Y-#m-#d → 13'1355-20-25_
 
-**X** can be:
+### 1.3 Time zone offset
 
-* **u**: uta (₂day) (00 – 55)
-* **p**: posha (₄day) (00 – 55)
-* **a**: agrima (₁₀day) (00 – 55)
-* **n**: anuga (₁₂day) (00 – 55)
-* **b**: boda (₁₄day) (00 – 55)
-* **e**: ekaditiboda (₃₀day) (0000_0000 – 5555_5555)
+    #[:]t
+
+        # - required, starts all sezimal format tags;
+
+        t - required; means the time zone uta and posha offset, preceeded by + or -;
+
+        : - optional; inserts a : between the uta and posha parts of the offset;
+
+    Examples:
+        #t  #:t  → +0000  +00:00  (UTC offset)
+        #t  #:t  → -0430  -04:30  (America/Sao_Paulo offset)
+        #t  #:t  → +2130  +21:30  (Asia/Tokyo offset)
+        #t  #:t  → -2130  -21:30  (America/Anchorage offset)
+
+### 1.4 Decimal and dozenal time
+
+    #99[?]u
+    #99[?]p
+    #99[?]a
+
+        99 - when paired with u, p or a renders the first, second and third divisions of the day,
+             using decimal base, dividing 1 day into 244 100 “decimal hours”,
+             each “decimal hour” into 244 100 “decimal minutes”,
+             and each “decimal minute” into 244 100 “decimal seconds”;
+             it’s a sort of [Decimal Time](https://en.wikipedia.org/wiki/Decimal_time#Fractional_days);
+
+        ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
+
+    #↋↋[?]u
+    #↋↋[?]p
+    #↋↋[?]a
+
+        ↋↋ - when paired with u, p or a renders the first, second and third divisions of the day,
+             using dozenal base, dividing 1 day into 400 144 “dozenal hours”,
+             each “dozenal hour” into 400 144 “dozenal minutes”,
+             and each “dozenal minute” into 400 144 “dozenal seconds”;
+
+        ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
+
+    Examples:
+        #u-#p-#a UTC (0.#u#p#a day)             → 01-25-30 UTC (0.012530 day)
+        #99u-#99p-#99a UTC (0.#99u#99p#99a day) → 04-12-97 UTC (0.041297 day)
+        #↋↋u-#↋↋p-#↋↋a UTC (0.#↋↋u#↋↋p#↋↋a day) → 05-↋4-42 UTC (0.05↋442 day)
+
+### 1.4 Seasons and moon phases change/event time
+
+    #T[@Z9↋|99|↋↋][!?][4][SL]
+
+        # - required, starts all sezimal format tags;
+
+        T - required; means the time of the Season or Moon Phase event/change;
+
+        S or
+        L - required; means year Season or Moon (Luna) Phase;
+            without other options, gives an empty string when there’s
+            no Season or Moon Phase change/event on the day, otherwise
+            the uta and posha of the change/event, adjusted to the locale’s
+            default time zone or other specificed time zone;
+
+        S - uses the traditional Western 4 Seasons plus the [Cross-Quarters](https://en.wikipedia.org/wiki/Quarter_days),
+            the middle of the transition between each of the 4 main Seasons;
+
+        L - uses the traditional 4 Phases, plus the middle of the
+            transition between each of the 4 main Phases;
+
+        @ - optional; niftimal base with regularized digits, [see above](https://sezimal.tauga.online/index.html#regularized-niftimal-digits);
+
+        Z - optional; niftimal base, [see above](https://sezimal.tauga.online/index.html#niftimal-digits);
+
+        9 - optional; decimal base, [see above](https://sezimal.tauga.online/index.html#decimal-digits);
+
+        ↋ - optional; dozenal base [see above](https://sezimal.tauga.online/index.html#dozenal-digits);
+
+        99 - optional; decimal time and decimal base, [see above](https://sezimal.tauga.online/index.html#decimal-time);
+
+        ↋↋ - optional; dozenal time and dozenal base, [see above](https://sezimal.tauga.online/index.html#dozenal-time);
+
+        ! - optional; sezimal dedicated digits, [see above](https://sezimal.tauga.online/index.html#dedicated-digits);
+
+        ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
+
+        4 − optional; ignores the Seasons Cross-Quarters and the
+            Intermediary Moon Phases, using only the 4 main Seasons
+            and 4 main Moon Phases;
+
+2. Text and emoji formats
+--------------------------
+
+### 2.1 Basic text format
+
+    #[@123][!?>][MW]
+
+        # - required, starts all sezimal format tags;
+
+        M or
+        W - required; means the Month or the Weekday;
+            without other options, gives the locale’s full month or weekday name;
+
+        @ − optional; gives the locale’s abreviated month or weekday name;
+
+        1 − optional; gives the first letter of the locale’s month or weekday name;
+
+        2 − optional; gives the first two letters of the locale’s month or weekday name;
+
+        3 − optional; gives the first three letters of the locale’s month or weekday name;
+
+        ! − optional; uses only upper case letters;
+
+        ! − optional; uses only lower case letters;
+
+        > − optional; the first letter is upper case, all others are lower case;
+
+    #O - gives the locale’s ordinal suffix for the day
+         (some locales use ordinal dates only for the first day of the month);
+
+    #E - gives the locale’s era abbreviation:
+         SHE - Sezimal Human Era for years >= 0;
+         BSHE - Before Sezimal Human Era, for years < 0;
+
+    #T - gives the time zone name;
+
+    #[&@][-]V
+
+        # - required, starts all sezimal format tags;
+
+        V - required; means the time zone DST name/status;
+            without other options, gives the locale’s short DST name;
+
+        & - optional; means the locale’s DST full name;
+
+        @ - optional; means the locale’s DST status as an emoji,
+             usually ⏰🌞;
+
+        - - optional; if the time is not in DST, gives an empty
+             string, otherwise, gives the text/emoji preceeded by a space;
+             used when #[&@]-V goes right after some other text, and
+             the extra space separating the empty format is unwanted;
+
+    Examples:
+        #W, #M #d#O, #Y → Wednesday, December 25th, 13,1355
+        #@W #@M #d #y → Wed Dec 25 131355
+        #W #@W #3W #2W #1W → Wednesday Wed Wed We W
+        #M #@M #3M #2M #1M → December Dec Dec De D
+        #!W #@!W #3!W #2!W #1!W → WEDNESDAY WED WED WE W
+        #!M #@!M #3!M #2!M #1!M → DECEMBER DEC DEC DE D
+        #?W #@?W #3?W #2?W #1?W → wednesday wed wed we w
+        #?M #@?M #3?M #2?M #1?M → december dec dec de d
+
+### 2.2 Seasons and moon phases text formats
+
+    #[@][~][NS][4][!?>][SL]
+
+        # - required, starts all sezimal format tags;
+
+        S or
+        L - required; means year Season or Moon (Luna) Phase;
+            without other options, gives an empty string when there’s
+            no Season or Moon Phase change/event on the day, otherwise
+            otherwise the locale’s Season/Moon Phase name or emoji,
+            adjusted to the locale’s Hemisphere;
+
+        S - uses the traditional Western 4 Seasons plus the [Cross-Quarters](https://en.wikipedia.org/wiki/Quarter_days),
+            the middle of the transition between each of the 4 main Seasons;
+
+        L - uses the traditional 4 Phases, plus the middle of the
+            transition between each of the 4 main Phases;
+
+        @ − optional; gives the locale’s emoji for the Season on Moon Phase;
+            Seasons emoji default to:
+                ❄️🌷🌞🍂 and
+                ❄️〰🌷, 🌷〰🌞, 🌞〰🍂, 🍂〰❄️
+            for the Northen Hemisphere, and:
+                🌞🍂❄️🌺 and
+                🌞〰🍂, 🍂〰❄️, ❄️〰🌺, 🌺〰🌞
+            for the Southern Hemisphere;
+            Moon Phase emoji are:
+                🌑🌒🌓🌔🌕🌖🌗🌘 for the Northern Hemisphere,
+                🌑🌘🌗🌖🌕🌔🌓🌒 for the Southern Hemisphere;
+
+        ~ − optional; ongoing Season, meaning it gives the locale’s Season name
+            emoji even if the Season change/event is not on the day;
+
+        N or
+        S − optional; Northern or Southern Hemisphere; when
+            omitted uses the locale’s default Hemisphere;
+
+        4 − optional; ignores the Cross-Quarters and Intermediary Moon Phases,
+            using only the 4 main Seasons and the 4 main Moon Phases;
+
+        ! − optional; uses only upper case letters;
+
+        ? − optional; uses only lower case letters;
+
+        > − optional; the first letter is upper case, all others are lower case;
+
+Examples, using English locale:
+        #~N4S #@~N4S → Autumn ️🍂
+        #~NS #@~NS → Winter Cross-Quarter ️🍂️〰️❄️
+        #~S4S #@~S4S → Spring ️🌺
+        #~SS #@~SS → Summer Cross-Quarter 🌺️〰️🌞
+
+        #~N4L #@~N4L → First Quarter ️🌓
+        #~NL #@~NL → First Quarter ️🌓
+        #~S4L #@~S4L → First Quarter ️🌗
+        #~SL #@~SL → First Quarter ️🌗
 
 
-# ISO/Gregorian date and time formats
-
-The regular Python’s strftime formatting is also available, for the same SezimalDate/SezimalTime/SezimalDateTime, so you can mix freely sezimal formatting tokens with ISO/Gregorian formatting tokens, for instance, to show date in sezimal and gregorian, and time in sezimal and ISO;
-
-    SezimalDateTime.now().format(**#y-#m-#d #u:#p:#a in sezimal date and time == %Y-%d-%d %H:%M:%S in ISO date and time**)
-
-# Language specific formatting tokens
+### 2.3 Language specific formatting tokens
 
 Some languages have complex grammar cases, or orthographic rules, that depend on the gender, preposition, first letter(s) of the word, etc.
 
@@ -170,11 +391,11 @@ The following languages have specialized formatting tokens:
 
 Weekday names are feminine, except sábado (Saturday) and domingo (Sunday); articles and prepositions/conjunctions referring to those weekdays have to change gender accordingly;
 
-To do so, **X** can be: **A**, **ESSA**, **ESTA**, **AQUELA**
+To do so, X can be: A, ESSA, ESTA, AQUELA
 
-For sábado and domingo, those get changed to the masculine: **o**, **esse**, **este**, **aquele**
+For sábado and domingo, those get changed to the masculine: o, esse, este, aquele
 
-Otherwise, you get the lowercase feminine versions: **a**, **essa**, **esta**, **aquela**.
+Otherwise, you get the lowercase feminine versions: a, essa, esta, aquela.
 
 Other contractions: da, na, etc. or gender changing: próxima, última etc. can be achived using: d#$AW, n#$AW, próxim#$AW, últim#$AW etc.
 
@@ -187,13 +408,13 @@ Weekday names are masculine, except domenica (Sunday); articles and prepositions
 
 Apart from that, Italian uses contractions of articles and prepositions/conjunctions extensively;
 
-To deal with that, **X** can be: **IL**, **UN**, **AL**, **DEL**, **NEL**, **DAL**, **SUL**, **COL**;
+To deal with that, X can be: IL, UN, AL, DEL, NEL, DAL, SUL, COL;
 
-Those get changed to (allways lowercase): **l’**, **un_**, **all’**, **dell’**, **nell’**, **dall’**, **sull’**, **con l’** before aprile, agosto and ottobre (for #$XM, also, notice the space after un, here represented by an underscore);
+Those get changed to (allways lowercase): l’, un_, all’, dell’, nell’, dall’, sull’, con l’ before aprile, agosto and ottobre (for #$XM, also, notice the space after un, here represented by an underscore);
 
-Those get changed to (allways lowercase, with a space, here represented by an underscore): **la_**, **una_**, **alla_**, **della_**, **nella_**, **dalla_**, **sulla_**, **colla_** before domenica (for #$XW);
+Those get changed to (allways lowercase, with a space, here represented by an underscore): la_, una_, alla_, della_, nella_, dalla_, sulla_, colla_ before domenica (for #$XW);
 
-Otherwise, they yield (allways lowercase, with a space, here represented by an underscore): **il_**, **un_**, **al_**, **del_**, **nel_**, **dal_**, **sul_**, **col_**.
+Otherwise, they yield (allways lowercase, with a space, here represented by an underscore): il_, un_, al_, del_, nel_, dal_, sul_, col_.
 
 ### French
 
@@ -201,11 +422,11 @@ Otherwise, they yield (allways lowercase, with a space, here represented by an u
 
 Some words contract or make liaison, depend on wether the next word begins with a vowel or an “H muet”;
 
-To deal with that, **X** can be: **DE**, **LE**, **CE**;
+To deal with that, X can be: DE, LE, CE;
 
-Those get changed to (allways lowercase): **d’**, **l’**, **cet** before avril, août, octobre;
+Those get changed to (allways lowercase): d’, l’, cet before avril, août, octobre;
 
-Otherwise, they get changed to lowercase and add a space, here represented by an underscore, except for **ce**/**cet**: **de_**, **le_**, **ce**.
+Otherwise, they get changed to lowercase and add a space, here represented by an underscore, except for ce/cet: de_, le_, ce.
 
 ### Catalan
 
@@ -213,11 +434,11 @@ Otherwise, they get changed to lowercase and add a space, here represented by an
 
 Some words contract or change form, depend on wether the next word begins with a vowel;
 
-To deal with that, **X** can be: **DE**, **EL**;
+To deal with that, X can be: DE, EL;
 
-Those get changed to (allways lowercase): **d’**, **l’** before abril, agost, octubre;
+Those get changed to (allways lowercase): d’, l’ before abril, agost, octubre;
 
-Otherwise, they get changed to lowercase and add a space, here represented by an underscore: **de_**, **el_**
+Otherwise, they get changed to lowercase and add a space, here represented by an underscore: de_, el_
 
 ### Romanian
 
@@ -228,25 +449,25 @@ Otherwise, they get changed to lowercase and add a space, here represented by an
 
 Romanian has 5 grammatical cases: nominative, accusative, genitive, dative, vocative; also, the definite article is attached at the end of words, and also declines according to case;
 
-To deal with that, **X** can be:
+To deal with that, X can be:
 
-* **I**: with no definite article (indefinite);
-* **D**: with definite article;
+* I: with no definite article (indefinite);
+* D: with definite article;
 
-And **Y** can be:
+And Y can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **D**: for the dative case
-* **A**: for the accusative case
-* **V**: for the vocative case
+* N: for the nominative case
+* G: for the genitive case
+* D: for the dative case
+* A: for the accusative case
+* V: for the vocative case
 
 ### Esperanto
 
     #$W
     #$M
 
-Those render the weekday or month with the final **o**, or, in other words, you get just the root, so you can attach other grammatical endings or combine those roots using Esperanto’s regular word forming rules;
+Those render the weekday or month with the final o, or, in other words, you get just the root, so you can attach other grammatical endings or combine those roots using Esperanto’s regular word forming rules;
 
 ### Greek
 
@@ -259,42 +480,42 @@ Greek uses three main grammatical cases: nominative, genitive, accusative, and, 
 
 Another interesting thing about Greek, the names of the months have colloquial forms, slightly different from those more formal ones;
 
-To deal with that, **X** can be:
+To deal with that, X can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **A**: for the accusative case
-* **V**: for the vocative case
+* N: for the nominative case
+* G: for the genitive case
+* A: for the accusative case
+* V: for the vocative case
 
 For the declension of articles and the demonstrative pronoun for weekdays, that are all feminine except for Σάββατο (Saturday), that is masculine, you can use:
 
     #$XYW
 
-Where **X** can be (all using the Greek alphabet exclusively): **Η** (Greek letter capital Eta), **ΜΊΑ**, **ΜΙΑ**, **ΑΥΤΉ**, **ΑΥΤΗ** (without the accent, it will get corrected afterwards);
+Where X can be (all using the Greek alphabet exclusively): Η (Greek letter capital Eta), ΜΊΑ, ΜΙΑ, ΑΥΤΉ, ΑΥΤΗ (without the accent, it will get corrected afterwards);
 
-And **Y** can be:
+And Y can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **A**: for the accusative case
+* N: for the nominative case
+* G: for the genitive case
+* A: for the accusative case
 
-Those change to (allways lowercase): **ο**, **του**, **τον**, **ένας**, **έναν**, **ενός**, **αυτός**, **αυτoύ**, **αυτόν** before Σάββατο;
+Those change to (allways lowercase): ο, του, τον, ένας, έναν, ενός, αυτός, αυτoύ, αυτόν before Σάββατο;
 
-And change to lowercase: **η**, **τη(ν)**, **της**, **μία**, **μία(ν)**, **μίας**, **μια**, **μια(ν)**, **μιας**, **αυτή**, **αυτής**, **αυτή(ν)** for the other days;  the ν gets added before Δευτέρα (Monday);
+And change to lowercase: η, τη(ν), της, μία, μία(ν), μίας, μια, μια(ν), μιας, αυτή, αυτής, αυτή(ν) for the other days;  the ν gets added before Δευτέρα (Monday);
 
 For the declension of articles and the demonstrative pronoun for months, that are all masculine, you can use:
 
     #$XYM
 
-Where **X** can be (all using the Greek alphabet exclusively): **Ο** (Greek letter capital Omicron), **ΈΝΑΣ**, **ΕΝΑΣ** (without the accent, it will get corrected afterwards), **ΑΥΤΌΣ**, **ΑΥΤΟΣ** (without the accent, it will get corrected afterwards);
+Where X can be (all using the Greek alphabet exclusively): Ο (Greek letter capital Omicron), ΈΝΑΣ, ΕΝΑΣ (without the accent, it will get corrected afterwards), ΑΥΤΌΣ, ΑΥΤΟΣ (without the accent, it will get corrected afterwards);
 
-And **Y** can be:
+And Y can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **A**: for the accusative case
+* N: for the nominative case
+* G: for the genitive case
+* A: for the accusative case
 
-Those allways change to lowercase: **ο**, **του**, **το(ν)**, **ένας**, **ένα(ν)**, **ενός**, **αυτός**, **αυτoύ**, **αυτό(ν)**, and the ν is ellided before Ιανουάριος, Απρίλιος, Ιούνιος, Ιούλιος, Αύγουστος and Οκτώβριος;
+Those allways change to lowercase: ο, του, το(ν), ένας, ένα(ν), ενός, αυτός, αυτoύ, αυτό(ν), and the ν is ellided before Ιανουάριος, Απρίλιος, Ιούνιος, Ιούλιος, Αύγουστος and Οκτώβριος;
 
 And, finally, Greek uses the ordinal number only for the first day of the month, πρώτη, which is an adjective, like the Romance languages; it is feminine, because it refers to ημέρα (day), that is feminine; it is sometimes written 1η, but, since adjectives also decline, it has to change to ης in the genitive;
 
@@ -302,11 +523,11 @@ To deal with that, you can use:
 
     #$XO
 
-And **X** can be:
+And X can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **A**: for the accusative case
+* N: for the nominative case
+* G: for the genitive case
+* A: for the accusative case
 
 You’ll get, for day 1, ης for the genitive, and η for the other cases; if the day is not 1, you’ll get an empty string.
 
@@ -317,27 +538,27 @@ You’ll get, for day 1, ης for the genitive, and η for the other cases; if t
 
 Russian has six grammatical cases: nominative, genitive, dative, accusative, instrumental and prepositional;
 
-To deal with that, **X** can be:
+To deal with that, X can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **D**: for the dative case
-* **A**: for the accusative case
-* **I**: for the instrumental case
-* **P**: for the prepositional case
+* N: for the nominative case
+* G: for the genitive case
+* D: for the dative case
+* A: for the accusative case
+* I: for the instrumental case
+* P: for the prepositional case
 
 Apart from that, some prepositions get an additional О before words with “difficult” consonant cluster, or, for В, before words beginning with В or Ф; the deal with that, you can use:
 
     #$XM
     #$XW
 
-Where **X** can be (all using the Cyrillic alphabet exclusively): **В**, **С**, **ОТ**, **К**, **НАД**, **ПЕРЕД**, **ПОД**;
+Where X can be (all using the Cyrillic alphabet exclusively): В, С, ОТ, К, НАД, ПЕРЕД, ПОД;
 
-They’ll get changed to (allways lowercase): **во**, **со**, **ото**, **ко**, **надо**, **передо**, **подо** before вто́рник, среда́, воскресе́нье, февра́ль and дека́брь;
+They’ll get changed to (allways lowercase): во, со, ото, ко, надо, передо, подо before вто́рник, среда́, воскресе́нье, февра́ль and дека́брь;
 
     #$ОM
 
-This uses the preposition **О** (Cyrillic letter capital O), that changes to **об** before months that begin with a vowel: янва́рь, апре́ль, ию́нь, ию́ль, а́вгуст and октя́брь;
+This uses the preposition О (Cyrillic letter capital O), that changes to об before months that begin with a vowel: янва́рь, апре́ль, ию́нь, ию́ль, а́вгуст and октя́брь;
 
 ### Polish
 
@@ -346,42 +567,29 @@ This uses the preposition **О** (Cyrillic letter capital O), that changes to **
 
 Polish has seven grammatical cases: nominative, genitive, dative, accusative, instrumental and locative and vocative;
 
-To deal with that, **X** can be:
+To deal with that, X can be:
 
-* **N**: for the nominative case
-* **G**: for the genitive case
-* **D**: for the dative case
-* **A**: for the accusative case
-* **I**: for the instrumental case
-* **P**: for the prepositional case
+* N: for the nominative case
+* G: for the genitive case
+* D: for the dative case
+* A: for the accusative case
+* I: for the instrumental case
+* P: for the prepositional case
 
 Also, the prepositions W and Z change to WE and ZE depending on the first letters of the next word; to deal with that, you can use:
 
     #$WW
     #$WM
 
-This will get you **we** before wtorek, czwartek and wrzesień, and **w** otherwise;
+This will get you we before wtorek, czwartek and wrzesień, and w otherwise;
 
     #$ZW
     #$ZM
 
-This will get you **ze** before środa, sobota, styczeń and sierpień, and **z** otherwise;
+This will get you ze before środa, sobota, styczeń and sierpień, and z otherwise;
 
 Finally, apparently using Roman Numerals for the months in Polish is a thing, so:
 
     #$RM
 
 You’ll get I, II, III, VI, V, VI, VII, VIII, IX, X, XI, XII for styczeń, luty, marzec, kwiecień, maj, czerwiec, lipiec, sierpień, wrzesień, październik, listopad and grudzień respectively.
-
-# Note about base 100
-
-So, in the context of the date and time formatting, if you ask for base 100 (36_dec), instead of using letters for the numbers above 13, we use diacritics instead, in the following way:
-
-| Alpha Digits |  Regular Digits | Dedicated Digits | Note |
-|:-:|:-:|:-:|-|
-| 012345 | 012345 | 󱨀󱨁󱨂󱨃󱨄󱨅 ||
-| 6789AB | 0̇1̇2̇3̇4̇5̇ | 󱨀̇󱨁̇󱨂̇󱨃̇󱨄̇󱨅̇ | One dot above  = +10, from 10 to 15 |
-| CDEFGH | 0̈1̈2̈3̈4̈5̈ | 󱨀̈󱨁̈󱨂̈󱨃̈󱨄̈󱨅̈ | Two dots above = +20, from 20 to 25 |
-| IJKLMN | 0̊1̊2̊3̊4̊5̊ | 󱨀̊󱨁̊󱨂̊󱨃̊󱨄̊󱨅̊ | Ring above (top part of 󱨃) = +30, from 30 to 35 |
-| OPQRST | 0̄1̄2̄3̄4̄5̄ | 󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ | Line above (top part of 󱨄) = +40, from 40 to 45 |
-| UVWXYZ | 0̆1̆2̆3̆4̆5̆ | 󱨀̆󱨁̆󱨂̆󱨃̆󱨄̆󱨅̆ | Breve above (bottom part of 󱨅) = +50, from 50 to 55 |
