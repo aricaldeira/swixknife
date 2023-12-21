@@ -155,7 +155,7 @@ ISO_TIME_NUMBER_FORMAT_TOKENS = tuple(
             ('H', 'iso_hour', 2, 1, 2),
             ('M', 'iso_minute', 2, 1, 2),
             ('S', 'iso_second', 2, 1, 2),
-            ('f', 'iso_microsecond', 6, 1, 2),
+            ('f', 'iso_microsecond', 10, 1, 2),
         ),
     )
 )
