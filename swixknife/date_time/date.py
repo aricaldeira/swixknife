@@ -270,7 +270,7 @@ class SezimalDate:
             if token.endswith('>y'):
                 value = value[::-1][0:2][::-1]
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
@@ -322,7 +322,7 @@ class SezimalDate:
                 if token.endswith('>y'):
                     value = value[::-1][0:3][::-1]
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:

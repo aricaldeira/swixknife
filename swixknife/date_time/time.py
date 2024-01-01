@@ -268,7 +268,7 @@ class SezimalTime:
                 case '#99a' | '#99?a':
                     value = decimal_time[2]
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '?' in token:
@@ -285,7 +285,7 @@ class SezimalTime:
                 case '#↋↋a' | '#↋↋?a':
                     value = dozenal_time[2]
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '?' in token:
@@ -297,13 +297,10 @@ class SezimalTime:
 
             value = str(value)
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             value = sezimal_to_niftimal(value)
-
-            if size:
-                value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
                 value = default_niftimal_to_regularized_dedicated_digits(value)
@@ -320,7 +317,7 @@ class SezimalTime:
             else:
                 value = str(value)
 
-            if size:
+            if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
