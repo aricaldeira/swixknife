@@ -182,8 +182,7 @@ class SezimalCalculator:
         params = {
             'sezimal_places': 0,
             'dedicated_digits': self.dedicated_digits,
-            'mark_recurring_digits': True,
-            'p_recurring_notation': True,
+            'mark_recurring_digits': 'p',
         }
 
         if not display:
@@ -234,7 +233,6 @@ class SezimalCalculator:
 
         params['sezimal_places'] = Decimal(precision)
         params['mark_recurring_digits'] = False
-        params['p_recurring_notation'] = False
 
         if not display:
             return sezimal_format(
@@ -250,8 +248,7 @@ class SezimalCalculator:
     def _format_decimal(self, number, precision: int = None, display: bool = False):
         params = {
             'decimal_places': 0,
-            'mark_recurring_digits': True,
-            'p_recurring_notation': True,
+            'mark_recurring_digits': '.',
         }
 
         if not display:
@@ -259,6 +256,7 @@ class SezimalCalculator:
             params['group_separator'] = '_'
             params['fraction_group_separator'] = '_'
             params['typographical_negative'] = False
+            params['mark_recurring_digits'] = 'p'
             p_notation = decimal_format(number, **params)
 
         else:
@@ -301,7 +299,6 @@ class SezimalCalculator:
 
         params['decimal_places'] = precision
         params['mark_recurring_digits'] = False
-        params['p_recurring_notation'] = False
 
         if not display:
             return decimal_format(
