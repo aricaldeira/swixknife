@@ -114,7 +114,7 @@ def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int
         or dozenal_fraction.endswith('BBB6'):
         dozenal_fraction = dozenal_fraction[:-4]
 
-        if sezimal_fraction.replace('B', '') == '':
+        if dozenal_fraction.replace('B', '') == '':
             dozenal_integer = _decimal_integer_to_dozenal(int(dozenal_integer, 12) + 1)
             dozenal_fraction = '0'
             break

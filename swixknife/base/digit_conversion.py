@@ -100,27 +100,35 @@ def default_to_denominator_digits(number: str) -> str:
 
 
 def dedicated_to_numerator_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_DIGITS, DEDICATED_NUMERATOR_DIGITS)
+    number = dedicated_to_default_digits(number)
+    number = default_to_numerator_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def dedicated_to_denominator_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_DIGITS, DEDICATED_DENOMINATOR_DIGITS)
+    number = dedicated_to_default_digits(number)
+    number = default_to_denominator_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def default_to_dedicated_numerator_digits(number: str) -> str:
-    return _change_digits(number, DEFAULT_DIGITS, DEDICATED_NUMERATOR_DIGITS)
+    number = default_to_numerator_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def default_to_dedicated_denominator_digits(number: str) -> str:
-    return _change_digits(number, DEFAULT_DIGITS, DEDICATED_DENOMINATOR_DIGITS)
+    number = default_to_denominator_digits(number)
+    return default_to_dedicated_digits(number)
 
 
 def dedicated_to_default_numerator_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_DIGITS, DEFAULT_NUMERATOR_DIGITS)
+    number = dedicated_to_default_digits(number)
+    return default_to_numerator_digits(number)
 
 
 def dedicated_to_default_denominator_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_DIGITS, DEFAULT_DENOMINATOR_DIGITS)
+    number = dedicated_to_default_digits(number)
+    return default_to_denominator_digits(number)
 
 
 def dozenal_letters_to_digits(number: str) -> str:
