@@ -1064,11 +1064,11 @@ class DozenalInteger(Dozenal):
             self._sign = 1
 
         if '.' in cleaned_number:
-            self._integer = str(int(cleaned_number.split('.')[0]))
-            # self._fraction = cleaned_number.split('.')[1].replace('0', '')
+            self._integer = cleaned_number.split('.')[0] or '0'
+            # self._fraction = cleaned_number.split('.')[1]
             self._fraction = ''
         else:
-            self._integer = str(int(cleaned_number))
+            self._integer = cleaned_number or '0'
             self._fraction = ''
 
         self._precision = len(self._fraction)
