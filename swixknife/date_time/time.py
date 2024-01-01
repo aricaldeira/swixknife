@@ -260,13 +260,12 @@ class SezimalTime:
         if '99' in token:
             decimal_time = self.decimal_time
 
-            match token:
-                case '#99u' | '#99?u':
-                    value = decimal_time[0]
-                case '#99p' | '#99?p':
-                    value = decimal_time[1]
-                case '#99a' | '#99?a':
-                    value = decimal_time[2]
+            if token in ('#99u', '#99?u'):
+                value = decimal_time[0]
+            elif token in ('#99p', '#99?p'):
+                value = decimal_time[1]
+            elif token in ('#99a', '#99?a'):
+                value = decimal_time[2]
 
             if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
@@ -277,13 +276,12 @@ class SezimalTime:
         elif '↋↋' in token:
             dozenal_time = self.dozenal_time
 
-            match token:
-                case '#↋↋u' | '#↋↋?u':
-                    value = dozenal_time[0]
-                case '#↋↋p' | '#↋↋?p':
-                    value = dozenal_time[1]
-                case '#↋↋a' | '#↋↋?a':
-                    value = dozenal_time[2]
+            if token in ('#↋↋u', '#↋↋?u'):
+                value = dozenal_time[0]
+            elif token in ('#↋↋p', '#↋↋?p'):
+                value = dozenal_time[1]
+            elif token in ('#↋↋a', '#↋↋?a'):
+                value = dozenal_time[2]
 
             if size and '-' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
