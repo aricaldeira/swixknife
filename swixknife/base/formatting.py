@@ -12,7 +12,9 @@ DozenalFraction = TypeVar('DozenalFraction', bound='DozenalFraction')
 
 import re
 from .validation import validate_clean_sezimal, validate_clean_decimal, \
-    validate_clean_niftimal, validate_clean_dozenal
+    validate_clean_niftimal, validate_clean_dozenal, \
+    _MAX_SEZIMAL_PRECISION_DECIMAL, MAX_DECIMAL_PRECISION, \
+    _MAX_DOZENAL_PRECISION_DECIMAL
 from .decimal_sezimal_conversion import decimal_to_sezimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .sezimal_niftimal_conversion import sezimal_to_niftimal, niftimal_to_sezimal
@@ -73,6 +75,9 @@ def sezimal_format(
     if type(minimum_size).__name__ == 'Decimal':
         minimum_size = decimal_to_sezimal(minimum_size)
 
+    if type(number).__name__ == 'SezimalFraction':
+        number = number.sezimal
+
     number = validate_clean_sezimal(str(number))
     sezimal_places = validate_clean_sezimal(sezimal_places)
     minimum_size = validate_clean_sezimal(minimum_size)
@@ -86,7 +91,7 @@ def sezimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:48])
+            fixed_part, recurring = _identify_recurring_digits(fraction[:_MAX_SEZIMAL_PRECISION_DECIMAL], max_fraction_size=_MAX_SEZIMAL_PRECISION_DECIMAL)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -128,7 +133,8 @@ def sezimal_format(
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 p_recurring_notation or fraction_group_separator == '_',
-                _FOUR_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+                _FOUR_DIGITS_GROUP_FORMAT,
+                fraction_group_separator,
             )
         else:
             formatted_number += fraction
@@ -246,7 +252,7 @@ def decimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:36], max_fraction_size=36)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:MAX_DECIMAL_PRECISION], max_fraction_size=MAX_DECIMAL_PRECISION)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -292,7 +298,8 @@ def decimal_format(
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 p_recurring_notation or fraction_group_separator == '_',
-                _THREE_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+                _THREE_DIGITS_GROUP_FORMAT,
+                fraction_group_separator
             )
         else:
             formatted_number += fraction
@@ -350,7 +357,7 @@ def dozenal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:36], max_fraction_size=36)
+            fixed_part, recurring = _identify_recurring_digits(fraction[:_MAX_DOZENAL_PRECISION_DECIMAL], max_fraction_size=_MAX_DOZENAL_PRECISION_DECIMAL)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -392,7 +399,8 @@ def dozenal_format(
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 p_recurring_notation or fraction_group_separator == '_',
-                _THREE_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+                _THREE_DIGITS_GROUP_FORMAT,
+                fraction_group_separator
             )
         else:
             formatted_number += fraction
@@ -453,7 +461,7 @@ def niftimal_format(
         integer, fraction = number.split('.')
 
         if mark_recurring_digits and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:48])
+            fixed_part, recurring = _identify_recurring_digits(fraction[:_MAX_SEZIMAL_PRECISION_DECIMAL // 2], max_fraction_size=_MAX_SEZIMAL_PRECISION_DECIMAL // 2)
 
             if recurring:
                 fraction = fixed_part + recurring
@@ -495,7 +503,8 @@ def niftimal_format(
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 p_recurring_notation or fraction_group_separator == '_',
-                _FOUR_DIGITS_GROUP_FORMAT if fraction_group_separator == '_' else None
+                _FOUR_DIGITS_GROUP_FORMAT,
+                fraction_group_separator
             )
         else:
             formatted_number += fraction
@@ -566,66 +575,27 @@ def _identify_recurring_digits(fraction: str, fixed_part: str = '', recurring_pa
     return _identify_recurring_digits(fraction, fixed_part, recurring_part, max_fraction_size)
 
 
-def _apply_recurring_mark(fraction: str, recurring: str, p_recurring_notation: bool = False, recurring_regrouping: re.Pattern = None) -> str:
+def _apply_recurring_mark(fraction: str, recurring: str, p_recurring_notation: bool = False, recurring_regrouping: re.Pattern = None, group_separator: str = '') -> str:
     if (not recurring) or (recurring == '0'):
         return fraction
 
-    fraction = fraction[::-1]
-    recurring = recurring[::-1]
-    marked_fraction = ''
-
-    i = 0
-    j = 0
-
-    while i < len(recurring) and j < len(fraction):
-        recurring_digit = recurring[i]
-        fraction_digit = fraction[j]
-
-        if fraction_digit == recurring_digit:
-            marked_fraction += _RECURRING_DIGITS_COMBINING_OVERLINE + recurring_digit
-        else:
-            marked_fraction += fraction_digit
-
-        if _ONE_DIGIT.sub('', fraction_digit) == '':
-            i += 1
-
-        j += 1
-
-    if j < len(fraction):
-        marked_fraction += fraction[j:]
-
-    marked_fraction = marked_fraction[::-1]
+    formatted_recurring = _apply_format(recurring.replace('_', '')[::-1], group_separator, recurring_regrouping)[::-1]
 
     if p_recurring_notation:
-        recurring_start = marked_fraction.find(_RECURRING_DIGITS_COMBINING_OVERLINE) - 1
-        formatted_recurring = marked_fraction[recurring_start:].replace(_RECURRING_DIGITS_COMBINING_OVERLINE, '')
-        marked_fraction = marked_fraction[:recurring_start]
-
-        #
-        # Regroup recurring digits, using _ as separator
-        #
-        if recurring_regrouping is not None:
-            formatted_recurring = _apply_format(formatted_recurring.replace('_', '')[::-1], '_', recurring_regrouping)[::-1]
-
-        if len(formatted_recurring) == 1:
-            marked_fraction += formatted_recurring + 'p'
+        if fraction and fraction != formatted_recurring:
+            return fraction + '_p_' + formatted_recurring + '_p'
         else:
-            if not marked_fraction:
-                if '_' in formatted_recurring:
-                    marked_fraction = formatted_recurring + '__p'
-                else:
-                    marked_fraction = formatted_recurring + '_p'
+            return formatted_recurring + '_p'
 
-            elif '_' not in formatted_recurring:
-                if '_' in formatted_recurring:
-                    marked_fraction += '__' + formatted_recurring + '__p'
-                else:
-                    marked_fraction += '_' + formatted_recurring + '_p'
+    marked_fraction = fraction
 
-            else:
-                if marked_fraction[-1] == '_':
-                    marked_fraction += '_' + formatted_recurring + '__p'
-                else:
-                    marked_fraction += '__' + formatted_recurring + '__p'
+    if fraction:
+        marked_fraction += group_separator
+
+    for c in formatted_recurring:
+        fraction += c
+
+        if c != group_separator and c != '_':
+            fraction += _RECURRING_DIGITS_COMBINING_OVERLINE
 
     return marked_fraction

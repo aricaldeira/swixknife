@@ -68,7 +68,7 @@ def _decimal_integer_to_dozenal(integer: int | str) -> str:
     return dozenal or '0'
 
 
-def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int = None) -> str:
+def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int = None) -> tuple[str, str]:
     if not fraction:
         return '0', ''
 

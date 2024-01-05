@@ -10,6 +10,19 @@ Decimal = TypeVar('Decimal', bound='Decimal')
 import re
 from .digit_conversion import dedicated_to_default_digits, dedicated_niftimal_to_default_digits
 
+# MAX_DECIMAL_PRECISION = 216
+#
+# MAX_SEZIMAL_PRECISION = 1200
+# _MAX_SEZIMAL_PRECISION_DECIMAL = 288
+
+MAX_DECIMAL_PRECISION = 37
+
+MAX_SEZIMAL_PRECISION = 120
+_MAX_SEZIMAL_PRECISION_DECIMAL = 48
+
+MAX_DOZENAL_PRECISION = 31
+_MAX_DOZENAL_PRECISION_DECIMAL = 37
+
 
 def _exponent_to_full_form(number: str, base: int = 6) -> str:
     number = number.upper()
@@ -88,100 +101,54 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
 _SPACES = re.compile('[\u0020\u00a0\u2000-\u206f]')
 
 
-def _clean_recurring_digits(number: str) -> str:
-    #
-    # The recurring digits marker can be used as:
-    # [0].5[_](pꝑꝓ) - at least 3 chars
-    # or
-    # [0].5555_55[_]p
-    #
+def _clean_recurring_digits(number: str, max_precision: int = 48) -> str:
     if not (
         number
         and '.' in number
         and len(number) >= 3
-        and number[-1].lower() in ('p', 'ꝑ', 'ꝓ', 'ꝕ')
+        and number.endswith('p')
     ):
         return number
-
-    #
-    # Those special letters are assumed to mean _p;
-    # or, in other words, allways have the underscore before them
-    #
-    if number[-1].lower() in ('ꝑ', 'ꝓ', 'ꝕ'):
-        if number[-2] != '_':
-            number = number[:-1] + '_p'
 
     #
     # Strips the “p” at the end
     #
     number = number[:-1]
 
-    #
-    # If there wasn’t any separator,
-    # the recurring digit is just the last digit:
-    #
-    if '_' not in number:
-        recurring = number[-1]
+    recurring = ''
+    integer, fraction = number.split('.')
 
-    #
-    # Let’s find where the recurring digit starts
-    #
+    if 'p' in fraction:
+        fraction, recurring = fraction.split('p')
     else:
-        if number[-1] == '_':
-            separator = number[-1]
-            number = number[:-1]
-        else:
-            separator = '_'
-
-        while number.endswith(separator[-1]):
-            separator = number[-1] + separator
-            number = number[:-1]
-
-        if separator in number:
-            parts = number.split(separator)
-        else:
-            parts = number.split('.')
-
-        recurring = parts[-1].replace('_', '')
+        recurring = fraction
+        fraction = ''
 
     #
     # How many times do we repeat (limit is 120 48_dec)?
     #
-    fraction = number.split('.')[-1]
-    fraction = fraction.replace('_', '')
-
-    repeating_max_size = 48 - len(fraction)
+    repeating_max_size = max_precision - len(fraction)
 
     times = ((repeating_max_size) // len(recurring)) + 1
-
-    plus_one = recurring in ('1', '2', '3', '4')
 
     recurring *= times
     recurring = recurring[:repeating_max_size]
 
-    number += recurring
-
-    # if plus_one:
-    #     if recurring[-1] == '1':
-    #         number = number[:-1] + '5'
-    #     # elif recurring[-1] == '2':
-    #     #     number = number[:-1] + '3'
-    #     elif recurring[-1] == '3':
-    #         number = number[:-1] + '4'
-    #     elif recurring[-1] == '4':
-    #         number = number[:-1] + '5'
+    number = integer + '.' + fraction + recurring
 
     return number
 
 
-def _clean_separators(number: str) -> str:
+def _clean_separators(number: str, max_precision: int = 48) -> str:
     number = number.replace(',', '.')
-    number = number.replace('\u02d9', '_')
+    number = number.replace('r', 'p')
+    number = number.replace('·', 'p')
+    number = number.replace('˙', 'p')
     number = _SPACES.sub('', number)
-
-    number = _clean_recurring_digits(number)
-
     number = number.replace('_', '')
+
+    number = _clean_recurring_digits(number, max_precision)
+
     return number
 
 
@@ -195,7 +162,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
         raise ValueError(f'An empty string is not a valid sezimal number')
 
     cleaned_number = dedicated_to_default_digits(number)
-    cleaned_number = _clean_separators(cleaned_number)
+    cleaned_number = _clean_separators(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -235,7 +202,7 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
     if not number:
         raise ValueError(f'An empty string is not a valid decimal number')
 
-    cleaned_number = _clean_separators(number)
+    cleaned_number = _clean_separators(number, MAX_DECIMAL_PRECISION)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -283,7 +250,7 @@ def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> st
         raise ValueError(f'An empty string is not a valid niftimal number')
 
     cleaned_number = dedicated_niftimal_to_default_digits(number)
-    cleaned_number = _clean_separators(cleaned_number)
+    cleaned_number = _clean_separators(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL / 2)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -325,7 +292,7 @@ def validate_clean_dozenal(number: str) -> str:
     if not number:
         raise ValueError(f'An empty string is not a valid dozenal number')
 
-    cleaned_number = _clean_separators(number)
+    cleaned_number = _clean_separators(number, _MAX_DOZENAL_PRECISION_DECIMAL)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
