@@ -9,6 +9,7 @@ from decimal import Decimal
 from swixknife import Sezimal, SezimalInteger, SezimalRange, SezimalLocale, \
     SezimalDate, SezimalTime, SezimalDateTime
 from swixknife.date_time.sezimal_functions import system_time_zone
+from swixknife.date_time.gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
 import datetime as _datetime
 
@@ -24,9 +25,44 @@ def _middle_date_time(first_date, second_date, time_zone) -> SezimalDateTime:
     return SezimalDateTime.from_days(cross_quarter, time_zone='UTC').at_time_zone(time_zone)
 
 
+def _astronomy_date_to_date(ad: Time) -> SezimalDateTime:
+    date, time = str(ad).split('T')
+    time = time.replace('Z', '')
+
+    if date.startswith('-'):
+        _, year, month, day = date.split('-')
+        year = '-' + str(int(year))
+
+    else:
+        year, month, day = date.split('-')
+
+    ordinal_date = gregorian_year_month_day_to_ordinal_date(int(year), int(month), int(day))
+
+    hour, minute, second = time.split(':')
+
+    if '.' in second:
+        second, microsecond = second.split('.')
+    else:
+        microsecond = '0'
+
+    seconds = Decimal(hour) * 60 * 60
+    seconds += Decimal(minute) * 60
+    seconds += Decimal(second)
+    seconds += Decimal(microsecond) / 1_000_000
+
+    agrima = seconds * Sezimal('1000') / Sezimal('1504')
+    agrima /= 100_0000
+
+    ordinal_date += agrima
+
+    date = SezimalDateTime.from_days(ordinal_date, 'UTC')
+
+    return date
+
+
 class SezimalSun:
     def __new__(cls, year: int | SezimalInteger, time_zone: str | ZoneInfo = None):
-        date = SezimalDate(year, 1, 1)
+        date = SezimalDate(year, 11, 1)
 
         self = object.__new__(cls)
 
@@ -37,18 +73,19 @@ class SezimalSun:
 
         previous_year_seasons = Seasons(date.gregorian_year - 1)
         this_year_seasons = Seasons(date.gregorian_year)
+
         # next_year_seasons = Seasons(date.gregorian_year + 1)
 
         self._previous_december_solstice = \
-            SezimalDateTime(_datetime.datetime.fromisoformat(str(previous_year_seasons.dec_solstice)))
+            _astronomy_date_to_date(previous_year_seasons.dec_solstice)
         self._march_equinox = \
-            SezimalDateTime(_datetime.datetime.fromisoformat(str(this_year_seasons.mar_equinox)))
+            _astronomy_date_to_date(this_year_seasons.mar_equinox)
         self._june_solstice = \
-            SezimalDateTime(_datetime.datetime.fromisoformat(str(this_year_seasons.jun_solstice)))
+            _astronomy_date_to_date(this_year_seasons.jun_solstice)
         self._september_equinox = \
-            SezimalDateTime(_datetime.datetime.fromisoformat(str(this_year_seasons.sep_equinox)))
+            _astronomy_date_to_date(this_year_seasons.sep_equinox)
         self._december_solstice = \
-            SezimalDateTime(_datetime.datetime.fromisoformat(str(this_year_seasons.dec_solstice)))
+            _astronomy_date_to_date(this_year_seasons.dec_solstice)
 
         #
         # Cross-quarters
