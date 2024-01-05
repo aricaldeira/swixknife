@@ -1,6 +1,5 @@
 
-
-__all__ = ('SezimalSun', 'SezimalMoon')
+__all__ = ('SezimalSun',)
 
 from tqdm import tqdm
 
@@ -147,12 +146,21 @@ def calculate_moon_phases(year_start: int | SezimalInteger, year_finish: int | S
             quarter = 'third_quarter'
             cross_quarter = 'waning_gibbous'
 
-        MOONS[date.ordinal_date] = [date, quarter]
+        if date.ordinal_date not in MOONS:
+            MOONS[date.ordinal_date] = [date, quarter]
+        else:
+            previous_quarter_date = date
+            time = time.AddDays(6)
+            continue
+
         print(quarter, date)
 
         if previous_quarter_date is not None:
-            cross_quarter_date = _middle_date_time(date, previous_quarter_date, time_zone)
-            MOONS[cross_quarter_date.ordinal_date] = [cross_quarter_date, cross_quarter]
+            cross_quarter_date = _middle_date_time(previous_quarter_date, date, time_zone)
+
+            if cross_quarter_date.ordinal_date not in MOONS:
+                MOONS[cross_quarter_date.ordinal_date] = [cross_quarter_date, cross_quarter]
+
             print(cross_quarter, cross_quarter_date)
 
         previous_quarter_date = date
