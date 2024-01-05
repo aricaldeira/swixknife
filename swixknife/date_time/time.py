@@ -48,7 +48,7 @@ class SezimalTime:
         ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         day: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         time_zone: str | ZoneInfo = None,
-        base_gregorian_date: str = None,
+        base_gregorian_date: str | _datetime.datetime | _datetime.date = None,
     ) -> Self:
         if type(uta) == str:
             if VALID_TIME_STRING.match(uta):

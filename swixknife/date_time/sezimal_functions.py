@@ -340,7 +340,7 @@ def timestamp_to_ordinal_date_and_agrima(timestamp: int | float | Decimal | Sezi
     return ordinal_date, agrimas
 
 
-def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str = None):
+def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None):
     if not time_zone:
         time_zone = system_time_zone()
 
@@ -370,7 +370,7 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
     return total_agrimas, total_agrimas_dst
 
 
-def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str = None):
+def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None):
     total_agrimas, total_agrimas_dst = tz_agrimas_offset(time_zone, base_gregorian_date)
 
     return total_agrimas / 100_0000, total_agrimas_dst / 100_0000
