@@ -24,12 +24,12 @@ from .base import validate_clean_sezimal, \
     sezimal_format, decimal_format, \
     sezimal_to_dozenal, dozenal_format, \
     sezimal_to_niftimal, niftimal_format, \
-    dozenal_to_sezimal
+    dozenal_to_sezimal, \
+    MAX_DECIMAL_PRECISION, MAX_SEZIMAL_PRECISION
 
 
-MAX_DECIMAL_PRECISION = 37
 getcontext().prec = MAX_DECIMAL_PRECISION
-MAX_PRECISION = 120
+MAX_PRECISION = MAX_SEZIMAL_PRECISION
 
 #
 # Operations maps/tables
@@ -791,18 +791,19 @@ class Sezimal:
         return division
 
     def __truediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
-        if type(other_number) != Sezimal:
-            other_number = Sezimal(other_number)
-
         #
         # Calculate the reciprocal first
         #
         if hasattr(other_number, 'reciprocal'):
             reciprocal = other_number.reciprocal
-        elif other_number == 1 or other_number == -1:
-            reciprocal = other_number
         else:
-            reciprocal = Sezimal('1').__division(other_number) * other_number._sign
+            if type(other_number) != Sezimal:
+                other_number = Sezimal(other_number)
+
+            if other_number == 1 or other_number == -1:
+                reciprocal = other_number
+            else:
+                reciprocal = Sezimal('1').__division(other_number) * other_number._sign
 
         return self * reciprocal
 
@@ -1127,7 +1128,8 @@ class SezimalFraction(Sezimal):
 
         self._numerator = Sezimal(cleaned_numerator)
         self._denominator = Sezimal(cleaned_denominator)
-        self._sezimal = self._numerator / self._denominator
+        # self._sezimal = self._numerator / self._denominator
+        self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
 
         super().__init__(self._sezimal)
 
@@ -1143,15 +1145,22 @@ class SezimalFraction(Sezimal):
     def sezimal(self):
         return self._sezimal
 
+    @property
+    def reciprocal(self) -> FractionSelf:
+        return SezimalFraction(self._denominator, self._numerator)
+
+    @reciprocal.setter
+    def reciprocal(self, value):
+        pass
+
     def __str__(self) -> str:
         if self._sign == -1:
             res = '-'
         else:
             res = ''
 
-
         res += str(self._numerator)
-        res += '/'
+        res += ' / '
         res += str(self._denominator)
 
         return res
@@ -1161,6 +1170,116 @@ class SezimalFraction(Sezimal):
 
     def as_integer_ratio(self) -> tuple[IntegerSelf, IntegerSelf]:
         return self._numerator, self._denominator
+
+    def as_decimal_integer_ratio(self) -> tuple[Decimal, Decimal]:
+        return int(self._numerator.decimal), int(self._denominator.decimal)
+
+    def __mul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            numerator = self.numerator * other_number.numerator
+            denominator = self.denominator * other_number.denominator
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator * other_number
+            denominator = self.denominator
+            return SezimalFraction(numerator, denominator)
+
+        return super().__mul__(other_number)
+
+    def __rmul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            numerator = self.numerator * other_number.numerator
+            denominator = self.denominator * other_number.denominator
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator * other_number
+            denominator = self.denominator
+            return SezimalFraction(numerator, denominator)
+
+        return super().__rmul__(other_number)
+
+    # def __div__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    #     if type(other_number) == SezimalFraction:
+    #         numerator = self.numerator * other_number.denominator
+    #         denominator = self.denominator * other_number.numerator
+    #         return SezimalFraction(numerator, denominator)
+    #
+    #     if type(other_number) != Sezimal:
+    #         other_number = Sezimal(other_number)
+    #
+    #     if other_number._fraction == '':
+    #         numerator = self.numerator
+    #         denominator = self.denominator * other_number
+    #         return SezimalFraction(numerator, denominator)
+    #
+    #     return super().__div__(other_number)
+    #
+    # def __rdiv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    #     if type(other_number) == SezimalFraction:
+    #         numerator = self.numerator * other_number.denominator
+    #         denominator = self.denominator * other_number.numerator
+    #         return SezimalFraction(numerator, denominator)
+    #
+    #     if type(other_number) != Sezimal:
+    #         other_number = Sezimal(other_number)
+    #
+    #     if other_number._fraction == '':
+    #         numerator = self.numerator
+    #         denominator = self.denominator * other_number
+    #         return SezimalFraction(numerator, denominator)
+    #
+    #     return super().__rdiv__(other_number)
+
+    def __truediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            numerator = self.numerator * other_number.denominator
+            denominator = self.denominator * other_number.numerator
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            denominator = self.denominator * other_number
+            return SezimalFraction(numerator, denominator)
+
+        return super().__truediv__(other_number)
+
+    def __rtruediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            numerator = self.numerator * other_number.denominator
+            denominator = self.denominator * other_number.numerator
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            denominator = self.denominator * other_number
+            return SezimalFraction(denominator, numerator)
+
+        return super().__rtruediv__(other_number)
+
+    def __pow__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator ** other_number
+            denominator = self.denominator ** other_number
+            return SezimalFraction(numerator, denominator)
+
+        return super().__pow__(other_number)
 
 
 _numbers.Number.register(Sezimal)
