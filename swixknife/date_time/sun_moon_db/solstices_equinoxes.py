@@ -1,4 +1,4 @@
-from swixknife.date_time.sun_moon_db.sun_moon_ephem import SezimalSun
+from sun_moon_astronomy import SezimalSun
 from swixknife import SezimalRange
 from swixknife import SezimalDate as SD
 
@@ -21,8 +21,9 @@ for name in [
 
 arq.write('\n')
 
+from tqdm import tqdm
 
-for year in SezimalRange(0, 140001):
+for year in tqdm(SezimalRange(0, 140001)):
     ss = SezimalSun(year, 'UTC')
 
     year_start = SD(year, 1, 1)
