@@ -5,33 +5,64 @@ __all__ = ('SezimalLocaleAR_LATN',)
 
 from .lokale import SezimalLocale
 from ..sezimal import SezimalInteger
-from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
+from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, \
+    SEPARATOR_NARROW_NOBREAK_SPACE, SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
+
+#
+# Romanization according to Egyptian pronunciation:
+#
+# ‹m› /m/ | ‹n› /n/
+# ‹p› /p/ | ‹t› /t/   |         | ‹k›  /k/ |          | ‹q› /ʔ/
+# ‹b› /b/ | ‹d› /d/   |         | ‹g›  /g/
+# ‹f› /f/ | ‹s› /s/   | ‹x› /ʃ/ | ‹kh› /x/ | ‹ħ›  /ħ/ | ‹h› /h/
+# ‹v› /v/ | ‹z› /z/   | ‹j› /ʒ/ | ‹gh› /ɣ/ | ‹għ› /ʕ/
+#         | ‹r› /ɾ~r/
+#         | ‹l›       | ‹y› /j/ | ‹w›  /w/
+#
+# Emphatic:                 Classic:
+#    ‹m’› /mˤ/ ‹b’› /bˤ/    ‹q’› /q/
+#    ‹t’› /tˤ/ ‹d’› /dˤ/    ‹th’› /θ/ ‹dh’› /ð/
+#    ‹s’› /sˤ/ ‹z’› /zˤ/
+#    ‹r’› /rˤ/ ‹l’› /lˤ/
+#
+# Gemminated and consonant clusters:
+#    kh + kh = kkh  | k + kh = k’kh | kh + h = kh’h | k + h = k’h
+#    gh + gh = ggh  | g + gh = g’gh | gh + h = gh’h | g + h = g’h
+#    għ + għ = ggħ  | g + għ = g’għ | għ + ħ = għ’ħ | g + ħ = g’ħ
+#
+# Vowels:
+# https://en.wikivoyage.org/wiki/Egyptian_Arabic_phrasebook
+#
+#  a /æ/  á /æː/ | à /ɑ/  â /ɑː/
+#  i /i/  í /iː/ | e /e/  é /eː/
+#  u /u/  ú /uː/ | o /o/  ó /oː/
+#
 
 
 class SezimalLocaleAR_LATN(SezimalLocale):
     LANG = 'ar'
-    LANGUAGE = 'al-ʕarabiyya'
+    LANGUAGE = 'el-għàràbí'
 
     SEZIMAL_SEPARATOR = SEPARATOR_COMMA
 
     GROUP_SEPARATOR = SEPARATOR_DOT
-    SUBGROUP_SEPARATOR = ''
+    SUBGROUP_SEPARATOR = SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
 
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
-    FRACTION_SUBGROUP_SEPARATOR = ''
+    FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
 
     FIRST_WEEKDAY = 'SUN'
     DAY_OF_REST = 'SAT'
     OPTIONAL_DAY_OF_REST = 'FRI'
 
     WEEKDAY_NAME = [
-        'el itnín',
-        'el taláta',
-        'el arbaʻá',
-        'el xamís',
-        'el gomʻá',
-        'el sabt',
-        'el ḥadd',
+        'el etnín',
+        'et talát',
+        'el àrbàgħ',
+        'el khamís',
+        'el gomgħà',
+        'es sabt',
+        'el ħad',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
@@ -46,17 +77,17 @@ class SezimalLocaleAR_LATN(SezimalLocale):
 
     MONTH_NAME= [
         'yanáyer',
-        'febráyer',
+        'febrâyer',
         'máres',
-        'ibríl',
+        'ebríl',
         'máyu',
-        'yúnya',
-        'yúlyu',
-        'aghóstos',
+        'yonyo',
+        'yolyu',
+        'àghóstos',
         'sebtámber',
-        'októbar',
-        'novámber',
-        'desámber',
+        'októbàr',
+        'novamber',
+        'desamber',
     ]
 
 
@@ -64,11 +95,11 @@ class SezimalLocaleAR_LATN(SezimalLocale):
         'yan',
         'feb',
         'már',
-        'ibr',
+        'ebr',
         'máy',
-        'yún',
-        'yúl',
-        'agh',
+        'yon',
+        'yol',
+        'agħ',
         'seb',
         'okt',
         'nov',
@@ -88,13 +119,13 @@ class SezimalLocaleAR_LATN(SezimalLocale):
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',
-        'spring_equinox': 'Spring',
+        'spring_equinox': 'Fàslu er ràbígħi',
         'summer_cross_quarter': 'Summer Cross-Quarter',
-        'summer_solstice': 'Summer',
+        'summer_solstice': 'Fàslu es sàyfi',
         'autumn_cross_quarter': 'Autumn Cross-Quarter',
-        'autumn_equinox': 'Autumn',
+        'autumn_equinox': 'Fàslu el kharífi',
         'winter_cross_quarter': 'Winter Cross-Quarter',
-        'winter_solstice': 'Winter',
+        'winter_solstice': 'Fàslu ex xetáqi',
     }
 
     MOON_PHASE = {

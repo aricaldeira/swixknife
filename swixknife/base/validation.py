@@ -8,20 +8,219 @@ SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
-from .digit_conversion import dedicated_to_default_digits, dedicated_niftimal_to_default_digits
+from swixknife.base.digit_conversion import dedicated_to_default_digits, \
+    dedicated_niftimal_to_default_digits, dozenal_digits_to_letters, \
+    dozenal_letters_to_digits
 
 # MAX_DECIMAL_PRECISION = 216
 #
 # MAX_SEZIMAL_PRECISION = 1200
 # _MAX_SEZIMAL_PRECISION_DECIMAL = 288
 
-MAX_DECIMAL_PRECISION = 37
+MAX_DECIMAL_PRECISION = 15
 
-MAX_SEZIMAL_PRECISION = 120
-_MAX_SEZIMAL_PRECISION_DECIMAL = 48
+MAX_SEZIMAL_PRECISION = 32
+_MAX_SEZIMAL_PRECISION_DECIMAL = 20
 
-MAX_DOZENAL_PRECISION = 31
-_MAX_DOZENAL_PRECISION_DECIMAL = 37
+MAX_DOZENAL_PRECISION = '13'
+_MAX_DOZENAL_PRECISION_DECIMAL = 15
+
+
+_CLEAN_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f_]')
+_FRACTION_SEPARATOR = '\\.'
+_RECURRING_MARKER = re.compile(f'\\.\\.')
+_CLOSING_RECURRING_MARKER = re.compile(f'\\.\\.\\.')
+
+
+_VALID_SEZIMAL_FORMAT = re.compile(r'''^[+-]?[0-5]{1,}\.{0,2}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.[0-5]{1,}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.\.[0-5]{1,}(\.\.\.)?$|^[+-]?[0-5]*\.[0-5]{1,}\.\.[0-5]{1,}(\.\.\.)?$''')
+
+_VALID_DECIMAL_FORMAT = re.compile(r'''^[+-]?[0-9]{1,}\.{0,2}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.[0-9]{1,}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.\.[0-9]{1,}(\.\.\.)?$|^[+-]?[0-9]*\.[0-9]{1,}\.\.[0-9]{1,}(\.\.\.)?$''')
+
+_VALID_NIFTIMAL_FORMAT = re.compile(r'''^[+-]?[0-9A-Za-z]{1,}\.{0,2}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.\.[0-9A-Za-z]{1,}(\.\.\.)?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}\.\.[0-9A-Za-z]{1,}(\.\.\.)?$''')
+
+_VALID_DOZENAL_FORMAT = re.compile(r'''^[+-]?[0-9↊↋ABab]{1,}\.{0,2}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.\.[0-9↊↋ABab]{1,}(\.\.\.)?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}\.\.[0-9↊↋ABab]{1,}(\.\.\.)?$''')
+
+
+def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger) -> str:
+    number = str(number)
+
+    cleaned_number = _CLEAN_SPACES.sub('', number)
+    cleaned_number = dedicated_to_default_digits(cleaned_number)
+
+    if not _VALID_SEZIMAL_FORMAT.match(cleaned_number):
+        raise ValueError(f'The number {number} has an invalid format for a sezimal number')
+
+    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL)
+
+    if cleaned_number.startswith('+'):
+        cleaned_number = cleaned_number[1:]
+
+    while cleaned_number.startswith('-00'):
+        cleaned_number = '-0' + cleaned_number[3:]
+
+    if len(cleaned_number) > 1:
+        while cleaned_number.startswith('0'):
+            cleaned_number = cleaned_number[1:]
+
+    if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+        cleaned_number = '0' + cleaned_number
+
+    if not cleaned_number:
+        cleaned_number = '0'
+
+    cleaned_number = _exponent_to_full_form(cleaned_number, 6)
+
+    return cleaned_number
+
+
+def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str:
+    number = str(number)
+
+    cleaned_number = _CLEAN_SPACES.sub('', number)
+
+    if not _VALID_DECIMAL_FORMAT.match(cleaned_number):
+        raise ValueError(f'The number {number} has an invalid format for a decimal number')
+
+    cleaned_number = _clean_recurring_digits(cleaned_number, MAX_DECIMAL_PRECISION)
+
+    if cleaned_number.startswith('+'):
+        cleaned_number = cleaned_number[1:]
+
+    while cleaned_number.startswith('-00'):
+        cleaned_number = '-0' + cleaned_number[3:]
+
+    if len(cleaned_number) > 1:
+        while cleaned_number.startswith('0'):
+            cleaned_number = cleaned_number[1:]
+
+    if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+        cleaned_number = '0' + cleaned_number
+
+    if not cleaned_number:
+        cleaned_number = '0'
+
+    cleaned_number = _exponent_to_full_form(cleaned_number, 10)
+
+    return cleaned_number
+
+
+def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> str:
+    number = str(number)
+
+    cleaned_number = _CLEAN_SPACES.sub('', number).upper()
+    cleaned_number = dedicated_niftimal_to_default_digits(cleaned_number)
+
+    if not _VALID_NIFTIMAL_FORMAT.match(cleaned_number):
+        raise ValueError(f'The number {number} has an invalid format for a niftimal number')
+
+    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL / 2)
+
+    if cleaned_number.startswith('+'):
+        cleaned_number = cleaned_number[1:]
+
+    while cleaned_number.startswith('-00'):
+        cleaned_number = '-0' + cleaned_number[3:]
+
+    if len(cleaned_number) > 1:
+        while cleaned_number.startswith('0'):
+            cleaned_number = cleaned_number[1:]
+
+    if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E+') or cleaned_number.startswith('e+'):
+        cleaned_number = '0' + cleaned_number
+    elif cleaned_number.startswith('E-') or cleaned_number.startswith('e-'):
+        cleaned_number = '0' + cleaned_number
+
+    if not cleaned_number:
+        cleaned_number = '0'
+
+    cleaned_number = _exponent_to_full_form(cleaned_number, 36)
+
+    return cleaned_number
+
+
+def validate_clean_dozenal(number: str) -> str:
+    number = str(number)
+
+    cleaned_number = _CLEAN_SPACES.sub('', number).upper()
+
+    if not _VALID_DOZENAL_FORMAT.match(cleaned_number):
+        raise ValueError(f'The number {number} has an invalid format for a dozenal number')
+
+    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_DOZENAL_PRECISION_DECIMAL)
+
+    if cleaned_number.startswith('+'):
+        cleaned_number = cleaned_number[1:]
+
+    while cleaned_number.startswith('-00'):
+        cleaned_number = '-0' + cleaned_number[3:]
+
+    if len(cleaned_number) > 1:
+        while cleaned_number.startswith('0'):
+            cleaned_number = cleaned_number[1:]
+
+    if cleaned_number.startswith('.'):
+        cleaned_number = '0' + cleaned_number
+
+    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+        cleaned_number = '0' + cleaned_number
+
+    if not cleaned_number:
+        cleaned_number = '0'
+
+    cleaned_number = dozenal_digits_to_letters(cleaned_number)
+
+    cleaned_number = _exponent_to_full_form(cleaned_number, 12)
+
+    cleaned_number = dozenal_letters_to_digits(cleaned_number)
+
+    return cleaned_number
+
+
+def _clean_recurring_digits(number: str, max_precision: int = 48) -> str:
+    number = _CLOSING_RECURRING_MARKER.sub('§', number)
+    number = _RECURRING_MARKER.sub('§', number)
+
+    if '§' not in number:
+        return number
+
+    recurring = ''
+
+    if number.endswith('§'):
+        number = number[:-1]
+
+    if '§' not in number:
+        return number
+
+    if '.' in number:
+        integer, fraction = number.split('.')
+        fraction, recurring = fraction.split('§')
+
+    else:
+        integer, recurring = number.split('§')
+        fraction = ''
+
+    #
+    # How many times do we repeat (limit is 120 48_dec)?
+    #
+    repeating_max_size = max_precision - len(fraction)
+
+    times = ((repeating_max_size) // len(recurring)) + 1
+
+    recurring *= times
+    recurring = recurring[:repeating_max_size]
+
+    number = integer + '.' + fraction + recurring
+
+    return number
 
 
 def _exponent_to_full_form(number: str, base: int = 6) -> str:
@@ -98,231 +297,40 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
     return number
 
 
-_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f]')
+def _make_validation_expression(all_digits='[0-5]') -> re.Pattern:
+    fraction_separator = _FRACTION_SEPARATOR
+    recurring_marker = f'{_RECURRING_MARKER.pattern}'
+    closing_recurring_marker = f'({_CLOSING_RECURRING_MARKER.pattern})?'
 
+    required_digits = f'{all_digits}{{1,}}'
+    optional_digits = f'{all_digits}*'
 
-def _clean_recurring_digits(number: str, max_precision: int = 48) -> str:
-    if not (
-        number
-        and '.' in number
-        and len(number) >= 3
-        and number.endswith('p')
-    ):
-        return number
+    integer = f'[+-]?{required_digits}{fraction_separator}{{0,2}}'
+
+    common_fractional = f'[+-]?{optional_digits}{fraction_separator}{required_digits}'
+    recurring_fractional = f'[+-]?{optional_digits}{recurring_marker}{required_digits}{closing_recurring_marker}'
+    complex_recurring_fraction = f'[+-]?{optional_digits}{fraction_separator}{required_digits}{recurring_marker}{required_digits}{closing_recurring_marker}'
 
     #
-    # Strips the “p” at the end
+    # If letters are used as digits, the use exponents
+    # is only allowed when a mandatory sign +/- is
+    # right next to E/e
     #
-    number = number[:-1]
-
-    recurring = ''
-    integer, fraction = number.split('.')
-
-    if 'p' in fraction:
-        fraction, recurring = fraction.split('p')
+    if 'Z' in all_digits:
+        exponent = f'([Ee][+-]{required_digits})?'
     else:
-        recurring = fraction
-        fraction = ''
+        exponent = f'([Ee][+-]?{required_digits})?'
 
-    #
-    # How many times do we repeat (limit is 120 48_dec)?
-    #
-    repeating_max_size = max_precision - len(fraction)
+    all_pattern = f'^{integer}{exponent}$|^{common_fractional}{exponent}$|^{recurring_fractional}$|^{complex_recurring_fraction}$'
 
-    times = ((repeating_max_size) // len(recurring)) + 1
+    return re.compile(all_pattern)
 
-    recurring *= times
-    recurring = recurring[:repeating_max_size]
 
-    number = integer + '.' + fraction + recurring
-
-    return number
-
-
-def _clean_separators(number: str, max_precision: int = 48) -> str:
-    number = number.replace(',', '.')
-    number = number.replace('r', 'p')
-    number = number.replace('·', 'p')
-    number = number.replace('˙', 'p')
-    number = _SPACES.sub('', number)
-    number = number.replace('_', '')
-
-    number = _clean_recurring_digits(number, max_precision)
-
-    return number
-
-
-_VALID_SEZIMAL_FORMAT = re.compile(r'^[+\-]?[0-5]+\.?$|^[+\-]?[0-5]*\.[0-5]+$|^[+\-]?[0-5]+\.?[Ee][+\-]?[0-5]*$|^[+\-]?[0-5]*\.[0-5]+[Ee][+\-]?[0-5]*$')
-
-
-def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger) -> str:
-    number = str(number)
-
-    if not number:
-        raise ValueError(f'An empty string is not a valid sezimal number')
-
-    cleaned_number = dedicated_to_default_digits(number)
-    cleaned_number = _clean_separators(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL)
-
-    if cleaned_number.startswith('+'):
-        cleaned_number = cleaned_number[1:]
-
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
-
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
-
-    if cleaned_number.startswith('.'):
-        cleaned_number = '0' + cleaned_number
-
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
-        cleaned_number = '0' + cleaned_number
-
-    if not cleaned_number:
-        cleaned_number = '0'
-
-    invalid = _VALID_SEZIMAL_FORMAT.sub('', cleaned_number)
-
-    if invalid != '':
-        raise ValueError(f'The number {number} has an invalid format for a sezimal number')
-
-    cleaned_number = _exponent_to_full_form(cleaned_number, 6)
-
-    return cleaned_number
-
-
-_VALID_DECIMAL_FORMAT = re.compile(r'^[+\-]?[0-9]+\.?$|^[+\-]?[0-9]*\.[0-9]+$|^[+\-]?[0-9]+\.?[Ee][+\-]?[0-9]*$|^[+\-]?[0-9]*\.[0-9]+[Ee][+\-]?[0-9]*$')
-
-
-def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str:
-    number = str(number)
-
-    if not number:
-        raise ValueError(f'An empty string is not a valid decimal number')
-
-    cleaned_number = _clean_separators(number, MAX_DECIMAL_PRECISION)
-
-    if cleaned_number.startswith('+'):
-        cleaned_number = cleaned_number[1:]
-
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
-
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
-
-    if cleaned_number.startswith('.'):
-        cleaned_number = '0' + cleaned_number
-
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
-        cleaned_number = '0' + cleaned_number
-
-    if not cleaned_number:
-        cleaned_number = '0'
-
-    invalid = _VALID_DECIMAL_FORMAT.sub('', cleaned_number)
-
-    if invalid != '':
-        raise ValueError(f'The number {number} has an invalid format for a decimal number')
-
-    cleaned_number = _exponent_to_full_form(cleaned_number, 10)
-
-    return cleaned_number
-
-
-#
-# Niftimal numbers,
-# when using engineering notation (E+, E-),
-# always have to specify the exponent sign;
-# when sezimal numbers don’t specify a sign,
-# a positive sign + is assumed
-#
-_VALID_NIFTIMAL_FORMAT = re.compile(r'^[+\-]?[0-9A-Z]+\.?$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+$|^[+\-]?[0-9A-Z]+\.?[Ee][+\-][0-9A-Z]*$|^[+\-]?[0-9A-Z]*\.[0-9A-Z]+[Ee][+\-][0-9A-Z]*$')
-
-
-def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> str:
-    number = str(number).upper()
-
-    if not number:
-        raise ValueError(f'An empty string is not a valid niftimal number')
-
-    cleaned_number = dedicated_niftimal_to_default_digits(number)
-    cleaned_number = _clean_separators(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL / 2)
-
-    if cleaned_number.startswith('+'):
-        cleaned_number = cleaned_number[1:]
-
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
-
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
-
-    if cleaned_number.startswith('.'):
-        cleaned_number = '0' + cleaned_number
-
-    if cleaned_number.startswith('E+') or cleaned_number.startswith('e+'):
-        cleaned_number = '0' + cleaned_number
-    elif cleaned_number.startswith('E-') or cleaned_number.startswith('e-'):
-        cleaned_number = '0' + cleaned_number
-
-    if not cleaned_number:
-        cleaned_number = '0'
-
-    invalid = _VALID_NIFTIMAL_FORMAT.sub('', cleaned_number)
-
-    if invalid != '':
-        raise ValueError(f'The number {number} has an invalid format for a niftimal number')
-
-    cleaned_number = _exponent_to_full_form(cleaned_number, 36)
-
-    return cleaned_number
-
-
-_VALID_DOZENAL_FORMAT = re.compile(r'^[+\-]?[0-9↊↋]+\.?$|^[+\-]?[0-9↊↋]*\.[0-9↊↋]+$|^[+\-]?[0-9↊↋]+\.?[Ee][+\-]?[0-9↊↋]*$|^[+\-]?[0-9↊↋]*\.[0-9↊↋]+[Ee][+\-]?[0-9↊↋]*$')
-
-
-def validate_clean_dozenal(number: str) -> str:
-    number = str(number)
-
-    if not number:
-        raise ValueError(f'An empty string is not a valid dozenal number')
-
-    cleaned_number = _clean_separators(number, _MAX_DOZENAL_PRECISION_DECIMAL)
-
-    if cleaned_number.startswith('+'):
-        cleaned_number = cleaned_number[1:]
-
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
-
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
-
-    if cleaned_number.startswith('.'):
-        cleaned_number = '0' + cleaned_number
-
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
-        cleaned_number = '0' + cleaned_number
-
-    if not cleaned_number:
-        cleaned_number = '0'
-
-    cleaned_number = cleaned_number.replace('A', '↊')
-    cleaned_number = cleaned_number.replace('a', '↊')
-    cleaned_number = cleaned_number.replace('B', '↋')
-    cleaned_number = cleaned_number.replace('b', '↋')
-
-    invalid = _VALID_DOZENAL_FORMAT.sub('', cleaned_number)
-
-    if invalid != '':
-        raise ValueError(f'The number {number} has an invalid format for a dozenal number')
-
-    cleaned_number = _exponent_to_full_form(cleaned_number, 10)
-
-    return cleaned_number
+if __name__ == '__main__':
+    print(f"_VALID_SEZIMAL_FORMAT = re.compile(r'''{_make_validation_expression('[0-5]').pattern}''')")
+    print()
+    print(f"_VALID_DECIMAL_FORMAT = re.compile(r'''{_make_validation_expression('[0-9]').pattern}''')")
+    print()
+    print(f"_VALID_NIFTIMAL_FORMAT = re.compile(r'''{_make_validation_expression('[0-9A-Za-z]').pattern}''')")
+    print()
+    print(f"_VALID_DOZENAL_FORMAT = re.compile(r'''{_make_validation_expression('[0-9↊↋ABab]').pattern}''')")
