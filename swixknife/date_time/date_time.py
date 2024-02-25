@@ -25,7 +25,7 @@ from decimal import Decimal
 from .date import SezimalDate
 from .time import SezimalTime
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 

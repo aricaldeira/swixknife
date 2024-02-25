@@ -50,8 +50,8 @@ def _astronomy_date_to_date(ad: Time) -> SezimalDateTime:
     seconds += Decimal(second)
     seconds += Decimal(microsecond) / 1_000_000
 
-    agrima = seconds * Sezimal('1000') / Sezimal('1504')
-    agrima /= 100_0000
+    agrima = seconds * Sezimal('1_000') / Sezimal('1_504')
+    agrima /= 1_000_000
 
     ordinal_date += agrima
 
@@ -212,15 +212,15 @@ if __name__ == '__main__':
     cursor.execute('create unique index if not exists sun_moon_desc_pk_index on sun_moon(date desc, sun_moon, name);')
 
     SPAN = SezimalInteger(300)
-    MIN_YEAR = 13_1400 - SPAN
-    MAX_YEAR = 13_1400 + SPAN
+    MIN_YEAR = 131_400 - SPAN
+    MAX_YEAR = 131_400 + SPAN
 
     #
     # Let’s precalculate the seasons and moon phases for the years
-    # from 13_1100 (11_916_dec)
-    #   to 13_2100 (12_132_dec)
+    # from 131_100 (11_916_dec)
+    #   to 132_100 (12_132_dec)
     # both are 300 (108_dec) years (1/20 [1/12_dec] of a "millenium")
-    # appart from 13_1400 (12_024_dec)
+    # appart from 131_400 (12_024_dec)
     #
     print('Pre-calculating and inserting seasons')
     for year in tqdm(list(SezimalRange(MIN_YEAR, MAX_YEAR + 1))):

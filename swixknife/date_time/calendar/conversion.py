@@ -70,6 +70,8 @@ def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalI
 
         reference_year = year
 
+    date_time = date_time.replace('_', '')
+
     if VALID_DATE_STRING.match(date_time) or VALID_MONTH_DAY_STRING.match(date_time):
         return _other_calendar_to_ordinal_date('SEZ-' + date_time, reference_year)
 

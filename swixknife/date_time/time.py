@@ -23,7 +23,7 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..dozenal import Dozenal, DozenalInteger
-from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_regularized_dedicated_digits, \
@@ -73,21 +73,21 @@ class SezimalTime:
         boda = Sezimal(boda)
         ekaditiboda = Sezimal(ekaditiboda)
 
-        total_agrimas = day * 100_0000
-        total_agrimas += uta * 1_0000
+        total_agrimas = day * 1_000_000
+        total_agrimas += uta * 10_000
         total_agrimas += posha * 100
         total_agrimas += agrima
         total_agrimas += anuga / 100
-        total_agrimas += boda / 1_0000
-        total_agrimas += (ekaditiboda / 1_0000_0000) / 1_0000
+        total_agrimas += boda / 10_000
+        total_agrimas += (ekaditiboda / 100_000_000) / 10_000
 
         self = object.__new__(cls)
 
-        self._day = SezimalInteger(total_agrimas // 100_0000)
-        total_agrimas -= self._day * 100_0000
+        self._day = SezimalInteger(total_agrimas // 1_000_000)
+        total_agrimas -= self._day * 1_000_000
 
-        self._uta = SezimalInteger(total_agrimas // 1_0000)
-        total_agrimas -= self._uta * 1_0000
+        self._uta = SezimalInteger(total_agrimas // 10_000)
+        total_agrimas -= self._uta * 10_000
 
         self._posha = SezimalInteger(total_agrimas // 100)
         total_agrimas -= self._posha * 100
@@ -103,16 +103,16 @@ class SezimalTime:
         self._boda = SezimalInteger(total_agrimas)
         total_agrimas -= self._boda
 
-        total_agrimas *= 1_0000_0000
+        total_agrimas *= 100_000_000
         self._ekaditiboda = round(Sezimal(total_agrimas), 0)
 
-        total_agrimas = self._day * 100_0000
-        total_agrimas += self._uta * 1_0000
+        total_agrimas = self._day * 1_000_000
+        total_agrimas += self._uta * 10_000
         total_agrimas += self._posha * 100
         total_agrimas += self._agrima
         total_agrimas += self._anuga / 100
-        total_agrimas += self._boda / 1_0000
-        total_agrimas += (self._ekaditiboda / 1_0000_0000) / 1_0000
+        total_agrimas += self._boda / 10_000
+        total_agrimas += (self._ekaditiboda / 100_000_000) / 10_000
 
         self._total_agrimas = total_agrimas
 
@@ -125,7 +125,7 @@ class SezimalTime:
         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone, base_gregorian_date)
 
         total_seconds = self._total_agrimas
-        total_seconds -= self._day * 100_0000
+        total_seconds -= self._day * 1_000_000
         total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal
 
         hour = int(total_seconds // 60 // 60)
@@ -231,7 +231,7 @@ class SezimalTime:
         # Date has shifted?
         #
         if total_agrimas < 0:
-            total_agrimas = total_agrimas + Sezimal('100_0000')
+            total_agrimas = total_agrimas + Sezimal('1_000_000')
 
         return cls(agrima=total_agrimas, time_zone=time_zone)
 
@@ -592,7 +592,7 @@ class SezimalTime:
             tz_offset, dst_offset = tz_agrimas_offset(self.time_zone)
             total_agrimas -= tz_offset # + dst_offset
 
-        jd = total_agrimas / 100_0000
+        jd = total_agrimas / 1_000_000
 
         return jd
 
@@ -602,12 +602,12 @@ class SezimalTime:
 
     @property
     def as_days(self) -> Sezimal:
-        return self.as_agrimas / 100_0000
+        return self.as_agrimas / 1_000_000
 
     @classmethod
     def from_days(cls, days: Sezimal, time_zone: str | ZoneInfo = None) -> Self:
         days = abs(days)
-        agrimas = Sezimal(days) * 100_0000
+        agrimas = Sezimal(days) * 1_000_000
         return cls(agrima=agrimas, time_zone=time_zone)
 
     def replace(self,

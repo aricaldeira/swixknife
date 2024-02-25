@@ -25,7 +25,7 @@ DATE_NUMBER_FORMAT_TOKENS = tuple(
             ('w', 'weekday', 2, 1, 1),            # 01 - 11 (01_dec – 7_dec)
             ('m', 'month', 2, 1, 2),              # 01 – 20 (01_dec – 12_dec)
             ('q', 'quarter', 1, 1, 1),            # 1 – 4
-            ('y', 'year', 10, 3, 5),              # 00_0000 – 55_5555 (−10_000_dec – 36_655_dec)
+            ('y', 'year', 10, 3, 5),              # 000_000 – 555_555 (−10_000_dec – 36_655_dec)
         ),
     )
 )
@@ -77,6 +77,9 @@ TIME_NUMBER_FORMAT_TOKENS = tuple(
             ('n', 'anuga', 2, 1, 2),
             ('b', 'boda', 2, 1, 2),
             ('e', 'ekaditiboda', 12, 4, 7),
+            ('h', 'uta', 2, 1, 2),
+            ('t', 'posha', 2, 1, 2),
+            ('s', 'agrima', 2, 1, 2),
         ),
     )
 )

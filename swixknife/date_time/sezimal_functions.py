@@ -14,16 +14,16 @@ except:
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..functions import floor, ceil
 from .gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
 
-VALID_DATE_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}$')
+VALID_DATE_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2}$|^-?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}$')
 VALID_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}:[0-5]{2}$')
 VALID_PARTIAL_TIME_STRING = re.compile(r'^[0-5]{2}:[0-5]{2}$')
-VALID_DATE_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
-VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
+VALID_DATE_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$|^-?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}:[0-5]{2}$')
+VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^-?[0-5]{6}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$|^-?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$|^-?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2} [0-5]{2}:[0-5]{2}$')
 
 #
 # Some expressions to validate holidays and events
@@ -38,7 +38,7 @@ VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)-)?(EASTER|PESACH|
 # ISO Epoch
 #
 ISO_EPOCH = SezimalInteger('1')
-ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
+ISO_EPOCH_JULIAN_DATE = Sezimal('100_521_320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
 
 #
 # Using the same Epoch as the ISO calendar,
@@ -53,16 +53,31 @@ ISO_EPOCH_JULIAN_DATE = Sezimal('1_0052_1320.3')  # 1_721_424.5_dec → 00-12-31
 #
 # Holocene Epoch
 #
-# Julian date -1_0521_5450.3 → -1_930_998.5_dec → -9_999-01-02_dec ISO
+# Julian date -105_215_450.3 → -1_930_998.5_dec → -9_999-01-02_dec ISO
 #
 # The one day difference (actually it should be -9_999-01-01_dec ISO)
 # compensates the fact that the ordinal date / Rada Die starts
 # with 1, not zero
 #
-EPOCH = SezimalInteger('-2_1014_1212')  # -3_652_424_dec
-EPOCH_JULIAN_DATE = Sezimal('-1_0521_5450.3')  # -1_930_998.5_dec
-ISO_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
-ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
+EPOCH = SezimalInteger('-210_141_212')  # -3_652_424_dec
+EPOCH_JULIAN_DATE = Sezimal('-105_215_450.3')  # -1_930_998.5_dec
+ISO_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
+ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
+
+#
+# Sezimal Holocene Epoch
+#
+# Julian date -220_511_131.3 → -3_959_551.5_dec → -15_553-01-06_dec ISO
+#
+# The one day difference (actually it should be -15_553-01-05_dec ISO)
+# compensates the fact that the ordinal date / Rada Die starts
+# with 1, not zero
+#
+EPOCH = SezimalInteger('-321_432_452')  # -5_680_976_dec
+EPOCH_JULIAN_DATE = Sezimal('-220_511_131.3')  # -3_959_550.5_dec
+ISO_YEAR_DIFF = SezimalInteger('200_000')  # 15_552_dec
+ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
+
 
 #
 # The epoch defined on the comments just below
@@ -70,52 +85,52 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_4144')  # 10_000_dec
 # where the Perihelion coincides with the Northern Hemisphere
 # Summer Solstice
 #
-# EPOCH = SezimalInteger('-2_0251_0230')  # -3_492_810_dec
-# EPOCH_JULIAN_DATE = Sezimal('-1_0154_4505.3')  # -1_771_385.5_dec
-# ISO_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
-# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_2135')  # 9_563_dec
+# EPOCH = SezimalInteger('-202_510_230')  # -3_492_810_dec
+# EPOCH_JULIAN_DATE = Sezimal('-101_544_505.3')  # -1_771_385.5_dec
+# ISO_YEAR_DIFF = SezimalInteger('112_135')  # 9_563_dec
+# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('112_135')  # 9_563_dec
 #
 # The epoch defined on the comments just below
 # lines Sezimal year __1__ with the year, on the Holocene Era,
 # where the Perihelion coincides with the Northern Hemisphere
 # Summer Solstice
 #
-# EPOCH = SezimalInteger('-2_0251_2034')  # -3_493_174_dec
-# EPOCH_JULIAN_DATE = Sezimal('-1_0155_0313.3')  # -1_771_749.5_dec
-# ISO_YEAR_DIFF = SezimalInteger('11_2134')  # 9_562_dec
-# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('11_2134')  # 9_562_dec
+# EPOCH = SezimalInteger('-202_512_034')  # -3_493_174_dec
+# EPOCH_JULIAN_DATE = Sezimal('-101_550_313.3')  # -1_771_749.5_dec
+# ISO_YEAR_DIFF = SezimalInteger('112_134')  # 9_562_dec
+# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('112_134')  # 9_562_dec
 #
 
 #
 # For compatibility with Python’s original date and datetime,
 # MAXYEAR has to be 1 year less, because:
 #
-# 23_2331-20-55 (19_999-12-35_dec) SEZIMAL → 10_000-01-02_dec GREGORIAN → 2_1013_5405 (3_652_061_dec) ORDINAL
-# 23_2331-20-54 (19_999-12-34_dec) SEZIMAL → 10_000-01-01_dec GREGORIAN → 2_1013_5404 (3_652_060_dec) ORDINAL
+# 314_143-20-55 (25_551-12-35_dec) SEZIMAL → 10_000-01-02_dec GREGORIAN → 210_135_405 (3_652_061_dec) ORDINAL
+# 314_143-20-54 (25_551-12-34_dec) SEZIMAL → 10_000-01-01_dec GREGORIAN → 210_135_404 (3_652_060_dec) ORDINAL
 #
 # This is the actual maximum Python date
-# 23_2331-20-53 (19_999-12-33_dec) SEZIMAL →  9_999-12-31_dec GREGORIAN → 2_1013_5403 (3_652_059_dec) ORDINAL
+# 314_143-20-53 (25_551-12-33_dec) SEZIMAL →  9_999-12-31_dec GREGORIAN → 210_135_403 (3_652_059_dec) ORDINAL
 #
 # So we use the maximum full year we can use
-# 23_2330-20-44 (19_998-12-28_dec) SEZIMAL → 9_998-12-27_dec GREGORIAN → 2_1013_3550 (3_651_690_dec) ORDINAL
+# 314_142-20-44 (25_550-12-28_dec) SEZIMAL → 9_998-12-27_dec GREGORIAN → 210_133_550 (3_651_690_dec) ORDINAL
 #
 MIN_ISO_YEAR = ISO_YEAR_DIFF + SezimalInteger('1')
-MAX_ISO_YEAR = SezimalInteger('23_2332')
+MAX_ISO_YEAR = SezimalInteger('232_332')
 MINYEAR = SezimalInteger('1')
 MAXYEAR = MAX_ISO_YEAR - SezimalInteger('1')
-MAXORDINAL = SezimalInteger('2_1013_3550')
+MAXORDINAL = SezimalInteger('210_133_550')
 
 
-CYCLE_MEAN_YEAR = Sezimal('1405') + (Sezimal('155') / Sezimal('1205'))  # 365_dec + (71_dec / 293_dec)
+CYCLE_MEAN_YEAR = Sezimal('1_405') + (Sezimal('155') / Sezimal('1_205'))  # 365_dec + (71_dec / 293_dec)
 
 #
-# 13_1230-01-04 SEZIMAL → 1_970-01-01_dec GREGORIAN → 2322_5243 (719_163_dec)
+# 131_230-01-04 SEZIMAL → 1_970-01-01_dec GREGORIAN → 23_225_243 (719_163_dec)
 #
-POSIX_EPOCH = SezimalInteger('2322_5243')
-POSIX_JULIAN_DATE = Sezimal('1_2415_1003.3')
+POSIX_EPOCH = SezimalInteger('23_225_243')
+POSIX_JULIAN_DATE = Sezimal('124_151_003.3')
 
 _LEAP_FACTOR = SezimalInteger('402')  # 146_dec
-# _LEAP_FACTOR = SezimalInteger('1005')  # 221_dec
+# _LEAP_FACTOR = SezimalInteger('1_005')  # 221_dec
 
 #
 # -1 is just a placeholder, so we don’t need to worry about month number 0
@@ -158,7 +173,7 @@ def is_leap(year):
     # The modulo is much faster using Decimal
     #
     leap = leap.decimal
-    leap %= SezimalInteger('1205').decimal  # 293_dec
+    leap %= SezimalInteger('1_205').decimal  # 293_dec
 
     is_leap = leap < SezimalInteger('124').decimal  # 52_dec
 
@@ -169,9 +184,9 @@ def _days_before_year(year):
     "year -> number of days before January 1st of year."
     year -= SezimalInteger('1')
 
-    dby = SezimalInteger('1404').decimal * year.decimal
+    dby = SezimalInteger('1_404').decimal * year.decimal
     weeks = (SezimalInteger('124').decimal * year.decimal) + _LEAP_FACTOR.decimal
-    weeks *= SezimalInteger(1).decimal / SezimalInteger('1205').decimal
+    weeks *= SezimalInteger(1).decimal / SezimalInteger('1_205').decimal
     dby += SezimalInteger('11').decimal * floor(weeks).decimal
 
     return dby
@@ -239,7 +254,7 @@ def ordinal_to_year_month_day(ordinal_date):
         # Check if the ordinal date informed may be
         # on the leap week of December or the next year
         #
-        if ordinal_date - first_day_year >= SezimalInteger('1404'):
+        if ordinal_date - first_day_year >= SezimalInteger('1_404'):
             first_day_next_year = _first_day_year(year + SezimalInteger('1'))
 
             #
@@ -373,7 +388,7 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
 def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None):
     total_agrimas, total_agrimas_dst = tz_agrimas_offset(time_zone, base_gregorian_date)
 
-    return total_agrimas / 100_0000, total_agrimas_dst / 100_0000
+    return total_agrimas / 1_000_000, total_agrimas_dst / 1_000_000
 
 
 def mars_sol_date(julian_date: Sezimal) -> Sezimal:
@@ -381,14 +396,14 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     # Ref. https://en.wikipedia.org/wiki/Timekeeping_on_Mars#Mars_Sol_Date
     #
     # MARS_SOL_EPOCH = 2_405_522.002_877_9_dec
-    # This is 13_0550-01-01 30:03:12.520354244205(01_4402_5454_4203_3201_0553_4140_4131)
+    # This is 130_550-01-01 30:03:12.520_354_244_205(014_402_545_442_033_201_055_341_404_131)
     # Equivalent to Gregorian/ISO 1873-12-29 12:03:36.466559
     #
-    MARS_SOL_EPOCH = Sezimal('1_2332_0402.0003_1252_0354_2442_0501_4402_5454_4203_3201_0553_4140_4131')
+    MARS_SOL_EPOCH = Sezimal('123_320_402.000_312_520_354_244_205_014_402_545_442_033_201_055_341_404_131')
     #
-    # Julian date 13_1315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
+    # Julian date 131_315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
     #
-    JULIAN_DATE_131315 = Sezimal('1_2431_3425')
+    JULIAN_DATE_131_315 = Sezimal('124_313_425')
 
     #
     # 37_dec seconds + 32.184_dec seconds
@@ -397,20 +412,20 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     TAI_UTC_OFFSET = (Decimal('37') + Decimal('32.184')) / Decimal('86_400')
 
     #
-    # Length of Mars sol in ekaditibodas = 100_5534_3442_4322_1121 ~ 88_775.244_dec seconds
-    # Lenght of Earth day in ekaditibodas = 100_0000_0001_2221_5525 ~ 86_400.002_dec seconds
+    # Length of Mars sol in ekaditibodas = 1_005_534_344_243_221_121 ~ 88_775.244_dec seconds
+    # Lenght of Earth day in ekaditibodas = 1_000_000_000_122_215_525 ~ 86_400.002_dec seconds
     #
-    # MARS_SOL_IN_DAYS = SezimalFraction('100_5534_3442_4322_1121', '100_0000_0001_2221_5525')
+    # MARS_SOL_IN_DAYS = SezimalFraction('1_005_534_344_243_221_121', '1_000_000_000_122_215_525')
     MARS_SOL_IN_DAYS = Sezimal(Decimal('1.027_491_252'))
 
     #
     # Formula from:
     # http://marsclock.com/
     #
-    julian_date = julian_date + TAI_UTC_OFFSET - JULIAN_DATE_131315
+    julian_date = julian_date + TAI_UTC_OFFSET - JULIAN_DATE_131_315
     mars_sol_date = julian_date - 4.3
     mars_sol_date /= MARS_SOL_IN_DAYS
-    mars_sol_date += Sezimal('54_3220')  # 44_796_dec
-    mars_sol_date -= Decimal('0.00096')  # adjustment from Mars24
+    mars_sol_date += Sezimal('543_220')  # 44_796_dec
+    mars_sol_date -= Decimal('0.000_96')  # adjustment from Mars24
 
     return mars_sol_date

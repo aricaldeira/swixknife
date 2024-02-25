@@ -68,20 +68,20 @@ class SezimalDateTimeDelta():
         total_days += self._weeks * SezimalInteger(11)
         total_days += self._days
 
-        total_agrimas = self._utas * 1_0000
+        total_agrimas = self._utas * 10_000
         total_agrimas += self._poshas * 100
         total_agrimas += self._agrimas
         total_agrimas += self._anugas / 100
-        total_agrimas += self._bodas / 1_0000
-        total_agrimas += (self._ekaditibodas / 1_0000_0000) / 1_0000
+        total_agrimas += self._bodas / 10_000
+        total_agrimas += (self._ekaditibodas / 100_000_000) / 10_000
 
-        if total_agrimas > 100_0000:
-            days = SezimalInteger(total_agrimas // 100_0000)
+        if total_agrimas > 1_000_000:
+            days = SezimalInteger(total_agrimas // 1_000_000)
             total_days += days
-            total_agrimas -= days * 100_0000
+            total_agrimas -= days * 1_000_000
 
         if total_days != SezimalInteger(total_days):
-            agrimas = (total_days - SezimalInteger(total_days)) * 100_0000
+            agrimas = (total_days - SezimalInteger(total_days)) * 1_000_000
             total_agrimas += agrimas
             total_days = SezimalInteger(total_days)
 

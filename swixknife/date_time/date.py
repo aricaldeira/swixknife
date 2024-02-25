@@ -31,7 +31,7 @@ from ..base import decimal_format, sezimal_format, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_regularized_dedicated_digits
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
-from ..units.conversions import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
 from .date_time_delta import SezimalDateTimeDelta
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
@@ -322,7 +322,7 @@ class SezimalDate:
                 if token.endswith('>y'):
                     value = value[::-1][0:3][::-1]
 
-            if size and '-' not in token:
+            if size and '-' not in token and '>' not in token:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
@@ -756,14 +756,14 @@ class SezimalDate:
 
     def __setstate(self, string):
         yhi, ylo, self._month, self._day = string
-        self._year = yhi * SezimalInteger('1104') + ylo
+        self._year = yhi * SezimalInteger('1_104') + ylo
 
     def __reduce__(self):
         return (self.__class__, self._getstate())
 
     @property
     def as_agrimas(self) -> SezimalInteger:
-        return self.ordinal_date * 100_0000
+        return self.ordinal_date * 1_000_000
 
     @property
     def as_seconds(self) -> Decimal:
@@ -784,27 +784,27 @@ class SezimalDate:
         # According to Wikipedia, this gives a mean lunar month
         # 1 day behind the actual moon phase
         #
-        MOON_MONTH = Sezimal('31_2113') / Sezimal('3534')
+        MOON_MONTH = Sezimal('312_113') / Sezimal('3_534')
 
         #
         # Date and time at the end of the day
         # minus 1 day, compensating the moon cycle
         #
         moon_phase = self.ordinal_date - 1
-        moon_phase += Sezimal('0.555555')
+        moon_phase += Sezimal('0.555_555')
 
         #
         # Specific point in time where the moon was knowingly
         # on the new phase:
         #
-        # Ordinal date 2301_4020.04
-        # Sezimal date 13_1111-01-25 04:00
+        # Ordinal date 23_014_020.04
+        # Sezimal date 131_111-01-25 04:00
         # Gregorian date 1923-01-17 02:40
         #
         # It was first new moon of the first lunation (lunar month),
         # according to this site: https://www.timeanddate.com/moon/phases/?year=1923
         #
-        moon_phase -= Sezimal('2301_4020.04')
+        moon_phase -= Sezimal('23_014_020.04')
 
         day_in_cycle = moon_phase.decimal % MOON_MONTH.decimal
 
@@ -813,8 +813,8 @@ class SezimalDate:
 
         persixniff = Sezimal(day_in_cycle / MOON_MONTH.decimal * 216)
 
-        if persixniff > 1000:
-            persixniff -= 1000
+        if persixniff > 1_000:
+            persixniff -= 1_000
 
         if persixniff < 20:
             phase = 'new'

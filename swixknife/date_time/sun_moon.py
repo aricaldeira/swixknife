@@ -29,7 +29,7 @@ def _sun_moon_search(self, sun_moon: str, hemisphere: str = '', only_four: bool 
     days_offset, days_offset_dst = tz_days_offset(time_zone, self.gregorian_isoformat)
 
     search_start = self.as_days - days_offset
-    search_end = search_start + Sezimal('0.5555_5555_5555_5555_55')
+    search_end = search_start + Sezimal('0.555_555_555_555_555_555')
 
     sql = f'''
 select
@@ -324,7 +324,7 @@ def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone:
         search_start = date_start.as_days - days_offset
         date_end = SezimalDate(year, 20, 55) if date_start.is_leap else SezimalDate(year, 20, 44)
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
-        search_end = date_end.as_days - days_offset + Sezimal('0.5555_5555_5555_5555_55')
+        search_end = date_end.as_days - days_offset + Sezimal('0.555_555_555_555_555_555')
 
     else:
         date_start = SezimalDate(year, month, 1)
@@ -332,7 +332,7 @@ def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone:
         search_start = date_start.as_days - days_offset
         date_end = SezimalDate(year, month, 55) if date_start.is_long_month else SezimalDate(year, month, 44)
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
-        search_end = date_end.as_days - days_offset + Sezimal('0.5555_5555_5555_5555_55')
+        search_end = date_end.as_days - days_offset + Sezimal('0.555_555_555_555_555_555')
 
     sql = f'''
 select

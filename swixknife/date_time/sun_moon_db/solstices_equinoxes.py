@@ -22,7 +22,7 @@ for name in [
 arq.write('\n')
 
 
-for year in SezimalRange(0, 140001):
+for year in SezimalRange(0, 140_001):
     ss = SezimalSun(year, 'UTC')
 
     year_start = SD(year, 1, 1)
