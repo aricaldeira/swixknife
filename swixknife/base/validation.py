@@ -12,18 +12,7 @@ from swixknife.base.digit_conversion import dedicated_to_default_digits, \
     dedicated_niftimal_to_default_digits, dozenal_digits_to_letters, \
     dozenal_letters_to_digits
 
-# MAX_DECIMAL_PRECISION = 216
-#
-# MAX_SEZIMAL_PRECISION = 1200
-# _MAX_SEZIMAL_PRECISION_DECIMAL = 288
-
-MAX_DECIMAL_PRECISION = 15
-
-MAX_SEZIMAL_PRECISION = 32
-_MAX_SEZIMAL_PRECISION_DECIMAL = 20
-
-MAX_DOZENAL_PRECISION = '13'
-_MAX_DOZENAL_PRECISION_DECIMAL = 15
+from .context import sezimal_context
 
 
 _CLEAN_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f_]')
@@ -41,7 +30,10 @@ _VALID_NIFTIMAL_FORMAT = re.compile(r'''^[+-]?[0-9A-Za-z]{1,}\.{0,2}([Ee][+-][0-
 _VALID_DOZENAL_FORMAT = re.compile(r'''^[+-]?[0-9↊↋ABab]{1,}\.{0,2}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.\.[0-9↊↋ABab]{1,}(\.\.\.)?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}\.\.[0-9↊↋ABab]{1,}(\.\.\.)?$''')
 
 
-def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger) -> str:
+def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger | SezimalFraction, double_precision: bool = False) -> str:
+    if type(number) == SezimalFraction:
+        number = number.sezimal
+
     number = str(number)
 
     cleaned_number = _CLEAN_SPACES.sub('', number)
@@ -50,7 +42,10 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     if not _VALID_SEZIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a sezimal number')
 
-    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL)
+    if double_precision:
+        cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal * 2)
+    else:
+        cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -76,7 +71,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     return cleaned_number
 
 
-def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str:
+def validate_clean_decimal(number: int | float | str | Decimal) -> str:
     number = str(number)
 
     cleaned_number = _CLEAN_SPACES.sub('', number)
@@ -84,7 +79,7 @@ def validate_clean_decimal(number: int | float | str | Decimal | Sezimal) -> str
     if not _VALID_DECIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a decimal number')
 
-    cleaned_number = _clean_recurring_digits(cleaned_number, MAX_DECIMAL_PRECISION)
+    cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.decimal_precision)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -119,7 +114,7 @@ def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> st
     if not _VALID_NIFTIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a niftimal number')
 
-    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_SEZIMAL_PRECISION_DECIMAL / 2)
+    cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal // 2)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -155,7 +150,7 @@ def validate_clean_dozenal(number: str) -> str:
     if not _VALID_DOZENAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a dozenal number')
 
-    cleaned_number = _clean_recurring_digits(cleaned_number, _MAX_DOZENAL_PRECISION_DECIMAL)
+    cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.dozenal_precision)
 
     if cleaned_number.startswith('+'):
         cleaned_number = cleaned_number[1:]
@@ -233,6 +228,11 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
         if 'E-' not in number and 'E+' not in number and 'E' not in number:
             return number
 
+    negative = number.startswith('-')
+
+    if negative:
+        number = number[1:]
+
     if '.' in number:
         integer, fraction = number.split('.')
     else:
@@ -293,6 +293,9 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
         integer = '0'
 
     number = integer + '.' + fraction
+
+    if negative:
+        number = '-' + number
 
     return number
 

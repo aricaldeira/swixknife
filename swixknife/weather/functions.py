@@ -11,9 +11,10 @@ from decimal import Decimal
 from ..sezimal import Sezimal, SezimalInteger
 from ..date_time import SezimalDateTime
 
-from ..units.conversions import KILOMETER_PER_HOUR_TO_VEGA, \
-    KILOMETER_TO_CHAMAPADA, PASCAL_TO_DABA, METER_TO_PADA, \
-    PERCENTAGE_TO_PERSIXNIFF, MILLIMETER_TO_CHATIPADA
+from ..units import KILOMETER_PER_HOUR_TO_VEGA, \
+    KILOMETER_TO_PAMAPADA, PASCAL_TO_DABA, METER_TO_PADA, \
+    PERCENTAGE_TO_PERSIXNIFF, MILLIMETER_TO_DITIPADA, \
+    CELSIUS_TO_TAPA, kelvin_to_celsius, tapa_to_gatika
 
 
 def convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> SezimalDateTime:
@@ -21,21 +22,23 @@ def convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> Sezimal
 
 
 def convert_temperature_kelvin(kelvin: float, gatika: bool = False) -> Sezimal:
-    celsius = Sezimal(Decimal(str(kelvin))) - Sezimal(Decimal('273.15'))
+    celsius = kelvin_to_celsius(Sezimal(Decimal(str(kelvin))))
+    tapa = celsius * CELSIUS_TO_TAPA
 
-    return convert_temperature_celsius(celsius, gatika)
+    if gatika:
+        return round(tapa_to_gatika(tapa), 3)
+
+    return round(tapa, 3)
 
 
 def convert_temperature_celsius(celsius: float | Sezimal, gatika: bool | Sezimal = False) -> Sezimal:
     celsius = Sezimal(Decimal(str(celsius)))
+    tapa = celsius * CELSIUS_TO_TAPA
 
     if gatika:
-        gatika = celsius / Sezimal('0.244')
-        gatika = round(Sezimal(gatika), 4)
-        return gatika
+        return round(tapa_to_gatika(tapa), 2)
 
-    else:
-        return round(celsius, 4)
+    return round(tapa, 2)
 
 
 def convert_speed(speed: float) -> Sezimal:
@@ -43,11 +46,11 @@ def convert_speed(speed: float) -> Sezimal:
 
 
 def convert_distance(distance: float) -> Sezimal:
-    return round((Decimal(str(distance)) / 10_000) * KILOMETER_TO_CHAMAPADA, 0)
+    return round((Decimal(str(distance)) / 10_000) * KILOMETER_TO_PAMAPADA, 0)
 
 
 def convert_pressure(pressure: float) -> Sezimal:
-    return round((Decimal(str(pressure)) * 100) * PASCAL_TO_DABA / 1_0000, 0)
+    return round(Decimal(str(pressure)) * PASCAL_TO_DABA / 10_000, 0)
 
 
 def convert_percentage(percentage: float) -> Sezimal:
@@ -55,4 +58,4 @@ def convert_percentage(percentage: float) -> Sezimal:
 
 
 def convert_precipitation(precipitation: float) -> Sezimal:
-    return round(Decimal(str(precipitation)) * MILLIMETER_TO_CHATIPADA, 0)
+    return round(Decimal(str(precipitation)) * MILLIMETER_TO_DITIPADA, 0)

@@ -35,6 +35,12 @@ DECOMPRESS = {
 def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
     number = validate_clean_sezimal(number)
 
+    negative = False
+
+    if number.startswith('-'):
+        negative = True
+        number = number[1:]
+
     if '.' in number:
         integer, fraction = number.split('.')
     else:
@@ -67,6 +73,9 @@ def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated
 
     if dedicated_digits:
         niftimal_number = default_niftimal_to_dedicated_digits(niftimal_number)
+
+    if negative:
+        niftimal_number = '-' + niftimal_number
 
     return niftimal_number
 

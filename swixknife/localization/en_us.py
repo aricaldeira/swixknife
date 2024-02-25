@@ -34,7 +34,7 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
         # that occur on a specific date
         #
         ('01-01', '\ufe0f🎆 New Year’s Day'),
-        ('13_0304-11-04', '\ufe0f🇺🇸 Independence Day (#i)'),  # Thursday 13_0304-11-04 ~ 1776-07-04_dec
+        ('130_304-11-04', '\ufe0f🇺🇸 Independence Day (#i)'),  # Thursday 130_304-11-04 ~ 1776-07-04_dec
         ('10-31', '\ufe0f🇺🇸 Juneteenth Day'),
         ('15-15', '\ufe0f🇺🇸 Veterans’ Day'),
         ('20-41', '\ufe0f🎄 Christmas’ Day'),

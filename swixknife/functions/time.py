@@ -5,7 +5,7 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal
 from ..base import sezimal_format
-from ..units.conversions import SECOND_TO_AGRIMA
+from ..units import SECOND_TO_AGRIMA
 
 
 def agrimas_since_midnight() -> Sezimal:

@@ -1,0 +1,20 @@
+Medidas da água a 1 atm e
+293.150_547_159_702_806_710_267_922_561_179_315 K
+20.000_547_159_702_806_710_267_922_561_179_315_200 °C
+
+Calor específico da água
+    4_184.050_542_872_792_966_765_964_312_496_953_710 - usado
+    SF('2_4505_0402_2400_5423_5345_3030_4124_4502_0553_1523_4103_5443 / 5115_4542_5403_5413_0143_3103_5312_3432_4544_5305_0404')
+
+    (não deu pra saber a temperatura exata pq não cabia na precisão do wolframalpha)
+    4_184.050_542_873_949_780_187_103_897_333_145_140 J/(kg °C)
+
+    https://www.wolframalpha.com/input?i=specific+heat+of+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+36+digits+precision
+
+Densidade da água em g/cm³
+
+    998.207_037_512_698_661_885_224_282_741_546_631
+    SezimalFraction('133_3414_1122_3515_3332_3052_1225_5014_5255_3110_0411_0035 / 202_4503_3335_1102_4344_2110_5121_0330_4425_3343_3344')
+
+    Fonte:
+    https://www.wolframalpha.com/input?i=density+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+15+digits+precision

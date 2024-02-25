@@ -18,6 +18,7 @@ __status__ = 'Beta'
 from .base import *
 from .sezimal import *
 from .dozenal import *
+# from .decimal import *
 from .functions import *
 from .exponents import *
 from .units import *

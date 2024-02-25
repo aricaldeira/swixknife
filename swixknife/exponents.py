@@ -1,13 +1,14 @@
 
 from decimal import Decimal
 
-from .sezimal import Sezimal, SezimalInteger, MAX_PRECISION, MAX_DECIMAL_PRECISION
+from .sezimal import Sezimal, SezimalInteger
 from .functions import SezimalRange
+from .base import sezimal_context
 
-MAX_EXPONENT = SezimalInteger(MAX_PRECISION) - 4
+MAX_EXPONENT = SezimalInteger(sezimal_context.sezimal_precision) - 4
 MIN_EXPONENT = MAX_EXPONENT * -1
 
-MAX_DECIMAL_EXPONENT = SezimalInteger(Decimal(MAX_DECIMAL_PRECISION)) - 4
+MAX_DECIMAL_EXPONENT = SezimalInteger(Decimal(sezimal_context.decimal_precision)) - 4
 MIN_DECIMAL_EXPONENT = MAX_DECIMAL_EXPONENT * -1
 
 

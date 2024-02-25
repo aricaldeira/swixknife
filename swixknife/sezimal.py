@@ -25,76 +25,24 @@ from .base import validate_clean_sezimal, \
     sezimal_to_dozenal, dozenal_format, \
     sezimal_to_niftimal, niftimal_format, \
     dozenal_to_sezimal, \
-    MAX_DECIMAL_PRECISION, MAX_SEZIMAL_PRECISION
+    sezimal_context
 
 
-getcontext().prec = MAX_DECIMAL_PRECISION
-MAX_PRECISION = MAX_SEZIMAL_PRECISION
+getcontext().prec = sezimal_context.decimal_precision
 
 #
 # Operations maps/tables
 #
-_ADDITION_MAP = {
-    '0': {'0': '0', '1':  '1', '2':  '2', '3':  '3', '4':  '4', '5':  '5', '10': '10', '11': '11', '12': '12', '13': '13', '14': '14'},
-    '1': {'0': '1', '1':  '2', '2':  '3', '3':  '4', '4':  '5', '5': '10', '10': '11', '11': '12', '12': '13', '13': '14', '14': '15'},
-    '2': {'0': '2', '1':  '3', '2':  '4', '3':  '5', '4': '10', '5': '11', '10': '12', '11': '13', '12': '14', '13': '15', '14': '20'},
-    '3': {'0': '3', '1':  '4', '2':  '5', '3': '10', '4': '11', '5': '12', '10': '13', '11': '14', '12': '15', '13': '20', '14': '21'},
-    '4': {'0': '4', '1':  '5', '2': '10', '3': '11', '4': '12', '5': '13', '10': '14', '11': '15', '12': '20', '13': '21', '14': '22'},
-    '5': {'0': '5', '1': '10', '2': '11', '3': '12', '4': '13', '5': '14', '10': '15', '11': '20', '12': '21', '13': '22', '14': '23'},
-}
+from . import _sezimal_maps
 
-_SUBTRACTION_MAP = {
-    '0': {'0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5'},
-    '1': {'0': '1', '1': '0', '2': '1', '3': '2', '4': '3', '5': '4'},
-    '2': {'0': '2', '1': '1', '2': '0', '3': '1', '4': '2', '5': '3'},
-    '3': {'0': '3', '1': '2', '2': '1', '3': '0', '4': '1', '5': '2'},
-    '4': {'0': '4', '1': '3', '2': '2', '3': '1', '4': '0', '5': '1'},
-    '5': {'0': '5', '1': '4', '2': '3', '3': '2', '4': '1', '5': '0'},
-    '10': {'0': '10', '1':  '5', '2':  '4', '3':  '3', '4':  '2', '5':  '1'},
-    '11': {'0': '11', '1': '10', '2':  '5', '3':  '4', '4':  '3', '5':  '2'},
-    '12': {'0': '12', '1': '11', '2': '10', '3':  '5', '4':  '4', '5':  '3'},
-    '13': {'0': '13', '1': '12', '2': '11', '3': '10', '4':  '5', '5':  '4'},
-    '14': {'0': '14', '1': '13', '2': '12', '3': '11', '4': '10', '5':  '5'},
-    '15': {'0': '15', '1': '14', '2': '13', '3': '12', '4': '11', '5': '10'},
-}
-
-_SUBTRACTION_BORROWED = {
-    '0': '5',
-    '1': '0',
-    '2': '1',
-    '3': '2',
-    '4': '3',
-    '5': '4',
-}
-
-_MULTIPLICATION_MAP = {
-    '0': {'0': '0', '1': '0', '2':  '0', '3':  '0', '4':  '0', '5':  '0'},
-    '1': {'0': '0', '1': '1', '2':  '2', '3':  '3', '4':  '4', '5':  '5'},
-    '2': {'0': '0', '1': '2', '2':  '4', '3': '10', '4': '12', '5': '14'},
-    '3': {'0': '0', '1': '3', '2': '10', '3': '13', '4': '20', '5': '23'},
-    '4': {'0': '0', '1': '4', '2': '12', '3': '20', '4': '24', '5': '32'},
-    '5': {'0': '0', '1': '5', '2': '14', '3': '23', '4': '32', '5': '41'},
-}
-
-_RECIPROCAL_MAP = {
-    '2': '0.3', '3': '0.2', '4': '0.13', '5': '0.1p',
-    '10': '0.1', '11': '0.05_p', '12': '0.043', '13': '0.04', '14': '0.03p', '15': '0.0313_4524_21__p',
-    '20': '0.03', '21': '0.0243_4053_1215__p', '22': '0.0_23_p', '23': '0.02p', '24': '0.0213', '25': '0.0204_1224_5351_4331__p',
-    '30': '0.02', '31': '0.0152_1132_5__p', '32': '0.014p', '33': '0.0_14_p', '34': '0.0__1345_2421_03__p', '35': '0.0132_2030_441__p',
-    '40': '0.013', '41': '0.0123_5__p', '42': '0.0__1215_0243_4053__p', '43': '0.012', '44': '0.01_14_p', '45': '0.0112_4045_4431_51__p',
-    '50': '0.01p', '51': '0.0105_45__p', '52': '0.0104_3', '53': '0.0__1031_3452_42__p', '54': '0.0__1020_4122_4535_1433__p', '55': '0.01_p',
-    '100': '0.01', '101': '0.0055_p', '102': '0.0__0540_3442_3__p', '103': '0.0__0531_2150_2434__p', '104': '0.0052p', '105': '0.0051_3354_1244_0330_2344_5504_2201_4311_5225_3211_0051_3p',
-    '110': '0.0_05_p', '111': '0.005_p', '112': '0.00__4524_2103_13__p', '113': '0.004p', '114': '0.0__0441_0132_203__p', '115': '0.0043_3240_3021_4420_1310_521__p',
-    '120': '0.0043', '121': '0.0042_2405_5133_15__p', '122': '0.0__0415_3__p', '123': '0.0__0412_2453_5143_3102__p', '124': '0.00__4053_1215_0243__p', '125': '0.0040_2414_5112_4551_5314_1044_3100_4024_1451_1245_5153__14_p',
-    '130': '0.004', '131': '0.0035_3214_25__p', '132': '0.003_50_p', '133': '0.0__0344_2305_4__p', '134': '0.0__0342_0225_2135_33__p', '135': '0.0033_5444_0223_5104_1343_2425_0301_4552_2011_1533_20_451_p',
-    '140': '0.003p', '141': '0.0033_1250_4044_1544_5301_4342_3202_2055_2243_0515__1140_p', '142': '0.0__0325_23__p', '143': '0.00_32_p', '144': '0.0032_13', '145': '0.0031_5344_1251__p',
-    '150': '0.0__0313_4524_21__p', '151': '0.0031_2020_5212_3325_4215_4531_5141_1304_5003_1202_0521__23_p', '152': '0.00__3102_0412_2453_5143__p', '153': '0.0__0304_4101_322__p', '154': '0.0_03_p', '155': '0.0030_1304_3214_0502_3113_3445_2241_2040_2010_0301_3043__21_p',
-    '200': '0.003', '201': '0.0025_4304_2344_0354_0055_3012_5132_1152_0155_0025_4304__23_p', '202': '0.0_0253_p', '203': '0.0__0251_4__p', '204': '0.00__2501_5211_3__p', '205': '0.0024_4553_11__p',
-    '210': '0.0__0243_4053_1215__p', '211': '0.0024_2232_5434_4413_0403_3512_3541_0214_0052_4505_5313__32_p', '212': '0.0024_1p', '213': '0.0024', '214': '0.0023_4455_0422_0143_1152_2532_1100_5133_5412_4403_3023_4p', '215': '0.0023_3404_2005_1121_2401_4224_2520_3245_2544_1053_4553_2p',
-    '220': '0.00_23_p', '221': '0.0023_1252_1043_5415__p', '222': '0.0_023_p', '223': '0.0__0225_2135_3303_42__p', '224': '0.002__2421_0313_45__p', '225': '0.0022_3212_0312_2544_4151_5421_4303_3502_0045_0424_1024_5p',
-    '230': '0.002p', '231': '0.0022_1241_1525__p', '232': '0.00__2203_0441_013__p', '233': '0.0__0215_34__p', '234': '0.0__0214_4201_3105_2100_4332_403__p', '235': '0.0021_3504_1__p',
-    '240': '0.0021_3', '241': '0.0021_2055_3435__p', '242': '0.0__0211_2025_3443_53__p', '243': '0.00__2103_1345_24__p', '244': '0.00__2054_3__p',
-}
+_ADDITION_MAP = _sezimal_maps.ADDITION_MAP
+_SUBTRACTION_MAP = _sezimal_maps.SUBTRACTION_MAP
+_SUBTRACTION_BORROWED = _sezimal_maps.SUBTRACTION_BORROWED
+_MULTIPLICATION_MAP = _sezimal_maps.MULTIPLICATION_MAP
+_RECIPROCAL_MAP = _sezimal_maps.RECIPROCAL_MAP
+_FACTORIAL = _sezimal_maps.FACTORIAL
+_EXP = {}
+_LN = {}
 
 
 class Sezimal:
@@ -142,7 +90,7 @@ class Sezimal:
         #
         if original_decimal is None:
             with localcontext() as context:
-                context.prec = MAX_DECIMAL_PRECISION
+                context.prec = sezimal_context.decimal_precision
                 self._value = Decimal(sezimal_to_decimal(cleaned_number)) ## .quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
                 self._value *= self._sign
 
@@ -165,7 +113,7 @@ class Sezimal:
         if not self._fraction:
             return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0)}')"
         else:
-            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=MAX_DECIMAL_PRECISION)}')"
+            return f"Sezimal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=sezimal_context.decimal_precision)}')"
 
     @property
     def formatted_number(self) -> str:
@@ -180,7 +128,7 @@ class Sezimal:
         if not self._fraction:
             return decimal_format(str(self._value), decimal_places=0)
         else:
-            return decimal_format(str(self._value), decimal_places=MAX_DECIMAL_PRECISION)
+            return decimal_format(str(self._value), decimal_places=sezimal_context.decimal_precision)
 
     @property
     def dozenal(self) -> str:
@@ -539,7 +487,7 @@ class Sezimal:
 
         return adjust
 
-    def __round__(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
+    def __round__(self, precision: IntegerSelf = sezimal_context.sezimal_precision) -> Self:
         precision = SezimalInteger(precision)
 
         if self._precision <= int(precision):
@@ -569,7 +517,7 @@ class Sezimal:
 
         return rounded
 
-    def trunc(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
+    def trunc(self, precision: IntegerSelf = sezimal_context.sezimal_precision) -> Self:
         if precision is None:
             precision = 0
 
@@ -589,10 +537,17 @@ class Sezimal:
         return self == self.trunc(0)
 
     def _mult_div_finalizing(self):
-        res = round(self, MAX_PRECISION)
+        res = round(self, sezimal_context.sezimal_precision)
 
-        if str(res).endswith('5555'):
-            res += Sezimal(f'1E-{decimal_to_sezimal(res._precision)}')
+        if res._fraction and len(res._fraction) >= 3:
+            fives = res._fraction[::-1][3:][::-1]
+
+            if fives.endswith('55555'):
+                res += Sezimal(f'1E-{decimal_to_sezimal(res._precision)}')
+            elif fives.endswith('55554'):
+                res += Sezimal(f'2E-{decimal_to_sezimal(res._precision)}')
+            elif fives.endswith('55553'):
+                res += Sezimal(f'3E-{decimal_to_sezimal(res._precision)}')
 
         return res
 
@@ -726,7 +681,7 @@ class Sezimal:
         # # Return quotient and remainder as strings
         # return quotient_str, int(remainder_str[::-1])
 
-    def __division(self, other_number: Self, max_precision: IntegerSelf = MAX_PRECISION) -> str:
+    def __division(self, other_number: Self, max_precision: IntegerSelf = None) -> str:
         #
         # Divides two values;
         # the final sign of the operation is dealt with by the calling method: __div__
@@ -740,8 +695,19 @@ class Sezimal:
         if other_number == 1:
             return str(self)
 
-        if self == 1 and str(other_number) in _RECIPROCAL_MAP:
-            return _RECIPROCAL_MAP[str(other_number)]
+        negative = other_number < 0
+        check = str(other_number).replace('-', '')
+
+        if self == 1 and check in _RECIPROCAL_MAP:
+            division = validate_clean_sezimal(_RECIPROCAL_MAP[check], double_precision=True)
+
+            if negative:
+                division = '-' + division
+
+            return division
+
+        if max_precision is None:
+            max_precision = sezimal_context.sezimal_precision
 
         max_precision = int(SezimalInteger(max_precision))
 
@@ -769,11 +735,16 @@ class Sezimal:
         quotient, remainder = self.__basic_division(dividend, divisor)
         max_precision = max(final_precision, max_precision) * 2
 
+        original_precision = sezimal_context.sezimal_precision
+        sezimal_context.sezimal_precision = decimal_to_sezimal(str(max_precision))
+
         while remainder > 0 and final_precision < max_precision:
             dividend = remainder * 10
             final_precision += 1
             q, remainder = self.__basic_division(dividend, divisor)
             quotient = Sezimal(str(quotient) + str(q))
+
+        sezimal_context.sezimal_precision = original_precision
 
         division = str(quotient)
 
@@ -787,6 +758,12 @@ class Sezimal:
 
             division = division[0:final_precision] + '.' + division[final_precision:]
             division = division[::-1]
+
+        if self == 1:
+            _RECIPROCAL_MAP[check] = division
+
+        if negative:
+            division = '-' + division
 
         return division
 
@@ -803,7 +780,7 @@ class Sezimal:
             if other_number == 1 or other_number == -1:
                 reciprocal = other_number
             else:
-                reciprocal = Sezimal('1').__division(other_number) * other_number._sign
+                reciprocal = Sezimal('1').__division(other_number)
 
         return self * reciprocal
 
@@ -890,33 +867,50 @@ class Sezimal:
 
         return other_number.__mod__(self)
 
-    def factorial(self) -> Self:
+    def factorial(self) -> IntegerSelf:
         if self == 0 or self == 1:
-            return Sezimal(1)
+            return SezimalInteger(1)
 
         if self == 2:
-            return Sezimal(2)
+            return SezimalInteger(2)
 
-        integer = Sezimal(self._integer)
+        integer = SezimalInteger(self._integer)
+
+        if integer in _FACTORIAL:
+            return _FACTORIAL[integer]
+
+        if str(integer) in _FACTORIAL:
+            _FACTORIAL[integer] = SezimalInteger(_FACTORIAL[str(integer)])
+            del _FACTORIAL[str(integer)]
+            return _FACTORIAL[integer]
+
         next_integer = integer - 1
 
-        return integer * next_integer.factorial()
+        _FACTORIAL[integer] = SezimalInteger(integer * next_integer.factorial())
+
+        return _FACTORIAL[integer]
 
     def calculus_exp(self) -> Self:
+        sezimal_context.sezimal_precision_decimal += 4
+
         result = Sezimal(1)
-        term = Sezimal(1)
-        i = Sezimal(1)
 
-        while term > 0:
-            term *= self * (Sezimal(1) / i)
-            result += term
-            i += 1
+        for i in range(1, sezimal_context.sezimal_precision_decimal + 1):
+            i = SezimalInteger(Decimal(i))
+            result += (self ** i) / i.factorial()
 
-        return result
+        sezimal_context.sezimal_precision_decimal -= 4
+
+        return result._mult_div_finalizing()
 
     def exp(self) -> Self:
-        result = self.decimal.exp()
-        result = Sezimal(result)
+        with localcontext() as context:
+            context.prec = sezimal_context.decimal_precision + 3
+            sezimal_context.sezimal_precision_decimal += 4
+            result = self.decimal.exp()
+            result = Sezimal(result)
+            sezimal_context.sezimal_precision_decimal -= 4
+
         return result._mult_div_finalizing()
 
     # def calculus_ln(self) -> Self:
@@ -936,9 +930,12 @@ class Sezimal:
     #     return result
 
     def ln(self) -> Self:
-        result = self.decimal.ln()
-        result = Sezimal(result)
-        return result._mult_div_finalizing()
+        with localcontext() as context:
+            context.prec = sezimal_context.decimal_precision + 3
+            sezimal_context.sezimal_precision_decimal += 4
+            result = self.decimal.ln()
+            result = Sezimal(result)
+            sezimal_context.sezimal_precision_decimal -= 4
 
     def __calculus_power(self, other_number: Self) -> Self:
         if other_number == 0:
@@ -1003,25 +1000,31 @@ class Sezimal:
 
     def log(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = sezimal_context.decimal_precision + 3
+            sezimal_context.sezimal_precision_decimal += 4
             result = self.decimal.ln() / Decimal(6).ln()
             result = Sezimal(result)
+            sezimal_context.sezimal_precision_decimal -= 4
 
         return result._mult_div_finalizing()
 
     def log2(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = sezimal_context.decimal_precision + 3
+            sezimal_context.sezimal_precision_decimal += 4
             result = self.decimal.ln() / Decimal(2).ln()
             result = Sezimal(result)
+            sezimal_context.sezimal_precision_decimal -= 4
 
         return result._mult_div_finalizing()
 
     def log14(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = sezimal_context.decimal_precision + 3
+            sezimal_context.sezimal_precision_decimal += 4
             result = self.decimal.ln() / Decimal(10).ln()
             result = Sezimal(result)
+            sezimal_context.sezimal_precision_decimal -= 4
 
         return result._mult_div_finalizing()
 
@@ -1128,8 +1131,8 @@ class SezimalFraction(Sezimal):
 
         self._numerator = Sezimal(cleaned_numerator)
         self._denominator = Sezimal(cleaned_denominator)
-        # self._sezimal = self._numerator / self._denominator
-        self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
+        self._sezimal = self._numerator / self._denominator
+        # self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
 
         super().__init__(self._sezimal)
 
@@ -1142,8 +1145,12 @@ class SezimalFraction(Sezimal):
         return self._denominator
 
     @property
-    def sezimal(self):
+    def sezimal(self) -> Sezimal:
         return self._sezimal
+
+    @property
+    def decimal(self) -> Decimal:
+        return self._numerator.decimal / self._denominator.decimal
 
     @property
     def reciprocal(self) -> FractionSelf:
@@ -1165,8 +1172,16 @@ class SezimalFraction(Sezimal):
 
         return res
 
+    @property
+    def formatted_number(self):
+        return f'{self._numerator.formatted_number} / {self._denominator.formatted_number}'
+
+    @property
+    def decimal_formatted_number(self):
+        return f'{self._numerator.decimal_formatted_number} / {self._denominator.decimal_formatted_number}'
+
     def __repr__(self) -> str:
-        return f"SezimalFraction('{self._numerator.formatted_number}/{self._denominator.formatted_number}') == {self._sezimal.__repr__()}"
+        return f"SezimalFraction('{self.formatted_number}') == {self._sezimal.__repr__()}"
 
     def as_integer_ratio(self) -> tuple[IntegerSelf, IntegerSelf]:
         return self._numerator, self._denominator
@@ -1174,18 +1189,25 @@ class SezimalFraction(Sezimal):
     def as_decimal_integer_ratio(self) -> tuple[Decimal, Decimal]:
         return int(self._numerator.decimal), int(self._denominator.decimal)
 
+    def as_decimal_ratio(self) -> tuple[Decimal, Decimal]:
+        return self._numerator.decimal, self._denominator.decimal
+
     def __mul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
         if type(other_number) == SezimalFraction:
             numerator = self.numerator * other_number.numerator
             denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
-        if other_number._fraction == '':
+        numerator = self.numerator * other_number
+
+        if numerator._fraction == '':
             numerator = self.numerator * other_number
             denominator = self.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         return super().__mul__(other_number)
@@ -1194,54 +1216,26 @@ class SezimalFraction(Sezimal):
         if type(other_number) == SezimalFraction:
             numerator = self.numerator * other_number.numerator
             denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
-        if other_number._fraction == '':
-            numerator = self.numerator * other_number
+        numerator = self.numerator * other_number
+
+        if numerator._fraction == '':
             denominator = self.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         return super().__rmul__(other_number)
-
-    # def __div__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
-    #     if type(other_number) == SezimalFraction:
-    #         numerator = self.numerator * other_number.denominator
-    #         denominator = self.denominator * other_number.numerator
-    #         return SezimalFraction(numerator, denominator)
-    #
-    #     if type(other_number) != Sezimal:
-    #         other_number = Sezimal(other_number)
-    #
-    #     if other_number._fraction == '':
-    #         numerator = self.numerator
-    #         denominator = self.denominator * other_number
-    #         return SezimalFraction(numerator, denominator)
-    #
-    #     return super().__div__(other_number)
-    #
-    # def __rdiv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
-    #     if type(other_number) == SezimalFraction:
-    #         numerator = self.numerator * other_number.denominator
-    #         denominator = self.denominator * other_number.numerator
-    #         return SezimalFraction(numerator, denominator)
-    #
-    #     if type(other_number) != Sezimal:
-    #         other_number = Sezimal(other_number)
-    #
-    #     if other_number._fraction == '':
-    #         numerator = self.numerator
-    #         denominator = self.denominator * other_number
-    #         return SezimalFraction(numerator, denominator)
-    #
-    #     return super().__rdiv__(other_number)
 
     def __truediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
         if type(other_number) == SezimalFraction:
             numerator = self.numerator * other_number.denominator
             denominator = self.denominator * other_number.numerator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         if type(other_number) != Sezimal:
@@ -1250,6 +1244,7 @@ class SezimalFraction(Sezimal):
         if other_number._fraction == '':
             numerator = self.numerator
             denominator = self.denominator * other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         return super().__truediv__(other_number)
@@ -1258,6 +1253,7 @@ class SezimalFraction(Sezimal):
         if type(other_number) == SezimalFraction:
             numerator = self.numerator * other_number.denominator
             denominator = self.denominator * other_number.numerator
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         if type(other_number) != Sezimal:
@@ -1266,6 +1262,7 @@ class SezimalFraction(Sezimal):
         if other_number._fraction == '':
             numerator = self.numerator
             denominator = self.denominator * other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(denominator, numerator)
 
         return super().__rtruediv__(other_number)
@@ -1277,9 +1274,46 @@ class SezimalFraction(Sezimal):
         if other_number._fraction == '':
             numerator = self.numerator ** other_number
             denominator = self.denominator ** other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
             return SezimalFraction(numerator, denominator)
 
         return super().__pow__(other_number)
+
+    def simplify(self) -> FractionSelf:
+        num, den = self.__simplify(self.numerator, self.denominator)
+
+        if num == self.numerator and den == self.denominator:
+            return self
+
+        return SezimalFraction(num, den)
+
+    def __simplify(self, num, den):
+        num = num.decimal
+        den = den.decimal
+
+        _PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049, 1051, 1061, 1063, 1069, 1087, 1091, 1093, 1097, 1103, 1109, 1117, 1123, 1129, 1151, 1153, 1163, 1171, 1181, 1187, 1193, 1201, 1213, 1217, 1223)
+
+        for factor in _PRIMES:
+            factor = Decimal(factor)
+
+            if factor > min(num, den):
+                continue
+
+            while True:
+                num_test = num / factor
+
+                if num_test != int(num_test):
+                    break
+
+                den_test = den / factor
+
+                if den_test != int(den_test):
+                    break
+
+                num = num_test
+                den = den_test
+
+        return SezimalInteger(num), SezimalInteger(den)
 
 
 _numbers.Number.register(Sezimal)

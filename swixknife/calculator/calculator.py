@@ -8,7 +8,9 @@ from ..sezimal import Sezimal, SezimalInteger
 from ..constants import E, PI, TAU, GOLDEN_RATIO
 from ..base import default_to_dedicated_digits, decimal_to_sezimal, \
     validate_clean_sezimal, validate_clean_decimal, \
-    sezimal_format, decimal_format
+    sezimal_format, decimal_format, \
+    RECURRING_DIGITS_NOTATION_NONE, \
+    RECURRING_DIGITS_NOTATION_SIMPLE
 
 from ..localization import SezimalLocale, sezimal_locale
 
@@ -56,8 +58,8 @@ _OPERATION = {
     '__MULTIPLY__': '*',
     '__POWER__': '**',
     '__PERNIF__': "/Sezimal('100')",
-    '__PERSIXNIF__': "/Sezimal('1000')",
-    '__PERUNEXIAN__': "/Sezimal('1_0000')",
+    '__PERSIXNIF__': "/Sezimal('1_000')",
+    '__PERUNEXIAN__': "/Sezimal('10_000')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -75,8 +77,8 @@ _OPERATION_DECIMAL  = {
     '__MULTIPLY__': '*',
     '__POWER__': '**',
     '__PERNIF__': "/Sezimal('244')",
-    '__PERSIXNIF__': "/Sezimal('4344')",
-    '__PERUNEXIAN__': "/Sezimal('11_4144')",
+    '__PERSIXNIF__': "/Sezimal('4_344')",
+    '__PERUNEXIAN__': "/Sezimal('114_144')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -182,7 +184,7 @@ class SezimalCalculator:
         params = {
             'sezimal_places': 0,
             'dedicated_digits': self.dedicated_digits,
-            'mark_recurring_digits': 'p',
+            'recurring_digits_notation': 'p',
         }
 
         if not display:
@@ -232,7 +234,7 @@ class SezimalCalculator:
             precision = Decimal(precision)
 
         params['sezimal_places'] = Decimal(precision)
-        params['mark_recurring_digits'] = False
+        params['recurring_digits_notation'] = RECURRING_DIGITS_NOTATION_NONE
 
         if not display:
             return sezimal_format(
@@ -248,7 +250,7 @@ class SezimalCalculator:
     def _format_decimal(self, number, precision: int = None, display: bool = False):
         params = {
             'decimal_places': 0,
-            'mark_recurring_digits': '.',
+            'recurring_digits_notation': RECURRING_DIGITS_NOTATION_MIDDLE_DOT,
         }
 
         if not display:
@@ -256,7 +258,7 @@ class SezimalCalculator:
             params['group_separator'] = '_'
             params['fraction_group_separator'] = '_'
             params['typographical_negative'] = False
-            params['mark_recurring_digits'] = 'p'
+            params['recurring_digits_notation'] = RECURRING_DIGITS_NOTATION_SIMPLE
             p_notation = decimal_format(number, **params)
 
         else:
@@ -298,7 +300,7 @@ class SezimalCalculator:
             precision = Decimal(precision)
 
         params['decimal_places'] = precision
-        params['mark_recurring_digits'] = False
+        params['recurring_digits_notation'] = RECURRING_DIGITS_NOTATION_NONE
 
         if not display:
             return decimal_format(
@@ -399,11 +401,11 @@ class SezimalCalculator:
 
                 if self.decimal:
                     display = display.replace('%', ' ÷ 244')
-                    display = display.replace('‰', ' ÷ 4344')
-                    display = display.replace('‱', f' ÷ 11{self.locale.GROUP_SEPARATOR}4144')
+                    display = display.replace('‰', f' ÷ 4{self.locale.GROUP_SEPARATOR}344')
+                    display = display.replace('‱', f' ÷ 114{self.locale.GROUP_SEPARATOR}144')
 
                     exp = exp.replace('%', ' / 100')
-                    exp = exp.replace('‰', ' / 1000')
+                    exp = exp.replace('‰', ' / 1_000')
                     exp = exp.replace('‱', ' / 10_000')
 
                 else:
@@ -469,21 +471,21 @@ class SezimalCalculator:
 
         if self.decimal:
             sezimal_expression = sezimal_expression.replace(" /Sezimal('244')", ' / 244')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('4344')", ' / 4344')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('11_4144')", ' / 11_4144')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('4_344')", ' / 4_344')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('114_144')", ' / 114_144')
 
             decimal_expression = decimal_expression.replace(" /Sezimal('244')", '%')
-            decimal_expression = decimal_expression.replace(" /Sezimal('4344')", '‰')
-            decimal_expression = decimal_expression.replace(" /Sezimal('11_4144')", '‱')
+            decimal_expression = decimal_expression.replace(" /Sezimal('4_344')", '‰')
+            decimal_expression = decimal_expression.replace(" /Sezimal('114_144')", '‱')
 
         else:
             sezimal_expression = sezimal_expression.replace(" /Sezimal('100')", '%')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('1000')", '‰')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('1_000')", '‱')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('1_000')", '‰')
+            sezimal_expression = sezimal_expression.replace(" /Sezimal('10_000')", '‱')
 
             decimal_expression = decimal_expression.replace(" /Sezimal('100')", ' / 36')
-            decimal_expression = decimal_expression.replace(" /Sezimal('1000')", ' / 216')
-            decimal_expression = decimal_expression.replace(" /Sezimal('1_000')", ' / 1_296')
+            decimal_expression = decimal_expression.replace(" /Sezimal('1_000')", ' / 216')
+            decimal_expression = decimal_expression.replace(" /Sezimal('10_000')", ' / 1_296')
 
         self._sezimal_expression = sezimal_expression
         self._decimal_expression = decimal_expression

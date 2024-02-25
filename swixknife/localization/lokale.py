@@ -305,6 +305,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str = False,
+        grouping_digits: int = 3,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -325,6 +326,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             recurring_digits_notation,
+            grouping_digits,
         )
 
     def format_decimal_number(self,

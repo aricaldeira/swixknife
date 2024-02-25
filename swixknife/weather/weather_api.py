@@ -10,9 +10,10 @@ ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 from ..sezimal import SezimalInteger
 from .weather import SezimalWeather
 from . import functions
+from ..json import json
 
+import os
 import requests
-import json
 
 # nublado fechado ☁️
 # raios 🌩️
@@ -60,11 +61,11 @@ def get_weather_conditions(
                 functions.convert_time(observation['current']['last_updated_epoch'], time_zone)
 
         if 'temp_c' in observation['current']:
-            observation['current']['temp_s'] = \
+            observation['current']['temp_tapa'] = \
                 functions.convert_temperature_celsius(observation['current']['temp_c'])
 
         if 'feelslike_c' in observation['current']:
-            observation['current']['feelslike_s'] = \
+            observation['current']['feelslike_tapa'] = \
                 functions.convert_temperature_celsius(observation['current']['feelslike_c'])
 
         if 'wind_kph' in observation['current']:
@@ -77,10 +78,10 @@ def get_weather_conditions(
 
         if 'pressure_mb' in observation['current']:
             observation['current']['pressure_chamadaba'] = \
-                functions.convert_speed(observation['current']['pressure_mb'])
+                functions.convert_speed(observation['current']['pressure_mb'] * 100)
 
         if 'precip_mm' in observation['current']:
-            observation['current']['precipitation_chatipada'] = \
+            observation['current']['precipitation_ditipada'] = \
                 functions.convert_precipitation(observation['current']['precip_mm'])
 
         if 'humidity' in observation['current']:
@@ -92,8 +93,15 @@ def get_weather_conditions(
                 functions.convert_percentage(observation['current']['cloud'])
 
         if 'vis_km' in observation['current']:
-            observation['current']['vis_chamapada'] = \
-                functions.convert_distance(observation['current']['vis_km'])
+            observation['current']['vis_pamapada'] = \
+                functions.convert_distance(observation['current']['vis_km'] * 10_000)
+
+    #
+    # Save this reading for future reference
+    #
+    observation['api_type'] = 'weather_api'
+    filename = os.path.expanduser('~/.sweather.json')
+    open(filename, 'w').write(json.dumps(observation))
 
     return observation
 
@@ -105,11 +113,11 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'last_updated_date_time' in conditions:
         weather._reference_date_time = conditions['last_updated_date_time']
 
-    if 'temp_s' in conditions:
-        weather._temperature = conditions['temp_s']
+    if 'temp_tapa' in conditions:
+        weather._temperature = conditions['temp_tapa']
 
-    if 'feelslike_s' in conditions:
-        weather._temperature_sensation = conditions['feelslike_s']
+    if 'feelslike_tapa' in conditions:
+        weather._temperature_sensation = conditions['feelslike_tapa']
 
     if 'wind_vega' in conditions:
         weather._wind_speed = conditions['wind_vega']
@@ -123,8 +131,8 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'clouds' in conditions:
         weather._clouds = conditions['clouds']
 
-    if 'vis_chamapada' in conditions:
-        weather._visibility = conditions['vis_chamapada']
+    if 'vis_pamapada' in conditions:
+        weather._visibility = conditions['vis_pamapada']
 
     if 'pressure_chamadaba' in conditions:
         weather._pressure = conditions['pressure_chamadaba']

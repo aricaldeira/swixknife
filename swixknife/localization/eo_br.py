@@ -54,17 +54,17 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('13_0332-04-32', '\ufe0f🇧🇷🔺 Tiradentes'),                 # Sabato   13_0332-04-32 ~ 1792-04-21_dec
-        # ('13_1124-11-10', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈)'),    # Sabato   13_1124-11-10 ~ 1932-07-09_dec
-        # ('13_0422-13-10', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo'),   # Sabato   13_0422-13-10 ~ 1822-09-07_dec
-        # ('13_1013-15-31', '\ufe0f🇧🇷📜 Proklamo de la Respubliko'),  # Vendredo 13_1013-15-31 ~ 1889-11-15_dec
-        # ('13_0051-15-33', '\ufe0f👨🏿 Nigra Konscienco'),             # Dimanĉo  13_0051-15-33 ~ 1695-11-20_dec
+        # ('130_332-04-32', '\ufe0f🇧🇷🔺 Tiradentes'),                 # Sabato   130_332-04-32 ~ 1792-04-21_dec
+        # ('131_124-11-10', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈)'),    # Sabato   131_124-11-10 ~ 1932-07-09_dec
+        # ('130_422-13-10', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo'),   # Sabato   130_422-13-10 ~ 1822-09-07_dec
+        # ('131_013-15-31', '\ufe0f🇧🇷📜 Proklamo de la Respubliko'),  # Vendredo 131_013-15-31 ~ 1889-11-15_dec
+        # ('130_051-15-33', '\ufe0f👨🏿 Nigra Konscienco'),             # Dimanĉo  130_051-15-33 ~ 1695-11-20_dec
 
-        ('13_0332-04-33', '\ufe0f🇧🇷🔺 Tiradentes'),                      # Dimanĉo, 04-33 ~ 04-21_dec
-        ('13_1124-11-13', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈) (#i)'),    # Mardo,   11-13 ~ 07-09_dec
-        ('13_0422-13-11', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo (#i)'),   # Dimanĉo, 13-11 ~ 09-07_dec
-        ('13_1013-15-23', '\ufe0f🇧🇷📜 Proklamo de la Respubliko (#i)'),  # Lundo,   15-23 ~ 11-15_dec
-        ('13_0051-15-32', '\ufe0f👨🏿 Nigra Konscienco'),                  # Sabato,  15-32 ~ 11-20_dec
+        ('130_332-04-33', '\ufe0f🇧🇷🔺 Tiradentes'),                      # Dimanĉo, 04-33 ~ 04-21_dec
+        ('131_124-11-13', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈) (#i)'),    # Mardo,   11-13 ~ 07-09_dec
+        ('130_422-13-11', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo (#i)'),   # Dimanĉo, 13-11 ~ 09-07_dec
+        ('131_013-15-23', '\ufe0f🇧🇷📜 Proklamo de la Respubliko (#i)'),  # Lundo,   15-23 ~ 11-15_dec
+        ('130_051-15-32', '\ufe0f👨🏿 Nigra Konscienco'),                  # Sabato,  15-32 ~ 11-20_dec
     ] + SezimalLocaleEO.HOLIDAYS
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -100,9 +100,9 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %-d for year, month and day, respectively
         #
-        ('ISO-1792-04-21', '\ufe0f🇧🇷🔺 Tiradentes (%d-%b)'),                      # Sabato   13_0332-04-32 ~ 1792-04-21_dec
-        ('ISO-1932-07-09', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈) (%d-%b - %i)'),    # Sabato   13_1124-11-10 ~ 1932-07-09_dec
-        ('ISO-1822-09-07', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo (%d-%b - %i)'),   # Sabato   13_0422-13-10 ~ 1822-09-07_dec
-        ('ISO-1889-11-15', '\ufe0f🇧🇷📜 Proklamo de la Respubliko (%d-%b - %i)'),  # Vendredo 13_1013-15-31 ~ 1889-11-15_dec
-        ('ISO-1695-11-20', '\ufe0f👨🏿 Nigra Konscienco (%d-%b)'),                  # Dimanĉo 13_0051-15-33 ~ 1695-11-20_dec
+        ('ISO-1792-04-21', '\ufe0f🇧🇷🔺 Tiradentes (%d-%b)'),                      # Sabato   130_332-04-32 ~ 1792-04-21_dec
+        ('ISO-1932-07-09', '\ufe0f🪖📜 Revolucio de 1932 (3̇1̇4̈) (%d-%b - %i)'),    # Sabato   131_124-11-10 ~ 1932-07-09_dec
+        ('ISO-1822-09-07', '\ufe0f🇧🇷🕊️  Sendependeco de Brazilo (%d-%b - %i)'),   # Sabato   130_422-13-10 ~ 1822-09-07_dec
+        ('ISO-1889-11-15', '\ufe0f🇧🇷📜 Proklamo de la Respubliko (%d-%b - %i)'),  # Vendredo 131_013-15-31 ~ 1889-11-15_dec
+        ('ISO-1695-11-20', '\ufe0f👨🏿 Nigra Konscienco (%d-%b)'),                  # Dimanĉo 130_051-15-33 ~ 1695-11-20_dec
     ] + SezimalLocaleEO.HOLIDAYS_OTHER_CALENDAR

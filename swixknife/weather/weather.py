@@ -2,24 +2,26 @@
 
 __all__ = ('SezimalWeather',)
 
-
 from typing import TypeVar
 
 Self = TypeVar('Self', bound='SezimalWeather')
 ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 
+import os
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from ..user_preferences import user_preferences
+from ..json import json
 
 
 class SezimalWeather:
     def __new__(
         cls,
         locale: str | SezimalLocale = None,
-        time_zone: str | ZoneInfo = None
+        time_zone: str | ZoneInfo = None,
+        use_last_reading: bool = False,
     ) -> Self:
         self = object.__new__(cls)
 
@@ -51,6 +53,7 @@ class SezimalWeather:
         self._temperature_maximum = SezimalInteger(0)
         self._temperature_minimum = SezimalInteger(0)
         self._clouds = SezimalInteger(0)
+        self._use_last_reading = use_last_reading
 
         return self
 
@@ -170,32 +173,43 @@ class SezimalWeather:
     def visibility_formatted(self) -> str:
         return self.locale.format_number(self._visibility, sezimal_places=0, suffix='Cpad')
 
-    def get_openweathermap_conditions(self, api_key: str = None, location_id: str = None):
+    def get_openweathermap_conditions(self, api_key: str = None, latitude: float = None, longitude: float = None):
         from .open_weather_map import get_weather_conditions, fill_sezimal_weather
+
+        if self._use_last_reading \
+            and self._get_last_reading('open_weather_map', fill_sezimal_weather):
+            return
 
         lang = self.lang
 
         if lang == 'bz':
             lang = 'pt-br'
 
-        if not (api_key and location_id):
+        if not (api_key and latitude and longitude):
             up = user_preferences(self.locale)
 
-            if (not api_key) and 'WEATHER_API_KEY' in up:
-                api_key = up['WEATHER_API_KEY']
+            if (not api_key) and 'OPENWEATHERMAP_API_KEY' in up:
+                api_key = up['OPENWEATHERMAP_API_KEY']
 
-            if (not location_id) and 'WEATHER_LOCATION' in up:
-                location_id = up['WEATHER_LOCATION']
+            if (not latitude) and 'WEATHER_LATITUDE' in up:
+                latitude = up['WEATHER_LATITUDE']
+
+            if (not longitude) and 'WEATHER_LONGITUDE' in up:
+                longitude = up['WEATHER_LONGITUDE']
 
         conditions = get_weather_conditions(
-            api_key=api_key, location_id=location_id,
-            language=lang, time_zone=self.time_zone,
+            api_key=api_key, latitude=latitude, longitude=longitude,
+            time_zone=self.time_zone,
         )
 
         fill_sezimal_weather(self, conditions)
 
     def get_weatherapi_conditions(self, api_key: str = None, location: str = None, latitude: float = None, longitude: float = None):
         from .weather_api import get_weather_conditions, fill_sezimal_weather
+
+        if self._use_last_reading \
+            and self._get_last_reading('weather_api', fill_sezimal_weather):
+            return
 
         lang = self.lang
 
@@ -223,3 +237,19 @@ class SezimalWeather:
         )
 
         fill_sezimal_weather(self, conditions)
+
+    def _get_last_reading(self, api_type: str, fill_sezimal_weather):
+        if not os.path.isfile('~/.sweather.json'):
+            return False
+
+        last_reading = json.loads(open(os.path.expanduser('~/.sweather.json'), 'r').read())
+
+        if not 'api_type' in last_reading:
+            return False
+
+        if last_reading['api_type'] != api_type:
+            return False
+
+        fill_sezimal_weather(self, last_reading)
+
+        return True

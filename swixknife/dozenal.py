@@ -21,12 +21,11 @@ SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 
 from .base import validate_clean_dozenal, \
     decimal_to_dozenal, dozenal_to_decimal, \
-    dozenal_format, decimal_format, sezimal_to_dozenal
+    dozenal_format, decimal_format, sezimal_to_dozenal, \
+    sezimal_context
 
 
-MAX_DECIMAL_PRECISION = 37
-getcontext().prec = MAX_DECIMAL_PRECISION
-MAX_PRECISION = 31
+getcontext().prec = sezimal_context.decimal_precision
 
 #
 # Operations maps/tables
@@ -104,7 +103,7 @@ _MULTIPLICATION_MAP = {
 }
 
 _RECIPROCAL_MAP = {
-    '2': '0.6', '3': '0.4', '4': '0.3', '5': '0.2497_p', '6': '0.2', '7': '0.186_↊35_p', '8': '0.16', '9': '0.14', '↊': '0.1__2497__p', '↋': '0.1p',
+    '2': '0.6', '3': '0.4', '4': '0.3', '5': '0..249_7', '6': '0.2', '7': '0..186_↊35', '8': '0.16', '9': '0.14', '↊': '0.1..249_7', '↋': '0..1',
     '10': '0.1',
 }
 
@@ -154,7 +153,7 @@ class Dozenal:
         #
         if original_decimal is None:
             with localcontext() as context:
-                context.prec = MAX_DECIMAL_PRECISION
+                context.prec = sezimal_context.decimal_precision
                 self._value = Decimal(dozenal_to_decimal(cleaned_number)) ## .quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
                 self._value *= self._sign
 
@@ -177,7 +176,7 @@ class Dozenal:
         if not self._fraction:
             return f"Dozenal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=0)}')"
         else:
-            return f"Dozenal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=MAX_DECIMAL_PRECISION)}')"
+            return f"Dozenal('{self.formatted_number}') == Decimal('{decimal_format(self.decimal, decimal_places=sezimal_context.decimal_precision)}')"
 
     @property
     def formatted_number(self) -> str:
@@ -192,7 +191,7 @@ class Dozenal:
         if not self._fraction:
             return decimal_format(str(self._value), decimal_places=0)
         else:
-            return decimal_format(str(self._value), decimal_places=MAX_DECIMAL_PRECISION)
+            return decimal_format(str(self._value), decimal_places=sezimal_context.decimal_precision)
 
     # @property
     # def sezimal(self) -> str:
@@ -537,7 +536,7 @@ class Dozenal:
 
         return adjust
 
-    def __round__(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
+    def __round__(self, precision: IntegerSelf = sezimal_context.dozenal_precision) -> Self:
         precision = DozenalInteger(precision)
 
         if self._precision <= int(precision):
@@ -567,7 +566,7 @@ class Dozenal:
 
         return rounded
 
-    def trunc(self, precision: IntegerSelf = MAX_PRECISION) -> Self:
+    def trunc(self, precision: IntegerSelf = sezimal_context.dozenal_precision) -> Self:
         if precision is None:
             precision = 0
 
@@ -587,10 +586,21 @@ class Dozenal:
         return self == self.trunc(0)
 
     def _mult_div_finalizing(self):
-        res = round(self, MAX_PRECISION)
+        res = round(self, sezimal_context.dozenal_precision)
 
-        if str(res).endswith('5555'):
-            res += Dozenal(f'1E-{decimal_to_dozenal(res._precision)}')
+        if res._fraction:
+            if res._fraction.endswith('B_BBB'):
+                res += Sezimal(f'1E-{decimal_to_dozenal(res._precision)}')
+            elif res._fraction.endswith('B_BBA'):
+                res += Sezimal(f'2E-{decimal_to_dozenal(res._precision)}')
+            elif res._fraction.endswith('B_BB9'):
+                res += Sezimal(f'3E-{decimal_to_dozenal(res._precision)}')
+            elif res._fraction.endswith('B_BB8'):
+                res += Sezimal(f'4E-{decimal_to_dozenal(res._precision)}')
+            elif res._fraction.endswith('B_BB7'):
+                res += Sezimal(f'5E-{decimal_to_dozenal(res._precision)}')
+            elif res._fraction.endswith('B_BB6'):
+                res += Sezimal(f'6E-{decimal_to_dozenal(res._precision)}')
 
         return res
 
@@ -724,7 +734,7 @@ class Dozenal:
         # # Return quotient and remainder as strings
         # return quotient_str, int(remainder_str[::-1])
 
-    def __division(self, other_number: Self, max_precision: IntegerSelf = MAX_PRECISION) -> str:
+    def __division(self, other_number: Self, max_precision: IntegerSelf = sezimal_context.dozenal_precision) -> str:
         #
         # Divides two values;
         # the final sign of the operation is dealt with by the calling method: __div__
@@ -789,18 +799,19 @@ class Dozenal:
         return division
 
     def __truediv__(self, other_number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Self | IntegerSelf | FractionSelf) -> Self:
-        if type(other_number) != Dozenal:
-            other_number = Dozenal(other_number)
-
         #
         # Calculate the reciprocal first
         #
         if hasattr(other_number, 'reciprocal'):
             reciprocal = other_number.reciprocal
-        elif other_number == 1 or other_number == -1:
-            reciprocal = other_number
         else:
-            reciprocal = Dozenal('1').__division(other_number) * other_number._sign
+            if type(other_number) != Dozenal:
+                other_number = Dozenal(other_number)
+
+            if other_number == 1 or other_number == -1:
+                reciprocal = other_number
+            else:
+                reciprocal = Dozenal('1').__division(other_number) * other_number._sign
 
         return self * reciprocal
 
@@ -1000,7 +1011,7 @@ class Dozenal:
 
     def log(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = int(sezimal_context.dozenal_precision / 2)
             result = self.decimal.ln() / Decimal(6).ln()
             result = Dozenal(result)
 
@@ -1008,7 +1019,7 @@ class Dozenal:
 
     def log2(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = int(sezimal_context.dozenal_precision / 2)
             result = self.decimal.ln() / Decimal(2).ln()
             result = Dozenal(result)
 
@@ -1016,7 +1027,7 @@ class Dozenal:
 
     def log14(self) -> Self:
         with localcontext() as context:
-            context.prec = int(MAX_PRECISION / 2)
+            context.prec = int(sezimal_context.dozenal_precision / 2)
             result = self.decimal.ln() / Decimal(10).ln()
             result = Dozenal(result)
 
@@ -1096,7 +1107,7 @@ class DozenalInteger(Dozenal):
 class DozenalFraction(Dozenal):
     __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', '_numerator', '_denominator', '_dozenal']
 
-    def __init__(self, numerator: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Self | IntegerSelf | FractionSelf, denominator: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Self | IntegerSelf | FractionSelf = None) -> Self:
+    def __init__(self, numerator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction, denominator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction = None) -> Self:
         if type(numerator) == str:
             if '/' in numerator:
                 numerator, denominator = numerator.split('/')
@@ -1107,9 +1118,6 @@ class DozenalFraction(Dozenal):
 
         elif type(numerator) == Decimal:
             numerator = decimal_to_dozenal(str(numerator))
-
-        elif type(numerator).__class__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-            numerator = sezimal_to_dozenal(str(numerator))
 
         cleaned_numerator = validate_clean_dozenal(numerator)
 
@@ -1123,16 +1131,13 @@ class DozenalFraction(Dozenal):
             denominator = decimal_to_dozenal(str(denominator))
             cleaned_denominator = validate_clean_dozenal(denominator)
 
-        elif type(denominator).__class__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-            denominator = sezimal_to_dozenal(str(denominator))
-            cleaned_denominator = validate_clean_dozenal(denominator)
-
         else:
             cleaned_denominator = validate_clean_dozenal(denominator)
 
         self._numerator = Dozenal(cleaned_numerator)
         self._denominator = Dozenal(cleaned_denominator)
         self._dozenal = self._numerator / self._denominator
+        # self._dozenal = Dozenal(self._numerator.decimal / self._denominator.decimal)
 
         super().__init__(self._dozenal)
 
@@ -1148,24 +1153,173 @@ class DozenalFraction(Dozenal):
     def dozenal(self):
         return self._dozenal
 
+    @property
+    def decimal(self) -> Decimal:
+        return self._numerator.decimal / self._denominator.decimal
+
+    @property
+    def reciprocal(self) -> FractionSelf:
+        return DozenalFraction(self._denominator, self._numerator)
+
+    @reciprocal.setter
+    def reciprocal(self, value):
+        pass
+
     def __str__(self) -> str:
         if self._sign == -1:
             res = '-'
         else:
             res = ''
 
-
         res += str(self._numerator)
-        res += '/'
+        res += ' / '
         res += str(self._denominator)
 
         return res
 
+    @property
+    def formatted_number(self):
+        return f'{self._numerator.formatted_number} / {self._denominator.formatted_number}'
+
+    @property
+    def decimal_formatted_number(self):
+        return f'{self._numerator.decimal_formatted_number} / {self._denominator.decimal_formatted_number}'
+
     def __repr__(self) -> str:
-        return f"DozenalFraction('{self._numerator.formatted_number}/{self._denominator.formatted_number}') == {self._dozenal.__repr__()}"
+        return f"DozenalFraction('{self.formatted_number}') == {self._dozenal.__repr__()}"
 
     def as_integer_ratio(self) -> tuple[IntegerSelf, IntegerSelf]:
         return self._numerator, self._denominator
+
+    def as_decimal_integer_ratio(self) -> tuple[Decimal, Decimal]:
+        return int(self._numerator.decimal), int(self._denominator.decimal)
+
+    def as_decimal_ratio(self) -> tuple[Decimal, Decimal]:
+        return self._numerator.decimal, self._denominator.decimal
+
+    def __mul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
+        if type(other_number) == DozenalFraction:
+            numerator = self.numerator * other_number.numerator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        if type(other_number) != Dozenal:
+            other_number = Dozenal(other_number)
+
+        numerator = self.numerator * other_number
+
+        if numerator._fraction == '':
+            numerator = self.numerator * other_number
+            denominator = self.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        return super().__mul__(other_number)
+
+    def __rmul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            numerator = self.numerator * other_number.numerator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        if type(other_number) != Dozenal:
+            other_number = Dozenal(other_number)
+
+        numerator = self.numerator * other_number
+
+        if numerator._fraction == '':
+            numerator = self.numerator * other_number
+            denominator = self.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        return super().__rmul__(other_number)
+
+    def __truediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
+        if type(other_number) == DozenalFraction:
+            numerator = self.numerator * other_number.denominator
+            denominator = self.denominator * other_number.numerator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        if type(other_number) != Dozenal:
+            other_number = Dozenal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            denominator = self.denominator * other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        return super().__truediv__(other_number)
+
+    def __rtruediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
+        if type(other_number) == DozenalFraction:
+            numerator = self.numerator * other_number.denominator
+            denominator = self.denominator * other_number.numerator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Dozenal:
+            other_number = Dozenal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            denominator = self.denominator * other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(denominator, numerator)
+
+        return super().__rtruediv__(other_number)
+
+    def __pow__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
+        if type(other_number) != Dozenal:
+            other_number = Dozenal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator ** other_number
+            denominator = self.denominator ** other_number
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return DozenalFraction(numerator, denominator)
+
+        return super().__pow__(other_number)
+
+    def simplify(self) -> FractionSelf:
+        num, den = self.__simplify(self.numerator, self.denominator)
+
+        if num == self.numerator and den == self.denominator:
+            return self
+
+        return DozenalFraction(num, den)
+
+    def __simplify(self, num, den):
+        num = num.decimal
+        den = den.decimal
+
+        _PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049, 1051, 1061, 1063, 1069, 1087, 1091, 1093, 1097, 1103, 1109, 1117, 1123, 1129, 1151, 1153, 1163, 1171, 1181, 1187, 1193, 1201, 1213, 1217, 1223)
+
+        for factor in _PRIMES:
+            factor = Decimal(factor)
+
+            if factor > min(num, den):
+                continue
+
+            while True:
+                num_test = num / factor
+
+                if num_test != int(num_test):
+                    break
+
+                den_test = den / factor
+
+                if den_test != int(den_test):
+                    break
+
+                num = num_test
+                den = den_test
+
+        return DozenalInteger(num), DozenalInteger(den)
 
 
 _numbers.Number.register(Dozenal)

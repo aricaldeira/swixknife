@@ -5,7 +5,7 @@ from decimal import Decimal
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..date_time import SezimalDateTime
 
-from ..units.conversions import \
+from ..units import \
     MANI_TO_MISALI, MANI_TO_SATOSHI, MANI_TO_BITCOIN, \
     MISALI_TO_MANI, MISALI_TO_SATOSHI, MISALI_TO_BITCOIN, \
     BITCOIN_TO_MANI, BITCOIN_TO_SATOSHI, BITCOIN_TO_MISALI, \

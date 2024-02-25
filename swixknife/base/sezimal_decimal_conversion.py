@@ -7,11 +7,11 @@ SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 
 from decimal import Decimal, localcontext, getcontext
 
-from .validation import validate_clean_sezimal, validate_clean_decimal, \
-    MAX_DECIMAL_PRECISION
+from .validation import validate_clean_sezimal, validate_clean_decimal
+from .context import sezimal_context
 
 
-def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = MAX_DECIMAL_PRECISION) -> str:
+def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = sezimal_context.decimal_precision) -> str:
     if type(number) == Decimal:
         return validate_clean_decimal(str(number))
 
@@ -72,7 +72,7 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
         decimal_precision = getcontext().prec
 
     with localcontext() as context:
-        # context.prec = decimal_precision * 2
+        context.prec = decimal_precision * 2
 
         decimal_fraction = Decimal('0')
 
