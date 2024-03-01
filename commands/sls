@@ -46,14 +46,14 @@ if __name__ == '__main__':
     sdl.locale = locale
 
     if arguments.decimal:
-        sdl.date_time_format = arguments.date_time_format or '#9d/#9m/#9-y #@W %H:%M'
+        sdl.date_time_format = arguments.date_time_format or '#9d/#9m/#9>y #@W %H:%M'
         # sdl.date_time_format = arguments.date_time_format or '%d/%m/%y %a %H:%M'
     elif arguments.dozenal:
-        sdl.date_time_format = arguments.date_time_format or '#↋d/#↋m/#↋-y #@W #↋↋u:#↋↋p'
+        sdl.date_time_format = arguments.date_time_format or '#↋d/#↋m/#↋>y #@W #↋↋u:#↋↋p'
     elif arguments.dedicated_digits:
-        sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!-y #@W #!u:#!p'
+        sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!>y #@W #!u:#!p'
     else:
-        sdl.date_time_format = arguments.date_time_format or '#d/#m/#-y #@W #u:#p'
+        sdl.date_time_format = arguments.date_time_format or '#d/#m/#>y #@W #u:#p'
 
     sdl.use_prefixes = not arguments.no_prefixes
     sdl.use_dedicated_digits = arguments.dedicated_digits

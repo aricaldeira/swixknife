@@ -13,17 +13,27 @@ parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOp
 parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
 parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
 parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-UT', '--unit-tapa', dest='unit_tapa', action=argparse.BooleanOptionalAction, default=True, help='Temperature in tapas °S')
+parser.add_argument('-UG', '--unit-gatika', dest='unit_gatika', action=argparse.BooleanOptionalAction, help='Temperature in gatikas EDgat')
+parser.add_argument('-UC', '--unit-celsius', dest='unit_celsius', action=argparse.BooleanOptionalAction, help='Temperature in Celsius °C')
+parser.add_argument('-UK', '--unit-kelvin', dest='unit_kelvin', action=argparse.BooleanOptionalAction, help='Temperature in kelvins K')
+parser.add_argument('-UF', '--unit-fahrenheit', dest='unit_fahrenheit', action=argparse.BooleanOptionalAction, help='Temperature in Fahrenheit °F')
+parser.add_argument('-NU', '--no-unit', dest='no_unit', action=argparse.BooleanOptionalAction, help='Don’t show unit, just the temperature value')
+parser.add_argument('-LR', '--last-reading', dest='last_reading', action=argparse.BooleanOptionalAction, help='Use last reading (doesn’t check API again)')
 
 
 from swixknife.weather.weather import SezimalWeather
-from swixknife.base import default_to_dedicated_digits, default_niftimal_to_dedicated_digits
+from swixknife.localization import sezimal_locale
 from zoneinfo import ZoneInfo
+
+from swixknife.units import TAPA_TO_CELSIUS, \
+    tapa_to_gatika, GATIKA_TO_KELVIN, tapa_to_fahrenheit
 
 
 if __name__ == '__main__':
     arguments = parser.parse_args()
 
-    locale = arguments.locale
+    locale = sezimal_locale(arguments.locale or None)
 
     if arguments.timezone:
         time_zone = ZoneInfo(arguments.timezone)
@@ -47,30 +57,59 @@ if __name__ == '__main__':
     except:
         raise ValueError(f'Invalid value for longitude: {arguments.longitude}')
 
-    sw = SezimalWeather(locale, time_zone)
-    sw.get_weatherapi_conditions(
+    sw = SezimalWeather(locale, time_zone, arguments.last_reading)
+    # sw.get_weatherapi_conditions(
+    #     api_key=api_key,
+    #     location=location,
+    #     latitude=latitude, longitude=longitude,
+    # )
+    sw.get_openweathermap_conditions(
         api_key=api_key,
-        location=location,
-        latitude=latitude, longitude=longitude,
+        latitude=latitude,
+        longitude=longitude,
     )
 
-    if arguments.decimal:
-        temperature = f'{round(sw.temperature_sensation.decimal, 0)} °'
-    elif arguments.dozenal:
-        temperature = f'{sw.temperature_sensation.dozenal} °'
-    elif arguments.niftimal:
-        temperature = f'{sw.temperature_sensation.niftimal} °'
+    temperature = sw.temperature_sensation
+    celsius = locale.format_decimal_number(temperature * TAPA_TO_CELSIUS, 1)
 
-        if '.' in temperature:
-            temperature = temperature.split('.')[0] + ' °'
+    if arguments.unit_celsius:
+        temperature *= TAPA_TO_CELSIUS
+        unit = '°C'
+    elif arguments.unit_fahrenheit:
+        temperature = tapa_to_fahrenheit(temperature)
+        unit = '°F'
+    elif arguments.unit_gatika or arguments.unit_kelvin:
+        temperature = tapa_to_gatika(temperature)
 
-        if arguments.dedicated_digits:
-            temperature = default_niftimal_to_dedicated_digits(temperature)
+        if arguments.unit_kelvin:
+            temperature *= GATIKA_TO_KELVIN
+            unit = 'K'
+        else:
+            temperature /= 100_000_000
+            unit = 'XDgat'
 
     else:
-        temperature = f'{round(sw.temperature_sensation, 0)} °'
+        unit = '°S'
 
-        if arguments.dedicated_digits:
-            temperature = default_to_dedicated_digits(temperature)
+    if arguments.decimal:
+        temperature = locale.format_decimal_number(temperature, 1)
+    elif arguments.dozenal:
+        temperature = locale.format_dozenal_number(temperature, 1)
+    elif arguments.niftimal:
+        temperature = locale.format_niftimal_number(
+            round(temperature, 0),
+            0,
+            dedicated_digits=arguments.dedicated_digits
+            )
+    else:
+        temperature = locale.format_number(
+            round(temperature, 0),
+            0,
+            dedicated_digits=arguments.dedicated_digits
+            )
 
-    print(temperature)
+    if arguments.no_unit:
+        print(temperature)
+    else:
+        # print(f'{temperature} {unit} • {celsius} °C')
+        print(f'{temperature} {unit}')
