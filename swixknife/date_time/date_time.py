@@ -43,7 +43,7 @@ class SezimalDateTime:
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         boda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
-        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
+        shaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         time_zone: str | ZoneInfo = None,
         ) -> Self:
         self = object.__new__(cls)
@@ -100,7 +100,7 @@ class SezimalDateTime:
             self._time = uta
             time_zone = self._time.time_zone
         else:
-            self._time = SezimalTime(uta=uta, posha=posha, agrima=agrima, anuga=anuga, boda=boda, ekaditiboda=ekaditiboda, day=0, time_zone=time_zone)
+            self._time = SezimalTime(uta=uta, posha=posha, agrima=agrima, anuga=anuga, boda=boda, shaditiboda=shaditiboda, day=0, time_zone=time_zone)
 
         if type(self._date.gregorian_date) == _datetime.date:
             if time_zone:
@@ -123,7 +123,7 @@ class SezimalDateTime:
         return self
 
     def __repr__(self) -> str:
-        return f'{self.__class__.__qualname__}(year={self.year.formatted_number}, month={self.month}, day={self.day}, uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, time_zone={self.time_zone})'
+        return f'{self.__class__.__qualname__}(year={self.year.formatted_number}, month={self.month}, day={self.day}, uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, shaditiboda={self.shaditiboda}, time_zone={self.time_zone})'
 
     @property
     def gregorian_date(self):
@@ -140,7 +140,7 @@ class SezimalDateTime:
         return str(self)
 
     def isoformat(self) -> str:
-        return self.format(f'#y-#m-#d #u:#p:#a.#n#b#e #t#-V')
+        return self.format(f'#y-#m-#d #u:#p:#a.#n#b#x #t#-V')
 
     __str__ = isoformat
 
@@ -340,8 +340,8 @@ class SezimalDateTime:
         return self._time.boda
 
     @property
-    def ekaditiboda(self) -> Sezimal:
-        return self._time.ekaditiboda
+    def shaditiboda(self) -> Sezimal:
+        return self._time.shaditiboda
 
     @property
     def time_zone(self) -> str:
@@ -496,11 +496,11 @@ class SezimalDateTime:
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         boda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
-        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        shaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         time_zone: str | ZoneInfo = None,
     ) -> Self:
         date = self._date.replace(year, month, day)
-        time = self._time.replace(uta, posha, agrima, anuga, boda, ekaditiboda, time_zone=time_zone)
+        time = self._time.replace(uta, posha, agrima, anuga, boda, shaditiboda, time_zone=time_zone)
         return type(self).combine(date, time, time.time_zone)
 
     @classmethod

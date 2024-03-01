@@ -23,7 +23,7 @@ from ..sezimal import Sezimal, SezimalInteger
 
 
 class SezimalDateTimeDelta():
-    __slots__ = ('_years', '_quarters', '_months', '_weeks', '_days', '_utas', '_poshas', '_agrimas', '_anugas', '_bodas', '_ekaditibodas', '_total_days', '_total_agrimas')
+    __slots__ = ('_years', '_quarters', '_months', '_weeks', '_days', '_utas', '_poshas', '_agrimas', '_anugas', '_bodas', '_shaditibodas', '_total_days', '_total_agrimas')
 
     def __new__(
         cls,
@@ -37,7 +37,7 @@ class SezimalDateTimeDelta():
         agrimas: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         anugas: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         bodas: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
-        ekaditibodas: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
+        shaditibodas: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         ):
         self = object.__new__(cls)
 
@@ -57,7 +57,7 @@ class SezimalDateTimeDelta():
         self._agrimas = Sezimal(agrimas)
         self._anugas = Sezimal(anugas)
         self._bodas = Sezimal(bodas)
-        self._ekaditibodas = Sezimal(ekaditibodas)
+        self._shaditibodas = Sezimal(shaditibodas)
 
         #
         # Since only months and years have varying lengths,
@@ -73,7 +73,7 @@ class SezimalDateTimeDelta():
         total_agrimas += self._agrimas
         total_agrimas += self._anugas / 100
         total_agrimas += self._bodas / 10_000
-        total_agrimas += (self._ekaditibodas / 100_000_000) / 10_000
+        total_agrimas += (self._shaditibodas / 100_000_000) / 10_000
 
         if total_agrimas > 1_000_000:
             days = SezimalInteger(total_agrimas // 1_000_000)
@@ -91,7 +91,7 @@ class SezimalDateTimeDelta():
         return self
 
     def __repr__(self):
-        return f'{self.__class__.__qualname__}(years={self.years.formatted_number}, quarters={self.quarters.formatted_number}, months={self.months.formatted_number}, weeks={self.weeks.formatted_number}, days={self.days.formatted_number}, utas={self.utas.formatted_number}, poshas={self.poshas.formatted_number}, agrimas={self.agrimas.formatted_number}, anugas={self.anugas.formatted_number}, bodas={self.bodas.formatted_number}, ekaditibodas={self.ekaditibodas.formatted_number})'
+        return f'{self.__class__.__qualname__}(years={self.years.formatted_number}, quarters={self.quarters.formatted_number}, months={self.months.formatted_number}, weeks={self.weeks.formatted_number}, days={self.days.formatted_number}, utas={self.utas.formatted_number}, poshas={self.poshas.formatted_number}, agrimas={self.agrimas.formatted_number}, anugas={self.anugas.formatted_number}, bodas={self.bodas.formatted_number}, shaditibodas={self.shaditibodas.formatted_number})'
 
     @property
     def years(self):
@@ -134,8 +134,8 @@ class SezimalDateTimeDelta():
         return self._bodas
 
     @property
-    def ekaditibodas(self):
-        return self._ekaditibodas
+    def shaditibodas(self):
+        return self._shaditibodas
 
     def _add_date_time_delta(self, other: Self) -> Self:
         years = self.years + other.years
@@ -148,8 +148,8 @@ class SezimalDateTimeDelta():
         agrimas = self.agrimas + other.agrimas
         anugas = self.anugas + other.anugas
         bodas = self.bodas + other.bodas
-        ekaditibodas = self.ekaditibodas + other.ekaditibodas
-        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, ekaditibodas)
+        shaditibodas = self.shaditibodas + other.shaditibodas
+        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, shaditibodas)
 
     def _subtract_date_time_delta(self, other: Self) -> Self:
         years = self.years - other.years
@@ -162,8 +162,8 @@ class SezimalDateTimeDelta():
         agrimas = self.agrimas - other.agrimas
         anugas = self.anugas - other.anugas
         bodas = self.bodas - other.bodas
-        ekaditibodas = self.ekaditibodas - other.ekaditibodas
-        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, ekaditibodas)
+        shaditibodas = self.shaditibodas - other.shaditibodas
+        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, shaditibodas)
 
     def _mutiply_date_time_delta(self, other: Sezimal) -> Self:
         other = Sezimal(other)
@@ -177,8 +177,8 @@ class SezimalDateTimeDelta():
         agrimas = self.agrimas * other
         anugas = self.anugas * other
         bodas = self.bodas * other
-        ekaditibodas = self.ekaditibodas * other
-        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, ekaditibodas)
+        shaditibodas = self.shaditibodas * other
+        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, shaditibodas)
 
     def _divide_date_time_delta(self, other: Sezimal) -> Self:
         other = Sezimal(other)
@@ -192,5 +192,5 @@ class SezimalDateTimeDelta():
         agrimas = self.agrimas / other
         anugas = self.anugas / other
         bodas = self.bodas / other
-        ekaditibodas = self.ekaditibodas / other
-        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, ekaditibodas)
+        shaditibodas = self.shaditibodas / other
+        return SezimalDateTimeDelta(years, quarters, months, weeks, days, utas, poshas, agrimas, anugas, bodas, shaditibodas)

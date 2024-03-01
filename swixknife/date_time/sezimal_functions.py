@@ -412,8 +412,8 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     TAI_UTC_OFFSET = (Decimal('37') + Decimal('32.184')) / Decimal('86_400')
 
     #
-    # Length of Mars sol in ekaditibodas = 1_005_534_344_243_221_121 ~ 88_775.244_dec seconds
-    # Lenght of Earth day in ekaditibodas = 1_000_000_000_122_215_525 ~ 86_400.002_dec seconds
+    # Length of Mars sol in shaditibodas = 1_005_534_344_243_221_121 ~ 88_775.244_dec seconds
+    # Lenght of Earth day in shaditibodas = 1_000_000_000_122_215_525 ~ 86_400.002_dec seconds
     #
     # MARS_SOL_IN_DAYS = SezimalFraction('1_005_534_344_243_221_121', '1_000_000_000_122_215_525')
     MARS_SOL_IN_DAYS = Sezimal(Decimal('1.027_491_252'))

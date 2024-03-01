@@ -36,7 +36,7 @@ from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, \
 
 
 class SezimalTime:
-    __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_ekaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
+    __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_shaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
 
     def __new__(
         cls,
@@ -45,7 +45,7 @@ class SezimalTime:
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         boda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
-        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
+        shaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         day: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         time_zone: str | ZoneInfo = None,
         base_gregorian_date: str | _datetime.datetime | _datetime.date = None,
@@ -71,7 +71,7 @@ class SezimalTime:
         agrima = Sezimal(agrima)
         anuga = Sezimal(anuga)
         boda = Sezimal(boda)
-        ekaditiboda = Sezimal(ekaditiboda)
+        shaditiboda = Sezimal(shaditiboda)
 
         total_agrimas = day * 1_000_000
         total_agrimas += uta * 10_000
@@ -79,7 +79,7 @@ class SezimalTime:
         total_agrimas += agrima
         total_agrimas += anuga / 100
         total_agrimas += boda / 10_000
-        total_agrimas += (ekaditiboda / 100_000_000) / 10_000
+        total_agrimas += (shaditiboda / 100_000_000) / 10_000
 
         self = object.__new__(cls)
 
@@ -104,7 +104,7 @@ class SezimalTime:
         total_agrimas -= self._boda
 
         total_agrimas *= 100_000_000
-        self._ekaditiboda = round(Sezimal(total_agrimas), 0)
+        self._shaditiboda = round(Sezimal(total_agrimas), 0)
 
         total_agrimas = self._day * 1_000_000
         total_agrimas += self._uta * 10_000
@@ -112,7 +112,7 @@ class SezimalTime:
         total_agrimas += self._agrima
         total_agrimas += self._anuga / 100
         total_agrimas += self._boda / 10_000
-        total_agrimas += (self._ekaditiboda / 100_000_000) / 10_000
+        total_agrimas += (self._shaditiboda / 100_000_000) / 10_000
 
         self._total_agrimas = total_agrimas
 
@@ -170,8 +170,8 @@ class SezimalTime:
         return self._boda
 
     @property
-    def ekaditiboda(self) -> Sezimal:
-        return self._ekaditiboda
+    def shaditiboda(self) -> Sezimal:
+        return self._shaditiboda
 
     @property
     def time_zone(self) -> str:
@@ -211,10 +211,10 @@ class SezimalTime:
         return seconds.decimal
 
     def __repr__(self) -> str:
-        return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, ekaditiboda={self.ekaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
+        return f"SezimalTime(uta={self.uta}, posha={self.posha}, agrima={self.agrima}, anuga={self.anuga}, boda={self.boda}, shaditiboda={self.shaditiboda}, day={self.day}, time_zone={self.time_zone}) - {self.iso_time.__repr__()}"
 
     def __str__(self) -> str:
-        res = self.format(f'#*d #u:#p:#a.#n#b#e #t #V')
+        res = self.format(f'#*d #u:#p:#a.#n#b#x #t #V')
         return res.strip()
 
     @classmethod
@@ -357,21 +357,6 @@ class SezimalTime:
 
             fmt = regex.sub(value, fmt)
 
-        # for character, value, unit in [
-        #     ['d', 'day', 'SH-day'],
-        #     ['u', 'uta', 'SH-uta'],
-        #     ['p', 'posha', 'SH-psh'],
-        #     ['a', 'agrima', 'SH-agm'],
-        #     ['n', 'anuga', 'SH-ang'],
-        #     ['b', 'boda', 'SH-bda'],
-        #     ['e', 'ekaditiboda', 'SH-edbda'],
-        # ]:
-        #     if f'#&{character}' in fmt:
-        #         fmt = fmt.replace(f'#&{character}', sezimal_spellout(unit + ' ' + str(getattr(self, value, 0)), lang or 'en'))
-        #
-        #     if f'#&@{character}' in fmt:
-        #         fmt = fmt.replace(f'#&@{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
-
         for regex, token, base, colon in TIME_ZONE_OFFSET_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
@@ -498,48 +483,10 @@ class SezimalTime:
 
                 fmt = regex.sub(value, fmt)
 
-            # if '%H' in fmt:
-            #     fmt = fmt.replace('%H', str(self.iso_hour).zfill(2))
-            #
-            # if '%-H' in fmt:
-            #     fmt = fmt.replace('%-H', str(self.iso_hour))
-            #
-            # if '%M' in fmt:
-            #     fmt = fmt.replace('%M', str(self.iso_minute).zfill(2))
-            #
-            # if '%-M' in fmt:
-            #     fmt = fmt.replace('%-M', str(self.iso_minute))
-            #
-            # if '%S' in fmt:
-            #     fmt = fmt.replace('%S', str(self.iso_second).zfill(2))
-            #
-            # if '%-S' in fmt:
-            #     fmt = fmt.replace('%-S', str(self.iso_second))
-            #
-            # if '%?H' in fmt:
-            #     fmt = fmt.replace('%?H', locale.digit_replace(str(self.iso_hour).zfill(2)))
-            #
-            # if '%?-H' in fmt:
-            #     fmt = fmt.replace('%?-H', locale.digit_replace(str(self.iso_hour)))
-            #
-            # if '%?M' in fmt:
-            #     fmt = fmt.replace('%?M', locale.digit_replace(str(self.iso_minute).zfill(2)))
-            #
-            # if '%?-M' in fmt:
-            #     fmt = fmt.replace('%?-M', locale.digit_replace(str(self.iso_minute)))
-            #
-            # if '%?S' in fmt:
-            #     fmt = fmt.replace('%?S', locale.digit_replace(str(self.iso_second).zfill(2)))
-            #
-            # if '%?-S' in fmt:
-            #     fmt = fmt.replace('%?-S', locale.digit_replace(str(self.iso_second)))
-            #
-            # if '%f' in fmt:
-            #     fmt = fmt.replace('%f', str(self.iso_microsecond).zfill(6))
-
-            if '%z' in fmt:
+            if '%z' in fmt or '%5z':
                 if self._time_zone_offset == 0:
                     fmt = fmt.replace('%z', '+0000')
+                    fmt = fmt.replace('%5z', '+0000')
                 else:
                     if self._time_zone_offset > 0:
                         text = '+'
@@ -551,13 +498,18 @@ class SezimalTime:
                     tzo *= UTA_TO_HOUR
                     tzo_hour = int(tzo.decimal)
                     tzo_minute = int((tzo.decimal - tzo_hour) * 60)
-                    text += str(tzo_hour).zfill(2) + str(tzo_minute).zfill(2)
 
-                    fmt = fmt.replace('%z', text)
+                    if '%5z' in fmt:
+                        text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+                        fmt = fmt.replace('%5z', text)
+                    else:
+                        text += str(tzo_hour).zfill(2) + str(tzo_minute).zfill(2)
+                        fmt = fmt.replace('%z', text)
 
-            if '%:z' in fmt:
+            if '%:z' in fmt or '%:5z' in fmt:
                 if self._time_zone_offset == 0:
                     fmt = fmt.replace('%:z', '+00:00')
+                    fmt = fmt.replace('%:5z', '+00:00')
                 else:
                     if self._time_zone_offset > 0:
                         text = '+'
@@ -569,9 +521,13 @@ class SezimalTime:
                     tzo *= UTA_TO_HOUR
                     tzo_hour = int(tzo.decimal)
                     tzo_minute = int((tzo.decimal - tzo_hour) * 60)
-                    text += str(tzo_hour).zfill(2) + ':' + str(tzo_minute).zfill(2)
 
-                    fmt = fmt.replace('%:z', text)
+                    if '%:5z' in fmt:
+                        text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + ':' + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+                        fmt = fmt.replace('%:5z', text)
+                    else:
+                        text += str(tzo_hour).zfill(2) + ':' + str(tzo_minute).zfill(2)
+                        fmt = fmt.replace('%:z', text)
 
             if '%Z' in fmt:
                 fmt = fmt.replace('%Z', self.time_zone)
@@ -616,7 +572,7 @@ class SezimalTime:
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         boda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
-        ekaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        shaditiboda: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         time_zone: str | ZoneInfo = None,
     ) -> Self:
@@ -635,8 +591,8 @@ class SezimalTime:
         if boda is None:
             boda = self._boda
 
-        if ekaditiboda is None:
-            ekaditiboda = self._ekaditiboda
+        if shaditiboda is None:
+            shaditiboda = self._shaditiboda
 
         if day is None:
             day = self._day
@@ -644,7 +600,7 @@ class SezimalTime:
         if time_zone is None:
             time_zone = self._time_zone
 
-        return type(self)(uta, posha, agrima, anuga, boda, ekaditiboda, day, time_zone)
+        return type(self)(uta, posha, agrima, anuga, boda, shaditiboda, day, time_zone)
 
     @property
     def dozenal_time(self) -> tuple[str, str, str]:

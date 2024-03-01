@@ -372,41 +372,6 @@ class SezimalDate:
 
             fmt = regex.sub(value, fmt)
 
-        # for character, value in [
-        #     ['wM', 'week_in_month'],
-        #     ['dQ', 'day_in_quarter'],
-        #     ['wQ', 'week_in_quarter'],
-        #     ['mQ', 'month_in_quarter'],
-        #     ['dY', 'day_in_year'],
-        #     ['wY', 'week_in_year'],
-        #
-        #     ['d', 'day'],
-        #     ['m', 'month'],
-        #     ['y', 'year'],
-        #     ['w', 'weekday'],
-        #     ['q', 'quarter'],
-        # ]:
-        #     if f'#&{character}' in fmt:
-        #         fmt = fmt.replace(f'#&{character}', sezimal_spellout(str(getattr(self, value, 0)), lang or 'en'))
-        #
-        #     elif f'#&o{character}' in fmt:
-        #         fmt = fmt.replace(f'#o&{character}', sezimal_spellout('ordinal ' + str(getattr(self, value, 0)), lang or 'en'))
-        #
-        #     elif f'#&a{character}' in fmt:
-        #         fmt = fmt.replace(f'#a&{character}', sezimal_spellout('ordinal-feminine ' + str(getattr(self, value, 0)), lang or 'en'))
-
-        # #
-        # # Some languages have special rules for using ordinal days,
-        # # so, we only use ordinal if there is a suffix for the ordinal day
-        # #
-        # if '#&Od' in fmt:
-        #     suffix = locale.day_ordinal_suffix(self.day)
-        #
-        #     if suffix:
-        #         fmt = fmt.replace('#&Od', sezimal_spellout('ordinal ' + str(self.day), lang or 'en'))
-        #     else:
-        #         fmt = fmt.replace('#&Od', sezimal_spellout(str(self.day), lang or 'en'))
-
         #
         # Formatted year number
         #
@@ -450,8 +415,12 @@ class SezimalDate:
             if '?' in base:
                 year = locale.digit_replace(year)
 
-            if separator and separator != locale.GROUP_SEPARATOR:
-                year = year.replace(locale.GROUP_SEPARATOR, separator)
+            if separator:
+                if separator[0] == '\\' and len(separator) >= 2:
+                    separator = separator[1:]
+
+                if separator != locale.GROUP_SEPARATOR:
+                    year = year.replace(locale.GROUP_SEPARATOR, separator)
 
             fmt = regex.sub(year, fmt)
 
