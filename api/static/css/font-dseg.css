@@ -1,0 +1,10 @@
+
+@font-face {
+  font-family: 'DSEG';
+  font-weight: normal;
+  font-style: normal;
+  src: local('DSEG14Classic-Regular');
+  src: local('DSEG14Classic-Regular'),
+       url("../font/DSEG14Classic-Regular.woff2") format("woff2"),
+       url("../font/DSEG14Classic-Regular.ttf") format("truetype");
+}

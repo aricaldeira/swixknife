@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sezimal API - Date and Time Formats</title>
+        <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-iosevka.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/font-noto.css" />
+<!--         <link rel="stylesheet" type="text/css" href="static/css/sezimal.css" /> -->
+        <style>
+            .calendar-month-title {
+                border: 1px solid;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .calendar-title {
+                border: 1px solid;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .week-number {
+                border: 1px solid;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .calendar-day {
+                border: 1px solid;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .calendar-year {
+                border: 0px;
+            }
+            td.calendar-year: {
+                border: 0px;
+            }
+        </style>
+    </head>
+    <body>
+<table class="calendar-year">
+    <tbody>
+        <tr>
+            <td>
+                <table class="calendar-month">
+                    <thead>
+                        <tr>
+                            <th class="calendar-month-title" colspan="8">janeru</th>
+                        </tr>
+                        <tr>
+                            <th class="calendar-title">sem</th>
+                            <th class="calendar-title">sig</th>
+                            <th class="calendar-title">ter</th>
+                            <th class="calendar-title">kwa</th>
+                            <th class="calendar-title">kin</th>
+                            <th class="calendar-title">ses</th>
+                            <th class="calendar-title">sáb</th>
+                            <th class="calendar-title">dum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-number">1</td>
+                            <td class="calendar-day">1</td>
+                            <td class="calendar-day">2</td>
+                            <td class="calendar-day">3</td>
+                            <td class="calendar-day">4</td>
+                            <td class="calendar-day">5</td>
+                            <td class="calendar-day">10</td>
+                            <td class="calendar-day">11</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">2</td>
+                            <td class="calendar-day">12</td>
+                            <td class="calendar-day">13</td>
+                            <td class="calendar-day">14</td>
+                            <td class="calendar-day">15</td>
+                            <td class="calendar-day">20</td>
+                            <td class="calendar-day">21</td>
+                            <td class="calendar-day">22</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">3</td>
+                            <td class="calendar-day">23</td>
+                            <td class="calendar-day">24</td>
+                            <td class="calendar-day">25</td>
+                            <td class="calendar-day">30</td>
+                            <td class="calendar-day">31</td>
+                            <td class="calendar-day">32</td>
+                            <td class="calendar-day">33</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">4</td>
+                            <td class="calendar-day">34</td>
+                            <td class="calendar-day">35</td>
+                            <td class="calendar-day">40</td>
+                            <td class="calendar-day">41</td>
+                            <td class="calendar-day">42</td>
+                            <td class="calendar-day">43</td>
+                            <td class="calendar-day">44</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="calendar-month">
+                    <thead>
+                        <tr>
+                            <th class="calendar-month-title" colspan="8">fevereru</th>
+                        </tr>
+                        <tr>
+                            <th class="calendar-title">sem</th>
+                            <th class="calendar-title">sig</th>
+                            <th class="calendar-title">ter</th>
+                            <th class="calendar-title">kwa</th>
+                            <th class="calendar-title">kin</th>
+                            <th class="calendar-title">ses</th>
+                            <th class="calendar-title">sáb</th>
+                            <th class="calendar-title">dum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-number">5</td>
+                            <td class="calendar-day">1</td>
+                            <td class="calendar-day">2</td>
+                            <td class="calendar-day">3</td>
+                            <td class="calendar-day">4</td>
+                            <td class="calendar-day">5</td>
+                            <td class="calendar-day">10</td>
+                            <td class="calendar-day">11</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">10</td>
+                            <td class="calendar-day">12</td>
+                            <td class="calendar-day">13</td>
+                            <td class="calendar-day">14</td>
+                            <td class="calendar-day">15</td>
+                            <td class="calendar-day">20</td>
+                            <td class="calendar-day">21</td>
+                            <td class="calendar-day">22</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">11</td>
+                            <td class="calendar-day">23</td>
+                            <td class="calendar-day">24</td>
+                            <td class="calendar-day">25</td>
+                            <td class="calendar-day">30</td>
+                            <td class="calendar-day">31</td>
+                            <td class="calendar-day">32</td>
+                            <td class="calendar-day">33</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">12</td>
+                            <td class="calendar-day">34</td>
+                            <td class="calendar-day">35</td>
+                            <td class="calendar-day">40</td>
+                            <td class="calendar-day">41</td>
+                            <td class="calendar-day">42</td>
+                            <td class="calendar-day">43</td>
+                            <td class="calendar-day">44</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">13</td>
+                            <td class="calendar-day">45</td>
+                            <td class="calendar-day">50</td>
+                            <td class="calendar-day">51</td>
+                            <td class="calendar-day">52</td>
+                            <td class="calendar-day">53</td>
+                            <td class="calendar-day">54</td>
+                            <td class="calendar-day">55</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="calendar-month">
+                    <thead>
+                        <tr>
+                            <th class="calendar-month-title" colspan="8">marsu</th>
+                        </tr>
+                        <tr>
+                            <th class="calendar-title">sem</th>
+                            <th class="calendar-title">sig</th>
+                            <th class="calendar-title">ter</th>
+                            <th class="calendar-title">kwa</th>
+                            <th class="calendar-title">kin</th>
+                            <th class="calendar-title">ses</th>
+                            <th class="calendar-title">sáb</th>
+                            <th class="calendar-title">dum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-number">14</td>
+                            <td class="calendar-day">1</td>
+                            <td class="calendar-day">2</td>
+                            <td class="calendar-day">3</td>
+                            <td class="calendar-day">4</td>
+                            <td class="calendar-day">5</td>
+                            <td class="calendar-day">10</td>
+                            <td class="calendar-day">11</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">15</td>
+                            <td class="calendar-day">12</td>
+                            <td class="calendar-day">13</td>
+                            <td class="calendar-day">14</td>
+                            <td class="calendar-day">15</td>
+                            <td class="calendar-day">20</td>
+                            <td class="calendar-day">21</td>
+                            <td class="calendar-day">22</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">20</td>
+                            <td class="calendar-day">23</td>
+                            <td class="calendar-day">24</td>
+                            <td class="calendar-day">25</td>
+                            <td class="calendar-day">30</td>
+                            <td class="calendar-day">31</td>
+                            <td class="calendar-day">32</td>
+                            <td class="calendar-day">33</td>
+                        </tr>
+                        <tr>
+                            <td class="week-number">21</td>
+                            <td class="calendar-day">34</td>
+                            <td class="calendar-day">35</td>
+                            <td class="calendar-day">40</td>
+                            <td class="calendar-day">41</td>
+                            <td class="calendar-day">42</td>
+                            <td class="calendar-day">43</td>
+                            <td class="calendar-day">44</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

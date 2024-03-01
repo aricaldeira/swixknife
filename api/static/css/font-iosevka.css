@@ -1,0 +1,40 @@
+
+@font-face {
+  font-family: 'Iosevka';
+  font-weight: bold;
+  font-style: italic;
+  src: local('iosevka-sezimal-bolditalic');
+  src: local('iosevka-sezimal-bolditalic'),
+       url("../font/iosevka-sezimal-bolditalic.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-bolditalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-weight: normal;
+  font-style: italic;
+  src: local('iosevka-sezimal-italic');
+  src: local('iosevka-sezimal-italic'),
+       url("../font/iosevka-sezimal-italic.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-weight: bold;
+  font-style: normal;
+  src: local('iosevka-sezimal-bold');
+  src: local('iosevka-sezimal-bold'),
+       url("../font/iosevka-sezimal-bold.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-weight: normal;
+  font-style: normal;
+  src: local('Iosevka');
+  src: local('Iosevka'),
+       url("../font/iosevka-sezimal-regular.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-regular.ttf") format("truetype");
+}

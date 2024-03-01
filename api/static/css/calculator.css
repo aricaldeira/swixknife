@@ -1,0 +1,121 @@
+/*
+ *
+ *
+ *
+ */
+
+:root {
+    --o-webclient-color-scheme: blue;
+
+    font-size: 1.5em;
+
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+
+    /*
+     / Font Andika
+    */
+    font-family: 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+}
+
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.calculator{
+    font-family: 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    margin: 0;
+/*     position: absolute; */
+    text-align: center;
+    background-color: #B71C1C;
+    top: 50%;
+    left: 50%;
+/*     transform: translate(-50%,0%); */
+    border-radius: 15px;
+    padding: 15px;
+    display: grid;
+}
+
+div.calculator {
+    width: 562px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.display {
+    font-size: 25px;
+    text-align: right;
+    background-color: white;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+.decimal_display {
+    font-size: 15px;
+    text-align: right;
+    background-color: white;
+    height: 20px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 7px;
+    vertical-align: middle;
+}
+
+.calc-button{
+/*     width: 70px; */
+    width: 100%;
+    height: 70px;
+    font-size: 40px;
+    cursor: pointer;
+    margin: 3px;
+    border: none;
+    background-color: #3E2723;
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    /*
+     * Setting font-weight to bold cancels font-feature-settings, have to re-set here
+     */
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+}
+
+.calc-button:hover{
+    background-color: #F44336;
+}
+
+.calc-button-operator {
+    font-size: 50px;
+}
+
+.calc-button-backspace {
+    font-size: 30px;
+}
+
+.calc-button-constant {
+/*     font-family: 'Gentium Plus', 'Andika', 'Noto Sans', sans-serif; */
+/*     font-size: 30px; */
+}
+
+.regular {
+/*     display: inherit; */
+}
+
+.scientific {
+    display: none;
+}

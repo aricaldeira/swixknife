@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{locale.LANG}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sezimal Now</title>
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-noto.css" />
+    </head>
+    <body>
+    <h2 {'dir="rtl"' if locale.RTL else ""} style="text-align: center;">{date_time.format(date_format, locale)}</h2>
+    <h1 {'dir="rtl"' if locale.RTL else ""} style="text-align: center;">{date_time.format(time_format, locale)}</h1>
+    <p {'dir="rtl"' if locale.RTL else ""} style="text-align: center;">{date_time.format(season_format, locale)}</p>
+    <p {'dir="rtl"' if locale.RTL else ""} style="text-align: center;">{date_time.format(moon_format, locale)}</p>
+
+    </body>
+</html>
