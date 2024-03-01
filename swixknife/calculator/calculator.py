@@ -250,7 +250,7 @@ class SezimalCalculator:
     def _format_decimal(self, number, precision: int = None, display: bool = False):
         params = {
             'decimal_places': 0,
-            'recurring_digits_notation': RECURRING_DIGITS_NOTATION_MIDDLE_DOT,
+            'recurring_digits_notation': RECURRING_DIGITS_NOTATION_NONE,
         }
 
         if not display:
