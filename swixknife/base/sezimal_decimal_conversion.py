@@ -11,12 +11,15 @@ from .validation import validate_clean_sezimal, validate_clean_decimal
 from .context import sezimal_context
 
 
-def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = sezimal_context.decimal_precision) -> str:
+def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, decimal_precision: int = None) -> str:
     if type(number) == Decimal:
         return validate_clean_decimal(str(number))
 
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         return validate_clean_decimal(str(number.decimal))
+
+    if decimal_precision is None:
+        decimal_precision = sezimal_context.decimal_precision
 
     number = validate_clean_sezimal(str(number))
 
