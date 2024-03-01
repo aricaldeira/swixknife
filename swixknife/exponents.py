@@ -1,15 +1,9 @@
 
 from decimal import Decimal
 
-from .sezimal import Sezimal, SezimalInteger
+from .sezimal import Sezimal, SezimalInteger, SezimalFraction
 from .functions import SezimalRange
 from .base import sezimal_context
-
-MAX_EXPONENT = SezimalInteger(sezimal_context.sezimal_precision) - 4
-MIN_EXPONENT = MAX_EXPONENT * -1
-
-MAX_DECIMAL_EXPONENT = SezimalInteger(Decimal(sezimal_context.decimal_precision)) - 4
-MIN_DECIMAL_EXPONENT = MAX_DECIMAL_EXPONENT * -1
 
 
 def sezimal_exponent_to_decimal(exponent: str | int | SezimalInteger) -> SezimalInteger:
@@ -17,11 +11,6 @@ def sezimal_exponent_to_decimal(exponent: str | int | SezimalInteger) -> Sezimal
         return SezimalInteger(0)
 
     exponent = SezimalInteger(exponent)
-
-    # if exponent > 0 and exponent > MAX_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be above {MAX_EXPONENT}')
-    # elif exponent < 0 and exponent < MIN_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be under {MIN_EXPONENT}')
 
     exponent_six = Sezimal(10) ** exponent
 
@@ -54,11 +43,6 @@ def decimal_exponent_to_sezimal(exponent: str | int | SezimalInteger) -> Sezimal
 
     exponent = SezimalInteger(exponent)
 
-    # if exponent > 0 and exponent > MAX_DECIMAL_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be above {MAX_DECIMAL_EXPONENT}')
-    # elif exponent < 0 and exponent < MIN_DECIMAL_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be under {MIN_DECIMAL_EXPONENT}')
-
     exponent_ten = Sezimal(14) ** exponent
 
     if exponent > 0:
@@ -86,69 +70,46 @@ def decimal_exponent_to_sezimal(exponent: str | int | SezimalInteger) -> Sezimal
 
 def sezimal_exponent_to_decimal_factor(sezimal_exponent: str | int | SezimalInteger, decimal_exponent: str | int | SezimalInteger = None) -> SezimalInteger:
     if sezimal_exponent == 0:
-        return SezimalInteger(0)
+        return SezimalFraction(0, 1)
 
     sezimal_exponent = SezimalInteger(sezimal_exponent)
-
-    if sezimal_exponent > 0 and sezimal_exponent > MAX_EXPONENT:
-        raise ValueError(f'Sezimal exponent {sezimal_exponent} cannot be above {MAX_EXPONENT}')
-    elif sezimal_exponent < 0 and sezimal_exponent < MIN_EXPONENT:
-        raise ValueError(f'Sezimal exponent {sezimal_exponent} cannot be under {MIN_EXPONENT}')
 
     if decimal_exponent is None:
         decimal_exponent = sezimal_exponent_to_decimal(sezimal_exponent)
     else:
         decimal_exponent = SezimalInteger(decimal_exponent)
 
-        if decimal_exponent > 0 and decimal_exponent > MAX_DECIMAL_EXPONENT:
-            raise ValueError(f'Decimal exponent {decimal_exponent} cannot be above {MAX_DECIMAL_EXPONENT}')
-        elif decimal_exponent < 0 and decimal_exponent < MIN_DECIMAL_EXPONENT:
-            raise ValueError(f'Decimal exponent {decimal_exponent} cannot be under {MIN_DECIMAL_EXPONENT}')
-
     if decimal_exponent == 0:
-        return SezimalInteger(0)
+        return SezimalFraction(0, 1)
 
     if sezimal_exponent > 0 and decimal_exponent > 0:
-        factor = (Sezimal(10) ** sezimal_exponent) / (Sezimal(14) ** decimal_exponent)
+        factor = SezimalFraction(Sezimal(10) ** sezimal_exponent, Sezimal(14) ** decimal_exponent)
 
     else:
-        factor = (Sezimal(10) ** abs(sezimal_exponent)) / (Sezimal(14) ** abs(decimal_exponent))
+        factor = SezimalFraction(Sezimal(10) ** abs(sezimal_exponent) , Sezimal(14) ** abs(decimal_exponent))
         factor = 1 / factor
-
-    # if str(factor).endswith('5555'):
-    #     factor += Sezimal(f'1E{factor._precision}')
 
     return factor
 
 
 def decimal_exponent_to_sezimal_factor(decimal_exponent: str | int | SezimalInteger, sezimal_exponent: str | int | SezimalInteger = None) -> SezimalInteger:
     if decimal_exponent == 0:
-        return SezimalInteger(0)
+        return SezimalFraction(0, 1)
 
     decimal_exponent = SezimalInteger(decimal_exponent)
-
-    if decimal_exponent > 0 and decimal_exponent > MAX_DECIMAL_EXPONENT:
-        raise ValueError(f'Decimal exponent {decimal_exponent} cannot be above {MAX_DECIMAL_EXPONENT}')
-    elif decimal_exponent < 0 and decimal_exponent < MIN_DECIMAL_EXPONENT:
-        raise ValueError(f'Decimal exponent {decimal_exponent} cannot be under {MIN_DECIMAL_EXPONENT}')
 
     if sezimal_exponent is None:
         sezimal_exponent = decimal_exponent_to_sezimal(decimal_exponent)
     else:
         sezimal_exponent = SezimalInteger(sezimal_exponent)
 
-        if sezimal_exponent > 0 and sezimal_exponent > MAX_EXPONENT:
-            raise ValueError(f'Sezimal exponent {sezimal_exponent} cannot be above {MAX_EXPONENT}')
-        elif sezimal_exponent < 0 and sezimal_exponent < MIN_EXPONENT:
-            raise ValueError(f'Sezimal exponent {sezimal_exponent} cannot be under {MIN_EXPONENT}')
-
     if sezimal_exponent == 0:
-        return SezimalInteger(0)
+        return SezimalFraction(0, 1)
 
     if decimal_exponent > 0 and sezimal_exponent > 0:
-        factor = (Sezimal(14) ** decimal_exponent) / (Sezimal(10) ** sezimal_exponent)
+        factor = SezimalFraction(Sezimal(14) ** decimal_exponent, Sezimal(10) ** sezimal_exponent)
     else:
-        factor = (Sezimal(14) ** abs(decimal_exponent)) / (Sezimal(10) ** abs(sezimal_exponent))
+        factor = SezimalFraction(Sezimal(14) ** abs(decimal_exponent), Sezimal(10) ** abs(sezimal_exponent))
         factor = 1 / factor
 
     # if str(factor).endswith('5555'):
@@ -162,8 +123,39 @@ _DIGIT_TO_PREFIX = {
     '1': 'eka',
     '2': 'di',
     '3': 'tri',
-    '4': 'cha',
+    '4': 'char',
     '5': 'pan',
+    '10': 'sha',
+    '11': 'shaeka',
+    '12': 'shadi',
+    '13': 'shatri',
+    '14': 'shachar',
+    '15': 'shapan',
+    '20': 'disha',
+    '30': 'trisha',
+    '40': 'charsha',
+    '50': 'pansha',
+    '100': 'ni',
+    '101': 'nieka',
+    '102': 'nidi',
+    '103': 'nitri',
+    '104': 'nichar',
+    '105': 'nipan',
+    '110': 'nisha',
+    '111': 'nishaeka',
+    '112': 'nishadi',
+    '113': 'nishatri',
+    '114': 'nishachar',
+    '115': 'nishapan',
+    '120': 'nidisha',
+    '130': 'nitrisha',
+    '140': 'nicharsha',
+    '150': 'nipansha',
+    '200': 'dini',
+    '300': 'trini',
+    '400': 'charni',
+    '500': 'pani',
+    '1000': 'ar',
 }
 
 _DIGIT_TO_SYMBOL = {
@@ -173,25 +165,41 @@ _DIGIT_TO_SYMBOL = {
     '3': 't',
     '4': 'c',
     '5': 'p',
+    '10': 'x',
+    '11': 'xe',
+    '12': 'xd',
+    '13': 'xt',
+    '14': 'xc',
+    '15': 'xp',
+    '20': 'dx',
+    '30': 'tx',
+    '40': 'cx',
+    '50': 'px',
+    '100': 'n',
+    '101': 'ne',
+    '102': 'nd',
+    '103': 'nt',
+    '104': 'nc',
+    '105': 'np',
+    '110': 'nx',
+    '111': 'nxe',
+    '112': 'nxd',
+    '113': 'nxt',
+    '114': 'nxc',
+    '115': 'nxp',
+    '120': 'ndx',
+    '130': 'ntx',
+    '140': 'ncx',
+    '150': 'npx',
+    '200': 'dn',
+    '300': 'tn',
+    '400': 'cn',
+    '500': 'pn',
+    '1000': 'a',
 }
 
-_PREFIX_TO_DIGIT = {
-    'shun': '0',
-    'eka': '1',
-    'di': '2',
-    'tri': '3',
-    'cha': '4',
-    'pan': '5',
-}
-
-_SYMBOL_TO_DIGIT = {
-    's': '0',
-    'e': '1',
-    'd': '2',
-    't': '3',
-    'c': '4',
-    'p': '5',
-}
+_PREFIX_TO_DIGIT = {p: d for d, p in _DIGIT_TO_PREFIX.items()}
+_SYMBOL_TO_DIGIT = {s: d for d, s in _DIGIT_TO_SYMBOL.items()}
 
 
 def sezimal_exponent_to_prefix(exponent: str | int | SezimalInteger) -> str:
@@ -200,50 +208,59 @@ def sezimal_exponent_to_prefix(exponent: str | int | SezimalInteger) -> str:
 
     exponent = SezimalInteger(exponent)
 
-    # if exponent > 0 and exponent > MAX_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be above {MAX_EXPONENT}')
-    # elif exponent < 0 and exponent < MIN_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be under {MIN_EXPONENT}')
-
-    prefix = ''
-
     if exponent > 0:
+        infix = 'ma'
+    else:
+        infix = 'ti'
+
+    exponent = str(abs(exponent))
+
+    if exponent in _DIGIT_TO_PREFIX:
+        prefix = _DIGIT_TO_PREFIX[exponent]
+    else:
+        prefix = ''
+
         for digit in str(exponent):
             prefix += _DIGIT_TO_PREFIX[digit]
 
-        prefix += 'ma'
+    prefix += infix
 
-    else:
-        for digit in str(abs(exponent)):
-            prefix += _DIGIT_TO_PREFIX[digit]
-
-        prefix += 'ti'
+    prefix = prefix.replace('nn', 'n')
+    prefix = prefix.replace('nm', 'm')
 
     return prefix
 
 
-def sezimal_exponent_to_symbol(exponent: str | int | SezimalInteger) -> str:
+def sezimal_exponent_to_symbol(exponent: str | int | SezimalInteger, with_infix: bool = False) -> str:
     if exponent == 0:
         return _DIGIT_TO_SYMBOL['0']
 
     exponent = SezimalInteger(exponent)
-    #
-    # if exponent > 0 and exponent > MAX_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be above {MAX_EXPONENT}')
-    # elif exponent < 0 and exponent < MIN_EXPONENT:
-    #     raise ValueError(f'Exponent {exponent} cannot be under {MIN_EXPONENT}')
-
-    symbol = ''
 
     if exponent > 0:
+        upper_case = True
+        infix = 'm'
+    else:
+        upper_case = False
+        infix = 'i'
+
+    if not with_infix:
+        infix = ''
+
+    exponent = str(abs(exponent))
+
+    if exponent in _DIGIT_TO_SYMBOL:
+        symbol = _DIGIT_TO_SYMBOL[exponent]
+    else:
+        symbol = ''
+
         for digit in str(exponent):
             symbol += _DIGIT_TO_SYMBOL[digit]
 
+    if infix == '' and upper_case:
         symbol = symbol.upper()
 
-    else:
-        for digit in str(abs(exponent)):
-            symbol += _DIGIT_TO_SYMBOL[digit]
+    symbol += infix
 
     return symbol
 
