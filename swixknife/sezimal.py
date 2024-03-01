@@ -761,6 +761,7 @@ class Sezimal:
 
         if self == 1:
             _RECIPROCAL_MAP[check] = division
+            # print(f"'{check}', ")
 
         if negative:
             division = '-' + division
@@ -961,6 +962,9 @@ class Sezimal:
         return result
 
     def __power(self, other_number: Self) -> Self:
+        if other_number == 0:
+            return SezimalInteger(1)
+
         #
         # When the exponent is an integer,
         # avoid loosing precision in the decimal conversion,
