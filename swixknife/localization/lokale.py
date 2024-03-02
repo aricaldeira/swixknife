@@ -16,6 +16,7 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
     RECURRING_DIGITS_NOTATION_SIMPLE, \
     sezimal_format, decimal_format, dozenal_format, \
     niftimal_format
+from ..text import sezimal_spellout
 
 
 class SezimalLocale:
@@ -570,3 +571,11 @@ class SezimalLocale:
                 sliced_text += c
 
         return sliced_text
+
+    def spellout(self, number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, lang: str = None) -> str:
+        number = str(number)
+
+        if lang is None:
+            lang = self.LANG
+
+        return sezimal_spellout(number, lang)
