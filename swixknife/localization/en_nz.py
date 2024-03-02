@@ -11,3 +11,4 @@ class SezimalLocaleEN_NZ(SezimalLocaleEN):
     LANGUAGE = 'New Zealand English'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+    DEFAULT_TIME_ZONE = 'Pacific/Auckland'
