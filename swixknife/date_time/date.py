@@ -249,7 +249,7 @@ class SezimalDate:
     def _apply_number_format(self, token: str, value_name: str, size: int | SezimalInteger = None, locale: SezimalLocale = None, from_decimal: bool = False) -> str:
         value = getattr(self, value_name, 0)
 
-        if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
+        if token.startswith('#') and value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
             if type(value) == Decimal:
                 value = SezimalInteger(value)
             else:
