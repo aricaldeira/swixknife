@@ -26,10 +26,10 @@ DATE_NUMBER_FORMAT_TOKENS = tuple(
             ('m', 'month', 2, 1, 2),              # 01 – 20 (01_dec – 12_dec)
             ('q', 'quarter', 1, 1, 1),            # 1 – 4
             ('y', 'year', 10, 3, 5),              # 000_000 – 555_555 (−10_000_dec – 36_655_dec)
-            ('gY', 'gregorian_year', 5, 2, 4),
-            ('gHY', 'gregorian_holocene_year', 10, 3, 5),
-            ('sY', 'symmetric_year', 5, 2, 4),
-            ('sHY', 'symmetric_holocene_year', 10, 3, 5),
+            ('gy', 'gregorian_year', 5, 2, 4),
+            ('ghy', 'gregorian_holocene_year', 10, 3, 5),
+            ('sy', 'symmetric_year', 5, 2, 4),
+            ('shy', 'symmetric_holocene_year', 10, 3, 5),
         ),
     )
 )
@@ -37,10 +37,10 @@ DATE_NUMBER_FORMAT_TOKENS = tuple(
 
 YEAR_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{separator}Y'),
-        f'#{base}{separator}Y'.replace('\\', ''), base.replace('\\', ''), separator
+        re.compile(f'\#{base}{separator}{value[0]}'),
+        f'#{base}{separator}{value[0]}'.replace('\\', ''), base.replace('\\', ''), separator, *value
     )
-    for base, separator, in product(
+    for base, separator, value, in product(
         ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
         (
             '', '_', '\\.', ',', '˙', 'ʼ',
@@ -48,6 +48,13 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
             '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
             '\u2006', '\u2007', '\u2008', '\u2009', '\u200a', '\u202f',
             '\u205f'
+        ),
+        (
+            ('Y', 'year'),
+            ('gY', 'gregorian_year'),
+            ('ghY', 'gregorian_holocene_year'),
+            ('sY', 'symmetric_year'),
+            ('shY', 'symmetric_holocene_year'),
         )
     )
 )

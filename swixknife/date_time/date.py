@@ -381,11 +381,17 @@ class SezimalDate:
         #
         # Formatted year number
         #
-        for regex, token, base, separator in YEAR_NUMBER_FORMAT_TOKENS:
+        for regex, token, base, separator, character, value_name in YEAR_NUMBER_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
 
-            year = self.year
+            year = getattr(self, value_name, 0)
+
+            if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
+                if type(year) == Decimal:
+                    year = SezimalInteger(year)
+                else:
+                    year = SezimalInteger(Decimal(year))
 
             if base in ['', '!', '?']:
                 year = locale.format_number(
