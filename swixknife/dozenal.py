@@ -1066,6 +1066,18 @@ class DozenalInteger(Dozenal):
             original_decimal = number
             number = decimal_to_dozenal(str(number))
 
+        elif type(number).__name__ in ('Sezimal', 'SezimalInteger'):
+            number = sezimal_to_dozenal(str(number))
+
+        elif type(number).__name__ == 'SezimalFraction':
+            number = sezimal_to_dozenal(str(number.sezimal))
+
+        elif type(number).__name__ == 'DozenalFraction':
+            number = number.dozenal
+
+        elif type(number) == str and ('/' in number or '⁄' in number or '÷' in number):
+            number = DozenalFraction(number).dozenal
+
         cleaned_number = validate_clean_dozenal(number)
 
         if cleaned_number[0] == '-':
