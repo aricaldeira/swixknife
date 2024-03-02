@@ -11,30 +11,30 @@ def create_units(lang='en'):
 UNIT-dia dia
 UNIT-day dia
 UNIT-uta uta
-UNIT-psh poxa
+UNIT-pox poxa
 UNIT-agm agrima
 UNIT-ang anuga
-UNIT-bda boda
+UNIT-bod boda
 UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-ksh quexe
+UNIT-kex quexe
 UNIT-ayt aitan
 UNIT-vrt várti
 UNIT-drv drávia
-UNIT-gna gana
+UNIT-gan gana
 UNIT-trg taranga
 UNIT-mnu mânu
-UNIT-bra bara
-UNIT-dba daba
+UNIT-bar bara
+UNIT-dab daba
 UNIT-kry kária
-UNIT-sht xáti
-UNIT-dra dara
-UNIT-vsh avexa
+UNIT-xat xáti
+UNIT-dar dara
+UNIT-avx avexa
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-chl chalana
+UNIT-cln chalana
 UNIT-prk preraca
 UNIT-sma samai
 UNIT-abv abiva
@@ -48,30 +48,30 @@ UNIT-vst vistara
 UNIT-dia dia
 UNIT-day dia
 UNIT-uta uta
-UNIT-psh poxa
+UNIT-pox poxa
 UNIT-agm agrima
 UNIT-ang anuga
-UNIT-bda bòda
+UNIT-bod boda
 UNIT-avt avrita
 UNIT-pad pada
-UNIT-veg vèga
+UNIT-veg vega
 UNIT-tvr tevara
-UNIT-ksh kexi
+UNIT-kex kexi
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
-UNIT-gna gana
+UNIT-gan gana
 UNIT-trg taranga
 UNIT-mnu manu
-UNIT-bra bara
-UNIT-dba daba
+UNIT-bar bara
+UNIT-dab daba
 UNIT-kry karya
-UNIT-sht xati
-UNIT-dra dara
-UNIT-vsh avexa
+UNIT-xat xati
+UNIT-dar dara
+UNIT-avx avexa
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-chl xalana
+UNIT-cln xalana
 UNIT-prk preraka
 UNIT-sma samay
 UNIT-abv abiva
@@ -84,30 +84,30 @@ UNIT-vst vistara
 #
 UNIT-day day
 UNIT-uta uta
-UNIT-psh posha
+UNIT-pox posha
 UNIT-agm agrima
 UNIT-ang anuga
-UNIT-bda boda
+UNIT-bod boda
 UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-ksh keshe
+UNIT-kex keshe
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
-UNIT-gna gana
+UNIT-gan gana
 UNIT-trg taranga
 UNIT-mnu manu
-UNIT-bra bara
-UNIT-dba daba
+UNIT-bar bara
+UNIT-dab daba
 UNIT-kry karya
-UNIT-sht shati
-UNIT-dra dara
-UNIT-vsh avesha
+UNIT-xat shati
+UNIT-dar dara
+UNIT-avx avesha
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-chl chalana
+UNIT-cln chalana
 UNIT-prk preraka
 UNIT-sma samai
 UNIT-abv abiva
@@ -131,13 +131,17 @@ def create_prefixes(lang='en'):
             name = sezimal_exponent_to_prefix(i)
 
             if lang == 'pt':
-                name = name.replace('shun', 'xun')
+                name = name.replace('shu', 'xu')
+                name = name.replace('sha', 'xa')
                 name = name.replace('eka', 'eca')
                 name = name.replace('panp', 'pamp')
 
             elif lang == 'bz':
-                name = name.replace('shun', 'xun')
+                name = name.replace('shu', 'xu')
+                name = name.replace('sha', 'xa')
                 name = name.replace('cha', 'xa')
+
+            name = name.replace('nm', 'm')
 
             text += f'PREFIX-{symbol} {name}\n'
 
@@ -176,7 +180,7 @@ def create_rules(conjunction='and', preposition=''):
     else:
         preposition = f' {preposition} '
 
-    PREFIX_RULE = '[SEDTCP]{1,3}|[sedtcp]{1,3}'
+    PREFIX_RULE = '[SEDTCPXNA]{1,3}|[sedtcpxna]{1,3}'
     UNIT_RULE = '[a-z]{3}'
     # PRECISION_RULE = '[0-5]{1,3}'
 
@@ -239,6 +243,6 @@ def create_rules(conjunction='and', preposition=''):
 
 
 if __name__ == '__main__':
-    print(create_units(lang='en'))
-    print(create_prefixes(lang='en'))
-    print(create_rules(conjunction='and', preposition=''))
+    print(create_units(lang='bz'))
+    print(create_prefixes(lang='bz'))
+    print(create_rules(conjunction='i', preposition=''))

@@ -23,61 +23,28 @@
 1(\d0) nif and $1
 1(\d\d) nif $1
 
-(\d)00 $1 nif
-(\d)(1\d) $1 nif and $2
-(\d)(\d0) $1 nif and $2
-(\d)(\d\d) $1 nif $2
-
-1000 arda
-100(\d) arda and $1
-10(1\d) arda and $1
-10(\d0) arda and $1
-1(\d00) arda and $1
-1(\d\d\d) arda $1
-
-(\d{1,3})000 $1 arda
-(\d{1,3})00(\d) $1 arda and $2
-(\d{1,3})0(1\d) $1 arda and $2
-(\d{1,3})0(\d0) $1 arda and $2
-(\d{1,3})(\d00) $1 arda and $2
-(\d{1,3})(\d\d\d) $1 arda, $2
-
-1000000 shadara
-100000(\d) shadara and $1
-10000(1\d) shadara and $1
-10000(\d0) shadara and $1
-1000(\d00) shadara and $1
-100(\d000) shadara and $1
-10(\d0000) shadara and $1
-1(\d00000) shadara and $1
-1(\d{6}) shadara, $1
-
-(\d{1,6})000000 $1 shadara
-(\d{1,6})00000(\d) $1 shadara and $2
-(\d{1,6})0000(1\d) $1 shadara and $2
-(\d{1,6})0000(\d0) $1 shadara and $2
-(\d{1,6})000(\d00) $1 shadara and $2
-(\d{1,6})00(\d000) $1 shadara and $2
-(\d{1,6})0(\d0000) $1 shadara and $2
-(\d{1,6})(\d00000) $1 shadara and $2
-(\d{1,6})(\d{6}) $1 shadara, $2
+(\d{1,2})00 $1 nif
+(\d{1,2})(1\d) $1 nif and $2
+(\d{1,2})(\d0) $1 nif and $2
+(\d{1,2})(\d\d) $1 nif $2
 
 # separator function
 :0+			# one million
 :0*\d?\d " and "	# one million and twenty-two
 :\d+ ", "		# one million, one thousand
 
-(\d{1,6})(\d{12}) $1 dishadara$(:\2)$2
-(\d{1,6})(\d{18}) $1 trishadara$(:\2)$2
-(\d{1,6})(\d{24}) $1 charshadara$(:\2)$2
-(\d{1,6})(\d{30}) $1 panshadara$(:\2)$2
-(\d{1,6})(\d{36}) $1 shashadara$(:\2)$2
-(\d{1,6})(\d{42}) $1 shaekashadara$(:\2)$2
-(\d{1,6})(\d{48}) $1 shadishadara$(:\2)$2
-(\d{1,6})(\d{54}) $1 shatrishadara$(:\2)$2
-(\d{1,6})(\d{60}) $1 shacharshadara$(:\2)$2
-(\d{1,6})(\d{66}) $1 shapanshadara$(:\2)$2
-(\d{1,6})(\d{72}) $1 dishashadara$(:\2)$2
+(\d{1,4})(\d{4}) $1 unexian$(:\2)$2
+(\d{1,4})(\d{8})  $1 biexian$(:\2)$2
+(\d{1,4})(\d{12}) $1 triexian$(:\2)$2
+(\d{1,4})(\d{16}) $1 quadexian$(:\2)$2
+(\d{1,4})(\d{20}) $1 pentexian$(:\2)$2
+(\d{1,4})(\d{24}) $1 unnilexian$(:\2)$2
+(\d{1,4})(\d{28}) $1 ununexian$(:\2)$2
+(\d{1,4})(\d{32}) $1 unbiexian$(:\2)$2
+(\d{1,4})(\d{36}) $1 untriexian$(:\2)$2
+(\d{1,4})(\d{40}) $1 unquadexian$(:\2)$2
+(\d{1,4})(\d{44}) $1 unpentexian$(:\2)$2
+(\d{1,4})(\d{48}) $1 binilexian$(:\2)$2
 
 # negative number
 
@@ -87,7 +54,7 @@
 
 ([-−]?\d+)[,.] $1| point
 #([-−]?\d+)[,.] $1| comma
-([-−]?\d+[.,])([^0]\d{1,3}) $1| |$2
+([-−]?\d+[.,])([^0]\d{1,4}) $1| |$2
 "([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5
 "([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6
 "([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7

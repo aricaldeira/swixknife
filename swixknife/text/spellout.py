@@ -12,7 +12,7 @@ from .soros import run as soros_run
 
 
 def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, lang: str = 'en') -> str:
-    number = str(number)
+    number = str(number).replace('_', '')
 
     try:
         lang_file = open(f'{CURDIR}/data/{lang}.sor', 'r').read()

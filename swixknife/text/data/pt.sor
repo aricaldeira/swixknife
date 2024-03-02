@@ -4,38 +4,52 @@
 3 três
 4 quatro
 5 cinco
-
 10 seis
-20 dusseis
+11 sete
+12 oito
+13 nove
+14 dez
+15 onze
+20 doze
 30 tresseis
 40 quasseis
 50 quinseis
 (\d)(\d) $(\10) e $2
 
-100 zem
-110 zem e seis
-200 duzém
-210 duzém e seis
-300 trezém
-310 trezém e seis
-400 quazém
-410 quazém e seis
-500 quinzém
-510 quinzém e seis
-(\d)0(\d) $(\100) e $2
-(\d)(\d)0 $(\100) e $(\20)
+100 nife
+200 dunife
+300 trenife
+400 quatronife
+500 quinife
+
+(\d)(0\d) $(\100) e $2
+(\d)(1\d) $(\100) e $2
+(\d)(\d0) $(\100) e $2
 (\d)(\d\d) $(\100) $2
 
-1000 seis zem
-100(\d) seis zem e $1
-10(\d)0 seis zem e $(\10)
-10(\d\d) seis zem $1
+1000 arda
+100(\d) arda e $1
+10(1\d) arda e $1
+10(\d0) arda e $1
+1(\d00) arda e $1
+1(\d\d\d) arda $1
 
-(\d\d)00 $1 zem
-(\d\d)10 $1 zem e seis
-(\d\d)0(\d) $1 zem e $2
-(\d\d)(\d)0 $1 zem e $(\20)
-(\d\d)(\d\d) $1 zem $2
+(\d{1,3})000 $1 arda
+(\d{1,3})00(\d) $1 arda e $2
+(\d{1,3})0(1\d) $1 arda e $2
+(\d{1,3})0(\d0) $1 arda e $2
+(\d{1,3})(\d00) $1 arda e $2
+(\d{1,3})(\d\d\d) $1 arda, $2
+
+(\d{1,6})000000 $1 xadara
+(\d{1,6})00000(\d) $1 xadara e $2
+(\d{1,6})0000(1\d) $1 xadara e $2
+(\d{1,6})0000(\d0) $1 xadara e $2
+(\d{1,6})000(\d00) $1 xadara e $2
+(\d{1,6})00(\d000) $1 xadara e $2
+(\d{1,6})0(\d0000) $1 xadara e $2
+(\d{1,6})(\d00000) $1 xadara e $2
+(\d{1,6})(\d{6}) $1 xadara, $2
 
 #
 # Nas regras abaixo, o número que entra
@@ -46,27 +60,19 @@
 :0*[12345] " e "
 :0*[12345]0+ " e "
 :0*[12345]00+ " e "
-:0*[12345][012345]00+ " e "
 :\d+ ", "
 
-pl:1	ão			# milhão
-pl:.*	ões			# milhões
-
-1(\d\d\d\d) zil$(:\1)$1
-(\d{1,4})(\d\d\d\d) $1 zil$(:\2)$2
-
-(\d{1,4})(\d{8})  $1 zilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{12}) $1 duzilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{16}) $1 trezilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{20}) $1 quazilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{24}) $1 quinlh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{28}) $1 sezilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{32}) $1 seziunzilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{36}) $1 seziduzilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{40}) $1 sezitrezilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{44}) $1 seziquazilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{48}) $1 seziquinzilh$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{52}) $1 dussezilh$(pl:\1)$(:\2)$2
+(\d{1,6})(\d{12}) $1 dixadara$(:\2)$2
+(\d{1,6})(\d{18}) $1 trixadara$(:\2)$2
+(\d{1,6})(\d{24}) $1 charxadara$(:\2)$2
+(\d{1,6})(\d{30}) $1 panxadara$(:\2)$2
+(\d{1,6})(\d{36}) $1 xaxadara$(:\2)$2
+(\d{1,6})(\d{42}) $1 xaekaxadara$(:\2)$2
+(\d{1,6})(\d{48}) $1 xadixadara$(:\2)$2
+(\d{1,6})(\d{54}) $1 xatrixadara$(:\2)$2
+(\d{1,6})(\d{60}) $1 xacharxadara$(:\2)$2
+(\d{1,6})(\d{66}) $1 xapanxadara$(:\2)$2
+(\d{1,6})(\d{72}) $1 dixaxadara$(:\2)$2
 
 #
 # Números negativos
@@ -112,23 +118,28 @@ pl:.*	ões			# milhões
 4 quarto
 5 quinto
 10 sexto
-20 dussexto
+11 sétimo
+12 oitavo
+13 nono
+14 décimo
+15 ônzimo
+20 dôzimo
 30 tressexto
 40 quassexto
 50 quinsexto
 (\d)(\d) $(ordinal \20) $(ordinal \3)
-100 zenhésimo
-200 duzenhésimo
-300 trezenhésimo
-400 quazenhésimo
-500 quinzenhésimo
+100 nifésimo
+200 dunifésimo
+300 trenifésimo
+400 quatronifésimo
+500 quinifésimo
 (\d)(\d\d) $(ordinal \200) $(ordinal \3)
-1(\d{4}) zilésimo[ $(ordinal \2)]
-(\d)(\d{4}) $2 zilésimo[ $(ordinal \3)]
-1(\d{8}) zilionésimo[ $(ordinal \2)]
-(\d{1,7})(\d{8}) $2 zilionésimo[ $(ordinal \3)]
-1(\d{12}) duzilionésimo[ $(ordinal \2)]
-(\d{1,4})(\d{12}) $2 duzilionésimo[ $(ordinal \3)]
+1(\d{3}) ardésimo[ $(ordinal \2)]
+(\d{1,3})(\d{3}) $(ordinal \2) ardésimo[ $(ordinal \3)]
+1(\d{6}) xadarésimo[ $(ordinal \2)]
+(\d{1,5})(\d{6}) $(ordinal \2) xadarésimo[ $(ordinal \3)]
+1(\d{12}) dixadarésimo[ $(ordinal \2)]
+(\d{1,5})(\d{12}) $(ordinal \2) dixadarésimo[ $(ordinal \3)]
 
 == ordinal-feminine ==
 

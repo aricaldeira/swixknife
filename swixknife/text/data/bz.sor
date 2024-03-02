@@ -4,70 +4,76 @@
 3 treys
 4 kwatru
 5 sinku
-
 10 sêys
-20 duseys
+11 sèti
+12 oytu
+13 nòvi
+14 dèys
+15 onzi
+20 dozi
+
 30 treseys
 40 quaseys
 50 kinseys
 (\d)(\d) $(\10) i $2
 
-100 zêyn
-110 zêyn i sêys
-200 duzeyn
-210 duzeyn i sêys
-300 trezeyn
-310 trezeyn i sêys
-400 kwazeyn
-410 kwazeyn i sêys
-500 kinzeyn
-510 kinzeyn i sêys
-(\d)0(\d) $(\100) i $2
-(\d)(\d)0 $(\100) i $(\20)
+100 nifi
+200 dunifi
+300 trenifi
+400 kwatrunifi
+500 kinifi
+
+(\d)(0\d) $(\100) i $2
+(\d)(1\d) $(\100) i $2
+(\d)(\d0) $(\100) i $2
 (\d)(\d\d) $(\100) $2
 
-1000 sêys zêyn
-100(\d) sêys zêyn i $1
-10(\d)0 sêys zêyn i $(\10)
-10(\d\d) sêys zêyn $1
+1000 arda
+100(\d) arda i $1
+10(1\d) arda i $1
+10(\d0) arda i $1
+1(\d00) arda i $1
+1(\d\d\d) arda $1
 
-(\d\d)00 $1 zêyn
-(\d\d)10 $1 zêyn i sêys
-(\d\d)0(\d) $1 zêyn i $2
-(\d\d)(\d)0 $1 zêyn i $(\20)
-(\d\d)(\d\d) $1 zêyn $2
+(\d{1,3})000 $1 arda
+(\d{1,3})00(\d) $1 arda i $2
+(\d{1,3})0(1\d) $1 arda i $2
+(\d{1,3})0(\d0) $1 arda i $2
+(\d{1,3})(\d00) $1 arda i $2
+(\d{1,3})(\d\d\d) $1 arda, $2
+
+(\d{1,6})000000 $1 xadara
+(\d{1,6})00000(\d) $1 xadara i $2
+(\d{1,6})0000(1\d) $1 xadara i $2
+(\d{1,6})0000(\d0) $1 xadara i $2
+(\d{1,6})000(\d00) $1 xadara i $2
+(\d{1,6})00(\d000) $1 xadara i $2
+(\d{1,6})0(\d0000) $1 xadara i $2
+(\d{1,6})(\d00000) $1 xadara i $2
+(\d{1,6})(\d{6}) $1 xadara, $2
 
 #
 # Nas règras abaixu, u númeru ki entra
-# è us prósimus 4 díjitus depoys di un
+# è us prósimus 3 díjitus depoys di un
 # grupu
 #
 :0+
 :0*[12345] " i "
 :0*[12345]0+ " i "
 :0*[12345]00+ " i "
-:0*[12345][012345]00+ " i "
 :\d+ ", "
 
-
-pl:1	awn			# milyawn
-pl:.*	oyns		# milyoyns
-
-1(\d\d\d\d) ziw$(:\1)$1
-(\d{1,4})(\d\d\d\d) $1 ziw$(:\2)$2
-
-(\d{1,4})(\d{8})  $1 zily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{12}) $1 duzily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{16}) $1 trezily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{20}) $1 kwazily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{24}) $1 kinly$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{28}) $1 sezily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{32}) $1 seziunzily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{36}) $1 seziduzily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{40}) $1 sezitrezily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{44}) $1 sezikwazily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{48}) $1 sezikinzily$(pl:\1)$(:\2)$2
-(\d{1,4})(\d{52}) $1 dusezily$(pl:\1)$(:\2)$2
+(\d{1,6})(\d{12}) $1 dixadara$(:\2)$2
+(\d{1,6})(\d{18}) $1 trixadara$(:\2)$2
+(\d{1,6})(\d{24}) $1 xarxadara$(:\2)$2
+(\d{1,6})(\d{30}) $1 panxadara$(:\2)$2
+(\d{1,6})(\d{36}) $1 xaxadara$(:\2)$2
+(\d{1,6})(\d{42}) $1 xaekaxadara$(:\2)$2
+(\d{1,6})(\d{48}) $1 xadixadara$(:\2)$2
+(\d{1,6})(\d{54}) $1 xatrixadara$(:\2)$2
+(\d{1,6})(\d{60}) $1 xaxarxadara$(:\2)$2
+(\d{1,6})(\d{66}) $1 xapanxadara$(:\2)$2
+(\d{1,6})(\d{72}) $1 dixaxadara$(:\2)$2
 
 #
 # Númerus negativus
@@ -113,23 +119,28 @@ pl:.*	oyns		# milyoyns
 4 kwartu
 5 kintu
 10 sestu
-20 dusexto
+11 sétimu
+12 oytavu
+13 nonu
+14 désimu
+15 ônzimu
+20 dôzimu
 30 tresestu
 40 kwasestu
 50 kinsestu
 (\d)(\d) $(ordinal \20) $(ordinal \3)
-100 zeỹézimu
-200 duzeỹézimu
-300 trezeỹézimu
-400 kwazeỹézimu
-500 kinzeỹézimu
+100 nifézimu
+200 dunifézimu
+300 trenifézimu
+400 kwatrunifézimu
+500 kinifézimu
 (\d)(\d\d) $(ordinal \200) $(ordinal \3)
-1(\d{4}) zilézimu[ $(ordinal \2)]
-(\d)(\d{4}) $2 zilézimu[ $(ordinal \3)]
-1(\d{8}) zilyonézimu[ $(ordinal \2)]
-(\d{1,7})(\d{8}) $2 zilyonézimu[ $(ordinal \3)]
-1(\d{12}) duzilyonézimu[ $(ordinal \2)]
-(\d{1,4})(\d{12}) $2 duzilyonézimu[ $(ordinal \3)]
+1(\d{3}) ardézimu[ $(ordinal \2)]
+(\d{1,3})(\d{3}) $(ordinal \2) ardézimu[ $(ordinal \3)]
+1(\d{6}) xadarézimu[ $(ordinal \2)]
+(\d{1,5})(\d{6}) $(ordinal \2) xadarézimu[ $(ordinal \3)]
+1(\d{12}) dixadarézimu[ $(ordinal \2)]
+(\d{1,5})(\d{12}) $(ordinal \2) dixadarézimu[ $(ordinal \3)]
 
 == ordinal-feminine ==
 
