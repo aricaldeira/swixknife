@@ -4,6 +4,7 @@ from swixknife import Sezimal as S, SezimalFraction as SF
 from swixknife.base import sezimal_format, decimal_format
 
 from tqdm import tqdm
+from math import trunc
 
 
 mass = D('3057974877246151') / D('175075132133727776')

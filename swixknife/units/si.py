@@ -117,10 +117,10 @@ KESHE_TO_SQUARE_KILOMETER = SezimalFraction('5_332_521 / 3_451_550_303_213_000_0
 SQUARE_KILOMETER_TO_KESHE = KESHE_TO_SQUARE_KILOMETER.reciprocal
 
 #
-# Dishumakeshe = DSksh = ESpad² = 1_000_000_000_000 pad²
+# Dishumakeshe = DSkex = ESpad² = 1_000_000_000_000 pad²
 #
-# 1 km² = 0.41 DSksh = 0.41 ESpad²
-# 1 DSksh = 1 ESpad² = 1.25 km²
+# 1 km² = 0.41 DSkex = 0.41 ESpad²
+# 1 DSkex = 1 ESpad² = 1.25 km²
 #
 DISHUMAKESHE_TO_SQUARE_KILOMETER = SezimalFraction('1_354_105_104 / 1_044_050_213')
 SQUARE_KILOMETER_TO_DISHUMAKESHE = DISHUMAKESHE_TO_SQUARE_KILOMETER.reciprocal
@@ -233,8 +233,8 @@ JOULE_TO_KARYA = KARYA_TO_JOULE.reciprocal
 # Shati = bara × pada × agrima⁻¹
 # Shati = daba × pada³ × agrima⁻¹ = daba × aytan × agrima⁻¹
 #
-# 1 W = 10.505_252 sht
-# 1 sht = 1 ÷ 10.505_252 W
+# 1 W = 10.505_252 xat
+# 1 xat = 1 ÷ 10.505_252 W
 #
 SHATI_TO_WATT = SezimalFraction('23_433_452_533_505_041 / 502_150_541_130_054_411')
 WATT_TO_SHATI = SHATI_TO_WATT.reciprocal
