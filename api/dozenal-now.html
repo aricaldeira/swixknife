@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="{locale.LANG}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dozenal Now</title>
+        <meta name="description" content="Current Dozenal date and time">
+        <meta name="author" content="Ari Caldeira">
+        <meta name="theme-color" content="black">
+        <link rel="manifest" href="manifest___{url}.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!--         <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icons/icon-152x152.png') }}"> -->
+
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-noto.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/now.css" />
+    </head>
+    <body>
+        <p{'dir="rtl"' if locale.RTL else ""}>
+            {date_time.format('#W', locale)}<br/>
+            <span id="dozenal_time" class="dozenal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format.replace('#', '#↋↋'), locale)}</span><br/>
+            <span data-tooltip=" {date_time.format(locale.ISO_DATE_FORMAT, locale)} ">{date_time.format(date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy').replace('?', ''), locale)}</span><br/>
+            <br/>
+            <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
+            <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
+        </p>
+        <br />
+        <table>
+            <thead>
+                <tr><th colspan="7" data-tooltip=" ISO {locale.digit_replace(date_time.format('#9gy', locale))} ― Sezimal Holocene {locale.digit_replace(date_time.format('#9Y', locale))} ">{date_time.format('#↋shY', locale)}</th></tr>
+                <tr><th colspan="7">{date_time.format('#!M', locale)}</th></tr>
+                <tr>
+                    <th {'class="weekday_monday"'    if date_time.weekday ==  1 else ''} data-tooltip=" {locale.WEEKDAY_NAME[0]} "> {locale.WEEKDAY_ABBREVIATED_NAME[0]} </th>
+                    <th {'class="weekday_tuesday"'   if date_time.weekday ==  2 else ''} data-tooltip=" {locale.WEEKDAY_NAME[1]} "> {locale.WEEKDAY_ABBREVIATED_NAME[1]} </th>
+                    <th {'class="weekday_wednesday"' if date_time.weekday ==  3 else ''} data-tooltip=" {locale.WEEKDAY_NAME[2]} "> {locale.WEEKDAY_ABBREVIATED_NAME[2]} </th>
+                    <th {'class="weekday_thursday"'  if date_time.weekday ==  4 else ''} data-tooltip=" {locale.WEEKDAY_NAME[3]} "> {locale.WEEKDAY_ABBREVIATED_NAME[3]} </th>
+                    <th {'class="weekday_friday"'    if date_time.weekday ==  5 else ''} data-tooltip=" {locale.WEEKDAY_NAME[4]} "> {locale.WEEKDAY_ABBREVIATED_NAME[4]} </th>
+                    <th {'class="weekday_saturday"'  if date_time.weekday == 10 else ''} data-tooltip=" {locale.WEEKDAY_NAME[5]} "> {locale.WEEKDAY_ABBREVIATED_NAME[5]} </th>
+                    <th {'class="weekday_sunday"'    if date_time.weekday == 11 else ''} data-tooltip=" {locale.WEEKDAY_NAME[6]} "> {locale.WEEKDAY_ABBREVIATED_NAME[6]} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day ==  1 else ''} data-tooltip=" {date_time.replace(day= 1).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 1{'º' if locale.LANG.startswith('pt') else ''}{'ᵘ̱' if locale.LANG.startswith('bz') else ''} </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day ==  2 else ''} data-tooltip=" {date_time.replace(day= 2).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 2 </td>
+                    <td {'class="weekday_wednesday"' if date_time.day ==  3 else ''} data-tooltip=" {date_time.replace(day= 3).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 3 </td>
+                    <td {'class="weekday_thursday"'  if date_time.day ==  4 else ''} data-tooltip=" {date_time.replace(day= 4).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 4 </td>
+                    <td {'class="weekday_friday"'    if date_time.day ==  5 else ''} data-tooltip=" {date_time.replace(day= 5).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 5 </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 10 else ''} data-tooltip=" {date_time.replace(day=10).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 6 </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 11 else ''} data-tooltip=" {date_time.replace(day=11).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 7 </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 12 else ''} data-tooltip=" {date_time.replace(day=12).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 8 </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 13 else ''} data-tooltip=" {date_time.replace(day=13).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 9 </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 14 else ''} data-tooltip=" {date_time.replace(day=14).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> ↊ </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 15 else ''} data-tooltip=" {date_time.replace(day=15).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> ↋ </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 20 else ''} data-tooltip=" {date_time.replace(day=20).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 10 </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 21 else ''} data-tooltip=" {date_time.replace(day=21).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 11 </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 22 else ''} data-tooltip=" {date_time.replace(day=22).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 12 </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 23 else ''} data-tooltip=" {date_time.replace(day=23).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 13 </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 24 else ''} data-tooltip=" {date_time.replace(day=24).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 14 </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 25 else ''} data-tooltip=" {date_time.replace(day=25).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 15 </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 30 else ''} data-tooltip=" {date_time.replace(day=30).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 16 </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 31 else ''} data-tooltip=" {date_time.replace(day=31).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 17 </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 32 else ''} data-tooltip=" {date_time.replace(day=32).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 18 </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 33 else ''} data-tooltip=" {date_time.replace(day=33).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 19 </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 34 else ''} data-tooltip=" {date_time.replace(day=34).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 1↊ </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 35 else ''} data-tooltip=" {date_time.replace(day=35).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 1↋ </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 40 else ''} data-tooltip=" {date_time.replace(day=40).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 20 </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 41 else ''} data-tooltip=" {date_time.replace(day=41).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 21 </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 42 else ''} data-tooltip=" {date_time.replace(day=42).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 22 </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 43 else ''} data-tooltip=" {date_time.replace(day=43).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 23 </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 44 else ''} data-tooltip=" {date_time.replace(day=44).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 24 </td>
+                </tr>
+                <tr {'hidden=""' if not date_time.is_long_month else ''}>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 45 else ''} data-tooltip=" {date_time.replace(day=45).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 25 </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 50 else ''} data-tooltip=" {date_time.replace(day=50).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 26 </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 51 else ''} data-tooltip=" {date_time.replace(day=51).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 27 </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 52 else ''} data-tooltip=" {date_time.replace(day=52).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 28 </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 53 else ''} data-tooltip=" {date_time.replace(day=53).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 29 </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 54 else ''} data-tooltip=" {date_time.replace(day=54).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 2↊ </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 55 else ''} data-tooltip=" {date_time.replace(day=55).format('ISO ' + locale.ISO_DATE_FORMAT + ' ― ' + date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy'), locale)} "> 2↋ </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+    </body>
+    <script type="text/javascript">
+function auto_refresh(){{
+    var date = new Date();
+    var seconds = date.getTime();
+    var digits = '{digits}';
+    var lang = '{locale.LANG[0:2]}';
+
+    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
+    seconds = seconds - Math.floor(seconds);
+    var anuga = seconds * 12 * 12 * 12 * 12 * 12;
+
+    var time = Math.floor(anuga).toString(12).padStart(5, '0');
+    var uta = time.slice(0, 1);
+    var posha = time.slice(1, 2);
+    var agrima = time.slice(2, 3);
+    var anuga = time.slice(3, 4);
+    var boda = time.slice(4, 5);
+
+    time = uta + posha + agrima + '{locale.SEZIMAL_SEPARATOR}' + anuga + boda;
+
+    time = time.replaceAll('a', '↊');
+    time = time.replaceAll('b', '↋');
+
+    //
+    // Regular time in tooltip
+    //
+    seconds = Math.floor(seconds * 60 * 60 * 24);
+
+    var hours = Math.floor(seconds / 60 / 60);
+    seconds = seconds - (hours * 60 * 60);
+
+    var minutes = Math.floor(seconds / 60);
+    seconds = seconds - (minutes * 60);
+
+    minutes = minutes.toString().padStart(2, '0');
+    seconds = seconds.toString().padStart(2, '0');
+
+    if (lang === 'en') {{
+        if (hours > 12) {{
+            hours = hours - 12;
+            am_pm = ' pm';
+        }} else if (hours == 12) {{
+            am_pm = ' pm';
+        }} else {{
+            am_pm = ' am';
+        }};
+
+        hours = hours.toString().padStart(2, '0');
+
+        var decimal_time = hours + ':' + minutes + ':' + seconds + am_pm;
+    }} else {{
+        hours = hours.toString().padStart(2, '0');
+        var decimal_time = hours + ':' + minutes + ':' + seconds;
+    }};
+
+    document.getElementById("dozenal_time").innerText = time;
+    document.getElementById("dozenal_time").textContent = time;
+    document.getElementById("dozenal_time").attributes['data-tooltip'].value = decimal_time;
+
+    if (uta === '00' && posha === '00') {{
+        location.reload();
+    }};
+
+    setTimeout(auto_refresh, 174);
+}};
+auto_refresh();
+
+if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {{
+    document.querySelector("body").requestFullscreen();
+}};
+
+window.setNavigationBarColor('#000');
+</script>
+</html>

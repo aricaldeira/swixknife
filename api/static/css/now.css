@@ -1,0 +1,86 @@
+/*
+ *
+ *
+ *
+ */
+
+:root {
+    --o-webclient-color-scheme: black;
+    --theme: black;
+    background-color: black;
+    color: white;
+
+    font-size: 1.5em;
+
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+
+    /*
+     / Font Andika
+    */
+    font-family: 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
+    --font-family-sans-serif: 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
+    --font-family-monospace: 'Iosevka', 'Noto Color Emoji', 'Noto Sans Mono', monospace;
+    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
+    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+}
+
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.sezimal_time, .decimal_time, .dozenal_time {
+    font-weight: bold;
+    font-size: 3em;
+    color: white;
+}
+
+.sezimal_time_landscape {
+    font-weight: bold;
+    font-size: 5em;
+    color: white;
+}
+
+.sezimal_date, .sezimal_temperature {
+    color: white;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td, th {
+    font-size: 1em;
+    font-weight: normal;
+    color: #aaa;
+}
+
+span, p {
+    float: center;
+}
+
+.weekday_monday, .weekday_tuesday,
+.weekday_wednesday, .weekday_thursday,
+.weekday_friday,
+.weekday_saturday, .weekday_sunday {
+    font-weight: bold;
+    color: white;
+}
+
+[data-tooltip]:hover::after {
+    text-align: center;
+    display: block;
+    position: absolute;
+    content: attr(data-tooltip);
+    border: 1px solid white;
+    background: black;
+    padding: .25em;
+    font-size: 0.8em;
+}

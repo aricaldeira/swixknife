@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sezimal Now</title>
-        <meta name="description" content="Current Sezimal date and time">
+        <title>Agòra</title>
+        <meta name="description" content="Tenpu i data sezimays">
         <meta name="author" content="Ari Caldeira">
         <meta name="theme-color" content="#000000">
         <link rel="manifest" href="manifest___{url}.json">
@@ -33,7 +33,8 @@
                             <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(season_format, locale)}</span>
                         </td>
                         <td width="33.33%">
-                            <span class="sezimal_date" data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(date_format, locale)}</span>
+                            <span class="sezimal_date" data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(date_format, locale)}</span><br/>
+                            <span class="sezimal_temperature" data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span>
                         </td>
                         <td width="33.33%">
                             <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(moon_format, locale)}</span>
@@ -44,7 +45,7 @@
             <span id="portrait_content" hidden>
                 <span id="sezimal_time_pt" class="sezimal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
                 <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}</span><br/>
-                <br/>
+                <span data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span><br/>
                 <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
                 <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
             </span>
@@ -121,7 +122,7 @@ function auto_refresh(){{
     var digits = '{digits}';
     var lang = '{locale.LANG[0:2]}';
 
-    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
+    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1_000)) / 1_000 / 86_400;
     seconds = seconds - Math.floor(seconds);
     var anuga = seconds * 36 * 36 * 36;
 
@@ -129,6 +130,16 @@ function auto_refresh(){{
     var uta = time.slice(0, 2);
     var posha = time.slice(2, 4);
     var agrima = time.slice(4, 6);
+
+    //
+    // Reload page from server, and update temperature
+    // (and calendar at midnight)
+    //
+    if (agrima === '00') {{
+        if (posha === '00' || posha === '13' || posha === '30' || posha === '43') {{
+            location.reload();
+        }}
+    }};
 
     time = uta + ':' + posha + ':' + agrima;
 
@@ -164,7 +175,6 @@ function auto_refresh(){{
         var decimal_time = hours + ':' + minutes + ':' + seconds;
     }};
 
-
     if (digits !== '') {{
         for(var i = 0; i < 10; i++) {{
             time = time.replaceAll(i.toString(), digits.slice(i, i+1));
@@ -179,10 +189,6 @@ function auto_refresh(){{
     document.getElementById("sezimal_time_pt").innerText = time;
     document.getElementById("sezimal_time_pt").textContent = time;
     document.getElementById("sezimal_time_pt").attributes['data-tooltip'].value = decimal_time;
-
-    if (uta === '00' && posha === '00') {{
-        location.reload();
-    }};
 
     setTimeout(auto_refresh, 925);
 }};

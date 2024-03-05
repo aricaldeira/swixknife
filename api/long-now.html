@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="{locale.LANG}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sezimal Now</title>
+        <meta name="description" content="Current Sezimal date and time">
+        <meta name="author" content="Ari Caldeira">
+        <meta name="theme-color" content="black">
+        <link rel="manifest" href="/manifest___{url}.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!--         <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icons/icon-152x152.png') }}"> -->
+
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-andika.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-noto.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/now.css" />
+    </head>
+    <body>
+        <p{'dir="rtl"' if locale.RTL else ""}>
+            <span id="sezimal_time" class="sezimal_time">{date_time.format(time_format, locale)}</span><br/>
+            {date_time.format(date_format, locale)}<br/>
+            {date_time.format(season_format, locale)}<br/>
+            {date_time.format(moon_format, locale)}<br/>
+        </p>
+        <br />
+        <table>
+            <thead>
+                <tr><th colspan="7">{locale.digit_replace(date_time.format('#Y', locale))}</th></tr>
+                <tr><th colspan="7">{date_time.format('#!M', locale)}</th></tr>
+                <tr>
+                    <th {'class="weekday_monday"'    if date_time.weekday ==  1 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[0]} </th>
+                    <th {'class="weekday_tuesday"'   if date_time.weekday ==  2 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[1]} </th>
+                    <th {'class="weekday_wednesday"' if date_time.weekday ==  3 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[2]} </th>
+                    <th {'class="weekday_thursday"'  if date_time.weekday ==  4 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[3]} </th>
+                    <th {'class="weekday_friday"'    if date_time.weekday ==  5 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[4]} </th>
+                    <th {'class="weekday_saturday"'  if date_time.weekday == 10 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[5]} </th>
+                    <th {'class="weekday_sunday"'    if date_time.weekday == 11 else ''}> {locale.WEEKDAY_ABBREVIATED_NAME[6]} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day ==  1 else ''}> {locale.digit_replace('1')}{'º' if locale.LANG.startswith('pt') else ''}{'ᵘ̱' if locale.LANG.startswith('bz') else ''} </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day ==  2 else ''}> {locale.digit_replace('2')} </td>
+                    <td {'class="weekday_wednesday"' if date_time.day ==  3 else ''}> {locale.digit_replace('3')} </td>
+                    <td {'class="weekday_thursday"'  if date_time.day ==  4 else ''}> {locale.digit_replace('4')} </td>
+                    <td {'class="weekday_friday"'    if date_time.day ==  5 else ''}> {locale.digit_replace('5')} </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 10 else ''}> {locale.digit_replace('10')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 11 else ''}> {locale.digit_replace('11')} </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 12 else ''}> {locale.digit_replace('12')} </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 13 else ''}> {locale.digit_replace('13')} </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 14 else ''}> {locale.digit_replace('14')} </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 15 else ''}> {locale.digit_replace('15')} </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 20 else ''}> {locale.digit_replace('20')} </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 21 else ''}> {locale.digit_replace('21')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 22 else ''}> {locale.digit_replace('22')} </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 23 else ''}> {locale.digit_replace('23')} </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 24 else ''}> {locale.digit_replace('24')} </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 25 else ''}> {locale.digit_replace('25')} </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 30 else ''}> {locale.digit_replace('30')} </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 31 else ''}> {locale.digit_replace('31')} </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 32 else ''}> {locale.digit_replace('32')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 33 else ''}> {locale.digit_replace('33')} </td>
+                </tr>
+                <tr>
+                    <td {'class="weekday_monday"'    if date_time.day == 34 else ''}> {locale.digit_replace('34')} </td>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 35 else ''}> {locale.digit_replace('35')} </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 40 else ''}> {locale.digit_replace('40')} </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 41 else ''}> {locale.digit_replace('41')} </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 42 else ''}> {locale.digit_replace('42')} </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 43 else ''}> {locale.digit_replace('43')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 44 else ''}> {locale.digit_replace('44')} </td>
+                </tr>
+                <tr {'disable=""' if not date_time.is_long_month else ''}>
+                    <td {'class="weekday_tuesday"'   if date_time.day == 45 else ''}> {locale.digit_replace('45')} </td>
+                    <td {'class="weekday_wednesday"' if date_time.day == 50 else ''}> {locale.digit_replace('50')} </td>
+                    <td {'class="weekday_thursday"'  if date_time.day == 51 else ''}> {locale.digit_replace('51')} </td>
+                    <td {'class="weekday_friday"'    if date_time.day == 52 else ''}> {locale.digit_replace('52')} </td>
+                    <td {'class="weekday_saturday"'  if date_time.day == 53 else ''}> {locale.digit_replace('53')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 54 else ''}> {locale.digit_replace('54')} </td>
+                    <td {'class="weekday_sunday"'    if date_time.day == 55 else ''}> {locale.digit_replace('55')} </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <script type="text/javascript">
+function auto_refresh(){{
+    var date = new Date();
+    var seconds = date.getTime();
+    var digits = '{digits}';
+
+    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
+    seconds = seconds - Math.floor(seconds);
+    var anuga = seconds * 36 * 36 * 36;
+
+    var time = Math.floor(anuga).toString(6).padStart(6, '0');
+    var uta = time.slice(0, 2);
+    var posha = time.slice(2, 4);
+    var agrima = time.slice(4, 6);
+
+    time = uta + ':' + posha + ':' + agrima;
+
+    if (digits !== '') {{
+        for(var i = 0; i < 10; i++) {{
+            time = time.replaceAll(i.toString(), digits.slice(i, i+1));
+        }};
+    }};
+
+    document.getElementById("sezimal_time").innerText = time;
+    document.getElementById("sezimal_time").textContent = time;
+
+    if (uta === '00' && posha === '00') {{
+        location.reload();
+    }};
+
+    setTimeout(auto_refresh, 1851);
+}};
+auto_refresh();
+
+if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {{
+    document.querySelector("body").requestFullscreen();
+}};
+        </script>
+    </body>
+</html>
