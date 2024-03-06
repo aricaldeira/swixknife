@@ -11,10 +11,11 @@ from decimal import Decimal
 from ..sezimal import Sezimal, SezimalInteger
 from ..date_time import SezimalDateTime
 
-from ..units import KILOMETER_PER_HOUR_TO_VEGA, \
-    KILOMETER_TO_PAMAPADA, PASCAL_TO_DABA, METER_TO_PADA, \
-    PERCENTAGE_TO_PERSIXNIFF, MILLIMETER_TO_DITIPADA, \
-    CELSIUS_TO_TAPA, kelvin_to_celsius, tapa_to_gatika
+from ..units.length import KILOMETER_PER_HOUR_TO_VEGA, \
+    KILOMETER_TO_PAMAPADA, METER_TO_PADA, MILLIMETER_TO_DITIPADA
+from ..units.temperature import CELSIUS_TO_TAPA, kelvin_to_celsius, tapa_to_gatika
+from ..units.force import PASCAL_TO_DABA
+from ..units.proportion import PERCENTAGE_TO_PERSIXNIFF
 
 
 def convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> SezimalDateTime:

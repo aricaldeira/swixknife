@@ -26,7 +26,7 @@ from swixknife.weather.weather import SezimalWeather
 from swixknife.localization import sezimal_locale
 from zoneinfo import ZoneInfo
 
-from swixknife.units import TAPA_TO_CELSIUS, \
+from swixknife.units.temperature import TAPA_TO_CELSIUS, \
     tapa_to_gatika, GATIKA_TO_KELVIN, tapa_to_fahrenheit
 
 

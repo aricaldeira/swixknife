@@ -15,14 +15,13 @@ __version__ = '1.3b1'
 __status__ = 'Beta'
 
 
-#from .base import *
+from .base import *
 from .sezimal import *
-#from .dozenal import *
+from .dozenal import *
 # from .decimal import *
-#from .functions import *
-#from .exponents import *
-#from .units import *
-#from .localization import *
-#from .date_time import *
-#from .text import *
-#from .calculator import *
+from .functions import *
+from .exponents import *
+from .localization import *
+from .date_time import *
+from .text import *
+from .calculator import *
