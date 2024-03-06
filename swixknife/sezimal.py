@@ -48,26 +48,33 @@ _LN = {}
 class Sezimal:
     __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', 'reciprocal']
 
-    def __init__(self, number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+    def __init__(self, number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction, _internal: bool = False) -> Self:
         original_decimal = None
 
         if type(number) == Decimal:
             original_decimal = number
-            number = decimal_to_sezimal(str(number))
+            cleaned_number = decimal_to_sezimal(str(number))
+
+        elif type(number).__name__ in ('Sezimal', 'SezimalInteger'):
+            cleaned_number = str(number)
+
+        elif type(number).__name__ == 'SezimalFraction':
+            cleaned_number = str(number.sezimal)
 
         elif type(number).__name__ in ('Dozenal', 'DozenalInteger'):
-            number = dozenal_to_sezimal(str(number))
+            cleaned_number = dozenal_to_sezimal(str(number))
 
         elif type(number).__name__ == 'DozenalFraction':
-            number = dozenal_to_sezimal(str(number.dozenal))
-
-        elif type(number) == SezimalFraction:
-            number = number.sezimal
+            cleaned_number = dozenal_to_sezimal(str(number.dozenal))
 
         elif type(number) == str and ('/' in number or '⁄' in number or '÷' in number):
-            number = SezimalFraction(number).sezimal
-
-        cleaned_number = validate_clean_sezimal(number)
+            cleaned_number = str(SezimalFraction(number).sezimal)
+            
+        else:
+            if _internal:
+                cleaned_number = str(number)
+            else:
+                cleaned_number = validate_clean_sezimal(number)
 
         if cleaned_number[0] == '-':
             cleaned_number = cleaned_number[1:]
@@ -417,7 +424,7 @@ class Sezimal:
             if abs(self) > abs(other_number) and res[0] != '-':
                res = '-' + res
 
-        return Sezimal(res)
+        return Sezimal(res, _internal=True)
 
     def __radd__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
         if type(other_number) != Sezimal:
@@ -453,7 +460,7 @@ class Sezimal:
             if res[0] != '-':
                 res = '-' + res
 
-        return Sezimal(res)
+        return Sezimal(res, _internal=True)
 
     def __rsub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
         if type(other_number) != Sezimal:
@@ -510,10 +517,10 @@ class Sezimal:
 
         adjust = self.__round_half_up__(precision, last_digit, next_digit, to_discard)
 
-        rounded = Sezimal(to_round) + adjust
+        rounded = Sezimal(to_round, _internal=True) + adjust
 
         if rounded._sign != self._sign:
-            rounded = Sezimal(0)
+            rounded = Sezimal(0, _internal=True)
 
         return rounded
 
@@ -531,7 +538,7 @@ class Sezimal:
         if self._sign == -1:
             to_round = '-' + to_round
 
-        return Sezimal(to_round)
+        return Sezimal(to_round, _internal=True)
 
     def is_integer(self) -> bool:
         return self == self.trunc(0)
@@ -580,7 +587,7 @@ class Sezimal:
                 md = _MULTIPLICATION_MAP[d1][d2]
 
                 if carries != '0':
-                    md = str(Sezimal(md) + carries)
+                    md = str(Sezimal(md, _internal=True) + carries)
 
                 sums[-1] += md[-1]
 
@@ -592,11 +599,11 @@ class Sezimal:
             if carries != '0':
                 sums[-1] += carries
 
-        multiplication = Sezimal('0')
+        multiplication = Sezimal('0', _internal=True)
 
         for s in sums:
             if s:
-                multiplication += Sezimal(s[::-1])
+                multiplication += Sezimal(s[::-1], _internal=True)
 
         multiplication = str(multiplication)
 
@@ -632,7 +639,7 @@ class Sezimal:
             res = self.__multiplication(other_number)
             res = '-' + res
 
-        return Sezimal(res)._mult_div_finalizing()
+        return Sezimal(res, _internal=True)._mult_div_finalizing()
 
     def __rmul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
         if type(other_number) != Sezimal:
@@ -642,7 +649,7 @@ class Sezimal:
 
     def __basic_division(self, dividend: Self, divisor: Self) -> tuple[Self]:
         remainder = dividend
-        quotient = Sezimal('0')
+        quotient = Sezimal('0', _internal=True)
 
         while remainder >= divisor:
             remainder -= divisor
@@ -652,16 +659,16 @@ class Sezimal:
 
     def new_division(self, dividend: Self, divisor: Self) -> tuple[Self]:
         if dividend < divisor:
-            return Sezimal(0), dividend
+            return Sezimal(0, _internal=True), dividend
 
-        quotient = Sezimal('0')
-        remainder = Sezimal(dividend._digits[0])
+        quotient = Sezimal('0', _internal=True)
+        remainder = Sezimal(dividend._digits[0], _internal=True)
 
         for i in range(1, len(dividend._digits)):
             remainder *= 10
-            remainder += Sezimal(dividend._digits[i])
+            remainder += Sezimal(dividend._digits[i], _internal=True)
 
-            factor = Sezimal(0)
+            factor = Sezimal(0, _internal=True)
 
             while (divisor * (factor + 1)) < remainder:
                 factor += 1
@@ -730,8 +737,8 @@ class Sezimal:
 
         initial_precision = final_precision
 
-        dividend = Sezimal(''.join(digits_a))
-        divisor = Sezimal(''.join(digits_b))
+        dividend = Sezimal(''.join(digits_a), _internal=True)
+        divisor = Sezimal(''.join(digits_b), _internal=True)
         quotient, remainder = self.__basic_division(dividend, divisor)
         max_precision = max(final_precision, max_precision) * 2
 
@@ -742,7 +749,7 @@ class Sezimal:
             dividend = remainder * 10
             final_precision += 1
             q, remainder = self.__basic_division(dividend, divisor)
-            quotient = Sezimal(str(quotient) + str(q))
+            quotient = Sezimal(str(quotient) + str(q), _internal=True)
 
         sezimal_context.sezimal_precision = original_precision
 
@@ -781,7 +788,7 @@ class Sezimal:
             if other_number == 1 or other_number == -1:
                 reciprocal = other_number
             else:
-                reciprocal = Sezimal('1').__division(other_number)
+                reciprocal = Sezimal('1', _internal=True).__division(other_number)
 
         return self * reciprocal
 
@@ -814,14 +821,14 @@ class Sezimal:
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
-        dividend = Sezimal(self._integer)
-        divisor = Sezimal(other_number._integer)
+        dividend = Sezimal(self._integer, _internal=True)
+        divisor = Sezimal(other_number._integer, _internal=True)
 
         if divisor == 0:
             raise ZeroDivisionError('Division by zero')
 
         if divisor == 1:
-            return dividend, Sezimal(0)
+            return dividend, Sezimal(0, _internal=True)
 
         quotient, remainder = self.__basic_division(dividend, divisor)
 
@@ -894,7 +901,7 @@ class Sezimal:
     def calculus_exp(self) -> Self:
         sezimal_context.sezimal_precision_decimal += 4
 
-        result = Sezimal(1)
+        result = Sezimal(1, _internal=True)
 
         for i in range(1, sezimal_context.sezimal_precision_decimal + 1):
             i = SezimalInteger(Decimal(i))
@@ -940,13 +947,13 @@ class Sezimal:
 
     def __calculus_power(self, other_number: Self) -> Self:
         if other_number == 0:
-            return Sezimal(1)
+            return Sezimal(1, _internal=True)
 
         if self == 0:
-            return Sezimal(0)
+            return Sezimal(0, _internal=True)
 
         if other_number < 0:
-            return Sezimal(1) / self.__power(other_number * -1)
+            return Sezimal(1, _internal=True) / self.__power(other_number * -1)
 
         if other_number.is_integer():
             result = self
@@ -963,7 +970,7 @@ class Sezimal:
 
     def __power(self, other_number: Self) -> Self:
         if other_number == 0:
-            return SezimalInteger(1)
+            return SezimalInteger(1, _internal=True)
 
         #
         # When the exponent is an integer,
@@ -1045,7 +1052,7 @@ class Sezimal:
         if self.is_integer():
             return SezimalInteger(self), SezimalInteger(1)
 
-        numerator = Sezimal(self._integer + self._fraction)
+        numerator = Sezimal(self._integer + self._fraction, _internal=True)
         denominator = Sezimal(f'1e+{SezimalInteger(Decimal(self._precision))}')
 
         gcd = self._find_gcd(numerator, denominator)
@@ -1058,40 +1065,27 @@ class Sezimal:
 class SezimalInteger(Sezimal):
     __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits']
 
-    def __init__(self, number: str | int | float | Decimal | Self | IntegerSelf | Dozenal | DozenalInteger) -> Self:
+    def __init__(
+            self, 
+            number: str | int | float | Decimal | Self | IntegerSelf | Dozenal | DozenalInteger, 
+            _internal: bool = False
+        ) -> Self:
+        super().__init__(number, _internal=_internal)
+            
         original_decimal = None
 
         if type(number) == Decimal:
-            original_decimal = number
-            number = decimal_to_sezimal(str(number))
+            original_decimal = Decimal(int(number))
 
-        cleaned_number = validate_clean_sezimal(number)
-
-        if cleaned_number[0] == '-':
-            cleaned_number = cleaned_number[1:]
-            self._sign = -1
-        else:
-            self._sign = 1
-
-        if '.' in cleaned_number:
-            self._integer = str(int(cleaned_number.split('.')[0]))
-            # self._fraction = cleaned_number.split('.')[1].replace('0', '')
-            self._fraction = ''
-        else:
-            self._integer = str(int(cleaned_number))
-            self._fraction = ''
-
-        self._precision = len(self._fraction)
-        self._digits = list(self._integer + self._fraction)
-
-        if self._precision:
-            raise ValueError(f'The number {number} has an invalid format for a sezimal integer number')
+        self._fraction = ''
+        self._precision = 0
+        self._digits = list(self._integer)
 
         #
         # Converts and stores as decimal
         #
         if original_decimal is None:
-            self._value = Decimal(sezimal_to_decimal(cleaned_number))
+            self._value = Decimal(sezimal_to_decimal(self._integer))
             self._value *= self._sign
         else:
             self._value = original_decimal

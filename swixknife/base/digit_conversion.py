@@ -7,6 +7,9 @@ SEZIMAL_DIGITS_MAP = (
 DEFAULT_DIGITS = tuple(digit[0] for digit in SEZIMAL_DIGITS_MAP)
 DEDICATED_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
 
+_DEFAULT_TO_DEDICATED_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: DEDICATED_DIGITS[i] for i in range(18)})
+_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({DEDICATED_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(18)})
+
 NIFTIMAL_DIGITS_MAP = (
     ('0', '0', '0̃'), ('1', '1', '1̃'), ('2', '2','2̃'), ('3', '3', '3̃'), ('4', '4', '4̃'), ('5', '5','5̃'),
     ('6', '0̇', '0ͯ'), ('7', '1̇', '1ͯ'), ('8', '2̇','2ͯ'), ('9', '3̇', '3ͯ'), ('A', '4̇', '4ͯ'), ('B', '5̇','5ͯ'),
@@ -73,16 +76,19 @@ DEFAULT_DENOMINATOR_DIGITS = (
 
 
 def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
-    for i in range(len(digits_from)):
-        df = digits_from[i]
-        dt = digits_to[i]
-        number = number.replace(df, dt)
+    translate_table = str.maketrans({digits_from[i]: digits_to[i] for i in range(len(digits_from))})
+    number = number.translate(translate_table)
+
+    #for i in range(len(digits_from)):
+    #    df = digits_from[i]
+    #    dt = digits_to[i]
+    #    number = re.sub(df, dt, number)
 
     return number
 
 
 def default_to_dedicated_digits(number: str) -> str:
-    return _change_digits(number, DEFAULT_DIGITS, DEDICATED_DIGITS)
+    return number.translate(_DEFAULT_TO_DEDICATED_DIGITS_TT)
 
 
 def default_niftimal_to_dedicated_digits(number:str) -> str:
@@ -109,7 +115,7 @@ def default_niftimal_to_financial_dedicated_digits(number:str) -> str:
 
 
 def dedicated_to_default_digits(number: str) -> str:
-    return _change_digits(number, DEDICATED_DIGITS, DEFAULT_DIGITS)
+    return number.translate(_DEDICATED_TO_DEFAULT_DIGITS_TT)
 
 
 def dedicated_niftimal_to_default_digits(number: str) -> str:

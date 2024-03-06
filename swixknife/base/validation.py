@@ -17,9 +17,8 @@ from .context import sezimal_context
 
 _CLEAN_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f_]')
 _FRACTION_SEPARATOR = '\\.'
-_RECURRING_MARKER = re.compile(f'\\.\\.')
-_CLOSING_RECURRING_MARKER = re.compile(f'\\.\\.\\.')
-
+_RECURRING_MARKER = re.compile('\\.\\.')
+_CLOSING_RECURRING_MARKER = re.compile('\\.\\.\\.$')
 
 _VALID_SEZIMAL_FORMAT = re.compile(r'''^[+-]?[0-5]{1,}\.{0,2}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.[0-5]{1,}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.\.[0-5]{1,}(\.\.\.)?$|^[+-]?[0-5]*\.[0-5]{1,}\.\.[0-5]{1,}(\.\.\.)?$''')
 
@@ -47,20 +46,19 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     else:
         cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal)
 
-    if cleaned_number.startswith('+'):
+    if cleaned_number and cleaned_number[0] == '+':
         cleaned_number = cleaned_number[1:]
 
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
+    while len(cleaned_number) > 2 and cleaned_number[0:3] == '-00':
+            cleaned_number = '-0' + cleaned_number[3:]
 
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
+    while len(cleaned_number) > 1 and cleaned_number[0] == '0':
+        cleaned_number = cleaned_number[1:]
 
-    if cleaned_number.startswith('.'):
+    if cleaned_number and cleaned_number[0] == '.':
         cleaned_number = '0' + cleaned_number
 
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+    if cleaned_number and cleaned_number[0] in ('E', 'e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
@@ -81,20 +79,19 @@ def validate_clean_decimal(number: int | float | str | Decimal) -> str:
 
     cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.decimal_precision)
 
-    if cleaned_number.startswith('+'):
+    if cleaned_number and cleaned_number[0] == '+':
         cleaned_number = cleaned_number[1:]
 
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
+    while len(cleaned_number) > 2 and cleaned_number[0:3] == '-00':
+            cleaned_number = '-0' + cleaned_number[3:]
 
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
+    while len(cleaned_number) > 1 and cleaned_number[0] == '0':
+        cleaned_number = cleaned_number[1:]
 
-    if cleaned_number.startswith('.'):
+    if cleaned_number and cleaned_number[0] == '.':
         cleaned_number = '0' + cleaned_number
 
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+    if cleaned_number and cleaned_number[0] in ('E', 'e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
@@ -116,22 +113,19 @@ def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> st
 
     cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal // 2)
 
-    if cleaned_number.startswith('+'):
+    if cleaned_number and cleaned_number[0] == '+':
         cleaned_number = cleaned_number[1:]
 
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
+    while len(cleaned_number) > 2 and cleaned_number[0:3] == '-00':
+            cleaned_number = '-0' + cleaned_number[3:]
 
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
+    while len(cleaned_number) > 1 and cleaned_number[0] == '0':
+        cleaned_number = cleaned_number[1:]
 
-    if cleaned_number.startswith('.'):
+    if cleaned_number and cleaned_number[0] == '.':
         cleaned_number = '0' + cleaned_number
 
-    if cleaned_number.startswith('E+') or cleaned_number.startswith('e+'):
-        cleaned_number = '0' + cleaned_number
-    elif cleaned_number.startswith('E-') or cleaned_number.startswith('e-'):
+    if cleaned_number and cleaned_number[0] in ('E', 'e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
@@ -152,20 +146,19 @@ def validate_clean_dozenal(number: str) -> str:
 
     cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.dozenal_precision)
 
-    if cleaned_number.startswith('+'):
+    if cleaned_number and cleaned_number[0] == '+':
         cleaned_number = cleaned_number[1:]
 
-    while cleaned_number.startswith('-00'):
-        cleaned_number = '-0' + cleaned_number[3:]
+    while len(cleaned_number) > 2 and cleaned_number[0:3] == '-00':
+            cleaned_number = '-0' + cleaned_number[3:]
 
-    if len(cleaned_number) > 1:
-        while cleaned_number.startswith('0'):
-            cleaned_number = cleaned_number[1:]
+    while len(cleaned_number) > 1 and cleaned_number[0] == '0':
+        cleaned_number = cleaned_number[1:]
 
-    if cleaned_number.startswith('.'):
+    if cleaned_number and cleaned_number[0] == '.':
         cleaned_number = '0' + cleaned_number
 
-    if cleaned_number.startswith('E') or cleaned_number.startswith('e'):
+    if cleaned_number and cleaned_number[0] in ('E', 'e'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
@@ -189,7 +182,7 @@ def _clean_recurring_digits(number: str, max_precision: int = 48) -> str:
 
     recurring = ''
 
-    if number.endswith('§'):
+    if number and number[-1] == '§':
         number = number[:-1]
 
     if '§' not in number:
@@ -228,7 +221,7 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
         if 'E-' not in number and 'E+' not in number and 'E' not in number:
             return number
 
-    negative = number.startswith('-')
+    negative = number and number[0] == '-'
 
     if negative:
         number = number[1:]
@@ -286,7 +279,7 @@ def _exponent_to_full_form(number: str, base: int = 6) -> str:
             integer += number
             fraction = '0' * len(initial_fraction)
 
-    while integer.startswith('0'):
+    while integer and integer[0] == '0':
         integer = integer[1:]
 
     if not integer:

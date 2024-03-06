@@ -23,7 +23,7 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..dozenal import Dozenal, DozenalInteger
-from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_digits, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_regularized_dedicated_digits, \

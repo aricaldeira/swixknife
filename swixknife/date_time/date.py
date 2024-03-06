@@ -31,7 +31,7 @@ from ..base import decimal_format, sezimal_format, \
     default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_regularized_dedicated_digits
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
-from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
 from .date_time_delta import SezimalDateTimeDelta
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale

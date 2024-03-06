@@ -14,7 +14,7 @@ except:
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..units import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
 from ..functions import floor, ceil
 from .gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
