@@ -114,15 +114,14 @@
             </tbody>
         </table>
         <br />
-    </body>
-    <script type="text/javascript">
+        <script type="text/javascript">
 function auto_refresh(){{
     var date = new Date();
     var seconds = date.getTime();
     var digits = '{digits}';
     var lang = '{locale.LANG[0:2]}';
 
-    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1_000)) / 1_000 / 86_400;
+    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
     seconds = seconds - Math.floor(seconds);
     var anuga = seconds * 36 * 36 * 36;
 
@@ -219,5 +218,6 @@ screen.orientation.addEventListener("change", (event) => {{
 
 update_orientation();
 
-</script>
+        </script>
+    </body>
 </html>
