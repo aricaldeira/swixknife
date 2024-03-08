@@ -1128,8 +1128,15 @@ class DozenalFraction(Dozenal):
             elif '÷' in numerator:
                 numerator, denominator = numerator.split('÷')
 
-        elif type(numerator) == Decimal:
+        elif type(numerator).__name__ == 'Decimal':
             numerator = decimal_to_dozenal(str(numerator))
+
+        elif type(numerator).__name__ in ('Sezimal', 'SezimalInteger'):
+            numerator = decimal_to_dozenal(str(numerator.decimal))
+
+        elif type(numerator).__name__ == 'SezimalFraction':
+            denominator = decimal_to_dozenal(str(numerator.denominator.decimal))
+            numerator = decimal_to_dozenal(str(numerator.numerator.decimal))
 
         cleaned_numerator = validate_clean_dozenal(numerator)
 
@@ -1332,6 +1339,10 @@ class DozenalFraction(Dozenal):
                 den = den_test
 
         return DozenalInteger(num), DozenalInteger(den)
+
+    @property
+    def decimal(self):
+        return DecimalFraction(*self.as_decimal_integer_ratio())
 
 
 _numbers.Number.register(Dozenal)
