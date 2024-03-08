@@ -7,6 +7,7 @@ __all__ = (
 
 
 from decimal import Decimal, localcontext, getcontext
+from fractions import Fraction as DecimalFraction
 
 from typing import TypeVar
 import numbers as _numbers
@@ -555,6 +556,8 @@ class Sezimal:
                 res += Sezimal(f'2E-{decimal_to_sezimal(res._precision)}')
             elif fives.endswith('55553'):
                 res += Sezimal(f'3E-{decimal_to_sezimal(res._precision)}')
+            elif fives.endswith('555544'):
+                res += Sezimal(f'12E-{decimal_to_sezimal(res._precision)}')
 
         return res
 
@@ -1312,6 +1315,10 @@ class SezimalFraction(Sezimal):
                 den = den_test
 
         return SezimalInteger(num), SezimalInteger(den)
+
+    @property
+    def decimal(self):
+        return DecimalFraction(*self.as_decimal_integer_ratio())
 
 
 _numbers.Number.register(Sezimal)
