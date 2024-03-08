@@ -276,8 +276,11 @@ class SezimalDate:
             if token.endswith('>y'):
                 value = value[::-1][0:2][::-1]
 
-            if size and '-' not in token:
-                value = value.zfill(int(SezimalInteger(size)))
+            if size and '-' not in token and '>' not in token:
+                if value[0] == '-':
+                    value = value.zfill(int(SezimalInteger(size)) + 1)
+                else:
+                    value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
                 value = default_niftimal_to_regularized_dedicated_digits(value)
@@ -329,13 +332,19 @@ class SezimalDate:
                     value = value[::-1][0:3][::-1]
 
             if size and '-' not in token and '>' not in token:
-                value = value.zfill(int(SezimalInteger(size)))
+                if value[0] == '-':
+                    value = value.zfill(int(SezimalInteger(size)) + 1)
+                else:
+                    value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
                 value = default_to_dedicated_digits(value)
 
             elif '?' in token:
                 value = locale.digit_replace(value)
+
+        if value[0] == '-':
+            value = '−' + value[1:]
 
         return value
 
@@ -360,6 +369,15 @@ class SezimalDate:
         # Astronomical formats: seasons and moon phases
         #
         fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
+
+        #
+        # Year’s explicit sign
+        #
+        if '#+' in fmt:
+            if self.year >= 0:
+                fmt = fmt.replace('#+', '+')
+            else:
+                fmt = fmt.replace('#+', '')
 
         #
         # Let’s deal first with the numeric formats

@@ -351,20 +351,30 @@ def _easter_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInte
 
     if calendar == 'ISO' or calendar == 'GRE':
         easter = EASTER_GREGORIAN
-        date_time = date_time.replace('ISO-', '')
-        date_time = date_time.replace('GRE-', '')
+        date_time = date_time.replace('ISO+', '')
+        date_time = date_time.replace('ISO−', '-')
+        date_time = date_time.replace('ISO-', '-')
+        date_time = date_time.replace('GRE+', '')
+        date_time = date_time.replace('GRE−', '-')
+        date_time = date_time.replace('GRE-', '-')
 
     elif calendar == 'JUL' or 'PASCHA' in date_time or 'PASKHA' in date_time:
         easter = EASTER_JULIAN_REVISED
-        date_time = date_time.replace('JUL-', '')
+        date_time = date_time.replace('JUL+', '')
+        date_time = date_time.replace('JUL−', '-')
+        date_time = date_time.replace('JUL-', '-')
 
     elif calendar == 'HEB' or 'PESACH' in date_time:
         easter = EASTER_HEBREW
-        date_time = date_time.replace('HEB-', '')
+        date_time = date_time.replace('HEB+', '')
+        date_time = date_time.replace('HEB−', '-')
+        date_time = date_time.replace('HEB-', '-')
 
     else:
         easter = EASTER_SEZIMAL
-        date_time = date_time.replace('SEZ-', '')
+        date_time = date_time.replace('SEZ+', '')
+        date_time = date_time.replace('SEZ−', '-')
+        date_time = date_time.replace('SEZ-', '-')
 
     date_time = date_time.replace('PASCHA', 'EASTER')
     date_time = date_time.replace('PASKHA', 'EASTER')
