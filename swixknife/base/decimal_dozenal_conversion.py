@@ -9,6 +9,7 @@ from decimal import Decimal, localcontext, getcontext
 
 from .validation import validate_clean_decimal
 from .digit_conversion import dozenal_letters_to_digits
+from .context import sezimal_context
 
 
 def decimal_to_dozenal(number: int | float | Decimal | str | Dozenal | DozenalInteger | DozenalFraction, dozenal_precision: int | str | DozenalInteger = None) -> str:
@@ -17,8 +18,8 @@ def decimal_to_dozenal(number: int | float | Decimal | str | Dozenal | DozenalIn
 
     number = validate_clean_decimal(str(number))
 
-    if dozenal_precision is not None:
-        dozenal_precision = int(dozenal_precision)
+    if dozenal_precision is None:
+        dozenal_precision = sezimal_context.dozenal_precision_decimal
 
     if number.startswith('-'):
         negative = True

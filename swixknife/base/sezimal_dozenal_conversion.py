@@ -11,6 +11,7 @@ from decimal import Decimal, localcontext, getcontext
 from .validation import validate_clean_sezimal, validate_clean_dozenal, validate_clean_decimal
 from .sezimal_decimal_conversion import sezimal_to_decimal
 from .decimal_sezimal_conversion import decimal_to_sezimal
+from .context import sezimal_context
 
 
 DOZENAL_DIGITS = '0123456789↊↋'
@@ -21,6 +22,9 @@ def sezimal_to_dozenal(number: int | float | Decimal | str | Sezimal | SezimalIn
         number = validate_clean_decimal(str(number))
     else:
         number = sezimal_to_decimal(number)
+
+    if dozenal_precision is None:
+        dozenal_precision = sezimal_context.dozenal_precision_decimal
 
     if number.startswith('-'):
         negative = True
