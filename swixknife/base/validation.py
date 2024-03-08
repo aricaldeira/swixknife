@@ -15,7 +15,124 @@ from swixknife.base.digit_conversion import dedicated_to_default_digits, \
 from .context import sezimal_context
 
 
-_CLEAN_SPACES = re.compile('[\u0020\u00a0\u2000-\u206f_]')
+_CLEAN_SPACES = {
+    ord('\u002c'): '.',  # comma is transformed into full stop
+    ord('\u0020'): '',   # space
+    ord('\u005f'): '',   # undescore
+    ord('\u00a0'): '',   # non-break space
+    ord('\u2000'): '',   # other spacing characters
+    ord('\u2001'): '',
+    ord('\u2002'): '',
+    ord('\u2003'): '',
+    ord('\u2004'): '',
+    ord('\u2005'): '',
+    ord('\u2006'): '',
+    ord('\u2007'): '',
+    ord('\u2008'): '',
+    ord('\u2009'): '',
+    ord('\u200a'): '',
+    ord('\u200b'): '',
+    ord('\u200c'): '',
+    ord('\u200d'): '',
+    ord('\u200e'): '',
+    ord('\u200f'): '',
+    ord('\u2010'): '',
+    ord('\u2011'): '',
+    ord('\u2012'): '',
+    ord('\u2013'): '',
+    ord('\u2014'): '',
+    ord('\u2015'): '',
+    ord('\u2016'): '',
+    ord('\u2017'): '',
+    ord('\u2018'): '',
+    ord('\u2019'): '',
+    ord('\u201a'): '',
+    ord('\u201b'): '',
+    ord('\u201c'): '',
+    ord('\u201d'): '',
+    ord('\u201e'): '',
+    ord('\u201f'): '',
+    ord('\u2020'): '',
+    ord('\u2021'): '',
+    ord('\u2022'): '',
+    ord('\u2023'): '',
+    ord('\u2024'): '',
+    ord('\u2025'): '',
+    ord('\u2026'): '',
+    ord('\u2027'): '',
+    ord('\u2028'): '',
+    ord('\u2029'): '',
+    ord('\u202a'): '',
+    ord('\u202b'): '',
+    ord('\u202c'): '',
+    ord('\u202d'): '',
+    ord('\u202e'): '',
+    ord('\u202f'): '',   # narrow non-break space
+    ord('\u2030'): '',
+    ord('\u2031'): '',
+    ord('\u2032'): '',
+    ord('\u2033'): '',
+    ord('\u2034'): '',
+    ord('\u2035'): '',
+    ord('\u2036'): '',
+    ord('\u2037'): '',
+    ord('\u2038'): '',
+    ord('\u2039'): '',
+    ord('\u203a'): '',
+    ord('\u203b'): '',
+    ord('\u203c'): '',
+    ord('\u203d'): '',
+    ord('\u203e'): '',
+    ord('\u203f'): '',
+    ord('\u2040'): '',
+    ord('\u2041'): '',
+    ord('\u2042'): '',
+    ord('\u2043'): '',
+    ord('\u2044'): '',
+    ord('\u2045'): '',
+    ord('\u2046'): '',
+    ord('\u2047'): '',
+    ord('\u2048'): '',
+    ord('\u2049'): '',
+    ord('\u204a'): '',
+    ord('\u204b'): '',
+    ord('\u204c'): '',
+    ord('\u204d'): '',
+    ord('\u204e'): '',
+    ord('\u204f'): '',
+    ord('\u2050'): '',
+    ord('\u2051'): '',
+    ord('\u2052'): '',
+    ord('\u2053'): '',
+    ord('\u2054'): '',
+    ord('\u2055'): '',
+    ord('\u2056'): '',
+    ord('\u2057'): '',
+    ord('\u2058'): '',
+    ord('\u2059'): '',
+    ord('\u205a'): '',
+    ord('\u205b'): '',
+    ord('\u205c'): '',
+    ord('\u205d'): '',
+    ord('\u205e'): '',
+    ord('\u205f'): '',
+    ord('\u2060'): '',
+    ord('\u2061'): '',
+    ord('\u2062'): '',
+    ord('\u2063'): '',
+    ord('\u2064'): '',
+    ord('\u2065'): '',
+    ord('\u2066'): '',
+    ord('\u2067'): '',
+    ord('\u2068'): '',
+    ord('\u2069'): '',
+    ord('\u206a'): '',
+    ord('\u206b'): '',
+    ord('\u206c'): '',
+    ord('\u206d'): '',
+    ord('\u206e'): '',
+    ord('\u206f'): '',
+}
 _FRACTION_SEPARATOR = '\\.'
 _RECURRING_MARKER = re.compile('\\.\\.')
 _CLOSING_RECURRING_MARKER = re.compile('\\.\\.\\.$')
@@ -35,7 +152,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
 
     number = str(number)
 
-    cleaned_number = _CLEAN_SPACES.sub('', number)
+    cleaned_number = number.translate(_CLEAN_SPACES)
     cleaned_number = dedicated_to_default_digits(cleaned_number)
 
     if not _VALID_SEZIMAL_FORMAT.match(cleaned_number):
@@ -72,7 +189,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
 def validate_clean_decimal(number: int | float | str | Decimal) -> str:
     number = str(number)
 
-    cleaned_number = _CLEAN_SPACES.sub('', number)
+    cleaned_number = number.translate(_CLEAN_SPACES)
 
     if not _VALID_DECIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a decimal number')
@@ -105,7 +222,7 @@ def validate_clean_decimal(number: int | float | str | Decimal) -> str:
 def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> str:
     number = str(number)
 
-    cleaned_number = _CLEAN_SPACES.sub('', number).upper()
+    cleaned_number = number.translate(_CLEAN_SPACES).upper()
     cleaned_number = dedicated_niftimal_to_default_digits(cleaned_number)
 
     if not _VALID_NIFTIMAL_FORMAT.match(cleaned_number):
@@ -139,12 +256,12 @@ def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> st
 def validate_clean_dozenal(number: str) -> str:
     number = str(number)
 
-    cleaned_number = _CLEAN_SPACES.sub('', number).upper()
+    cleaned_number = number.translate(_CLEAN_SPACES).upper()
 
     if not _VALID_DOZENAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a dozenal number')
 
-    cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.dozenal_precision)
+    cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.dozenal_precision_decimal)
 
     if cleaned_number and cleaned_number[0] == '+':
         cleaned_number = cleaned_number[1:]
