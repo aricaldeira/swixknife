@@ -61,21 +61,21 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         #
         # Moving Holidays
         #
-        ('ISO-EASTER-115', '\ufe0f🎉 Carnaval (%d/%m)'),
-        ('ISO-EASTER-2',   '\ufe0f🥀 Sexta-feira Santa (%d/%m)'),
-        ('ISO-EASTER',     '\ufe0f🐣 Páscoa (%d/%m)'),
-        ('ISO-EASTER+140', '\ufe0f🥖 Corpo de Deus (%d/%m)'),
+        ('ISO+EASTER-115', '\ufe0f🎉 Carnaval (%d/%m)'),
+        ('ISO+EASTER-2',   '\ufe0f🥀 Sexta-feira Santa (%d/%m)'),
+        ('ISO+EASTER',     '\ufe0f🐣 Páscoa (%d/%m)'),
+        ('ISO+EASTER+140', '\ufe0f🥖 Corpo de Deus (%d/%m)'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('ISO-01-01', '\ufe0f⛪ Santa Mãe de Deus (%d/%m)'),
-        ('ISO-05-01', '\ufe0f🐝 Dia do Trabalhador (%d/%m)'),
-        ('ISO-08-15', '\ufe0f⛪ Assunção de Nossa Senhora (%d/%m)'),
-        ('ISO-11-02', '\ufe0f🪦 Todos os Santos (%d/%m)'),
-        ('ISO-12-08', '\ufe0f⛪ Imaculada Conceição (%d/%m)'),
-        ('ISO-12-25', '\ufe0f👼🏼 Natal (%d/%m)'),
+        ('ISO+01-01', '\ufe0f⛪ Santa Mãe de Deus (%d/%m)'),
+        ('ISO+05-01', '\ufe0f🐝 Dia do Trabalhador (%d/%m)'),
+        ('ISO+08-15', '\ufe0f⛪ Assunção de Nossa Senhora (%d/%m)'),
+        ('ISO+11-02', '\ufe0f🪦 Todos os Santos (%d/%m)'),
+        ('ISO+12-08', '\ufe0f⛪ Imaculada Conceição (%d/%m)'),
+        ('ISO+12-25', '\ufe0f👼🏼 Natal (%d/%m)'),
 
         #
         # National Holidays
@@ -85,9 +85,9 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO-1974-04-25', '\ufe0f🇵🇹 Dia da Liberdade (%d/%m - %i)'),
-        ('ISO-1580-06-10', '\ufe0f🇵🇹 Dia de Portugal (%d/%m - %i)'),
-        ('ISO-1910-10-05', '\ufe0f🇵🇹 Implantação da República (%d/%m - %i)'),
-        ('ISO-1640-12-01', '\ufe0f🇵🇹 Restauração da Independência (%d/%m - %i)'),
+        ('ISO+1974-04-25', '\ufe0f🇵🇹 Dia da Liberdade (%d/%m - %i)'),
+        ('ISO+1580-06-10', '\ufe0f🇵🇹 Dia de Portugal (%d/%m - %i)'),
+        ('ISO+1910-10-05', '\ufe0f🇵🇹 Implantação da República (%d/%m - %i)'),
+        ('ISO+1640-12-01', '\ufe0f🇵🇹 Restauração da Independência (%d/%m - %i)'),
     ]
 

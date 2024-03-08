@@ -54,19 +54,19 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         #
         # Moving Holidays
         #
-        ('ISO-EASTER-2',   '\ufe0f🕆 🥀 Good Friday (%d/%m)'),
-        ('ISO-EASTER-1',   '\ufe0f🐣🌱 Easter Saturday (%d/%m)'),
-        ('ISO-EASTER',     '\ufe0f🐣🌱 Easter Sunday (%d/%m)'),
-        ('ISO-EASTER+1',   '\ufe0f🐣🌱 Easter Monday (%d/%m)'),
+        ('ISO+EASTER-2',   '\ufe0f🕆 🥀 Good Friday (%d/%m)'),
+        ('ISO+EASTER-1',   '\ufe0f🐣🌱 Easter Saturday (%d/%m)'),
+        ('ISO+EASTER',     '\ufe0f🐣🌱 Easter Sunday (%d/%m)'),
+        ('ISO+EASTER+1',   '\ufe0f🐣🌱 Easter Monday (%d/%m)'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('ISO-01-01', '\ufe0f🕊️ 🌎 New Year’s Day (%d/%m)'),
-        ('ISO-12-24', '\ufe0f🥂🍽️  Christmas Eve (%d/%m)'),
-        ('ISO-12-25', '\ufe0f🌟👼🏼 Christmas (%d/%m)'),
-        ('ISO-12-31', '\ufe0f🍾🎆 New Year’s Eve (%d/%m)'),
+        ('ISO+01-01', '\ufe0f🕊️ 🌎 New Year’s Day (%d/%m)'),
+        ('ISO+12-24', '\ufe0f🥂🍽️  Christmas Eve (%d/%m)'),
+        ('ISO+12-25', '\ufe0f🌟👼🏼 Christmas (%d/%m)'),
+        ('ISO+12-31', '\ufe0f🍾🎆 New Year’s Eve (%d/%m)'),
 
         #
         # National Holidays
@@ -77,6 +77,6 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO-1788-01-26', '\ufe0f🇦🇺 Australia Day (%d/%m - %i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
-        ('ISO-1915-04-25', '\ufe0f🇦🇺 Anzac Day (%d/%m - %i)'),      # Sunday   130_324-01-43 ~ 1915-04-25_dec
+        ('ISO+1788-01-26', '\ufe0f🇦🇺 Australia Day (%d/%m - %i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
+        ('ISO+1915-04-25', '\ufe0f🇦🇺 Anzac Day (%d/%m - %i)'),      # Sunday   130_324-01-43 ~ 1915-04-25_dec
     ]

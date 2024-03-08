@@ -125,8 +125,8 @@ class SezimalLocaleEO(SezimalLocale):
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
-        ('ISO-1859-12-15', '\ufe0f💚 Zamenhof-Tago (%d-%b - %i)'),
-        ('ISO-1887-07-26', '\ufe0f📗 Unua Libro (%d-%b - %i)'),
+        ('ISO+1859-12-15', '\ufe0f💚 Zamenhof-Tago (%d-%b - %i)'),
+        ('ISO+1887-07-26', '\ufe0f📗 Unua Libro (%d-%b - %i)'),
     ]
 
     WEEKDAY_ERROR = 'Nevalida semajntago {weekday}'
