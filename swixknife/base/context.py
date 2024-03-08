@@ -35,7 +35,27 @@ class SezimalContext:
 
         self._sezimal_precision = int(precision)
         self._sezimal_precision_decimal = int(precision, 6)
+
+        self._niftimal_precision_decimal = self._sezimal_precision_decimal // 2
+        self._niftimal_precision = ''
+
+        p = self._niftimal_precision_decimal
+        n = 0
+
+        while p >= 36:
+            p -= 36
+            n += 1
+
+        if n:
+            self._niftimal_precision = '0123456789ABCDEFGHIJKMLMNOPQRSTUVWXYZ'[n]
+
+        self._niftimal_precision += '0123456789ABCDEFGHIJKMLMNOPQRSTUVWXYZ'[p]
+
         self._decimal_precision = int(int(precision, 6) / 4 * 3)
+
+        if self._decimal_precision % 3 != 0:
+            self._decimal_precision -= self._decimal_precision % 3
+
         # self._decimal_precision = self._sezimal_precision_decimal // 4 * 3
 
         p = int(self._decimal_precision)
@@ -108,8 +128,16 @@ class SezimalContext:
         self._dozenal_precision_decimal = int(precision, 12)
 
     @property
-    def dozenal_precision_decimal(self):
+    def dozenal_precision_decimal(self) -> int:
         return self._dozenal_precision_decimal
+
+    @property
+    def niftimal_precision(self) -> str:
+        return self._niftimal_precision
+
+    @property
+    def niftimal_precision_decimal(self) -> int:
+        return self._niftimal_precision_decimal
 
 
 sezimal_context = SezimalContext()
