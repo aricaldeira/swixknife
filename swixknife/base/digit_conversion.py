@@ -1,4 +1,6 @@
 
+import re
+
 SEZIMAL_DIGITS_MAP = (
     ('0', '󱨀'), ('1', '󱨁'), ('2', '󱨂'), ('3', '󱨃'), ('4', '󱨄'), ('5', '󱨅'),
     ('⁰', '󱨤'), ('¹', '󱨥'), ('²', '󱨦'), ('³', '󱨧'), ('⁴', '󱨨'), ('⁵', '󱨩'),
@@ -76,13 +78,10 @@ DEFAULT_DENOMINATOR_DIGITS = (
 
 
 def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
-    translate_table = str.maketrans({digits_from[i]: digits_to[i] for i in range(len(digits_from))})
-    number = number.translate(translate_table)
-
-    #for i in range(len(digits_from)):
-    #    df = digits_from[i]
-    #    dt = digits_to[i]
-    #    number = re.sub(df, dt, number)
+    for i in range(len(digits_from)):
+        df = digits_from[i]
+        dt = digits_to[i]
+        number = re.sub(df, dt, number)
 
     return number
 
