@@ -305,7 +305,7 @@ class SezimalLocale:
         suffix: str = '',
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
-        recurring_digits_notation: bool | str = False,
+        recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         grouping_digits: int = 3,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
@@ -341,7 +341,7 @@ class SezimalLocale:
         suffix: str = '',
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
-        recurring_digits_notation: bool | str = False,
+        recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
@@ -374,7 +374,7 @@ class SezimalLocale:
         suffix: str = '',
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
-        recurring_digits_notation: bool | str = False,
+        recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -413,7 +413,7 @@ class SezimalLocale:
         suffix: str = '',
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
-        recurring_digits_notation: bool | str = False,
+        recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
