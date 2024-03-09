@@ -19,6 +19,16 @@ class SezimalContext:
         # self.sezimal_precision = 30
         self.sezimal_precision = 33
         # self.sezimal_precision = 1200
+        self._locale = None
+        self.show_recurring_digits = True
+
+    @property
+    def precision(self) -> SezimalInteger:
+        return self._sezimal_precision
+
+    @precision.setter
+    def precision(self, precision: int | float | str | Decimal | Sezimal | SezimalInteger):
+        self.sezimal_precision = precision
 
     @property
     def sezimal_precision(self) -> SezimalInteger:
@@ -138,6 +148,19 @@ class SezimalContext:
     @property
     def niftimal_precision_decimal(self) -> int:
         return self._niftimal_precision_decimal
+
+    @property
+    def locale(self):
+        if self._locale is None:
+            from swixknife import sezimal_locale
+            self._locale = sezimal_locale()
+
+        return self._locale
+
+    @locale.setter
+    def locale(self, locale: str = None):
+        from swixknife import sezimal_locale
+        self._locale = sezimal_locale(locale)
 
 
 sezimal_context = SezimalContext()

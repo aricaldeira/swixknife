@@ -1316,9 +1316,9 @@ class SezimalFraction(Sezimal):
 
         return SezimalInteger(num), SezimalInteger(den)
 
-    @property
-    def decimal(self):
-        return DecimalFraction(*self.as_decimal_integer_ratio())
+    # @property
+    # def decimal(self):
+    #     return DecimalFraction(*self.as_decimal_integer_ratio())
 
 
 _numbers.Number.register(Sezimal)

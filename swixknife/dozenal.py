@@ -1340,9 +1340,9 @@ class DozenalFraction(Dozenal):
 
         return DozenalInteger(num), DozenalInteger(den)
 
-    @property
-    def decimal(self):
-        return DecimalFraction(*self.as_decimal_integer_ratio())
+    # @property
+    # def decimal(self):
+    #     return DecimalFraction(*self.as_decimal_integer_ratio())
 
 
 _numbers.Number.register(Dozenal)
