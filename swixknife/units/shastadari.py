@@ -73,7 +73,8 @@ SPECIFIC_HEAT = SezimalFraction('14_020_313_040_133_131_521 / 304_053_500_515_14
 # fraction form:
 # https://en.wikipedia.org/wiki/Impedance_of_free_space
 #
-VACUUM_RESISTANCE = SezimalFraction('424_125_300_421_243_401 / 231_513_450_033_532')
+#VACUUM_RESISTANCE = SezimalFraction('424_125_300_421_243_401 / 231_513_450_033_532')
+VACUUM_RESISTANCE = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
 
 #
 # Elementary charge in coulombos, converted to
@@ -129,24 +130,26 @@ class ShastadariUnits:
         # First calculation of an integer amount of elementary charges
         # tuned so that the ohm equivalent is exactly the vacuum resistance
         #
-        # electric_charge = (self.mass * (self.length ** 2)) / self.time / self.electric_resistance
+        # breakpoint()
         # old_precision = sezimal_context.sezimal_precision
+        # old_fractions_use_decimal = sezimal_context.fractions_use_decimal
         # sezimal_context.sezimal_precision = 1200
         # getcontext().prec = 216
-        # elementary_charges = round(electric_charge.sqrt() / ELEMENTARY_CHARGE, 0)
-        # sezimal_context.sezimal_precision = old_precision
-        # n1 = Decimal('779412164274376171234058386576532287600155737784525832218459455728013261315375207815188474985856573986161864553522540185830155549861618464759331105692046145204949657017886049294936433740720512269840829187622399212243')
-        # d1 = Decimal('1e219')
-        # n2, d2 = ELEMENTARY_CHARGE.as_decimal_ratio()
+        # sezimal_context.fractions_use_decimal = True
         #
-        # elementary_charges = (n1 * d2) / (n2 * d1)
-        # elementary_charges = SezimalInteger('115_522_212_014_120_443_141')
+        # vr = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
+        # ec = SezimalFraction('211_254_034_113 / 252_412_511_453_013_134_321_101_511_222_244_052')
+        #
+        # electric_charge = (self.mass * self.area) / self.time / vr
+        # elementary_charges = round(electric_charge.decimal.sqrt() / ec.decimal, 0)
         # self.electric_charge = elementary_charges * ELEMENTARY_CHARGE
+        # sezimal_context.sezimal_precision = old_precision
+        # sezimal_context.fractions_use_decimal = old_fractions_use_decimal
 
         #
         # Pre-calculated elementary charge - coulomb
         #
-        self.electric_charge = SezimalFraction('543_113_043_050_305_145 / 5_410_444_451_125_535_023_412')  # C = A·s
+        self.electric_charge = SezimalFraction('4_223_523_221_410_440_513_140_205_022_413 / 42_102_114_542_132_152_350_143_244_503_341_012')  # C = A·s
         self.electric_current = self.electric_charge / self.time  # A = C/s
         self.electric_potential_difference = self.energy__work__potential__heat / self.electric_charge  # V = J/C = kg·m²/s³/A
         self.electric_conductance = self.electric_current / self.electric_potential_difference  # S = 1/Ω = s³·A²/kg/m²

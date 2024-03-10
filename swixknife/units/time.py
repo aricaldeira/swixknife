@@ -13,7 +13,7 @@ SECOND_TO_ANUGA = ANUGA_TO_SECOND.reciprocal
 #
 # Avrita = agrima⁻¹
 #
-AVRITA_TO_HERTZ = SezimalFraction('41 / 2_130')
+AVRITA_TO_HERTZ = SezimalFraction('2_130 / 41')
 HERTZ_TO_AVRITA = AVRITA_TO_HERTZ.reciprocal
 
 
@@ -47,4 +47,3 @@ POSHA_TO_DAY = Sezimal('0.000_1')
 AGRIMA_TO_DAY = Sezimal('0.000_001')
 ANUGA_TO_DAY = Sezimal('0.000_000_01')
 BODA_TO_DAY = Sezimal('0.000_000_000_1')
-
