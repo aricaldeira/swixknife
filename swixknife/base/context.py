@@ -21,6 +21,8 @@ class SezimalContext:
         # self.sezimal_precision = 1200
         self._locale = None
         self.show_recurring_digits = True
+        self.fractions_use_decimal = False
+        self.fractions_simplify = True
 
     @property
     def precision(self) -> SezimalInteger:
