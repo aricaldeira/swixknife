@@ -63,14 +63,14 @@ class SezimalContext:
 
         self._niftimal_precision += '0123456789ABCDEFGHIJKMLMNOPQRSTUVWXYZ'[p]
 
-        self._decimal_precision = int(int(precision, 6) / 4 * 3)
+        decimal_precision = int(int(precision, 6) / 4 * 3)
 
-        if self._decimal_precision % 3 != 0:
-            self._decimal_precision -= self._decimal_precision % 3
+        if decimal_precision % 3 != 0:
+            decimal_precision -= decimal_precision % 3
 
-        # self._decimal_precision = self._sezimal_precision_decimal // 4 * 3
+        self.decimal_precision = decimal_precision
 
-        p = int(self._decimal_precision)
+        p = self.decimal_precision
         sp = ''
 
         while p:
@@ -122,6 +122,9 @@ class SezimalContext:
             precision = integer
 
         self._decimal_precision = int(precision)
+
+        from decimal import getcontext
+        getcontext().prec = int(precision) + 1
 
     @property
     def dozenal_precision(self) -> DozenalInteger:
