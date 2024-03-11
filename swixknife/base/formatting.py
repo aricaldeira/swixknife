@@ -122,10 +122,15 @@ def sezimal_format(
         integer, fraction = number.split('.')
 
         if recurring_digits_notation and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal], max_fraction_size=sezimal_context.sezimal_precision_decimal)
+            if type(recurring_digits_notation) == int:
+                max_fraction_size = recurring_digits_notation
+            else:
+                max_fraction_size = sezimal_context.sezimal_precision_decimal
+
+            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal], max_fraction_size=max_fraction_size)
 
             if not recurring:
-                fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal - 1], max_fraction_size=sezimal_context.sezimal_precision_decimal - 1)
+                fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal - 1], max_fraction_size=max_fraction_size - 1)
 
             if recurring:
                 #
@@ -303,7 +308,12 @@ def decimal_format(
         integer, fraction = number.split('.')
 
         if recurring_digits_notation and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.decimal_precision], max_fraction_size=sezimal_context.decimal_precision)
+            if type(recurring_digits_notation) == int:
+                max_fraction_size = recurring_digits_notation
+            else:
+                max_fraction_size = sezimal_context.decimal_precision
+
+            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.decimal_precision], max_fraction_size=max_fraction_size)
 
             if recurring:
                 #
@@ -431,7 +441,12 @@ def dozenal_format(
         integer, fraction = number.split('.')
 
         if recurring_digits_notation and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.dozenal_precision_decimal], max_fraction_size=sezimal_context.dozenal_precision_decimal)
+            if type(recurring_digits_notation) == int:
+                max_fraction_size = recurring_digits_notation
+            else:
+                max_fraction_size = sezimal_context.dozenal_precision_decimal
+
+            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.dozenal_precision_decimal], max_fraction_size=max_fraction_size)
 
             if recurring:
                 #
@@ -563,10 +578,25 @@ def niftimal_format(
         integer, fraction = number.split('.')
 
         if recurring_digits_notation and fraction:
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal // 2], max_fraction_size=sezimal_context.sezimal_precision_decimal // 2)
+            if type(recurring_digits_notation) == int:
+                max_fraction_size = recurring_digits_notation
+            else:
+                max_fraction_size = sezimal_context.sezimal_precision_decimal // 2
+
+            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal // 2], max_fraction_size=max_fraction_size)
 
             if recurring:
-                fraction = fixed_part
+                #
+                # Let’s check if we limit the size of the recurring notation
+                #
+                if type(recurring_digits_notation) == int:
+                    if len(fixed_part + recurring) < recurring_digits_notation:
+                        fraction = fixed_part
+                    else:
+                        recurring = ''
+
+                else:
+                    fraction = fixed_part
 
     else:
         integer, fraction = number, ''
