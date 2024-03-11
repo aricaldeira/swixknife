@@ -43,7 +43,7 @@ GRAVITY = SezimalFraction('44_220 / 2_521')
 # https://www.wolframalpha.com/input?i=density+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+15+digits+precision
 # Limited to 15_dec digits precision
 #
-DENSITY = SezimalFraction('1_530_352_241_044_350_011 / 225_420_400_413_012')
+DENSITY = SezimalFraction('13_455_001_552_110_541_335 / 2_043_221_010_301_344')
 
 #
 # The same density, but with more precision
@@ -60,7 +60,7 @@ DENSITY = SezimalFraction('1_530_352_241_044_350_011 / 225_420_400_413_012')
 # https://www.wolframalpha.com/input?i=specific+heat+of+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+15+digits+precision
 # Limited to 15_dec digits precision
 #
-SPECIFIC_HEAT = SezimalFraction('14_020_313_040_133_131_521 / 304_053_500_515_144')
+SPECIFIC_HEAT = SezimalFraction('224_553_132_435_043_304 / 4_332_142_412_144')
 
 #
 # The same specific heat, but with more precision
