@@ -10,7 +10,7 @@ from decimal import Decimal
 PADA_TO_METER = SezimalFraction('2_211 / 231_043')
 METER_TO_PADA = PADA_TO_METER.reciprocal
 
-DIPADA_TO_METER = SezimalFraction('13_244 / 14_043')
+DIMAPADA_TO_METER = SezimalFraction('13_244 / 14_043')
 METER_TO_DIMAPADA = DIMAPADA_TO_METER.reciprocal
 
 PADA_TO_KILOMETER = SezimalFraction('2_211 / 1_541_513_000')
