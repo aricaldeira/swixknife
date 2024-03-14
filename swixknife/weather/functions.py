@@ -24,6 +24,7 @@ def convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> Sezimal
 
 def convert_temperature_kelvin(kelvin: float, gatika: bool = False) -> Sezimal:
     celsius = kelvin_to_celsius(Sezimal(Decimal(str(kelvin))))
+
     tapa = celsius * CELSIUS_TO_TAPA
 
     if gatika:
@@ -51,7 +52,7 @@ def convert_distance(distance: float) -> Sezimal:
 
 
 def convert_pressure(pressure: float) -> Sezimal:
-    return round(Decimal(str(pressure)) * PASCAL_TO_DABA / 10_000, 0)
+    return round(Decimal(str(pressure)) * PASCAL_TO_DABA, 0)
 
 
 def convert_percentage(percentage: float) -> Sezimal:
@@ -60,3 +61,7 @@ def convert_percentage(percentage: float) -> Sezimal:
 
 def convert_precipitation(precipitation: float) -> Sezimal:
     return round(Decimal(str(precipitation)) * MILLIMETER_TO_DITIPADA, 0)
+
+
+def convert_angle(angle: float) -> Sezimal:
+    return round(Decimal(str(angle)) / Sezimal(1400) * 100, 2)

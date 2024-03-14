@@ -239,7 +239,7 @@ class SezimalWeather:
         fill_sezimal_weather(self, conditions)
 
     def _get_last_reading(self, api_type: str, fill_sezimal_weather):
-        if not os.path.isfile('~/.sweather.json'):
+        if not os.path.isfile(os.path.expanduser('~/.sweather.json')):
             return False
 
         last_reading = json.loads(open(os.path.expanduser('~/.sweather.json'), 'r').read())

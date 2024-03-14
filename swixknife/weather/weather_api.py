@@ -7,7 +7,7 @@ from typing import TypeVar
 
 ZoneInfo = TypeVar('ZoneInfo', bound='ZoneInfo')
 
-from ..sezimal import SezimalInteger
+from ..sezimal import SezimalInteger, Sezimal
 from .weather import SezimalWeather
 from . import functions
 from ..json import json
