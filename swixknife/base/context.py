@@ -23,6 +23,7 @@ class SezimalContext:
         self.show_recurring_digits = True
         self.fractions_use_decimal = False
         self.fractions_simplify = True
+        self.minimum_size = 0
 
     @property
     def precision(self) -> SezimalInteger:

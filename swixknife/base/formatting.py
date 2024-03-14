@@ -132,6 +132,10 @@ def sezimal_format(
             if not recurring:
                 fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal - 1], max_fraction_size=max_fraction_size - 1)
 
+            if recurring == '0':
+                recurring = ''
+                fraction = fixed_part
+
             if recurring:
                 #
                 # Let’s check if we limit the size of the recurring notation
@@ -155,15 +159,15 @@ def sezimal_format(
             fraction = ''
 
     if group_separator:
-        if minimum_size > 0:
-            integer = integer.rjust(minimum_size, ' ')
-
         integer = _apply_format(integer, group_separator, group_format)
 
         if subgroup_separator:
             integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
             integer = integer.replace(subgroup_separator + group_separator, group_separator)
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
+
+        if minimum_size > 0:
+            integer = integer.rjust(minimum_size, ' ')
 
     formatted_number = integer
 
