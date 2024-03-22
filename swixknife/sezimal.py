@@ -70,7 +70,7 @@ class Sezimal:
 
         elif type(number) == str and ('/' in number or '⁄' in number or '÷' in number):
             cleaned_number = str(SezimalFraction(number).sezimal)
-            
+
         else:
             if _internal:
                 cleaned_number = str(number)
@@ -97,10 +97,12 @@ class Sezimal:
         # Converts and stores as decimal
         #
         if original_decimal is None:
-            with localcontext() as context:
-                context.prec = sezimal_context.decimal_precision
-                self._value = Decimal(sezimal_to_decimal(cleaned_number)) ## .quantize(Decimal(f'1E-{_DECIMAL_PRECISION}'))
-                self._value *= self._sign
+            dec = sezimal_to_decimal(cleaned_number)
+
+            if self._sign < 0:
+                dec = '-' + dec
+
+            self._value = Decimal(dec)
 
         else:
             self._value = original_decimal
@@ -1069,12 +1071,12 @@ class SezimalInteger(Sezimal):
     __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits']
 
     def __init__(
-            self, 
-            number: str | int | float | Decimal | Self | IntegerSelf | Dozenal | DozenalInteger, 
+            self,
+            number: str | int | float | Decimal | Self | IntegerSelf | Dozenal | DozenalInteger,
             _internal: bool = False
         ) -> Self:
         super().__init__(number, _internal=_internal)
-            
+
         original_decimal = None
 
         if type(number) == Decimal:
@@ -1088,8 +1090,16 @@ class SezimalInteger(Sezimal):
         # Converts and stores as decimal
         #
         if original_decimal is None:
-            self._value = Decimal(sezimal_to_decimal(self._integer))
-            self._value *= self._sign
+            dec = sezimal_to_decimal(self._integer)
+
+            if self._sign == -1:
+                dec = '-' + dec
+
+            if '.' in dec:
+                dec = dec.split('.')[0]
+
+            self._value = Decimal(dec)
+
         else:
             self._value = original_decimal
 
@@ -1130,8 +1140,11 @@ class SezimalFraction(Sezimal):
         else:
             cleaned_denominator = validate_clean_sezimal(denominator)
 
-        self._numerator = Sezimal(cleaned_numerator)
-        self._denominator = Sezimal(cleaned_denominator)
+        self._numerator, self._denominator = \
+            self.__simplify(
+                Sezimal(cleaned_numerator),
+                Sezimal(cleaned_denominator),
+            )
 
         if sezimal_context.fractions_use_decimal:
             self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
@@ -1283,6 +1296,102 @@ class SezimalFraction(Sezimal):
 
         return super().__pow__(other_number)
 
+    def __add__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            if self.denominator == other_number.denominator:
+                numerator = self.numerator + other_number.numerator
+                numerator, denominator = self.__simplify(numerator, self.denominator)
+                return SezimalFraction(numerator, denominator)
+
+            numerator = self.numerator * other_number.denominator
+            numerator += other_number.numerator * self.denominator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            numerator += other_number * self.denominator
+            numerator, denominator = self.__simplify(numerator, self.denominator)
+            return SezimalFraction(numerator, denominator)
+
+        return super().__add__(other_number)
+
+    def __radd__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            if self.denominator == other_number.denominator:
+                numerator = self.numerator + other_number.numerator
+                numerator, denominator = self.__simplify(numerator, self.denominator)
+                return SezimalFraction(numerator, denominator)
+
+            numerator = self.numerator * other_number.denominator
+            numerator += other_number.numerator * self.denominator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            numerator += other_number * self.denominator
+            numerator, denominator = self.__simplify(numerator, self.denominator)
+            return SezimalFraction(numerator, denominator)
+
+        return super().__radd__(other_number)
+
+    def __sub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            if self.denominator == other_number.denominator:
+                numerator = self.numerator - other_number.numerator
+                numerator, denominator = self.__simplify(numerator, self.denominator)
+                return SezimalFraction(numerator, denominator)
+
+            numerator = self.numerator * other_number.denominator
+            numerator -= other_number.numerator * self.denominator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = self.numerator
+            numerator -= other_number * self.denominator
+            numerator, denominator = self.__simplify(numerator, self.denominator)
+            return SezimalFraction(numerator, denominator)
+
+        return super().__sub__(other_number)
+
+    def __rsub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+        if type(other_number) == SezimalFraction:
+            if self.denominator == other_number.denominator:
+                numerator = other_number.numerator - self.numerator
+                numerator, denominator = self.__simplify(numerator, self.denominator)
+                return SezimalFraction(numerator, denominator)
+
+            numerator = other_number.numerator * self.denominator
+            numerator -= self.numerator * other_number.denominator
+            denominator = self.denominator * other_number.denominator
+            numerator, denominator = self.__simplify(numerator, denominator)
+            return SezimalFraction(numerator, denominator)
+
+        if type(other_number) != Sezimal:
+            other_number = Sezimal(other_number)
+
+        if other_number._fraction == '':
+            numerator = other_number * self.denominator
+            numerator -= self.numerator
+            numerator, denominator = self.__simplify(numerator, self.denominator)
+            return SezimalFraction(numerator, denominator)
+
+        return super().__rsub__(other_number)
+
     @property
     def decimal_fraction(self):
         return DecimalFraction(*self.as_decimal_integer_ratio())
@@ -1302,18 +1411,11 @@ class SezimalFraction(Sezimal):
         num = num.decimal
         den = den.decimal
 
-        # df = DecimalFraction(int(num), int(den))
-        #
-        # num = Decimal(df.numerator)
-        # den = Decimal(df.denominator)
-        #
-        # return num, den
-
         for factor in _sezimal_maps._PRIMES:
             factor = Decimal(factor)
 
-            if factor > min(num, den):
-                continue
+            if factor > min(abs(num), abs(den)):
+                break
 
             while True:
                 num_test = num / factor
