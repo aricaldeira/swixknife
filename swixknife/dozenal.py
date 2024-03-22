@@ -1323,7 +1323,7 @@ class DozenalFraction(Dozenal):
 
         return super().__pow__(other_number)
 
-    def __add__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    def __add__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
         if type(other_number) == DozenalFraction:
             if self.denominator == other_number.denominator:
                 numerator = self.numerator + other_number.numerator
@@ -1347,7 +1347,7 @@ class DozenalFraction(Dozenal):
 
         return super().__add__(other_number)
 
-    def __radd__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    def __radd__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
         if type(other_number) == DozenalFraction:
             if self.denominator == other_number.denominator:
                 numerator = self.numerator + other_number.numerator
@@ -1371,7 +1371,7 @@ class DozenalFraction(Dozenal):
 
         return super().__radd__(other_number)
 
-    def __sub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    def __sub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
         if type(other_number) == DozenalFraction:
             if self.denominator == other_number.denominator:
                 numerator = self.numerator - other_number.numerator
@@ -1395,7 +1395,7 @@ class DozenalFraction(Dozenal):
 
         return super().__sub__(other_number)
 
-    def __rsub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> FractionSelf | Self:
+    def __rsub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction) -> FractionSelf | Self:
         if type(other_number) == DozenalFraction:
             if self.denominator == other_number.denominator:
                 numerator = other_number.numerator - self.numerator
