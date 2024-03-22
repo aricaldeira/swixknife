@@ -11,11 +11,12 @@ import datetime
 
 
 def pyspread_format_sezimal(value: Sezimal | SezimalInteger) -> str:
-    if value._fraction:
+    if value._fraction.replace('0', '') != '':
         return sezimal_context.locale.format_number(
             value,
             sezimal_places=sezimal_context.sezimal_precision,
-            recurring_digits_notation=10 if sezimal_context.show_recurring_digits else False,
+            recurring_digits_notation=sezimal_context.show_recurring_digits,
+            minimum_size=sezimal_context.minimum_size,
             use_fraction_group_separator=True,
         )
 
@@ -23,6 +24,7 @@ def pyspread_format_sezimal(value: Sezimal | SezimalInteger) -> str:
         return sezimal_context.locale.format_number(
             value,
             sezimal_places=0,
+            minimum_size=sezimal_context.minimum_size,
         )
 
 
@@ -32,6 +34,7 @@ def pyspread_format_sezimal_fraction(value: SezimalFraction) -> str:
             sezimal_places=0,
         ) + ' / ' + sezimal_context.locale.format_number(
             value.denominator,
+            minimum_size=sezimal_context.minimum_size,
             sezimal_places=0,
         )
 
