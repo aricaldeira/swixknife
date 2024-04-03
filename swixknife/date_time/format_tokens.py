@@ -5,7 +5,7 @@ import re
 
 DATE_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{zero}{value[0]}'),
+        re.compile(f'#{base}{zero}{value[0]}'),
         f'#{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
@@ -37,7 +37,7 @@ DATE_NUMBER_FORMAT_TOKENS = tuple(
 
 YEAR_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{separator}{value[0]}'),
+        re.compile(f'#{base}{separator}{value[0]}'),
         f'#{base}{separator}{value[0]}'.replace('\\', ''), base.replace('\\', ''), separator, *value
     )
     for base, separator, value, in product(
@@ -61,7 +61,7 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
 
 DATE_TEXT_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{case}{month_week}'),
+        re.compile(f'#{base}{case}{month_week}'),
         f'#{base}{case}{month_week}'.replace('\\', ''), base.replace('\\', ''), case.replace('\\', ''), month_week
     )
     for base, case, month_week in product(
@@ -74,7 +74,7 @@ DATE_TEXT_FORMAT_TOKENS = tuple(
 
 TIME_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{zero}{value[0]}'),
+        re.compile(f'#{base}{zero}{value[0]}'),
         f'#{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
@@ -95,7 +95,7 @@ TIME_NUMBER_FORMAT_TOKENS = tuple(
 
 TIME_ZONE_OFFSET_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{colon}t'),
+        re.compile(f'#{base}{colon}t'),
         f'#{base}{colon}t'.replace('\\', ''), base.replace('\\', ''), colon.replace('\\', '')
     )
     for base, colon in product(
@@ -107,7 +107,7 @@ TIME_ZONE_OFFSET_FORMAT_TOKENS = tuple(
 
 SEASON_MOON_TEXT_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#{base}{hemisphere}{number}{case}{season_moon}'),
+        re.compile(f'#{base}{hemisphere}{number}{case}{season_moon}'),
         base, hemisphere, number, case.replace('\\', ''), season_moon
     )
     for base, hemisphere, number, case, season_moon in product(
@@ -121,7 +121,7 @@ SEASON_MOON_TEXT_FORMAT_TOKENS = tuple(
 
 SEASON_MOON_TIME_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\#T{base}{number}{season_moon}'),
+        re.compile(f'#T{base}{number}{season_moon}'),
         base.replace('\\', ''), number, season_moon
     )
     for base, number, season_moon in product(
@@ -134,7 +134,7 @@ SEASON_MOON_TIME_FORMAT_TOKENS = tuple(
 
 ISO_DATE_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\%{base}{zero}{value[0]}'),
+        re.compile(f'%{base}{zero}{value[0]}'),
         f'%{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
@@ -155,7 +155,7 @@ ISO_DATE_NUMBER_FORMAT_TOKENS = tuple(
 
 ISO_TIME_NUMBER_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'\%{base}{zero}{value[0]}'),
+        re.compile(f'%{base}{zero}{value[0]}'),
         f'%{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
