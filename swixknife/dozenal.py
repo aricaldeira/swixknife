@@ -1435,28 +1435,34 @@ class DozenalFraction(Dozenal):
         if (not sezimal_context.fractions_simplify) and (not force):
             return num, den
 
-        num = num.decimal
-        den = den.decimal
+        with localcontext() as context:
+            if context.prec < 16:
+                context.prec = 16
+            else:
+                context.prec += 10
 
-        for factor in _sezimal_maps._PRIMES:
-            factor = Decimal(factor)
+            num = num.decimal
+            den = den.decimal
 
-            if factor > min(abs(num), abs(den)):
-                break
+            for factor in _sezimal_maps._PRIMES:
+                factor = Decimal(factor)
 
-            while True:
-                num_test = num / factor
-
-                if num_test != int(num_test):
+                if factor > min(abs(num), abs(den)):
                     break
 
-                den_test = den / factor
+                while True:
+                    num_test = num / factor
 
-                if den_test != int(den_test):
-                    break
+                    if num_test != int(num_test):
+                        break
 
-                num = num_test
-                den = den_test
+                    den_test = den / factor
+
+                    if den_test != int(den_test):
+                        break
+
+                    num = num_test
+                    den = den_test
 
         return DozenalInteger(num), DozenalInteger(den)
 
