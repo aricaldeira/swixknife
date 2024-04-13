@@ -1,0 +1,462 @@
+[Pyspread save file version]
+2.0
+[shape]
+72	6	2
+[grid]
+3	0	0	"'1 day in seconds, divided into twelve parts, six times (÷ 10⁶)'"
+3	1	0	"time = DozenalFraction('21 / 600')"
+3	2	0	'time.dozenal'
+4	0	0	"'Earth’s gravity'"
+4	1	0	"acceleration = DozenalFraction('1_346_690 / 16↊_081')"
+4	2	0	'acceleration.dozenal'
+5	0	0	"'Density of water'"
+5	1	0	"density = DozenalFraction('100_809 / 18↊')"
+5	2	0	'density.dozenal'
+6	0	0	"'Specific heat of water'"
+6	1	0	"specific_heat = DozenalFraction('4_489_2↋↊ / 1_985')"
+6	2	0	'specific_heat.dozenal'
+2	0	0	"'Defining fractions'"
+17	0	0	"'⚀lengthel'"
+18	0	0	"'⚀areanel'"
+18	1	0	'area = length ** 2'
+18	2	0	'area.dozenal'
+19	0	0	"'⚀volumel'"
+19	1	0	'volume = length ** 3'
+19	2	0	'volume.dozenal'
+20	0	0	"'⚀densitel'"
+20	1	0	'density'
+20	2	0	'density.dozenal'
+21	0	0	"'⚀massel'"
+21	1	0	'mass = density * volume'
+21	2	0	'mass.dozenal'
+22	0	0	"'⚀forcel'"
+22	1	0	'force = mass * acceleration'
+22	2	0	'force.dozenal'
+23	0	0	"'⚀energiel'"
+23	1	0	'energy = force * length'
+23	2	0	'energy.dozenal'
+24	0	0	"'⚀powerel'"
+24	1	0	'power = energy / time'
+24	2	0	'power.dozenal'
+25	0	0	"'⚀pressurel'"
+25	1	0	'pressure = force / area'
+25	2	0	'pressure.dozenal'
+26	0	0	"'⚀momentumel'"
+26	1	0	'momentum = mass * velocity'
+26	2	0	'momentum.dozenal'
+27	0	0	"'⚀actionel'"
+27	1	0	'action = momentum * length'
+27	2	0	'action.dozenal'
+28	0	0	"'⚀influencel'"
+28	1	0	'influence = force * area'
+28	2	0	'influence.dozenal'
+29	0	0	"'⚀tensionel'"
+29	1	0	'tension = force / length'
+29	2	0	'tension.dozenal'
+30	0	0	"'⚀intensitel'"
+30	1	0	'intensity = power / area'
+30	2	0	'intensity.dozenal'
+3	4	0	'time.decimal'
+4	4	0	'acceleration.decimal'
+5	4	0	'density.decimal'
+6	4	0	'specific_heat.decimal'
+18	4	0	'area.decimal'
+19	4	0	'volume.decimal'
+20	4	0	'density.decimal'
+21	4	0	'mass.decimal'
+22	4	0	'force.decimal'
+23	4	0	'energy.decimal'
+24	4	0	'power.decimal'
+25	4	0	'pressure.decimal'
+26	4	0	'momentum.decimal'
+27	4	0	'action.decimal'
+28	4	0	'influence.decimal'
+29	4	0	'tension.decimal'
+30	4	0	'intensity.decimal'
+3	5	0	"'s'"
+4	5	0	"'m/s²'"
+5	5	0	"'kg/m³'"
+6	5	0	"'J/K/kg'"
+18	5	0	"'m²'"
+19	5	0	"'m³'"
+20	5	0	"'kg/m³'"
+21	5	0	"'kg'"
+22	5	0	"'N = kg·m/s²'"
+23	5	0	"'J = kg·m²/s²'"
+24	5	0	"'W = kg·m²/s³'"
+25	5	0	"'Pa = kg/m/s²'"
+26	5	0	"'kg·m/s'"
+27	5	0	"'kg·m²/s'"
+28	5	0	"'N·m² = kg·m³/s²'"
+29	5	0	"'N/m = kg/s²'"
+30	5	0	"'W/m² = kg/s³'"
+3	3	0	'time.decimal_fraction'
+4	3	0	'acceleration.decimal_fraction'
+5	3	0	'density.decimal_fraction'
+6	3	0	'specific_heat.decimal_fraction'
+18	3	0	'area.decimal_fraction'
+19	3	0	'volume.decimal_fraction'
+20	3	0	'density.decimal_fraction'
+21	3	0	'mass.decimal_fraction'
+22	3	0	'force.decimal_fraction'
+23	3	0	'energy.decimal_fraction'
+24	3	0	'power.decimal_fraction'
+25	3	0	'pressure.decimal_fraction'
+26	3	0	'momentum.decimal_fraction'
+27	3	0	'action.decimal_fraction'
+28	3	0	'influence.decimal_fraction'
+29	3	0	'tension.decimal_fraction'
+30	3	0	'intensity.decimal_fraction'
+47	0	0	"'⚀magnetelic·forcel'"
+33	0	0	"'⚀temperaturel'"
+39	0	0	"'⚀currentel'"
+8	0	0	"'Luminous efficacy of human perception of light'"
+8	1	0	"luminous_efficacy = DozenalFraction('170_89↊_768 / 402_851')"
+8	2	0	'luminous_efficacy.dozenal'
+8	3	0	'luminous_efficacy.decimal_fraction'
+8	4	0	'luminous_efficacy.decimal'
+35	0	0	"'⚀entropiel'"
+15	0	0	"'⚀accelerel'"
+44	0	0	"'⚀conductancel'"
+16	0	0	"'⚀velocitel'"
+16	1	0	'velocity = acceleration * time'
+16	2	0	'velocity.dozenal'
+17	1	0	'length = velocity * time'
+17	2	0	'length.dozenal'
+16	4	0	'velocity.decimal'
+17	4	0	'length.decimal'
+16	5	0	"'m/s'"
+17	5	0	"'m'"
+16	3	0	'velocity.decimal_fraction'
+17	3	0	'length.decimal_fraction'
+45	0	0	"'⚀inductancel'"
+36	0	0	"'⚀masselic·heatabilitel'"
+36	1	0	'calory = specific_heat'
+36	2	0	'calory.dozenal'
+36	4	0	'calory.decimal'
+36	5	0	"'J/K/kg = m²/s²/K'"
+36	3	0	'calory.decimal_fraction'
+13	0	0	"'⚀timel'"
+42	0	0	"'⚀capacitancel'"
+7	0	0	"'Vacuum resistance'"
+7	1	0	'vacuum_resistance = VACUUM_RESISTANCE'
+7	2	0	'vacuum_resistance.dozenal'
+7	3	0	'vacuum_resistance.decimal_fraction'
+7	4	0	'vacuum_resistance.decimal'
+7	5	0	"'Ω'"
+14	0	0	"'⚀frequenciel'"
+14	1	0	'frequency = 1 / time'
+14	2	0	'frequency.dozenal'
+15	1	0	'acceleration'
+15	2	0	'acceleration.dozenal'
+14	4	0	'frequency.decimal'
+15	4	0	'acceleration.decimal'
+14	5	0	"'Hz = 1/s'"
+15	5	0	"'m/s²'"
+14	3	0	'frequency.decimal_fraction'
+15	3	0	'acceleration.decimal_fraction'
+43	0	0	"'⚀resistancel'"
+34	1	0	'common_temperature = temperature * 10_000'
+34	2	0	'common_temperature.dozenal'
+34	4	0	'common_temperature.decimal'
+34	3	0	'common_temperature.decimal_fraction'
+35	1	0	'entropy = specific_heat * mass'
+35	2	0	'entropy.dozenal'
+35	4	0	'entropy.decimal'
+35	5	0	"'J/K = kg·m²/s²/K'"
+35	3	0	'entropy.decimal_fraction'
+40	0	0	"'⚀electrel'"
+40	4	0	'electric_charge.decimal'
+40	5	0	"'C = A·s'"
+41	0	0	"'⚀electrelic·potentialel'"
+41	5	0	"'V = J/C = kg·m²/s³/A'"
+40	1	0	'electric_charge.simplify()'
+40	2	0	'electric_charge.dozenal'
+40	3	0	'electric_charge.decimal_fraction'
+41	1	0	'electric_potential_difference = energy / electric_charge'
+41	2	0	'electric_potential_difference.dozenal'
+41	3	0	'electric_potential_difference.decimal_fraction'
+41	4	0	'electric_potential_difference.decimal'
+42	1	0	'electric_capacitance = electric_charge / electric_potential_difference'
+42	2	0	'electric_capacitance.dozenal'
+42	3	0	'electric_capacitance.decimal_fraction'
+42	4	0	'electric_capacitance.decimal'
+42	5	0	"'F = C/V = s⁴·A²/kg/m²'"
+43	1	0	'electric_resistance = VACUUM_RESISTANCE.simplify()'
+43	5	0	"'Ω = V/A = kg·m²/s³/A²'"
+43	2	0	'electric_resistance.dozenal'
+43	3	0	'electric_resistance.decimal_fraction'
+43	4	0	'electric_resistance.decimal'
+44	1	0	'electric_conductance = 1 / electric_resistance'
+44	2	0	'electric_conductance.dozenal'
+44	3	0	'electric_conductance.decimal_fraction'
+44	4	0	'electric_conductance.decimal'
+44	5	0	"'S = 1/Ω = s³·A²/kg/m²'"
+45	1	0	'electric_inductance = electric_resistance * time'
+45	2	0	'electric_inductance.dozenal'
+45	3	0	'electric_inductance.decimal_fraction'
+45	4	0	'electric_inductance.decimal'
+45	5	0	"'H = Wb/A = kg·m²/s²/A²'"
+47	1	0	'magnetic_flux_density = magnetic_flux / area'
+47	2	0	'magnetic_flux_density.dozenal'
+47	3	0	'magnetic_flux_density.decimal_fraction'
+47	4	0	'magnetic_flux_density.decimal'
+47	5	0	"'T = Wb/m² = kg/s²/A'"
+46	0	0	"'⚀magnetelic·influencel'"
+46	1	0	'magnetic_flux = electric_potential_difference * time'
+46	2	0	'magnetic_flux.dozenal'
+46	3	0	'magnetic_flux.decimal_fraction'
+46	4	0	'magnetic_flux.decimal'
+46	5	0	"'Wb = V·s = kg·m²/s²/A'"
+32	0	0	"'Thermodynamics'"
+38	0	0	"'Electromagnetism'"
+12	0	0	"'Mechanics'"
+13	1	0	'time'
+13	2	0	'time.dozenal'
+13	4	0	'time.decimal'
+13	5	0	"'s'"
+13	3	0	'time.decimal_fraction'
+33	1	0	'temperature = energy /entropy'
+33	2	0	'temperature.dozenal'
+33	4	0	'temperature.decimal'
+33	5	0	"'K'"
+33	3	0	'temperature.decimal_fraction'
+10	1	0	"'× to S.I.'"
+10	0	0	"'Unit'"
+39	4	0	'electric_current.decimal'
+39	5	0	"'A = C/s'"
+39	1	0	'electric_current = electric_charge / time'
+39	2	0	'electric_current.dozenal'
+39	3	0	'electric_current.decimal_fraction'
+0	0	0	'sezimal_context.fractions_use_decimal = True'
+34	0	0	"'⚀stadegree'"
+34	5	0	"'°C'"
+1	0	1	"'⚀lengthel'"
+1	1	1	'length'
+1	2	1	'length.dozenal'
+1	3	1	'length.decimal_fraction'
+1	4	1	'length.decimal'
+1	5	1	"'m'"
+2	0	1	"'⚀massel'"
+2	1	1	'mass'
+2	2	1	'mass.dozenal'
+2	3	1	'mass.decimal_fraction'
+2	4	1	'mass.decimal'
+2	5	1	"'kg'"
+3	0	1	"'⚀volumel'"
+3	1	1	"liter = length ** 3 * Decimal('1000')"
+3	2	1	'liter.dozenal'
+3	3	1	'liter.decimal_fraction'
+3	4	1	'liter.decimal'
+3	5	1	"'L'"
+4	0	1	"'⚀velocitel'"
+4	1	1	'speed = acceleration * time * Sezimal(30) / 5'
+4	2	1	'speed.dozenal'
+4	3	1	'speed.decimal_fraction'
+4	4	1	'speed.decimal'
+4	5	1	"'km/h'"
+5	0	1	"'⚀stadegree'"
+5	1	1	'common_temperature = temperature * 10_000'
+5	2	1	'common_temperature.dozenal'
+5	3	1	'common_temperature.decimal_fraction'
+5	4	1	'common_temperature.decimal'
+5	5	1	"'°C'"
+0	1	1	"'Dozenal factor to SI'"
+0	3	1	"'Decimal factor to SI'"
+7	1	1	"'Dozenal factor to Primel'"
+7	3	1	"'Decimal factor to Primel'"
+8	0	1	"'m'"
+8	1	1	'length.reciprocal'
+8	2	1	'length.reciprocal.dozenal'
+8	3	1	'length.reciprocal.decimal_fraction'
+8	4	1	'length.reciprocal.decimal'
+8	5	1	"'⚀lengthel'"
+9	0	1	"'kg'"
+9	1	1	'mass.reciprocal'
+9	2	1	'mass.reciprocal.dozenal'
+9	3	1	'mass.reciprocal.decimal_fraction'
+9	4	1	'mass.reciprocal.decimal'
+9	5	1	"'⚀massel'"
+10	0	1	"'L'"
+10	1	1	'liter.reciprocal'
+10	2	1	'liter.reciprocal.dozenal'
+10	3	1	'liter.reciprocal.decimal_fraction'
+10	4	1	'liter.reciprocal.decimal'
+10	5	1	"'⚀volumel'"
+11	0	1	"'km/h'"
+11	1	1	'speed.reciprocal'
+11	2	1	'speed.reciprocal.dozenal'
+11	3	1	'speed.reciprocal.decimal_fraction'
+11	4	1	'speed.reciprocal.decimal'
+11	5	1	"'⚀velocitel'"
+12	0	1	"'°C'"
+12	1	1	'common_temperature.reciprocal'
+12	2	1	'common_temperature.reciprocal.dozenal'
+12	3	1	'common_temperature.reciprocal.decimal_fraction'
+12	4	1	'common_temperature.reciprocal.decimal'
+12	5	1	"'⚀stadegree'"
+50	0	0	"'(luminous energy)'"
+50	1	0	'luminous_energy = energy * luminous_efficacy'
+50	2	0	'luminous_energy.dozenal'
+50	3	0	'luminous_energy.decimal_fraction'
+50	4	0	'luminous_energy.decimal'
+50	5	0	"'lm·s'"
+51	0	0	"'(luminous flux)'"
+51	1	0	'luminous_flux = luminous_energy / time'
+51	2	0	'luminous_flux.dozenal'
+51	3	0	'luminous_flux.decimal_fraction'
+51	4	0	'luminous_flux.decimal'
+51	5	0	"'lm'"
+52	0	0	"'(luminous illuminance emitance)'"
+52	1	0	'luminous_illuminance_emitance = luminous_flux / area'
+52	2	0	'luminous_illuminance_emitance.dozenal'
+52	3	0	'luminous_illuminance_emitance.decimal_fraction'
+52	4	0	'luminous_illuminance_emitance.decimal'
+52	5	0	"'lx'"
+53	0	0	"'(luminous intensity)'"
+53	1	0	'luminous_intensity = luminous_flux'
+53	2	0	'luminous_intensity.dozenal'
+53	3	0	'luminous_intensity.decimal_fraction'
+53	4	0	'luminous_intensity.decimal'
+53	5	0	"'cd'"
+[attributes]
+[]	[]	[]	[]	[(10, 1)]	0	'merge_area'	(10, 1, 10, 5)
+[]	[]	[]	[]	[(10, 1), (10, 2), (10, 4), (10, 5)]	0	'justification'	'justify_center'
+[(13, 1)]	[(46, 1)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[(13, 2)]	[(46, 2)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[(13, 4)]	[(46, 4)]	[]	[]	[]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[(13, 5)]	[(46, 5)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[(13, 4)]	[(46, 4)]	[]	[]	[]	0	'fontstyle'	1
+[(13, 0)]	[(46, 0)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[]	[]	[9, 10, 13, 14, 15, 16, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 46]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(13, 0)]	0	'fontweight'	71
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontweight'	71
+[(15, 0)]	[(15, 5)]	[]	[]	[]	0	'fontweight'	71
+[(2, 0)]	[(10, 0)]	[]	[]	[]	0	'fontstyle'	0	'justification'	'justify_fill'	'vertical_align'	'align_center'	'textfont'	'Andika'
+[(2, 0)]	[(9, 5)]	[]	[]	[]	0	'textfont'	'Andika Tauga'	'pointsize'	14
+[(2, 1)]	[(9, 1)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[(2, 2)]	[(9, 2)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[(2, 4)]	[(9, 4)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'fontstyle'	1
+[(2, 5)]	[(9, 5)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(3, 0)]	0	'vertical_align'	'align_top'
+[]	[]	[]	[]	[(5, 0)]	0	'justification'	'justify_left'
+[]	[]	[]	[]	[(6, 0)]	0	'justification'	'justify_left'
+[(4, 0)]	[(4, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[(6, 0)]	[(6, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[(8, 0)]	[(8, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[]	[]	[]	[]	[(2, 0)]	0	'merge_area'	(2, 0, 2, 5)	'pointsize'	18	'fontweight'	71
+[]	[]	[]	[]	[(2, 0), (2, 1), (2, 2), (2, 4), (2, 5)]	0	'justification'	'justify_center'	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(10, 0), (10, 1), (10, 2), (10, 4), (10, 5)]	0	'fontweight'	71	'justification'	'justify_center'	'bgcolor'	(200, 200, 200, 255)
+[(15, 0)]	[(15, 5)]	[]	[]	[]	0	'fontweight'	49
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontstyle'	0	'fontweight'	49
+[(13, 4)]	[(21, 4)]	[]	[]	[]	0	'fontstyle'	1
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontweight'	71
+[(17, 0)]	[(17, 5)]	[]	[]	[]	0	'fontweight'	71
+[(21, 0)]	[(21, 5)]	[]	[]	[]	0	'fontweight'	71
+[]	[]	[]	[]	[(12, 0)]	0	'merge_area'	(12, 0, 12, 5)	'pointsize'	18	'fontweight'	71	'justification'	'justify_center'
+[]	[]	[]	[]	[(12, 0), (12, 1), (12, 2), (12, 4), (12, 5)]	0	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(32, 0)]	0	'merge_area'	(32, 0, 32, 5)	'justification'	'justify_center'	'pointsize'	18	'fontweight'	71	'bgcolor'	(200, 200, 200, 255)
+[(3, 3)]	[(8, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'fontstyle'	1
+[(13, 3)]	[(30, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[33]	[]	[]	0	'fontweight'	71
+[(33, 3)]	[(36, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(38, 0)]	0	'merge_area'	(38, 0, 38, 5)	'justification'	'justify_center'	'fontstyle'	0	'fontweight'	71	'pointsize'	20
+[]	[]	[]	[]	[(32, 0), (32, 1), (32, 2), (32, 3), (32, 4), (32, 5)]	0	'pointsize'	18
+[]	[]	[]	[]	[(38, 0), (38, 1), (38, 2), (38, 3), (38, 4), (38, 5)]	0	'pointsize'	18	'bgcolor'	(200, 200, 200, 255)
+[(29, 0)]	[(30, 0)]	[]	[]	[]	0	'textcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(29, 0)]	0	'textcolor'	(0, 0, 0, 255)
+[]	[]	[]	[]	[(30, 0)]	0	'textcolor'	(0, 0, 0, 255)
+[]	[]	[47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	0	'pointsize'	14	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(9, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'fontstyle'	1
+[]	[]	[3, 4, 5, 6, 7, 8, 9]	[]	[]	0	'bgcolor'	(255, 255, 255, 255)
+[(39, 3)]	[(50, 3)]	[]	[]	[]	0	'justification'	'justify_center'
+[(39, 1)]	[(52, 1)]	[]	[]	[]	0	'justification'	'justify_center'
+[(39, 2)]	[(52, 2)]	[]	[]	[]	0	'justification'	'justify_right'
+[(39, 4)]	[(51, 4)]	[]	[]	[]	0	'justification'	'justify_right'
+[(39, 3)]	[(52, 4)]	[]	[]	[]	0	'fontstyle'	1
+[]	[]	[38]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(38, 3)]	0	'justification'	'justify_center'	'fontstyle'	1
+[]	[]	[45]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(0, 0)]	0	'merge_area'	(0, 0, 0, 5)	'fontweight'	71	'pointsize'	18	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5)]	0	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(0, 1)]	1	'merge_area'	(0, 1, 0, 2)
+[]	[]	[]	[]	[(0, 3)]	1	'merge_area'	(0, 3, 0, 4)
+[]	[]	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	1	'pointsize'	14
+[(1, 1)]	[(5, 1)]	[]	[]	[]	1	'justification'	'justify_center'
+[]	[]	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	1	'vertical_align'	'align_center'
+[(1, 2)]	[(5, 2)]	[]	[]	[]	1	'justification'	'justify_right'
+[(1, 3)]	[(5, 3)]	[]	[]	[]	1	'justification'	'justify_center'
+[(1, 4)]	[(5, 4)]	[]	[]	[]	1	'justification'	'justify_right'
+[]	[]	[]	[]	[(0, 1), (0, 2)]	1	'justification'	'justify_center'
+[]	[]	[]	[]	[(0, 3), (0, 4)]	1	'justification'	'justify_center'
+[(8, 1)]	[(12, 1)]	[]	[]	[]	1	'justification'	'justify_center'
+[(8, 3)]	[(12, 3)]	[]	[]	[]	1	'justification'	'justify_center'
+[]	[]	[]	[]	[(7, 1)]	1	'merge_area'	(7, 1, 7, 2)	'justification'	'justify_center'
+[]	[]	[]	[]	[(7, 3)]	1	'merge_area'	(7, 3, 7, 4)	'justification'	'justify_center'
+[(8, 2)]	[(12, 2)]	[]	[]	[]	1	'justification'	'justify_right'
+[(8, 4)]	[(12, 4)]	[]	[]	[]	1	'justification'	'justify_right'
+[(52, 4)]	[(53, 4)]	[]	[]	[]	0	'justification'	'justify_right'
+[(51, 3)]	[(53, 3)]	[]	[]	[]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(53, 1)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(53, 2)]	0	'justification'	'justify_right'
+[row_heights]
+[col_widths]
+0	0	557.5
+2	0	321.25
+4	0	291.25
+3	0	1113.3333333333335
+5	0	282.5
+1	0	458.75
+0	1	121.25
+1	1	291.25
+2	1	191.25
+3	1	325.0
+4	1	186.25
+5	1	145.0
+[macros]
+from swixknife import sezimal_context
+from decimal import getcontext
+
+#
+# Precision needed to match SI prefix:
+# deci  = 2           femto  = 33  (21_dec; Google’s max)
+# centi = 3           atto   = 40  (24_dec)
+# milli = 4           zepto  = 50  (30_dec)
+# micro = 13 (9_dec)  yocto  = 53  (33_dec)
+# nano  = 20 (12_dec) ronto  = 100 (36_dec)
+# pico  = 30 (18_dec) quecto = 110 (42_dec)
+#
+PRECISION = 13
+
+sezimal_context.locale = 'iso'  # Try iso-dot or en
+sezimal_context.sezimal_precision = PRECISION
+sezimal_context.show_recurring_digits = False
+sezimal_context.fractions_simplify = True
+sezimal_context.fractions_use_decimal = True
+
+
+#
+# Precalculation of
+# the electric charge
+#
+VACUUM_RESISTANCE = DozenalFraction('16_305_67↊_↋55 / 6↋_883_↋14')
+
+#
+# Commented for speed, final result is uncommented
+#
+old_fractions_use_decimal = sezimal_context.fractions_use_decimal
+sezimal_context.sezimal_precision = 1200
+getcontext().prec = 216
+sezimal_context.fractions_use_decimal = True
+
+ELEMENTARY_CHARGE = DozenalFraction('1↊4_348_939 / 52_↊8↋_67↋_962_457_508_125_586_628')
+
+electric_charge = (mass * area) / time / VACUUM_RESISTANCE
+elementary_charges = round(electric_charge.decimal.sqrt() / ELEMENTARY_CHARGE.decimal, 0)
+electric_charge = elementary_charges * ELEMENTARY_CHARGE
+
+sezimal_context.sezimal_precision = PRECISION
+sezimal_context.fractions_use_decimal = old_fractions_use_decimal
+
+#
+#electric_charge = DozenalFraction('773_↋22_15↊_27↋_7↋5_962_3↋3 / 6_358_432_467_52↋_660_987_8↋7_↊28')

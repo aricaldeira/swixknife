@@ -1,0 +1,1150 @@
+[Pyspread save file version]
+2.0
+[shape]
+216	12	5
+[grid]
+3	0	0	"'1 day in seconds, divided into six parts, eight times (÷ 10¹²)'"
+3	1	0	'time = TIME'
+3	2	0	'time.sezimal'
+4	0	0	"'Earth’s gravity at 51.28₁₄\u202fN 0 W'"
+4	1	0	'gravity = GRAVITY'
+4	2	0	'acceleration.sezimal'
+5	0	0	"'Density of water at  293.150\u202f547\u202f138₁₄ K'"
+5	1	0	"density = DENSITY  # SezimalFraction('5_223_045_303_000_304_351 / 1_100_315_423_005_012')"
+5	2	0	'density.sezimal'
+6	0	0	"'Specific heat of water at 293.150\u202f547\u202f159\u202f702\u202f807₁₄ K'"
+6	1	0	"specific_heat = SPECIFIC_HEAT  # SezimalFraction('235_210_530_222_022_521_545_413 / 4_531_224_455_021_434_452')  # SezimalFraction('113_144_132_111_030_100_551 / 2_201_035_250_014_024')"
+6	2	0	'specific_heat.sezimal'
+2	0	0	"'Defining fractions'"
+18	0	0	"'pada ― pad (length)'"
+18	1	0	'length = ((gravity ** 1) * (time ** 2)).simplify(precision=FRACTION_PRECISION)  # velocity * time'
+18	2	0	'length.sezimal'
+21	0	0	"'aytan ― ayt (volume; pad³)'"
+21	1	0	'volume = ((gravity ** 3) * (time ** 10)).simplify(precision=FRACTION_PRECISION)  # length ** 3'
+21	2	0	'volume.sezimal'
+23	0	0	"'gana ― gan (density; drv/pad³)'"
+23	1	0	'density'
+23	2	0	'density.sezimal'
+24	0	0	"'dravya ― drv (mass)'"
+24	1	0	'mass = (density * (gravity ** 3) * (time ** 10)).simplify(precision=FRACTION_PRECISION)  # density * volume'
+24	2	0	'mass.sezimal'
+26	0	0	"'bara ― bar (force; weight; drv·pad/ang²)'"
+26	1	0	'force = (density * (gravity ** 4) * (time ** 10)).simplify(precision=FRACTION_PRECISION)  # mass * acceleration'
+26	2	0	'force.sezimal'
+27	0	0	"'karya ― kry (energy; work; potential; heat; drv·pad²/ang²)'"
+27	1	0	'energy = (density * (gravity ** 5) * (time ** 12)).simplify(precision=FRACTION_PRECISION)  # force * length'
+27	2	0	'energy.sezimal'
+28	0	0	"'shati ― xat (power; drv·pad²/ang³)'"
+28	1	0	'power = energy / time  # (density * (gravity ** 10) * (time ** 11)).simplify(precision=FRACTION_PRECISION)  # energy / time'
+28	2	0	'power.sezimal'
+29	0	0	"'daba ― dab (pressure; drv/pad/ang²)'"
+29	1	0	'pressure = (density * (gravity ** 2) * (time ** 2)).simplify(precision=FRACTION_PRECISION)  # force / area'
+29	2	0	'pressure.sezimal'
+30	0	0	"'sanvega ― svg (momentum; drv·pad/ang)'"
+30	1	0	'momentum = (density * (gravity ** 4) * (time ** 11)).simplify(precision=FRACTION_PRECISION)  # mass * velocity'
+30	2	0	'momentum.sezimal'
+3	4	0	'time.decimal'
+4	4	0	'acceleration.decimal'
+5	4	0	'density.decimal'
+6	4	0	'specific_heat.decimal'
+18	4	0	'length.decimal'
+21	4	0	'volume.decimal'
+23	4	0	'density.decimal'
+24	4	0	'mass.decimal'
+26	4	0	'force.decimal'
+27	4	0	'energy.decimal'
+28	4	0	'power.decimal'
+29	4	0	'pressure.decimal'
+30	4	0	'momentum.decimal'
+3	5	0	"'s'"
+4	5	0	"'m/s²'"
+5	5	0	"'kg/m³'"
+6	5	0	"'J/K/kg'"
+18	5	0	"'m'"
+21	5	0	"'m³'"
+23	5	0	"'kg/m³'"
+24	5	0	"'kg'"
+26	5	0	"'N = kg·m/s²'"
+27	5	0	"'J = kg·m²/s²'"
+28	5	0	"'W = kg·m²/s³'"
+29	5	0	"'Pa = kg/m/s²'"
+30	5	0	"'kg·m/s'"
+3	3	0	'time.decimal_fraction'
+4	3	0	'acceleration.decimal_fraction'
+5	3	0	'density.decimal_fraction'
+6	3	0	'specific_heat.decimal_fraction'
+18	3	0	'length.decimal_fraction'
+21	3	0	'volume.decimal_fraction'
+23	3	0	'density.decimal_fraction'
+24	3	0	'mass.decimal_fraction'
+26	3	0	'force.decimal_fraction'
+27	3	0	'energy.decimal_fraction'
+28	3	0	'power.decimal_fraction'
+29	3	0	'pressure.decimal_fraction'
+30	3	0	'momentum.decimal_fraction'
+8	0	0	"'Luminous efficacy of human perception of light'"
+8	1	0	'luminous_efficacy = LUMINOUS_EFFICACY'
+8	2	0	'luminous_efficacy.sezimal'
+8	3	0	'luminous_efficacy.decimal_fraction'
+8	4	0	'luminous_efficacy.decimal'
+15	0	0	"'tevara ― tvr (acceleration; pad/ang²)'"
+16	0	0	"'vega ― veg (speed; pad/ang)'"
+16	1	0	'velocity = (gravity * time).simplify(precision=FRACTION_PRECISION)  # acceleration * time'
+16	2	0	'velocity.sezimal'
+16	4	0	'velocity.decimal'
+16	5	0	"'m/s'"
+16	3	0	'velocity.decimal_fraction'
+36	0	0	"'Thermodynamics'"
+13	0	0	"'anuga ― ang (time)'"
+7	0	0	"'Vacuum resistance'"
+7	1	0	'vacuum_resistance = VACUUM_RESISTANCE'
+7	2	0	'vacuum_resistance.sezimal'
+7	3	0	'vacuum_resistance.decimal_fraction'
+7	4	0	'vacuum_resistance.decimal'
+7	5	0	"'Ω'"
+14	0	0	"'avrita ― avt (frequency; 1/ang)'"
+14	1	0	'frequency = time.reciprocal'
+14	2	0	'frequency.sezimal'
+15	1	0	'acceleration = gravity'
+15	2	0	'acceleration.sezimal'
+14	4	0	'frequency.decimal'
+15	4	0	'acceleration.decimal'
+14	5	0	"'Hz = 1/s'"
+15	5	0	"'m/s²'"
+14	3	0	'frequency.decimal_fraction'
+15	3	0	'acceleration.decimal_fraction'
+12	0	0	"'Mechanics'"
+13	1	0	'time'
+13	2	0	'time.sezimal'
+13	4	0	'time.decimal'
+13	5	0	"'s'"
+13	3	0	'time.decimal_fraction'
+10	1	0	"'× to S.I.'"
+10	0	0	"'Unit'"
+0	0	1	"'Pythons constants'"
+1	0	1	'f"""ANUGA_TO_SECOND = SezimalFraction(\'{time.sezimal.formatted_number}\')"""'
+2	0	1	'f"""AVRITA_TO_HERTZ = SezimalFraction(\'{frequency.sezimal.formatted_number}\')"""'
+42	0	0	"'Electromagnetism'"
+43	0	0	"'dara ― dar (electric current; avx/ang)'"
+43	1	0	'electric_current = electric_charge / time'
+43	2	0	'electric_current.sezimal'
+43	3	0	'electric_current.decimal_fraction'
+43	4	0	'electric_current.decimal'
+43	5	0	"'A = C/s'"
+45	0	0	"'vibava ― vbv (electric potential difference; kry/avx)'"
+45	1	0	'electric_potential_difference = energy / electric_charge'
+45	5	0	"'V = J/C = kg·m²/s³/A'"
+45	2	0	'electric_potential_difference.sezimal'
+45	3	0	'electric_potential_difference.decimal_fraction'
+45	4	0	'electric_potential_difference.decimal'
+44	0	0	"'avesha ― avx (electric charge; dar·ang)'"
+44	1	0	'electric_charge'
+44	2	0	'electric_charge.sezimal'
+44	3	0	'electric_charge.decimal_fraction'
+44	4	0	'electric_charge.decimal'
+44	5	0	"'C = A·s'"
+46	0	0	"'pratiroda ― ptr (electric resistance; vbv/dar)'"
+46	1	0	'electric_resistance = VACUUM_RESISTANCE'
+46	2	0	'electric_resistance.sezimal'
+46	3	0	'electric_resistance.decimal_fraction'
+46	4	0	'electric_resistance.decimal'
+46	5	0	"'Ω = V/A = kg·m²/s³/A²'"
+47	0	0	"'chalana ― cln (electric conductance; 1/ptr; dar/vbv)'"
+47	1	0	'electric_conductance = 1 / electric_resistance'
+47	2	0	'electric_conductance.sezimal'
+47	3	0	'electric_conductance.decimal_fraction'
+47	4	0	'electric_conductance.decimal'
+47	5	0	"'S = 1/Ω = s³·A²/kg/m²'"
+0	0	0	"'Shastadari Units'"
+0	1	2	"'Sezimal factor to SI'"
+0	3	2	"'Decimal factor to SI'"
+5	0	2	"'dimadravya – Ddrv – 100 drv'"
+5	1	2	'dimadravya = mass * 100'
+5	2	2	'dimadravya.sezimal'
+5	3	2	'dimadravya.decimal_fraction'
+5	4	2	'dimadravya.decimal'
+5	5	2	"'kg'"
+2	0	2	"'pada − pad'"
+2	1	2	'pada = length'
+2	2	2	'pada.sezimal'
+2	3	2	'pada.decimal_fraction'
+2	4	2	'pada.decimal'
+2	5	2	"'m'"
+6	0	2	"'dravya – drv'"
+6	1	2	'dravya = mass'
+6	2	2	'dravya.sezimal'
+6	3	2	'dravya.decimal_fraction'
+6	4	2	'dravya.decimal'
+6	5	2	"'kg'"
+17	0	2	"'m'"
+17	3	2	'rdimapada.decimal_fraction'
+17	4	2	'rdimapada.decimal'
+17	5	2	"'dimapada − Dpad – 100 pad'"
+18	0	2	"'m'"
+18	3	2	'rpada.decimal_fraction'
+18	4	2	'rpada.decimal'
+18	5	2	"'pada − pad'"
+16	3	2	"'Decimal factor to Shastadari'"
+1	0	2	"'dimapada − Dpad – 100 pad'"
+1	1	2	'dimapada = length * 100'
+1	2	2	'dimapada.sezimal'
+1	3	2	'dimapada.decimal_fraction'
+1	4	2	'dimapada.decimal'
+1	5	2	"'m'"
+10	1	2	'aytan = (volume * 4344)'
+10	3	2	'aytan.decimal_fraction'
+31	0	0	"'prakepa ― pkp (action; drv·pad²/ang)'"
+31	1	0	'action = (density * (gravity ** 5) * (time ** 13)).simplify(precision=FRACTION_PRECISION)  # momentum * length'
+31	2	0	'action.sezimal'
+31	4	0	'action.decimal'
+31	5	0	"'kg·m²/s'"
+31	3	0	'action.decimal_fraction'
+37	0	0	"'gatika ― gkt (absolute temperature)'"
+37	1	0	"temperature = (specific_heat.reciprocal * (gravity ** 2) * (time ** 2)).simplify(precision=FRACTION_PRECISION)  # energy / entropy  # SezimalFraction('41_143 / 12_523_221_412')  # energy /entropy"
+37	2	0	'temperature.sezimal'
+37	4	0	'temperature.decimal'
+37	5	0	"'K'"
+37	3	0	'temperature.decimal_fraction'
+48	0	0	"'preraka ― prk (electric inductance)'"
+48	1	0	'electric_inductance = electric_resistance * time'
+48	2	0	'electric_inductance.sezimal'
+48	3	0	'electric_inductance.decimal_fraction'
+48	4	0	'electric_inductance.decimal'
+48	5	0	"'H = Wb/A = kg·m²/s²/A²'"
+17	0	0	"'vega ― veg (speed; Xpad/Xang)'"
+17	1	0	"speed = (velocity * SezimalFraction('30 / 5')).simplify(precision=FRACTION_PRECISION)"
+17	2	0	'speed.sezimal'
+17	3	0	'speed.decimal_fraction'
+17	4	0	'speed.decimal'
+17	5	0	"'km/h'"
+20	0	0	"'keshe ― kex (area; pad²)'"
+20	1	0	'area = ((gravity ** 2) * (time ** 4)).simplify(precision=FRACTION_PRECISION)  # length ** 2'
+20	2	0	'area.sezimal'
+20	4	0	'area.decimal'
+20	5	0	"'m²'"
+20	3	0	'area.decimal_fraction'
+32	0	0	"'prabava ― pbv (influence; bar·kex; drv·pad³/ang²)'"
+32	1	0	'influence = (density * (gravity ** 10) * (time ** 14)).simplify(precision=FRACTION_PRECISION)  # force * area'
+32	2	0	'influence.sezimal'
+32	4	0	"SezimalFraction('242_243_405_044_055_453_405 / 33_133_534_145_024_144')"
+32	5	0	"'N·m² = kg·m³/s²'"
+32	3	0	'influence.decimal_fraction'
+38	0	0	"'tapa ― tap ― °S (common temperature)'"
+38	1	0	'common_temperature = temperature * 100_000'
+38	2	0	'common_temperature.sezimal'
+38	4	0	'common_temperature.decimal'
+38	5	0	"'°C'"
+38	3	0	'common_temperature.decimal_fraction'
+49	0	0	"'samai ― smi (electric capacitance; avx/vbv)'"
+49	1	0	'electric_capacitance = electric_charge / electric_potential_difference'
+49	2	0	'electric_capacitance.sezimal'
+49	3	0	'electric_capacitance.decimal_fraction'
+49	4	0	'electric_capacitance.decimal'
+49	5	0	"'F = C/V = s⁴·A²/kg/m²'"
+19	0	0	"'dimapada ― Dpad ― 100 pad (length)'"
+19	1	0	'konprimentu = length * 100'
+19	2	0	'konprimentu.sezimal'
+19	3	0	'konprimentu.decimal_fraction'
+19	4	0	'konprimentu.decimal'
+19	5	0	"'m'"
+33	0	0	"'tanava ― tnv (tension; bar/pad; drv/ang²)'"
+33	1	0	'tension = (density * (gravity ** 3) * (time ** 4)).simplify(precision=FRACTION_PRECISION)  # force / length'
+33	2	0	'tension.sezimal'
+33	4	0	'tension.decimal'
+33	5	0	"'N/m = kg/s²'"
+33	3	0	'tension.decimal_fraction'
+39	0	0	"'(entropy; heat capacity; kry/gtk)'"
+39	1	0	'entropy = (specific_heat * density * (gravity ** 3) * (time ** 10)).simplify(precision=FRACTION_PRECISION)  # energy / temperature'
+39	2	0	'entropy.sezimal'
+39	4	0	'entropy.decimal'
+39	5	0	"'J/K = kg·m²/s²/K'"
+39	3	0	'entropy.decimal_fraction'
+50	0	0	"'abiva ― abv (magnetic flux)'"
+50	1	0	'magnetic_flux = electric_potential_difference * time'
+50	2	0	'magnetic_flux.sezimal'
+50	3	0	'magnetic_flux.decimal_fraction'
+50	4	0	'magnetic_flux.decimal'
+50	5	0	"'Wb = V·s = kg·m²/s²/A'"
+22	0	0	"'dimaytan ― Dayt ― 100 ayt (volume)'"
+22	1	0	'volumi = volume * 100 * 4344'
+22	2	0	'volumi.sezimal'
+22	3	0	'volumi.decimal_fraction'
+22	4	0	'volumi.decimal'
+22	5	0	"'L'"
+34	0	0	"'upari ― upr (intensity; xat/kex; drv/ang³)'"
+34	1	0	'intensity = (density * (gravity ** 4) * (time ** 3)).simplify(precision=FRACTION_PRECISION)  # power / area'
+34	2	0	'intensity.sezimal'
+34	4	0	'intensity.decimal'
+34	5	0	"'W/m² = kg/s³'"
+34	3	0	'intensity.decimal_fraction'
+40	0	0	"'(calory; heatability; kry/gtk/drv)'"
+40	1	0	'calory = specific_heat  # entropy / mass'
+40	2	0	'calory.sezimal'
+40	4	0	'calory.decimal'
+40	5	0	"'J/K/kg = m²/s²/K'"
+40	3	0	'calory.decimal_fraction'
+51	0	0	"'vistara ― vtr (magnetic flux density)'"
+51	1	0	'magnetic_flux_density = magnetic_flux / area'
+51	2	0	'magnetic_flux_density.sezimal'
+51	3	0	'magnetic_flux_density.decimal_fraction'
+51	4	0	'magnetic_flux_density.decimal'
+51	5	0	"'T = Wb/m² = kg/s²/A'"
+25	0	0	"'dimadravya ― Ddrv ― 100 drv (mass)'"
+25	1	0	'masa = mass * 100'
+25	2	0	'masa.sezimal'
+25	3	0	'masa.decimal_fraction'
+25	4	0	'masa.decimal'
+25	5	0	"'kg'"
+16	1	2	"'Sezimal factor to Shastadari'"
+17	1	2	'rdimapada = dimapada.reciprocal'
+17	2	2	'rdimapada.sezimal'
+18	1	2	'rpada = pada.reciprocal'
+18	2	2	'rpada.sezimal'
+13	6	0	'rtime = time.reciprocal'
+13	7	0	'rtime.sezimal'
+13	8	0	'rtime.decimal_fraction'
+13	9	0	'rtime.decimal'
+14	6	0	'rfrequency = frequency.reciprocal'
+14	7	0	'rfrequency.sezimal'
+14	8	0	'rfrequency.decimal_fraction'
+14	9	0	'rfrequency.decimal'
+15	6	0	'racceleration = acceleration.reciprocal'
+15	7	0	'racceleration.sezimal'
+15	8	0	'racceleration.decimal_fraction'
+15	9	0	'racceleration.decimal'
+16	6	0	'rvelocity = velocity.reciprocal'
+16	7	0	'rvelocity.sezimal'
+16	8	0	'rvelocity.decimal_fraction'
+16	9	0	'rvelocity.decimal'
+17	6	0	'rspeed = speed.reciprocal'
+17	7	0	'rspeed.sezimal'
+17	8	0	'rspeed.decimal_fraction'
+17	9	0	'rspeed.decimal'
+18	6	0	'rlength = length.reciprocal'
+18	7	0	'rlength.sezimal'
+18	8	0	'rlength.decimal_fraction'
+18	9	0	'rlength.decimal'
+19	6	0	'rkonprimentu = konprimentu.reciprocal'
+19	7	0	'rkonprimentu.sezimal'
+19	8	0	'rkonprimentu.decimal_fraction'
+19	9	0	'rkonprimentu.decimal'
+20	6	0	'rarea = area.reciprocal'
+20	7	0	'rarea.sezimal'
+20	8	0	'rarea.decimal_fraction'
+20	9	0	'rarea.decimal'
+21	6	0	'rvolume = volume.reciprocal'
+21	7	0	'rvolume.sezimal'
+21	8	0	'rvolume.decimal_fraction'
+21	9	0	'rvolume.decimal'
+22	6	0	'rvolumi = volumi.reciprocal'
+22	7	0	'rvolumi.sezimal'
+22	8	0	'rvolumi.decimal_fraction'
+22	9	0	'rvolumi.decimal'
+23	6	0	'rdensity = density.reciprocal'
+23	7	0	'rdensity.sezimal'
+23	8	0	'rdensity.decimal_fraction'
+23	9	0	'rdensity.decimal'
+24	6	0	'rmass = mass.reciprocal'
+24	7	0	'rmass.sezimal'
+24	8	0	'rmass.decimal_fraction'
+24	9	0	'rmass.decimal'
+25	6	0	'rmasa = masa.reciprocal'
+25	7	0	'rmasa.sezimal'
+25	8	0	'rmasa.decimal_fraction'
+25	9	0	'rmasa.decimal'
+26	6	0	'rforce = force.reciprocal'
+26	7	0	'rforce.sezimal'
+26	8	0	'rforce.decimal_fraction'
+26	9	0	'rforce.decimal'
+27	6	0	'renergy = energy.reciprocal'
+27	7	0	'renergy.sezimal'
+27	8	0	'renergy.decimal_fraction'
+27	9	0	'renergy.decimal'
+28	6	0	'rpower = power.reciprocal'
+28	7	0	'rpower.sezimal'
+28	8	0	'rpower.decimal_fraction'
+28	9	0	'rpower.decimal'
+29	6	0	'rpressure = pressure.reciprocal'
+29	7	0	'rpressure.sezimal'
+29	8	0	'rpressure.decimal_fraction'
+29	9	0	'rpressure.decimal'
+30	6	0	'rmomentum = momentum.reciprocal'
+30	7	0	'rmomentum.sezimal'
+30	8	0	'rmomentum.decimal_fraction'
+30	9	0	'rmomentum.decimal'
+31	6	0	'raction = action.reciprocal'
+31	7	0	'raction.sezimal'
+31	8	0	'raction.decimal_fraction'
+31	9	0	'raction.decimal'
+32	6	0	'rinfluence = influence.reciprocal'
+32	7	0	'rinfluence.sezimal'
+32	8	0	'rinfluence.decimal_fraction'
+32	9	0	'rinfluence.decimal'
+33	6	0	'rtension = tension.reciprocal'
+33	7	0	'rtension.sezimal'
+33	8	0	'rtension.decimal_fraction'
+33	9	0	'rtension.decimal'
+34	6	0	'rintensity = intensity.reciprocal'
+34	7	0	'rintensity.sezimal'
+34	8	0	'rintensity.decimal_fraction'
+34	9	0	'rintensity.decimal'
+37	6	0	'rtemperature = temperature.reciprocal'
+37	7	0	'rtemperature.sezimal'
+37	8	0	'rtemperature.decimal_fraction'
+37	9	0	'rtemperature.decimal'
+38	6	0	'rcommon_temperature = common_temperature.reciprocal'
+38	7	0	'rcommon_temperature.sezimal'
+38	8	0	'rcommon_temperature.decimal_fraction'
+38	9	0	'rcommon_temperature.decimal'
+39	6	0	'rentropy = entropy.reciprocal'
+39	7	0	'rentropy.sezimal'
+39	8	0	'rentropy.decimal_fraction'
+39	9	0	'rentropy.decimal'
+40	6	0	'rcalory = calory.reciprocal'
+40	7	0	'rcalory.sezimal'
+40	8	0	'rcalory.decimal_fraction'
+40	9	0	'rcalory.decimal'
+43	6	0	'relectric_current = electric_current.reciprocal'
+43	7	0	'relectric_current.sezimal'
+43	8	0	'relectric_current.decimal_fraction'
+44	6	0	'relectric_charge = electric_charge.reciprocal'
+44	7	0	'relectric_charge.sezimal'
+44	8	0	'relectric_charge.decimal_fraction'
+45	6	0	'relectric_potential_difference = electric_potential_difference.reciprocal'
+45	7	0	'relectric_potential_difference.sezimal'
+45	8	0	'relectric_potential_difference.decimal_fraction'
+46	6	0	'relectric_resistance = VACUUM_RESISTANCE.reciprocal'
+46	7	0	'relectric_resistance.sezimal'
+46	8	0	'relectric_resistance.decimal_fraction'
+47	6	0	'relectric_conductance = electric_resistance'
+47	7	0	'relectric_conductance.sezimal'
+47	8	0	'relectric_conductance.decimal_fraction'
+48	6	0	'relectric_inductance = electric_inductance.reciprocal'
+48	7	0	'relectric_inductance.sezimal'
+48	8	0	'relectric_inductance.decimal_fraction'
+49	6	0	'relectric_capacitance = electric_capacitance.reciprocal'
+49	7	0	'relectric_capacitance.sezimal'
+49	8	0	'relectric_capacitance.decimal_fraction'
+50	6	0	'rmagnetic_flux = magnetic_flux.reciprocal'
+50	7	0	'rmagnetic_flux.sezimal'
+50	8	0	'rmagnetic_flux.decimal_fraction'
+51	6	0	'rmagnetic_flux_density = magnetic_flux_density.reciprocal'
+51	7	0	'rmagnetic_flux_density.sezimal'
+51	8	0	'rmagnetic_flux_density.decimal_fraction'
+43	9	0	'relectric_current.decimal'
+44	9	0	'relectric_charge.decimal'
+45	9	0	'relectric_potential_difference.decimal'
+46	9	0	'relectric_resistance.decimal'
+47	9	0	'relectric_conductance.decimal'
+48	9	0	'relectric_inductance.decimal'
+49	9	0	'relectric_capacitance.decimal'
+50	9	0	'rmagnetic_flux.decimal'
+51	9	0	'rmagnetic_flux_density.decimal'
+10	0	2	"'aytan – ayt'"
+10	2	2	'aytan.sezimal'
+10	4	2	'aytan.decimal'
+10	5	2	"'L'"
+9	0	2	"'dimaytan – Dayt – 100 ayt'"
+9	1	2	'dimaytan = (volume * 4344) * 100'
+9	2	2	'dimaytan.sezimal'
+9	3	2	'dimaytan.decimal_fraction'
+9	4	2	'dimaytan.decimal'
+9	5	2	"'L'"
+3	0	2	"'ditipada – dpad – 0,01 pad'"
+3	1	2	'ditipada = length / 100'
+3	2	2	'ditipada.sezimal'
+3	3	2	'ditipada.decimal_fraction'
+3	4	2	'ditipada.decimal'
+3	5	2	"'m'"
+21	0	2	"'kg'"
+21	3	2	'rdimadravya.decimal_fraction'
+21	4	2	'rdimadravya.decimal'
+21	5	2	"'dimadravya – Ddrv – 100 drv'"
+22	0	2	"'kg'"
+22	3	2	'rdravya.decimal_fraction'
+22	4	2	'rdravya.decimal'
+22	5	2	"'dravya – drv'"
+21	1	2	'rdimadravya = dimadravya.reciprocal'
+21	2	2	'rdimadravya.sezimal'
+22	1	2	'rdravya = dravya.reciprocal'
+22	2	2	'rdravya.sezimal'
+7	0	2	"'ditidravya – ddrv – 0,01 drv'"
+7	1	2	'ditidravya = mass / 100'
+7	2	2	'ditidravya.sezimal'
+7	3	2	'ditidravya.decimal_fraction'
+7	4	2	'ditidravya.decimal'
+7	5	2	"'kg'"
+13	1	2	"vega = acceleration * time * SezimalFraction('30 / 5')"
+13	3	2	'vega.decimal_fraction'
+13	0	2	"'vega – veg'"
+13	2	2	'vega.sezimal'
+13	4	2	'vega.decimal'
+13	5	2	"'km/h'"
+14	1	2	'tapa = common_temperature'
+14	3	2	'tapa.decimal_fraction'
+14	0	2	"'tapa – tap/°S'"
+14	2	2	'tapa.sezimal'
+14	4	2	'tapa.decimal'
+14	5	2	"'°C'"
+11	0	2	"'ditiaytan – dayt – 0,01 ayt'"
+11	1	2	'ditiaytan = (volume * 4344) / 100'
+11	2	2	'ditiaytan.sezimal'
+11	3	2	'ditiaytan.decimal_fraction'
+11	4	2	'ditiaytan.decimal'
+11	5	2	"'L'"
+25	0	2	"'L'"
+25	3	2	'rdimaytan.decimal_fraction'
+25	4	2	'rdimaytan.decimal'
+25	5	2	"'dimaytan – Dayt – 100 ayt'"
+25	1	2	'rdimaytan = dimaytan.reciprocal'
+25	2	2	'rdimaytan.sezimal'
+26	0	2	"'L'"
+26	3	2	'raytan.decimal_fraction'
+26	4	2	'raytan.decimal'
+26	5	2	"'aytan – ayt'"
+26	1	2	'raytan = aytan.reciprocal'
+26	2	2	'raytan.sezimal'
+19	0	2	"'m'"
+19	1	2	'rditipada = ditipada.reciprocal'
+19	2	2	'rditipada.sezimal'
+19	3	2	'rditipada.decimal_fraction'
+19	4	2	'rditipada.decimal'
+19	5	2	"'ditipada − dpad – 0,01 pad'"
+23	0	2	"'kg'"
+23	1	2	'rditidravya = ditidravya.reciprocal'
+23	2	2	'rditidravya.sezimal'
+23	3	2	'rditidravya.decimal_fraction'
+23	4	2	'rditidravya.decimal'
+23	5	2	"'ditidravya – ddrv – 0,01 drv'"
+29	0	2	"'km/h'"
+29	3	2	'rvega.decimal_fraction'
+29	4	2	'rvega.decimal'
+29	5	2	"'vega – veg'"
+29	1	2	'rvega = vega.reciprocal'
+29	2	2	'rvega.sezimal'
+30	0	2	"'°C'"
+30	3	2	'rtapa.decimal_fraction'
+30	4	2	'rtapa.decimal'
+30	5	2	"'tapa – tap/°S'"
+30	1	2	'rtapa = tapa.reciprocal'
+30	2	2	'rtapa.sezimal'
+27	0	2	"'L'"
+27	1	2	'rditiaytan = ditiaytan.reciprocal'
+27	2	2	'rditiaytan.sezimal'
+27	3	2	'rditiaytan.decimal_fraction'
+27	4	2	'rditiaytan.decimal'
+27	5	2	"'ditiaytan – dayt – 0,01 ayt'"
+17	6	2	"Decimal('1.78') * rdimapada"
+21	6	2	"Decimal('86.05') * rdimadravya"
+30	6	2	"Decimal('23.2') * rtapa"
+2	1	3	"'∆νCs'"
+2	2	3	"dvcs = (Decimal('9_192_631_770') * rfrequency).sezimal"
+3	1	3	"'c'"
+3	2	3	"c = (Decimal('299_792_458') * rvelocity).decimal"
+2	0	3	"'Hyperfine transition frequency of Cs'"
+3	0	3	"'Speed of light'"
+4	0	3	"'Planck constant'"
+4	1	3	"'h'"
+4	2	3	"h = (SezimalFraction(Decimal('662_607_015'), Decimal('1e42')) * Sezimal('1e102') * raction).decimal"
+2	3	3	"'avt'"
+3	3	3	"'veg'"
+4	3	3	"'× 10⁻¹⁰² pkp'"
+5	0	3	"'Elementary charge'"
+5	1	3	"'e'"
+5	2	3	"e = (ELEMENTARY_CHARGE * Sezimal('1e33') * relectric_charge).sezimal"
+5	3	3	"'× 10⁻³³ avx'"
+6	0	3	"'Boltzmann constant'"
+6	1	3	"'k'"
+6	2	3	"k = (SezimalFraction(Decimal('1_380_649'), Decimal('1e29')) * Sezimal('1e52') * rentropy).sezimal"
+6	3	3	"'× 10⁻⁵² entropy'"
+7	0	3	"'Avogadro constant'"
+7	1	3	"'Na'"
+7	2	3	"na = SezimalInteger(Decimal('6.022_140_76e23'))"
+7	3	3	"'/mol'"
+8	0	3	"'Luminous efficacy'"
+8	1	3	"'Kcd'"
+8	2	3	"kcd = (Decimal('683') * luminous_efficacy.reciprocal).sezimal"
+8	3	3	"'× 10⁻⁴ '"
+53	0	0	"'Photometry'"
+54	0	0	"'(luminous energy)'"
+54	1	0	'luminous_energy = energy * luminous_efficacy'
+54	2	0	'luminous_energy.sezimal'
+54	3	0	'luminous_energy.decimal_fraction'
+54	4	0	'luminous_energy.decimal'
+54	5	0	"'lm·s'"
+54	6	0	'rluminous_energy = luminous_energy.reciprocal'
+54	7	0	'rluminous_energy.sezimal'
+54	8	0	'rluminous_energy.decimal_fraction'
+54	9	0	'rluminous_energy.decimal'
+55	0	0	"'(luminous flux)'"
+55	1	0	'luminous_flux = luminous_energy / time'
+55	2	0	'luminous_flux.sezimal'
+55	3	0	'luminous_flux.decimal_fraction'
+55	4	0	'luminous_flux.decimal'
+55	5	0	"'lm'"
+55	6	0	'rluminous_flux = luminous_flux.reciprocal'
+55	7	0	'rluminous_flux.sezimal'
+55	8	0	'rluminous_flux.decimal_fraction'
+55	9	0	'rluminous_flux.decimal'
+56	0	0	"'(luminous illuminance emitance)'"
+56	1	0	'luminous_illuminance_emitance = luminous_flux / area'
+56	2	0	'luminous_illuminance_emitance.sezimal'
+56	3	0	'luminous_illuminance_emitance.decimal_fraction'
+56	4	0	'luminous_illuminance_emitance.decimal'
+56	5	0	"'lx = lm/m²'"
+56	6	0	'rluminous_illuminance_emitance = luminous_illuminance_emitance.reciprocal'
+56	7	0	'rluminous_illuminance_emitance.sezimal'
+56	8	0	'rluminous_illuminance_emitance.decimal_fraction'
+56	9	0	'rluminous_illuminance_emitance.decimal'
+58	0	0	"'(luminous_energy_density)'"
+58	1	0	'luminous_energy_density = luminous_energy / volume'
+58	2	0	'luminous_energy_density.sezimal'
+58	3	0	'luminous_energy_density.decimal_fraction'
+58	4	0	'luminous_energy_density.decimal'
+58	5	0	"'lm·s/m³'"
+59	0	0	"'(luminous_eficacy)'"
+59	1	0	'luminous_efficacy'
+59	2	0	'luminous_efficacy.sezimal'
+59	3	0	'luminous_efficacy.decimal_fraction'
+59	4	0	'luminous_efficacy.decimal'
+59	5	0	"'lm/W = lm·s³/kg/m²'"
+60	0	0	"'(luminous intensity)'"
+60	1	0	'luminous_intensity = luminous_flux'
+60	2	0	'luminous_intensity.sezimal'
+60	3	0	'luminous_intensity.decimal_fraction'
+60	4	0	'luminous_intensity.decimal'
+60	5	0	"'cd'"
+61	0	0	"'(luminous_luminance)'"
+61	1	0	'luminous_luminance = luminous_intensity / area'
+61	2	0	'luminous_luminance.sezimal'
+61	3	0	'luminous_luminance.decimal_fraction'
+61	4	0	'luminous_luminance.decimal'
+61	5	0	"'cd/m²'"
+57	0	0	"'(luminous exposure)'"
+57	1	0	'luminous_exposure = luminous_illuminance_emitance * time'
+57	2	0	'luminous_exposure.sezimal'
+57	3	0	'luminous_exposure.decimal_fraction'
+57	4	0	'luminous_exposure.decimal'
+57	5	0	"'lx·s = lm·s/m²'"
+57	6	0	'rluminous_exposure = luminous_exposure.reciprocal'
+57	7	0	'rluminous_exposure.sezimal'
+57	8	0	'rluminous_exposure.decimal_fraction'
+57	9	0	'rluminous_exposure.decimal'
+58	6	0	'rluminous_energy_density = luminous_energy_density.reciprocal'
+58	7	0	'rluminous_energy_density.sezimal'
+58	8	0	'rluminous_energy_density.decimal_fraction'
+58	9	0	'rluminous_energy_density.decimal'
+59	6	0	'rluminous_efficacy = luminous_efficacy.reciprocal'
+59	7	0	'rluminous_efficacy.sezimal'
+59	8	0	'rluminous_efficacy.decimal_fraction'
+59	9	0	'rluminous_efficacy.decimal'
+60	6	0	'rluminous_intensity = luminous_intensity.reciprocal'
+60	7	0	'rluminous_intensity.sezimal'
+60	8	0	'rluminous_intensity.decimal_fraction'
+60	9	0	'rluminous_intensity.decimal'
+61	6	0	'rluminous_luminance = luminous_luminance.reciprocal'
+61	7	0	'rluminous_luminance.sezimal'
+61	8	0	'rluminous_luminance.decimal_fraction'
+61	9	0	'rluminous_luminance.decimal'
+37	10	0	'gtk_0 = SezimalFraction(Decimal(27315), Decimal(100)) * rtemperature'
+5	6	0	"water_density_at_20_celsius = SezimalFraction('541_455_032_152_544_422_511_023_212_405_002_022_415_345_152_554_222_235 / 112_312_225_141_411_533_112_513_552_550_524_405_013_333_323_501_344')"
+5	7	0	"water_density_at_4_celsius = SezimalFraction('13_341_542_420_431_003_120_000_125_143_223_440_414_225_254_321 / 2_024_503_333_511_024_344_211_051_210_330_442_533_433_344')"
+6	7	0	"water_entropy_at_4_celsius = SezimalFraction('4_014_153_431_151_410_452_452_105_041_044_054_523_532_401_533 / 112_515_054_330_412_510_234_151_534_131_513_520_550_544')"
+6	6	0	"SezimalFraction('113_144_132_111_030_100_551 / 2_201_035_250_014_024')"
+6	8	0	"water_entropy_ex_20_celsius = SezimalFraction('12_343_310_554_421_234_302_334_533_410_513_054_455_214_254_323_442_031 / 240_112_032_020_152_545_545_132_044_010_141_545_341_020_012_144')"
+5	8	0	"water_density_ex_20_celsius = SezimalFraction('541_455_033_223_404_251_023_410_452_502_140_010_523_514_115_000_133_100 / 112_312_225_141_411_533_112_513_552_550_524_405_013_333_323_501_344')"
+38	10	0	'gtk_0.decimal'
+24	10	0	'((mass * 4344) / water_molar_mass) * mole'
+23	10	0	"'átomos de água'"
+22	10	0	"water_molar_mass = SezimalFraction('102_340_224 / 2_050_544')"
+21	10	0	"mole = SezimalInteger('2_420_220_441_202_515_135_044_212_141_344')"
+39	10	0	'gtk_0.sezimal'
+41	10	0	'gtk_20 = SezimalFraction(Decimal(29315), Decimal(100)) * rtemperature'
+42	10	0	'gtk_20.decimal'
+43	10	0	'(gtk_20 - gtk_0).sezimal / 100_000'
+45	10	0	'gtk_100 = SezimalFraction(Decimal(37315), Decimal(100)) * rtemperature'
+46	10	0	'gtk_100.decimal'
+47	10	0	'gtk_100.sezimal'
+49	10	0	'((gtk_100 - gtk_0) / 100_000).sezimal'
+50	10	0	'(550 * common_temperature).decimal'
+1	0	4	"'Xpad'"
+1	1	4	'(pada * 1_000_000).decimal'
+0	1	4	"'m'"
+2	0	4	"'Ppad'"
+2	1	4	'(pada * 100_000).decimal'
+3	0	4	"'Cpad'"
+3	1	4	'(pada * 10_000).decimal'
+4	0	4	"'Tpad'"
+4	1	4	'(pada * 1_000).decimal'
+5	0	4	"'Dpad'"
+5	1	4	'(pada * 100).decimal'
+6	0	4	"'Epad'"
+6	1	4	'(pada * 10).decimal'
+7	0	4	"'pad'"
+7	1	4	'(pada * 1).decimal'
+8	0	4	"'epad'"
+8	1	4	'(pada / 10).decimal'
+9	0	4	"'dpad'"
+9	1	4	'(pada / 100).decimal'
+10	0	4	"'tpad'"
+10	1	4	'(pada / 1_000).decimal'
+11	0	4	"'cpad'"
+11	1	4	'(pada / 10_000).decimal'
+12	0	4	"'ppad'"
+12	1	4	'(pada / 100_000).decimal'
+13	0	4	"'xpad'"
+13	1	4	'(pada / 1_000_000).decimal'
+9	0	3	"'Gravitational constant'"
+9	1	3	"'G'"
+9	2	3	"G = (SezimalFraction(Decimal('6_674_30'), Decimal('1e16')) * rforce * rarea / (rmass ** 2) * '1e21').sezimal"
+9	3	3	"'× 10⁻²¹ bar·kex·drv⁻²'"
+5	0	1	'f"""PADA_TO_METER = Sezimal(\'{length.sezimal.formatted_number}\')"""'
+6	0	1	'f"""METER_TO_PADA = Sezimal(\'{rlength.sezimal.formatted_number}\')"""'
+7	0	1	"'PADA_TO_METER.reciprocal = METER_TO_PADA'"
+12	0	1	'f"""METER_TO_DIMAPADA = Sezimal(\'{(length * 100).reciprocal.sezimal.formatted_number}\')"""'
+8	0	1	"'METER_TO_PADA.reciprocal = PADA_TO_METER'"
+13	0	1	"'DIMAPADA_TO_METER.reciprocal = METER_TO_DIMAPADA'"
+18	0	1	'f"""KILOMETER_TO_PADA = Sezimal(\'{(length / 4344).reciprocal.sezimal.formatted_number}\')"""'
+14	0	1	"'METER_TO_DIMAPADA.reciprocal = DIMAPADA_TO_METER'"
+19	0	1	"'PADA_TO_KILOMETER.reciprocal = KILOMETER_TO_PADA'"
+24	0	1	'f"""KILOMETER_TO_SHAMAPADA = Sezimal(\'{(length * 1_000_000 / 4344).reciprocal.sezimal.formatted_number}\')"""'
+20	0	1	"'KILOMETER_TO_PADA.reciprocal = PADA_TO_KILOMETER'"
+25	0	1	"'SHAMAPADA_TO_KILOMETER.reciprocal = KILOMETER_TO_SHAMAPADA'"
+36	0	1	'f"""MILLIMETER_TO_PADA = Sezimal(\'{(length * 4344).reciprocal.sezimal.formatted_number}\')"""'
+41	0	1	'f"""DITIPADA_TO_MILLIMETER = Sezimal(\'{(length / 100 * 4344).sezimal.formatted_number}\')"""'
+11	0	1	'f"""DIMAPADA_TO_METER = Sezimal(\'{(length * 100).sezimal.formatted_number}\')"""'
+26	0	1	"'KILOMETER_TO_SHAMAPADA.reciprocal = SHAMAPADA_TO_KILOMETER'"
+37	0	1	"'PADA_TO_MILLIMETER.reciprocal = MILLIMETER_TO_PADA'"
+42	0	1	'f"""MILLIMETER_TO_DITIPADA = Sezimal(\'{(length / 100 * 4344).reciprocal.sezimal.formatted_number}\')"""'
+17	0	1	'f"""PADA_TO_KILOMETER = Sezimal(\'{(length / 4344).sezimal.formatted_number}\')"""'
+30	0	1	'f"""CENTIMETER_TO_PADA = Sezimal(\'{(length * 244).reciprocal.sezimal.formatted_number}\')"""'
+23	0	1	'f"""SHAMAPADA_TO_KILOMETER = Sezimal(\'{(length * 1_000_000 / 4344).sezimal.formatted_number}\')"""'
+31	0	1	"'PADA_TO_CENTIMETER.reciprocal = CENTIMETER_TO_PADA'"
+35	0	1	'f"""PADA_TO_MILLIMETER = Sezimal(\'{(length * 4344).sezimal.formatted_number}\')"""'
+32	0	1	"'CENTIMETER_TO_PADA.reciprocal = PADA_TO_CENTIMETER'"
+29	0	1	'f"""PADA_TO_CENTIMETER = Sezimal(\'{(length * 244).sezimal.formatted_number}\')"""'
+4	0	1	'f"""# PADA_TO_METER = SezimalFraction(\'{length.formatted_number}\')"""'
+10	0	1	'f"""# DIMAPADA_TO_METER = SezimalFraction(\'{(length * 100).formatted_number}\')"""'
+16	0	1	'f"""# PADA_TO_KILOMETER = SezimalFraction(\'{(length / 4344).formatted_number}\')"""'
+22	0	1	'f"""# SHAMAPADA_TO_KILOMETER = SezimalFraction(\'{(length * 1_000_000 / 4344).formatted_number}\')"""'
+28	0	1	'f"""# PADA_TO_CENTIMETER = SezimalFraction(\'{(length * 244).formatted_number}\')"""'
+38	0	1	"'MILLIMETER_TO_PADA.reciprocal = PADA_TO_MILLIMETER'"
+43	0	1	"'DITIPADA_TO_MILLIMETER.reciprocal = MILLIMETER_TO_DITIPADA'"
+64	0	1	'f"""# KESHE_TO_SQUARE_METER = SezimalFraction(\'{area.formatted_number}\')"""'
+47	0	1	'f"""VEGA_TO_METER_PER_SECOND = Sezimal(\'{velocity.sezimal.formatted_number}\')"""'
+34	0	1	'f"""# PADA_TO_MILLIMETER = SezimalFraction(\'{(length * 4344).formatted_number}\')"""'
+44	0	1	"'MILLIMETER_TO_DITIPADA.reciprocal = DITIPADA_TO_MILLIMETER'"
+48	0	1	'f"""METER_PER_SECOND_TO_VEGA = Sezimal(\'{velocity.reciprocal.sezimal.formatted_number}\')"""'
+53	0	1	'f"""VEGA_TO_KILOMETER_PER_HOUR = Sezimal(\'{(velocity * 30 / 5).sezimal.formatted_number}\')"""'
+40	0	1	'f"""# DITIPADA_TO_MILLIMETER = SezimalFraction(\'{(length / 100 * 4344).formatted_number}\')"""'
+46	0	1	'f"""# VEGA_TO_METER_PER_SECOND = SezimalFraction(\'{velocity.formatted_number}\')"""'
+49	0	1	"'VEGA_TO_METER_PER_SECOND.reciprocal = METER_PER_SECOND_TO_VEGA'"
+50	0	1	"'METER_PER_SECOND_TO_VEGA.reciprocal = VEGA_TO_METER_PER_SECOND'"
+52	0	1	'f"""# VEGA_TO_KILOMETER_PER_HOUR = SezimalFraction(\'{(velocity * 30 / 5).formatted_number}\')"""'
+54	0	1	'f"""KILOMETER_PER_HOUR_TO_VEGA = Sezimal(\'{(velocity * 30 / 5).reciprocal.sezimal.formatted_number}\')"""'
+55	0	1	"'VEGA_TO_KILOMETER_PER_HOUR.reciprocal = KILOMETER_PER_HOUR_TO_VEGA'"
+56	0	1	"'KILOMETER_PER_HOUR_TO_VEGA.reciprocal = VEGA_TO_KILOMETER_PER_HOUR'"
+58	0	1	'f"""# TEVARA_TO_METER_PER_SQUARE_SECOND = SezimalFraction(\'{acceleration.formatted_number}\')"""'
+59	0	1	'f"""TEVARA_TO_METER_PER_SQUARE_SECOND = Sezimal(\'{acceleration.sezimal.formatted_number}\')"""'
+60	0	1	'f"""METER_PER_SQUARE_SECOND_TO_TEVARA = Sezimal(\'{acceleration.reciprocal.sezimal.formatted_number}\')"""'
+61	0	1	"'TEVARA_TO_METER_PER_SQUARE_SECOND.reciprocal = METER_PER_SQUARE_SECOND_TO_TEVARA'"
+62	0	1	"'METER_PER_SQUARE_SECOND_TO_TEVARA.reciprocal = TEVARA_TO_METER_PER_SQUARE_SECOND'"
+65	0	1	'f"""KESHE_TO_SQUARE_METER = Sezimal(\'{area.sezimal.formatted_number}\')"""'
+66	0	1	'f"""SQUARE_METER_TO_KESHE = Sezimal(\'{area.reciprocal.sezimal.formatted_number}\')"""'
+67	0	1	"'KESHE_TO_SQUARE_METER.reciprocal = SQUARE_METER_TO_KESHE'"
+68	0	1	"'SQUARE_METER_TO_KESHE.reciprocal = KESHE_TO_SQUARE_METER'"
+82	0	1	'f"""# AYTAN_TO_CUBIC_METER = SezimalFraction(\'{volume.formatted_number}\')"""'
+76	0	1	'f"""# DISHAMAKESHE_TO_SQUARE_KILOMETER = SezimalFraction(\'{((length * 1_000_000 / 4344) ** 2).formatted_number}\')"""'
+70	0	1	'f"""# KESHE_TO_SQUARE_CENTIMETER = SezimalFraction(\'{(area * 114_144).formatted_number}\')"""'
+71	0	1	'f"""KESHE_TO_SQUARE_CENTIMETER = Sezimal(\'{(area * 114_144).sezimal.formatted_number}\')"""'
+72	0	1	'f"""SQUARE_CENTIMETER_TO_KESHE = Sezimal(\'{(area * 114_144).reciprocal.sezimal.formatted_number}\')"""'
+73	0	1	"'KESHE_TO_SQUARE_CENTIMETER.reciprocal = SQUARE_CENTIMETER_TO_KESHE'"
+74	0	1	"'SQUARE_CENTIMETER_TO_KESHE.reciprocal = KESHE_TO_SQUARE_CENTIMETER'"
+77	0	1	'f"""DISHAMAKESHE_TO_SQUARE_KILOMETER = Sezimal(\'{((length * 1_000_000 / 4344) ** 2).sezimal.formatted_number}\')"""'
+78	0	1	'f"""SQUARE_KILOMETER_TO_DISHAMAKESHE = Sezimal(\'{((length * 1_000_000 / 4344) ** 2).reciprocal.sezimal.formatted_number}\')"""'
+79	0	1	"'DISHAMAKESHE_TO_SQUARE_KILOMETER.reciprocal = SQUARE_KILOMETER_TO_DISHAMAKESHE'"
+80	0	1	"'SQUARE_KILOMETER_TO_DISHAMAKESHE.reciprocal = DISHAMAKESHE_TO_SQUARE_KILOMETER'"
+83	0	1	'f"""AYTAN_TO_CUBIC_METER = Sezimal(\'{volume.sezimal.formatted_number}\')"""'
+84	0	1	'f"""CUBIC_METER_TO_AYTAN = Sezimal(\'{volume.reciprocal.sezimal.formatted_number}\')"""'
+85	0	1	"'AYTAN_TO_CUBIC_METER.reciprocal = CUBIC_METER_TO_AYTAN'"
+86	0	1	"'CUBIC_METER_TO_AYTAN.reciprocal = AYTAN_TO_CUBIC_METER'"
+88	0	1	'f"""# AYTAN_TO_LITER = SezimalFraction(\'{(volume * 4344).formatted_number}\')"""'
+95	0	1	'f"""# DRAVYA_TO_KILOGRAM = SezimalFraction(\'{mass.formatted_number}\')"""'
+89	0	1	'f"""AYTAN_TO_LITER = SezimalFraction(\'{(volume * 4344).sezimal.formatted_number}\')"""'
+90	0	1	'f"""LITER_TO_AYTAN = SezimalFraction(\'{(volume * 4344).reciprocal.sezimal.formatted_number}\')"""'
+91	0	1	"'AYTAN_TO_LITER.reciprocal = LITER_TO_AYTAN'"
+92	0	1	"'LITER_TO_AYTAN.reciprocal = AYTAN_TO_LITER'"
+124	0	1	'f"""DABA_TO_PASCAL = SezimalFraction(\'{pressure.formatted_number}\')"""'
+123	0	1	'f"""SHATI_TO_WATT = SezimalFraction(\'{power.formatted_number}\')"""'
+96	0	1	'f"""DRAVYA_TO_KILOGRAM = Sezimal(\'{mass.sezimal.formatted_number}\')"""'
+97	0	1	'f"""KILOGRAM_TO_DRAVYA = Sezimal(\'{mass.reciprocal.sezimal.formatted_number}\')"""'
+98	0	1	"'DRAVYA_TO_KILOGRAM.reciprocal = KILOGRAM_TO_DRAVYA'"
+99	0	1	"'KILOGRAM_TO_DRAVYA.reciprocal = DRAVYA_TO_KILOGRAM'"
+101	0	1	'f"""# DRAVYA_TO_GRAM = SezimalFraction(\'{(mass * 4344).formatted_number}\')"""'
+129	0	1	'f"""UPARI_TO_WATT_PER_SQUARE_METER = SezimalFraction(\'{intensity.formatted_number}\')"""'
+128	0	1	'f"""TANAVA_TO_NEWTON_PER_METER = SezimalFraction(\'{tension.formatted_number}\')"""'
+102	0	1	'f"""DRAVYA_TO_GRAM = Sezimal(\'{(mass * 4344).sezimal.formatted_number}\')"""'
+103	0	1	'f"""GRAM_TO_DRAVYA = Sezimal(\'{(mass * 4344).reciprocal.sezimal.formatted_number}\')"""'
+104	0	1	"'DRAVYA_TO_GRAM.reciprocal = GRAM_TO_DRAVYA'"
+105	0	1	"'GRAM_TO_DRAVYA.reciprocal = DRAVYA_TO_GRAM'"
+108	0	1	'f"""DRAVYA_TO_MILLIGRAM = SezimalFraction(\'{(mass * 4344 * 4344).sezimal.formatted_number}\')"""'
+127	0	1	'f"""PRABAVA_TO_NEWTON_SQUARE_METER = SezimalFraction(\'{influence.formatted_number}\')"""'
+121	0	1	'f"""BARA_TO_NEWTON = SezimalFraction(\'{force.formatted_number}\')"""'
+134	0	1	"'GATIKA_TO_KELVIN.reciprocal = KELVIN_TO_GATIKA'"
+133	0	1	'f"""KELVIN_TO_GATIKA = SezimalFraction(\'{rtemperature.sezimal.formatted_number}\')"""'
+107	0	1	'f"""# DRAVYA_TO_MILLIGRAM = SezimalFraction(\'{(mass * 4344 * 4344).formatted_number}\')"""'
+126	0	1	'f"""PRAKEPA_TO_KILOGRAM_SQUARE_METER_PER_SECOND = SezimalFraction(\'{action.formatted_number}\')"""'
+109	0	1	'f"""MILLIGRAM_TO_DRAVYA = SezimalFraction(\'{(mass * 4344 * 4344).reciprocal.sezimal.formatted_number}\')"""'
+110	0	1	"'DRAVYA_TO_MILLIGRAM.reciprocal = MILLIGRAM_TO_DRAVYA'"
+111	0	1	"'MILLIGRAM_TO_DRAVYA.reciprocal = DRAVYA_TO_MILLIGRAM'"
+125	0	1	'f"""SANVEGA_TO_KILOGRAM_METER_PER_SECOND = SezimalFraction(\'{momentum.formatted_number}\')"""'
+139	0	1	'f"""CELSIUS_TO_TAPA = SezimalFraction(\'{rcommon_temperature.sezimal.formatted_number}\')"""'
+138	0	1	'f"""TAPA_TO_CELSIUS = SezimalFraction(\'{common_temperature.sezimal.formatted_number}\')"""'
+113	0	1	'f"""# DIMADRAVYA_TO_KILOGRAM = SezimalFraction(\'{(mass * 100).formatted_number}\')"""'
+114	0	1	'f"""DIMADRAVYA_TO_KILOGRAM = Sezimal(\'{(mass * 100).sezimal.formatted_number}\')"""'
+115	0	1	'f"""KILOGRAM_TO_DIMADRAVYA = Sezimal(\'{(mass * 100).reciprocal.sezimal.formatted_number}\')"""'
+116	0	1	"'DIMADRAVYA_TO_KILOGRAM.reciprocal = KILOGRAM_TO_DIMADRAVYA'"
+117	0	1	"'KILOGRAM_TO_DIMADRAVYA.reciprocal = DIMADRAVYA_TO_KILOGRAM'"
+122	0	1	'f"""KARYA_TO_JOULE = SezimalFraction(\'{energy.formatted_number}\')"""'
+119	0	1	'f"""GANA_TO_KILOGRAM_PER_CUBIC_METER = SezimalFraction(\'{density.formatted_number}\')"""'
+132	0	1	'f"""GATIKA_TO_KELVIN = SezimalFraction(\'{temperature.sezimal.formatted_number}\')"""'
+135	0	1	"'KELVIN_TO_GATIKA.reciprocal = GATIKA_TO_KELVIN'"
+140	0	1	"'TAPA_TO_CELSIUS.reciprocal = CELSIUS_TO_TAPA'"
+131	0	1	'f"""# GATIKA_TO_KELVIN = SezimalFraction(\'{temperature.formatted_number}\')"""'
+141	0	1	"'CELSIUS_TO_TAPA.reciprocal = TAPA_TO_CELSIUS'"
+137	0	1	'f"""# TAPA_TO_CELSIUS = SezimalFraction(\'{common_temperature.formatted_number}\')"""'
+[attributes]
+[]	[]	[]	[]	[(10, 1)]	0	'merge_area'	(10, 1, 10, 5)
+[]	[]	[]	[]	[(10, 1), (10, 2), (10, 4), (10, 5)]	0	'justification'	'justify_center'
+[(13, 1)]	[(50, 1)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[(13, 2)]	[(50, 2)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[(13, 4)]	[(50, 4)]	[]	[]	[]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[(13, 5)]	[(50, 5)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[(13, 4)]	[(50, 4)]	[]	[]	[]	0	'fontstyle'	1
+[(13, 0)]	[(50, 0)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[]	[]	[9, 10, 13, 14, 15, 16, 16, 18, 20, 21, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 49, 47, 48, 50]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(13, 0)]	0	'fontweight'	71
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontweight'	71
+[(15, 0)]	[(15, 5)]	[]	[]	[]	0	'fontweight'	71
+[(2, 0)]	[(10, 0)]	[]	[]	[]	0	'fontstyle'	0	'justification'	'justify_fill'	'vertical_align'	'align_center'	'textfont'	'Andika'
+[(2, 0)]	[(9, 5)]	[]	[]	[]	0	'textfont'	'Andika Tauga'	'pointsize'	14
+[(2, 1)]	[(9, 1)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[(2, 2)]	[(9, 2)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[(2, 4)]	[(9, 4)]	[]	[]	[]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'fontstyle'	1
+[(2, 5)]	[(9, 5)]	[]	[]	[]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(3, 0)]	0	'vertical_align'	'align_top'
+[]	[]	[]	[]	[(5, 0)]	0	'justification'	'justify_left'
+[]	[]	[]	[]	[(6, 0)]	0	'justification'	'justify_left'
+[(4, 0)]	[(4, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[(6, 0)]	[(6, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[(8, 0)]	[(8, 5)]	[]	[]	[]	0	'bgcolor'	(230, 230, 230, 255)
+[]	[]	[]	[]	[(2, 0)]	0	'merge_area'	(2, 0, 2, 5)	'pointsize'	18	'fontweight'	71
+[]	[]	[]	[]	[(2, 0), (2, 1), (2, 2), (2, 4), (2, 5)]	0	'justification'	'justify_center'	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(10, 0), (10, 1), (10, 2), (10, 4), (10, 5)]	0	'fontweight'	71	'justification'	'justify_center'	'bgcolor'	(200, 200, 200, 255)
+[(15, 0)]	[(15, 5)]	[]	[]	[]	0	'fontweight'	49
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontstyle'	0	'fontweight'	49
+[(13, 4)]	[(24, 4)]	[]	[]	[]	0	'fontstyle'	1
+[(13, 0)]	[(13, 5)]	[]	[]	[]	0	'fontweight'	71
+[(18, 0)]	[(18, 5)]	[]	[]	[]	0	'fontweight'	71
+[(24, 0)]	[(24, 5)]	[]	[]	[]	0	'fontweight'	71
+[]	[]	[]	[]	[(12, 0)]	0	'merge_area'	(12, 0, 12, 5)	'pointsize'	18	'fontweight'	71	'justification'	'justify_center'
+[]	[]	[]	[]	[(12, 0), (12, 1), (12, 2), (12, 4), (12, 5)]	0	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(36, 0)]	0	'merge_area'	(36, 0, 36, 5)	'justification'	'justify_center'	'pointsize'	18	'fontweight'	71	'bgcolor'	(200, 200, 200, 255)
+[(3, 3)]	[(8, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'fontstyle'	1
+[(13, 3)]	[(34, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[37]	[]	[]	0	'fontweight'	71
+[(37, 3)]	[(40, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(42, 0)]	0	'merge_area'	(42, 0, 42, 5)	'justification'	'justify_center'	'fontstyle'	0	'fontweight'	71	'pointsize'	20
+[]	[]	[]	[]	[(36, 0), (36, 1), (36, 2), (36, 3), (36, 4), (36, 5)]	0	'pointsize'	18
+[]	[]	[]	[]	[(42, 0), (42, 1), (42, 2), (42, 3), (42, 4), (42, 5)]	0	'pointsize'	18	'bgcolor'	(200, 200, 200, 255)
+[(33, 0)]	[(34, 0)]	[]	[]	[]	0	'textcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(33, 0)]	0	'textcolor'	(0, 0, 0, 255)
+[]	[]	[]	[]	[(34, 0)]	0	'textcolor'	(0, 0, 0, 255)
+[]	[]	[51, 52, 53, 54, 55, 56, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]	[]	[]	0	'pointsize'	14	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(9, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'fontstyle'	1
+[]	[]	[3, 4, 5, 6, 7, 8, 9]	[]	[]	0	'bgcolor'	(255, 255, 255, 255)
+[(43, 3)]	[(54, 3)]	[]	[]	[]	0	'justification'	'justify_center'
+[(43, 1)]	[(56, 1)]	[]	[]	[]	0	'justification'	'justify_center'
+[(43, 2)]	[(56, 2)]	[]	[]	[]	0	'justification'	'justify_right'
+[(43, 4)]	[(55, 4)]	[]	[]	[]	0	'justification'	'justify_right'
+[(43, 3)]	[(56, 4)]	[]	[]	[]	0	'fontstyle'	1
+[]	[]	[42]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(42, 3)]	0	'justification'	'justify_center'	'fontstyle'	1
+[]	[]	[49]	[]	[]	0	'pointsize'	14
+[]	[]	[0, 1, 2, 2, 5, 11, 17, 23, 27, 29, 35, 41, 46, 47, 53, 57, 58, 63, 64, 76, 81, 82, 88, 94, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 132, 138, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175]	[]	[]	1	'pointsize'	14
+[]	[]	[0, 1, 2, 2, 5, 11, 17, 23, 27, 29, 35, 41, 46, 47, 53, 57, 58, 63, 64, 76, 81, 82, 88, 94, 95, 107, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 132, 138, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172]	[]	[]	1	'pointsize'	14
+[]	[]	[]	[]	[(101, 0)]	1	'pointsize'	14
+[(46, 0)]	[(46, 5)]	[]	[]	[]	0	'pointsize'	14
+[(47, 0)]	[(47, 5)]	[]	[]	[]	0	'pointsize'	14
+[(48, 0)]	[(48, 5)]	[]	[]	[]	0	'pointsize'	14
+[]	[]	[]	[]	[(0, 0)]	0	'merge_area'	(0, 0, 0, 5)
+[]	[]	[]	[]	[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5)]	0	'fontweight'	71	'pointsize'	18	'justification'	'justify_center'	'vertical_align'	'align_center'	'bgcolor'	(200, 200, 200, 255)
+[(43, 0)]	[(43, 5)]	[]	[]	[]	0	'fontweight'	71
+[]	[]	[]	[]	[(88, 0)]	1	'pointsize'	14	'fontweight'	71	'vertical_align'	'align_center'
+[]	[]	[0, 0, 2, 6, 13, 14, 15, 16, 18, 22, 26, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89]	[]	[]	2	'vertical_align'	'align_center'	'pointsize'	14
+[(0, 1)]	[(30, 1)]	[]	[]	[]	2	'justification'	'justify_center'
+[(0, 2)]	[(30, 2)]	[]	[]	[]	2	'justification'	'justify_right'
+[(0, 3)]	[(30, 3)]	[]	[]	[]	2	'justification'	'justify_center'
+[(0, 4)]	[(30, 4)]	[]	[]	[]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(16, 1)]	2	'merge_area'	(16, 1, 16, 2)
+[]	[]	[]	[]	[(16, 3)]	2	'merge_area'	(16, 3, 16, 4)
+[]	[]	[]	[]	[(0, 1)]	2	'merge_area'	(0, 1, 0, 2)
+[]	[]	[]	[]	[(0, 3)]	2	'merge_area'	(0, 3, 0, 4)
+[]	[]	[0, 0, 1, 2, 5, 6, 9, 13, 14, 15, 16, 18, 22, 26, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]	[]	[]	2	'pointsize'	14
+[(1, 0)]	[(1, 5)]	[]	[]	[]	2	'fontweight'	71
+[(5, 0)]	[(5, 5)]	[]	[]	[]	2	'fontweight'	71
+[(9, 0)]	[(9, 5)]	[]	[]	[]	2	'fontweight'	71
+[]	[]	[0, 0, 1, 2, 5, 6, 9, 10, 13, 14, 15, 16, 18, 22, 26, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]	[]	[]	2	'pointsize'	14
+[(1, 0)]	[(1, 5)]	[]	[]	[]	2	'fontweight'	71	'underline'	False	'fontstyle'	0
+[]	[]	[0, 0, 1, 2, 5, 6, 9, 10, 13, 14, 15, 16, 17, 18, 21, 22, 25, 26, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]	[]	[]	2	'pointsize'	14
+[(17, 0)]	[(17, 5)]	[]	[]	[]	2	'fontweight'	71
+[(21, 0)]	[(21, 5)]	[]	[]	[]	2	'fontweight'	71
+[(25, 0)]	[(25, 5)]	[]	[]	[]	2	'fontweight'	71
+[]	[]	[]	[]	[(17, 0)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(17, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(17, 5)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(17, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'	'fontstyle'	1	'pointsize'	14
+[]	[]	[]	[]	[(17, 3)]	0	'pointsize'	14	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(17, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(19, 0)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(19, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(19, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'	'fontstyle'	1	'pointsize'	14
+[]	[]	[]	[]	[(19, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(19, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(19, 5)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(22, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[]	[]	[]	[]	[(22, 5)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(22, 0)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(22, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 0)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(22, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(22, 5)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(22, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'	'fontstyle'	1	'pointsize'	14
+[]	[]	[]	[]	[(22, 3)]	0	'pointsize'	14	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(22, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(25, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[]	[]	[]	[]	[(25, 5)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(25, 0)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(25, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[]	[]	[]	[]	[(25, 5)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(25, 0)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(25, 3)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 0)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(25, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(25, 5)]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(25, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'	'fontstyle'	1	'pointsize'	14
+[]	[]	[]	[]	[(25, 3)]	0	'pointsize'	14	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(25, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	0	'pointsize'	14
+[(13, 6)]	[(31, 6)]	[]	[]	[]	0	'justification'	'justify_center'
+[(13, 7)]	[(31, 7)]	[]	[]	[]	0	'justification'	'justify_right'
+[(13, 8)]	[(31, 8)]	[]	[]	[]	0	'justification'	'justify_center'
+[(13, 9)]	[(31, 9)]	[]	[]	[]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(32, 7)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(32, 9)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(32, 8)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(32, 6)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(33, 9)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(33, 8)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(33, 7)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(33, 6)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(34, 9)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(34, 8)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(34, 7)]	0	'justification'	'justify_right'
+[]	[]	[]	[]	[(34, 6)]	0	'justification'	'justify_center'
+[]	[]	[]	[]	[(3, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(3, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(3, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(3, 4)]	2	'justification'	'justify_right'
+[(3, 0)]	[(3, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71	'underline'	False	'fontstyle'	0
+[]	[]	[]	[]	[(7, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(7, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(7, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(7, 4)]	2	'justification'	'justify_right'
+[(7, 0)]	[(7, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71
+[]	[]	[]	[]	[(11, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(11, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(11, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(11, 4)]	2	'justification'	'justify_right'
+[(11, 0)]	[(11, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71
+[]	[]	[]	[]	[(19, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(19, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(19, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(19, 4)]	2	'justification'	'justify_right'
+[(19, 0)]	[(19, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71
+[]	[]	[]	[]	[(23, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(23, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(23, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(23, 4)]	2	'justification'	'justify_right'
+[(23, 0)]	[(23, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71
+[]	[]	[]	[]	[(27, 1)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(27, 2)]	2	'justification'	'justify_right'
+[]	[]	[]	[]	[(27, 3)]	2	'justification'	'justify_center'
+[]	[]	[]	[]	[(27, 4)]	2	'justification'	'justify_right'
+[(27, 0)]	[(27, 5)]	[]	[]	[]	2	'pointsize'	14	'fontweight'	71
+[]	[]	[]	[]	[(2, 2)]	3	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(3, 2)]	3	'justification'	'justify_right'
+[]	[]	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	3	'pointsize'	14	'vertical_align'	'align_center'
+[(2, 1)]	[(3, 1)]	[]	[]	[]	3	'justification'	'justify_center'
+[(3, 1)]	[(4, 1)]	[]	[]	[]	3	'fontstyle'	1	'justification'	'justify_center'
+[]	[]	[]	[]	[(4, 2)]	3	'justification'	'justify_right'
+[]	[]	[]	[]	[(5, 1)]	3	'justification'	'justify_center'	'fontstyle'	1
+[]	[]	[]	[]	[(6, 1)]	3	'justification'	'justify_center'	'fontstyle'	1
+[(2, 2)]	[(7, 2)]	[]	[]	[]	3	'justification'	'justify_right'	'vertical_align'	'align_center'
+[(2, 1)]	[(8, 1)]	[]	[]	[]	3	'justification'	'justify_center'	'fontstyle'	1
+[]	[]	[]	[]	[(8, 2)]	3	'justification'	'justify_right'
+[]	[]	[]	[]	[(53, 1)]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(53, 2)]	0	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(53, 4)]	0	'vertical_align'	'align_center'	'justification'	'justify_right'
+[]	[]	[]	[]	[(53, 5)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(53, 4)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(53, 0)]	0	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(53, 0), (53, 3), (53, 2), (53, 5), (53, 4), (53, 1)]	0	'pointsize'	14
+[]	[]	[]	[]	[(53, 0)]	0	'justification'	'justify_center'	'fontstyle'	0	'fontweight'	71	'pointsize'	20
+[]	[]	[]	[]	[(53, 0), (53, 3), (53, 2), (53, 5), (53, 4), (53, 1)]	0	'pointsize'	14	'bgcolor'	(200, 200, 200, 255)
+[]	[]	[]	[]	[(53, 3)]	0	'justification'	'justify_center'	'fontstyle'	1
+[]	[]	[]	[]	[(53, 0), (53, 3), (53, 2), (53, 5), (53, 4), (53, 1)]	0	'pointsize'	14
+[(53, 0)]	[(53, 5)]	[]	[]	[]	0	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(53, 0)]	0	'merge_area'	(53, 0, 53, 5)
+[(37, 9)]	[(69, 9)]	[]	[]	[]	0	'justification'	'justify_right'
+[(35, 8)]	[(69, 8)]	[]	[]	[]	0	'justification'	'justify_center'
+[(35, 7)]	[(69, 7)]	[]	[]	[]	0	'justification'	'justify_right'
+[(35, 6)]	[(69, 6)]	[]	[]	[]	0	'justification'	'justify_center'
+[(54, 4)]	[(71, 4)]	[]	[]	[]	0	'justification'	'justify_right'	'fontstyle'	1
+[(54, 3)]	[(71, 3)]	[]	[]	[]	0	'justification'	'justify_center'	'fontstyle'	1
+[(54, 2)]	[(71, 2)]	[]	[]	[]	0	'justification'	'justify_right'
+[(54, 1)]	[(70, 1)]	[]	[]	[]	0	'justification'	'justify_center'
+[(60, 0)]	[(60, 5)]	[]	[]	[]	0	'vertical_align'	'align_center'	'pointsize'	14
+[(60, 6)]	[(60, 9)]	[]	[]	[]	0	'vertical_align'	'align_center'	'pointsize'	14
+[]	[]	[]	[]	[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5)]	0	'fontstyle'	1
+[]	[]	[]	[]	[(1, 1)]	4	'justification'	'justify_right'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(1, 0)]	4	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(1, 2)]	4	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(0, 1)]	4	'justification'	'justify_center'	'vertical_align'	'align_center'
+[]	[]	[]	[]	[(2, 0)]	4	'vertical_align'	'align_center'
+[]	[]	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]	[]	[]	4	'vertical_align'	'align_center'
+[(2, 1)]	[(3, 1)]	[]	[]	[]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(4, 1)]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(5, 1)]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(6, 1)]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(7, 1)]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(8, 1)]	4	'justification'	'justify_right'
+[(9, 1)]	[(14, 1)]	[]	[]	[]	4	'justification'	'justify_right'
+[]	[]	[]	[]	[(9, 2)]	3	'justification'	'justify_right'
+[]	[]	[]	[]	[(9, 1)]	3	'justification'	'justify_center'
+[]	[]	[]	[]	[(133, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(139, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(158, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(6, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(15, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(7, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(8, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(12, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(13, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(14, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(18, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(19, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(20, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(24, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(25, 0)]	1	'pointsize'	14
+[]	[]	[]	[]	[(26, 0)]	1	'pointsize'	14
+[(30, 0)]	[(32, 0)]	[]	[]	[]	1	'pointsize'	14
+[(36, 0)]	[(38, 0)]	[]	[]	[]	1	'pointsize'	14
+[(134, 0)]	[(135, 0)]	[]	[]	[]	1	'pointsize'	14
+[(140, 0)]	[(141, 0)]	[]	[]	[]	1	'pointsize'	14
+[]	[]	[]	[0]	[]	1	'pointsize'	12	'textfont'	'Iosevka Sezimal'	'vertical_align'	'align_center'	'justification'	'justify_fill'
+[]	[]	[]	[]	[(88, 0)]	1	'fontweight'	49
+[]	[]	[]	[]	[(95, 0)]	1	'justification'	'justify_left'
+[]	[]	[]	[]	[(101, 0)]	1	'justification'	'justify_left'
+[]	[]	[]	[0]	[]	1	'justification'	'justify_left'
+[row_heights]
+[col_widths]
+0	0	451.0
+2	0	409.0
+4	0	345.0
+0	1	1635.0
+5	0	408.0
+0	2	328.0
+1	2	0.0
+2	2	319.0
+3	2	0.0
+4	2	288.0
+5	2	288.0
+6	2	195.0
+6	0	0.0
+7	0	5.0
+8	0	0.0
+9	0	298.0
+10	0	876.0
+11	0	400.0
+2	3	532.0
+1	3	85.0
+0	3	357.0
+3	3	205.0
+3	0	229.0
+1	0	232.0
+1	4	167.0
+[macros]
+from decimal import getcontext
+
+#
+# Precision needed to match SI prefix:
+# deci  = 2           femto  = 33  (21_dec)
+# centi = 3           atto   = 40  (24_dec)
+# milli = 4           zepto  = 50  (30_dec)
+# micro = 13 (9_dec)  yocto  = 53  (33_dec)
+# nano  = 20 (12_dec) ronto  = 100 (36_dec)
+# pico  = 30 (18_dec) quecto = 110 (42_dec)
+#
+PRECISION = 120
+FRACTION_PRECISION = 4000
+
+sezimal_context.locale = 'code'
+sezimal_context.sezimal_precision = PRECISION
+sezimal_context.show_recurring_digits = False
+sezimal_context.fractions_simplify = False
+sezimal_context.fractions_use_decimal = True
+sezimal_context.fractions_precision = FRACTION_PRECISION
+
+TIME = SezimalFraction('41 / 2_130')
+GRAVITY = SezimalFraction('5_324_444_301_513 / 322_545_201_312') 
+DENSITY = SezimalFraction('242_142_032_202_023_425_342 / 33_133_534_145_024_144')
+SPECIFIC_HEAT = SezimalFraction('323_245_314_040_541_203_352_340_150_141 / 10_212_445_512_343_411_332_414_300') 
+LUMINOUS_EFFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
+
+#
+# Precalculation of
+# the electric charge
+#
+VACUUM_RESISTANCE = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
+
+old_fractions_use_decimal = sezimal_context.fractions_use_decimal
+sezimal_context.sezimal_precision = 1200
+getcontext().prec = 216
+sezimal_context.fractions_use_decimal = True
+
+ELEMENTARY_CHARGE = SezimalFraction('211_254_034_113 / 252_412_511_453_013_134_321_101_511_222_244_052')
+
+try:
+    electric_charge = (mass * area) / time / VACUUM_RESISTANCE
+    elementary_charges = round(electric_charge.decimal.sqrt() / ELEMENTARY_CHARGE.decimal, 0)
+
+    sezimal_context.sezimal_precision = PRECISION
+    sezimal_context.fractions_use_decimal = old_fractions_use_decimal
+
+    electric_charge = elementary_charges * ELEMENTARY_CHARGE
+except:
+    electric_charge = SezimalFraction('25_322_223_312_052_202_430_033_315_413_330 / 252_412_511_453_013_134_321_101_511_222_244_052')
