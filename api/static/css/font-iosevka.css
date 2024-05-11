@@ -1,40 +1,40 @@
 
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Iosevka Sezimal';
   font-weight: bold;
   font-style: italic;
-  src: local('iosevka-sezimal-bolditalic');
-  src: local('iosevka-sezimal-bolditalic'),
-       url("../font/iosevka-sezimal-bolditalic.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-bolditalic.ttf") format("truetype");
+  src: local('iosevka-sezimal-BoldItalic');
+  src: local('iosevka-sezimal-BoldItalic'),
+       url("../font/iosevka-sezimal-BoldItalic.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-BoldItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Iosevka Sezimal';
   font-weight: normal;
   font-style: italic;
-  src: local('iosevka-sezimal-italic');
-  src: local('iosevka-sezimal-italic'),
-       url("../font/iosevka-sezimal-italic.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-italic.ttf") format("truetype");
+  src: local('iosevka-sezimal-Italic');
+  src: local('iosevka-sezimal-Italic'),
+       url("../font/iosevka-sezimal-Italic.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-Italic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Iosevka Sezimal';
   font-weight: bold;
   font-style: normal;
-  src: local('iosevka-sezimal-bold');
-  src: local('iosevka-sezimal-bold'),
+  src: local('iosevka-sezimal-Bold');
+  src: local('iosevka-sezimal-Bold'),
        url("../font/iosevka-sezimal-bold.woff2") format("woff2"),
        url("../font/iosevka-sezimal-bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Iosevka Sezimal';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka');
   src: local('Iosevka'),
-       url("../font/iosevka-sezimal-regular.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-regular.ttf") format("truetype");
+       url("../font/iosevka-sezimal-Regular.woff2") format("woff2"),
+       url("../font/iosevka-sezimal-Regular.ttf") format("truetype");
 }

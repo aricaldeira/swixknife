@@ -84,3 +84,7 @@ span, p {
     padding: .25em;
     font-size: 0.8em;
 }
+
+.sezimal_digits {
+    font-family: 'Iosevka Sezimal';
+}

@@ -22,8 +22,8 @@ woff2_compress NotoSansSymbols2-Regular.ttf
 
 woff2_compress DSEG14Classic-Regular.ttf
 
-woff2_compress iosevka-sezimal-bold.ttf
-woff2_compress iosevka-sezimal-bolditalic.ttf
-woff2_compress iosevka-sezimal-italic.ttf
-woff2_compress iosevka-sezimal-regular.ttf
+woff2_compress iosevka-sezimal-Bold.ttf
+woff2_compress iosevka-sezimal-BoldItalic.ttf
+woff2_compress iosevka-sezimal-Italic.ttf
+woff2_compress iosevka-sezimal-Regular.ttf
 
