@@ -93,7 +93,7 @@ def get_weather_conditions(
                 functions.convert_percentage(observation['current']['cloud'])
 
         if 'vis_km' in observation['current']:
-            observation['current']['vis_pamapada'] = \
+            observation['current']['vis_shamapada'] = \
                 functions.convert_distance(observation['current']['vis_km'] * 10_000)
 
     #
@@ -131,8 +131,8 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'clouds' in conditions:
         weather._clouds = conditions['clouds']
 
-    if 'vis_pamapada' in conditions:
-        weather._visibility = conditions['vis_pamapada']
+    if 'vis_shamapada' in conditions:
+        weather._visibility = conditions['vis_shamapada']
 
     if 'pressure_chamadaba' in conditions:
         weather._pressure = conditions['pressure_chamadaba']

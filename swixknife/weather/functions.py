@@ -12,7 +12,7 @@ from ..sezimal import Sezimal, SezimalInteger
 from ..date_time import SezimalDateTime
 
 from ..units.length import KILOMETER_PER_HOUR_TO_VEGA, \
-    KILOMETER_TO_PAMAPADA, METER_TO_PADA, MILLIMETER_TO_DITIPADA
+    KILOMETER_TO_SHAMAPADA, MILLIMETER_TO_DITIPADA
 from ..units.temperature import CELSIUS_TO_TAPA, kelvin_to_celsius, tapa_to_gatika
 from ..units.force import PASCAL_TO_DABA
 from ..units.proportion import PERCENTAGE_TO_PERSIXNIFF
@@ -48,7 +48,7 @@ def convert_speed(speed: float) -> Sezimal:
 
 
 def convert_distance(distance: float) -> Sezimal:
-    return round((Decimal(str(distance)) / 10_000) * KILOMETER_TO_PAMAPADA, 0)
+    return round((Decimal(str(distance)) / 10_000) * KILOMETER_TO_SHAMAPADA, 0)
 
 
 def convert_pressure(pressure: float) -> Sezimal:
