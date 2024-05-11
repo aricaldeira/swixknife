@@ -74,20 +74,20 @@ Also, Sezimal objects have the following methods/properties:
     >>> x.decimal
     Decimal('11190.399734....  # a lot of decimal places
     >>> x.formatted_number
-    '12_3450.0123_45'
+    '123_450.012_345'
     >>> Sezimal(3.2).as_integer_ratio()
     (Sezimal('14'), Sezimal('3'))
     >>> Sezimal(14).factorial()
     Sezimal('2_0544_0000')
     >>> Sezimal(100).ln()  # Natural logarithm
-    Sezimal('3.3300_1235_4245_5414_4234_5013_3035_4200_0312')
+    Sezimal('3.330_012_354_245_541_442_345_013_303_542_000_312')
     >>> Sezimal(100).log()  # Sezimal (base six) logarithm
     Sezimal('2')
     >>> Sezimal(100).log2()  # Base 2 logarithm
-    Sezimal('5.1004_1200_4301_3301_2143_4143_2523_2423_5041')
+    Sezimal('5.100_412_004_301_330_121_434_143_252_324_235_041')
     >>> Sezimal(100).log14()  # Decimal (base ten) logarithm
-    Sezimal('1.3200_5450_3253_0505_0505_3032_5511_2323_0533')
+    Sezimal('1.320_054_503_253_050_505_053_032_551_123_230_533')
     >>> Sezimal(10_000).sqrt()  # Square root
     Sezimal('100.0')
-    >>> Sezimal(1.4430_0415).exp()  # Euler’s number elevated to the power
-    Sezimal('5.5555_5550_4330_0510_0220_2125_2222_0022_0112')
+    >>> Sezimal(1.443_004_15).exp()  # Euler’s number elevated to the power
+    Sezimal('5.555_555_504_330_051_002_202_125_222_200_220_112')
