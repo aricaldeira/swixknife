@@ -7,7 +7,7 @@ Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
 from .validation import validate_clean_sezimal, validate_clean_niftimal
-from .digit_conversion import default_niftimal_to_dedicated_digits, default_to_dedicated_digits
+from .digit_conversion import default_niftimal_to_sezimal_digits, default_to_sezimal_digits
 
 
 COMPRESS_PATTERN = re.compile('([0-5]{2})')
@@ -32,7 +32,7 @@ DECOMPRESS = {
 }
 
 
-def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated_digits: bool = False) -> str:
+def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, sezimal_digits: bool = False) -> str:
     number = validate_clean_sezimal(number)
 
     negative = False
@@ -71,8 +71,8 @@ def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated
             elif len(part) == 2:
                 niftimal_number += COMPRESS[part]
 
-    if dedicated_digits:
-        niftimal_number = default_niftimal_to_dedicated_digits(niftimal_number)
+    if sezimal_digits:
+        niftimal_number = default_niftimal_to_sezimal_digits(niftimal_number)
 
     if negative:
         niftimal_number = '-' + niftimal_number
@@ -80,7 +80,7 @@ def sezimal_to_niftimal(number: int | float | str | Decimal | Sezimal, dedicated
     return niftimal_number
 
 
-def niftimal_to_sezimal(number: str, dedicated_digits: bool = False) -> str:
+def niftimal_to_sezimal(number: str, sezimal_digits: bool = False) -> str:
     number = validate_clean_niftimal(number)
 
     if '.' in number:
@@ -101,7 +101,7 @@ def niftimal_to_sezimal(number: str, dedicated_digits: bool = False) -> str:
 
     sezimal_number = validate_clean_sezimal(sezimal_number)
 
-    if dedicated_digits:
-        sezimal_number = default_to_dedicated_digits(sezimal_number)
+    if sezimal_digits:
+        sezimal_number = default_to_sezimal_digits(sezimal_number)
 
     return sezimal_number

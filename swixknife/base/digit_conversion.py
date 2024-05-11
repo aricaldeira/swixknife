@@ -2,15 +2,15 @@
 import re
 
 SEZIMAL_DIGITS_MAP = (
-    ('0', '󱨀'), ('1', '󱨁'), ('2', '󱨂'), ('3', '󱨃'), ('4', '󱨄'), ('5', '󱨅'),
-    ('⁰', '󱨤'), ('¹', '󱨥'), ('²', '󱨦'), ('³', '󱨧'), ('⁴', '󱨨'), ('⁵', '󱨩'),
-    ('₀', '󱩈'), ('₁', '󱩉'), ('₂', '󱩊'), ('₃', '󱩋'), ('₄', '󱩌'), ('₅', '󱩍'),
+    ('0', '󱸀'), ('1', '󱸁'), ('2', '󱸂'), ('3', '󱸃'), ('4', '󱸄'), ('5', '󱸅'),
+    ('⁰', '󱸤'), ('¹', '󱸥'), ('²', '󱸦'), ('³', '󱸧'), ('⁴', '󱸨'), ('⁵', '󱸩'),
+    ('₀', '󱹈'), ('₁', '󱹉'), ('₂', '󱹊'), ('₃', '󱹋'), ('₄', '󱹌'), ('₅', '󱹍'),
 )
 DEFAULT_DIGITS = tuple(digit[0] for digit in SEZIMAL_DIGITS_MAP)
-DEDICATED_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
+SEZIMAL_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
 
-_DEFAULT_TO_DEDICATED_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: DEDICATED_DIGITS[i] for i in range(18)})
-_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({DEDICATED_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(18)})
+_DEFAULT_TO_SEZIMAL_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: SEZIMAL_DIGITS[i] for i in range(18)})
+_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({SEZIMAL_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(18)})
 
 NIFTIMAL_DIGITS_MAP = (
     ('0', '0', '0̃'), ('1', '1', '1̃'), ('2', '2','2̃'), ('3', '3', '3̃'), ('4', '4', '4̃'), ('5', '5','5̃'),
@@ -86,39 +86,39 @@ def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
     return number
 
 
-def default_to_dedicated_digits(number: str) -> str:
-    return number.translate(_DEFAULT_TO_DEDICATED_DIGITS_TT)
+def default_to_sezimal_digits(number: str) -> str:
+    return number.translate(_DEFAULT_TO_SEZIMAL_DIGITS_TT)
 
 
-def default_niftimal_to_dedicated_digits(number:str) -> str:
+def default_niftimal_to_sezimal_digits(number:str) -> str:
     number = default_niftimal_to_regularized_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
 def default_niftimal_to_regularized_digits(number:str) -> str:
     return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_NIFTIMAL_DIGITS)
 
 
-def default_niftimal_to_regularized_dedicated_digits(number:str) -> str:
+def default_niftimal_to_niftimal_digits(number:str) -> str:
     number = default_niftimal_to_regularized_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
 def default_niftimal_to_financial_digits(number:str) -> str:
     return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, FINANCIAL_NIFTIMAL_DIGITS)
 
 
-def default_niftimal_to_financial_dedicated_digits(number:str) -> str:
+def default_niftimal_to_financial_sezimal_digits(number:str) -> str:
     number = default_niftimal_to_financial_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
-def dedicated_to_default_digits(number: str) -> str:
+def sezimal_to_default_digits(number: str) -> str:
     return number.translate(_DEDICATED_TO_DEFAULT_DIGITS_TT)
 
 
 def dedicated_niftimal_to_default_digits(number: str) -> str:
-    number = dedicated_to_default_digits(number)
+    number = sezimal_to_default_digits(number)
     return _change_digits(number, REGULARIZED_NIFTIMAL_DIGITS, DEFAULT_NIFTIMAL_DIGITS)
 
 
@@ -130,35 +130,35 @@ def default_to_denominator_digits(number: str) -> str:
     return _change_digits(number, DEFAULT_DIGITS, DEFAULT_DENOMINATOR_DIGITS)
 
 
-def dedicated_to_numerator_digits(number: str) -> str:
-    number = dedicated_to_default_digits(number)
+def sezimal_to_numerator_digits(number: str) -> str:
+    number = sezimal_to_default_digits(number)
     number = default_to_numerator_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
-def dedicated_to_denominator_digits(number: str) -> str:
-    number = dedicated_to_default_digits(number)
+def sezimal_to_denominator_digits(number: str) -> str:
+    number = sezimal_to_default_digits(number)
     number = default_to_denominator_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
 def default_to_dedicated_numerator_digits(number: str) -> str:
     number = default_to_numerator_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
 def default_to_dedicated_denominator_digits(number: str) -> str:
     number = default_to_denominator_digits(number)
-    return default_to_dedicated_digits(number)
+    return default_to_sezimal_digits(number)
 
 
-def dedicated_to_default_numerator_digits(number: str) -> str:
-    number = dedicated_to_default_digits(number)
+def sezimal_to_default_numerator_digits(number: str) -> str:
+    number = sezimal_to_default_digits(number)
     return default_to_numerator_digits(number)
 
 
-def dedicated_to_default_denominator_digits(number: str) -> str:
-    number = dedicated_to_default_digits(number)
+def sezimal_to_default_denominator_digits(number: str) -> str:
+    number = sezimal_to_default_digits(number)
     return default_to_denominator_digits(number)
 
 

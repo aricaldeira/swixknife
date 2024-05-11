@@ -27,9 +27,9 @@ from zoneinfo import ZoneInfo
 from ..sezimal import Sezimal, SezimalInteger
 from ..dozenal import Dozenal, DozenalInteger
 from ..base import decimal_format, sezimal_format, \
-    sezimal_to_niftimal, default_to_dedicated_digits, \
-    default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
-    default_niftimal_to_regularized_dedicated_digits
+    sezimal_to_niftimal, default_to_sezimal_digits, \
+    default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
+    default_niftimal_to_niftimal_digits
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
 from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
 from .date_time_delta import SezimalDateTimeDelta
@@ -283,7 +283,7 @@ class SezimalDate:
                     value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
-                value = default_niftimal_to_regularized_dedicated_digits(value)
+                value = default_niftimal_to_niftimal_digits(value)
             elif '@' in token:
                 value = default_niftimal_to_regularized_digits(value)
 
@@ -338,7 +338,7 @@ class SezimalDate:
                     value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
-                value = default_to_dedicated_digits(value)
+                value = default_to_sezimal_digits(value)
 
             elif '?' in token:
                 value = locale.digit_replace(value)
@@ -414,7 +414,7 @@ class SezimalDate:
             if base in ['', '!', '?']:
                 year = locale.format_number(
                     year,
-                    dedicated_digits='!' in base,
+                    sezimal_digits='!' in base,
                     use_group_separator=True,
                     sezimal_places=0,
                 )
@@ -422,7 +422,7 @@ class SezimalDate:
             elif base in ['@', '@!', 'Z', 'Z?']:
                 year = locale.format_niftimal_number(
                     year,
-                    dedicated_digits='!' in base,
+                    sezimal_digits='!' in base,
                     regularized_digits='@' in base,
                     use_group_separator=True,
                     niftimal_places=0,

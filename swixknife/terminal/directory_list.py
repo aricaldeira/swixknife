@@ -22,7 +22,7 @@ class SezimalDirectoryList:
         self.is_decimal = False
         self.is_dozenal = False
         self.use_prefixes = True
-        self.use_dedicated_digits = False
+        self.use_sezimal_digits = False
         self.original_path = ''
 
         if directory_list is None:
@@ -137,9 +137,9 @@ class SezimalDirectoryList:
 
             else:
                 if file_info.is_directory:
-                    info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, dedicated_digits=self.use_dedicated_digits)
+                    info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, sezimal_digits=self.use_sezimal_digits)
                 else:
-                    info['size'] = sezimal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, dedicated_digits=self.use_dedicated_digits)
+                    info['size'] = sezimal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits)
 
             user_padding = max(user_padding, len(info['user']))
             group_padding = max(group_padding, len(info['group']))

@@ -16,13 +16,12 @@ Decimal = TypeVar('Decimal', bound='Decimal')
 
 class SezimalContext:
     def __init__(self):
-        # self.sezimal_precision = 30
         self.sezimal_precision = 33
-        # self.sezimal_precision = 1200
         self._locale = None
         self.show_recurring_digits = True
         self.fractions_use_decimal = False
         self.fractions_simplify = True
+        self.fractions_precision = None
         self.minimum_size = 0
 
     @property

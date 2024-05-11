@@ -19,14 +19,14 @@ from .sezimal_dozenal_conversion import sezimal_to_dozenal, dozenal_to_sezimal
 from .decimal_dozenal_conversion import decimal_to_dozenal
 from .dozenal_decimal_conversion import dozenal_to_decimal
 from .digit_conversion import (
-    default_to_dedicated_digits, default_niftimal_to_dedicated_digits,
-    default_niftimal_to_regularized_digits, default_niftimal_to_regularized_dedicated_digits,
-    default_niftimal_to_financial_digits, default_niftimal_to_financial_dedicated_digits,
-    dedicated_to_default_digits, dedicated_niftimal_to_default_digits,
+    default_to_sezimal_digits, default_niftimal_to_sezimal_digits,
+    default_niftimal_to_regularized_digits, default_niftimal_to_niftimal_digits,
+    default_niftimal_to_financial_digits, default_niftimal_to_financial_sezimal_digits,
+    sezimal_to_default_digits, dedicated_niftimal_to_default_digits,
     default_to_numerator_digits, default_to_denominator_digits,
-    dedicated_to_numerator_digits, dedicated_to_denominator_digits,
+    sezimal_to_numerator_digits, sezimal_to_denominator_digits,
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
-    dedicated_to_default_numerator_digits, dedicated_to_default_denominator_digits,
+    sezimal_to_default_numerator_digits, sezimal_to_default_denominator_digits,
     dozenal_letters_to_digits, dozenal_digits_to_letters,
 )
 from .formatting import (

@@ -41,6 +41,7 @@ _SUBTRACTION_MAP = _sezimal_maps.SUBTRACTION_MAP
 _SUBTRACTION_BORROWED = _sezimal_maps.SUBTRACTION_BORROWED
 _MULTIPLICATION_MAP = _sezimal_maps.MULTIPLICATION_MAP
 _RECIPROCAL_MAP = _sezimal_maps.RECIPROCAL_MAP
+#_RECIPROCAL_MAP = {}
 _FACTORIAL = _sezimal_maps.FACTORIAL
 _EXP = {}
 _LN = {}
@@ -127,7 +128,10 @@ class Sezimal:
 
     @property
     def formatted_number(self) -> str:
-        return sezimal_format(str(self), sezimal_places=Decimal(self._precision))
+        return sezimal_format(
+            str(self),
+            sezimal_places=Decimal(self._precision),
+        )
 
     @property
     def decimal(self) -> Decimal:
@@ -402,6 +406,9 @@ class Sezimal:
         return subtraction
 
     def __add__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__radd__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -430,12 +437,18 @@ class Sezimal:
         return Sezimal(res, _internal=True)
 
     def __radd__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__add__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
         return other_number.__add__(self)
 
     def __sub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__rsub__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -466,6 +479,9 @@ class Sezimal:
         return Sezimal(res, _internal=True)
 
     def __rsub__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__sub__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -624,6 +640,9 @@ class Sezimal:
         return multiplication
 
     def __mul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__rmul__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -647,6 +666,9 @@ class Sezimal:
         return Sezimal(res, _internal=True)._mult_div_finalizing()
 
     def __rmul__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__mul__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -773,7 +795,7 @@ class Sezimal:
 
         if self == 1:
             _RECIPROCAL_MAP[check] = division
-            # print(f"'{check}', ")
+            # print(f"""    '{check}': '{division}',""")
 
         if negative:
             division = '-' + division
@@ -787,6 +809,9 @@ class Sezimal:
         if hasattr(other_number, 'reciprocal'):
             reciprocal = other_number.reciprocal
         else:
+            if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+                return other_number.__rtruediv__(self)
+
             if type(other_number) != Sezimal:
                 other_number = Sezimal(other_number)
 
@@ -817,6 +842,9 @@ class Sezimal:
         # return Sezimal(res)._mult_div_finalizing()
 
     def __rtruediv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__truediv__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -861,10 +889,16 @@ class Sezimal:
         return quotient, remainder
 
     def __floordiv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__rfloordiv__(self)
+
         quotient, remainder = self.__divmod__(other_number)
         return quotient
 
     def __rfloordiv__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction) -> Self:
+        if type(other_number).__name__ in ('SezimalUnit', 'DecimalUnit', 'DozenalUnit'):
+            return other_number.__floordiv__(self)
+
         if type(other_number) != Sezimal:
             other_number = Sezimal(other_number)
 
@@ -1140,16 +1174,29 @@ class SezimalFraction(Sezimal):
         else:
             cleaned_denominator = validate_clean_sezimal(denominator)
 
+        old_precision = sezimal_context.sezimal_precision
+
+        if sezimal_context.fractions_precision:
+            sezimal_context.sezimal_precision = sezimal_context.fractions_precision
+
+        # self._numerator, self._denominator = \
+        #     self.__simplify(
+        #         Sezimal(cleaned_numerator),
+        #         Sezimal(cleaned_denominator),
+        #     )
         self._numerator, self._denominator = \
-            self.__simplify(
-                Sezimal(cleaned_numerator),
-                Sezimal(cleaned_denominator),
-            )
+            Sezimal(cleaned_numerator), \
+            Sezimal(cleaned_denominator)
 
         if sezimal_context.fractions_use_decimal:
             self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
+
         else:
             self._sezimal = self._numerator / self._denominator
+
+        if old_precision != sezimal_context.sezimal_precision:
+            self._sezimal = round(self._sezimal, old_precision)
+            sezimal_context.sezimal_precision = old_precision
 
         super().__init__(self._sezimal)
 
@@ -1396,40 +1443,51 @@ class SezimalFraction(Sezimal):
     def decimal_fraction(self):
         return DecimalFraction(*self.as_decimal_integer_ratio())
 
-    def simplify(self) -> FractionSelf:
-        num, den = self.__simplify(self.numerator, self.denominator, force=True)
+    def simplify(self, precision=None) -> FractionSelf:
+        num, den = self.__simplify(self.numerator, self.denominator, force=True, precision=precision)
 
         if num == self.numerator and den == self.denominator:
             return self
 
         return SezimalFraction(num, den)
 
-    def __simplify(self, num, den, force: bool = False):
+    def __simplify(self, num, den, force: bool = False, precision = None):
         if (not sezimal_context.fractions_simplify) and (not force):
             return num, den
 
-        num = num.decimal
-        den = den.decimal
+        if precision:
+            precision = int(SezimalInteger(precision).decimal)
+        else:
+            precision = getcontext().prec + 10
 
-        for factor in _sezimal_maps._PRIMES:
-            factor = Decimal(factor)
+        with localcontext() as context:
+            if precision < 16:
+                context.prec = 16
+            else:
+                context.prec = precision
 
-            if factor > min(abs(num), abs(den)):
-                break
+            num = num.decimal
+            den = den.decimal
 
-            while True:
-                num_test = num / factor
+            for factor in _sezimal_maps._PRIMES:
+                factor = Decimal(factor)
 
-                if num_test != int(num_test):
+                if factor > min(abs(num), abs(den)):
                     break
 
-                den_test = den / factor
+                while True:
+                    num_test = num / factor
 
-                if den_test != int(den_test):
-                    break
+                    if num_test != int(num_test):
+                        break
 
-                num = num_test
-                den = den_test
+                    den_test = den / factor
+
+                    if den_test != int(den_test):
+                        break
+
+                    num = num_test
+                    den = den_test
 
         return SezimalInteger(num), SezimalInteger(den)
 

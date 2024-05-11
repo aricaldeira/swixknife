@@ -6,7 +6,7 @@ from .. import Sezimal, SezimalInteger, SezimalDateTime, \
 from decimal import Decimal
 
 
-def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool = True, dedicated_digits: bool = False) -> str:
+def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool = True, sezimal_digits: bool = False) -> str:
     sezimal_places = SezimalInteger(sezimal_places)
 
     if len(str(value)) <= 4:
@@ -18,7 +18,7 @@ def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
             power -= 4
 
     if (not use_prefixes) or (power == 0) or (not unit):
-        return locale.format_number(value, sezimal_places=0, suffix=unit, dedicated_digits=dedicated_digits)
+        return locale.format_number(value, sezimal_places=0, suffix=unit, sezimal_digits=sezimal_digits)
 
     value = value / (Sezimal(10) ** Sezimal(Decimal(power)))
     unit = sezimal_exponent_to_symbol(Decimal(power)) + unit
@@ -27,7 +27,7 @@ def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
     # power = power.replace('3', '³').replace('4', '⁴').replace('5', '⁵')
     # unit = power + unit
     # unit = Sezimal(Decimal(power)).formatted_number + '↑' + unit
-    return locale.format_number(value, sezimal_places, suffix=unit, dedicated_digits=dedicated_digits)
+    return locale.format_number(value, sezimal_places, suffix=unit, sezimal_digits=sezimal_digits)
 
 
 def decimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, decimal_places: SezimalInteger = 0, use_prefixes: bool = True) -> str:

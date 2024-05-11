@@ -17,8 +17,8 @@ from ...localization import sezimal_locale, SezimalLocale
 from ...sezimal import Sezimal, SezimalInteger
 from ...functions import SezimalRange
 from .conversion import other_calendar_date_to_ordinal_date
-from ...base import default_to_dedicated_digits, \
-    default_niftimal_to_dedicated_digits
+from ...base import default_to_sezimal_digits, \
+    default_niftimal_to_sezimal_digits
 from ...user_preferences import user_preferences
 
 
@@ -592,12 +592,12 @@ class SezimalCalendar:
                     age = age.dozenal_formatted_number
                 elif '@' in self._day_format:
                     if '!' in self._day_format:
-                        age = default_niftimal_to_dedicated_digits(age.niftimal_formatted_number)
+                        age = default_niftimal_to_sezimal_digits(age.niftimal_formatted_number)
                     else:
                         age = age.niftimal_formatted_number
 
                 elif '!' in self._day_format:
-                    age = default_to_dedicated_digits(str(age))
+                    age = default_to_sezimal_digits(str(age))
 
                 if '?' in self._day_format:
                     age = self._locale.digit_replace(str(age))

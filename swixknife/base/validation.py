@@ -8,7 +8,7 @@ SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
 Decimal = TypeVar('Decimal', bound='Decimal')
 
 import re
-from swixknife.base.digit_conversion import dedicated_to_default_digits, \
+from swixknife.base.digit_conversion import sezimal_to_default_digits, \
     dedicated_niftimal_to_default_digits, dozenal_digits_to_letters, \
     dozenal_letters_to_digits
 
@@ -153,7 +153,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     number = str(number)
 
     cleaned_number = number.translate(_CLEAN_SPACES)
-    cleaned_number = dedicated_to_default_digits(cleaned_number)
+    cleaned_number = sezimal_to_default_digits(cleaned_number)
 
     if not _VALID_SEZIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a sezimal number')

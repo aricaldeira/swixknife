@@ -6,7 +6,7 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..constants import E, PI, TAU, GOLDEN_RATIO
-from ..base import default_to_dedicated_digits, decimal_to_sezimal, \
+from ..base import default_to_sezimal_digits, decimal_to_sezimal, \
     validate_clean_sezimal, validate_clean_decimal, \
     sezimal_format, decimal_format, \
     RECURRING_DIGITS_NOTATION_NONE, \
@@ -110,7 +110,7 @@ _NICE_OPERATION = {
 
 class SezimalCalculator:
     def __init__(self, expression: str = '0', locale: str | SezimalLocale = None):
-        self.dedicated_digits = False
+        self.sezimal_digits = False
         self.decimal = False
         self.p_notation = True
         self.precision = 3
@@ -171,8 +171,8 @@ class SezimalCalculator:
 
     @property
     def display(self):
-        if self.dedicated_digits:
-            return default_to_dedicated_digits(self._display)
+        if self.sezimal_digits:
+            return default_to_sezimal_digits(self._display)
         else:
             return self._display
 
@@ -183,7 +183,7 @@ class SezimalCalculator:
     def _format_sezimal(self, number, precision: int = None, display: bool = False):
         params = {
             'sezimal_places': 0,
-            'dedicated_digits': self.dedicated_digits,
+            'sezimal_digits': self.sezimal_digits,
             'recurring_digits_notation': 'p',
         }
 
@@ -191,7 +191,7 @@ class SezimalCalculator:
             params['sezimal_separator'] = '.'
             params['group_separator'] = '_'
             params['fraction_group_separator'] = '_'
-            params['dedicated_digits'] = False
+            params['sezimal_digits'] = False
             params['typographical_negative'] = False
             p_notation = sezimal_format(number, **params)
 
@@ -302,13 +302,15 @@ class SezimalCalculator:
         params['decimal_places'] = precision
         params['recurring_digits_notation'] = RECURRING_DIGITS_NOTATION_NONE
 
+        number = number.quantize(Decimal(f'1e{int(precision)}'))
+
         if not display:
             return decimal_format(
-                round(number, int(params['decimal_places'])),
+                number,
                 **params
             )
         return self.locale.format_decimal_number(
-                round(number, int(params['decimal_places'])),
+                number,
                 **params
             )
 

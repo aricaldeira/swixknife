@@ -24,9 +24,9 @@ from decimal import Decimal
 from ..sezimal import Sezimal, SezimalInteger
 from ..dozenal import Dozenal, DozenalInteger
 from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
-from ..base import sezimal_format, sezimal_to_niftimal, default_to_dedicated_digits, \
-    default_niftimal_to_dedicated_digits, default_niftimal_to_regularized_digits, \
-    default_niftimal_to_regularized_dedicated_digits, \
+from ..base import sezimal_format, sezimal_to_niftimal, default_to_sezimal_digits, \
+    default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
+    default_niftimal_to_niftimal_digits, \
     sezimal_to_dozenal
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
@@ -301,7 +301,7 @@ class SezimalTime:
             value = sezimal_to_niftimal(value)
 
             if '!' in token:
-                value = default_niftimal_to_regularized_dedicated_digits(value)
+                value = default_niftimal_to_niftimal_digits(value)
             elif '@' in token:
                 value = default_niftimal_to_regularized_digits(value)
 
@@ -319,7 +319,7 @@ class SezimalTime:
                 value = value.zfill(int(SezimalInteger(size)))
 
             if '!' in token:
-                value = default_to_dedicated_digits(value)
+                value = default_to_sezimal_digits(value)
 
             elif '?' in token:
                 value = locale.digit_replace(value)
@@ -378,13 +378,13 @@ class SezimalTime:
                 uta = locale.format_niftimal_number(
                     SezimalInteger(uta),
                     niftimal_places=0,
-                    dedicated_digits='!' in base,
+                    sezimal_digits='!' in base,
                     regularized_digits='@' in base,
                 )
                 posha = locale.format_niftimal_number(
                     SezimalInteger(posha),
                     niftimal_places=0,
-                    dedicated_digits='!' in base,
+                    sezimal_digits='!' in base,
                     regularized_digits='@' in base,
                 )
 
@@ -433,7 +433,7 @@ class SezimalTime:
             text = f'{sign}{uta}{colon}{posha}'
 
             if '!' in token:
-                text = default_to_dedicated_digits(text)
+                text = default_to_sezimal_digits(text)
 
             elif '?' in token:
                 text = locale.digit_replace(text)

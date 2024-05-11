@@ -19,11 +19,11 @@ from .sezimal_niftimal_conversion import sezimal_to_niftimal, niftimal_to_sezima
 from .sezimal_dozenal_conversion import sezimal_to_dozenal, dozenal_to_sezimal
 from .dozenal_decimal_conversion import dozenal_to_decimal
 from .digit_conversion import (
-    default_to_dedicated_digits,
+    default_to_sezimal_digits,
     default_to_numerator_digits, default_to_denominator_digits,
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
     default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
-    default_niftimal_to_regularized_dedicated_digits, default_niftimal_to_financial_dedicated_digits,
+    default_niftimal_to_niftimal_digits, default_niftimal_to_financial_sezimal_digits,
     dozenal_letters_to_digits,
 )
 from .context import sezimal_context
@@ -69,7 +69,7 @@ def sezimal_format(
         subgroup_separator: str = '',
         fraction_group_separator: str = SEPARATOR_UNDERSCORE,
         fraction_subgroup_separator: str = '',
-        dedicated_digits: bool = False,
+        sezimal_digits: bool = False,
         typographical_negative: bool = False,
         minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
         prefix: str = '',
@@ -197,8 +197,8 @@ def sezimal_format(
         formatted_number += sezimal_separator
         formatted_number += fraction
 
-    if dedicated_digits:
-        formatted_number = default_to_dedicated_digits(formatted_number)
+    if sezimal_digits:
+        formatted_number = default_to_sezimal_digits(formatted_number)
 
     formatted_number = _finish_formatting(
         formatted_number, prefix, suffix,
@@ -244,7 +244,7 @@ def _finish_formatting(formatted_number: str, prefix: str, suffix: str, positive
     return formatted_number
 
 
-def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal | SezimalInteger, denominator: str | int | float | Decimal | Sezimal | SezimalInteger, dedicated_digits: bool = False) -> str:
+def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal | SezimalInteger, denominator: str | int | float | Decimal | Sezimal | SezimalInteger, sezimal_digits: bool = False) -> str:
     if type(numerator).__name__ == 'Decimal':
         numerator = decimal_to_sezimal(numerator)
 
@@ -255,7 +255,7 @@ def sezimal_format_fraction(numerator: str | int | float | Decimal | Sezimal | S
 
     denominator = validate_clean_sezimal(str(denominator))
 
-    if dedicated_digits:
+    if sezimal_digits:
         numerator = default_to_dedicated_numerator_digits(numerator)
         denominator = default_to_dedicated_denominator_digits(denominator)
 
@@ -530,7 +530,7 @@ def niftimal_format(
         fraction_group_separator: str = SEPARATOR_UNDERSCORE,
         fraction_subgroup_separator: str = '',
         regularized_digits: bool = True,
-        dedicated_digits: bool = False,
+        sezimal_digits: bool = False,
         financial_digits: bool = False,
         typographical_negative: bool = False,
         minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
@@ -651,14 +651,14 @@ def niftimal_format(
         formatted_number += fraction
 
     if financial_digits:
-        if dedicated_digits:
-            formatted_number = default_niftimal_to_financial_dedicated_digits(formatted_number)
+        if sezimal_digits:
+            formatted_number = default_niftimal_to_financial_sezimal_digits(formatted_number)
         else:
             formatted_number = default_niftimal_to_financial_digits(formatted_number)
 
     elif regularized_digits:
-        if dedicated_digits:
-            formatted_number = default_niftimal_to_regularized_dedicated_digits(formatted_number)
+        if sezimal_digits:
+            formatted_number = default_niftimal_to_niftimal_digits(formatted_number)
         else:
             formatted_number = default_niftimal_to_regularized_digits(formatted_number)
 
