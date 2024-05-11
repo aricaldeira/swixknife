@@ -6,6 +6,10 @@ from swixknife.localization import sezimal_locale
 from swixknife.base import sezimal_format, decimal_format
 from collections import OrderedDict
 
+from swixknife.sezimal import _RECIPROCAL_MAP
+
+sezimal_context.sezimal_precision = 4000
+
 #
 # Time fraction:
 # 1 day in seconds ÷ 10¹²
@@ -43,7 +47,8 @@ GRAVITY = SezimalFraction('44_220 / 2_521')
 # https://www.wolframalpha.com/input?i=density+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+15+digits+precision
 # Limited to 15_dec digits precision
 #
-DENSITY = SezimalFraction('13_455_001_552_110_541_335 / 2_043_221_010_301_344')
+# DENSITY = SezimalFraction('13_455_001_552_110_541_335 / 2_043_221_010_301_344')
+DENSITY = SezimalFraction('5_223_045_303_000_304_351 / 1_100_315_423_005_012')
 
 #
 # The same density, but with more precision
@@ -60,7 +65,8 @@ DENSITY = SezimalFraction('13_455_001_552_110_541_335 / 2_043_221_010_301_344')
 # https://www.wolframalpha.com/input?i=specific+heat+of+water+at+293.150547159702806710267922561179315+K+and+1+atm+with+15+digits+precision
 # Limited to 15_dec digits precision
 #
-SPECIFIC_HEAT = SezimalFraction('224_553_132_435_043_304 / 4_332_142_412_144')
+# SPECIFIC_HEAT = SezimalFraction('105_110_422_141_212_423_455 / 2_043_221_010_301_344')
+SPECIFIC_HEAT = SezimalFraction('113_144_132_111_030_100_551 / 2_201_035_250_014_024')
 
 #
 # The same specific heat, but with more precision
@@ -114,13 +120,14 @@ class ShastadariUnits:
         self.intensity = self.power / self.area  # W/m² = kg/s³
         self.tension = self.force__weight / self.length  # N/m = kg/s²
         self.pressure = self.force__weight / self.area  # Pa = kg/m/s²
+        self.atmosphere = self.pressure / 2_101_033
         self.dynamic_viscosity = self.mass / self.length / self.time  # kg/m/s
         self.kinectic_viscosity = self.area / self.time  # m³/s
         self.heatability = SPECIFIC_HEAT  # J/K/kg = m²/s²/K
         self.heat_capacity__entropy = SPECIFIC_HEAT * self.mass  # J/K = kg·m²/s²/K
-        # self.absolute_temperature = self.energy__work__potential__heat / self.heat_capacity__entropy
+        self.absolute_temperature = self.energy__work__potential__heat / self.heat_capacity__entropy
         self.absolute_temperature = SezimalFraction('41_143 / 12_523_221_412')  # K
-        # self.common_temperature = self.absolute_temperature * 100_000
+        self.common_temperature = self.absolute_temperature * 100_000
         self.common_temperature = SezimalFraction('132_523_430 / 320_113_505')  # °C
         self.gravitivity = self.influence / self.mass / self.mass  # m³/s²/kg
 
@@ -160,11 +167,11 @@ class ShastadariUnits:
 
         self.luminous_energy = self.energy__work__potential__heat * LUMINOUS_EFICACY  # lm·s
         self.luminous_flux = self.luminous_energy / self.time  # lm
-        self.luminous_intensity = self.luminous_flux  # cd
         self.luminous_illuminance_emitance = self.luminous_flux / self.area  # lx = lm/m²
-        self.luminous_exposure = self.luminous_illuminance_emitance * self.time  # lx·s = lm·s/m²
         self.luminous_energy_density = self.luminous_energy / self.volume  # lm·s/m³
+        self.luminous_exposure = self.luminous_illuminance_emitance * self.time  # lx·s = lm·s/m²
         self.luminous_eficacy = LUMINOUS_EFICACY  # lm/W = lm·s³/kg/m²
+        self.luminous_intensity = self.luminous_flux  # cd
         self.luminous_luminance = self.luminous_intensity / self.area  # cd/m²
 
     def report(self, locale: str = None) -> str:
@@ -228,7 +235,8 @@ class ShastadariUnits:
         for unit, symbol in UNITS.items():
             name = unit.replace('__', '; ').replace('_', ' ').capitalize()
             value = getattr(self, unit)
-            print(f'{name} [ {symbol} ]|{sezimal_format(value, sezimal_places=33, fraction_group_separator="_", recurring_digits_notation=False)}|{decimal_format(value.decimal, decimal_places=15, fraction_group_separator="_", recurring_digits_notation=False)}|{value.formatted_number}|{value.decimal_formatted_number}'.replace('_', ' '))
+            SezimalInteger(1) / value.sezimal
+            # print(f'{name} [ {symbol} ]|{sezimal_format(value, sezimal_places=33, fraction_group_separator="_", recurring_digits_notation=False)}|{decimal_format(value.decimal, decimal_places=15, fraction_group_separator="_", recurring_digits_notation=False)}|{value.formatted_number}|{value.decimal_formatted_number}'.replace('_', ' '))
 
         print()
         print()
@@ -236,13 +244,42 @@ class ShastadariUnits:
         for unit, symbol in UNITS.items():
             name = unit.replace('__', '; ').replace('_', ' ').capitalize()
             value = getattr(self, unit).reciprocal
-            print(f'{name} [ {symbol} ]|{sezimal_format(value, sezimal_places=33, fraction_group_separator="_", recurring_digits_notation=False)}|{decimal_format(value.decimal, decimal_places=15, fraction_group_separator="_", recurring_digits_notation=False)}|{value.formatted_number}|{value.decimal_formatted_number}'.replace('_', ' '))
+            SezimalInteger(1) / value.sezimal
+            # print(f'{name} [ {symbol} ]|{sezimal_format(value, sezimal_places=33, fraction_group_separator="_", recurring_digits_notation=False)}|{decimal_format(value.decimal, decimal_places=15, fraction_group_separator="_", recurring_digits_notation=False)}|{value.formatted_number}|{value.decimal_formatted_number}'.replace('_', ' '))
 
 
 if __name__ == '__main__':
-
     su = ShastadariUnits()
-    su.report('en')
+    # su.report('en')
+
+    new_map = {}
+
+    arq = open('/home/ari/mapa.py', 'w')
+
+    for i in _RECIPROCAL_MAP:
+        val = Sezimal(i).decimal
+
+        new_map[val] = [i, _RECIPROCAL_MAP[i]]
+
+
+    for i in sorted(new_map.keys()):
+        val, div = new_map[i]
+
+        if '.' in val:
+            continue
+
+        if len(val) <= 4:
+            continue
+
+        if val.replace('0', '') == '1':
+            continue
+
+        if '_' not in div:
+            div = round(Sezimal(div), 1200).formatted_number
+
+        arq.write(f"""    '{val}': '{div}',\n""")
+
+
     # caloria = (su.energy_work_potential_heat / su.temperature) / su.mass
     # print(caloria, caloria.sezimal, caloria.decimal)
     # caloria = SPECIFIC_HEAT
