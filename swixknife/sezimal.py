@@ -131,6 +131,7 @@ class Sezimal:
         return sezimal_format(
             str(self),
             sezimal_places=Decimal(self._precision),
+            sezimal_digits=sezimal_context.sezimal_digits,
         )
 
     @property

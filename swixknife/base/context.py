@@ -23,6 +23,7 @@ class SezimalContext:
         self.fractions_simplify = True
         self.fractions_precision = None
         self.minimum_size = 0
+        self.sezimal_digits = False
 
     @property
     def precision(self) -> SezimalInteger:
