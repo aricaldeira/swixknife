@@ -18,7 +18,7 @@ parser.add_argument('-NH', '--northern-hemisphere', dest='northern', action=argp
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date')
 parser.add_argument('-s', '--date', default=None, nargs='?', help='Sezimal date')
 parser.add_argument('-tz', '--time-zone', dest='time_zone', default=None, nargs='?', help='Time zone')
-parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-SD', '--sezimal-digits', dest='sezimal_digits', action=argparse.BooleanOptionalAction, help='Use sezimal digits')
 parser.add_argument('-LFWD', '--locale-first-weekday', dest='locale_first_weekday', action=argparse.BooleanOptionalAction, help='Use locale’s first weekday')
 parser.add_argument('-ET', '--exclude-time', dest='exclude_time', action=argparse.BooleanOptionalAction, help='Don’t show time')
 parser.add_argument('-EE', '--exclude-events', dest='exclude_events', action=argparse.BooleanOptionalAction, help='Don’t show events')
@@ -73,7 +73,7 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
 
     elif arguments.niftimal:
-        if arguments.dedicated_digits:
+        if arguments.sezimal_digits:
             calendar_parameters['day_format'] = '#@!-d'
             calendar_parameters['month_format'] = '#M'
             calendar_parameters['year_format'] = '#@!y'
@@ -98,7 +98,7 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
         calendar_parameters['date_format'] = locale.ISO_DATE_FORMAT
 
     else:
-        if arguments.dedicated_digits:
+        if arguments.sezimal_digits:
             calendar_parameters['day_format'] = '#!-d'
             calendar_parameters['month_format'] = '#M'
             calendar_parameters['year_format'] = '#!Y'

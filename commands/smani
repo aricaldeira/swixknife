@@ -17,7 +17,7 @@ parser.add_argument('-S', '--satoshi', dest='satoshi', action=argparse.BooleanOp
 parser.add_argument('-B', '--bitcoin', dest='bitcoin', action=argparse.BooleanOptionalAction, help='Use bitcoin instead of mani')
 parser.add_argument('-C', '--bits', dest='bits', action=argparse.BooleanOptionalAction, help='Use bits/microbitcoin instead of mani')
 parser.add_argument('-U', '--usd', dest='usd', action=argparse.BooleanOptionalAction, help='Show also USD rate')
-parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-SD', '--sezimal-digits', dest='sezimal_digits', action=argparse.BooleanOptionalAction, help='Use sezimal digits')
 
 
 from swixknife import sezimal_locale
@@ -128,15 +128,15 @@ if __name__ == '__main__':
 
     elif arguments.niftimal or arguments.financial:
         if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
-            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, niftimal_places=0, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits, financial_digits=arguments.financial)
+            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, niftimal_places=0, prefix=mani_symbol, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
         else:
-            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits, financial_digits=arguments.financial)
+            mani_formatted = locale.format_niftimal_number(mani_amount_to_format, prefix=mani_symbol, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
 
     else:
         if mani_amount_to_format == 1 or mani_symbol in ('₷', 'ș'):
-            mani_formatted = locale.format_number(mani_amount_to_format, sezimal_places=0, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
+            mani_formatted = locale.format_number(mani_amount_to_format, sezimal_places=0, prefix=mani_symbol, sezimal_digits=arguments.sezimal_digits)
         else:
-            mani_formatted = locale.format_number(mani_amount_to_format, prefix=mani_symbol, dedicated_digits=arguments.dedicated_digits)
+            mani_formatted = locale.format_number(mani_amount_to_format, prefix=mani_symbol, sezimal_digits=arguments.sezimal_digits)
 
     dc = mani.mani_to_decimal_currency(mani_amount)
     dc_prefix = mani.decimal_symbol
@@ -153,12 +153,12 @@ if __name__ == '__main__':
         usd_formatted = locale.format_dozenal_number(usd.decimal, prefix='US$')
 
     elif arguments.niftimal or arguments.financial:
-        dc_formatted = locale.format_niftimal_number(dc.decimal, prefix=dc_prefix, dedicated_digits=arguments.dedicated_digits, financial_digits=arguments.financial)
-        usd_formatted = locale.format_niftimal_number(usd.decimal, prefix='US$', dedicated_digits=arguments.dedicated_digits, financial_digits=arguments.financial)
+        dc_formatted = locale.format_niftimal_number(dc.decimal, prefix=dc_prefix, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
+        usd_formatted = locale.format_niftimal_number(usd.decimal, prefix='US$', sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
 
     else:
-        dc_formatted = locale.format_number(dc, prefix=dc_prefix, dedicated_digits=arguments.dedicated_digits)
-        usd_formatted = locale.format_number(usd, prefix='US$', dedicated_digits=arguments.dedicated_digits)
+        dc_formatted = locale.format_number(dc, prefix=dc_prefix, sezimal_digits=arguments.sezimal_digits)
+        usd_formatted = locale.format_number(usd, prefix='US$', sezimal_digits=arguments.sezimal_digits)
 
     if arguments.usd:
         print(f'{mani_formatted}: <b>{dc_formatted}</b> / {usd_formatted}')

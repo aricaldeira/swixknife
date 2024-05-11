@@ -7,7 +7,7 @@ parser.add_argument('-f', '--format', default=None, nargs='?', help='Format')
 parser.add_argument('-l', '--locale', default=None, nargs='?', help='Locale')
 parser.add_argument('-i', '--iso', default=None, nargs='?', help='ISO/Gregorian date and time')
 parser.add_argument('-tz', '--timezone', default=None, nargs='?', help='Time zone')
-parser.add_argument('-DD', '--dedicated-digits', dest='dedicated_digits', action=argparse.BooleanOptionalAction, help='Use dedicated digits')
+parser.add_argument('-SD', '--sezimal-digits', dest='sezimal_digits', action=argparse.BooleanOptionalAction, help='Use sezimal digits')
 parser.add_argument('-LC', '--lower-case', dest='lower_case', action=argparse.BooleanOptionalAction, help='Output all in lower case')
 parser.add_argument('-UC', '--upper-case', dest='upper_case', action=argparse.BooleanOptionalAction, help='Output all in upper case')
 
@@ -41,9 +41,9 @@ if __name__ == '__main__':
 
     dt = sdt.format(formato, locale)
 
-    if arguments.dedicated_digits:
-        dt = dt.replace('0', '󱨀').replace('1', '󱨁').replace('2', '󱨂')
-        dt = dt.replace('3', '󱨃').replace('4', '󱨄').replace('5', '󱨅')
+    if arguments.sezimal_digits:
+        dt = dt.replace('0', '󱸀').replace('1', '󱸁').replace('2', '󱸂')
+        dt = dt.replace('3', '󱸃').replace('4', '󱸄').replace('5', '󱸅')
 
     if arguments.lower_case:
         print(dt.lower())
