@@ -1,13 +1,13 @@
 
-__all__ = ('locale_info',)
-
 from main import app
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
 from decimal import Decimal
-
-from main import app
+from swixknife import Sezimal, SezimalRange, SezimalInteger
+from swixknife.units.time import UTA_TO_HOUR
+from swixknife.units.temperature import TAPA_TO_CELSIUS
+from swixknife.weather.weather import SezimalWeather
 
 
 @app.route('/long-now')
@@ -22,7 +22,7 @@ def api_long_now(locale: str = None, time_zone: str = None) -> str:
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
 
-    text = open('long-now.html').read()
+    text = open('template/long-now.html').read()
 
     date_format = locale.DATE_TIME_LONG_FORMAT.replace(locale.TIME_FORMAT, '')
 
@@ -65,7 +65,7 @@ def api_manifest(base: str = 'now', locale: str = None, time_zone: str = None) -
     url = _manifest_url(base, locale, time_zone)
     url = url.replace('___', '/')
     url = url.replace('__', '/')
-    text = open('manifest.json').read()
+    text = open('template/manifest.json').read()
     return eval(f'f"""{text}"""')
 
 
@@ -81,7 +81,7 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
 
-    text = open('now.html').read()
+    text = open('template/now.html').read()
 
     date_format = locale.DATE_FORMAT
 
@@ -139,7 +139,7 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
 
-    text = open('agòra.html').read()
+    text = open('template/agòra.html').read()
 
     date_format = locale.DATE_FORMAT
 
@@ -202,7 +202,7 @@ def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
 
-    text = open('decimal-now.html').read()
+    text = open('template/decimal-now.html').read()
 
     date_format = locale.DATE_FORMAT
 
@@ -233,7 +233,7 @@ def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
 
-    text = open('dozenal-now.html').read()
+    text = open('template/dozenal-now.html').read()
 
     date_format = locale.DATE_FORMAT
 

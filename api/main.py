@@ -14,6 +14,7 @@ app.json.sort_keys = False
 
 from locale_info import *
 from number_conversion import *
+from now import *
 
 
 @app.route('/')

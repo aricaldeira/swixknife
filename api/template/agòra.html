@@ -44,7 +44,7 @@
             </table>
             <span id="portrait_content" hidden>
                 <span id="sezimal_time_pt" class="sezimal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
-                <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}</span><br/>
+                <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}<br/><span class="sezimal_digits">{date_time.format(date_format.replace("#", "#@!").replace('/', '‐'), locale)}</span></span><br/>
                 <span data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span><br/>
                 <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
                 <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
