@@ -20,11 +20,11 @@ The Sezimal Date and Time class gives you:
 *   1 posha is divided into 100 36 agrimas (sezimal seconds)
 *   1 agrima is divided into 100 36 anugas (sezimal centiseconds);
 *   1 anuga is divided into 100 36 bodas (sezimal milliseconds)
-*   1 boda is divided into 1 0000 0000 1 679 616 ekaditibodas (sezimal nanoseconds)
+*   1 boda is divided into 100 000 000 1 679 616 shaditibodas (sezimal nanoseconds)
 
 Example:
 
-     This page was last rendered on 131355-20-25 01:25:30.441524103005 UTC 2023-12-20 00:59:28.123355 UTC
+     This page was last rendered on 213211-20-25 01:25:30.441524103005 UTC 2023-12-20 00:59:28.123355 UTC
 
 Sezimal date and time formatting is much like using the [strftime in Python](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior), but uses a extended set of format tags, all starting with #, whereas strftime uses %;
 
@@ -66,16 +66,16 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
             a - agrima, the third sezimal division of the day, the sezimal second, with 2 digits (00 - 55 36);
             n - anuga, the fourth sezimal division of the day, the sezimal centisecond, with 2 digits (00 - 55 36);
             b - boda, the fifth sezimal division of the day, the sezimal millisecond, with 2 digits (00 - 55 36);
-            e - ekaditiboda, the sezimal nanosecond, with 12 8 digits (0000000000 - 55555555 1 679 616);
+            x - shaditiboda, the sezimal nanosecond, with 12 8 digits (0000000000 - 55555555 1 679 616);
 
         @ - optional; uses base 100 36, also known as [niftimal](https://www.seximal.net/hexaseximal);
             with regularized niftimal digits, using diacritics:
                 012345
                 0̇1̇2̇3̇4̇5̇ (6789AB) ˙ means 1
                 0̈1̈2̈3̈4̈5̈ (CDEFGH) ¨ means 2
-                0̊1̊2̊3̊4̊5̊ (IJKLMN)  ̊ resembles top part of 󱨃, see below
-                0̄1̄2̄3̄4̄5̄ (OPQRST)  ̄ resembles top part of 󱨄, see below
-                0̆1̆2̆3̆4̆5̆ (UVWXYZ)  ̆ resembles bottom part of 󱨅, see below;
+                0̊1̊2̊3̊4̊5̊ (IJKLMN)  ̊ resembles top part of 󱸃, see below
+                0̄1̄2̄3̄4̄5̄ (OPQRST)  ̄ resembles top part of 󱸄, see below
+                0̆1̆2̆3̆4̆5̆ (UVWXYZ)  ̆ resembles bottom part of 󱸅, see below;
 
         Z - optional; uses base 100 36, also known as [niftimal](https://www.seximal.net/hexaseximal),
             using decimal digits from 10 6 up to 13 9,
@@ -91,14 +91,14 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
 
         ↋ - optional; uses dozenal (twelve) base with Pitman digits ↊ (14) and ↋ (15);
 
-        ! - optional; uses sezimal dedicated digits 󱨀󱨁󱨂󱨃󱨄󱨅 (012345);
+        ! - optional; uses sezimal digits 󱸀󱸁󱸂󱸃󱸄󱸅 (012345);
             can be used alone, or paired with @ to give:
-                󱨀󱨁󱨂󱨃󱨄󱨅 (012345)
-                󱨀̇󱨁̇󱨂̇󱨃̇󱨄̇󱨅̇ (6789AB) ˙ means 1
-                󱨀̈󱨁̈󱨂̈󱨃̈󱨄̈󱨅̈ (CDEFGH) ¨ means 2
-                󱨀̊󱨁̊󱨂̊󱨃̊󱨄̊󱨅̊ (IJKLMN)  ̊ resembles top part of 󱨃
-                󱨀̄󱨁̄󱨂̄󱨃̄󱨄̄󱨅̄ (OPQRST)  ̄ resembles top part of 󱨄
-                󱨀̆󱨁̆󱨂̆󱨃̆󱨄̆󱨅̆ (UVWXYZ)  ̆ resembles bottom part of 󱨅;
+                󱸀󱸁󱸂󱸃󱸄󱸅 (012345)
+                󱸀̇󱸁̇󱸂̇󱸃̇󱸄̇󱸅̇ (6789AB) ˙ means 1
+                󱸀̈󱸁̈󱸂̈󱸃̈󱸄̈󱸅̈ (CDEFGH) ¨ means 2
+                󱸀̊󱸁̊󱸂̊󱸃̊󱸄̊󱸅̊ (IJKLMN)  ̊ resembles top part of 󱸃
+                󱸀̄󱸁̄󱸂̄󱸃̄󱸄̄󱸅̄ (OPQRST)  ̄ resembles top part of 󱸄
+                󱸀̆󱸁̆󱸂̆󱸃̆󱸄̆󱸅̆ (UVWXYZ)  ̆ resembles bottom part of 󱸅;
 
         ? - optional; uses localized digits for some locales (Arabic, Farsi, Hindi etc.);
             can be used alone, or paired with Z, 9 and ↋;
@@ -110,16 +110,16 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
         > - optional, only paired with y; only the last 3 digits of the year (2 digits for other bases);
 
     Examples:
-        #y-#m-#d #u:#p:#a        → 131355-20-25 01:25:30
-        #>y-#m-#d #u:#p:#a       → 000355-20-25 01:25:30
-        #!y-#!m-#!d #!u:#!p:#!a  → 󱨁󱨃󱨁󱨃󱨅󱨅-󱨂󱨀-󱨂󱨅 󱨀󱨁:󱨂󱨅:󱨃󱨀
-        #@y-#@m-#@d #@u:#@p:#@a  → 3̇3̇5̆-0̈-5̈ 1:5̈:0̊
-        #@>y-#@m-#@d #@u:#@p:#@a → 03̇5̆-0̈-5̈ 1:5̈:0̊
-        #Zy-#Zm-#Zd #Zu:#Zp:#Za  → 99Z-C-H 1:H:I
-        #Z>y-#Zm-#Zd #Zu:#Zp:#Za → 9Z-C-H 1:H:I
-        #9-y-#9m-#9d #9u:#9p:#9a → 12023-12-17 01:17:18
-        #9>y-#9m-#9d #9u:#9p:#9a → 23-12-17 01:17:18
-        #↋-y-#↋m-#↋d #↋u:#↋p:#↋a → 5↋-10-15 29:0↋:20
+        #y-#m-#d #u:#p:#a        → 213211-20-25 01:25:30
+        #>y-#m-#d #u:#p:#a       → 211-20-25 01:25:30
+        #!y-#!m-#!d #!u:#!p:#!a  → 󱸂󱸁󱸃󱸂󱸁󱸁-󱸂󱸀-󱸂󱸅 󱸀󱸁:󱸂󱸅:󱸃󱸀
+        #@y-#@m-#@d #@u:#@p:#@a  → 1̈2̊1̇-0̈-5̈ 1:5̈:0̊
+        #@>y-#@m-#@d #@u:#@p:#@a → 2̊1̇-0̈-5̈ 1:5̈:0̊
+        #Zy-#Zm-#Zd #Zu:#Zp:#Za  → DK7-C-H 1:H:I
+        #Z>y-#Zm-#Zd #Zu:#Zp:#Za → K7-C-H 1:H:I
+        #9-y-#9m-#9d #9u:#9p:#9a → 17575-12-17 01:17:18
+        #9>y-#9m-#9d #9u:#9p:#9a → 75-12-17 01:17:18
+        #↋-y-#↋m-#↋d #↋u:#↋p:#↋a → 08-10-15 29:0↋:20
 
 ### 1.2 Year number with group separator
 
@@ -137,7 +137,7 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
 
         ↋ - optional; dozenal base [see above](https://sezimal.tauga.online/index.html#dozenal-digits);
 
-        ! - optional; sezimal dedicated digits, [see above](https://sezimal.tauga.online/index.html#dedicated-digits);
+        ! - optional; sezimal digits, [see above](https://sezimal.tauga.online/index.html#sezimal-digits);
 
         ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
 
@@ -162,13 +162,13 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
                narrow no-break space U+202f, medium mathematical space U+205f
 
     Examples:
-        #Y-#m-#d  → 13,1355-20-25  (English locale’s default)
-        #Y-#m-#d  → 13.1355-20-25  (Brazilian locale’s default)
-        #Y-#m-#d  → 13 1355-20-25  (French locale’s default)
-        #_Y-#m-#d → 13_1355-20-25
-        #,Y-#m-#d → 13,1355-20-25
-        #.Y-#m-#d → 13.1355-20-25
-        #'Y-#m-#d → 13'1355-20-25_
+        #Y-#m-#d  → 213,211-20-25  (English locale’s default)
+        #Y-#m-#d  → 213.211-20-25  (Brazilian locale’s default)
+        #Y-#m-#d  → 213 211-20-25  (French locale’s default)
+        #_Y-#m-#d → 213_211-20-25
+        #,Y-#m-#d → 213,211-20-25
+        #.Y-#m-#d → 213.211-20-25
+        #'Y-#m-#d → 213'211-20-25_
 
 ### 1.3 Time zone offset
 
@@ -212,9 +212,9 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
         ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
 
     Examples:
-        #u-#p-#a UTC (0.#u#p#a day)             → 01-25-30 UTC (0.012530 day)
-        #99u-#99p-#99a UTC (0.#99u#99p#99a day) → 04-12-97 UTC (0.041297 day)
-        #↋↋u-#↋↋p-#↋↋a UTC (0.#↋↋u#↋↋p#↋↋a day) → 05-↋4-42 UTC (0.05↋442 day)
+        #u-#p-#a UTC (0.#u#p#a day)             → 01-25-30 UTC (0.012_530 day)
+        #99u-#99p-#99a UTC (0.#99u#99p#99a day) → 04-12-97 UTC (0.041_297 day)
+        #↋↋u-#↋↋p-#↋↋a UTC (0.#↋↋u#↋↋p#↋↋a day) → 05-↋4-42 UTC (0.05↋_442 day)
 
 ### 1.4 Seasons and moon phases change/event time
 
@@ -249,7 +249,7 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
 
         ↋↋ - optional; dozenal time and dozenal base, [see above](https://sezimal.tauga.online/index.html#dozenal-time);
 
-        ! - optional; sezimal dedicated digits, [see above](https://sezimal.tauga.online/index.html#dedicated-digits);
+        ! - optional; sezimal digits, [see above](https://sezimal.tauga.online/index.html#sezimal-digits);
 
         ? - optional; localized digits for some locales (Arabic, Farsi, Hindi etc.), [see above](https://sezimal.tauga.online/index.html#localized-digits);
 
@@ -312,7 +312,7 @@ Sezimal date and time formatting is much like using the [strftime in Python](htt
 
     Examples:
         #W, #M #d#O, #Y → Wednesday, December 25th, 13,1355
-        #@W #@M #d #y → Wed Dec 25 131355
+        #@W #@M #d #y → Wed Dec 25 213211
         #W #@W #3W #2W #1W → Wednesday Wed Wed We W
         #M #@M #3M #2M #1M → December Dec Dec De D
         #!W #@!W #3!W #2!W #1!W → WEDNESDAY WED WED WE W
