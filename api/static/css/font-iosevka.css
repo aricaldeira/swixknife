@@ -3,38 +3,34 @@
   font-family: 'Iosevka Sezimal';
   font-weight: bold;
   font-style: italic;
-  src: local('iosevka-sezimal-BoldItalic');
-  src: local('iosevka-sezimal-BoldItalic'),
-       url("../font/iosevka-sezimal-BoldItalic.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-BoldItalic.ttf") format("truetype");
+  src: local('Iosevka Sezimal Bold Italic'),
+       url("../font/IosevkaSezimal-BoldItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-BoldItalic.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Iosevka Sezimal';
   font-weight: normal;
   font-style: italic;
-  src: local('iosevka-sezimal-Italic');
-  src: local('iosevka-sezimal-Italic'),
-       url("../font/iosevka-sezimal-Italic.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-Italic.ttf") format("truetype");
+  src: local('Iosevka Sezimal Italic'),
+       url("../font/IosevkaSezimal-Italic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-Italic.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Iosevka Sezimal';
   font-weight: bold;
   font-style: normal;
-  src: local('iosevka-sezimal-Bold');
-  src: local('iosevka-sezimal-Bold'),
-       url("../font/iosevka-sezimal-bold.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-bold.ttf") format("truetype");
+  src: local('Iosevka Sezimal Bold'),
+       url("../font/IosevkaSezimal-bold.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Iosevka Sezimal';
   font-weight: normal;
   font-style: normal;
-  src: local('Iosevka');
-  src: local('Iosevka'),
-       url("../font/iosevka-sezimal-Regular.woff2") format("woff2"),
-       url("../font/iosevka-sezimal-Regular.ttf") format("truetype");
+  src: local('Iosevka Sezimal'),
+       url("../font/IosevkaSezimal-Regular.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-Regular.ttf") format("truetype");
 }
