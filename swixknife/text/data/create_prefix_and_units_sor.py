@@ -19,8 +19,8 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex quexe
-UNIT-ayt aitan
+UNIT-kex quexê
+UNIT-ayt aitã
 UNIT-vrt várti
 UNIT-drv drávia
 UNIT-gan gana
@@ -28,7 +28,7 @@ UNIT-trg taranga
 UNIT-mnu mânu
 UNIT-bar bara
 UNIT-dab daba
-UNIT-kry kária
+UNIT-kry cária
 UNIT-xat xáti
 UNIT-dar dara
 UNIT-avx avexa
@@ -56,7 +56,7 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex kexi
+UNIT-kex kexe
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
@@ -124,8 +124,8 @@ def create_prefixes(lang='en'):
 
     for i in SezimalRange(-104, 105):
         if i == 0:
-            text += 'PREFIX-s shunti\n'
-            text += 'PREFIX-S shunma\n'
+            text += 'PREFIX-x shunti\n'
+            text += 'PREFIX-X shunma\n'
         else:
             symbol = sezimal_exponent_to_symbol(i)
             name = sezimal_exponent_to_prefix(i)
@@ -155,8 +155,8 @@ def create_prefixes(lang='en'):
 '''
     for i in SezimalRange(-104, 105):
         if i == 0:
-            text += 'PREFIX-DIV10-s e\n'
-            text += 'PREFIX-DIV10-S e\n'
+            text += 'PREFIX-DIV10-x e\n'
+            text += 'PREFIX-DIV10-X e\n'
         else:
             symbol = sezimal_exponent_to_symbol(i)
             div10 = sezimal_exponent_to_symbol(i-1)
@@ -180,7 +180,7 @@ def create_rules(conjunction='and', preposition=''):
     else:
         preposition = f' {preposition} '
 
-    PREFIX_RULE = '[SEDTCPXNA]{1,3}|[sedtcpxna]{1,3}'
+    PREFIX_RULE = '[XEDTCPSNA]{1,3}|[xedtcpsna]{1,3}'
     UNIT_RULE = '[a-z]{3}'
     # PRECISION_RULE = '[0-5]{1,3}'
 
@@ -217,12 +217,12 @@ def create_rules(conjunction='and', preposition=''):
         return _digits_div10(x - 1, t)
 
     for i in SezimalRange(1, 105):
-        digits_rule = '\d' * int(i)
+        digits_rule = r'\d' * int(i)
         prefix_negative = sezimal_exponent_to_symbol(i * -1)
         prefix_positive = sezimal_exponent_to_symbol(i)
         div10 = _digits_div10(i, '\\2')
 
-#         text += f'''#
+#         text += rf'''#
 # # {i} sezimal place{'s' if i > 1 else ''}
 # #
 # "(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$3 $(PREFIX-{prefix_negative})$(UNIT-\\2)
@@ -230,7 +230,7 @@ def create_rules(conjunction='and', preposition=''):
 # "(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$4 $(PREFIX-{div10})$(UNIT-\\3)
 #
 # '''
-        text += f'''#
+        text += rf'''#
 # {i} sezimal place{'s' if i > 1 else ''}
 #
 "(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
@@ -243,6 +243,14 @@ def create_rules(conjunction='and', preposition=''):
 
 
 if __name__ == '__main__':
-    print(create_units(lang='bz'))
-    print(create_prefixes(lang='bz'))
-    print(create_rules(conjunction='i', preposition=''))
+    # print(create_units(lang='bz'))
+    # print(create_prefixes(lang='bz'))
+    # print(create_rules(conjunction='i', preposition=''))
+
+    # print(create_units(lang='pt'))
+    # print(create_prefixes(lang='pt'))
+    # print(create_rules(conjunction='e', preposition=''))
+
+    print(create_units(lang='en'))
+    print(create_prefixes(lang='en'))
+    print(create_rules(conjunction='and', preposition=''))

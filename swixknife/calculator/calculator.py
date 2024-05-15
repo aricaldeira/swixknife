@@ -14,8 +14,8 @@ from ..base import default_to_sezimal_digits, decimal_to_sezimal, \
 
 from ..localization import SezimalLocale, sezimal_locale
 
-_PERSIXNIFF = '‰'
-_PERUNEXIAN = '‱'
+_PERARDA = '‰'
+_PERSIXARDA = '‱'
 
 _OPERATOR = {
     #
@@ -31,8 +31,8 @@ _OPERATOR = {
     '×': ' __MULTIPLY__ ',
     '*': ' __MULTIPLY__ ',
     '%': ' __PERNIF__ ',
-    '‰': ' __PERSIXNIF__ ',
-    '‱': ' __PERUNEXIAN__ ',
+    '‰': ' __PERARDA__ ',
+    '‱': ' __PERSIXARDA__ ',
     '²': ' __SQUARE__ ',
     '³': ' __CUBE__ ',
     '±': ' __PLUS_MINUS__ ',
@@ -58,8 +58,8 @@ _OPERATION = {
     '__MULTIPLY__': '*',
     '__POWER__': '**',
     '__PERNIF__': "/Sezimal('100')",
-    '__PERSIXNIF__': "/Sezimal('1_000')",
-    '__PERUNEXIAN__': "/Sezimal('10_000')",
+    '__PERARDA__': "/Sezimal('1_000')",
+    '__PERSIXARDA__': "/Sezimal('10_000')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -77,8 +77,8 @@ _OPERATION_DECIMAL  = {
     '__MULTIPLY__': '*',
     '__POWER__': '**',
     '__PERNIF__': "/Sezimal('244')",
-    '__PERSIXNIF__': "/Sezimal('4_344')",
-    '__PERUNEXIAN__': "/Sezimal('114_144')",
+    '__PERARDA__': "/Sezimal('4_344')",
+    '__PERSIXARDA__': "/Sezimal('114_144')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -96,8 +96,8 @@ _NICE_OPERATION = {
     '__MULTIPLY__': ' × ',
     '__POWER__': ' ^ ',
     '__PERNIF__': '%',
-    '__PERSIXNIF__': '‰',
-    '__PERUNEXIAN__': '‱',
+    '__PERARDA__': '‰',
+    '__PERSIXARDA__': '‱',
     '__SQUARE__': "²",
     '__CUBE__': "³",
     '__LEFT_PARENTHESIS__': '(',
@@ -384,7 +384,7 @@ class SezimalCalculator:
                         decimal_display += ' −'
 
                     elif previous_part in _OPERATION:
-                        if previous_part in (' __PERNIF__ ', ' __PERSIXNIF__ ', ' __PERUNEXIAN__ '):
+                        if previous_part in (' __PERNIF__ ', ' __PERARDA__ ', ' __PERSIXARDA__ '):
                             display += _NICE_OPERATION[part]
                             decimal_display += _NICE_OPERATION[part]
                         else:

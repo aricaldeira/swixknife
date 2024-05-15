@@ -15,7 +15,7 @@ from ..units.length import KILOMETER_PER_HOUR_TO_VEGA, \
     KILOMETER_TO_SHAMAPADA, MILLIMETER_TO_DITIPADA
 from ..units.temperature import CELSIUS_TO_TAPA, kelvin_to_celsius, tapa_to_gatika
 from ..units.force import PASCAL_TO_DABA
-from ..units.proportion import PERCENTAGE_TO_PERSIXNIFF
+from ..units.proportion import PERCENTAGE_TO_PERARDA
 
 
 def convert_time(time: int | float, time_zone: str | ZoneInfo = None) -> SezimalDateTime:
@@ -56,7 +56,7 @@ def convert_pressure(pressure: float) -> Sezimal:
 
 
 def convert_percentage(percentage: float) -> Sezimal:
-    return round(Decimal(str(percentage)) * PERCENTAGE_TO_PERSIXNIFF, 0)
+    return round(Decimal(str(percentage)) * PERCENTAGE_TO_PERARDA, 0)
 
 
 def convert_precipitation(precipitation: float) -> Sezimal:
