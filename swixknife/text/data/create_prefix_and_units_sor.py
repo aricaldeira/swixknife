@@ -124,8 +124,8 @@ def create_prefixes(lang='en'):
 
     for i in SezimalRange(-104, 105):
         if i == 0:
-            text += 'PREFIX-x shunti\n'
-            text += 'PREFIX-X shunma\n'
+            text += 'PREFIX-z shunti\n'
+            text += 'PREFIX-Z shunma\n'
         else:
             symbol = sezimal_exponent_to_symbol(i)
             name = sezimal_exponent_to_prefix(i)
@@ -155,8 +155,8 @@ def create_prefixes(lang='en'):
 '''
     for i in SezimalRange(-104, 105):
         if i == 0:
-            text += 'PREFIX-DIV10-x e\n'
-            text += 'PREFIX-DIV10-X e\n'
+            text += 'PREFIX-DIV10-z e\n'
+            text += 'PREFIX-DIV10-Z e\n'
         else:
             symbol = sezimal_exponent_to_symbol(i)
             div10 = sezimal_exponent_to_symbol(i-1)
@@ -180,7 +180,7 @@ def create_rules(conjunction='and', preposition=''):
     else:
         preposition = f' {preposition} '
 
-    PREFIX_RULE = '[XEDTCPSNA]{1,3}|[xedtcpsna]{1,3}'
+    PREFIX_RULE = '[ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3}'
     UNIT_RULE = '[a-z]{3}'
     # PRECISION_RULE = '[0-5]{1,3}'
 
@@ -243,14 +243,20 @@ def create_rules(conjunction='and', preposition=''):
 
 
 if __name__ == '__main__':
-    # print(create_units(lang='bz'))
-    # print(create_prefixes(lang='bz'))
-    # print(create_rules(conjunction='i', preposition=''))
+    arq = open('bz_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='bz'))
+    arq.write(create_prefixes(lang='bz'))
+    arq.write(create_rules(conjunction='i', preposition=''))
+    arq.close()
 
-    # print(create_units(lang='pt'))
-    # print(create_prefixes(lang='pt'))
-    # print(create_rules(conjunction='e', preposition=''))
+    arq = open('pt_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='pt'))
+    arq.write(create_prefixes(lang='pt'))
+    arq.write(create_rules(conjunction='e', preposition=''))
+    arq.close()
 
-    print(create_units(lang='en'))
-    print(create_prefixes(lang='en'))
-    print(create_rules(conjunction='and', preposition=''))
+    arq = open('en_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='en'))
+    arq.write(create_prefixes(lang='en'))
+    arq.write(create_rules(conjunction='and', preposition=''))
+    arq.close()
