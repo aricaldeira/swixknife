@@ -159,38 +159,38 @@ _DIGIT_TO_PREFIX = {
 }
 
 _DIGIT_TO_SYMBOL = {
-    '0': 'x',
+    '0': 'z',
     '1': 'e',
     '2': 'd',
     '3': 't',
     '4': 'c',
     '5': 'p',
-    '10': 's',
-    '11': 'se',
-    '12': 'sd',
-    '13': 'st',
-    '14': 'sc',
-    '15': 'sp',
-    '20': 'ds',
-    '30': 'ts',
-    '40': 'cs',
-    '50': 'ps',
+    '10': 'x',
+    '11': 'xe',
+    '12': 'xd',
+    '13': 'xt',
+    '14': 'xc',
+    '15': 'xp',
+    '20': 'dx',
+    '30': 'tx',
+    '40': 'cx',
+    '50': 'px',
     '100': 'n',
     '101': 'ne',
     '102': 'nd',
     '103': 'nt',
     '104': 'nc',
     '105': 'np',
-    '110': 'ns',
-    '111': 'nse',
-    '112': 'nsd',
-    '113': 'nst',
-    '114': 'nsc',
-    '115': 'nsp',
-    '120': 'nds',
-    '130': 'nts',
-    '140': 'ncs',
-    '150': 'nps',
+    '110': 'nx',
+    '111': 'nxe',
+    '112': 'nxd',
+    '113': 'nxt',
+    '114': 'nxc',
+    '115': 'nxp',
+    '120': 'ndx',
+    '130': 'ntx',
+    '140': 'ncx',
+    '150': 'npx',
     '200': 'dn',
     '300': 'tn',
     '400': 'cn',
@@ -365,6 +365,32 @@ def decimal_exponent_to_symbol(exponent: str | int | SezimalInteger) -> str:
         else:
             return 'Q'
 
+        # match exponent:
+        #     case 1:
+        #         return 'da'
+        #     case 2:
+        #         return 'h'
+        #     case 3 | 4 | 5:
+        #         return 'k'
+        #     case 10 | 11 | 12:
+        #         return 'M'
+        #     case 13 | 14 | 15:
+        #         return 'G'
+        #     case 20 | 21 | 22:
+        #         return 'T'
+        #     case 23 | 24 | 25:
+        #         return 'P'
+        #     case 30 | 31 | 32:
+        #         return 'E'
+        #     case 33 | 34 | 35:
+        #         return 'Z'
+        #     case 40 | 41 | 42:
+        #         return 'Y'
+        #     case 43 | 44 | 45:
+        #         return 'R'
+        #     case _:
+        #         return 'Q'
+
     else:
         exponent = abs(exponent)
 
@@ -392,3 +418,29 @@ def decimal_exponent_to_symbol(exponent: str | int | SezimalInteger) -> str:
             return 'r'
         else:
             return 'q'
+
+        # match exponent:
+        #     case 1:
+        #         return 'd'
+        #     case 2:
+        #         return 'c'
+        #     case 3 | 4 | 5:
+        #         return 'm'
+        #     case 10 | 11 | 12:
+        #         return 'µ'
+        #     case 13 | 14 | 15:
+        #         return 'n'
+        #     case 20 | 21 | 22:
+        #         return 'p'
+        #     case 23 | 24 | 25:
+        #         return 'f'
+        #     case 30 | 31 | 32:
+        #         return 'a'
+        #     case 33 | 34 | 35:
+        #         return 'z'
+        #     case 40 | 41 | 42:
+        #         return 'y'
+        #     case 43 | 44 | 45:
+        #         return 'r'
+        #     case _:
+        #         return 'q'
