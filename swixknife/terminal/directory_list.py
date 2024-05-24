@@ -86,17 +86,8 @@ class SezimalDirectoryList:
 
         return terminal.isatty()
 
-    def terminal_list(self, terminal=None):
-        if terminal is None:
-            terminal = sys.stdout
-
-        use_color = self._terminal_supports_colors(terminal)
-
+    def _prepare_lines(self, time_zone: None):
         lines = []
-
-        user_padding = 0
-        group_padding = 0
-        size_padding = 0
 
         for file_info in self.directory_list + self.file_list:
             if file_info.is_hidden and not self.show_hidden:
@@ -121,31 +112,48 @@ class SezimalDirectoryList:
             if self.permissions_simplified:
                 info['permission'] = file_info.permission_simplified
 
-            info['date_time'] = file_info.date_time.format(self.date_time_format, locale=self.locale)
+            if time_zone:
+                info['date_time'] = file_info.date_time.at_time_zone(time_zone).format(self.date_time_format, locale=self.locale)
+            else:
+                info['date_time'] = file_info.date_time.format(self.date_time_format, locale=self.locale)
 
             if self.is_decimal:
                 if file_info.is_directory:
                     info['size'] = decimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
                 else:
-                    info['size'] = decimal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, decimal_places=1)
+                    info['size'] = decimal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, decimal_places=1)
 
             elif self.is_dozenal:
                 if file_info.is_directory:
                     info['size'] = dozenal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
                 else:
-                    info['size'] = dozenal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, dozenal_places=1)
+                    info['size'] = dozenal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, dozenal_places=1)
 
             else:
                 if file_info.is_directory:
                     info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, sezimal_digits=self.use_sezimal_digits)
                 else:
-                    info['size'] = sezimal_format(file_info.file_size, unit='B', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits)
+                    info['size'] = sezimal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits)
 
+            lines.append(info)
+
+        return lines
+
+    def terminal_list(self, terminal=None):
+        if terminal is None:
+            terminal = sys.stdout
+
+        use_color = self._terminal_supports_colors(terminal)
+
+        user_padding = 0
+        group_padding = 0
+        size_padding = 0
+        lines = self._prepare_lines()
+
+        for info in lines:
             user_padding = max(user_padding, len(info['user']))
             group_padding = max(group_padding, len(info['group']))
             size_padding = max(size_padding, len(info['size']))
-
-            lines.append(info)
 
         for info in lines:
             if use_color:

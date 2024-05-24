@@ -6,16 +6,20 @@ from .. import Sezimal, SezimalInteger, SezimalDateTime, \
 from decimal import Decimal
 
 
-def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool = True, sezimal_digits: bool = False) -> str:
+def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool | int = True, sezimal_digits: bool = False) -> str:
     sezimal_places = SezimalInteger(sezimal_places)
 
-    if len(str(value)) <= 4:
-        power = 0
-    else:
-        power = (len(str(value)) // 4) * 4
+    if type(use_prefixes) == int and use_prefixes > 0:
+        if len(str(value)) <= use_prefixes:
+            power = 0
+        else:
+            power = (len(str(value)) // use_prefixes) * use_prefixes
 
-        if len(str(value)) == power:
-            power -= 4
+            if len(str(value)) == power:
+                power -= use_prefixes
+
+    else:
+        power = len(str(value)) - 1
 
     if (not use_prefixes) or (power == 0) or (not unit):
         return locale.format_number(value, sezimal_places=0, suffix=unit, sezimal_digits=sezimal_digits)

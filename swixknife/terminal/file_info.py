@@ -12,9 +12,13 @@ from decimal import Decimal
 
 
 def _get_ls_colors():
-    ls_colors = os.environ['LS_COLORS']
 
     colors = {}
+
+    ls_colors = os.environ.get('LS_COLORS', None)
+
+    if not ls_colors:
+        return colors
 
     for item in ls_colors.split(':'):
         if not item:
