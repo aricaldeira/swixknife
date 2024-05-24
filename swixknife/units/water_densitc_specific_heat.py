@@ -1,3 +1,7 @@
+
+from decimal import Decimal
+
+
 def water_density_specific_heat(celsius):
     if celsius < Decimal('130'):
         density = Decimal('-0.000_000_000_092_044_536_27') * (celsius ** 4)

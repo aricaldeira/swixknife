@@ -76,7 +76,7 @@ class SezimalUnit(object):
                 if not exponent.isdigit():
                     exponent = other_value.base_unit.symbol[-1]
 
-                exponent = SI(exponent) + 1
+                exponent = SezimalInteger(exponent) + 1
 
             if self.base_unit.symbol + exponent in globals():
                 square_unit = globals()[self.base_unit.symbol + exponent]

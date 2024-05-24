@@ -117,10 +117,10 @@ KESHE_TO_SQUARE_KILOMETER = SezimalFraction('5_332_521 / 3_451_550_303_213_000_0
 SQUARE_KILOMETER_TO_KESHE = KESHE_TO_SQUARE_KILOMETER.reciprocal
 
 #
-# Dishumakeshe = DSkex = ESpad² = 1_000_000_000_000 pad²
+# Dishumakeshe = DXkex = EXpad² = 1_000_000_000_000 pad²
 #
-# 1 km² = 0.41 DSkex = 0.41 ESpad²
-# 1 DSkex = 1 ESpad² = 1.25 km²
+# 1 km² = 0.41 DXkex = 0.41 EXpad²
+# 1 DSkex = 1 EXpad² = 1.25 km²
 #
 DISHUMAKESHE_TO_SQUARE_KILOMETER = SezimalFraction('1_354_105_104 / 1_044_050_213')
 SQUARE_KILOMETER_TO_DISHUMAKESHE = DISHUMAKESHE_TO_SQUARE_KILOMETER.reciprocal
