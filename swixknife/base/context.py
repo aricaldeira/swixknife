@@ -64,10 +64,15 @@ class SezimalContext:
 
         self._niftimal_precision += '0123456789ABCDEFGHIJKMLMNOPQRSTUVWXYZ'[p]
 
-        decimal_precision = int(int(precision, 6) / 4 * 3)
+        if self._sezimal_precision_decimal <= 48:
+            decimal_precision = 0
 
-        if decimal_precision % 3 != 0:
-            decimal_precision -= decimal_precision % 3
+            while (6 ** (self._sezimal_precision_decimal * -1)) * (10 ** decimal_precision) < 1:
+                decimal_precision += 1
+        else:
+            decimal_precision = int(self._sezimal_precision_decimal / 4 * 3)
+            if decimal_precision % 3 != 0:
+                decimal_precision -= decimal_precision % 3
 
         self.decimal_precision = decimal_precision
 
