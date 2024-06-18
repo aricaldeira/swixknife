@@ -130,7 +130,7 @@ class Sezimal:
     def formatted_number(self) -> str:
         return sezimal_format(
             str(self),
-            sezimal_places=Decimal(self._precision),
+            sezimal_places=decimal_to_sezimal(self._precision),
             sezimal_digits=sezimal_context.sezimal_digits,
         )
 
@@ -188,9 +188,13 @@ class Sezimal:
     def __compare__(self, other_number: Self) -> IntegerSelf:
         #
         # If the sign of both numbers are not equal,
-        # they can be compared only by their sign
+        # they can be compared only by their sign, unless
+        # it is 0 and -0
         #
         if self._sign != other_number._sign:
+            if self._value == 0 and other_number._value == 0:
+                return 0
+
             return self._sign
 
         #
@@ -569,14 +573,16 @@ class Sezimal:
         if res._fraction and len(res._fraction) >= 3:
             fives = res._fraction[::-1][3:][::-1]
 
-            if fives.endswith('55555'):
-                res += Sezimal(f'1E-{decimal_to_sezimal(res._precision)}')
-            elif fives.endswith('55554'):
-                res += Sezimal(f'2E-{decimal_to_sezimal(res._precision)}')
-            elif fives.endswith('55553'):
-                res += Sezimal(f'3E-{decimal_to_sezimal(res._precision)}')
-            elif fives.endswith('555544'):
-                res += Sezimal(f'12E-{decimal_to_sezimal(res._precision)}')
+            if len(fives) >= 5 and fives[-5:] in ('55555', '55554', '55553'):
+                new = round(res, decimal_to_sezimal(res._precision - 4))
+                res = Sezimal(new._integer + '.' + new._fraction.ljust(res._precision, '0'))
+            elif len(fives) >= 6 and fives[-6:] in (
+                '555555',
+                '555545', '555544', '555543',
+                '555535', '555534', '555533',
+            ):
+                new = round(res, decimal_to_sezimal(res._precision - 6))
+                res = Sezimal(new._integer + '.' + new._fraction.ljust(res._precision, '0'))
 
         return res
 
@@ -1146,9 +1152,9 @@ class SezimalInteger(Sezimal):
 
 
 class SezimalFraction(Sezimal):
-    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', '_numerator', '_denominator', '_sezimal']
+    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', '_numerator', '_denominator', '_sezimal', '_precalculated_value', '_precalculated_reciprocal']
 
-    def __init__(self, numerator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction, denominator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction = None) -> Self:
+    def __init__(self, numerator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction, denominator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction = None, _precalculated_value: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction = None, _precalculated_reciprocal: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Dozenal | DozenalInteger | DozenalFraction = None) -> Self:
         if type(numerator) == str:
             if '/' in numerator:
                 numerator, denominator = numerator.split('/')
@@ -1189,15 +1195,19 @@ class SezimalFraction(Sezimal):
             Sezimal(cleaned_numerator), \
             Sezimal(cleaned_denominator)
 
-        if sezimal_context.fractions_use_decimal:
+        if _precalculated_value is not None:
+            self._sezimal = Sezimal(_precalculated_value)
+        elif sezimal_context.fractions_use_decimal:
             self._sezimal = Sezimal(self._numerator.decimal / self._denominator.decimal)
-
         else:
             self._sezimal = self._numerator / self._denominator
 
         if old_precision != sezimal_context.sezimal_precision:
             self._sezimal = round(self._sezimal, old_precision)
             sezimal_context.sezimal_precision = old_precision
+
+        self._precalculated_value = _precalculated_value
+        self._precalculated_reciprocal = _precalculated_reciprocal
 
         super().__init__(self._sezimal)
 
@@ -1219,7 +1229,7 @@ class SezimalFraction(Sezimal):
 
     @property
     def reciprocal(self) -> FractionSelf:
-        return SezimalFraction(self._denominator, self._numerator)
+        return SezimalFraction(self._denominator, self._numerator, self._precalculated_reciprocal, self._precalculated_value)
 
     @reciprocal.setter
     def reciprocal(self, value):
