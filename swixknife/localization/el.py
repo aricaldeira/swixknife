@@ -308,6 +308,13 @@ class SezimalLocaleEL(SezimalLocale):
         'waning_crescent': 'Φθίνων Μηνίσκος',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Λάθος'
+    WEEKDAY_ERROR = 'Μη έγκυρη ημέρα της εβδομάδας {weekday}'
+    MONTH_ERROR = 'Μη έγκυρος μήνας {month}'
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 

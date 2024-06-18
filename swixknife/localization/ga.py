@@ -125,8 +125,13 @@ class SezimalLocaleGA(SezimalLocale):
 
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
+
+    #
+    # Error messages
+    #
+    ERROR = 'Earráid'
+    WEEKDAY_ERROR = 'Lá seachtaine neamhbhailí {weekday}'
+    MONTH_ERROR = 'Mí neamhbhailí {month}'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

@@ -107,6 +107,9 @@ class SezimalLocaleNL(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
-
+    #
+    # Error messages
+    #
+    ERROR = 'Fout'
+    WEEKDAY_ERROR = 'Ongeldige weekdag {weekday}'
+    MONTH_ERROR = 'Ongeldige maand {month}'

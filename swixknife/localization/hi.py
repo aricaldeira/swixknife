@@ -108,6 +108,10 @@ class SezimalLocaleHI(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
+    #
+    # Error messages
+    #
+    ERROR = 'त्रुटि'
+    WEEKDAY_ERROR = 'अमान्य कार्यदिवस {weekday}'
+    MONTH_ERROR = 'अमान्य महीना {month}'
 

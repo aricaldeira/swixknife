@@ -113,6 +113,10 @@ class SezimalLocaleVI(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
+    #
+    # Error messages
+    #
+    ERROR = 'Lỗi'
+    WEEKDAY_ERROR = 'Ngày trong tuần không hợp lệ {weekday}'
+    MONTH_ERROR = 'Tháng không hợp lệ {month}'
 

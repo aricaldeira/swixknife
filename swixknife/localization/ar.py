@@ -112,6 +112,11 @@ class SezimalLocaleAR(SezimalLocale):
 
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
+
+    #
+    # Error messages
+    #
+    ERROR = 'خطأ'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
 

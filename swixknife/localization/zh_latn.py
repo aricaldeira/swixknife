@@ -94,3 +94,10 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
         'third_quarter': 'xiàxián yuè',     # 下弦月
         'waning_crescent': 'cán yuè',       # 殘月
     }
+
+    #
+    # Error messages
+    #
+    ERROR = 'Cuòwù'
+    WEEKDAY_ERROR = '{weekday} shì wúxiào xīngqí jǐ'
+    MONTH_ERROR = '{month} shì wúxiào yuèfèn'

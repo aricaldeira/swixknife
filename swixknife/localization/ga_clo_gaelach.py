@@ -134,6 +134,10 @@ class SezimalLocaleGA_CLO_GAELACH(SezimalLocaleGA_TRADITIONAL):
         'waning_crescent': _clo_gaelach(SezimalLocaleGA_TRADITIONAL.MOON_PHASE['waning_crescent']),
     }
 
+    ERROR = _clo_gaelach(SezimalLocaleGA_TRADITIONAL.ERROR)
+    WEEKDAY_ERROR = _clo_gaelach(SezimalLocaleGA_TRADITIONAL.WEEKDAY_ERROR)
+    MONTH_ERROR = _clo_gaelach(SezimalLocaleGA_TRADITIONAL.MONTH_ERROR)
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

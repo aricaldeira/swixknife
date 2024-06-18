@@ -129,6 +129,10 @@ class SezimalLocaleEO(SezimalLocale):
         ('ISO+1887-07-26', '\ufe0f📗 Unua Libro (%d-%b - %i)'),
     ]
 
+    #
+    # Error messages
+    #
+    ERROR = 'Eraro'
     WEEKDAY_ERROR = 'Nevalida semajntago {weekday}'
     MONTH_ERROR = 'Nevalida monato {month}'
 

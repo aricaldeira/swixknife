@@ -85,6 +85,13 @@ class SezimalLocaleEN_SHAVIAN(SezimalLocaleEN):
         'waning_crescent': '𐑢𐑱𐑯𐑦𐑙 𐑒𐑮𐑧𐑕𐑩𐑯𐑑',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = '𐑧𐑮𐑼'
+    WEEKDAY_ERROR = '𐑦𐑯𐑝𐑩𐑤𐑦𐑛 𐑢𐑰𐑒𐑛𐑱 {weekday}'
+    MONTH_ERROR = '𐑦𐑯𐑝𐑩𐑤𐑦𐑛 𐑥𐑩𐑯𐑔 {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

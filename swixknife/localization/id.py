@@ -101,3 +101,10 @@ class SezimalLocaleID(SezimalLocale):
         'third_quarter': 'Perbani Akhir',
         'waning_crescent': 'Bulan Sabit',
     }
+
+    #
+    # Error messages
+    #
+    ERROR = 'Kesalahan'
+    WEEKDAY_ERROR = 'Hari kerja tidak valid {weekday}'
+    MONTH_ERROR = 'Bulan tidak valid {month}'

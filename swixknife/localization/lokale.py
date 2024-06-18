@@ -190,6 +190,10 @@ class SezimalLocale:
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
+    #
+    # Error messages
+    #
+    ERROR = 'Error'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
 
@@ -307,6 +311,7 @@ class SezimalLocale:
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         grouping_digits: int = 3,
+        keep_original_aspect: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -328,6 +333,7 @@ class SezimalLocale:
             negative_format,
             recurring_digits_notation,
             grouping_digits,
+            keep_original_aspect,
         )
 
     def format_decimal_number(self,
@@ -342,6 +348,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
+        keep_original_aspect: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
@@ -359,6 +366,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             recurring_digits_notation,
+            keep_original_aspect=keep_original_aspect,
         )
 
     def format_dozenal_number(self,

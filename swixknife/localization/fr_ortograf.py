@@ -110,6 +110,13 @@ class SezimalLocaleFR_ORTOGRAF(SezimalLocaleFR):
         'waning_crescent': 'Dèrnyé krouasan',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Ereur'
+    WEEKDAY_ERROR = 'Jour de la semèn invalide {weekday}'
+    MONTH_ERROR = 'Moi-z invalide {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

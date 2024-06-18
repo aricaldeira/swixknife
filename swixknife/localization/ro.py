@@ -187,6 +187,13 @@ class SezimalLocaleRO(SezimalLocale):
         'waning_crescent': 'Descreștere',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Eroare'
+    WEEKDAY_ERROR = 'Zi a săptămânii nevalidă {weekday}'
+    MONTH_ERROR = 'Luna nevalidă {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

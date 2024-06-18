@@ -106,6 +106,9 @@ class SezimalLocaleUK(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
-
+    #
+    # Error messages
+    #
+    ERROR = 'Помилка'
+    WEEKDAY_ERROR = 'Недійсний день тижня {weekday}'
+    MONTH_ERROR = 'Недійсний місяць {month}'

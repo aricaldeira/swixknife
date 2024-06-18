@@ -106,6 +106,9 @@ class SezimalLocaleHU(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
-
+    #
+    # Error messages
+    #
+    ERROR = 'Hiba'
+    WEEKDAY_ERROR = 'Érvénytelen hétköznap {weekday}'
+    MONTH_ERROR = 'Érvénytelen hónap {month}'

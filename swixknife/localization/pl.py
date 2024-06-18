@@ -305,6 +305,13 @@ class SezimalLocalePL(SezimalLocale):
         'waning_crescent': 'Stary',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Błąd'
+    WEEKDAY_ERROR = 'Nieprawidłowy dzień tygodnia {weekday}'
+    MONTH_ERROR = 'Nieprawidłowy miesiąc {month}'
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 

@@ -113,3 +113,10 @@ class SezimalLocaleJA(SezimalLocale):
         'third_quarter': '上弦の月',            # jōgen no tsuki
         'waning_crescent': '欠けていく三日月',   # kakete iku mikadzuki
     }
+
+    #
+    # Error messages
+    #
+    ERROR = 'エラー'
+    WEEKDAY_ERROR = '{weekday}は曜日が無効です'
+    MONTH_ERROR = '{month}は月が無効です'

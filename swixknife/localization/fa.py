@@ -124,6 +124,10 @@ class SezimalLocaleFA(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
+    #
+    # Error messages
+    #
+    ERROR = 'خطا'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
 

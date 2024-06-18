@@ -258,6 +258,13 @@ class SezimalLocaleRU(SezimalLocale):
         'waning_crescent': 'Старая',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Ошибка'
+    WEEKDAY_ERROR = 'Неверный день недели {weekday}'
+    MONTH_ERROR = 'Неверный месяц {month}'
+
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)
 

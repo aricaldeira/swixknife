@@ -20,3 +20,10 @@ class SezimalLocaleZH_HANT(SezimalLocaleZH):
         'third_quarter': '下弦月',   # xiàxián yuè
         'waning_crescent': '殘月',   # cán yuè
     }
+
+    #
+    # Error messages
+    #
+    ERROR = '錯誤'
+    WEEKDAY_ERROR = '{weekday}是無效星期几'
+    MONTH_ERROR = '{month}是無效月份'

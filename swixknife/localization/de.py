@@ -113,5 +113,12 @@ class SezimalLocaleDE(SezimalLocale):
         'waning_crescent': 'Abnehmender Sichelmond',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Fehler'
+    WEEKDAY_ERROR = 'Ungültiger Wochentag {weekday}'
+    MONTH_ERROR = 'Ungültiger Monat {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         return '.'

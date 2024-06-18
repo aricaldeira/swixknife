@@ -118,6 +118,13 @@ class SezimalLocaleCA(SezimalLocale):
         'waning_crescent': 'Minvant',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Error'
+    WEEKDAY_ERROR = 'Dia de la setmana no vàlid {weekday}'
+    MONTH_ERROR = 'Mes no vàlid {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

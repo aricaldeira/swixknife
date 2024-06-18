@@ -113,6 +113,13 @@ class SezimalLocaleGL(SezimalLocale):
         'waning_crescent': 'Minguante',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Erro'
+    WEEKDAY_ERROR = 'Día da semana non válido {weekday}'
+    MONTH_ERROR = 'Mes non válido {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

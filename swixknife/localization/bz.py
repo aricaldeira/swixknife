@@ -208,6 +208,10 @@ class SezimalLocaleBZ(SezimalLocale):
         ('ISO+1695-11-20', '\ufe0f👨🏿 Konsiensya Negra (%d/%m)'),                  # domingu 130_051-15-33 ~ 1695-11-20_dec
     ]
 
+    #
+    # Error messages
+    #
+    ERROR = 'Erru'
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
     MONTH_ERROR = 'Mez inválidu {month}'
 

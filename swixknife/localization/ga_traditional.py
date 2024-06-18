@@ -104,6 +104,14 @@ class SezimalLocaleGA_TRADITIONAL(SezimalLocaleGA):
         'waning_crescent': 'Deireaḋ Gealaí',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Earráid'
+    WEEKDAY_ERROR = 'Lá seaċtaine neaṁḃailí {weekday}'
+    MONTH_ERROR = 'Mí neaṁḃailí {month}'
+
+
     def weekday_name(self, weekday: SezimalInteger, mutation: str = '', case: str = '') -> str:
         weekday = SezimalInteger(weekday)
 

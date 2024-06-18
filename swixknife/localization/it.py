@@ -118,6 +118,13 @@ class SezimalLocaleIT(SezimalLocale):
         'waning_crescent': 'Calante',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Errore'
+    WEEKDAY_ERROR = 'Giorno della settimana non valido {weekday}'
+    MONTH_ERROR = 'Mese non valido {month}'
+
     HOLIDAYS = [
         ('01-01', '\ufe0f🕊️  Capodanno'),
         ('01-10', '\ufe0f🍬 Epifania'),

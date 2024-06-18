@@ -117,6 +117,13 @@ class SezimalLocaleFR(SezimalLocale):
         'waning_crescent': 'Dernier croissant',
     }
 
+    #
+    # Error messages
+    #
+    ERROR = 'Erreur'
+    WEEKDAY_ERROR = 'Jour de la semaine invalide {weekday}'
+    MONTH_ERROR = 'Mois invalide {month}'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

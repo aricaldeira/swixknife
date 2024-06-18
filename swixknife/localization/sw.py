@@ -107,5 +107,10 @@ class SezimalLocaleSW(SezimalLocale):
 
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
+
+    #
+    # Error messages
+    #
+    ERROR = 'Hitilafu'
+    WEEKDAY_ERROR = 'Siku ya juma si sahihi {weekday}'
+    MONTH_ERROR = 'Mwezi batili {month}'

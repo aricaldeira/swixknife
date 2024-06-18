@@ -106,6 +106,9 @@ class SezimalLocaleYO(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
-
+    #
+    # Error messages
+    #
+    ERROR = 'Asise'
+    WEEKDAY_ERROR = 'Ọjọ ọsẹ ti ko wulo {weekday}'
+    MONTH_ERROR = 'Oṣu ti ko tọ {month}'

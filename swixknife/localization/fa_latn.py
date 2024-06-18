@@ -119,6 +119,10 @@ class SezimalLocaleFA_LATN(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
+    #
+    # Error messages
+    #
+    ERROR = 'Khatá'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
 

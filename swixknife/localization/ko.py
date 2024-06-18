@@ -113,3 +113,10 @@ class SezimalLocaleKO(SezimalLocale):
         'third_quarter': '3분기 달',          # sambungi dal
         'waning_crescent': '약 해지는 초승달',  # yag haejineun choseungdal
     }
+
+    #
+    # Error messages
+    #
+    ERROR = '오류'
+    WEEKDAY_ERROR = '{weekday}잘못된 평일'
+    MONTH_ERROR = '{month}잘못된 달'

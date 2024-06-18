@@ -111,3 +111,10 @@ class SezimalLocaleTR(SezimalLocale):
         'third_quarter': 'Son Dördün',
         'waning_crescent': 'Azalan',
     }
+
+    #
+    # Error messages
+    #
+    ERROR = 'Hata'
+    WEEKDAY_ERROR = 'Geçersiz hafta günü {weekday}'
+    MONTH_ERROR = 'Geçersiz ay {month}'

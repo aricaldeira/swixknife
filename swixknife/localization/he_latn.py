@@ -110,6 +110,10 @@ class SezimalLocaleHE_LATN(SezimalLocale):
     HOLIDAYS = []
     HOLIDAYS_OTHER_CALENDAR = []
 
-    WEEKDAY_ERROR = 'Invalid weekday {weekday}'
-    MONTH_ERROR = 'Invalid month {month}'
+    #
+    # Error messages
+    #
+    ERROR = 'Shegiá'
+    WEEKDAY_ERROR = 'Yom shavúa lo chuki {weekday}'
+    MONTH_ERROR = 'Hodesh lo chuki {month}'
 
