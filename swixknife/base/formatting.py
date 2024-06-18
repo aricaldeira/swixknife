@@ -78,6 +78,7 @@ def sezimal_format(
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = RECURRING_DIGITS_NOTATION_NONE,
         grouping_digits: int = 3,
+        keep_original_aspect: bool = False,
     ) -> str:
     if type(number).__name__ == 'Decimal':
         number = decimal_to_sezimal(number)
@@ -109,48 +110,79 @@ def sezimal_format(
     elif grouping_digits == 2:
         group_format = _TWO_DIGITS_GROUP_FORMAT
 
-    number = validate_clean_sezimal(str(number))
     sezimal_places = validate_clean_sezimal(sezimal_places)
     minimum_size = validate_clean_sezimal(minimum_size)
 
     sezimal_places = int(sezimal_to_decimal(sezimal_places))
     minimum_size = int(sezimal_to_decimal(minimum_size))
 
-    recurring: str = ''
+    if keep_original_aspect:
+        number = str(number).replace('_', '')
 
-    if '.' in number:
-        integer, fraction = number.split('.')
+        integer, fraction, recurring = '', '', ''
 
-        if recurring_digits_notation and fraction:
-            if type(recurring_digits_notation) == int:
-                max_fraction_size = recurring_digits_notation
-            else:
-                max_fraction_size = sezimal_context.sezimal_precision_decimal
+        if number.endswith('..'):
+            number = number[:-2]
+            recurring_digits_notation = RECURRING_DIGITS_NOTATION_SIMPLE
+            recurring = '?'
 
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal], max_fraction_size=max_fraction_size)
+        elif number.endswith('.'):
+            number = number[:-1]
+            fraction = '?'
 
-            if not recurring:
-                fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal - 1], max_fraction_size=max_fraction_size - 1)
+        validated_number = validate_clean_sezimal(number)
 
-            if recurring == '0':
-                recurring = ''
-                fraction = fixed_part
+        if '..' in number:
+            recurring_digits_notation = RECURRING_DIGITS_NOTATION_SIMPLE
+            integer, recurring = number.split('..')
 
-            if recurring:
-                #
-                # Let’s check if we limit the size of the recurring notation
-                #
-                if type(recurring_digits_notation) == int:
-                    if len(fixed_part + recurring) < recurring_digits_notation:
-                        fraction = fixed_part
-                    else:
-                        recurring = ''
+            if '.' in integer:
+                integer, fraction = integer.split('.')
 
-                else:
-                    fraction = fixed_part
+        elif '.' in number:
+            integer, fraction = number.split('.')
+        else:
+            integer = number
+
+        sezimal_places = len(fraction + recurring)
 
     else:
-        integer, fraction = number, ''
+        number = validate_clean_sezimal(str(number))
+        recurring: str = ''
+
+        if '.' in number:
+            integer, fraction = number.split('.')
+
+            if recurring_digits_notation and fraction:
+                if type(recurring_digits_notation) == int:
+                    max_fraction_size = recurring_digits_notation
+                else:
+                    max_fraction_size = sezimal_context.sezimal_precision_decimal
+
+                fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal], max_fraction_size=max_fraction_size)
+
+                if not recurring:
+                    fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.sezimal_precision_decimal - 1], max_fraction_size=max_fraction_size - 1)
+
+                if recurring == '0':
+                    recurring = ''
+                    fraction = fixed_part
+
+                if recurring:
+                    #
+                    # Let’s check if we limit the size of the recurring notation
+                    #
+                    if type(recurring_digits_notation) == int:
+                        if len(fixed_part + recurring) < recurring_digits_notation:
+                            fraction = fixed_part
+                        else:
+                            recurring = ''
+
+                    else:
+                        fraction = fixed_part
+
+        else:
+            integer, fraction = number, ''
 
     if not recurring_digits_notation:
         if sezimal_places:
@@ -173,12 +205,21 @@ def sezimal_format(
 
     if recurring_digits_notation:
         if recurring:
+            if fraction and fraction_group_separator:
+                fraction = _apply_format(fraction[::-1], fraction_group_separator, group_format)[::-1]
+
+                if fraction_subgroup_separator:
+                    fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
+                    fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
+
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 recurring_digits_notation,
                 group_format,
                 sezimal_separator,
                 fraction_group_separator,
+                keep_original_aspect,
             )
             fraction = ''
 
@@ -205,6 +246,9 @@ def sezimal_format(
         positive_format, negative_format, typographical_negative,
     )
 
+    if keep_original_aspect:
+        formatted_number = formatted_number.replace('?', '')
+
     return formatted_number
 
 
@@ -230,7 +274,7 @@ def _finish_formatting(formatted_number: str, prefix: str, suffix: str, positive
     if prefix:
         prefix += ' '
 
-    if suffix and suffix[-1] not in '%‰‱':
+    if suffix and suffix[-1] not in ('%', '‰', '‱', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
         suffix = ' ' + suffix
 
     if formatted_number[0] != '-':
@@ -289,6 +333,7 @@ def decimal_format(
         # https://en.wikipedia.org/wiki/Japanese_numerals#Powers_of_10
         #
         wan_man_van_grouping: bool = False,
+        keep_original_aspect: bool = False,
     ) -> str:
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         number = sezimal_to_decimal(number)
@@ -299,41 +344,73 @@ def decimal_format(
     if type(minimum_size).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         minimum_size = sezimal_to_decimal(minimum_size)
 
-    number = validate_clean_decimal(str(number))
     decimal_places = int(validate_clean_decimal(str(decimal_places)))
     minimum_size = int(validate_clean_decimal(str(minimum_size)))
 
-    if type(recurring_digits_notation).__name__ in ('Decimal', 'int', 'Sezimal', 'SezimalInteger'):
-        recurring_digits_notation = int(recurring_digits_notation)
+    if keep_original_aspect:
+        number = str(number).replace('_', '')
 
-    recurring: str = ''
+        integer, fraction, recurring = '', '', ''
 
-    if '.' in number:
-        integer, fraction = number.split('.')
+        if number.endswith('..'):
+            number = number[:-2]
+            recurring_digits_notation = RECURRING_DIGITS_NOTATION_SIMPLE
+            recurring = '?'
 
-        if recurring_digits_notation and fraction:
-            if type(recurring_digits_notation) == int:
-                max_fraction_size = recurring_digits_notation
-            else:
-                max_fraction_size = sezimal_context.decimal_precision
+        elif number.endswith('.'):
+            number = number[:-1]
+            fraction = '?'
 
-            fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.decimal_precision], max_fraction_size=max_fraction_size)
+        validated_number = validate_clean_decimal(number)
 
-            if recurring:
-                #
-                # Let’s check if we limit the size of the recurring notation
-                #
-                if type(recurring_digits_notation) == int:
-                    if len(fixed_part + recurring) < recurring_digits_notation:
-                        fraction = fixed_part
-                    else:
-                        recurring = ''
+        if '..' in number:
+            recurring_digits_notation = RECURRING_DIGITS_NOTATION_SIMPLE
+            integer, recurring = number.split('..')
 
-                else:
-                    fraction = fixed_part
+            if '.' in integer:
+                integer, fraction = integer.split('.')
+
+        elif '.' in number:
+            integer, fraction = number.split('.')
+        else:
+            integer = number
+
+        decimal_places = len(fraction + recurring)
 
     else:
-        integer, fraction = number, ''
+        number = validate_clean_decimal(str(number))
+
+        if type(recurring_digits_notation).__name__ in ('Decimal', 'int', 'Sezimal', 'SezimalInteger'):
+            recurring_digits_notation = int(recurring_digits_notation)
+
+        recurring: str = ''
+
+        if '.' in number:
+            integer, fraction = number.split('.')
+
+            if recurring_digits_notation and fraction:
+                if type(recurring_digits_notation) == int:
+                    max_fraction_size = recurring_digits_notation
+                else:
+                    max_fraction_size = sezimal_context.decimal_precision
+
+                fixed_part, recurring = _identify_recurring_digits(fraction[:sezimal_context.decimal_precision], max_fraction_size=max_fraction_size)
+
+                if recurring:
+                    #
+                    # Let’s check if we limit the size of the recurring notation
+                    #
+                    if type(recurring_digits_notation) == int:
+                        if len(fixed_part + recurring) < recurring_digits_notation:
+                            fraction = fixed_part
+                        else:
+                            recurring = ''
+
+                    else:
+                        fraction = fixed_part
+
+        else:
+            integer, fraction = number, ''
 
     if not recurring_digits_notation:
         if decimal_places:
@@ -358,12 +435,23 @@ def decimal_format(
 
     if recurring_digits_notation:
         if recurring:
+            if fraction and fraction_group_separator:
+                if wan_man_van_grouping:
+                    fraction = _apply_format(fraction[::-1], fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)[::-1]
+
+                elif lakh_crore_grouping and len(fraction) > 3:
+                    fraction = fraction[0:3] + fraction_group_separator + _apply_format(fraction[::-1][:-3], fraction_group_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+
+                else:
+                    fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
+
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
                 recurring_digits_notation,
                 _THREE_DIGITS_GROUP_FORMAT,
                 decimal_separator,
-                fraction_group_separator
+                fraction_group_separator,
+                keep_original_aspect,
             )
             fraction = ''
 
@@ -388,6 +476,9 @@ def decimal_format(
         formatted_number, prefix, suffix,
         positive_format, negative_format, typographical_negative,
     )
+
+    if keep_original_aspect:
+        formatted_number = formatted_number.replace('?', '')
 
     return formatted_number
 
@@ -722,9 +813,11 @@ def _apply_recurring_mark(
     recurring_regrouping: re.Pattern = None,
     fraction_separator: str = '.',
     group_separator: str = '',
+    keep_original_aspect: bool = False,
 ) -> str:
-    if (not recurring) or (recurring == '0'):
-        return fraction_separator + fraction
+    if not keep_original_aspect:
+        if (not recurring) or (recurring == '0'):
+            return fraction_separator + fraction
 
     formatted_recurring = _apply_format(recurring.replace('_', '')[::-1], group_separator, recurring_regrouping)[::-1]
 
