@@ -8,10 +8,13 @@ from swixknife import SezimalRange
 
 
 LOCALE_LIST = [
+    'iso',
+    'iso_dot',
+    'code',
     'ar_latn',
     'ar',
-    'bz_pt',
     'bz',
+    'bz_pt',
     'ca',
     'de',
     'el',
