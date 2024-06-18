@@ -1,3 +1,45 @@
+\+ mais
+\- menos
+− menos
+² ao quadrado
+³ ao cubo
+\^ elevado a
+\*\* elevado a
+\* vezes
+× vezes
+/ dividido por
+÷ dividido por
+([-−]?1)[/⁄](\d+) $1 $(fractional \\2)
+([-−]?\d+)[/⁄](\d+) $1 $(fractional-plural \\2)
+([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 sobre $2
+⁄ sobre
+([-−]?\d+[,.]?\d*)% $1 por nife
+% por nife
+([-−]?\d+[,.]?\d*)‰ $1 por arda
+‰ por arda
+([-−]?\d+[,.]?\d*)‱ $1 por seis arda
+‱ por seis arda
+([-−]?\d+[,.]?\d*)󱹷 $1 por unidade
+󱹷 por unidade
+([-−]?\d+[,.]?\d*)󱹸 $1 por seis
+󱹸 por seis
+([-−]?\d+[,.]?\d*)󱹹 $1 por nife
+󱹹 por nife
+([-−]?\d+[,.]?\d*)󱹺 $1 por arda
+󱹺 por arda
+([-−]?\d+[,.]?\d*)󱹻 $1 por seis arda
+󱹻 por seis arda
+([-−]?\d+[,.]?\d*)󱹼 $1 por nife arda
+󱹻 por nife arda
+([-−]?\d+[,.]?\d*)󱹽 $1 por xadara
+󱹽 por xadara
+e e
+π pi
+τ tau
+φ fi
+\( abre parênteses
+\) fecha parênteses
+
 ^0 zero
 1 um
 2 dois
@@ -84,15 +126,7 @@
 #
 #([-−]?\d+)[,.] $1| ponto
 ([-−]?\d+)[,.] $1| vírgula
-([-−]?\d+[.,])([^0]\d{1,4}) $1| |$2
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11 |$12
+([-−]?\d+[.,])([^0]\d{1,2}) $1| |$2
 ([-−]?\d+[.,]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
@@ -154,6 +188,56 @@
 .*a .ª
 .*o º    # [:pt-BR:]
 .*o .º
+
+== fractional ==
+
+2 meio
+3 terço
+4 quarto
+5 quinto
+10 sexto
+11 sétimo
+12 oitavo
+13 nono
+14 décimo
+15 ônzimo
+20 dussexto
+30 tressexto
+40 quassexto
+50 quinsexto
+100 nifésimo
+200 dunifésimo
+300 trenifésimo
+400 quatronifésimo
+500 quinifésimo
+1000 ardésimo
+1000000 xadarésimo
+(\d+) $(\\1) avos
+
+== fractional-plural ==
+
+2 meios
+3 terços
+4 quartos
+5 quintos
+10 sextos
+11 sétimos
+12 oitavos
+13 nonos
+14 décimos
+15 ônzimos
+20 dussextos
+30 tressextos
+40 quassextos
+50 quinsextos
+100 nifésimos
+200 dunifésimos
+300 trenifésimos
+400 quatronifésimos
+500 quinifésimos
+1000 ardésimos
+1000000 xadarésimos
+(\d+) $(\\1) avos
 
 == help ==
 

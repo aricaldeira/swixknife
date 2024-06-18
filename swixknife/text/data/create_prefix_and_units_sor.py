@@ -30,15 +30,31 @@ UNIT-bar bara
 UNIT-dab daba
 UNIT-kry cária
 UNIT-xat xáti
+UNIT-svg sanvega
+UNIT-pkp praquepa
+UNIT-pbv prabava
+UNIT-tnv tanava
+UNIT-upr upári
+UNIT-nad nádi
+UNIT-bum búmi
+UNIT-idn índana
+UNIT-tln têlan
+UNIT-agn aguení
+UNIT-gtk gática
+UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx avexa
+UNIT-avx ávexa
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-cln chalana
-UNIT-prk preraca
-UNIT-sma samai
+UNIT-cln chálana
+UNIT-prk prêraca
+UNIT-sam samái
 UNIT-abv abiva
 UNIT-vst vistara
+UNIT-prd parídi
+UNIT-gol gola
+UNIT-pkx pracaxa
+UNIT-dpk dípaca
 '''
 
     elif lang == 'bz':
@@ -67,15 +83,31 @@ UNIT-bar bara
 UNIT-dab daba
 UNIT-kry karya
 UNIT-xat xati
+UNIT-svg sanvega
+UNIT-pkp prakepa
+UNIT-pbv prabava
+UNIT-tnv tanava
+UNIT-upr upari
+UNIT-nad nadi
+UNIT-bum bumi
+UNIT-idn índana
+UNIT-tln têlan
+UNIT-agn agení
+UNIT-gtk gátika
+UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx avexa
+UNIT-avx ávexa
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-cln xalana
-UNIT-prk preraka
-UNIT-sma samay
+UNIT-cln xálana
+UNIT-prk prêraka
+UNIT-sam samay
 UNIT-abv abiva
 UNIT-vst vistara
+UNIT-prd paridi
+UNIT-gol gola
+UNIT-pkx prakaxa
+UNIT-dpk dípaka
 '''
 
     else:
@@ -103,15 +135,31 @@ UNIT-bar bara
 UNIT-dab daba
 UNIT-kry karya
 UNIT-xat shati
+UNIT-svg sanvega
+UNIT-pkp prakepa
+UNIT-pbv prabava
+UNIT-tnv tanava
+UNIT-upr upari
+UNIT-nad nadi
+UNIT-bum bumi
+UNIT-idn indana
+UNIT-tln telan
+UNIT-agn agni
+UNIT-gtk gatika
+UNIT-tap tapa
 UNIT-dar dara
 UNIT-avx avesha
 UNIT-vbv vibava
 UNIT-ptr pratiroda
 UNIT-cln chalana
 UNIT-prk preraka
-UNIT-sma samai
+UNIT-sam samai
 UNIT-abv abiva
 UNIT-vst vistara
+UNIT-prd paridi
+UNIT-gol gola
+UNIT-pkx prakasha
+UNIT-dpk dipaka
 '''
     return text
 
@@ -165,7 +213,7 @@ def create_prefixes(lang='en'):
     return text
 
 
-def create_rules(conjunction='and', preposition=''):
+def create_rules(conjunction='and', preposition='', lang=''):
     conjunction = conjunction.strip()
 
     if not conjunction:
@@ -196,12 +244,18 @@ def create_rules(conjunction='and', preposition=''):
 # # let’s deduce the subunit prefix by the number of sezimal places
 # #
 # '''
-    text = f'''#
+    text = rf'''#
+# Rules for units used with fractions
+#
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\3){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2))
+
+#
 # Rules for units without fractional parts, or only zeroes
 #
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,]0*?)?" $(1) $(PREFIX-\\1)$(UNIT-\\2)
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\\d+0{{8,}})([.,]0*?)?" $3{preposition}$(PREFIX-\\1)$(UNIT-\\2)s
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\\d+)([.,]0*?)?" $3 $(PREFIX-\\1)$(UNIT-\\2)s
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+0{{8,}})([.,]0*?)?" $3 $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 
 #
 # Rules for units with fractional parts;
@@ -233,10 +287,44 @@ def create_rules(conjunction='and', preposition=''):
         text += rf'''#
 # {i} sezimal place{'s' if i > 1 else ''}
 #
+"(SH-({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
+
 "(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
 "(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
 
+'''
+
+    if lang == 'pt':
+        text += r'''== cleanup ==
+
+"tapa" grau sezimal \(tapa\)
+"tapas" graus sezimais \(tapas\)
+(.+)ma([aâàáãä])(.+) \\1m\\2\\3
+(.+)ti([iîìíĩï])(.+) \\1t\\2\\3
+(.+) \\1
+'''
+
+    elif lang == 'bz':
+        text += r'''== cleanup ==
+
+"tapa" graw sezimaw \(tapa\)
+"tapas" graws sezimays \(tapas\)
+(.+)ma([aâàáãä])(.+) \\1m\\2\\3
+(.+)ti([iîìíĩï])(.+) \\1t\\2\\3
+(.+) \\1
+'''
+
+    else:
+        text += r'''== cleanup ==
+
+"tapa" sezimal degree \(tapa\)
+"tapas" sezimal degrees \(tapas\)
+(.+)ma([aâàáãä])(.+) \\1m\\2\\3
+(.+)ti([iîìíĩï])(.+) \\1t\\2\\3
+(.+) \\1
 '''
 
     return text
@@ -246,17 +334,23 @@ if __name__ == '__main__':
     arq = open('bz_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='bz'))
     arq.write(create_prefixes(lang='bz'))
-    arq.write(create_rules(conjunction='i', preposition=''))
+    arq.write(create_rules(conjunction='i', preposition='di un', lang='bz'))
     arq.close()
 
     arq = open('pt_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='pt'))
     arq.write(create_prefixes(lang='pt'))
-    arq.write(create_rules(conjunction='e', preposition=''))
+    arq.write(create_rules(conjunction='e', preposition='de um', lang='pt'))
     arq.close()
 
     arq = open('en_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='en'))
     arq.write(create_prefixes(lang='en'))
-    arq.write(create_rules(conjunction='and', preposition=''))
+    arq.write(create_rules(conjunction='and', preposition='of one', lang='en'))
+    arq.close()
+
+    arq = open('en_misali_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='en'))
+    arq.write(create_prefixes(lang='en'))
+    arq.write(create_rules(conjunction='and', preposition='of one'))
     arq.close()

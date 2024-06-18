@@ -1,4 +1,46 @@
-^0 zero
+\+ máys
+\- menus
+− menus
+² aw kwadradu
+³ aw kubu
+\^ elevadu a
+\*\* elevadu a
+\* vezis
+× vezis
+/ divididu pur
+÷ divididu pur
+([-−]?1)[/⁄](\d+) $1 $(fractional \\2)
+([-−]?\d+)[/⁄](\d+) $1 $(fractional-plural \\2)
+([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 sobri $2
+⁄ sobri
+([-−]?\d+[,.]?\d*)% $1 pur nifi
+% pur nifi
+([-−]?\d+[,.]?\d*)‰ $1 pur arda
+‰ pur arda
+([-−]?\d+[,.]?\d*)‱ $1 pur sêys arda
+‱ pur sêys arda
+([-−]?\d+[,.]?\d*)󱹷 $1 pur unidadi
+󱹷 pur unidadi
+([-−]?\d+[,.]?\d*)󱹸 $1 pur sêys
+󱹸 pur sêys
+([-−]?\d+[,.]?\d*)󱹹 $1 pur nifi
+󱹹 pur nifi
+([-−]?\d+[,.]?\d*)󱹺 $1 pur arda
+󱹺 pur arda
+([-−]?\d+[,.]?\d*)󱹻 $1 pur sêys arda
+󱹻 pur sêys arda
+([-−]?\d+[,.]?\d*)󱹼 $1 pur nifi arda
+󱹻 pur nifi arda
+([-−]?\d+[,.]?\d*)󱹽 $1 pur xadara
+󱹽 pur xadara
+e e
+π pi
+τ taw
+φ fi
+\( abri parêntezis
+\) fèxa parêntezis
+
+^0 zèro
 1 un
 2 doys
 3 treys
@@ -11,6 +53,7 @@
 14 dèys
 15 onzi
 20 dozi
+# 20 duseys
 
 30 treseys
 40 quaseys
@@ -85,15 +128,7 @@
 #
 #([-−]?\d+)[,.] $1| pontu
 ([-−]?\d+)[,.] $1| vírgula
-([-−]?\d+[.,])([^0]\d{1,4}) $1| |$2
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11
-"([-−]?\d+[.,])(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)" |$1 |$2| |$3| |$4 |$5 |$6 |$7 |$8 |$9 |$10 |$11 |$12
+([-−]?\d+[.,])([^0]\d{1,2}) $1| |$2
 ([-−]?\d+[.,]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
@@ -153,6 +188,56 @@
 ([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
 .*a ᵃ̱
 .*u ᵘ̱
+
+== fractional ==
+
+2 meyu
+3 tersu
+4 kwartu
+5 kintu
+10 sestu
+11 sétimu
+12 oytavu
+13 nonu
+14 désimu
+15 ônzimu
+20 dusestu
+30 tresestu
+40 kwasestu
+50 kinsestu
+100 nifézimu
+200 dunifézimu
+300 trenifézimu
+400 kwatrunifézimu
+500 kinifézimu
+1000 ardézimu
+1000000 xadarézimu
+(\d+) $(\\1) avus
+
+== fractional-plural ==
+
+2 meyus
+3 tersus
+4 kwartus
+5 kintus
+10 sestus
+11 sétimus
+12 oytavus
+13 nonus
+14 désimus
+15 ônzimus
+20 dusestus
+30 tresestus
+40 kwasestus
+50 kinsestus
+100 nifézimus
+200 dunifézimus
+300 trenifézimus
+400 kwatrunifézimus
+500 kinifézimus
+1000 ardézimus
+1000000 xadarézimus
+(\d+) $(\\1) avus
 
 == help ==
 
