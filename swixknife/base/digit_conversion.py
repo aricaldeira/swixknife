@@ -5,12 +5,16 @@ SEZIMAL_DIGITS_MAP = (
     ('0', '󱸀'), ('1', '󱸁'), ('2', '󱸂'), ('3', '󱸃'), ('4', '󱸄'), ('5', '󱸅'),
     ('⁰', '󱸤'), ('¹', '󱸥'), ('²', '󱸦'), ('³', '󱸧'), ('⁴', '󱸨'), ('⁵', '󱸩'),
     ('₀', '󱹈'), ('₁', '󱹉'), ('₂', '󱹊'), ('₃', '󱹋'), ('₄', '󱹌'), ('₅', '󱹍'),
+    ('%', '󱹹'), ('‰', '󱹺'), ('‱', '󱹻'),
+    ('½', '󱹬'), ('⅓', '󱹭'), ('⅔', '󱹮'), ('¼', '󱹯'), ('¾', '󱹰'),
+    ('⅕', '󱹱'), ('⅖', '󱹲'), ('⅗', '󱹳'), ('⅘', '󱹴'),
+    ('⅙', '󱹵'), ('⅚', '󱹶'),
 )
 DEFAULT_DIGITS = tuple(digit[0] for digit in SEZIMAL_DIGITS_MAP)
 SEZIMAL_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
 
-_DEFAULT_TO_SEZIMAL_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: SEZIMAL_DIGITS[i] for i in range(18)})
-_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({SEZIMAL_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(18)})
+_DEFAULT_TO_SEZIMAL_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: SEZIMAL_DIGITS[i] for i in range(32)})
+_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({SEZIMAL_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(32)})
 
 NIFTIMAL_DIGITS_MAP = (
     ('0', '0', '0̃'), ('1', '1', '1̃'), ('2', '2','2̃'), ('3', '3', '3̃'), ('4', '4', '4̃'), ('5', '5','5̃'),
