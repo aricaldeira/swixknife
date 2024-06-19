@@ -55,6 +55,22 @@ UNIT-prd parídi
 UNIT-gol gola
 UNIT-pkx pracaxa
 UNIT-dpk dípaca
+UNIT-p/s por seis
+UNIT-p/n por nife
+UNIT-p/a por arda
+UNIT-p/sa por seis arda
+UNIT-p/na por nife arda
+UNIT-p/x por xadara
+UNIT-p/sx por seis xadara
+UNIT-p/nx por nife xadara
+UNIT-p/ax por arda xadara
+UNIT-p/sax por seis arda xadara
+UNIT-p/nax por nife arda xadara
+UNIT-p/Dx por dixadara
+UNIT-p/Tx por trixadara
+UNIT-p/Cx por charxadara
+UNIT-p/Px por panxadara
+UNIT-p/Xx por xaxadara
 '''
 
     elif lang == 'bz':
@@ -108,6 +124,22 @@ UNIT-prd paridi
 UNIT-gol gola
 UNIT-pkx prakaxa
 UNIT-dpk dípaka
+UNIT-p/s pur sêys
+UNIT-p/n pur nifi
+UNIT-p/a pur arda
+UNIT-p/sa pur sêys arda
+UNIT-p/na pur nifi arda
+UNIT-p/x pur xadara
+UNIT-p/sx pur sêys xadara
+UNIT-p/nx pur nifi xadara
+UNIT-p/ax pur arda xadara
+UNIT-p/sax pur sêys arda xadara
+UNIT-p/nax pur nifi arda xadara
+UNIT-p/Dx pur dixadara
+UNIT-p/Tx pur trixadara
+UNIT-p/Cx pur charxadara
+UNIT-p/Px pur panxadara
+UNIT-p/Xx pur xaxadara
 '''
 
     else:
@@ -160,6 +192,22 @@ UNIT-prd paridi
 UNIT-gol gola
 UNIT-pkx prakasha
 UNIT-dpk dipaka
+UNIT-p/s per six
+UNIT-p/n per nif
+UNIT-p/a per arda
+UNIT-p/sa per six arda
+UNIT-p/na per nif arda
+UNIT-p/x per shadara
+UNIT-p/sx per six shadara
+UNIT-p/nx per nif shadara
+UNIT-p/ax per arda shadara
+UNIT-p/sax per six arda shadara
+UNIT-p/nax per nif arda shadara
+UNIT-p/Dx per dishadara
+UNIT-p/Tx per trishadara
+UNIT-p/Cx per charshadara
+UNIT-p/Px per panshadara
+UNIT-p/Xx per shashadara
 '''
     return text
 
@@ -172,11 +220,11 @@ def create_prefixes(lang='en'):
 
     for i in SezimalRange(-104, 105):
         if i == 0:
-            text += 'PREFIX-z shunti\n'
-            text += 'PREFIX-Z shunma\n'
+            text += 'PREFIX-z ""\n'
+            text += 'PREFIX-Z ""\n'
         else:
-            symbol = sezimal_exponent_to_symbol(i)
-            name = sezimal_exponent_to_prefix(i)
+            symbol = sezimal_exponent_to_symbol(i) or 'z'
+            name = sezimal_exponent_to_prefix(i) or 'z'
 
             if lang == 'pt':
                 name = name.replace('shu', 'xu')
@@ -206,8 +254,8 @@ def create_prefixes(lang='en'):
             text += 'PREFIX-DIV10-z e\n'
             text += 'PREFIX-DIV10-Z e\n'
         else:
-            symbol = sezimal_exponent_to_symbol(i)
-            div10 = sezimal_exponent_to_symbol(i-1)
+            symbol = sezimal_exponent_to_symbol(i) or 'z'
+            div10 = sezimal_exponent_to_symbol(i-1) or 'z'
             text += f'PREFIX-DIV10-{symbol} {div10}\n'
 
     return text
@@ -230,6 +278,7 @@ def create_rules(conjunction='and', preposition='', lang=''):
 
     PREFIX_RULE = '[ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3}'
     UNIT_RULE = '[a-z]{3}'
+    PER_UNIT_RULE = 'p/[a-zA-Z]{1,3}'
     # PRECISION_RULE = '[0-5]{1,3}'
 
 #     text = f'''#
@@ -244,7 +293,17 @@ def create_rules(conjunction='and', preposition='', lang=''):
 # # let’s deduce the subunit prefix by the number of sezimal places
 # #
 # '''
-    text = rf'''#
+    text = rf'''
+#
+# Rules for the "per" units, that don’t use prefixes,
+# and don’t get plural forms
+#
+"SH-({PER_UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\2) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?\d+[.,]\d+)" $(\2) $(cleanup $(UNIT-\1))
+
+#
 # Rules for units used with fractions
 #
 "SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\3){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2))
@@ -254,7 +313,6 @@ def create_rules(conjunction='and', preposition='', lang=''):
 #
 "SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 "SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+0{{8,}})([.,]0*?)?" $3 $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 "SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 
 #
@@ -272,8 +330,8 @@ def create_rules(conjunction='and', preposition='', lang=''):
 
     for i in SezimalRange(1, 105):
         digits_rule = r'\d' * int(i)
-        prefix_negative = sezimal_exponent_to_symbol(i * -1)
-        prefix_positive = sezimal_exponent_to_symbol(i)
+        prefix_negative = sezimal_exponent_to_symbol(i * -1) or 'z'
+        prefix_positive = sezimal_exponent_to_symbol(i) or 'z'
         div10 = _digits_div10(i, '\\2')
 
 #         text += rf'''#

@@ -48,6 +48,22 @@ UNIT-prd parídi
 UNIT-gol gola
 UNIT-pkx pracaxa
 UNIT-dpk dípaca
+UNIT-p/s por seis
+UNIT-p/n por nife
+UNIT-p/a por arda
+UNIT-p/sa por seis arda
+UNIT-p/na por nife arda
+UNIT-p/x por xadara
+UNIT-p/sx por seis xadara
+UNIT-p/nx por nife xadara
+UNIT-p/ax por arda xadara
+UNIT-p/sax por seis arda xadara
+UNIT-p/nax por nife arda xadara
+UNIT-p/Dx por dixadara
+UNIT-p/Tx por trixadara
+UNIT-p/Cx por charxadara
+UNIT-p/Px por panxadara
+UNIT-p/Xx por xaxadara
 #
 # Prefixes
 #
@@ -91,8 +107,8 @@ PREFIX-c charti
 PREFIX-t triti
 PREFIX-d diti
 PREFIX-e ecati
-PREFIX-z shunti
-PREFIX-Z shunma
+PREFIX-z ""
+PREFIX-Z ""
 PREFIX-E ecama
 PREFIX-D dima
 PREFIX-T trima
@@ -222,6 +238,16 @@ PREFIX-DIV10-NE N
 PREFIX-DIV10-ND NE
 PREFIX-DIV10-NT ND
 PREFIX-DIV10-NC NT
+
+#
+# Rules for the "per" units, that don’t use prefixes,
+# and don’t get plural forms
+#
+"SH-(p/[a-zA-Z]{1,3}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(UNIT-\1))
+"SH-(p/[a-zA-Z]{1,3}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(UNIT-\1))
+"SH-(p/[a-zA-Z]{1,3}) ([-−]?\d+)([.,]0*?)?" $(\2) $(cleanup $(UNIT-\1))
+"SH-(p/[a-zA-Z]{1,3}) ([-−]?\d+[.,]\d+)" $(\2) $(cleanup $(UNIT-\1))
+
 #
 # Rules for units used with fractions
 #
@@ -232,7 +258,6 @@ PREFIX-DIV10-NC NT
 #
 "SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 "SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-"SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?\d+0{8,})([.,]0*?)?" $3 $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 "SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
 
 #

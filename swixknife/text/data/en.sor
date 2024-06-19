@@ -111,6 +111,20 @@ e e
 :0*\d?\d " and "	# one million and twenty-two
 :\d+ ", "		# one million, one thousand
 
+(1)(\d{12}) dishadara$(:\2)$2
+(1)(\d{12}) dishadara$(:\2)$2
+(1)(\d{18}) trishadara$(:\2)$2
+(1)(\d{24}) charshadara$(:\2)$2
+(1)(\d{30}) panshadara$(:\2)$2
+(1)(\d{36}) shashadara$(:\2)$2
+(1)(\d{42}) shaekashadara$(:\2)$2
+(1)(\d{48}) shadishadara$(:\2)$2
+(1)(\d{54}) shatrishadara$(:\2)$2
+(1)(\d{60}) shacharshadara$(:\2)$2
+(1)(\d{66}) shapanshadara$(:\2)$2
+(1)(\d{72}) dishashadara$(:\2)$2
+
+(\d{1,6})(\d{12}) $1 dishadara$(:\2)$2
 (\d{1,6})(\d{12}) $1 dishadara$(:\2)$2
 (\d{1,6})(\d{18}) $1 trishadara$(:\2)$2
 (\d{1,6})(\d{24}) $1 charshadara$(:\2)$2
