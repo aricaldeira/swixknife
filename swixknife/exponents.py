@@ -438,8 +438,6 @@ def decimal_symbol_to_exponent(symbol: str) -> SezimalInteger:
     if not symbol:
         return SezimalInteger(0)
 
-    breakpoint()
-
     if symbol not in _DECIMAL_SYMBOL_EXPONENT:
         raise ValueError(f'Symbol {symbol} invalid')
 
