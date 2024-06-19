@@ -1,36 +1,36 @@
 
 @font-face {
-  font-family: 'Iosevka Sezimal';
+  font-family: 'Iosevka Sezimal Extended';
   font-weight: bold;
   font-style: italic;
-  src: local('Iosevka Sezimal Bold Italic'),
-       url("../font/IosevkaSezimal-BoldItalic.woff2") format("woff2"),
-       url("../font/IosevkaSezimal-BoldItalic.ttf") format("truetype");
+  src: local('Iosevka Sezimal Extended Bold Italic'),
+       url("../font/IosevkaSezimal-ExtendedBoldItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedBoldItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal';
+  font-family: 'Iosevka Sezimal Extended';
   font-weight: normal;
   font-style: italic;
-  src: local('Iosevka Sezimal Italic'),
-       url("../font/IosevkaSezimal-Italic.woff2") format("woff2"),
-       url("../font/IosevkaSezimal-Italic.ttf") format("truetype");
+  src: local('Iosevka Sezimal Extended Italic'),
+       url("../font/IosevkaSezimal-ExtendedItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal';
+  font-family: 'Iosevka Sezimal Extended';
   font-weight: bold;
   font-style: normal;
-  src: local('Iosevka Sezimal Bold'),
-       url("../font/IosevkaSezimal-bold.woff2") format("woff2"),
-       url("../font/IosevkaSezimal-bold.ttf") format("truetype");
+  src: local('Iosevka Sezimal Extended Bold'),
+       url("../font/IosevkaSezimal-ExtendedBold.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal';
+  font-family: 'Iosevka Sezimal Extended';
   font-weight: normal;
   font-style: normal;
-  src: local('Iosevka Sezimal'),
-       url("../font/IosevkaSezimal-Regular.woff2") format("woff2"),
-       url("../font/IosevkaSezimal-Regular.ttf") format("truetype");
+  src: local('Iosevka Sezimal Extended'),
+       url("../font/IosevkaSezimal-Extended.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-Extended.ttf") format("truetype");
 }
