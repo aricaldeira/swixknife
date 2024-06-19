@@ -61,7 +61,7 @@ SD.today().strftime('Today is %A, %-d %B %_Y SHE').replace('_', SEPARATOR_NARROW
 # #a / #-a / #*a / #*-a = agrimas
 # #n / #-n / #*n / #*-n = anugas
 # #b / #-b / #*b / #*-b = bodas
-# #e / #-e / #*e / #*-e = ekaditibodas
+# #x / #-x / #*x / #*-x = shaditibodas
 # #d / #*d = days
 # #t = time zone offset (formatted)
 # #T = time zone name
@@ -96,22 +96,22 @@ S(12345).formatted_number
 # allowed on floats, otherwise, any other number class will do;
 # remember that ints and floats will be validated as if they where Sezimal
 #
-sezimal_format(123_4501_2345.0123_4512, sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
-sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
-sezimal_format('123_4501_2345.0123_4512', sezimal_places=12, group_separator=SEPARATOR_DOT, sezimal_separator=SEPARATOR_COMMA, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format(12_345_012_345.012_345_12, sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('12_345_012_345.012_345_12', sezimal_places=12, group_separator=SEPARATOR_COMMA, sezimal_separator=SEPARATOR_DOT, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
+sezimal_format('12_345_012_345.012_345_12', sezimal_places=12, group_separator=SEPARATOR_DOT, sezimal_separator=SEPARATOR_COMMA, fraction_group_separator=SEPARATOR_NARROW_NOBREAK_SPACE)
 
 #
 # Units conversions
 #
 PADA_TO_METER
-1_0000 * PADA_TO_METER / 4344
-0.0001 * PADA_TO_METER * 4344
-(PADA_TO_METER / 100 * 4344) - D('25.4')  # Difference from the ditipada to an inch
-(PADA_TO_METER / 100 * 4344).decimal - D('25.4')
+10_000 * PADA_TO_METER / 4_344
+0.000_1 * PADA_TO_METER * 4_344
+(PADA_TO_METER / 100 * 4_344) - D('25.4')  # Difference from the ditipada to an inch
+(PADA_TO_METER / 100 * 4_344).decimal - D('25.4')
 </pre>
         </main>
         <footer>
-            <p>Revised on the 15<sup>th</sup> of May 13,1355 SHE (13,1355-05-15 <span class="decimal">2023-05-11</span>)</p>
+            <p>Revised on the 15<sup>th</sup> of May 131,355 SHE (131,355-05-15 <span class="decimal">2023-05-11</span>)</p>
         </footer>
     </body>
 </html>
