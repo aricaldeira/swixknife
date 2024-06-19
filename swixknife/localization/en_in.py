@@ -6,7 +6,7 @@ __all__ = ('SezimalLocaleEN_IE',)
 from .en import SezimalLocaleEN
 
 
-class SezimalLocaleEN_IE(SezimalLocaleEN):
+class SezimalLocaleEN_IN(SezimalLocaleEN):
     LANG = 'en'
     LANGUAGE = 'Indian English'
 

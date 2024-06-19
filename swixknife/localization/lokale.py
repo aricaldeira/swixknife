@@ -349,6 +349,16 @@ class SezimalLocale:
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         keep_original_aspect: bool = False,
+        #
+        # Lakhs and crores are Indian names for powers of ten
+        # https://en.wikipedia.org/wiki/Indian_numbering_system
+        #
+        lakh_crore_grouping: bool = False,
+        #
+        # 萬/万: Chinese wàn/ㄨㄢˋ, Japanese まん man, Korean 만 man, Vietnamese vạn
+        # https://en.wikipedia.org/wiki/Japanese_numerals#Powers_of_10
+        #
+        wan_man_van_grouping: bool = False,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
@@ -366,7 +376,9 @@ class SezimalLocale:
             positive_format,
             negative_format,
             recurring_digits_notation,
-            keep_original_aspect=keep_original_aspect,
+            keep_original_aspect,
+            lakh_crore_grouping,
+            wan_man_van_grouping,
         )
 
     def format_dozenal_number(self,

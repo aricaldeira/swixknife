@@ -323,6 +323,7 @@ def decimal_format(
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = RECURRING_DIGITS_NOTATION_NONE,
+        keep_original_aspect: bool = False,
         #
         # Lakhs and crores are Indian names for powers of ten
         # https://en.wikipedia.org/wiki/Indian_numbering_system
@@ -333,7 +334,6 @@ def decimal_format(
         # https://en.wikipedia.org/wiki/Japanese_numerals#Powers_of_10
         #
         wan_man_van_grouping: bool = False,
-        keep_original_aspect: bool = False,
     ) -> str:
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         number = sezimal_to_decimal(number)
