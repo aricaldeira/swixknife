@@ -86,7 +86,7 @@ class SezimalDirectoryList:
 
         return terminal.isatty()
 
-    def _prepare_lines(self, time_zone: None):
+    def _prepare_lines(self, time_zone=None):
         lines = []
 
         for file_info in self.directory_list + self.file_list:
