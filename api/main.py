@@ -4,17 +4,22 @@ from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
 from decimal import Decimal
 from swixknife import Sezimal, SezimalRange, SezimalInteger
-from swixknife.units.time import UTA_TO_HOUR
-from swixknife.units.temperature import TAPA_TO_CELSIUS
 from swixknife.weather.weather import SezimalWeather
+
+
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 app = Flask(__name__)
 app.json.sort_keys = False
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
 
 from locale_info import *
 from number_conversion import *
 from now import *
+from calculator import *
 
 
 @app.route('/')

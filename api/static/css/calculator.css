@@ -1,121 +1,302 @@
-/*
- *
- *
- *
- */
-
 :root {
-    --o-webclient-color-scheme: blue;
+    --o-webclient-color-scheme: black;
+    --theme: black;
+    background-color: black;
+    color: white;
 
     font-size: 1.5em;
 
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    /*
-     / Font Andika
-    */
-    font-family: 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
-    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
-    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
-    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    font-family: "Iosevka Sezimal Extended" !important;
+/*     font-family: "Andika", "Iosevka Sezimal Extended"; */
+    --font-family-sans-serif: "Iosevka Sezimal Extended", monospace, sans-serif;
+    --font-family-monospace: "Iosevka Sezimal Extended", monospace;
 }
-
 html, body {
     position: relative;
     width: 100%;
     height: 100%;
-}
-
-.calculator{
-    font-family: 'Andika', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans', sans-serif;
-    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
-    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
-    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    background-color: black;
+    color: white;
     margin: 0;
-/*     position: absolute; */
-    text-align: center;
-    background-color: #B71C1C;
-    top: 50%;
-    left: 50%;
-/*     transform: translate(-50%,0%); */
-    border-radius: 15px;
-    padding: 15px;
-    display: grid;
 }
-
-div.calculator {
-    width: 562px;
+.buttons {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
-
 table {
     table-layout: fixed;
     width: 100%;
+    border: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-.display {
-    font-size: 25px;
-    text-align: right;
-    background-color: white;
-    height: 40px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
-    vertical-align: middle;
+.buttons-table {
+    max-width: 400px;
 }
-
-.decimal_display {
-    font-size: 15px;
-    text-align: right;
-    background-color: white;
-    height: 20px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 7px;
-    vertical-align: middle;
+td {
+    border: 5px;
+    padding: 0;
+    margin: 0;
 }
-
-.calc-button{
-/*     width: 70px; */
+button {
+    font-family: "Iosevka Sezimal Extended";
+    font-size: 30pt;
+    font-weight: normal;
+/*     font-style: italic; */
     width: 100%;
-    height: 70px;
-    font-size: 40px;
-    cursor: pointer;
-    margin: 3px;
-    border: none;
-    background-color: #3E2723;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    border-radius: 12px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.button-clear {
+    background-color: #D32F2F;
     color: white;
-    border-radius: 30px;
+
+    &:hover {
+        background-color: #FFCDD2;
+        color: #D32F2F;
+    }
+}
+.button-base {
+    background-color: #9E9E9E;
+    color: white;
+
+    &:hover {
+        background-color: #F5F5F5;
+        color: #9E9E9E;
+    }
+}
+.button-arrow {
+    background-color: #3F51B5;
+    color: white;
+
+    &:hover {
+        background-color: #C5CAE9;
+        color: #3F51B5;
+    }
+}
+.button-back {
+    background-color: #FF5722;
+    color: white;
+
+    &:hover {
+        background-color: #FFCCBC;
+        color: #FF5722;
+    }
+}
+.button-digit {
+    background-color: #8BC34A;
+    color: white;
+
+    &:hover {
+        background-color: #DCEDC8;
+        color: #8BC34A;
+    }
+}
+.button-constant {
+    background-color: #4CAF50;
+    color: white;
+
+    &:hover {
+        background-color: #C8E6C9;
+        color: #4CAF50;
+    }
+}
+.button-tau {
+    height: 102px;
+    line-height: unset;
+
+    background-color: #4CAF50;
+    color: white;
+
+    &:hover {
+        background-color: #C8E6C9;
+        color: #4CAF50;
+    }
+}
+.button-zero {
+    background-color: #3F51B5;
+    color: white;
+
+    &:hover {
+        background-color: #C5CAE9;
+        color: #3F51B5;
+    }
+}
+.button-equal {
+    background-color: #FF9800;
+    color: white;
+
+    &:hover {
+        background-color: #FFE0B2;
+        color: #FF9800;
+    }
+}
+.button-math {
+    background-color: #03A9F4;
+    color: white;
+
+    &:hover {
+        background-color: #BBDEFB;
+        color: #03A9F4;
+    }
+}
+.button-operator {
+    background-color: #2196F3;
+    color: white;
+
+    &:hover {
+        background-color: #BBDEFB;
+        color: #2196F3;
+    }
+}
+.button-function {
+    font-size: 22px;
+    background-color: #9C27B0;
+    color: white;
+
+    &:hover {
+        background-color: #E1BEE7;
+        color: #9C27B0;
+    }
+/*    background-color: #009688;
+    color: white;
+
+    &:hover {
+        background-color: #B2DFDB;
+        color: #009688;
+    }*/
+}
+.unit {
+    font-size: 16pt;
+    font-weight: normal;
+    text-align: center;
+    background-color: #212121;
+    color: #F5F5F5;
+}
+.display {
+    font-size: 36pt;
+    font-weight: normal;
+/*     font-style: italic; */
+    text-align: right;
+/*     width: 100%; */
+/*    height: 215px;
+    line-height: 65px;*/
+    align-content: start;
+    padding: 6px;
+    border-bottom: 2px double #607D8B;
+    background-color: #CFD8DC;
+    color: #263238;
+    word-wrap: break-word;
+    padding-top: 20px;
+    font-variant-numeric: diagonal-fractions;
+}
+.spellout {
+    font-size: 10pt;
+    text-align: right;
+    padding: 6px;
+    border-bottom: 2px double #9E9E9E;
+    background-color: #212121;
+    color: #F5F5F5;
+    word-wrap: break-word;
+}
+.decimal_display {
+    font-size: 24pt;
+    font-weight: normal;
+    font-style: italic;
+    text-align: right;
+/*     width: 100%; */
+/*     height: ; */
+/*     line-height: 45px; */
+    align-content: start;
+    padding: 6px;
+    border-bottom: 2px double #9E9E9E;
+    background-color: #212121;
+    color: #F5F5F5;
+    word-wrap: break-word;
+    font-variant-numeric: diagonal-fractions;
+}
+.expression {
+    font-size: 20pt;
+    font-weight: normal;
+/*     font-style: italic; */
+    text-align: right;
+    width: 100%;
+    height: 100px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: 0;
+    border-radius: 12px;
+}
+.settings {
+    font-size: 12pt;
+
+}
+td.settings {
+    vertical-align: top;
+    word-wrap: break-word;
+}
+label {
     font-weight: bold;
-    /*
-     * Setting font-weight to bold cancels font-feature-settings, have to re-set here
-     */
-    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
-    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
-    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    font-size: 12pt;
 }
 
-.calc-button:hover{
-    background-color: #F44336;
+select {
+    font-family: "Iosevka Sezimal Extended";
+    font-size: 12pt;
+}
+select > option {
+    font-family: "Iosevka Sezimal Extended";
+}
+option {
+    font-family: "Iosevka Sezimal Extended";
+}
+option:before {
+    font-family: "Iosevka Sezimal Extended";
 }
 
-.calc-button-operator {
-    font-size: 50px;
+.grouping-explanation {
+    font-size: 12pt;
+
+    .title {
+        text-align: center;
+        font-weight: bold;
+    }
+    td {
+        font-size: 10pt;
+        width: auto;
+    }
 }
 
-.calc-button-backspace {
-    font-size: 30px;
+.units {
+    font-size: 12pt;
+}
+td.units {
+    vertical-align: top;
+    word-wrap: break-word;
+}
+.units-explanation {
+    font-size: 12pt;
+    text-align: left;
+
+    .title {
+        text-align: center;
+        font-weight: bold;
+    }
+    td {
+        font-size: 10pt;
+        width: auto;
+    }
 }
 
-.calc-button-constant {
-/*     font-family: 'Gentium Plus', 'Andika', 'Noto Sans', sans-serif; */
-/*     font-size: 30px; */
-}
-
-.regular {
-/*     display: inherit; */
-}
-
-.scientific {
-    display: none;
-}

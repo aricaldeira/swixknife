@@ -1,0 +1,2921 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sezimal Calculator</title>
+        <meta name="description" content="Sezimal Calculator">
+        <meta name="author" content="Ari Caldeira">
+        <meta name="theme-color" content="#000000">
+        <link rel="manifest" href="manifest_calculator.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/calculator.css" />
+    </head>
+    <body>
+        <div id="settings" class="control-panel" hidden>
+            <table id="settings-table" class="settings">
+                <colgroup>
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 40%;">
+                    <col span="1" style="width: 40%;">
+                    <col span="1" style="width: 10%;">
+                </colgroup>
+                <tr>
+                    <td style="text-align: left;" onclick="toggle_settings(false)"><span style="font-size: 26pt;">≡ </span></td>
+                    <td colspan="3" id="label-settings" style="font-size: 18pt; font-weight: bold;">
+                        Settings
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="label-sezimal-places" for="calculator-sezimal-places">Sezimal Places</label>
+                    </td>
+                    <td colspan="2">
+                        <label id="label-sezimal-digits" for="calculator-sezimal-digits">Digits</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select id="calculator-sezimal-places" name="calculator-sezimal-places" onchange="set_sezimal_places()">
+                            <option  value="0"> 0</option>
+                            <option  value="1"> 1</option>
+                            <option  value="2"> 2</option>
+                            <option  value="3" selected> 3</option>
+                            <option  value="4"> 4</option>
+                            <option  value="5"> 5</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                        </select>
+                    </td>
+                    <td colspan="2">
+                        <select id="calculator-sezimal-digits" name="calculator-sezimal-digits" onchange="change_digits()">
+                            <option value="false">012345</option>
+                            <option value="true">󱸀󱸁󱸂󱸃󱸄󱸅</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="label-sezimal-grouping" for="calculator-sezimal-grouping">Grouping</label>
+                    </td>
+                    <td colspan="2">
+                        <label id="label-sezimal-spellout" for="calculator-sezimal-spellout">Spell out</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select id="calculator-sezimal-grouping" name="calculator-sezimal-grouping" onchange="set_sezimal_grouping()">
+                            <option  value="3">3 (arda...)</option>
+                            <option  value="4">4 (unexian...)</option>
+                        </select>
+                    </td>
+                    <td colspan="2">
+                        <input id="calculator-sezimal-spellout" name="calculator-sezimal-spellout" type="checkbox" onchange="set_sezimal_spellout(this)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="grouping-explanation">
+                            <colgroup>
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 40%;">
+                                <col span="1" style="width: 40%;">
+                            </colgroup>
+                            <tr>
+                                <td colspan="3" id="grouping-explanation">
+                                    Each grouping option requires it’s own vocabulary, used in the spelling out of numbers:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="title" id="group-title-3">1 000 000</td>
+                                <td class="title" id="group-title-4">1 0000 0000</td>
+                            </tr>
+                            <tr>
+                                <td>10²</td>
+                                <td id="groupping-explanation-nif-3">nif</td>
+                                <td id="groupping-explanation-nif-4">nif</td>
+                            </tr>
+                            <tr>
+                                <td>10³</td>
+                                <td id="groupping-explanation-arda-3">arda</td>
+                                <td id="groupping-explanation-arda-4">six nif</td>
+                            </tr>
+                            <tr>
+                                <td>10⁴</td>
+                                <td id="groupping-explanation-six-arda-3">six arda</td>
+                                <td id="groupping-explanation-six-arda-4">unexian</td>
+                            </tr>
+                            <tr>
+                                <td>10⁵</td>
+                                <td id="groupping-explanation-nif-arda-3">nif arda</td>
+                                <td id="groupping-explanation-nif-arda-4">six unexian</td>
+                            </tr>
+                            <tr>
+                                <td>10¹⁰</td>
+                                <td id="groupping-explanation-shadara-3">shadara</td>
+                                <td id="groupping-explanation-shadara-4">nif unexian</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td colspan="1">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label id="label-sezimal-locale" for="calculator-sezimal-locale">Locale</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <select id="calculator-sezimal-locale" name="calculator-sezimal-locale" onchange="set_locale()">
+                            <option value="iso">ISO (comma)</option>
+                            <option value="iso_dot">ISO (dot)</option>
+                            <option value="code">Code (dot and _)</option>
+                            <option value="ar">العربية (ar)</option>
+                            <option value="ar_latn">el-għàràbí (ar_Latn)</option>
+                            <option value="bz">brazileru (bz)</option>
+                            <option value="ca">català (ca)</option>
+                            <option value="de">Deutsch (de)</option>
+                            <option value="el">ελληνικά (el)</option>
+                            <!-- <option value="en">English (en)</option> -->
+                            <option value="en_au">English - Australia (en_AU)</option>
+                            <option value="en_br">English - Brazil (en_BR)</option>
+                            <option value="en_ca">English - Canada (en_CA)</option>
+                            <option value="en_gb">English - GB (en_GB)</option>
+                            <option value="en_ie">English - Ireland (en_IE)</option>
+                            <option value="en_in">English - India (en_IN)</option>
+                            <option value="en_nz">English - New Zealand (en_NZ)</option>
+                            <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
+                            <option value="en_us">English - USA (en_US)</option>
+                            <option value="eo">Esperanto (eo)</option>
+                            <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+                            <option value="es">español de España (es)</option>
+                            <option value="es_ar">español de Argentina (es_AR)</option>
+                            <option value="es_bo">español de Bolivia (es_BO)</option>
+                            <option value="es_cl">español de Chile (es_CL)</option>
+                            <option value="es_co">español de Colombia (es_CO)</option>
+                            <option value="es_ec">español de Ecuador (es_EC)</option>
+                            <option value="es_mx">español de Méjico (es_MX)</option>
+                            <option value="es_pe">español de Perú (es_PE)</option>
+                            <option value="es_py">español de Paraguai (es_PY)</option>
+                            <option value="es_uy">español de Uruguai (es_UY)</option>
+                            <option value="fa">فارسی (fa)</option>
+                            <option value="fa_latn">fârsi (fa_Latn)</option>
+                            <option value="fr">français (fr)</option>
+                            <option value="fr_ca">français canadien (fr_CA)</option>
+                            <option value="fr_ch">français de Suisse (fr_CH)</option>
+                            <option value="fr_ortograf">fransè ortograf (fr_Ortograf)</option>
+                            <option value="ga">gaeilge (ga)</option>
+                            <option value="ga_clo_gaelach">ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
+                            <option value="ga_traditional">gaeilge mh -> ṁ (ga_Traditional)</option>
+                            <option value="gl">galego (gl)</option>
+                            <option value="gn">avañeꞌẽ (gn)</option>
+                            <option value="he">עברית (he)</option>
+                            <option value="he_latn">’ivrít (he_Latn)</option>
+                            <option value="hi">हिन्दी (hi)</option>
+                            <option value="hi_latn">hindi (hi_Latn)</option>
+                            <option value="hu">magyar (hu)</option>
+                            <option value="id">Indonesia (id)</option>
+                            <option value="it">italiano (it)</option>
+                            <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
+                            <option value="iu_latn">inuktitut (iu_Latn)</option>
+                            <option value="ja">日本語 (ja)</option>
+                            <option value="ko">한국어 (ko)</option>
+                            <option value="nl">Nederlands (nl)</option>
+                            <option value="pl">polski (pl)</option>
+                            <option value="pt_ao">português angolano (pt_AO)</option>
+                            <option value="pt_br">português brasileiro (pt_BR)</option>
+                            <option value="pt_ch">português suíço (pt_CH)</option>
+                            <option value="pt_cv">português cabo-verdiano (pt_CV)</option>
+                            <option value="pt_gq">português equatorial-guineense (pt_GQ)</option>
+                            <option value="pt_gw">português bissau-guineense (pt_GW)</option>
+                            <option value="pt_lu">português luxemburguês (pt_LU)</option>
+                            <option value="pt_mo">português macaense (pt_MO)</option>
+                            <option value="pt_mz">português moçambicano (pt_MZ)</option>
+                            <option value="pt_pt">português europeu (pt_PT)</option>
+                            <option value="pt_st">português são-tomense (pt_ST)</option>
+                            <option value="pt_tl">português timorense (pt_TL)</option>
+                            <option value="ro">română (ro)</option>
+                            <option value="ru">русский (ru)</option>
+                            <option value="sw">Kiswahili (sw)</option>
+                            <option value="tr">Türkçe (tr)</option>
+                            <option value="uk">українська (uk)</option>
+                            <option value="vi">Tiếng Việt (vi)</option>
+                            <option value="yo">Èdè Yorùbá (yo)</option>
+                            <option value="yrl">ỹengatu (yrl)</option>
+                            <option value="zh_cn">中文 中国 (zh_CN)</option>
+                            <option value="zh_hk">中文 香港 (zh_HK)</option>
+                            <option value="zh_mo">中文 澳門 (zh_MO)</option>
+                            <option value="zh_sg">中文 新加坡 (zh_SG)</option>
+                            <option value="zh_tw">中文 臺灣 (zh_TW)</option>
+                            <option value="zh_hans">中文 简体 (zh_HanS)</option>
+                            <option value="zh_hant">中文 正體 (zh_HanT)</option>
+                            <option value="zh_latn">zhōngwén (zh_Latn)</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="units" class="control-panel" hidden>
+            <table id="units-table">
+                <colgroup>
+                    <col span="1" style="width: 50%;">
+                    <col span="1" style="width: 38%;">
+                    <col span="1" style="width: 12%;">
+                </colgroup>
+                <tr>
+                    <td colspan="2" id="label-settings" style="font-size: 18pt; font-weight: bold;">
+                        Shastadari Units of Measure
+                    </td>
+                    <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">⚙ </span></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;">
+                        <select id="calculator-sezimal-unit-type" name="calculator-sezimal-unit-type" onchange="set_unit_type()">
+                            <optgroup label="Instructions">
+                                <option value="units">Shastari units</option>
+                                <option value="prefixes">Shastari prefixes</option>
+                            </optgroup>
+                            <optgroup label="Mechanics">
+                                <option value="ang">Time</option>
+                                <option value="avt">Frequency</option>
+                                <option value="pad">Length</option>
+                                <option value="kex">Area</option>
+                                <option value="ayt">Volume</option>
+                                <option value="veg">Speed</option>
+                                <option value="tvr">Acceleration</option>
+                                <option value="drv">Mass</option>
+                                <option value="gan">Density</option>
+                                <option value="bar">Force/weight</option>
+                                <option value="dab">Pressure</option>
+                                <option value="kry">Energy/work</option>
+                                <option value="xat">Power</option>
+<!--                                <option value="svg">Momentum</option>
+                                <option value="pkp">Action</option>
+                                <option value="pbv">Influence</option>
+                                <option value="tnv">Tension</option>
+                                <option value="upr">Intensity</option>
+                                <option value="nad">Dynamic viscosity</option>
+                                <option value="bum">Kinematic viscosity</option> -->
+                            </optgoup>
+                            <optgroup label="Thermodynamics">
+                                <option value="tap">Common Temperature</option>
+                                <option value="gtk">Thermodynamic temperature</option>
+                                <option value="agn">Heat capacity</option>
+                                <option value="idn">Heat capacity per mass</option>
+                                <option value="tln">Heat capacity per volume</option>
+                            </optgoup>
+                            <optgroup label="Electromagnetism">
+                                <option value="avx">Elec. charge</option>
+                                <option value="dar">Elec. current</option>
+                                <option value="vbv">Elec. potential difference</option>
+                                <option value="ptr">Elec. resistance</option>
+                                <option value="cln">Elec. conductance</option>
+                                <option value="prk">Elec. inductance</option>
+                                <option value="smi">Elec. capacitance</option>
+                                <option value="abv">Mag. flux</option>
+                                <option value="vtr">Mag. flux density</option>
+                            </optgoup>
+                            <optgroup label="Angles">
+                                <option value="prd">Plane angle</option>
+                                <option value="gol">Solid angle</option>
+                            </optgoup>
+                            <optgroup label="Proportions">
+                                <option value="prt">Proportions</option>
+                            </optgoup>
+                            <optgroup label="Data/information">
+                                <option value="atk">Storage</option>
+                                <option value="pvn">Speed</option>
+                            </optgoup>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="units-explanation">
+                    <td colspan="3" id="unit-ang-explanation" hidden>
+<p>Civil time is divided into six units; one day is divided regularly into sixths, and we group those sixths into units as such:</p>
+<ul>
+    <li>the uta, symbol uta, corresponding to the first two divisions, closer to the hour;</li>
+    <li>the posha, symbol pox, corresponding to the next two divisions, closer to the minute;</li>
+    <li>the agrima, symbol agm, corresponding to the next two divisions, closer to the second;</li>
+    <li>the anuga, symbol ang, corresponding to the next two divisions, closer to the centisecond;</li>
+    <li>the boda, symbol bod, corresponding to the last two divisions, closer to the millisecond;</li>
+</ul>
+<p>So, one day is divided:</p>
+<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 12pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
+<p style="text-align: center;"><span style="color: #9E9E9E;">  5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :    55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
+<p style="text-align: center;"><span style="color: #9E9E9E;">day . </span><span style="font-size: 12pt; font-weight: bold;">uta : posha : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
+<p>For science, the base unit of time is the anuga, so all other units that derive from time in any way use the anuga in their definitions.</p>
+                    </td>
+                    <td colspan="3" id="unit-units-explanation" hidden></td>
+                    <td colspan="3" id="unit-prefixes-explanation" hidden>
+Shastadari prefixes explanation
+                    </td>
+                    <td colspan="3" id="unit-avt-explanation" hidden></td>
+                    <td colspan="3" id="unit-pad-explanation" hidden></td>
+                    <td colspan="3" id="unit-kex-explanation" hidden></td>
+                    <td colspan="3" id="unit-ayt-explanation" hidden></td>
+                    <td colspan="3" id="unit-veg-explanation" hidden></td>
+                    <td colspan="3" id="unit-tvr-explanation" hidden></td>
+                    <td colspan="3" id="unit-drv-explanation" hidden></td>
+                    <td colspan="3" id="unit-gan-explanation" hidden></td>
+                    <td colspan="3" id="unit-tap-explanation" hidden></td>
+                    <td colspan="3" id="unit-bar-explanation" hidden></td>
+                    <td colspan="3" id="unit-dab-explanation" hidden></td>
+                    <td colspan="3" id="unit-kry-explanation" hidden></td>
+                    <td colspan="3" id="unit-xat-explanation" hidden></td>
+                    <td colspan="3" id="unit-svg-explanation" hidden></td>
+                    <td colspan="3" id="unit-pkp-explanation" hidden></td>
+                    <td colspan="3" id="unit-pbv-explanation" hidden></td>
+                    <td colspan="3" id="unit-tnv-explanation" hidden></td>
+                    <td colspan="3" id="unit-upr-explanation" hidden></td>
+                    <td colspan="3" id="unit-nad-explanation" hidden></td>
+                    <td colspan="3" id="unit-bum-explanation" hidden></td>
+                    <td colspan="3" id="unit-gtk-explanation" hidden></td>
+                    <td colspan="3" id="unit-agn-explanation" hidden></td>
+                    <td colspan="3" id="unit-idn-explanation" hidden></td>
+                    <td colspan="3" id="unit-tln-explanation" hidden></td>
+                    <td colspan="3" id="unit-avx-explanation" hidden></td>
+                    <td colspan="3" id="unit-dar-explanation" hidden></td>
+                    <td colspan="3" id="unit-ptr-explanation" hidden></td>
+                    <td colspan="3" id="unit-vbv-explanation" hidden></td>
+                    <td colspan="3" id="unit-cln-explanation" hidden></td>
+                    <td colspan="3" id="unit-prk-explanation" hidden></td>
+                    <td colspan="3" id="unit-sam-explanation" hidden></td>
+                    <td colspan="3" id="unit-abv-explanation" hidden></td>
+                    <td colspan="3" id="unit-vtr-explanation" hidden></td>
+                    <td colspan="3" id="unit-prd-explanation" hidden></td>
+                    <td colspan="3" id="unit-gol-explanation" hidden></td>
+                    <td colspan="3" id="unit-prt-explanation" hidden></td>
+                    <td colspan="3" id="unit-atk-explanation" hidden></td>
+                    <td colspan="3" id="unit-pvn-explanation" hidden></td>
+                </tr>
+                <tr id="units-title" hidden>
+                    <td style="text-align: center;"><label id="label-unit-sezimal" for="calculator-unit-sezimal">Sezimal</label></td>
+                    <td colspan="2" style="text-align: center;"><label id="label-unit-decimal" for="calculator-unit-decimal">Decimal</label></td>
+                </tr>
+                <tr id="unit-ang" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-ang" name="calculator-sezimal-unit-ang" onchange="set_sezimal_unit(this)">
+                            <optgroup label="Common">
+                                <option value="day">day</option>
+                                <option value="uta">uta</option>
+                                <option value="pox">posha</option>
+                                <option value="agm">agrima</option>
+                                <option value="ang">anuga</option>
+                                <option value="bod">boda</option>
+                            </optgroup>
+                            <optgroup label="Day">
+                                <option value="day">day</option>
+                                <option value="eday">eday</option>
+                                <option value="dday">dday = uta</option>
+                                <option value="tday">tday</option>
+                                <option value="cday">cday = posha</option>
+                                <option value="pday">pday</option>
+                                <option value="xday">xday = agrima</option>
+                                <option value="xeday">xeday</option>
+                                <option value="xdday">xdday = anuga</option>
+                                <option value="xtday">xtday</option>
+                                <option value="xcday">xcday = boda</option>
+                            </optgroup>
+                            <optgroup label="Anuga">
+                                <option value="XDang">XDang = day</option>
+                                <option value="XEang">XEang</option>
+                                <option value="Xang">Xang = uta</option>
+                                <option value="Pang">Pang</option>
+                                <option value="Cang">Cang = posha</option>
+                                <option value="Tang">Tang</option>
+                                <option value="Dang">Dang = agrima</option>
+                                <option value="Eang">Eang</option>
+                                <option value="ang">ang</option>
+                                <option value="eang">eang</option>
+                                <option value="dang">dang = boda</option>
+                                <option value="tang">tang</option>
+                                <option value="cang">cang</option>
+                                <option value="pang">pang</option>
+                                <option value="xang">xang</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-ang" name="calculator-decimal-unit-ang" onchange="set_decimal_unit(this)">
+                            <optgroup label="Common">
+                                <option value="day">day</option>
+                                <option value="h">hour</option>
+                                <option value="min">minute</option>
+                                <option value="s">second</option>
+                            </optgroup>
+                            <optgroup label="S.I.">
+                                <option value="ks">ks</option>
+                                <option value="hs">hs</option>
+                                <option value="das">das</option>
+                                <option value="s">s</option>
+                                <option value="ds">ds</option>
+                                <option value="cs">cs</option>
+                                <option value="ms">ms</option>
+                                <option value="µs">µs</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-avt" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-avt" name="calculator-sezimal-unit-avt" onchange="set_sezimal_unit(this)">
+                            <option value="TXavt">TXavt</option>
+                            <option value="DPavt">DPavt</option>
+                            <option value="DCavt">DCavt</option>
+                            <option value="DTavt">DTavt</option>
+                            <option value="DDavt">DDavt</option>
+                            <option value="DEavt">DEavt</option>
+                            <option value="DXavt">DXavt</option>
+                            <option value="XPavt">XPavt</option>
+                            <option value="XCavt">XCavt</option>
+                            <option value="XTavt">XTavt</option>
+                            <option value="XDavt">XDavt</option>
+                            <option value="XEavt">XEavt</option>
+                            <option value="Xavt">Xavt</option>
+                            <option value="Pavt">Pavt</option>
+                            <option value="Cavt">Cavt</option>
+                            <option value="Tavt">Tavt</option>
+                            <option value="Davt">Davt</option>
+                            <option value="Eavt">Eavt</option>
+                            <option value="avt">avt</option>
+                            <option value="eavt">eavt</option>
+                            <option value="davt">davt</option>
+                            <option value="tavt">tavt</option>
+                            <option value="cavt">cavt</option>
+                            <option value="pavt">pavt</option>
+                            <option value="xavt">xavt</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-avt" name="calculator-decimal-unit-avt" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="PHz">PHz</option>
+                                <option value="THz">THz</option>
+                                <option value="GHz">GHz</option>
+                                <option value="MHz">MHz</option>
+                                <option value="kHz">kHz</option>
+                                <option value="hHz">hHz</option>
+                                <option value="daHz">daHz</option>
+                                <option value="Hz">Hz</option>
+                                <option value="dHz">dHz</option>
+                                <option value="cHz">cHz</option>
+                                <option value="mHz">mHz</option>
+                                <option value="µHz">µHz</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="rpm">rpm</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-pad" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-pad" name="calculator-sezimal-unit-pad" onchange="set_sezimal_unit(this)">
+                            <option value="Xpad">Xpad</option>
+                            <option value="Ppad">Ppad</option>
+                            <option value="Cpad">Cpad</option>
+                            <option value="Tpad">Tpad</option>
+                            <option value="Dpad">Dpad</option>
+                            <option value="Epad">Epad</option>
+                            <option value="pad">pad</option>
+                            <option value="epad">epad</option>
+                            <option value="dpad">dpad</option>
+                            <option value="tpad">tpad</option>
+                            <option value="cpad">cpad</option>
+                            <option value="ppad">ppad</option>
+                            <option value="xpad">xpad</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-pad" name="calculator-decimal-unit-pad" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="km">km</option>
+                                <option value="hm">hm</option>
+                                <option value="dam">dam</option>
+                                <option value="m">m</option>
+                                <option value="dm">dm</option>
+                                <option value="cm">cm</option>
+                                <option value="mm">mm</option>
+                                <option value="µm">µm</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="ml">ml</option>
+                                <option value="yd">yd</option>
+                                <option value="ft">ft</option>
+                                <option value="in">in</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-kex" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-kex" name="calculator-sezimal-unit-kex" onchange="set_sezimal_unit(this)">
+                            <option value="DXkex">DXkex ‐ Xpad²</option>
+                            <option value="XPkex">XPkex</option>
+                            <option value="XCkex">XCkex ‐ Ppad²</option>
+                            <option value="XTkex">XTkex</option>
+                            <option value="XDkex">XDkex ‐ Cpad²</option>
+                            <option value="XEkex">XEkex</option>
+                            <option value="Xkex">Xkex ‐ Tpad²</option>
+                            <option value="Pkex">Pkex</option>
+                            <option value="Ckex">Ckex ‐ Dpad²</option>
+                            <option value="Tkex">Tkex</option>
+                            <option value="Dkex">Dkex ‐ Epad²</option>
+                            <option value="Ekex">Ekex</option>
+                            <option value="kex">kex ‐ pad²</option>
+                            <option value="ekex">ekex</option>
+                            <option value="dkex">dkex ‐ epad²</option>
+                            <option value="tkex">tkex</option>
+                            <option value="ckex">ckex ‐ dpad²</option>
+                            <option value="pkex">pkex</option>
+                            <option value="xkex">xkex ‐ tpad²</option>
+                            <option value="xekex">xekex</option>
+                            <option value="xdkex">xdkex ‐ cpad²</option>
+                            <option value="xtkex">xtkex</option>
+                            <option value="xckex">xckex ‐ ppad²</option>
+                            <option value="xpkex">xpkex</option>
+                            <option value="dxkex">dxkex ‐ xpad²</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-kex" name="calculator-decimal-unit-kex" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="km2">km²</option>
+                                <option value="hm2">hm² ‐ ha</option>
+                                <option value="dam2">dam²</option>
+                                <option value="m2">m²</option>
+                                <option value="dm2">dm²</option>
+                                <option value="cm2">cm²</option>
+                                <option value="mm2">mm²</option>
+                                <option value="µm2">µm²</option>
+                            </optgroup>
+                            <optgroup label="US/UK">
+                                <option value="ac">ac</option>
+                                <option value="ml2">ml²</option>
+                                <option value="yd2">yd²</option>
+                                <option value="ft2">ft²</option>
+                                <option value="in2">in²</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-ayt" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-ayt" name="calculator-sezimal-unit-ayt" onchange="set_sezimal_unit(this)">
+                            <option value="Xayt">TXayt ‐ Xpad³</option>
+                            <option value="Xayt">DPayt</option>
+                            <option value="Xayt">DCayt</option>
+                            <option value="Xayt">DTayt ‐ Ppad³</option>
+                            <option value="Xayt">DDayt</option>
+                            <option value="Xayt">DEayt</option>
+                            <option value="Xayt">DXayt ‐ Cpad³</option>
+                            <option value="Xayt">XPayt</option>
+                            <option value="Xayt">XCayt</option>
+                            <option value="Xayt">XTayt ‐ Tpad³</option>
+                            <option value="Xayt">XDayt</option>
+                            <option value="Xayt">XEayt</option>
+                            <option value="Xayt">Xayt ‐ Dpad³</option>
+                            <option value="Payt">Payt</option>
+                            <option value="Cayt">Cayt</option>
+                            <option value="Tayt">Tayt ‐ Epad³</option>
+                            <option value="Dayt">Dayt</option>
+                            <option value="Eayt">Eayt</option>
+                            <option value="ayt">ayt ‐ pad³</option>
+                            <option value="eayt">eayt</option>
+                            <option value="dayt">dayt</option>
+                            <option value="tayt">tayt ‐ epad³</option>
+                            <option value="cayt">cayt</option>
+                            <option value="payt">payt</option>
+                            <option value="xayt">xayt ‐ dpad³</option>
+                            <option value="payt">xeayt</option>
+                            <option value="payt">xdayt</option>
+                            <option value="payt">xtayt ‐ tpad³</option>
+                            <option value="payt">xcayt</option>
+                            <option value="payt">xpayt</option>
+                            <option value="payt">dxayt ‐ cpad³</option>
+                            <option value="payt">deayt</option>
+                            <option value="payt">ddayt</option>
+                            <option value="payt">dtayt ‐ ppad³</option>
+                            <option value="payt">dcayt</option>
+                            <option value="payt">dpayt</option>
+                            <option value="payt">txayt ‐ xpad³</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-ayt" name="calculator-decimal-unit-ayt" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="kL">kL ‐ m³</option>
+                                <option value="hL">hL</option>
+                                <option value="daL">daL</option>
+                                <option value="L">L ‐ dm³</option>
+                                <option value="dL">dL</option>
+                                <option value="cL">cL</option>
+                                <option value="mL">mL – cm³</option>
+                                <option value="µL">µL ‐ mm³</option>
+                            </optgroup>
+                            <optgroup label="US/UK">
+                                <option value="yd">yd³</option>
+                                <option value="ft">ft³</option>
+                                <option value="in">in³</option>
+                            </optgroup>
+                            <optgroup label="US fluid">
+                                <option value="US fl dr">dr</option>
+                                <option value="tsp">tsp</option>
+                                <option value="tbsp">tbsp</option>
+                                <option value="US fl oz">oz</option>
+                                <option value="US cup">cup</option>
+                                <option value="US pt">pt</option>
+                                <option value="US qt">qt</option>
+                                <option value="US gal">gal</option>
+                            </optgroup>
+                            <optgroup label="US dry">
+                                <option value="US pt dry">pt</option>
+                                <option value="US qt dry">qt</option>
+                                <option value="US gal dry">gal</option>
+                                <option value="US pk dry">pk</option>
+                                <option value="US bu dry">bu</option>
+                            </optgroup>
+                            <optgroup label="UK fluid">
+                                <option value="UK fl dr">dr</option>
+                                <option value="UK fl oz">oz</option>
+                                <option value="UK pt">pt</option>
+                                <option value="UK qt">qt</option>
+                                <option value="UK gal">gal</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-veg" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-veg" name="calculator-sezimal-unit-veg" onchange="set_sezimal_unit(this)">
+                            <option value="Xveg">Xveg</option>
+                            <option value="Pveg">Pveg</option>
+                            <option value="Cveg">Cveg</option>
+                            <option value="Tveg">Tveg</option>
+                            <option value="Dveg">Dveg</option>
+                            <option value="Eveg">Eveg</option>
+                            <option value="veg">veg</option>
+                            <option value="eveg">eveg</option>
+                            <option value="dveg">dveg</option>
+                            <option value="tveg">tveg</option>
+                            <option value="cveg">cveg</option>
+                            <option value="pveg">pveg</option>
+                            <option value="xveg">xveg</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-veg" name="calculator-decimal-unit-veg" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="km/h">km/h</option>
+                                <option value="m/s">m/s</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="mph">mph</option>
+                                <option value="ft/s">ft/s</option>
+                                <option value="kn">kn</option>
+                                <option value="c">c</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-tvr" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-tvr" name="calculator-sezimal-unit-tvr" onchange="set_sezimal_unit(this)">
+                            <option value="Xtvr">Xtvr</option>
+                            <option value="Ptvr">Ptvr</option>
+                            <option value="Ctvr">Ctvr</option>
+                            <option value="Ttvr">Ttvr</option>
+                            <option value="Dtvr">Dtvr</option>
+                            <option value="Etvr">Etvr</option>
+                            <option value="tvr">tvr</option>
+                            <option value="etvr">etvr</option>
+                            <option value="dtvr">dtvr</option>
+                            <option value="ttvr">ttvr</option>
+                            <option value="ctvr">ctvr</option>
+                            <option value="ptvr">ptvr</option>
+                            <option value="xtvr">xtvr</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-tvr" name="calculator-decimal-unit-tvr" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="m/s2">m/s²</option>
+                                <option value="cm/s²">cm/s²</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="ft/s2">ft/s²</option>
+                                <option value="g">g</option>
+                                <option value="Gal">Gal</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-drv" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-drv" name="calculator-sezimal-unit-drv" onchange="set_sezimal_unit(this)">
+                            <option value="Xdrv">Xdrv</option>
+                            <option value="Pdrv">Pdrv</option>
+                            <option value="Cdrv">Cdrv</option>
+                            <option value="Tdrv">Tdrv</option>
+                            <option value="Ddrv">Ddrv</option>
+                            <option value="Edrv">Edrv</option>
+                            <option value="drv">drv</option>
+                            <option value="edrv">edrv</option>
+                            <option value="ddrv">ddrv</option>
+                            <option value="tdrv">tdrv</option>
+                            <option value="cdrv">cdrv</option>
+                            <option value="pdrv">pdrv</option>
+                            <option value="xdrv">xdrv</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-drv" name="calculator-decimal-unit-drv" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="ton">ton</option>
+                                <option value="kg">kg</option>
+                                <option value="g">g</option>
+                                <option value="mg">mg</option>
+                                <option value="μg">μg</option>
+                            </optgroup>
+                            <optgroup label="US/UK">
+                                <option value="gr">gr</option>
+                                <option value="dwt">dwt</option>
+                                <option value="ozt">ozt</option>
+                                <option value="lbt">lbt</option>
+                                <option value="dr">dr</option>
+                                <option value="oz">oz</option>
+                                <option value="lb">lb</option>
+                                <option value="st">st</option>
+                                <option value="sl">sl</option>
+                            </optgroup>
+                            <optgroup label="US">
+                                <option value="US qr">qr</option>
+                                <option value="US cwt">cwt</option>
+                                <option value="US ton">ton</option>
+                            </optgroup>
+                            <optgroup label="UK">
+                                <option value="UK qr">qr</option>
+                                <option value="UK cwt">cwt</option>
+                                <option value="UK ton">ton</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-gan" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-gan" name="calculator-sezimal-unit-gan" onchange="set_sezimal_unit(this)">
+                            <option value="Xgan">Xgan</option>
+                            <option value="Pgan">Pgan</option>
+                            <option value="Cgan">Cgan</option>
+                            <option value="Tgan">Tgan</option>
+                            <option value="Dgan">Dgan</option>
+                            <option value="Egan">Egan</option>
+                            <option value="gan">gan</option>
+                            <option value="egan">egan</option>
+                            <option value="dgan">dgan</option>
+                            <option value="tgan">tgan</option>
+                            <option value="cgan">cgan</option>
+                            <option value="pgan">pgan</option>
+                            <option value="xgan">xgan</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-gan" name="calculator-decimal-unit-gan" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="kg/m3">kg/m³</option>
+                                <option value="kg/L">kg/L</option>
+                                <option value="kg/dm3">kg/dm³</option>
+                                <option value="g/cm3">g/cm³</option>
+                                <option value="g/mL">g/mL</option>
+                                <option value="ton/m3">ton/m³</option>
+                                <option value="Mg/m3">Mg/m³</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="oz/in3">oz/in³</option>
+                                <option value="lb/in3">lb/in³</option>
+                                <option value="lb/ft3">lb/ft³</option>
+                                <option value="lb/yd3">lb/yd³</option>
+                                <option value="sl/ft3">sl/ft³</option>
+                                <option value="lb/gal">lb/gal</option>
+                                <option value="lb/bu">lb/bu</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-bar" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-bar" name="calculator-sezimal-unit-bar" onchange="set_sezimal_unit(this)">
+                            <option value="DXbar">DXbar</option>
+                            <option value="XPbar">XPbar</option>
+                            <option value="XCbar">XCbar</option>
+                            <option value="XTbar">XTbar</option>
+                            <option value="XDbar">XDbar</option>
+                            <option value="XEbar">XEbar</option>
+                            <option value="Xbar">Xbar</option>
+                            <option value="Pbar">Pbar</option>
+                            <option value="Cbar">Cbar</option>
+                            <option value="Tbar">Tbar</option>
+                            <option value="Dbar">Dbar</option>
+                            <option value="Ebar">Ebar</option>
+                            <option value="bar">bar</option>
+                            <option value="ebar">ebar</option>
+                            <option value="dbar">dbar</option>
+                            <option value="tbar">tbar</option>
+                            <option value="cbar">cbar</option>
+                            <option value="pbar">pbar</option>
+                            <option value="xbar">xbar</option>
+                            <option value="xebar">xebar</option>
+                            <option value="xdbar">xdbar</option>
+                            <option value="xtbar">xtbar</option>
+                            <option value="xcbar">xcbar</option>
+                            <option value="xpbar">xpbar</option>
+                            <option value="dxbar">dxbar</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-bar" name="calculator-decimal-unit-bar" onchange="set_decimal_unit(this)">
+                            <optgroup label="SI - Joule">
+                                <option value="MN">MN</option>
+                                <option value="kN">kN</option>
+                                <option value="hN">hN</option>
+                                <option value="daN">daN</option>
+                                <option value="N">N</option>
+                                <option value="dN">dN</option>
+                                <option value="cN">cN</option>
+                                <option value="mN">mN</option>
+                                <option value="µN">µN</option>
+                                <option value="nN">nN</option>
+                            </optgroup>
+                            <optgroup label="gf">
+                                <option value="Mgf">Mgf</option>
+                                <option value="kgf">kgf</option>
+                                <option value="hgf">hgf</option>
+                                <option value="dagf">dagf</option>
+                                <option value="gf">gf</option>
+                                <option value="dgf">dgf</option>
+                                <option value="cgf">cgf</option>
+                                <option value="mgf">mgf</option>
+                                <option value="µgf">µgf</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="lbf">lbf</option>
+                                <option value="dyn">dyn</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-dab" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-dab" name="calculator-sezimal-unit-dab" onchange="set_sezimal_unit(this)">
+                            <option value="DXdab">DXdab</option>
+                            <option value="XPdab">XPdab</option>
+                            <option value="XCdab">XCdab</option>
+                            <option value="XTdab">XTdab</option>
+                            <option value="XDdab">XDdab</option>
+                            <option value="XEdab">XEdab</option>
+                            <option value="Xdab">Xdab</option>
+                            <option value="Pdab">Pdab</option>
+                            <option value="Cdab">Cdab</option>
+                            <option value="Tdab">Tdab</option>
+                            <option value="Ddab">Ddab</option>
+                            <option value="Edab">Edab</option>
+                            <option value="dab">dab</option>
+                            <option value="edab">edab</option>
+                            <option value="ddab">ddab</option>
+                            <option value="tdab">tdab</option>
+                            <option value="cdab">cdab</option>
+                            <option value="pdab">pdab</option>
+                            <option value="xdab">xdab</option>
+                            <option value="xedab">xedab</option>
+                            <option value="xddab">xddab</option>
+                            <option value="xtdab">xtdab</option>
+                            <option value="xcdab">xcdab</option>
+                            <option value="xpdab">xpdab</option>
+                            <option value="dxdab">dxdab</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-dab" name="calculator-decimal-unit-dab" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="TPa">TPa</option>
+                                <option value="GPa">GPa</option>
+                                <option value="MPa">MPa</option>
+                                <option value="kPa">kPa</option>
+                                <option value="hPa">hPa</option>
+                                <option value="daPa">daPa</option>
+                                <option value="Pa">Pa</option>
+                                <option value="dPa">dPa</option>
+                                <option value="cPa">cPa</option>
+                                <option value="mPa">mPa</option>
+                                <option value="µPa">µPa</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="atm">atm</option>
+                                <option value="psi">psi</option>
+                                <option value="kpsi">kpsi</option>
+                                <option value="Mpsi">Mpsi</option>
+                                <option value="mbar">mbar</option>
+                                <option value="mmHg">mmHg</option>
+                                <option value="inHg">inHg</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-kry" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-kry" name="calculator-sezimal-unit-kry" onchange="set_sezimal_unit(this)">
+                            <option value="CXkry">CXkry</option>
+                            <option value="TPkry">TPkry</option>
+                            <option value="TCkry">TCkry</option>
+                            <option value="TTkry">TTkry</option>
+                            <option value="TDkry">TDkry</option>
+                            <option value="TEkry">TEkry</option>
+                            <option value="TXkry">TXkry</option>
+                            <option value="DPkry">DPkry</option>
+                            <option value="DCkry">DCkry</option>
+                            <option value="DTkry">DTkry</option>
+                            <option value="DDkry">DDkry</option>
+                            <option value="DEkry">DEkry</option>
+                            <option value="DXkry">DXkry</option>
+                            <option value="XPkry">XPkry</option>
+                            <option value="XCkry">XCkry</option>
+                            <option value="XTkry">XTkry</option>
+                            <option value="XDkry">XDkry</option>
+                            <option value="XEkry">XEkry</option>
+                            <option value="Xkry">Xkry</option>
+                            <option value="Pkry">Pkry</option>
+                            <option value="Ckry">Ckry</option>
+                            <option value="Tkry">Tkry</option>
+                            <option value="Dkry">Dkry</option>
+                            <option value="Ekry">Ekry</option>
+                            <option value="kry">kry</option>
+                            <option value="ekry">ekry</option>
+                            <option value="dkry">dkry</option>
+                            <option value="tkry">tkry</option>
+                            <option value="ckry">ckry</option>
+                            <option value="pkry">pkry</option>
+                            <option value="xkry">xkry</option>
+                            <option value="xekry">xekry</option>
+                            <option value="xdkry">xdkry</option>
+                            <option value="xtkry">xtkry</option>
+                            <option value="xckry">xckry</option>
+                            <option value="xpkry">xpkry</option>
+                            <option value="dxkry">dxkry</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-kry" name="calculator-decimal-unit-kry" onchange="set_decimal_unit(this)">
+                            <optgroup label="SI - Joule">
+                                <option value="TJ">TJ</option>
+                                <option value="GJ">GJ</option>
+                                <option value="MJ">MJ</option>
+                                <option value="kJ">kJ</option>
+                                <option value="hJ">hJ</option>
+                                <option value="daJ">daJ</option>
+                                <option value="J">J</option>
+                                <option value="dJ">dJ</option>
+                                <option value="cJ">cJ</option>
+                                <option value="mJ">mJ</option>
+                                <option value="µJ">µJ</option>
+                            </optgroup>
+                            <optgroup label="wH">
+                                <option value="TWh">TWh</option>
+                                <option value="GWh">GWh</option>
+                                <option value="MWh">MWh</option>
+                                <option value="kWh">kWh</option>
+                                <option value="hWh">hWh</option>
+                                <option value="daWh">daWh</option>
+                                <option value="Wh">Wh</option>
+                                <option value="dWh">dWh</option>
+                                <option value="cWh">cWh</option>
+                                <option value="mWh">mWh</option>
+                                <option value="µWh">µWh</option>
+                            </optgroup>
+                            <optgroup label="cal">
+                                <option value="Tcal">Tcal</option>
+                                <option value="Gcal">Gcal</option>
+                                <option value="Mcal">Mcal</option>
+                                <option value="kcal">kcal</option>
+                                <option value="hcal">hcal</option>
+                                <option value="dacal">dacal</option>
+                                <option value="cal">cal</option>
+                                <option value="dcal">dcal</option>
+                                <option value="ccal">ccal</option>
+                                <option value="mcal">mcal</option>
+                                <option value="µcal">µcal</option>
+                            </optgroup>
+                            <optgroup label="BTU">
+                                <option value="TBTU">TBTU</option>
+                                <option value="GBTU">GBTU</option>
+                                <option value="MBTU">MBTU</option>
+                                <option value="kBTU">kBTU</option>
+                                <option value="hBTU">hBTU</option>
+                                <option value="daBTU">daBTU</option>
+                                <option value="BTU">BTU</option>
+                                <option value="dBTU">dBTU</option>
+                                <option value="cBTU">cBTU</option>
+                                <option value="mBTU">mBTU</option>
+                                <option value="µBTU">µBTU</option>
+                            </optgroup>
+                            <optgroup label="TNT">
+                                <option value="TTNT">Tton TNT</option>
+                                <option value="GTNT">Gton TNT</option>
+                                <option value="MTNT">Mton TNT</option>
+                                <option value="kTNT">kton TNT</option>
+                                <option value="hTNT">hton TNT</option>
+                                <option value="daTNT">daton TNT</option>
+                                <option value="TNT">ton TNT</option>
+                                <option value="dTNT">dton TNT</option>
+                                <option value="cTNT">cton TNT</option>
+                                <option value="mTNT">mton TNT</option>
+                                <option value="µTNT">µton TNT</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="ft·lb">ft·lb</option>
+                                <option value="erg">erg</option>
+                                <option value="eV">eV</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-xat" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-xat" name="calculator-sezimal-unit-xat" onchange="set_sezimal_unit(this)">
+                            <option value="DXxat">DXxat</option>
+                            <option value="XPxat">XPxat</option>
+                            <option value="XCxat">XCxat</option>
+                            <option value="XTxat">XTxat</option>
+                            <option value="XDxat">XDxat</option>
+                            <option value="XExat">XExat</option>
+                            <option value="Xxat">Xxat</option>
+                            <option value="Pxat">Pxat</option>
+                            <option value="Cxat">Cxat</option>
+                            <option value="Txat">Txat</option>
+                            <option value="Dxat">Dxat</option>
+                            <option value="Exat">Exat</option>
+                            <option value="xat">xat</option>
+                            <option value="exat">exat</option>
+                            <option value="dxat">dxat</option>
+                            <option value="txat">txat</option>
+                            <option value="cxat">cxat</option>
+                            <option value="pxat">pxat</option>
+                            <option value="xxat">xxat</option>
+                            <option value="xexat">xexat</option>
+                            <option value="xdxat">xdxat</option>
+                            <option value="xtxat">xtxat</option>
+                            <option value="xcxat">xcxat</option>
+                            <option value="xpxat">xpxat</option>
+                            <option value="dxxat">dxxat</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-xat" name="calculator-decimal-unit-xat" onchange="set_decimal_unit(this)">
+                            <optgroup label="SI - Watt">
+                                <option value="PW">PW</option>
+                                <option value="TW">TW</option>
+                                <option value="GW">GW</option>
+                                <option value="MW">MW</option>
+                                <option value="kW">kW</option>
+                                <option value="hW">hW</option>
+                                <option value="daW">daW</option>
+                                <option value="W">W</option>
+                                <option value="dW">dW</option>
+                                <option value="cW">cW</option>
+                                <option value="mW">mW</option>
+                                <option value="µW">µW</option>
+                                <option value="nW">nW</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="ftlb/s">ftlb/s</option>
+                                <option value="hp">hp</option>
+                                <option value="BTU/h">BTU/h</option>
+                                <option value="cal/s">cal/s</option>
+                                <option value="kcal/h">kcal/h</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr id="unit-gtk" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-gtk" name="calculator-sezimal-unit-gtk" onchange="set_sezimal_unit(this)">
+                            <option value="DXgtk">DXgtk</option>
+                            <option value="XPgtk">XPgtk</option>
+                            <option value="XCgtk">XCgtk</option>
+                            <option value="XTgtk">XTgtk</option>
+                            <option value="XDgtk">XDgtk</option>
+                            <option value="XEgtk">XEgtk</option>
+                            <option value="Xgtk">Xgtk</option>
+                            <option value="Pgtk">Pgtk</option>
+                            <option value="Cgtk">Cgtk</option>
+                            <option value="Tgtk">Tgtk</option>
+                            <option value="Dgtk">Dgtk</option>
+                            <option value="Egtk">Egtk</option>
+                            <option value="gtk">gtk</option>
+                            <option value="egtk">egtk</option>
+                            <option value="dgtk">dgtk</option>
+                            <option value="tgtk">tgtk</option>
+                            <option value="cgtk">cgtk</option>
+                            <option value="pgtk">pgtk</option>
+                            <option value="xgtk">xgtk</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-gtk" name="calculator-decimal-unit-gtk" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="K">K</option>
+                                <option value="°C">°C</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="°R">°R</option>
+                                <option value="°F">°F</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-tap" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-tap" name="calculator-sezimal-unit-tap" onchange="set_sezimal_unit(this)">
+                            <option value="Xtap">Xtap</option>
+                            <option value="Ptap">Ptap</option>
+                            <option value="Ctap">Ctap</option>
+                            <option value="Ttap">Ttap</option>
+                            <option value="Dtap">Dtap</option>
+                            <option value="Etap">Etap</option>
+                            <option value="tap">tap – °S</option>
+                            <option value="etap">etap</option>
+                            <option value="dtap">dtap</option>
+                            <option value="ttap">ttap</option>
+                            <option value="ctap">ctap</option>
+                            <option value="ptap">ptap</option>
+                            <option value="xtap">xtap</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-tap" name="calculator-decimal-unit-tap" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="°C">°C</option>
+                                <option value="K">K</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="°F">°F</option>
+                                <option value="°R">°R</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-agn" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-agn" name="calculator-sezimal-unit-agn" onchange="set_sezimal_unit(this)">
+                            <option value="Xagn">Xagn</option>
+                            <option value="Pagn">Pagn</option>
+                            <option value="Cagn">Cagn</option>
+                            <option value="Tagn">Tagn</option>
+                            <option value="Dagn">Dagn</option>
+                            <option value="Eagn">Eagn</option>
+                            <option value="agn">agn</option>
+                            <option value="eagn">eagn</option>
+                            <option value="dagn">dagn</option>
+                            <option value="tagn">tagn</option>
+                            <option value="cagn">cagn</option>
+                            <option value="pagn">pagn</option>
+                            <option value="xagn">xagn</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-agn" name="calculator-decimal-unit-agn" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="MJ/K">MJ/K</option>
+                                <option value="kJ/K">kJ/K</option>
+                                <option value="hJ/K">hJ/K</option>
+                                <option value="daJ/K">daJ/K</option>
+                                <option value="J/K">J/K</option>
+                                <option value="dJ/K">dJ/K</option>
+                                <option value="cJ/K">cJ/K</option>
+                                <option value="mJ/K">mJ/K</option>
+                                <option value="µJ/K">µJ/K</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="BTU/°R">BTU/°R</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-idn" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-idn" name="calculator-sezimal-unit-idn" onchange="set_sezimal_unit(this)">
+                            <option value="Xidn">Xidn</option>
+                            <option value="Pidn">Pidn</option>
+                            <option value="Cidn">Cidn</option>
+                            <option value="Tidn">Tidn</option>
+                            <option value="Didn">Didn</option>
+                            <option value="Eidn">Eidn</option>
+                            <option value="idn">idn</option>
+                            <option value="eidn">eidn</option>
+                            <option value="didn">didn</option>
+                            <option value="tidn">tidn</option>
+                            <option value="cidn">cidn</option>
+                            <option value="pidn">pidn</option>
+                            <option value="xidn">xidn</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-idn" name="calculator-decimal-unit-idn" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="MJ/K/kg">MJ/K/kg</option>
+                                <option value="kJ/K/kg">kJ/K/kg</option>
+                                <option value="hJ/K/kg">hJ/K/kg</option>
+                                <option value="daJ/K/kg">daJ/K/kg</option>
+                                <option value="J/K/kg">J/K/kg</option>
+                                <option value="dJ/K/kg">dJ/K/kg</option>
+                                <option value="cJ/K/kg">cJ/K/kg</option>
+                                <option value="mJ/K/kg">mJ/K/kg</option>
+                                <option value="µJ/K/kg">µJ/K/kg</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="BTU/°R/lb">BTU/°R/lb</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-tln" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-tln" name="calculator-sezimal-unit-tln" onchange="set_sezimal_unit(this)">
+                            <option value="Xtln">Xtln</option>
+                            <option value="Ptln">Ptln</option>
+                            <option value="Ctln">Ctln</option>
+                            <option value="Ttln">Ttln</option>
+                            <option value="Dtln">Dtln</option>
+                            <option value="Etln">Etln</option>
+                            <option value="tln">tln</option>
+                            <option value="etln">etln</option>
+                            <option value="dtln">dtln</option>
+                            <option value="ttln">ttln</option>
+                            <option value="ctln">ctln</option>
+                            <option value="ptln">ptln</option>
+                            <option value="xtln">xtln</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-tln" name="calculator-decimal-unit-tln" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="MJ/K/m3">MJ/K/m³</option>
+                                <option value="kJ/K/m3">kJ/K/m³</option>
+                                <option value="hJ/K/m3">hJ/K/m³</option>
+                                <option value="daJ/K/m3">daJ/K/m³</option>
+                                <option value="J/K/m3">J/K/m³</option>
+                                <option value="dJ/K/m3">dJ/K/m³</option>
+                                <option value="cJ/K/m3">cJ/K/m³</option>
+                                <option value="mJ/K/m3">mJ/K/m³</option>
+                                <option value="µJ/K/m3">µJ/K/m³</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="BTU/°R/gal">BTU/°R/gal</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-avx" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-avx" name="calculator-sezimal-unit-avx" onchange="set_sezimal_unit(this)">
+                            <option value="DXavx">DXavx</option>
+                            <option value="XPavx">XPavx</option>
+                            <option value="XCavx">XCavx</option>
+                            <option value="XTavx">XTavx</option>
+                            <option value="XDavx">XDavx</option>
+                            <option value="XEavx">XEavx</option>
+                            <option value="Xavx">Xavx</option>
+                            <option value="Pavx">Pavx</option>
+                            <option value="Cavx">Cavx</option>
+                            <option value="Tavx">Tavx</option>
+                            <option value="Davx">Davx</option>
+                            <option value="Eavx">Eavx</option>
+                            <option value="avx">avx</option>
+                            <option value="eavx">eavx</option>
+                            <option value="davx">davx</option>
+                            <option value="tavx">tavx</option>
+                            <option value="cavx">cavx</option>
+                            <option value="pavx">pavx</option>
+                            <option value="xavx">xavx</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-avx" name="calculator-decimal-unit-avx" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="MC">MC</option>
+                                <option value="kC">kC</option>
+                                <option value="hC">hC</option>
+                                <option value="daC">daC</option>
+                                <option value="C">C</option>
+                                <option value="dC">dC</option>
+                                <option value="cC">cC</option>
+                                <option value="mC">mC</option>
+                                <option value="µC">µC</option>
+                                <option value="nC">nC</option>
+                            </optgroup>
+                            <optgroup label="Ah">
+                                <option value="MAh">MAh</option>
+                                <option value="kAh">kAh</option>
+                                <option value="hAh">hAh</option>
+                                <option value="daAh">daAh</option>
+                                <option value="Ah">Ah</option>
+                                <option value="dAh">dAh</option>
+                                <option value="cAh">cAh</option>
+                                <option value="mAh">mAh</option>
+                                <option value="µAh">µAh</option>
+                                <option value="nAh">nAh</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-dar" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-dar" name="calculator-sezimal-unit-dar" onchange="set_sezimal_unit(this)">
+                            <option value="DXdar">DXdar</option>
+                            <option value="XPdar">XPdar</option>
+                            <option value="XAdar">XAdar</option>
+                            <option value="XTdar">XTdar</option>
+                            <option value="XDdar">XDdar</option>
+                            <option value="XEdar">XEdar</option>
+                            <option value="Xdar">Xdar</option>
+                            <option value="Pdar">Pdar</option>
+                            <option value="Adar">Adar</option>
+                            <option value="Tdar">Tdar</option>
+                            <option value="Ddar">Ddar</option>
+                            <option value="Edar">Edar</option>
+                            <option value="dar">dar</option>
+                            <option value="edar">edar</option>
+                            <option value="ddar">ddar</option>
+                            <option value="tdar">tdar</option>
+                            <option value="cdar">cdar</option>
+                            <option value="pdar">pdar</option>
+                            <option value="xdar">xdar</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-dar" name="calculator-decimal-unit-dar" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GA">GA</option>
+                                <option value="MA">MA</option>
+                                <option value="kA">kA</option>
+                                <option value="hA">hA</option>
+                                <option value="daA">daA</option>
+                                <option value="A">A</option>
+                                <option value="dA">dA</option>
+                                <option value="cA">cA</option>
+                                <option value="mA">mA</option>
+                                <option value="µA">µA</option>
+                                <option value="nA">nA</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-vbv" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-vbv" name="calculator-sezimal-unit-vbv" onchange="set_sezimal_unit(this)">
+                            <option value="Xvbv">Xvbv</option>
+                            <option value="Pvbv">Pvbv</option>
+                            <option value="Cvbv">Cvbv</option>
+                            <option value="Tvbv">Tvbv</option>
+                            <option value="Dvbv">Dvbv</option>
+                            <option value="Evbv">Evbv</option>
+                            <option value="vbv">vbv</option>
+                            <option value="evbv">evbv</option>
+                            <option value="dvbv">dvbv</option>
+                            <option value="tvbv">tvbv</option>
+                            <option value="cvbv">cvbv</option>
+                            <option value="pvbv">pvbv</option>
+                            <option value="xvbv">xvbv</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-vbv" name="calculator-decimal-unit-vbv" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GV">GV</option>
+                                <option value="MV">MV</option>
+                                <option value="kV">kV</option>
+                                <option value="hV">hV</option>
+                                <option value="daV">daV</option>
+                                <option value="V">V</option>
+                                <option value="dV">dV</option>
+                                <option value="cV">cV</option>
+                                <option value="mV">mV</option>
+                                <option value="µV">µV</option>
+                                <option value="nV">nV</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-ptr" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-ptr" name="calculator-sezimal-unit-ptr" onchange="set_sezimal_unit(this)">
+                            <option value="Xptr">Xptr</option>
+                            <option value="Pptr">Pptr</option>
+                            <option value="Cptr">Cptr</option>
+                            <option value="Tptr">Tptr</option>
+                            <option value="Dptr">Dptr</option>
+                            <option value="Eptr">Eptr</option>
+                            <option value="ptr">ptr</option>
+                            <option value="eptr">eptr</option>
+                            <option value="dptr">dptr</option>
+                            <option value="tptr">tptr</option>
+                            <option value="cptr">cptr</option>
+                            <option value="pptr">pptr</option>
+                            <option value="xptr">xptr</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-ptr" name="calculator-decimal-unit-ptr" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GΩ">GΩ</option>
+                                <option value="MΩ">MΩ</option>
+                                <option value="kΩ">kΩ</option>
+                                <option value="hΩ">hΩ</option>
+                                <option value="daΩ">daΩ</option>
+                                <option value="Ω">Ω</option>
+                                <option value="dΩ">dΩ</option>
+                                <option value="cΩ">cΩ</option>
+                                <option value="mΩ">mΩ</option>
+                                <option value="µΩ">µΩ</option>
+                                <option value="nΩ">nΩ</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-cln" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-cln" name="calculator-sezimal-unit-cln" onchange="set_sezimal_unit(this)">
+                            <option value="Xcln">Xcln</option>
+                            <option value="Pcln">Pcln</option>
+                            <option value="Ccln">Ccln</option>
+                            <option value="Tcln">Tcln</option>
+                            <option value="Dcln">Dcln</option>
+                            <option value="Ecln">Ecln</option>
+                            <option value="cln">cln</option>
+                            <option value="ecln">ecln</option>
+                            <option value="dcln">dcln</option>
+                            <option value="tcln">tcln</option>
+                            <option value="ccln">ccln</option>
+                            <option value="pcln">pcln</option>
+                            <option value="xcln">xcln</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-cln" name="calculator-decimal-unit-cln" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GS">GS</option>
+                                <option value="MS">MS</option>
+                                <option value="kS">kS</option>
+                                <option value="hS">hS</option>
+                                <option value="daS">daS</option>
+                                <option value="S">S</option>
+                                <option value="dS">dS</option>
+                                <option value="cS">cS</option>
+                                <option value="mS">mS</option>
+                                <option value="µS">µS</option>
+                                <option value="nS">nS</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-prk" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-prk" name="calculator-sezimal-unit-prk" onchange="set_sezimal_unit(this)">
+                            <option value="Xprk">Xprk</option>
+                            <option value="Pprk">Pprk</option>
+                            <option value="Cprk">Cprk</option>
+                            <option value="Tprk">Tprk</option>
+                            <option value="Dprk">Dprk</option>
+                            <option value="Eprk">Eprk</option>
+                            <option value="prk">prk</option>
+                            <option value="eprk">eprk</option>
+                            <option value="dprk">dprk</option>
+                            <option value="tprk">tprk</option>
+                            <option value="cprk">cprk</option>
+                            <option value="pprk">pprk</option>
+                            <option value="xprk">xprk</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-prk" name="calculator-decimal-unit-prk" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GH">GH</option>
+                                <option value="MH">MH</option>
+                                <option value="kH">kH</option>
+                                <option value="hH">hH</option>
+                                <option value="daH">daH</option>
+                                <option value="H">H</option>
+                                <option value="dH">dH</option>
+                                <option value="cH">cH</option>
+                                <option value="mH">mH</option>
+                                <option value="µH">µH</option>
+                                <option value="nH">nH</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-sam" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-sam" name="calculator-sezimal-unit-sam" onchange="set_sezimal_unit(this)">
+                            <option value="Xsam">Xsam</option>
+                            <option value="Psam">Psam</option>
+                            <option value="Csam">Csam</option>
+                            <option value="Tsam">Tsam</option>
+                            <option value="Dsam">Dsam</option>
+                            <option value="Esam">Esam</option>
+                            <option value="sam">sam</option>
+                            <option value="esam">esam</option>
+                            <option value="dsam">dsam</option>
+                            <option value="tsam">tsam</option>
+                            <option value="csam">csam</option>
+                            <option value="psam">psam</option>
+                            <option value="xsam">xsam</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-sam" name="calculator-decimal-unit-sam" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GF">GF</option>
+                                <option value="MF">MF</option>
+                                <option value="kF">kF</option>
+                                <option value="hF">hF</option>
+                                <option value="daF">daF</option>
+                                <option value="F">F</option>
+                                <option value="dF">dF</option>
+                                <option value="cF">cF</option>
+                                <option value="mF">mF</option>
+                                <option value="µF">µF</option>
+                                <option value="nF">nF</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-abv" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-abv" name="calculator-sezimal-unit-abv" onchange="set_sezimal_unit(this)">
+                            <option value="Xabv">Xabv</option>
+                            <option value="Pabv">Pabv</option>
+                            <option value="Cabv">Cabv</option>
+                            <option value="Tabv">Tabv</option>
+                            <option value="Dabv">Dabv</option>
+                            <option value="Eabv">Eabv</option>
+                            <option value="abv">abv</option>
+                            <option value="eabv">eabv</option>
+                            <option value="dabv">dabv</option>
+                            <option value="tabv">tabv</option>
+                            <option value="cabv">cabv</option>
+                            <option value="pabv">pabv</option>
+                            <option value="xabv">xabv</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-abv" name="calculator-decimal-unit-abv" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GWb">GWb</option>
+                                <option value="MWb">MWb</option>
+                                <option value="kWb">kWb</option>
+                                <option value="hWb">hWb</option>
+                                <option value="daWb">daWb</option>
+                                <option value="Wb">Wb</option>
+                                <option value="dWb">dWb</option>
+                                <option value="cWb">cWb</option>
+                                <option value="mWb">mWb</option>
+                                <option value="µWb">µWb</option>
+                                <option value="nWb">nWb</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-vtr" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-vtr" name="calculator-sezimal-unit-vtr" onchange="set_sezimal_unit(this)">
+                            <option value="Xvtr">Xvtr</option>
+                            <option value="Pvtr">Pvtr</option>
+                            <option value="Cvtr">Cvtr</option>
+                            <option value="Tvtr">Tvtr</option>
+                            <option value="Dvtr">Dvtr</option>
+                            <option value="Evtr">Evtr</option>
+                            <option value="vtr">vtr</option>
+                            <option value="evtr">evtr</option>
+                            <option value="dvtr">dvtr</option>
+                            <option value="tvtr">tvtr</option>
+                            <option value="cvtr">cvtr</option>
+                            <option value="pvtr">pvtr</option>
+                            <option value="xvtr">xvtr</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-vtr" name="calculator-decimal-unit-vtr" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="GT">GT</option>
+                                <option value="MT">MT</option>
+                                <option value="kT">kT</option>
+                                <option value="hT">hT</option>
+                                <option value="daT">daT</option>
+                                <option value="T">T</option>
+                                <option value="dT">dT</option>
+                                <option value="cT">cT</option>
+                                <option value="mT">mT</option>
+                                <option value="µT">µT</option>
+                                <option value="nT">nT</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-prd" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-prd" name="calculator-sezimal-unit-prd" onchange="set_sezimal_unit(this)">
+                            <option value="prd">prd</option>
+                            <option value="eprd">eprd</option>
+                            <option value="dprd">dprd</option>
+                            <option value="tprd">tprd</option>
+                            <option value="cprd">cprd</option>
+                            <option value="pprd">pprd</option>
+                            <option value="xprd">xprd</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-prd" name="calculator-decimal-unit-prd" onchange="set_decimal_unit(this)">
+                            <optgroup label="SI">
+                                <option value="rad">rad</option>
+                                <option value="drad">drad</option>
+                                <option value="crad">crad</option>
+                                <option value="mrad">mrad</option>
+                                <option value="µrad">µrad</option>
+                                <option value="nrad">nrad</option>
+                            </optgroup>
+                            <optgroup label="turn">
+                                <option value="turn">turn</option>
+                                <option value="dturn">dturn</option>
+                                <option value="cturn">cturn</option>
+                                <option value="mturn">mturn</option>
+                                <option value="µturn">µturn</option>
+                                <option value="nturn">nturn</option>
+                            </optgroup>
+                            <optgroup label="arcmin">
+                                <option value="arcmin">arcmin</option>
+                                <option value="darcmin">darcmin</option>
+                                <option value="carcmin">carcmin</option>
+                                <option value="marcmin">marcmin</option>
+                                <option value="µarcmin">µarcmin</option>
+                                <option value="narcmin">narcmin</option>
+                            </optgroup>
+                            <optgroup label="arcsec">
+                                <option value="arcsec">arcsec</option>
+                                <option value="darcsec">darcsec</option>
+                                <option value="carcsec">carcsec</option>
+                                <option value="marcsec">marcsec</option>
+                                <option value="µarcsec">µarcsec</option>
+                                <option value="narcsec">narcsec</option>
+                            </optgroup>
+                            <optgroup label="gon">
+                                <option value="gon">gon</option>
+                                <option value="dgon">dgon</option>
+                                <option value="cgon">cgon</option>
+                                <option value="mgon">mgon</option>
+                                <option value="µgon">µgon</option>
+                                <option value="ngon">ngon</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="deg">deg</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-gol" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-gol" name="calculator-sezimal-unit-gol" onchange="set_sezimal_unit(this)">
+                            <option value="gol">gol</option>
+                            <option value="egol">egol</option>
+                            <option value="dgol">dgol</option>
+                            <option value="tgol">tgol</option>
+                            <option value="cgol">cgol</option>
+                            <option value="pgol">pgol</option>
+                            <option value="xgol">xgol</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-gol" name="calculator-decimal-unit-gol" onchange="set_decimal_unit(this)">
+                            <optgroup label="S.I.">
+                                <option value="sr">sr</option>
+                                <option value="dsr">dsr</option>
+                                <option value="csr">csr</option>
+                                <option value="msr">msr</option>
+                                <option value="µsr">µsr</option>
+                                <option value="nsr">nsr</option>
+                            </optgroup>
+                            <optgroup label="spat">
+                                <option value="spat">spat</option>
+                                <option value="dspat">dspat</option>
+                                <option value="cspat">cspat</option>
+                                <option value="mspat">mspat</option>
+                                <option value="µspat">µspat</option>
+                                <option value="nspat">nspat</option>
+                            </optgroup>
+                            <optgroup label="Non-S.I.">
+                                <option value="deg2">deg²</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-prt" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-prt" name="calculator-sezimal-unit-prt" onchange="set_sezimal_unit(this)">
+                            <option value="prt">prt (per unit 10⁰)</option>
+                            <option value="eprt">eprt (per six 10¹)</option>
+                            <option value="dprt">dprt (per nif 10²)</option>
+                            <option value="tprt">tprt (per arda 10³)</option>
+                            <option value="cprt">cprt (per six arda 10⁴)</option>
+                            <option value="pprt">pprt (per nif arda 10⁵)</option>
+                            <option value="xprt">xprt (per shadara 10¹⁰)</option>
+                            <option value="xeprt">xeprt (per six shadara 10¹¹)</option>
+                            <option value="xdprt">xdprt (per nif shadara 10¹²)</option>
+<!--                            <option value="xtprt">xtprt (per arda shadara 10¹³)</option>
+                            <option value="xcprt">xcprt (per six arda shadara 10¹⁴)</option>
+                            <option value="xpprt">xpprt (per nif arda shadara 10¹⁵)</option>
+                            <option value="dxprt">dxprt (per dishadara 10²⁰)</option>
+                            <option value="deprt">deprt (per six dishadara 10²¹)</option>
+                            <option value="ddprt">ddprt (per nif dishadara 10²²)</option>
+                            <option value="dtprt">dtprt (per arda dishadara 10²³)</option>
+                            <option value="dcprt">dcprt (per six arda dishadara 10²⁴)</option>
+                            <option value="dpprt">dpprt (per nif arda dishadara 10²⁵)</option>
+                            <option value="txprt">txprt (per trishadara 10³⁰)</option>-->
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-prt" name="calculator-decimal-unit-prt" onchange="set_decimal_unit(this)">
+                            <option value="%">% per hundred</option>
+                            <option value="‰">‰ per thousand</option>
+                            <option value="‱">‱ per ten thousand</option>
+                            <option value="pcm">ppm per hundred thousand</option>
+                            <option value="ppm">ppm per million</option>
+<!--                            <option value="ppb">ppb per billion/thousand million</option>
+                            <option value="ppt">ppt per trillion/billion</option>
+                            <option value="ppq">ppt per quadrillion/thousand billion</option>-->
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-atk" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-atk" name="calculator-sezimal-unit-atk" onchange="set_sezimal_unit(this)">
+                            <option value="NDXatk">NDXatk</option>
+                            <option value="NXPatk">NXPatk</option>
+                            <option value="NXCatk">NXCatk</option>
+                            <option value="NXTatk">NXTatk</option>
+                            <option value="NXDatk">NXDatk</option>
+                            <option value="NXEatk">NXEatk</option>
+                            <option value="NXatk">NXatk</option>
+                            <option value="NPatk">NPatk</option>
+                            <option value="NCatk">NCatk</option>
+                            <option value="NTatk">NTatk</option>
+                            <option value="NDatk">NDatk</option>
+                            <option value="NEatk">NEatk</option>
+                            <option value="Natk">Natk</option>
+                            <option value="PPatk">PPatk</option>
+                            <option value="PCatk">PCatk</option>
+                            <option value="PTatk">PTatk</option>
+                            <option value="PDatk">PDatk</option>
+                            <option value="PEatk">PEatk</option>
+                            <option value="PXatk">PXatk</option>
+                            <option value="CPatk">CPatk</option>
+                            <option value="CCatk">CCatk</option>
+                            <option value="CTatk">CTatk</option>
+                            <option value="CDatk">CDatk</option>
+                            <option value="CEatk">CEatk</option>
+                            <option value="CXatk">CXatk</option>
+                            <option value="TPatk">TPatk</option>
+                            <option value="TCatk">TCatk</option>
+                            <option value="TTatk">TTatk</option>
+                            <option value="TDatk">TDatk</option>
+                            <option value="TEatk">TEatk</option>
+                            <option value="TXatk">TXatk</option>
+                            <option value="DPatk">DPatk</option>
+                            <option value="DCatk">DCatk</option>
+                            <option value="DTatk">DTatk</option>
+                            <option value="DDatk">DDatk</option>
+                            <option value="DEatk">DEatk</option>
+                            <option value="DXatk">DXatk</option>
+                            <option value="XPatk">XPatk</option>
+                            <option value="XCatk">XCatk</option>
+                            <option value="XTatk">XTatk</option>
+                            <option value="XDatk">XDatk</option>
+                            <option value="XEatk">XEatk</option>
+                            <option value="Xatk">Xatk</option>
+                            <option value="Patk">Patk</option>
+                            <option value="Catk">Catk</option>
+                            <option value="Tatk">Tatk</option>
+                            <option value="Datk">Datk</option>
+                            <option value="Eatk">Eatk</option>
+                            <option value="atk">atk</option>
+                            <option value="eatk">eatk</option>
+                            <option value="datk">datk</option>
+                            <option value="tatk">tatk</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-atk" name="calculator-decimal-unit-atk" onchange="set_decimal_unit(this)">
+                            <optgroup label="Byte">
+                                <option value="QB">QB</option>
+                                <option value="RB">RB</option>
+                                <option value="YB">YB</option>
+                                <option value="ZB">ZB</option>
+                                <option value="EB">EB</option>
+                                <option value="PB">PB</option>
+                                <option value="TB">TB</option>
+                                <option value="GB">GB</option>
+                                <option value="MB">MB</option>
+                                <option value="kB">kB</option>
+                                <option value="B">B</option>
+                            </optgroup>
+                            <optgroup label="bit">
+                                <option value="Qbit">Qbit</option>
+                                <option value="Rbit">Rbit</option>
+                                <option value="Ybit">Ybit</option>
+                                <option value="Zbit">Zbit</option>
+                                <option value="Ebit">Ebit</option>
+                                <option value="Pbit">Pbit</option>
+                                <option value="Tbit">Tbit</option>
+                                <option value="Gbit">Gbit</option>
+                                <option value="Mbit">Mbit</option>
+                                <option value="kbit">kbit</option>
+                                <option value="bit">bit</option>
+                            </optgroup>
+                            <optgroup label="Byte (binary prefix)">
+                                <option value="QiB">QiB</option>
+                                <option value="RiB">RiB</option>
+                                <option value="YiB">YiB</option>
+                                <option value="ZiB">ZiB</option>
+                                <option value="EiB">EiB</option>
+                                <option value="PiB">PiB</option>
+                                <option value="TiB">TiB</option>
+                                <option value="GiB">GiB</option>
+                                <option value="MiB">MiB</option>
+                                <option value="KiB">KiB</option>
+                                <option value="B">B</option>
+                            </optgroup>
+                            <optgroup label="bit (binary prefix)">
+                                <option value="Qibit">Qibit</option>
+                                <option value="Ribit">Ribit</option>
+                                <option value="Yibit">Yibit</option>
+                                <option value="Zibit">Zibit</option>
+                                <option value="Eibit">Eibit</option>
+                                <option value="Pibit">Pibit</option>
+                                <option value="Tibit">Tibit</option>
+                                <option value="Gibit">Gibit</option>
+                                <option value="Mibit">Mibit</option>
+                                <option value="Kibit">Kibit</option>
+                                <option value="bit">bit</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="unit-pvn" hidden>
+                    <td style="text-align: center;">
+                        <select id="calculator-sezimal-unit-pvn" name="calculator-sezimal-unit-pvn" onchange="set_sezimal_unit(this)">
+                            <option value="NDXpvn">NDXpvn</option>
+                            <option value="NXPpvn">NXPpvn</option>
+                            <option value="NXCpvn">NXCpvn</option>
+                            <option value="NXTpvn">NXTpvn</option>
+                            <option value="NXDpvn">NXDpvn</option>
+                            <option value="NXEpvn">NXEpvn</option>
+                            <option value="NXpvn">NXpvn</option>
+                            <option value="NPpvn">NPpvn</option>
+                            <option value="NCpvn">NCpvn</option>
+                            <option value="NTpvn">NTpvn</option>
+                            <option value="NDpvn">NDpvn</option>
+                            <option value="NEpvn">NEpvn</option>
+                            <option value="Npvn">Npvn</option>
+                            <option value="PPpvn">PPpvn</option>
+                            <option value="PCpvn">PCpvn</option>
+                            <option value="PTpvn">PTpvn</option>
+                            <option value="PDpvn">PDpvn</option>
+                            <option value="PEpvn">PEpvn</option>
+                            <option value="PXpvn">PXpvn</option>
+                            <option value="CPpvn">CPpvn</option>
+                            <option value="CCpvn">CCpvn</option>
+                            <option value="CTpvn">CTpvn</option>
+                            <option value="CDpvn">CDpvn</option>
+                            <option value="CEpvn">CEpvn</option>
+                            <option value="CXpvn">CXpvn</option>
+                            <option value="TPpvn">TPpvn</option>
+                            <option value="TCpvn">TCpvn</option>
+                            <option value="TTpvn">TTpvn</option>
+                            <option value="TDpvn">TDpvn</option>
+                            <option value="TEpvn">TEpvn</option>
+                            <option value="TXpvn">TXpvn</option>
+                            <option value="DPpvn">DPpvn</option>
+                            <option value="DCpvn">DCpvn</option>
+                            <option value="DTpvn">DTpvn</option>
+                            <option value="DDpvn">DDpvn</option>
+                            <option value="DEpvn">DEpvn</option>
+                            <option value="DXpvn">DXpvn</option>
+                            <option value="XPpvn">XPpvn</option>
+                            <option value="XCpvn">XCpvn</option>
+                            <option value="XTpvn">XTpvn</option>
+                            <option value="XDpvn">XDpvn</option>
+                            <option value="XEpvn">XEpvn</option>
+                            <option value="Xpvn">Xpvn</option>
+                            <option value="Ppvn">Ppvn</option>
+                            <option value="Cpvn">Cpvn</option>
+                            <option value="Tpvn">Tpvn</option>
+                            <option value="Dpvn">Dpvn</option>
+                            <option value="Epvn">Epvn</option>
+                            <option value="pvn">pvn</option>
+                            <option value="epvn">epvn</option>
+                            <option value="dpvn">dpvn</option>
+                            <option value="tpvn">tpvn</option>
+                            <option value="cpvn">cpvn</option>
+                            <option value="ppvn">ppvn</option>
+                            <option value="xpvn">xpvn</option>
+                        </select>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <select id="calculator-decimal-unit-pvn" name="calculator-decimal-unit-pvn" onchange="set_decimal_unit(this)">
+                            <optgroup label="bps">
+                                <option value="Qbps">Qbps</option>
+                                <option value="Rbps">Rbps</option>
+                                <option value="Ybps">Ybps</option>
+                                <option value="Zbps">Zbps</option>
+                                <option value="Ebps">Ebps</option>
+                                <option value="Pbps">Pbps</option>
+                                <option value="Tbps">Tbps</option>
+                                <option value="Gbps">Gbps</option>
+                                <option value="Mbps">Mbps</option>
+                                <option value="kbps">kbps</option>
+                                <option value="bps">bps</option>
+                                <option value="dbps">dbps</option>
+                                <option value="cbps">cbps</option>
+                                <option value="mbps">mbps</option>
+                            </optgroup>
+                            <optgroup label="Bps">
+                                <option value="QBps">QBps</option>
+                                <option value="RBps">RBps</option>
+                                <option value="YBps">YBps</option>
+                                <option value="ZBps">ZBps</option>
+                                <option value="EBps">EBps</option>
+                                <option value="PBps">PBps</option>
+                                <option value="TBps">TBps</option>
+                                <option value="GBps">GBps</option>
+                                <option value="MBps">MBps</option>
+                                <option value="kBps">kBps</option>
+                                <option value="Bps">Bps</option>
+                                <option value="dBps">dBps</option>
+                                <option value="cBps">cBps</option>
+                                <option value="mBps">mBps</option>
+                            </optgroup>
+                            <optgroup label="Bpm">
+                                <option value="QBpm">QBpm</option>
+                                <option value="RBpm">RBpm</option>
+                                <option value="YBpm">YBpm</option>
+                                <option value="ZBpm">ZBpm</option>
+                                <option value="EBpm">EBpm</option>
+                                <option value="PBpm">PBpm</option>
+                                <option value="TBpm">TBpm</option>
+                                <option value="GBpm">GBpm</option>
+                                <option value="MBpm">MBpm</option>
+                                <option value="kBpm">kBpm</option>
+                                <option value="Bpm">Bpm</option>
+                                <option value="dBpm">dBpm</option>
+                                <option value="cBpm">cBpm</option>
+                                <option value="mBpm">mBpm</option>
+                            </optgroup>
+                            <optgroup label="bps (binary prefix)">
+                                <option value="Qibps">Qibps</option>
+                                <option value="Ribps">Ribps</option>
+                                <option value="Yibps">Yibps</option>
+                                <option value="Zibps">Zibps</option>
+                                <option value="Eibps">Eibps</option>
+                                <option value="Pibps">Pibps</option>
+                                <option value="Tibps">Tibps</option>
+                                <option value="Gibps">Gibps</option>
+                                <option value="Mibps">Mibps</option>
+                                <option value="Kibps">Kibps</option>
+                                <option value="bps">bps</option>
+                            </optgroup>
+                            <optgroup label="Bps (binary prefix)">
+                                <option value="QiBps">QiBps</option>
+                                <option value="RiBps">RiBps</option>
+                                <option value="YiBps">YiBps</option>
+                                <option value="ZiBps">ZiBps</option>
+                                <option value="EiBps">EiBps</option>
+                                <option value="PiBps">PiBps</option>
+                                <option value="TiBps">TiBps</option>
+                                <option value="GiBps">GiBps</option>
+                                <option value="MiBps">MiBps</option>
+                                <option value="KiBps">KiBps</option>
+                                <option value="Bps">Bps</option>
+                            </optgroup>
+                            <optgroup label="Bpm (binary prefix)">
+                                <option value="QiBpm">QiBpm</option>
+                                <option value="RiBpm">RiBpm</option>
+                                <option value="YiBpm">YiBpm</option>
+                                <option value="ZiBpm">ZiBpm</option>
+                                <option value="EiBpm">EiBpm</option>
+                                <option value="PiBpm">PiBpm</option>
+                                <option value="TiBpm">TiBpm</option>
+                                <option value="GiBpm">GiBpm</option>
+                                <option value="MiBpm">MiBpm</option>
+                                <option value="KiBpm">KiBpm</option>
+                                <option value="Bpm">Bpm</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="displays">
+            <div id="settings"><span style="text-align: left; font-size: 19pt;" onclick="toggle_settings(true)"> ≡ </span><span style="text-align: right; float: right; font-size: 16pt;" onclick="toggle_units(true)"> ⚙ </span></div>
+            <div id="units-conversion"></div>
+            <div id="spellout" class="spellout"></div>
+            <div id="display" class="display">0</div>
+            <div id="expression" class="expression" hidden>0</div>
+            <div id="decimal_expression" class="expression" hidden>0</div>
+            <div id="decimal_display" class="decimal_display">0</div>
+        </div>
+        <div id="buttons" class="buttons">
+            <table id="sezimal-buttons-table" class="buttons-table">
+                <colgroup>
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                </colgroup>
+                <tr>
+                    <td><button id="button-clear" name="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td></td>
+                    <td><button id="button-base-ten" name="button-base-ten" class="button-base" value="14" onclick="set_base_ten()">󱸁󱸄</button></td>
+                    <td></td>
+<!--                    <td><button id="button-arrow-left" name="button-arrow-left" class="button-arrow" value="◂">◂</button></td>
+                    <td><button id="button-arrow-right" name="button-arrow-right" class="button-arrow" value="▸">▸</button></td>-->
+                    <td><button id="button-left-parentheses"  name="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td></td>
+                    <td><button id="button-right-parentheses" name="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td></td>
+                    <td><button id="button-backspace" name="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-e" name="button" class="button-constant" value="e" style="font-style: italic;" onclick="button_click(this)">e</button></td>
+                    <td></td>
+                    <td><button id="button-pi" name="button" class="button-constant" value="π" onclick="button_click(this)">π</button></td>
+                    <td></td>
+                    <td><button id="button-tau" name="button" class="button-constant" value="τ" onclick="button_click(this)">τ</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-exponent" name="button" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
+                    <td></td>
+                    <td><button id="button-pernif" name="button" class="button-operator" value="%" onclick="button_click(this)">%</button></td>
+                    <td hidden><button id="button-perarda" name="button" class="button-operator" value="‰" onclick="button_click(this)">‰</button></td>
+                    <td hidden><button id="button-persixarda" name="button" class="button-operator" value="‱" onclick="button_click(this)">‱</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-sezimal-number-3" name="button-number-3" class="button-digit" value="3" onclick="button_click(this)">󱸃</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-number-4" name="button-number-4" class="button-digit" value="4" onclick="button_click(this)">󱸄</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-number-5" name="button-number-5" class="button-digit" value="5" onclick="button_click(this)">󱸅</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-multiplication" name="button-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-division" name="button-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-sezimal-number-0" name="button-number-0" class="button-digit" value="0" onclick="button_click(this)">󱸀</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-number-1" name="button-number-1" class="button-digit"  value="1" onclick="button_click(this)">󱸁</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-number-2" name="button-number-2" class="button-digit" value="2" onclick="button_click(this)">󱸂</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-addition" name="button-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-subtraction" name="button-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-sezimal-number-00" name="button-number-00" class="button-digit" value="00" onclick="button_click(this)">󱸀󱸀</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-separator" name="button-sezimal-separator" class="button-digit" value="." onclick="button_click(this)">,</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-invert-sign" name="button-invert-sign" class="button-operator" value="±" onclick="button_click(this)">±</button></td>
+                    <td></td>
+                    <td colspan="3"><button id="button-sezimal-equal" name="button-equal" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
+                </tr>
+            </table>
+            <table id="decimal-buttons-table" class="buttons-table" hidden>
+                <colgroup>
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 19.2%;">
+                </colgroup>
+                <tr>
+                    <td><button id="button-clear" name="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td></td>
+                    <td><button id="button-base-six" name="button-base-six" class="button-base" value="6" onclick="set_base_six()">6</button></td>
+                    <td></td>
+                    <td><button id="button-left-parentheses"  name="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td></td>
+                    <td><button id="button-right-parentheses" name="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td></td>
+                    <td><button id="button-backspace" name="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+               <tr>
+                    <td><button id="button-decimal-number-7" name="button" class="button-digit" value="7" onclick="button_click(this)">7</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-8" name="button" class="button-digit" value="8" onclick="button_click(this)">8</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-9" name="button" class="button-digit" value="9" onclick="button_click(this)">9</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-exponent" name="button" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
+                    <td></td>
+                    <td><button id="button-percent" name="button" class="button-operator" value="%" onclick="button_click(this)">%</button></td>
+<!--                     <td><button id="button-permille" name="button" class="button-operator" value="‰">‰</button></td> -->
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-decimal-number-4" name="button" class="button-digit" value="4" onclick="button_click(this)">4</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-5" name="button" class="button-digit" value="5" onclick="button_click(this)">5</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-6" name="button" class="button-digit" value="6" onclick="button_click(this)">6</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-multiplication" name="button-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-division" name="button-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-decimal-number-1" name="button" class="button-digit" value="1" onclick="button_click(this)">1</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-2" name="button" class="button-digit" value="2" onclick="button_click(this)">2</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-number-3" name="button" class="button-digit" value="3" onclick="button_click(this)">3</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-addition" name="button-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-subtraction" name="button-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-decimal-number-0" name="button" class="button-digit" value="0" onclick="button_click(this)">0</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-separator" name="button" class="button-digit" value="." onclick="button_click(this)">,</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-invert-sign" name="button" class="button-math" value="±" onclick="button_click(this)">±</button></td>
+                    <td></td>
+                    <td colspan="3"><button id="button-decimal-equal" name="button" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script>
+var locale = localStorage.getItem('sezimal-calculator-locale');
+var places = localStorage.getItem('sezimal-calculator-sezimal-places');
+var base = localStorage.getItem('sezimal-calculator-base');
+var sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
+var grouping = localStorage.getItem('sezimal-calculator-grouping');
+var spellout = localStorage.getItem('sezimal-calculator-spellout');
+var unit_type = localStorage.getItem('sezimal-calculator-unit-type');
+var sezimal_unit = localStorage.getItem('sezimal-calculator-sezimal-unit');
+var decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
+const sezimal_separator = {
+    'iso': ',',
+    'iso_dot': '.',
+    'code': '.',
+    'ar_latn': ',',
+    'ar': ',',
+    'bz': ',',
+    'bz_pt': ',',
+    'ca': ',',
+    'de': ',',
+    'el': ',',
+    'en_au': '.',
+    'en_br': '.',
+    'en_ca': '.',
+    'en_gb': '.',
+    'en_ie': '.',
+    'en_in': '.',
+    'en_nyoo_speling': '.',
+    'en_nz': '.',
+    'en_shavian': '.',
+    'en_us': '.',
+    'en': '.',
+    'eo_br': ',',
+    'eo': ',',
+    'es_ar': ',',
+    'es_bo': ',',
+    'es_cl': ',',
+    'es_co': ',',
+    'es_ec': ',',
+    'es_mx': ',',
+    'es_pe': ',',
+    'es_py': ',',
+    'es_uy': ',',
+    'es': ',',
+    'fa_latn': ',',
+    'fa': ',',
+    'fr_ca': ',',
+    'fr_ch': ',',
+    'fr_ortograf': ',',
+    'fr': ',',
+    'ga_clo_gaelach': '.',
+    'ga_traditional': '.',
+    'ga': '.',
+    'gl': ',',
+    'gn': ',',
+    'he_latn': '.',
+    'he': '.',
+    'hi_latn': '.',
+    'hi': '.',
+    'hu': ',',
+    'id': '.',
+    'it': ',',
+    'iu_latn': '.',
+    'iu': '.',
+    'ja': '.',
+    'ko': '.',
+    'nl': ',',
+    'pl': ',',
+    'pt_ao': ',',
+    'pt_br': ',',
+    'pt_ch': ',',
+    'pt_cv': ',',
+    'pt_gq': ',',
+    'pt_gw': ',',
+    'pt_lu': ',',
+    'pt_mo': ',',
+    'pt_mz': ',',
+    'pt_pt': ',',
+    'pt_st': ',',
+    'pt_tl': ',',
+    'pt': ',',
+    'ro': ',',
+    'ru': ',',
+    'sw_traditional': '.',
+    'sw': '.',
+    'tr': ',',
+    'uk': ',',
+    'vi': ',',
+    'yo': '.',
+    'yrl': ',',
+    'zh_cn': '.',
+    'zh_hans': '.',
+    'zh_hant': '.',
+    'zh_hk': '.',
+    'zh_latn': '.',
+    'zh_mo': '.',
+    'zh_sg': '.',
+    'zh_tw': '.',
+    'zh': '.',
+};
+
+if (locale === null) {
+    locale = navigator.languages && navigator.languages.length
+    ? navigator.languages[0]
+    : navigator.language;
+
+    locale = locale.replace('-', '_').toLowerCase();
+    localStorage.setItem('sezimal-calculator-locale', locale);
+};
+
+if (places === null) {
+    places = 3;
+    localStorage.setItem('sezimal-calculator-sezimal-places', 3);
+};
+
+if (base === null) {
+    base = 10;
+    localStorage.setItem('sezimal-calculator-base', 10);
+};
+
+if (sezimal_digits === null) {
+    sezimal_digits = false;
+    localStorage.setItem('sezimal-calculator-sezimal-digits', sezimal_digits);
+};
+
+if (grouping === null) {
+    grouping = 3;
+    localStorage.setItem('sezimal-calculator-grouping', grouping);
+};
+
+if (spellout === null) {
+    spellout = true;
+    localStorage.setItem('sezimal-calculator-spellout', spellout);
+};
+
+if (unit_type === null) {
+    unit_type = 'pad';
+    localStorage.setItem('sezimal-calculator-unit-type', unit_type);
+};
+
+document.getElementById('calculator-sezimal-locale').value = locale;
+document.getElementById('calculator-sezimal-places').value = places;
+document.getElementById('calculator-sezimal-digits').value = sezimal_digits.toString();
+document.getElementById('calculator-sezimal-grouping').value = grouping;
+document.getElementById('calculator-sezimal-spellout').checked = spellout;
+document.getElementById('calculator-sezimal-unit-type').value = unit_type;
+
+function set_locale() {
+    const locale = document.getElementById('calculator-sezimal-locale').value;
+    localStorage.setItem('sezimal-calculator-locale', locale);
+    document.getElementById('button-sezimal-separator').innerHTML = sezimal_separator[locale];
+    document.getElementById('button-decimal-separator').innerHTML = sezimal_separator[locale];
+
+    document.getElementById('label-sezimal-places').innerHTML = 'Sezimal Places';
+    document.getElementById('label-sezimal-digits').innerHTML = 'Digits';
+    document.getElementById('label-sezimal-locale').innerHTML = 'Language and country';
+    document.getElementById('label-settings').innerHTML = 'Settings';
+    document.getElementById('label-sezimal-grouping').innerHTML = 'Grouping';
+    document.getElementById('label-sezimal-spellout').innerHTML = 'Show spell out';
+    document.getElementById('grouping-explanation').innerHTML = 'Each grouping of digits’ option requires it’s own vocabulary, used in the spelling out of numbers:';
+    document.getElementById('group-title-3').innerHTML = '1 123 123';
+    document.getElementById('group-title-4').innerHTML = '1 1234 1234';
+    document.getElementById('groupping-explanation-nif-3').innerHTML = 'nif';
+    document.getElementById('groupping-explanation-nif-4').innerHTML = 'nif';
+    document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
+    document.getElementById('groupping-explanation-arda-4').innerHTML = 'six nif';
+    document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'six arda';
+    document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'unexian';
+    document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nif arda';
+    document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'six unexian';
+    document.getElementById('groupping-explanation-shadara-3').innerHTML = 'shadara';
+    document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nif unexian';
+
+    if (locale.startsWith('bz')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Kazas sezimays';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Díjitus';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Língwa i paiz';
+        document.getElementById('label-settings').innerHTML = 'Konfigurasoyns';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupamentu';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar estensu';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Kada opisawn di agrupamentu di díjitus teyn sew pròpryu vokubularyu, uzadu pra si ler i eskrever us númerus pur estensu:';
+        document.getElementById('groupping-explanation-nif-3').innerHTML = 'nifi';
+        document.getElementById('groupping-explanation-nif-4').innerHTML = 'nifi';
+        document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
+        document.getElementById('groupping-explanation-arda-4').innerHTML = 'sêys nifi';
+        document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'sêys arda';
+        document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'uneksiawn';
+        document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nifi arda';
+        document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'sêys uneksioyns';
+        document.getElementById('groupping-explanation-shadara-3').innerHTML = 'xadara';
+        document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nifi uneksioyns';
+    } else if (locale.startsWith('pt')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Casas sezimais';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Dígitos';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Língua e país';
+        document.getElementById('label-settings').innerHTML = 'Configurações';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupamento';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar extenso';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Cada opção de agrupamento de dígitos tem seu próprio vocabulário, usado para se ler e escrever os números por extenso:';
+        document.getElementById('groupping-explanation-nif-3').innerHTML = 'nife';
+        document.getElementById('groupping-explanation-nif-4').innerHTML = 'nife';
+        document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
+        document.getElementById('groupping-explanation-arda-4').innerHTML = 'seis nife';
+        document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'seis arda';
+        document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'unexião';
+        document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nife arda';
+        document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'seis unexiões';
+        document.getElementById('groupping-explanation-shadara-3').innerHTML = 'xadara';
+        document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nife unexiões';
+    } else if (locale.startsWith('es')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Posiciones sezimales';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Dígitos';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Idioma y pais';
+        document.getElementById('label-settings').innerHTML = 'Ajustes';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupación';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar deletrear';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Cada opción de agrupación de dígitos requiere su propio vocabulario, que se utiliza para deletrear los números:';
+    } else if (locale.startsWith('eo')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Sesumaj lokoj';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Ciferoj';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Lingvo kaj lando';
+        document.getElementById('label-settings').innerHTML = 'Agordoj';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Grupado';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Montru literumado';
+        document.getElementById('grouping-explanation').innerHTML = 'Ĉiu nombro-grupado bezonas siajn specifajn vortojn, uzatajn en la literumado de nombroj:';
+    } else if (locale.startsWith('de')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Nachkommastellen';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Ziffern';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Sprache und Land';
+        document.getElementById('label-settings').innerHTML = 'Einstellungen';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Gruppierung';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Ausgeschriebene Zahlen anzeigen';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Jede Option zur Zifferngruppierung erfordert ein eigenes Vokabular, das zum Ausschreiben von Zahlen verwendet wird:';
+    } else if (locale.startsWith('fr')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Sézimales';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Chiffres';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Langue et pays';
+        document.getElementById('label-settings').innerHTML = 'Paramètres';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Regroupement';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Montrer l’épelage';
+        document.getElementById('group-title-3').innerHTML = '1 123 123';
+        document.getElementById('group-title-4').innerHTML = '1 1234 1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Chaque option de regroupement de chiffres nécessite son propre vocabulaire, utilisé pour épeler les nombres :';
+    } else if (locale.startsWith('it')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Sezimali';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Cifre';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Lingua e paese';
+        document.getElementById('label-settings').innerHTML = 'Impostazioni';
+        document.getElementById('label-sezimal-grouping').innerHTML = 'Raggruppamento';
+        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostra i numeri scritti';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+        document.getElementById('grouping-explanation').innerHTML = 'Ogni opzione di raggruppamento di cifre richiede il suo proprio vocabolario, utilizzato per scrivere i numeri:';
+    } else if (locale.startsWith('el')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Εξαδικά ψηφία';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Ψηφία';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Γλώσσα και χώρα';
+        document.getElementById('label-settings').innerHTML = 'Ρυθμίσεις';
+        document.getElementById('group-title-3').innerHTML = '1.123.123';
+        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
+    } else if (locale.startsWith('ru')) {
+        document.getElementById('label-sezimal-places').innerHTML = 'Шестеричный разряд';
+        document.getElementById('label-sezimal-digits').innerHTML = 'Цифры';
+        document.getElementById('label-sezimal-locale').innerHTML = 'Язык и страна';
+        document.getElementById('label-settings').innerHTML = 'Настройки';
+    } else if (locale.startsWith('ja')) {
+        document.getElementById('label-sezimal-places').innerHTML = '小数点以下の桁数';
+        document.getElementById('label-sezimal-digits').innerHTML = '桁数';
+        document.getElementById('label-sezimal-locale').innerHTML = '言語と国';
+        document.getElementById('label-settings').innerHTML = '設定';
+        document.getElementById('group-title-3').innerHTML = '1,123,123';
+        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
+    } else if (locale.startsWith('ko')) {
+        document.getElementById('label-sezimal-places').innerHTML = '소수점 자리';
+        document.getElementById('label-sezimal-digits').innerHTML = '숫자';
+        document.getElementById('label-sezimal-locale').innerHTML = '언어 및 국가';
+        document.getElementById('label-settings').innerHTML = '설정';
+        document.getElementById('group-title-3').innerHTML = '1,123,123';
+        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
+    } else if (locale.startsWith('zh')) {
+        document.getElementById('group-title-3').innerHTML = '1,123,123';
+        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
+
+        if (locale == 'zh_latn') {
+            document.getElementById('label-sezimal-places').innerHTML = 'Xiǎoshù wèi';
+            document.getElementById('label-sezimal-digits').innerHTML = 'Shùzì';
+            document.getElementById('label-sezimal-locale').innerHTML = 'Yǔyán hé guójiā';
+            document.getElementById('label-settings').innerHTML = 'Shèzhì';
+        } else if (locale == 'zh_tw' || locale == 'zh_hant') {
+            document.getElementById('label-sezimal-places').innerHTML = '小數位';
+            document.getElementById('label-sezimal-digits').innerHTML = '數位';
+            document.getElementById('label-sezimal-locale').innerHTML = '語言和國家';
+            document.getElementById('label-settings').innerHTML = '設定';
+        } else {
+            document.getElementById('label-sezimal-places').innerHTML = '小数位';
+            document.getElementById('label-sezimal-digits').innerHTML = '数字';
+            document.getElementById('label-sezimal-locale').innerHTML = '语言和国家';
+            document.getElementById('label-settings').innerHTML = '设置';
+        };
+    } else if (locale.startsWith('en')) {
+        document.getElementById('group-title-3').innerHTML = '1,123,123';
+        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
+    };
+};
+
+function set_sezimal_places() {
+    localStorage.setItem('sezimal-calculator-sezimal-places', document.getElementById('calculator-sezimal-places').value);
+};
+
+function set_base_ten() {
+    localStorage.setItem('sezimal-calculator-base', 14);
+    change_base();
+};
+
+function set_base_six() {
+    localStorage.setItem('sezimal-calculator-base', 10);
+    change_base();
+};
+
+function set_sezimal_grouping() {
+    const grouping = document.getElementById('calculator-sezimal-grouping').value;
+    localStorage.setItem('sezimal-calculator-grouping', grouping);
+};
+
+function set_sezimal_spellout(e) {
+    localStorage.setItem('sezimal-calculator-spellout', e.checked);
+    document.getElementById('spellout').hidden = !e.checked;
+};
+
+function set_unit_type() {
+    const unit_type = document.getElementById('calculator-sezimal-unit-type').value;
+    localStorage.setItem('sezimal-calculator-unit-type', unit_type);
+
+    document.getElementById('unit-units-explanation').hidden = true;
+    document.getElementById('unit-prefixes-explanation').hidden = true;
+    document.getElementById('units-title').hidden = true;
+
+    document.getElementById('unit-ang-explanation').hidden = true;
+    document.getElementById('unit-ang').hidden = true;
+    document.getElementById('unit-avt-explanation').hidden = true;
+    document.getElementById('unit-avt').hidden = true;
+    document.getElementById('unit-pad-explanation').hidden = true;
+    document.getElementById('unit-pad').hidden = true;
+    document.getElementById('unit-kex-explanation').hidden = true;
+    document.getElementById('unit-kex').hidden = true;
+    document.getElementById('unit-ayt-explanation').hidden = true;
+    document.getElementById('unit-ayt').hidden = true;
+    document.getElementById('unit-drv-explanation').hidden = true;
+    document.getElementById('unit-drv').hidden = true;
+    document.getElementById('unit-gan-explanation').hidden = true;
+    document.getElementById('unit-gan').hidden = true;
+    document.getElementById('unit-veg-explanation').hidden = true;
+    document.getElementById('unit-veg').hidden = true;
+    document.getElementById('unit-tvr-explanation').hidden = true;
+    document.getElementById('unit-tvr').hidden = true;
+    document.getElementById('unit-bar-explanation').hidden = true;
+    document.getElementById('unit-bar').hidden = true;
+    document.getElementById('unit-dab-explanation').hidden = true;
+    document.getElementById('unit-dab').hidden = true;
+    document.getElementById('unit-kry-explanation').hidden = true;
+    document.getElementById('unit-kry').hidden = true;
+    document.getElementById('unit-xat-explanation').hidden = true;
+    document.getElementById('unit-xat').hidden = true;
+    document.getElementById('unit-gtk-explanation').hidden = true;
+    document.getElementById('unit-gtk').hidden = true;
+    document.getElementById('unit-tap-explanation').hidden = true;
+    document.getElementById('unit-tap').hidden = true;
+    document.getElementById('unit-agn-explanation').hidden = true;
+    document.getElementById('unit-agn').hidden = true;
+    document.getElementById('unit-idn-explanation').hidden = true;
+    document.getElementById('unit-idn').hidden = true;
+    document.getElementById('unit-tln-explanation').hidden = true;
+    document.getElementById('unit-tln').hidden = true;
+    document.getElementById('unit-avx-explanation').hidden = true;
+    document.getElementById('unit-avx').hidden = true;
+    document.getElementById('unit-dar-explanation').hidden = true;
+    document.getElementById('unit-dar').hidden = true;
+    document.getElementById('unit-vbv-explanation').hidden = true;
+    document.getElementById('unit-vbv').hidden = true;
+    document.getElementById('unit-ptr-explanation').hidden = true;
+    document.getElementById('unit-ptr').hidden = true;
+    document.getElementById('unit-cln-explanation').hidden = true;
+    document.getElementById('unit-cln').hidden = true;
+    document.getElementById('unit-prk-explanation').hidden = true;
+    document.getElementById('unit-prk').hidden = true;
+    document.getElementById('unit-sam-explanation').hidden = true;
+    document.getElementById('unit-sam').hidden = true;
+    document.getElementById('unit-abv-explanation').hidden = true;
+    document.getElementById('unit-abv').hidden = true;
+    document.getElementById('unit-vtr-explanation').hidden = true;
+    document.getElementById('unit-vtr').hidden = true;
+    document.getElementById('unit-prd-explanation').hidden = true;
+    document.getElementById('unit-prd').hidden = true;
+    document.getElementById('unit-gol-explanation').hidden = true;
+    document.getElementById('unit-gol').hidden = true;
+    document.getElementById('unit-prt-explanation').hidden = true;
+    document.getElementById('unit-prt').hidden = true;
+    document.getElementById('unit-atk-explanation').hidden = true;
+    document.getElementById('unit-atk').hidden = true;
+    document.getElementById('unit-pvn-explanation').hidden = true;
+    document.getElementById('unit-pvn').hidden = true;
+
+    if (unit_type == 'units') {
+        document.getElementById('unit-units-explanation').hidden = false;
+    } else if (unit_type == 'prefixes') {
+        document.getElementById('unit-prefixes-explanation').hidden = false;
+    } else {
+        document.getElementById('units-title').hidden = false;
+    };
+
+    if (unit_type == 'ang') {
+        _set_unit_type_sezimal_decimal(unit_type, 'agm', 's');
+    } else if (unit_type == 'avt') {
+        _set_unit_type_sezimal_decimal(unit_type, 'avt', 'Hz');
+    } else if (unit_type == 'pad') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Dpad', 'm');
+    } else if (unit_type == 'kex') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Dkex', 'm2');
+    } else if (unit_type == 'ayt') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Dayt', 'L');
+    } else if (unit_type == 'veg') {
+        _set_unit_type_sezimal_decimal(unit_type, 'veg', 'km/h');
+    } else if (unit_type == 'tvr') {
+        _set_unit_type_sezimal_decimal(unit_type, 'tvr', 'm/s2');
+    } else if (unit_type == 'drv') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Ddrv', 'kg');
+    } else if (unit_type == 'gan') {
+        _set_unit_type_sezimal_decimal(unit_type, 'gan', 'kg/L');
+    } else if (unit_type == 'bar') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Dbar', 'N');
+    } else if (unit_type == 'dab') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Ddab', 'kPa');
+    } else if (unit_type == 'kry') {
+        _set_unit_type_sezimal_decimal(unit_type, 'DXkry', 'kWh');
+    } else if (unit_type == 'xat') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Dxat', 'W');
+    } else if (unit_type == 'gtk') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Xgtk', 'K');
+    } else if (unit_type == 'tap') {
+        _set_unit_type_sezimal_decimal(unit_type, 'tap', '°C');
+    } else if (unit_type == 'agn') {
+        _set_unit_type_sezimal_decimal(unit_type, 'agn', 'J/K');
+    } else if (unit_type == 'idn') {
+        _set_unit_type_sezimal_decimal(unit_type, 'idn', 'J/K/kg');
+    } else if (unit_type == 'tln') {
+        _set_unit_type_sezimal_decimal(unit_type, 'tln', 'J/K/m3');
+    } else if (unit_type == 'avx') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Xavx', 'mAh');
+    } else if (unit_type == 'dar') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Tdar', 'A');
+    } else if (unit_type == 'vbv') {
+        _set_unit_type_sezimal_decimal(unit_type, 'vbv', 'V');
+    } else if (unit_type == 'ptr') {
+        _set_unit_type_sezimal_decimal(unit_type, 'ptr', 'Ω');
+    } else if (unit_type == 'cln') {
+        _set_unit_type_sezimal_decimal(unit_type, 'cln', 'S');
+    } else if (unit_type == 'prk') {
+        _set_unit_type_sezimal_decimal(unit_type, 'prk', 'H');
+    } else if (unit_type == 'sam') {
+        _set_unit_type_sezimal_decimal(unit_type, 'sam', 'F');
+    } else if (unit_type == 'abv') {
+        _set_unit_type_sezimal_decimal(unit_type, 'abv', 'Wb');
+    } else if (unit_type == 'vtr') {
+        _set_unit_type_sezimal_decimal(unit_type, 'vtr', 'T');
+    } else if (unit_type == 'prd') {
+        _set_unit_type_sezimal_decimal(unit_type, 'dprd', 'rad');
+    } else if (unit_type == 'gol') {
+        _set_unit_type_sezimal_decimal(unit_type, 'gol', 'sr');
+    } else if (unit_type == 'prt') {
+        _set_unit_type_sezimal_decimal(unit_type, 'dprt', '%');
+    } else if (unit_type == 'atk') {
+        _set_unit_type_sezimal_decimal(unit_type, 'DXatk', 'GiB');
+    } else if (unit_type == 'pvn') {
+        _set_unit_type_sezimal_decimal(unit_type, 'Xpvn', 'Mbps');
+    } else {
+        localStorage.setItem('sezimal-calculator-sezimal-unit', '');
+        localStorage.setItem('sezimal-calculator-decimal-unit', '');
+    };
+};
+
+function set_sezimal_unit(select) {
+    localStorage.setItem('sezimal-calculator-sezimal-unit', select.value);
+};
+
+function set_decimal_unit(select) {
+    localStorage.setItem('sezimal-calculator-decimal-unit', select.value);
+};
+
+function _set_unit_type_sezimal_decimal(unit_type, sezimal_unit, decimal_unit) {
+    localStorage.setItem('sezimal-calculator-sezimal-unit', sezimal_unit);
+    localStorage.setItem('sezimal-calculator-decimal-unit', decimal_unit);
+
+    document.getElementById(`unit-${unit_type}-explanation`).hidden = false;
+    document.getElementById(`unit-${unit_type}`).hidden = false;
+    document.getElementById(`calculator-sezimal-unit-${unit_type}`).value = sezimal_unit;
+    document.getElementById(`calculator-decimal-unit-${unit_type}`).value = decimal_unit;
+};
+
+function change_base() {
+    if (localStorage.getItem('sezimal-calculator-base') == 14) {
+        document.getElementById('sezimal-buttons-table').hidden = true;
+        document.getElementById('decimal-buttons-table').hidden = false;
+        document.getElementById('display').classList.add('decimal_display');
+        document.getElementById('display').classList.remove('display');
+        document.getElementById('decimal_display').classList.add('display');
+        document.getElementById('decimal_display').classList.remove('decimal_display');
+    } else {
+        document.getElementById('sezimal-buttons-table').hidden = false;
+        document.getElementById('decimal-buttons-table').hidden = true;
+        document.getElementById('display').classList.add('display');
+        document.getElementById('display').classList.remove('decimal_display');
+        document.getElementById('decimal_display').classList.add('decimal_display');
+        document.getElementById('decimal_display').classList.remove('display');
+    };
+};
+
+function change_digits() {
+    const sezimal_digits = document.getElementById('calculator-sezimal-digits').value === 'true';
+    localStorage.setItem('sezimal-calculator-sezimal-digits', sezimal_digits);
+
+    if (sezimal_digits) {
+        document.getElementById('button-sezimal-number-0').innerHTML = '󱸀';
+        document.getElementById('button-sezimal-number-1').innerHTML = '󱸁';
+        document.getElementById('button-sezimal-number-2').innerHTML = '󱸂';
+        document.getElementById('button-sezimal-number-3').innerHTML = '󱸃';
+        document.getElementById('button-sezimal-number-4').innerHTML = '󱸄';
+        document.getElementById('button-sezimal-number-5').innerHTML = '󱸅';
+        document.getElementById('button-sezimal-number-00').innerHTML = '󱸀󱸀';
+        document.getElementById('button-base-ten').innerHTML = '󱸁󱸄';
+        document.getElementById('button-pernif').innerHTML = '󱹹';
+        document.getElementById('button-perarda').innerHTML = '󱹺';
+        document.getElementById('button-persixarda').innerHTML = '󱹻';
+    } else {
+        document.getElementById('button-sezimal-number-0').innerHTML = '0';
+        document.getElementById('button-sezimal-number-1').innerHTML = '1';
+        document.getElementById('button-sezimal-number-2').innerHTML = '2';
+        document.getElementById('button-sezimal-number-3').innerHTML = '3';
+        document.getElementById('button-sezimal-number-4').innerHTML = '4';
+        document.getElementById('button-sezimal-number-5').innerHTML = '5';
+        document.getElementById('button-sezimal-number-00').innerHTML = '00';
+        document.getElementById('button-base-ten').innerHTML = '14';
+        document.getElementById('button-pernif').innerHTML = '%';
+        document.getElementById('button-perarda').innerHTML = '‰';
+        document.getElementById('button-persixarda').innerHTML = '‱';
+    };
+};
+
+set_locale();
+change_digits();
+change_base();
+set_sezimal_grouping();
+set_unit_type();
+
+function button_click(button) {
+    update_calculation(button.value);
+}
+
+function update_calculation(value = '') {
+    let dados = {};
+
+    if (localStorage.getItem('sezimal-calculator-base') == 14) {
+        dados = JSON.stringify({
+            locale: localStorage.getItem('sezimal-calculator-locale'),
+            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
+            base: localStorage.getItem('sezimal-calculator-base'),
+            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
+            grouping: localStorage.getItem('sezimal-calculator-grouping'),
+            spellout: localStorage.getItem('sezimal-calculator-spellout'),
+            sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
+            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            expression: document.getElementById('decimal_expression').innerHTML,
+            value: value,
+        });
+    } else {
+        dados = JSON.stringify({
+            locale: localStorage.getItem('sezimal-calculator-locale'),
+            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
+            base: localStorage.getItem('sezimal-calculator-base'),
+            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
+            grouping: localStorage.getItem('sezimal-calculator-grouping'),
+            spellout: localStorage.getItem('sezimal-calculator-spellout'),
+            sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
+            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            expression: document.getElementById('expression').innerHTML,
+            value: value,
+        });
+    }
+
+    console.log(dados);
+
+    fetch('/calculator/process', {
+        method: 'post',
+        body: dados,
+        headers: {
+            'Accept': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json; charset=UTF-8'
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((dados) => {
+        console.log('dados', dados);
+        document.getElementById('expression').innerHTML = dados.expression;
+        document.getElementById('display').innerHTML = dados.display.replace(',,', '„').replace('..', '‥');
+        document.getElementById('decimal_expression').innerHTML = dados.decimal_expression;
+        document.getElementById('decimal_display').innerHTML = dados.decimal_display.replace(',,', '„').replace('..', '‥');
+
+        if (dados.show_spellout) {
+            document.getElementById('spellout').hidden = false;
+            document.getElementById('spellout').innerHTML = dados.spellout;
+        } else {
+            document.getElementById('spellout').hidden = true;
+        };
+
+        if (localStorage.getItem('sezimal-calculator-base') == 14) {
+            if (dados.decimal_display.length <= 10) {
+                document.getElementById('decimal_display').style = 'font-size: 42pt;';
+            } else if (dados.decimal_display.length <= 12) {
+                document.getElementById('decimal_display').style = 'font-size: 36pt;';
+            } else if (dados.decimal_display.length <= 15) {
+                document.getElementById('decimal_display').style = 'font-size: 30pt;';
+            } else if (dados.decimal_display.length <= 23) {
+                document.getElementById('decimal_display').style = 'font-size: 20pt;';
+            } else if (dados.decimal_display.length <= 44) {
+                document.getElementById('decimal_display').style = 'font-size: 12pt;';
+            } else {
+                document.getElementById('decimal_display').style = 'font-size: 10pt;';
+            };
+
+            if (dados.display.length <= 18) {
+                document.getElementById('display').style = 'font-size: 24pt;';
+            } else {
+                document.getElementById('display').style = 'font-size: 12pt;';
+            };
+        } else {
+            if (dados.display.length <= 10) {
+                document.getElementById('display').style = 'font-size: 42pt;';
+            } else if (dados.display.length <= 12) {
+                document.getElementById('display').style = 'font-size: 36pt;';
+            } else if (dados.display.length <= 15) {
+                document.getElementById('display').style = 'font-size: 30pt;';
+            } else if (dados.display.length <= 23) {
+                document.getElementById('display').style = 'font-size: 20pt;';
+            } else if (dados.display.length <= 44) {
+                document.getElementById('display').style = 'font-size: 12pt;';
+            } else {
+                document.getElementById('display').style = 'font-size: 10pt;';
+            };
+
+            if (dados.decimal_display.length <= 18) {
+                document.getElementById('decimal_display').style = 'font-size: 24pt;';
+            } else {
+                document.getElementById('decimal_display').style = 'font-size: 12pt;';
+            };
+        }
+    });
+};
+
+if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {
+    document.querySelector("body").requestFullscreen();
+};
+
+function toggle_settings(show) {
+    if (show) {
+        document.getElementById('settings').hidden = false;
+        document.getElementById('units').hidden = true;
+        document.getElementById('displays').hidden = true;
+        // document.getElementById('buttons').hidden = true;
+        document.getElementById('buttons').style = 'visibility: hidden;';
+    } else {
+        document.getElementById('settings').hidden = true;
+        document.getElementById('units').hidden = true;
+        document.getElementById('displays').hidden = false;
+        // document.getElementById('buttons').hidden = false;
+        document.getElementById('buttons').style = 'visibility: visible;';
+        update_calculation();
+    };
+}
+
+function toggle_units(show) {
+    if (show) {
+        document.getElementById('settings').hidden = true;
+        document.getElementById('units').hidden = false;
+        document.getElementById('displays').hidden = true;
+        // document.getElementById('buttons').hidden = true;
+        document.getElementById('buttons').style = 'visibility: hidden;';
+    } else {
+        document.getElementById('settings').hidden = true;
+        document.getElementById('units').hidden = true;
+        document.getElementById('displays').hidden = false;
+        // document.getElementById('buttons').hidden = false;
+        document.getElementById('buttons').style = 'visibility: visible;';
+        update_calculation();
+    };
+}
+
+    </script>
+</html>
