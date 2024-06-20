@@ -5,8 +5,7 @@ from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
 from decimal import Decimal
 from swixknife import Sezimal, SezimalRange, SezimalInteger
-from swixknife.units.time import UTA_TO_HOUR
-from swixknife.units.temperature import TAPA_TO_CELSIUS
+from swixknife.units import sezimal_to_decimal_unit
 from swixknife.weather.weather import SezimalWeather
 
 
@@ -20,7 +19,7 @@ def api_long_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
 
     text = open('template/long-now.html').read()
 
@@ -79,7 +78,7 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
 
     text = open('template/now.html').read()
 
@@ -137,7 +136,7 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 's')
 
     text = open('template/agòra.html').read()
 
@@ -185,7 +184,7 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
     sw = SezimalWeather(locale, time_zone)
     sw.get_openweathermap_conditions()
     sezimal_temperature = locale.format_number(sw.temperature_sensation, 0) + ' °S'
-    decimal_temperature = locale.format_decimal_number((sw.temperature_sensation * TAPA_TO_CELSIUS).decimal, 1) + ' °C'
+    decimal_temperature = locale.format_decimal_number(sezimal_to_decimal_unit(sw.temperature_sensation, 'tap', '°C'), 1) + ' °C'
 
     return eval(f'f"""{text}"""')
 
@@ -200,7 +199,7 @@ def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
 
     text = open('template/decimal-now.html').read()
 
@@ -231,7 +230,7 @@ def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = (date_time.time._time_zone_offset / 10_000) * UTA_TO_HOUR
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
 
     text = open('template/dozenal-now.html').read()
 
