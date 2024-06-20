@@ -112,10 +112,11 @@ class SezimalDirectoryList:
             if self.permissions_simplified:
                 info['permission'] = file_info.permission_simplified
 
-            if time_zone:
-                info['date_time'] = file_info.date_time.at_time_zone(time_zone).format(self.date_time_format, locale=self.locale)
-            else:
-                info['date_time'] = file_info.date_time.format(self.date_time_format, locale=self.locale)
+            if file_info.date_time:
+                if time_zone:
+                    info['date_time'] = file_info.date_time.at_time_zone(time_zone).format(self.date_time_format, locale=self.locale)
+                else:
+                    info['date_time'] = file_info.date_time.format(self.date_time_format, locale=self.locale)
 
             if self.is_decimal:
                 if file_info.is_directory:
