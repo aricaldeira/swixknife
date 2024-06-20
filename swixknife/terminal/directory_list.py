@@ -121,19 +121,19 @@ class SezimalDirectoryList:
                 if file_info.is_directory:
                     info['size'] = decimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
                 else:
-                    info['size'] = decimal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, decimal_places=1)
+                    info['size'] = decimal_format(file_info.file_size, unit='atk', locale=self.locale, use_prefixes=self.use_prefixes, decimal_places=1)
 
             elif self.is_dozenal:
                 if file_info.is_directory:
                     info['size'] = dozenal_format(file_info.itens_in_directory, unit='it.', locale=self.locale)
                 else:
-                    info['size'] = dozenal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, dozenal_places=1)
+                    info['size'] = dozenal_format(file_info.file_size, unit='atk', locale=self.locale, use_prefixes=self.use_prefixes, dozenal_places=1)
 
             else:
                 if file_info.is_directory:
                     info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, sezimal_digits=self.use_sezimal_digits)
                 else:
-                    info['size'] = sezimal_format(file_info.file_size, unit='byt', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits)
+                    info['size'] = sezimal_format(file_info.file_size, unit='atk', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits)
 
             lines.append(info)
 
