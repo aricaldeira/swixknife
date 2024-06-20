@@ -15,7 +15,8 @@ from ..base import sezimal_context
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..exponents import sezimal_symbol_to_exponent, sezimal_exponent_to_symbol, \
     sezimal_exponent_to_factor, decimal_symbol_to_exponent, \
-    decimal_exponent_to_factor
+    decimal_exponent_to_factor, binary_symbol_to_exponent, \
+    binary_exponent_to_factor
 from decimal import Decimal
 
 
@@ -87,9 +88,16 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
 
     if not sezimal_unit:
         for su in UNIT_CONVERSION:
-            if decimal_unit[1:] in UNIT_CONVERSION[su]:
+            if len(decimal_unit) >= 2 and decimal_unit[1:] in UNIT_CONVERSION[su]:
                 sezimal_unit = su
                 break
+            #
+            # Binary prefixes and “da”
+            #
+            elif len(decimal_unit) >= 3 and decimal_unit[2:] in UNIT_CONVERSION[su]:
+                sezimal_unit = su
+                break
+
 
     if not sezimal_unit:
         raise ValueError(f'Invalid decimal unit [{decimal_unit}]')
@@ -98,8 +106,19 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
         #
         # Maybe there’s a prefix, let’s remove it
         #
-        if decimal_unit[1:] not in UNIT_CONVERSION[sezimal_unit]:
+        if len(decimal_unit) >= 2 and decimal_unit[1:] in UNIT_CONVERSION[sezimal_unit]:
+            pass
+
+        #
+        # Binary prefixes and “da”
+        #
+        elif len(decimal_unit) >= 3 and decimal_unit[2:] in UNIT_CONVERSION[sezimal_unit]:
+            pass
+
+        else:
             raise ValueError(f'Invalid decimal unit [{decimal_unit}] paired with Shastadari unit [{sezimal_unit}]')
+
+    binary_prefix = False
 
     #
     # Let’s see if the decimal unit uses SI prefixes
@@ -111,23 +130,48 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
         du = decimal_unit
         dp = ''
     #
-    # The unit is prefixed
+    # The unit is prefixed, and the prefix is a binary prefix
+    # Binary prefixes too the form [KMGTPEZYRQ]i
+    #
+    elif len(decimal_unit) >= 3 \
+        and decimal_unit[0] in 'KMGTPEZYRQ' \
+        and decimal_unit[1] == 'i':
+        dp = decimal_unit[0:2]
+        du = decimal_unit[2:]
+        binary_prefix = True
+    #
+    # The unit is prefixed, and the prefix is da
+    #
+    elif len(decimal_unit) >= 3 and decimal_unit[0:2] == 'da':
+        dp = decimal_unit[0:2]
+        du = decimal_unit[2:]
+    #
+    # The unit is prefixed, and the prefix is a single letter
     #
     else:
         dp = decimal_unit[0]
         du = decimal_unit[1:]
 
     try:
-        de = decimal_symbol_to_exponent(dp)
+        if binary_prefix:
+            de = binary_symbol_to_exponent(dp)
+        else:
+            de = decimal_symbol_to_exponent(dp)
     except:
-        raise ValueError(f'Invalid S.I. prefix [{dp}]')
+        if binary_prefix:
+            raise ValueError(f'Invalid binary prefix [{dp}]')
+        else:
+            raise ValueError(f'Invalid S.I. prefix [{dp}]')
 
     if du[-1] == '2':
         de *= 2
     elif du[-1] == '3':
         de *= 3
 
-    dpf = decimal_exponent_to_factor(de, True)
+    if binary_prefix:
+        dpf = binary_exponent_to_factor(de, True)
+    else:
+        dpf = decimal_exponent_to_factor(de, True)
 
     if 'adjust' in UNIT_CONVERSION[sezimal_unit] \
         and du in UNIT_CONVERSION[sezimal_unit]['adjust']:
