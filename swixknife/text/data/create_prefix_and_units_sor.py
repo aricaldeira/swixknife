@@ -55,6 +55,7 @@ UNIT-prd parídi
 UNIT-gol gola
 UNIT-pkx pracaxa
 UNIT-dpk dípaca
+UNIT-prt práti
 UNIT-p/s por seis
 UNIT-p/n por nife
 UNIT-p/a por arda
@@ -124,6 +125,7 @@ UNIT-prd paridi
 UNIT-gol gola
 UNIT-pkx prakaxa
 UNIT-dpk dípaka
+UNIT-prt prati
 UNIT-p/s pur sêys
 UNIT-p/n pur nifi
 UNIT-p/a pur arda
@@ -192,6 +194,7 @@ UNIT-prd paridi
 UNIT-gol gola
 UNIT-pkx prakasha
 UNIT-dpk dipaka
+UNIT-prt prati
 UNIT-p/s per six
 UNIT-p/n per nif
 UNIT-p/a per arda
