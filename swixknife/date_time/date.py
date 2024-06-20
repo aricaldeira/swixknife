@@ -31,7 +31,7 @@ from ..base import decimal_format, sezimal_format, \
     default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_niftimal_digits
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
-from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA
+from ..units import sezimal_to_decimal_unit
 from .date_time_delta import SezimalDateTimeDelta
 from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
@@ -766,7 +766,7 @@ class SezimalDate:
 
     @property
     def as_seconds(self) -> Decimal:
-        seconds = self.as_agrimas * AGRIMA_TO_SECOND
+        seconds = sezimal_to_decimal_unit(self.as_agrimas, 'agm', 's')
         return seconds.decimal
 
     @property

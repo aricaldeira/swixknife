@@ -26,8 +26,7 @@ from swixknife.weather.weather import SezimalWeather
 from swixknife.localization import sezimal_locale
 from zoneinfo import ZoneInfo
 
-from swixknife.units.temperature import TAPA_TO_CELSIUS, \
-    tapa_to_gatika, GATIKA_TO_KELVIN, tapa_to_fahrenheit
+from swixknife.units import sezimal_to_decimal_unit, sezimal_to_sezimal_unit
 
 
 if __name__ == '__main__':
@@ -70,23 +69,21 @@ if __name__ == '__main__':
     )
 
     temperature = sw.temperature_sensation
-    celsius = locale.format_decimal_number(temperature * TAPA_TO_CELSIUS, 1)
+    celsius = locale.format_decimal_number(sezimal_to_decimal_unit(temperature, 'tap', '°C'), 1)
 
     if arguments.unit_celsius:
-        temperature *= TAPA_TO_CELSIUS
+        temperature = sezimal_to_decimal_unit(temperature, 'tap', '°C')
         unit = '°C'
     elif arguments.unit_fahrenheit:
-        temperature = tapa_to_fahrenheit(temperature)
+        temperature = sezimal_to_decimal_unit(temperature, 'tap', '°F')
         unit = '°F'
     elif arguments.unit_gatika or arguments.unit_kelvin:
-        temperature = tapa_to_gatika(temperature)
-
         if arguments.unit_kelvin:
-            temperature *= GATIKA_TO_KELVIN
+            temperature = sezimal_to_decimal_unit(temperature, 'tap', 'K')
             unit = 'K'
         else:
-            temperature /= 100_000_000
-            unit = 'XDgat'
+            temperature = sezimal_to_sezimal_unit(temperature, 'tap', 'XDgtk')
+            unit = 'XDgtk'
 
     else:
         unit = '°S'

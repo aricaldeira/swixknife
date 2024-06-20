@@ -5,13 +5,13 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal
 from ..base import sezimal_format
-from ..units.time import SECOND_TO_AGRIMA
+from ..units import decimal_to_sezimal_unit
 
 
 def agrimas_since_midnight() -> Sezimal:
     today = datetime.date.today()
     seconds_since_midnight = time.time() - time.mktime(today.timetuple())
-    agrimas_since_midnight = Decimal(str(seconds_since_midnight)) * SECOND_TO_AGRIMA
+    agrimas_since_midnight = decimal_to_sezimal_unit(Decimal(str(seconds_since_midnight)), 's', 'agm')
     return agrimas_since_midnight
 
 

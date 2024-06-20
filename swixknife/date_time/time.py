@@ -23,7 +23,7 @@ from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
 from ..dozenal import Dozenal, DozenalInteger
-from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units import sezimal_to_decimal_unit
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_sezimal_digits, \
     default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_niftimal_digits, \
@@ -126,7 +126,7 @@ class SezimalTime:
 
         total_seconds = self._total_agrimas
         total_seconds -= self._day * 1_000_000
-        total_seconds = total_seconds.decimal * AGRIMA_TO_SECOND.decimal
+        total_seconds = total_seconds.decimal * sezimal_to_decimal_unit(1, 'agm', 's').decimal
 
         hour = int(total_seconds // 60 // 60)
         total_seconds -= hour * 60 * 60
@@ -207,7 +207,7 @@ class SezimalTime:
 
     @property
     def as_seconds(self) -> Decimal:
-        seconds = self.as_agrimas * AGRIMA_TO_SECOND
+        seconds = sezimal_to_decimal_unit(self.as_agrimas, 'agm', 's')
         return seconds.decimal
 
     def __repr__(self) -> str:
@@ -495,7 +495,7 @@ class SezimalTime:
 
                     tzo = SezimalInteger(abs(self._time_zone_offset / 100))
                     tzo /= 100
-                    tzo *= UTA_TO_HOUR
+                    tzo = sezimal_to_decimal_unit(tzo, 'uta', 'h')
                     tzo_hour = int(tzo.decimal)
                     tzo_minute = int((tzo.decimal - tzo_hour) * 60)
 
@@ -518,7 +518,7 @@ class SezimalTime:
 
                     tzo = SezimalInteger(abs(self._time_zone_offset / 100))
                     tzo /= 100
-                    tzo *= UTA_TO_HOUR
+                    tzo = sezimal_to_decimal_unit(tzo, 'uta', 'h')
                     tzo_hour = int(tzo.decimal)
                     tzo_minute = int((tzo.decimal - tzo_hour) * 60)
 

@@ -14,7 +14,7 @@ except:
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..units.time import AGRIMA_TO_SECOND, SECOND_TO_AGRIMA, UTA_TO_HOUR
+from ..units import decimal_to_sezimal_unit
 from ..functions import floor, ceil
 from .gregorian_functions import gregorian_year_month_day_to_ordinal_date
 
@@ -330,7 +330,7 @@ def date_time_to_agrima(date_time: _datetime.datetime | _datetime.time):
     total_seconds += Decimal(str(date_time.minute * 60))
     total_seconds += Decimal(str(date_time.second))
     total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
-    total_agrimas = total_seconds * SECOND_TO_AGRIMA
+    total_agrimas = decimal_to_sezimal_unit(total_seconds, 's', 'agm')
     return total_agrimas
 
 
@@ -374,13 +374,13 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
     total_seconds = Decimal(str(td.days * 86_400))
     total_seconds += Decimal(str(td.seconds))
 
-    total_agrimas = total_seconds * SECOND_TO_AGRIMA
+    total_agrimas = decimal_to_sezimal_unit(total_seconds, 's', 'agm')
 
     td_dst = dt_tz.dst()
     total_seconds_dst = Decimal(str(td_dst.days * 86_400))
     total_seconds_dst += Decimal(str(td_dst.seconds))
 
-    total_agrimas_dst = total_seconds_dst * SECOND_TO_AGRIMA
+    total_agrimas_dst = decimal_to_sezimal_unit(total_seconds_dst, 's', 'agm')
 
     return total_agrimas, total_agrimas_dst
 

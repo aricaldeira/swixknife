@@ -179,8 +179,10 @@ def _calc_paper_size_series(initial_height, series_name):
 if __name__ == '__main__':
     from swixknife import SezimalInteger as SI
     from swixknife import SezimalRange
-    from swixknife.units import PADA_TO_METER
+    from swixknife.units import sezimal_to_decimal_unit
     from swixknife.constants import SQRT_2
+
+    PADA_TO_METER = sezimal_to_decimal_unit(1, 'pad', 'm')
 
     _calc_paper_size_series(Sezimal('1.1045'), 'A')
     _calc_paper_size_series(Sezimal('1.2253'), 'B')
