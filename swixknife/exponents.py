@@ -1,11 +1,18 @@
 
 __all__ = (
-    'sezimal_exponent_to_decimal_exponent', 'decimal_exponent_to_sezimal_exponent',
-    'sezimal_exponent_to_factor', 'decimal_exponent_to_factor',
-    'sezimal_exponent_to_decimal_exponent_factor', 'decimal_exponent_to_sezimal_exponent_factor',
-    'sezimal_exponent_to_prefix', 'sezimal_exponent_to_symbol',
+    'sezimal_exponent_to_decimal_exponent',
+    'decimal_exponent_to_sezimal_exponent',
+    'sezimal_exponent_to_factor',
+    'decimal_exponent_to_factor',
+    'sezimal_exponent_to_decimal_exponent_factor',
+    'decimal_exponent_to_sezimal_exponent_factor',
+    'sezimal_exponent_to_prefix',
+    'sezimal_exponent_to_symbol',
     'sezimal_symbol_to_exponent',
-    'decimal_exponent_to_symbol', 'decimal_symbol_to_exponent',
+    'decimal_exponent_to_symbol',
+    'decimal_symbol_to_exponent',
+    'binary_symbol_to_exponent',
+    'binary_exponent_to_factor',
 )
 
 from decimal import Decimal
@@ -442,6 +449,41 @@ def decimal_symbol_to_exponent(symbol: str) -> SezimalInteger:
         raise ValueError(f'Symbol {symbol} invalid')
 
     return _DECIMAL_SYMBOL_EXPONENT[symbol]
+
+
+def binary_symbol_to_exponent(symbol: str) -> SezimalInteger:
+    if not symbol:
+        return SezimalInteger(0)
+
+    if symbol not in _BINARY_SYMBOL_EXPONENT:
+        raise ValueError(f'Symbol {symbol} invalid')
+
+    return _BINARY_SYMBOL_EXPONENT[symbol]
+
+
+def binary_exponent_to_factor(binary_exponent: str | int | SezimalInteger, return_fraction: bool = False) -> Sezimal | SezimalFraction:
+    if type(binary_exponent) != SezimalInteger:
+        binary_exponent = SezimalInteger(binary_exponent)
+
+    if binary_exponent <= 0:
+        raise ValueError(f'Invalid binary exponent {binary_exponent}')
+
+    _precision = sezimal_context.precision
+
+    if _precision < 120:
+        sezimal_context.precision = 120
+
+    if binary_exponent in _BINARY_EXPONENT_FACTOR:
+        binary_factor = _BINARY_EXPONENT_FACTOR[binary_exponent]
+    else:
+        binary_factor = SezimalFraction(SezimalInteger(4_424) ** binary_exponent, 1)
+
+    if not return_fraction:
+        binary_factor = binary_factor.sezimal
+
+    sezimal_context.precision = _precision
+
+    return binary_factor
 
 
 #
@@ -1882,3 +1924,70 @@ _DECIMAL_EXPONENT_PREFIX = {
     SezimalInteger('102'): 'quetta',
 }
 _DECIMAL_PREFIX_EXPONENT = {prefix: exponent for exponent, prefix in _DECIMAL_EXPONENT_PREFIX.items()}
+
+
+_BINARY_SYMBOL_EXPONENT = {
+    'Ki': SezimalInteger('1'),
+    'Mi': SezimalInteger('2'),
+    'Gi': SezimalInteger('3'),
+    'Ti': SezimalInteger('4'),
+    'Pi': SezimalInteger('5'),
+    'Ei': SezimalInteger('10'),
+    'Zi': SezimalInteger('11'),
+    'Yi': SezimalInteger('12'),
+    'Ri': SezimalInteger('13'),
+    'Qi': SezimalInteger('14'),
+}
+
+_BINARY_EXPONENT_FACTOR = {
+    SezimalInteger('1'): SezimalFraction(
+            '4_424 / 1',
+            _precalculated_value='4_424',
+            _precalculated_reciprocal='0.000_113_321_3',
+        ),
+    SezimalInteger('2'): SezimalFraction(
+            '34_250_304 / 1',
+            _precalculated_value='34_250_304',
+            _precalculated_reciprocal='0.000_000_013_335_535_202_13',
+        ),
+    SezimalInteger('3'): SezimalFraction(
+            '254_314_002_544 / 1',
+            _precalculated_value='254_314_002_544',
+            _precalculated_reciprocal='0.000_000_000_002_005_521_025',
+        ),
+    SezimalInteger('4'): SezimalFraction(
+            '2_201_035_250_014_024 / 1',
+            _precalculated_value='2_201_035_250_014_024',
+            _precalculated_reciprocal='0.000_000_000_000_000_232_212',
+        ),
+    SezimalInteger('5'): SezimalFraction(
+            '15_030_331_135_435_431_504 / 1',
+            _precalculated_value='15_030_331_135_435_431_504',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_031',
+        ),
+    SezimalInteger('10'): SezimalFraction(
+            '124_320_043_215_215_144_440_144 / 1',
+            _precalculated_value='124_320_043_215_215_144_440_144',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_000',
+        ),
+    SezimalInteger('11'): SezimalFraction(
+            '1_053_053_253_455_150_523_033_503_224 / 1',
+            _precalculated_value='1_053_053_253_455_150_523_033_503_224',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_000',
+        ),
+    SezimalInteger('12'): SezimalFraction(
+            '5_245_102_433_414_021_100_531_325_253_104 / 1',
+            _precalculated_value='5_245_102_433_414_021_100_531_325_253_104',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_000',
+        ),
+    SezimalInteger('13'): SezimalFraction(
+            '41_531_355_441_334_210_235_014_054_522_353_344 / 1',
+            _precalculated_value='41_531_355_441_334_210_235_014_054_522_353_344',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_000',
+        ),
+    SezimalInteger('14'): SezimalFraction(
+            '322_522_321_352_014_003_510_332_101_242_451_232_424 / 1',
+            _precalculated_value='322_522_321_352_014_003_510_332_101_242_451_232_424',
+            _precalculated_reciprocal='0.000_000_000_000_000_000_000',
+        ),
+}
