@@ -1,3 +1,9 @@
+#
+# This file is intended to be run from the terminal;
+# it creates/overwrite the conversion_factor.py file,
+# containing the dictionaries with the conversion factors
+# between all related units
+#
 
 from swixknife import sezimal_context
 from swixknife import Sezimal, SezimalInteger, SezimalFraction
@@ -561,45 +567,13 @@ def calculate_conversions():
     unit_conversion['prd'] = {
         'rad': TAU,
         'prefixed': ('rad', 'turn', 'gon', 'arcmin', 'arcsec'),
-        'deg': SezimalInteger('1400'),
-        'turn': SezimalInteger('1'),
-        'gon': SezimalInteger('1504'),
-        'arcmin': SezimalInteger('244_000'),
-        'arcsec': SezimalInteger('43_440_000'),
+        'deg': SezimalFraction('1400 / 1'),
+        'turn': SezimalFraction('1 / 1'),
+        'gon': SezimalFraction('1504 / 1'),
+        'arcmin': SezimalFraction('244_000 / 1'),
+        'arcsec': SezimalFraction('43_440_000 / 1'),
     }
     unit_conversion['prd'] = _set_non_prefixed_units(unit_conversion['prd'])
-
-    #
-    # Proportions
-    #
-    # for unit, factor in (
-    #     ('p/n', 2), ('p/a', 3), ('p/sa', 4), ('p/na', 5), ('p/x', 10),
-    #     ('p/sx', 11), ('p/nx', 12), ('p/ax', 13), ('p/sax', 14), ('p/nax', 15),
-    #     ('p/Dx', 20), ('p/Tx', 30), ('p/Cx', 40), ('p/Tx', 50), ('p/Xx', 100),
-    # ):
-    #     unit_conversion[unit] = {
-    #         '%': SezimalFraction(244, SezimalInteger(10) ** factor),
-    #         '‰': SezimalFraction(4344, SezimalInteger(10) ** factor),
-    #         '‱': SezimalFraction(114_144, SezimalInteger(10) ** factor),
-    #         'pcm': SezimalFraction(2_050_544, SezimalInteger(10) ** factor),
-    #         'ppm': SezimalFraction(33_233_344, SezimalInteger(10) ** factor),
-    #         'ppb': SezimalFraction(243_121_245_344, SezimalInteger(10) ** factor),
-    #         'prefixed': (),
-    #     }
-    #     unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
-
-    unit_conversion['prt'] = {
-        'prefixed': (),
-        '%': SezimalInteger(244),
-        '‰': SezimalInteger(4344),
-        '‱': SezimalInteger(114_144),
-        'pcm': SezimalInteger(2_050_544),
-        'ppm': SezimalInteger(33_233_344),
-        'ppb': SezimalInteger(243_121_245_344),
-        'ppt': SezimalInteger(2_043_221_010_301_344),
-        'ppq': SezimalInteger(13_502_453_354_043_313_344),
-    }
-    unit_conversion['prt'] = _set_non_prefixed_units(unit_conversion['prt'])
 
     # #
     # # Angular velocity
@@ -631,11 +605,90 @@ def calculate_conversions():
     unit_conversion['gol'] = {
         'sr': GOLA,
         'prefixed': ('sr', 'spat'),
-        'spat': SezimalInteger('1'),
+        'spat': SezimalFraction('1 / 1'),
         'deg2': SezimalFraction('2_440_000 / 1') / PI,
     }
     unit_conversion['gol'] = _set_non_prefixed_units(unit_conversion['gol'])
 
+    #
+    # Proportions
+    #
+    # for unit, factor in (
+    #     ('p/n', 2), ('p/a', 3), ('p/sa', 4), ('p/na', 5), ('p/x', 10),
+    #     ('p/sx', 11), ('p/nx', 12), ('p/ax', 13), ('p/sax', 14), ('p/nax', 15),
+    #     ('p/Dx', 20), ('p/Tx', 30), ('p/Cx', 40), ('p/Tx', 50), ('p/Xx', 100),
+    # ):
+    #     unit_conversion[unit] = {
+    #         '%': SezimalFraction(244, SezimalInteger(10) ** factor),
+    #         '‰': SezimalFraction(4344, SezimalInteger(10) ** factor),
+    #         '‱': SezimalFraction(114_144, SezimalInteger(10) ** factor),
+    #         'pcm': SezimalFraction(2_050_544, SezimalInteger(10) ** factor),
+    #         'ppm': SezimalFraction(33_233_344, SezimalInteger(10) ** factor),
+    #         'ppb': SezimalFraction(243_121_245_344, SezimalInteger(10) ** factor),
+    #         'prefixed': (),
+    #     }
+    #     unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    unit_conversion['prt'] = {
+        'prefixed': (),
+        '%': SezimalFraction('244 / 1'),
+        '‰': SezimalFraction('4344 / 1'),
+        '‱': SezimalFraction('114_144 / 1'),
+        'pcm': SezimalFraction('2_050_544 / 1'),
+        'ppm': SezimalFraction('33_233_344 / 1'),
+        'ppb': SezimalFraction('243_121_245_344 / 1'),
+        'ppt': SezimalFraction('2_043_221_010_301_344 / 1'),
+        'ppq': SezimalFraction('13_502_453_354_043_313_344 / 1'),
+    }
+    unit_conversion['prt'] = _set_non_prefixed_units(unit_conversion['prt'])
+
+    #
+    # Information store
+    #
+    # atk ashtaka = octet = byte = 12 bits
+    # xtk shataka = sextet = 10 bits
+    #
+    unit_conversion['atk'] = {
+        'prefixed': ('bit', 'b', 'B'),
+        'bit': SezimalFraction('12 / 1'),
+        'b': SezimalFraction('12 / 1'),
+        'byte':  SezimalFraction('1 / 1'),
+        'B': SezimalFraction('1 / 1'),
+    }
+    unit_conversion['atk'] = _set_non_prefixed_units(unit_conversion['atk'])
+
+    unit_conversion['xtk'] = {
+        'prefixed': ('bit', 'b', 'B'),
+        'bit': SezimalFraction('10 / 1'),
+        'b': SezimalFraction('10 / 1'),
+        'byte':  SezimalFraction('3 / 4'),
+        'B': SezimalFraction('3 / 4'),
+    }
+    unit_conversion['xtk'] = _set_non_prefixed_units(unit_conversion['xtk'])
+
+    #
+    # Information speed/rate
+    #
+    # pvn pavana = atk/ang
+    # tvt tevashta = xtk/ang
+    #
+    unit_conversion['pvn'] = {
+        'prefixed': ('bit/s', 'bps', 'B/s', 'Bps'),
+        'bit/s': unit_conversion['atk']['bit'] / unit_conversion['ang']['s'],
+        'bps': unit_conversion['atk']['bit'] / unit_conversion['ang']['s'],
+        'B/s': unit_conversion['atk']['byte'] / unit_conversion['ang']['s'],
+        'Bps': unit_conversion['atk']['byte'] / unit_conversion['ang']['s'],
+    }
+    unit_conversion['pvn'] = _set_non_prefixed_units(unit_conversion['pvn'])
+
+    unit_conversion['tvt'] = {
+        'prefixed': ('bit/s', 'bps', 'B/s', 'Bps'),
+        'bit/s': unit_conversion['xtk']['bit'] / unit_conversion['ang']['s'],
+        'bps': unit_conversion['xtk']['bit'] / unit_conversion['ang']['s'],
+        'B/s': unit_conversion['xtk']['byte'] / unit_conversion['ang']['s'],
+        'Bps': unit_conversion['xtk']['byte'] / unit_conversion['ang']['s'],
+    }
+    unit_conversion['tvt'] = _set_non_prefixed_units(unit_conversion['tvt'])
 
     text = '''#
 # DO NOT EDIT THIS FILE DIRECTLY!

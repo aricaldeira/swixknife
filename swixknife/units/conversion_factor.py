@@ -1698,6 +1698,25 @@ UNIT_CONVERSION = {
         ),
         'non_prefixed': ('prefixed', 'deg'),
     },
+    'gol': {
+        'sr': SezimalFraction(
+            '441_351_311_532_451_014_205_402_312_151_220_143_343_202_410_301 / 21_300_000_000_000_000_000_000_000_000_000_000_000_000_000_000',
+            _precalculated_value='20.322_200_330_512_544_433_430_504_340_554_124_414_005_311_052_024',
+            _precalculated_reciprocal='0.025_104_433_322_223_232_315_150_230_212_425_233_152_511_110_025',
+        ),
+        'prefixed': ('sr', 'spat'),
+        'spat': SezimalFraction(
+            '1 / 1',
+            _precalculated_value='1',
+            _precalculated_reciprocal='1',
+        ),
+        'deg2': SezimalFraction(
+            '410_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000 / 441_351_311_532_451_014_205_402_312_151_220_143_343_202_410_301',
+            _precalculated_value='514_552.543_344_015_232_205_345_552_053_105_404_513_103_535_310_450_000',
+            _precalculated_reciprocal='0.000_001_044_142_405_354_141_553_345_435_452_043_531_051_050_423',
+        ),
+        'non_prefixed': ('prefixed', 'deg2'),
+    },
     'prt': {
         'prefixed': (),
         '%': SezimalFraction(
@@ -1742,24 +1761,101 @@ UNIT_CONVERSION = {
         ),
         'non_prefixed': ('prefixed', '%', '‰', '‱', 'pcm', 'ppm', 'ppb', 'ppt', 'ppq'),
     },
-    'gol': {
-        'sr': SezimalFraction(
-            '441_351_311_532_451_014_205_402_312_151_220_143_343_202_410_301 / 21_300_000_000_000_000_000_000_000_000_000_000_000_000_000_000',
-            _precalculated_value='20.322_200_330_512_544_433_430_504_340_554_124_414_005_311_052_024',
-            _precalculated_reciprocal='0.025_104_433_322_223_232_315_150_230_212_425_233_152_511_110_025',
+    'atk': {
+        'prefixed': ('bit', 'b', 'B'),
+        'bit': SezimalFraction(
+            '12 / 1',
+            _precalculated_value='12',
+            _precalculated_reciprocal='0.043',
         ),
-        'prefixed': ('sr', 'spat'),
-        'spat': SezimalFraction(
+        'b': SezimalFraction(
+            '12 / 1',
+            _precalculated_value='12',
+            _precalculated_reciprocal='0.043',
+        ),
+        'byte': SezimalFraction(
             '1 / 1',
             _precalculated_value='1',
             _precalculated_reciprocal='1',
         ),
-        'deg2': SezimalFraction(
-            '410_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000 / 441_351_311_532_451_014_205_402_312_151_220_143_343_202_410_301',
-            _precalculated_value='514_552.543_344_015_232_205_345_552_053_105_404_513_103_535_310_450_000',
-            _precalculated_reciprocal='0.000_001_044_142_405_354_141_553_345_435_452_043_531_051_050_423',
+        'B': SezimalFraction(
+            '1 / 1',
+            _precalculated_value='1',
+            _precalculated_reciprocal='1',
         ),
-        'non_prefixed': ('prefixed', 'deg2'),
+        'non_prefixed': ('prefixed', 'byte'),
+    },
+    'xtk': {
+        'prefixed': ('bit', 'b', 'B'),
+        'bit': SezimalFraction(
+            '10 / 1',
+            _precalculated_value='10',
+            _precalculated_reciprocal='0.1',
+        ),
+        'b': SezimalFraction(
+            '10 / 1',
+            _precalculated_value='10',
+            _precalculated_reciprocal='0.1',
+        ),
+        'byte': SezimalFraction(
+            '3 / 4',
+            _precalculated_value='0.43',
+            _precalculated_reciprocal='1.2',
+        ),
+        'B': SezimalFraction(
+            '3 / 4',
+            _precalculated_value='0.43',
+            _precalculated_reciprocal='1.2',
+        ),
+        'non_prefixed': ('prefixed', 'byte'),
+    },
+    'pvn': {
+        'prefixed': ('bit/s', 'bps', 'B/s', 'Bps'),
+        'bit/s': SezimalFraction(
+            '30_000 / 41',
+            _precalculated_value='415.304_153_041_530_415_304_153_041_530_415_304_153_041_530_415_304',
+            _precalculated_reciprocal='0.001_22',
+        ),
+        'bps': SezimalFraction(
+            '30_000 / 41',
+            _precalculated_value='415.304_153_041_530_415_304_153_041_530_415_304_153_041_530_415_304',
+            _precalculated_reciprocal='0.001_22',
+        ),
+        'B/s': SezimalFraction(
+            '2_130 / 41',
+            _precalculated_value='31.235_012_350_123_501_235_012_350_123_501_235_012_350_123_501_235',
+            _precalculated_reciprocal='0.015_04',
+        ),
+        'Bps': SezimalFraction(
+            '2_130 / 41',
+            _precalculated_value='31.235_012_350_123_501_235_012_350_123_501_235_012_350_123_501_235',
+            _precalculated_reciprocal='0.015_04',
+        ),
+        'non_prefixed': ('prefixed',),
+    },
+    'tvt': {
+        'prefixed': ('bit/s', 'bps', 'B/s', 'Bps'),
+        'bit/s': SezimalFraction(
+            '21_300 / 41',
+            _precalculated_value='312.350_123_501_235_012_350_123_501_235_012_350_123_501_235_012_350',
+            _precalculated_reciprocal='0.001_504',
+        ),
+        'bps': SezimalFraction(
+            '21_300 / 41',
+            _precalculated_value='312.350_123_501_235_012_350_123_501_235_012_350_123_501_235_012_350',
+            _precalculated_reciprocal='0.001_504',
+        ),
+        'B/s': SezimalFraction(
+            '3_213 / 122',
+            _precalculated_value='22.325_140_251_402_514_025_140_251_402_514_025_140_251_402_514_025',
+            _precalculated_reciprocal='0.022_452',
+        ),
+        'Bps': SezimalFraction(
+            '3_213 / 122',
+            _precalculated_value='22.325_140_251_402_514_025_140_251_402_514_025_140_251_402_514_025',
+            _precalculated_reciprocal='0.022_452',
+        ),
+        'non_prefixed': ('prefixed',),
     },
 }
 
