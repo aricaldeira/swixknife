@@ -72,6 +72,10 @@ UNIT-p/Tx por trixadara
 UNIT-p/Cx por charxadara
 UNIT-p/Px por panxadara
 UNIT-p/Xx por xaxadara
+UNIT-atk ástaca
+UNIT-pvn pávana
+UNIT-xtk xátaca
+UNIT-tvt tevasta
 '''
 
     elif lang == 'bz':
@@ -142,6 +146,10 @@ UNIT-p/Tx pur trixadara
 UNIT-p/Cx pur charxadara
 UNIT-p/Px pur panxadara
 UNIT-p/Xx pur xaxadara
+UNIT-atk ástaka
+UNIT-pvn pávana
+UNIT-xtk xátaka
+UNIT-tvt tevasta
 '''
 
     else:
@@ -211,6 +219,10 @@ UNIT-p/Tx per trishadara
 UNIT-p/Cx per charshadara
 UNIT-p/Px per panshadara
 UNIT-p/Xx per shashadara
+UNIT-atk ashtaka
+UNIT-pvn pavana
+UNIT-xtk shataka
+UNIT-tvt tevashta
 '''
     return text
 
