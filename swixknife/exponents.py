@@ -1616,7 +1616,7 @@ _SEZIMAL_EXPONENT_TO_SYMBOL = {
     SezimalInteger('120'): 'NDX',
 }
 _SEZIMAL_SYMBOL_TO_EXPONENT = {symbol: exponent for symbol, exponent in _SEZIMAL_EXPONENT_TO_SYMBOL.items()}
-_SEZIMAL_SYMBOL_TO_EXPONENT.update({symbol.lower() + 't' if exponent < 0 else 'm': exponent for exponent, symbol in _SEZIMAL_EXPONENT_TO_SYMBOL.items()})
+_SEZIMAL_SYMBOL_TO_EXPONENT.update({symbol.lower() + 'i' if exponent < 0 else 'm': exponent for exponent, symbol in _SEZIMAL_EXPONENT_TO_SYMBOL.items()})
 
 
 #
