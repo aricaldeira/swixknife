@@ -589,7 +589,6 @@ _SEZIMAL_EXPONENT_TO_DECIMAL_EXPONENT = {
     SezimalInteger('120'): SezimalInteger('102'),
 }
 
-
 #
 # Pre-calculated decimal exponent to sezimal exponent
 #
@@ -672,7 +671,6 @@ _DECIMAL_EXPONENT_TO_SEZIMAL_EXPONENT = {
     SezimalInteger('101'): SezimalInteger('120'),
     SezimalInteger('102'): SezimalInteger('121'),
 }
-
 
 #
 # Pre-calculated sezimal exponents conversion
@@ -1657,9 +1655,9 @@ _SEZIMAL_EXPONENT_TO_SYMBOL = {
     SezimalInteger('115'): 'NXP',
     SezimalInteger('120'): 'NDX',
 }
+
 _SEZIMAL_SYMBOL_TO_EXPONENT = {symbol: exponent for symbol, exponent in _SEZIMAL_EXPONENT_TO_SYMBOL.items()}
 _SEZIMAL_SYMBOL_TO_EXPONENT.update({symbol.lower() + 'i' if exponent < 0 else 'm': exponent for exponent, symbol in _SEZIMAL_EXPONENT_TO_SYMBOL.items()})
-
 
 #
 # Pre-calculated sezimal exponent to prefix
@@ -1762,8 +1760,8 @@ _SEZIMAL_EXPONENT_TO_PREFIX = {
     SezimalInteger('115'): 'nishapama',
     SezimalInteger('120'): 'nidishama',
 }
-_SEZIMAL_PREFIX_TO_EXPONENT = {prefix: exponent for exponent, prefix in _SEZIMAL_EXPONENT_TO_SYMBOL.items()}
 
+_SEZIMAL_PREFIX_TO_EXPONENT = {prefix: exponent for exponent, prefix in _SEZIMAL_EXPONENT_TO_SYMBOL.items()}
 
 _DECIMAL_EXPONENT_SYMBOL = {
     SezimalInteger('-102'): 'q',
@@ -1843,7 +1841,34 @@ _DECIMAL_EXPONENT_SYMBOL = {
     SezimalInteger('101'): 'Q',
     SezimalInteger('102'): 'Q',
 }
-_DECIMAL_SYMBOL_EXPONENT = {symbol: exponent for exponent, symbol in _DECIMAL_EXPONENT_SYMBOL.items()}
+
+_DECIMAL_SYMBOL_EXPONENT = {
+    'q': SezimalInteger('-50'),
+    'r': SezimalInteger('-43'),
+    'y': SezimalInteger('-40'),
+    'z': SezimalInteger('-33'),
+    'a': SezimalInteger('-30'),
+    'f': SezimalInteger('-23'),
+    'p': SezimalInteger('-20'),
+    'n': SezimalInteger('-13'),
+    'µ': SezimalInteger('-10'),
+    'u': SezimalInteger('-10'),
+    'm': SezimalInteger('-3'),
+    'c': SezimalInteger('-2'),
+    'd': SezimalInteger('-1'),
+    'da': SezimalInteger('1'),
+    'h': SezimalInteger('2'),
+    'k': SezimalInteger('3'),
+    'M': SezimalInteger('10'),
+    'G': SezimalInteger('13'),
+    'T': SezimalInteger('20'),
+    'P': SezimalInteger('23'),
+    'E': SezimalInteger('30'),
+    'Z': SezimalInteger('33'),
+    'Y': SezimalInteger('40'),
+    'R': SezimalInteger('43'),
+    'Q': SezimalInteger('50'),
+}
 
 _DECIMAL_EXPONENT_PREFIX = {
     SezimalInteger('-102'): 'quecto',
@@ -1923,8 +1948,33 @@ _DECIMAL_EXPONENT_PREFIX = {
     SezimalInteger('101'): 'quetta',
     SezimalInteger('102'): 'quetta',
 }
-_DECIMAL_PREFIX_EXPONENT = {prefix: exponent for exponent, prefix in _DECIMAL_EXPONENT_PREFIX.items()}
 
+_DECIMAL_PREFIX_EXPONENT = {
+    'quecto': SezimalInteger('-50'),
+    'ronto': SezimalInteger('-43'),
+    'yocto': SezimalInteger('-40'),
+    'zepto': SezimalInteger('-33'),
+    'atto': SezimalInteger('-30'),
+    'femto': SezimalInteger('-23'),
+    'pico': SezimalInteger('-20'),
+    'nano': SezimalInteger('-13'),
+    'micro': SezimalInteger('-10'),
+    'milli': SezimalInteger('-3'),
+    'centi': SezimalInteger('-2'),
+    'deci': SezimalInteger('-1'),
+    'deca': SezimalInteger('1'),
+    'hecto': SezimalInteger('2'),
+    'kilo': SezimalInteger('3'),
+    'mega': SezimalInteger('10'),
+    'giga': SezimalInteger('13'),
+    'tera': SezimalInteger('20'),
+    'peta': SezimalInteger('23'),
+    'exa': SezimalInteger('30'),
+    'zetta': SezimalInteger('33'),
+    'yotta': SezimalInteger('40'),
+    'ronna': SezimalInteger('43'),
+    'quetta': SezimalInteger('50'),
+}
 
 _BINARY_SYMBOL_EXPONENT = {
     'Ki': SezimalInteger('1'),
@@ -1937,6 +1987,45 @@ _BINARY_SYMBOL_EXPONENT = {
     'Yi': SezimalInteger('12'),
     'Ri': SezimalInteger('13'),
     'Qi': SezimalInteger('14'),
+}
+
+_BINARY_EXPONENT_SYMBOL = {
+    SezimalInteger('1'): 'Ki',
+    SezimalInteger('2'): 'Mi',
+    SezimalInteger('3'): 'Gi',
+    SezimalInteger('4'): 'Ti',
+    SezimalInteger('5'): 'Pi',
+    SezimalInteger('10'): 'Ei',
+    SezimalInteger('11'): 'Zi',
+    SezimalInteger('12'): 'Yi',
+    SezimalInteger('13'): 'Ri',
+    SezimalInteger('14'): 'Qi',
+}
+
+_BINARY_PREFIX_EXPONENT = {
+    'kibi': SezimalInteger('1'),
+    'mebi': SezimalInteger('2'),
+    'gibi': SezimalInteger('3'),
+    'tebi': SezimalInteger('4'),
+    'pebi': SezimalInteger('5'),
+    'exbi': SezimalInteger('10'),
+    'zebi': SezimalInteger('11'),
+    'yobi': SezimalInteger('12'),
+    'robi': SezimalInteger('13'),
+    'qebi': SezimalInteger('14'),
+}
+
+_BINARY_EXPONENT_PREFIX = {
+    SezimalInteger('1'): 'kibi',
+    SezimalInteger('2'): 'mebi',
+    SezimalInteger('3'): 'gibi',
+    SezimalInteger('4'): 'tebi',
+    SezimalInteger('5'): 'pebi',
+    SezimalInteger('10'): 'exbi',
+    SezimalInteger('11'): 'zebi',
+    SezimalInteger('12'): 'yobi',
+    SezimalInteger('13'): 'robi',
+    SezimalInteger('14'): 'qebi',
 }
 
 _BINARY_EXPONENT_FACTOR = {
