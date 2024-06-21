@@ -25,6 +25,7 @@ from .digit_conversion import (
     default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
     default_niftimal_to_niftimal_digits, default_niftimal_to_financial_sezimal_digits,
     dozenal_letters_to_digits,
+    PER_SYMBOLS,
 )
 from .context import sezimal_context
 
@@ -274,7 +275,7 @@ def _finish_formatting(formatted_number: str, prefix: str, suffix: str, positive
     if prefix:
         prefix += ' '
 
-    if suffix and suffix[-1] not in ('%', '‰', '‱', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
+    if suffix and suffix[-1] not in PER_SYMBOLS:
         suffix = ' ' + suffix
 
     if formatted_number[0] != '-':

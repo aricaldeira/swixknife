@@ -18,8 +18,6 @@ from ..text import sezimal_spellout
 
 from ..localization import SezimalLocale, sezimal_locale
 
-_PERARDA = '‰'
-_PERSIXARDA = '‱'
 
 _OPERATOR = {
     #
@@ -34,9 +32,25 @@ _OPERATOR = {
     '**': ' __POWER__ ',
     '×': ' __MULTIPLY__ ',
     '*': ' __MULTIPLY__ ',
-    '%': ' __PERNIF__ ',
-    '‰': ' __PERARDA__ ',
-    '‱': ' __PERSIXARDA__ ',
+    '%': ' __PERCENT__ ',
+    '‰': ' __PERMILLE__ ',
+    '‱': ' __PERMYRIAD__ ',
+    '󱺈': ' __PERSIX__ ',
+    '󱺉': ' __PERNIF__ ',
+    '󱺊': ' __PERARDA__ ',
+    '󱺋': ' __PERSIXARDA__ ',
+    '󱺌': ' __PERNIFARDA__ ',
+    '󱺍': ' __PERSHADARA__ ',
+    '󱺎': ' __PERSIXSHADARA__ ',
+    '󱺏': ' __PERNIFSHADARA__ ',
+    '󱺐': ' __PERARDASHADARA__ ',
+    '󱺑': ' __PERSIXARDASHADARA__ ',
+    '󱺒': ' __PERNIFARDASHADARA__ ',
+    '󱺓': ' __PERDISHADARA__ ',
+    '󱺔': ' __PERTRISHADARA__ ',
+    '󱺕': ' __PERCHARSHADARA__ ',
+    '󱺖': ' __PERPANSHADARA__ ',
+    '󱺗': ' __PERSHASHADARA__ ',
     '²': ' __SQUARE__ ',
     '³': ' __CUBE__ ',
     '±': ' __PLUS_MINUS__ ',
@@ -57,9 +71,25 @@ _OPERATION = {
     '__DIVIDE__': '/',
     '__MULTIPLY__': '*',
     '__POWER__': '**',
+    '__PERCENT__': "/Sezimal('100')",
+    '__PERMILLE__': "/Sezimal('1_000')",
+    '__PERMYRIAD__': "/Sezimal('10_000')",
+    '__PERSIX__': "/Sezimal('10')",
     '__PERNIF__': "/Sezimal('100')",
     '__PERARDA__': "/Sezimal('1_000')",
     '__PERSIXARDA__': "/Sezimal('10_000')",
+    '__PERNIFARDA__': "/Sezimal('100_000')",
+    '__PERSHADARA__': "/Sezimal('1_000_000')",
+    '__PERSIXSHADARA__': "/Sezimal('1e11')",
+    '__PERNIFSHADARA__': "/Sezimal('1e12')",
+    '__PERARDASHADARA__': "/Sezimal('1e13')",
+    '__PERSIXARDASHADARA__': "/Sezimal('1e14')",
+    '__PERNIFARDASHADARA__': "/Sezimal('1e15')",
+    '__PERDISHADARA__': "/Sezimal('1e20')",
+    '__PERTRISHADARA__': "/Sezimal('1e30')",
+    '__PERCHARSHADARA__': "/Sezimal('1e40')",
+    '__PERPANSHADARA__': "/Sezimal('1e50')",
+    '__PERSHASHADARA__': "/Sezimal('1e100')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -73,9 +103,25 @@ _OPERATION_DECIMAL  = {
     '__DIVIDE__': '/',
     '__MULTIPLY__': '*',
     '__POWER__': '**',
-    '__PERNIF__': "/Sezimal('244')",
-    '__PERARDA__': "/Sezimal('4_344')",
-    '__PERSIXARDA__': "/Sezimal('114_144')",
+    '__PERCENT__': "/Sezimal('244')",
+    '__PERMILLE__': "/Sezimal('4_344')",
+    '__PERMYRIAD__': "/Sezimal('114_144')",
+    '__PERSIX__': "/Sezimal('10')",
+    '__PERNIF__': "/Sezimal('100')",
+    '__PERARDA__': "/Sezimal('1_000')",
+    '__PERSIXARDA__': "/Sezimal('10_000')",
+    '__PERNIFARDA__': "/Sezimal('100_000')",
+    '__PERSHADARA__': "/Sezimal('1_000_000')",
+    '__PERSIXSHADARA__': "/Sezimal('1e11')",
+    '__PERNIFSHADARA__': "/Sezimal('1e12')",
+    '__PERARDASHADARA__': "/Sezimal('1e13')",
+    '__PERSIXARDASHADARA__': "/Sezimal('1e14')",
+    '__PERNIFARDASHADARA__': "/Sezimal('1e15')",
+    '__PERDISHADARA__': "/Sezimal('1e20')",
+    '__PERTRISHADARA__': "/Sezimal('1e30')",
+    '__PERCHARSHADARA__': "/Sezimal('1e40')",
+    '__PERPANSHADARA__': "/Sezimal('1e50')",
+    '__PERSHASHADARA__': "/Sezimal('1e100')",
     '__SQUARE__': "**Sezimal('2')",
     '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
@@ -89,14 +135,32 @@ _NICE_OPERATION = {
     '__DIVIDE__': ' ÷ ',
     '__MULTIPLY__': ' × ',
     '__POWER__': ' ^ ',
-    '__PERNIF__': '%',
-    '__PERARDA__': '‰',
-    '__PERSIXARDA__': '‱',
+    '__PERCENT__': '%',
+    '__PERMILLE__': '‰',
+    '__PERMYRIAD__': '‱',
+    '__PERSIX__': '󱺈',
+    '__PERNIF__': '󱺉',
+    '__PERARDA__': '󱺊',
+    '__PERSIXARDA__': '󱺋',
+    '__PERNIFARDA__': '󱺌',
+    '__PERSHADARA__': '󱺍',
+    '__PERSIXSHADARA__': '󱺎',
+    '__PERNIFSHADARA__': '󱺏',
+    '__PERARDASHADARA__': '󱺐',
+    '__PERSIXARDASHADARA__': '󱺑',
+    '__PERNIFARDASHADARA__': '󱺒',
+    '__PERDISHADARA__': '󱺓',
+    '__PERTRISHADARA__': '󱺔',
+    '__PERCHARSHADARA__': '󱺕',
+    '__PERPANSHADARA__': '󱺖',
+    '__PERSHASHADARA__': '󱺗',
     '__SQUARE__': "²",
     '__CUBE__': "³",
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
 }
+
+_ALLWAYS_NICE_OPERATIONS = ('__PERCENT__', '__PERMILLE__', '__PERMYRIAD__', '__PERSIX__', '__PERNIF__', '__PERARDA__', '__PERSIXARDA__', '__PERNIFARDA__', '__PERSHADARA__', '__PERSIXSHADARA__', '__PERNIFSHADARA__', '__PERARDASHADARA__', '__PERSIXARDASHADARA__', '__PERNIFARDASHADARA__', '__PERDISHADARA__', '__PERTRISHADARA__', '__PERCHARSHADARA__', '__PERPANSHADARA__', '__PERSHASHADARA__')
 
 e = E
 π = PI
@@ -344,14 +408,14 @@ class SezimalCalculator:
         return decimal_format(number, **params)
 
     def _apply_sezimal_or_recurring_mark(self, display: str, separator: str, suffix: str) -> str:
-        if suffix in ('%', '‰', '‱', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
+        if suffix in ('%', '‰', '‱', '󱺈', '󱺉', '󱺊', '󱺋', '󱺌', '󱺍', '󱺎', '󱺏', '󱺐', '󱺑', '󱺒', '󱺓', '󱺔', '󱺕', '󱺖', '󱺗', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
             display = display[0:len(suffix) * -1]
         elif suffix:
             display = display[0:(len(suffix) + 1) * -1]
 
         display += separator
 
-        if suffix in ('%', '‰', '‱', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
+        if suffix in ('%', '‰', '‱', '󱺈', '󱺉', '󱺊', '󱺋', '󱺌', '󱺍', '󱺎', '󱺏', '󱺐', '󱺑', '󱺒', '󱺓', '󱺔', '󱺕', '󱺖', '󱺗', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇'):
             display += suffix
         elif suffix:
             display += ' ' + suffix
@@ -367,7 +431,27 @@ class SezimalCalculator:
             self._decimal_expression = ''
             return
 
+        if self.expression == '0':
+            if self.sezimal_digits:
+                self._display = '󱸀'
+            else:
+                self._display = '0'
+
+            self._decimal_display = '0'
+
+            if self.decimal:
+                self._prepared_expression = "Decimal('0')"
+            else:
+                self._prepared_expression = "Sezimal('0')"
+
+            self._sezimal_expression = "0"
+            self._decimal_expression = "0"
+
+            return
+
         exp = self.expression
+
+        print('expressão', exp)
 
         #
         # Replace operators first
@@ -413,10 +497,20 @@ class SezimalCalculator:
                 if self.decimal:
                     prepared_expression += _OPERATION_DECIMAL[part]
                     sezimal_expression += f' {_OPERATION_DECIMAL[part]} '
-                    decimal_expression += f' {_OPERATION_DECIMAL[part]} '
+
+                    if part in _ALLWAYS_NICE_OPERATIONS:
+                        decimal_expression += f'{_NICE_OPERATION[part]} '
+                    else:
+                        decimal_expression += f' {_OPERATION_DECIMAL[part]} '
+
                 else:
                     prepared_expression += _OPERATION[part]
-                    sezimal_expression +=  f' {_OPERATION[part]} '
+
+                    if part in _ALLWAYS_NICE_OPERATIONS:
+                        sezimal_expression +=  f'{_NICE_OPERATION[part]} '
+                    else:
+                        sezimal_expression +=  f' {_OPERATION[part]} '
+
                     decimal_expression += f' {_OPERATION[part]} '
 
                 #
@@ -428,7 +522,7 @@ class SezimalCalculator:
                         decimal_display += ' −'
 
                     elif previous_part in _OPERATION:
-                        if previous_part in (' __PERNIF__ ', ' __PERARDA__ ', ' __PERSIXARDA__ '):
+                        if previous_part.strip() in _ALLWAYS_NICE_OPERATIONS:
                             display += _NICE_OPERATION[part]
                             decimal_display += _NICE_OPERATION[part]
                         else:
@@ -446,22 +540,38 @@ class SezimalCalculator:
                 previous_part = part
 
                 if self.decimal:
-                    display = display.replace('%', ' ÷ 244')
-                    display = display.replace('‰', f' ÷ 4{self.locale.GROUP_SEPARATOR}344')
-                    display = display.replace('‱', f' ÷ 114{self.locale.GROUP_SEPARATOR}144')
-
-                    exp = exp.replace('%', ' / 100')
-                    exp = exp.replace('‰', ' / 1_000')
-                    exp = exp.replace('‱', ' / 10_000')
+                    for symbol, display_text, expression_text in (
+                        ('%', ' ÷ 244', ' / 244'),
+                        ('‰', f' ÷ 4{self.locale.GROUP_SEPARATOR}344', ' / 4_344'),
+                        ('‱', f' ÷ 114{self.locale.GROUP_SEPARATOR}144', ' / 114_144'),
+                    ):
+                        display = display.replace(symbol, display_text)
+                        exp = exp.replace(symbol, expression_text)
 
                 else:
-                    decimal_display = decimal_display.replace('%', ' ÷ 36')
-                    decimal_display = decimal_display.replace('‰', ' ÷ 216')
-                    decimal_display = decimal_display.replace('‱', f' ÷ 1{self.locale.GROUP_SEPARATOR}296')
-
-                    decimal_expression = decimal_expression.replace('%', ' / 36')
-                    decimal_expression = decimal_expression.replace('‰', ' / 216')
-                    decimal_expression = decimal_expression.replace('‱', ' / 1_296')
+                    for symbol, display_text, expression_text in (
+                        ('%', ' ÷ 36', ' / 36'),
+                        ('‰', ' ÷ 216', ' / 216'),
+                        ('‱', f' ÷ 1{self.locale.GROUP_SEPARATOR}296', ' / 1_296'),
+                        ('󱺈', ' ÷ 6', ' / 6'),
+                        ('󱺉', ' ÷ 36', ' / 36'),
+                        ('󱺊', ' ÷ 216', ' / 216'),
+                        ('󱺋', f' ÷ 1{self.locale.GROUP_SEPARATOR}296', ' / 1_296'),
+                        ('󱺌', f' ÷ 7{self.locale.GROUP_SEPARATOR}776', ' / 7_776'),
+                        ('󱺍', f' ÷ 46{self.locale.GROUP_SEPARATOR}656', ' / 46_656'),
+                        ('󱺎', f' ÷ 279{self.locale.GROUP_SEPARATOR}936', ' / 279_936'),
+                        ('󱺏', f' ÷ 1{self.locale.GROUP_SEPARATOR}679{self.locale.GROUP_SEPARATOR}616', ' / 1_679_616'),
+                        ('󱺐', f' ÷ 10{self.locale.GROUP_SEPARATOR}077{self.locale.GROUP_SEPARATOR}696', ' / 10_077_696'),
+                        ('󱺑', f' ÷ 60{self.locale.GROUP_SEPARATOR}466{self.locale.GROUP_SEPARATOR}176', ' / 60_466_176'),
+                        ('󱺒', f' ÷ 362{self.locale.GROUP_SEPARATOR}797{self.locale.GROUP_SEPARATOR}056', ' / 362_797_056'),
+                        ('󱺓', f' ÷ 2{self.locale.GROUP_SEPARATOR}176{self.locale.GROUP_SEPARATOR}782{self.locale.GROUP_SEPARATOR}336', ' / 2_176_782_336'),
+                        ('󱺔', f' ÷ 101{self.locale.GROUP_SEPARATOR}559{self.locale.GROUP_SEPARATOR}956{self.locale.GROUP_SEPARATOR}668{self.locale.GROUP_SEPARATOR}416', ' / 101_559_956_668_416'),
+                        ('󱺕', f' ÷ 4{self.locale.GROUP_SEPARATOR}738{self.locale.GROUP_SEPARATOR}381{self.locale.GROUP_SEPARATOR}338{self.locale.GROUP_SEPARATOR}321{self.locale.GROUP_SEPARATOR}616{self.locale.GROUP_SEPARATOR}896', ' / 4_738_381_338_321_616_896'),
+                        ('󱺖', f' ÷ 221{self.locale.GROUP_SEPARATOR}073{self.locale.GROUP_SEPARATOR}919{self.locale.GROUP_SEPARATOR}720{self.locale.GROUP_SEPARATOR}733{self.locale.GROUP_SEPARATOR}357{self.locale.GROUP_SEPARATOR}899{self.locale.GROUP_SEPARATOR}776', ' / 221_073_919_720_733_357_899_776'),
+                        ('󱺗', f' ÷ 10{self.locale.GROUP_SEPARATOR}314{self.locale.GROUP_SEPARATOR}424{self.locale.GROUP_SEPARATOR}798{self.locale.GROUP_SEPARATOR}490{self.locale.GROUP_SEPARATOR}535{self.locale.GROUP_SEPARATOR}546{self.locale.GROUP_SEPARATOR}171{self.locale.GROUP_SEPARATOR}949{self.locale.GROUP_SEPARATOR}056', ' / 10_314_424_798_490_535_546_171_949_056'),
+                    ):
+                        decimal_display = decimal_display.replace(symbol, display_text)
+                        decimal_expression = decimal_expression.replace(symbol, expression_text)
 
                 if (not parenthesis_opened) and part == '__LEFT_PARENTHESIS__':
                     parenthesis_opened += 1
@@ -560,24 +670,6 @@ class SezimalCalculator:
         decimal_expression = decimal_expression.replace('**', '^')
         sezimal_expression = sezimal_expression.replace('* *', '^')
         decimal_expression = decimal_expression.replace('* *', '^')
-
-        if self.decimal:
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('244')", ' / 244')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('4_344')", ' / 4_344')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('114_144')", ' / 114_144')
-
-            decimal_expression = decimal_expression.replace(" /Sezimal('244')", '%')
-            decimal_expression = decimal_expression.replace(" /Sezimal('4_344')", '‰')
-            decimal_expression = decimal_expression.replace(" /Sezimal('114_144')", '‱')
-
-        else:
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('100')", '%')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('1_000')", '‰')
-            sezimal_expression = sezimal_expression.replace(" /Sezimal('10_000')", '‱')
-
-            decimal_expression = decimal_expression.replace(" /Sezimal('100')", ' / 36')
-            decimal_expression = decimal_expression.replace(" /Sezimal('1_000')", ' / 216')
-            decimal_expression = decimal_expression.replace(" /Sezimal('10_000')", ' / 1_296')
 
         self._sezimal_expression = sezimal_expression
         self._decimal_expression = decimal_expression
