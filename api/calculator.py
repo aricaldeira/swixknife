@@ -26,14 +26,14 @@ UNIT_SIMPLIFIED_SYMBOL = {
     'p/Cx': '󱺅 (p/Cx)',
     'p/Px': '󱺆 (p/Px)',
     'p/Xx': '󱺇 (p/Xx)',
-    'eprt': ' eprt (per six)',
-    'dprt': ' dprt (per nif)',
-    'tprt': ' tprt (per arda)',
-    'cprt': ' cprt (per six arda)',
-    'pprt': ' pprt (per nif arda)',
-    'xprt': ' pprt (per shadara)',
-    'xeprt': ' xeprt (per six shadara)',
-    'xdprt': ' xdprt (per nif shadara)',
+    'eprt': ' eprt (󱺈 per six)',
+    'dprt': ' dprt (󱺉 per nif)',
+    'tprt': ' tprt (󱺊 per arda)',
+    'cprt': ' cprt (󱺋 per six arda)',
+    'pprt': ' pprt (󱺌 per nif arda)',
+    'xprt': ' pprt (󱺍 per shadara)',
+    'xeprt': ' xeprt (󱺎 per six shadara)',
+    'xdprt': ' xdprt (󱺏 per nif shadara)',
 }
 
 
@@ -102,6 +102,42 @@ def api_calculator_process() -> dict:
     elif dados['value'] == '/' and dados['expression'].endswith(' / '):
         calculator.expression = dados['expression'][:-3] + '⁄'
 
+    elif dados['value'] == '%' and dados['expression'].endswith('% '):
+        calculator.expression = dados['expression'][:-2] + '‰ '
+
+    elif dados['value'] == '%' and dados['expression'].endswith('‰ '):
+        calculator.expression = dados['expression'][:-2] + '‱ '
+
+    elif dados['value'] == '%' and dados['expression'].endswith('‱ '):
+        calculator.expression = dados['expression'][:-2] + '% '
+
+    # elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺈 '):
+    #     calculator.expression = dados['expression'][:-2] + '󱺉 '
+
+    elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺉 '):
+        calculator.expression = dados['expression'][:-2] + '󱺊 '
+
+    elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺊 '):
+        calculator.expression = dados['expression'][:-2] + '󱺋 '
+
+    elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺋 '):
+        calculator.expression = dados['expression'][:-2] + '󱺌 '
+
+    elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺌 '):
+        calculator.expression = dados['expression'][:-2] + '󱺍 '
+
+    elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺍 '):
+        calculator.expression = dados['expression'][:-2] + '󱺉 '
+
+    # elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺎 '):
+    #     calculator.expression = dados['expression'][:-2] + '󱺏 '
+    #
+    # elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺏 '):
+    #     calculator.expression = dados['expression'][:-2] + '󱺐 '
+    #
+    # elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺐 '):
+    #     calculator.expression = dados['expression'][:-2] + '󱺉 '
+
     else:
         if dados['expression'] == '0':
             if dados['value'] == '.':
@@ -117,7 +153,7 @@ def api_calculator_process() -> dict:
     resposta = {
         'expression': calculator.sezimal_expression,
         'decimal_expression': calculator.decimal_expression,
-        'display': calculator.display,
+        'display': calculator.display.replace('%', '󱺉').replace('‰', '󱺊').replace('‱', '󱺋'),
         'decimal_display': calculator.decimal_display,
         'show_spellout': False,
         'spellout': '',
