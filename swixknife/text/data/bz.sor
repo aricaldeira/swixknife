@@ -13,26 +13,6 @@
 ([-−]?\d+)[/⁄](\d+) $1 $(fractional-plural \\2)
 ([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 sobri $2
 ⁄ sobri
-([-−]?\d+[,.]?\d*)% $1 pur nifi
-% pur nifi
-([-−]?\d+[,.]?\d*)‰ $1 pur arda
-‰ pur arda
-([-−]?\d+[,.]?\d*)‱ $1 pur sêys arda
-‱ pur sêys arda
-([-−]?\d+[,.]?\d*)󱹷 $1 pur unidadi
-󱹷 pur unidadi
-([-−]?\d+[,.]?\d*)󱹸 $1 pur sêys
-󱹸 pur sêys
-([-−]?\d+[,.]?\d*)󱹹 $1 pur nifi
-󱹹 pur nifi
-([-−]?\d+[,.]?\d*)󱹺 $1 pur arda
-󱹺 pur arda
-([-−]?\d+[,.]?\d*)󱹻 $1 pur sêys arda
-󱹻 pur sêys arda
-([-−]?\d+[,.]?\d*)󱹼 $1 pur nifi arda
-󱹻 pur nifi arda
-([-−]?\d+[,.]?\d*)󱹽 $1 pur xadara
-󱹽 pur xadara
 e e
 π pi
 τ taw

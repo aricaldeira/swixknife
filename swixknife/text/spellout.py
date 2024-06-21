@@ -17,6 +17,45 @@ SPELLOUT_PROGRAMS = {}
 def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, lang: str = 'en') -> str:
     number = str(number).replace('_', '')
 
+    if not number:
+        return ''
+
+    #
+    # The unicode characters are not all working correctly,
+    # so we replace them by their correspondent unit
+    #
+    if number[-1] in ('󱺈', '󱹸'):
+        number = 'SH-p/s ' + number[0:-1]
+    elif number[-1] in ('%', '󱺉', '󱹹'):
+        number = 'SH-p/n ' + number[0:-1]
+    elif number[-1] in ('‰', '󱺊', '󱹺'):
+        number = 'SH-p/a ' + number[0:-1]
+    elif number[-1] in ('‱', '󱺋', '󱹻'):
+        number = 'SH-p/sa ' + number[0:-1]
+    elif number[-1] in ('󱺌', '󱹼'):
+        number = 'SH-p/na ' + number[0:-1]
+    elif number[-1] in ('󱺍', '󱹽'):
+        number = 'SH-p/x ' + number[0:-1]
+    elif number[-1] in ('󱺎', '󱹾'):
+        number = 'SH-p/sx ' + number[0:-1]
+    elif number[-1] in ('󱺏', '󱹿'):
+        number = 'SH-p/nx ' + number[0:-1]
+    elif number[-1] in ('󱺐', '󱺀'):
+        number = 'SH-p/ax ' + number[0:-1]
+    elif number[-1] in ('󱺑', '󱺁'):
+        number = 'SH-p/sax ' + number[0:-1]
+    elif number[-1] in ('󱺒', '󱺂'):
+        number = 'SH-p/nax ' + number[0:-1]
+    elif number[-1] in ('󱺓', '󱺃'):
+        number = 'SH-p/Dx ' + number[0:-1]
+    elif number[-1] in ('󱺔', '󱺄'):
+        number = 'SH-p/Tx ' + number[0:-1]
+    elif number[-1] in ('󱺕', '󱺅'):
+        number = 'SH-p/Cx ' + number[0:-1]
+    elif number[-1] in ('󱺖', '󱺆'):
+        number = 'SH-p/Px ' + number[0:-1]
+    elif number[-1] in ('󱺗', '󱺇'):
+        number = 'SH-p/Xx ' + number[0:-1]
 
     if lang not in SPELLOUT_PROGRAMS:
         try:

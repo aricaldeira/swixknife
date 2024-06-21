@@ -15,26 +15,6 @@
 ([-−]?\d+)[/⁄](\d+) $1 $(ordinal \\2)s
 ([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 over $2
 ⁄ over
-([-−]?\d+[,.]?\d*)% $1 per nif
-% per nif
-([-−]?\d+[,.]?\d*)‰ $1 per arda
-‰ per arda
-([-−]?\d+[,.]?\d*)‱ $1 per six arda
-‱ per six arda
-([-−]?\d+[,.]?\d*)󱹷 $1 per unit
-󱹷 per unit
-([-−]?\d+[,.]?\d*)󱹸 $1 per six
-󱹸 per six
-([-−]?\d+[,.]?\d*)󱹹 $1 per nif
-󱹹 per nif
-([-−]?\d+[,.]?\d*)󱹺 $1 per arda
-󱹺 per arda
-([-−]?\d+[,.]?\d*)󱹻 $1 per six arda
-󱹻 per six arda
-([-−]?\d+[,.]?\d*)󱹼 $1 per nif arda
-󱹻 per nif arda
-([-−]?\d+[,.]?\d*)󱹽 $1 per shadara
-󱹽 per shadara
 e e
 π pi
 τ tau
