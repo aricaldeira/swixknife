@@ -317,7 +317,7 @@ class SezimalCalculator:
         else:
             lang = 'en'
 
-        if lang == 'en' and self.grouping_digits == 4:
+        if self.grouping_digits == 4:
             lang = 'en_misali'
 
         expression = self._sezimal_expression.replace('_', '')
@@ -504,7 +504,7 @@ class SezimalCalculator:
         if suffix in PER_SYMBOLS:
             display += suffix
         elif suffix:
-            display += ' ' + suffix
+            display += '\N{NNBSP}' + suffix
 
         return display
 
