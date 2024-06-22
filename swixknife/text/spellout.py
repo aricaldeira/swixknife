@@ -20,6 +20,13 @@ def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInte
     if not number:
         return ''
 
+    if '..' in number:
+        number, recurring = number.split('..')
+    elif ',,' in number:
+        number, recurring = number.split(',,')
+    else:
+        recurring = ''
+
     #
     # The unicode characters are not all working correctly,
     # so we replace them by their correspondent unit
@@ -73,6 +80,10 @@ def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInte
 
     text = soros_run(SPELLOUT_PROGRAMS[lang], number, lang).strip()
 
-    # del SPELLOUT_PROGRAMS[lang]
+    if recurring:
+        text += ' ' + soros_run(SPELLOUT_PROGRAMS[lang], '..', lang).strip()
+        text += ' ' + soros_run(SPELLOUT_PROGRAMS[lang], recurring, lang).strip()
+
+    del SPELLOUT_PROGRAMS[lang]
 
     return text
