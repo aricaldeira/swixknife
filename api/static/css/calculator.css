@@ -187,7 +187,7 @@ button {
 }
 .display {
     font-size: 36pt;
-    font-weight: normal;
+    font-weight: bold;
 /*     font-style: italic; */
     text-align: right;
 /*     width: 100%; */
@@ -224,6 +224,15 @@ button {
     border-bottom: 2px double #9E9E9E;
     background-color: #212121;
     color: #F5F5F5;
+    word-wrap: break-word;
+    font-variant-numeric: diagonal-fractions;
+}
+.niftimal_display {
+    font-size: 18pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align: right;
+    align-content: start;
     word-wrap: break-word;
     font-variant-numeric: diagonal-fractions;
 }
@@ -299,4 +308,12 @@ td.units {
         width: auto;
     }
 }
-
+.base-badge {
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    font-size: 10pt;
+    position: absolute;
+    left: 6px;
+    mix-blend-mode: difference;
+}

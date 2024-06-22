@@ -2045,10 +2045,20 @@ Shastadari prefixes explanation
             <div id="settings"><span style="text-align: left; font-size: 19pt;" onclick="toggle_settings(true)"> ≡ </span><span style="text-align: right; float: right; font-size: 16pt;" onclick="toggle_units(true)"> ⚙ </span></div>
             <div id="units-conversion"></div>
             <div id="spellout" class="spellout"></div>
-            <div id="display" class="display">0</div>
+            <div id="display" class="display">
+                <span class="base-badge" onclick="toggle_niftimal()">sez</span>
+                <span id="display_number">0</span>
+                <div id="niftimal_display" class="niftimal_display" hidden>
+                    <span class="base-badge" onclick="toggle_niftimal_alphabetical()">nif</span>
+                    <span id="niftimal_display_number">0<span>
+                </div>
+            </div>
+            <div id="decimal_display" class="decimal_display">
+                <span class="base-badge">dec</span>
+                <span id="decimal_display_number">0</span>
+            </div>
             <div id="expression" class="expression" hidden>0</div>
             <div id="decimal_expression" class="expression" hidden>0</div>
-            <div id="decimal_display" class="decimal_display">0</div>
         </div>
         <div id="buttons" class="buttons">
             <table id="sezimal-buttons-table" class="buttons-table">
@@ -2224,6 +2234,11 @@ var spellout = localStorage.getItem('sezimal-calculator-spellout');
 var unit_type = localStorage.getItem('sezimal-calculator-unit-type');
 var sezimal_unit = localStorage.getItem('sezimal-calculator-sezimal-unit');
 var decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
+var show_niftimal = localStorage.getItem('sezimal-calculator-show-niftimal');
+var niftimal_alphabetical = localStorage.getItem('sezimal-calculator-niftimal-alphabetical');
+
+console.log('niftimal', show_niftimal, niftimal_alphabetical);
+
 const sezimal_separator = {
     'iso': ',',
     'iso_dot': '.',
@@ -2353,6 +2368,15 @@ if (unit_type === null) {
     unit_type = 'pad';
     localStorage.setItem('sezimal-calculator-unit-type', unit_type);
 };
+
+if (show_niftimal == null) {
+    localStorage.setItem('sezimal-calculator-show-niftimal', true);
+    localStorage.setItem('sezimal-calculator-niftimal-alphabetical', false);
+    document.getElementById('niftimal_display').hidden = false;
+} else if (show_niftimal == 'true' || show_niftimal == true) {
+    document.getElementById('niftimal_display').hidden = false;
+};
+
 
 document.getElementById('calculator-sezimal-locale').value = locale;
 document.getElementById('calculator-sezimal-places').value = places;
@@ -2736,6 +2760,7 @@ function change_base() {
         document.getElementById('decimal_display').classList.add('decimal_display');
         document.getElementById('decimal_display').classList.remove('display');
     };
+    update_calculation('');
 };
 
 function change_digits() {
@@ -2792,6 +2817,7 @@ function update_calculation(value = '') {
             spellout: localStorage.getItem('sezimal-calculator-spellout'),
             sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
             decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            niftimal_alphabetical: localStorage.getItem('sezimal-calculator-niftimal-alphabetical'),
             expression: document.getElementById('decimal_expression').innerHTML,
             value: value,
         });
@@ -2805,6 +2831,7 @@ function update_calculation(value = '') {
             spellout: localStorage.getItem('sezimal-calculator-spellout'),
             sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
             decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            niftimal_alphabetical: localStorage.getItem('sezimal-calculator-niftimal-alphabetical'),
             expression: document.getElementById('expression').innerHTML,
             value: value,
         });
@@ -2824,9 +2851,10 @@ function update_calculation(value = '') {
     }).then((dados) => {
         console.log('dados', dados);
         document.getElementById('expression').innerHTML = dados.expression;
-        document.getElementById('display').innerHTML = dados.display.replace(',,', '„').replace('..', '‥');
         document.getElementById('decimal_expression').innerHTML = dados.decimal_expression;
-        document.getElementById('decimal_display').innerHTML = dados.decimal_display.replace(',,', '„').replace('..', '‥');
+        document.getElementById('display_number').innerHTML = dados.display.replace(',,', '„').replace('..', '‥');
+        document.getElementById('decimal_display_number').innerHTML = dados.decimal_display.replace(',,', '„').replace('..', '‥');
+        document.getElementById('niftimal_display_number').innerHTML = dados.niftimal_display.replace(',,', '„').replace('..', '‥');
 
         if (dados.show_spellout) {
             document.getElementById('spellout').hidden = false;
@@ -2836,41 +2864,41 @@ function update_calculation(value = '') {
         };
 
         if (localStorage.getItem('sezimal-calculator-base') == 14) {
-            if (dados.decimal_display.length <= 10) {
+            if (Array.from(dados.decimal_display).length <= 10) {
                 document.getElementById('decimal_display').style = 'font-size: 42pt;';
-            } else if (dados.decimal_display.length <= 12) {
+            } else if (Array.from(dados.decimal_display).length <= 12) {
                 document.getElementById('decimal_display').style = 'font-size: 36pt;';
-            } else if (dados.decimal_display.length <= 15) {
+            } else if (Array.from(dados.decimal_display).length <= 15) {
                 document.getElementById('decimal_display').style = 'font-size: 30pt;';
-            } else if (dados.decimal_display.length <= 23) {
+            } else if (Array.from(dados.decimal_display).length <= 23) {
                 document.getElementById('decimal_display').style = 'font-size: 20pt;';
-            } else if (dados.decimal_display.length <= 44) {
+            } else if (Array.from(dados.decimal_display).length <= 44) {
                 document.getElementById('decimal_display').style = 'font-size: 12pt;';
             } else {
                 document.getElementById('decimal_display').style = 'font-size: 10pt;';
             };
 
-            if (dados.display.length <= 18) {
+            if (Array.from(dados.display).length <= 18) {
                 document.getElementById('display').style = 'font-size: 24pt;';
             } else {
                 document.getElementById('display').style = 'font-size: 12pt;';
             };
         } else {
-            if (dados.display.length <= 10) {
+            if (Array.from(dados.display).length <= 10) {
                 document.getElementById('display').style = 'font-size: 42pt;';
-            } else if (dados.display.length <= 12) {
+            } else if (Array.from(dados.display).length <= 12) {
                 document.getElementById('display').style = 'font-size: 36pt;';
-            } else if (dados.display.length <= 15) {
+            } else if (Array.from(dados.display).length <= 15) {
                 document.getElementById('display').style = 'font-size: 30pt;';
-            } else if (dados.display.length <= 23) {
+            } else if (Array.from(dados.display).length <= 23) {
                 document.getElementById('display').style = 'font-size: 20pt;';
-            } else if (dados.display.length <= 44) {
+            } else if (Array.from(dados.display).length <= 44) {
                 document.getElementById('display').style = 'font-size: 12pt;';
             } else {
                 document.getElementById('display').style = 'font-size: 10pt;';
             };
 
-            if (dados.decimal_display.length <= 18) {
+            if (Array.from(dados.decimal_display).length <= 18) {
                 document.getElementById('decimal_display').style = 'font-size: 24pt;';
             } else {
                 document.getElementById('decimal_display').style = 'font-size: 12pt;';
@@ -2915,7 +2943,27 @@ function toggle_units(show) {
         document.getElementById('buttons').style = 'visibility: visible;';
         update_calculation();
     };
-}
+};
+
+function toggle_niftimal() {
+    if (localStorage.getItem('sezimal-calculator-show-niftimal') == 'true') {
+        localStorage.setItem('sezimal-calculator-show-niftimal', false);
+        document.getElementById('niftimal_display').hidden = true;
+    } else {
+        localStorage.setItem('sezimal-calculator-show-niftimal', true);
+        document.getElementById('niftimal_display').hidden = false;
+    };
+    update_calculation();
+};
+
+function toggle_niftimal_alphabetical() {
+    if (localStorage.getItem('sezimal-calculator-niftimal-alphabetical') == 'true') {
+        localStorage.setItem('sezimal-calculator-niftimal-alphabetical', false);
+    } else {
+        localStorage.setItem('sezimal-calculator-niftimal-alphabetical', true);
+    }
+    update_calculation();
+};
 
     </script>
 </html>

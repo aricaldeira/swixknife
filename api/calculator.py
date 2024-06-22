@@ -54,6 +54,7 @@ def api_calculator_process() -> dict:
     dados['places'] = int(dados['places'])
     dados['grouping'] = int(dados['grouping'])
     dados['sezimal_digits'] = dados['sezimal_digits'] == 'true'
+    dados['niftimal_alphabetical'] = dados['niftimal_alphabetical'] == 'true'
     dados['spellout'] = dados['spellout'] == 'true'
 
     print('dados', dados)
@@ -65,6 +66,7 @@ def api_calculator_process() -> dict:
     calculator.precision = dados['places']
     calculator.decimal = dados['base'] == 14
     calculator.sezimal_digits = dados['sezimal_digits']
+    calculator.regularized_digits = not dados['niftimal_alphabetical']
     calculator.unit = dados['sezimal_unit']
     # calculator.suffix = dados['sezimal_unit']
     calculator.decimal_unit = dados['decimal_unit']
@@ -155,6 +157,7 @@ def api_calculator_process() -> dict:
         'decimal_expression': calculator.decimal_expression,
         'display': calculator.display.replace('%', '󱺉').replace('‰', '󱺊').replace('‱', '󱺋'),
         'decimal_display': calculator.decimal_display,
+        'niftimal_display': calculator.niftimal_display,
         'show_spellout': False,
         'spellout': '',
     }
