@@ -242,7 +242,7 @@ def validate_clean_niftimal(number: int | float | str | Decimal | Sezimal) -> st
     if cleaned_number and cleaned_number[0] == '.':
         cleaned_number = '0' + cleaned_number
 
-    if cleaned_number and cleaned_number[0] in ('E', 'e'):
+    if cleaned_number and len(cleaned_number) >= 2 and cleaned_number[0:2] in ('E+', 'e+', 'E-', 'e-'):
         cleaned_number = '0' + cleaned_number
 
     if not cleaned_number:
