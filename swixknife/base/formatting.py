@@ -273,10 +273,18 @@ def _apply_format(number: str, separator: str, format_pattern: re.Pattern) -> st
 
 def _finish_formatting(formatted_number: str, prefix: str, suffix: str, positive_format: str, negative_format: str, typographical_negative: bool) -> str:
     if prefix:
-        prefix += ' '
+        #
+        # ISO standard suggests the use of the NNBSP
+        # to separate the unit/prefix/sufix from the value
+        #
+        prefix += SEPARATOR_NARROW_NOBREAK_SPACE
 
     if suffix and suffix[-1] not in PER_SYMBOLS:
-        suffix = ' ' + suffix
+        #
+        # ISO standard suggests the use of the NNBSP
+        # to separate the unit/prefix/sufix from the value
+        #
+        suffix = SEPARATOR_NARROW_NOBREAK_SPACE + suffix
 
     if formatted_number[0] != '-':
         formatted_number = positive_format.format(prefix=prefix, value=formatted_number, suffix=suffix)
