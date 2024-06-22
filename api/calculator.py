@@ -10,7 +10,7 @@ from main import app
 
 
 UNIT_SIMPLIFIED_SYMBOL = {
-    'tap': ' °S',
+    'tap': '\N{NNBSP}°S',
     'p/n': '󱹹 (p/n)',
     'p/a': '󱹹 (p/a)',
     'p/sa': '󱹻 (p/sa)',
@@ -26,14 +26,14 @@ UNIT_SIMPLIFIED_SYMBOL = {
     'p/Cx': '󱺅 (p/Cx)',
     'p/Px': '󱺆 (p/Px)',
     'p/Xx': '󱺇 (p/Xx)',
-    'eprt': ' eprt (󱺈 per six)',
-    'dprt': ' dprt (󱺉 per nif)',
-    'tprt': ' tprt (󱺊 per arda)',
-    'cprt': ' cprt (󱺋 per six arda)',
-    'pprt': ' pprt (󱺌 per nif arda)',
-    'xprt': ' pprt (󱺍 per shadara)',
-    'xeprt': ' xeprt (󱺎 per six shadara)',
-    'xdprt': ' xdprt (󱺏 per nif shadara)',
+    'eprt': '\N{NNBSP}eprt (󱺈 per six)',
+    'dprt': '\N{NNBSP}dprt (󱺉 per nif)',
+    'tprt': '\N{NNBSP}tprt (󱺊 per arda)',
+    'cprt': '\N{NNBSP}cprt (󱺋 per six arda)',
+    'pprt': '\N{NNBSP}pprt (󱺌 per nif arda)',
+    'xprt': '\N{NNBSP}pprt (󱺍 per shadara)',
+    'xeprt': '\N{NNBSP}xeprt (󱺎 per six shadara)',
+    'xdprt': '\N{NNBSP}xdprt (󱺏 per nif shadara)',
 }
 
 
@@ -54,7 +54,6 @@ def api_calculator_process() -> dict:
     dados['places'] = int(dados['places'])
     dados['grouping'] = int(dados['grouping'])
     dados['sezimal_digits'] = dados['sezimal_digits'] == 'true'
-    dados['niftimal_alphabetical'] = dados['niftimal_alphabetical'] == 'true'
     dados['spellout'] = dados['spellout'] == 'true'
 
     print('dados', dados)
@@ -66,7 +65,7 @@ def api_calculator_process() -> dict:
     calculator.precision = dados['places']
     calculator.decimal = dados['base'] == 14
     calculator.sezimal_digits = dados['sezimal_digits']
-    calculator.regularized_digits = not dados['niftimal_alphabetical']
+    calculator.regularized_digits = dados['niftimal'] != 'Z'
     calculator.unit = dados['sezimal_unit']
     # calculator.suffix = dados['sezimal_unit']
     calculator.decimal_unit = dados['decimal_unit']
@@ -155,11 +154,13 @@ def api_calculator_process() -> dict:
     resposta = {
         'expression': calculator.sezimal_expression,
         'decimal_expression': calculator.decimal_expression,
-        'display': calculator.display.replace('%', '󱺉').replace('‰', '󱺊').replace('‱', '󱺋'),
+        'display': calculator.display,
         'decimal_display': calculator.decimal_display,
         'niftimal_display': calculator.niftimal_display,
         'show_spellout': False,
         'spellout': '',
+        'separator': calculator.locale.SEZIMAL_SEPARATOR,
+        'group_separator': calculator.locale.GROUP_SEPARATOR,
     }
 
     if not calculator.error:
@@ -167,13 +168,13 @@ def api_calculator_process() -> dict:
             if dados['sezimal_unit'] in UNIT_SIMPLIFIED_SYMBOL:
                 resposta['display'] += UNIT_SIMPLIFIED_SYMBOL[dados['sezimal_unit']]
             else:
-                resposta['display'] += ' ' + dados['sezimal_unit']
+                resposta['display'] += '\N{NNBSP}' + dados['sezimal_unit']
 
         if dados['decimal_unit']:
             if dados['decimal_unit'] in '%‰‱':
                 resposta['decimal_display'] += dados['decimal_unit']
             else:
-                resposta['decimal_display'] += ' ' + dados['decimal_unit']
+                resposta['decimal_display'] += '\N{NNBSP}' + dados['decimal_unit']
 
         if dados['spellout']:
             resposta['show_spellout'] = True
