@@ -6,7 +6,7 @@ from decimal import Decimal
 from fractions import Fraction as DecimalFraction
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..constants import E, PI, TAU, GOLDEN_RATIO
+from ..constants import E, PI, TAU, GOLDEN_RATIO, SQRT_2
 from ..base import default_to_sezimal_digits, decimal_to_sezimal, \
     validate_clean_sezimal, validate_clean_decimal, \
     sezimal_format, decimal_format, \
@@ -210,6 +210,8 @@ _PER_OPERATIONS_SEZIMAL_TO_DECIMAL = (
     ('󱺗', ' / 10_314_424_798_490_535_546_171_949_056'),
 )
 
+_CONSTANTS = ('e', 'π', 'τ', 'φ')
+
 e = E
 π = PI
 τ = TAU
@@ -242,6 +244,7 @@ class SezimalCalculator:
         self._expression = self._expression.replace('pi', 'π').replace('PI', 'π')
         self._expression = self._expression.replace('tau', 'τ').replace('TAU', 'τ')
         self._expression = self._expression.replace('phi', 'φ').replace('PHI', 'φ')
+        self._expression = self._expression.replace('sqrt_2', '√2').replace('SQRT_2', '√2')
 
         if self.debug:
             self._prepare_expression()
@@ -655,7 +658,7 @@ class SezimalCalculator:
 
             previous_part = part
 
-            if part in ('e', 'π', 'τ', 'φ'):
+            if part in _CONSTANTS:
                 prepared_expression += part
                 display += part
                 decimal_display += part
@@ -699,17 +702,22 @@ class SezimalCalculator:
                 sezimal_expression += self._format_sezimal(number)
 
             else:
+                cleaned_part = part
+
                 if '⁄' in part:
                     if part.endswith('⁄'):
+                        cleaned_part = part[:-1]
                         number = Sezimal(part[:-1])
                         prepared_expression += f"Sezimal('{number}')"
                     else:
                         number = SezimalFraction(part)
                         prepared_expression += f"SezimalFraction('{number}')"
                 elif part.endswith('..'):
+                    cleaned_part = part[:-2]
                     number = Sezimal(part[:-2])
                     prepared_expression += f"Sezimal('{number}')"
                 elif part.endswith('.'):
+                    cleaned_part = part[:-1]
                     number = Sezimal(part[:-1])
                     prepared_expression += f"Sezimal('{number}')"
                 else:
@@ -717,7 +725,7 @@ class SezimalCalculator:
                     prepared_expression += f"Sezimal('{number}')"
 
                 display += self._format_sezimal(part, display=True, part=part)
-                niftimal_display += self._format_niftimal(part, part=part)
+                niftimal_display += self._format_niftimal(cleaned_part, part=part)
                 sezimal_expression += self._format_sezimal(part, part=part)
 
                 if self.unit and self.decimal_unit:
