@@ -183,8 +183,8 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
 
     sw = SezimalWeather(locale, time_zone)
     sw.get_openweathermap_conditions()
-    sezimal_temperature = locale.format_number(sw.temperature_sensation, 0) + ' °S'
-    decimal_temperature = locale.format_decimal_number(sezimal_to_decimal_unit(sw.temperature_sensation, 'tap', '°C'), 1) + ' °C'
+    sezimal_temperature = locale.format_number(sw.temperature_sensation, 0) + '\N{NNBSP}°S'
+    decimal_temperature = locale.format_decimal_number(sezimal_to_decimal_unit(sw.temperature_sensation, 'tap', '°C'), 1) + '\N{NNBSP}°C'
 
     return eval(f'f"""{text}"""')
 
