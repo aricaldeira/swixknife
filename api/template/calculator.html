@@ -14,225 +14,6 @@
         <link rel="stylesheet" type="text/css" href="/static/css/calculator.css" />
     </head>
     <body>
-        <div id="settings" class="control-panel" hidden>
-            <table id="settings-table" class="settings">
-                <colgroup>
-                    <col span="1" style="width: 10%;">
-                    <col span="1" style="width: 40%;">
-                    <col span="1" style="width: 40%;">
-                    <col span="1" style="width: 10%;">
-                </colgroup>
-                <tr>
-                    <td style="text-align: left;" onclick="toggle_settings(false)"><span style="font-size: 26pt;">≡ </span></td>
-                    <td colspan="3" id="label-settings" style="font-size: 18pt; font-weight: bold;">
-                        Settings
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label id="label-sezimal-places" for="calculator-sezimal-places">Sezimal Places</label>
-                    </td>
-                    <td colspan="2">
-                        <label id="label-sezimal-digits" for="calculator-sezimal-digits">Digits</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <select id="calculator-sezimal-places" name="calculator-sezimal-places" onchange="set_sezimal_places()">
-                            <option  value="0"> 0</option>
-                            <option  value="1"> 1</option>
-                            <option  value="2"> 2</option>
-                            <option  value="3" selected> 3</option>
-                            <option  value="4"> 4</option>
-                            <option  value="5"> 5</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                            <option value="32">32</option>
-                            <option value="33">33</option>
-                        </select>
-                    </td>
-                    <td colspan="2">
-                        <select id="calculator-sezimal-digits" name="calculator-sezimal-digits" onchange="change_digits()">
-                            <option value="false">012345</option>
-                            <option value="true">󱸀󱸁󱸂󱸃󱸄󱸅</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label id="label-sezimal-grouping" for="calculator-sezimal-grouping">Grouping</label>
-                    </td>
-                    <td colspan="2">
-                        <label id="label-sezimal-spellout" for="calculator-sezimal-spellout">Spell out</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <select id="calculator-sezimal-grouping" name="calculator-sezimal-grouping" onchange="set_sezimal_grouping()">
-                            <option  value="3">3 (arda...)</option>
-                            <option  value="4">4 (unexian...)</option>
-                        </select>
-                    </td>
-                    <td colspan="2">
-                        <input id="calculator-sezimal-spellout" name="calculator-sezimal-spellout" type="checkbox" onchange="set_sezimal_spellout(this)" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <table class="grouping-explanation">
-                            <colgroup>
-                                <col span="1" style="width: 20%;">
-                                <col span="1" style="width: 40%;">
-                                <col span="1" style="width: 40%;">
-                            </colgroup>
-                            <tr>
-                                <td colspan="3" id="grouping-explanation">
-                                    Each grouping option requires it’s own vocabulary, used in the spelling out of numbers:
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="title" id="group-title-3">1 000 000</td>
-                                <td class="title" id="group-title-4">1 0000 0000</td>
-                            </tr>
-                            <tr>
-                                <td>10²</td>
-                                <td id="groupping-explanation-nif-3">nif</td>
-                                <td id="groupping-explanation-nif-4">nif</td>
-                            </tr>
-                            <tr>
-                                <td>10³</td>
-                                <td id="groupping-explanation-arda-3">arda</td>
-                                <td id="groupping-explanation-arda-4">six nif</td>
-                            </tr>
-                            <tr>
-                                <td>10⁴</td>
-                                <td id="groupping-explanation-six-arda-3">six arda</td>
-                                <td id="groupping-explanation-six-arda-4">unexian</td>
-                            </tr>
-                            <tr>
-                                <td>10⁵</td>
-                                <td id="groupping-explanation-nif-arda-3">nif arda</td>
-                                <td id="groupping-explanation-nif-arda-4">six unexian</td>
-                            </tr>
-                            <tr>
-                                <td>10¹⁰</td>
-                                <td id="groupping-explanation-shadara-3">shadara</td>
-                                <td id="groupping-explanation-shadara-4">nif unexian</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td colspan="1">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <label id="label-sezimal-locale" for="calculator-sezimal-locale">Locale</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <select id="calculator-sezimal-locale" name="calculator-sezimal-locale" onchange="set_locale()">
-                            <option value="iso">ISO (comma)</option>
-                            <option value="iso_dot">ISO (dot)</option>
-                            <option value="code">Code (dot and _)</option>
-                            <option value="ar">العربية (ar)</option>
-                            <option value="ar_latn">el-għàràbí (ar_Latn)</option>
-                            <option value="bz">brazileru (bz)</option>
-                            <option value="ca">català (ca)</option>
-                            <option value="de">Deutsch (de)</option>
-                            <option value="el">ελληνικά (el)</option>
-                            <!-- <option value="en">English (en)</option> -->
-                            <option value="en_au">English - Australia (en_AU)</option>
-                            <option value="en_br">English - Brazil (en_BR)</option>
-                            <option value="en_ca">English - Canada (en_CA)</option>
-                            <option value="en_gb">English - GB (en_GB)</option>
-                            <option value="en_ie">English - Ireland (en_IE)</option>
-                            <option value="en_in">English - India (en_IN)</option>
-                            <option value="en_nz">English - New Zealand (en_NZ)</option>
-                            <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
-                            <option value="en_us">English - USA (en_US)</option>
-                            <option value="eo">Esperanto (eo)</option>
-                            <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
-                            <option value="es">español de España (es)</option>
-                            <option value="es_ar">español de Argentina (es_AR)</option>
-                            <option value="es_bo">español de Bolivia (es_BO)</option>
-                            <option value="es_cl">español de Chile (es_CL)</option>
-                            <option value="es_co">español de Colombia (es_CO)</option>
-                            <option value="es_ec">español de Ecuador (es_EC)</option>
-                            <option value="es_mx">español de Méjico (es_MX)</option>
-                            <option value="es_pe">español de Perú (es_PE)</option>
-                            <option value="es_py">español de Paraguai (es_PY)</option>
-                            <option value="es_uy">español de Uruguai (es_UY)</option>
-                            <option value="fa">فارسی (fa)</option>
-                            <option value="fa_latn">fârsi (fa_Latn)</option>
-                            <option value="fr">français (fr)</option>
-                            <option value="fr_ca">français canadien (fr_CA)</option>
-                            <option value="fr_ch">français de Suisse (fr_CH)</option>
-                            <option value="fr_ortograf">fransè ortograf (fr_Ortograf)</option>
-                            <option value="ga">gaeilge (ga)</option>
-                            <option value="ga_clo_gaelach">ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
-                            <option value="ga_traditional">gaeilge mh -> ṁ (ga_Traditional)</option>
-                            <option value="gl">galego (gl)</option>
-                            <option value="gn">avañeꞌẽ (gn)</option>
-                            <option value="he">עברית (he)</option>
-                            <option value="he_latn">’ivrít (he_Latn)</option>
-                            <option value="hi">हिन्दी (hi)</option>
-                            <option value="hi_latn">hindi (hi_Latn)</option>
-                            <option value="hu">magyar (hu)</option>
-                            <option value="id">Indonesia (id)</option>
-                            <option value="it">italiano (it)</option>
-                            <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
-                            <option value="iu_latn">inuktitut (iu_Latn)</option>
-                            <option value="ja">日本語 (ja)</option>
-                            <option value="ko">한국어 (ko)</option>
-                            <option value="nl">Nederlands (nl)</option>
-                            <option value="pl">polski (pl)</option>
-                            <option value="pt_ao">português angolano (pt_AO)</option>
-                            <option value="pt_br">português brasileiro (pt_BR)</option>
-                            <option value="pt_ch">português suíço (pt_CH)</option>
-                            <option value="pt_cv">português cabo-verdiano (pt_CV)</option>
-                            <option value="pt_gq">português equatorial-guineense (pt_GQ)</option>
-                            <option value="pt_gw">português bissau-guineense (pt_GW)</option>
-                            <option value="pt_lu">português luxemburguês (pt_LU)</option>
-                            <option value="pt_mo">português macaense (pt_MO)</option>
-                            <option value="pt_mz">português moçambicano (pt_MZ)</option>
-                            <option value="pt_pt">português europeu (pt_PT)</option>
-                            <option value="pt_st">português são-tomense (pt_ST)</option>
-                            <option value="pt_tl">português timorense (pt_TL)</option>
-                            <option value="ro">română (ro)</option>
-                            <option value="ru">русский (ru)</option>
-                            <option value="sw">Kiswahili (sw)</option>
-                            <option value="tr">Türkçe (tr)</option>
-                            <option value="uk">українська (uk)</option>
-                            <option value="vi">Tiếng Việt (vi)</option>
-                            <option value="yo">Èdè Yorùbá (yo)</option>
-                            <option value="yrl">ỹengatu (yrl)</option>
-                            <option value="zh_cn">中文 中国 (zh_CN)</option>
-                            <option value="zh_hk">中文 香港 (zh_HK)</option>
-                            <option value="zh_mo">中文 澳門 (zh_MO)</option>
-                            <option value="zh_sg">中文 新加坡 (zh_SG)</option>
-                            <option value="zh_tw">中文 臺灣 (zh_TW)</option>
-                            <option value="zh_hans">中文 简体 (zh_HanS)</option>
-                            <option value="zh_hant">中文 正體 (zh_HanT)</option>
-                            <option value="zh_latn">zhōngwén (zh_Latn)</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-        </div>
         <div id="units" class="control-panel" hidden>
             <table id="units-table">
                 <colgroup>
@@ -244,11 +25,11 @@
                     <td colspan="2" id="label-settings" style="font-size: 18pt; font-weight: bold;">
                         Shastadari Units of Measure
                     </td>
-                    <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">⚙ </span></td>
+                    <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">× </span></td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: center;">
-                        <select id="calculator-sezimal-unit-type" name="calculator-sezimal-unit-type" onchange="set_unit_type()">
+                        <select id="calculator-sezimal-unit-type" onchange="set_unit_type()">
                             <optgroup label="Instructions">
                                 <option value="units">Shastari units</option>
                                 <option value="prefixes">Shastari prefixes</option>
@@ -372,7 +153,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-ang" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-ang" name="calculator-sezimal-unit-ang" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-ang" onchange="set_sezimal_unit(this)">
                             <optgroup label="Common">
                                 <option value="day">day</option>
                                 <option value="uta">uta</option>
@@ -414,7 +195,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-ang" name="calculator-decimal-unit-ang" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-ang" onchange="set_decimal_unit(this)">
                             <optgroup label="Common">
                                 <option value="day">day</option>
                                 <option value="h">hour</option>
@@ -436,7 +217,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-avt" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-avt" name="calculator-sezimal-unit-avt" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-avt" onchange="set_sezimal_unit(this)">
                             <option value="TXavt">TXavt</option>
                             <option value="DPavt">DPavt</option>
                             <option value="DCavt">DCavt</option>
@@ -465,7 +246,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-avt" name="calculator-decimal-unit-avt" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-avt" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="PHz">PHz</option>
                                 <option value="THz">THz</option>
@@ -488,7 +269,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-pad" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-pad" name="calculator-sezimal-unit-pad" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-pad" onchange="set_sezimal_unit(this)">
                             <option value="Xpad">Xpad</option>
                             <option value="Ppad">Ppad</option>
                             <option value="Cpad">Cpad</option>
@@ -505,7 +286,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-pad" name="calculator-decimal-unit-pad" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-pad" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="km">km</option>
                                 <option value="hm">hm</option>
@@ -527,7 +308,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-kex" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-kex" name="calculator-sezimal-unit-kex" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-kex" onchange="set_sezimal_unit(this)">
                             <option value="DXkex">DXkex ‐ Xpad²</option>
                             <option value="XPkex">XPkex</option>
                             <option value="XCkex">XCkex ‐ Ppad²</option>
@@ -556,7 +337,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-kex" name="calculator-decimal-unit-kex" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-kex" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="km2">km²</option>
                                 <option value="hm2">hm² ‐ ha</option>
@@ -579,7 +360,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-ayt" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-ayt" name="calculator-sezimal-unit-ayt" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-ayt" onchange="set_sezimal_unit(this)">
                             <option value="Xayt">TXayt ‐ Xpad³</option>
                             <option value="Xayt">DPayt</option>
                             <option value="Xayt">DCayt</option>
@@ -620,7 +401,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-ayt" name="calculator-decimal-unit-ayt" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-ayt" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="kL">kL ‐ m³</option>
                                 <option value="hL">hL</option>
@@ -665,7 +446,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-veg" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-veg" name="calculator-sezimal-unit-veg" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-veg" onchange="set_sezimal_unit(this)">
                             <option value="Xveg">Xveg</option>
                             <option value="Pveg">Pveg</option>
                             <option value="Cveg">Cveg</option>
@@ -682,7 +463,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-veg" name="calculator-decimal-unit-veg" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-veg" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="km/h">km/h</option>
                                 <option value="m/s">m/s</option>
@@ -698,7 +479,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-tvr" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-tvr" name="calculator-sezimal-unit-tvr" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-tvr" onchange="set_sezimal_unit(this)">
                             <option value="Xtvr">Xtvr</option>
                             <option value="Ptvr">Ptvr</option>
                             <option value="Ctvr">Ctvr</option>
@@ -715,7 +496,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-tvr" name="calculator-decimal-unit-tvr" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-tvr" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="m/s2">m/s²</option>
                                 <option value="cm/s²">cm/s²</option>
@@ -730,7 +511,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-drv" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-drv" name="calculator-sezimal-unit-drv" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-drv" onchange="set_sezimal_unit(this)">
                             <option value="Xdrv">Xdrv</option>
                             <option value="Pdrv">Pdrv</option>
                             <option value="Cdrv">Cdrv</option>
@@ -747,7 +528,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-drv" name="calculator-decimal-unit-drv" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-drv" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="ton">ton</option>
                                 <option value="kg">kg</option>
@@ -781,7 +562,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-gan" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-gan" name="calculator-sezimal-unit-gan" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-gan" onchange="set_sezimal_unit(this)">
                             <option value="Xgan">Xgan</option>
                             <option value="Pgan">Pgan</option>
                             <option value="Cgan">Cgan</option>
@@ -798,7 +579,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-gan" name="calculator-decimal-unit-gan" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-gan" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="kg/m3">kg/m³</option>
                                 <option value="kg/L">kg/L</option>
@@ -822,7 +603,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-bar" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-bar" name="calculator-sezimal-unit-bar" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-bar" onchange="set_sezimal_unit(this)">
                             <option value="DXbar">DXbar</option>
                             <option value="XPbar">XPbar</option>
                             <option value="XCbar">XCbar</option>
@@ -851,7 +632,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-bar" name="calculator-decimal-unit-bar" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-bar" onchange="set_decimal_unit(this)">
                             <optgroup label="SI - Joule">
                                 <option value="MN">MN</option>
                                 <option value="kN">kN</option>
@@ -884,7 +665,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-dab" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-dab" name="calculator-sezimal-unit-dab" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-dab" onchange="set_sezimal_unit(this)">
                             <option value="DXdab">DXdab</option>
                             <option value="XPdab">XPdab</option>
                             <option value="XCdab">XCdab</option>
@@ -913,7 +694,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-dab" name="calculator-decimal-unit-dab" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-dab" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="TPa">TPa</option>
                                 <option value="GPa">GPa</option>
@@ -941,7 +722,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-kry" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-kry" name="calculator-sezimal-unit-kry" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-kry" onchange="set_sezimal_unit(this)">
                             <option value="CXkry">CXkry</option>
                             <option value="TPkry">TPkry</option>
                             <option value="TCkry">TCkry</option>
@@ -982,7 +763,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-kry" name="calculator-decimal-unit-kry" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-kry" onchange="set_decimal_unit(this)">
                             <optgroup label="SI - Joule">
                                 <option value="TJ">TJ</option>
                                 <option value="GJ">GJ</option>
@@ -1058,7 +839,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-xat" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-xat" name="calculator-sezimal-unit-xat" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-xat" onchange="set_sezimal_unit(this)">
                             <option value="DXxat">DXxat</option>
                             <option value="XPxat">XPxat</option>
                             <option value="XCxat">XCxat</option>
@@ -1087,7 +868,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-xat" name="calculator-decimal-unit-xat" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-xat" onchange="set_decimal_unit(this)">
                             <optgroup label="SI - Watt">
                                 <option value="PW">PW</option>
                                 <option value="TW">TW</option>
@@ -1116,7 +897,7 @@ Shastadari prefixes explanation
 
                 <tr id="unit-gtk" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-gtk" name="calculator-sezimal-unit-gtk" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-gtk" onchange="set_sezimal_unit(this)">
                             <option value="DXgtk">DXgtk</option>
                             <option value="XPgtk">XPgtk</option>
                             <option value="XCgtk">XCgtk</option>
@@ -1139,7 +920,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-gtk" name="calculator-decimal-unit-gtk" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-gtk" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="K">K</option>
                                 <option value="°C">°C</option>
@@ -1153,7 +934,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-tap" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-tap" name="calculator-sezimal-unit-tap" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-tap" onchange="set_sezimal_unit(this)">
                             <option value="Xtap">Xtap</option>
                             <option value="Ptap">Ptap</option>
                             <option value="Ctap">Ctap</option>
@@ -1170,7 +951,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-tap" name="calculator-decimal-unit-tap" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-tap" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="°C">°C</option>
                                 <option value="K">K</option>
@@ -1184,7 +965,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-agn" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-agn" name="calculator-sezimal-unit-agn" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-agn" onchange="set_sezimal_unit(this)">
                             <option value="Xagn">Xagn</option>
                             <option value="Pagn">Pagn</option>
                             <option value="Cagn">Cagn</option>
@@ -1201,7 +982,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-agn" name="calculator-decimal-unit-agn" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-agn" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="MJ/K">MJ/K</option>
                                 <option value="kJ/K">kJ/K</option>
@@ -1221,7 +1002,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-idn" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-idn" name="calculator-sezimal-unit-idn" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-idn" onchange="set_sezimal_unit(this)">
                             <option value="Xidn">Xidn</option>
                             <option value="Pidn">Pidn</option>
                             <option value="Cidn">Cidn</option>
@@ -1238,7 +1019,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-idn" name="calculator-decimal-unit-idn" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-idn" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="MJ/K/kg">MJ/K/kg</option>
                                 <option value="kJ/K/kg">kJ/K/kg</option>
@@ -1258,7 +1039,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-tln" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-tln" name="calculator-sezimal-unit-tln" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-tln" onchange="set_sezimal_unit(this)">
                             <option value="Xtln">Xtln</option>
                             <option value="Ptln">Ptln</option>
                             <option value="Ctln">Ctln</option>
@@ -1275,7 +1056,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-tln" name="calculator-decimal-unit-tln" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-tln" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="MJ/K/m3">MJ/K/m³</option>
                                 <option value="kJ/K/m3">kJ/K/m³</option>
@@ -1295,7 +1076,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-avx" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-avx" name="calculator-sezimal-unit-avx" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-avx" onchange="set_sezimal_unit(this)">
                             <option value="DXavx">DXavx</option>
                             <option value="XPavx">XPavx</option>
                             <option value="XCavx">XCavx</option>
@@ -1318,7 +1099,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-avx" name="calculator-decimal-unit-avx" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-avx" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="MC">MC</option>
                                 <option value="kC">kC</option>
@@ -1348,7 +1129,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-dar" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-dar" name="calculator-sezimal-unit-dar" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-dar" onchange="set_sezimal_unit(this)">
                             <option value="DXdar">DXdar</option>
                             <option value="XPdar">XPdar</option>
                             <option value="XAdar">XAdar</option>
@@ -1371,7 +1152,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-dar" name="calculator-decimal-unit-dar" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-dar" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GA">GA</option>
                                 <option value="MA">MA</option>
@@ -1390,7 +1171,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-vbv" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-vbv" name="calculator-sezimal-unit-vbv" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-vbv" onchange="set_sezimal_unit(this)">
                             <option value="Xvbv">Xvbv</option>
                             <option value="Pvbv">Pvbv</option>
                             <option value="Cvbv">Cvbv</option>
@@ -1407,7 +1188,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-vbv" name="calculator-decimal-unit-vbv" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-vbv" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GV">GV</option>
                                 <option value="MV">MV</option>
@@ -1426,7 +1207,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-ptr" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-ptr" name="calculator-sezimal-unit-ptr" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-ptr" onchange="set_sezimal_unit(this)">
                             <option value="Xptr">Xptr</option>
                             <option value="Pptr">Pptr</option>
                             <option value="Cptr">Cptr</option>
@@ -1443,7 +1224,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-ptr" name="calculator-decimal-unit-ptr" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-ptr" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GΩ">GΩ</option>
                                 <option value="MΩ">MΩ</option>
@@ -1462,7 +1243,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-cln" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-cln" name="calculator-sezimal-unit-cln" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-cln" onchange="set_sezimal_unit(this)">
                             <option value="Xcln">Xcln</option>
                             <option value="Pcln">Pcln</option>
                             <option value="Ccln">Ccln</option>
@@ -1479,7 +1260,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-cln" name="calculator-decimal-unit-cln" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-cln" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GS">GS</option>
                                 <option value="MS">MS</option>
@@ -1498,7 +1279,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-prk" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-prk" name="calculator-sezimal-unit-prk" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-prk" onchange="set_sezimal_unit(this)">
                             <option value="Xprk">Xprk</option>
                             <option value="Pprk">Pprk</option>
                             <option value="Cprk">Cprk</option>
@@ -1515,7 +1296,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-prk" name="calculator-decimal-unit-prk" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-prk" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GH">GH</option>
                                 <option value="MH">MH</option>
@@ -1534,7 +1315,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-sam" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-sam" name="calculator-sezimal-unit-sam" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-sam" onchange="set_sezimal_unit(this)">
                             <option value="Xsam">Xsam</option>
                             <option value="Psam">Psam</option>
                             <option value="Csam">Csam</option>
@@ -1551,7 +1332,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-sam" name="calculator-decimal-unit-sam" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-sam" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GF">GF</option>
                                 <option value="MF">MF</option>
@@ -1570,7 +1351,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-abv" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-abv" name="calculator-sezimal-unit-abv" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-abv" onchange="set_sezimal_unit(this)">
                             <option value="Xabv">Xabv</option>
                             <option value="Pabv">Pabv</option>
                             <option value="Cabv">Cabv</option>
@@ -1587,7 +1368,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-abv" name="calculator-decimal-unit-abv" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-abv" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GWb">GWb</option>
                                 <option value="MWb">MWb</option>
@@ -1606,7 +1387,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-vtr" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-vtr" name="calculator-sezimal-unit-vtr" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-vtr" onchange="set_sezimal_unit(this)">
                             <option value="Xvtr">Xvtr</option>
                             <option value="Pvtr">Pvtr</option>
                             <option value="Cvtr">Cvtr</option>
@@ -1623,7 +1404,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-vtr" name="calculator-decimal-unit-vtr" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-vtr" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="GT">GT</option>
                                 <option value="MT">MT</option>
@@ -1642,7 +1423,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-prd" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-prd" name="calculator-sezimal-unit-prd" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-prd" onchange="set_sezimal_unit(this)">
                             <option value="prd">prd</option>
                             <option value="eprd">eprd</option>
                             <option value="dprd">dprd</option>
@@ -1653,7 +1434,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-prd" name="calculator-decimal-unit-prd" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-prd" onchange="set_decimal_unit(this)">
                             <optgroup label="SI">
                                 <option value="rad">rad</option>
                                 <option value="drad">drad</option>
@@ -1702,7 +1483,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-gol" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-gol" name="calculator-sezimal-unit-gol" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-gol" onchange="set_sezimal_unit(this)">
                             <option value="gol">gol</option>
                             <option value="egol">egol</option>
                             <option value="dgol">dgol</option>
@@ -1713,7 +1494,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-gol" name="calculator-decimal-unit-gol" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-gol" onchange="set_decimal_unit(this)">
                             <optgroup label="S.I.">
                                 <option value="sr">sr</option>
                                 <option value="dsr">dsr</option>
@@ -1738,7 +1519,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-prt" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-prt" name="calculator-sezimal-unit-prt" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-prt" onchange="set_sezimal_unit(this)">
                             <option value="prt">prt (per unit 10⁰)</option>
                             <option value="eprt">eprt (per six 10¹)</option>
                             <option value="dprt">dprt (per nif 10²)</option>
@@ -1761,7 +1542,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-prt" name="calculator-decimal-unit-prt" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-prt" onchange="set_decimal_unit(this)">
                             <option value="%">% per hundred</option>
                             <option value="‰">‰ per thousand</option>
                             <option value="‱">‱ per ten thousand</option>
@@ -1775,7 +1556,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-atk" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-atk" name="calculator-sezimal-unit-atk" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-atk" onchange="set_sezimal_unit(this)">
                             <option value="NDXatk">NDXatk</option>
                             <option value="NXPatk">NXPatk</option>
                             <option value="NXCatk">NXCatk</option>
@@ -1831,7 +1612,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-atk" name="calculator-decimal-unit-atk" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-atk" onchange="set_decimal_unit(this)">
                             <optgroup label="Byte">
                                 <option value="QB">QB</option>
                                 <option value="RB">RB</option>
@@ -1889,7 +1670,7 @@ Shastadari prefixes explanation
                 </tr>
                 <tr id="unit-pvn" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-pvn" name="calculator-sezimal-unit-pvn" onchange="set_sezimal_unit(this)">
+                        <select id="calculator-sezimal-unit-pvn" onchange="set_sezimal_unit(this)">
                             <option value="NDXpvn">NDXpvn</option>
                             <option value="NXPpvn">NXPpvn</option>
                             <option value="NXCpvn">NXCpvn</option>
@@ -1948,7 +1729,7 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-pvn" name="calculator-decimal-unit-pvn" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-pvn" onchange="set_decimal_unit(this)">
                             <optgroup label="bps">
                                 <option value="Qbps">Qbps</option>
                                 <option value="Rbps">Rbps</option>
@@ -2042,23 +1823,146 @@ Shastadari prefixes explanation
             </table>
         </div>
         <div id="displays">
-            <div id="settings"><span style="text-align: left; font-size: 19pt;" onclick="toggle_settings(true)"> ≡ </span><span style="text-align: right; float: right; font-size: 16pt;" onclick="toggle_units(true)"> ⚙ </span></div>
-            <div id="units-conversion"></div>
-            <div id="spellout" class="spellout"></div>
+            <div id="configuration-left" class="configuration-left">
+<!--                 <span id="toggle_help">[ ? ]</span> -->
+                <span id="toggle_locale" onclick="toggle_locale()">[ en ]</span>
+                <span id="locale-setting" hidden>
+                    <label id="calculator-sezimal-locale-label" for="calculator-sezimal-locale" onclick="toggle_locale()">Locale</label><br/>
+                    <select id="calculator-sezimal-locale" onchange="set_locale()">
+                        <option value="iso">ISO (comma)</option>
+                        <option value="iso_dot">ISO (dot)</option>
+                        <option value="code">Code (dot and _)</option>
+                        <option value="ar">العربية (ar)</option>
+                        <option value="ar_latn">el-għàràbí (ar_Latn)</option>
+                        <option value="bz">brazileru (bz)</option>
+                        <option value="ca">català (ca)</option>
+                        <option value="de">Deutsch (de)</option>
+                        <option value="el">ελληνικά (el)</option>
+                        <!-- <option value="en">English (en)</option> -->
+                        <option value="en_au">English - Australia (en_AU)</option>
+                        <option value="en_br">English - Brazil (en_BR)</option>
+                        <option value="en_ca">English - Canada (en_CA)</option>
+                        <option value="en_gb">English - GB (en_GB)</option>
+                        <option value="en_ie">English - Ireland (en_IE)</option>
+                        <option value="en_in">English - India (en_IN)</option>
+                        <option value="en_nz">English - New Zealand (en_NZ)</option>
+                        <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
+                        <option value="en_us">English - USA (en_US)</option>
+                        <option value="eo">Esperanto (eo)</option>
+                        <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+                        <option value="es">español de España (es)</option>
+                        <option value="es_ar">español de Argentina (es_AR)</option>
+                        <option value="es_bo">español de Bolivia (es_BO)</option>
+                        <option value="es_cl">español de Chile (es_CL)</option>
+                        <option value="es_co">español de Colombia (es_CO)</option>
+                        <option value="es_ec">español de Ecuador (es_EC)</option>
+                        <option value="es_mx">español de Méjico (es_MX)</option>
+                        <option value="es_pe">español de Perú (es_PE)</option>
+                        <option value="es_py">español de Paraguai (es_PY)</option>
+                        <option value="es_uy">español de Uruguai (es_UY)</option>
+                        <option value="fa">فارسی (fa)</option>
+                        <option value="fa_latn">fârsi (fa_Latn)</option>
+                        <option value="fr">français (fr)</option>
+                        <option value="fr_ca">français canadien (fr_CA)</option>
+                        <option value="fr_ch">français de Suisse (fr_CH)</option>
+                        <option value="fr_ortograf">fransè ortograf (fr_Ortograf)</option>
+                        <option value="ga">gaeilge (ga)</option>
+                        <option value="ga_clo_gaelach">ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
+                        <option value="ga_traditional">gaeilge mh -> ṁ (ga_Traditional)</option>
+                        <option value="gl">galego (gl)</option>
+                        <option value="gn">avañeꞌẽ (gn)</option>
+                        <option value="he">עברית (he)</option>
+                        <option value="he_latn">’ivrít (he_Latn)</option>
+                        <option value="hi">हिन्दी (hi)</option>
+                        <option value="hi_latn">hindi (hi_Latn)</option>
+                        <option value="hu">magyar (hu)</option>
+                        <option value="id">Indonesia (id)</option>
+                        <option value="it">italiano (it)</option>
+                        <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
+                        <option value="iu_latn">inuktitut (iu_Latn)</option>
+                        <option value="ja">日本語 (ja)</option>
+                        <option value="ko">한국어 (ko)</option>
+                        <option value="nl">Nederlands (nl)</option>
+                        <option value="pl">polski (pl)</option>
+                        <option value="pt_ao">português angolano (pt_AO)</option>
+                        <option value="pt_br">português brasileiro (pt_BR)</option>
+                        <option value="pt_ch">português suíço (pt_CH)</option>
+                        <option value="pt_cv">português cabo-verdiano (pt_CV)</option>
+                        <option value="pt_gq">português equatorial-guineense (pt_GQ)</option>
+                        <option value="pt_gw">português bissau-guineense (pt_GW)</option>
+                        <option value="pt_lu">português luxemburguês (pt_LU)</option>
+                        <option value="pt_mo">português macaense (pt_MO)</option>
+                        <option value="pt_mz">português moçambicano (pt_MZ)</option>
+                        <option value="pt_pt">português europeu (pt_PT)</option>
+                        <option value="pt_st">português são-tomense (pt_ST)</option>
+                        <option value="pt_tl">português timorense (pt_TL)</option>
+                        <option value="ro">română (ro)</option>
+                        <option value="ru">русский (ru)</option>
+                        <option value="sw">Kiswahili (sw)</option>
+                        <option value="tr">Türkçe (tr)</option>
+                        <option value="uk">українська (uk)</option>
+                        <option value="vi">Tiếng Việt (vi)</option>
+                        <option value="yo">Èdè Yorùbá (yo)</option>
+                        <option value="yrl">ỹengatu (yrl)</option>
+                        <option value="zh_cn">中文 中国 (zh_CN)</option>
+                        <option value="zh_hk">中文 香港 (zh_HK)</option>
+                        <option value="zh_mo">中文 澳門 (zh_MO)</option>
+                        <option value="zh_sg">中文 新加坡 (zh_SG)</option>
+                        <option value="zh_tw">中文 臺灣 (zh_TW)</option>
+                        <option value="zh_hans">中文 简体 (zh_HanS)</option>
+                        <option value="zh_hant">中文 正體 (zh_HanT)</option>
+                        <option value="zh_latn">zhōngwén (zh_Latn)</option>
+                    </select>
+                </span>
+                <span id="toggle_spellout" onclick="toggle_spellout()">[ ∼<i>txt</i> ]</span>
+                <span id="toggle_sezimal_digits" onclick="toggle_sezimal_digits()">[ 3 ]</span>
+                <span id="toggle_grouping" onclick="toggle_grouping()">[ 3&nnbsp;3 ]</span>
+                <span id="toggle_niftimal" onclick="toggle_niftimal()">[ ≁<i>nif</i> ]</span>
+            </div>
+            <div id="configuration-right" class="configuration-right">
+                <span id="toggle_units" onclick="toggle_units(true)">[ ↮ ]</span>
+                <span id="toggle_sezimal_places" onclick="toggle_sezimal_places()">[ 0.3 ]</span>
+                <span id="sezimal-places-setting" hidden>
+                    <label id="calculator-sezimal-places-label" for="calculator-sezimal-places" onclick="toggle_sezimal_places()">Places</label><br/>
+                    <select id="calculator-sezimal-places" onchange="set_sezimal_places()">
+                        <option  value="0"> 0</option>
+                        <option  value="1"> 1</option>
+                        <option  value="2"> 2</option>
+                        <option  value="3"> 3</option>
+                        <option  value="4"> 4</option>
+                        <option  value="5"> 5</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                    </select>
+                </span>
+            </div>
             <div id="display" class="display">
-                <span class="base-badge" onclick="toggle_niftimal()">sez</span>
-                <span id="display_number">0</span>
+                <div id="sezimal_display" class="sezimal_display">
+                    <div id="display_number">0</div>
+                </div>
                 <div id="niftimal_display" class="niftimal_display" hidden>
-                    <span class="base-badge" onclick="toggle_niftimal_alphabetical()">nif</span>
-                    <span id="niftimal_display_number">0<span>
+                    <div id="niftimal_display_number">0</div>
+                </div>
+                <div id="spellout_display" class="spellout" hidden>
+                    <div id="spellout">zero</div>
                 </div>
             </div>
             <div id="decimal_display" class="decimal_display">
-                <span class="base-badge">dec</span>
-                <span id="decimal_display_number">0</span>
+                <div id="decimal_display_number">0</div>
             </div>
-            <div id="expression" class="expression" hidden>0</div>
-            <div id="decimal_expression" class="expression" hidden>0</div>
+            <div id="expression" hidden>0</div>
+            <div id="decimal_expression" hidden>0</div>
         </div>
         <div id="buttons" class="buttons">
             <table id="sezimal-buttons-table" class="buttons-table">
@@ -2074,73 +1978,71 @@ Shastadari prefixes explanation
                     <col span="1" style="width: 19.2%;">
                 </colgroup>
                 <tr>
-                    <td><button id="button-clear" name="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td><button id="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
                     <td></td>
-                    <td><button id="button-base-ten" name="button-base-ten" class="button-base" value="14" onclick="set_base_ten()">󱸁󱸄</button></td>
+                    <td><button id="button-base-ten" class="button-base" value="14" onclick="toggle_base_ten()">󱸁󱸄</button></td>
                     <td></td>
-<!--                    <td><button id="button-arrow-left" name="button-arrow-left" class="button-arrow" value="◂">◂</button></td>
-                    <td><button id="button-arrow-right" name="button-arrow-right" class="button-arrow" value="▸">▸</button></td>-->
-                    <td><button id="button-left-parentheses"  name="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td><button id="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>
-                    <td><button id="button-right-parentheses" name="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td><button id="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
                     <td></td>
-                    <td><button id="button-backspace" name="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                    <td><button id="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-e" name="button" class="button-constant" value="e" style="font-style: italic;" onclick="button_click(this)">e</button></td>
+                    <td><button id="button-phi" class="button-constant" value="φ" onclick="button_click(this)">φ</button></td>
                     <td></td>
-                    <td><button id="button-pi" name="button" class="button-constant" value="π" onclick="button_click(this)">π</button></td>
+                    <td><button id="button-e" class="button-constant" value="e" style="font-style: italic;" onclick="button_click(this)">e</button></td>
                     <td></td>
-                    <td><button id="button-tau" name="button" class="button-constant" value="τ" onclick="button_click(this)">τ</button></td>
+                    <td><button id="button-tau" class="button-constant" value="τ" onclick="button_click(this)">τ</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-exponent" name="button" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
+                    <td><button id="button-sezimal-exponent" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
                     <td></td>
-                    <td><button id="button-pernif" name="button" class="button-operator" value="󱺉" onclick="button_click(this)">󱺉</button></td>
-                    <td hidden><button id="button-perarda" name="button" class="button-operator" value="󱺊" onclick="button_click(this)">󱺊</button></td>
-                    <td hidden><button id="button-persixarda" name="button" class="button-operator" value="󱺋" onclick="button_click(this)">󱺋</button></td>
+                    <td><button id="button-pernif" class="button-operator" value="󱺉" onclick="button_click(this)">󱺉</button></td>
+                    <td hidden><button id="button-perarda" class="button-operator" value="󱺊" onclick="button_click(this)">󱺊</button></td>
+                    <td hidden><button id="button-persixarda" class="button-operator" value="󱺋" onclick="button_click(this)">󱺋</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-sezimal-number-3" name="button-number-3" class="button-digit" value="3" onclick="button_click(this)">󱸃</button></td>
+                    <td><button id="button-sezimal-number-3" class="button-digit" value="3" onclick="button_click(this)">󱸃</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-number-4" name="button-number-4" class="button-digit" value="4" onclick="button_click(this)">󱸄</button></td>
+                    <td><button id="button-sezimal-number-4" class="button-digit" value="4" onclick="button_click(this)">󱸄</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-number-5" name="button-number-5" class="button-digit" value="5" onclick="button_click(this)">󱸅</button></td>
+                    <td><button id="button-sezimal-number-5" class="button-digit" value="5" onclick="button_click(this)">󱸅</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-multiplication" name="button-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
+                    <td><button id="button-sezimal-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-division" name="button-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
+                    <td><button id="button-sezimal-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-sezimal-number-0" name="button-number-0" class="button-digit" value="0" onclick="button_click(this)">󱸀</button></td>
+                    <td><button id="button-sezimal-number-0" class="button-digit" value="0" onclick="button_click(this)">󱸀</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-number-1" name="button-number-1" class="button-digit"  value="1" onclick="button_click(this)">󱸁</button></td>
+                    <td><button id="button-sezimal-number-1" class="button-digit"  value="1" onclick="button_click(this)">󱸁</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-number-2" name="button-number-2" class="button-digit" value="2" onclick="button_click(this)">󱸂</button></td>
+                    <td><button id="button-sezimal-number-2" class="button-digit" value="2" onclick="button_click(this)">󱸂</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-addition" name="button-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
+                    <td><button id="button-sezimal-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-subtraction" name="button-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
+                    <td><button id="button-sezimal-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-sezimal-number-00" name="button-number-00" class="button-digit" value="00" onclick="button_click(this)">󱸀󱸀</button></td>
+                    <td><button id="button-sezimal-number-00" class="button-digit" value="00" onclick="button_click(this)">󱸀󱸀</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-separator" name="button-sezimal-separator" class="button-digit" value="." onclick="button_click(this)">,</button></td>
+                    <td><button id="button-sezimal-separator" class="button-digit" value="." onclick="button_click(this)">,</button></td>
                     <td></td>
-                    <td><button id="button-sezimal-invert-sign" name="button-invert-sign" class="button-operator" value="±" onclick="button_click(this)">±</button></td>
+                    <td><button id="button-sezimal-invert-sign" class="button-operator" value="±" onclick="button_click(this)">±</button></td>
                     <td></td>
-                    <td colspan="3"><button id="button-sezimal-equal" name="button-equal" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
+                    <td colspan="3"><button id="button-sezimal-equal" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
                 </tr>
             </table>
             <table id="decimal-buttons-table" class="buttons-table" hidden>
@@ -2156,814 +2058,84 @@ Shastadari prefixes explanation
                     <col span="1" style="width: 19.2%;">
                 </colgroup>
                 <tr>
-                    <td><button id="button-clear" name="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td><button id="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
                     <td></td>
-                    <td><button id="button-base-six" name="button-base-six" class="button-base" value="6" onclick="set_base_six()">6</button></td>
+                    <td><button id="button-base-six" class="button-base" value="6" onclick="toggle_base_six()">6</button></td>
                     <td></td>
-                    <td><button id="button-left-parentheses"  name="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td><button id="button-left-parentheses"  class="button-operator" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>
-                    <td><button id="button-right-parentheses" name="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td><button id="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
                     <td></td>
-                    <td><button id="button-backspace" name="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                    <td><button id="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                <tr>
-                    <td><button id="button-decimal-number-7" name="button" class="button-digit" value="7" onclick="button_click(this)">7</button></td>
+                    <td><button id="button-decimal-number-7" class="button-digit" value="7" onclick="button_click(this)">7</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-8" name="button" class="button-digit" value="8" onclick="button_click(this)">8</button></td>
+                    <td><button id="button-decimal-number-8" class="button-digit" value="8" onclick="button_click(this)">8</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-9" name="button" class="button-digit" value="9" onclick="button_click(this)">9</button></td>
+                    <td><button id="button-decimal-number-9" class="button-digit" value="9" onclick="button_click(this)">9</button></td>
                     <td></td>
-                    <td><button id="button-decimal-exponent" name="button" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
+                    <td><button id="button-decimal-exponent" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
                     <td></td>
-                    <td><button id="button-percent" name="button" class="button-operator" value="%" onclick="button_click(this)">%</button></td>
-<!--                     <td><button id="button-permille" name="button" class="button-operator" value="‰">‰</button></td> -->
+                    <td><button id="button-percent" class="button-operator" value="%" onclick="button_click(this)">%</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-decimal-number-4" name="button" class="button-digit" value="4" onclick="button_click(this)">4</button></td>
+                    <td><button id="button-decimal-number-4" class="button-digit" value="4" onclick="button_click(this)">4</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-5" name="button" class="button-digit" value="5" onclick="button_click(this)">5</button></td>
+                    <td><button id="button-decimal-number-5" class="button-digit" value="5" onclick="button_click(this)">5</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-6" name="button" class="button-digit" value="6" onclick="button_click(this)">6</button></td>
+                    <td><button id="button-decimal-number-6" class="button-digit" value="6" onclick="button_click(this)">6</button></td>
                     <td></td>
-                    <td><button id="button-decimal-multiplication" name="button-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
+                    <td><button id="button-decimal-multiplication" class="button-math" value="*" style="font-size: 22pt; font-weight: bold;" onclick="button_click(this)">×</button></td>
                     <td></td>
-                    <td><button id="button-decimal-division" name="button-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
+                    <td><button id="button-decimal-division" class="button-math" value="/" onclick="button_click(this)">÷</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-decimal-number-1" name="button" class="button-digit" value="1" onclick="button_click(this)">1</button></td>
+                    <td><button id="button-decimal-number-1" class="button-digit" value="1" onclick="button_click(this)">1</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-2" name="button" class="button-digit" value="2" onclick="button_click(this)">2</button></td>
+                    <td><button id="button-decimal-number-2" class="button-digit" value="2" onclick="button_click(this)">2</button></td>
                     <td></td>
-                    <td><button id="button-decimal-number-3" name="button" class="button-digit" value="3" onclick="button_click(this)">3</button></td>
+                    <td><button id="button-decimal-number-3" class="button-digit" value="3" onclick="button_click(this)">3</button></td>
                     <td></td>
-                    <td><button id="button-decimal-addition" name="button-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
+                    <td><button id="button-decimal-addition" class="button-math" value="+" onclick="button_click(this)">+</button></td>
                     <td></td>
-                    <td><button id="button-decimal-subtraction" name="button-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
+                    <td><button id="button-decimal-subtraction" class="button-math" value="-" onclick="button_click(this)">−</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
                 <tr>
-                    <td><button id="button-decimal-number-0" name="button" class="button-digit" value="0" onclick="button_click(this)">0</button></td>
+                    <td><button id="button-decimal-number-0" class="button-digit" value="0" onclick="button_click(this)">0</button></td>
                     <td></td>
-                    <td><button id="button-decimal-separator" name="button" class="button-digit" value="." onclick="button_click(this)">,</button></td>
+                    <td><button id="button-decimal-separator" class="button-digit" value="." onclick="button_click(this)">,</button></td>
                     <td></td>
-                    <td><button id="button-decimal-invert-sign" name="button" class="button-math" value="±" onclick="button_click(this)">±</button></td>
+                    <td><button id="button-decimal-invert-sign" class="button-math" value="±" onclick="button_click(this)">±</button></td>
                     <td></td>
-                    <td colspan="3"><button id="button-decimal-equal" name="button" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
+                    <td colspan="3"><button id="button-decimal-equal" class="button-equal" value="=" onclick="button_click(this)">=</button></td>
                 </tr>
             </table>
         </div>
     </body>
+    <script src="/static/js/calculator_calculation_api.js"></script>
+    <script src="/static/js/calculator_locale.js"></script>
+    <script src="/static/js/calculator_sezimal_places.js"></script>
+    <script src="/static/js/calculator_sezimal_digits.js"></script>
+    <script src="/static/js/calculator_niftimal.js"></script>
+    <script src="/static/js/calculator_spellout.js"></script>
+    <script src="/static/js/calculator_unit_conversion.js"></script>
+    <script src="/static/js/calculator_base_change.js"></script>
+    <script src="/static/js/calculator_grouping.js"></script>
+    <script src="/static/js/calculator_load.js"></script>
     <script>
-var locale = localStorage.getItem('sezimal-calculator-locale');
-var places = localStorage.getItem('sezimal-calculator-sezimal-places');
-var base = localStorage.getItem('sezimal-calculator-base');
-var sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
-var grouping = localStorage.getItem('sezimal-calculator-grouping');
-var spellout = localStorage.getItem('sezimal-calculator-spellout');
-var unit_type = localStorage.getItem('sezimal-calculator-unit-type');
-var sezimal_unit = localStorage.getItem('sezimal-calculator-sezimal-unit');
-var decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
-var show_niftimal = localStorage.getItem('sezimal-calculator-show-niftimal');
-var niftimal_alphabetical = localStorage.getItem('sezimal-calculator-niftimal-alphabetical');
-
-console.log('niftimal', show_niftimal, niftimal_alphabetical);
-
-const sezimal_separator = {
-    'iso': ',',
-    'iso_dot': '.',
-    'code': '.',
-    'ar_latn': ',',
-    'ar': ',',
-    'bz': ',',
-    'bz_pt': ',',
-    'ca': ',',
-    'de': ',',
-    'el': ',',
-    'en_au': '.',
-    'en_br': '.',
-    'en_ca': '.',
-    'en_gb': '.',
-    'en_ie': '.',
-    'en_in': '.',
-    'en_nyoo_speling': '.',
-    'en_nz': '.',
-    'en_shavian': '.',
-    'en_us': '.',
-    'en': '.',
-    'eo_br': ',',
-    'eo': ',',
-    'es_ar': ',',
-    'es_bo': ',',
-    'es_cl': ',',
-    'es_co': ',',
-    'es_ec': ',',
-    'es_mx': ',',
-    'es_pe': ',',
-    'es_py': ',',
-    'es_uy': ',',
-    'es': ',',
-    'fa_latn': ',',
-    'fa': ',',
-    'fr_ca': ',',
-    'fr_ch': ',',
-    'fr_ortograf': ',',
-    'fr': ',',
-    'ga_clo_gaelach': '.',
-    'ga_traditional': '.',
-    'ga': '.',
-    'gl': ',',
-    'gn': ',',
-    'he_latn': '.',
-    'he': '.',
-    'hi_latn': '.',
-    'hi': '.',
-    'hu': ',',
-    'id': '.',
-    'it': ',',
-    'iu_latn': '.',
-    'iu': '.',
-    'ja': '.',
-    'ko': '.',
-    'nl': ',',
-    'pl': ',',
-    'pt_ao': ',',
-    'pt_br': ',',
-    'pt_ch': ',',
-    'pt_cv': ',',
-    'pt_gq': ',',
-    'pt_gw': ',',
-    'pt_lu': ',',
-    'pt_mo': ',',
-    'pt_mz': ',',
-    'pt_pt': ',',
-    'pt_st': ',',
-    'pt_tl': ',',
-    'pt': ',',
-    'ro': ',',
-    'ru': ',',
-    'sw_traditional': '.',
-    'sw': '.',
-    'tr': ',',
-    'uk': ',',
-    'vi': ',',
-    'yo': '.',
-    'yrl': ',',
-    'zh_cn': '.',
-    'zh_hans': '.',
-    'zh_hant': '.',
-    'zh_hk': '.',
-    'zh_latn': '.',
-    'zh_mo': '.',
-    'zh_sg': '.',
-    'zh_tw': '.',
-    'zh': '.',
-};
-
-if (locale === null) {
-    locale = navigator.languages && navigator.languages.length
-    ? navigator.languages[0]
-    : navigator.language;
-
-    locale = locale.replace('-', '_').toLowerCase();
-    localStorage.setItem('sezimal-calculator-locale', locale);
-};
-
-if (places === null) {
-    places = 3;
-    localStorage.setItem('sezimal-calculator-sezimal-places', 3);
-};
-
-if (base === null) {
-    base = 10;
-    localStorage.setItem('sezimal-calculator-base', 10);
-};
-
-if (sezimal_digits === null) {
-    sezimal_digits = false;
-    localStorage.setItem('sezimal-calculator-sezimal-digits', sezimal_digits);
-};
-
-if (grouping === null) {
-    grouping = 3;
-    localStorage.setItem('sezimal-calculator-grouping', grouping);
-};
-
-if (spellout === null) {
-    spellout = true;
-    localStorage.setItem('sezimal-calculator-spellout', spellout);
-};
-
-if (unit_type === null) {
-    unit_type = 'pad';
-    localStorage.setItem('sezimal-calculator-unit-type', unit_type);
-};
-
-if (show_niftimal == null) {
-    localStorage.setItem('sezimal-calculator-show-niftimal', true);
-    localStorage.setItem('sezimal-calculator-niftimal-alphabetical', false);
-    document.getElementById('niftimal_display').hidden = false;
-} else if (show_niftimal == 'true' || show_niftimal == true) {
-    document.getElementById('niftimal_display').hidden = false;
-};
-
-
-document.getElementById('calculator-sezimal-locale').value = locale;
-document.getElementById('calculator-sezimal-places').value = places;
-document.getElementById('calculator-sezimal-digits').value = sezimal_digits.toString();
-document.getElementById('calculator-sezimal-grouping').value = grouping;
-document.getElementById('calculator-sezimal-spellout').checked = spellout;
-document.getElementById('calculator-sezimal-unit-type').value = unit_type;
-
-function set_locale() {
-    const locale = document.getElementById('calculator-sezimal-locale').value;
-    localStorage.setItem('sezimal-calculator-locale', locale);
-    document.getElementById('button-sezimal-separator').innerHTML = sezimal_separator[locale];
-    document.getElementById('button-decimal-separator').innerHTML = sezimal_separator[locale];
-
-    document.getElementById('label-sezimal-places').innerHTML = 'Sezimal Places';
-    document.getElementById('label-sezimal-digits').innerHTML = 'Digits';
-    document.getElementById('label-sezimal-locale').innerHTML = 'Language and country';
-    document.getElementById('label-settings').innerHTML = 'Settings';
-    document.getElementById('label-sezimal-grouping').innerHTML = 'Grouping';
-    document.getElementById('label-sezimal-spellout').innerHTML = 'Show spell out';
-    document.getElementById('grouping-explanation').innerHTML = 'Each grouping of digits’ option requires it’s own vocabulary, used in the spelling out of numbers:';
-    document.getElementById('group-title-3').innerHTML = '1 123 123';
-    document.getElementById('group-title-4').innerHTML = '1 1234 1234';
-    document.getElementById('groupping-explanation-nif-3').innerHTML = 'nif';
-    document.getElementById('groupping-explanation-nif-4').innerHTML = 'nif';
-    document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
-    document.getElementById('groupping-explanation-arda-4').innerHTML = 'six nif';
-    document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'six arda';
-    document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'unexian';
-    document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nif arda';
-    document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'six unexian';
-    document.getElementById('groupping-explanation-shadara-3').innerHTML = 'shadara';
-    document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nif unexian';
-
-    if (locale.startsWith('bz')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Kazas sezimays';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Díjitus';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Língwa i paiz';
-        document.getElementById('label-settings').innerHTML = 'Konfigurasoyns';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupamentu';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar estensu';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Kada opisawn di agrupamentu di díjitus teyn sew pròpryu vokubularyu, uzadu pra si ler i eskrever us númerus pur estensu:';
-        document.getElementById('groupping-explanation-nif-3').innerHTML = 'nifi';
-        document.getElementById('groupping-explanation-nif-4').innerHTML = 'nifi';
-        document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
-        document.getElementById('groupping-explanation-arda-4').innerHTML = 'sêys nifi';
-        document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'sêys arda';
-        document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'uneksiawn';
-        document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nifi arda';
-        document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'sêys uneksioyns';
-        document.getElementById('groupping-explanation-shadara-3').innerHTML = 'xadara';
-        document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nifi uneksioyns';
-    } else if (locale.startsWith('pt')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Casas sezimais';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Dígitos';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Língua e país';
-        document.getElementById('label-settings').innerHTML = 'Configurações';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupamento';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar extenso';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Cada opção de agrupamento de dígitos tem seu próprio vocabulário, usado para se ler e escrever os números por extenso:';
-        document.getElementById('groupping-explanation-nif-3').innerHTML = 'nife';
-        document.getElementById('groupping-explanation-nif-4').innerHTML = 'nife';
-        document.getElementById('groupping-explanation-arda-3').innerHTML = 'arda';
-        document.getElementById('groupping-explanation-arda-4').innerHTML = 'seis nife';
-        document.getElementById('groupping-explanation-six-arda-3').innerHTML = 'seis arda';
-        document.getElementById('groupping-explanation-six-arda-4').innerHTML = 'unexião';
-        document.getElementById('groupping-explanation-nif-arda-3').innerHTML = 'nife arda';
-        document.getElementById('groupping-explanation-nif-arda-4').innerHTML = 'seis unexiões';
-        document.getElementById('groupping-explanation-shadara-3').innerHTML = 'xadara';
-        document.getElementById('groupping-explanation-shadara-4').innerHTML = 'nife unexiões';
-    } else if (locale.startsWith('es')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Posiciones sezimales';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Dígitos';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Idioma y pais';
-        document.getElementById('label-settings').innerHTML = 'Ajustes';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Agrupación';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostrar deletrear';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Cada opción de agrupación de dígitos requiere su propio vocabulario, que se utiliza para deletrear los números:';
-    } else if (locale.startsWith('eo')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Sesumaj lokoj';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Ciferoj';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Lingvo kaj lando';
-        document.getElementById('label-settings').innerHTML = 'Agordoj';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Grupado';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Montru literumado';
-        document.getElementById('grouping-explanation').innerHTML = 'Ĉiu nombro-grupado bezonas siajn specifajn vortojn, uzatajn en la literumado de nombroj:';
-    } else if (locale.startsWith('de')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Nachkommastellen';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Ziffern';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Sprache und Land';
-        document.getElementById('label-settings').innerHTML = 'Einstellungen';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Gruppierung';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Ausgeschriebene Zahlen anzeigen';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Jede Option zur Zifferngruppierung erfordert ein eigenes Vokabular, das zum Ausschreiben von Zahlen verwendet wird:';
-    } else if (locale.startsWith('fr')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Sézimales';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Chiffres';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Langue et pays';
-        document.getElementById('label-settings').innerHTML = 'Paramètres';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Regroupement';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Montrer l’épelage';
-        document.getElementById('group-title-3').innerHTML = '1 123 123';
-        document.getElementById('group-title-4').innerHTML = '1 1234 1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Chaque option de regroupement de chiffres nécessite son propre vocabulaire, utilisé pour épeler les nombres :';
-    } else if (locale.startsWith('it')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Sezimali';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Cifre';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Lingua e paese';
-        document.getElementById('label-settings').innerHTML = 'Impostazioni';
-        document.getElementById('label-sezimal-grouping').innerHTML = 'Raggruppamento';
-        document.getElementById('label-sezimal-spellout').innerHTML = 'Mostra i numeri scritti';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-        document.getElementById('grouping-explanation').innerHTML = 'Ogni opzione di raggruppamento di cifre richiede il suo proprio vocabolario, utilizzato per scrivere i numeri:';
-    } else if (locale.startsWith('el')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Εξαδικά ψηφία';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Ψηφία';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Γλώσσα και χώρα';
-        document.getElementById('label-settings').innerHTML = 'Ρυθμίσεις';
-        document.getElementById('group-title-3').innerHTML = '1.123.123';
-        document.getElementById('group-title-4').innerHTML = '1.1234.1234';
-    } else if (locale.startsWith('ru')) {
-        document.getElementById('label-sezimal-places').innerHTML = 'Шестеричный разряд';
-        document.getElementById('label-sezimal-digits').innerHTML = 'Цифры';
-        document.getElementById('label-sezimal-locale').innerHTML = 'Язык и страна';
-        document.getElementById('label-settings').innerHTML = 'Настройки';
-    } else if (locale.startsWith('ja')) {
-        document.getElementById('label-sezimal-places').innerHTML = '小数点以下の桁数';
-        document.getElementById('label-sezimal-digits').innerHTML = '桁数';
-        document.getElementById('label-sezimal-locale').innerHTML = '言語と国';
-        document.getElementById('label-settings').innerHTML = '設定';
-        document.getElementById('group-title-3').innerHTML = '1,123,123';
-        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
-    } else if (locale.startsWith('ko')) {
-        document.getElementById('label-sezimal-places').innerHTML = '소수점 자리';
-        document.getElementById('label-sezimal-digits').innerHTML = '숫자';
-        document.getElementById('label-sezimal-locale').innerHTML = '언어 및 국가';
-        document.getElementById('label-settings').innerHTML = '설정';
-        document.getElementById('group-title-3').innerHTML = '1,123,123';
-        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
-    } else if (locale.startsWith('zh')) {
-        document.getElementById('group-title-3').innerHTML = '1,123,123';
-        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
-
-        if (locale == 'zh_latn') {
-            document.getElementById('label-sezimal-places').innerHTML = 'Xiǎoshù wèi';
-            document.getElementById('label-sezimal-digits').innerHTML = 'Shùzì';
-            document.getElementById('label-sezimal-locale').innerHTML = 'Yǔyán hé guójiā';
-            document.getElementById('label-settings').innerHTML = 'Shèzhì';
-        } else if (locale == 'zh_tw' || locale == 'zh_hant') {
-            document.getElementById('label-sezimal-places').innerHTML = '小數位';
-            document.getElementById('label-sezimal-digits').innerHTML = '數位';
-            document.getElementById('label-sezimal-locale').innerHTML = '語言和國家';
-            document.getElementById('label-settings').innerHTML = '設定';
-        } else {
-            document.getElementById('label-sezimal-places').innerHTML = '小数位';
-            document.getElementById('label-sezimal-digits').innerHTML = '数字';
-            document.getElementById('label-sezimal-locale').innerHTML = '语言和国家';
-            document.getElementById('label-settings').innerHTML = '设置';
-        };
-    } else if (locale.startsWith('en')) {
-        document.getElementById('group-title-3').innerHTML = '1,123,123';
-        document.getElementById('group-title-4').innerHTML = '1,1234,1234';
-    };
-};
-
-function set_sezimal_places() {
-    localStorage.setItem('sezimal-calculator-sezimal-places', document.getElementById('calculator-sezimal-places').value);
-};
-
-function set_base_ten() {
-    localStorage.setItem('sezimal-calculator-base', 14);
-    change_base();
-};
-
-function set_base_six() {
-    localStorage.setItem('sezimal-calculator-base', 10);
-    change_base();
-};
-
-function set_sezimal_grouping() {
-    const grouping = document.getElementById('calculator-sezimal-grouping').value;
-    localStorage.setItem('sezimal-calculator-grouping', grouping);
-};
-
-function set_sezimal_spellout(e) {
-    localStorage.setItem('sezimal-calculator-spellout', e.checked);
-    document.getElementById('spellout').hidden = !e.checked;
-};
-
-function set_unit_type() {
-    const unit_type = document.getElementById('calculator-sezimal-unit-type').value;
-    localStorage.setItem('sezimal-calculator-unit-type', unit_type);
-
-    document.getElementById('unit-units-explanation').hidden = true;
-    document.getElementById('unit-prefixes-explanation').hidden = true;
-    document.getElementById('units-title').hidden = true;
-
-    document.getElementById('unit-ang-explanation').hidden = true;
-    document.getElementById('unit-ang').hidden = true;
-    document.getElementById('unit-avt-explanation').hidden = true;
-    document.getElementById('unit-avt').hidden = true;
-    document.getElementById('unit-pad-explanation').hidden = true;
-    document.getElementById('unit-pad').hidden = true;
-    document.getElementById('unit-kex-explanation').hidden = true;
-    document.getElementById('unit-kex').hidden = true;
-    document.getElementById('unit-ayt-explanation').hidden = true;
-    document.getElementById('unit-ayt').hidden = true;
-    document.getElementById('unit-drv-explanation').hidden = true;
-    document.getElementById('unit-drv').hidden = true;
-    document.getElementById('unit-gan-explanation').hidden = true;
-    document.getElementById('unit-gan').hidden = true;
-    document.getElementById('unit-veg-explanation').hidden = true;
-    document.getElementById('unit-veg').hidden = true;
-    document.getElementById('unit-tvr-explanation').hidden = true;
-    document.getElementById('unit-tvr').hidden = true;
-    document.getElementById('unit-bar-explanation').hidden = true;
-    document.getElementById('unit-bar').hidden = true;
-    document.getElementById('unit-dab-explanation').hidden = true;
-    document.getElementById('unit-dab').hidden = true;
-    document.getElementById('unit-kry-explanation').hidden = true;
-    document.getElementById('unit-kry').hidden = true;
-    document.getElementById('unit-xat-explanation').hidden = true;
-    document.getElementById('unit-xat').hidden = true;
-    document.getElementById('unit-gtk-explanation').hidden = true;
-    document.getElementById('unit-gtk').hidden = true;
-    document.getElementById('unit-tap-explanation').hidden = true;
-    document.getElementById('unit-tap').hidden = true;
-    document.getElementById('unit-agn-explanation').hidden = true;
-    document.getElementById('unit-agn').hidden = true;
-    document.getElementById('unit-idn-explanation').hidden = true;
-    document.getElementById('unit-idn').hidden = true;
-    document.getElementById('unit-tln-explanation').hidden = true;
-    document.getElementById('unit-tln').hidden = true;
-    document.getElementById('unit-avx-explanation').hidden = true;
-    document.getElementById('unit-avx').hidden = true;
-    document.getElementById('unit-dar-explanation').hidden = true;
-    document.getElementById('unit-dar').hidden = true;
-    document.getElementById('unit-vbv-explanation').hidden = true;
-    document.getElementById('unit-vbv').hidden = true;
-    document.getElementById('unit-ptr-explanation').hidden = true;
-    document.getElementById('unit-ptr').hidden = true;
-    document.getElementById('unit-cln-explanation').hidden = true;
-    document.getElementById('unit-cln').hidden = true;
-    document.getElementById('unit-prk-explanation').hidden = true;
-    document.getElementById('unit-prk').hidden = true;
-    document.getElementById('unit-sam-explanation').hidden = true;
-    document.getElementById('unit-sam').hidden = true;
-    document.getElementById('unit-abv-explanation').hidden = true;
-    document.getElementById('unit-abv').hidden = true;
-    document.getElementById('unit-vtr-explanation').hidden = true;
-    document.getElementById('unit-vtr').hidden = true;
-    document.getElementById('unit-prd-explanation').hidden = true;
-    document.getElementById('unit-prd').hidden = true;
-    document.getElementById('unit-gol-explanation').hidden = true;
-    document.getElementById('unit-gol').hidden = true;
-    document.getElementById('unit-prt-explanation').hidden = true;
-    document.getElementById('unit-prt').hidden = true;
-    document.getElementById('unit-atk-explanation').hidden = true;
-    document.getElementById('unit-atk').hidden = true;
-    document.getElementById('unit-pvn-explanation').hidden = true;
-    document.getElementById('unit-pvn').hidden = true;
-
-    if (unit_type == 'units') {
-        document.getElementById('unit-units-explanation').hidden = false;
-    } else if (unit_type == 'prefixes') {
-        document.getElementById('unit-prefixes-explanation').hidden = false;
-    } else {
-        document.getElementById('units-title').hidden = false;
-    };
-
-    if (unit_type == 'ang') {
-        _set_unit_type_sezimal_decimal(unit_type, 'agm', 's');
-    } else if (unit_type == 'avt') {
-        _set_unit_type_sezimal_decimal(unit_type, 'avt', 'Hz');
-    } else if (unit_type == 'pad') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Dpad', 'm');
-    } else if (unit_type == 'kex') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Dkex', 'm2');
-    } else if (unit_type == 'ayt') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Dayt', 'L');
-    } else if (unit_type == 'veg') {
-        _set_unit_type_sezimal_decimal(unit_type, 'veg', 'km/h');
-    } else if (unit_type == 'tvr') {
-        _set_unit_type_sezimal_decimal(unit_type, 'tvr', 'm/s2');
-    } else if (unit_type == 'drv') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Ddrv', 'kg');
-    } else if (unit_type == 'gan') {
-        _set_unit_type_sezimal_decimal(unit_type, 'gan', 'kg/L');
-    } else if (unit_type == 'bar') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Dbar', 'N');
-    } else if (unit_type == 'dab') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Ddab', 'kPa');
-    } else if (unit_type == 'kry') {
-        _set_unit_type_sezimal_decimal(unit_type, 'DXkry', 'kWh');
-    } else if (unit_type == 'xat') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Dxat', 'W');
-    } else if (unit_type == 'gtk') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Xgtk', 'K');
-    } else if (unit_type == 'tap') {
-        _set_unit_type_sezimal_decimal(unit_type, 'tap', '°C');
-    } else if (unit_type == 'agn') {
-        _set_unit_type_sezimal_decimal(unit_type, 'agn', 'J/K');
-    } else if (unit_type == 'idn') {
-        _set_unit_type_sezimal_decimal(unit_type, 'idn', 'J/K/kg');
-    } else if (unit_type == 'tln') {
-        _set_unit_type_sezimal_decimal(unit_type, 'tln', 'J/K/m3');
-    } else if (unit_type == 'avx') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Xavx', 'mAh');
-    } else if (unit_type == 'dar') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Tdar', 'A');
-    } else if (unit_type == 'vbv') {
-        _set_unit_type_sezimal_decimal(unit_type, 'vbv', 'V');
-    } else if (unit_type == 'ptr') {
-        _set_unit_type_sezimal_decimal(unit_type, 'ptr', 'Ω');
-    } else if (unit_type == 'cln') {
-        _set_unit_type_sezimal_decimal(unit_type, 'cln', 'S');
-    } else if (unit_type == 'prk') {
-        _set_unit_type_sezimal_decimal(unit_type, 'prk', 'H');
-    } else if (unit_type == 'sam') {
-        _set_unit_type_sezimal_decimal(unit_type, 'sam', 'F');
-    } else if (unit_type == 'abv') {
-        _set_unit_type_sezimal_decimal(unit_type, 'abv', 'Wb');
-    } else if (unit_type == 'vtr') {
-        _set_unit_type_sezimal_decimal(unit_type, 'vtr', 'T');
-    } else if (unit_type == 'prd') {
-        _set_unit_type_sezimal_decimal(unit_type, 'dprd', 'rad');
-    } else if (unit_type == 'gol') {
-        _set_unit_type_sezimal_decimal(unit_type, 'gol', 'sr');
-    } else if (unit_type == 'prt') {
-        _set_unit_type_sezimal_decimal(unit_type, 'dprt', '%');
-    } else if (unit_type == 'atk') {
-        _set_unit_type_sezimal_decimal(unit_type, 'DXatk', 'GiB');
-    } else if (unit_type == 'pvn') {
-        _set_unit_type_sezimal_decimal(unit_type, 'Xpvn', 'Mbps');
-    } else {
-        localStorage.setItem('sezimal-calculator-sezimal-unit', '');
-        localStorage.setItem('sezimal-calculator-decimal-unit', '');
-    };
-};
-
-function set_sezimal_unit(select) {
-    localStorage.setItem('sezimal-calculator-sezimal-unit', select.value);
-};
-
-function set_decimal_unit(select) {
-    localStorage.setItem('sezimal-calculator-decimal-unit', select.value);
-};
-
-function _set_unit_type_sezimal_decimal(unit_type, sezimal_unit, decimal_unit) {
-    localStorage.setItem('sezimal-calculator-sezimal-unit', sezimal_unit);
-    localStorage.setItem('sezimal-calculator-decimal-unit', decimal_unit);
-
-    document.getElementById(`unit-${unit_type}-explanation`).hidden = false;
-    document.getElementById(`unit-${unit_type}`).hidden = false;
-    document.getElementById(`calculator-sezimal-unit-${unit_type}`).value = sezimal_unit;
-    document.getElementById(`calculator-decimal-unit-${unit_type}`).value = decimal_unit;
-};
-
-function change_base() {
-    if (localStorage.getItem('sezimal-calculator-base') == 14) {
-        document.getElementById('sezimal-buttons-table').hidden = true;
-        document.getElementById('decimal-buttons-table').hidden = false;
-        document.getElementById('display').classList.add('decimal_display');
-        document.getElementById('display').classList.remove('display');
-        document.getElementById('decimal_display').classList.add('display');
-        document.getElementById('decimal_display').classList.remove('decimal_display');
-    } else {
-        document.getElementById('sezimal-buttons-table').hidden = false;
-        document.getElementById('decimal-buttons-table').hidden = true;
-        document.getElementById('display').classList.add('display');
-        document.getElementById('display').classList.remove('decimal_display');
-        document.getElementById('decimal_display').classList.add('decimal_display');
-        document.getElementById('decimal_display').classList.remove('display');
-    };
-    update_calculation('');
-};
-
-function change_digits() {
-    const sezimal_digits = document.getElementById('calculator-sezimal-digits').value === 'true';
-    localStorage.setItem('sezimal-calculator-sezimal-digits', sezimal_digits);
-
-    if (sezimal_digits) {
-        document.getElementById('button-sezimal-number-0').innerHTML = '󱸀';
-        document.getElementById('button-sezimal-number-1').innerHTML = '󱸁';
-        document.getElementById('button-sezimal-number-2').innerHTML = '󱸂';
-        document.getElementById('button-sezimal-number-3').innerHTML = '󱸃';
-        document.getElementById('button-sezimal-number-4').innerHTML = '󱸄';
-        document.getElementById('button-sezimal-number-5').innerHTML = '󱸅';
-        document.getElementById('button-sezimal-number-00').innerHTML = '󱸀󱸀';
-        document.getElementById('button-base-ten').innerHTML = '󱸁󱸄';
-        // document.getElementById('button-pernif').innerHTML = '󱺉';
-        // document.getElementById('button-perarda').innerHTML = '󱺊';
-        // document.getElementById('button-persixarda').innerHTML = '󱺋';
-    } else {
-        document.getElementById('button-sezimal-number-0').innerHTML = '0';
-        document.getElementById('button-sezimal-number-1').innerHTML = '1';
-        document.getElementById('button-sezimal-number-2').innerHTML = '2';
-        document.getElementById('button-sezimal-number-3').innerHTML = '3';
-        document.getElementById('button-sezimal-number-4').innerHTML = '4';
-        document.getElementById('button-sezimal-number-5').innerHTML = '5';
-        document.getElementById('button-sezimal-number-00').innerHTML = '00';
-        document.getElementById('button-base-ten').innerHTML = '14';
-        // document.getElementById('button-pernif').innerHTML = '%';
-        // document.getElementById('button-perarda').innerHTML = '‰';
-        // document.getElementById('button-persixarda').innerHTML = '‱';
-    };
-};
-
-set_locale();
-change_digits();
-change_base();
-set_sezimal_grouping();
-set_unit_type();
-
-function button_click(button) {
-    update_calculation(button.value);
-}
-
-function update_calculation(value = '') {
-    let dados = {};
-
-    if (localStorage.getItem('sezimal-calculator-base') == 14) {
-        dados = JSON.stringify({
-            locale: localStorage.getItem('sezimal-calculator-locale'),
-            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
-            base: localStorage.getItem('sezimal-calculator-base'),
-            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
-            grouping: localStorage.getItem('sezimal-calculator-grouping'),
-            spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
-            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
-            niftimal_alphabetical: localStorage.getItem('sezimal-calculator-niftimal-alphabetical'),
-            expression: document.getElementById('decimal_expression').innerHTML,
-            value: value,
-        });
-    } else {
-        dados = JSON.stringify({
-            locale: localStorage.getItem('sezimal-calculator-locale'),
-            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
-            base: localStorage.getItem('sezimal-calculator-base'),
-            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
-            grouping: localStorage.getItem('sezimal-calculator-grouping'),
-            spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: localStorage.getItem('sezimal-calculator-sezimal-unit'),
-            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
-            niftimal_alphabetical: localStorage.getItem('sezimal-calculator-niftimal-alphabetical'),
-            expression: document.getElementById('expression').innerHTML,
-            value: value,
-        });
-    }
-
-    console.log(dados);
-
-    fetch('/calculator/process', {
-        method: 'post',
-        body: dados,
-        headers: {
-            'Accept': 'application/json; charset=UTF-8',
-            'Content-Type': 'application/json; charset=UTF-8'
-        }
-    }).then((response) => {
-        return response.json();
-    }).then((dados) => {
-        console.log('dados', dados);
-        document.getElementById('expression').innerHTML = dados.expression;
-        document.getElementById('decimal_expression').innerHTML = dados.decimal_expression;
-        document.getElementById('display_number').innerHTML = dados.display.replace(',,', '„').replace('..', '‥');
-        document.getElementById('decimal_display_number').innerHTML = dados.decimal_display.replace(',,', '„').replace('..', '‥');
-        document.getElementById('niftimal_display_number').innerHTML = dados.niftimal_display.replace(',,', '„').replace('..', '‥');
-
-        if (dados.show_spellout) {
-            document.getElementById('spellout').hidden = false;
-            document.getElementById('spellout').innerHTML = dados.spellout;
-        } else {
-            document.getElementById('spellout').hidden = true;
-        };
-
-        if (localStorage.getItem('sezimal-calculator-base') == 14) {
-            if (Array.from(dados.decimal_display).length <= 10) {
-                document.getElementById('decimal_display').style = 'font-size: 42pt;';
-            } else if (Array.from(dados.decimal_display).length <= 12) {
-                document.getElementById('decimal_display').style = 'font-size: 36pt;';
-            } else if (Array.from(dados.decimal_display).length <= 15) {
-                document.getElementById('decimal_display').style = 'font-size: 30pt;';
-            } else if (Array.from(dados.decimal_display).length <= 23) {
-                document.getElementById('decimal_display').style = 'font-size: 20pt;';
-            } else if (Array.from(dados.decimal_display).length <= 44) {
-                document.getElementById('decimal_display').style = 'font-size: 12pt;';
-            } else {
-                document.getElementById('decimal_display').style = 'font-size: 10pt;';
-            };
-
-            if (Array.from(dados.display).length <= 18) {
-                document.getElementById('display').style = 'font-size: 24pt;';
-            } else {
-                document.getElementById('display').style = 'font-size: 12pt;';
-            };
-        } else {
-            if (Array.from(dados.display).length <= 10) {
-                document.getElementById('display').style = 'font-size: 42pt;';
-            } else if (Array.from(dados.display).length <= 12) {
-                document.getElementById('display').style = 'font-size: 36pt;';
-            } else if (Array.from(dados.display).length <= 15) {
-                document.getElementById('display').style = 'font-size: 30pt;';
-            } else if (Array.from(dados.display).length <= 23) {
-                document.getElementById('display').style = 'font-size: 20pt;';
-            } else if (Array.from(dados.display).length <= 44) {
-                document.getElementById('display').style = 'font-size: 12pt;';
-            } else {
-                document.getElementById('display').style = 'font-size: 10pt;';
-            };
-
-            if (Array.from(dados.decimal_display).length <= 18) {
-                document.getElementById('decimal_display').style = 'font-size: 24pt;';
-            } else {
-                document.getElementById('decimal_display').style = 'font-size: 12pt;';
-            };
-        }
-    });
-};
-
-if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {
-    document.querySelector("body").requestFullscreen();
-};
-
-function toggle_settings(show) {
-    if (show) {
-        document.getElementById('settings').hidden = false;
-        document.getElementById('units').hidden = true;
-        document.getElementById('displays').hidden = true;
-        // document.getElementById('buttons').hidden = true;
-        document.getElementById('buttons').style = 'visibility: hidden;';
-    } else {
-        document.getElementById('settings').hidden = true;
-        document.getElementById('units').hidden = true;
-        document.getElementById('displays').hidden = false;
-        // document.getElementById('buttons').hidden = false;
-        document.getElementById('buttons').style = 'visibility: visible;';
-        update_calculation();
-    };
-}
-
-function toggle_units(show) {
-    if (show) {
-        document.getElementById('settings').hidden = true;
-        document.getElementById('units').hidden = false;
-        document.getElementById('displays').hidden = true;
-        // document.getElementById('buttons').hidden = true;
-        document.getElementById('buttons').style = 'visibility: hidden;';
-    } else {
-        document.getElementById('settings').hidden = true;
-        document.getElementById('units').hidden = true;
-        document.getElementById('displays').hidden = false;
-        // document.getElementById('buttons').hidden = false;
-        document.getElementById('buttons').style = 'visibility: visible;';
-        update_calculation();
-    };
-};
-
-function toggle_niftimal() {
-    if (localStorage.getItem('sezimal-calculator-show-niftimal') == 'true') {
-        localStorage.setItem('sezimal-calculator-show-niftimal', false);
-        document.getElementById('niftimal_display').hidden = true;
-    } else {
-        localStorage.setItem('sezimal-calculator-show-niftimal', true);
-        document.getElementById('niftimal_display').hidden = false;
-    };
-    update_calculation();
-};
-
-function toggle_niftimal_alphabetical() {
-    if (localStorage.getItem('sezimal-calculator-niftimal-alphabetical') == 'true') {
-        localStorage.setItem('sezimal-calculator-niftimal-alphabetical', false);
-    } else {
-        localStorage.setItem('sezimal-calculator-niftimal-alphabetical', true);
-    }
-    update_calculation();
-};
-
+calculator_load();
     </script>
 </html>

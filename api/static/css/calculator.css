@@ -15,12 +15,14 @@
     --font-family-monospace: "Iosevka Sezimal Extended", monospace;
 }
 html, body {
-    position: relative;
-    width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #212121;
     color: white;
     margin: 0;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    margin: auto;
 }
 .buttons {
     position: absolute;
@@ -36,9 +38,6 @@ table {
     padding: 0;
     margin-left: auto;
     margin-right: auto;
-}
-.buttons-table {
-    max-width: 400px;
 }
 td {
     border: 5px;
@@ -186,7 +185,7 @@ button {
     color: #F5F5F5;
 }
 .display {
-    font-size: 36pt;
+    font-size: 42pt;
     font-weight: bold;
 /*     font-style: italic; */
     text-align: right;
@@ -195,20 +194,16 @@ button {
     line-height: 65px;*/
     align-content: start;
     padding: 6px;
-    border-bottom: 2px double #607D8B;
     background-color: #CFD8DC;
     color: #263238;
     word-wrap: break-word;
-    padding-top: 20px;
+/*     padding-top: 20px; */
     font-variant-numeric: diagonal-fractions;
 }
 .spellout {
     font-size: 10pt;
     text-align: right;
-    padding: 6px;
-    border-bottom: 2px double #9E9E9E;
-    background-color: #212121;
-    color: #F5F5F5;
+    padding-top: 6px;
     word-wrap: break-word;
 }
 .decimal_display {
@@ -312,8 +307,29 @@ td.units {
     font-weight: normal;
     font-style: italic;
     text-align: center;
-    font-size: 10pt;
+    font-size: 9pt;
     position: absolute;
     left: 6px;
     mix-blend-mode: difference;
+}
+.configuration-left {
+    font-weight: normal;
+    font-size: 9pt;
+    mix-blend-mode: luminosity;
+    text-align: left;
+    padding: 6px;
+    white-space: nowrap;
+/*    overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+.configuration-right {
+    font-weight: normal;
+    font-size: 10pt;
+    mix-blend-mode: luminosity;
+    text-align: right;
+    padding: 6px;
+    white-space: nowrap;
+/*    overflow: hidden;
+    text-overflow: ellipsis;*/
+    border-bottom: 2px double #607D8B;
 }
