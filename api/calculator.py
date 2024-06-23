@@ -103,6 +103,9 @@ def api_calculator_process() -> dict:
     elif dados['value'] == '/' and dados['expression'].endswith(' / '):
         calculator.expression = dados['expression'][:-3] + '⁄'
 
+    elif dados['value'] == '/' and dados['expression'].endswith('⁄'):
+        calculator.expression = dados['expression'][:-1] + ' / '
+
     elif dados['value'] == '%' and dados['expression'].endswith('% '):
         calculator.expression = dados['expression'][:-2] + '‰ '
 
@@ -138,6 +141,18 @@ def api_calculator_process() -> dict:
     #
     # elif dados['value'] == '󱺉' and dados['expression'].endswith('󱺐 '):
     #     calculator.expression = dados['expression'][:-2] + '󱺉 '
+
+    elif dados['value'] == 'τ' and dados['expression'].endswith('τ'):
+        calculator.expression = dados['expression'][:-1] + 'π'
+
+    elif dados['value'] == 'τ' and dados['expression'].endswith('π'):
+        calculator.expression = dados['expression'][:-1] + 'τ'
+
+    elif dados['value'] == 'π' and dados['expression'].endswith('π'):
+        calculator.expression = dados['expression'][:-1] + 'τ'
+
+    elif dados['value'] == 'π' and dados['expression'].endswith('τ'):
+        calculator.expression = dados['expression'][:-1] + 'π'
 
     else:
         if dados['expression'] == '0':
