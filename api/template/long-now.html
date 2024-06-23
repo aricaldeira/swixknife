@@ -95,7 +95,7 @@ function auto_refresh(){{
     var seconds = date.getTime();
     var digits = '{digits}';
 
-    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
+    seconds = (seconds + {time_zone_offset.decimal}) / 1000 / 86400;
     seconds = seconds - Math.floor(seconds);
     var anuga = seconds * 36 * 36 * 36;
 

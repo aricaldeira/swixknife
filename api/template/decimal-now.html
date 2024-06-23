@@ -98,7 +98,7 @@ function auto_refresh(){{
     var digits = '{digits}';
     var lang = '{locale.LANG[0:2]}';
 
-    seconds = (seconds + ({time_zone_offset.decimal} * 60 * 60 * 1000)) / 1000 / 86400;
+    seconds = (seconds + {time_zone_offset.decimal}) / 1000 / 86400;
     seconds = seconds - Math.floor(seconds);
     seconds = Math.floor(seconds * 60 * 60 * 24);
 

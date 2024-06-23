@@ -19,7 +19,7 @@ def api_long_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/long-now.html').read()
 
@@ -78,7 +78,7 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/now.html').read()
 
@@ -136,7 +136,7 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 's')
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/agòra.html').read()
 
@@ -199,7 +199,7 @@ def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/decimal-now.html').read()
 
@@ -230,7 +230,7 @@ def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset / 10_000, 'uta', 'h')
+    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/dozenal-now.html').read()
 
