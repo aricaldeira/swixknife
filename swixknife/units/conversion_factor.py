@@ -12,7 +12,7 @@ from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 
 
 UNIT_CONVERSION = {
-    'day': {
+    'din': {
         's': SezimalFraction(
             '1_504_000 / 1',
             _precalculated_value='1_504_000',

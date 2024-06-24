@@ -25,7 +25,7 @@ def calculate_conversions():
     DAY_TO_SECOND = SezimalFraction('1_504_000 / 1')
 
     for unit, factor in (
-        ('day', 1), ('uta', 100), ('pox', 10_000), ('agm', 1_000_000),
+        ('din', 1), ('uta', 100), ('pox', 10_000), ('agm', 1_000_000),
         ('ang', 100_000_000), ('bod', 10_000_000_000)):
 
         unit_conversion[unit] = {

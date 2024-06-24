@@ -8,8 +8,7 @@ def create_units(lang='en'):
         text = '''#
 # Units
 #
-UNIT-dia dia
-UNIT-day dia
+UNIT-din dina
 UNIT-uta uta
 UNIT-pox poxa
 UNIT-agm agrima
@@ -82,8 +81,7 @@ UNIT-tvt tevasta
         text = '''#
 # Units
 #
-UNIT-dia dia
-UNIT-day dia
+UNIT-din dina
 UNIT-uta uta
 UNIT-pox poxa
 UNIT-agm agrima
@@ -156,7 +154,7 @@ UNIT-tvt tevasta
         text = '''#
 # Units
 #
-UNIT-day day
+UNIT-din dina
 UNIT-uta uta
 UNIT-pox posha
 UNIT-agm agrima
