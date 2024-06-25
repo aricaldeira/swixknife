@@ -26,14 +26,14 @@ UNIT_SIMPLIFIED_SYMBOL = {
     'p/Cx': '󱺅 (p/Cx)',
     'p/Px': '󱺆 (p/Px)',
     'p/Xx': '󱺇 (p/Xx)',
-    'eprt': '\N{NNBSP}eprt (󱺈 per six)',
-    'dprt': '\N{NNBSP}dprt (󱺉 per nif)',
-    'tprt': '\N{NNBSP}tprt (󱺊 per arda)',
-    'cprt': '\N{NNBSP}cprt (󱺋 per six arda)',
-    'pprt': '\N{NNBSP}pprt (󱺌 per nif arda)',
-    'xprt': '\N{NNBSP}pprt (󱺍 per shadara)',
-    'xeprt': '\N{NNBSP}xeprt (󱺎 per six shadara)',
-    'xdprt': '\N{NNBSP}xdprt (󱺏 per nif shadara)',
+    'eprt': '\N{NNBSP}eprt (󱺈)',
+    'dprt': '\N{NNBSP}dprt (󱺉)',
+    'tprt': '\N{NNBSP}tprt (󱺊)',
+    'cprt': '\N{NNBSP}cprt (󱺋)',
+    'pprt': '\N{NNBSP}pprt (󱺌)',
+    'xprt': '\N{NNBSP}pprt (󱺍)',
+    'xeprt': '\N{NNBSP}xeprt (󱺎)',
+    'xdprt': '\N{NNBSP}xdprt (󱺏)',
 }
 
 
@@ -70,6 +70,7 @@ def api_calculator_process() -> dict:
     # calculator.suffix = dados['sezimal_unit']
     calculator.decimal_unit = dados['decimal_unit']
     # calculator.decimal_suffix = dados['decimal_unit']
+
     calculator.debug = True
 
     if not dados['value']:
@@ -177,6 +178,10 @@ def api_calculator_process() -> dict:
         'separator': calculator.locale.SEZIMAL_SEPARATOR,
         'group_separator': calculator.locale.GROUP_SEPARATOR,
     }
+
+    if len(dados['decimal_unit']) >= 3 and dados['decimal_unit'][-3:] == 'day':
+        if dados['locale'][0:2] in ('pt', 'bz'):
+            dados['decimal_unit'] = dados['decimal_unit'].replace('day', 'dia')
 
     if not calculator.error:
         if dados['sezimal_unit']:

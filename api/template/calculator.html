@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sezimal Calculator</title>
+        <title id="title">Sezimal Calculator</title>
         <meta name="description" content="Sezimal Calculator">
         <meta name="author" content="Ari Caldeira">
         <meta name="theme-color" content="#000000">
@@ -22,187 +22,135 @@
                     <col span="1" style="width: 12%;">
                 </colgroup>
                 <tr>
-                    <td colspan="2" id="label-settings" style="font-size: 18pt; font-weight: bold;">
+                    <td colspan="2" id="td-shastadari-units" style="font-size: 18pt; font-weight: bold;">
                         Shastadari Units of Measure
                     </td>
                     <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">× </span></td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: center;">
+                        <br/>
                         <select id="calculator-sezimal-unit-type" onchange="set_unit_type()">
-                            <optgroup label="Instructions">
-                                <option value="units">Shastari units</option>
-                                <option value="prefixes">Shastari prefixes</option>
+                            <optgroup name="optgroup-units-instructions" label="Instructions">
+                                <option value="units" name="option-units-units">Shastari units</option>
+                                <option value="prefixes" name="option-units-prefixes">Shastari prefixes</option>
                             </optgroup>
-                            <optgroup label="Mechanics">
-                                <option value="ang">Time</option>
-                                <option value="avt">Frequency</option>
-                                <option value="pad">Length</option>
-                                <option value="kex">Area</option>
-                                <option value="ayt">Volume</option>
-                                <option value="veg">Speed</option>
-                                <option value="tvr">Acceleration</option>
-                                <option value="drv">Mass</option>
-                                <option value="gan">Density</option>
-                                <option value="bar">Force/weight</option>
-                                <option value="dab">Pressure</option>
-                                <option value="kry">Energy/work</option>
-                                <option value="xat">Power</option>
-<!--                                <option value="svg">Momentum</option>
-                                <option value="pkp">Action</option>
-                                <option value="pbv">Influence</option>
-                                <option value="tnv">Tension</option>
-                                <option value="upr">Intensity</option>
-                                <option value="nad">Dynamic viscosity</option>
-                                <option value="bum">Kinematic viscosity</option> -->
+                            <optgroup name="optgroup-units-mechanics" label="Mechanics">
+                                <option value="ang" name="option-units-ang">Time</option>
+                                <option value="avt" name="option-units-avt">Frequency</option>
+                                <option value="pad" name="option-units-pad">Length</option>
+                                <option value="kex" name="option-units-kex">Area</option>
+                                <option value="ayt" name="option-units-ayt">Volume</option>
+                                <option value="veg" name="option-units-veg">Speed</option>
+                                <option value="tvr" name="option-units-tvr">Acceleration</option>
+                                <option value="drv" name="option-units-drv">Mass</option>
+                                <option value="gan" name="option-units-gan">Density</option>
+                                <option value="bar" name="option-units-bar">Force/weight</option>
+                                <option value="dab" name="option-units-dab">Pressure</option>
+                                <option value="kry" name="option-units-kry">Energy/work</option>
+                                <option value="xat" name="option-units-xat">Power</option>
+<!--                            <option value="svg" name="option-units-svg">Momentum</option>
+                                <option value="pkp" name="option-units-pkp">Action</option>
+                                <option value="pbv" name="option-units-pbv">Influence</option>
+                                <option value="tnv" name="option-units-tnv">Tension</option>
+                                <option value="upr" name="option-units-upr">Intensity</option>
+                                <option value="nad" name="option-units-nad">Dynamic viscosity</option>
+                                <option value="bum" name="option-units-bum">Kinematic viscosity</option> -->
                             </optgoup>
-                            <optgroup label="Thermodynamics">
-                                <option value="tap">Common Temperature</option>
-                                <option value="gtk">Thermodynamic temperature</option>
-                                <option value="agn">Heat capacity</option>
-                                <option value="idn">Heat capacity per mass</option>
-                                <option value="tln">Heat capacity per volume</option>
+                            <optgroup name="optgroup-units-thermodynamics" label="Thermodynamics">
+                                <option value="tap" name="option-units-tap">Common Temperature</option>
+                                <option value="gtk" name="option-units-gtk">Thermodynamic temperature</option>
+                                <option value="agn" name="option-units-agn">Heat capacity</option>
+                                <option value="idn" name="option-units-idn">Heat capacity per mass</option>
+                                <option value="tln" name="option-units-tln">Heat capacity per volume</option>
                             </optgoup>
-                            <optgroup label="Electromagnetism">
-                                <option value="avx">Elec. charge</option>
-                                <option value="dar">Elec. current</option>
-                                <option value="vbv">Elec. potential difference</option>
-                                <option value="ptr">Elec. resistance</option>
-                                <option value="cln">Elec. conductance</option>
-                                <option value="prk">Elec. inductance</option>
-                                <option value="smi">Elec. capacitance</option>
-                                <option value="abv">Mag. flux</option>
-                                <option value="vtr">Mag. flux density</option>
+                            <optgroup name="optgroup-units-electromagnetism" label="Electromagnetism">
+                                <option value="avx" name="option-units-avx">Elec. charge</option>
+                                <option value="dar" name="option-units-dar">Elec. current</option>
+                                <option value="vbv" name="option-units-vbv">Elec. potential difference</option>
+                                <option value="ptr" name="option-units-ptr">Elec. resistance</option>
+                                <option value="cln" name="option-units-cln">Elec. conductance</option>
+                                <option value="prk" name="option-units-prk">Elec. inductance</option>
+                                <option value="smi" name="option-units-smi">Elec. capacitance</option>
+                                <option value="abv" name="option-units-abv">Mag. flux</option>
+                                <option value="vtr" name="option-units-vtr">Mag. flux density</option>
                             </optgoup>
-                            <optgroup label="Angles">
-                                <option value="prd">Plane angle</option>
-                                <option value="gol">Solid angle</option>
+                            <optgroup name="optgroup-units-angle" label="Angle">
+                                <option value="prd" name="option-units-prd">Plane angle</option>
+                                <option value="gol" name="option-units-gol">Solid angle</option>
                             </optgoup>
-                            <optgroup label="Proportions">
-                                <option value="prt">Proportions</option>
+                            <optgroup name="optgroup-units-proportion" label="Proportion">
+                                <option value="prt" name="option-units-prt">Proportion</option>
                             </optgoup>
-                            <optgroup label="Data/information">
-                                <option value="atk">Storage</option>
-                                <option value="pvn">Speed</option>
+                            <optgroup name="optgroup-units-data-information" label="Data/information">
+                                <option value="atk" name="option-units-atk">Storage</option>
+                                <option value="pvn" name="option-units-pvn">Speed</option>
                             </optgoup>
                         </select>
                     </td>
                 </tr>
-                <tr class="units-explanation">
-                    <td colspan="3" id="unit-ang-explanation" hidden>
-<p>Civil time is divided into six units; one day is divided regularly into sixths, and we group those sixths into units as such:</p>
-<ul>
-    <li>the uta, symbol uta, corresponding to the first two divisions, closer to the hour;</li>
-    <li>the posha, symbol pox, corresponding to the next two divisions, closer to the minute;</li>
-    <li>the agrima, symbol agm, corresponding to the next two divisions, closer to the second;</li>
-    <li>the anuga, symbol ang, corresponding to the next two divisions, closer to the centisecond;</li>
-    <li>the boda, symbol bod, corresponding to the last two divisions, closer to the millisecond;</li>
-</ul>
-<p>So, one day is divided:</p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 12pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">  5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :    55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">day . </span><span style="font-size: 12pt; font-weight: bold;">uta : posha : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
-<p>For science, the base unit of time is the anuga, so all other units that derive from time in any way use the anuga in their definitions.</p>
-                    </td>
-                    <td colspan="3" id="unit-units-explanation" hidden></td>
-                    <td colspan="3" id="unit-prefixes-explanation" hidden>
-Shastadari prefixes explanation
-                    </td>
-                    <td colspan="3" id="unit-avt-explanation" hidden></td>
-                    <td colspan="3" id="unit-pad-explanation" hidden></td>
-                    <td colspan="3" id="unit-kex-explanation" hidden></td>
-                    <td colspan="3" id="unit-ayt-explanation" hidden></td>
-                    <td colspan="3" id="unit-veg-explanation" hidden></td>
-                    <td colspan="3" id="unit-tvr-explanation" hidden></td>
-                    <td colspan="3" id="unit-drv-explanation" hidden></td>
-                    <td colspan="3" id="unit-gan-explanation" hidden></td>
-                    <td colspan="3" id="unit-tap-explanation" hidden></td>
-                    <td colspan="3" id="unit-bar-explanation" hidden></td>
-                    <td colspan="3" id="unit-dab-explanation" hidden></td>
-                    <td colspan="3" id="unit-kry-explanation" hidden></td>
-                    <td colspan="3" id="unit-xat-explanation" hidden></td>
-                    <td colspan="3" id="unit-svg-explanation" hidden></td>
-                    <td colspan="3" id="unit-pkp-explanation" hidden></td>
-                    <td colspan="3" id="unit-pbv-explanation" hidden></td>
-                    <td colspan="3" id="unit-tnv-explanation" hidden></td>
-                    <td colspan="3" id="unit-upr-explanation" hidden></td>
-                    <td colspan="3" id="unit-nad-explanation" hidden></td>
-                    <td colspan="3" id="unit-bum-explanation" hidden></td>
-                    <td colspan="3" id="unit-gtk-explanation" hidden></td>
-                    <td colspan="3" id="unit-agn-explanation" hidden></td>
-                    <td colspan="3" id="unit-idn-explanation" hidden></td>
-                    <td colspan="3" id="unit-tln-explanation" hidden></td>
-                    <td colspan="3" id="unit-avx-explanation" hidden></td>
-                    <td colspan="3" id="unit-dar-explanation" hidden></td>
-                    <td colspan="3" id="unit-ptr-explanation" hidden></td>
-                    <td colspan="3" id="unit-vbv-explanation" hidden></td>
-                    <td colspan="3" id="unit-cln-explanation" hidden></td>
-                    <td colspan="3" id="unit-prk-explanation" hidden></td>
-                    <td colspan="3" id="unit-sam-explanation" hidden></td>
-                    <td colspan="3" id="unit-abv-explanation" hidden></td>
-                    <td colspan="3" id="unit-vtr-explanation" hidden></td>
-                    <td colspan="3" id="unit-prd-explanation" hidden></td>
-                    <td colspan="3" id="unit-gol-explanation" hidden></td>
-                    <td colspan="3" id="unit-prt-explanation" hidden></td>
-                    <td colspan="3" id="unit-atk-explanation" hidden></td>
-                    <td colspan="3" id="unit-pvn-explanation" hidden></td>
-                </tr>
                 <tr id="units-title" hidden>
-                    <td style="text-align: center;"><label id="label-unit-sezimal" for="calculator-unit-sezimal">Sezimal</label></td>
-                    <td colspan="2" style="text-align: center;"><label id="label-unit-decimal" for="calculator-unit-decimal">Decimal</label></td>
+                    <td style="text-align: center;">
+                        <br/>
+                        <label id="label-unit-sezimal" for="calculator-unit-sezimal">Sezimal</label>
+                    </td>
+                    <td colspan="2" style="text-align: center;">
+                        <br/>
+                        <label id="label-unit-decimal" for="calculator-unit-decimal">Decimal</label>
+                    </td>
                 </tr>
                 <tr id="unit-ang" hidden>
                     <td style="text-align: center;">
                         <select id="calculator-sezimal-unit-ang" onchange="set_sezimal_unit(this)">
-                            <optgroup label="Common">
-                                <option value="day">day</option>
-                                <option value="uta">uta</option>
-                                <option value="pox">posha</option>
-                                <option value="agm">agrima</option>
-                                <option value="ang">anuga</option>
-                                <option value="bod">boda</option>
+                            <optgroup name="optgroup-units-ang-common" label="Common">
+                                <option value="din" name="option-units-ang-dina">dina</option>
+                                <option value="uta" name="option-units-ang-uta">uta</option>
+                                <option value="pox" name="option-units-ang-posha">posha</option>
+                                <option value="agm" name="option-units-ang-agrima">agrima</option>
+                                <option value="ang" name="option-units-ang-anuga">anuga</option>
+                                <option value="bod" name="option-units-ang-boda">boda</option>
                             </optgroup>
-                            <optgroup label="Day">
-                                <option value="day">day</option>
-                                <option value="eday">eday</option>
-                                <option value="dday">dday = uta</option>
-                                <option value="tday">tday</option>
-                                <option value="cday">cday = posha</option>
-                                <option value="pday">pday</option>
-                                <option value="xday">xday = agrima</option>
-                                <option value="xeday">xeday</option>
-                                <option value="xdday">xdday = anuga</option>
-                                <option value="xtday">xtday</option>
-                                <option value="xcday">xcday = boda</option>
+                            <optgroup name="optgroup-units-ang-dina" label="Dina/Day">
+                                <option value="din"   name="option-units-ang-din"  >din = day</option>
+                                <option value="edin"  name="option-units-ang-edin" >edin</option>
+                                <option value="ddin"  name="option-units-ang-ddin" >ddin = uta</option>
+                                <option value="tdin"  name="option-units-ang-tdin" >tdin</option>
+                                <option value="cdin"  name="option-units-ang-cdin" >cdin = posha</option>
+                                <option value="pdin"  name="option-units-ang-pdin" >pdin</option>
+                                <option value="xdin"  name="option-units-ang-xdin" >xdin = agrima</option>
+                                <option value="xedin" name="option-units-ang-xedin">xedin</option>
+                                <option value="xddin" name="option-units-ang-xddin">xddin = anuga</option>
+                                <option value="xtdin" name="option-units-ang-xtdin">xtdin</option>
+                                <option value="xcdin" name="option-units-ang-xcdin">xcdin = boda</option>
                             </optgroup>
-                            <optgroup label="Anuga">
-                                <option value="XDang">XDang = day</option>
-                                <option value="XEang">XEang</option>
-                                <option value="Xang">Xang = uta</option>
-                                <option value="Pang">Pang</option>
-                                <option value="Cang">Cang = posha</option>
-                                <option value="Tang">Tang</option>
-                                <option value="Dang">Dang = agrima</option>
-                                <option value="Eang">Eang</option>
-                                <option value="ang">ang</option>
-                                <option value="eang">eang</option>
-                                <option value="dang">dang = boda</option>
-                                <option value="tang">tang</option>
-                                <option value="cang">cang</option>
-                                <option value="pang">pang</option>
-                                <option value="xang">xang</option>
+                            <optgroup name="optgroup-units-ang-anuga" label="Anuga">
+                                <option value="XDang" name="option-units-ang-XDang">XDang = dina/day</option>
+                                <option value="XEang" name="option-units-ang-XEang">XEang</option>
+                                <option value="Xang"  name="option-units-ang-Xang" >Xang = uta</option>
+                                <option value="Pang"  name="option-units-ang-Pang" >Pang</option>
+                                <option value="Cang"  name="option-units-ang-Cang" >Cang = posha</option>
+                                <option value="Tang"  name="option-units-ang-Tang" >Tang</option>
+                                <option value="Dang"  name="option-units-ang-Dang" >Dang = agrima</option>
+                                <option value="Eang"  name="option-units-ang-Eang" >Eang</option>
+                                <option value="ang"   name="option-units-ang-ang"  >ang</option>
+                                <option value="eang"  name="option-units-ang-eang" >eang</option>
+                                <option value="dang"  name="option-units-ang-dang" >dang = boda</option>
+                                <option value="tang"  name="option-units-ang-tang" >tang</option>
+                                <option value="cang"  name="option-units-ang-cang" >cang</option>
+                                <option value="pang"  name="option-units-ang-pang" >pang</option>
+                                <option value="xang"  name="option-units-ang-xang" >xang</option>
                             </optgroup>
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-ang" onchange="set_decimal_unit(this)">
-                            <optgroup label="Common">
-                                <option value="day">day</option>
-                                <option value="h">hour</option>
-                                <option value="min">minute</option>
-                                <option value="s">second</option>
+                            <optgroup name="optgroup-decimal-units-ang-common" label="Common">
+                                <option value="day" name="option-decimal-units-ang-day">day</option>
+                                <option value="h"   name="option-decimal-units-ang-hour">hour</option>
+                                <option value="min" name="option-decimal-units-ang-minute">minute</option>
+                                <option value="s"   name="option-decimal-units-ang-second">second</option>
                             </optgroup>
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="ks">ks</option>
                                 <option value="hs">hs</option>
                                 <option value="das">das</option>
@@ -247,7 +195,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-avt" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="PHz">PHz</option>
                                 <option value="THz">THz</option>
                                 <option value="GHz">GHz</option>
@@ -261,7 +209,7 @@ Shastadari prefixes explanation
                                 <option value="mHz">mHz</option>
                                 <option value="µHz">µHz</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="rpm">rpm</option>
                             </optgroup>
                         </select>
@@ -287,7 +235,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-pad" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="km">km</option>
                                 <option value="hm">hm</option>
                                 <option value="dam">dam</option>
@@ -297,7 +245,7 @@ Shastadari prefixes explanation
                                 <option value="mm">mm</option>
                                 <option value="µm">µm</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
                                 <option value="ml">ml</option>
                                 <option value="yd">yd</option>
                                 <option value="ft">ft</option>
@@ -338,7 +286,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-kex" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="km2">km²</option>
                                 <option value="hm2">hm² ‐ ha</option>
                                 <option value="dam2">dam²</option>
@@ -348,7 +296,7 @@ Shastadari prefixes explanation
                                 <option value="mm2">mm²</option>
                                 <option value="µm2">µm²</option>
                             </optgroup>
-                            <optgroup label="US/UK">
+                            <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
                                 <option value="ac">ac</option>
                                 <option value="ml2">ml²</option>
                                 <option value="yd2">yd²</option>
@@ -402,7 +350,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-ayt" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="kL">kL ‐ m³</option>
                                 <option value="hL">hL</option>
                                 <option value="daL">daL</option>
@@ -412,12 +360,12 @@ Shastadari prefixes explanation
                                 <option value="mL">mL – cm³</option>
                                 <option value="µL">µL ‐ mm³</option>
                             </optgroup>
-                            <optgroup label="US/UK">
+                            <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
                                 <option value="yd">yd³</option>
                                 <option value="ft">ft³</option>
                                 <option value="in">in³</option>
                             </optgroup>
-                            <optgroup label="US fluid">
+                            <optgroup name="optgroup-units-generic-us-fluid" label="US fluid">
                                 <option value="US fl dr">dr</option>
                                 <option value="tsp">tsp</option>
                                 <option value="tbsp">tbsp</option>
@@ -427,14 +375,14 @@ Shastadari prefixes explanation
                                 <option value="US qt">qt</option>
                                 <option value="US gal">gal</option>
                             </optgroup>
-                            <optgroup label="US dry">
+                            <optgroup name="optgroup-units-generic-us-dry" label="US dry">
                                 <option value="US pt dry">pt</option>
                                 <option value="US qt dry">qt</option>
                                 <option value="US gal dry">gal</option>
                                 <option value="US pk dry">pk</option>
                                 <option value="US bu dry">bu</option>
                             </optgroup>
-                            <optgroup label="UK fluid">
+                            <optgroup name="optgroup-units-generic-uk-fluid" label="UK fluid">
                                 <option value="UK fl dr">dr</option>
                                 <option value="UK fl oz">oz</option>
                                 <option value="UK pt">pt</option>
@@ -464,11 +412,11 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-veg" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="km/h">km/h</option>
                                 <option value="m/s">m/s</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="mph">mph</option>
                                 <option value="ft/s">ft/s</option>
                                 <option value="kn">kn</option>
@@ -497,11 +445,11 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-tvr" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="m/s2">m/s²</option>
                                 <option value="cm/s²">cm/s²</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="ft/s2">ft/s²</option>
                                 <option value="g">g</option>
                                 <option value="Gal">Gal</option>
@@ -529,14 +477,14 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-drv" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="ton">ton</option>
                                 <option value="kg">kg</option>
                                 <option value="g">g</option>
                                 <option value="mg">mg</option>
                                 <option value="μg">μg</option>
                             </optgroup>
-                            <optgroup label="US/UK">
+                            <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
                                 <option value="gr">gr</option>
                                 <option value="dwt">dwt</option>
                                 <option value="ozt">ozt</option>
@@ -547,12 +495,12 @@ Shastadari prefixes explanation
                                 <option value="st">st</option>
                                 <option value="sl">sl</option>
                             </optgroup>
-                            <optgroup label="US">
+                            <optgroup optgroup name="optgroup-units-generic-us" label="US">
                                 <option value="US qr">qr</option>
                                 <option value="US cwt">cwt</option>
                                 <option value="US ton">ton</option>
                             </optgroup>
-                            <optgroup label="UK">
+                            <optgroup optgroup name="optgroup-units-generic-uk" label="UK">
                                 <option value="UK qr">qr</option>
                                 <option value="UK cwt">cwt</option>
                                 <option value="UK ton">ton</option>
@@ -580,7 +528,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-gan" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="kg/m3">kg/m³</option>
                                 <option value="kg/L">kg/L</option>
                                 <option value="kg/dm3">kg/dm³</option>
@@ -589,7 +537,7 @@ Shastadari prefixes explanation
                                 <option value="ton/m3">ton/m³</option>
                                 <option value="Mg/m3">Mg/m³</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="oz/in3">oz/in³</option>
                                 <option value="lb/in3">lb/in³</option>
                                 <option value="lb/ft3">lb/ft³</option>
@@ -633,7 +581,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-bar" onchange="set_decimal_unit(this)">
-                            <optgroup label="SI - Joule">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="MN">MN</option>
                                 <option value="kN">kN</option>
                                 <option value="hN">hN</option>
@@ -656,7 +604,7 @@ Shastadari prefixes explanation
                                 <option value="mgf">mgf</option>
                                 <option value="µgf">µgf</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="lbf">lbf</option>
                                 <option value="dyn">dyn</option>
                             </optgroup>
@@ -695,7 +643,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-dab" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="TPa">TPa</option>
                                 <option value="GPa">GPa</option>
                                 <option value="MPa">MPa</option>
@@ -708,7 +656,7 @@ Shastadari prefixes explanation
                                 <option value="mPa">mPa</option>
                                 <option value="µPa">µPa</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="atm">atm</option>
                                 <option value="psi">psi</option>
                                 <option value="kpsi">kpsi</option>
@@ -764,7 +712,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-kry" onchange="set_decimal_unit(this)">
-                            <optgroup label="SI - Joule">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="TJ">TJ</option>
                                 <option value="GJ">GJ</option>
                                 <option value="MJ">MJ</option>
@@ -829,7 +777,7 @@ Shastadari prefixes explanation
                                 <option value="mTNT">mton TNT</option>
                                 <option value="µTNT">µton TNT</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="ft·lb">ft·lb</option>
                                 <option value="erg">erg</option>
                                 <option value="eV">eV</option>
@@ -869,7 +817,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-xat" onchange="set_decimal_unit(this)">
-                            <optgroup label="SI - Watt">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="PW">PW</option>
                                 <option value="TW">TW</option>
                                 <option value="GW">GW</option>
@@ -884,7 +832,7 @@ Shastadari prefixes explanation
                                 <option value="µW">µW</option>
                                 <option value="nW">nW</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="ftlb/s">ftlb/s</option>
                                 <option value="hp">hp</option>
                                 <option value="BTU/h">BTU/h</option>
@@ -894,7 +842,6 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                 </tr>
-
                 <tr id="unit-gtk" hidden>
                     <td style="text-align: center;">
                         <select id="calculator-sezimal-unit-gtk" onchange="set_sezimal_unit(this)">
@@ -921,11 +868,11 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-gtk" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="K">K</option>
                                 <option value="°C">°C</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="°R">°R</option>
                                 <option value="°F">°F</option>
                             </optgroup>
@@ -952,11 +899,11 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-tap" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="°C">°C</option>
                                 <option value="K">K</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="°F">°F</option>
                                 <option value="°R">°R</option>
                             </optgroup>
@@ -983,7 +930,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-agn" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="MJ/K">MJ/K</option>
                                 <option value="kJ/K">kJ/K</option>
                                 <option value="hJ/K">hJ/K</option>
@@ -994,7 +941,7 @@ Shastadari prefixes explanation
                                 <option value="mJ/K">mJ/K</option>
                                 <option value="µJ/K">µJ/K</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="BTU/°R">BTU/°R</option>
                             </optgroup>
                         </select>
@@ -1020,7 +967,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-idn" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="MJ/K/kg">MJ/K/kg</option>
                                 <option value="kJ/K/kg">kJ/K/kg</option>
                                 <option value="hJ/K/kg">hJ/K/kg</option>
@@ -1031,7 +978,7 @@ Shastadari prefixes explanation
                                 <option value="mJ/K/kg">mJ/K/kg</option>
                                 <option value="µJ/K/kg">µJ/K/kg</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="BTU/°R/lb">BTU/°R/lb</option>
                             </optgroup>
                         </select>
@@ -1057,7 +1004,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-tln" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="MJ/K/m3">MJ/K/m³</option>
                                 <option value="kJ/K/m3">kJ/K/m³</option>
                                 <option value="hJ/K/m3">hJ/K/m³</option>
@@ -1068,7 +1015,7 @@ Shastadari prefixes explanation
                                 <option value="mJ/K/m3">mJ/K/m³</option>
                                 <option value="µJ/K/m3">µJ/K/m³</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="BTU/°R/gal">BTU/°R/gal</option>
                             </optgroup>
                         </select>
@@ -1100,7 +1047,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-avx" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="MC">MC</option>
                                 <option value="kC">kC</option>
                                 <option value="hC">hC</option>
@@ -1153,7 +1100,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-dar" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GA">GA</option>
                                 <option value="MA">MA</option>
                                 <option value="kA">kA</option>
@@ -1189,7 +1136,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-vbv" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GV">GV</option>
                                 <option value="MV">MV</option>
                                 <option value="kV">kV</option>
@@ -1225,7 +1172,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-ptr" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GΩ">GΩ</option>
                                 <option value="MΩ">MΩ</option>
                                 <option value="kΩ">kΩ</option>
@@ -1261,7 +1208,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-cln" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GS">GS</option>
                                 <option value="MS">MS</option>
                                 <option value="kS">kS</option>
@@ -1297,7 +1244,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-prk" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GH">GH</option>
                                 <option value="MH">MH</option>
                                 <option value="kH">kH</option>
@@ -1333,7 +1280,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-sam" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GF">GF</option>
                                 <option value="MF">MF</option>
                                 <option value="kF">kF</option>
@@ -1369,7 +1316,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-abv" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GWb">GWb</option>
                                 <option value="MWb">MWb</option>
                                 <option value="kWb">kWb</option>
@@ -1405,7 +1352,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-vtr" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="GT">GT</option>
                                 <option value="MT">MT</option>
                                 <option value="kT">kT</option>
@@ -1475,7 +1422,7 @@ Shastadari prefixes explanation
                                 <option value="µgon">µgon</option>
                                 <option value="ngon">ngon</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="deg">deg</option>
                             </optgroup>
                         </select>
@@ -1495,7 +1442,7 @@ Shastadari prefixes explanation
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-gol" onchange="set_decimal_unit(this)">
-                            <optgroup label="S.I.">
+                            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="sr">sr</option>
                                 <option value="dsr">dsr</option>
                                 <option value="csr">csr</option>
@@ -1511,7 +1458,7 @@ Shastadari prefixes explanation
                                 <option value="µspat">µspat</option>
                                 <option value="nspat">nspat</option>
                             </optgroup>
-                            <optgroup label="Non-S.I.">
+                            <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
                                 <option value="deg2">deg²</option>
                             </optgroup>
                         </select>
@@ -1820,11 +1767,54 @@ Shastadari prefixes explanation
                         </select>
                     </td>
                 </tr>
+                <tr class="units-explanation">
+                    <td colspan="3" id="unit-units-explanation" hidden></td>
+                    <td colspan="3" id="unit-prefixes-explanation" hidden></td>
+                    <td colspan="3" id="unit-ang-explanation" hidden></td>
+                    <td colspan="3" id="unit-avt-explanation" hidden></td>
+                    <td colspan="3" id="unit-pad-explanation" hidden></td>
+                    <td colspan="3" id="unit-kex-explanation" hidden></td>
+                    <td colspan="3" id="unit-ayt-explanation" hidden></td>
+                    <td colspan="3" id="unit-veg-explanation" hidden></td>
+                    <td colspan="3" id="unit-tvr-explanation" hidden></td>
+                    <td colspan="3" id="unit-drv-explanation" hidden></td>
+                    <td colspan="3" id="unit-gan-explanation" hidden></td>
+                    <td colspan="3" id="unit-tap-explanation" hidden></td>
+                    <td colspan="3" id="unit-bar-explanation" hidden></td>
+                    <td colspan="3" id="unit-dab-explanation" hidden></td>
+                    <td colspan="3" id="unit-kry-explanation" hidden></td>
+                    <td colspan="3" id="unit-xat-explanation" hidden></td>
+                    <td colspan="3" id="unit-svg-explanation" hidden></td>
+                    <td colspan="3" id="unit-pkp-explanation" hidden></td>
+                    <td colspan="3" id="unit-pbv-explanation" hidden></td>
+                    <td colspan="3" id="unit-tnv-explanation" hidden></td>
+                    <td colspan="3" id="unit-upr-explanation" hidden></td>
+                    <td colspan="3" id="unit-nad-explanation" hidden></td>
+                    <td colspan="3" id="unit-bum-explanation" hidden></td>
+                    <td colspan="3" id="unit-gtk-explanation" hidden></td>
+                    <td colspan="3" id="unit-agn-explanation" hidden></td>
+                    <td colspan="3" id="unit-idn-explanation" hidden></td>
+                    <td colspan="3" id="unit-tln-explanation" hidden></td>
+                    <td colspan="3" id="unit-avx-explanation" hidden></td>
+                    <td colspan="3" id="unit-dar-explanation" hidden></td>
+                    <td colspan="3" id="unit-ptr-explanation" hidden></td>
+                    <td colspan="3" id="unit-vbv-explanation" hidden></td>
+                    <td colspan="3" id="unit-cln-explanation" hidden></td>
+                    <td colspan="3" id="unit-prk-explanation" hidden></td>
+                    <td colspan="3" id="unit-sam-explanation" hidden></td>
+                    <td colspan="3" id="unit-abv-explanation" hidden></td>
+                    <td colspan="3" id="unit-vtr-explanation" hidden></td>
+                    <td colspan="3" id="unit-prd-explanation" hidden></td>
+                    <td colspan="3" id="unit-gol-explanation" hidden></td>
+                    <td colspan="3" id="unit-prt-explanation" hidden></td>
+                    <td colspan="3" id="unit-atk-explanation" hidden></td>
+                    <td colspan="3" id="unit-pvn-explanation" hidden></td>
+                </tr>
             </table>
         </div>
         <div id="displays">
             <div id="configuration-left" class="configuration-left">
-<!--                 <span id="toggle_help">[ ? ]</span> -->
+                <span id="toggle_help">[ ? ]</span>
                 <span id="toggle_locale" onclick="toggle_locale()">[ en ]</span>
                 <span id="locale-setting" hidden>
                     <label id="calculator-sezimal-locale-label" for="calculator-sezimal-locale" onclick="toggle_locale()">Locale</label><br/>
@@ -1978,9 +1968,9 @@ Shastadari prefixes explanation
                     <col span="1" style="width: 19.2%;">
                 </colgroup>
                 <tr>
-                    <td><button id="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td><button id="button-sezimal-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
                     <td></td>
-                    <td><button id="button-base-ten" class="button-base" value="14" onclick="toggle_base_ten()">󱸁󱸄</button></td>
+                    <td><button id="button-base-ten" class="button-base" value="14" onclick="toggle_base_ten()">dec</button></td>
                     <td></td>
                     <td><button id="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>
@@ -2001,8 +1991,6 @@ Shastadari prefixes explanation
                     <td><button id="button-sezimal-exponent" class="button-operator" value="^" onclick="button_click(this)">^</button></td>
                     <td></td>
                     <td><button id="button-pernif" class="button-operator" value="󱺉" onclick="button_click(this)">󱺉</button></td>
-                    <td hidden><button id="button-perarda" class="button-operator" value="󱺊" onclick="button_click(this)">󱺊</button></td>
-                    <td hidden><button id="button-persixarda" class="button-operator" value="󱺋" onclick="button_click(this)">󱺋</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -2058,9 +2046,9 @@ Shastadari prefixes explanation
                     <col span="1" style="width: 19.2%;">
                 </colgroup>
                 <tr>
-                    <td><button id="button-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
+                    <td><button id="button-decimal-clear" class="button-clear" value="C" onclick="button_click(this)">C</button></td>
                     <td></td>
-                    <td><button id="button-base-six" class="button-base" value="6" onclick="toggle_base_six()">6</button></td>
+                    <td><button id="button-base-six" class="button-base" value="6" onclick="toggle_base_six()">sez</button></td>
                     <td></td>
                     <td><button id="button-left-parentheses"  class="button-operator" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>

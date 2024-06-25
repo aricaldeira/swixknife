@@ -1,7 +1,7 @@
 :root {
-    --o-webclient-color-scheme: black;
-    --theme: black;
-    background-color: black;
+    --o-webclient-color-scheme: #212121;
+    --theme: #212121;
+    background-color: #212121;
     color: white;
 
     font-size: 1.5em;
@@ -19,7 +19,7 @@ html, body {
     background-color: #212121;
     color: white;
     margin: 0;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     position: relative;
     margin: auto;
@@ -68,6 +68,7 @@ button {
     }
 }
 .button-base {
+    font-size: 26pt;
     background-color: #9E9E9E;
     color: white;
 
@@ -333,3 +334,17 @@ td.units {
     text-overflow: ellipsis;*/
     border-bottom: 2px double #607D8B;
 }
+table.explanation {
+    font-size: 7pt;
+    padding: 6px;
+    border: 1px white solid;
+    border-collapse: collapse;
+}
+table.explanation td {
+    font-size: 7pt;
+    padding: 6px;
+    border: 1px white solid;
+    border-collapse: collapse;
+}
+
+
