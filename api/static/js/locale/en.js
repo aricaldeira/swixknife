@@ -223,12 +223,12 @@ const sezimal_calculator_en_text = {
     </colgroup>
     <tr>
         <td style="text-align: center;">―</td>
-        <td style="text-align: center;">Davt</td>
-        <td style="text-align: center;">avt</td>
-        <td style="text-align: center;">davt</td>
-        <td style="text-align: center;">cavt</td>
-        <td style="text-align: center;">xavt</td>
-        <td style="text-align: center;">xdavt</td>
+        <td style="text-align: center;">Davt</br>per boda</td>
+        <td style="text-align: center;">avt</br>per anuga</td>
+        <td style="text-align: center;">davt</br>per agrima</td>
+        <td style="text-align: center;">cavt</br>per poxa</td>
+        <td style="text-align: center;">xavt</br>per uta</td>
+        <td style="text-align: center;">xdavt</br>per dina/day</td>
     </tr>
     <tr>
         <td style="text-align: center;">Davt</td>
