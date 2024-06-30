@@ -48,3 +48,13 @@
        url("../font/NotoColorEmoji.woff2") format("woff2"),
        url("../font/NotoColorEmoji.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: 'Noto Sans Devanagari';
+  font-weight: normal;
+  font-style: normal;
+  src: local('Noto Sans Devanagari');
+  src: local('Noto Sans Devanagari Regular'),
+       url("../font/NotoSansDevanagari-Regular.woff2") format("woff2"),
+       url("../font/NotoSansDevanagari-Regular.ttf") format("truetype");
+}
