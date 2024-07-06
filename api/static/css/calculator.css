@@ -2,22 +2,22 @@
     --o-webclient-color-scheme: #212121;
     --theme: #212121;
     background-color: #212121;
-    color: white;
+    color: #fafafa;
 
     font-size: 1.5em;
 
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: "Iosevka Sezimal Extended" !important;
+    font-family: 'Sezimal' !important;
 /*     font-family: "Andika", "Iosevka Sezimal Extended"; */
-    --font-family-sans-serif: "Iosevka Sezimal Extended", monospace, sans-serif;
-    --font-family-monospace: "Iosevka Sezimal Extended", monospace;
+    --font-family-sans-serif: 'Sezimal', monospace;
+    --font-family-monospace: 'Sezimal', monospace;
 }
 html, body {
     height: 100%;
     background-color: #212121;
-    color: white;
+    color: #fafafa;
     margin: 0;
     max-width: 500px;
     width: 100%;
@@ -45,7 +45,7 @@ td {
     margin: 0;
 }
 button {
-    font-family: "Iosevka Sezimal Extended";
+    font-family: 'Sezimal';
     font-size: 30pt;
     font-weight: normal;
 /*     font-style: italic; */
@@ -60,123 +60,86 @@ button {
 }
 .button-clear {
     background-color: #D32F2F;
-    color: white;
+    color: #FFEBEE;
 
     &:hover {
         background-color: #FFCDD2;
         color: #D32F2F;
+        font-weight: bold;
     }
 }
 .button-base {
     font-size: 26pt;
-    background-color: #9E9E9E;
-    color: white;
-
-    &:hover {
-        background-color: #F5F5F5;
-        color: #9E9E9E;
-    }
-}
-.button-arrow {
     background-color: #3F51B5;
-    color: white;
+    color: #E8EAF6;
 
     &:hover {
         background-color: #C5CAE9;
         color: #3F51B5;
+        font-weight: bold;
+        font-weight: bold;
     }
 }
 .button-back {
     background-color: #FF5722;
-    color: white;
+    color: #FBE9E7;
 
     &:hover {
         background-color: #FFCCBC;
         color: #FF5722;
+        font-weight: bold;
     }
 }
 .button-digit {
+    background-color: #4CAF50;
+    color: #E8F5E9;
+
+    &:hover {
+        background-color: #C8E6C9;
+        color: #4CAF50;
+        font-weight: bold;
+    }
+}
+.button-constant {
     background-color: #8BC34A;
-    color: white;
+    color: #F1F8E9;
 
     &:hover {
         background-color: #DCEDC8;
         color: #8BC34A;
-    }
-}
-.button-constant {
-    background-color: #4CAF50;
-    color: white;
-
-    &:hover {
-        background-color: #C8E6C9;
-        color: #4CAF50;
-    }
-}
-.button-tau {
-    height: 102px;
-    line-height: unset;
-
-    background-color: #4CAF50;
-    color: white;
-
-    &:hover {
-        background-color: #C8E6C9;
-        color: #4CAF50;
-    }
-}
-.button-zero {
-    background-color: #3F51B5;
-    color: white;
-
-    &:hover {
-        background-color: #C5CAE9;
-        color: #3F51B5;
+        font-weight: bold;
     }
 }
 .button-equal {
     background-color: #FF9800;
-    color: white;
+    color: #FFF3E0;
 
     &:hover {
         background-color: #FFE0B2;
         color: #FF9800;
+        font-weight: bold;
     }
 }
 .button-math {
-    background-color: #03A9F4;
-    color: white;
-
-    &:hover {
-        background-color: #BBDEFB;
-        color: #03A9F4;
-    }
-}
-.button-operator {
     background-color: #2196F3;
-    color: white;
+    color: #E3F2FD;
+    font-weight: bold;
 
     &:hover {
         background-color: #BBDEFB;
         color: #2196F3;
+        font-weight: bold;
     }
 }
-.button-function {
-    font-size: 22px;
-    background-color: #9C27B0;
-    color: white;
+.button-operator {
+    background-color: #03A9F4;
+    color: #E1F5FE;
 
     &:hover {
-        background-color: #E1BEE7;
-        color: #9C27B0;
+        background-color: #BBDEFB;
+        color: #03A9F4;
+        font-weight: bold;
     }
-/*    background-color: #009688;
-    color: white;
-
-    &:hover {
-        background-color: #B2DFDB;
-        color: #009688;
-    }*/
 }
 .unit {
     font-size: 16pt;
@@ -197,6 +160,7 @@ button {
     padding: 6px;
     background-color: #CFD8DC;
     color: #263238;
+    text-shadow: 2px 2px 5px #9E9E9E;
     word-wrap: break-word;
 /*     padding-top: 20px; */
     font-variant-numeric: diagonal-fractions;
@@ -219,11 +183,13 @@ button {
     padding: 6px;
     border-bottom: 2px double #9E9E9E;
     background-color: #212121;
-    color: #F5F5F5;
+    color: #FAFAFA;
+    text-shadow: 1px 1px 2px #9E9E9E;
     word-wrap: break-word;
     font-variant-numeric: diagonal-fractions;
 }
 .niftimal_display {
+    font-family: 'Sezimal Light';
     font-size: 18pt;
     font-weight: normal;
     font-style: normal;
@@ -231,6 +197,8 @@ button {
     align-content: start;
     word-wrap: break-word;
     font-variant-numeric: diagonal-fractions;
+    padding-top: 6px;
+    text-shadow: unset;
 }
 .expression {
     font-size: 20pt;
@@ -258,17 +226,17 @@ label {
 }
 
 select {
-    font-family: "Iosevka Sezimal Extended";
+    font-family: 'Sezimal';
     font-size: 12pt;
 }
 select > option {
-    font-family: "Iosevka Sezimal Extended";
+    font-family: 'Sezimal';
 }
 option {
-    font-family: "Iosevka Sezimal Extended";
+    font-family: 'Sezimal';
 }
 option:before {
-    font-family: "Iosevka Sezimal Extended";
+    font-family: 'Sezimal';
 }
 
 .grouping-explanation {
@@ -294,6 +262,7 @@ td.units {
 .units-explanation {
     font-size: 12pt;
     text-align: left;
+    font-variant-numeric: diagonal-fractions;
 
     .title {
         text-align: center;
@@ -319,7 +288,7 @@ td.units {
     mix-blend-mode: luminosity;
     text-align: left;
     padding: 6px;
-    white-space: nowrap;
+    #fafafa-space: nowrap;
 /*    overflow: hidden;
     text-overflow: ellipsis;*/
 }
@@ -329,7 +298,7 @@ td.units {
     mix-blend-mode: luminosity;
     text-align: right;
     padding: 6px;
-    white-space: nowrap;
+    #fafafa-space: nowrap;
 /*    overflow: hidden;
     text-overflow: ellipsis;*/
     border-bottom: 2px double #607D8B;
@@ -337,14 +306,22 @@ td.units {
 table.explanation {
     font-size: 7pt;
     padding: 6px;
-    border: 1px white solid;
+    border: 1px #fafafa solid;
     border-collapse: collapse;
 }
 table.explanation td {
     font-size: 7pt;
     padding: 6px;
-    border: 1px white solid;
+    border: 1px #fafafa solid;
     border-collapse: collapse;
 }
-
+.devanagari-word {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+a {
+    color: #fafafa;
+    text-decoration: underline;
+/*     color: #212121; */
+/*     background-color: black; */
+}
 
