@@ -1,0 +1,74 @@
+
+@font-face {
+  font-family: 'Sezimal';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Iosevka Sezimal QP Bold Italic Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedBoldItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedBoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal';
+  font-weight: normal;
+  font-style: italic;
+  src: local('Iosevka Sezimal QP Italic Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal';
+  font-weight: bold;
+  font-style: normal;
+  src: local('Iosevka Sezimal QP Bold Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedBold.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal';
+  font-weight: normal;
+  font-style: normal;
+  src: local('Iosevka Sezimal QP Extended'),
+       url("../font/IosevkaSezimalQP-Extended.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-Extended.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Iosevka Sezimal QP Medium Italic Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedMediumItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedMediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: normal;
+  font-style: italic;
+  src: local('Iosevka Sezimal QP Light Italic Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedLightItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedLightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: bold;
+  font-style: normal;
+  src: local('Iosevka Sezimal QP Medium Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedMedium.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: normal;
+  font-style: normal;
+  src: local('Iosevka Sezimal QP Light Extended'),
+       url("../font/IosevkaSezimalQP-ExtendedLight.woff2") format("woff2"),
+       url("../font/IosevkaSezimalQP-ExtendedLight.ttf") format("truetype");
+}
+

@@ -1,36 +1,74 @@
 
 @font-face {
-  font-family: 'Iosevka Sezimal Extended';
+  font-family: 'Sezimal';
   font-weight: bold;
   font-style: italic;
-  src: local('Iosevka Sezimal Extended Bold Italic'),
+  src: local('Iosevka Sezimal Bold Italic Extended'),
        url("../font/IosevkaSezimal-ExtendedBoldItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimal-ExtendedBoldItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal Extended';
+  font-family: 'Sezimal';
   font-weight: normal;
   font-style: italic;
-  src: local('Iosevka Sezimal Extended Italic'),
+  src: local('Iosevka Sezimal Italic Extended'),
        url("../font/IosevkaSezimal-ExtendedItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimal-ExtendedItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal Extended';
+  font-family: 'Sezimal';
   font-weight: bold;
   font-style: normal;
-  src: local('Iosevka Sezimal Extended Bold'),
+  src: local('Iosevka Sezimal Bold Extended'),
        url("../font/IosevkaSezimal-ExtendedBold.woff2") format("woff2"),
        url("../font/IosevkaSezimal-ExtendedBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Iosevka Sezimal Extended';
+  font-family: 'Sezimal';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka Sezimal Extended'),
        url("../font/IosevkaSezimal-Extended.woff2") format("woff2"),
        url("../font/IosevkaSezimal-Extended.ttf") format("truetype");
 }
+
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Iosevka Sezimal Medium Italic Extended'),
+       url("../font/IosevkaSezimal-ExtendedMediumItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedMediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: normal;
+  font-style: italic;
+  src: local('Iosevka Sezimal Light Italic Extended'),
+       url("../font/IosevkaSezimal-ExtendedLightItalic.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedLightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: bold;
+  font-style: normal;
+  src: local('Iosevka Sezimal Medium Extended'),
+       url("../font/IosevkaSezimal-ExtendedMedium.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Sezimal Light';
+  font-weight: normal;
+  font-style: normal;
+  src: local('Iosevka Sezimal Light Extended'),
+       url("../font/IosevkaSezimal-ExtendedLight.woff2") format("woff2"),
+       url("../font/IosevkaSezimal-ExtendedLight.ttf") format("truetype");
+}
+
