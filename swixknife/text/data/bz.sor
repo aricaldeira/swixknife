@@ -11,8 +11,11 @@
 ÷ divididu pur
 ([-−]?1)[/⁄](\d+) $1 $(fractional \\2)
 ([-−]?\d+)[/⁄](\d+) $1 $(fractional-plural \\2)
+([-−]?\d+|[-−]?[πτφ])[/⁄] $1 sobri
 ([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 sobri $2
 ⁄ sobri
+m[oó]d módulu
+([-−]?\d+|[-−]?[πτφ])! fatoriaw di $1
 [.,]{2} i repèti
 e e
 π pi
@@ -20,6 +23,18 @@ e e
 φ fi
 \( abri parêntezis
 \) fèxa parêntezis
+ln\((.*)\) logarítimu natural di $1
+ln\((.*) logarítimu natural di $1
+ln\( logarítimu natural di
+lsez\((.*)\) logarítimu sezimal di $1
+lsez\((.*) logarítimu sezimal di $1
+lsez\( logarítimu sezimal di
+ldec\((.*)\) logarítimu desimal di $1
+ldec\((.*) logarítimu desimal di $1
+ldec\( logarítimu desimal di
+ldes\((.*)\) logarítimu desimal di $1
+ldes\((.*) logarítimu desimal di $1
+ldes\( logarítimu desimal di
 
 ^0 zèro
 1 un

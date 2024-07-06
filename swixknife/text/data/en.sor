@@ -10,11 +10,14 @@
 / divided by
 ÷ divided by
 ([-−]?1)[/⁄]2 $1 half
-([-−]?\d+)[/⁄](\d+) $1 halves
+([-−]?\d+)[/⁄]2 $1 halves
 ([-−]?1)[/⁄](\d+) $1 $(ordinal \\2)
 ([-−]?\d+)[/⁄](\d+) $1 $(ordinal \\2)s
+([-−]?\d+|[-−]?[πτφ])[/⁄] $1 over
 ([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 over $2
 ⁄ over
+mod modulo
+([-−]?\d+|[-−]?[πτφ])! $1 factorial
 [.,]{2} repeating
 e e
 π pi
@@ -22,6 +25,15 @@ e e
 φ phi
 \( open parenthesis
 \) close parenthesis
+ln\((.*)\) natural logarithm of $1
+ln\((.*) natural logarithm of $1
+ln\( natural logarithm of
+lsez\((.*)\) sezimal logarithm of $1
+lsez\((.*) sezimal logarithm of $1
+lsez\( sezimal logarithm of
+ldec\((.*)\) decimal logarithm of $1
+ldec\((.*) decimal logarithm of $1
+ldec\( decimal logarithm of
 
 ^0 zero
 1 one
