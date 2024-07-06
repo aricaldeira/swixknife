@@ -2,24 +2,21 @@
 import re
 
 
-PER_SYMBOLS = ('%', '‰', '‱', '󱺈', '󱺉', '󱺊', '󱺋', '󱺌', '󱺍', '󱺎', '󱺏', '󱺐', '󱺑', '󱺒', '󱺓', '󱺔', '󱺕', '󱺖', '󱺗', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿', '󱺀', '󱺁', '󱺂', '󱺃', '󱺄', '󱺅', '󱺆', '󱺇')
+PER_SYMBOLS = ('%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵', '󱹶', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿')
 
 
 SEZIMAL_DIGITS_MAP = (
-    ('0', '󱸀'), ('1', '󱸁'), ('2', '󱸂'), ('3', '󱸃'), ('4', '󱸄'), ('5', '󱸅'),
-    ('⁰', '󱸤'), ('¹', '󱸥'), ('²', '󱸦'), ('³', '󱸧'), ('⁴', '󱸨'), ('⁵', '󱸩'),
-    ('₀', '󱹈'), ('₁', '󱹉'), ('₂', '󱹊'), ('₃', '󱹋'), ('₄', '󱹌'), ('₅', '󱹍'),
-    # ('%', '󱹹'), ('‰', '󱹺'), ('‱', '󱹻'),
-    ('%', '󱺉'), ('‰', '󱺊'), ('‱', '󱺋'),
-    ('½', '󱹬'), ('⅓', '󱹭'), ('⅔', '󱹮'), ('¼', '󱹯'), ('¾', '󱹰'),
-    ('⅕', '󱹱'), ('⅖', '󱹲'), ('⅗', '󱹳'), ('⅘', '󱹴'),
-    ('⅙', '󱹵'), ('⅚', '󱹶'),
+    ('0', '󱸀'), ('1', '󱸁'), ('2', '󱸂'), ('3', '󱸃'), ('4', '󱸄'), ('5', '󱸅'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'),
+    ('⁰', '󱸤'), ('¹', '󱸥'), ('²', '󱸦'), ('³', '󱸧'), ('⁴', '󱸨'), ('⁵', '󱸩'), ('⁶', '⁶'), ('⁷', '⁷'), ('⁸', '⁸'), ('⁹', '⁹'),
+    ('₀', '󱹈'), ('₁', '󱹉'), ('₂', '󱹊'), ('₃', '󱹋'), ('₄', '󱹌'), ('₅', '󱹍'), ('₆', '₆'), ('₇', '₇'), ('₈', '₈'), ('₉', '₉'),
+    ('+', '+'), ('-', '-'), ('=', '='), ('(', '('), (')', ')'),
+    ('%', '󱹱'), ('‰', '󱹲'), ('‱', '󱹳'),
 )
 DEFAULT_DIGITS = tuple(digit[0] for digit in SEZIMAL_DIGITS_MAP)
 SEZIMAL_DIGITS = tuple(digit[1] for digit in SEZIMAL_DIGITS_MAP)
 
-_DEFAULT_TO_SEZIMAL_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: SEZIMAL_DIGITS[i] for i in range(32)})
-_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({SEZIMAL_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(32)})
+_DEFAULT_TO_SEZIMAL_DIGITS_TT = str.maketrans({DEFAULT_DIGITS[i]: SEZIMAL_DIGITS[i] for i in range(38)})
+_DEDICATED_TO_DEFAULT_DIGITS_TT = str.maketrans({SEZIMAL_DIGITS[i]: DEFAULT_DIGITS[i] for i in range(38)})
 
 NIFTIMAL_DIGITS_MAP = (
     ('0', '󱸀', '0', '0̃'), ('1', '󱸁', '1', '1̃'), ('2', '󱸂', '2','2̃'), ('3', '󱸃', '3', '3̃'), ('4', '󱸄', '4', '4̃'), ('5', '󱸅', '5','5̃'),
@@ -48,16 +45,16 @@ FINANCIAL_NIFTIMAL_DIGITS = tuple(digit[3] for digit in NIFTIMAL_DIGITS_MAP)
 
 
 DEFAULT_NUMERATOR_DIGITS = (
-    '⁰', '¹', '²', '³', '⁴', '⁵',
-    '⁰', '¹', '²', '³', '⁴', '⁵',
-    '⁰', '¹', '²', '³', '⁴', '⁵',
-    '⁺', '⁻',
+    '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹',
+    '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹',
+    '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹',
+    '⁺', '⁻', '⁼', '⁽', '⁾',
 )
 DEFAULT_DENOMINATOR_DIGITS = (
-    '₀', '₁', '₂', '₃', '₄', '₅',
-    '₀', '₁', '₂', '₃', '₄', '₅',
-    '₀', '₁', '₂', '₃', '₄', '₅',
-    '⁺', '⁻',
+    '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉',
+    '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉',
+    '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉',
+    '⁺', '⁻', '₌', '₍', '₎',
 )
 
 
@@ -65,6 +62,10 @@ def _change_digits(number: str, digits_from: tuple, digits_to: tuple) -> str:
     for i in range(len(digits_from)):
         df = digits_from[i]
         dt = digits_to[i]
+
+        if df == '+':
+            df = r'\+'
+
         number = re.sub(df, dt, number)
 
     return number
@@ -105,11 +106,11 @@ def dedicated_niftimal_to_default_digits(number: str) -> str:
 
 
 def default_to_numerator_digits(number: str) -> str:
-    return _change_digits(number, DEFAULT_DIGITS, DEFAULT_NUMERATOR_DIGITS)
+    return _change_digits(number, DEFAULT_DIGITS[0:20], DEFAULT_NUMERATOR_DIGITS)
 
 
 def default_to_denominator_digits(number: str) -> str:
-    return _change_digits(number, DEFAULT_DIGITS, DEFAULT_DENOMINATOR_DIGITS)
+    return _change_digits(number, DEFAULT_DIGITS[0:20], DEFAULT_DENOMINATOR_DIGITS)
 
 
 def sezimal_to_numerator_digits(number: str) -> str:
