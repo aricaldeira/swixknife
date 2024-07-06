@@ -37,9 +37,6 @@ function update_sezimal_digits(calculation_refresh = true) {
         document.getElementById('button-sezimal-number-5').innerHTML = '󱸅';
         document.getElementById('button-sezimal-number-00').innerHTML = '󱸀󱸀';
         // document.getElementById('button-base-ten').innerHTML = '󱸁󱸄';
-        // document.getElementById('button-pernif').innerHTML = '󱺉';
-        // document.getElementById('button-perarda').innerHTML = '󱺊';
-        // document.getElementById('button-persixarda').innerHTML = '󱺋';
     };
 
     update_grouping(false);

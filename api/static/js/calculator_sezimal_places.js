@@ -45,7 +45,13 @@ function more_sezimal_places() {
 function update_sezimal_places(calculation_refresh = true) {
     var sezimal_places = localStorage.getItem('sezimal-calculator-sezimal-places');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
-    const separator = document.getElementById('button-sezimal-separator').innerHTML;
+    let separator;
+
+    if (sezimal_digits == 'true') {
+        separator = '󱹭'
+    } else {
+        separator = document.getElementById('button-sezimal-separator').innerHTML;
+    };
 
     if (sezimal_places == 0) {
         if (sezimal_digits == 'true') {

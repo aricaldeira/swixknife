@@ -13,8 +13,14 @@ function toggle_grouping() {
 
 function update_grouping(calculation_refresh = true) {
     const grouping = localStorage.getItem('sezimal-calculator-grouping');
-    const separator = localStorage.getItem('sezimal-calculator-group-separator');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
+    let separator;
+
+    if (sezimal_digits == 'true') {
+        separator = ' ';
+    } else {
+        separator = localStorage.getItem('sezimal-calculator-group-separator');
+    }
 
     if (grouping == 3) {
         if (sezimal_digits == 'true') {

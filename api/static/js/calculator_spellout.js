@@ -13,11 +13,12 @@ function toggle_spellout() {
 
 function update_spellout(calculation_refresh = true) {
     const spellout = localStorage.getItem('sezimal-calculator-spellout');
+    const txt_translation = localStorage.getItem('sezimal-translation-txt');
 
     if ((spellout == null) || (spellout == '') || (spellout == false)  || (spellout == 'false')) {
-        document.getElementById('toggle_spellout').innerHTML = '[ ≁<i>txt</i> ]'
+        document.getElementById('toggle_spellout').innerHTML = `[ ≁<i>${txt_translation}</i> ]`
     } else {
-        document.getElementById('toggle_spellout').innerHTML = '[ ∼<i>txt</i> ]'
+        document.getElementById('toggle_spellout').innerHTML = `[ ∼<i>${txt_translation}</i> ]`
     };
 
     if (calculation_refresh == true) {

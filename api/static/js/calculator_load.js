@@ -76,14 +76,18 @@ function calculator_load() {
     */
     if (unit_type = localStorage.getItem('sezimal-calculator-unit-type') === null) {
         localStorage.setItem('sezimal-calculator-unit-type', 'units');
+        localStorage.setItem('sezimal-calculator-prefix', '-');
         localStorage.setItem('sezimal-calculator-unit', '');
+        localStorage.setItem('sezimal-calculator-decimal-prefix', '-');
         localStorage.setItem('sezimal-calculator-decimal-unit', '');
     } else {
         const unit_type = localStorage.getItem('sezimal-calculator-unit-type');
+        const sezimal_prefix = localStorage.getItem('sezimal-calculator-prefix');
         const sezimal_unit = localStorage.getItem('sezimal-calculator-unit');
+        const decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-prefix');
         const decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
         document.getElementById('calculator-sezimal-unit-type').value = unit_type;
-        set_unit_type_sezimal_decimal(unit_type, sezimal_unit, decimal_unit);
+        set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, decimal_prefix, decimal_unit);
     };
 
     if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {

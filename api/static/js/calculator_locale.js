@@ -1,5 +1,6 @@
 
 let locales_text = {};
+let locales_display = {};
 
 function toggle_locale() {
     document.getElementById('locale-setting').hidden = !document.getElementById('locale-setting').hidden;
@@ -23,6 +24,8 @@ function update_locale(calculation_refresh = true) {
         update_calculation();
         update_grouping(false);
         update_sezimal_places(false);
+        update_spellout(false);
+        update_niftimal(false);
     };
 
     load_translation();
@@ -59,6 +62,7 @@ function load_translation(first_run = false) {
                 locales_text[locale] = Object.assign({}, locales_text['en']);
                 locales_text[locale] = Object.assign(locales_text[locale], sezimal_calculator_text);
             };
+            _store_display_translation(locale, locales_text[locale]);
             _assign_ids_text(locales_text[locale]);
             return true;
         })
@@ -69,6 +73,7 @@ function load_translation(first_run = false) {
                 }).then((sezimal_calculator_text) => {
                     locales_text[locale] = Object.assign({}, locales_text['en']);
                     locales_text[locale] = Object.assign(locales_text[locale], sezimal_calculator_text);
+                    _store_display_translation(locale, locales_text[locale]);
                     _assign_ids_text(locales_text[locale]);
                     return true;
                 }).catch((e) => {
@@ -78,6 +83,41 @@ function load_translation(first_run = false) {
         });
     };
 }
+
+function _store_display_translation(locale, translation) {
+    if ((locale === undefined) || (translation === undefined)) {
+        return false;
+    };
+
+    if (locale !== 'en') {
+        locales_display[locale] = Object.assign({}, locales_display['en']);
+    } else {
+        locales_display[locale] = {};
+    };
+
+    let key;
+
+    Object.keys(translation).forEach((element_id) => {
+        if (element_id.includes('translation-display-')) {
+            key = element_id.replace('translation-display-', '');
+            locales_display[locale][key] = translation[element_id];
+        };
+    });
+};
+
+function translate_display(display) {
+    const locale = localStorage.getItem('sezimal-calculator-locale');
+
+    if (locales_display[locale] === undefined) {
+        return display;
+    };
+
+    Object.keys(locales_display[locale]).forEach((key) => {
+        display = display.replace(key, locales_display[locale][key]);
+    });
+
+    return display;
+};
 
 function _assign_ids_text(translation) {
     if (translation === undefined) {
@@ -99,6 +139,13 @@ function _assign_ids_text(translation) {
             document.getElementsByName(element_id).forEach((element) => {
                 element.label = translation[element_id];
             });
+        } else if (element_id.includes('translation-')) {
+            localStorage.setItem(`sezimal-${element_id}`, translation[element_id]);
+            if (element_id == 'translation-txt') {
+                update_spellout(false);
+            } else if (element_id == 'translation-nif') {
+                update_niftimal(false);
+            };
         } else {
             document.getElementById(element_id).innerHTML = translation[element_id];
         }

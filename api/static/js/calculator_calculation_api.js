@@ -5,40 +5,59 @@ function button_click(button) {
 
 function update_calculation(value = '') {
     let dados = {};
+    let sezimal_prefix = localStorage.getItem('sezimal-calculator-prefix');
+    let sezimal_unit = localStorage.getItem('sezimal-calculator-unit');
+    let decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-prefix');
+    let decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
+
+    if ((sezimal_prefix == '-') || (sezimal_prefix == null)) {
+        sezimal_prefix = '';
+    };
+    if ((decimal_prefix == '-') || (decimal_prefix == null)) {
+        decimal_prefix = '';
+    };
+
+    if (localStorage.getItem(`sezimal-translation-${sezimal_unit}`) != null) {
+        sezimal_unit = localStorage.getItem(`sezimal-translation-${sezimal_unit}`);
+    };
+    if (localStorage.getItem(`sezimal-translation-${decimal_unit}`) != null) {
+        decimal_unit = localStorage.getItem(`sezimal-translation-${decimal_unit}`);
+    };
 
     if (localStorage.getItem('sezimal-calculator-base') == 14) {
-        dados = JSON.stringify({
+        dados = {
             locale: localStorage.getItem('sezimal-calculator-locale'),
             places: localStorage.getItem('sezimal-calculator-sezimal-places'),
             base: localStorage.getItem('sezimal-calculator-base'),
             sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
             grouping: localStorage.getItem('sezimal-calculator-grouping'),
             spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: localStorage.getItem('sezimal-calculator-unit'),
-            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            sezimal_unit: sezimal_prefix + sezimal_unit,
+            decimal_unit: decimal_prefix + decimal_unit,
             niftimal: localStorage.getItem('sezimal-calculator-niftimal'),
             expression: document.getElementById('decimal_expression').innerHTML,
             value: value,
-        });
+        };
     } else {
-        dados = JSON.stringify({
+        dados = {
             locale: localStorage.getItem('sezimal-calculator-locale'),
             places: localStorage.getItem('sezimal-calculator-sezimal-places'),
             base: localStorage.getItem('sezimal-calculator-base'),
             sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
             grouping: localStorage.getItem('sezimal-calculator-grouping'),
             spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: localStorage.getItem('sezimal-calculator-unit'),
-            decimal_unit: localStorage.getItem('sezimal-calculator-decimal-unit'),
+            sezimal_unit: sezimal_prefix + sezimal_unit,
+            decimal_unit: decimal_prefix + decimal_unit,
             niftimal: localStorage.getItem('sezimal-calculator-niftimal'),
             expression: document.getElementById('expression').innerHTML,
             value: value,
-        });
+        };
     }
+
 
     fetch('/calculator/process', {
         method: 'post',
-        body: dados,
+        body: JSON.stringify(dados),
         headers: {
             'Accept': 'application/json; charset=UTF-8',
             'Content-Type': 'application/json; charset=UTF-8'
@@ -46,15 +65,18 @@ function update_calculation(value = '') {
     }).then((response) => {
         return response.json();
     }).then((dados) => {
-        dados.display = dados.display.replace(',,', '„').replace('..', '‥');
-        dados.niftimal_display = dados.niftimal_display.replace(',,', '„').replace('..', '‥');
-        dados.decimal_display = dados.decimal_display.replace(',,', '„').replace('..', '‥');
-
         document.getElementById('expression').innerHTML = dados.expression;
         document.getElementById('decimal_expression').innerHTML = dados.decimal_expression;
 
         localStorage.setItem('sezimal-calculator-sezimal-separator', dados.separator);
-        document.getElementById('button-sezimal-separator').innerHTML = dados.separator;
+
+        if (dados.sezimal_digits) {
+            document.getElementById('button-sezimal-separator').innerHTML = '󱹭';
+        } else {
+            document.getElementById('button-sezimal-separator').innerHTML = dados.separator;
+        };
+        update_sezimal_places(false);
+
         document.getElementById('button-decimal-separator').innerHTML = dados.separator;
 
         localStorage.setItem('sezimal-calculator-group-separator', dados.group_separator);
@@ -69,11 +91,11 @@ function update_calculation(value = '') {
 
         if (localStorage.getItem('sezimal-calculator-base') == 14) {
             set_display_value(dados.display, 'display_number', 32);
-            set_display_value(dados.niftimal_display, 'niftimal_display_number', 9);
+            set_display_value(dados.niftimal_display, 'niftimal_display_number', 15);
             set_display_value(dados.decimal_display, 'decimal_display_number', 56);
         } else {
             set_display_value(dados.display, 'display_number', 56);
-            set_display_value(dados.niftimal_display, 'niftimal_display_number', 16);
+            set_display_value(dados.niftimal_display, 'niftimal_display_number', 24);
             set_display_value(dados.decimal_display, 'decimal_display_number', 32);
         }
     });
@@ -84,7 +106,7 @@ function set_display_value(value, display_number_name, font_size) {
     var number = document.getElementById(display_number_name);
 
     number.style.fontSize = font_size.toString() + 'px';
-    number.innerHTML = value;
+    number.innerHTML = translate_display(value);
 
     if ((font_size == 56) || (font_size == 32)) {
         const width = number.getBoundingClientRect().width;
