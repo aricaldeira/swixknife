@@ -5,6 +5,9 @@ const sezimal_calculator_en_text = {
     'button-decimal-clear': 'C',
     'button-base-ten': 'dec',
     'button-base-six': 'sez',
+    'translation-txt': 'txt',
+    'translation-nif': 'nif',
+    'translation-display-mod': 'mod',
 
     //
     // Units
@@ -59,8 +62,11 @@ const sezimal_calculator_en_text = {
     'option-units-atk': 'Storage',
     'option-units-pvn': 'Speed',
 
-    'label-unit-sezimal': 'Sezimal',
-    'label-unit-decimal': 'Decimal',
+    'label-prefix-sezimal': 'Sezimal Prefix',
+    'label-unit-sezimal': 'Sezimal Unit',
+    'label-prefix-decimal': 'Decimal Prefix',
+    'label-prefix-decimal-binary': 'Decimal/Binary Prefix',
+    'label-unit-decimal': 'Decimal Unit',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Non-S.I.',
     'optgroup-units-generic-us-uk': 'US/UK',
@@ -69,6 +75,147 @@ const sezimal_calculator_en_text = {
     'optgroup-units-generic-us-fluid': 'US fluid',
     'optgroup-units-generic-us-dry': 'US dry',
     'optgroup-units-generic-uk-fluid': 'UK fluid',
+
+    //
+    // Sezimal Prefixes
+    //
+    'option-sezimal-prefix-ndxm': 'NDX – nidishama  – 10¹²⁰',
+    'option-sezimal-prefix-nxpm': 'NXP – nishapama  – 10¹¹⁵',
+    'option-sezimal-prefix-nxcm': 'NXC – nishacharma – 10¹¹⁴',
+    'option-sezimal-prefix-nxtm': 'NXT – nishatrima – 10¹¹³',
+    'option-sezimal-prefix-nxdm': 'NXD – nishadima  – 10¹¹²',
+    'option-sezimal-prefix-nxem': 'NXE – nishaekama – 10¹¹¹',
+    'option-sezimal-prefix-nxm': 'NX – nishama – 10¹¹⁰',
+    'option-sezimal-prefix-npm': 'NP – nipama – 10¹⁰⁵',
+    'option-sezimal-prefix-ncm': 'NC – nicharma  – 10¹⁰⁴',
+    'option-sezimal-prefix-ntm': 'NT – nitrima – 10¹⁰³',
+    'option-sezimal-prefix-ndm': 'ND – nidima – 10¹⁰²',
+    'option-sezimal-prefix-nem': 'NE – niekama – 10¹⁰¹',
+    'option-sezimal-prefix-nm': 'N – nima – 10¹⁰⁰',
+    'option-sezimal-prefix-ppm': 'PP – panpama – 10⁵⁵',
+    'option-sezimal-prefix-pcm': 'PC – pancharma – 10⁵⁴',
+    'option-sezimal-prefix-ptm': 'PT – pantrima  – 10⁵³',
+    'option-sezimal-prefix-pdm': 'PD – pandima – 10⁵²',
+    'option-sezimal-prefix-pem': 'PE – panekama  – 10⁵¹',
+    'option-sezimal-prefix-pxm': 'PX – panshama  – 10⁵⁰',
+    'option-sezimal-prefix-cpm': 'CP – charpama  – 10⁴⁵',
+    'option-sezimal-prefix-ccm': 'CC – charcharma  – 10⁴⁴',
+    'option-sezimal-prefix-ctm': 'CT – chartrima – 10⁴³',
+    'option-sezimal-prefix-cdm': 'CD – chardima  – 10⁴²',
+    'option-sezimal-prefix-cem': 'CE – charekama – 10⁴¹',
+    'option-sezimal-prefix-cxm': 'CX – charshama – 10⁴⁰',
+    'option-sezimal-prefix-tpm': 'TP – tripama – 10³⁵',
+    'option-sezimal-prefix-tcm': 'TC – tricharma – 10³⁴',
+    'option-sezimal-prefix-ttm': 'TT – tritrima  – 10³³',
+    'option-sezimal-prefix-tdm': 'TD – tridima – 10³²',
+    'option-sezimal-prefix-tem': 'TE – triekama  – 10³¹',
+    'option-sezimal-prefix-txm': 'TX – trishama  – 10³⁰',
+    'option-sezimal-prefix-dpm': 'DP – dipama – 10²⁵',
+    'option-sezimal-prefix-dcm': 'DC – dicharma  – 10²⁴',
+    'option-sezimal-prefix-dtm': 'DT – ditrima – 10²³',
+    'option-sezimal-prefix-ddm': 'DD – didima – 10²²',
+    'option-sezimal-prefix-dem': 'DE – diekama – 10²¹',
+    'option-sezimal-prefix-dxm': 'DX – dishama – 10²⁰',
+    'option-sezimal-prefix-xpm': 'XP – shapama – 10¹⁵',
+    'option-sezimal-prefix-xcm': 'XC – shacharma – 10¹⁴',
+    'option-sezimal-prefix-xtm': 'XT – shatrima  – 10¹³',
+    'option-sezimal-prefix-xdm': 'XD – shadima – 10¹²',
+    'option-sezimal-prefix-xem': 'XE – shaekama  – 10¹¹',
+    'option-sezimal-prefix-xm': 'X – shama – 10¹⁰',
+    'option-sezimal-prefix-pm': 'P – pama – 10⁵',
+    'option-sezimal-prefix-cm': 'C – charma – 10⁴',
+    'option-sezimal-prefix-tm': 'T – trima – 10³',
+    'option-sezimal-prefix-dm': 'D – dima – 10²',
+    'option-sezimal-prefix-em': 'E – ekama – 10¹',
+    'option-sezimal-prefix-ei': 'e – ekati – 10⁻¹',
+    'option-sezimal-prefix-di': 'd – diti – 10⁻²',
+    'option-sezimal-prefix-ti': 't – triti – 10⁻³',
+    'option-sezimal-prefix-ci': 'c – charti – 10⁻⁴',
+    'option-sezimal-prefix-pi': 'p – panti – 10⁻⁵',
+    'option-sezimal-prefix-xi': 'x – shati – 10⁻¹⁰',
+    'option-sezimal-prefix-xei': 'xe – shaekati – 10⁻¹¹',
+    'option-sezimal-prefix-xdi': 'xd – shaditi – 10⁻¹²',
+    'option-sezimal-prefix-xti': 'xt – shatriti – 10⁻¹³',
+    'option-sezimal-prefix-xci': 'xc – shacharti – 10⁻¹⁴',
+    'option-sezimal-prefix-xpi': 'xp – shapanti – 10⁻¹⁵',
+    'option-sezimal-prefix-dxi': 'dx – dishati – 10⁻²⁰',
+    'option-sezimal-prefix-dei': 'de – diekati – 10⁻²¹',
+    'option-sezimal-prefix-ddi': 'dd – diditi – 10⁻²²',
+    'option-sezimal-prefix-dti': 'dt – ditriti – 10⁻²³',
+    'option-sezimal-prefix-dci': 'dc – dicharti – 10⁻²⁴',
+    'option-sezimal-prefix-dpi': 'dp – dipanti – 10⁻²⁵',
+    'option-sezimal-prefix-txi': 'tx – trishati – 10⁻³⁰',
+    'option-sezimal-prefix-tei': 'te – triekati – 10⁻³¹',
+    'option-sezimal-prefix-tdi': 'td – triditi – 10⁻³²',
+    'option-sezimal-prefix-tti': 'tt – tritriti – 10⁻³³',
+    'option-sezimal-prefix-tci': 'tc – tricharti – 10⁻³⁴',
+    'option-sezimal-prefix-tpi': 'tp – tripanti – 10⁻³⁵',
+    'option-sezimal-prefix-cxi': 'cx – charshati – 10⁻⁴⁰',
+    'option-sezimal-prefix-cei': 'ce – charekati – 10⁻⁴¹',
+    'option-sezimal-prefix-cdi': 'cd – charditi – 10⁻⁴²',
+    'option-sezimal-prefix-cti': 'ct – chartriti – 10⁻⁴³',
+    'option-sezimal-prefix-cci': 'cc – charcharti – 10⁻⁴⁴',
+    'option-sezimal-prefix-cpi': 'cp – charpanti – 10⁻⁴⁵',
+    'option-sezimal-prefix-pxi': 'px – panshati – 10⁻⁵⁰',
+    'option-sezimal-prefix-pei': 'pe – panekati – 10⁻⁵¹',
+    'option-sezimal-prefix-pdi': 'pd – panditi – 10⁻⁵²',
+    'option-sezimal-prefix-pti': 'pt – pantriti – 10⁻⁵³',
+    'option-sezimal-prefix-pci': 'pc – pancharti – 10⁻⁵⁴',
+    'option-sezimal-prefix-ppi': 'pp – panpanti – 10⁻⁵⁵',
+    'option-sezimal-prefix-ni': 'n – niti – 10⁻¹⁰⁰',
+    'option-sezimal-prefix-nei': 'ne – niekati – 10⁻¹⁰¹',
+    'option-sezimal-prefix-ndi': 'nd – niditi – 10⁻¹⁰²',
+    'option-sezimal-prefix-nti': 'nt – nitriti – 10⁻¹⁰³',
+    'option-sezimal-prefix-nci': 'nc – nicharti – 10⁻¹⁰⁴',
+    'option-sezimal-prefix-npi': 'np – nipanti – 10⁻¹⁰⁵',
+    'option-sezimal-prefix-nxi': 'nx – nishati – 10⁻¹¹⁰',
+    'option-sezimal-prefix-nxei': 'nxe – nishaekati – 10⁻¹¹¹',
+    'option-sezimal-prefix-nxdi': 'nxd – nishaditi – 10⁻¹¹²',
+    'option-sezimal-prefix-nxti': 'nxt – nishatriti – 10⁻¹¹³',
+    'option-sezimal-prefix-nxci': 'nxc – nishacharti – 10⁻¹¹⁴',
+    'option-sezimal-prefix-nxpi': 'nxp – nishapanti – 10⁻¹¹⁵',
+    'option-sezimal-prefix-ndxi': 'ndx – nidishati – 10⁻¹²⁰',
+
+    //
+    // Decimal Prefixes
+    //
+    'option-decimal-prefix-quetta': 'Q – quetta – 10³⁰',
+    'option-decimal-prefix-ronna': 'R – ronna – 10²⁷',
+    'option-decimal-prefix-yotta': 'Y – yotta – 10²⁴',
+    'option-decimal-prefix-zetta': 'Z – zetta – 10²¹',
+    'option-decimal-prefix-exa': 'E – exa – 10¹⁸',
+    'option-decimal-prefix-peta': 'P – peta – 10¹⁵',
+    'option-decimal-prefix-tera': 'T – tera – 10¹²',
+    'option-decimal-prefix-giga': 'G – giga – 10⁹',
+    'option-decimal-prefix-mega': 'M – mega – 10⁶',
+    'option-decimal-prefix-kilo': 'k – kilo – 10³',
+    'option-decimal-prefix-hecto': 'h – hecto – 10²',
+    'option-decimal-prefix-deca': 'da – deca – 10¹',
+    'option-decimal-prefix-deci': 'd – deci – 10⁻¹',
+    'option-decimal-prefix-centi': 'c – centi – 10⁻²',
+    'option-decimal-prefix-milli': 'm – milli – 10⁻³',
+    'option-decimal-prefix-micro': 'µ – micro – 10⁻⁶',
+    'option-decimal-prefix-nano': 'n – nano – 10⁻⁹',
+    'option-decimal-prefix-pico': 'p – pico – 10⁻¹²',
+    'option-decimal-prefix-femto': 'f – femto – 10⁻¹⁵',
+    'option-decimal-prefix-atto': 'a – atto – 10⁻¹⁸',
+    'option-decimal-prefix-zepto': 'z – zepto – 10⁻²¹',
+    'option-decimal-prefix-yocto': 'y – yocto – 10⁻²⁴',
+    'option-decimal-prefix-ronto': 'r – ronto – 10⁻²⁷',
+    'option-decimal-prefix-quecto': 'q – quecto – 10⁻³⁰',
+
+    //
+    // Binary Prefixes
+    //
+    'optgroup-units-generic-binary': 'Binary',
+    'option-binary-prefix-yobi': 'Yi – yobi – 2⁸⁰',
+    'option-binary-prefix-zebi': 'Zi – zebi – 2⁷⁰',
+    'option-binary-prefix-exbi': 'Ei – exbi – 2⁶⁰',
+    'option-binary-prefix-pebi': 'Ei – pebi – 2⁵⁰',
+    'option-binary-prefix-tebi': 'Ti – tebi – 2⁴⁰',
+    'option-binary-prefix-gibi': 'Gi – gibi – 2³⁰',
+    'option-binary-prefix-mebi': 'Mi – mebi – 2²⁰',
+    'option-binary-prefix-kibi': 'Ki – kibi – 2¹⁰',
 
     //
     // Time - anuga
@@ -88,7 +235,6 @@ const sezimal_calculator_en_text = {
 <p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 12pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
 <p style="text-align: center;"><span style="color: #9E9E9E;">   5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :    55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
 <p style="text-align: center;"><span style="color: #9E9E9E;">dina . </span><span style="font-size: 12pt; font-weight: bold;">uta : posha : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
-<p>For science, the base unit of time is the anuga, so all other units that derive from time in any way use the anuga in their definitions.</p>
 <p>Prefixes can be used with any of the units of time, and the conversion between the units and prefixes is done as follows:</p>
 <table class="explanation">
     <colgroup>
@@ -165,52 +311,58 @@ const sezimal_calculator_en_text = {
     </tr>
 </table>
 <p></p>
+<p>The name of each of the units come from the following Sanskrit words:</p>
+<ul>
+    <li><span class="devanagari-word">दिन</span> ‹dina› /'d̪i.nə/: Day, cognate with Latin <i>diēs</i>;</li>
+    <li><span class="devanagari-word">उत्थानम्</span> ‹utthānam› /ut̪'t̪ʰɑː.nəm/: Lift up;</li>
+    <li><span class="devanagari-word">पोषण</span> ‹poṣaṇa› /'poː.ʂə.ɳə/: Nourishing;</li>
+    <li><span class="devanagari-word">अग्रिम</span> ‹agrima› /ə'gri.mə/: Preceding;</li>
+    <li><span class="devanagari-word">अनुगामी</span> ‹anugāmī› /ə.nu'gɑː.miː/: Follower;</li>
+    <li><span class="devanagari-word">बोध</span> ‹bodha› /'boː.d̪ʰə/: Knowledge;</li>
+</ul>
+<p></p>
+<p>In science, the base sezimal unit of time is the anuga, so all other units that derive from time in any way use the anuga in their definitions.</p>
+<p>The formal definition of the anuga is on pair with the S.I. definition of the second, stating that:</p>
+<p></p>
+<p>   the unperturbed optical 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) transition of the ⁴⁴³Yb⁺ ion has a frequency of <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203 150 505 354 503 234.530 12 avt<sup><a href="#reference_1">1</a></sup>, when expressed in the unit avrita (avt), which is equal to ang⁻¹ (in decimal, ¹⁷¹Yb⁺ and 688 358 979 309 308.24 Hz<sup><a href="#reference_2">2</a></sup>).</p>
+<p></p>
+<p>Finally, the conversion between anuga and second; we take the average day of 1,504,000 seconds (decimal 86,400), and divide it by the average day of 100,000,000 (decimal 1,679,616) anugas:
+</p>
+<p>So, 1 ang = 1,504,000⁄100,000,000 = 41⁄2,130 = 0.015 04 s (decimal 25⁄486 = 0&zwj;.&zwj;0&zwj;‥&zwj;514 403 292 181 069 958 847 736 625);</p>
+<p>Conversely, 1 s = 100,000,000⁄1,504,000 = 2,130⁄41 = 31&zwj;‥&zwj;235 01 ang (decimal 486⁄25 = 19.44);</p>
+<p></p>
+<p>References:</p>
+<p id="reference_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Recommendations adopted by the International Committee for Weights
+and Measures, 95th meeting (October 2006) of the CIPM, pages 123–124 of the French version, pages 249–250 (PDF 115–116) of the English version.</a>
+</p>
+<p id="reference_2"><sup>2</sup> <a href="https://www.bipm.org/documents/20126/69375151/171Yb+_688THz_2021.pdf/6ffc6ec4-76a5-d043-ba4c-af680662fc29">Recommended Values of Standard Frequencies
+for Applications Including the Practical Realization
+of the Metre and Secondary Representations of the
+Definition of the Second, Ytterbium 171 Ion</a>
+</p>
 `,
-    'optgroup-units-ang-common': 'Common/Civil',
-    'option-units-ang-dina': 'dina = day',
-    'option-units-ang-uta': 'uta ~ hour',
-    'option-units-ang-posha': 'posha ~ minute',
-    'option-units-ang-agrima': 'agrima ~ second',
-    'option-units-ang-anuga': 'anuga ~ centisecond',
-    'option-units-ang-boda': 'boda ~ millisecond',
-    'optgroup-units-ang-dina': 'Dina/day',
-    'option-units-ang-din': 'din = day',
-    // 'option-units-ang-edin': 'edin',
-    'option-units-ang-ddin': 'ddin = uta',
-    // 'option-units-ang-tdin': 'tdin',
-    'option-units-ang-cdin': 'cdin = posha',
-    // 'option-units-ang-pdin': 'pdin',
-    'option-units-ang-xdin': 'xdin = agrima',
-    // 'option-units-ang-xedin': 'xedin',
-    'option-units-ang-xddin': 'xddin = anuga',
-    // 'option-units-ang-xtdin': 'xtdin',
-    'option-units-ang-xcdin': 'xcdin = boda',
-    'optgroup-units-ang-anuga': 'Anuga',
-    'option-units-ang-XDang': 'XDang = dina/day',
-    // 'option-units-ang-XEang': 'XEang',
-    'option-units-ang-Xang': 'Xang = uta',
-    // 'option-units-ang-Pang': 'Pang',
-    'option-units-ang-Cang': 'Cang = posha',
-    // 'option-units-ang-Tang': 'Tang',
-    'option-units-ang-Dang': 'Dang = agrima',
-    // 'option-units-ang-Eang': 'Eang',
-    // 'option-units-ang-ang': 'ang',
-    // 'option-units-ang-eang': 'eang',
-    'option-units-ang-dang': 'dang = boda',
-    // 'option-units-ang-tang': 'tang',
-    // 'option-units-ang-cang': 'cang',
-    // 'option-units-ang-pang': 'pang',
-    // 'option-units-ang-xang': 'xang',
-    'optgroup-decimal-units-ang-common': 'Common/civil',
+
+    'option-units-ang-dina': 'dina – din = day',
+    'option-units-ang-uta': 'uta – uta ~ hour',
+    'option-units-ang-posha': 'posha – pox ~ minute',
+    'option-units-ang-agrima': 'agrima – agm ~ second',
+    'option-units-ang-anuga': 'anuga – ang ~ centisecond',
+    'option-units-ang-boda': 'boda – bod ~ millisecond',
+
     'option-decimal-units-ang-day': 'day',
-    'option-decimal-units-ang-hour': 'hour',
-    'option-decimal-units-ang-minute': 'minute',
-    'option-decimal-units-ang-second': 'second',
+    'option-decimal-units-ang-hour': 'hour – h',
+    'option-decimal-units-ang-minute': 'minute – min',
+    'option-decimal-units-ang-second': 'second – s',
+
+    'translation-day': 'day',
+    'translation-hour': 'h',
+    'translation-minute': 'min',
+    'translation-second': 's',
 
     'unit-avt-explanation': `
 <br/>
 <p>Frequency is registered using the unit avrita (uh-VREE-tuh), símbolo avt, that represents events, cycles, ocurrences etc. per anuga (the base unit of time).</p>
-<p>An interesting property of all units envolving time in sezimal, is that is }fairly easy to convert between the several units of civil time and the anuga:</p>
+<p>An interesting property of all units envolving time in sezimal, is that is fairly easy to convert between the several units of civil time and the anuga:</p>
 <table class="explanation">
     <colgroup>
         <col span="1" style="width: 10%;">
@@ -287,6 +439,33 @@ const sezimal_calculator_en_text = {
 </table>
 <br/>
 `,
+
+    'option-units-avt-avrita': 'avrita – avt',
+    'option-decimal-units-avt-hertz': 'Hertz – Hz',
+    'option-decimal-units-avt-rpm': 'rpm',
+
+    'option-units-pad-pada': 'pada – pad',
+    'option-decimal-units-pad-meter': 'meter – m',
+    'option-decimal-units-pad-mile': 'mile – ml',
+    'option-decimal-units-pad-yard': 'yard – yd',
+    'option-decimal-units-pad-foot': 'foot – ft',
+    'option-decimal-units-pad-inch': 'inch – in',
+
+    'option-units-kex-keshe': 'keshe – kex',
+    'option-decimal-units-kex-sq-meter': 'sq. meter – m²',
+    'option-decimal-units-kex-are': 'are - a',
+    'option-decimal-units-kex-acre': 'acre - ac',
+    'option-decimal-units-kex-sq-mile': 'sq. mile – ml²',
+    'option-decimal-units-kex-sq-yard': 'sq. yard – yd²',
+    'option-decimal-units-kex-sq-foot': 'sq. foot – ft²',
+    'option-decimal-units-kex-sq-inch': 'sq. inch – in²',
+
+    'option-units-ayt-aytan': 'aytan – ayt',
+    'option-decimal-units-ayt-cb-meter': 'cb. meter – m³',
+    'option-decimal-units-ayt-liter': 'liter – L',
+    'option-decimal-units-ayt-cb-mile': 'cb. mile – ml³',
+    'option-decimal-units-ayt-cb-yard': 'cb. yard – yd³',
+    'option-decimal-units-ayt-cb-foot': 'cb. foot – ft³',
 };
 
 export { sezimal_calculator_en_text };
