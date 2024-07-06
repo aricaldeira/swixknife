@@ -326,10 +326,10 @@ def system_time_zone():
 
 
 def date_time_to_agrima(date_time: _datetime.datetime | _datetime.time):
-    total_seconds = Decimal(str(date_time.hour * 60 * 60))
-    total_seconds += Decimal(str(date_time.minute * 60))
+    total_seconds = Decimal(str(date_time.hour)) * 60 * 60
+    total_seconds += Decimal(str(date_time.minute)) * 60
     total_seconds += Decimal(str(date_time.second))
-    total_seconds += Decimal(str(date_time.microsecond / 1_000_000))
+    total_seconds += Decimal(str(date_time.microsecond)) / 1_000_000
     total_agrimas = decimal_to_sezimal_unit(total_seconds, 's', 'agm')
     return total_agrimas
 
