@@ -25,18 +25,46 @@ def calculate_conversions():
     DAY_TO_SECOND = SezimalFraction('1_504_000 / 1')
 
     for unit, factor in (
-        ('din', 1), ('uta', 100), ('pox', 10_000), ('agm', 1_000_000),
-        ('ang', 100_000_000), ('bod', 10_000_000_000)):
-
+        #
+        # Varsha (year) is the Symmetry454 mean year:
+        # 1405 + 155⁄1205 din
+        # 2143240⁄1205 din
+        # 1405 din 12 uta 42 pox 01 agm 41 ang 53 + 223⁄1205 bod
+        #
+        ('vrx', SezimalFraction('1_205 / 2_143_240')),
+        #
+        # Masa (month) is Varsha / 20 (20 months in the mean year)
+        #
+        ('mas', SezimalFraction('1_205 / 105_142')),
+        #
+        # Saptaha (week) is the same, 11 days
+        #
+        ('sth', SezimalFraction('1 / 11')),
+        ('din', 1),
+        ('uta', 100),
+        ('pox', 10_000),
+        ('agm', 1_000_000),
+        ('ang', 100_000_000),
+        ('bod', 10_000_000_000),
+    ):
         unit_conversion[unit] = {
             's': DAY_TO_SECOND / factor,
-            'prefixed': ('s', 'day'),
+            'prefixed': ('s', 'min', 'h', 'day', 'week', 'month', 'year'),
             #
             # Non S.I. units
             #
             'min': DAY_TO_SECOND / 140 / factor,
             'h': DAY_TO_SECOND / 140 / 140 / factor,
             'day': DAY_TO_SECOND / 140 / 140 / 40 / factor,
+            'week': DAY_TO_SECOND / 140 / 140 / 40 / 11 / factor,
+            #
+            # This is the Gregorian Calendar mean year and month;
+            # The Gregorian Calendar has a cycle of 114_144 years
+            # comprising 210_141_213 days; and that many days
+            # divided into 114_144 × 20 = 2_323_320 months
+            #
+            'month': SezimalFraction('2_323_320 / 210_141_213') / factor,
+            'year': SezimalFraction('114_144 / 210_141_213') / factor,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -136,7 +164,7 @@ def calculate_conversions():
         'ft3': unit_conversion['pad']['ft'] ** 3,
         'yd3': unit_conversion['pad']['yd'] ** 3,
         'ml3': unit_conversion['pad']['ml'] ** 3,
-        'ac·ft': (unit_conversion['pad']['ft'] ** 3) / 533_400,
+        'ac⋅ft': (unit_conversion['pad']['ft'] ** 3) / 533_400,
 
         'US min': AYTAN_TO_US_FLUID_DRAM * 140,
         'US fl dr': AYTAN_TO_US_FLUID_DRAM,
@@ -186,7 +214,8 @@ def calculate_conversions():
                  'XDpad/XDang', 'Xpad/Xang', 'Cpad/Cang', 'Dpad/Dang', 'dpad/dang'):
         unit_conversion[unit] = {
             'm/s': VEGA_TO_METER_PER_SECOND,
-            'prefixed': ('m/s',),
+            'm/h': VEGA_TO_METER_PER_SECOND * 24_400,
+            'prefixed': ('m/s', 'm/h'),
             #
             # Non S.I. units
             #
@@ -268,6 +297,9 @@ def calculate_conversions():
     GANA_TO_KILOGRAM_PER_LITER = GANA_TO_KILOGRAM_PER_CUBIC_METER / 4344
 
     unit_conversion['gan'] = {
+        'g/m3': GANA_TO_KILOGRAM_PER_CUBIC_METER * 4344,
+        'g/L': GANA_TO_KILOGRAM_PER_LITER * 4344,
+        'g/l': GANA_TO_KILOGRAM_PER_LITER * 4344,
         'kg/m3': GANA_TO_KILOGRAM_PER_CUBIC_METER,
         'kg/L': GANA_TO_KILOGRAM_PER_LITER,
         'kg/l': GANA_TO_KILOGRAM_PER_LITER,
@@ -339,7 +371,7 @@ def calculate_conversions():
         #
         'Wh': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / 4344 / SezimalFraction('30 / 5'),
         'ft⋅lb': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('22_310_245 / 14_414_452'),
-        'ftlb': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('22_310_245 / 14_414_452'),
+        'ft⋅lb': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('22_310_245 / 14_414_452'),
         'BTU': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('40_122_335_231_451 / 4_543_401_252'),
         'cal': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('2_231 / 325'),
         'erg': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') * 554_200_144,
@@ -359,9 +391,9 @@ def calculate_conversions():
         # Non S.I. units
         #
         'hp': SezimalFraction('121_132_153_514_542_401_513_232_551_044_525_041_412_401_023_245_415_205_322_023_430 / 2_353_312_241_345_501_021_435_340_022_525_025_342_351_251_450_242_104_254_225_320_300') / SezimalFraction('54_305 / 14'),
-        'ftlb/s': unit_conversion['kry']['ftlb'] / unit_conversion['ang']['s'],
-        'ftlb/min': unit_conversion['kry']['ftlb'] / unit_conversion['ang']['min'],
-        'ftlb/h': unit_conversion['kry']['ftlb'] / unit_conversion['ang']['h'],
+        'ft⋅lb/s': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['s'],
+        'ft⋅lb/min': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['min'],
+        'ft⋅lb/h': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['h'],
         'BTU/h': unit_conversion['kry']['BTU'] / unit_conversion['ang']['h'],
         'cal/s': unit_conversion['kry']['cal'] / unit_conversion['ang']['s'],
         'kcal/h': unit_conversion['kry']['cal'] / 4344 / unit_conversion['ang']['h'],
