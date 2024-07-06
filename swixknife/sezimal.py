@@ -991,6 +991,8 @@ class Sezimal:
             result = Sezimal(result)
             sezimal_context.sezimal_precision_decimal -= 4
 
+        return result._mult_div_finalizing()
+
     def __calculus_power(self, other_number: Self) -> Self:
         if other_number == 0:
             return Sezimal(1, _internal=True)
@@ -1087,6 +1089,9 @@ class Sezimal:
 
     def sqrt(self) -> Self:
         return self ** Sezimal('0.3')
+
+    def cbrt(self) -> Self:
+        return self ** Sezimal('0.2')
 
     def _find_gcd(self, numerator: Self, denominator: Self) -> Self:
         if denominator == 0:
