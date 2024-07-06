@@ -9,7 +9,7 @@ from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..constants import E, PI, TAU, GOLDEN_RATIO, SQRT_2
 from ..base import default_to_sezimal_digits, decimal_to_sezimal, \
     validate_clean_sezimal, validate_clean_decimal, \
-    sezimal_format, decimal_format, \
+    sezimal_format, decimal_format, niftimal_format, \
     RECURRING_DIGITS_NOTATION_NONE, \
     RECURRING_DIGITS_NOTATION_SIMPLE
 from ..base.digit_conversion import PER_SYMBOLS
@@ -36,34 +36,40 @@ _OPERATOR = {
     '%': ' __PERCENT__ ',
     '‰': ' __PERMILLE__ ',
     '‱': ' __PERMYRIAD__ ',
-    '󱺈': ' __PERSIX__ ',
-    '󱺉': ' __PERNIF__ ',
-    '󱺊': ' __PERARDA__ ',
-    '󱺋': ' __PERSIXARDA__ ',
-    '󱺌': ' __PERNIFARDA__ ',
-    '󱺍': ' __PERSHADARA__ ',
-    '󱺎': ' __PERSIXSHADARA__ ',
-    '󱺏': ' __PERNIFSHADARA__ ',
-    '󱺐': ' __PERARDASHADARA__ ',
-    '󱺑': ' __PERSIXARDASHADARA__ ',
-    '󱺒': ' __PERNIFARDASHADARA__ ',
-    '󱺓': ' __PERDISHADARA__ ',
-    '󱺔': ' __PERTRISHADARA__ ',
-    '󱺕': ' __PERCHARSHADARA__ ',
-    '󱺖': ' __PERPANSHADARA__ ',
-    '󱺗': ' __PERSHASHADARA__ ',
-    '²': ' __SQUARE__ ',
-    '³': ' __CUBE__ ',
+    '󱹰': ' __PERSIX__ ',
+    '󱹱': ' __PERNIF__ ',
+    '󱹲': ' __PERARDA__ ',
+    '󱹳': ' __PERSIXARDA__ ',
+    '󱹴': ' __PERNIFARDA__ ',
+    '󱹵': ' __PERSHADARA__ ',
+    '󱹶': ' __PERSIXSHADARA__ ',
+    '󱹷': ' __PERNIFSHADARA__ ',
+    '󱹸': ' __PERARDASHADARA__ ',
+    '󱹹': ' __PERSIXARDASHADARA__ ',
+    '󱹺': ' __PERNIFARDASHADARA__ ',
+    '󱹻': ' __PERDISHADARA__ ',
+    '󱹼': ' __PERTRISHADARA__ ',
+    '󱹽': ' __PERCHARSHADARA__ ',
+    '󱹾': ' __PERPANSHADARA__ ',
+    '󱹿': ' __PERSHASHADARA__ ',
     '±': ' __PLUS_MINUS__ ',
+    'mod': ' __MODULO__ ',
+    '!': ' __FACTORIAL__ ',
 
     #
-    # Constants and “punctuation”
+    # Functions and “punctuation”
     #
     'ln': ' __NATURAL_LOGARITHM__ ',
+    'lsez': ' __SEZIMAL_LOGARITHM__ ',
+    'ldec': ' __DECIMAL_LOGARITHM__ ',
+    '²': ' __SQUARE__ ',
+    '\u200b²': ' __SQUARE__ ',
+    'sqrt': ' __SQUARE_ROOT__ ',
+    '³': ' __CUBE__ ',
+    '\u200b³': ' __CUBE__ ',
+    'cbrt': ' __CUBIC_ROOT__ ',
     '(': ' __LEFT_PARENTHESIS__ ',
     ')': ' __RIGHT_PARENTHESIS__ ',
-    '|o': '__MOD_OPEN__',
-    'c|': '__MOD_CLOSE__',
 }
 
 _IN_PREPARED_EXPRESSION_OPERATION = {
@@ -91,11 +97,17 @@ _IN_PREPARED_EXPRESSION_OPERATION = {
     '__PERCHARSHADARA__': "/Sezimal('1e40')",
     '__PERPANSHADARA__': "/Sezimal('1e50')",
     '__PERSHASHADARA__': "/Sezimal('1e100')",
-    '__SQUARE__': "**Sezimal('2')",
-    '__CUBE__': "**Sezimal('3')",
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
-    '__MOD__': '|',
+    '__MODULO__': 'mod',
+    '__NATURAL_LOGARITHM__': 'ln',
+    '__SEZIMAL_LOGARITHM__': 'lsez',
+    '__DECIMAL_LOGARITHM__': 'ldec',
+    '__SQUARE__': "**Sezimal('2')",
+    '__SQUARE_ROOT__': "sqrt",
+    '__CUBE__': "**Sezimal('3')",
+    '__CUBIC_ROOT__': "cbrt",
+    '__FACTORIAL__': ".factorial()",
 }
 
 _IN_EXPRESSION_OPERATION  = {
@@ -104,49 +116,17 @@ _IN_EXPRESSION_OPERATION  = {
     '__DIVIDE__': '/',
     '__MULTIPLY__': '*',
     '__POWER__': '**',
-    # '__PERCENT__': '/ 244',
-    # '__PERMILLE__': '/ 4_344',
-    # '__PERMYRIAD__': '/ 114_144',
-    # '__PERSIX__': '/ 10',
-    # '__PERNIF__': '/ 100',
-    # '__PERARDA__': '/ 1_000',
-    # '__PERSIXARDA__': '/ 10_000',
-    # '__PERNIFARDA__': '/ 100_000',
-    # '__PERSHADARA__': '/ 1_000_000',
-    # '__PERSIXSHADARA__': '/ 10_000_000',
-    # '__PERNIFSHADARA__': '/ 100_000_000',
-    # '__PERARDASHADARA__': '/ 1_000_000_000',
-    # '__PERSIXARDASHADARA__': '/ 10_000_000_000',
-    # '__PERNIFARDASHADARA__': '/ 100_000_000_000',
-    # '__PERDISHADARA__': '/ 1_000_000_000_000',
-    # '__PERTRISHADARA__': '/ 1_000_000_000_000_000_000',
-    # '__PERCHARSHADARA__': '/ 1_000_000_000_000_000_000_000_000',
-    # '__PERPANSHADARA__': '/ 1_000_000_000_000_000_000_000_000_000_000',
-    # '__PERSHASHADARA__': '/ 1_000_000_000_000_000_000_000_000_000_000_000_000',
-    '__SQUARE__': "^ 2",
-    '__CUBE__': "^ 3",
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
-    '__MOD__': '|',
-    # '__PERCENT_DECIMAL__': '/ 100',
-    # '__PERMILLE_DECIMAL__': '/ 1_000',
-    # '__PERMYRIAD_DECIMAL__': '/ 10_000',
-    # '__PERSIX_DECIMAL__': '/ 6',
-    # '__PERNIF_DECIMAL__': '/ 36',
-    # '__PERARDA_DECIMAL__': '/ 216',
-    # '__PERSIXARDA_DECIMAL__': '/ 1_296',
-    # '__PERNIFARDA_DECIMAL__': '/ 7_776',
-    # '__PERSHADARA_DECIMAL__': '/ 46_656',
-    # '__PERSIXSHADARA_DECIMAL__': '/ 279_936',
-    # '__PERNIFSHADARA_DECIMAL__': '/ 1_679_616',
-    # '__PERARDASHADARA_DECIMAL__': '/ 10_077_696',
-    # '__PERSIXARDASHADARA_DECIMAL__':'/ 60_466_176',
-    # '__PERNIFARDASHADARA_DECIMAL__':'/ 362_797_056',
-    # '__PERDISHADARA_DECIMAL__': '/ 2_176_782_336',
-    # '__PERTRISHADARA_DECIMAL__': '/ 101_559_956_668_416',
-    # '__PERCHARSHADARA_DECIMAL__': '/ 4_738_381_338_321_616_896',
-    # '__PERPANSHADARA_DECIMAL__': '/ 221_073_919_720_733_357_899_776',
-    # '__PERSHASHADARA_DECIMAL__': '/ 10_314_424_798_490_535_546_171_949_056',
+    '__NATURAL_LOGARITHM__': 'ln',
+    '__SEZIMAL_LOGARITHM__': 'lsez',
+    '__DECIMAL_LOGARITHM__': 'ldec',
+    '__SQUARE__': "\u200b²",
+    '__SQUARE_ROOT__': "sqrt",
+    '__CUBE__': "\u200b³",
+    '__CUBIC_ROOT__': "cbrt",
+    '__MODULO__': " mod ",
+    '__FACTORIAL__': "!",
 }
 
 _NICE_OPERATION = {
@@ -158,26 +138,33 @@ _NICE_OPERATION = {
     '__PERCENT__': '%',
     '__PERMILLE__': '‰',
     '__PERMYRIAD__': '‱',
-    '__PERSIX__': '󱺈',
-    '__PERNIF__': '󱺉',
-    '__PERARDA__': '󱺊',
-    '__PERSIXARDA__': '󱺋',
-    '__PERNIFARDA__': '󱺌',
-    '__PERSHADARA__': '󱺍',
-    '__PERSIXSHADARA__': '󱺎',
-    '__PERNIFSHADARA__': '󱺏',
-    '__PERARDASHADARA__': '󱺐',
-    '__PERSIXARDASHADARA__': '󱺑',
-    '__PERNIFARDASHADARA__': '󱺒',
-    '__PERDISHADARA__': '󱺓',
-    '__PERTRISHADARA__': '󱺔',
-    '__PERCHARSHADARA__': '󱺕',
-    '__PERPANSHADARA__': '󱺖',
-    '__PERSHASHADARA__': '󱺗',
-    '__SQUARE__': "²",
-    '__CUBE__': "³",
+    '__PERSIX__': '󱹰',
+    '__PERNIF__': '󱹱',
+    '__PERARDA__': '󱹲',
+    '__PERSIXARDA__': '󱹳',
+    '__PERNIFARDA__': '󱹴',
+    '__PERSHADARA__': '󱹵',
+    '__PERSIXSHADARA__': '󱹶',
+    '__PERNIFSHADARA__': '󱹷',
+    '__PERARDASHADARA__': '󱹸',
+    '__PERSIXARDASHADARA__': '󱹹',
+    '__PERNIFARDASHADARA__': '󱹺',
+    '__PERDISHADARA__': '󱹻',
+    '__PERTRISHADARA__': '󱹼',
+    '__PERCHARSHADARA__': '󱹽',
+    '__PERPANSHADARA__': '󱹾',
+    '__PERSHASHADARA__': '󱹿',
     '__LEFT_PARENTHESIS__': '(',
     '__RIGHT_PARENTHESIS__': ')',
+    '__NATURAL_LOGARITHM__': 'ln',
+    '__SEZIMAL_LOGARITHM__': 'lsez',
+    '__DECIMAL_LOGARITHM__': 'ldec',
+    '__SQUARE__': "\u200b²",
+    '__SQUARE_ROOT__': "sqrt",
+    '__CUBE__': "\u200b³",
+    '__CUBIC_ROOT__': "cbrt",
+    '__MODULO__': " mod ",
+    '__FACTORIAL__': "!",
 }
 
 _PER_OPERATIONS = ('__PERCENT__', '__PERMILLE__', '__PERMYRIAD__', '__PERSIX__', '__PERNIF__', '__PERARDA__', '__PERSIXARDA__', '__PERNIFARDA__', '__PERSHADARA__', '__PERSIXSHADARA__', '__PERNIFSHADARA__', '__PERARDASHADARA__', '__PERSIXARDASHADARA__', '__PERNIFARDASHADARA__', '__PERDISHADARA__', '__PERTRISHADARA__', '__PERCHARSHADARA__', '__PERPANSHADARA__', '__PERSHASHADARA__')
@@ -192,22 +179,35 @@ _PER_OPERATIONS_SEZIMAL_TO_DECIMAL = (
     ('%', ' / 36'),
     ('‰', ' / 216'),
     ('‱', ' / 1_296'),
-    ('󱺈', ' / 6'),
-    ('󱺉', ' / 36'),
-    ('󱺊', ' / 216'),
-    ('󱺋', ' / 1_296'),
-    ('󱺌', ' / 7_776'),
-    ('󱺍', ' / 46_656'),
-    ('󱺎', ' / 279_936'),
-    ('󱺏', ' / 1_679_616'),
-    ('󱺐', ' / 10_077_696'),
-    ('󱺑', ' / 60_466_176'),
-    ('󱺒', ' / 362_797_056'),
-    ('󱺓', ' / 2_176_782_336'),
-    ('󱺔', ' / 101_559_956_668_416'),
-    ('󱺕', ' / 4_738_381_338_321_616_896'),
-    ('󱺖', ' / 221_073_919_720_733_357_899_776'),
-    ('󱺗', ' / 10_314_424_798_490_535_546_171_949_056'),
+    ('󱹰', ' / 6'),
+    ('󱹱', ' / 36'),
+    ('󱹲', ' / 216'),
+    ('󱹳', ' / 1_296'),
+    ('󱹴', ' / 7_776'),
+    ('󱹵', ' / 46_656'),
+    ('󱹶', ' / 279_936'),
+    ('󱹷', ' / 1_679_616'),
+    ('󱹸', ' / 10_077_696'),
+    ('󱹹', ' / 60_466_176'),
+    ('󱹺', ' / 362_797_056'),
+    ('󱹻', ' / 2_176_782_336'),
+    ('󱹼', ' / 101_559_956_668_416'),
+    ('󱹽', ' / 4_738_381_338_321_616_896'),
+    ('󱹾', ' / 221_073_919_720_733_357_899_776'),
+    ('󱹿', ' / 10_314_424_798_490_535_546_171_949_056'),
+)
+
+_NO_SPACE_OPERATIONS = (
+    '__LEFT_PARENTHESIS__',
+    '__RIGHT_PARENTHESIS__',
+    '__NATURAL_LOGARITHM__',
+    '__SEZIMAL_LOGARITHM__',
+    '__DECIMAL_LOGARITHM__',
+    '__SQUARE__',
+    '__SQUARE_ROOT__',
+    '__CUBE__',
+    '__CUBIC_ROOT__',
+    '__FACTORIAL__',
 )
 
 _CONSTANTS = ('e', 'π', 'τ', 'φ')
@@ -216,6 +216,35 @@ e = E
 π = PI
 τ = TAU
 φ = GOLDEN_RATIO
+
+
+def ln(number):
+    return number.ln()
+
+
+def lsez(number):
+    if type(number) == Decimal:
+        return number.ln() / Decimal(6).ln()
+
+    return number.log()
+
+
+def ldec(number):
+    if type(number) == Decimal:
+        return number.log()
+
+    return number.log14()
+
+
+def sqrt(number):
+    return number.sqrt()
+
+
+def cbrt(number):
+    if type(number) == Decimal:
+        return number ** Decimal(validate_clean_decimal('0..3'))
+
+    return number.cbrt()
 
 
 class SezimalCalculator:
@@ -245,6 +274,7 @@ class SezimalCalculator:
         self._expression = self._expression.replace('tau', 'τ').replace('TAU', 'τ')
         self._expression = self._expression.replace('phi', 'φ').replace('PHI', 'φ')
         self._expression = self._expression.replace('sqrt_2', '√2').replace('SQRT_2', '√2')
+        self._expression = self._expression.replace('\u200b', '')
 
         if self.debug:
             self._prepare_expression()
@@ -396,6 +426,9 @@ class SezimalCalculator:
         if display:
             params['use_fraction_group_separator'] = True
             params['suffix'] = self.suffix
+            # params['sezimal_separator'] = '󱹭'
+            # params['group_separator'] = ' '
+            # params['fraction_group_separator'] = ' '
         else:
             params['sezimal_separator'] = '.'
             params['group_separator'] = '_'
@@ -489,12 +522,16 @@ class SezimalCalculator:
             'use_fraction_group_separator': True,
             'suffix': self.suffix,
             'regularized_digits': self.regularized_digits,
+            # 'niftimal_separator': '󱹭',
+            # 'group_separator': ' ',
+            # 'fraction_group_separator': ' ',
         }
 
         if type(number) == str:
             number = Sezimal(number)
 
         return self.locale.format_niftimal_number(number, **params)
+        # return niftimal_format(number, **params)
 
     def _apply_sezimal_or_recurring_mark(self, display: str, separator: str, suffix: str) -> str:
         if suffix in PER_SYMBOLS:
@@ -590,6 +627,9 @@ class SezimalCalculator:
                 if part in _PER_OPERATIONS:
                     sezimal_expression += f'{_NICE_OPERATION[part]} '
                     decimal_expression += f'{_NICE_OPERATION[part]} '
+                elif part in _NO_SPACE_OPERATIONS:
+                    sezimal_expression += f'{_IN_EXPRESSION_OPERATION[part]}'
+                    decimal_expression += f'{_IN_EXPRESSION_OPERATION[part]}'
                 else:
                     sezimal_expression += f' {_IN_EXPRESSION_OPERATION[part]} '
                     decimal_expression += f' {_IN_EXPRESSION_OPERATION[part]} '
@@ -730,10 +770,20 @@ class SezimalCalculator:
 
                 if self.unit and self.decimal_unit:
                     number = sezimal_to_decimal_unit(number, self.unit, self.decimal_unit)
-                    number = round(number.decimal, int(self._decimal_precision))
+
+                    try:
+                        number = round(number.decimal, int(self._decimal_precision))
+                    except:
+                        number = number.decimal
+
                 elif self.factor:
                     number /= self.factor
-                    number = round(number.decimal, int(self._decimal_precision))
+
+                    try:
+                        number = round(number.decimal, int(self._decimal_precision))
+                    except:
+                        number = number.decimal
+
                 else:
                     number = number.decimal
 
@@ -742,6 +792,20 @@ class SezimalCalculator:
 
         for i in range(parenthesis_opened):
             prepared_expression += ')'
+
+        display = display.replace('lbin', 'log₂')
+        display = display.replace('ln', 'logₑ')
+        display = display.replace('lsez', 'log₁₀')
+        display = display.replace('ldec', 'log₁₄')
+        display = display.replace('sqrt', '√')
+        display = display.replace('cbrt', '∛')
+
+        decimal_display = decimal_display.replace('lbin', 'log₂')
+        decimal_display = decimal_display.replace('ln', 'logₑ')
+        decimal_display = decimal_display.replace('lsez', 'log₆')
+        decimal_display = decimal_display.replace('ldec', 'log₁₀')
+        decimal_display = decimal_display.replace('sqrt', '√')
+        decimal_display = decimal_display.replace('cbrt', '∛')
 
         self._prepared_expression = prepared_expression
         self._display = display
@@ -766,7 +830,10 @@ class SezimalCalculator:
             return
 
         if self.debug:
-            response = eval(self._prepared_expression)
+            #
+            # Take care of the mod to % operator change
+            #
+            response = eval(self._prepared_expression.replace('mod', '%'))
 
             if self.decimal:
                 if type(response) != DecimalFraction:
