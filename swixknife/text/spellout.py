@@ -86,6 +86,6 @@ def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInte
         for n in recurring:
             text += ' ' + soros_run(SPELLOUT_PROGRAMS[lang], n, lang).strip()
 
-    # del SPELLOUT_PROGRAMS[lang]
+    del SPELLOUT_PROGRAMS[lang]
 
     return text
