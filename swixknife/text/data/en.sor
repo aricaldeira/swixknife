@@ -18,7 +18,7 @@
 ⁄ over
 mod modulo
 ([-−]?\d+|[-−]?[πτφ])! $1 factorial
-[.,]{2} repeating
+[.,󱹭]{2}|[‥„󱹮] repeating
 e e
 π pi
 τ tau
@@ -136,10 +136,9 @@ ldec\( decimal logarithm of
 
 # decimals
 
-([-−]?\d+)[,.] $1| point
-#([-−]?\d+)[,.] $1| comma
-([-−]?\d+[.,])([^0]\d{1,2}) $1| |$2
-([-−]?\d+[.,]\d*)(\d) $1| |$2
+([-−]?\d+)[,.󱹭] $1| point
+([-−]?\d+[.,󱹭])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
 

@@ -16,7 +16,7 @@
 ⁄ sobre
 m[oó]d módulo
 ([-−]?\d+|[-−]?[πτφ])! fatorial de $1
-[.,]{2} e repete
+[.,󱹭]{2}|[‥„󱹮] e repete
 e e
 π pi
 τ tau
@@ -76,6 +76,16 @@ ldec\( logaritmo decimal de
 (\d{1,3})(\d00) $1 arda e $2
 (\d{1,3})(\d\d\d) $1 arda, $2
 
+1000000 xadara
+100000(\d) xadara e $1
+10000(1\d) xadara e $1
+10000(\d0) xadara e $1
+1000(\d00) xadara e $1
+100(\d000) xadara e $1
+10(\d0000) xadara e $1
+1(\d00000) xadara e $1
+1(\d{6}) xadara, $1
+
 (\d{1,6})000000 $1 xadara
 (\d{1,6})00000(\d) $1 xadara e $2
 (\d{1,6})0000(1\d) $1 xadara e $2
@@ -129,10 +139,9 @@ ldec\( logaritmo decimal de
 #
 # Frações
 #
-#([-−]?\d+)[,.] $1| ponto
-([-−]?\d+)[,.] $1| vírgula
-([-−]?\d+[.,])([^0]\d{1,2}) $1| |$2
-([-−]?\d+[.,]\d*)(\d) $1| |$2
+([-−]?\d+)[,.󱹭] $1| vírgula
+([-−]?\d+[.,󱹭])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
 
