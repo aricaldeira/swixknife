@@ -135,6 +135,40 @@ class SezimalLocale:
         itf = itf.replace('a', 'S')
         return itf
 
+    @property
+    def DATE_SEPARATOR(self):
+        if not self.DATE_FORMAT:
+            return ''
+
+        separator = self.DATE_FORMAT.lower().replace('#', '')
+        separator = separator.replace('?', '')
+        separator = separator.replace('!', '')
+        separator = separator.replace('y', '')
+        separator = separator.replace('m', '')
+        separator = separator.replace('d', '')
+
+        if not separator:
+            return ''
+
+        return separator[0]
+
+    @property
+    def TIME_SEPARATOR(self):
+        if not self.TIME_SEPARATOR:
+            return ''
+
+        separator = self.TIME_FORMAT.lower().replace('#', '')
+        separator = separator.replace('?', '')
+        separator = separator.replace('!', '')
+        separator = separator.replace('u', '')
+        separator = separator.replace('p', '')
+        separator = separator.replace('a', '')
+
+        if not separator:
+            return ''
+
+        return separator[0]
+
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'UTC'
 
