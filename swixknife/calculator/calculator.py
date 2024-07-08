@@ -250,6 +250,7 @@ def cbrt(number):
 class SezimalCalculator:
     def __init__(self, expression: str = '0', locale: str | SezimalLocale = None):
         self.sezimal_digits = False
+        self.sezimal_punctuation = True
         self.regularized_digits = True
         self.decimal = False
         self.precision = 3
@@ -418,6 +419,7 @@ class SezimalCalculator:
         params = {
             'sezimal_places': precision,
             'sezimal_digits': self.sezimal_digits,
+            'sezimal_punctuation': self.sezimal_punctuation,
             'recurring_digits_notation': recurring_digits_notation,
             'keep_original_aspect': keep_original_aspect,
             'grouping_digits': self.grouping_digits,
@@ -434,6 +436,7 @@ class SezimalCalculator:
             params['group_separator'] = '_'
             params['fraction_group_separator'] = '_'
             params['sezimal_digits'] = False
+            params['sezimal_punctuation'] = False
             params['typographical_negative'] = False
 
         if not keep_original_aspect:
@@ -518,6 +521,7 @@ class SezimalCalculator:
         params = {
             'niftimal_places': precision // 2 if precision % 2 == 0 else (precision // 2) + 1,
             'sezimal_digits': self.sezimal_digits,
+            'sezimal_punctuation': self.sezimal_punctuation,
             'recurring_digits_notation': recurring_digits_notation,
             'use_fraction_group_separator': True,
             'suffix': self.suffix,
