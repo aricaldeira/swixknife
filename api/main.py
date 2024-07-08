@@ -19,6 +19,7 @@ app.wsgi_app = ProxyFix(
 from locale_info import *
 from number_conversion import *
 from now import *
+from agòra import *
 from calculator import *
 
 

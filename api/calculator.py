@@ -7,6 +7,7 @@ from swixknife.units import sezimal_to_decimal_unit
 from swixknife import Sezimal
 
 from main import app
+from  locale_detection import browser_preferred_locale
 
 
 UNIT_SIMPLIFIED_SYMBOL = {
@@ -258,7 +259,63 @@ def api_calculator_process() -> dict:
     return jsonify(resposta)
 
 
-@app.route('/manifest_calculator.json')
+_TRANSLATIONS = {
+    'ar': 'حاسبة',
+    'bz': 'Kawkuladora',
+    'ca': 'Calculadora',
+    'de': 'Taschenrechner',
+    'el': 'Αριθμομηχανή',
+    'eo': 'Kalkulilo',
+    'es': 'Calculadora',
+    'fa': 'حساب',
+    'fr': 'Calculatrice',
+    'ga': 'Áireamhán',
+    'gl': 'Calculadora',
+    'gn': 'Calculadora',
+    'he': 'מחשבון',
+    'hi': 'कैलकुलेटर',
+    'hu': 'Számológép',
+    'id': 'Kalkulator',
+    'it': 'Calcolatrice',
+    'ja': '電卓',
+    'ko': '계산자',
+    'nl': 'Rekenmachine',
+    'pl': 'Kalkulator',
+    'pt': 'Calculadora',
+    'ro': 'Calculator',
+    'ru': 'Калькулятор',
+    'sw': 'Kikokotozi',
+    'tr': 'Hesap',
+    'uk': 'Калькулятор',
+    'vi': 'Máy tính',
+    'yo': 'Ẹrọ iṣiro',
+    'zh': '計算機',
+    'zh_CN': '计算器',
+}
+
+
+@app.route('/calculator/manifest.webmanifest')
 def calculator_manifest() -> str:
     text = open('template/manifest_calculator.json').read()
+
+    pl = browser_preferred_locale()
+
+    if '_' in pl:
+        lang = pl.split('_')[0]
+    elif '-' in pl:
+        lang = pl.split('-')[0]
+    else:
+        lang = pl
+
+    if lang in _TRANSLATIONS:
+        if pl in _TRANSLATIONS:
+            text = text.replace('"Sezimal Calculator"', f'"{_TRANSLATIONS[pl]}"')
+        else:
+            text = text.replace('"Sezimal Calculator"', f'"{_TRANSLATIONS[lang]}"')
+
+    if 'pt-' in pl or pl == 'pt':
+        text = text.replace('"Sezimal calculator, base and units converter"', '"Calculadora sezimal, conversão de base numérica e unidades de medida"')
+    elif 'bz-' in pl or pl == 'bz':
+        text = text.replace('"Sezimal calculator, base and units converter"', '"Kawkuladora sezimaw, konversawn di bazi numérika i unidadis di medida"')
+
     return text

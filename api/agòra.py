@@ -8,71 +8,22 @@ from swixknife import SezimalDate, SezimalDateTime, SezimalTime
 from decimal import Decimal
 from swixknife import Sezimal, SezimalRange, SezimalInteger
 from swixknife.units import sezimal_to_decimal_unit
+from swixknife.weather.weather import SezimalWeather
 
 
-@app.route('/long-now')
-@app.route('/long-now/<string:locale>')
-@app.route('/long-now/<string:locale>/<path:time_zone>')
-def api_long_now(locale: str = None, time_zone: str = None) -> str:
-    url = _manifest_url('long-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
+@app.route('/agòra')
+# @app.route('/agòra/<string:locale>')
+# @app.route('/agòra/<string:locale>/<path:time_zone>')
+def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False) -> str:
+    locale = sezimal_locale('bz')
+
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
     time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
-    text = open('template/long-now.html').read()
-
-    date_format = locale.DATE_TIME_LONG_FORMAT.replace(locale.TIME_FORMAT, '')
-
-    if date_format.endswith(', '):
-        date_format = date_format[0:-2] + ' '
-
-    if date_time.is_dst:
-        if locale.RTL:
-            time_format = '#@V ' + locale.TIME_FORMAT
-        else:
-            time_format = locale.TIME_FORMAT + ' #@V'
-
-    else:
-        time_format = locale.TIME_FORMAT
-
-    if locale.RTL:
-        season_format = f'#~{locale.DEFAULT_HEMISPHERE}S #@~{locale.DEFAULT_HEMISPHERE}S'
-        moon_format = f'#~{locale.DEFAULT_HEMISPHERE}L #@~{locale.DEFAULT_HEMISPHERE}L'
-    else:
-        season_format = f'#@~{locale.DEFAULT_HEMISPHERE}S #~{locale.DEFAULT_HEMISPHERE}S'
-        moon_format = f'#@~{locale.DEFAULT_HEMISPHERE}L #~{locale.DEFAULT_HEMISPHERE}L'
-
-    return eval(f'f"""{text}"""')
-
-
-def _manifest_url(base, locale, time_zone):
-    url = base
-
-    if locale:
-        url += '___' + locale
-
-    if time_zone:
-        url += '___' + time_zone.replace('/', '__')
-
-    return url
-
-
-@app.route('/now')
-@app.route('/now/<string:locale>')
-@app.route('/now/<string:locale>/<path:time_zone>')
-def api_short_now(locale: str = None, time_zone: str = None) -> str:
-    url = _manifest_url('now', locale, time_zone)
-    locale = sezimal_locale(locale or browser_preferred_locale())
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-    digits = locale.DIGITS
-
-    date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
-
-    text = open('template/now.html').read()
+    text = open('template/agòra.html').read()
 
     date_format = locale.DATE_FORMAT
 
@@ -115,67 +66,10 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
         spellout_year = ''
         spellout = ''
 
-    return eval(f'f"""{text}"""')
-
-
-@app.route('/decimal-now')
-@app.route('/decimal-now/<string:locale>')
-@app.route('/decimal-now/<string:locale>/<path:time_zone>')
-def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
-    url = _manifest_url('decimal-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-    digits = locale.DIGITS
-
-    date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
-
-    text = open('template/decimal-now.html').read()
-
-    date_format = locale.DATE_FORMAT
-
-    if date_time.is_dst:
-        if locale.RTL:
-            time_format = '#@V ' + locale.TIME_FORMAT
-        else:
-            time_format = locale.TIME_FORMAT + ' #@V'
-
-    else:
-        time_format = locale.TIME_FORMAT
-
-    season_format = f'#@~{locale.DEFAULT_HEMISPHERE}S'
-    moon_format = f'#@~{locale.DEFAULT_HEMISPHERE}L'
-
-    return eval(f'f"""{text}"""')
-
-
-@app.route('/dozenal-now')
-@app.route('/dozenal-now/<string:locale>')
-@app.route('/dozenal-now/<string:locale>/<path:time_zone>')
-def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
-    url = _manifest_url('dozenal-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-    digits = locale.DIGITS
-
-    date_time = SezimalDateTime.now(time_zone=time_zone)
-    time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
-
-    text = open('template/dozenal-now.html').read()
-
-    date_format = locale.DATE_FORMAT
-
-    if date_time.is_dst:
-        if locale.RTL:
-            time_format = '#@V ' + locale.TIME_FORMAT
-        else:
-            time_format = locale.TIME_FORMAT + ' #@V'
-
-    else:
-        time_format = locale.TIME_FORMAT
-
-    season_format = f'#@~{locale.DEFAULT_HEMISPHERE}S'
-    moon_format = f'#@~{locale.DEFAULT_HEMISPHERE}L'
+    sw = SezimalWeather(locale, time_zone)
+    sw.get_openweathermap_conditions()
+    sezimal_temperature = locale.format_number(sw.temperature_sensation, 0) + '\N{NNBSP}°S'
+    decimal_temperature = locale.format_decimal_number(sezimal_to_decimal_unit(sw.temperature_sensation, 'tap', '°C'), 1) + '\N{NNBSP}°C'
 
     return eval(f'f"""{text}"""')
 
@@ -215,9 +109,9 @@ _TRANSLATIONS = {
 }
 
 
-@app.route('/now/manifest.webmanifest')
-def now_manifest() -> str:
-    text = open('template/manifest_now.json').read()
+@app.route('/agòra/manifest.webmanifest')
+def agòra_manifest() -> str:
+    text = open('template/manifest_agòra.json').read()
 
     pl = browser_preferred_locale()
 
@@ -227,6 +121,8 @@ def now_manifest() -> str:
         lang = pl.split('-')[0]
     else:
         lang = pl
+
+    lang = 'bz'
 
     if lang in _TRANSLATIONS:
         if pl in _TRANSLATIONS:
@@ -242,11 +138,12 @@ def now_manifest() -> str:
     return text
 
 
-@app.route('/now/now-icon.svg')
-def now_icon() -> str:
+@app.route('/agòra/now-icon.svg')
+def agòra_icon() -> str:
     text = open('static/img/now-icon.svg').read()
 
-    locale = sezimal_locale(browser_preferred_locale())
+    # locale = sezimal_locale(browser_preferred_locale())
+    locale = sezimal_locale('bz')
 
     date_time = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 

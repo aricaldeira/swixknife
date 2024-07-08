@@ -7,14 +7,10 @@
         <meta name="description" content="Tenpu i data sezimays">
         <meta name="author" content="Ari Caldeira">
         <meta name="theme-color" content="#000000">
-        <link rel="manifest" href="manifest___{url}.json">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
-<!--         <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icons/icon-152x152.png') }}"> -->
-
-        <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
+        <link rel="manifest" href="/agòra/manifest.webmanifest" crossorigin="use-credentials" />
+        <link rel="icon" type="image/svg+xml" href="/agòra/now-icon.svg" />
         <link rel="stylesheet" type="text/css" href="/static/css/font-andika.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-qp.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/font-noto.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/now.css" />
     </head>
@@ -44,7 +40,7 @@
             </table>
             <span id="portrait_content" hidden>
                 <span id="sezimal_time_pt" class="sezimal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
-                <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}<br/><span class="sezimal_digits">{date_time.format(date_format.replace("#", "#@!").replace('/', '‐'), locale)}</span></span><br/>
+                <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}<br/><!-- <span class="sezimal_digits">{date_time.format(date_format.replace("#", "#@!").replace('/', '‐'), locale)}</span> --></span><br/>
                 <span data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span><br/>
                 <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
                 <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>

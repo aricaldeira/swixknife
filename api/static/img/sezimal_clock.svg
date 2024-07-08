@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+     id="sezimal_time"
+     width="25.924999mm"
+     height="25.924999mm"
+     viewBox="0 0 97.984249 97.984249"
+     version="1.1"
+     sodipodi:docname="sezimal_clock.svg"
+     inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+     inkscape:export-filename="sezimal_clock.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg">
+    <defs
+         id="defs5" />
+    <sodipodi:namedview
+         id="sezimal_time_view"
+         pagecolor="#ffffff"
+         bordercolor="#000000"
+         borderopacity="0.25"
+         inkscape:showpageshadow="2"
+         inkscape:pageopacity="0.0"
+         inkscape:pagecheckerboard="0"
+         inkscape:deskcolor="#d1d1d1"
+         inkscape:zoom="7.2124892"
+         inkscape:cx="48.992123"
+         inkscape:cy="48.992123"
+         inkscape:window-width="1920"
+         inkscape:window-height="1014"
+         inkscape:window-x="0"
+         inkscape:window-y="0"
+         inkscape:window-maximized="1"
+         inkscape:current-layer="svg6"
+         inkscape:document-units="mm" />
+    <g
+         id="face"
+         inkscape:label="face"
+         sodipodi:insensitive="true">
+        <circle
+             style="fill:#ffffff;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
+             id="background_white"
+             cx="66.924484"
+             cy="17.932362"
+             r="48.992126"
+             transform="rotate(30,7.9999531e-6,-5.1733804e-6)"
+             inkscape:label="background_white" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_0"
+             width="1.6330709"
+             height="4.8992128"
+             x="48.175591"
+             y="93.085045"
+             inkscape:label="bigger_marker_0" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="48.992126"
+             y="91.356224"
+             id="mayor_0"
+             inkscape:label="bigger_number_0"><tspan
+                 sodipodi:role="line"
+                 id="tspan58"
+                 x="48.992126"
+                 y="91.356224"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">0</tspan></text>
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_3"
+             width="1.6330709"
+             height="4.8992128"
+             x="48.175591"
+             y="0"
+             inkscape:label="bigger_marker_3" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="48.836643"
+             y="18.971268"
+             id="mayor_3"
+             inkscape:label="bigger_number_3"><tspan
+                 sodipodi:role="line"
+                 id="tspan59"
+                 x="48.836643"
+                 y="18.971268"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">3</tspan></text>
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_1"
+             width="1.6330709"
+             height="4.8992128"
+             x="66.107956"
+             y="26.160553"
+             transform="rotate(60)"
+             inkscape:label="bigger_marker_1" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="16.880121"
+             y="74.133499"
+             id="mayor_1"
+             inkscape:label="bigger_number_1"><tspan
+                 sodipodi:role="line"
+                 id="tspan62"
+                 x="16.880121"
+                 y="74.133499"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">1</tspan></text>
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_4"
+             width="1.6330709"
+             height="4.8992128"
+             x="66.107956"
+             y="-66.924492"
+             transform="rotate(60)"
+             inkscape:label="bigger_marker_4" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_5"
+             width="1.6330709"
+             height="4.8992128"
+             x="17.115828"
+             y="-115.91662"
+             transform="rotate(120)"
+             inkscape:label="bigger_marker_5" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="80.129257"
+             y="73.437553"
+             id="mayor_5"
+             inkscape:label="bigger_number_5"><tspan
+                 sodipodi:role="line"
+                 id="tspan64"
+                 x="80.129257"
+                 y="73.437553"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">5</tspan></text>
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665408;stroke-dasharray:none;stroke-opacity:1"
+             id="bigger_marker_2"
+             width="1.6330709"
+             height="4.8992128"
+             x="17.115828"
+             y="-22.831575"
+             transform="rotate(120)"
+             inkscape:label="bigger_marker_2" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="16.845951"
+             y="34.542877"
+             id="mayor_2"
+             inkscape:label="bigger_number_2"><tspan
+                 sodipodi:role="line"
+                 id="tspan65"
+                 x="16.845951"
+                 y="34.542877"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">2</tspan></text>
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="smaller_marker_01"
+             width="0.81653547"
+             height="2.4496064"
+             x="56.346951"
+             y="86.282959"
+             transform="rotate(10)"
+             inkscape:label="smaller_marker_01" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="smaller_marker_31"
+             width="0.81653547"
+             height="2.4496064"
+             x="56.346951"
+             y="-9.2516937"
+             transform="rotate(10)"
+             inkscape:label="smaller_marker_31" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="smaller_marker_02"
+             width="0.81653547"
+             height="2.4496064"
+             x="62.385567"
+             y="75.823769"
+             transform="rotate(20)"
+             inkscape:label="smaller_marker_02" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect18"
+             width="0.81653547"
+             height="2.4496064"
+             x="62.385567"
+             y="-19.710882"
+             transform="rotate(20)"
+             inkscape:label="smaller_marker_32" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect22"
+             width="0.81653547"
+             height="2.4496064"
+             x="66.51622"
+             y="64.474884"
+             transform="rotate(30)"
+             inkscape:label="smaller_marker_03" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect21"
+             width="0.81653547"
+             height="2.4496064"
+             x="66.51622"
+             y="-31.059765"
+             transform="rotate(30)"
+             inkscape:label="smaller_marker_33" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect25"
+             width="0.81653541"
+             height="2.4496064"
+             x="68.613411"
+             y="52.581135"
+             transform="rotate(40)"
+             inkscape:label="smaller_marker_04" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect24"
+             width="0.81653541"
+             height="2.4496064"
+             x="68.613411"
+             y="-42.95351"
+             transform="rotate(40)"
+             inkscape:label="smaller_marker_34" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect28"
+             width="0.81653541"
+             height="2.4496064"
+             x="68.613411"
+             y="40.503906"
+             transform="rotate(50)"
+             inkscape:label="smaller_marker_05" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect27"
+             width="0.81653541"
+             height="2.4496064"
+             x="68.613411"
+             y="-55.030743"
+             transform="rotate(50)"
+             inkscape:label="smaller_marker_35" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect31"
+             width="0.81653547"
+             height="2.4496064"
+             x="62.385567"
+             y="17.261274"
+             transform="rotate(70)"
+             inkscape:label="smaller_marker_11" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect30"
+             width="0.81653547"
+             height="2.4496064"
+             x="62.385567"
+             y="-78.273369"
+             transform="rotate(70)"
+             inkscape:label="smaller_marker_41" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect34"
+             width="0.81653547"
+             height="2.4496064"
+             x="56.346951"
+             y="6.8020883"
+             transform="rotate(80)"
+             inkscape:label="smaller_marker_12" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect33"
+             width="0.81653547"
+             height="2.4496064"
+             x="56.346951"
+             y="-88.732567"
+             transform="rotate(80)"
+             inkscape:label="smaller_marker_42" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect37"
+             width="0.81653547"
+             height="2.4496064"
+             x="48.583858"
+             y="-2.4496064"
+             transform="rotate(90)"
+             inkscape:label="smaller_marker_23" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect36"
+             width="0.81653547"
+             height="2.4496064"
+             x="48.583858"
+             y="-97.984253"
+             transform="rotate(90)"
+             inkscape:label="smaller_marker_43" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect40"
+             width="0.81653547"
+             height="2.4496064"
+             x="39.332165"
+             y="-10.212699"
+             transform="rotate(100)"
+             inkscape:label="smaller_marker_24" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect39"
+             width="0.81653547"
+             height="2.4496064"
+             x="39.332165"
+             y="-105.74735"
+             transform="rotate(100)"
+             inkscape:label="smaller_marker_44" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect43"
+             width="0.81653547"
+             height="2.4496064"
+             x="28.872978"
+             y="-16.251314"
+             transform="rotate(110)"
+             inkscape:label="smaller_marker_15" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect42"
+             width="0.81653547"
+             height="2.4496064"
+             x="28.872978"
+             y="-111.78596"
+             transform="rotate(110)"
+             inkscape:label="smaller_marker_45" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect46"
+             width="0.81653541"
+             height="2.4496064"
+             x="5.6303473"
+             y="-22.47916"
+             transform="rotate(130)"
+             inkscape:label="smaller_marker_21" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect45"
+             width="0.81653541"
+             height="2.4496064"
+             x="5.6303473"
+             y="-118.0138"
+             transform="rotate(130)"
+             inkscape:label="smaller_marker_51" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect49"
+             width="0.81653541"
+             height="2.4496064"
+             x="-6.4468818"
+             y="-22.47916"
+             transform="rotate(140)"
+             inkscape:label="smaller_marker_22" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect48"
+             width="0.81653541"
+             height="2.4496064"
+             x="-6.4468818"
+             y="-118.01381"
+             transform="rotate(140)"
+             inkscape:label="smaller_marker_52" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect52"
+             width="0.81653547"
+             height="2.4496064"
+             x="-18.34063"
+             y="-20.381969"
+             transform="rotate(150)"
+             inkscape:label="smaller_marker_23" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect51"
+             width="0.81653547"
+             height="2.4496064"
+             x="-18.34063"
+             y="-115.91662"
+             transform="rotate(150)"
+             inkscape:label="smaller_marker_53" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect55"
+             width="0.81653547"
+             height="2.4496064"
+             x="-29.689514"
+             y="-16.251314"
+             transform="rotate(160)"
+             inkscape:label="smaller_marker_24" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect54"
+             width="0.81653547"
+             height="2.4496064"
+             x="-29.689514"
+             y="-111.78596"
+             transform="rotate(160)"
+             inkscape:label="smaller_marker_54" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="rect58"
+             width="0.81653547"
+             height="2.4496064"
+             x="-40.148701"
+             y="-10.212699"
+             transform="rotate(170)"
+             inkscape:label="smaller_marker_25" />
+        <rect
+             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332704;stroke-dasharray:none;stroke-opacity:1"
+             id="smaller_marker_55"
+             width="0.81653547"
+             height="2.4496064"
+             x="-40.148701"
+             y="-105.74735"
+             transform="rotate(170)"
+             inkscape:label="smaller_marker_55" />
+        <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.653228;stroke-dasharray:none;stroke-opacity:1"
+             x="80.984856"
+             y="34.256836"
+             id="text7"
+             inkscape:label="bigger_number_4"><tspan
+                 sodipodi:role="line"
+                 id="tspan7"
+                 x="80.984856"
+                 y="34.256836"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Andika Tauga';-inkscape-font-specification:'Andika Tauga, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.653228">4</tspan></text>
+    </g>
+    <g
+         id="uta"
+         inkscape:label="uta" transform="rotate(0,48.992123,48.992123)" style="display:inline">
+         <animateTransform
+              attributeName="transform"
+              begin="0s"
+              dur="86400s"
+              type="rotate"
+              from="0 48.992123 48.992123"
+              to="360 48.992123 48.992123"
+              repeatCount="indefinite" />
+        <circle
+             style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
+             id="circle4"
+             cx="48.992123"
+             cy="48.992123"
+             r="48.992126"
+             inkscape:label="anchor_uta" />
+        <g
+             id="g5"
+             inkscape:label="face_uta"
+             sodipodi:insensitive="true">
+            <rect
+                 style="fill:#000000;stroke-width:0.14908"
+                 id="rect4"
+                 width="2.449134"
+                 height="28.306562"
+                 x="47.767556"
+                 y="48.992126"
+                 inkscape:label="hand_uta" />
+            <circle
+                 style="fill:#000000;stroke-width:1.31688"
+                 id="circle5"
+                 cx="48.992123"
+                 cy="48.992123"
+                 r="1.224567"
+                 inkscape:label="anchor_hand_uta" />
+        </g>
+    </g>
+    <g
+         id="posha"
+         inkscape:label="posha" transform="rotate(0,48.992123,48.992123)" style="display:inline">
+         <animateTransform
+              attributeName="transform"
+              begin="0s"
+              dur="2400s"
+              type="rotate"
+              from="0 48.992123 48.992123"
+              to="360 48.992123 48.992123"
+              repeatCount="indefinite" />
+        <circle
+             style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
+             id="circle4"
+             cx="48.992123"
+             cy="48.992123"
+             r="48.992126"
+             inkscape:label="anchor_posha" />
+        <g
+             id="g5"
+             inkscape:label="face_posha"
+             sodipodi:insensitive="true">
+            <rect
+                 style="fill:#000000;stroke-width:0.14908"
+                 id="rect4"
+                 width="1.6330709"
+                 height="35.383938"
+                 x="48.175591"
+                 y="48.992126"
+                 inkscape:label="hand_posha" />
+            <circle
+                 style="fill:#000000;stroke-width:1.31688"
+                 id="circle5"
+                 cx="48.992123"
+                 cy="48.992123"
+                 r="0.81653547"
+                 inkscape:label="anchor_hand_posha" />
+        </g>
+    </g>
+    <g
+         id="agrima"
+         inkscape:label="agrima" transform="rotate(0,48.992123,48.992123)" style="display:inline">
+         <animateTransform
+              attributeName="transform"
+              begin="0s"
+              dur="66666.666ms"
+              type="rotate"
+              from="0 48.992123 48.992123"
+              to="360 48.992123 48.992123"
+              repeatCount="indefinite" />
+        <circle
+             style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
+             id="circle1"
+             cx="48.992123"
+             cy="48.992123"
+             r="48.992126"
+             inkscape:label="anchor_agrima" />
+        <g
+             id="g2"
+             inkscape:label="face_agrima"
+             sodipodi:insensitive="true">
+            <rect
+                 style="fill:#aa0000;stroke-width:0.115464"
+                 id="rect1"
+                 width="0.816378"
+                 height="42.459843"
+                 x="48.583935"
+                 y="48.992126"
+                 inkscape:label="hand_agrima" />
+            <circle
+                 style="fill:#aa0000;stroke-width:0.658313"
+                 id="circle3"
+                 cx="48.992123"
+                 cy="48.992123"
+                 r="0.408189"
+                 inkscape:label="anchor_hand_agrima" />
+        </g>
+    </g>
+    <g
+         id="anuga"
+         inkscape:label="anuga" transform="rotate(0,48.992123,48.992123)" style="display:inline">
+         <animateTransform
+              attributeName="transform"
+              begin="0s"
+              dur="1851.851ms"
+              type="rotate"
+              from="0 48.992123 48.992123"
+              to="360 48.992123 48.992123"
+              repeatCount="indefinite" />
+        <circle
+             style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
+             id="circle1"
+             cx="48.992123"
+             cy="48.992123"
+             r="48.992126"
+             inkscape:label="anchor_anuga" />
+        <g
+             id="g2"
+             inkscape:label="face_anuga"
+             sodipodi:insensitive="true">
+            <rect
+                 style="fill:#fc02b5;stroke-width:0.115464"
+                 id="rect1"
+                 width="0.612284"
+                 height="42.459843"
+                 x="48.685981"
+                 y="48.992126"
+                 inkscape:label="hand_anuga" />
+            <circle
+                 style="fill:#fc02b5;stroke-width:0.658313"
+                 id="circle3"
+                 cx="48.992123"
+                 cy="48.992123"
+                 r="0.306142"
+                 inkscape:label="anchor_hand_anuga" />
+        </g>
+    </g>
+</svg>
