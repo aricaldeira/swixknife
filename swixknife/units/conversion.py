@@ -30,6 +30,8 @@ def _identify_validate_sezimal_unit(sezimal_unit: str) -> (str, str, SezimalFrac
         raise ValueError(f'Invalid Shastadari unit [{sezimal_unit}]')
 
     sezimal_unit = sezimal_unit.replace('²', '2').replace('³', '3')
+    sezimal_unit = sezimal_unit.replace('τ\u202f', 'tau_').replace('τ ', 'tau_').replace('τ ', 'tau_')
+    sezimal_unit = sezimal_unit.replace('π\u202f', 'pi_').replace('π ', 'pi_').replace('π ', 'pi_')
 
     #
     # Let’s convert pad² to kex
@@ -79,6 +81,8 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
         raise ValueError('Informing the symbol of the decimal unit is mandatory')
 
     decimal_unit = decimal_unit.replace('²', '2').replace('³', '3')
+    decimal_unit = decimal_unit.replace('τ\u202f', 'tau_').replace('τ ', 'tau_').replace('τ ', 'tau_')
+    decimal_unit = decimal_unit.replace('π\u202f', 'pi_').replace('π ', 'pi_').replace('π ', 'pi_')
 
     if not sezimal_unit:
         for su in UNIT_CONVERSION:
@@ -209,6 +213,9 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
 
+    if return_fraction and type(measure) != SezimalFraction:
+        measure = SezimalFraction(*measure.as_integer_ratio())
+
     measure *= factor
 
     if adjust:
@@ -224,10 +231,6 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
 def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit_1: str, sezimal_unit_2, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
     sp_1, su_1, spf_1 = _identify_validate_sezimal_unit(sezimal_unit_1)
-
-    if sezimal_unit_2[-3:] != su_1:
-        pass
-
     sp_2, su_2, spf_2 = _identify_validate_sezimal_unit(sezimal_unit_2)
 
     if su_1 != su_2 \
@@ -241,6 +244,9 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
+
+    if return_fraction and type(measure) != SezimalFraction:
+        measure = SezimalFraction(*measure.as_integer_ratio())
 
     measure *= spf_1
 
@@ -271,6 +277,9 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
+
+    if return_fraction and type(measure) != SezimalFraction:
+        measure = SezimalFraction(*measure.as_integer_ratio())
 
     if adjust:
         measure -= adjust
