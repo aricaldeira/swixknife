@@ -1,17 +1,34 @@
 
 
-__all__ = ('SezimalLocalePT_CV',)
+__all__ = ('SezimalLocaleKEA',)
 
 
-from .bz import SezimalLocaleBZ
+from .pt_cv import SezimalLocalePT_CV
 
 
-class SezimalLocaleKEA(SezimalLocaleBZ):
+class SezimalLocaleKEA(SezimalLocalePT_CV):
     LANG = 'kea'
-    LANGUAGE = 'kriolu kabuverdi'
+    LANGUAGE = 'kabuverdianu'
 
-    DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
-    DEFAULT_TIME_ZONE = 'Atlantic/Cape_Verde'
+    WEEKDAY_NAME = [
+        'sigunda',
+        'tersa',
+        'kwarta',
+        'kinta',
+        'sesta',
+        'sábadu',
+        'dumingu',
+    ]
+
+    WEEKDAY_ABBREVIATED_NAME = [
+        'sig',
+        'ter',
+        'kwa',
+        'kin',
+        'ses',
+        'sáb',
+        'dum',
+    ]
 
     MONTH_NAME= [
         'janeru',
