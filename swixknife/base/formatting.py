@@ -38,14 +38,15 @@ SEPARATOR_NOBREAK_SPACE = '\u00a0'
 SEPARATOR_HAIR_SPACE = '\u200a'
 SEPARATOR_DOT_ABOVE = '\u02d9'
 SEPARATOR_ZERO_WIDTH_JOINER = '\u200d'
+SEPARATOR_ZERO_WIDTH_SPACE = '\u200b'
 SEPARATOR_HIGH_VERTICAL_LINE = 'ˈ'
 SEPARATOR_LOW_VERTICAL_LINE = 'ˌ'
 SEPARATOR_MIDDLE_DOT = '·'
 SEPARATOR_COMBINING_DOT_ABOVE_RIGHT = '\u0358'
 SEPARATOR_COMBINING_COMMA_ABOVE_RIGHT = '\u0315'
-SEPARATOR_SHADARA = '\U000f1e6c'  # 󱹬
-SEPARATOR_MULAM = '\U000f1e6d'  # 󱹭
-SEPARATOR_PUNARAAVARTI = '\U000f1e6e'  # 󱹮
+SEPARATOR_SHADARA = '󱹬'  # '\U000f1e6c'  # 󱹬
+SEPARATOR_MULAM = '󱹭'  # '\U000f1e6d'  # 󱹭
+SEPARATOR_PUNARAAVARTI = '󱹮'  # '\U000f1e6e'  # 󱹮
 SEPARATOR_ARDA = SEPARATOR_NARROW_NOBREAK_SPACE
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
@@ -318,12 +319,18 @@ def _finish_formatting(formatted_number: str, prefix: str, suffix: str, positive
         #
         prefix += SEPARATOR_NARROW_NOBREAK_SPACE
 
-    if suffix and suffix[-1] not in PER_SYMBOLS:
-        #
-        # ISO standard suggests the use of the NNBSP
-        # to separate the unit/prefix/sufix from the value
-        #
-        suffix = SEPARATOR_NARROW_NOBREAK_SPACE + suffix
+    if suffix:
+        if suffix[0] in ('π', 'τ'):
+            #
+            # Avoids mixing π and τ with fraction values
+            #
+            suffix = SEPARATOR_ZERO_WIDTH_SPACE + suffix
+        elif suffix not in PER_SYMBOLS:
+            #
+            # ISO standard suggests the use of the NNBSP
+            # to separate the unit/prefix/sufix from the value
+            #
+            suffix = SEPARATOR_NARROW_NOBREAK_SPACE + suffix
 
     if formatted_number[0] != '-':
         formatted_number = positive_format.format(prefix=prefix, value=formatted_number, suffix=suffix)
