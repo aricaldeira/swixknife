@@ -1,8 +1,6 @@
 \+ máys
 \- menus
 − menus
-² aw kwadradu
-³ aw kubu
 \^ elevadu a
 \*\* elevadu a
 \* vezis
@@ -16,7 +14,7 @@
 ⁄ sobri
 m[oó]d módulu
 ([-−]?\d+|[-−]?[πτφ])! fatoriaw di $1
-[.,󱹭]{2}|[‥„󱹮] i repèti
+[.,󱹭]{2}|[‥„󱹮] y repèti
 e e
 π pi
 τ taw
@@ -35,6 +33,52 @@ ldec\( logarítimu desimal di
 ldes\((.*)\) logarítimu desimal di $1
 ldes\((.*) logarítimu desimal di $1
 ldes\( logarítimu desimal di
+sqrt\((.*)\) raiz kwadrada di $1
+sqrt\((.*) raiz kwadrada di $1
+sqrt\( raiz kwadrada di
+cbrt\((.*)\) raiz kúbika di $1
+cbrt\((.*) raiz kúbika di $1
+cbrt\( raiz kúbika di
+\u200b?² aw kwadradu
+\u200b?³ aw kubu
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 aw kwadradu
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 aw kubu
+[Ss][IiEe][Nn]\((.*)\) senu di $1
+[Ss][IiEe][Nn]\((.*) senu di $1
+[Ss][IiEe][Nn]\( senu di
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*)\) arkusenu di $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*) arkusenu di $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\( arkusenu di
+[CcKk][Ss][CcKk]\((.*)\) kosekanti di $1
+[CcKk][Ss][CcKk]\((.*) kosekanti di $1
+[CcKk][Ss][CcKk]\( kosekanti di
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*)\) arkukosekanti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*) arkukosekanti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\( arkukosekanti di
+[CcKk][Oo][Ss]\((.*)\) kosenu di $1
+[CcKk][Oo][Ss]\((.*) kosenu di $1
+[CcKk][Oo][Ss]\( kosenu di
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*)\) arkukosenu di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*) arkukosenu di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\( arkukosenu di
+[Ss][Ee][CcKk]\((.*)\) sekanti di $1
+[Ss][Ee][CcKk]\((.*) sekanti di $1
+[Ss][Ee][CcKk]\( sekanti di
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*)\) arkusekanti di $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*) arkusekanti di $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\( arkusekanti di
+[Tt][Aa][Nn]\((.*)\) tanjenti di $1
+[Tt][Aa][Nn]\((.*) tanjenti di $1
+[Tt][Aa][Nn]\( tanjenti di
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*)\) arkutanjenti di $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*) arkutanjenti di $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\( arkutanjenti di
+[CcKk][Oo][Tt]\((.*)\) kotanjenti di $1
+[CcKk][Oo][Tt]\((.*) kotanjenti di $1
+[CcKk][Oo][Tt]\( kotanjenti di
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*)\) arkukotanjenti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*) arkukotanjenti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\( arkukotanjenti di
 
 ^0 zèro
 1 un
@@ -54,7 +98,7 @@ ldes\( logarítimu desimal di
 30 treseys
 40 quaseys
 50 kinseys
-(\d)(\d) $(\10) i $2
+(\d)(\d) $(\10) y $2
 
 100 nifi
 200 dunifi
@@ -62,43 +106,43 @@ ldes\( logarítimu desimal di
 400 kwatrunifi
 500 kinifi
 
-(\d)(0\d) $(\100) i $2
-(\d)(1\d) $(\100) i $2
-(\d)(\d0) $(\100) i $2
+(\d)(0\d) $(\100) y $2
+(\d)(1\d) $(\100) y $2
+(\d)(\d0) $(\100) y $2
 (\d)(\d\d) $(\100) $2
 
 1000 arda
-100(\d) arda i $1
-10(1\d) arda i $1
-10(\d0) arda i $1
-1(\d00) arda i $1
+100(\d) arda y $1
+10(1\d) arda y $1
+10(\d0) arda y $1
+1(\d00) arda y $1
 1(\d\d\d) arda $1
 
 1000000 xadara
-100000(\d) xadara i $1
-10000(1\d) xadara i $1
-10000(\d0) xadara i $1
-1000(\d00) xadara i $1
-100(\d000) xadara i $1
-10(\d0000) xadara i $1
-1(\d00000) xadara i $1
+100000(\d) xadara y $1
+10000(1\d) xadara y $1
+10000(\d0) xadara y $1
+1000(\d00) xadara y $1
+100(\d000) xadara y $1
+10(\d0000) xadara y $1
+1(\d00000) xadara y $1
 1(\d{6}) xadara, $1
 
 (\d{1,3})000 $1 arda
-(\d{1,3})00(\d) $1 arda i $2
-(\d{1,3})0(1\d) $1 arda i $2
-(\d{1,3})0(\d0) $1 arda i $2
-(\d{1,3})(\d00) $1 arda i $2
+(\d{1,3})00(\d) $1 arda y $2
+(\d{1,3})0(1\d) $1 arda y $2
+(\d{1,3})0(\d0) $1 arda y $2
+(\d{1,3})(\d00) $1 arda y $2
 (\d{1,3})(\d\d\d) $1 arda, $2
 
 (\d{1,6})000000 $1 xadara
-(\d{1,6})00000(\d) $1 xadara i $2
-(\d{1,6})0000(1\d) $1 xadara i $2
-(\d{1,6})0000(\d0) $1 xadara i $2
-(\d{1,6})000(\d00) $1 xadara i $2
-(\d{1,6})00(\d000) $1 xadara i $2
-(\d{1,6})0(\d0000) $1 xadara i $2
-(\d{1,6})(\d00000) $1 xadara i $2
+(\d{1,6})00000(\d) $1 xadara y $2
+(\d{1,6})0000(1\d) $1 xadara y $2
+(\d{1,6})0000(\d0) $1 xadara y $2
+(\d{1,6})000(\d00) $1 xadara y $2
+(\d{1,6})00(\d000) $1 xadara y $2
+(\d{1,6})0(\d0000) $1 xadara y $2
+(\d{1,6})(\d00000) $1 xadara y $2
 (\d{1,6})(\d{6}) $1 xadara, $2
 
 #
@@ -107,9 +151,9 @@ ldes\( logarítimu desimal di
 # grupu
 #
 :0+
-:0*[12345] " i "
-:0*[12345]0+ " i "
-:0*[12345]00+ " i "
+:0*[12345] " y "
+:0*[12345]0+ " y "
+:0*[12345]00+ " y "
 :\d+ ", "
 
 (1)(\d{12}) dixadara$(:\2)$2

@@ -1,8 +1,6 @@
 \+ plus
 \- minus
 − minus
-² squared
-³ cubed
 \^ elevated to
 \*\* elevated to
 \* times
@@ -40,6 +38,57 @@ lsez\( sezimal logarithm of
 ldec\((.*)\) decimal logarithm of $1
 ldec\((.*) decimal logarithm of $1
 ldec\( decimal logarithm of
+sqrt\((.*)\) square root of $1
+sqrt\((.*) square root of $1
+sqrt\( square root of
+cbrt\((.*)\) cube root of $1
+cbrt\((.*) cube root of $1
+cbrt\( cube root of
+\u200b?² squared
+\u200b?³ cubed
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 squared
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 cubed
+(?:sin|SIN)\((.*)\) sine of $1
+(?:sin|SIN)\((.*) sine of $1
+(?:sin|SIN)\( sine of
+(?:asin|ASIN|arcsin|ARCSIN)\((.*)\) arcsine of $1
+(?:asin|ASIN|arcsin|ARCSIN)\((.*) arcsine of $1
+(?:asin|ASIN|arcsin|ARCSIN)\( arcsine of
+(?:csc|CSC)\((.*)\) cosecant of $1
+(?:csc|CSC)\((.*) cosecant of $1
+(?:csc|CSC)\( cosecant of
+(?:acsc|ACSC|arccsc|ARCCSC)\((.*)\) arccosecant of $1
+(?:acsc|ACSC|arccsc|ARCCSC)\((.*) arccosecant of $1
+(?:acsc|ACSC|arccsc|ARCCSC)\( arccosecant of
+(?:cos|COS)\((.*)\) cosine of $1
+(?:cos|COS)\((.*) cosine of $1
+(?:cos|COS)\( cosine of
+(?:acos|ACOS|arccos|ARCCOS)\((.*)\) arccosine of $1
+(?:acos|ACOS|arccos|ARCCOS)\((.*) arccosine of $1
+(?:acos|ACOS|arccos|ARCCOS)\( arccosine of
+(?:sec|SEC)\((.*)\) secant of $1
+(?:sec|SEC)\((.*) secant of $1
+(?:sec|SEC)\( secant of
+(?:asec|ASEC|arcsec|ARCSEC)\((.*)\) arcsecant of $1
+(?:asec|ASEC|arcsec|ARCSEC)\((.*) arcsecant of $1
+(?:asec|ASEC|arcsec|ARCSEC)\( arcsecant of
+(?:tan|TAN)\((.*)\) tangent of $1
+(?:tan|TAN)\((.*) tangent of $1
+(?:tan|TAN)\( tangent of
+(?:atan|ATAN|arctan|ARCTAN)\((.*)\) arctangent of $1
+(?:atan|ATAN|arctan|ARCTAN)\((.*) arctangent of $1
+(?:atan|ATAN|arctan|ARCTAN)\( arctangent of
+(?:cot|COT)\((.*)\) cotangent of $1
+(?:cot|COT)\((.*) cotangent of $1
+(?:cot|COT)\( cotangent of
+(?:acot|ACOT|arccot|ARCCOT)\((.*)\) arccotangent of $1
+(?:acot|ACOT|arccot|ARCCOT)\((.*) arccotangent of $1
+(?:acot|ACOT|arccot|ARCCOT)\( arccotangent of
+
+\( open parenthesis
+\) close parenthesis
+\((.*) open parenthesis $1
+(.*)\) $1 close parenthesis
 
 ^0 zero
 1 one

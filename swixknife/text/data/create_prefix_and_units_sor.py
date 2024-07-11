@@ -405,7 +405,7 @@ if __name__ == '__main__':
     arq = open('bz_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='bz'))
     arq.write(create_prefixes(lang='bz'))
-    arq.write(create_rules(conjunction='i', preposition='di un', lang='bz'))
+    arq.write(create_rules(conjunction='y', preposition='dun', lang='bz'))
     arq.close()
 
     arq = open('pt_units_and_prefixes.sor', 'w')

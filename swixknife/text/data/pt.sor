@@ -1,8 +1,6 @@
 \+ mais
 \- menos
 − menos
-² ao quadrado
-³ ao cubo
 \^ elevado a
 \*\* elevado a
 \* vezes
@@ -21,8 +19,6 @@ e e
 π pi
 τ tau
 φ fi
-\( abre parênteses
-\) fecha parênteses
 ln\((.*)\) logaritmo natural de $1
 ln\((.*) logaritmo natural de $1
 ln\( logaritmo natural de
@@ -32,6 +28,57 @@ lsez\( logaritmo sezimal de
 ldec\((.*)\) logaritmo decimal de $1
 ldec\((.*) logaritmo decimal de $1
 ldec\( logaritmo decimal de
+sqrt\((.*)\) raiz quadrada de $1
+sqrt\((.*) raiz quadrada de $1
+sqrt\( raiz quadrada de
+cbrt\((.*)\) raiz cúbica de $1
+cbrt\((.*) raiz cúbica de $1
+cbrt\( raiz cúbica de
+\u200b?² ao quadrado
+\u200b?³ ao cubo
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 ao quadrado
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 ao cubo
+(?:s[ie]n|S[IE]N)\((.*)\) seno de $1
+(?:s[ie]n|S[IE]N)\((.*) seno de $1
+(?:s[ie]n|S[IE]N)\( seno de
+(?:as[ie]n|AS[IE]N|arcs[ie]n|ARCS[IE]N)\((.*)\) arcosseno de $1
+(?:as[ie]n|AS[IE]N|arcs[ie]n|ARCS[IE]N)\((.*) arcosseno de $1
+(?:as[ie]n|AS[IE]N|arcs[ie]n|ARCS[IE]N)\( arcosseno de
+(?:csc|CSC)\((.*)\) cossecante de $1
+(?:csc|CSC)\((.*) cossecante de $1
+(?:csc|CSC)\( cossecante de
+(?:acsc|ACSC|arccsc|ARCCSC)\((.*)\) arcocossecante de $1
+(?:acsc|ACSC|arccsc|ARCCSC)\((.*) arcocossecante de $1
+(?:acsc|ACSC|arccsc|ARCCSC)\( arcocossecante de
+(?:cos|COS)\((.*)\) cosseno de $1
+(?:cos|COS)\((.*) cosseno de $1
+(?:cos|COS)\( cosseno de
+(?:acos|ACOS|arccos|ARCCOS)\((.*)\) arcocosseno de $1
+(?:acos|ACOS|arccos|ARCCOS)\((.*) arcocosseno de $1
+(?:acos|ACOS|arccos|ARCCOS)\( arcocosseno de
+(?:sec|SEC)\((.*)\) secante de $1
+(?:sec|SEC)\((.*) secante de $1
+(?:sec|SEC)\( secante de
+(?:asec|ASEC|arcsec|ARCSEC)\((.*)\) arcossecante de $1
+(?:asec|ASEC|arcsec|ARCSEC)\((.*) arcossecante de $1
+(?:asec|ASEC|arcsec|ARCSEC)\( arcossecante de
+(?:tan|TAN)\((.*)\) tangente de $1
+(?:tan|TAN)\((.*) tangente de $1
+(?:tan|TAN)\( tangente de
+(?:atan|ATAN|arctan|ARCTAN)\((.*)\) arcotangente de $1
+(?:atan|ATAN|arctan|ARCTAN)\((.*) arcotangente de $1
+(?:atan|ATAN|arctan|ARCTAN)\( arcotangente de
+(?:cot|COT)\((.*)\) cotangente de $1
+(?:cot|COT)\((.*) cotangente de $1
+(?:cot|COT)\( cotangente de
+(?:acot|ACOT|arccot|ARCCOT)\((.*)\) arcocotangente de $1
+(?:acot|ACOT|arccot|ARCCOT)\((.*) arcocotangente de $1
+(?:acot|ACOT|arccot|ARCCOT)\( arcocotangente de
+
+\( abre parênteses
+\) fecha parênteses
+\((.*) abre parênteses $1
+(.*)\) $1 fecha parênteses
 
 ^0 zero
 1 um
