@@ -598,12 +598,14 @@ def calculate_conversions():
     #
     unit_conversion['prd'] = {
         'rad': TAU,
-        'prefixed': ('rad', 'turn', 'gon', 'arcmin', 'arcsec'),
+        'tau_rad': SezimalFraction('1 / 1'),
+        'pi_rad': SezimalFraction('2 / 1'),
         'deg': SezimalFraction('1400 / 1'),
         'turn': SezimalFraction('1 / 1'),
         'gon': SezimalFraction('1504 / 1'),
         'arcmin': SezimalFraction('244_000 / 1'),
         'arcsec': SezimalFraction('43_440_000 / 1'),
+        'prefixed': ('rad', 'tau_rad', 'pi_rad', 'turn', 'gon', 'arcmin', 'arcsec'),
     }
     unit_conversion['prd'] = _set_non_prefixed_units(unit_conversion['prd'])
 

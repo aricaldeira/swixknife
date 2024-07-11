@@ -1947,7 +1947,16 @@ UNIT_CONVERSION = {
             _precalculated_value='10.141_100_143_234_252_214_513_232_150_255_042_205_002_433_324_012',
             _precalculated_reciprocal='0.054_213_311_044_450_505_034_340_500_425_254_510_345_422_220_053',
         ),
-        'prefixed': ('rad', 'turn', 'gon', 'arcmin', 'arcsec'),
+        'tau_rad': SezimalFraction(
+            '1 / 1',
+            _precalculated_value='1',
+            _precalculated_reciprocal='1',
+        ),
+        'pi_rad': SezimalFraction(
+            '2 / 1',
+            _precalculated_value='2',
+            _precalculated_reciprocal='0.3',
+        ),
         'deg': SezimalFraction(
             '1_400 / 1',
             _precalculated_value='1_400',
@@ -1973,7 +1982,8 @@ UNIT_CONVERSION = {
             _precalculated_value='43_440_000',
             _precalculated_reciprocal='0.000_000_011_435_341_020_032_422_550_452_131_143_534_102_003_242',
         ),
-        'non_prefixed': ('prefixed', 'deg'),
+        'prefixed': ('rad', 'tau_rad', 'pi_rad', 'turn', 'gon', 'arcmin', 'arcsec'),
+        'non_prefixed': ('deg', 'prefixed'),
     },
     'gol': {
         'sr': SezimalFraction(
