@@ -11,6 +11,7 @@ const prefixed_units = [
     'Bps',
     'C',
     'F',
+    'deg',
     'H',
     'Hz',
     'J',
@@ -145,7 +146,7 @@ function set_unit_type() {
     } else if (unit_type == 'vtr') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'vtr', '-', 'T');
     } else if (unit_type == 'prd') {
-        set_unit_type_sezimal_decimal(unit_type, 't', 'prd', '-', 'deg');
+        set_unit_type_sezimal_decimal(unit_type, 'd', 'prd', '-', 'pi_rad');
     } else if (unit_type == 'gol') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'gol', '-', 'sr');
     } else if (unit_type == 'prt') {
@@ -195,9 +196,12 @@ function set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, 
 
     hide_all_units();
 
-    if (unit_type == 'units') {
+    if (unit_type == 'no-conversion') {
         document.getElementById('unit-units-explanation').hidden = false;
-        document.getElementById('toggle_units').innerHTML = '[ ↮ ]';
+        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
+    } else if (unit_type == 'units') {
+        document.getElementById('unit-units-explanation').hidden = false;
+        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
     } else if (unit_type == 'prefixes') {
         document.getElementById('unit-prefixes-explanation').hidden = false;
         document.getElementById('toggle_units').innerHTML = '[ ↮ ]';
@@ -232,14 +236,18 @@ function update_units_conversion() {
         decimal_prefix = '';
     };
 
-    if (localStorage.getItem(`sezimal-translation-${sezimal_unit}`) != null) {
-        sezimal_unit = localStorage.getItem(`sezimal-translation-${sezimal_unit}`);
+    if (localStorage.getItem(`sezimal-translation-display-${sezimal_unit}`) != null) {
+        sezimal_unit = localStorage.getItem(`sezimal-translation-display-${sezimal_unit}`);
     };
-    if (localStorage.getItem(`sezimal-translation-${decimal_unit}`) != null) {
-        decimal_unit = localStorage.getItem(`sezimal-translation-${decimal_unit}`);
+    if (localStorage.getItem(`sezimal-translation-display-${decimal_unit}`) != null) {
+        decimal_unit = localStorage.getItem(`sezimal-translation-display-${decimal_unit}`);
     };
 
-    document.getElementById('toggle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ↔ ' + decimal_prefix + decimal_unit + ' ]';
+    if ((sezimal_unit != '') && (decimal_unit != '')) {
+        document.getElementById('toggle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ⬢ ' + decimal_prefix + decimal_unit + ' ]';
+    } else {
+        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
+    };
 };
 
 function show_decimal_binary_prefix(sezimal_unit, decimal_unit) {

@@ -12,6 +12,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
         <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-qp.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-mono.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/calculator.css" />
     </head>
     <body>
@@ -32,6 +33,9 @@
                     <td colspan="3" style="text-align: center;">
                         <br/>
                         <select id="calculator-sezimal-unit-type" onchange="set_unit_type()">
+                            <optgroup name="optgroup-units-no-conversion" label="No Conversion">
+                                <option value="no-conversion" name="option-units-no-conversion">No conversion</option>
+                            </optgroup>
                             <optgroup name="optgroup-units-instructions" label="Instructions">
                                 <option value="units" name="option-units-units">Shastari units</option>
                                 <option value="prefixes" name="option-units-prefixes">Shastari prefixes</option>
@@ -93,7 +97,7 @@
                 <tr id="units-title" hidden>
                     <td style="text-align: center;">
                         <br/>
-                        <label id="label-prefix-sezimal" for="calculator-prefix-sezimal">Prefix</label>
+                        <label id="label-prefix-sezimal" for="calculator-prefix-sezimal">Prefix</label><br/>
                         <select id="calculator-prefix-sezimal" onchange="set_sezimal_prefix(this)">
                             <option value="NDX" name="option-sezimal-prefix-ndxm" hidden>NDX – nidishama  – 10¹²⁰</option>
                             <option value="NXP" name="option-sezimal-prefix-nxpm" hidden>NXP – nishapama  – 10¹¹⁵</option>
@@ -198,7 +202,7 @@
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <br/>
-                        <label id="label-prefix-decimal" for="calculator-prefix-decimal">Prefix</label>
+                        <label id="label-prefix-decimal" for="calculator-prefix-decimal">Prefix</label><br/>
                         <label id="label-prefix-decimal-binary" for="calculator-prefix-decimal" hidden>Prefix</label>
                         <select id="calculator-prefix-decimal" onchange="set_decimal_prefix(this)">
                             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
@@ -774,20 +778,22 @@
                 <tr id="unit-prd" hidden>
                     <td style="text-align: center;">
                         <select id="calculator-sezimal-unit-prd" onchange="set_sezimal_unit(this)">
-                            <option value="prd">prd</option>
+                            <option name="option-sezimal-units-prd-prd" value="prd">prd</option>
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-prd" onchange="set_decimal_unit(this)">
                             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                                <option value="rad">rad</option>
+                                <option name="option-decimal-units-prd-tau_rad" value="tau_rad">τ rad</option>
+                                <option name="option-decimal-units-prd-pi_rad" value="pi_rad">π rad</option>
+                                <option name="option-decimal-units-prd-rad" value="rad">rad</option>
                             </optgroup>
                             <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
-                                <option value="deg">deg</option>
-                                <option value="turn">turn</option>
-                                <option value="gon">gon</option>
-                                <option value="arcmin">arcmin</option>
-                                <option value="arcsec">arcsec</option>
+                                <option name="option-decimal-units-prd-deg" value="deg">deg</option>
+                                <option name="option-decimal-units-prd-arcmin" value="arcmin">arcmin</option>
+                                <option name="option-decimal-units-prd-arcsec" value="arcsec">arcsec</option>
+                                <option name="option-decimal-units-prd-turn" value="turn">turn</option>
+                                <option name="option-decimal-units-prd-gon" value="gon">gon</option>
                             </optgroup>
                         </select>
                     </td>
@@ -905,126 +911,210 @@
             <div id="configuration-left" class="configuration-left">
                 <span id="toggle_help">[ ? ]</span>
                 <span id="toggle_locale" onclick="toggle_locale()">[ en ]</span>
-                <span id="locale-setting" hidden>
-                    <label id="calculator-sezimal-locale-label" for="calculator-sezimal-locale" onclick="toggle_locale()">Locale</label><br/>
-                    <select id="calculator-sezimal-locale" onchange="set_locale()">
-                        <option value="iso">ISO (comma)</option>
-                        <option value="iso_dot">ISO (dot)</option>
-                        <option value="code">Code (dot and _)</option>
-                        <option value="ar">العربية (ar)</option>
-                        <option value="ar_latn">el-għàràbí (ar_Latn)</option>
-                        <option value="bz">brazileru (bz)</option>
-                        <option value="ca">català (ca)</option>
-                        <option value="de">Deutsch (de)</option>
-                        <option value="el">ελληνικά (el)</option>
-                        <!-- <option value="en">English (en)</option> -->
-                        <option value="en_au">English - Australia (en_AU)</option>
-                        <option value="en_br">English - Brazil (en_BR)</option>
-                        <option value="en_ca">English - Canada (en_CA)</option>
-                        <option value="en_gb">English - GB (en_GB)</option>
-                        <option value="en_ie">English - Ireland (en_IE)</option>
-                        <option value="en_in">English - India (en_IN)</option>
-                        <option value="en_nz">English - New Zealand (en_NZ)</option>
-                        <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
-                        <option value="en_us">English - USA (en_US)</option>
-                        <option value="eo">Esperanto (eo)</option>
-                        <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
-                        <option value="es">español de España (es)</option>
-                        <option value="es_ar">español de Argentina (es_AR)</option>
-                        <option value="es_bo">español de Bolivia (es_BO)</option>
-                        <option value="es_cl">español de Chile (es_CL)</option>
-                        <option value="es_co">español de Colombia (es_CO)</option>
-                        <option value="es_ec">español de Ecuador (es_EC)</option>
-                        <option value="es_mx">español de Méjico (es_MX)</option>
-                        <option value="es_pe">español de Perú (es_PE)</option>
-                        <option value="es_py">español de Paraguai (es_PY)</option>
-                        <option value="es_uy">español de Uruguai (es_UY)</option>
-                        <option value="fa">فارسی (fa)</option>
-                        <option value="fa_latn">fârsi (fa_Latn)</option>
-                        <option value="fr">français (fr)</option>
-                        <option value="fr_ca">français canadien (fr_CA)</option>
-                        <option value="fr_ch">français de Suisse (fr_CH)</option>
-                        <option value="fr_ortograf">fransè ortograf (fr_Ortograf)</option>
-                        <option value="ga">gaeilge (ga)</option>
-                        <option value="ga_clo_gaelach">ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
-                        <option value="ga_traditional">gaeilge mh -> ṁ (ga_Traditional)</option>
-                        <option value="gl">galego (gl)</option>
-                        <option value="gn">avañeꞌẽ (gn)</option>
-                        <option value="he">עברית (he)</option>
-                        <option value="he_latn">’ivrít (he_Latn)</option>
-                        <option value="hi">हिन्दी (hi)</option>
-                        <option value="hi_latn">hindi (hi_Latn)</option>
-                        <option value="hu">magyar (hu)</option>
-                        <option value="id">Indonesia (id)</option>
-                        <option value="it">italiano (it)</option>
-                        <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
-                        <option value="iu_latn">inuktitut (iu_Latn)</option>
-                        <option value="ja">日本語 (ja)</option>
-                        <option value="ko">한국어 (ko)</option>
-                        <option value="nl">Nederlands (nl)</option>
-                        <option value="pl">polski (pl)</option>
-                        <option value="pt_ao">português angolano (pt_AO)</option>
-                        <option value="pt_br">português brasileiro (pt_BR)</option>
-                        <option value="pt_ch">português suíço (pt_CH)</option>
-                        <option value="pt_cv">português cabo-verdiano (pt_CV)</option>
-                        <option value="pt_gq">português equatorial-guineense (pt_GQ)</option>
-                        <option value="pt_gw">português bissau-guineense (pt_GW)</option>
-                        <option value="pt_lu">português luxemburguês (pt_LU)</option>
-                        <option value="pt_mo">português macaense (pt_MO)</option>
-                        <option value="pt_mz">português moçambicano (pt_MZ)</option>
-                        <option value="pt_pt">português europeu (pt_PT)</option>
-                        <option value="pt_st">português são-tomense (pt_ST)</option>
-                        <option value="pt_tl">português timorense (pt_TL)</option>
-                        <option value="ro">română (ro)</option>
-                        <option value="ru">русский (ru)</option>
-                        <option value="sw">Kiswahili (sw)</option>
-                        <option value="tr">Türkçe (tr)</option>
-                        <option value="uk">українська (uk)</option>
-                        <option value="vi">Tiếng Việt (vi)</option>
-                        <option value="yo">Èdè Yorùbá (yo)</option>
-                        <option value="yrl">ỹengatu (yrl)</option>
-                        <option value="zh_cn">中文 中国 (zh_CN)</option>
-                        <option value="zh_hk">中文 香港 (zh_HK)</option>
-                        <option value="zh_mo">中文 澳門 (zh_MO)</option>
-                        <option value="zh_sg">中文 新加坡 (zh_SG)</option>
-                        <option value="zh_tw">中文 臺灣 (zh_TW)</option>
-                        <option value="zh_hans">中文 简体 (zh_HanS)</option>
-                        <option value="zh_hant">中文 正體 (zh_HanT)</option>
-                        <option value="zh_latn">zhōngwén (zh_Latn)</option>
-                    </select>
-                </span>
-                <span id="toggle_spellout" onclick="toggle_spellout()">[ ∼<i>txt</i> ]</span>
+                <span id="toggle_spellout" onclick="toggle_spellout()">[ txt ]</span>
                 <span id="toggle_sezimal_digits" onclick="toggle_sezimal_digits()">[ 3 ]</span>
                 <span id="toggle_grouping" onclick="toggle_grouping()">[ 3&nnbsp;3 ]</span>
-                <span id="toggle_niftimal" onclick="toggle_niftimal()">[ ≁<i>nif</i> ]</span>
+                <span id="toggle_niftimal" onclick="toggle_niftimal()">[ nif ]</span>
             </div>
             <div id="configuration-right" class="configuration-right">
-                <span id="toggle_units" onclick="toggle_units(true)">[ ↮ ]</span>
+                <span id="toggle_angle_units" onclick="toggle_angle_units()">[ prd ○ τ rad ]</span>
+                <span id="toggle_units" onclick="toggle_units(true)">[ ⬡ ]</span>
                 <span id="toggle_sezimal_places" onclick="toggle_sezimal_places()">[ 0.3 ]</span>
-                <span id="sezimal-places-setting" hidden>
-                    <label id="calculator-sezimal-places-label" for="calculator-sezimal-places" onclick="toggle_sezimal_places()">Places</label><br/>
-                    <select id="calculator-sezimal-places" onchange="set_sezimal_places()">
-                        <option  value="0"> 0</option>
-                        <option  value="1"> 1</option>
-                        <option  value="2"> 2</option>
-                        <option  value="3"> 3</option>
-                        <option  value="4"> 4</option>
-                        <option  value="5"> 5</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="30">30</option>
-                    </select>
-                </span>
+            </div>
+            <div id="locale-setting" hidden class="configuration-center">
+                <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
+                <label id="label-sezimal-locale" for="calculator-sezimal-locale">Locale</label><br/><br/>
+                <span onclick="set_locale()">[ ✓ ]</span><br/><br/>
+                <select id="calculator-sezimal-locale">
+                    <option value="iso">ISO (comma)</option>
+                    <option value="iso_dot">ISO (dot)</option>
+                    <option value="code">Code (dot and _)</option>
+                    <option value="ar">العربية (ar)</option>
+                    <option value="ar_latn">El-għàràbí (ar_Latn)</option>
+                    <option value="bz">Brazileru (bz)</option>
+                    <option value="ca">Català (ca)</option>
+                    <option value="de">Deutsch (de)</option>
+                    <option value="el">ελληνικά (el)</option>
+                    <!-- <option value="en">English (en)</option> -->
+                    <option value="en_au">English - Australia (en_AU)</option>
+                    <option value="en_br">English - Brazil (en_BR)</option>
+                    <option value="en_ca">English - Canada (en_CA)</option>
+                    <option value="en_gb">English - GB (en_GB)</option>
+                    <option value="en_ie">English - Ireland (en_IE)</option>
+                    <option value="en_in">English - India (en_IN)</option>
+                    <option value="en_nz">English - New Zealand (en_NZ)</option>
+                    <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
+                    <option value="en_us">English - USA (en_US)</option>
+                    <option value="eo">Esperanto (eo)</option>
+                    <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+                    <option value="es_ar">Español - Argentina (es_AR)</option>
+                    <option value="es_bo">Español - Bolivia (es_BO)</option>
+                    <option value="es_cl">Español - Chile (es_CL)</option>
+                    <option value="es_co">Español - Colombia (es_CO)</option>
+                    <option value="es_ec">Español - Ecuador (es_EC)</option>
+                    <option value="es_es">Español - España (es_ES)</option>
+                    <option value="es_mx">Español - Méjico (es_MX)</option>
+                    <option value="es_pe">Español - Perú (es_PE)</option>
+                    <option value="es_py">Español - Paraguai (es_PY)</option>
+                    <option value="es_uy">Español - Uruguai (es_UY)</option>
+                    <option value="fa">فارسی (fa)</option>
+                    <option value="fa_latn">Fârsi (fa_Latn)</option>
+                    <option value="fr_ca">Français - Canada (fr_CA)</option>
+                    <option value="fr_ch">Français - Suisse (fr_CH)</option>
+                    <option value="fr_fr">Français - France (fr_FR)</option>
+                    <option value="fr_ortograf" hidden>Fransè ortograf (fr_Ortograf)</option>
+                    <option value="ga">Gaeilge (ga)</option>
+                    <option value="ga_clo_gaelach" hidden>Ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
+                    <option value="ga_traditional" hidden>Gaeilge mh -> ṁ (ga_Traditional)</option>
+                    <option value="gl">Galego (gl)</option>
+                    <option value="gn">Avañeꞌẽ (gn)</option>
+                    <option value="he">עברית (he)</option>
+                    <option value="he_latn">’ivrít (he_Latn)</option>
+                    <option value="hi">हिन्दी (hi)</option>
+                    <option value="hi_latn">Hindi (hi_Latn)</option>
+                    <option value="hu">Magyar (hu)</option>
+                    <option value="id">Indonesia (id)</option>
+                    <option value="it">Italiano (it)</option>
+                    <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
+                    <option value="iu_latn">Inuktitut (iu_Latn)</option>
+                    <option value="ja">日本語 (ja)</option>
+                    <option value="kea">Kabuverdianu (kea)</option>
+                    <option value="ko">한국어 (ko)</option>
+                    <option value="nl">Nederlands (nl)</option>
+                    <option value="pl">Polski (pl)</option>
+                    <option value="pt_ao">português - Angola (pt_AO)</option>
+                    <option value="pt_br">português - Brasil (pt_BR)</option>
+                    <option value="pt_ch">Português - Suíça (pt_CH)</option>
+                    <option value="pt_cv">Português - Cabo-Verde (pt_CV)</option>
+                    <option value="pt_gq">Português - Guiné Equatorial (pt_GQ)</option>
+                    <option value="pt_gw">Português - Guiné‐Bissau (pt_GW)</option>
+                    <option value="pt_lu">Português - Luxemburgo (pt_LU)</option>
+                    <option value="pt_mo">Português - Macau (pt_MO)</option>
+                    <option value="pt_mz">Português - Moçambique (pt_MZ)</option>
+                    <option value="pt_pt">Português - Portugal (pt_PT)</option>
+                    <option value="pt_st">Português - São‐Tomé e Príncipe (pt_ST)</option>
+                    <option value="pt_tl">Português - Timor‐Leste (pt_TL)</option>
+                    <option value="ro">Română (ro)</option>
+                    <option value="ru">Русский (ru)</option>
+                    <option value="sw">Kiswahili (sw)</option>
+                    <option value="tr">Türkçe (tr)</option>
+                    <option value="uk">Українська (uk)</option>
+                    <option value="vi">Tiếng Việt (vi)</option>
+                    <option value="yo">Èdè Yorùbá (yo)</option>
+                    <option value="yrl">Ỹengatu (yrl)</option>
+                    <option value="zh_cn">中文 中国 (zh_CN)</option>
+                    <option value="zh_hk">中文 香港 (zh_HK)</option>
+                    <option value="zh_mo">中文 澳門 (zh_MO)</option>
+                    <option value="zh_sg">中文 新加坡 (zh_SG)</option>
+                    <option value="zh_tw">中文 臺灣 (zh_TW)</option>
+                    <option value="zh_hans">中文 简体 (zh_HanS)</option>
+                    <option value="zh_hant">中文 正體 (zh_HanT)</option>
+                    <option value="zh_latn">Zhōngwén (zh_Latn)</option>
+                </select>
+            </div>
+            <div id="sezimal-places-setting" hidden class="configuration-center">
+                <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
+                <label id="label-sezimal-places" for="calculator-sezimal-places">Places</label><br/><br/>
+                <span onclick="set_sezimal_places()">[ ✓ ]</span><br/><br/>
+                <select id="calculator-sezimal-places">
+                    <option  value="0"> 0</option>
+                    <option  value="1"> 1</option>
+                    <option  value="2"> 2</option>
+                    <option  value="3"> 3</option>
+                    <option  value="4"> 4</option>
+                    <option  value="5"> 5</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+            <div id="angle-unit-setting" hidden class="configuration-center">
+                <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
+                <label id="label-sezimal-angle" for="calculator-sezimal-angle">Trigonometric functions units</label><br/><br/>
+                <span onclick="toggle_angle_units()">[ ✓ ]</span><br/>
+                <table id="angle-units-table">
+                    <colgroup>
+                        <col span="1" style="width: 50%;">
+                        <col span="1" style="width: 50%;">
+                    </colgroup>
+                    <tr id="angles-title">
+                        <td style="text-align: center;">
+                            <br/>
+                            <label id="label-prefix-sezimal-angle" for="calculator-prefix-sezimal-angle">Prefix</label><br/>
+                            <select id="calculator-prefix-sezimal-angle" onchange="set_sezimal_angle_prefix(this)">
+                                <option value="-"   name="option-sezimal-prefix-none" selected>     ―</option>
+                                <option value="e"   name="option-sezimal-prefix-ei"  >e – ekati – 10⁻¹</option>
+                                <option value="d"   name="option-sezimal-prefix-di"  >d – diti – 10⁻²</option>
+                                <option value="t"   name="option-sezimal-prefix-ti"  >t – triti – 10⁻³</option>
+                                <option value="c"   name="option-sezimal-prefix-ci"  >c – charti – 10⁻⁴</option>
+                                <option value="p"   name="option-sezimal-prefix-pi"  >p – panti – 10⁻⁵</option>
+                                <option value="x"   name="option-sezimal-prefix-xi"  >x – shati – 10⁻¹⁰</option>
+                            </select>
+                            <br/>
+                            <label id="label-unit-sezimal-angle" for="calculator-angle-unit-sezimal">Sezimal</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <br/>
+                            <label id="label-prefix-decimal-angle" for="calculator-prefix-decimal-angle">Prefix</label><br/>
+                            <select id="calculator-prefix-decimal-angle" onchange="set_decimal_angle_prefix(this)">
+                                <option value="-"  name="option-decimal-prefix-none" selected>     ―</option>
+                                <option value="d"  name="option-decimal-prefix-deci"  >d – deci – 10⁻¹</option>
+                                <option value="c"  name="option-decimal-prefix-centi" >c – centi – 10⁻²</option>
+                                <option value="m"  name="option-decimal-prefix-milli" >m – milli – 10⁻³</option>
+                                <option value="µ"  name="option-decimal-prefix-micro" >µ – micro – 10⁻⁶</option>
+                            </select>
+                            <br/>
+                            <label id="label-unit-decimal-angle" for="calculator-angle-unit-decimal">Decimal</label>
+                        </td>
+                    </tr>
+                    <tr id="unit-angle-prd">
+                        <td style="text-align: center;">
+                            <select id="calculator-sezimal-unit-angle-prd" onchange="set_sezimal_angle_unit(this)">
+                                <optgroup name="optgroup-units-generic-shastadari" label="Shastadari">
+                                    <option name="option-decimal-units-prd-prd" value="prd">prd</option>
+                                </optgroup>
+                                <optgroup name="optgroup-units-generic-s-i" label="S.I.">
+                                    <option name="option-decimal-units-prd-tau_rad" value="tau_rad">τ rad</option>
+                                    <option name="option-decimal-units-prd-pi_rad" value="pi_rad">π rad</option>
+                                    <option name="option-decimal-units-prd-rad" value="rad">rad</option>
+                                </optgroup>
+                                <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
+                                    <option name="option-decimal-units-prd-deg" value="deg">deg</option>
+                                    <option name="option-decimal-units-prd-arcmin" value="arcmin">arcmin</option>
+                                    <option name="option-decimal-units-prd-arcsec" value="arcsec">arcsec</option>
+                                    <option name="option-decimal-units-prd-turn" value="turn">turn</option>
+                                    <option name="option-decimal-units-prd-gon" value="gon">gon</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <select id="calculator-decimal-angle-unit-prd" onchange="set_decimal_angle_unit(this)">
+                                <optgroup name="optgroup-units-generic-s-i" label="S.I.">
+                                    <option name="option-decimal-units-prd-tau_rad" value="tau_rad">τ rad</option>
+                                    <option name="option-decimal-units-prd-pi_rad" value="pi_rad">π rad</option>
+                                    <option name="option-decimal-units-prd-rad" value="rad">rad</option>
+                                </optgroup>
+                                <optgroup name="optgroup-units-generic-non-s-i" label="Non-S.I.">
+                                    <option name="option-decimal-units-prd-deg" value="deg">deg</option>
+                                    <option name="option-decimal-units-prd-arcmin" value="arcmin">arcmin</option>
+                                    <option name="option-decimal-units-prd-arcsec" value="arcsec">arcsec</option>
+                                    <option name="option-decimal-units-prd-turn" value="turn">turn</option>
+                                    <option name="option-decimal-units-prd-gon" value="gon">gon</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div id="display" class="display">
                 <div id="sezimal_display" class="sezimal_display">
@@ -1061,11 +1151,25 @@
                     <td></td>
                     <td><button id="button-base-ten" class="button-base" value="14" onclick="toggle_base_ten()">dec</button></td>
                     <td></td>
-                    <td><button id="button-left-parentheses" class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td><button id="button-left-parentheses" class="button-punctuation" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>
-                    <td><button id="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td><button id="button-right-parentheses" class="button-punctuation" value=")" onclick="button_click(this)">)</button></td>
                     <td></td>
                     <td><button id="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-sezimal-sin" class="button-function" value="SIN(" onclick="button_click(this)">sin</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-cos" class="button-function" value="COS(" onclick="button_click(this)">cos</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-tan" class="button-function" value="TAN(" onclick="button_click(this)">tan</button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-ln" class="button-function" value="ln(" onclick="button_click(this)">log<i>ₑ</i></button></td>
+                    <td></td>
+                    <td><button id="button-sezimal-lsez" class="button-function" value="lsez(" onclick="button_click(this)">log₁₀</button></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -1142,11 +1246,26 @@
                     <td></td>
                     <td><button id="button-base-six" class="button-base" value="6" onclick="toggle_base_six()">sez</button></td>
                     <td></td>
-                    <td><button id="button-left-parentheses"  class="button-operator" value="(" onclick="button_click(this)">(</button></td>
+                    <td><button id="button-left-parentheses"  class="button-punctuation" value="(" onclick="button_click(this)">(</button></td>
                     <td></td>
-                    <td><button id="button-right-parentheses" class="button-operator" value=")" onclick="button_click(this)">)</button></td>
+                    <td><button id="button-right-parentheses" class="button-punctuation" value=")" onclick="button_click(this)">)</button></td>
                     <td></td>
                     <td><button id="button-backspace" class="button-back" value="⌫" onclick="button_click(this)">⌫</button></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td><button id="button-decimal-sin" class="button-function" value="SIN(" onclick="button_click(this)">sin</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-cos" class="button-function" value="COS(" onclick="button_click(this)">cos</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-tan" class="button-function" value="TAN(" onclick="button_click(this)">tan</button></td>
+                    <td></td>
+                    <td><button id="button-decimal-ln" class="button-function" value="ln(" onclick="button_click(this)">log<i>ₑ</i></button></td>
+                    <td></td>
+                    <td><button id="button-decimal-tau" class="button-constant" value="τ" onclick="button_click(this)">τ</button></td>
+<!--                    <td><button id="button-decimal-ldec" class="button-function" value="ldec(" onclick="button_click(this)">log₁₀</button></td>-->
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -1217,6 +1336,7 @@
     <script src="/static/js/calculator_unit_conversion.js"></script>
     <script src="/static/js/calculator_base_change.js"></script>
     <script src="/static/js/calculator_grouping.js"></script>
+    <script src="/static/js/calculator_angle_unit.js"></script>
     <script src="/static/js/calculator_load.js"></script>
     <script>
 calculator_load();

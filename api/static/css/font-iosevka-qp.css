@@ -1,33 +1,36 @@
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal QP';
   font-weight: bold;
   font-style: italic;
-  src: local('Iosevka Sezimal QP Bold Italic Extended'),
+  src: local('Iosevka Sezimal QP Extended Bold Italic'),
+       local('Iosevka Sezimal QP Bold Italic Extended'),
        url("../font/IosevkaSezimalQP-ExtendedBoldItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimalQP-ExtendedBoldItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal QP';
   font-weight: normal;
   font-style: italic;
-  src: local('Iosevka Sezimal QP Italic Extended'),
+  src: local('Iosevka Sezimal QP Extended Italic'),
+       local('Iosevka Sezimal QP Italic Extended'),
        url("../font/IosevkaSezimalQP-ExtendedItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimalQP-ExtendedItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal QP';
   font-weight: bold;
   font-style: normal;
-  src: local('Iosevka Sezimal QP Bold Extended'),
+  src: local('Iosevka Sezimal QP Extended Bold'),
+       local('Iosevka Sezimal QP Bold Extended'),
        url("../font/IosevkaSezimalQP-ExtendedBold.woff2") format("woff2"),
        url("../font/IosevkaSezimalQP-ExtendedBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal QP';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka Sezimal QP Extended'),
@@ -37,25 +40,25 @@
 
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal QP Light';
   font-weight: bold;
   font-style: italic;
-  src: local('Iosevka Sezimal QP Medium Italic Extended'),
+  src: local('Iosevka Sezimal QP Medium Extended Italic'),
        url("../font/IosevkaSezimalQP-ExtendedMediumItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimalQP-ExtendedMediumItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal QP Light';
   font-weight: normal;
   font-style: italic;
-  src: local('Iosevka Sezimal QP Light Italic Extended'),
+  src: local('Iosevka Sezimal QP Light Extended Italic'),
        url("../font/IosevkaSezimalQP-ExtendedLightItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimalQP-ExtendedLightItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal QP Light';
   font-weight: bold;
   font-style: normal;
   src: local('Iosevka Sezimal QP Medium Extended'),
@@ -64,7 +67,7 @@
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal QP Light';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka Sezimal QP Light Extended'),

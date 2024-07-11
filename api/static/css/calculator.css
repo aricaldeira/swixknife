@@ -1,7 +1,10 @@
 :root {
-    --o-webclient-color-scheme: #212121;
+/*    --o-webclient-color-scheme: #212121;
     --theme: #212121;
-    background-color: #212121;
+    background-color: #212121;*/
+    --o-webclient-color-scheme: black;
+    --theme: black;
+    background-color: black;
     color: #fafafa;
 
     font-size: 1.5em;
@@ -9,14 +12,15 @@
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal' !important;
+    font-family: 'Sezimal QP' !important;
 /*     font-family: "Andika", "Iosevka Sezimal Extended"; */
-    --font-family-sans-serif: 'Sezimal', monospace;
-    --font-family-monospace: 'Sezimal', monospace;
+    --font-family-sans-serif: 'Sezimal QP', monospace;
+    --font-family-monospace: 'Sezimal QP', monospace;
 }
 html, body {
     height: 100%;
-    background-color: #212121;
+/*     background-color: #212121; */
+    background-color: black;
     color: #fafafa;
     margin: 0;
     max-width: 500px;
@@ -45,7 +49,7 @@ td {
     margin: 0;
 }
 button {
-    font-family: 'Sezimal';
+    font-family: 'Sezimal QP';
     font-size: 30pt;
     font-weight: normal;
 /*     font-style: italic; */
@@ -77,6 +81,15 @@ button {
         background-color: #C5CAE9;
         color: #3F51B5;
         font-weight: bold;
+    }
+}
+.button-punctuation {
+    background-color: #00BCD4;
+    color: #E0F7FA;
+
+    &:hover {
+        background-color: #B2EBF2;
+        color: #00BCD4;
         font-weight: bold;
     }
 }
@@ -87,6 +100,17 @@ button {
     &:hover {
         background-color: #FFCCBC;
         color: #FF5722;
+        font-weight: bold;
+    }
+}
+.button-function {
+    background-color: #00BCD4;
+    color: #E0F7FA;
+    font-size: 16pt;
+
+    &:hover {
+        background-color: #B2EBF2;
+        color: #00BCD4;
         font-weight: bold;
     }
 }
@@ -189,7 +213,7 @@ button {
     font-variant-numeric: diagonal-fractions;
 }
 .niftimal_display {
-    font-family: 'Sezimal Light';
+    font-family: 'Sezimal QP Light';
     font-size: 18pt;
     font-weight: normal;
     font-style: normal;
@@ -226,17 +250,17 @@ label {
 }
 
 select {
-    font-family: 'Sezimal';
+    font-family: 'Sezimal QP';
     font-size: 12pt;
 }
 select > option {
-    font-family: 'Sezimal';
+    font-family: 'Sezimal QP';
 }
 option {
-    font-family: 'Sezimal';
+    font-family: 'Sezimal QP';
 }
 option:before {
-    font-family: 'Sezimal';
+    font-family: 'Sezimal QP';
 }
 
 .grouping-explanation {
@@ -283,22 +307,36 @@ td.units {
     mix-blend-mode: difference;
 }
 .configuration-left {
+    font-family: 'Sezimal QP';
     font-weight: normal;
-    font-size: 9pt;
+    font-size: 12pt;
     mix-blend-mode: luminosity;
     text-align: left;
     padding: 6px;
-    #fafafa-space: nowrap;
+    white-space: nowrap;
 /*    overflow: hidden;
     text-overflow: ellipsis;*/
 }
 .configuration-right {
+    font-family: 'Sezimal QP';
     font-weight: normal;
-    font-size: 10pt;
+    font-size: 12pt;
     mix-blend-mode: luminosity;
     text-align: right;
     padding: 6px;
-    #fafafa-space: nowrap;
+    white-space: nowrap;
+/*    overflow: hidden;
+    text-overflow: ellipsis;*/
+    border-bottom: 2px double #607D8B;
+}
+.configuration-center {
+    font-family: 'Sezimal QP';
+    font-weight: normal;
+    font-size: 14pt;
+    mix-blend-mode: luminosity;
+    text-align: center;
+    padding: 6px;
+    white-space: nowrap;
 /*    overflow: hidden;
     text-overflow: ellipsis;*/
     border-bottom: 2px double #607D8B;

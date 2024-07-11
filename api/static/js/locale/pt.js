@@ -5,14 +5,63 @@ const sezimal_calculator_pt_text = {
     'button-decimal-clear': 'Z',
     'button-base-ten': 'dec',
     'button-base-six': 'sez',
-    'translation-txt': 'ext',
+    'translation-txt': 'ext.',
     'translation-nif': 'nife',
+
+
+    'translation-sezimal-calculator': 'Calculadora Sezimal',
+    'label-sezimal-locale': 'Defina o locale para a formatação dos números',
+    'label-sezimal-places': 'Defina a quantidade de casas sezimais',
+    'label-sezimal-angle': 'Defina a conversão de unidades de ângulo<br/>para as funções trigonométricas',
+
+    'translation-turn': 'volta',
+    'translation-deg': 'grau',
+    'translation-arcmin': 'min',
+    'translation-arcseg': 'seg',
+
     'translation-display-mod': 'mód',
+    'translation-display-turn': 'volta',
+    'translation-display-deg': '°',
+    'translation-display-arcmin': '′',
+    'translation-display-arcsec': '″',
+    'translation-display-gon': 'gon',
+    'translation-display-rad': 'rad',
+    'translation-display-tau_rad': 'τ rad',
+    'translation-display-pi_rad': 'π rad',
+
+    'button-sezimal-sin': 'sen',
+    'button-sezimal-cos': 'cos',
+    'button-sezimal-tan': 'tan',
+    'button-decimal-sin': 'sen',
+    'button-decimal-cos': 'cos',
+    'button-decimal-tan': 'tan',
+
+    'translation-display-sin': 'sen',
+    'translation-display-asin': 'asen',
+    'translation-display-csc': 'csc',
+    'translation-display-acsc': 'acsc',
+    'translation-display-cos': 'cos',
+    'translation-display-acos': 'acos',
+    'translation-display-sec': 'sec',
+    'translation-display-asec': 'asec',
+    'translation-display-tan': 'tan',
+    'translation-display-atan': 'atan',
+    'translation-display-cot': 'cot',
+    'translation-display-acot': 'acot',
+
+    'button-sezimal-ln': 'log<i>ₑ</i>',
+    'button-sezimal-lsez': 'log₁₀',
+    'button-sezimal-ldec': 'log₁₄',
+    'button-decimal-ln': 'log<i>ₑ</i>',
+    'button-decimal-lsez': 'log₆',
+    'button-decimal-ldec': 'log₁₀',
 
     //
     // Unidades
     //
     'td-shastadari-units': 'Unidades de Medida Xastadári',
+    'optgroup-units-no-conversion': 'Sem conversão',
+    'option-units-no-conversion': 'Sem conversão (só calculadora)',
     'optgroup-units-instructions': 'Instruções',
     'option-units-units': 'Unidades Xastadári',
     'option-units-prefixes': 'Prefixos Xastadári',
@@ -63,10 +112,13 @@ const sezimal_calculator_pt_text = {
     'option-units-pvn': 'Velocidade',
 
     'label-prefix-sezimal': 'Prefixo sezimal',
+    'label-prefix-sezimal-angle': 'Prefixo sezimal',
     'label-unit-sezimal': 'Unidade sezimal',
     'label-prefix-decimal': 'Prefixo decimal',
+    'label-prefix-decimal-angle': 'Prefixo decimal',
     'label-prefix-decimal-binary': 'Prefixo decimal/binário',
     'label-unit-decimal': 'Unidade decimal',
+    'optgroup-units-generic-shastadari': 'Xastadári',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Outras',
     'optgroup-units-generic-us-uk': 'EUA/Reino Unido',
@@ -431,6 +483,15 @@ const sezimal_calculator_pt_text = {
 
     'option-units-ayt-aytan': 'aitã – ayt',
 
+    'option-decimal-units-prd-prd': 'parídis',
+    'option-decimal-units-prd-tau_rad': 'τ radianos',
+    'option-decimal-units-prd-pi_rad': 'π radianos',
+    'option-decimal-units-prd-rad': 'radianos',
+    'option-decimal-units-prd-deg': 'graus',
+    'option-decimal-units-prd-arcmin': 'minutos',
+    'option-decimal-units-prd-arcsec': 'segundos',
+    'option-decimal-units-prd-turn': 'voltas',
+    'option-decimal-units-prd-gon': 'gradianos (gon)',
 };
 
 export { sezimal_calculator_pt_text };

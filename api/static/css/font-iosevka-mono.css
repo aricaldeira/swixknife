@@ -1,6 +1,6 @@
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal Mono';
   font-weight: bold;
   font-style: italic;
   src: local('Iosevka Sezimal Bold Italic Extended'),
@@ -9,16 +9,17 @@
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal Mono';
   font-weight: normal;
   font-style: italic;
-  src: local('Iosevka Sezimal Italic Extended'),
+  src: local('Iosevka Sezimal Extended Italic'),
+       local('Iosevka Sezimal Italic Extended'),
        url("../font/IosevkaSezimal-ExtendedItalic.woff2") format("woff2"),
        url("../font/IosevkaSezimal-ExtendedItalic.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal Mono';
   font-weight: bold;
   font-style: normal;
   src: local('Iosevka Sezimal Bold Extended'),
@@ -27,7 +28,7 @@
 }
 
 @font-face {
-  font-family: 'Sezimal';
+  font-family: 'Sezimal Mono';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka Sezimal Extended'),
@@ -37,7 +38,7 @@
 
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal Mono Light';
   font-weight: bold;
   font-style: italic;
   src: local('Iosevka Sezimal Medium Italic Extended'),
@@ -46,7 +47,7 @@
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal Mono Light';
   font-weight: normal;
   font-style: italic;
   src: local('Iosevka Sezimal Light Italic Extended'),
@@ -55,7 +56,7 @@
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal Mono Light';
   font-weight: bold;
   font-style: normal;
   src: local('Iosevka Sezimal Medium Extended'),
@@ -64,7 +65,7 @@
 }
 
 @font-face {
-  font-family: 'Sezimal Light';
+  font-family: 'Sezimal Mono Light';
   font-weight: normal;
   font-style: normal;
   src: local('Iosevka Sezimal Light Extended'),

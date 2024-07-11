@@ -3,7 +3,6 @@ from flask import send_file, Response, request, jsonify
 import json
 from swixknife.localization import sezimal_locale
 from swixknife.calculator import SezimalCalculator
-from swixknife.units import sezimal_to_decimal_unit
 from swixknife import Sezimal
 
 from main import app
@@ -32,7 +31,7 @@ UNIT_SIMPLIFIED_SYMBOL = {
     'tprt': '\N{NNBSP}tprt (󱹲)',
     'cprt': '\N{NNBSP}cprt (󱹳)',
     'pprt': '\N{NNBSP}pprt (󱹴)',
-    'xprt': '\N{NNBSP}pprt (󱹵)',
+    'xprt': '\N{NNBSP}xprt (󱹵)',
     'xeprt': '\N{NNBSP}xeprt (󱹶)',
     'xdprt': '\N{NNBSP}xdprt (󱹷)',
 }
@@ -55,6 +54,7 @@ def api_calculator_process() -> dict:
     dados['places'] = int(dados['places'])
     dados['grouping'] = int(dados['grouping'])
     dados['sezimal_digits'] = dados['sezimal_digits'] == 'true'
+    dados['sezimal_punctuation'] = dados['sezimal_punctuation'] == 'true'
     dados['spellout'] = dados['spellout'] == 'true'
 
     calculator = SezimalCalculator()
@@ -64,11 +64,24 @@ def api_calculator_process() -> dict:
     calculator.precision = dados['places']
     calculator.decimal = dados['base'] == 14
     calculator.sezimal_digits = dados['sezimal_digits']
+    calculator.sezimal_punctuation = dados['sezimal_punctuation']
     calculator.regularized_digits = dados['niftimal'] != 'Z'
     calculator.unit = dados['sezimal_unit']
     # calculator.suffix = dados['sezimal_unit']
     calculator.decimal_unit = dados['decimal_unit']
     # calculator.decimal_suffix = dados['decimal_unit']
+    calculator.unit_as_fraction = False
+    calculator.angle = dados['sezimal_angle_unit']
+    calculator.decimal_angle = dados['decimal_angle_unit']
+    calculator.angle_as_fraction = True
+
+    if calculator.decimal_unit.endswith('turn') \
+        or calculator.decimal_unit.startswith('tau_') \
+        or calculator.decimal_unit.startswith('pi_'):
+        calculator.unit_as_fraction = True
+
+    print('dados antes', dados)
+    print()
 
     calculator.debug = True
 
@@ -88,6 +101,32 @@ def api_calculator_process() -> dict:
             calculator.expression = dados['expression'].strip()[:-5]
         elif dados['expression'].endswith('ldec('):
             calculator.expression = dados['expression'].strip()[:-5]
+        elif dados['expression'].endswith('lbin('):
+            calculator.expression = dados['expression'].strip()[:-5]
+        elif dados['expression'].endswith('SIN('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arcsin('):
+            calculator.expression = dados['expression'].strip()[:-7]
+        elif dados['expression'].endswith('CSC('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arccsc('):
+            calculator.expression = dados['expression'].strip()[:-7]
+        elif dados['expression'].endswith('COS('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arccos('):
+            calculator.expression = dados['expression'].strip()[:-7]
+        elif dados['expression'].endswith('SEC('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arcsec('):
+            calculator.expression = dados['expression'].strip()[:-7]
+        elif dados['expression'].endswith('TAN('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arctan('):
+            calculator.expression = dados['expression'].strip()[:-7]
+        elif dados['expression'].endswith('cot('):
+            calculator.expression = dados['expression'].strip()[:-4]
+        elif dados['expression'].endswith('arccot('):
+            calculator.expression = dados['expression'].strip()[:-7]
         elif dados['expression'].endswith(' mod '):
             calculator.expression = dados['expression'].strip()[:-5]
         else:
@@ -151,9 +190,6 @@ def api_calculator_process() -> dict:
         calculator.expression = dados['expression'][:-2] + '󱹲 '
 
     elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹲 '):
-        calculator.expression = dados['expression'][:-2] + '󱹲 '
-
-    elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹲 '):
         calculator.expression = dados['expression'][:-2] + '󱹳 '
 
     elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹳 '):
@@ -186,11 +222,79 @@ def api_calculator_process() -> dict:
     elif dados['value'] == 'e' and dados['expression'].endswith('ldec('):
         calculator.expression = dados['expression'][:-5] + 'e'
 
+    elif dados['value'] == 'ln(' and dados['expression'].endswith('ln('):
+        calculator.expression = dados['expression'][:-3] + 'e'
+
+    elif dados['value'] == 'ln(' and dados['expression'].endswith('e'):
+        calculator.expression = dados['expression'][:-3] + 'lsez('
+
+    elif dados['value'] == 'ln(' and dados['expression'].endswith('lsez('):
+        calculator.expression = dados['expression'][:-5] + 'ldec('
+
+    elif dados['value'] == 'ln(' and dados['expression'].endswith('ldec('):
+        calculator.expression = dados['expression'][:-5] + 'ln('
+
+    elif dados['value'] == 'lsez(' and dados['expression'].endswith('lsez('):
+        calculator.expression = dados['expression'][:-5] + 'ln('
+
+    elif dados['value'] == 'lsez(' and dados['expression'].endswith('ln('):
+        calculator.expression = dados['expression'][:-3] + 'ldec('
+
+    elif dados['value'] == 'lsez(' and dados['expression'].endswith('ldec('):
+        calculator.expression = dados['expression'][:-5] + 'lsez('
+
+    elif dados['value'] == 'ldec(' and dados['expression'].endswith('ldec('):
+        calculator.expression = dados['expression'][:-5] + 'ln('
+
+    elif dados['value'] == 'ldec(' and dados['expression'].endswith('ln('):
+        calculator.expression = dados['expression'][:-3] + 'lsez('
+
+    elif dados['value'] == 'ldec(' and dados['expression'].endswith('lsez('):
+        calculator.expression = dados['expression'][:-5] + 'ldec('
+
+    elif dados['value'] == 'SIN(' and dados['expression'].endswith('SIN('):
+        calculator.expression = dados['expression'][:-4] + 'asin('
+
+    elif dados['value'] == 'SIN(' and dados['expression'].endswith('asin('):
+        calculator.expression = dados['expression'][:-5] + 'CSC('
+
+    elif dados['value'] == 'SIN(' and dados['expression'].endswith('CSC('):
+        calculator.expression = dados['expression'][:-4] + 'acsc('
+
+    elif dados['value'] == 'SIN(' and dados['expression'].endswith('acsc('):
+        calculator.expression = dados['expression'][:-5] + 'SIN('
+
+    elif dados['value'] == 'COS(' and dados['expression'].endswith('COS('):
+        calculator.expression = dados['expression'][:-4] + 'acos('
+
+    elif dados['value'] == 'COS(' and dados['expression'].endswith('acos('):
+        calculator.expression = dados['expression'][:-5] + 'SEC('
+
+    elif dados['value'] == 'COS(' and dados['expression'].endswith('SEC('):
+        calculator.expression = dados['expression'][:-4] + 'asec('
+
+    elif dados['value'] == 'COS(' and dados['expression'].endswith('asec('):
+        calculator.expression = dados['expression'][:-5] + 'COS('
+
+    elif dados['value'] == 'TAN(' and dados['expression'].endswith('TAN('):
+        calculator.expression = dados['expression'][:-4] + 'atan('
+
+    elif dados['value'] == 'TAN(' and dados['expression'].endswith('atan('):
+        calculator.expression = dados['expression'][:-5] + 'COT('
+
+    elif dados['value'] == 'TAN(' and dados['expression'].endswith('COT('):
+        calculator.expression = dados['expression'][:-4] + 'acot('
+
+    elif dados['value'] == 'TAN(' and dados['expression'].endswith('acot('):
+        calculator.expression = dados['expression'][:-5] + 'TAN('
+
     else:
         if dados['expression'] == '0':
             if dados['value'] == '.':
                 calculator.expression = dados['expression'] + dados['value']
             elif dados['expression'] in '0123456789↊↋':
+                calculator.expression = dados['value']
+            elif '(' in dados['value']:
                 calculator.expression = dados['value']
             else:
                 calculator.expression = dados['expression'] + dados['value']
@@ -218,6 +322,10 @@ def api_calculator_process() -> dict:
 
     decimal_display = calculator.decimal_display.replace(',,', '„').replace('..', '‥')
 
+    display = display.replace('ₑ', '<i>ₑ</i>')
+    niftimal_display = niftimal_display.replace('ₑ', '<i>ₑ</i>')
+    decimal_display = decimal_display.replace('ₑ', '<i>ₑ</i>')
+
     resposta = {
         'expression': calculator.sezimal_expression,
         'decimal_expression': calculator.decimal_expression,
@@ -241,6 +349,10 @@ def api_calculator_process() -> dict:
         if dados['decimal_unit']:
             if dados['decimal_unit'] in '%‰‱':
                 resposta['decimal_display'] += dados['decimal_unit']
+            elif dados['decimal_unit'][0] in ('π', 'τ') \
+                or 'pi_' in dados['decimal_unit'] \
+                or 'tau_' in dados['decimal_unit']:
+                resposta['decimal_display'] += '\N{ZWSP}' + dados['decimal_unit']
             else:
                 resposta['decimal_display'] += '\N{NNBSP}' + dados['decimal_unit']
 

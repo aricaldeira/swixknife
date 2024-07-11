@@ -10,50 +10,51 @@ function update_calculation(value = '') {
     let decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-prefix');
     let decimal_unit = localStorage.getItem('sezimal-calculator-decimal-unit');
 
+    let sezimal_angle_prefix = localStorage.getItem('sezimal-calculator-angle-prefix');
+    let sezimal_angle_unit = localStorage.getItem('sezimal-calculator-angle-unit');
+    let decimal_angle_prefix = localStorage.getItem('sezimal-calculator-decimal-angle-prefix');
+    let decimal_angle_unit = localStorage.getItem('sezimal-calculator-decimal-angle-unit');
+
     if ((sezimal_prefix == '-') || (sezimal_prefix == null)) {
         sezimal_prefix = '';
     };
     if ((decimal_prefix == '-') || (decimal_prefix == null)) {
         decimal_prefix = '';
     };
-
-    if (localStorage.getItem(`sezimal-translation-${sezimal_unit}`) != null) {
-        sezimal_unit = localStorage.getItem(`sezimal-translation-${sezimal_unit}`);
+    if ((sezimal_angle_prefix == '-') || (sezimal_angle_prefix == null)) {
+        sezimal_angle_prefix = '';
     };
-    if (localStorage.getItem(`sezimal-translation-${decimal_unit}`) != null) {
-        decimal_unit = localStorage.getItem(`sezimal-translation-${decimal_unit}`);
+    if ((decimal_angle_prefix == '-') || (decimal_angle_prefix == null)) {
+        decimal_angle_prefix = '';
+    };
+
+    // if (localStorage.getItem(`sezimal-translation-${sezimal_unit}`) != null) {
+    //     sezimal_unit = localStorage.getItem(`sezimal-translation-${sezimal_unit}`);
+    // };
+    // if (localStorage.getItem(`sezimal-translation-${decimal_unit}`) != null) {
+    //     decimal_unit = localStorage.getItem(`sezimal-translation-${decimal_unit}`);
+    // };
+
+    dados = {
+        locale: localStorage.getItem('sezimal-calculator-locale'),
+        places: localStorage.getItem('sezimal-calculator-sezimal-places'),
+        base: localStorage.getItem('sezimal-calculator-base'),
+        sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
+        sezimal_punctuation: localStorage.getItem('sezimal-calculator-sezimal-punctuation'),
+        grouping: localStorage.getItem('sezimal-calculator-grouping'),
+        spellout: localStorage.getItem('sezimal-calculator-spellout'),
+        sezimal_unit: sezimal_prefix + sezimal_unit,
+        decimal_unit: decimal_prefix + decimal_unit,
+        sezimal_angle_unit: sezimal_angle_prefix + sezimal_angle_unit,
+        decimal_angle_unit: decimal_angle_prefix + decimal_angle_unit,
+        niftimal: localStorage.getItem('sezimal-calculator-niftimal'),
+        expression: document.getElementById('expression').innerHTML,
+        value: value,
     };
 
     if (localStorage.getItem('sezimal-calculator-base') == 14) {
-        dados = {
-            locale: localStorage.getItem('sezimal-calculator-locale'),
-            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
-            base: localStorage.getItem('sezimal-calculator-base'),
-            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
-            grouping: localStorage.getItem('sezimal-calculator-grouping'),
-            spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: sezimal_prefix + sezimal_unit,
-            decimal_unit: decimal_prefix + decimal_unit,
-            niftimal: localStorage.getItem('sezimal-calculator-niftimal'),
-            expression: document.getElementById('decimal_expression').innerHTML,
-            value: value,
-        };
-    } else {
-        dados = {
-            locale: localStorage.getItem('sezimal-calculator-locale'),
-            places: localStorage.getItem('sezimal-calculator-sezimal-places'),
-            base: localStorage.getItem('sezimal-calculator-base'),
-            sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
-            grouping: localStorage.getItem('sezimal-calculator-grouping'),
-            spellout: localStorage.getItem('sezimal-calculator-spellout'),
-            sezimal_unit: sezimal_prefix + sezimal_unit,
-            decimal_unit: decimal_prefix + decimal_unit,
-            niftimal: localStorage.getItem('sezimal-calculator-niftimal'),
-            expression: document.getElementById('expression').innerHTML,
-            value: value,
-        };
-    }
-
+        dados.expression = document.getElementById('decimal_expression').innerHTML;
+    };
 
     fetch('/calculator/process', {
         method: 'post',
@@ -70,7 +71,7 @@ function update_calculation(value = '') {
 
         localStorage.setItem('sezimal-calculator-sezimal-separator', dados.separator);
 
-        if (dados.sezimal_digits) {
+        if (dados.sezimal_punctuation) {
             document.getElementById('button-sezimal-separator').innerHTML = '󱹭';
         } else {
             document.getElementById('button-sezimal-separator').innerHTML = dados.separator;

@@ -5,6 +5,17 @@ let locales_display = {};
 function toggle_locale() {
     document.getElementById('locale-setting').hidden = !document.getElementById('locale-setting').hidden;
     document.getElementById('toggle_locale').hidden = !document.getElementById('toggle_locale').hidden;
+    document.getElementById('display').hidden = !document.getElementById('display').hidden;
+    document.getElementById('decimal_display').hidden = !document.getElementById('decimal_display').hidden;
+    document.getElementById('configuration-left').hidden = !document.getElementById('configuration-left').hidden;
+    document.getElementById('configuration-right').hidden = !document.getElementById('configuration-right').hidden;
+
+    if (document.getElementById('toggle_locale').hidden) {
+        document.getElementById('buttons').style = 'visibility: hidden;';
+    } else {
+        document.getElementById('buttons').style = 'visibility: visible;';
+    };
+
 };
 
 function update_locale(calculation_refresh = true) {
@@ -145,9 +156,17 @@ function _assign_ids_text(translation) {
                 update_spellout(false);
             } else if (element_id == 'translation-nif') {
                 update_niftimal(false);
+            } else {
+                document.getElementsByName(element_id.replace('translation-', '')).forEach((element) => {
+                    element.innerHTML = translation[element_id];
+                });
             };
         } else {
-            document.getElementById(element_id).innerHTML = translation[element_id];
+            if (document.getElementById(element_id) == null) {
+                console.log('elemento não encontrado', element_id);
+            } else {
+                document.getElementById(element_id).innerHTML = translation[element_id];
+            };
         }
     });
 };

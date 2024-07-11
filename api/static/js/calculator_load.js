@@ -44,6 +44,10 @@ function calculator_load() {
         localStorage.setItem('sezimal-calculator-grouping', 3);
     };
 
+    if (localStorage.getItem('sezimal-calculator-sezimal-punctuation') === null) {
+        localStorage.setItem('sezimal-calculator-sezimal-punctuation', true);
+    };
+
     if (localStorage.getItem('sezimal-calculator-sezimal-separator') === null) {
         localStorage.setItem('sezimal-calculator-sezimal-separator', '.');
         document.getElementById('button-sezimal-separator').innerHTML = '.';
@@ -90,6 +94,13 @@ function calculator_load() {
         set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, decimal_prefix, decimal_unit);
     };
 
+    /*
+    *  First run angle unit definition
+    */
+    if (localStorage.getItem('sezimal-calculator-angle-unit') === null) {
+        localStorage.setItem('sezimal-calculator-angle-unit', 'prd');
+    };
+
     if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {
         document.querySelector("body").requestFullscreen();
     };
@@ -102,6 +113,7 @@ function calculator_load() {
     update_sezimal_digits(false);
     update_niftimal(false);
     update_sezimal_places(false);
+    // update_angle_unit(false);
     // update_units(false);
 
     update_calculation();

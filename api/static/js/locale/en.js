@@ -7,12 +7,60 @@ const sezimal_calculator_en_text = {
     'button-base-six': 'sez',
     'translation-txt': 'txt',
     'translation-nif': 'nif',
+
+    'translation-sezimal-calculator': 'Sezimal Calculator',
+    'label-sezimal-locale': 'Set the locale for number formatting',
+    'label-sezimal-places': 'Set the number of sezimal places',
+    'label-sezimal-angle': 'Set the angle units’ conversion<br/>for the trigonometric functions',
+
+    'translation-turn': 'turn',
+    'translation-deg': 'deg',
+    'translation-arcmin': 'min',
+    'translation-arcseg': 'sec',
+
     'translation-display-mod': 'mod',
+    'translation-display-turn': 'trn',
+    'translation-display-deg': '°',
+    'translation-display-arcmin': '′',
+    'translation-display-arcsec': '″',
+    'translation-display-gon': 'gon',
+    'translation-display-rad': 'rad',
+    'translation-display-tau_rad': 'τ rad',
+    'translation-display-pi_rad': 'π rad',
+
+    'button-sezimal-sin': 'sin',
+    'button-sezimal-cos': 'cos',
+    'button-sezimal-tan': 'tan',
+    'button-decimal-sin': 'sin',
+    'button-decimal-cos': 'cos',
+    'button-decimal-tan': 'tan',
+
+    'translation-display-sin': 'sin',
+    'translation-display-asin': 'asin',
+    'translation-display-csc': 'csc',
+    'translation-display-acsc': 'acsc',
+    'translation-display-cos': 'cos',
+    'translation-display-acos': 'acos',
+    'translation-display-sec': 'sec',
+    'translation-display-asec': 'asec',
+    'translation-display-tan': 'tan',
+    'translation-display-atan': 'atan',
+    'translation-display-cot': 'cot',
+    'translation-display-acot': 'acot',
+
+    'button-sezimal-ln': 'log<i>ₑ</i>',
+    'button-sezimal-lsez': 'log₁₀',
+    'button-sezimal-ldec': 'log₁₄',
+    'button-decimal-ln': 'log<i>ₑ</i>',
+    'button-decimal-lsez': 'log₆',
+    'button-decimal-ldec': 'log₁₀',
 
     //
     // Units
     //
     'td-shastadari-units': 'Shastadari Units of Measure',
+    'optgroup-units-no-conversion': 'No conversion',
+    'option-units-no-conversion': 'No conversion (plain calculator)',
     'optgroup-units-instructions': 'Instructions',
     'option-units-units': 'Shastari units',
     'option-units-prefixes': 'Shastari prefixes',
@@ -63,10 +111,13 @@ const sezimal_calculator_en_text = {
     'option-units-pvn': 'Speed',
 
     'label-prefix-sezimal': 'Sezimal Prefix',
+    'label-prefix-sezimal-angle': 'Sezimal Prefix',
     'label-unit-sezimal': 'Sezimal Unit',
     'label-prefix-decimal': 'Decimal Prefix',
+    'label-prefix-decimal-angle': 'Decimal Prefix',
     'label-prefix-decimal-binary': 'Decimal/Binary Prefix',
     'label-unit-decimal': 'Decimal Unit',
+    'optgroup-units-generic-shastadari': 'Shastadari',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Non-S.I.',
     'optgroup-units-generic-us-uk': 'US/UK',
@@ -466,6 +517,17 @@ Definition of the Second, Ytterbium 171 Ion</a>
     'option-decimal-units-ayt-cb-mile': 'cb. mile – ml³',
     'option-decimal-units-ayt-cb-yard': 'cb. yard – yd³',
     'option-decimal-units-ayt-cb-foot': 'cb. foot – ft³',
+
+    'option-decimal-units-prd-prd': 'paridis',
+    'option-decimal-units-prd-tau_rad': 'τ radians',
+    'option-decimal-units-prd-pi_rad': 'π radians',
+    'option-decimal-units-prd-rad': 'radians',
+    'option-decimal-units-prd-deg': 'degrees',
+    'option-decimal-units-prd-arcmin': 'minutes',
+    'option-decimal-units-prd-arcsec': 'seconds',
+    'option-decimal-units-prd-turn': 'turns',
+    'option-decimal-units-prd-gon': 'gradians (gon)',
+
 };
 
 export { sezimal_calculator_en_text };

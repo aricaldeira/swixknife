@@ -5,14 +5,62 @@ const sezimal_calculator_bz_text = {
     'button-decimal-clear': 'Z',
     'button-base-ten': 'des',
     // 'button-base-six': 'sez',
-    'translation-txt': 'est',
+    'translation-txt': 'est.',
     'translation-nif': 'nifi',
+
+    'translation-sezimal-calculator': 'Kawkuladora Sezimaw',
+    'label-sezimal-locale': 'Defina u lokali pra formataswan dus númerus',
+    'label-sezimal-places': 'Defina a kwantidadi di kazas sezimays',
+    'label-sezimal-angle': 'Defina a konversawn di unidadis di ângulu<br/>pras funsoyns trigonométrikas',
+
+    'translation-turn': 'vòwta',
+    'translation-deg': 'graw',
+    'translation-arcmin': 'min',
+    'translation-arcseg': 'seg',
+
     'translation-display-mod': 'mód',
+    'translation-display-turn': 'vòwta',
+    'translation-display-deg': '°',
+    'translation-display-arcmin': '′',
+    'translation-display-arcsec': '″',
+    'translation-display-gon': 'gon',
+    'translation-display-rad': 'rad',
+    'translation-display-tau_rad': 'τ rad',
+    'translation-display-pi_rad': 'π rad',
+
+    'button-sezimal-sin': 'sen',
+    'button-sezimal-cos': 'kos',
+    'button-sezimal-tan': 'tan',
+    'button-decimal-sin': 'sen',
+    'button-decimal-cos': 'kos',
+    'button-decimal-tan': 'tan',
+
+    'translation-display-sin': 'sen',
+    'translation-display-asin': 'asen',
+    'translation-display-csc': 'ksk',
+    'translation-display-acsc': 'aksk',
+    'translation-display-cos': 'kos',
+    'translation-display-acos': 'akos',
+    'translation-display-sec': 'sek',
+    'translation-display-asec': 'asek',
+    'translation-display-tan': 'tan',
+    'translation-display-atan': 'atan',
+    'translation-display-cot': 'kot',
+    'translation-display-acot': 'akot',
+
+    'button-sezimal-ln': 'log<i>ₑ</i>',
+    'button-sezimal-lsez': 'log₁₀',
+    'button-sezimal-ldec': 'log₁₄',
+    'button-decimal-ln': 'log<i>ₑ</i>',
+    'button-decimal-lsez': 'log₆',
+    'button-decimal-ldec': 'log₁₀',
 
     //
     // Unidadis
     //
     'td-shastadari-units': 'Unidadis di Medida Xastadari',
+    'optgroup-units-no-conversion': 'Seyn konversawn',
+    'option-units-no-conversion': 'Seyn konversawn (sò kawkuladora)',
     'optgroup-units-instructions': 'Instrusoyns',
     'option-units-units': 'Unidadis Xastadari',
     'option-units-prefixes': 'Prefiksus Xastadari',
@@ -63,10 +111,14 @@ const sezimal_calculator_bz_text = {
     'option-units-pvn': 'Velosidadi',
 
     'label-prefix-sezimal': 'Prefiksu sezimaw',
+    'label-prefix-sezimal-angle': 'Prefiksu sezimaw',
     'label-unit-sezimal': 'Unidadi sezimaw',
+    'label-unit-sezimal-angle': 'Unidadi sezimaw',
     'label-prefix-decimal': 'Prefiksu desimaw',
+    'label-prefix-decimal-angle': 'Prefiksu desimaw',
     'label-prefix-decimal-binary': 'Prefiksu desimaw/binaryu',
     'label-unit-decimal': 'Unidadi desimaw',
+    'label-unit-decimal-angle': 'Unidadi desimaw',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Otras',
     'optgroup-units-generic-us-uk': 'EUA/Reynu Unidu',
@@ -222,7 +274,7 @@ const sezimal_calculator_bz_text = {
     //
     'unit-ang-explanation': `
 <br/>
-<p>U tenpu siviw è divididu in sêys unidadis; un dia è divididu di fòrma regular in sestus, i esis sestus sawn agrupadus in subunidadis, da seginti maneyra:</p>
+<p>U tenpu siviw è divididu in sêys unidadis; un dia è divididu di fòrma regular in sestus, y esis sestus sawn agrupadus in subunidadis, da seginti maneyra:</p>
 <ul>
     <li>u dina, sínbolu din, korrespondenti aw dia mesmu;</li>
     <li>u uta, sínbolu uta, korrespondenti as duas primeyras divizoyns/sestus, kun valor máys prósimu da òra;</li>
@@ -236,7 +288,7 @@ const sezimal_calculator_bz_text = {
 <p style="text-align: center;"><span style="color: #9E9E9E;">   5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :   55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
 <p style="text-align: center;"><span style="color: #9E9E9E;">dina . </span><span style="font-size: 12pt; font-weight: bold;">uta : poxa : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
 <p>Pra uzu sientífiku, a unidadi bazi di tenpu è u anuga, pur isu, todas as otras unidadis ki derivam da dimensawn tenpu, in awguma fòrma, uzam u anuga nas suas definisoyns.</p>
-<p>Us prefiksus pòden ser uzadus kun kawkèr uma das unidadis di tenpu, i a konversawn entri as unidadis i us prefiksus è a seginti:</p>
+<p>Us prefiksus pòden ser uzadus kun kawkèr uma das unidadis di tenpu, y a konversawn entri as unidadis y us prefiksus è a seginti:</p>
 <table class="explanation">
     <colgroup>
         <col span="1" style="width: 10%;">
@@ -334,7 +386,7 @@ const sezimal_calculator_bz_text = {
     'unit-avt-explanation': `
 <br/>
 <p>Frekwensya è rejistrada uzandu a unidadi avrita, sínbolu avt, ki reprezenta eventus, siklus, okorrensyas etc. pur anuga (a unidadi bazi di tenpu).</p>
-<p>Uma propriedadi interesanti di todas as unidadis ki envòwven tenpu in sezimaw è ki è bastanti sinplis a konversawn das varyas unidadis di tenpu komun/siviw i u anuga:</p>
+<p>Uma propriedadi interesanti di todas as unidadis ki envòwven tenpu in sezimaw è ki è bastanti sinplis a konversawn das varyas unidadis di tenpu komun/siviw y u anuga:</p>
 <table class="explanation">
     <colgroup>
         <col span="1" style="width: 10%;">
@@ -433,6 +485,16 @@ const sezimal_calculator_bz_text = {
     'option-decimal-units-kex-sq-inch': 'polegada kwad. – in²',
 
     'option-units-ayt-aytan': 'aytan – ayt',
+
+    'option-decimal-units-prd-prd': 'paridis',
+    'option-decimal-units-prd-tau_rad': 'τ radianus',
+    'option-decimal-units-prd-pi_rad': 'π radianus',
+    'option-decimal-units-prd-rad': 'radianus',
+    'option-decimal-units-prd-deg': 'graws',
+    'option-decimal-units-prd-arcmin': 'minutus',
+    'option-decimal-units-prd-arcsec': 'segundus',
+    'option-decimal-units-prd-turn': 'vòwtas',
+    'option-decimal-units-prd-gon': 'gradianus (gon)',
 
 };
 

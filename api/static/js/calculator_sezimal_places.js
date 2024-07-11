@@ -2,6 +2,16 @@
 function toggle_sezimal_places() {
     document.getElementById('sezimal-places-setting').hidden = !document.getElementById('sezimal-places-setting').hidden;
     document.getElementById('toggle_sezimal_places').hidden = !document.getElementById('toggle_sezimal_places').hidden;
+    document.getElementById('display').hidden = !document.getElementById('display').hidden;
+    document.getElementById('decimal_display').hidden = !document.getElementById('decimal_display').hidden;
+    document.getElementById('configuration-left').hidden = !document.getElementById('configuration-left').hidden;
+    document.getElementById('configuration-right').hidden = !document.getElementById('configuration-right').hidden;
+
+    if (document.getElementById('toggle_sezimal_places').hidden) {
+        document.getElementById('buttons').style = 'visibility: hidden;';
+    } else {
+        document.getElementById('buttons').style = 'visibility: visible;';
+    };
 };
 
 function set_sezimal_places() {
@@ -45,9 +55,11 @@ function more_sezimal_places() {
 function update_sezimal_places(calculation_refresh = true) {
     var sezimal_places = localStorage.getItem('sezimal-calculator-sezimal-places');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
+    const sezimal_punctuation = localStorage.getItem('sezimal-calculator-sezimal-punctuation');
+
     let separator;
 
-    if (sezimal_digits == 'true') {
+    if (sezimal_punctuation == 'true') {
         separator = '󱹭'
     } else {
         separator = document.getElementById('button-sezimal-separator').innerHTML;
