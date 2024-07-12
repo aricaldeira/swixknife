@@ -156,25 +156,25 @@ cbrt\( raiz cúbica de
 
 (1)(\d{12}) dixadara$(:\2)$2
 (1)(\d{18}) trixadara$(:\2)$2
-(1)(\d{24}) charxadara$(:\2)$2
+(1)(\d{24}) tcharxadara$(:\2)$2
 (1)(\d{30}) panxadara$(:\2)$2
 (1)(\d{36}) xaxadara$(:\2)$2
 (1)(\d{42}) xaekaxadara$(:\2)$2
 (1)(\d{48}) xadixadara$(:\2)$2
 (1)(\d{54}) xatrixadara$(:\2)$2
-(1)(\d{60}) xacharxadara$(:\2)$2
+(1)(\d{60}) xatcharxadara$(:\2)$2
 (1)(\d{66}) xapanxadara$(:\2)$2
 (1)(\d{72}) dixaxadara$(:\2)$2
 
 (\d{1,6})(\d{12}) $1 dixadara$(:\2)$2
 (\d{1,6})(\d{18}) $1 trixadara$(:\2)$2
-(\d{1,6})(\d{24}) $1 charxadara$(:\2)$2
+(\d{1,6})(\d{24}) $1 tcharxadara$(:\2)$2
 (\d{1,6})(\d{30}) $1 panxadara$(:\2)$2
 (\d{1,6})(\d{36}) $1 xaxadara$(:\2)$2
 (\d{1,6})(\d{42}) $1 xaekaxadara$(:\2)$2
 (\d{1,6})(\d{48}) $1 xadixadara$(:\2)$2
 (\d{1,6})(\d{54}) $1 xatrixadara$(:\2)$2
-(\d{1,6})(\d{60}) $1 xacharxadara$(:\2)$2
+(\d{1,6})(\d{60}) $1 xatcharxadara$(:\2)$2
 (\d{1,6})(\d{66}) $1 xapanxadara$(:\2)$2
 (\d{1,6})(\d{72}) $1 dixaxadara$(:\2)$2
 

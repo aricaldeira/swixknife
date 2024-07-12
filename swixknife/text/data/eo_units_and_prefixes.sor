@@ -3,7 +3,7 @@
 #
 UNIT-din dina
 UNIT-uta uta
-UNIT-pox poxa
+UNIT-pox posha
 UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
@@ -11,148 +11,148 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex quexê
-UNIT-ayt aitã
-UNIT-vrt várti
-UNIT-drv drávia
+UNIT-kex keshe
+UNIT-ayt aytan
+UNIT-vrt varti
+UNIT-drv dravya
 UNIT-gan gana
 UNIT-trg taranga
-UNIT-mnu mânu
+UNIT-mnu manu
 UNIT-bar bara
 UNIT-dab daba
-UNIT-kry cária
-UNIT-xat xáti
+UNIT-kry karya
+UNIT-xat shati
 UNIT-svg sanvega
-UNIT-pkp praquepa
+UNIT-pkp prakepa
 UNIT-pbv prabava
 UNIT-tnv tanava
-UNIT-upr upári
-UNIT-nad nádi
-UNIT-bum búmi
-UNIT-idn índana
-UNIT-tln têlan
-UNIT-agn aguení
-UNIT-gtk gática
+UNIT-upr upari
+UNIT-nad nadi
+UNIT-bum bumi
+UNIT-idn indana
+UNIT-tln telan
+UNIT-agn agni
+UNIT-gtk gatika
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx ávexa
+UNIT-avx avesha
 UNIT-vbv vibava
 UNIT-ptr pratiroda
-UNIT-cln chálana
-UNIT-prk prêraca
-UNIT-sam samái
+UNIT-cln chalana
+UNIT-prk preraka
+UNIT-sam samai
 UNIT-abv abiva
 UNIT-vst vistara
-UNIT-prd parídi
+UNIT-prd paridi
 UNIT-gol gola
-UNIT-pkx pracaxa
-UNIT-dpk dípaca
-UNIT-prt práti
-UNIT-p/s por seis
-UNIT-p/n por nife
-UNIT-p/a por arda
-UNIT-p/sa por seis arda
-UNIT-p/na por nife arda
-UNIT-p/x por xadara
-UNIT-p/sx por seis xadara
-UNIT-p/nx por nife xadara
-UNIT-p/ax por arda xadara
-UNIT-p/sax por seis arda xadara
-UNIT-p/nax por nife arda xadara
-UNIT-p/Dx por dixadara
-UNIT-p/Tx por trixadara
-UNIT-p/Cx por charxadara
-UNIT-p/Px por panxadara
-UNIT-p/Xx por xaxadara
-UNIT-atk ástaca
-UNIT-pvn pávana
-UNIT-xtk xátaca
-UNIT-tvt tevasta
+UNIT-pkx prakasha
+UNIT-dpk dipaka
+UNIT-prt prati
+UNIT-p/s per six
+UNIT-p/n per nif
+UNIT-p/a per arda
+UNIT-p/sa per six arda
+UNIT-p/na per nif arda
+UNIT-p/x per shadara
+UNIT-p/sx per six shadara
+UNIT-p/nx per nif shadara
+UNIT-p/ax per arda shadara
+UNIT-p/sax per six arda shadara
+UNIT-p/nax per nif arda shadara
+UNIT-p/Dx per dishadara
+UNIT-p/Tx per trishadara
+UNIT-p/Cx per charshadara
+UNIT-p/Px per panshadara
+UNIT-p/Xx per shashadara
+UNIT-atk ashtaka
+UNIT-pvn pavana
+UNIT-xtk shataka
+UNIT-tvt tevashta
 #
 # Prefixes
 #
-PREFIX-nc nitcharti
+PREFIX-nc nicharti
 PREFIX-nt nitriti
 PREFIX-nd niditi
-PREFIX-ne niecati
+PREFIX-ne niekati
 PREFIX-n niti
-PREFIX-pp pampanti
-PREFIX-pc pantcharti
+PREFIX-pp panpanti
+PREFIX-pc pancharti
 PREFIX-pt pantriti
 PREFIX-pd panditi
-PREFIX-pe panecati
-PREFIX-px panxati
-PREFIX-cp tcharpanti
-PREFIX-cc tchartcharti
-PREFIX-ct tchartriti
-PREFIX-cd tcharditi
-PREFIX-ce tcharecati
-PREFIX-cx tcharxati
+PREFIX-pe panekati
+PREFIX-px panshati
+PREFIX-cp charpanti
+PREFIX-cc charcharti
+PREFIX-ct chartriti
+PREFIX-cd charditi
+PREFIX-ce charekati
+PREFIX-cx charshati
 PREFIX-tp tripanti
-PREFIX-tc tritcharti
+PREFIX-tc tricharti
 PREFIX-tt tritriti
 PREFIX-td triditi
-PREFIX-te triecati
-PREFIX-tx trixati
+PREFIX-te triekati
+PREFIX-tx trishati
 PREFIX-dp dipanti
-PREFIX-dc ditcharti
+PREFIX-dc dicharti
 PREFIX-dt ditriti
 PREFIX-dd diditi
-PREFIX-de diecati
-PREFIX-dx dixati
-PREFIX-xp xapanti
-PREFIX-xc xatcharti
-PREFIX-xt xatriti
-PREFIX-xd xaditi
-PREFIX-xe xaecati
-PREFIX-x xati
+PREFIX-de diekati
+PREFIX-dx dishati
+PREFIX-xp shapanti
+PREFIX-xc shacharti
+PREFIX-xt shatriti
+PREFIX-xd shaditi
+PREFIX-xe shaekati
+PREFIX-x shati
 PREFIX-p panti
-PREFIX-c tcharti
+PREFIX-c charti
 PREFIX-t triti
 PREFIX-d diti
-PREFIX-e ecati
+PREFIX-e ekati
 PREFIX-z ""
 PREFIX-Z ""
-PREFIX-E ecama
+PREFIX-E ekama
 PREFIX-D dima
 PREFIX-T trima
-PREFIX-C tcharma
+PREFIX-C charma
 PREFIX-P pama
-PREFIX-X xama
-PREFIX-XE xaecama
-PREFIX-XD xadima
-PREFIX-XT xatrima
-PREFIX-XC xatcharma
-PREFIX-XP xapama
-PREFIX-DX dixama
-PREFIX-DE diecama
+PREFIX-X shama
+PREFIX-XE shaekama
+PREFIX-XD shadima
+PREFIX-XT shatrima
+PREFIX-XC shacharma
+PREFIX-XP shapama
+PREFIX-DX dishama
+PREFIX-DE diekama
 PREFIX-DD didima
 PREFIX-DT ditrima
-PREFIX-DC ditcharma
+PREFIX-DC dicharma
 PREFIX-DP dipama
-PREFIX-TX trixama
-PREFIX-TE triecama
+PREFIX-TX trishama
+PREFIX-TE triekama
 PREFIX-TD tridima
 PREFIX-TT tritrima
-PREFIX-TC tritcharma
+PREFIX-TC tricharma
 PREFIX-TP tripama
-PREFIX-CX tcharxama
-PREFIX-CE tcharecama
-PREFIX-CD tchardima
-PREFIX-CT tchartrima
-PREFIX-CC tchartcharma
-PREFIX-CP tcharpama
-PREFIX-PX panxama
-PREFIX-PE panecama
+PREFIX-CX charshama
+PREFIX-CE charekama
+PREFIX-CD chardima
+PREFIX-CT chartrima
+PREFIX-CC charcharma
+PREFIX-CP charpama
+PREFIX-PX panshama
+PREFIX-PE panekama
 PREFIX-PD pandima
 PREFIX-PT pantrima
-PREFIX-PC pantcharma
-PREFIX-PP pampama
+PREFIX-PC pancharma
+PREFIX-PP panpama
 PREFIX-N nima
-PREFIX-NE niecama
+PREFIX-NE niekama
 PREFIX-ND nidima
 PREFIX-NT nitrima
-PREFIX-NC nitcharma
+PREFIX-NC nicharma
 
 #
 # Prefixes divided by 10,
@@ -255,7 +255,7 @@ PREFIX-DIV10-NC NT
 #
 # Rules for units used with fractions
 #
-"SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?\d+[/⁄][-−]?\d+)" $(\3) de um $(cleanup $(PREFIX-\1)$(UNIT-\2))
+"SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})?([a-z]{3}) ([-−]?\d+[/⁄][-−]?\d+)" $(\3) el unu $(cleanup $(PREFIX-\1)$(UNIT-\2))
 
 #
 # Rules for units without fractional parts, or only zeroes
@@ -275,9 +275,9 @@ PREFIX-DIV10-NC NT
 "(SH-E([a-z]{3}) [-−]?0+)[.,](\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d)" $(SH-$(PREFIX-DIV10-\2)\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(SH-e\\2 \\3)
-"(SH-E([a-z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d)" $1 e |$(SH-$(PREFIX-DIV10-\2)\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d)" $1 kaj |$(SH-e\\2 \\3)
+"(SH-E([a-z]{3}) [-−]?\d+)[.,](\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d)" $1 kaj |$(SH-$(PREFIX-DIV10-\2)\\3 \\4)
 
 #
 # 2 sezimal places
@@ -286,9 +286,9 @@ PREFIX-DIV10-NC NT
 "(SH-D([a-z]{3}) [-−]?0+)[.,](\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 e |$(SH-d\\2 \\3)
-"(SH-D([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 kaj |$(SH-d\\2 \\3)
+"(SH-D([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))\\3 \\4)
 
 #
 # 3 sezimal places
@@ -297,9 +297,9 @@ PREFIX-DIV10-NC NT
 "(SH-T([a-z]{3}) [-−]?0+)[.,](\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 e |$(SH-t\\2 \\3)
-"(SH-T([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 kaj |$(SH-t\\2 \\3)
+"(SH-T([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))\\3 \\4)
 
 #
 # 4 sezimal places
@@ -308,9 +308,9 @@ PREFIX-DIV10-NC NT
 "(SH-C([a-z]{3}) [-−]?0+)[.,](\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 e |$(SH-c\\2 \\3)
-"(SH-C([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 kaj |$(SH-c\\2 \\3)
+"(SH-C([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))\\3 \\4)
 
 #
 # 5 sezimal places
@@ -319,9 +319,9 @@ PREFIX-DIV10-NC NT
 "(SH-P([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 e |$(SH-p\\2 \\3)
-"(SH-P([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 kaj |$(SH-p\\2 \\3)
+"(SH-P([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))\\3 \\4)
 
 #
 # 10 sezimal places
@@ -330,9 +330,9 @@ PREFIX-DIV10-NC NT
 "(SH-X([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 e |$(SH-x\\2 \\3)
-"(SH-X([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 kaj |$(SH-x\\2 \\3)
+"(SH-X([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))\\3 \\4)
 
 #
 # 11 sezimal places
@@ -341,9 +341,9 @@ PREFIX-DIV10-NC NT
 "(SH-XE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 e |$(SH-xe\\2 \\3)
-"(SH-XE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 kaj |$(SH-xe\\2 \\3)
+"(SH-XE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))\\3 \\4)
 
 #
 # 12 sezimal places
@@ -352,9 +352,9 @@ PREFIX-DIV10-NC NT
 "(SH-XD([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 e |$(SH-xd\\2 \\3)
-"(SH-XD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-xd\\2 \\3)
+"(SH-XD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))\\3 \\4)
 
 #
 # 13 sezimal places
@@ -363,9 +363,9 @@ PREFIX-DIV10-NC NT
 "(SH-XT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-xt\\2 \\3)
-"(SH-XT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-xt\\2 \\3)
+"(SH-XT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))\\3 \\4)
 
 #
 # 14 sezimal places
@@ -374,9 +374,9 @@ PREFIX-DIV10-NC NT
 "(SH-XC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-xc\\2 \\3)
-"(SH-XC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-xc\\2 \\3)
+"(SH-XC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))\\3 \\4)
 
 #
 # 15 sezimal places
@@ -385,9 +385,9 @@ PREFIX-DIV10-NC NT
 "(SH-XP([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-xp\\2 \\3)
-"(SH-XP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-xp\\2 \\3)
+"(SH-XP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))\\3 \\4)
 
 #
 # 20 sezimal places
@@ -396,9 +396,9 @@ PREFIX-DIV10-NC NT
 "(SH-DX([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-dx\\2 \\3)
-"(SH-DX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-dx\\2 \\3)
+"(SH-DX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))\\3 \\4)
 
 #
 # 21 sezimal places
@@ -407,9 +407,9 @@ PREFIX-DIV10-NC NT
 "(SH-DE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-de\\2 \\3)
-"(SH-DE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-de\\2 \\3)
+"(SH-DE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))\\3 \\4)
 
 #
 # 22 sezimal places
@@ -418,9 +418,9 @@ PREFIX-DIV10-NC NT
 "(SH-DD([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-dd\\2 \\3)
-"(SH-DD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-dd\\2 \\3)
+"(SH-DD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))\\3 \\4)
 
 #
 # 23 sezimal places
@@ -429,9 +429,9 @@ PREFIX-DIV10-NC NT
 "(SH-DT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-dt\\2 \\3)
-"(SH-DT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-dt\\2 \\3)
+"(SH-DT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))\\3 \\4)
 
 #
 # 24 sezimal places
@@ -440,9 +440,9 @@ PREFIX-DIV10-NC NT
 "(SH-DC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-dc\\2 \\3)
-"(SH-DC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-dc\\2 \\3)
+"(SH-DC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))\\3 \\4)
 
 #
 # 25 sezimal places
@@ -451,9 +451,9 @@ PREFIX-DIV10-NC NT
 "(SH-DP([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-dp\\2 \\3)
-"(SH-DP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-dp\\2 \\3)
+"(SH-DP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))\\3 \\4)
 
 #
 # 30 sezimal places
@@ -462,9 +462,9 @@ PREFIX-DIV10-NC NT
 "(SH-TX([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-tx\\2 \\3)
-"(SH-TX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-tx\\2 \\3)
+"(SH-TX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))\\3 \\4)
 
 #
 # 31 sezimal places
@@ -473,9 +473,9 @@ PREFIX-DIV10-NC NT
 "(SH-TE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-te\\2 \\3)
-"(SH-TE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-te\\2 \\3)
+"(SH-TE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))\\3 \\4)
 
 #
 # 32 sezimal places
@@ -484,9 +484,9 @@ PREFIX-DIV10-NC NT
 "(SH-TD([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-td\\2 \\3)
-"(SH-TD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-td\\2 \\3)
+"(SH-TD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))\\3 \\4)
 
 #
 # 33 sezimal places
@@ -495,9 +495,9 @@ PREFIX-DIV10-NC NT
 "(SH-TT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-tt\\2 \\3)
-"(SH-TT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-tt\\2 \\3)
+"(SH-TT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))\\3 \\4)
 
 #
 # 34 sezimal places
@@ -506,9 +506,9 @@ PREFIX-DIV10-NC NT
 "(SH-TC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-tc\\2 \\3)
-"(SH-TC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-tc\\2 \\3)
+"(SH-TC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))\\3 \\4)
 
 #
 # 35 sezimal places
@@ -517,9 +517,9 @@ PREFIX-DIV10-NC NT
 "(SH-TP([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-tp\\2 \\3)
-"(SH-TP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-tp\\2 \\3)
+"(SH-TP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))\\3 \\4)
 
 #
 # 40 sezimal places
@@ -528,9 +528,9 @@ PREFIX-DIV10-NC NT
 "(SH-CX([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-cx\\2 \\3)
-"(SH-CX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-cx\\2 \\3)
+"(SH-CX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))\\3 \\4)
 
 #
 # 41 sezimal places
@@ -539,9 +539,9 @@ PREFIX-DIV10-NC NT
 "(SH-CE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-ce\\2 \\3)
-"(SH-CE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-ce\\2 \\3)
+"(SH-CE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))\\3 \\4)
 
 #
 # 42 sezimal places
@@ -550,9 +550,9 @@ PREFIX-DIV10-NC NT
 "(SH-CD([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-cd\\2 \\3)
-"(SH-CD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-cd\\2 \\3)
+"(SH-CD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 43 sezimal places
@@ -561,9 +561,9 @@ PREFIX-DIV10-NC NT
 "(SH-CT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-ct\\2 \\3)
-"(SH-CT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-ct\\2 \\3)
+"(SH-CT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 44 sezimal places
@@ -572,9 +572,9 @@ PREFIX-DIV10-NC NT
 "(SH-CC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-cc\\2 \\3)
-"(SH-CC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-cc\\2 \\3)
+"(SH-CC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 45 sezimal places
@@ -583,9 +583,9 @@ PREFIX-DIV10-NC NT
 "(SH-CP([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-cp\\2 \\3)
-"(SH-CP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-cp\\2 \\3)
+"(SH-CP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 50 sezimal places
@@ -594,9 +594,9 @@ PREFIX-DIV10-NC NT
 "(SH-PX([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-px\\2 \\3)
-"(SH-PX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-px\\2 \\3)
+"(SH-PX([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 51 sezimal places
@@ -605,9 +605,9 @@ PREFIX-DIV10-NC NT
 "(SH-PE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-pe\\2 \\3)
-"(SH-PE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-pe\\2 \\3)
+"(SH-PE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 52 sezimal places
@@ -616,9 +616,9 @@ PREFIX-DIV10-NC NT
 "(SH-PD([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-pd\\2 \\3)
-"(SH-PD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-pd\\2 \\3)
+"(SH-PD([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 53 sezimal places
@@ -627,9 +627,9 @@ PREFIX-DIV10-NC NT
 "(SH-PT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-pt\\2 \\3)
-"(SH-PT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-pt\\2 \\3)
+"(SH-PT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 54 sezimal places
@@ -638,9 +638,9 @@ PREFIX-DIV10-NC NT
 "(SH-PC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-pc\\2 \\3)
-"(SH-PC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-pc\\2 \\3)
+"(SH-PC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 55 sezimal places
@@ -649,9 +649,9 @@ PREFIX-DIV10-NC NT
 "(SH-PP([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-pp\\2 \\3)
-"(SH-PP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-pp\\2 \\3)
+"(SH-PP([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 100 sezimal places
@@ -660,9 +660,9 @@ PREFIX-DIV10-NC NT
 "(SH-N([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-n\\2 \\3)
-"(SH-N([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-n\\2 \\3)
+"(SH-N([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 101 sezimal places
@@ -671,9 +671,9 @@ PREFIX-DIV10-NC NT
 "(SH-NE([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-ne\\2 \\3)
-"(SH-NE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-ne\\2 \\3)
+"(SH-NE([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 102 sezimal places
@@ -682,9 +682,9 @@ PREFIX-DIV10-NC NT
 "(SH-ND([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-nd\\2 \\3)
-"(SH-ND([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-nd\\2 \\3)
+"(SH-ND([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 103 sezimal places
@@ -693,9 +693,9 @@ PREFIX-DIV10-NC NT
 "(SH-NT([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-nt\\2 \\3)
-"(SH-NT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-nt\\2 \\3)
+"(SH-NT([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2)))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
 #
 # 104 sezimal places
@@ -704,14 +704,14 @@ PREFIX-DIV10-NC NT
 "(SH-NC([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-\\2 \\3)  # cancel shunma/shunti
 "(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?0+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
-"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-nc\\2 \\3)
-"(SH-NC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 e |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))))\\3 \\4)
+"(SH-([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-nc\\2 \\3)
+"(SH-NC([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-([ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3})([a-z]{3}) [-−]?\d+)[.,](\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)" $1 kaj |$(SH-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-$(PREFIX-DIV10-\2))))))))))))))))))))))))))))))))))))))))\\3 \\4)
 
 == cleanup ==
 
-"tapa" grau sezimal \(tapa\)
-"tapas" graus sezimais \(tapas\)
+"tapa" sezimal degree \(tapa\)
+"tapas" sezimal degrees \(tapas\)
 (.+)ma([aâàáãä])(.+) \\1m\\2\\3
 (.+)ti([iîìíĩï])(.+) \\1t\\2\\3
 (.+) \\1

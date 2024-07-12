@@ -150,6 +150,79 @@ UNIT-xtk xátaka
 UNIT-tvt tevasta
 '''
 
+    elif lang == 'eo':
+        text = '''#
+# Mezurunuoj
+#
+UNIT-din dinao
+UNIT-uta utao
+UNIT-pox poŝao
+UNIT-agm agrimao
+UNIT-ang anugao
+UNIT-bod bodao
+UNIT-avt avritao
+UNIT-pad padao
+UNIT-veg vegao
+UNIT-tvr tevaro
+UNIT-kex keŝeo
+UNIT-ayt ajtano
+UNIT-vrt vartio
+UNIT-drv dravjao
+UNIT-gan ganao
+UNIT-trg tarango
+UNIT-mnu manuo
+UNIT-bar barao
+UNIT-dab dabao
+UNIT-kry karjao
+UNIT-xat ŝatio
+UNIT-svg sanvegao
+UNIT-pkp prakepao
+UNIT-pbv prabavao
+UNIT-tnv tanavao
+UNIT-upr upario
+UNIT-nad nadio
+UNIT-bum bumio
+UNIT-idn indanao
+UNIT-tln telano
+UNIT-agn agnio
+UNIT-gtk gatikao
+UNIT-tap tapao
+UNIT-dar darao
+UNIT-avx aveŝao
+UNIT-vbv vibavao
+UNIT-ptr pratirodao
+UNIT-cln ĉalanao
+UNIT-prk prerakao
+UNIT-sam samaio
+UNIT-abv abivao
+UNIT-vst vistarao
+UNIT-prd paridio
+UNIT-gol golao
+UNIT-pkx prakaŝao
+UNIT-dpk dipakao
+UNIT-prt pratio
+UNIT-p/s per ses
+UNIT-p/n per nif
+UNIT-p/a per arad
+UNIT-p/sa per ses arad
+UNIT-p/na per nif arad
+UNIT-p/x per ŝadar
+UNIT-p/sx per ses ŝadar
+UNIT-p/nx per nif ŝadar
+UNIT-p/ax per arad ŝadar
+UNIT-p/sax per ses arad ŝadar
+UNIT-p/nax per nif arad ŝadar
+UNIT-p/Dx per diŝadar
+UNIT-p/Tx per triŝadar
+UNIT-p/Cx per ĉarŝadar
+UNIT-p/Px per panŝadar
+UNIT-p/Xx per ŝaŝadar
+UNIT-atk aŝtakao
+UNIT-pvn pavanao
+UNIT-xtk ŝatakao
+UNIT-tvt tevaŝtao
+'''
+
     else:
         text = '''#
 # Units
@@ -242,13 +315,14 @@ def create_prefixes(lang='en'):
             if lang == 'pt':
                 name = name.replace('shu', 'xu')
                 name = name.replace('sha', 'xa')
+                name = name.replace('cha', 'tcha')
                 name = name.replace('eka', 'eca')
                 name = name.replace('panp', 'pamp')
 
             elif lang == 'bz':
                 name = name.replace('shu', 'xu')
                 name = name.replace('sha', 'xa')
-                name = name.replace('cha', 'xa')
+                name = name.replace('cha', 'txa')
 
             name = name.replace('nm', 'm')
 
@@ -424,4 +498,10 @@ if __name__ == '__main__':
     arq.write(create_units(lang='en'))
     arq.write(create_prefixes(lang='en'))
     arq.write(create_rules(conjunction='and', preposition='of one'))
+    arq.close()
+
+    arq = open('eo_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='en'))
+    arq.write(create_prefixes(lang='en'))
+    arq.write(create_rules(conjunction='kaj', preposition='el unu'))
     arq.close()

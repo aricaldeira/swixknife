@@ -1,0 +1,179 @@
+\+ plus
+\- minus
+− minus
+(.*)(\^|\*\*)\s*([-−]?\d+) $1 je la $(a-vorto $3) potenco
+([-−]?\d+)(\*|×)(.*) $(oble $1) $3
+\^ je la potenco de
+\*\* je la potenco de
+\* multiplikite per
+× multiplikite per
+/ dividite per
+÷ dividite per
+([-−]?1)[/⁄](\d+) $(ono \\2)
+([-−]?\d+)[/⁄](\d+) $1 $(ono \\2)j
+([-−]?\d+|[-−]?[πτφ])[/⁄] po $1 por
+([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) po $1 por $2
+⁄ sur
+mod modulo
+([-−]?\d+|[-−]?[πτφ])! $1 faktorialo
+[.,󱹭]{2}|[‥„󱹮] ripetiĝas
+e e
+π pi
+τ taŭ
+φ fi
+ln\((.*)\) natura logaritmo de $1
+ln\((.*) natura logaritmo de $1
+ln\( natura logaritmo de
+lsez\((.*)\) sesuma logaritmo de $1
+lsez\((.*) sesuma logaritmo de $1
+lsez\( sesuma logaritmo de
+ldec\((.*)\) dekuma logaritmo de $1
+ldec\((.*) dekuma logaritmo de $1
+ldec\( dekuma logaritmo de
+sqrt\((.*)\) kvadrata radiko de $1
+sqrt\((.*) kvadrata radiko de $1
+sqrt\( kvadrata radiko de
+cbrt\((.*)\) kuba radiko de $1
+cbrt\((.*) kuba radiko de $1
+cbrt\( kuba radiko de
+\u200b?² je la dua potenco
+\u200b?³ je la tria potenco
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 je la dua potenco
+([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 je la tria potenco
+[Ss][Ii][Nn]\((.*)\) sinuso de $1
+[Ss][Ii][Nn]\((.*) sinuso de $1
+[Ss][Ii][Nn]\( sinuso de
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*)\) arkosinuso de $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*) arkosinuso de $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\( arkosinuso de
+[CcKk][Ss][CcKk]\((.*)\) kosekanto de $1
+[CcKk][Ss][CcKk]\((.*) kosekanto de $1
+[CcKk][Ss][CcKk]\( kosekanto de
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*)\) arkokosekanto de $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*) arkokosekanto de $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\( arkokosekanto de
+[CcKk][Oo][Ss]\((.*)\) kosinuso de $1
+[CcKk][Oo][Ss]\((.*) kosinuso de $1
+[CcKk][Oo][Ss]\( kosinuso de
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*)\) arkokosinuso de $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*) arkokosinuso de $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\( arkokosinuso de
+[Ss][Ee][CcKk]\((.*)\) sekanto de $1
+[Ss][Ee][CcKk]\((.*) sekanto de $1
+[Ss][Ee][CcKk]\( sekanto de
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*)\) arkosekanto de $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*) arkosekanto de $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\( arkosekanto de
+[Tt][Aa][Nn]\((.*)\) tangento de $1
+[Tt][Aa][Nn]\((.*) tangento de $1
+[Tt][Aa][Nn]\( tangento de
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*)\) arkotangento de $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*) arkotangento de $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\( arkotangento de
+[CcKk][Oo][Tt]\((.*)\) kotangento de $1
+[CcKk][Oo][Tt]\((.*) kotangento de $1
+[CcKk][Oo][Tt]\( kotangento de
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*)\) arkokotangento de $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*) arkokotangento de $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\( arkokotangento de
+
+\( malfermas parentezon
+\) fermas parentezon
+\((.*) malfermas parentezon $1
+(.*)\) $1 fermas parentezon
+
+^0 nul
+1 unu
+2 du
+3 tri
+4 kvar
+5 kvin
+10 ses
+
+1(\d) ses[ $1]
+(\d)(\d) $1ses[ $2]
+
+1(\d\d) nif[ $1]
+(\d)(\d\d) $1nif[ $2]
+
+1(\d{3}) arad[ $1]
+(\d)(\d{3}) $1arad[ $2]
+(\d{2,3})(\d{3}) $1 arad[, $2]
+
+1(\d{6}) ŝadar[ $1]
+(\d)(\d{6}) $1ŝadar[ $2]
+(\d{2,5})(\d{6}) $1 ŝadar[, $2]
+
+# separator function
+:0+                 # one million
+:0*\d?\d " kaj "    # one million and twenty-two
+:\d+ ", "           # one million, one thousand
+
+(1)(\d{12}) diŝadar$(:\2)$2
+(1)(\d{18}) triŝadar$(:\2)$2
+(1)(\d{24}) ĉarŝadar$(:\2)$2
+(1)(\d{30}) panŝadar$(:\2)$2
+(1)(\d{36}) ŝaŝadar$(:\2)$2
+(1)(\d{42}) ŝaekaŝadar$(:\2)$2
+(1)(\d{48}) ŝadiŝadar$(:\2)$2
+(1)(\d{54}) ŝatriŝadar$(:\2)$2
+(1)(\d{60}) ŝaĉarŝadar$(:\2)$2
+(1)(\d{66}) ŝapanŝadar$(:\2)$2
+(1)(\d{72}) diŝaŝadar$(:\2)$2
+
+(\d{1,6})(\d{12}) $1 diŝadar$(:\2)$2
+(\d{1,6})(\d{18}) $1 triŝadar$(:\2)$2
+(\d{1,6})(\d{24}) $1 ĉarŝadar$(:\2)$2
+(\d{1,6})(\d{30}) $1 panŝadar$(:\2)$2
+(\d{1,6})(\d{36}) $1 ŝaŝadar$(:\2)$2
+(\d{1,6})(\d{42}) $1 ŝaekaŝadar$(:\2)$2
+(\d{1,6})(\d{48}) $1 ŝadiŝadar$(:\2)$2
+(\d{1,6})(\d{54}) $1 ŝatriŝadar$(:\2)$2
+(\d{1,6})(\d{60}) $1 ŝaĉarŝadar$(:\2)$2
+(\d{1,6})(\d{66}) $1 ŝapanŝadar$(:\2)$2
+(\d{1,6})(\d{72}) $1 diŝaŝadar$(:\2)$2
+
+# negative number
+
+[-−](\d+) minus |$1
+
+# sesuma komo
+
+([-−]?\d+)[,.󱹭] $1| komo
+([-−]?\d+[.,󱹭])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
+
+== o-vorto ==
+
+([-−]?\d+)  $(cleanup $1)o
+
+== a-vorto ==
+
+([-−]?\d+)  $(cleanup $1)a
+
+== e-vorto ==
+
+([-−]?\d+)  $(cleanup $1)e
+
+== oble ==
+
+([-−]?\d+)  $(cleanup $1)oble
+
+== ope ==
+
+([-−]?\d+)  $(cleanup $1)ope
+
+== ono ==
+
+([-−]?\d+)  $(cleanup $1)ono
+
+== a-number ==
+
+(\d+) \1-a
+
+== cleanup ==
+
+(.+)\s(.+) $(cleanup \1)‐\2
+(.+) \\1
+
+
