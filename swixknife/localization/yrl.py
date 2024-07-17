@@ -48,7 +48,7 @@ class SezimalLocaleYRL(SezimalLocalePT):
     MONTH_ABBREVIATED_NAME = [
         'yye',
         'ymk',
-        'ymu',
+        'yms',
         'yid',
         'ypu',
         'ypy',
