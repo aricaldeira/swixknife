@@ -8,7 +8,7 @@ from fractions import Fraction as DecimalFraction
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..base import default_to_sezimal_digits, validate_clean_decimal, \
     sezimal_format, decimal_format, niftimal_format
-from ..base.digit_conversion import PER_SYMBOLS
+from ..base.formatting import PER_SYMBOLS
 from ..exponents import sezimal_exponent_to_decimal_exponent, \
     decimal_exponent_to_sezimal_exponent
 from ..units import sezimal_to_decimal_unit, decimal_to_sezimal_unit, \
@@ -182,7 +182,7 @@ class SezimalCalculator:
             if denominator:
                 denominator = self._format_sezimal(denominator, display, denominator, keep_original_aspect)
 
-                if denominator == '1':
+                if display and denominator == '1':
                     return numerator
 
                 return numerator + '⁄' + denominator
@@ -194,7 +194,7 @@ class SezimalCalculator:
             numerator = self._format_sezimal(numerator, display, numerator, keep_original_aspect)
             denominator = self._format_sezimal(denominator, display, numerator, keep_original_aspect)
 
-            if denominator == '1':
+            if display and denominator == '1':
                 return numerator
 
             return numerator + '⁄' + denominator
@@ -214,9 +214,6 @@ class SezimalCalculator:
         if display:
             params['use_fraction_group_separator'] = True
             params['suffix'] = self.suffix
-            # params['sezimal_separator'] = '󱹭'
-            # params['group_separator'] = ' '
-            # params['fraction_group_separator'] = ' '
         else:
             params['sezimal_separator'] = '.'
             params['group_separator'] = '_'
@@ -247,7 +244,7 @@ class SezimalCalculator:
             if denominator:
                 denominator = self._format_decimal(denominator, display, denominator, keep_original_aspect)
 
-                if denominator == '1':
+                if display and denominator == '1':
                     return numerator
 
                 return numerator + '⁄' + denominator
@@ -260,6 +257,10 @@ class SezimalCalculator:
             denominator = Decimal(denominator)
             numerator = self._format_decimal(numerator, display, numerator, keep_original_aspect)
             denominator = self._format_decimal(denominator, display, numerator, keep_original_aspect)
+
+            if display and denominator == '1':
+                return numerator
+
             return numerator + '⁄' + denominator
 
         precision = self._determine_precision(number, self._decimal_precision)
@@ -299,6 +300,10 @@ class SezimalCalculator:
 
             if denominator:
                 denominator = self._format_niftimal(Sezimal(denominator), denominator)
+
+                if denominator == '1':
+                    return numerator
+
                 return numerator + '⁄' + denominator
 
             return numerator + '⁄'
@@ -307,6 +312,10 @@ class SezimalCalculator:
             numerator, denominator = number.numerator, number.denominator
             numerator = self._format_niftimal(numerator, str(numerator))
             denominator = self._format_niftimal(denominator, str(numerator))
+
+            if denominator == '1':
+                return numerator
+
             return numerator + '⁄' + denominator
 
         precision = self._determine_precision(number, self._sezimal_precision)
@@ -320,7 +329,7 @@ class SezimalCalculator:
             'use_fraction_group_separator': True,
             'suffix': self.suffix,
             'regularized_digits': self.regularized_digits,
-            # 'niftimal_separator': '󱹭',
+            # 'niftimal_separator': '󱹮',
             # 'group_separator': ' ',
             # 'fraction_group_separator': ' ',
         }
