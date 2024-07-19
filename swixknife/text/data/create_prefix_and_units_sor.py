@@ -18,7 +18,7 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex quexê
+UNIT-ktr quetra
 UNIT-ayt aitã
 UNIT-vrt várti
 UNIT-drv drávia
@@ -75,6 +75,11 @@ UNIT-atk ástaca
 UNIT-pvn pávana
 UNIT-xtk xátaca
 UNIT-tvt tevasta
+
+EXP-2 quadrado
+EXP-² quadrado
+EXP-3 cúbico
+EXP-3 cúbico
 '''
 
     elif lang == 'bz':
@@ -91,7 +96,7 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex kexe
+UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
@@ -148,6 +153,11 @@ UNIT-atk ástaka
 UNIT-pvn pávana
 UNIT-xtk xátaka
 UNIT-tvt tevasta
+
+EXP-2 kwadradu
+EXP-² kwadradu
+EXP-3 kúbiku
+EXP-3 kúbiku
 '''
 
     elif lang == 'eo':
@@ -163,13 +173,13 @@ UNIT-bod bodao
 UNIT-avt avritao
 UNIT-pad padao
 UNIT-veg vegao
-UNIT-tvr tevaro
-UNIT-kex keŝeo
+UNIT-tvr tevarao
+UNIT-ktr ketrao
 UNIT-ayt ajtano
 UNIT-vrt vartio
 UNIT-drv dravjao
 UNIT-gan ganao
-UNIT-trg tarango
+UNIT-trg tarangao
 UNIT-mnu manuo
 UNIT-bar barao
 UNIT-dab dabao
@@ -221,6 +231,11 @@ UNIT-atk aŝtakao
 UNIT-pvn pavanao
 UNIT-xtk ŝatakao
 UNIT-tvt tevaŝtao
+
+EXP-2 kvadrata
+EXP-² kvadrata
+EXP-3 kuba
+EXP-3 kuba
 '''
 
     else:
@@ -237,7 +252,7 @@ UNIT-avt avrita
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
-UNIT-kex keshe
+UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
@@ -294,6 +309,11 @@ UNIT-atk ashtaka
 UNIT-pvn pavana
 UNIT-xtk shataka
 UNIT-tvt tevashta
+
+EXP-2 square
+EXP-² square
+EXP-3 cube
+EXP-3 cube
 '''
     return text
 
@@ -324,6 +344,13 @@ def create_prefixes(lang='en'):
                 name = name.replace('sha', 'xa')
                 name = name.replace('cha', 'txa')
 
+            elif lang == 'eo':
+                name = name.replace('shu', 'ŝu')
+                name = name.replace('sha', 'ŝa')
+                name = name.replace('cha', 'ĉa')
+                # symbol = symbol.replace('c', 'ĉ')
+                # symbol = symbol.replace('C', 'Ĉ')
+
             name = name.replace('nm', 'm')
 
             text += f'PREFIX-{symbol} {name}\n'
@@ -348,7 +375,7 @@ def create_prefixes(lang='en'):
     return text
 
 
-def create_rules(conjunction='and', preposition='', lang=''):
+def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', exponent_first=True, exponent_plural=''):
     conjunction = conjunction.strip()
 
     if not conjunction:
@@ -363,9 +390,10 @@ def create_rules(conjunction='and', preposition='', lang=''):
     else:
         preposition = f' {preposition} '
 
-    PREFIX_RULE = '[ZEDTCPXNA]{1,3}|[zedtcpxna]{1,3}'
+    PREFIX_RULE = '[ZEDTCPSXNA]{1,3}|[zedtcpsxna]{1,3}'
     UNIT_RULE = '[a-z]{3}'
     PER_UNIT_RULE = 'p/[a-zA-Z]{1,3}'
+    EXP_RULE = '[2²3³]'
     # PRECISION_RULE = '[0-5]{1,3}'
 
 #     text = f'''#
@@ -398,10 +426,34 @@ def create_rules(conjunction='and', preposition='', lang=''):
 #
 # Rules for units without fractional parts, or only zeroes
 #
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
 "SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2)s)
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
 
+#
+# Exponents - square and cube
+#
+'''
+
+    if exponent_first:
+        text = rf'''
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+'''
+    else:
+        text = rf'''
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
+
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
+"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+'''
+
+
+    text += rf'''
 #
 # Rules for units with fractional parts;
 # let’s deduce the subunit prefix by the number of sezimal places
@@ -432,13 +484,13 @@ def create_rules(conjunction='and', preposition='', lang=''):
         text += rf'''#
 # {i} sezimal place{'s' if i > 1 else ''}
 #
-"(SH-({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
 
-"(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
 
 '''
 
@@ -479,29 +531,29 @@ if __name__ == '__main__':
     arq = open('bz_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='bz'))
     arq.write(create_prefixes(lang='bz'))
-    arq.write(create_rules(conjunction='y', preposition='dun', lang='bz'))
+    arq.write(create_rules(conjunction='y', preposition='dun', lang='bz', plural_marker='s', exponent_first=False, exponent_plural='s'))
     arq.close()
 
     arq = open('pt_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='pt'))
     arq.write(create_prefixes(lang='pt'))
-    arq.write(create_rules(conjunction='e', preposition='de um', lang='pt'))
+    arq.write(create_rules(conjunction='e', preposition='de um', lang='pt', plural_marker='s', exponent_first=False, exponent_plural='s'))
     arq.close()
 
     arq = open('en_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='en'))
     arq.write(create_prefixes(lang='en'))
-    arq.write(create_rules(conjunction='and', preposition='of one', lang='en'))
+    arq.write(create_rules(conjunction='and', preposition='of one', lang='en', plural_marker='s', exponent_first=True, exponent_plural=''))
     arq.close()
 
     arq = open('en_misali_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='en'))
     arq.write(create_prefixes(lang='en'))
-    arq.write(create_rules(conjunction='and', preposition='of one'))
+    arq.write(create_rules(conjunction='and', preposition='of one', plural_marker='s', exponent_first=True, exponent_plural=''))
     arq.close()
 
     arq = open('eo_units_and_prefixes.sor', 'w')
-    arq.write(create_units(lang='en'))
-    arq.write(create_prefixes(lang='en'))
-    arq.write(create_rules(conjunction='kaj', preposition='el unu'))
+    arq.write(create_units(lang='eo'))
+    arq.write(create_prefixes(lang='eo'))
+    arq.write(create_rules(conjunction='kaj', preposition='el unu', plural_marker='j', exponent_first=True, exponent_plural='j'))
     arq.close()

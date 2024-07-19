@@ -14,7 +14,7 @@
 ⁄ sobri
 m[oó]d módulu
 ([-−]?\d+|[-−]?[πτφ])! fatoriaw di $1
-[.,󱹭]{2}|[‥„󱹮] y repèti
+[.,󱹮]{2}|[‥„󱹯] y repèti
 e e
 π pi
 τ taw
@@ -41,8 +41,8 @@ cbrt\((.*) raiz kúbika di $1
 cbrt\( raiz kúbika di
 \u200b?² aw kwadradu
 \u200b?³ aw kubu
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 aw kwadradu
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 aw kubu
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?² $1 aw kwadradu
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?³ $1 aw kubu
 [Ss][IiEe][Nn]\((.*)\) senu di $1
 [Ss][IiEe][Nn]\((.*) senu di $1
 [Ss][IiEe][Nn]\( senu di
@@ -188,9 +188,9 @@ cbrt\( raiz kúbika di
 #
 # Frasoyns
 #
-([-−]?\d+)[,.󱹭] $1| vírgula
-([-−]?\d+[.,󱹭])([^0]\d{1,2}) $1| |$2
-([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
+([-−]?\d+)[,.󱹮] $1| vírgula
+([-−]?\d+[.,󱹮])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
 

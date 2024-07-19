@@ -16,7 +16,7 @@
 ⁄ over
 mod modulo
 ([-−]?\d+|[-−]?[πτφ])! $1 factorial
-[.,󱹭]{2}|[‥„󱹮] repeating
+[.,󱹮]{2}|[‥„󱹯] repeating
 ([-−]?\d+[,.]?\d*)% $1 per nif
 % per nif
 ([-−]?\d+[,.]?\d*)‰ $1 per six nif
@@ -46,8 +46,8 @@ cbrt\((.*) cube root of $1
 cbrt\( cube root of
 \u200b?² squared
 \u200b?³ cubed
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 squared
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 cubed
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?² $1 squared
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?³ $1 cubed
 (?:sin|SIN)\((.*)\) sine of $1
 (?:sin|SIN)\((.*) sine of $1
 (?:sin|SIN)\( sine of
@@ -144,9 +144,9 @@ cbrt\( cube root of
 
 # decimals
 
-([-−]?\d+)[,.󱹭] $1| point
-([-−]?\d+[.,󱹭])([^0]\d{1,3}) $1| |$2
-([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
+([-−]?\d+)[,.󱹮] $1| point
+([-−]?\d+[.,󱹮])([^0]\d{1,3}) $1| |$2
+([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2
 
 ### UNITS_AND_PREFIXES ###
 

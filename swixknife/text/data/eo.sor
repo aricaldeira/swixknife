@@ -16,7 +16,7 @@
 ⁄ sur
 mod modulo
 ([-−]?\d+|[-−]?[πτφ])! $1 faktorialo
-[.,󱹭]{2}|[‥„󱹮] ripetiĝas
+[.,󱹮]{2}|[‥„󱹯] ripetiĝas
 e e
 π pi
 τ taŭ
@@ -38,8 +38,8 @@ cbrt\((.*) kuba radiko de $1
 cbrt\( kuba radiko de
 \u200b?² je la dua potenco
 \u200b?³ je la tria potenco
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?² $1 je la dua potenco
-([-−]?\d+|[-−]?\d+[.,󱹭]\d*|[eπτφ])\u200b?³ $1 je la tria potenco
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?² $1 je la dua potenco
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?³ $1 je la tria potenco
 [Ss][Ii][Nn]\((.*)\) sinuso de $1
 [Ss][Ii][Nn]\((.*) sinuso de $1
 [Ss][Ii][Nn]\( sinuso de
@@ -139,9 +139,11 @@ cbrt\( kuba radiko de
 
 # sesuma komo
 
-([-−]?\d+)[,.󱹭] $1| komo
-([-−]?\d+[.,󱹭])([^0]\d{1,2}) $1| |$2
-([-−]?\d+[.,󱹭]\d*)(\d) $1| |$2
+([-−]?\d+)[,.󱹮] $1| komo
+([-−]?\d+[.,󱹮])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2
+
+### UNITS_AND_PREFIXES ###
 
 == o-vorto ==
 
