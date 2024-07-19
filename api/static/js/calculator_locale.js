@@ -5,8 +5,7 @@ let locales_display = {};
 function toggle_locale() {
     document.getElementById('locale-setting').hidden = !document.getElementById('locale-setting').hidden;
     document.getElementById('toggle_locale').hidden = !document.getElementById('toggle_locale').hidden;
-    document.getElementById('display').hidden = !document.getElementById('display').hidden;
-    document.getElementById('decimal_display').hidden = !document.getElementById('decimal_display').hidden;
+    document.getElementById('displays').hidden = !document.getElementById('displays').hidden;
     document.getElementById('configuration-left').hidden = !document.getElementById('configuration-left').hidden;
     document.getElementById('configuration-right').hidden = !document.getElementById('configuration-right').hidden;
 
@@ -23,12 +22,12 @@ function update_locale(calculation_refresh = true) {
 
     if (locale.search('_')) {
         parts = locale.split('_');
-        document.getElementById('toggle_locale').innerHTML = '[ ' + parts[0] + ' ]';
+        document.getElementById('toggle_locale').innerHTML = '[ ' + parts[0] + ' ]';
     } else if (locale.search('-')) {
         parts = locale.split('-');
-        document.getElementById('toggle_locale').innerHTML = '[ ' + parts[0] + ' ]';
+        document.getElementById('toggle_locale').innerHTML = '[ ' + parts[0] + ' ]';
     } else {
-        document.getElementById('toggle_locale').innerHTML = '[ ' + locale + ' ]';
+        document.getElementById('toggle_locale').innerHTML = '[ ' + locale + ' ]';
     };
 
     if (calculation_refresh == true) {
@@ -124,7 +123,7 @@ function translate_display(display) {
     };
 
     Object.keys(locales_display[locale]).forEach((key) => {
-        display = display.replace(key, locales_display[locale][key]);
+        display = display.replace(key.replace('-', ' '), locales_display[locale][key]);
     });
 
     return display;
@@ -163,7 +162,7 @@ function _assign_ids_text(translation) {
             };
         } else {
             if (document.getElementById(element_id) == null) {
-                console.log('elemento não encontrado', element_id);
+                // console.log('elemento não encontrado', element_id);
             } else {
                 document.getElementById(element_id).innerHTML = translation[element_id];
             };

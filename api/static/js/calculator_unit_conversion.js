@@ -77,12 +77,14 @@ function toggle_units(show) {
     if (show) {
         document.getElementById('units').hidden = false;
         document.getElementById('displays').hidden = true;
-        // document.getElementById('buttons').hidden = true;
+        document.getElementById('configuration-left').hidden = true;
+        document.getElementById('configuration-right').hidden = true;
         document.getElementById('buttons').style = 'visibility: hidden;';
     } else {
         document.getElementById('units').hidden = true;
         document.getElementById('displays').hidden = false;
-        // document.getElementById('buttons').hidden = false;
+        document.getElementById('configuration-left').hidden = false;
+        document.getElementById('configuration-right').hidden = false;
         document.getElementById('buttons').style = 'visibility: visible;';
         update_calculation();
     };
@@ -90,17 +92,30 @@ function toggle_units(show) {
 
 function set_unit_type() {
     const unit_type = document.getElementById('calculator-sezimal-unit-type').value;
+    const locale = localStorage.getItem('sezimal-calculator-locale');
 
     if (unit_type == 'ang') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'agm', '-', 's');
     } else if (unit_type == 'avt') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'avt', '-', 'Hz');
     } else if (unit_type == 'pad') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'pad', '-', 'm');
-    } else if (unit_type == 'kex') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'kex', '-', 'm2');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'E', 'pad', '-', 'ft');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'pad', '-', 'm');
+        }
+    } else if (unit_type == 'ktr') {
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'ktr', '-', 'ft2');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'C', 'ktr', '-', 'm2');
+        }
     } else if (unit_type == 'ayt') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'ayt', '-', 'L');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'T', 'ayt', '-', 'US gal');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'ayt', '-', 'L');
+        }
     } else if (unit_type == 'veg') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'veg', 'k', 'm/h');
     } else if (unit_type == 'tvr') {
@@ -171,7 +186,19 @@ function set_sezimal_prefix(select) {
 };
 
 function set_decimal_unit(select) {
+    const unit_type = document.getElementById('calculator-sezimal-unit-type').value;
     localStorage.setItem('sezimal-calculator-decimal-unit', select.value);
+
+    if (unit_type == 'ktr') {
+        if (select.value == 'm2') {
+            document.getElementById('calculator-prefix-decimal').value = '-';
+            set_decimal_prefix(document.getElementById('calculator-prefix-decimal'));
+        } else if (select.value == 'a') {
+            document.getElementById('calculator-prefix-decimal').value = 'h';
+            set_decimal_prefix(document.getElementById('calculator-prefix-decimal'));
+        }
+    };
+
     update_units_conversion();
 };
 
@@ -198,13 +225,13 @@ function set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, 
 
     if (unit_type == 'no-conversion') {
         document.getElementById('unit-units-explanation').hidden = false;
-        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
+        document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else if (unit_type == 'units') {
         document.getElementById('unit-units-explanation').hidden = false;
-        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
+        document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else if (unit_type == 'prefixes') {
         document.getElementById('unit-prefixes-explanation').hidden = false;
-        document.getElementById('toggle_units').innerHTML = '[ ↮ ]';
+        document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else {
         document.getElementById('units-title').hidden = false;
 
@@ -236,17 +263,17 @@ function update_units_conversion() {
         decimal_prefix = '';
     };
 
-    if (localStorage.getItem(`sezimal-translation-display-${sezimal_unit}`) != null) {
-        sezimal_unit = localStorage.getItem(`sezimal-translation-display-${sezimal_unit}`);
+    if (localStorage.getItem(`sezimal-translation-display-${sezimal_unit.toLocaleLowerCase().replace(' ', '-').replace(' ', '-')}`) != null) {
+        sezimal_unit = localStorage.getItem(`sezimal-translation-display-${sezimal_unit.toLocaleLowerCase().replace(' ', '-').replace(' ', '-')}`);
     };
-    if (localStorage.getItem(`sezimal-translation-display-${decimal_unit}`) != null) {
-        decimal_unit = localStorage.getItem(`sezimal-translation-display-${decimal_unit}`);
+    if (localStorage.getItem(`sezimal-translation-display-${decimal_unit.toLocaleLowerCase().replace(' ', '-').replace(' ', '-')}`) != null) {
+        decimal_unit = localStorage.getItem(`sezimal-translation-display-${decimal_unit.toLocaleLowerCase().replace(' ', '-').replace(' ', '-')}`);
     };
 
     if ((sezimal_unit != '') && (decimal_unit != '')) {
-        document.getElementById('toggle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ⬢ ' + decimal_prefix + decimal_unit + ' ]';
+        document.getElementById('toggle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ⬢ ' + decimal_prefix + decimal_unit + ' ]';
     } else {
-        document.getElementById('toggle_units').innerHTML = '[ ⬡ ]';
+        document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     };
 };
 
@@ -278,8 +305,8 @@ function hide_all_units() {
     document.getElementById('unit-avt').hidden = true;
     document.getElementById('unit-pad-explanation').hidden = true;
     document.getElementById('unit-pad').hidden = true;
-    document.getElementById('unit-kex-explanation').hidden = true;
-    document.getElementById('unit-kex').hidden = true;
+    document.getElementById('unit-ktr-explanation').hidden = true;
+    document.getElementById('unit-ktr').hidden = true;
     document.getElementById('unit-ayt-explanation').hidden = true;
     document.getElementById('unit-ayt').hidden = true;
     document.getElementById('unit-drv-explanation').hidden = true;

@@ -1,4 +1,6 @@
 
+const per_symbols = ['%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵', '󱹶', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿'];
+
 function button_click(button) {
     update_calculation(button.value);
 };
@@ -72,7 +74,7 @@ function update_calculation(value = '') {
         localStorage.setItem('sezimal-calculator-sezimal-separator', dados.separator);
 
         if (dados.sezimal_punctuation) {
-            document.getElementById('button-sezimal-separator').innerHTML = '󱹭';
+            document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
         } else {
             document.getElementById('button-sezimal-separator').innerHTML = dados.separator;
         };
@@ -91,23 +93,40 @@ function update_calculation(value = '') {
         };
 
         if (localStorage.getItem('sezimal-calculator-base') == 14) {
-            set_display_value(dados.display, 'display_number', 32);
-            set_display_value(dados.niftimal_display, 'niftimal_display_number', 15);
-            set_display_value(dados.decimal_display, 'decimal_display_number', 56);
+            set_display_value(dados.display, sezimal_prefix + sezimal_unit, 'display_number', 32);
+            set_display_value(dados.niftimal_display, sezimal_prefix + sezimal_unit, 'niftimal_display_number', 15);
+            set_display_value(dados.decimal_display, decimal_prefix + decimal_unit, 'decimal_display_number', 56);
         } else {
-            set_display_value(dados.display, 'display_number', 56);
-            set_display_value(dados.niftimal_display, 'niftimal_display_number', 24);
-            set_display_value(dados.decimal_display, 'decimal_display_number', 32);
+            set_display_value(dados.display, sezimal_prefix + sezimal_unit, 'display_number', 56);
+            set_display_value(dados.niftimal_display, sezimal_prefix + sezimal_unit, 'niftimal_display_number', 24);
+            set_display_value(dados.decimal_display, decimal_prefix + decimal_unit, 'decimal_display_number', 32);
         }
     });
 };
 
-function set_display_value(value, display_number_name, font_size) {
-    const value_size = Array.from(value).length;
+function set_display_value(value, unit, display_number_name, font_size) {
+    const value_size = Array.from(
+        value.
+            replace('<math>', '').
+            replace('</math>', '').
+            replace('<mfrac>', '').
+            replace('</mfrac>', '').
+            replace('<mn>', '').
+            replace('</mn>', '')
+    ).length;
     var number = document.getElementById(display_number_name);
 
     number.style.fontSize = font_size.toString() + 'px';
-    number.innerHTML = translate_display(value);
+
+    if (unit != '') {
+        if (per_symbols.includes(unit)) {
+            number.innerHTML = translate_display(value) + unit;
+        } else {
+            number.innerHTML = translate_display(value) + '&zwnj; ' + translate_display(unit);
+        };
+    } else {
+        number.innerHTML = translate_display(value);
+    };
 
     if ((font_size == 56) || (font_size == 32)) {
         const width = number.getBoundingClientRect().width;

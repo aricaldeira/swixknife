@@ -28,7 +28,7 @@ function update_grouping(calculation_refresh = true) {
 
     if (sezimal_punctuation == 'true') {
         separator = '󱹬';
-        document.getElementById('button-sezimal-separator').innerHTML = '󱹭';
+        document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
     } else {
         separator = localStorage.getItem('sezimal-calculator-group-separator');
         document.getElementById('button-sezimal-separator').innerHTML = document.getElementById('button-decimal-separator').innerHTML;
@@ -36,15 +36,15 @@ function update_grouping(calculation_refresh = true) {
 
     if (grouping == 3) {
         if (sezimal_digits == 'true') {
-            document.getElementById('toggle_grouping').innerHTML = '[ 󱸃' + separator + '󱸃 ]';
+            document.getElementById('toggle_grouping').innerHTML = '[ 󱸃' + separator + '󱸃 ]';
         } else {
-            document.getElementById('toggle_grouping').innerHTML = '[ 3' + separator + '3 ]';
+            document.getElementById('toggle_grouping').innerHTML = '[ 3' + separator + '3 ]';
         };
     } else {
         if (sezimal_digits == 'true') {
-            document.getElementById('toggle_grouping').innerHTML = '[ 󱸄' + separator + '󱸄 ]';
+            document.getElementById('toggle_grouping').innerHTML = '[ 󱸄' + separator + '󱸄 ]';
         } else {
-            document.getElementById('toggle_grouping').innerHTML = '[ 4' + separator + '4 ]';
+            document.getElementById('toggle_grouping').innerHTML = '[ 4' + separator + '4 ]';
         };
     };
 

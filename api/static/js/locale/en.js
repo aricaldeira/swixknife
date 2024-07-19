@@ -12,6 +12,8 @@ const sezimal_calculator_en_text = {
     'label-sezimal-locale': 'Set the locale for number formatting',
     'label-sezimal-places': 'Set the number of sezimal places',
     'label-sezimal-angle': 'Set the angle units’ conversion<br/>for the trigonometric functions',
+    'translation-sezimal-units': 'Shastadari Units of Measure',
+    'label-sezimal-units': 'Choose which unit you’d like to convert<br/>to and from the Shastadari units,<br/>and see explanations for each unit',
 
     'translation-turn': 'turn',
     'translation-deg': 'deg',
@@ -55,6 +57,78 @@ const sezimal_calculator_en_text = {
     'button-decimal-lsez': 'log₆',
     'button-decimal-ldec': 'log₁₀',
 
+    'help-setting': `
+<h2>What’s this?</h2>
+<p>A calculator and base conversion app, between bases sezimal (six) and decimal (ten).</p>
+<p>You can use it like a regular decimal calculator, and it will convert the same calculations using sezimal, teaching you how to read the numbers along the way.</p>
+<p>By clicking or tapping on each of the displays (sezimal, niftimal, spell out or decimal), you can copy the display’s content to the clipboard.</p>
+<h3>Buttons usage</h3>
+<p>Some buttons give access to more operations/functions, when you press them a certain number of times in a row:</p>
+<ul>
+    <li>[ 󱹮 ] / [ . ] / [ , ] - the sezimal separator (according to locale/settings), when pressed two times in a row, or pressed in the fractional part of a number, gives you the recurring digits separator 󱹯 / ‥ / „ (see below more details on notation);</li><br/>
+    <li>[ × ] - the multiplication button, pressed two times in a row, gives you the ! factorial operator;</li><br/>
+    <li>[ ÷ ] - the division button, pressed two times in a row, gives you the ⁄ fraction slash, that allows you to enter numbers as fractions; pressed again, gives you the mod (modulo) operator;</li><br/>
+    <li>[ ^ ] - the exponentiation button cycles between the operations ^ (exponentiation), ² (square), √ (square root), ³ (cube), ∛ (cube root), ^ 1⁄ (arbitrary root), then back to ^ exponentiation;</li><br/>
+    <li>[ 󱹱 ] - the per nif button cycles between the operations 󱹱 (per niff 10²), 󱹲 (per arda 10³), 󱹳 (per six arda 10⁴), 󱹴 (per nif arda 10⁵), 󱹵 (per shadara 10¹⁰) - only for sezimal;</li><br/>
+    <li>[ % ] - the percent button cycles between the operations % (percent 14²), ‰ (per thousand 14³), ‱ (per myriad/ten thousand 10⁴) - only for decimal;</li><br/>
+    <li>[ sen ] - the sine function button cycles between the functions sin, asin, csc, acsc;</li><br/>
+    <li>[ cos ] - the cosine function button cycles between the functions cos, acos, sec, asec;</li><br/>
+    <li>[ tan ] - the tangent function button cycles between the functions tan, atan, cot, acot;</li><br/>
+    <li>[ log<i>ₑ</i> ] - the natural logarithm function button cycles between the functions log<i>ₑ</i>, the constant e, log₁₀/log₆ (sezimal logarithm), log₁₄/log₁₀ (decimal logarithm);</li><br/>
+    <li>[ log₁₀ ] - the sezimal logarithm function button cycles between the functions log₁₀/log₆ (sezimal logarithm) and log₁₄/log₁₀ (decimal logarithm);</li><br/>
+    <li>[ τ ] - the constant τ button cycles between the constants τ and π;</li>
+</ul>
+<p>The toggles/settings buttons on the first display line have the following functions:</p>
+<ul>
+    <li>[ ? ] - shows this help text;</li><br/>
+    <li>[ en ] - let’s you select the language and country, that determines how numbers are formatted, and sets the application language;</li><br/>
+    <li>[ 3 ] / [ 󱸃 ] - uses regular digits [ 3 ] or sezimal digits [ 󱸃 ] (see more below) for the sezimal and niftimal displays and buttons (decimal allways uses regular digits);</li><br/>
+    <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - how numbers are grouped and separated:<br/>
+        <ul>
+            <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - sezimal separators (see more below), every three digits;</li><br/>
+            <li>[ 3.3 ] / [ 󱸃.󱸃 ] - decimal/traditional separators, according to the selected locale, every three digits;</li><br/>
+            <li>[ 4.4 ] / [ 󱸄.󱸄 ] - decimal/traditional separators, according to the selected locale, every four digits (Misali’s seximal.net mode); this also changes, for English, the spelling out of the sezimal display, using six nif and unexian instead of arda and shadara;</li>
+        </ul>
+    </li><br/>
+    <li>[ nif 5̆ ] / [ nif 󱸣 ] - selects the niftimal display/conversion:<br/>
+        <ul>
+            <li>[ nif 5̆ ] / [ nif 󱸣 ] - niftimal display uses regularized digits (see below);</li><br/>
+            <li>[ nif Z ] - niftimal display uses digits 0123456789 and letters from 14 (decimal ten) up;</li><br/>
+            <li>[ <span style="text-decoration: line-through;">nif</span> ] - no niftimal display;</li>
+        </ul>
+    </li><br/>
+    <li>[ txt ] - enables [ txt ] / disables [ <span style="text-decoration: line-through;">txt</span> ] the spelling out of the sezimal display (as of now, only for English, Portuguese, Brazilian [phonemic orthography] and Esperanto);</li><br/>
+</ul>
+<p>And the settings buttons on the second display line:</p>
+<ul>
+    <li>[ prd ◕ ° ] - angle units for sezimal and decimal trigonometric functions;</li><br/>
+    <li>[ ⬢ ] - shastadari units and prefixes to and from SI/non SI units and prefixes;</li><br/>
+    <li>[ 0󱹮3 ] - how many digits after the sezimal separator results get rounded to; decimal precision is adjusted based on the sezimal precision;</li><br/>
+</ul>
+<h2>Notation used</h2>
+<ul>
+    <li>Number names - 0 zero; 1 one; 2 two; 3 three; 4 four; 5 five; 10 six; 11 seven; 12 eight; 13 nine; 14 ten; 15 eleven; 20 tweve; 21 dozen-one; 22 dozen-two; 23 dozen-three; 24 dozen-four; 25 dozen-five; 30 thirsy; 40 foursy; 50 fifsy; 100 nif (from the Ndom language for thirty-six); 1 000 arda (from Sanskrit अर्ध ardha for half, as in half six digits); 10 000 six arda; 100 000 nif arda; 1󱹬000 000 shadara (from Sanskrit षडार ṣaḍāra for a group of six, or a hexagon); from shadara we go for 10󱹬000 000 six shadara, 100󱹬000 000 nif shadara, 1 000󱹬000 000 arda shadara, 10 000󱹬000 000 six arda shadara, 100 000󱹬000 000 nif arda shadara, dishadara 1󱹬000 000󱹬000 000 (di from Sanskrit द्वि dvi for two); trishadara for 10³⁰ (tri from Sanskrit त्रि tri for three); charshadara for 10⁴⁰ (char from Sanskrit चतुर् catur for four); panshadara for 10⁵⁰ (pan from Sanskrit पञ्चन् pañcan, five); shashadara for 10¹⁰⁰ (sha from Sanskrit षष् ṣaṣ for six); use the spell out function to see how to read any sezimal number</li><br/>
+    <li>Sezimal separator 󱹮 - a needle shaped dash, pointing upwards, that starts above the base line at half the font’s X height and extends down to the font’s descender depth; it’s Unicode code point is U+F1E6E; compare it to the dot and comma: .󱹮,</li><br/>
+    <li>Recurring separator 󱹯 ‥ „ - doubling the radix separator (sezimal or decimal) gives you the recurring separator; for example, the sezimal fraction 1⁄5 can be written 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050 505...; the decimal fraction 1⁄3 0‥3 (0,3̅) = 0.333...; decimal 1⁄12 0.08‥3 (0.083̅) = 0.083 333...; that last example, without the recurring separator, is ambiguous: is only the 3 recurring, or 08333? For a one character rendering (like on this app), Unicode code points are 󱹯 U+F1E6F, ‥ U+2025 and „ U+201E;</li><br/>
+    <li>Arda separator ⍽ - the same as the narrow no‐break space, Unicode U+202F, is used to mark the first group of three digits to the left and right of the sezimal separator, and, from there on for each group of six digits, in practice alternating with the Shadara separator;</li><br/>
+    <li>Shadara separator 󱹬 - the same basic shape of the sezimal separator, one sixth of it’s size, pointing downwards, extending down from the font’s height, it marks the reading of shadaras each group of six digits in sezimal numbers, both to the left and right of the sezimal separator; it’s Unicode codepoint is U+F1E6C; compare it with the straight single quote '󱹬;</li><br/>
+    <li>Sezimal digits - 󱸀󱸁󱸂󱸃󱸄󱸅 for 012345; a dedicated representation for sezimal numbers; it’s a featural script, mapping three areas represeting values: <span class="horizontal-flip">◔</span> upper left represents 1, ◔ upper right represents 2, ◒ bottom also represents 2; each digit apart from zero “embraces” or “points to” the areas that sum up to it’s value: <span class="horizontal-flip">◔</span> 󱸁 one; ◔ 󱸂 two; <span class="horizontal-flip">◔</span> + ◔ = ◓ 󱸃 three; ◔ + ◒ = ◕ 󱸄 four; <span class="horizontal-flip">◔</span> + ◔ + ◒ = ● 󱸅 five;</li><br/>
+    <li>Regularized niftimal digits - conventional representation of base nif (thirty-six) uses letters for digits from ten up; the regularized representation uses the same basic six digits used to respresent sezimal 012345/󱸀󱸁󱸂󱸃󱸄󱸅 and extends them using five diacritics:<br/>
+        <ul>
+            <li>+00: 012345 󱸀󱸁󱸂󱸃󱸄󱸅 <span style="font-family: 'Sezimal Mono', monospace;">012345</span></li><br/>
+            <li>+10: 0̇1̇2̇3̇4̇5̇ 󱸆󱸇󱸈󱸉󱸊󱸋 <span style="font-family: 'Sezimal Mono', monospace;">6789AB</span></li><br/>
+            <li>+20: 0̈1̈2̈3̈4̈5̈ 󱸌󱸍󱸎󱸏󱸐󱸑 <span style="font-family: 'Sezimal Mono', monospace;">CDEFGH</span></li><br/>
+            <li>+30: 0̊1̊2̊3̊4̊5̊ 󱸒󱸓󱸔󱸕󱸖󱸗 <span style="font-family: 'Sezimal Mono', monospace;">IJKLMN</span></li><br/>
+            <li>+40: 0̄1̄2̄3̄4̄5̄ 󱸘󱸙󱸚󱸛󱸜󱸝 <span style="font-family: 'Sezimal Mono', monospace;">OPQRST</span></li><br/>
+            <li>+50: 0̆1̆2̆3̆4̆5̆ 󱸞󱸟󱸠󱸡󱸢󱸣 <span style="font-family: 'Sezimal Mono', monospace;">UVWXYZ</span></li><br/>
+            <li>˚ is the top part of 󱸃;  ˉ is the top part of 󱸄; ˘ is from the top part of 󱸅</li>
+        </ul>
+    </li>
+</ul>
+<p />
+<p />
+`,
+
     //
     // Units
     //
@@ -68,7 +142,7 @@ const sezimal_calculator_en_text = {
     'option-units-ang': 'Time',
     'option-units-avt': 'Frequency',
     'option-units-pad': 'Length',
-    'option-units-kex': 'Area',
+    'option-units-ktr': 'Area',
     'option-units-ayt': 'Volume',
     'option-units-veg': 'Speed',
     'option-units-tvr': 'Acceleration',
@@ -120,12 +194,12 @@ const sezimal_calculator_en_text = {
     'optgroup-units-generic-shastadari': 'Shastadari',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Non-S.I.',
-    'optgroup-units-generic-us-uk': 'US/UK',
+    'optgroup-units-generic-us-uk': 'Imperial/US',
     'optgroup-units-generic-us': 'US',
-    'optgroup-units-generic-uk': 'UK',
+    'optgroup-units-generic-uk': 'Imperial',
     'optgroup-units-generic-us-fluid': 'US fluid',
     'optgroup-units-generic-us-dry': 'US dry',
-    'optgroup-units-generic-uk-fluid': 'UK fluid',
+    'optgroup-units-generic-uk-fluid': 'Imperial',
 
     //
     // Sezimal Prefixes
@@ -269,6 +343,12 @@ const sezimal_calculator_en_text = {
     'option-binary-prefix-kibi': 'Ki – kibi – 2¹⁰',
 
     //
+    // Prefixes
+    //
+    'unit-prefixes-explanation': `
+`,
+
+    //
     // Time - anuga
     //
     'unit-ang-explanation': `
@@ -283,9 +363,9 @@ const sezimal_calculator_en_text = {
     <li>the boda (BOH-duh), symbol bod, corresponding to the last two divisions, closer to the millisecond;</li>
 </ul>
 <p>So, one day is divided:</p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 12pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">   5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :    55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">dina . </span><span style="font-size: 12pt; font-weight: bold;">uta : posha : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
+<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 16pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
+<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">   5 .  </span><span style="font-weight: bold;">55 :    55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
+<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">dina . </span><span style="font-weight: bold;">uta : posha : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
 <p>Prefixes can be used with any of the units of time, and the conversion between the units and prefixes is done as follows:</p>
 <table class="explanation">
     <colgroup>
@@ -375,12 +455,12 @@ const sezimal_calculator_en_text = {
 <p>In science, the base sezimal unit of time is the anuga, so all other units that derive from time in any way use the anuga in their definitions.</p>
 <p>The formal definition of the anuga is on pair with the S.I. definition of the second, stating that:</p>
 <p></p>
-<p>   the unperturbed optical 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) transition of the ⁴⁴³Yb⁺ ion has a frequency of <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203 150 505 354 503 234.530 12 avt<sup><a href="#reference_1">1</a></sup>, when expressed in the unit avrita (avt), which is equal to ang⁻¹ (in decimal, ¹⁷¹Yb⁺ and 688 358 979 309 308.24 Hz<sup><a href="#reference_2">2</a></sup>).</p>
+<p>   the unperturbed optical 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) transition of the ⁴⁴³Yb⁺ ion has a frequency of <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203 150󱹬505 354󱹬503 234󱹮530 12 avt<sup><a href="#reference_1">1</a></sup>, when expressed in the unit avrita (avt), which is equal to ang⁻¹ (in decimal, ¹⁷¹Yb⁺ and 688,358,979,309,308.24 Hz<sup><a href="#reference_2">2</a></sup>).</p>
 <p></p>
-<p>Finally, the conversion between anuga and second; we take the average day of 1,504,000 seconds (decimal 86,400), and divide it by the average day of 100,000,000 (decimal 1,679,616) anugas:
+<p>Finally, the conversion between anuga and second; we take the average day of 1󱹬504 000 seconds (decimal 86,400), and divide it by the average day of 100󱹬000 000 (decimal 1,679,616) anugas:
 </p>
-<p>So, 1 ang = 1,504,000⁄100,000,000 = 41⁄2,130 = 0.015 04 s (decimal 25⁄486 = 0&zwj;.&zwj;0&zwj;‥&zwj;514 403 292 181 069 958 847 736 625);</p>
-<p>Conversely, 1 s = 100,000,000⁄1,504,000 = 2,130⁄41 = 31&zwj;‥&zwj;235 01 ang (decimal 486⁄25 = 19.44);</p>
+<p>So, 1 ang = <math><mfrac><mn>1󱹬504 000</mn><mn>100󱹬000 000</mn></mfrac></math> = <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = 0󱹮015 04 s (decimal <math><mfrac><mn>25</mn><mn>486</mn></mfrac></math> = 0.0‥514 403 292 181 069 958 847 736 625);</p>
+<p>Conversely, 1 s = <math><mfrac><mn>100󱹬000 000</mn><mn>1󱹬504 000</mn></mfrac></math> = <math><mfrac><mn>2 130</mn><mn>41</mn></mfrac></math> = 31󱹯235 01 ang (decimal <math><mfrac><mn>486</mn><mn>25</mn></mfrac></math> = 19.44);</p>
 <p></p>
 <p>References:</p>
 <p id="reference_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Recommendations adopted by the International Committee for Weights
@@ -412,7 +492,7 @@ Definition of the Second, Ytterbium 171 Ion</a>
 
     'unit-avt-explanation': `
 <br/>
-<p>Frequency is registered using the unit avrita (uh-VREE-tuh), símbolo avt, that represents events, cycles, ocurrences etc. per anuga (the base unit of time).</p>
+<p>Frequency is registered using the unit avrita (uh-VREE-tuh), symbol avt, that represents events, cycles, ocurrences etc. per anuga (the base unit of time).</p>
 <p>An interesting property of all units envolving time in sezimal, is that is fairly easy to convert between the several units of civil time and the anuga:</p>
 <table class="explanation">
     <colgroup>
@@ -495,28 +575,109 @@ Definition of the Second, Ytterbium 171 Ion</a>
     'option-decimal-units-avt-hertz': 'Hertz – Hz',
     'option-decimal-units-avt-rpm': 'rpm',
 
+    'unit-pad-explanation': `
+<p>The pada (PAH-duh), symbol pad, is the unit of measure of length using the sezimal base;</p>
+
+<p>It’s formally defined as the distance travelled by light in <math><mfrac><mn>1</mn><mn>135 005󱹬235 440</mn></mfrac></math> of one anuga (<math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> s, see the formal anuga definition on the time units page).</p>
+
+<p>Conversion to and from the S.I. is given by taking the S.I. speed of light of 45 425󱹬332 014 (decimal 299,792,458) m/s, dividing it by it’s equivalent using Shastadari units, that is 135 005󱹬235 440 (decimal 594,838,032) pad/ang (see the page about speed units), then multiplying it by the conversion of anugas to seconds (see the time units page):</p>
+
+<p class="center">1 pad = <math><mfrac><mn>45 425󱹬332 014</mn><mn>135 005󱹬235 440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
+<br/>(decimal <math><mfrac><mn>3,747,405,725</mn><mn>144,545,641,776</mn></mfrac></math> = 0.025 925 414 830 613 m)</p>
+<p></p>
+
+<p>Another way to get to same conversion rate is by taking Earth’s <b>average</b> gravity’s acceleration (gravity’s acceleration is neither constant, neither 13󱹮450 123 (decimal 9.806 65) m/s² on all of the planet’s surface), calculated<sup><a href="#reference_1">1</a></sup> as 13󱹮444 135󱹬140 131󱹬050 515 (decimal 9.797 566 850 130 385) m/s², and multiply that value by the conversion of the anuga to the second, squared:</p>
+<p>Taking the gravity’s acceleration in fraction form:</p>
+<p class="center">1 g<sub>avg</sub> = <math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> = 13󱹮444 135󱹬140 131󱹬050 515 m/s²</p>
+<p class="center">(decimal <math><mfrac><mn>12,141,594,549</mn><mn>1,239,245,900</mn></mfrac></math> = 9.797 566 850 130 385 m/s²)</p>
+<p class="center"><math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2 130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
+<br/>(decimal <math><mfrac><mn>3,747,405,725</mn><mn>144,545,641,776</mn></mfrac></math> = 0.025 925 414 830 613 m)</p>
+<p>This means that the pada is also the distance that, on Earth, on average, an object travels on a free fall during one anuga, due to the acceleration of gravity, which is 1 pad/ang² (see more on the units of acceleration page).</p>
+<p></p>
+<p>References:</p>
+<p id="reference_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Primel Metrology - Second Mundane Reality: Acceleration due to Earth’s Gravity</a>
+</p>
+<p></p>
+`,
     'option-units-pad-pada': 'pada – pad',
-    'option-decimal-units-pad-meter': 'meter – m',
+    'option-decimal-units-pad-meter': 'metre – m',
     'option-decimal-units-pad-mile': 'mile – ml',
     'option-decimal-units-pad-yard': 'yard – yd',
     'option-decimal-units-pad-foot': 'foot – ft',
     'option-decimal-units-pad-inch': 'inch – in',
 
-    'option-units-kex-keshe': 'keshe – kex',
-    'option-decimal-units-kex-sq-meter': 'sq. meter – m²',
-    'option-decimal-units-kex-are': 'are - a',
-    'option-decimal-units-kex-acre': 'acre - ac',
-    'option-decimal-units-kex-sq-mile': 'sq. mile – ml²',
-    'option-decimal-units-kex-sq-yard': 'sq. yard – yd²',
-    'option-decimal-units-kex-sq-foot': 'sq. foot – ft²',
-    'option-decimal-units-kex-sq-inch': 'sq. inch – in²',
+    'unit-ktr-explanation': `
+<p>
+Since the unit of length is the pada (PAH-duh), symbol pad, the unit of area is the square pada, pad²; because using prefixes with compound units (like pad·pad) can be confusing, in that 1 Dpad² is not 100 pad², but instead 10 000 pad², we define a special name for the unit of area, namely the ketra (KAY-truh), symbol ktr, that is equal to pad²;
+</p>
+<p>Some common prefix equivalences between ktr and pad²:</p>
+<table>
+    <colgroup>
+        <col span="1" style="width: 45%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 45%;">
+    </colgroup>
+    <tr><td style="text-align: right;">1 ktr</td>          <td style="text-align: center;">=</td> <td style="text-align: left;">1 pad²</td></tr>
+    <tr><td style="text-align: right;">1 Ektr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 pad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>D</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>E</b>pad²</td></tr>
+    <tr><td style="text-align: right;">1 Tktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Epad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>C</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>D</b>pad²</td></tr>
+    <tr><td style="text-align: right;">1 Pktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Dpad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>X</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>T</b>pad²</td></tr>
+    <tr><td style="text-align: right;">1 XEktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Tpad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>XD</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>C</b>pad²</td></tr>
+    <tr><td style="text-align: right;">1 XTktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Cpad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>XC</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>P</b>pad²</td></tr>
+    <tr><td style="text-align: right;">1 XPktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Ppad²</td></tr>
+    <tr><td style="text-align: right;">1 <b>DX</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>X</b>pad²</td></tr>
+</table>
+<p></p>
+`,
+    'option-units-ktr-ketra': 'ketra – ktr',
+    'option-units-ktr-sq-pada': 'sq. pada – pad²',
+    'option-decimal-units-ktr-sq-meter': 'sq. metre – m²',
+    'option-decimal-units-ktr-are': 'are - a',
+    'option-decimal-units-ktr-acre': 'acre - ac',
+    'option-decimal-units-ktr-sq-mile': 'sq. mile – ml²',
+    'option-decimal-units-ktr-sq-yard': 'sq. yard – yd²',
+    'option-decimal-units-ktr-sq-foot': 'sq. foot – ft²',
+    'option-decimal-units-ktr-sq-inch': 'sq. inch – in²',
 
     'option-units-ayt-aytan': 'aytan – ayt',
-    'option-decimal-units-ayt-cb-meter': 'cb. meter – m³',
-    'option-decimal-units-ayt-liter': 'liter – L',
+    'option-units-ayt-cb-pad': 'cb.pada – pad³',
+    'option-decimal-units-ayt-cb-meter': 'cb. metre – m³',
+    'option-decimal-units-ayt-liter': 'litre – L',
     'option-decimal-units-ayt-cb-mile': 'cb. mile – ml³',
     'option-decimal-units-ayt-cb-yard': 'cb. yard – yd³',
     'option-decimal-units-ayt-cb-foot': 'cb. foot – ft³',
+    'option-decimal-units-ayt-cb-inch': 'cb. inch – in³',
+
+    'option-decimal-units-ayt-us-fl-dr': 'US dram  – US fl dr',
+    'option-decimal-units-ayt-us-tsp': 'US tea spoon – US tsp',
+    'option-decimal-units-ayt-us-tbsp': 'US table spoon – US tbsp',
+    'option-decimal-units-ayt-us-fl-oz': 'US ounce - US fl oz',
+    'option-decimal-units-ayt-us-cup': 'US cup – US cup',
+    'option-decimal-units-ayt-us-pt': 'US pint – US pt',
+    'option-decimal-units-ayt-us-qt': 'US quarter – US qt',
+    'option-decimal-units-ayt-us-gal': 'US gallon – US gal',
+    'option-decimal-units-ayt-us-pt-dry': 'US pint - US pt dry',
+    'option-decimal-units-ayt-us-qt-dry': 'US quarter - US qt dry',
+    'option-decimal-units-ayt-us-gal-dry': 'US gallon - US gal dry',
+    'option-decimal-units-ayt-us-pk-dry': 'US peck - US pk dry',
+    'option-decimal-units-ayt-us-bu-dry': 'US bushel - US bu dry',
+
+    'option-decimal-units-ayt-uk-fl-dr': 'fluid dram - fl dr',
+    'option-decimal-units-ayt-uk-fl-oz': 'fluid ounce - fl oz',
+    'option-decimal-units-ayt-uk-pt': 'pint - pt',
+    'option-decimal-units-ayt-uk-qt': 'quarter - qt',
+    'option-decimal-units-ayt-uk-gal': 'gallon - gal',
+
+    'translation-display-UK-fl-dr': 'fl dr',
+    'translation-display-UK-fl-oz': 'fl oz',
+    'translation-display-UK-pt': 'pt',
+    'translation-display-UK-qt': 'qt',
+    'translation-display-UK-gal': 'gal',
+
 
     'option-decimal-units-prd-prd': 'paridis',
     'option-decimal-units-prd-tau_rad': 'τ radians',

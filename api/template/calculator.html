@@ -11,24 +11,33 @@
         <link rel="manifest" href="/calculator/manifest.webmanifest" crossorigin="use-credentials" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-qp.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-mono.css" />
+        <link rel="preconnect" href="https://midia.tauga.online" crossorigin="anonymous"/>
+        <link href="https://midia.tauga.online/fonts/iosevka/IosevkaSezimalQP-Regular.woff2" crossorigin="anonymous" rel="preload" as="font"/>
+        <link href="https://midia.tauga.online/fonts/iosevka/IosevkaSezimalQP-Bold.woff2" crossorigin="anonymous" rel="preload" as="font"/>
+        <link href="https://midia.tauga.online/fonts/iosevka/IosevkaSezimalQP-Italic.woff2" crossorigin="anonymous" rel="preload" as="font"/>
+        <link href="https://midia.tauga.online/fonts/iosevka/IosevkaSezimalQP-BoldItalic.woff2" crossorigin="anonymous" rel="preload" as="font"/>
+        <link rel="stylesheet" type="text/css" href="https://midia.tauga.online/fonts/iosevka/font-iosevka-qp.css" />
+        <link rel="stylesheet" type="text/css" href="https://midia.tauga.online/fonts/iosevka/font-iosevka-mono.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/calculator.css" />
+<!--         <link rel="stylesheet" type="text/css" href="/static/css/calculator-light.css" /> -->
     </head>
     <body>
-        <div id="units" class="control-panel" hidden>
+        <div id="units" class="configuration-center" hidden>
+            <span name="sezimal-units" style="font-size: 16pt; font-weight: bold;">Shastadari Units of Measure</span><br/><br/>
+            <label id="label-sezimal-units" for="calculator-sezimal-unit-type"></label><br/><br/>
+            <span onclick="toggle_units(false)">[ ✓ ]</span><br/>
             <table id="units-table">
                 <colgroup>
                     <col span="1" style="width: 50%;">
                     <col span="1" style="width: 38%;">
                     <col span="1" style="width: 12%;">
                 </colgroup>
-                <tr>
+<!--                <tr>
                     <td colspan="2" id="td-shastadari-units" style="font-size: 18pt; font-weight: bold;">
                         Shastadari Units of Measure
                     </td>
-                    <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">× </span></td>
-                </tr>
+                    <td style="text-align: right;" onclick="toggle_units(false)"><span style="font-size: 26pt;">✓ </span></td>
+                </tr>-->
                 <tr>
                     <td colspan="3" style="text-align: center;">
                         <br/>
@@ -44,7 +53,7 @@
                                 <option value="ang" name="option-units-ang">Time</option>
                                 <option value="avt" name="option-units-avt">Frequency</option>
                                 <option value="pad" name="option-units-pad">Length</option>
-                                <option value="kex" name="option-units-kex">Area</option>
+                                <option value="ktr" name="option-units-ktr">Area</option>
                                 <option value="ayt" name="option-units-ayt">Volume</option>
                                 <option value="veg" name="option-units-veg">Speed</option>
                                 <option value="tvr" name="option-units-tvr">Acceleration</option>
@@ -98,7 +107,7 @@
                     <td style="text-align: center;">
                         <br/>
                         <label id="label-prefix-sezimal" for="calculator-prefix-sezimal">Prefix</label><br/>
-                        <select id="calculator-prefix-sezimal" onchange="set_sezimal_prefix(this)">
+                        <select id="calculator-prefix-sezimal" style="font-size: 10pt;" onchange="set_sezimal_prefix(this)">
                             <option value="NDX" name="option-sezimal-prefix-ndxm" hidden>NDX – nidishama  – 10¹²⁰</option>
                             <option value="NXP" name="option-sezimal-prefix-nxpm" hidden>NXP – nishapama  – 10¹¹⁵</option>
                             <option value="NXC" name="option-sezimal-prefix-nxcm" hidden>NXC – nishacharma – 10¹¹⁴</option>
@@ -204,7 +213,7 @@
                         <br/>
                         <label id="label-prefix-decimal" for="calculator-prefix-decimal">Prefix</label><br/>
                         <label id="label-prefix-decimal-binary" for="calculator-prefix-decimal" hidden>Prefix</label>
-                        <select id="calculator-prefix-decimal" onchange="set_decimal_prefix(this)">
+                        <select id="calculator-prefix-decimal" style="font-size: 10pt;" onchange="set_decimal_prefix(this)">
                             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option value="Q"  name="option-decimal-prefix-quetta">Q – quetta – 10³⁰</option>
                                 <option value="R"  name="option-decimal-prefix-ronna" >R – ronna – 10²⁷</option>
@@ -305,24 +314,25 @@
                         </select>
                     </td>
                 </tr>
-                <tr id="unit-kex" hidden>
+                <tr id="unit-ktr" hidden>
                     <td style="text-align: center;">
-                        <select id="calculator-sezimal-unit-kex" onchange="set_sezimal_unit(this)">
-                            <option name="option-units-kex-keshe" value="kex">kex</option>
+                        <select id="calculator-sezimal-unit-ktr" onchange="set_sezimal_unit(this)">
+                            <option name="option-units-ktr-ketra" value="ktr">ktr</option>
+<!--                             <option name="option-units-ktr-sq-pada" value="pad²">pad²</option> -->
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
-                        <select id="calculator-decimal-unit-kex" onchange="set_decimal_unit(this)">
+                        <select id="calculator-decimal-unit-ktr" onchange="set_decimal_unit(this)">
                             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                                <option name="option-decimal-units-kex-sq-meter" value="m2">m²</option>
-                                <option name="option-decimal-units-kex-are" value="a">a</option>
+                                <option name="option-decimal-units-ktr-sq-meter" value="m2">m²</option>
+                                <option name="option-decimal-units-ktr-are" value="a">a</option>
                             </optgroup>
                             <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
-                                <option name="option-decimal-units-kex-acre" value="ac">ac</option>
-                                <option name="option-decimal-units-kex-sq-mile" value="ml2">ml²</option>
-                                <option name="option-decimal-units-kex-sq-yard" value="yd2">yd²</option>
-                                <option name="option-decimal-units-kex-sq-foot" value="ft2">ft²</option>
-                                <option name="option-decimal-units-kex-sq-inch" value="in2">in²</option>
+                                <option name="option-decimal-units-ktr-acre" value="ac">ac</option>
+                                <option name="option-decimal-units-ktr-sq-mile" value="ml2">ml²</option>
+                                <option name="option-decimal-units-ktr-sq-yard" value="yd2">yd²</option>
+                                <option name="option-decimal-units-ktr-sq-foot" value="ft2">ft²</option>
+                                <option name="option-decimal-units-ktr-sq-inch" value="in2">in²</option>
                             </optgroup>
                         </select>
                     </td>
@@ -331,42 +341,43 @@
                     <td style="text-align: center;">
                         <select id="calculator-sezimal-unit-ayt" onchange="set_sezimal_unit(this)">
                             <option name="option-units-ayt-aytan" value="ayt">ayt</option>
+<!--                             <option name="option-units-ayt-cub-pad" value="pad³">pad³</option> -->
                         </select>
                     </td>
                     <td colspan="2" style="text-align: center;">
                         <select id="calculator-decimal-unit-ayt" onchange="set_decimal_unit(this)">
                             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
                                 <option name="option-decimal-units-ayt-cb-meter" value="m3">m³ – kL</option>
-                                <option name="option-decimal-units-ayt-liter" value="L">L ‐ dm³</option>
+                                <option name="option-decimal-units-ayt-liter"    value="L">L ‐ dm³</option>
                             </optgroup>
                             <optgroup name="optgroup-units-generic-us-uk" label="US/UK">
                                 <option name="option-decimal-units-ayt-cb-yard" value="yd">yd³</option>
                                 <option name="option-decimal-units-ayt-cb-foot" value="ft">ft³</option>
                                 <option name="option-decimal-units-ayt-cb-inch" value="in">in³</option>
                             </optgroup>
+                            <optgroup name="optgroup-units-generic-uk-fluid" label="UK fluid">
+                                <option name="option-decimal-units-ayt-uk-fl-dr" value="UK fl dr">dr</option>
+                                <option name="option-decimal-units-ayt-uk-fl-oz" value="UK fl oz">oz</option>
+                                <option name="option-decimal-units-ayt-uk-pt"    value="UK pt">pt</option>
+                                <option name="option-decimal-units-ayt-uk-qt"    value="UK qt">qt</option>
+                                <option name="option-decimal-units-ayt-uk-gal"   value="UK gal">gal</option>
+                            </optgroup>
                             <optgroup name="optgroup-units-generic-us-fluid" label="US fluid">
-                                <option value="US fl dr">dr</option>
-                                <option value="tsp">tsp</option>
-                                <option value="tbsp">tbsp</option>
-                                <option value="US fl oz">oz</option>
-                                <option value="US cup">cup</option>
-                                <option value="US pt">pt</option>
-                                <option value="US qt">qt</option>
-                                <option value="US gal">gal</option>
+                                <option name="option-decimal-units-ayt-us-fl-dr" value="US fl dr">dr</option>
+                                <option name="option-decimal-units-ayt-us-tsp"   value="tsp">tsp</option>
+                                <option name="option-decimal-units-ayt-us-tbsp"  value="tbsp">tbsp</option>
+                                <option name="option-decimal-units-ayt-us-fl-oz" value="US fl oz">oz</option>
+                                <option name="option-decimal-units-ayt-us-cup"   value="US cup">cup</option>
+                                <option name="option-decimal-units-ayt-us-pt"    value="US pt">pt</option>
+                                <option name="option-decimal-units-ayt-us-qt"    value="US qt">qt</option>
+                                <option name="option-decimal-units-ayt-us-gal"   value="US gal">gal</option>
                             </optgroup>
                             <optgroup name="optgroup-units-generic-us-dry" label="US dry">
-                                <option value="US pt dry">pt</option>
-                                <option value="US qt dry">qt</option>
-                                <option value="US gal dry">gal</option>
-                                <option value="US pk dry">pk</option>
-                                <option value="US bu dry">bu</option>
-                            </optgroup>
-                            <optgroup name="optgroup-units-generic-uk-fluid" label="UK fluid">
-                                <option value="UK fl dr">dr</option>
-                                <option value="UK fl oz">oz</option>
-                                <option value="UK pt">pt</option>
-                                <option value="UK qt">qt</option>
-                                <option value="UK gal">gal</option>
+                                <option name="option-decimal-units-ayt-us-pt-dry"  value="US pt dry">pt</option>
+                                <option name="option-decimal-units-ayt-us-qt-dry"  value="US qt dry">qt</option>
+                                <option name="option-decimal-units-ayt-us-gal-dry" value="US gal dry">gal</option>
+                                <option name="option-decimal-units-ayt-us-pk-dry"  value="US pk dry">pk</option>
+                                <option name="option-decimal-units-ayt-us-bu-dry"  value="US bu dry">bu</option>
                             </optgroup>
                         </select>
                     </td>
@@ -868,7 +879,7 @@
                     <td colspan="3" id="unit-ang-explanation" hidden></td>
                     <td colspan="3" id="unit-avt-explanation" hidden></td>
                     <td colspan="3" id="unit-pad-explanation" hidden></td>
-                    <td colspan="3" id="unit-kex-explanation" hidden></td>
+                    <td colspan="3" id="unit-ktr-explanation" hidden></td>
                     <td colspan="3" id="unit-ayt-explanation" hidden></td>
                     <td colspan="3" id="unit-veg-explanation" hidden></td>
                     <td colspan="3" id="unit-tvr-explanation" hidden></td>
@@ -907,47 +918,46 @@
                 </tr>
             </table>
         </div>
-        <div id="displays">
+        <div id="settings">
             <div id="configuration-left" class="configuration-left">
-                <span id="toggle_help">[ ? ]</span>
-                <span id="toggle_locale" onclick="toggle_locale()">[ en ]</span>
-                <span id="toggle_spellout" onclick="toggle_spellout()">[ txt ]</span>
-                <span id="toggle_sezimal_digits" onclick="toggle_sezimal_digits()">[ 3 ]</span>
-                <span id="toggle_grouping" onclick="toggle_grouping()">[ 3&nnbsp;3 ]</span>
-                <span id="toggle_niftimal" onclick="toggle_niftimal()">[ nif ]</span>
-            </div>
+                <span id="toggle_help" onclick="toggle_help()">[ ? ]</span>
+<!--                 <span id="toggle_help" onclick="toggle_help()">[ ☀ ]</span> -->
+                <span id="toggle_locale" onclick="toggle_locale()">[ en ]</span>
+                <span id="toggle_sezimal_digits" onclick="toggle_sezimal_digits()">[ 3 ]</span>
+                <span id="toggle_grouping" onclick="toggle_grouping()">[ 3&nnbsp;3 ]</span>
+                <span id="toggle_niftimal" onclick="toggle_niftimal()">[ nif ]</span>
+                <span id="toggle_spellout" onclick="toggle_spellout()">[ txt ]</span>            </div>
             <div id="configuration-right" class="configuration-right">
-                <span id="toggle_angle_units" onclick="toggle_angle_units()">[ prd ○ τ rad ]</span>
-                <span id="toggle_units" onclick="toggle_units(true)">[ ⬡ ]</span>
-                <span id="toggle_sezimal_places" onclick="toggle_sezimal_places()">[ 0.3 ]</span>
+                <span id="toggle_angle_units" onclick="toggle_angle_units()">[ prd ◕ ° ]</span>
+                <span id="toggle_units" onclick="toggle_units(true)">[ ⬢ ]</span>
+                <span id="toggle_sezimal_places" onclick="toggle_sezimal_places()">[ 0.3 ]</span>
             </div>
             <div id="locale-setting" hidden class="configuration-center">
                 <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
                 <label id="label-sezimal-locale" for="calculator-sezimal-locale">Locale</label><br/><br/>
-                <span onclick="set_locale()">[ ✓ ]</span><br/><br/>
+                <span onclick="set_locale()">[ ✓ ]</span><br/><br/>
                 <select id="calculator-sezimal-locale">
-                    <option value="iso">ISO (comma)</option>
-                    <option value="iso_dot">ISO (dot)</option>
-                    <option value="code">Code (dot and _)</option>
+<!--                    <option value="iso">ISO (English 123 450,054 321)</option>
+                    <option value="iso_dot">ISO (English 123 450.054 321)</option>
+                    <option value="code">Code (English 123_450.054_321)</option>
                     <option value="ar">العربية (ar)</option>
-                    <option value="ar_latn">El-għàràbí (ar_Latn)</option>
+                    <option value="ar_latn">El-għàràbí (ar_Latn)</option>-->
                     <option value="bz">Brazileru (bz)</option>
-                    <option value="ca">Català (ca)</option>
+<!--                    <option value="ca">Català (ca)</option>
                     <option value="de">Deutsch (de)</option>
                     <option value="el">ελληνικά (el)</option>
-                    <!-- <option value="en">English (en)</option> -->
                     <option value="en_au">English - Australia (en_AU)</option>
                     <option value="en_br">English - Brazil (en_BR)</option>
-                    <option value="en_ca">English - Canada (en_CA)</option>
+                    <option value="en_ca">English - Canada (en_CA)</option>-->
                     <option value="en_gb">English - GB (en_GB)</option>
-                    <option value="en_ie">English - Ireland (en_IE)</option>
+<!--                    <option value="en_ie">English - Ireland (en_IE)</option>
                     <option value="en_in">English - India (en_IN)</option>
                     <option value="en_nz">English - New Zealand (en_NZ)</option>
-                    <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>
+                    <option value="en_shavian">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shavian)</option>-->
                     <option value="en_us">English - USA (en_US)</option>
-                    <option value="eo">Esperanto (eo)</option>
+<!--                    <option value="eo">Esperanto (eo)</option>-->
                     <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
-                    <option value="es_ar">Español - Argentina (es_AR)</option>
+<!--                    <option value="es_ar">Español - Argentina (es_AR)</option>
                     <option value="es_bo">Español - Bolivia (es_BO)</option>
                     <option value="es_cl">Español - Chile (es_CL)</option>
                     <option value="es_co">Español - Colombia (es_CO)</option>
@@ -960,9 +970,9 @@
                     <option value="fa">فارسی (fa)</option>
                     <option value="fa_latn">Fârsi (fa_Latn)</option>
                     <option value="fr_ca">Français - Canada (fr_CA)</option>
-                    <option value="fr_ch">Français - Suisse (fr_CH)</option>
+                    <option value="fr_ch">Français - Suisse (fr_CH)</option>-->
                     <option value="fr_fr">Français - France (fr_FR)</option>
-                    <option value="fr_ortograf" hidden>Fransè ortograf (fr_Ortograf)</option>
+<!--                    <option value="fr_ortograf" hidden>Fransè ortograf (fr_Ortograf)</option>
                     <option value="ga">Gaeilge (ga)</option>
                     <option value="ga_clo_gaelach" hidden>Ᵹɑeılᵹe clo (ga_Clo_Gaelach)</option>
                     <option value="ga_traditional" hidden>Gaeilge mh -> ṁ (ga_Traditional)</option>
@@ -982,9 +992,9 @@
                     <option value="ko">한국어 (ko)</option>
                     <option value="nl">Nederlands (nl)</option>
                     <option value="pl">Polski (pl)</option>
-                    <option value="pt_ao">português - Angola (pt_AO)</option>
+                    <option value="pt_ao">português - Angola (pt_AO)</option>-->
                     <option value="pt_br">português - Brasil (pt_BR)</option>
-                    <option value="pt_ch">Português - Suíça (pt_CH)</option>
+<!--                    <option value="pt_ch">Português - Suíça (pt_CH)</option>
                     <option value="pt_cv">Português - Cabo-Verde (pt_CV)</option>
                     <option value="pt_gq">Português - Guiné Equatorial (pt_GQ)</option>
                     <option value="pt_gw">Português - Guiné‐Bissau (pt_GW)</option>
@@ -1009,13 +1019,13 @@
                     <option value="zh_tw">中文 臺灣 (zh_TW)</option>
                     <option value="zh_hans">中文 简体 (zh_HanS)</option>
                     <option value="zh_hant">中文 正體 (zh_HanT)</option>
-                    <option value="zh_latn">Zhōngwén (zh_Latn)</option>
+                    <option value="zh_latn">Zhōngwén (zh_Latn)</option>-->
                 </select>
             </div>
             <div id="sezimal-places-setting" hidden class="configuration-center">
                 <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
                 <label id="label-sezimal-places" for="calculator-sezimal-places">Places</label><br/><br/>
-                <span onclick="set_sezimal_places()">[ ✓ ]</span><br/><br/>
+                <span onclick="set_sezimal_places()">[ ✓ ]</span><br/><br/>
                 <select id="calculator-sezimal-places">
                     <option  value="0"> 0</option>
                     <option  value="1"> 1</option>
@@ -1041,7 +1051,7 @@
             <div id="angle-unit-setting" hidden class="configuration-center">
                 <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><br/><br/>
                 <label id="label-sezimal-angle" for="calculator-sezimal-angle">Trigonometric functions units</label><br/><br/>
-                <span onclick="toggle_angle_units()">[ ✓ ]</span><br/>
+                <span onclick="toggle_angle_units()">[ ✓ ]</span><br/>
                 <table id="angle-units-table">
                     <colgroup>
                         <col span="1" style="width: 50%;">
@@ -1116,6 +1126,12 @@
                     </tr>
                 </table>
             </div>
+            <div id="help-setting-div" hidden class="help-text">
+                <span name="sezimal-calculator" style="font-size: 18pt; font-weight: bold;">Sezimal Calculator</span><span style="font-size: 14pt; text-align: right; float: right;" onclick="toggle_help()">[ × ]</span><br/><br/>
+                <div id="help-setting"></div>
+            </div>
+        </div>
+        <div id="displays">
             <div id="display" class="display">
                 <div id="sezimal_display" class="sezimal_display">
                     <div id="display_number" onclick="copy_to_clipboard(this)">0</div>
@@ -1337,14 +1353,113 @@
     <script src="/static/js/calculator_base_change.js"></script>
     <script src="/static/js/calculator_grouping.js"></script>
     <script src="/static/js/calculator_angle_unit.js"></script>
+    <script src="/static/js/calculator_help.js"></script>
     <script src="/static/js/calculator_load.js"></script>
     <script>
 calculator_load();
 
 function copy_to_clipboard(element) {
-    navigator.clipboard.writeText(element.innerHTML);
+    let value = element.innerHTML;
 
-    console.log('copiou', element.innerHTML);
+    value = value.
+        replace('<math>', '').
+        replace('</math>', '').
+        replace('<mfrac>', '').
+        replace('</mfrac>', '').
+        replace('</mn><mn>', '⁄').
+        replace('<mn>', '').
+        replace('</mn>', '')
+
+    navigator.clipboard.writeText(value);
 };
+
+document.addEventListener('keydown', function(event) {
+    const base_six = localStorage.getItem('sezimal-calculator-base') != 14;
+    let button = {
+        'value': '',
+    };
+
+    if ((event.keyCode == 27) || (event.key == 'c') || (event.key == 'z')) {
+        button.value = 'C';
+    } else if (event.key == 'b') {
+        event.preventDefault();
+        if (base_six) {
+            toggle_base_ten();
+        } else {
+            toggle_base_six();
+        };
+        return;
+    } else if (event.key == '(') {
+        button.value = '(';
+    } else if (event.key == ')') {
+        button.value = ')';
+    } else if ((event.keyCode == 8) || (event.keyCode == 46)) {
+        button.value = '⌫';
+    } else if (event.key == '7') {
+        if (base_six) {
+            button.value = 'e';
+        } else {
+            button.value = '7';
+        }
+    } else if (event.key == '8') {
+        if (base_six) {
+            button.value = 'τ';
+        } else {
+            button.value = '8';
+        }
+    } else if (event.key == '9') {
+        if (base_six) {
+            button.value = '00';
+        } else {
+            button.value = '9';
+        }
+    } else if (event.key == '^') {
+        button.value = '^';
+    } else if ((event.key == '%') || (event.key == '󱹱') || (event.key == '󱹲') || (event.key == '󱹳')) {
+        if (base_six) {
+            button.value = '󱹱';
+        } else {
+            button.value = '%';
+        }
+    } else if (event.key == '6') {
+        if (base_six) {
+            button.value = 'φ';
+        } else {
+            button.value = '6';
+        }
+    } else if ((event.key == '3') || (event.key == '󱸃')) {
+        button.value = '3';
+    } else if ((event.key == '4') || (event.key == '󱸄')) {
+        button.value = '4';
+    } else if ((event.key == '5') || (event.key == '󱸅')) {
+        button.value = '5';
+    } else if (event.key == '*') {
+        button.value = '*';
+    } else if (event.key == '/') {
+        button.value = '/';
+    } else if ((event.key == '0') || (event.key == '󱸀')) {
+        button.value = '0';
+    } else if ((event.key == '1') || (event.key == '󱸁')) {
+        button.value = '1';
+    } else if ((event.key == '2') || (event.key == '󱸂')) {
+        button.value = '2';
+    } else if (event.key == '+') {
+        button.value = '+';
+    } else if (event.key == '-') {
+        button.value = '-';
+    } else if ((event.key == '.') || (event.key == ',') || (event.key == '󱹮')) {
+        button.value = '.';
+    // } else if ((event.keyCode == 38) || (event.keyCode == 40)) {
+    //     button.value = '±';
+    } else if (event.keyCode == 13) {
+        button.value = '=';
+    };
+
+    if (button.value != '') {
+        event.preventDefault();
+        button_click(button);
+    };
+});
+
     </script>
 </html>

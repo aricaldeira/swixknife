@@ -57,7 +57,7 @@ button {
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
-    border-radius: 12px;
+    border-radius: 18%;
     border: 0;
     padding: 0;
     margin: 0;
@@ -234,7 +234,6 @@ button {
     line-height: 40px;
     vertical-align: middle;
     border: 0;
-    border-radius: 12px;
 }
 .settings {
     font-size: 12pt;
@@ -248,10 +247,11 @@ label {
     font-weight: bold;
     font-size: 12pt;
 }
-
 select {
     font-family: 'Sezimal QP';
     font-size: 12pt;
+    height: 2.5em;
+    text-align: center;
 }
 select > option {
     font-family: 'Sezimal QP';
@@ -283,29 +283,6 @@ td.units {
     vertical-align: top;
     word-wrap: break-word;
 }
-.units-explanation {
-    font-size: 12pt;
-    text-align: left;
-    font-variant-numeric: diagonal-fractions;
-
-    .title {
-        text-align: center;
-        font-weight: bold;
-    }
-    td {
-        font-size: 10pt;
-        width: auto;
-    }
-}
-.base-badge {
-    font-weight: normal;
-    font-style: italic;
-    text-align: center;
-    font-size: 9pt;
-    position: absolute;
-    left: 6px;
-    mix-blend-mode: difference;
-}
 .configuration-left {
     font-family: 'Sezimal QP';
     font-weight: normal;
@@ -336,10 +313,12 @@ td.units {
     mix-blend-mode: luminosity;
     text-align: center;
     padding: 6px;
-    white-space: nowrap;
-/*    overflow: hidden;
+/*     white-space: nowrap; */
+    word-wrap: break-word;
+
+    /*    overflow: hidden;
     text-overflow: ellipsis;*/
-    border-bottom: 2px double #607D8B;
+/*     border-bottom: 2px double #607D8B; */
 }
 table.explanation {
     font-size: 7pt;
@@ -363,3 +342,47 @@ a {
 /*     background-color: black; */
 }
 
+.horizontal-flip {
+    display: inline-block;
+    transform: scale(-1, 1);
+}
+.vertical-flip {
+    display: inline-block;
+    transform: scale(1, -1);
+}
+.help-text {
+    font-size: 14pt;
+    text-align: left;
+    line-height: 2em;
+/*     font-variant-numeric: diagonal-fractions; */
+}
+math {
+    font-family: 'Sezimal QP';
+}
+mn {
+    margin: 6px;
+}
+.units-explanation {
+    font-size: 14pt;
+    text-align: left;
+/*     font-variant-numeric: diagonal-fractions; */
+
+    .title {
+        text-align: center;
+        font-weight: bold;
+    }
+    td {
+/*         font-size: 10pt; */
+        width: auto;
+        line-height: 2em;
+    }
+    mfrac {
+        font-size: 18pt;
+    }
+}
+.mono-text {
+    font-family: 'Sezimal Mono', monospace;
+}
+.center {
+    text-align: center;
+}

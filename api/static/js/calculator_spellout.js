@@ -16,9 +16,9 @@ function update_spellout(calculation_refresh = true) {
     const txt_translation = localStorage.getItem('sezimal-translation-txt');
 
     if ((spellout == null) || (spellout == '') || (spellout == false)  || (spellout == 'false')) {
-        document.getElementById('toggle_spellout').innerHTML = `[ <span style="text-decoration: line-through;">${txt_translation}</span> ]`
+        document.getElementById('toggle_spellout').innerHTML = `[ <span style="text-decoration: line-through;">${txt_translation}</span> ]`
     } else {
-        document.getElementById('toggle_spellout').innerHTML = `[ ${txt_translation} ]`
+        document.getElementById('toggle_spellout').innerHTML = `[ ${txt_translation} ]`
     };
 
     if (calculation_refresh == true) {

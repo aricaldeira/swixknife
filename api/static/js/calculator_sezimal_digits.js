@@ -15,7 +15,7 @@ function update_sezimal_digits(calculation_refresh = true) {
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
 
     if ((sezimal_digits == null) || (sezimal_digits == '') || (sezimal_digits == false)  || (sezimal_digits == 'false')) {
-        document.getElementById('toggle_sezimal_digits').innerHTML = '[ 3 ]'
+        document.getElementById('toggle_sezimal_digits').innerHTML = '[ 3 ]'
         document.getElementById('button-sezimal-number-0').innerHTML = '0';
         document.getElementById('button-sezimal-number-1').innerHTML = '1';
         document.getElementById('button-sezimal-number-2').innerHTML = '2';
@@ -25,7 +25,7 @@ function update_sezimal_digits(calculation_refresh = true) {
         document.getElementById('button-sezimal-number-00').innerHTML = '00';
         document.getElementById('button-sezimal-lsez').innerHTML = 'log₁₀';
     } else {
-        document.getElementById('toggle_sezimal_digits').innerHTML = '[ 󱸃 ]'
+        document.getElementById('toggle_sezimal_digits').innerHTML = '[ 󱸃 ]'
         document.getElementById('button-sezimal-number-0').innerHTML = '󱸀';
         document.getElementById('button-sezimal-number-1').innerHTML = '󱸁';
         document.getElementById('button-sezimal-number-2').innerHTML = '󱸂';

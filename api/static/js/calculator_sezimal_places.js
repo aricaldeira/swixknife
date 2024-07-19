@@ -2,8 +2,7 @@
 function toggle_sezimal_places() {
     document.getElementById('sezimal-places-setting').hidden = !document.getElementById('sezimal-places-setting').hidden;
     document.getElementById('toggle_sezimal_places').hidden = !document.getElementById('toggle_sezimal_places').hidden;
-    document.getElementById('display').hidden = !document.getElementById('display').hidden;
-    document.getElementById('decimal_display').hidden = !document.getElementById('decimal_display').hidden;
+    document.getElementById('displays').hidden = !document.getElementById('displays').hidden;
     document.getElementById('configuration-left').hidden = !document.getElementById('configuration-left').hidden;
     document.getElementById('configuration-right').hidden = !document.getElementById('configuration-right').hidden;
 
@@ -60,20 +59,20 @@ function update_sezimal_places(calculation_refresh = true) {
     let separator;
 
     if (sezimal_punctuation == 'true') {
-        separator = '󱹭'
+        separator = '󱹮'
     } else {
         separator = document.getElementById('button-sezimal-separator').innerHTML;
     };
 
     if (sezimal_places == 0) {
         if (sezimal_digits == 'true') {
-            document.getElementById('toggle_sezimal_places').innerHTML = '[ 󱸀 ]';
+            document.getElementById('toggle_sezimal_places').innerHTML = '[ 󱸀 ]';
         } else {
-            document.getElementById('toggle_sezimal_places').innerHTML = '[ 0 ]';
+            document.getElementById('toggle_sezimal_places').innerHTML = '[ 0 ]';
         };
     } else {
         sezimal_places = sezimal_places.toString();
-        sezimal_places = '[ 0' + separator + sezimal_places + ' ]';
+        sezimal_places = '[ 0' + separator + sezimal_places + ' ]';
 
         if (sezimal_digits == 'true') {
             sezimal_places = sezimal_places.replace('0', '󱸀');

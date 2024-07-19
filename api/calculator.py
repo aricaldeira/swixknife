@@ -193,9 +193,9 @@ def api_calculator_process() -> dict:
         calculator.expression = dados['expression'][:-2] + '󱹳 '
 
     elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹳 '):
-        calculator.expression = dados['expression'][:-2] + '󱹴 '
+        calculator.expression = dados['expression'][:-2] + '󱹵 '
 
-    elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹴 '):
+    elif dados['value'] == '󱹱' and dados['expression'].endswith('󱹵 '):
         calculator.expression = dados['expression'][:-2] + '󱹱 '
 
     elif dados['value'] == 'τ' and dados['expression'].endswith('τ'):
@@ -235,19 +235,13 @@ def api_calculator_process() -> dict:
         calculator.expression = dados['expression'][:-5] + 'ln('
 
     elif dados['value'] == 'lsez(' and dados['expression'].endswith('lsez('):
-        calculator.expression = dados['expression'][:-5] + 'ln('
-
-    elif dados['value'] == 'lsez(' and dados['expression'].endswith('ln('):
-        calculator.expression = dados['expression'][:-3] + 'ldec('
+        calculator.expression = dados['expression'][:-5] + 'ldec('
 
     elif dados['value'] == 'lsez(' and dados['expression'].endswith('ldec('):
         calculator.expression = dados['expression'][:-5] + 'lsez('
 
     elif dados['value'] == 'ldec(' and dados['expression'].endswith('ldec('):
-        calculator.expression = dados['expression'][:-5] + 'ln('
-
-    elif dados['value'] == 'ldec(' and dados['expression'].endswith('ln('):
-        calculator.expression = dados['expression'][:-3] + 'lsez('
+        calculator.expression = dados['expression'][:-5] + 'lsez('
 
     elif dados['value'] == 'ldec(' and dados['expression'].endswith('lsez('):
         calculator.expression = dados['expression'][:-5] + 'ldec('
@@ -306,15 +300,15 @@ def api_calculator_process() -> dict:
     niftimal_display = calculator.niftimal_display
 
     if calculator.sezimal_digits:
-        display = display.replace(calculator.locale.SEZIMAL_SEPARATOR, '󱹭')
-        display = display.replace('󱹭󱹭', '󱹮')
-        display = display.replace(calculator.locale.GROUP_SEPARATOR, ' ')
-        display = display.replace(calculator.locale.FRACTION_GROUP_SEPARATOR, ' ')
+        display = display.replace(calculator.locale.SEZIMAL_SEPARATOR, '󱹮')
+        display = display.replace('󱹮󱹮', '󱹯')
+        display = display.replace(calculator.locale.GROUP_SEPARATOR, '󱹭')
+        display = display.replace(calculator.locale.FRACTION_GROUP_SEPARATOR, '󱹭')
 
-        niftimal_display = niftimal_display.replace(calculator.locale.SEZIMAL_SEPARATOR, '󱹭')
-        niftimal_display = niftimal_display.replace('󱹭󱹭', '󱹮')
-        niftimal_display = niftimal_display.replace(calculator.locale.GROUP_SEPARATOR, ' ')
-        niftimal_display = niftimal_display.replace(calculator.locale.FRACTION_GROUP_SEPARATOR, ' ')
+        niftimal_display = niftimal_display.replace(calculator.locale.SEZIMAL_SEPARATOR, '󱹮')
+        niftimal_display = niftimal_display.replace('󱹮󱹮', '󱹯')
+        niftimal_display = niftimal_display.replace(calculator.locale.GROUP_SEPARATOR, '󱹭')
+        niftimal_display = niftimal_display.replace(calculator.locale.FRACTION_GROUP_SEPARATOR, '󱹭')
 
     else:
         display = display.replace(',,', '„').replace('..', '‥')
@@ -326,6 +320,15 @@ def api_calculator_process() -> dict:
     niftimal_display = niftimal_display.replace('ₑ', '<i>ₑ</i>')
     decimal_display = decimal_display.replace('ₑ', '<i>ₑ</i>')
 
+    #
+    # Chrome doesn’t play nice with the fraction slash,
+    # so we convert it to mathml
+    #
+    # if 'Chrome' in request.headers.get('User-Agent', ''):
+    #     display = _fraction_to_mathml(display)
+    #     niftimal_display = _fraction_to_mathml(niftimal_display)
+    #     decimal_display = _fraction_to_mathml(decimal_display)
+
     resposta = {
         'expression': calculator.sezimal_expression,
         'decimal_expression': calculator.decimal_expression,
@@ -336,25 +339,26 @@ def api_calculator_process() -> dict:
         'spellout': '',
         'separator': calculator.locale.SEZIMAL_SEPARATOR,
         'group_separator': calculator.locale.GROUP_SEPARATOR,
+        'digits': calculator.locale.DIGITS,
         'sezimal_digits': calculator.sezimal_digits,
     }
 
     if not calculator.error:
-        if dados['sezimal_unit']:
-            if dados['sezimal_unit'] in UNIT_SIMPLIFIED_SYMBOL:
-                resposta['display'] += UNIT_SIMPLIFIED_SYMBOL[dados['sezimal_unit']]
-            else:
-                resposta['display'] += '\N{NNBSP}' + dados['sezimal_unit']
-
-        if dados['decimal_unit']:
-            if dados['decimal_unit'] in '%‰‱':
-                resposta['decimal_display'] += dados['decimal_unit']
-            elif dados['decimal_unit'][0] in ('π', 'τ') \
-                or 'pi_' in dados['decimal_unit'] \
-                or 'tau_' in dados['decimal_unit']:
-                resposta['decimal_display'] += '\N{ZWSP}' + dados['decimal_unit']
-            else:
-                resposta['decimal_display'] += '\N{NNBSP}' + dados['decimal_unit']
+        # if dados['sezimal_unit']:
+        #     if dados['sezimal_unit'] in UNIT_SIMPLIFIED_SYMBOL:
+        #         resposta['display'] += UNIT_SIMPLIFIED_SYMBOL[dados['sezimal_unit']]
+        #     else:
+        #         resposta['display'] += '\N{NNBSP}' + dados['sezimal_unit']
+        #
+        # if dados['decimal_unit']:
+        #     if dados['decimal_unit'] in '%‰‱':
+        #         resposta['decimal_display'] += dados['decimal_unit']
+        #     elif dados['decimal_unit'][0] in ('π', 'τ') \
+        #         or 'pi_' in dados['decimal_unit'] \
+        #         or 'tau_' in dados['decimal_unit']:
+        #         resposta['decimal_display'] += '\N{ZWSP}' + dados['decimal_unit']
+        #     else:
+        #         resposta['decimal_display'] += '\N{NNBSP}' + dados['decimal_unit']
 
         if dados['spellout']:
             resposta['show_spellout'] = True
@@ -431,3 +435,50 @@ def calculator_manifest() -> str:
         text = text.replace('"Sezimal calculator, base and units converter"', '"Kawkuladora sezimaw, konversawn di bazi numérika i unidadis di medida"')
 
     return text
+
+
+def _fraction_to_mathml(display):
+    if '⁄' not in display:
+        return display
+
+    PARTS_OF_FRACTION = '0123456789󱸀󱸁󱸂󱸃󱸄󱸅󱹮,.󱹯󱹭„‥ 󱹬\N{ZWJ}'
+
+    while len(display.split('⁄', 1)) == 2:
+        parts = display.split('⁄', 1)
+
+        #
+        # Check if there’s a space or parentheses in either part
+        #
+        if ' ' not in parts[0] and '(' not in parts[0]:
+            display = '<math><mfrac><mn>' + parts[0]
+        #
+        # There are either spaces or parentheses in the first term,
+        # we have to find which is closer to the number
+        #
+        else:
+            subparts_space = parts[0].split(' ')
+            subparts_parentheses = parts[0].split('(')
+
+            if len(subparts_space[-1]) < len(subparts_parentheses[-1]):
+                display = ' '.join(subparts_space[:-1]) + '<math><mfrac><mn>' + subparts_space[-1]
+            else:
+                display = ' '.join(subparts_parentheses[:-1]) + '<math><mfrac><mn>' + subparts_parentheses[-1]
+
+        display += '</mn><mn>'
+
+        if ' ' not in parts[1] and '(' not in parts[1]:
+            display += parts[1] + '</mn></mfrac></math>'
+        #
+        # There are either spaces or parentheses in the first term,
+        # we have to find which is closer to the number
+        #
+        else:
+            subparts_space = parts[1].split(' ')
+            subparts_parentheses = parts[1].split('(')
+
+            if len(subparts_space[0]) < len(subparts_parentheses[0]):
+                display += subparts_space[0] + '</mn></mfrac></math>' + ' '.join(subparts_space[1:])
+            else:
+                display += subparts_parentheses[0] + '</mn></mfrac></math>' + ' '.join(subparts_parentheses[1:])
+
+    return display

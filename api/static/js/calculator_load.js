@@ -99,6 +99,11 @@ function calculator_load() {
     */
     if (localStorage.getItem('sezimal-calculator-angle-unit') === null) {
         localStorage.setItem('sezimal-calculator-angle-unit', 'prd');
+        localStorage.setItem('sezimal-calculator-angle-prefix', '-');
+    };
+    if (localStorage.getItem('sezimal-calculator-decimal-angle-unit') === null) {
+        localStorage.setItem('sezimal-calculator-decimal-angle-unit', 'deg');
+        localStorage.setItem('sezimal-calculator-decimal-angle-prefix', '-');
     };
 
     if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {
@@ -113,7 +118,7 @@ function calculator_load() {
     update_sezimal_digits(false);
     update_niftimal(false);
     update_sezimal_places(false);
-    // update_angle_unit(false);
+    update_angle_units_conversion(false);
     // update_units(false);
 
     update_calculation();

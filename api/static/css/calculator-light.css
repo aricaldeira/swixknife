@@ -1,0 +1,40 @@
+:root {
+    --o-webclient-color-scheme: white;
+    --theme: white;
+    background-color: #F5F5F5;
+    color: #212121;
+}
+html, body {
+    background-color: #F5F5F5;
+    color: #212121;
+}
+.unit {
+    background-color: #F5F5F5;
+    color: #424242;
+}
+.display {
+    background-color: #37474F;
+    color: #ECEFF1;
+    text-shadow: 0px 0px 12px #78909C;
+}
+.decimal_display {
+    border-bottom: 2px double #E0E0E0;
+    background-color: #ECEFF1;
+    color: #212121;
+    text-shadow: 0px 0px 12px #90A4AE;
+}
+.configuration-right {
+    border-bottom: 2px double #78909C;
+}
+.configuration-center {
+    border-bottom: 2px double #78909C;
+}
+table.explanation {
+    border: 1px #212121 solid;
+}
+table.explanation td {
+    border: 1px #212121 solid;
+}
+a {
+    color: #212121;
+}

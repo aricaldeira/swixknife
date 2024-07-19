@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   id="sezimal_time"
+   id="now-icon"
    width="432mm"
    height="432mm"
    viewBox="0 0 432 432"
    version="1.1"
    sodipodi:docname="now-icon.svg"
    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-   inkscape:export-filename="sezimal_clock.png"
+   inkscape:export-filename="now-icon.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -455,23 +455,23 @@
        to="360 216 216"
        repeatCount="indefinite" />
     <g
-       id="face_uta" transform="rotate(290,216,216)"
+       id="face_uta" transform="rotate(300,216,216)"
        inkscape:label="face_uta">
       <rect
-         style="fill:#000000;stroke-width:0.438183"
+         style="fill:#000000;"
          id="rect4"
-         width="7.1999998"
-         height="83.199997"
-         x="212.39999"
-         y="216"
+         width="9"
+         height="102"
+         x="211.5"
+         y="192"
          inkscape:label="hand_uta" />
-      <circle
-         style="fill:#000000;stroke-width:3.87064"
+<!--      <circle
+         style="fill:#d40000;"
          id="circle5"
          cx="216"
          cy="216"
          inkscape:label="anchor_hand_uta"
-         r="3.6" />
+         r="3.6" />-->
     </g>
   </g>
   <g
@@ -488,23 +488,56 @@
        to="360 216 216"
        repeatCount="indefinite" />
     <g
-       id="face_posha" transform="rotate(140,216,216)"
+       id="face_posha" transform="rotate(60,216,216)"
        inkscape:label="face_posha">
-      <rect
-         style="fill:#000000;stroke-width:0.438183"
+       <rect
+         style="fill:#000000;"
          id="rect1"
-         width="4.8000002"
-         height="104"
-         x="213.60001"
-         y="216"
+         width="6"
+         height="126"
+         x="213"
+         y="192"
          inkscape:label="hand_posha" />
-      <circle
-         style="fill:#000000;stroke-width:3.87064"
-         id="circle2"
+       <circle
+         style="fill:#d40000;"
+         id="circle5"
          cx="216"
          cy="216"
          inkscape:label="anchor_hand_posha"
-         r="2.4" />
+         r="3.2" />
+    </g>
+  </g>
+<g
+     id="g6"
+     inkscape:label="agrima"
+     sodipodi:insensitive="true"
+     style="display:inline">
+    <animateTransform
+       attributeName="transform"
+       begin="0s"
+       dur="66667ms"
+       type="rotate"
+       from="0 216 216"
+       to="360 216 216"
+       repeatCount="indefinite" />
+    <g
+       id="face_agrima" transform="rotate(150,216,216)"
+       inkscape:label="face_agrima">
+       <rect
+         style="fill:#d40000;"
+         id="rect1"
+         width="3"
+         height="162"
+         x="214.5"
+         y="186"
+         inkscape:label="hand_agrima" />
+       <circle
+         style="fill:#d40000;"
+         id="circle5"
+         cx="216"
+         cy="216"
+         inkscape:label="anchor_hand_agrima"
+         r="3.2" />
     </g>
   </g>
 </svg>

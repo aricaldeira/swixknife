@@ -5,14 +5,16 @@ const sezimal_calculator_pt_text = {
     'button-decimal-clear': 'Z',
     'button-base-ten': 'dec',
     'button-base-six': 'sez',
-    'translation-txt': 'ext.',
+    'translation-txt': 'ext',
     'translation-nif': 'nife',
-
 
     'translation-sezimal-calculator': 'Calculadora Sezimal',
     'label-sezimal-locale': 'Defina o locale para a formatação dos números',
     'label-sezimal-places': 'Defina a quantidade de casas sezimais',
     'label-sezimal-angle': 'Defina a conversão de unidades de ângulo<br/>para as funções trigonométricas',
+    'translation-sezimal-units': 'Unidades de Medida Xastadári',
+    'label-sezimal-units': 'Escolha qual unidade você deseja converter<br/>de ou para as unidades Xastadári,<br/>e veja as explicações e orientações<br/>sobre cada unidade',
+
 
     'translation-turn': 'volta',
     'translation-deg': 'grau',
@@ -56,6 +58,78 @@ const sezimal_calculator_pt_text = {
     'button-decimal-lsez': 'log₆',
     'button-decimal-ldec': 'log₁₀',
 
+    'help-setting': `
+<h2>O que é isso?</h2>
+<p>Uma calculadora e um conversor de base numérica e unidades de medida, entre as bases sezimal (seis) e decimal (dez).</p>
+<p>Você pode usar o aplicativo como uma calculadora decimal comum, e ele vai convertendo os cálculos usando base sezimal, ensinando você como ler os números no processo.</p>
+<p>Clicando ou tocando em cada um dos mostradores (sezimal, nifimal, extenso ou decimal), o conteúdo é copiado para a área de transferência.</p>
+<h3>Uso dos botões</h3>
+<p>Alguns botões dão acesso a mais de uma operação ou função, quando pressionados um certo número de vezes em sequência:</p>
+<ul>
+    <li>[ 󱹮 ] / [ , ] / [ . ] - o separador sezimal (de acordo com as configurações ou com o locale), quando pressionado duas vezes seguidas, ou pressionado na parte fracionária de um número, dá o separador de fração recorrente (“sézima periódica”) 󱹯 / „ / ‥ (veja mais abaixo detalhes sobre a notação);</li><br/>
+    <li>[ × ] - o botão de multiplicação, pressionado duas vezes seguidas, dá o operador ! fatorial;</li><br/>
+    <li>[ ÷ ] - o botão de divisão, pressionado duas vezes seguidas, dá a barra de frações ⁄ , que permite entrar números em formato de fração diretamente; pressionado uma terceira vez, dá o operador <i>mód</i> módulo;</li><br/>
+    <li>[ ^ ] - o botão da exponenciação alterna entre as operações ^ (exponenciação), ² (elevado ao quadrado), √ (raiz quadrada), ³ (elevado ao cubo), ∛ (raiz cúbica), ^ 1⁄ (raiz arbitrária), e daí de volta para a  ^ exponenciação;</li><br/>
+    <li>[ 󱹱 ] - o botão de por nife alterna entre as operações 󱹱 (por nife 10²), 󱹲 (por arda 10³), 󱹳 (por seis arda 10⁴), 󱹴 (por nife arda 10⁵), 󱹵 (por xadara 10¹⁰) - só na base sezimal;</li><br/>
+    <li>[ % ] - o botão de porcentagem alterna entre as operações % (por cento 14²), ‰ (por milhar 14³), ‱ (por miríade/dez mil 10⁴) - só na base decimal;</li><br/>
+    <li>[ sen ] - o botão da função seno alterna entre as funções sen, asen, csc, acsc;</li><br/>
+    <li>[ cos ] - o botão da função cosseno alterna entre as funções cos, acos, sec, asec;</li><br/>
+    <li>[ tan ] - o botão da função tangente alterna entre as funções tan, atan, cot, acot;</li><br/>
+    <li>[ log<i>ₑ</i> ] - o botão da função logaritmo natural alterna entre as funções log<i>ₑ</i>, a constante <i>e</i>, log₁₀/log₆ (logaritmo sezimal), log₁₄/log₁₀ (logaritmo decimal);</li><br/>
+    <li>[ log₁₀ ] - o botão da função logaritmo sezimal alterna entre as funções log₁₀/log₆ (logaritmo sezimal) e log₁₄/log₁₀ (logaritmo decimal);</li><br/>
+    <li>[ τ ] - o botão da constante τ alterna entre as constantes τ e π;</li>
+</ul>
+<p>Os botões de ajuste na primeira linha do mostrador têm as seguintes funções:</p>
+<ul>
+    <li>[ ? ] - mostra este texto de ajuda;</li><br/>
+    <li>[ en ] - permite selecionar o idioma e o país, o que determina como os números vão ser formatados, e define o idioma do aplicativo;</li><br/>
+    <li>[ 3 ] / [ 󱸃 ] - usa dígitos comuns [ 3 ] ou dígitos sezimais [ 󱸃 ] (veja mais abaixo) para os mostradores sezimal e nifimal, e para os botões sezimais (a base decimal sempre usa os dígitos comuns);</li><br/>
+    <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - determina como os números são agrupados e separados:<br/>
+        <ul>
+            <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - separadores sezimais (veja mais abaixo), a cada três dígitos;</li><br/>
+            <li>[ 3.3 ] / [ 󱸃.󱸃 ] - separadores decimais/tradicionais, de acordo com o locale (idioma e país) selecionados, a cada três dígitos;</li><br/>
+            <li>[ 4.4 ] / [ 󱸄.󱸄 ] - separadores decimais/tradicionais, de acordo com o locale (idioma e país) selecionados, a cada quatro dígitos (como no site seximal.net); isso também altera, em inglês, o resultado do mostrador do número por extenso, que passa a usar seis nife e unexião no lugar de arda e xadara;</li>
+        </ul>
+    </li><br/>
+    <li>[ nife 5̆ ] / [ nife 󱸣 ] - define o uso e conversão do mostrador nifimal:<br/>
+        <ul>
+            <li>[ nife 5̆ ] / [ nife 󱸣 ] - o mostrator nifimal usa dígitos regularizados (veja abaixo);</li><br/>
+            <li>[ nife Z ] - o mostrator nifimal usa os dígitos 0123456789 e letras a partir do número 14 (em decimal, dez);</li><br/>
+            <li>[ <span style="text-decoration: line-through;">nife</span> ] - oculta o mostrador nifimal;</li>
+        </ul>
+    </li><br/>
+    <li>[ ext ] - ativa [ ext ] / desativa [ <span style="text-decoration: line-through;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>
+</ul>
+<p>E os botões de ajuste na segunda linha do mostrador:</p>
+<ul>
+    <li>[ prd ◕ ° ] - unidades de medida de ângulos para as funções trigonométricas sezimais e decimais;</li><br/>
+    <li>[ ⬢ ] - unidades e prefixos Xastadári convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
+    <li>[ 0󱹮3 ] - em quantos dígitos depois do separador sezimais o resultado vai ser arredondado; a precisão em base decimal vai ser ajustada baseada na precisão da base sezimal;</li><br/>
+</ul>
+<h2>Notação usada</h2>
+<ul>
+    <li>Nomes dos números - 0 zero; 1 um; 2 dois; 3 três; 4 quatro; 5 cinco; 10 seis; 11 sete; 12 oito; 13 nove; 14 dez; 15 onze; 20 doze; 21 doze e um; 22 doze e dois; 23 doze e três; 24 doze e quatro; 25 doze e cinco; 30 tresseis; 40 quasseis; 50 quinseis; 100 nife (da língua ndom <i>nif</i> para trinta e seis); 1 000 arda (do sânscrito अर्ध <i>ardha</i> para meio, metade, para metade de seis dígitos); 10 000 seis arda; 100 000 nife arda; 1󱹬000 000 xadara (do sânscrito षडार <i>ṣaḍāra</i> para um grupo de seis, ou um hexágono); de xadara se segue 10󱹬000 000 seis xadara, 100󱹬000 000 nife xadara, 1 000󱹬000 000 arda xadara (em escala longa, como em português europeu), 10 000󱹬000 000 seis arda xadara, 100 000󱹬000 000 nife arda xadara, dixadara 1󱹬000 000󱹬000 000 (<i>di</i> do sânscrito द्वि <i>dvi</i> para dois); trixadara para 10³⁰ (<i>tri</i> do sânscrito त्रि <i>tri</i> para três); tcharxadara para 10⁴⁰ (<i>tchar</i> do sânscrito चतुर् <i>catur</i> para quatro); panxadara para 10⁵⁰ (<i>pan</i> do sânscrito पञ्चन् <i>pañcan</i>, cinco); xaxadara para 10¹⁰⁰ (<i>xa</i> do sânscrito षष् <i>ṣaṣ</i> para seis); use a função de números por extenso para saber como ler qualquer número sezimal</li><br/>
+    <li>Separador sezimal 󱹮 - uma barra em forma de agulha, apontando para cima, que se inicia sobre a linha base da escrita, pelo meio da altura X da fonte, e se extende para baixo até o ponto mais baixo dos descendentes da fonte; seu código Unicode é U+F1E6E; compare o separador sezimal com a vírgula e o ponto: ,󱹮.</li><br/>
+    <li>Separador periódico 󱹯 „ ‥  - dobrando o separador fracionário (sezimal ou decimal) resulta no separador periódico; por exemplo, a fração sezimal 1⁄5 pode ser escrita 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050 505...; a fração decimal 1⁄3 0„3 (0,3̅) = 0,333...; decimal 1⁄12 0,08„3 (0,083̅) = 0.083 333...; esse último exemplo, se o separador periódico, é ambíguo: é só o 3 que se repete, ou 08333? Para o separador periódico num único caracter(como neste aplicativo), os códigos Unicode são 󱹯 U+F1E6F, „ U+201E e ‥ U+2025;</li><br/>
+    <li>Separador de arda ⍽ - o espaço inseparável estreito, código Unicode U+202F, é usado para marcar o primeiro grupo de três dígitos à esquerda e à direita do separador sezimal, e, a partir daí, a cada grupo de seis dígitos, na prática se alternando com o separador de xadara;</li><br/>
+    <li>Separador de xadara 󱹬 - tem a mesma forma básica do separador sezimal, com um sexto do tamanho, apontando para baixo, se extendendo para baixo a partir do ponto mais alto da fonte usada, e marca a posição dos xadaras a cada grupo de seis dígitos nos números sezimais, tanto à esquerda quanto à direita do separador sezimal; seu código Unicode é U+F1E6C; compare o separador de xadara com o apóstrofe reto/aspas simples reta '󱹬;</li><br/>
+    <li>Dígitos sezimais - 󱸀󱸁󱸂󱸃󱸄󱸅 para 012345; é uma representação dedicada exclusiva para números sezimais; é uma escrita distintiva (<i>featural script</i>), mapeando três áreas que representam valores: <span class="horizontal-flip">◔</span> superior à esquerda representa o valor 1, ◔ superior à direita representa o valor 2, ◒ e abaixo também representa o valor 2; cada dígito, afora o zero, “abraça” ou “aponta” para as áreas cujos valores, somados, representam seu valor: <span class="horizontal-flip">◔</span> 󱸁 um; ◔ 󱸂 dois; <span class="horizontal-flip">◔</span> + ◔ = ◓ 󱸃 três; ◔ + ◒ = ◕ 󱸄 quatro; <span class="horizontal-flip">◔</span> + ◔ + ◒ = ● 󱸅 cinco;</li><br/>
+    <li>Dígitos nifemais regularizados - a representação convencional da base nife (trinta e seis) usa letras para os dígitos a partir de dez; a representação regularizada usa os mesmos seis dígitos usados na numeração sezimal 012345/󱸀󱸁󱸂󱸃󱸄󱸅 e os extende por meio de cinco sinais diacríticos (ou “acentos”):<br/>
+        <ul>
+            <li>+00: 012345 󱸀󱸁󱸂󱸃󱸄󱸅 <span style="font-family: 'Sezimal Mono', monospace;">012345</span></li><br/>
+            <li>+10: 0̇1̇2̇3̇4̇5̇ 󱸆󱸇󱸈󱸉󱸊󱸋 <span style="font-family: 'Sezimal Mono', monospace;">6789AB</span></li><br/>
+            <li>+20: 0̈1̈2̈3̈4̈5̈ 󱸌󱸍󱸎󱸏󱸐󱸑 <span style="font-family: 'Sezimal Mono', monospace;">CDEFGH</span></li><br/>
+            <li>+30: 0̊1̊2̊3̊4̊5̊ 󱸒󱸓󱸔󱸕󱸖󱸗 <span style="font-family: 'Sezimal Mono', monospace;">IJKLMN</span></li><br/>
+            <li>+40: 0̄1̄2̄3̄4̄5̄ 󱸘󱸙󱸚󱸛󱸜󱸝 <span style="font-family: 'Sezimal Mono', monospace;">OPQRST</span></li><br/>
+            <li>+50: 0̆1̆2̆3̆4̆5̆ 󱸞󱸟󱸠󱸡󱸢󱸣 <span style="font-family: 'Sezimal Mono', monospace;">UVWXYZ</span></li><br/>
+            <li>˚ é a parte de cima do 󱸃;  ˉ é a parte de cima do 󱸄; ˘ vem da parte de cima do 󱸅</li>
+        </ul>
+    </li>
+</ul>
+<p />
+<p />
+`,
+
     //
     // Unidades
     //
@@ -69,7 +143,7 @@ const sezimal_calculator_pt_text = {
     'option-units-ang': 'Tempo',
     'option-units-avt': 'Frequência',
     'option-units-pad': 'Comprimento',
-    'option-units-kex': 'Área',
+    'option-units-ktr': 'Área',
     'option-units-ayt': 'Volume',
     'option-units-veg': 'Velocidade',
     'option-units-tvr': 'Aceleração',
@@ -121,12 +195,12 @@ const sezimal_calculator_pt_text = {
     'optgroup-units-generic-shastadari': 'Xastadári',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Outras',
-    'optgroup-units-generic-us-uk': 'EUA/Reino Unido',
+    'optgroup-units-generic-us-uk': 'Reino Unido (imperial)/EUA',
     'optgroup-units-generic-us': 'EUA',
-    'optgroup-units-generic-uk': 'Reino Unido',
+    'optgroup-units-generic-uk': 'Reino Unido (imperial)',
     'optgroup-units-generic-us-fluid': 'EUA - volume líq.',
     'optgroup-units-generic-us-dry': 'EUA - volume seco',
-    'optgroup-units-generic-uk-fluid': 'Reino Unido - líq.',
+    'optgroup-units-generic-uk-fluid': 'Reino Unido (imperial)',
 
     //
     // Sezimal Prefixes
@@ -281,9 +355,9 @@ const sezimal_calculator_pt_text = {
     <li>o boda (bôda, não bóda), símbolo bod, correspondente às duas últimas divisões/sextos, com valor mais próximo do milésimo de segundo (milissegundo);</li>
 </ul>
 <p>Então, um dia é divido:</p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-size: 12pt; font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">   5 .  </span><span style="font-size: 12pt; font-weight: bold;">55 :   55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">dina . </span><span style="font-size: 12pt; font-weight: bold;">uta : poxa : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
+<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
+<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">   5 .  </span><span style="font-weight: bold;">55 :   55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
+<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">dina . </span><span style="font-weight: bold;">uta : poxa : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
 <p>Para uso científico, a unidade base de tempo é o anuga, por isso, todas as outras unidades que derivam da dimensão tempo, em alguma forma, usam o anuga nas suas definições.</p>
 <p>Os prefixos podem ser usados com qualquer uma das unidades de tempo, e a conversão entre as unidades e os prefixos é a seguinte:</p>
 <table class="explanation">
@@ -361,6 +435,33 @@ const sezimal_calculator_pt_text = {
     </tr>
 </table>
 <p></p>
+<p>A Luz disse: eu não sei nada sobre o teu tempo, e ainda assim, eu ergo o teu dia da escuridão, alimento tudo o que vive, dirijo teus pensamentos ao infinito; segue-me ainda que ao teu passo, e eu vou-te permitir ver tudo, e medir tudo o que há.</p>
+<p></p>
+<p>O nome de cada uma das unidades vem das seguintes palavras em sânscrito::</p>
+<ul>
+    <li><span class="devanagari-word">दिन</span> ‹dina› /'d̪i.nə/: Dia, cognato do latim <i>diēs</i>;</li>
+    <li><span class="devanagari-word">उत्थानम्</span> ‹utthānam› /ut̪'t̪ʰɑː.nəm/: que ergue, que dá origem (falando da luz, sobre o dia, acréscimo nosso);</li>
+    <li><span class="devanagari-word">पोषण</span> ‹poṣaṇa› /'poː.ʂə.ɳə/: que nutre, que cuida (falando da luz, sobre o dia);</li>
+    <li><span class="devanagari-word">अग्रिम</span> ‹agrima› /ə'gri.mə/: o que conduz, que vem antes (idem);</li>
+    <li><span class="devanagari-word">अनुगामी</span> ‹anugāmī› /ə.nu'gɑː.miː/: o que segue;</li>
+    <li><span class="devanagari-word">बोध</span> ‹bodha› /'boː.d̪ʰə/: entendimento, conhecimento;</li>
+</ul>
+<p></p>
+<p>Para fins científicos, a unidade de tempo da base sezimal é o anuga, portanto todas as outras unidades que derivam do tempo de alguma maneira, usam o anuga nas suas definições.</p>
+<p>A definição formal do anuga é similar em forma à definição do segundo no Sistema Internacional, estabelecendo que:</p>
+<p></p>
+<p>   a transição óptica não‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) do íon ⁴⁴³Yb⁺ tem uma frequência de <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203 150󱹬505 354󱹬503 234󱹮530 12 avt<sup><a href="#reference_1">1</a></sup>, quando expressa na unidade de frequência avrita (avt), que é igual a ang⁻¹ (em decimal, ¹⁷¹Yb⁺ e 688.358.979.309.308,24 Hz<sup><a href="#reference_2">2</a></sup>).</p>
+<p></p>
+<p>Por fim, a conversão entre anugas e segundos; pegamos o dia médio de duração de 1󱹬504 000 segundos (decimal 86.400), e divimos o tempo em segundos pela duração média de um dia de 100󱹬000 000 (decimal 1.679.616) anugas:
+</p>
+<p>Portanto, 1 ang = <math><mfrac><mn>1󱹬504 000</mn><mn>100󱹬000 000</mn></mfrac></math> = <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = 0󱹮015 04 s (decimal <math><mfrac><mn>25</mn><mn>486</mn></mfrac></math> = 0,0„514 403 292 181 069 958 847 736 625);</p>
+<p>A conversão inversa, 1 s = <math><mfrac><mn>100󱹬000 000</mn><mn>1󱹬504 000</mn></mfrac></math> = <math><mfrac><mn>2 130</mn><mn>41</mn></mfrac></math> = 31󱹯235 01 ang (decimal <math><mfrac><mn>486</mn><mn>25</mn></mfrac></math> = 19,44);</p>
+<p></p>
+<p>Referências:</p>
+<p id="reference_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Recomendações adotadas pelo Comitê Internacional para Pesos e Medidas em sua 95ª reunião (outubro de 2006), páginas 123–124 da versão francesa, páginas 249–250 (no PDF, 115–116) da versão inglesa.</a>
+</p>
+<p id="reference_2"><sup>2</sup> <a href="https://www.bipm.org/documents/20126/69375151/171Yb+_688THz_2021.pdf/6ffc6ec4-76a5-d043-ba4c-af680662fc29">Valores recomendados das frequências padrão para aplicações incluindo a realização prática do metro e representações secundárias da definição do segundo, íon de itérbio 171</a>
+</p>
 `,
     // 'optgroup-units-ang-common': 'Comum/civil',
     'option-units-ang-dina': 'dina – din = dia',
@@ -465,6 +566,28 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-avt-hertz': 'Hertz – Hz',
     'option-decimal-units-avt-rpm': 'rpm',
 
+    'unit-pad-explanation': `
+<p>O pada, símbolo pad, é a unidade de medida de comprimento na base sezimal;</p>
+
+<p>A definição formal do pada é a distância percorrida pela luz numa fração de <math><mfrac><mn>1</mn><mn>135 005󱹬235 440</mn></mfrac></math> de anuga (<math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> s, veja a definição formal do anuga na página das unidades de tempo).</p>
+<p>A conversão de e para metros é feita pegando a velocidade da luz, pelo S.I., de 45 425󱹬332 014 (decimal 299,792,458) m/s, e dividindo esse valor pela equivalente velocidade da luz em Xastadári, que é de 135 005󱹬235 440 (decimal 594,838,032) pad/ang (veja a página sobre unidades de velocidade), e daí multiplicando esse valor pela conversão de anugas em segundos (veja a página sobre as unidades de tempo):</p>
+<p class="center">1 pad = <math><mfrac><mn>45 425󱹬332 014</mn><mn>135 005󱹬235 440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
+<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
+<p></p>
+
+<p>Uma outra forma de se chegar à mesma conversão é tomar a aceleração <b>média</b> da gravidade do planeta Terra<sup><a href="#reference_1">1</a></sup> (a aceleração da gravidade não é nem constante, nem 13󱹮450 123 (decimal 9,806 65) m/s² em toda a superfície do planeta), calculada em 13󱹮444 135󱹬140 131󱹬050 515 (decimal 9,797 566 850 130 385) m/s², e multiplicar esse valor pela conversão do anuga para o segundo, ao quadrado:</p>
+<p>Tomando a aceleração da gravidade em forma fracionária:</p>
+<p class="center">1 g<sub>méd</sub> = <math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> = 13󱹮444 135󱹬140 131󱹬050 515 m/s²</p>
+<p class="center">(decimal <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850 130 385 m/s²)</p>
+<p class="center"><math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2 130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
+<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
+<p>Isso significa que o pada é também a distância que, na Terra, em média, um objeto percorre numa queda livre de duração de um anuga, devido a aceleração da gravidade, que é de 1 pad/ang² (veja mais na página das unidades de aceleração).</p>
+<p></p>
+<p>Referências:</p>
+<p id="reference_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrologia Primel - Segunda Realidade Mundana: Aceleração devido à Gravidade da Terra</a>
+</p>
+<p></p>
+`,
     'option-units-pad-pada': 'pada – pad',
     'option-decimal-units-pad-meter': 'metro – m',
     'option-decimal-units-pad-mile': 'milha – ml',
@@ -472,14 +595,15 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-pad-foot': 'pé – ft',
     'option-decimal-units-pad-inch': 'polegada – in',
 
-    'option-units-kex-keshe': 'quexê – kex',
-    'option-decimal-units-kex-sq-meter': 'metro quad. – m²',
-    'option-decimal-units-kex-are': 'are - a',
-    'option-decimal-units-kex-acre': 'acre - ac',
-    'option-decimal-units-kex-sq-mile': 'milha quad. – ml²',
-    'option-decimal-units-kex-sq-yard': 'jarda quad. – yd²',
-    'option-decimal-units-kex-sq-foot': 'pé quad. – ft²',
-    'option-decimal-units-kex-sq-inch': 'polegada quad. – in²',
+    'option-units-ktr-ketra': 'quetra – ktr',
+    'option-units-ktr-sq-pada': 'pada quad. – pad²',
+    'option-decimal-units-ktr-sq-meter': 'metro quad. – m²',
+    'option-decimal-units-ktr-are': 'are - a',
+    'option-decimal-units-ktr-acre': 'acre - ac',
+    'option-decimal-units-ktr-sq-mile': 'milha quad. – ml²',
+    'option-decimal-units-ktr-sq-yard': 'jarda quad. – yd²',
+    'option-decimal-units-ktr-sq-foot': 'pé quad. – ft²',
+    'option-decimal-units-ktr-sq-inch': 'polegada quad. – in²',
 
     'option-units-ayt-aytan': 'aitã – ayt',
 

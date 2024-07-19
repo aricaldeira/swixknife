@@ -252,6 +252,7 @@ def now_icon() -> str:
 
     uta_angle = round(date_time.uta / 100 * 1400, 0)
     posha_angle = round(date_time.posha / 100 * 1400, 0)
+    agrima_angle = round((date_time.agrima + (date_time.anuga / 100) + (date_time.boda / 10_000)) / 100 * 1400, 0)
 
     date_parts = date_time.format(
         locale.DATE_FORMAT.replace('#d', '#-d').replace('#?d', '#?-d').replace('#m', '#M').replace('#?m', '#M'),
@@ -271,12 +272,16 @@ def now_icon() -> str:
         'id="date-3">' + date_parts[2],
     )
     text = text.replace(
-        'id="face_uta" transform="rotate(290,216,216)"',
+        'id="face_uta" transform="rotate(300,216,216)"',
         f'id="face_uta" transform="rotate({uta_angle.decimal},216,216)"',
     )
     text = text.replace(
-        'id="face_posha" transform="rotate(140,216,216)"',
+        'id="face_posha" transform="rotate(60,216,216)"',
         f'id="face_posha" transform="rotate({posha_angle.decimal},216,216)"',
+    )
+    text = text.replace(
+        'id="face_agrima" transform="rotate(150,216,216)"',
+        f'id="face_agrima" transform="rotate({agrima_angle.decimal + 10},216,216)"',
     )
 
     return Response(text, mimetype='image/svg+xml')

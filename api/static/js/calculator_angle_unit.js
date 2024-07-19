@@ -45,6 +45,11 @@ function toggle_angle_units() {
 
 function set_sezimal_angle_unit(select) {
     localStorage.setItem('sezimal-calculator-angle-unit', select.value);
+
+    if (!sezimal_prefixed_units.includes(select.value)) {
+        localStorage.setItem('sezimal-calculator-angle-prefix', '-');
+    };
+
     update_angle_units_conversion();
 };
 
@@ -55,6 +60,11 @@ function set_sezimal_angle_prefix(select) {
 
 function set_decimal_angle_unit(select) {
     localStorage.setItem('sezimal-calculator-decimal-angle-unit', select.value);
+
+    if (!decimal_prefixed_units.includes(select.value)) {
+        localStorage.setItem('sezimal-calculator-decimal-angle-prefix', '-');
+    };
+
     update_angle_units_conversion();
 };
 
@@ -65,17 +75,22 @@ function set_decimal_angle_prefix(select) {
 
 
 function update_angle_units_conversion() {
-    let sezimal_prefix = localStorage.getItem('sezimal-calculator-angle-prefix');
     let sezimal_unit = localStorage.getItem('sezimal-calculator-angle-unit');
-    let decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-angle-prefix');
+    let sezimal_prefix = localStorage.getItem('sezimal-calculator-angle-prefix');
     let decimal_unit = localStorage.getItem('sezimal-calculator-decimal-angle-unit');
+    let decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-angle-prefix');
+
+    document.getElementById('calculator-sezimal-unit-angle-prd').value = sezimal_unit;
+    document.getElementById('calculator-prefix-sezimal-angle').value = sezimal_prefix;
+    document.getElementById('calculator-decimal-angle-unit-prd').value = decimal_unit;
+    document.getElementById('calculator-prefix-decimal-angle').value = decimal_prefix;
 
     show_sezimal_decimal_angle_prefix(sezimal_unit, decimal_unit);
 
-    if ((sezimal_prefix == '-') || (sezimal_prefix == null) || (!sezimal_prefixed_units.includes(sezimal_unit))) {
+    if ((sezimal_prefix == '-') || (sezimal_prefix == null)) {
         sezimal_prefix = '';
     };
-    if ((decimal_prefix == '-') || (decimal_prefix == null) || (!decimal_prefixed_units.includes(decimal_unit))) {
+    if ((decimal_prefix == '-') || (decimal_prefix == null)) {
         decimal_prefix = '';
     };
 
@@ -86,11 +101,7 @@ function update_angle_units_conversion() {
         decimal_unit = localStorage.getItem(`sezimal-translation-display-${decimal_unit}`);
     };
 
-    if ((sezimal_unit != '') && (decimal_unit != '')) {
-        document.getElementById('toggle_angle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ● ' + decimal_prefix + decimal_unit + ' ]';
-    } else {
-        document.getElementById('toggle_angle_units').innerHTML = '[ ○ ]';
-    };
+    document.getElementById('toggle_angle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ◕ ' + decimal_prefix + decimal_unit + ' ]';
 };
 
 

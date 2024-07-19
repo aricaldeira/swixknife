@@ -23,16 +23,16 @@ function update_niftimal(calculation_refresh = true) {
 
     if (niftimal_type == '5') {
         if ((sezimal_digits == 'true') || (sezimal_digits == true)) {
-            document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} 󱸣 ]`;
+            document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} 󱸣 ]`;
         } else {
-            document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} 5̆ ]`;
+            document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} 5̆ ]`;
         };
         document.getElementById('niftimal_display').hidden = false;
     } else if (niftimal_type == 'Z') {
-        document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} Z ]`
+        document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} Z ]`
         document.getElementById('niftimal_display').hidden = false;
     } else if ((niftimal_type == null) || (niftimal_type == '') || (niftimal_type == '-')) {
-        document.getElementById('toggle_niftimal').innerHTML = `[ <span style="text-decoration: line-through;">${nif_translation}</span> ]`
+        document.getElementById('toggle_niftimal').innerHTML = `[ <span style="text-decoration: line-through;">${nif_translation}</span> ]`
         document.getElementById('niftimal_display').hidden = true;
     };
 
