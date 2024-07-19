@@ -117,10 +117,10 @@ KESHE_TO_SQUARE_KILOMETER = SezimalFraction('5_332_521 / 3_451_550_303_213_000_0
 SQUARE_KILOMETER_TO_KESHE = KESHE_TO_SQUARE_KILOMETER.reciprocal
 
 #
-# Dishumakeshe = DXkex = EXpad² = 1_000_000_000_000 pad²
+# Dishumaketra = DXktr = EXpad² = 1_000_000_000_000 pad²
 #
-# 1 km² = 0.41 DXkex = 0.41 EXpad²
-# 1 DSkex = 1 EXpad² = 1.25 km²
+# 1 km² = 0.41 DXktr = 0.41 EXpad²
+# 1 DSktr = 1 EXpad² = 1.25 km²
 #
 DISHUMAKESHE_TO_SQUARE_KILOMETER = SezimalFraction('1_354_105_104 / 1_044_050_213')
 SQUARE_KILOMETER_TO_DISHUMAKESHE = DISHUMAKESHE_TO_SQUARE_KILOMETER.reciprocal
@@ -228,7 +228,7 @@ JOULE_TO_KARYA = KARYA_TO_JOULE.reciprocal
 #
 # Power
 #
-# Shati = dravya × pada² × agrima⁻³ = dravya × keshe × agrima⁻³
+# Shati = dravya × pada² × agrima⁻³ = dravya × ketra × agrima⁻³
 # Shati = karya × agrima⁻¹
 # Shati = bara × pada × agrima⁻¹
 # Shati = daba × pada³ × agrima⁻¹ = daba × aytan × agrima⁻¹
@@ -243,7 +243,7 @@ WATT_TO_SHATI = SHATI_TO_WATT.reciprocal
 # Pressure
 #
 # Daba = dravya × pada⁻¹ × agrima⁻²
-# Daba = bara × pada⁻² = bara × keshe⁻¹
+# Daba = bara × pada⁻² = bara × ketra⁻¹
 # Daba = karya × pada⁻³ = karya × aytan⁻¹
 #
 DABA_TO_PASCAL = SezimalFraction('14_001_522_340_145_312_055_052 / 12_300_335_551_511_421_225')

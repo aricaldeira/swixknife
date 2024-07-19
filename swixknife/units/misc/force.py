@@ -41,7 +41,7 @@ JOULE_TO_KARYA.reciprocal = KARYA_TO_JOULE
 #
 # Power
 #
-# Shati = dravya × pada² × agrima⁻³ = dravya × keshe × agrima⁻³
+# Shati = dravya × pada² × agrima⁻³ = dravya × ketra × agrima⁻³
 # Shati = karya × agrima⁻¹
 # Shati = bara × pada × agrima⁻¹
 # Shati = daba × pada³ × agrima⁻¹ = daba × aytan × agrima⁻¹
@@ -60,7 +60,7 @@ WATT_TO_SHATI.reciprocal = SHATI_TO_WATT
 # Pressure
 #
 # Daba = dravya × pada⁻¹ × agrima⁻²
-# Daba = bara × pada⁻² = bara × keshe⁻¹
+# Daba = bara × pada⁻² = bara × ketra⁻¹
 # Daba = karya × pada⁻³ = karya × aytan⁻¹
 #
 # DABA_TO_PASCAL = SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200')

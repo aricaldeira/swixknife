@@ -117,7 +117,7 @@ def calculate_conversions():
     #
     # Area
     #
-    unit_conversion['kex'] = {
+    unit_conversion['ktr'] = {
         'm2': unit_conversion['pad']['m'] ** 2,
         #
         # Non S.I. units
@@ -140,7 +140,7 @@ def calculate_conversions():
         'le2': unit_conversion['pad']['le'] ** 2,
         'ac': (unit_conversion['pad']['m'] ** 2) / SezimalFraction('51_212_230_430 / 1_401_405'),
     }
-    unit_conversion['kex'] = _set_non_prefixed_units(unit_conversion['kex'])
+    unit_conversion['ktr'] = _set_non_prefixed_units(unit_conversion['ktr'])
 
     #
     # Volume
@@ -168,8 +168,8 @@ def calculate_conversions():
 
         'US min': AYTAN_TO_US_FLUID_DRAM * 140,
         'US fl dr': AYTAN_TO_US_FLUID_DRAM,
-        'tsp': AYTAN_TO_US_FLUID_DRAM * 140 / 212,
-        'tbsp': AYTAN_TO_US_FLUID_DRAM / 4,
+        'US tsp': AYTAN_TO_US_FLUID_DRAM * 140 / 212,
+        'US tbsp': AYTAN_TO_US_FLUID_DRAM / 4,
         'US fl oz': AYTAN_TO_US_FLUID_DRAM / 12,
         'US jig': AYTAN_TO_US_FLUID_DRAM / 4 / 3,
         'US gi': AYTAN_TO_US_FLUID_DRAM / 12 / 4,
@@ -581,7 +581,7 @@ def calculate_conversions():
     # Magnetic flux density
     #
     unit_conversion['vtr'] = {
-        'T': unit_conversion['abv']['Wb'] / unit_conversion['kex']['m2'],
+        'T': unit_conversion['abv']['Wb'] / unit_conversion['ktr']['m2'],
         'prefixed': ('T',),
     }
     unit_conversion['vtr'] = _set_non_prefixed_units(unit_conversion['vtr'])

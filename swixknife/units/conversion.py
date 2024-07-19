@@ -34,7 +34,7 @@ def _identify_validate_sezimal_unit(sezimal_unit: str) -> (str, str, SezimalFrac
     sezimal_unit = sezimal_unit.replace('π\u202f', 'pi_').replace('π ', 'pi_').replace('π ', 'pi_')
 
     #
-    # Let’s convert pad² to kex
+    # Let’s convert pad² to ktr
     #
     if sezimal_unit.endswith('pad2'):
         prefix = sezimal_unit.replace('pad2', '')
@@ -44,7 +44,7 @@ def _identify_validate_sezimal_unit(sezimal_unit: str) -> (str, str, SezimalFrac
             exponent *= 2
             prefix = sezimal_exponent_to_symbol(exponent)
 
-        sezimal_unit = prefix + 'kex'
+        sezimal_unit = prefix + 'ktr'
 
     if sezimal_unit.endswith('pad3'):
         prefix = sezimal_unit.replace('pad3', '')

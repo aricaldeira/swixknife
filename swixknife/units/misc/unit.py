@@ -135,8 +135,8 @@ class DecimalUnit(SezimalUnit):
 pad = pada = SezimalUnit(symbol='pad', name='pada')
 m = meter = metre = DecimalUnit(symbol='m', name='metre', base_unit=Sezimal('102..304_003_214_232_052_043_015_225_105_000_231_145...') * pad)
 
-kex = keshe = pad2 = pada2 = square_pada = SezimalUnit(symbol='kex', name='kexe')
-m2 = meter2 = metre2 = square_meter = square_metre = DecimalUnit(symbol='m²', name='square metre', base_unit=Sezimal('10_511.403_140_301_542_144_503_035_401_055_345_101_343_231_523_435_004') * kex)
+ktr = ketra = pad2 = pada2 = square_pada = SezimalUnit(symbol='ktr', name='ketra')
+m2 = meter2 = metre2 = square_meter = square_metre = DecimalUnit(symbol='m²', name='square metre', base_unit=Sezimal('10_511.403_140_301_542_144_503_035_401_055_345_101_343_231_523_435_004') * ktr)
 
 
 def full_prefixes(unit):

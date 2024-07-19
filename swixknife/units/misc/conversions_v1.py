@@ -173,7 +173,7 @@ SQUARE_PADA_TO_SQUARE_METER = KESHE_TO_SQUARE_METER
 SQUARE_METER_TO_SQUARE_PADA = SQUARE_METER_TO_KESHE
 
 #
-# Ekadimakeshe = EDksh = EDpd² = 100_000_000 pd²
+# Ekadimaketra = EDksh = EDpd² = 100_000_000 pd²
 #
 # 1 km² = 0.41 EDksh = 0.41 Cpad²
 # 1 EDksh = 1 Cpad² = 1 ÷ 0.41
@@ -312,7 +312,7 @@ NEWTON_TO_BARA.reciprocal = BARA_TO_NEWTON
 # Pressure
 #
 # Daba = dravya × pada⁻¹ × agrima⁻²
-# Daba = bara × pada⁻² = bara × keshe⁻¹
+# Daba = bara × pada⁻² = bara × ketra⁻¹
 # Daba = karya × pada⁻³ = karya × aytan⁻¹
 #
 # 1 Pascal = 2.535_022_113_344 dab
@@ -341,7 +341,7 @@ JOULE_TO_KARYA.reciprocal = KARYA_TO_JOULE
 #
 # Power
 #
-# Shati = dravya × pada² × agrima⁻³ = dravya × keshe × agrima⁻³
+# Shati = dravya × pada² × agrima⁻³ = dravya × ketra × agrima⁻³
 # Shati = karya × agrima⁻¹
 # Shati = bara × pada × agrima⁻¹
 # Shati = daba × pada³ × agrima⁻¹ = daba × aytan × agrima⁻¹

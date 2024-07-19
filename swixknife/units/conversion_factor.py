@@ -461,7 +461,7 @@ UNIT_CONVERSION = {
         ),
         'non_prefixed': ('prefixed', 'twip', 'mil', 'in', 'li', 'ft', 'yd', 'ftm', 'rd', 'ch', 'fur', 'cb', 'ml', 'nmi', 'NM', 'le'),
     },
-    'kex': {
+    'ktr': {
         'm2': SezimalFraction(
             '2_544_053_253_512_152_413_104_201 / 32_225_223_253_321_451_321_300_000_000',
             _precalculated_value='0.000_051_205_254_250_110_510_024_132_415_440_340_040_524_243_343',
