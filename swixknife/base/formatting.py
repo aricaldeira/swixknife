@@ -25,10 +25,11 @@ from .digit_conversion import (
     default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
     default_niftimal_to_niftimal_digits, default_niftimal_to_financial_sezimal_digits,
     dozenal_letters_to_digits,
-    PER_SYMBOLS,
 )
 from .context import sezimal_context
 
+
+PER_SYMBOLS = ('%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵', '󱹶', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿')
 
 SEPARATOR_COMMA = ','
 SEPARATOR_DOT = '.'
@@ -45,9 +46,9 @@ SEPARATOR_MIDDLE_DOT = '·'
 SEPARATOR_COMBINING_DOT_ABOVE_RIGHT = '\u0358'
 SEPARATOR_COMBINING_COMMA_ABOVE_RIGHT = '\u0315'
 SEPARATOR_SHADARA = '󱹬'  # '\U000f1e6c'  # 󱹬
-SEPARATOR_MULAM = '󱹭'  # '\U000f1e6d'  # 󱹭
-SEPARATOR_PUNARAAVARTI = '󱹮'  # '\U000f1e6e'  # 󱹮
-SEPARATOR_ARDA = SEPARATOR_NARROW_NOBREAK_SPACE
+SEPARATOR_ARDA = '󱹭'  # '\U000f1e6d'  # 󱹭
+SEPARATOR_MULAM = '󱹮'  # '\U000f1e6e'  # 󱹮
+SEPARATOR_PUNARAAVARTI = '󱹯'  # '\U000f1e6f'  # 󱹯
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
