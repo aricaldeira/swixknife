@@ -164,14 +164,14 @@ def _calc_paper_size_series(initial_height, series_name):
         height_cpad = SI(height * 1_0000)
         width_cpad = SI(height_cpad / SQRT_2)
         width = width_cpad / 1_0000
-        area_keshe = height_cpad * width_cpad / 1_0000_0000
+        area_ketra = height_cpad * width_cpad / 1_0000_0000
 
         height_mm = round((height * PADA_TO_METER).decimal * 1_000, 3)
         width_mm = round((width * PADA_TO_METER).decimal * 1_000, 3)
         area_m2 = round(height_mm / 1_000 * width_mm / 1_000, 6)
 
-        print(f'S{series_name}{str(i).zfill(2)} - {width_cpad.formatted_number} cpad ({width_mm} mm) × {height_cpad.formatted_number} cpad ({height_mm} mm) = {area_keshe.formatted_number} ksh ({area_m2} m²)')
-        print(f"S{series_name}{str(i).zfill(2)} = (Sezimal('{width_cpad.formatted_number}'), Sezimal('{height_cpad.formatted_number}'), Sezimal('{area_keshe.formatted_number}'))")
+        print(f'S{series_name}{str(i).zfill(2)} - {width_cpad.formatted_number} cpad ({width_mm} mm) × {height_cpad.formatted_number} cpad ({height_mm} mm) = {area_ketra.formatted_number} ksh ({area_m2} m²)')
+        print(f"S{series_name}{str(i).zfill(2)} = (Sezimal('{width_cpad.formatted_number}'), Sezimal('{height_cpad.formatted_number}'), Sezimal('{area_ketra.formatted_number}'))")
 
         height = width
 
