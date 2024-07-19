@@ -81,10 +81,10 @@ class SezimalLocaleTR(SezimalLocale):
         'AİÇÖ',
     ]
 
-    DATE_FORMAT = '#d.#m.#y'
+    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
     DATE_LONG_FORMAT = '#-d #M #Y'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#d.#m.#y, #@W, #u:#p:#a'
+    DATE_TIME_FORMAT = '#d.#m.#\N{NNBSP}Y, #@W, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#-d #M #Y, #W, #u:#p:#a'
     DST_NAME = 'Yaz Saati Uygulaması'
     DST_SHORT_NAME = 'YSU'

@@ -77,11 +77,11 @@ class SezimalLocaleHE(SezimalLocale):
         'דצמ׳',
     ]
 
-    DATE_FORMAT = '#d.#m.#y'
-    DATE_LONG_FORMAT = '#d.#m.#y #@W'
+    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
+    DATE_LONG_FORMAT = '#d.#m.#\N{NNBSP}Y #@W'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#d.#m.#y #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#d.#m.#y #@W #u:#p:#a'
+    DATE_TIME_FORMAT = '#d.#m.#\N{NNBSP}Y #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#d.#m.#\N{NNBSP}Y #@W #u:#p:#a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 

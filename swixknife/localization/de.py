@@ -82,10 +82,10 @@ class SezimalLocaleDE(SezimalLocale):
         'v. SZM',
     ]
 
-    DATE_FORMAT = '#d.#m.#y'
+    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d.#m.#y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#\N{NNBSP}Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
     DST_NAME = 'Sommerzeit'
     DST_SHORT_NAME = 'SZ'
