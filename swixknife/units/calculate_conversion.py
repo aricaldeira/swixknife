@@ -149,7 +149,7 @@ def calculate_conversions():
     AYTAN_TO_LITER = AYTAN_TO_CUBIC_METER * 4344
     AYTAN_TO_MILLILITER = AYTAN_TO_LITER * 4344
     AYTAN_TO_US_FLUID_DRAM = AYTAN_TO_MILLILITER / SezimalFraction('114_541_451_453 / 20_411_252_332')
-    AYTAN_TO_UK_FLUID_DRAM = AYTAN_TO_MILLILITER / SezimalFraction('13_424_401 / 2_424_332')
+    AYTAN_TO_IMPERIAL_FLUID_DRAM = AYTAN_TO_MILLILITER / SezimalFraction('13_424_401 / 2_424_332')
     AYTAN_TO_CUBIC_INCH = unit_conversion['pad']['in'] ** 3
 
     unit_conversion['ayt'] = {
@@ -193,14 +193,14 @@ def calculate_conversions():
         'US bu dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2 / 4,
         'US bbl dry': AYTAN_TO_CUBIC_INCH / 52_400,
 
-        'UK min': AYTAN_TO_UK_FLUID_DRAM * 140,
-        'UK fl s': AYTAN_TO_UK_FLUID_DRAM * 3,
-        'UK fl dr': AYTAN_TO_UK_FLUID_DRAM,
-        'UK fl oz': AYTAN_TO_UK_FLUID_DRAM / 12,
-        'UK gi': AYTAN_TO_UK_FLUID_DRAM / 12 / 5,
-        'UK pt': AYTAN_TO_UK_FLUID_DRAM / 12 / 32,
-        'UK qt': AYTAN_TO_UK_FLUID_DRAM / 12 / 104,
-        'UK gal': AYTAN_TO_UK_FLUID_DRAM / 12 / 424,
+        'imp min': AYTAN_TO_IMPERIAL_FLUID_DRAM * 140,
+        'imp fl s': AYTAN_TO_IMPERIAL_FLUID_DRAM * 3,
+        'imp fl dr': AYTAN_TO_IMPERIAL_FLUID_DRAM,
+        'imp fl oz': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12,
+        'imp gi': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 5,
+        'imp pt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 32,
+        'imp qt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 104,
+        'imp gal': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 424,
     }
     unit_conversion['ayt'] = _set_non_prefixed_units(unit_conversion['ayt'])
 
@@ -280,9 +280,9 @@ def calculate_conversions():
         'st': DRAVYA_TO_GRAM / SezimalFraction('51_301_235_135 / 1_023_252'),
         'sl': DRAVYA_TO_GRAM / SezimalFraction('3_043_351 / 14'),
 
-        'UK qr': DRAVYA_TO_GRAM / SezimalFraction('51_301_235_135 / 311_424'),
-        'UK cwt': DRAVYA_TO_GRAM / SezimalFraction('51_301_235_135 / 44_534'),
-        'UK ton': DRAVYA_TO_KILOGRAM / SezimalFraction('51_301_235_135 / 10_410_432'),
+        'imp qr': DRAVYA_TO_GRAM / SezimalFraction('51_301_235_135 / 311_424'),
+        'imp cwt': DRAVYA_TO_GRAM / SezimalFraction('51_301_235_135 / 44_534'),
+        'imp ton': DRAVYA_TO_KILOGRAM / SezimalFraction('51_301_235_135 / 10_410_432'),
 
         'US qr': DRAVYA_TO_GRAM / SezimalFraction('4_300_112_245 / 30_304'),
         'US cwt': DRAVYA_TO_GRAM / SezimalFraction('4_300_112_245 / 4_344'),
