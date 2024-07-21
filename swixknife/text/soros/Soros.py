@@ -3,10 +3,10 @@
 # from __future__ import print_function
 import re, sys
 
-def run(program, data, lang):
-    return compile(program, lang).run(data)
+def soros_run(program, data, lang):
+    return soros_compile(program, lang).run(data)
 
-def compile(program, lang):
+def soros_compile(program, lang):
     return _Soros(program, lang)
 
 # conversion function

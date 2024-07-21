@@ -14,7 +14,7 @@ UNIT-pox poxa
 UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
-UNIT-avt avrita
+UNIT-avt avríti
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
@@ -92,7 +92,7 @@ UNIT-pox poxa
 UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
-UNIT-avt avrita
+UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
@@ -170,7 +170,7 @@ UNIT-pox poŝao
 UNIT-agm agrimao
 UNIT-ang anugao
 UNIT-bod bodao
-UNIT-avt avritao
+UNIT-avt avritio
 UNIT-pad padao
 UNIT-veg vegao
 UNIT-tvr tevarao
@@ -248,7 +248,7 @@ UNIT-pox posha
 UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
-UNIT-avt avrita
+UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevara
@@ -335,14 +335,14 @@ def create_prefixes(lang='en'):
             if lang == 'pt':
                 name = name.replace('shu', 'xu')
                 name = name.replace('sha', 'xa')
-                name = name.replace('cha', 'tcha')
+                name = name.replace('cha', 'cha')
                 name = name.replace('eka', 'eca')
                 name = name.replace('panp', 'pamp')
 
             elif lang == 'bz':
                 name = name.replace('shu', 'xu')
                 name = name.replace('sha', 'xa')
-                name = name.replace('cha', 'txa')
+                name = name.replace('cha', 'xa')
 
             elif lang == 'eo':
                 name = name.replace('shu', 'ŝu')
@@ -435,22 +435,22 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 #
 '''
 
-    if exponent_first:
-        text = rf'''
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
-'''
-    else:
-        text = rf'''
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
-
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
-"SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
-'''
+#     if exponent_first:
+#         text = rf'''
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+#
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+# '''
+#     else:
+#         text = rf'''
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
+#
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+# '''
 
 
     text += rf'''
@@ -484,13 +484,13 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
         text += rf'''#
 # {i} sezimal place{'s' if i > 1 else ''}
 #
-"(SH-({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}{EXP_RULE}?) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
 
-"(SH-({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}{EXP_RULE}?) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
 
 '''
 
