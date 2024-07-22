@@ -357,6 +357,8 @@ class SezimalTime:
 
             fmt = regex.sub(value, fmt)
 
+        is_tai = str(self.time_zone) == 'TAI'
+
         for regex, token, base, colon in TIME_ZONE_OFFSET_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
@@ -374,6 +376,9 @@ class SezimalTime:
                 uta = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[0:2]
                 posha = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[2:4]
 
+                if is_tai:
+                    agrima = str(SezimalInteger(round(self._time_zone_offset, 0))).zfill(6)[4:6]
+
             if '@' in base or 'Z' in base:
                 uta = locale.format_niftimal_number(
                     SezimalInteger(uta),
@@ -388,6 +393,14 @@ class SezimalTime:
                     regularized_digits='@' in base,
                 )
 
+                if is_tai:
+                    agrima = locale.format_niftimal_number(
+                        SezimalInteger(agrima),
+                        niftimal_places=0,
+                        sezimal_digits='!' in base,
+                        regularized_digits='@' in base,
+                    )
+
             elif '9' in base and '99' not in base:
                 uta = locale.format_decimal_number(
                     SezimalInteger(uta),
@@ -398,6 +411,12 @@ class SezimalTime:
                     decimal_places=0,
                 ).zfill(2)
 
+                if is_tai:
+                    agrima = locale.format_decimal_number(
+                        SezimalInteger(agrima),
+                        decimal_places=0,
+                    ).zfill(2)
+
             elif '↋' in base and '↋↋' not in base:
                 uta = locale.format_dozenal_number(
                     SezimalInteger(uta),
@@ -407,6 +426,12 @@ class SezimalTime:
                     SezimalInteger(posha),
                     dozenal_places=0,
                 ).zfill(2)
+
+                if is_tai:
+                    agrima = locale.format_dozenal_number(
+                        SezimalInteger(agrima),
+                        dozenal_places=0,
+                    ).zfill(2)
 
             elif '99' in base:
                 decimal_time = str(Sezimal(f'0.{uta}{posha}').decimal).split('.')[1][0:6]
@@ -431,6 +456,9 @@ class SezimalTime:
                     posha += colon + agrima
 
             text = f'{sign}{uta}{colon}{posha}'
+
+            if is_tai:
+                text += f'{colon}{agrima}'
 
             if '!' in token:
                 text = default_to_sezimal_digits(text)

@@ -460,12 +460,11 @@ class SezimalDateTime:
         if self.time_zone == str(time_zone):
             return self
 
-        if type(time_zone) == ZoneInfo:
-            dt = self.iso_date_time.astimezone(time_zone)
-        else:
-            dt = self.iso_date_time.astimezone(ZoneInfo(time_zone))
-
-        return SezimalDateTime(dt)
+        utc_agrimas = self.as_agrimas - self.time._time_zone_offset # - self._dst_offset
+        tz_offset, dst_offset = tz_agrimas_offset(time_zone)
+        tz_agrimas = utc_agrimas + tz_offset # + dst_offset
+        tz_days = tz_agrimas / 1_000_000
+        return SezimalDateTime.from_days(days=tz_days, time_zone=time_zone)
 
     @classmethod
     def combine(cls, date: SezimalDate, time: SezimalTime, time_zone: str | ZoneInfo = None) -> Self:

@@ -13,6 +13,7 @@ except:
 
 from decimal import Decimal
 
+from ..base import sezimal_context
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..units import decimal_to_sezimal_unit
 from ..functions import floor, ceil
@@ -365,10 +366,13 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
     if not isinstance(time_zone, ZoneInfo):
         time_zone = ZoneInfo(time_zone)
 
-    if base_gregorian_date:
+    if base_gregorian_date is not None:
         dt_tz = _datetime.datetime.fromisoformat(f'{base_gregorian_date}T12:00:00').astimezone(time_zone)
     else:
         dt_tz = _datetime.datetime.now(time_zone)
+
+    if str(time_zone) == 'TAI':
+        return _tai_offset(dt_tz)
 
     td = dt_tz.utcoffset()
     total_seconds = Decimal(str(td.days * 86_400))
@@ -429,3 +433,52 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     mars_sol_date -= Decimal('0.000_96')  # adjustment from Mars24
 
     return mars_sol_date
+
+#
+# Leap seconds to TAI “time zone”
+# Date in Python ordinal date, seconds to add
+#
+_prec = sezimal_context.sezimal_precision
+sezimal_context.precision = 120
+
+_TAI_LEAP_SECONDS = {
+    736_330: Sezimal('31.5..514_02'),     # 213200-20-44 - ISO-2017-01-01 - 37 s
+    735_780: Sezimal('31.2..35_01'),      # 213155-11-03 - ISO-2015-07-01 - 36 s
+    734_685: Sezimal('30.5..2'),          # 213152-10-44 - ISO-2012-07-01 - 35 s
+    733_408: Sezimal('30..205_43'),       # 213145-01-04 - ISO-2009-01-01 - 34 s
+    732_312: Sezimal('25.4..530_41'),     # 213141-20-44 - ISO-2006-01-01 - 33 s
+    729_755: Sezimal('25..140_25'),       # 213130-20-53 - ISO-1999-01-01 - 32 s
+    729_206: Sezimal('24.4..235_01'),     # 213125-11-02 - ISO-1997-07-01 - 31 s
+    728_659: Sezimal('24..1'),            # 213124-01-01 - ISO-1996-01-01 - 30 s
+    728_110: Sezimal('23.3..543_20...'),  # 213122-10-42 - ISO-1994-07-01 - 29 s
+    727_745: Sezimal('23..041_53'),       # 213121-10-41 - ISO-1993-07-01 - 28 s
+    727_380: Sezimal('22.3..251_40...'),  # 213120-11-03 - ISO-1992-07-01 - 27 s
+    726_833: Sezimal('22..012_35'),       # 213115-01-02 - ISO-1991-01-01 - 26 s
+    726_468: Sezimal('21.3'),             # 213114-01-01 - ISO-1990-01-01 - 25 s
+    725_737: Sezimal('20..543_20'),       # 213111-20-53 - ISO-1988-01-01 - 24 s
+    724_823: Sezimal('20.2..304_15'),     # 213105-11-01 - ISO-1985-07-01 - 23 s
+    724_092: Sezimal('15.5..140_25'),     # 213103-10-42 - ISO-1983-07-01 - 22 s
+    723_727: Sezimal('15.2..012_35'),     # 213102-10-41 - ISO-1982-07-01 - 21 s
+    723_362: Sezimal('14..4'),            # 213101-11-03 - ISO-1981-07-01 - 20 s
+    722_815: Sezimal('14.1..320_54'),     # 213100-01-02 - ISO-1980-01-01 - 19 s
+    722_450: Sezimal('13..415_30...'),    # 213055-01-01 - ISO-1979-01-01 - 18 s
+    722_085: Sezimal('13.1..025_14'),     # 213053-20-44 - ISO-1978-01-01 - 17 s
+    721_720: Sezimal('12..350_12'),       # 213052-20-43 - ISO-1977-01-01 - 16 s
+    721_354: Sezimal('12.0..3'),          # 213051-20-52 - ISO-1976-01-01 - 15 s
+    720_989: Sezimal('11..320_54'),       # 213051-01-03 - ISO-1975-01-01 - 14 s
+    720_624: Sezimal('11.0..041_53'),     # 213050-01-02 - ISO-1974-01-01 - 13 s
+    720_259: Sezimal('10..251_40...'),    # 213045-01-01 - ISO-1973-01-01 - 12 s
+    720_075:  Sezimal('5.5..350_12'),     # 213044-10-43 - ISO-1972-07-01 - 11 s
+    719_893:  Sezimal('5..2'),            # 213043-20-43 - ISO-1972-01-01 - 10 s
+}
+
+sezimal_context.precision = _prec
+
+def _tai_offset(base_gregorian_date: _datetime.datetime | _datetime.date) -> SezimalInteger:
+    ordinal_date = base_gregorian_date.toordinal()
+
+    for od in _TAI_LEAP_SECONDS:
+        if ordinal_date >= od:
+            return _TAI_LEAP_SECONDS[od], Sezimal(0)
+
+    return Sezimal(0), Sezimal(0)
