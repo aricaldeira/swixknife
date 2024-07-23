@@ -65,6 +65,10 @@ def calculate_conversions():
             #
             'month': SezimalFraction('2_323_320 / 210_141_213') / factor,
             'year': SezimalFraction('114_144 / 210_141_213') / factor,
+            #
+            #
+            #
+            'ang': factor * 100_000_000,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -220,6 +224,7 @@ def calculate_conversions():
             # Non S.I. units
             #
             'km/h': VEGA_TO_METER_PER_SECOND * 30 / 5,
+            'ml/s': VEGA_TO_METER_PER_SECOND / SezimalFraction('4_151_200 / 325'),
             'ml/h': VEGA_TO_METER_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
             'mph': VEGA_TO_METER_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
             'kn': VEGA_TO_METER_PER_SECOND * 24_400 / 12_324,
@@ -379,6 +384,20 @@ def calculate_conversions():
         'TNT': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / 1_531_101_350_212,
     }
     unit_conversion['kry'] = _set_non_prefixed_units(unit_conversion['kry'])
+
+    #
+    # Torque (gurna)
+    #
+    unit_conversion['grn'] = {
+        'N·m': unit_conversion['kry']['J'],
+        'Nm': unit_conversion['kry']['J'],
+        'prefixed': ('N·m', 'Nm'),
+
+        #
+        # Non S.I. units
+        #
+    }
+    unit_conversion['grn'] = _set_non_prefixed_units(unit_conversion['grn'])
 
     #
     # Power

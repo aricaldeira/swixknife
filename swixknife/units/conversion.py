@@ -234,7 +234,14 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     sp_2, su_2, spf_2 = _identify_validate_sezimal_unit(sezimal_unit_2)
 
     if su_1 != su_2 \
-        and (not (su_1 in ('tap', 'gtk') and su_2 in ('tap', 'gtk'))):
+        and (not (
+            su_1 in ('tap', 'gtk')
+            and su_2 in ('tap', 'gtk')
+        )) \
+        and (not (
+            su_1 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            and su_2 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+        )):
         raise ValueError(f'Invalid conversion between units [{sezimal_unit_1}] and [{sezimal_unit_2}]')
 
     _precision = sezimal_context.precision
@@ -256,6 +263,12 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     elif su_1 == 'gtk' and su_2 == 'tap':
         measure -= SezimalInteger('240_234_312')
         measure /= SezimalInteger('100_000')
+
+    if su_1 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+        measure /= UNIT_CONVERSION[su_1]['ang']
+
+    if su_2 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+        measure *= UNIT_CONVERSION[su_2]['ang']
 
     measure /= spf_2
 
