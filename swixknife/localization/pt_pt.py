@@ -4,6 +4,7 @@ __all__ = ('SezimalLocalePT_PT',)
 
 
 from .pt import SezimalLocalePT
+from ..sezimal import SezimalInteger
 
 
 class SezimalLocalePT_PT(SezimalLocalePT):
@@ -12,6 +13,14 @@ class SezimalLocalePT_PT(SezimalLocalePT):
 
     DEFAULT_TIME_ZONE = 'Europe/Lisbon'
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
+
+    def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
+        day = SezimalInteger(day)
+
+        if day == 1:
+            return '.º'
+
+        return ''
 
     _HOLIDAYS = [
         #

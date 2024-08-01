@@ -124,6 +124,6 @@ class SezimalLocaleES(SezimalLocale):
         day = SezimalInteger(day)
 
         if day == 1:
-            return 'º'
+            return '.º'
 
         return ''

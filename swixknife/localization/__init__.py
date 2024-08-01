@@ -6,9 +6,12 @@ __all__ = ('sezimal_locale', 'DEFAULT_LOCALE', 'SezimalLocale')
 import sys
 import locale as system_locale
 import importlib
+import os
 
 from .lokale import SezimalLocale
 
+
+CURDIR = os.path.dirname(os.path.abspath(__file__))
 
 LOCALE_CACHE = {}
 
@@ -82,14 +85,11 @@ def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> Sezim
     if locale_icu in LOCALE_CACHE:
         return LOCALE_CACHE[locale_icu]()
 
-    try:
+    if os.path.exists(os.path.join(CURDIR, locale_icu.lower() + '.py')):
         module = importlib.import_module('swixknife.localization.' + locale_icu.lower())
         locale_class = getattr(module, 'SezimalLocale' + locale_icu.upper())
         LOCALE_CACHE[locale_icu] = locale_class
         return locale_class()
-
-    except:
-        pass
 
     if script and country:
         language_icu = language.lower() + '_' + country.lower()
@@ -97,26 +97,20 @@ def sezimal_locale(locale: str | SezimalLocale = None, force_icu=False) -> Sezim
         if language_icu in LOCALE_CACHE:
             return LOCALE_CACHE[language_icu]()
 
-        try:
+        if os.path.exists(os.path.join(CURDIR, language_icu + '.py')):
             module = importlib.import_module('swixknife.localization.' + language_icu)
             locale_class = getattr(module, 'SezimalLocale' + language_icu.upper())
             LOCALE_CACHE[language_icu] = locale_class
             return locale_class()
 
-        except:
-            pass
-
     if language in LOCALE_CACHE:
         return LOCALE_CACHE[language]()
 
-    try:
+    if os.path.exists(os.path.join(CURDIR, language + '.py')):
         module = importlib.import_module('swixknife.localization.' + language)
         locale_class = getattr(module, 'SezimalLocale' + language.upper())
         LOCALE_CACHE[language] = locale_class
         return locale_class()
-
-    except:
-        pass
 
     return _create_locale_from_icu(locale_icu) or _create_locale_from_system(locale_os)
 
