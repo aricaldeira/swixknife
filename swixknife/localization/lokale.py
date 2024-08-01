@@ -125,7 +125,21 @@ class SezimalLocale:
 
     @property
     def ISO_DATE_FORMAT(self):
-        return self.DATE_FORMAT.replace('#', '%').replace('y', 'Y')
+        res = self.DATE_FORMAT
+
+        for separator in (
+            '_', '.', ',', '˙', 'ʼ',
+            '’', "'", '•', '◦', '\u0020', '\u00a0',
+            '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
+            '\u2006', '\u2007', '\u2008', '\u2009', '\u200a', '\u202f',
+            '\u205f', '\U000f1e6c', '\U000f1e6d', '\U000f1e6e', '\U000f1e6f',
+            '',
+        ):
+            res = res.replace(f'#{separator}', '%')
+
+        res = res.replace('y', 'Y')
+
+        return res
 
     @property
     def ISO_TIME_FORMAT(self):
@@ -347,6 +361,7 @@ class SezimalLocale:
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         grouping_digits: int = 3,
         keep_original_aspect: bool = False,
+        native_digits: bool = True,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -356,7 +371,7 @@ class SezimalLocale:
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
-        return sezimal_format(
+        res = sezimal_format(
             number, sezimal_places, self.SEZIMAL_SEPARATOR,
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
@@ -370,6 +385,11 @@ class SezimalLocale:
             grouping_digits,
             keep_original_aspect,
         )
+
+        if (not sezimal_digits) and native_digits and self.DIGITS:
+            res = self.digit_replace(res)
+
+        return res
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
@@ -394,6 +414,7 @@ class SezimalLocale:
         # https://en.wikipedia.org/wiki/Japanese_numerals#Powers_of_10
         #
         wan_man_van_grouping: bool = False,
+        native_digits: bool = True,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
@@ -401,7 +422,7 @@ class SezimalLocale:
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
-        return decimal_format(
+        res = decimal_format(
             number, decimal_places, self.SEZIMAL_SEPARATOR,
             group_separator, fraction_group_separator,
             typographical_negative,
@@ -415,6 +436,11 @@ class SezimalLocale:
             lakh_crore_grouping,
             wan_man_van_grouping,
         )
+
+        if native_digits and self.DIGITS:
+            res = self.digit_replace(res)
+
+        return res
 
     def format_dozenal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
@@ -430,6 +456,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
+        native_digits: bool = True,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -439,7 +466,7 @@ class SezimalLocale:
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
-        return dozenal_format(
+        res = dozenal_format(
             number, dozenal_places, self.SEZIMAL_SEPARATOR,
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
@@ -451,6 +478,11 @@ class SezimalLocale:
             negative_format,
             recurring_digits_notation,
         )
+
+        if native_digits and self.DIGITS:
+            res = self.digit_replace(res)
+
+        return res
 
     def format_niftimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
@@ -470,6 +502,7 @@ class SezimalLocale:
         positive_format: str = '{prefix}{value}{suffix}',
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
+        native_digits: bool = True,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -479,7 +512,7 @@ class SezimalLocale:
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
-        return niftimal_format(
+        res = niftimal_format(
             number, niftimal_places, self.SEZIMAL_SEPARATOR,
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
@@ -495,6 +528,11 @@ class SezimalLocale:
             negative_format,
             recurring_digits_notation,
         )
+
+        if (not sezimal_digits) and native_digits and self.DIGITS:
+            res = self.digit_replace(res)
+
+        return res
 
     @property
     def sort_key(self) -> callable:

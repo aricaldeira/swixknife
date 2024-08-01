@@ -227,10 +227,10 @@ class SezimalLocaleRU(SezimalLocale):
         'aSHE',
     ]
 
-    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
+    DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#-d #M #Y г.'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d.#m.#\N{NNBSP}Y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d #M #Y г., #u:#p:#a'
     DST_NAME = 'Летнее Время'
     DST_SHORT_NAME = 'ЛВ'

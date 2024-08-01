@@ -70,11 +70,11 @@ class SezimalLocaleUK(SezimalLocale):
         'груд.',
     ]
 
-    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
-    DATE_LONG_FORMAT = '#d.#m.#\N{NNBSP}Y #@W'
+    DATE_FORMAT = '#d.#m.#Y'
+    DATE_LONG_FORMAT = '#d.#m.#Y #@W'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#d.#m.#\N{NNBSP}Y #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#d.#m.#\N{NNBSP}Y #@W #u:#p:#a'
+    DATE_TIME_FORMAT = '#d.#m.#Y #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#d.#m.#Y #@W #u:#p:#a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 

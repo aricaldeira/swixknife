@@ -271,10 +271,10 @@ class SezimalLocalePL(SezimalLocale):
         'aSHE',
     ]
 
-    DATE_FORMAT = '#d.#m.#\N{NNBSP}Y'
+    DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#-d. #M #Y r.'
     TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#@W, #d.#m.#\N{NNBSP}Y, #u:#p:#a'
+    DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
     DST_NAME = 'Czas Letni'
     DST_SHORT_NAME = 'CzL'
