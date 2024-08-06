@@ -311,7 +311,13 @@ def sezimal_exponent_to_symbol(exponent: str | int | SezimalInteger, unicase: bo
         exponent = SezimalInteger(exponent)
 
     if exponent in _SEZIMAL_EXPONENT_TO_SYMBOL:
-        return _SEZIMAL_EXPONENT_TO_SYMBOL[exponent]
+        if not unicase:
+            return _SEZIMAL_EXPONENT_TO_SYMBOL[exponent]
+
+        if exponent > 0:
+            return _SEZIMAL_EXPONENT_TO_SYMBOL[exponent].lower() + 'm'
+
+        return _SEZIMAL_EXPONENT_TO_SYMBOL[exponent].lower() + 'i'
 
     if exponent > 0:
         upper_case = True
