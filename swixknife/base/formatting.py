@@ -47,7 +47,7 @@ SEPARATOR_COMBINING_DOT_ABOVE_RIGHT = '\u0358'
 SEPARATOR_COMBINING_COMMA_ABOVE_RIGHT = '\u0315'
 SEPARATOR_SHADARA = '󱹬'  # '\U000f1e6c'  # 󱹬
 SEPARATOR_ARDA = '󱹭'  # '\U000f1e6d'  # 󱹭
-SEPARATOR_MULAM = '󱹮'  # '\U000f1e6e'  # 󱹮
+SEPARATOR_SUTRA = '󱹮'  # '\U000f1e6e'  # 󱹮
 SEPARATOR_PUNARAAVARTI = '󱹯'  # '\U000f1e6f'  # 󱹯
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
@@ -203,12 +203,12 @@ def sezimal_format(
 
     if group_separator:
         if sezimal_punctuation:
-            integer = _apply_sezimal_punctuation(integer)
+            integer = _apply_sezimal_punctuation(integer, False)
         else:
-            integer = _apply_format(integer, group_separator, group_format)
+            integer = _apply_format(integer, group_separator, group_format, False)
 
         if subgroup_separator:
-            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
+            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT, False)
             integer = integer.replace(subgroup_separator + group_separator, group_separator)
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
@@ -221,12 +221,12 @@ def sezimal_format(
         if recurring:
             if fraction and fraction_group_separator:
                 if sezimal_punctuation:
-                    fraction = _apply_sezimal_punctuation(fraction[::-1])[::-1]
+                    fraction = _apply_sezimal_punctuation(fraction)
                 else:
-                    fraction = _apply_format(fraction[::-1], fraction_group_separator, group_format)[::-1]
+                    fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
                 if fraction_subgroup_separator:
-                    fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = _apply_format(fraction, fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
                     fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
                     fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
@@ -234,7 +234,7 @@ def sezimal_format(
                 fraction, recurring,
                 recurring_digits_notation,
                 group_format,
-                SEPARATOR_MULAM if sezimal_punctuation else sezimal_separator ,
+                SEPARATOR_SUTRA if sezimal_punctuation else sezimal_separator ,
                 fraction_group_separator,
                 keep_original_aspect,
             )
@@ -246,17 +246,17 @@ def sezimal_format(
     if fraction:
         if fraction_group_separator:
             if sezimal_punctuation:
-                fraction = _apply_sezimal_punctuation(fraction[::-1])[::-1]
+                fraction = _apply_sezimal_punctuation(fraction)
             else:
-                fraction = _apply_format(fraction[::-1], fraction_group_separator, group_format)[::-1]
+                fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
             if fraction_subgroup_separator:
-                fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = _apply_format(fraction, fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
                 fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
                 fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
         if sezimal_punctuation:
-            formatted_number += SEPARATOR_MULAM
+            formatted_number += SEPARATOR_SUTRA
         else:
             formatted_number += sezimal_separator
 
@@ -276,17 +276,23 @@ def sezimal_format(
     return formatted_number
 
 
-def _apply_sezimal_punctuation(number: str) -> str:
+def _apply_sezimal_punctuation(number: str, is_fraction: bool = True) -> str:
     is_negative = number[0] in '-−⁻₋'
 
     if is_negative:
         number = number[1:]
 
-    if len(number) <= 3:
+    if is_fraction:
+        number = number[::-1]
+
+    if len(number) <= 4:
         formatted_number = number
     else:
-        formatted_number = _apply_format(number[:-3], SEPARATOR_ARDA, _ARDA_DIGITS_GROUP_FORMAT) + SEPARATOR_ARDA + number[-3:]
-        formatted_number = _apply_format(formatted_number, SEPARATOR_SHADARA, _SHADARA_DIGITS_GROUP_FORMAT)
+        formatted_number = _apply_format(number[:-3], SEPARATOR_ARDA, _ARDA_DIGITS_GROUP_FORMAT, False) + SEPARATOR_ARDA + number[-3:]
+        formatted_number = _apply_format(formatted_number, SEPARATOR_SHADARA, _SHADARA_DIGITS_GROUP_FORMAT, False)
+
+    if is_fraction:
+        formatted_number = formatted_number[::-1]
 
     if is_negative:
         formatted_number = '-' + formatted_number
@@ -294,17 +300,26 @@ def _apply_sezimal_punctuation(number: str) -> str:
     return formatted_number
 
 
-def _apply_format(number: str, separator: str, format_pattern: re.Pattern) -> str:
+def _apply_format(number: str, separator: str, format_pattern: re.Pattern, is_fraction: bool = True) -> str:
     is_negative = number[0] in '-−⁻₋'
 
     if is_negative:
         number = number[1:]
 
-    formatted_number = number[::-1]
-    parts = re.split(format_pattern, formatted_number)
-    parts = list(filter(bool, parts))
-    formatted_number = separator.join(parts)
-    formatted_number = formatted_number[::-1]
+    if is_fraction:
+        number = number[::-1]
+
+    if format_pattern == _THREE_DIGITS_GROUP_FORMAT and len(number) <= 4:
+        formatted_number = number
+    else:
+        formatted_number = number[::-1]
+        parts = re.split(format_pattern, formatted_number)
+        parts = list(filter(bool, parts))
+        formatted_number = separator.join(parts)
+        formatted_number = formatted_number[::-1]
+
+    if is_fraction:
+        formatted_number = formatted_number[::-1]
 
     if is_negative:
         formatted_number = '-' + formatted_number
@@ -479,13 +494,13 @@ def decimal_format(
             integer = integer.rjust(minimum_size, '0')
 
         if wan_man_van_grouping:
-            integer = _apply_format(integer, group_separator, _FOUR_DIGITS_GROUP_FORMAT)
+            integer = _apply_format(integer, group_separator, _FOUR_DIGITS_GROUP_FORMAT, False)
 
         elif lakh_crore_grouping and len(integer) > 3:
-            integer = _apply_format(integer[:-3], group_separator, _TWO_DIGITS_GROUP_FORMAT) + group_separator + integer[-3:]
+            integer = _apply_format(integer[:-3], group_separator, _TWO_DIGITS_GROUP_FORMAT, False) + group_separator + integer[-3:]
 
         else:
-            integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT)
+            integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT, False)
 
     formatted_number = integer
 
@@ -493,13 +508,13 @@ def decimal_format(
         if recurring:
             if fraction and fraction_group_separator:
                 if wan_man_van_grouping:
-                    fraction = _apply_format(fraction[::-1], fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = _apply_format(fraction, fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)
 
                 elif lakh_crore_grouping and len(fraction) > 3:
-                    fraction = fraction[0:3] + fraction_group_separator + _apply_format(fraction[::-1][:-3], fraction_group_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = fraction[0:3] + fraction_group_separator + _apply_format(fraction[3:], fraction_group_separator, _TWO_DIGITS_GROUP_FORMAT)
 
                 else:
-                    fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = _apply_format(fraction, fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)
 
             formatted_number += _apply_recurring_mark(
                 fraction, recurring,
@@ -517,13 +532,13 @@ def decimal_format(
     if fraction:
         if fraction_group_separator:
             if wan_man_van_grouping:
-                fraction = _apply_format(fraction[::-1], fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = _apply_format(fraction, fraction_group_separator, _FOUR_DIGITS_GROUP_FORMAT)
 
             elif lakh_crore_grouping and len(fraction) > 3:
-                fraction = fraction[0:3] + fraction_group_separator + _apply_format(fraction[::-1][:-3], fraction_group_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = fraction[0:3] + fraction_group_separator + _apply_format(fraction[3:], fraction_group_separator, _TWO_DIGITS_GROUP_FORMAT)
 
             else:
-                fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = _apply_format(fraction, fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)
 
         formatted_number += decimal_separator
         formatted_number += fraction
@@ -625,10 +640,10 @@ def dozenal_format(
         if minimum_size > 0:
             integer = integer.rjust(minimum_size, '0')
 
-        integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT)
+        integer = _apply_format(integer, group_separator, _THREE_DIGITS_GROUP_FORMAT, False)
 
         if subgroup_separator:
-            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
+            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT, False)
             integer = integer.replace(subgroup_separator + group_separator, group_separator)
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
@@ -650,10 +665,10 @@ def dozenal_format(
 
     if fraction:
         if fraction_group_separator:
-            fraction = _apply_format(fraction[::-1], fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)[::-1]
+            fraction = _apply_format(fraction, fraction_group_separator, _THREE_DIGITS_GROUP_FORMAT)
 
             if fraction_subgroup_separator:
-                fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = _apply_format(fraction, fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
                 fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
                 fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
@@ -796,12 +811,12 @@ def niftimal_format(
             integer = integer.rjust(minimum_size, '0')
 
         if sezimal_punctuation:
-            integer = _apply_sezimal_punctuation(integer)
+            integer = _apply_sezimal_punctuation(integer, False)
         else:
-            integer = _apply_format(integer, group_separator, group_format)
+            integer = _apply_format(integer, group_separator, group_format, False)
 
         if subgroup_separator:
-            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
+            integer = _apply_format(integer, subgroup_separator, _TWO_DIGITS_GROUP_FORMAT, False)
             integer = integer.replace(subgroup_separator + group_separator, group_separator)
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
@@ -811,12 +826,12 @@ def niftimal_format(
         if recurring:
             if fraction and fraction_group_separator:
                 if sezimal_punctuation:
-                    fraction = _apply_sezimal_punctuation(fraction[::-1])[::-1]
+                    fraction = _apply_sezimal_punctuation(fraction)
                 else:
-                    fraction = _apply_format(fraction[::-1], fraction_group_separator, group_format)[::-1]
+                    fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
                 if fraction_subgroup_separator:
-                    fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                    fraction = _apply_format(fraction, fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
                     fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
                     fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
@@ -824,7 +839,7 @@ def niftimal_format(
                 fraction, recurring,
                 recurring_digits_notation,
                 group_format,
-                SEPARATOR_MULAM if sezimal_punctuation else niftimal_separator,
+                SEPARATOR_SUTRA if sezimal_punctuation else niftimal_separator,
                 fraction_group_separator
             )
             fraction = ''
@@ -835,17 +850,17 @@ def niftimal_format(
     if fraction:
         if fraction_group_separator:
             if sezimal_punctuation:
-                fraction = _apply_sezimal_punctuation(fraction[::-1])[::-1]
+                fraction = _apply_sezimal_punctuation(fraction)
             else:
-                fraction = _apply_format(fraction[::-1], fraction_group_separator, group_format)[::-1]
+                fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
             if fraction_subgroup_separator:
-                fraction = _apply_format(fraction[::-1], fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)[::-1]
+                fraction = _apply_format(fraction, fraction_subgroup_separator, _TWO_DIGITS_GROUP_FORMAT)
                 fraction = fraction.replace(fraction_subgroup_separator + fraction_group_separator, fraction_group_separator)
                 fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
         if sezimal_punctuation:
-            formatted_number += SEPARATOR_MULAM
+            formatted_number += SEPARATOR_SUTRA
         else:
             formatted_number += niftimal_separator
 
@@ -929,10 +944,10 @@ def _apply_recurring_mark(
         if (not recurring) or (recurring == '0'):
             return fraction_separator + fraction
 
-    if fraction_separator == SEPARATOR_MULAM:
-        formatted_recurring = _apply_sezimal_punctuation(recurring.replace('_', '')[::-1])[::-1]
+    if fraction_separator == SEPARATOR_SUTRA:
+        formatted_recurring = _apply_sezimal_punctuation(recurring.replace('_', ''))
     else:
-        formatted_recurring = _apply_format(recurring.replace('_', '')[::-1], group_separator, recurring_regrouping)[::-1]
+        formatted_recurring = _apply_format(recurring.replace('_', ''), group_separator, recurring_regrouping)
 
     if recurring_digits_notation == RECURRING_DIGITS_NOTATION_OVERLINE:
         if fraction and fraction != formatted_recurring:
@@ -966,7 +981,7 @@ def _apply_recurring_mark(
 
         return fraction_separator + marked_fraction
 
-    if fraction_separator == SEPARATOR_MULAM:
+    if fraction_separator == SEPARATOR_SUTRA:
         recurring_marker = SEPARATOR_PUNARAAVARTI
     else:
         recurring_marker = fraction_separator + fraction_separator
