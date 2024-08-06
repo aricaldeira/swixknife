@@ -7,7 +7,7 @@ from fractions import Fraction as DecimalFraction
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..base import default_to_sezimal_digits, validate_clean_decimal, \
-    sezimal_format, decimal_format, niftimal_format
+    sezimal_format, decimal_format, niftimal_format, sezimal_context
 from ..base.formatting import PER_SYMBOLS
 from ..exponents import sezimal_exponent_to_decimal_exponent, \
     decimal_exponent_to_sezimal_exponent
@@ -125,7 +125,7 @@ class SezimalCalculator:
     @property
     def spellout(self):
         if self.locale:
-            lang = self.locale.LANG
+            lang = self.locale.LANGUAGE_TAG
         else:
             lang = 'en'
 
@@ -149,11 +149,11 @@ class SezimalCalculator:
                 continue
 
             if self.unit and part.replace('.', '').isdigit():
-                spellout += sezimal_spellout(f'SH-{self.unit} {part}', lang) + ' '
+                spellout += sezimal_spellout(f'SH-{self.unit} {part}', lang, self.sezimal_punctuation) + ' '
             elif self.unit and part.replace('/', '').replace('⁄', '').isdigit():
-                spellout += sezimal_spellout(f'SH-{self.unit} {part}', lang) + ' '
+                spellout += sezimal_spellout(f'SH-{self.unit} {part}', lang, self.sezimal_punctuation) + ' '
             else:
-                spellout += sezimal_spellout(part, lang) + ' '
+                spellout += sezimal_spellout(part, lang, self.sezimal_punctuation) + ' '
 
         return spellout.strip()
 
@@ -270,8 +270,6 @@ class SezimalCalculator:
             'decimal_places': precision,
             'recurring_digits_notation': recurring_digits_notation,
             'keep_original_aspect': keep_original_aspect,
-            'lakh_crore_grouping': self.locale and (self.locale.LANG in ('hi', 'ur', 'mr', 'bn', 'or', 'ta', 'te', 'kn', 'ml') or 'Indian ' in self.locale.LANGUAGE),
-            'wan_man_van_grouping': self.locale and self.locale.LANG in ('zh', 'ja', 'ko', 'vi'),
         }
 
         if display:
@@ -351,7 +349,7 @@ class SezimalCalculator:
         if suffix in PER_SYMBOLS:
             display += suffix
         elif suffix:
-            display += '\N{NNBSP}' + suffix
+            display += '\u202f' + suffix
 
         return display
 
@@ -679,7 +677,9 @@ class SezimalCalculator:
             #
             # Take care of the mod to % operator change
             #
+            sezimal_context.use_ultra_precision()
             response = eval(self._prepared_expression.replace('mod', '%'))
+            sezimal_context.back_to_regular_precision()
 
             if self.decimal:
                 if type(response) == Sezimal:

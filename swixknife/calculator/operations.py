@@ -391,8 +391,8 @@ _TRIGONOMETRIC_FUNCTION = (
 
 _CONSTANTS = ('e', 'π', 'τ', 'φ')
 
-e = E
-π = PI
-τ = TAU
+e = E.sezimal
+π = PI.sezimal
+τ = TAU.sezimal
 φ = GOLDEN_RATIO
 
