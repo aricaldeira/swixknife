@@ -14,11 +14,13 @@ from .soros import soros_compile
 SPELLOUT_PROGRAMS = {}
 
 
-def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, lang: str = 'en') -> str:
+def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, lang: str = 'en', sezimal_punctuation: bool = False) -> str:
     number = str(number).replace('_', '')
 
     if not number:
         return ''
+
+    lang = lang.replace('-', '_')
 
     if '..' in number:
         number, recurring = number.split('..')
@@ -79,6 +81,10 @@ def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInte
         SPELLOUT_PROGRAMS[lang] = soros_compile(lang_file.replace('### UNITS_AND_PREFIXES ###', units_and_prefixes), lang)
 
     soros_program = SPELLOUT_PROGRAMS[lang]
+
+    if sezimal_punctuation:
+        number = number.replace('.', '󱹮').replace(',', '󱹮')
+
     text = soros_program.run(number).strip()
 
     if recurring:
