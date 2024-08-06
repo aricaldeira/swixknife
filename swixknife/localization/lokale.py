@@ -674,3 +674,49 @@ class SezimalLocale:
             lang = self.LANG
 
         return sezimal_spellout(number, lang)
+
+    @property
+    def POSIX_CODE(self):
+        parts = self.__class__.__name__.replace('SezimalLocale', '').split('_')
+
+        if len(parts) == 1:
+            return parts[0].lower()
+
+        #
+        # Presume that the 2 characters are a country code
+        #
+        if len(parts[1]) == 2:
+            name = parts[0].lower() + '_' + parts[1]
+
+            if len(parts) > 2:
+                name += '@' + '_'.join(parts[2:]).capitalize()
+
+            return name
+
+        if len(parts) == 2:
+            return parts[0].lower() + '@' + parts[1].capitalize()
+
+        return '_'.join(parts)
+
+    @property
+    def LANGUAGE_TAG(self):
+        parts = self.__class__.__name__.replace('SezimalLocale', '').split('_')
+
+        if len(parts) == 1:
+            return parts[0].lower()
+
+        #
+        # Presume that the 2 characters are a country code
+        #
+        if len(parts[1]) == 2:
+            name = parts[0].lower() + '-' + parts[1]
+
+            if len(parts) > 2:
+                name += '-' + '-'.join(parts[2:]).capitalize()
+
+            return name
+
+        if len(parts) == 2:
+            return parts[0].lower() + '-' + parts[1].capitalize()
+
+        return '-'.join(parts)
