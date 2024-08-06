@@ -438,8 +438,7 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
 # Leap seconds to TAI “time zone”
 # Date in Python ordinal date, seconds to add
 #
-_prec = sezimal_context.sezimal_precision
-sezimal_context.precision = 120
+sezimal_context.use_ultra_precision()
 
 _TAI_LEAP_SECONDS = {
     736_330: Sezimal('31.5..514_02'),     # 213200-20-44 - ISO-2017-01-01 - 37 s
@@ -472,7 +471,8 @@ _TAI_LEAP_SECONDS = {
     719_893:  Sezimal('5..2'),            # 213043-20-43 - ISO-1972-01-01 - 10 s
 }
 
-sezimal_context.precision = _prec
+sezimal_context.back_to_regular_precision()
+
 
 def _tai_offset(base_gregorian_date: _datetime.datetime | _datetime.date) -> SezimalInteger:
     ordinal_date = base_gregorian_date.toordinal()
