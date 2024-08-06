@@ -16,7 +16,7 @@ Decimal = TypeVar('Decimal', bound='Decimal')
 
 class SezimalContext:
     def __init__(self):
-        self.sezimal_precision = 33
+        self.sezimal_precision = 30
         self._locale = None
         self.show_recurring_digits = True
         self.fractions_use_decimal = False
@@ -24,6 +24,10 @@ class SezimalContext:
         self.fractions_precision = None
         self.minimum_size = 0
         self.sezimal_digits = False
+        self.using_ultra_precision = False
+        self._regular_precision = 0
+        self._regular_fractions_precision = 0
+        self._regular_fractions_use_decimal = False
 
     @property
     def precision(self) -> SezimalInteger:
@@ -172,6 +176,29 @@ class SezimalContext:
     def locale(self, locale: str = None):
         from swixknife import sezimal_locale
         self._locale = sezimal_locale(locale)
+
+    def use_ultra_precision(self):
+        if self.using_ultra_precision:
+            return
+
+        self._regular_precision = self.precision
+        self._regular_fractions_precision = self.fractions_precision
+        self._regular_fractions_use_decimal = self.fractions_use_decimal
+
+        self.precision = 130
+        self.fractions_precision = 130
+        # self.fractions_use_decimal = True
+        self.using_ultra_precision = True
+
+
+    def back_to_regular_precision(self):
+        if not self.using_ultra_precision:
+            return
+
+        self.precision = self._regular_precision
+        self.fractions_precision = self._regular_fractions_precision
+        # self.fractions_use_decimal = self._regular_fractions_use_decimal
+        self.using_ultra_precision = False
 
 
 sezimal_context = SezimalContext()
