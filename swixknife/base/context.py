@@ -28,6 +28,7 @@ class SezimalContext:
         self._regular_precision = 0
         self._regular_fractions_precision = 0
         self._regular_fractions_use_decimal = False
+        self.ultra_precision = 100
 
     @property
     def precision(self) -> SezimalInteger:
@@ -185,8 +186,8 @@ class SezimalContext:
         self._regular_fractions_precision = self.fractions_precision
         self._regular_fractions_use_decimal = self.fractions_use_decimal
 
-        self.precision = 130
-        self.fractions_precision = 130
+        self.precision = self.ultra_precision
+        self.fractions_precision = self.ultra_precision
         # self.fractions_use_decimal = True
         self.using_ultra_precision = True
 
