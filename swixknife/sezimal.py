@@ -34,14 +34,14 @@ getcontext().prec = sezimal_context.decimal_precision
 #
 # Operations maps/tables
 #
-from . import _sezimal_maps
+from . import _sezimal_maps, _sezimal_reciprocal_map
 
 _ADDITION_MAP = _sezimal_maps.ADDITION_MAP
 _SUBTRACTION_MAP = _sezimal_maps.SUBTRACTION_MAP
 _SUBTRACTION_BORROWED = _sezimal_maps.SUBTRACTION_BORROWED
 _MULTIPLICATION_MAP = _sezimal_maps.MULTIPLICATION_MAP
-_RECIPROCAL_MAP = _sezimal_maps.RECIPROCAL_MAP
-#_RECIPROCAL_MAP = {}
+_RECIPROCAL_MAP = _sezimal_reciprocal_map.RECIPROCAL_MAP
+# _RECIPROCAL_MAP = {}
 _FACTORIAL = _sezimal_maps.FACTORIAL
 _EXP = {}
 _LN = {}
@@ -100,7 +100,7 @@ class Sezimal:
         if original_decimal is None:
             dec = sezimal_to_decimal(cleaned_number)
 
-            if self._sign < 0:
+            if self._sign < 0 and dec[0] != '-':
                 dec = '-' + dec
 
             self._value = Decimal(dec)
@@ -109,7 +109,7 @@ class Sezimal:
             self._value = original_decimal
 
     def __str__(self) -> str:
-        if self._sign == -1:
+        if self._sign == -1 and self._integer[0] != '-':
             res = '-' + self._integer
         else:
             res = self._integer
@@ -736,6 +736,20 @@ class Sezimal:
         if other_number == 1:
             return str(self)
 
+        if sezimal_context.fractions_use_decimal:
+            using_ultra_precision = sezimal_context.using_ultra_precision
+            precision = sezimal_context.precision
+
+            if not using_ultra_precision:
+                sezimal_context.use_ultra_precision()
+
+            res = round(Sezimal(self.decimal / other_number.decimal), precision)
+
+            if not using_ultra_precision:
+                sezimal_context.back_to_regular_precision()
+
+            return res
+
         negative = other_number < 0
         check = str(other_number).replace('-', '')
 
@@ -747,9 +761,13 @@ class Sezimal:
 
             return division
 
-        if max_precision is None:
-            max_precision = sezimal_context.sezimal_precision
+        using_ultra_precision = sezimal_context.using_ultra_precision
+        precision = sezimal_context.precision
 
+        if not using_ultra_precision:
+            sezimal_context.use_ultra_precision()
+
+        max_precision = sezimal_context.sezimal_precision
         max_precision = int(SezimalInteger(max_precision))
 
         digits_a = list(self._digits)
@@ -776,7 +794,6 @@ class Sezimal:
         quotient, remainder = self.__basic_division(dividend, divisor)
         max_precision = max(final_precision, max_precision) * 2
 
-        original_precision = sezimal_context.sezimal_precision
         sezimal_context.sezimal_precision = decimal_to_sezimal(str(max_precision))
 
         while remainder > 0 and final_precision < max_precision:
@@ -784,8 +801,6 @@ class Sezimal:
             final_precision += 1
             q, remainder = self.__basic_division(dividend, divisor)
             quotient = Sezimal(str(quotient) + str(q), _internal=True)
-
-        sezimal_context.sezimal_precision = original_precision
 
         division = str(quotient)
 
@@ -802,10 +817,13 @@ class Sezimal:
 
         if self == 1:
             _RECIPROCAL_MAP[check] = division
-            # print(f"""    '{check}': '{division}',""")
+            # print(f"""    '{check}': '{sezimal_format(division, sezimal_places=sezimal_context.sezimal_precision)}',""")
 
         if negative:
             division = '-' + division
+
+        if not using_ultra_precision:
+            sezimal_context.back_to_regular_precision()
 
         return division
 
@@ -1241,7 +1259,7 @@ class SezimalFraction(Sezimal):
         pass
 
     def __str__(self) -> str:
-        if self._sign == -1:
+        if self._sign == -1 and str(self._numerator)[0] != '-':
             res = '-'
         else:
             res = ''
@@ -1471,39 +1489,65 @@ class SezimalFraction(Sezimal):
         if (not sezimal_context.fractions_simplify) and (not force):
             return num, den
 
-        if precision:
-            precision = int(SezimalInteger(precision).decimal)
-        else:
-            precision = getcontext().prec + 10
+        using_ultra_precision = sezimal_context.using_ultra_precision
+        precision = sezimal_context.precision
 
-        with localcontext() as context:
-            if precision < 16:
-                context.prec = 16
-            else:
-                context.prec = precision
+        if not using_ultra_precision:
+            sezimal_context.use_ultra_precision()
 
-            num = num.decimal
-            den = den.decimal
+        while True:
+            x = num.decimal
+            y = den.decimal
 
-            for factor in _sezimal_maps._PRIMES:
-                factor = Decimal(factor)
+            while y:
+                x, y = y, x % y
 
-                if factor > min(abs(num), abs(den)):
-                    break
+            x = abs(x)
 
-                while True:
-                    num_test = num / factor
+            if x == 1 or x == 0:
+                break
 
-                    if num_test != int(num_test):
-                        break
+            num = SezimalInteger(num.decimal / x)
+            den = SezimalInteger(den.decimal / x)
 
-                    den_test = den / factor
+        if not using_ultra_precision:
+            sezimal_context.back_to_regular_precision()
 
-                    if den_test != int(den_test):
-                        break
+        return num, den
 
-                    num = num_test
-                    den = den_test
+        # if precision:
+        #     precision = int(SezimalInteger(precision).decimal)
+        # else:
+        #     precision = getcontext().prec + 10
+        #
+        # with localcontext() as context:
+        #     if precision < 16:
+        #         context.prec = 16
+        #     else:
+        #         context.prec = precision
+        #
+        #     num = num.decimal
+        #     den = den.decimal
+        #
+        #     for factor in _sezimal_maps._PRIMES:
+        #         factor = Decimal(factor)
+        #
+        #         if factor > min(abs(num), abs(den)):
+        #             break
+        #
+        #         while True:
+        #             num_test = num / factor
+        #
+        #             if num_test != int(num_test):
+        #                 break
+        #
+        #             den_test = den / factor
+        #
+        #             if den_test != int(den_test):
+        #                 break
+        #
+        #             num = num_test
+        #             den = den_test
 
         return SezimalInteger(num), SezimalInteger(den)
 
