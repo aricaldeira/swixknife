@@ -3,7 +3,7 @@ __all__ = ('json',)
 
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
-from ..decimal import Decimal, DecimalFraction
+from .._decimal import Decimal, DecimalFraction
 from ..dozenal import Dozenal, DozenalInteger, DozenalFraction
 from ..date_time import SezimalDate, SezimalTime, SezimalDateTime
 
