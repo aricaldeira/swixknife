@@ -16,7 +16,7 @@
 ⁄ sur
 mod modulo
 ([-−]?\d+|[-−]?[πτφ])! $1 faktorialo
-[.,󱹮]{2}|[‥„󱹯] ripetiĝas
+[.,󱹮]{2}|[‥„󱹯] kaj ripetiĝas
 e e
 π pi
 τ taŭ
@@ -139,7 +139,7 @@ cbrt\( kuba radiko de
 
 # sesuma komo
 
-([-−]?\d+)[󱹮] $1| el tie
+([-−]?\d+)[󱹮] $1| kojno
 ([-−]?\d+)[,.] $1| komo
 ([-−]?\d+[.,󱹮])([^0]\d{1,2}) $1| |$2
 ([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2

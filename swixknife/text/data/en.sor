@@ -18,7 +18,7 @@
 ⁄ over
 mod modulo
 ([-−]?\d+|[-−]?[πτφ])! $1 factorial
-[.,󱹮]{2}|[‥„󱹯] repeating
+[.,󱹮]{2}|[‥„󱹯] and repeats
 e e
 π pi
 τ tau
@@ -185,7 +185,7 @@ cbrt\( cube root of
 
 # decimals
 
-([-−]?\d+)[󱹮] $1| and then
+([-−]?\d+)[󱹮] $1| wedge
 ([-−]?\d+)[,.] $1| point
 ([-−]?\d+[.,󱹮])([^0]\d{1,2}) $1| |$2
 ([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2

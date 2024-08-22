@@ -8,6 +8,9 @@ def create_units(lang='en'):
         text = '''#
 # Units
 #
+UNIT-vrx varxa
+UNIT-mas massa
+UNIT-spt sapta
 UNIT-din dina
 UNIT-uta uta
 UNIT-pox poxa
@@ -17,20 +20,26 @@ UNIT-bod boda
 UNIT-avt avríti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevara
+UNIT-tvr tevaran
 UNIT-ktr quetra
-UNIT-ayt aitã
+UNIT-ayt aytan
 UNIT-vrt várti
 UNIT-drv drávia
-UNIT-gan gana
+UNIT-gnt ganata
 UNIT-trg taranga
-UNIT-mnu mânu
+UNIT-bht barruta
+UNIT-bal bala
 UNIT-bar bara
-UNIT-dab daba
-UNIT-kry cária
-UNIT-xat xáti
+UNIT-pdn pídana
+UNIT-vay váiu
+UNIT-pbl pratibala
+UNIT-vrc varcha
+UNIT-xrm xarama
+UNIT-xky xáquia
+UNIT-uxn úxuna
+UNIT-xkt xákiti
 UNIT-svg sanvega
-UNIT-pkp praquepa
+UNIT-kry quíria
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upári
@@ -39,18 +48,21 @@ UNIT-bum búmi
 UNIT-idn índana
 UNIT-tln têlan
 UNIT-agn aguení
-UNIT-gtk gática
+UNIT-prv parivártana
+UNIT-gtk gatica
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx ávexa
-UNIT-vbv vibava
-UNIT-ptr pratiroda
-UNIT-cln chálana
-UNIT-prk prêraca
-UNIT-sam samái
-UNIT-abv abiva
+UNIT-vdt vidiúta
+UNIT-atr antarã
+UNIT-bad bada
+UNIT-vrd viroda
+UNIT-ptg pratigata
+UNIT-vht várrata
+UNIT-upp upapadã
+UNIT-dry daraiata
+UNIT-pvh pravarra
 UNIT-vst vistara
-UNIT-prd parídi
+UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx pracaxa
 UNIT-dpk dípaca
@@ -79,13 +91,16 @@ UNIT-tvt tevasta
 EXP-2 quadrado
 EXP-² quadrado
 EXP-3 cúbico
-EXP-3 cúbico
+EXP-³ cúbico
 '''
 
     elif lang == 'bz':
         text = '''#
 # Units
 #
+UNIT-vrx varxa
+UNIT-mas masa
+UNIT-spt sápita
 UNIT-din dina
 UNIT-uta uta
 UNIT-pox poxa
@@ -95,20 +110,26 @@ UNIT-bod boda
 UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevara
+UNIT-tvr tevarã
 UNIT-ktr ketra
-UNIT-ayt aytan
+UNIT-ayt aitã
 UNIT-vrt varti
 UNIT-drv dravya
-UNIT-gan gana
+UNIT-gnt ganata
 UNIT-trg taranga
-UNIT-mnu manu
+UNIT-bht barruta
+UNIT-bal bala
 UNIT-bar bara
-UNIT-dab daba
-UNIT-kry karya
-UNIT-xat xati
+UNIT-pdn pídana
+UNIT-vay vayu
+UNIT-pbl pratibala
+UNIT-vrc varxa
+UNIT-xrm xarama
+UNIT-xky xakya
+UNIT-uxn úxuna
+UNIT-xkt xákiti
 UNIT-svg sanvega
-UNIT-pkp prakepa
+UNIT-kry kirya
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upari
@@ -117,18 +138,21 @@ UNIT-bum bumi
 UNIT-idn índana
 UNIT-tln têlan
 UNIT-agn agení
+UNIT-prv parivártana
 UNIT-gtk gátika
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx ávexa
-UNIT-vbv vibava
-UNIT-ptr pratiroda
-UNIT-cln xálana
-UNIT-prk prêraka
-UNIT-sam samay
-UNIT-abv abiva
+UNIT-vdt vidyuta
+UNIT-atr antaran
+UNIT-bad bada
+UNIT-vrd viroda
+UNIT-ptg pratigata
+UNIT-vht várrata
+UNIT-upp upapadan
+UNIT-dry darayata
+UNIT-pvh pravarra
 UNIT-vst vistara
-UNIT-prd paridi
+UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakaxa
 UNIT-dpk dípaka
@@ -157,13 +181,16 @@ UNIT-tvt tevasta
 EXP-2 kwadradu
 EXP-² kwadradu
 EXP-3 kúbiku
-EXP-3 kúbiku
+EXP-³ kúbiku
 '''
 
     elif lang == 'eo':
         text = '''#
 # Mezurunuoj
 #
+UNIT-vrx varŝao
+UNIT-mas masao
+UNIT-spt saptao
 UNIT-din dinao
 UNIT-uta utao
 UNIT-pox poŝao
@@ -173,20 +200,26 @@ UNIT-bod bodao
 UNIT-avt avritio
 UNIT-pad padao
 UNIT-veg vegao
-UNIT-tvr tevarao
+UNIT-tvr tevarano
 UNIT-ktr ketrao
-UNIT-ayt ajtano
+UNIT-ayt ajtanao
 UNIT-vrt vartio
 UNIT-drv dravjao
-UNIT-gan ganao
+UNIT-gnt ganatao
 UNIT-trg tarangao
-UNIT-mnu manuo
+UNIT-bht bahutao
+UNIT-bal balao
 UNIT-bar barao
-UNIT-dab dabao
-UNIT-kry karjao
-UNIT-xat ŝatio
+UNIT-pdn pidanao
+UNIT-vay vajuo
+UNIT-pbl pratibalao
+UNIT-vrx varŝao
+UNIT-xrm ŝaramao
+UNIT-xky ŝakjao
+UNIT-uxn uŝunao
+UNIT-xkt ŝakitio
 UNIT-svg sanvegao
-UNIT-pkp prakepao
+UNIT-kry kirjao
 UNIT-pbv prabavao
 UNIT-tnv tanavao
 UNIT-upr upario
@@ -194,19 +227,22 @@ UNIT-nad nadio
 UNIT-bum bumio
 UNIT-idn indanao
 UNIT-tln telano
-UNIT-agn agnio
+UNIT-agn aginio
+UNIT-prv parivartanao
 UNIT-gtk gatikao
 UNIT-tap tapao
 UNIT-dar darao
-UNIT-avx aveŝao
-UNIT-vbv vibavao
-UNIT-ptr pratirodao
-UNIT-cln ĉalanao
-UNIT-prk prerakao
-UNIT-sam samaio
-UNIT-abv abivao
+UNIT-vdt vidjutao
+UNIT-atr antarano
+UNIT-bad badao
+UNIT-vrd virodao
+UNIT-ptg pratigatao
+UNIT-vht vahatao
+UNIT-upp upapadano
+UNIT-dry darayatao
+UNIT-pvh pravahao
 UNIT-vst vistarao
-UNIT-prd paridio
+UNIT-mdl mandalao
 UNIT-gol golao
 UNIT-pkx prakaŝao
 UNIT-dpk dipakao
@@ -235,13 +271,16 @@ UNIT-tvt tevaŝtao
 EXP-2 kvadrata
 EXP-² kvadrata
 EXP-3 kuba
-EXP-3 kuba
+EXP-³ kuba
 '''
 
     else:
         text = '''#
 # Units
 #
+UNIT-vrx varsha
+UNIT-mas masa
+UNIT-spt sapta
 UNIT-din dina
 UNIT-uta uta
 UNIT-pox posha
@@ -251,20 +290,26 @@ UNIT-bod boda
 UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevara
+UNIT-tvr tevaran
 UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
-UNIT-gan gana
+UNIT-gnt ganata
 UNIT-trg taranga
-UNIT-mnu manu
+UNIT-bht bahuta
+UNIT-bal bala
 UNIT-bar bara
-UNIT-dab daba
-UNIT-kry karya
-UNIT-xat shati
+UNIT-pdn pidana
+UNIT-vay vayu
+UNIT-pbl pratibala
+UNIT-vrc varcha
+UNIT-xrm sharama
+UNIT−xky shakya
+UNIT-uxn ushuna
+UNIT-xkt shakiti
 UNIT-svg sanvega
-UNIT-pkp prakepa
+UNIT-kry kirya
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upari
@@ -272,19 +317,22 @@ UNIT-nad nadi
 UNIT-bum bumi
 UNIT-idn indana
 UNIT-tln telan
-UNIT-agn agni
+UNIT-agn agini
+UNIT-prv parivartana
 UNIT-gtk gatika
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx avesha
-UNIT-vbv vibava
-UNIT-ptr pratiroda
-UNIT-cln chalana
-UNIT-prk preraka
-UNIT-sam samai
-UNIT-abv abiva
+UNIT-vdt vidyuta
+UNIT-atr antaran
+UNIT-bad bada
+UNIT-vrd viroda
+UNIT-ptg pratigata
+UNIT-vht vahata
+UNIT-upp upapadan
+UNIT-dry darayata
+UNIT-pvh pravaha
 UNIT-vst vistara
-UNIT-prd paridi
+UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakasha
 UNIT-dpk dipaka
@@ -313,7 +361,7 @@ UNIT-tvt tevashta
 EXP-2 square
 EXP-² square
 EXP-3 cube
-EXP-3 cube
+EXP-³ cube
 '''
     return text
 
@@ -348,8 +396,6 @@ def create_prefixes(lang='en'):
                 name = name.replace('shu', 'ŝu')
                 name = name.replace('sha', 'ŝa')
                 name = name.replace('cha', 'ĉa')
-                # symbol = symbol.replace('c', 'ĉ')
-                # symbol = symbol.replace('C', 'Ĉ')
 
             name = name.replace('nm', 'm')
 
@@ -399,9 +445,9 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 #     text = f'''#
 # # Rules for units without fractional parts, or only zeroes
 # #
-# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?0*1)([.,]0*?)?" $(1) $(PREFIX-\\3)$(UNIT-\\4)
-# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?\\d+0{{8,}})([.,]0*?)?" $9{preposition}$(PREFIX-\\3)$(UNIT-\\4)s
-# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?\\d+)([.,]0*?)?" $9 $(PREFIX-\\3)$(UNIT-\\4)s
+# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?0*1)([.,󱹮]0*?)?" $(1) $(PREFIX-\\3)$(UNIT-\\4)
+# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?\\d+0{{8,}})([.,󱹮]0*?)?" $9{preposition}$(PREFIX-\\3)$(UNIT-\\4)s
+# "(SH(-({PREFIX_RULE})?({UNIT_RULE}))(-({PREFIX_RULE})?({UNIT_RULE})-?({PRECISION_RULE})?)?) ([-−]?\\d+)([.,󱹮]0*?)?" $9 $(PREFIX-\\3)$(UNIT-\\4)s
 #
 # #
 # # Rules for units with fractional parts, but no subunit specified;
@@ -413,10 +459,10 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 # Rules for the "per" units, that don’t use prefixes,
 # and don’t get plural forms
 #
-"SH-({PER_UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(UNIT-\1))
-"SH-({PER_UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(UNIT-\1))
-"SH-({PER_UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\2) $(cleanup $(UNIT-\1))
-"SH-({PER_UNIT_RULE}) ([-−]?\d+[.,]\d+)" $(\2) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?0+)([.,󱹮]0*)?" $(0) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?0*1)([.,󱹮]0*)?" $(1) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?\d+)([.,󱹮]0*?)?" $(\2) $(cleanup $(UNIT-\1))
+"SH-({PER_UNIT_RULE}) ([-−]?\d+[.,󱹮]\d+)" $(\2) $(cleanup $(UNIT-\1))
 
 #
 # Rules for units used with fractions
@@ -426,9 +472,9 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 #
 # Rules for units without fractional parts, or only zeroes
 #
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0+)([.,󱹮]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?0*1)([.,󱹮]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+"SH-({PREFIX_RULE})?({UNIT_RULE}) ([-−]?\d+)([.,󱹮]0*?)?" $(\3) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
 
 #
 # Exponents - square and cube
@@ -439,17 +485,17 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 #         text = rf'''
 # "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
 #
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,󱹮]0*)?" $(0) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,󱹮]0*)?" $(1) $(EXP-\3) $(cleanup $(PREFIX-\1)$(UNIT-\2))
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,󱹮]0*?)?" $(\4) $(EXP-\3){exponent_plural} $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker})
 # '''
 #     else:
 #         text = rf'''
 # "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+[/⁄][-−]?\d+)" $(\4){preposition}$(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
 #
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
-# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,]0*?)?" $(\4) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0+)([.,󱹮]0*)?" $(0) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?0*1)([.,󱹮]0*)?" $(1) $(cleanup $(PREFIX-\1)$(UNIT-\2)) $(EXP-\3)
+# "SH-({PREFIX_RULE})?({UNIT_RULE})({EXP_RULE}) ([-−]?\d+)([.,󱹮]0*?)?" $(\4) $(cleanup $(PREFIX-\1)$(UNIT-\2){plural_marker}) $(EXP-\3){exponent_plural}
 # '''
 
 
@@ -476,21 +522,21 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 #         text += rf'''#
 # # {i} sezimal place{'s' if i > 1 else ''}
 # #
-# "(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$3 $(PREFIX-{prefix_negative})$(UNIT-\\2)
-# "(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$3 $(UNIT-\\2)  # cancel shunma/shunti
-# "(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$4 $(PREFIX-{div10})$(UNIT-\\3)
+# "(SH-({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$3 $(PREFIX-{prefix_negative})$(UNIT-\\2)
+# "(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$3 $(UNIT-\\2)  # cancel shunma/shunti
+# "(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$4 $(PREFIX-{div10})$(UNIT-\\3)
 #
 # '''
         text += rf'''#
 # {i} sezimal place{'s' if i > 1 else ''}
 #
-"(SH-({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?0+)[.,]({digits_rule})" $(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}) [-−]?0+)[.,󱹮]({digits_rule})" $(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}) [-−]?0+)[.,󱹮]({digits_rule})" $(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?0+)[.,󱹮]({digits_rule})" $(SH-{div10}\\3 \\4)
 
-"(SH-({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
-"(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
-"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
+"(SH-({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$(SH-{prefix_negative}\\2 \\3)
+"(SH-{prefix_positive}({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$(SH-\\2 \\3)  # cancel shunma/shunti
+"(SH-({PREFIX_RULE})({UNIT_RULE}) [-−]?\d+)[.,󱹮]({digits_rule})" $1{conjunction}|$(SH-{div10}\\3 \\4)
 
 '''
 
