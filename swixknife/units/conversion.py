@@ -29,6 +29,7 @@ def _identify_validate_sezimal_unit(sezimal_unit: str) -> (str, str, SezimalFrac
     elif len(sezimal_unit) < 3:
         raise ValueError(f'Invalid Shastadari unit [{sezimal_unit}]')
 
+    sezimal_unit = sezimal_unit.replace('⁻', '-').replace('¹', '1')
     sezimal_unit = sezimal_unit.replace('²', '2').replace('³', '3')
     sezimal_unit = sezimal_unit.replace('τ\u202f', 'tau_').replace('τ ', 'tau_').replace('τ ', 'tau_')
     sezimal_unit = sezimal_unit.replace('π\u202f', 'pi_').replace('π ', 'pi_').replace('π ', 'pi_')
@@ -80,6 +81,7 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
     if not decimal_unit:
         raise ValueError('Informing the symbol of the decimal unit is mandatory')
 
+    decimal_unit = decimal_unit.replace('⁻', '-').replace('¹', '1')
     decimal_unit = decimal_unit.replace('²', '2').replace('³', '3')
     decimal_unit = decimal_unit.replace('τ\u202f', 'tau_').replace('τ ', 'tau_').replace('τ ', 'tau_')
     decimal_unit = decimal_unit.replace('π\u202f', 'pi_').replace('π ', 'pi_').replace('π ', 'pi_')
@@ -101,7 +103,6 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
             elif len(decimal_unit) >= 3 and decimal_unit[2:] in UNIT_CONVERSION[su]:
                 sezimal_unit = su
                 break
-
 
     if not sezimal_unit:
         raise ValueError(f'Invalid decimal unit [{decimal_unit}]')
@@ -190,14 +191,11 @@ def _identify_validate_prefix_unit(sezimal_unit: str, decimal_unit: str):
     sp, su, spf = _identify_validate_sezimal_unit(sezimal_unit)
     dp, du, dpf, da = _identify_validate_decimal_unit(decimal_unit, su)
 
-    _precision = sezimal_context.precision
-
-    if _precision < 120:
-        sezimal_context.precision = 120
+    sezimal_context.use_ultra_precision()
 
     factor = spf * UNIT_CONVERSION[su][du] / dpf
 
-    sezimal_context.precision = _precision
+    sezimal_context.back_to_regular_precision()
 
     return factor, da
 
@@ -205,10 +203,7 @@ def _identify_validate_prefix_unit(sezimal_unit: str, decimal_unit: str):
 def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit: str, decimal_unit: str, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
     factor, adjust = _identify_validate_prefix_unit(sezimal_unit, decimal_unit)
 
-    _precision = sezimal_context.precision
-
-    if _precision < 120:
-        sezimal_context.precision = 120
+    sezimal_context.use_ultra_precision()
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -221,10 +216,10 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     if adjust:
         measure += adjust
 
-    sezimal_context.precision = _precision
+    sezimal_context.back_to_regular_precision()
 
-    if not return_fraction and type(measure) == SezimalFraction:
-        measure = measure.sezimal
+    if not return_fraction:
+        measure = round(measure, sezimal_context.precision)
 
     return measure
 
@@ -239,15 +234,12 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
             and su_2 in ('tap', 'gtk')
         )) \
         and (not (
-            su_1 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
-            and su_2 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            su_1 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            and su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
         )):
         raise ValueError(f'Invalid conversion between units [{sezimal_unit_1}] and [{sezimal_unit_2}]')
 
-    _precision = sezimal_context.precision
-
-    if _precision < 120:
-        sezimal_context.precision = 120
+    sezimal_context.use_ultra_precision()
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -264,18 +256,18 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
         measure -= SezimalInteger('240_234_312')
         measure /= SezimalInteger('100_000')
 
-    if su_1 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+    if su_1 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure /= UNIT_CONVERSION[su_1]['ang']
 
-    if su_2 in ('vrx', 'mas', 'sth', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+    if su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure *= UNIT_CONVERSION[su_2]['ang']
 
     measure /= spf_2
 
-    sezimal_context.precision = _precision
+    sezimal_context.back_to_regular_precision()
 
-    if not return_fraction and type(measure) == SezimalFraction:
-        measure = measure.sezimal
+    if not return_fraction:
+        measure = round(measure, sezimal_context.precision)
 
     return measure
 
@@ -283,10 +275,7 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, decimal_unit: str, sezimal_unit: str, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
     factor, adjust = _identify_validate_prefix_unit(sezimal_unit, decimal_unit)
 
-    _precision = sezimal_context.precision
-
-    if _precision < 120:
-        sezimal_context.precision = 120
+    sezimal_context.use_ultra_precision()
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -299,10 +288,10 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
     measure /= factor
 
-    sezimal_context.precision = _precision
+    sezimal_context.back_to_regular_precision()
 
-    if not return_fraction and type(measure) == SezimalFraction:
-        measure = measure.sezimal
+    if not return_fraction:
+        measure = round(measure, sezimal_context.precision)
 
     return measure
 
@@ -324,7 +313,7 @@ def decimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     measure = decimal_to_sezimal_unit(measure, decimal_unit_1, sezimal_unit, return_fraction=True)
     measure = sezimal_to_decimal_unit(measure, sezimal_unit, decimal_unit_2, return_fraction=True)
 
-    if not return_fraction and type(measure) == SezimalFraction:
-        measure = measure.sezimal
+    if not return_fraction:
+        measure = round(measure, sezimal_context.precision)
 
     return measure
