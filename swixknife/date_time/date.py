@@ -405,6 +405,9 @@ class SezimalDate:
 
             year = getattr(self, value_name, 0)
 
+            if character == 'X' and not separator:
+                separator = '\U000f1e6d'  # Arda separator
+
             if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
                 if type(year) == Decimal:
                     year = SezimalInteger(year)

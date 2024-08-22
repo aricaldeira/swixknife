@@ -51,6 +51,7 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
         ),
         (
             ('Y', 'year'),
+            ('X', 'year'),
             ('gY', 'gregorian_year'),
             ('ghY', 'gregorian_holocene_year'),
             ('sY', 'symmetric_year'),
