@@ -77,7 +77,7 @@ def get_weather_conditions(
                 functions.convert_speed(observation['current']['gust_kph'])
 
         if 'pressure_mb' in observation['current']:
-            observation['current']['pressure_chamadaba'] = \
+            observation['current']['pressure_chamapidana'] = \
                 functions.convert_speed(observation['current']['pressure_mb'] * 100)
 
         if 'precip_mm' in observation['current']:
@@ -134,5 +134,5 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'vis_shamapada' in conditions:
         weather._visibility = conditions['vis_shamapada']
 
-    if 'pressure_chamadaba' in conditions:
-        weather._pressure = conditions['pressure_chamadaba']
+    if 'pressure_chamapidana' in conditions:
+        weather._pressure = conditions['pressure_chamapidana']

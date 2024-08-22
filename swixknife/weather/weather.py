@@ -115,7 +115,7 @@ class SezimalWeather:
 
     @property
     def pressure_formatted(self) -> str:
-        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='Cdab')
+        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='Cpdn')
 
     @property
     def pressure_sea_level(self) -> SezimalInteger:
@@ -123,7 +123,7 @@ class SezimalWeather:
 
     @property
     def pressure_sea_level_formatted(self) -> str:
-        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='Cdab')
+        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='Cpdn')
 
     @property
     def temperature(self) -> SezimalInteger:

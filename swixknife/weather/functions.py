@@ -45,7 +45,7 @@ def convert_distance(distance: float) -> Sezimal:
 
 
 def convert_pressure(pressure: float) -> Sezimal:
-    return round(decimal_to_sezimal_unit(Decimal(str(pressure)), 'Pa', 'dab'), 0)
+    return round(decimal_to_sezimal_unit(Decimal(str(pressure)), 'Pa', 'vay'), 0)
 
 
 def convert_percentage(percentage: float) -> Sezimal:
@@ -57,4 +57,4 @@ def convert_precipitation(precipitation: float) -> Sezimal:
 
 
 def convert_angle(angle: float) -> Sezimal:
-    return round(decimal_to_sezimal_unit(Decimal(str(angle)), 'deg', 'dprd'), 2)
+    return round(decimal_to_sezimal_unit(Decimal(str(angle)), 'deg', 'dmdl'), 2)
