@@ -5,24 +5,85 @@
 # between all related units
 #
 
+from swixknife import sezimal
 from swixknife import sezimal_context
 from swixknife import Sezimal, SezimalInteger, SezimalFraction
 from swixknife import SezimalRange
+from swixknife.constants import TAU, PI, TWO_TAU
+from decimal import Decimal
+
+sezimal_context.ultra_precision = 300
+sezimal_context.use_ultra_precision()
+
+#
+# Time fraction:
+# 1 day in seconds ÷ 10¹²
+# 1 day in seconds ÷ 6⁸_dec
+#
+TIME = SezimalFraction('41 / 2_130')
+
+#
+# Gravity
+#
+GRAVITY = SezimalFraction('5_324_444_301_513 / 322_545_201_312')
+
+#
+# Density of water at 293.149_986_919_793_dec K
+#
+# from iapws.iapws95 import IAPWS95
+# water = IAPWS95(T=293.149_986_919_793, P=0.101325)
+# print(water.rho)
+# 998.207_153_168_156_9
+#
+DENSITY = SezimalFraction('3_023_235_045_222_024_505 / 355_321_023_311_132')
+
+#
+# Specific heat of water at 293.149_986_919_793_dec K
+#
+# from iapws.iapws95 import IAPWS95
+# water = IAPWS95(T=293.149_986_919_793, P=0.101325)
+# print(water.cp * 1000)
+# 4184.050_933_649_753
+#
+# This exact value gives a conversion between K and gkt
+#      273.15_dec K = 240_234_312 (4_499_396_dec) gtk
+# exactly, and the conversion between gkt and tap
+#      tap = (gtk - 240_234_312) / 100_000
+#
+SPECIFIC_HEAT = SezimalFraction('323_245_314_040_541_203_352_340_150_141 / 10_212_445_512_343_411_332_414_300')
+
+#
+# Vacuum resistance/impedance in ohms, converted to
+# fraction form:
+# https://en.wikipedia.org/wiki/Impedance_of_free_space
+#
+IMPEDANCE_FREE_SPACE = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
+
+#
+# Elementary charge in coulombos, converted to
+# fraction form:
+# https://en.wikipedia.org/wiki/Elementary_charge
+#
+ELEMENTARY_CHARGE_IN_COULOMBS = SezimalFraction('211_254_034_113 / 252_412_511_453_013_134_321_101_511_222_244_052')
+
+#
+# Luminous efficacy, converted to
+# fraction form:
+# https://en.wikipedia.org/wiki/Luminous_efficiency_function
+#
+LUMINOUS_EFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
+
 
 
 def calculate_conversions():
-    _precision = sezimal_context.precision
-
-    if _precision < 120:
-        sezimal_context.precision = 120
-
     unit_conversion = {}
 
     #
     # Time
     #
-    ANUGA_TO_SECOND = SezimalFraction('41 / 2_130')
-    DAY_TO_SECOND = SezimalFraction('1_504_000 / 1')
+    ANUGA_TO_SECOND = TIME
+    ANANTA_TO_SECOND_SQUARED = ANUGA_TO_SECOND ** 2
+    DAY_TO_SECOND = TIME * 100_000_000
 
     for unit, factor in (
         #
@@ -39,7 +100,7 @@ def calculate_conversions():
         #
         # Saptaha (week) is the same, 11 days
         #
-        ('sth', SezimalFraction('1 / 11')),
+        ('spt', SezimalFraction('1 / 11')),
         ('din', 1),
         ('uta', 100),
         ('pox', 10_000),
@@ -50,6 +111,8 @@ def calculate_conversions():
         unit_conversion[unit] = {
             's': DAY_TO_SECOND / factor,
             'prefixed': ('s', 'min', 'h', 'day', 'week', 'month', 'year'),
+            'comparable': ('ang', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'bod'),
+            'ang': factor * 100_000_000,
             #
             # Non S.I. units
             #
@@ -65,206 +128,249 @@ def calculate_conversions():
             #
             'month': SezimalFraction('2_323_320 / 210_141_213') / factor,
             'year': SezimalFraction('114_144 / 210_141_213') / factor,
-            #
-            #
-            #
-            'ang': factor * 100_000_000,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Frequency
+    # Frequency (avriti)
     #
-    AVRITA_TO_HERTZ = ANUGA_TO_SECOND.reciprocal
+    AVRITI_TO_HERTZ = ANUGA_TO_SECOND.reciprocal
 
     unit_conversion['avt'] = {
-        'Hz': AVRITA_TO_HERTZ,
-        'prefixed': ('Hz',),
+        'Hz': AVRITI_TO_HERTZ,
+        's-1': AVRITI_TO_HERTZ,
+        'prefixed': ('Hz', 's-1'),
+        'comparable': ('avt', 'ang-1'),
+        'avt': 1,
         #
         # Non S.I. units
         #
-        'rpm': AVRITA_TO_HERTZ * 140,
+        'rpm': AVRITI_TO_HERTZ * 140,
     }
     unit_conversion['avt'] = _set_non_prefixed_units(unit_conversion['avt'])
 
     #
-    # Length
+    # Length (pada) / Deformation (virupana)
     #
-    PADA_TO_METER = SezimalFraction('1_415_503_524_325 / 150_223_042_430_000')
+    # PADA_TO_METRE = SezimalFraction('1_415_503_524_325 / 150_223_042_430_000')
+    PADA_TO_METRE = GRAVITY * (TIME ** 2)
 
-    unit_conversion['pad'] = {
-        'm': PADA_TO_METER,
-        'prefixed': ('m',),
-        #
-        # Non S.I. units
-        #
-        'twip': PADA_TO_METER / SezimalFraction('331 / 414_153_200'),  # 1/32 p
-        'mil': PADA_TO_METER / SezimalFraction('331 / 255_100_052'),  # 1/4_344 in
-        # 'p': PADA_TO_METER / SezimalFraction('331 / 11_414_400'),  # 1/200 in
-        # 'P': PADA_TO_METER / SezimalFraction('331 / 350_520'),  # 20 p
-        'in': PADA_TO_METER / SezimalFraction('331 / 35_052'),
-        'li': PADA_TO_METER / SezimalFraction('134_113 / 1_201_204'),  # 53/122 ft
-        'ft': PADA_TO_METER / SezimalFraction('1_433 / 5_442'),  # 20 in
-        'yd': PADA_TO_METER / SezimalFraction('5_143 / 5_442'),  # 3 ft, 100 in
-        'ftm': PADA_TO_METER / SezimalFraction('5_143 / 2_521'),  # 2 yd, 10 ft, 200 in
-        'rd': PADA_TO_METER / SezimalFraction('134_113 / 15_324'),  # 24.3 ft
-        'ch': PADA_TO_METER / SezimalFraction('134_113 / 2_521'),  # 150 ft
-        'fur': PADA_TO_METER / SezimalFraction('312_230 / 325'),  # 3_020 ft
-        'cb': PADA_TO_METER / SezimalFraction('331_000 / 325'),  # 3_200 ft
-        'ml': PADA_TO_METER / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
-        'nmi': PADA_TO_METER / 12_324,
-        'NM': PADA_TO_METER / 12_324,
-        'le': PADA_TO_METER / SezimalFraction('20_534_000 / 325'),  # 3 ml
-    }
-    unit_conversion['pad'] = _set_non_prefixed_units(unit_conversion['pad'])
-
-    #
-    # Area
-    #
-    unit_conversion['ktr'] = {
-        'm2': unit_conversion['pad']['m'] ** 2,
-        #
-        # Non S.I. units
-        #
-        'a': (unit_conversion['pad']['m'] ** 2) / 244,
-        'prefixed': ('m2', 'a'),
-
-        'in2': unit_conversion['pad']['in'] ** 2,
-        'li2': unit_conversion['pad']['li'] ** 2,
-        'ft2': unit_conversion['pad']['ft'] ** 2,
-        'yd2': unit_conversion['pad']['yd'] ** 2,
-        'ftm2': unit_conversion['pad']['ftm'] ** 2,
-        'rd2': unit_conversion['pad']['rd'] ** 2,
-        'ch2': unit_conversion['pad']['ch'] ** 2,
-        'fur2': unit_conversion['pad']['fur'] ** 2,
-        'cb2': unit_conversion['pad']['cb'] ** 2,
-        'ml2': unit_conversion['pad']['ml'] ** 2,
-        'nmi2': unit_conversion['pad']['nmi'] ** 2,
-        'NM2': unit_conversion['pad']['NM'] ** 2,
-        'le2': unit_conversion['pad']['le'] ** 2,
-        'ac': (unit_conversion['pad']['m'] ** 2) / SezimalFraction('51_212_230_430 / 1_401_405'),
-    }
-    unit_conversion['ktr'] = _set_non_prefixed_units(unit_conversion['ktr'])
-
-    #
-    # Volume
-    #
-    AYTAN_TO_CUBIC_METER = unit_conversion['pad']['m'] ** 3
-    AYTAN_TO_LITER = AYTAN_TO_CUBIC_METER * 4344
-    AYTAN_TO_MILLILITER = AYTAN_TO_LITER * 4344
-    AYTAN_TO_US_FLUID_DRAM = AYTAN_TO_MILLILITER / SezimalFraction('114_541_451_453 / 20_411_252_332')
-    AYTAN_TO_IMPERIAL_FLUID_DRAM = AYTAN_TO_MILLILITER / SezimalFraction('13_424_401 / 2_424_332')
-    AYTAN_TO_CUBIC_INCH = unit_conversion['pad']['in'] ** 3
-
-    unit_conversion['ayt'] = {
-        'm3': AYTAN_TO_CUBIC_METER,
-        'L': AYTAN_TO_LITER,
-        'l': AYTAN_TO_LITER,
-        'prefixed': ('m3', 'L', 'l'),
-        #
-        # Non S.I. units
-        #
-        'in3': AYTAN_TO_CUBIC_INCH,
-        'ft3': unit_conversion['pad']['ft'] ** 3,
-        'yd3': unit_conversion['pad']['yd'] ** 3,
-        'ml3': unit_conversion['pad']['ml'] ** 3,
-        'ac⋅ft': (unit_conversion['pad']['ft'] ** 3) / 533_400,
-
-        'US min': AYTAN_TO_US_FLUID_DRAM * 140,
-        'US fl dr': AYTAN_TO_US_FLUID_DRAM,
-        'US tsp': AYTAN_TO_US_FLUID_DRAM * 140 / 212,
-        'US tbsp': AYTAN_TO_US_FLUID_DRAM / 4,
-        'US fl oz': AYTAN_TO_US_FLUID_DRAM / 12,
-        'US jig': AYTAN_TO_US_FLUID_DRAM / 4 / 3,
-        'US gi': AYTAN_TO_US_FLUID_DRAM / 12 / 4,
-        'US c': AYTAN_TO_US_FLUID_DRAM / 12 / 12,
-        'US cup': AYTAN_TO_US_FLUID_DRAM / 12 / 12,
-        'US pt': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2,
-        'US pint': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2,
-        'US qt': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2,
-        'US pot': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 2,
-        'US gal': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4,
-        'US bbl': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 513 * 10,
-        'US bbl oil': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 110,
-        'US hogshead': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 143,
-
-        'US pt dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452'),
-        'US qt dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2,
-        'US gal dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4,
-        'US pk': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2,
-        'US pk dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2,
-        'US bu': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2 / 4,
-        'US bu dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2 / 4,
-        'US bbl dry': AYTAN_TO_CUBIC_INCH / 52_400,
-
-        'imp min': AYTAN_TO_IMPERIAL_FLUID_DRAM * 140,
-        'imp fl s': AYTAN_TO_IMPERIAL_FLUID_DRAM * 3,
-        'imp fl dr': AYTAN_TO_IMPERIAL_FLUID_DRAM,
-        'imp fl oz': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12,
-        'imp gi': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 5,
-        'imp pt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 32,
-        'imp qt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 104,
-        'imp gal': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 424,
-    }
-    unit_conversion['ayt'] = _set_non_prefixed_units(unit_conversion['ayt'])
-
-    #
-    # Speed
-    #
-    VEGA_TO_METER_PER_SECOND = PADA_TO_METER / ANUGA_TO_SECOND
-
-    for unit in ('veg', 'pad/ang',
-                 'XDpad/day', 'Xpad/uta', 'Cpad/pox', 'Dpad/agm', 'dpad/bod',
-                 'XDpad/XDang', 'Xpad/Xang', 'Cpad/Cang', 'Dpad/Dang', 'dpad/dang'):
+    for unit in ('pad', 'vrp'):
         unit_conversion[unit] = {
-            'm/s': VEGA_TO_METER_PER_SECOND,
-            'm/h': VEGA_TO_METER_PER_SECOND * 24_400,
-            'prefixed': ('m/s', 'm/h'),
+            'm': PADA_TO_METRE,
+            'prefixed': ('m', 'au', 'parsec'),
+            'comparable': ('pad', 'vrp'),
+            'pad': 1,
             #
             # Non S.I. units
             #
-            'km/h': VEGA_TO_METER_PER_SECOND * 30 / 5,
-            'ml/s': VEGA_TO_METER_PER_SECOND / SezimalFraction('4_151_200 / 325'),
-            'ml/h': VEGA_TO_METER_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
-            'mph': VEGA_TO_METER_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
-            'kn': VEGA_TO_METER_PER_SECOND * 24_400 / 12_324,
-            'c': VEGA_TO_METER_PER_SECOND / 45_425_332_014,
-            'ft/s': VEGA_TO_METER_PER_SECOND / SezimalFraction('1_433 / 5_442'),
-            'fps': VEGA_TO_METER_PER_SECOND / SezimalFraction('1_433 / 5_442'),
+            'twip': PADA_TO_METRE / SezimalFraction('331 / 414_153_200'),  # 1/32 p
+            'mil': PADA_TO_METRE / SezimalFraction('331 / 255_100_052'),  # 1/4_344 in
+            # 'p': PADA_TO_METRE / SezimalFraction('331 / 11_414_400'),  # 1/200 in
+            # 'P': PADA_TO_METRE / SezimalFraction('331 / 350_520'),  # 20 p
+            'in': PADA_TO_METRE / SezimalFraction('331 / 35_052'),
+            'li': PADA_TO_METRE / SezimalFraction('134_113 / 1_201_204'),  # 53/122 ft
+            'ft': PADA_TO_METRE / SezimalFraction('1_433 / 5_442'),  # 20 in
+            'yd': PADA_TO_METRE / SezimalFraction('5_143 / 5_442'),  # 3 ft, 100 in
+            'ftm': PADA_TO_METRE / SezimalFraction('5_143 / 2_521'),  # 2 yd, 10 ft, 200 in
+            'rd': PADA_TO_METRE / SezimalFraction('134_113 / 15_324'),  # 24.3 ft
+            'ch': PADA_TO_METRE / SezimalFraction('134_113 / 2_521'),  # 150 ft
+            'fur': PADA_TO_METRE / SezimalFraction('312_230 / 325'),  # 3_020 ft
+            'cb': PADA_TO_METRE / SezimalFraction('331_000 / 325'),  # 3_200 ft
+            'ml': PADA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
+            'le': PADA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 ml
+
+
+            'nmi': PADA_TO_METRE / 12_324,  # Nautical mile
+            'NM': PADA_TO_METRE / 12_324,  # Nautical mile
+            'au': PADA_TO_METRE / 152_420_241_314_420,
+            'parsec': PADA_TO_METRE / 152_420_241_314_420 / 4_230_533,
+            'ly': SezimalFraction('10_142_015 / 252_331_101_020_221_154_110_000_000_000'),
+            'sly': SezimalFraction('2 / 53_134_100_033_433_015_020_311'),
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Acceleration
+    # Spatial frequency / Wavenumber (taranga)
     #
-    SQUARE_ANUGA_TO_SQUARE_SECOND = ANUGA_TO_SECOND ** 2
-    TEVARA_TO_METER_PER_SQUARE_SECOND = PADA_TO_METER / SQUARE_ANUGA_TO_SQUARE_SECOND
-
-    unit_conversion['tvr'] = {
-        'm/s2': TEVARA_TO_METER_PER_SQUARE_SECOND,
-        'prefixed': ('m/s2',),
-        #
-        # Non S.I. units
-        #
-        'gal': TEVARA_TO_METER_PER_SQUARE_SECOND / 244,
-        'Gal': TEVARA_TO_METER_PER_SQUARE_SECOND / 244,
-        'cm/s2': TEVARA_TO_METER_PER_SQUARE_SECOND / 244,
-        'ft/s2': TEVARA_TO_METER_PER_SQUARE_SECOND * SezimalFraction('1_433 / 5_442'),
-        'g': TEVARA_TO_METER_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
-        'g0': TEVARA_TO_METER_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
-    }
-    unit_conversion['tvr'] = _set_non_prefixed_units(unit_conversion['tvr'])
+    for unit in ('trg', 'pad-1'):
+        unit_conversion[unit] = {
+            'm-1': 1 / PADA_TO_METRE,
+            'prefixed': ('m-1',),
+            'comparable': ('trg', 'pad-1'),
+            'trg': 1,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Mass
+    # Area (ketra)
     #
-    DRAVYA_TO_GRAM = SezimalFraction('1_121_553_311_121_233_254_355_341_153_543_530_003_222_141_222_041_020_041_130_325_304 / 23_143_025_000_503_050_204_534_013_221_244_351_143_435_300_313_353_244_021_413_324')
-    DRAVYA_TO_KILOGRAM = DRAVYA_TO_GRAM / 4344
+    KETRA_TO_SQUARE_METRE = PADA_TO_METRE ** 2
+
+    for unit in ('ktr', 'pad2'):
+        unit_conversion[unit] = {
+            'm2': KETRA_TO_SQUARE_METRE,
+            #
+            # Non S.I. units
+            #
+            'a': KETRA_TO_SQUARE_METRE / 244,
+            'prefixed': ('m2', 'a'),
+            'comparable': ('ktr', 'pad2'),
+            'ktr': 1,
+
+            'in2': unit_conversion['pad']['in'] ** 2,
+            'li2': unit_conversion['pad']['li'] ** 2,
+            'ft2': unit_conversion['pad']['ft'] ** 2,
+            'yd2': unit_conversion['pad']['yd'] ** 2,
+            'ftm2': unit_conversion['pad']['ftm'] ** 2,
+            'rd2': unit_conversion['pad']['rd'] ** 2,
+            'ch2': unit_conversion['pad']['ch'] ** 2,
+            'fur2': unit_conversion['pad']['fur'] ** 2,
+            'cb2': unit_conversion['pad']['cb'] ** 2,
+            'ml2': unit_conversion['pad']['ml'] ** 2,
+            'nmi2': unit_conversion['pad']['nmi'] ** 2,
+            'NM2': unit_conversion['pad']['NM'] ** 2,
+            'le2': unit_conversion['pad']['le'] ** 2,
+            'ac': KETRA_TO_SQUARE_METRE / SezimalFraction('51_212_230_430 / 1_401_405'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Volume (aytan)
+    #
+    AYTAN_TO_CUBIC_METRE = PADA_TO_METRE ** 3
+    AYTAN_TO_LITRE = AYTAN_TO_CUBIC_METRE * 4344
+    AYTAN_TO_MILLILITRE = AYTAN_TO_LITRE * 4344
+    AYTAN_TO_US_FLUID_DRAM = AYTAN_TO_MILLILITRE / SezimalFraction('114_541_451_453 / 20_411_252_332')
+    AYTAN_TO_IMPERIAL_FLUID_DRAM = AYTAN_TO_MILLILITRE / SezimalFraction('13_424_401 / 2_424_332')
+    AYTAN_TO_CUBIC_INCH = unit_conversion['pad']['in'] ** 3
+
+    for unit in ('ayt', 'pad3'):
+        unit_conversion[unit] = {
+            'm3': AYTAN_TO_CUBIC_METRE,
+            'L': AYTAN_TO_LITRE,
+            'l': AYTAN_TO_LITRE,
+            'prefixed': ('m3', 'L', 'l'),
+            'comparable': ('ayt', 'pad3'),
+            #
+            # Non S.I. units
+            #
+            'in3': AYTAN_TO_CUBIC_INCH,
+            'ft3': unit_conversion['pad']['ft'] ** 3,
+            'yd3': unit_conversion['pad']['yd'] ** 3,
+            'ml3': unit_conversion['pad']['ml'] ** 3,
+            'ac⋅ft': (unit_conversion['pad']['ft'] ** 3) / 533_400,
+
+            'US min': AYTAN_TO_US_FLUID_DRAM * 140,
+            'US fl dr': AYTAN_TO_US_FLUID_DRAM,
+            'US tsp': AYTAN_TO_US_FLUID_DRAM * 140 / 212,
+            'US tbsp': AYTAN_TO_US_FLUID_DRAM / 4,
+            'US fl oz': AYTAN_TO_US_FLUID_DRAM / 12,
+            'US jig': AYTAN_TO_US_FLUID_DRAM / 4 / 3,
+            'US gi': AYTAN_TO_US_FLUID_DRAM / 12 / 4,
+            'US c': AYTAN_TO_US_FLUID_DRAM / 12 / 12,
+            'US cup': AYTAN_TO_US_FLUID_DRAM / 12 / 12,
+            'US pt': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2,
+            'US pint': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2,
+            'US qt': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2,
+            'US pot': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 2,
+            'US gal': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4,
+            'US bbl': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 513 * 10,
+            'US bbl oil': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 110,
+            'US hogshead': AYTAN_TO_US_FLUID_DRAM / 12 / 12 / 2 / 2 / 4 / 143,
+
+            'US pt dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452'),
+            'US qt dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2,
+            'US gal dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4,
+            'US pk': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2,
+            'US pk dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2,
+            'US bu': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2 / 4,
+            'US bu dry': AYTAN_TO_CUBIC_INCH / SezimalFraction('2_145_441 / 22_452') / 2 / 4 / 2 / 4,
+            'US bbl dry': AYTAN_TO_CUBIC_INCH / 52_400,
+
+            'imp min': AYTAN_TO_IMPERIAL_FLUID_DRAM * 140,
+            'imp fl s': AYTAN_TO_IMPERIAL_FLUID_DRAM * 3,
+            'imp fl dr': AYTAN_TO_IMPERIAL_FLUID_DRAM,
+            'imp fl oz': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12,
+            'imp gi': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 5,
+            'imp pt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 32,
+            'imp qt': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 104,
+            'imp gal': AYTAN_TO_IMPERIAL_FLUID_DRAM / 12 / 424,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Speed (vega)
+    #
+    VEGA_TO_METRE_PER_SECOND = PADA_TO_METRE / ANUGA_TO_SECOND
+
+    for unit in ('veg', 'pad/ang',
+                 'XDpad/din', 'Xpad/uta', 'Cpad/pox', 'Dpad/agm', 'dpad/bod',
+                 'XDpad/XDang', 'Xpad/Xang', 'Cpad/Cang', 'Dpad/Dang', 'dpad/dang'):
+        unit_conversion[unit] = {
+            'm/s': VEGA_TO_METRE_PER_SECOND,
+            'm/h': VEGA_TO_METRE_PER_SECOND * 24_400,
+            'prefixed': ('m/s', 'm/h'),
+            'comparable': ('veg', 'pad/ang',
+                 'XDpad/day', 'Xpad/uta', 'Cpad/pox', 'Dpad/agm', 'dpad/bod',
+                 'XDpad/XDang', 'Xpad/Xang', 'Cpad/Cang', 'Dpad/Dang', 'dpad/dang'),
+            #
+            # Non S.I. units
+            #
+            'km/h': VEGA_TO_METRE_PER_SECOND * 30 / 5,
+            'ml/s': VEGA_TO_METRE_PER_SECOND / SezimalFraction('4_151_200 / 325'),
+            'ml/h': VEGA_TO_METRE_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
+            'mph': VEGA_TO_METRE_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
+            'kn': VEGA_TO_METRE_PER_SECOND * 24_400 / 12_324,
+            'c': VEGA_TO_METRE_PER_SECOND / 45_425_332_014,
+            'ft/s': VEGA_TO_METRE_PER_SECOND / SezimalFraction('1_433 / 5_442'),
+            'fps': VEGA_TO_METRE_PER_SECOND / SezimalFraction('1_433 / 5_442'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Acceleration (tevaran)
+    #
+    TEVARAN_TO_METRE_PER_SQUARE_SECOND = VEGA_TO_METRE_PER_SECOND / ANUGA_TO_SECOND
+
+    for unit in ('tvr', 'pad/ang2'):
+        unit_conversion[unit] = {
+            'm/s2': TEVARAN_TO_METRE_PER_SQUARE_SECOND,
+            'prefixed': ('m/s2',),
+            #
+            # Non S.I. units
+            #
+            'gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
+            'Gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
+            'cm/s2': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
+            'ft/s2': unit_conversion['veg']['ft/s'] / ANUGA_TO_SECOND,
+            'g': TEVARAN_TO_METRE_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
+            'g0': TEVARAN_TO_METRE_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Mass (dravya)
+    # atomic mass: parmanu = Dalton
+    #
+    DRAVYA_TO_KILOGRAM = DENSITY * AYTAN_TO_CUBIC_METRE
+    DRAVYA_TO_GRAM = DRAVYA_TO_KILOGRAM * 4344
     DRAVYA_TO_GRAIN = DRAVYA_TO_GRAM / SezimalFraction('350_515_255 / 13_531_202_544')
+    DALTON_TO_GRAM = SezimalFraction('12_455_034_111_522_345 / 40_015_005_003_025_124_254_152_011_001_323_254_223_133_002_024')
+
+    WATER_MASS_IN_DALTON = SezimalFraction(Decimal('1801528'), Decimal('1e5'))
+    CARBON_MASS_IN_DALTON = SezimalFraction(Decimal('120107'), Decimal('1e4'))
+    # DULI_TO_GRAM = (WATER_MASS_IN_DALTON + CARBON_MASS_IN_DALTON) * DALTON_TO_GRAM / 50
+    # DULI_TO_GRAM = CARBON_MASS_IN_DALTON * DALTON_TO_GRAM / 20
+    DULI_TO_GRAM = WATER_MASS_IN_DALTON * DALTON_TO_GRAM / 30
+    NUMBER_OF_JALA = round((DULI_TO_GRAM / DRAVYA_TO_GRAM).reciprocal, 0)
+
+    DULI_TO_DRAVYA = SezimalFraction(1, NUMBER_OF_JALA)
+    DULI_TO_GRAM = DULI_TO_DRAVYA * DRAVYA_TO_GRAM
 
     unit_conversion['drv'] = {
         'g': DRAVYA_TO_GRAM,
-        'prefixed': ('g',),
+        'prefixed': ('g', 'Da', 'ton', 't',),
 
         #
         # Non S.I. units
@@ -272,6 +378,9 @@ def calculate_conversions():
         'kg': DRAVYA_TO_KILOGRAM,
         't': DRAVYA_TO_KILOGRAM / 4344,
         'ton': DRAVYA_TO_KILOGRAM / 4344,
+        'Da': DRAVYA_TO_GRAM / DALTON_TO_GRAM,
+        'dul': DRAVYA_TO_GRAM / DULI_TO_GRAM,
+        'eV/c2': DRAVYA_TO_GRAM / SezimalFraction('1_034_445_353 / 1_142_211_330_011_351_323_314_255_225_034_105_151_305_555_500_001_104'),
 
         'gr': DRAVYA_TO_GRAIN,
 
@@ -295,147 +404,286 @@ def calculate_conversions():
     }
     unit_conversion['drv'] = _set_non_prefixed_units(unit_conversion['drv'])
 
-    #
-    # Density
-    #
-    GANA_TO_KILOGRAM_PER_CUBIC_METER = DRAVYA_TO_KILOGRAM / (PADA_TO_METER ** 3)
-    GANA_TO_KILOGRAM_PER_LITER = GANA_TO_KILOGRAM_PER_CUBIC_METER / 4344
-
-    unit_conversion['gan'] = {
-        'g/m3': GANA_TO_KILOGRAM_PER_CUBIC_METER * 4344,
-        'g/L': GANA_TO_KILOGRAM_PER_LITER * 4344,
-        'g/l': GANA_TO_KILOGRAM_PER_LITER * 4344,
-        'kg/m3': GANA_TO_KILOGRAM_PER_CUBIC_METER,
-        'kg/L': GANA_TO_KILOGRAM_PER_LITER,
-        'kg/l': GANA_TO_KILOGRAM_PER_LITER,
-        'kg/dm3': GANA_TO_KILOGRAM_PER_LITER,
-        'g/cm3': GANA_TO_KILOGRAM_PER_LITER,
-        'g/mL': GANA_TO_KILOGRAM_PER_LITER,
-        'g/ml': GANA_TO_KILOGRAM_PER_LITER,
-        'ton/m3': GANA_TO_KILOGRAM_PER_LITER,
-        'Mg/m3': GANA_TO_KILOGRAM_PER_LITER,
-
-        'prefixed': ('g/m3', 'g/L', 'g/l'),
+    unit_conversion['dul'] = {
+        'g': DULI_TO_GRAM,
+        'prefixed': ('g', 'Da',),
 
         #
         # Non S.I. units
         #
-        'oz/in3': unit_conversion['drv']['oz'] / unit_conversion['ayt']['in3'],
-        'lb/in3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['in3'],
-        'lb/ft3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['ft3'],
-        'lb/yd3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['yd3'],
-        'sl/ft3': unit_conversion['drv']['sl'] / unit_conversion['ayt']['ft3'],
-        'lb/gal': unit_conversion['drv']['lb'] / unit_conversion['ayt']['US gal'],
-        'lb/bu': unit_conversion['drv']['lb'] / unit_conversion['ayt']['US bu'],
+        'Da': DULI_TO_GRAM / DALTON_TO_GRAM,
+        'drv': unit_conversion['drv']['dul'].reciprocal,
     }
-    unit_conversion['gan'] = _set_non_prefixed_units(unit_conversion['gan'])
+    unit_conversion['dul'] = _set_non_prefixed_units(unit_conversion['dul'])
 
     #
-    # Force/weight
+    # Density (ganata)
     #
-    unit_conversion['bar'] = {
-        'N': SezimalFraction('1_514_013_223_524_454_001_155_251_200_421_502_131_214_453_103_540_110_043_004_301 / 15_010_344_010_111_333_042_214_015_440_344_150_251_043_044_342_310_023_032_344_544'),
-        'prefixed': ('N', 'gf'),
+    GANATA_TO_KILOGRAM_PER_CUBIC_METRE = DENSITY
+    GANATA_TO_KILOGRAM_PER_LITRE = GANATA_TO_KILOGRAM_PER_CUBIC_METRE / 4344
 
-        #
-        # Non S.I. units
-        #
-        'gf': SezimalFraction('1_514_013_223_524_454_001_155_251_200_421_502_131_214_453_103_540_110_043_004_301 / 15_010_344_010_111_333_042_214_015_440_344_150_251_043_044_342_310_023_032_344_544') / SezimalFraction('4_112_005 / 1_552_400_332'),
-        'lbf': SezimalFraction('1_514_013_223_524_454_001_155_251_200_421_502_131_214_453_103_540_110_043_004_301 / 15_010_344_010_111_333_042_214_015_440_344_150_251_043_044_342_310_023_032_344_544') / SezimalFraction('30_530_545_233_334_201 / 4_130_442_021_003_132'),
-        'dyn': SezimalFraction('1_514_013_223_524_454_001_155_251_200_421_502_131_214_453_103_540_110_043_004_301 / 15_010_344_010_111_333_042_214_015_440_344_150_251_043_044_342_310_023_032_344_544') / SezimalFraction('1 / 2_050_544'),
-    }
-    unit_conversion['bar'] = _set_non_prefixed_units(unit_conversion['bar'])
+    for unit in ('gnt', 'drv/ayt', 'drv/pad3'):
+        unit_conversion[unit] = {
+            'g/m3': GANATA_TO_KILOGRAM_PER_CUBIC_METRE * 4344,
+            'g/L': GANATA_TO_KILOGRAM_PER_LITRE * 4344,
+            'g/l': GANATA_TO_KILOGRAM_PER_LITRE * 4344,
+            'kg/m3': GANATA_TO_KILOGRAM_PER_CUBIC_METRE,
+            'kg/L': GANATA_TO_KILOGRAM_PER_LITRE,
+            'kg/l': GANATA_TO_KILOGRAM_PER_LITRE,
+            'kg/dm3': GANATA_TO_KILOGRAM_PER_LITRE,
+            'g/cm3': GANATA_TO_KILOGRAM_PER_LITRE,
+            'g/mL': GANATA_TO_KILOGRAM_PER_LITRE,
+            'g/ml': GANATA_TO_KILOGRAM_PER_LITRE,
+            'ton/m3': GANATA_TO_KILOGRAM_PER_LITRE,
+            'Mg/m3': GANATA_TO_KILOGRAM_PER_LITRE,
 
-    #
-    # Pressure
-    #
-    unit_conversion['dab'] = {
-        'Pa': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200'),
-        'prefixed': ('Pa', 'psi', 'bar'),
+            'prefixed': ('g/m3', 'g/L', 'g/l'),
 
-        #
-        # Non S.I. units
-        #
-        'atm': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200') / 2_101_033,
-        'psi': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200') / 4344 / SezimalFraction('403_440_101 / 33_233_344'),
-        'bar': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200') / 2_050_544,
-        'mmHg': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200') / SezimalFraction('1_232_341 / 2_152'),
-        'inHg': SezimalFraction('122_200_235_212_541_051_051_420_432_402_021_022_212_131 / 110_514_124_353_011_111_533_000_230_455_224_221_200') / SezimalFraction('11_131_435 / 244'),
-    }
-    unit_conversion['dab'] = _set_non_prefixed_units(unit_conversion['dab'])
-
-    #
-    # Energy/work
-    #
-    unit_conversion['kry'] = {
-        'J': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300'),
-        'prefixed': ('J', 'Wh', 'BTU', 'cal', 'erg', 'eV', 'TNT'),
-
-        #
-        # Non S.I. units
-        #
-        'Wh': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / 4344 / SezimalFraction('30 / 5'),
-        'ft⋅lb': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('22_310_245 / 14_414_452'),
-        'ft⋅lb': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('22_310_245 / 14_414_452'),
-        'BTU': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('40_122_335_231_451 / 4_543_401_252'),
-        'cal': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('2_231 / 325'),
-        'erg': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') * 554_200_144,
-        'eV': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / SezimalFraction('422_552_112_230 / 545_225_423_350_030_313_042_203_422_444_532_144'),
-        'TNT': SezimalFraction('33_521_011_020_511_504_500_105_153_500_503_335_231_504_250_513_113_014_250_131 / 34_535_213_355_430_432_413_330_124_234_141_103_540_144_344_324_515_411_045_300_300') / 1_531_101_350_212,
-    }
-    unit_conversion['kry'] = _set_non_prefixed_units(unit_conversion['kry'])
+            #
+            # Non S.I. units
+            #
+            'oz/in3': unit_conversion['drv']['oz'] / unit_conversion['ayt']['in3'],
+            'lb/in3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['in3'],
+            'lb/ft3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['ft3'],
+            'lb/yd3': unit_conversion['drv']['lb'] / unit_conversion['ayt']['yd3'],
+            'sl/ft3': unit_conversion['drv']['sl'] / unit_conversion['ayt']['ft3'],
+            'lb/gal': unit_conversion['drv']['lb'] / unit_conversion['ayt']['US gal'],
+            'lb/bu': unit_conversion['drv']['lb'] / unit_conversion['ayt']['US bu'],
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Torque (gurna)
+    # Force (bala) / weight (bara)
     #
-    unit_conversion['grn'] = {
-        'N·m': unit_conversion['kry']['J'],
-        'Nm': unit_conversion['kry']['J'],
-        'prefixed': ('N·m', 'Nm'),
+    BALA_TO_NEWTON = DRAVYA_TO_KILOGRAM * TEVARAN_TO_METRE_PER_SQUARE_SECOND
 
-        #
-        # Non S.I. units
-        #
-    }
-    unit_conversion['grn'] = _set_non_prefixed_units(unit_conversion['grn'])
+    for unit in ('bal', 'bar', 'drv·tvr', 'drv·pad/ang2'):
+        unit_conversion[unit] = {
+            'N': BALA_TO_NEWTON,
+            'kg·m/s2': BALA_TO_NEWTON,
+            'prefixed': ('N', 'gf'),
+
+            #
+            # Non S.I. units
+            #
+            'gf': BALA_TO_NEWTON / SezimalFraction('4_112_005 / 1_552_400_332'),
+            'lbf': BALA_TO_NEWTON / SezimalFraction('115_400_451 / 14_414_452'),
+            'dyn': BALA_TO_NEWTON / SezimalFraction('1 / 2_050_544'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Pressure (pidana) / Stress (pratibala)
+    #
+    # Pidana
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%A8
+    #
+    # Daba
+    # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A4%BE%E0%A4%AC
+    #
+    # Pratibala
+    # https://hi.wikipedia.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%AC%E0%A4%B2
+    #
+    # Vayu = atm
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BE%E0%A4%AF%E0%A5%81%E0%A4%AE%E0%A4%A3%E0%A5%8D%E0%A4%A1%E0%A4%B2#Sanskrit
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BE%E0%A4%AF%E0%A5%81#Sanskrit
+    #
+    DABA_TO_PASCAL = DRAVYA_TO_KILOGRAM / TEVARAN_TO_METRE_PER_SQUARE_SECOND
+    VAYU_TO_PASCAL = SezimalFraction('2_101_033 / 1')
+
+    for unit in (
+        'pdn', 'pbl', 'drv/pad/ang2',
+        'vrc/ayt', 'uxn/ayt', 'xrm/ayt', 'xky/ayt',
+        'vrc/pad3', 'uxn/pad3', 'xrm/pad3', 'xky/pad3',
+    ):
+        unit_conversion[unit] = {
+            'Pa': DABA_TO_PASCAL,
+            'J/m3': DABA_TO_PASCAL,
+            'kg/m/s2': DABA_TO_PASCAL,
+            'prefixed': ('Pa', 'J/m3', 'psi', 'bar'),
+
+            #
+            # Non S.I. units
+            #
+            'atm': DABA_TO_PASCAL / 2_101_033,
+            'vay': DABA_TO_PASCAL / VAYU_TO_PASCAL,
+            'psi': DABA_TO_PASCAL / 4344 / SezimalFraction('403_440_101 / 33_233_344'),
+            'bar': DABA_TO_PASCAL / 2_050_544,
+            'mmHg': DABA_TO_PASCAL / SezimalFraction('1_232_341 / 2_152'),
+            'inHg': DABA_TO_PASCAL / SezimalFraction('11_131_435 / 244'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    for unit in (
+        'vay',
+    ):
+        unit_conversion[unit] = {
+            'Pa': VAYU_TO_PASCAL,
+            'J/m3': VAYU_TO_PASCAL,
+            'kg/m/s2': VAYU_TO_PASCAL,
+            'prefixed': ('Pa', 'J/m3', 'psi', 'bar'),
+
+            #
+            # Non S.I. units
+            #
+            'atm': VAYU_TO_PASCAL / 2_101_033,
+            'pdn': VAYU_TO_PASCAL / DABA_TO_PASCAL,
+            'pbl': VAYU_TO_PASCAL / DABA_TO_PASCAL,
+            'psi': VAYU_TO_PASCAL / 4344 / SezimalFraction('403_440_101 / 33_233_344'),
+            'bar': VAYU_TO_PASCAL / 2_050_544,
+            'mmHg': VAYU_TO_PASCAL / SezimalFraction('1_232_341 / 2_152'),
+            'inHg': VAYU_TO_PASCAL / SezimalFraction('11_131_435 / 244'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Energy varcha / heat ushuna / work (sharama) / potential (shakya)
+    #
+    # more generic: varcha
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%9A%E0%A4%B8%E0%A5%8D
+    # heat uxna
+    # https://en.wiktionary.org/wiki/%E0%A4%8A%E0%A4%B0%E0%A5%8D%E0%A4%9C%E0%A4%BE#Sanskrit
+    # heat ushuna
+    # https://en.wiktionary.org/wiki/%E0%A4%89%E0%A4%B7%E0%A5%8D%E0%A4%A3#Sanskrit
+    # work sharama
+    # https://en.wiktionary.org/wiki/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A4%AE#Sanskrit
+    # potential shakya
+    # https://en.wiktionary.org/wiki/%E0%A4%B6%E0%A4%95%E0%A5%8D%E0%A4%AF#Sanskrit
+    #
+    VARCHA_TO_JOULE = BALA_TO_NEWTON * PADA_TO_METRE
+
+    for unit in ('vrc', 'uxn', 'xrm', 'xky', 'drv·pad2/ang2'):
+        unit_conversion[unit] = {
+            'J': VARCHA_TO_JOULE,
+            'N·m': VARCHA_TO_JOULE,
+            'Pa·m3': VARCHA_TO_JOULE,
+            'C·V': VARCHA_TO_JOULE,
+            'prefixed': ('J', 'Wh', 'BTU', 'cal', 'erg', 'eV', 'TNT', 'N·m', 'Pa·m3', 'C·V'),
+
+            #
+            # Non S.I. units
+            #
+            'Wh': VARCHA_TO_JOULE / 4344 / SezimalFraction('30 / 5'),
+            'ft⋅lb': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
+            'ftlb': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
+            'BTU': VARCHA_TO_JOULE / SezimalFraction('40_122_335_231_451 / 4_543_401_252'),
+            'cal': VARCHA_TO_JOULE / SezimalFraction('2_231 / 325'),
+            'erg': VARCHA_TO_JOULE * 554_200_144,
+            'eV': VARCHA_TO_JOULE / SezimalFraction('422_552_112_230 / 545_225_423_350_030_313_042_203_422_444_532_144'),
+            'TNT': VARCHA_TO_JOULE / 1_531_101_350_212,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
     # Power
     #
-    unit_conversion['xat'] = {
-        'W': SezimalFraction('121_132_153_514_542_401_513_232_551_044_525_041_412_401_023_245_415_205_322_023_430 / 2_353_312_241_345_501_021_435_340_022_525_025_342_351_251_450_242_104_254_225_320_300'),
-        'prefixed': ('W',),
+    # Shakiti
+    # https://en.wiktionary.org/wiki/%E0%A4%B6%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%BF#Sanskrit
+    #
+    SHAKITI_TO_WATT = VARCHA_TO_JOULE / ANUGA_TO_SECOND
 
-        #
-        # Non S.I. units
-        #
-        'hp': SezimalFraction('121_132_153_514_542_401_513_232_551_044_525_041_412_401_023_245_415_205_322_023_430 / 2_353_312_241_345_501_021_435_340_022_525_025_342_351_251_450_242_104_254_225_320_300') / SezimalFraction('54_305 / 14'),
-        'ft⋅lb/s': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['s'],
-        'ft⋅lb/min': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['min'],
-        'ft⋅lb/h': unit_conversion['kry']['ft⋅lb'] / unit_conversion['ang']['h'],
-        'BTU/h': unit_conversion['kry']['BTU'] / unit_conversion['ang']['h'],
-        'cal/s': unit_conversion['kry']['cal'] / unit_conversion['ang']['s'],
-        'kcal/h': unit_conversion['kry']['cal'] / 4344 / unit_conversion['ang']['h'],
-    }
-    unit_conversion['xat'] = _set_non_prefixed_units(unit_conversion['xat'])
+    for unit in ('xkt', 'drv·pad2/ang3'):
+        unit_conversion[unit] = {
+            'W': SHAKITI_TO_WATT,
+            'J/s': SHAKITI_TO_WATT,
+            'N·m/s': SHAKITI_TO_WATT,
+            'kg·m2/s3': SHAKITI_TO_WATT,
+            'prefixed': ('W', 'J/s', 'N·m/s', ),
+
+            #
+            # Non S.I. units
+            #
+            'hp': SHAKITI_TO_WATT / SezimalFraction('54_305 / 14'),
+            'ft⋅lb/s': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['s'],
+            'ft⋅lb/min': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['min'],
+            'ft⋅lb/h': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['h'],
+            'BTU/h': unit_conversion['vrc']['BTU'] / unit_conversion['ang']['h'],
+            'cal/s': unit_conversion['vrc']['cal'] / unit_conversion['ang']['s'],
+            'kcal/h': unit_conversion['vrc']['cal'] / 4344 / unit_conversion['ang']['h'],
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Momentum (sanvega)
+    #
+    # https://en.wiktionary.org/wiki/%E0%A4%B8%E0%A4%82%E0%A4%B5%E0%A5%87%E0%A4%97#Sanskrit
+    #
+    for unit in ('svg', 'drv·veg', 'drv·pad/ang'):
+        unit_conversion[unit] = {
+            'kg·m/s': DRAVYA_TO_KILOGRAM * VEGA_TO_METRE_PER_SECOND,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Action (kirya)
+    #
+    # https://en.wiktionary.org/wiki/%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE
+    #
+    for unit in ('kry', 'svg·pad', 'drv·pad2/ang'):
+        unit_conversion[unit] = {
+            'kg·m2/s': DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE / ANUGA_TO_SECOND,
+            'J·s': DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE / ANUGA_TO_SECOND,
+            'J/Hz': DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE / ANUGA_TO_SECOND,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Influence (prabava)
+    #
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AD%E0%A4%BE%E0%A4%B5#Sanskrit
+    #
+    for unit in ('pbv', 'bal·ktr', 'drv·ayt/ang2', 'drv·pad3/ang2'):
+        unit_conversion[unit] = {
+            'kg·m3/s2': BALA_TO_NEWTON * KETRA_TO_SQUARE_METRE,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Tension (tanava)
+    #
+    for unit in ('tnv', 'bal/pad', 'drv/ang2'):
+        unit_conversion[unit] = {
+            'kg/s2': DRAVYA_TO_KILOGRAM / ANANTA_TO_SECOND_SQUARED,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Intensity (upari)
+    #
+    for unit in ('upr', 'xkt/ktr', 'tnv/ang', 'drv/ang3'):
+        unit_conversion[unit] = {
+            'kg/s3': SHAKITI_TO_WATT / KETRA_TO_SQUARE_METRE,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
     # Thermodynamic temperature
     #
+    # (simplified by a 135_435_154_201_541_452_513_332_102_041_321 factor)
+    #
+    # GATIKA_TO_KELVIN = ((GRAVITY ** 2) * (TIME ** 2)) / SPECIFIC_HEAT
+    GATIKA_TO_KELVIN = SezimalFraction('41_143 / 12_532_430_424')
+    TAPA_TO_CELSIUS = GATIKA_TO_KELVIN * 100_000
+
     unit_conversion['gtk'] = {
-        'K': SezimalFraction('10_555_444_540_024_220_300_311_044_444_024_243_143 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344'),
-        '°C': SezimalFraction('10_555_444_540_024_220_300_311_044_444_024_243_143 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344'),
+        'K': GATIKA_TO_KELVIN,
+        'C': GATIKA_TO_KELVIN,
+        '°C': GATIKA_TO_KELVIN,
 
         'prefixed': ('K',),
 
         #
         # Non S.I. units
         #
-        '°F': SezimalFraction('10_555_444_540_024_220_300_311_044_444_024_243_143 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344') / SezimalFraction('5 / 13'),
-        '°R': SezimalFraction('10_555_444_540_024_220_300_311_044_444_024_243_143 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344') / SezimalFraction('5 / 13'),
+        'F': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        '°F': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        'R': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        '°R': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
 
         'adjust': {
-            '°C': SezimalFraction('-41_143 / 32'),
+            'C': SezimalFraction('-330_243 / 244'),
+            '°C': SezimalFraction('-330_243 / 244'),
+            'F': SezimalFraction('-552_451 / 244'),
             '°F': SezimalFraction('-552_451 / 244'),
         }
     }
@@ -445,91 +693,121 @@ def calculate_conversions():
     # Common temperature
     #
     unit_conversion['tap'] = {
-        '°C': SezimalFraction('1_055_544_454_002_422_030_031_104_444_402_424_314_300_000 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344'),
-        'K': SezimalFraction('1_055_544_454_002_422_030_031_104_444_402_424_314_300_000 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344'),
+        'C': TAPA_TO_CELSIUS,
+        '°C': TAPA_TO_CELSIUS,
+        'K': TAPA_TO_CELSIUS,
 
         'prefixed': ('K',),
 
         #
         # Non S.I. units
         #
-        '°F': SezimalFraction('1_055_544_454_002_422_030_031_104_444_402_424_314_300_000 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344') / SezimalFraction('5 / 13'),
-        '°R': SezimalFraction('1_055_544_454_002_422_030_031_104_444_402_424_314_300_000 / 2_245_430_323_350_444_405_535_225_150_451_403_235_403_344') / SezimalFraction('5 / 13'),
+        'F': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        '°F': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        'R': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        '°R': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
 
         'adjust': {
-            'K': SezimalFraction('41_143 / 32'),
+            'K': SezimalFraction('330_243 / 244'),
+            'F': Sezimal(52),
             '°F': Sezimal(52),
+            'R': SezimalFraction('552_451 / 244'),
             '°R': SezimalFraction('552_451 / 244'),
         }
     }
     unit_conversion['tap'] = _set_non_prefixed_units(unit_conversion['tap'])
 
     #
-    # Heat capacity
+    # Heat capacity (agini) / Entropy (parivartana)
     #
-    unit_conversion['agn'] = {
-        'J/K': unit_conversion['kry']['J'] / unit_conversion['gtk']['K'],
-
-        'prefixed': ('J/K',),
-
-        #
-        # Non S.I. units
-        #
-        'BTU/°R': unit_conversion['kry']['BTU'] / unit_conversion['gtk']['°R'],
-    }
-    unit_conversion['agn'] = _set_non_prefixed_units(unit_conversion['agn'])
-
+    # Agni
+    # https://en.wiktionary.org/wiki/%E0%A4%85%E0%A4%97%E0%A5%8D%E0%A4%A8%E0%A4%BF#Sanskrit
     #
-    # Heat capacity per mass
+    # Parivartana
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%A8#Sanskrit
     #
-    unit_conversion['idn'] = {
-        'J/K/kg': unit_conversion['agn']['J/K'] / unit_conversion['drv']['kg'],
+    for unit in ('agn', 'prv', 'vrc/gtk'):
+        unit_conversion[unit] = {
+            'J/K': unit_conversion['vrc']['J'] / unit_conversion['gtk']['K'],
 
-        'prefixed': ('J/K/kg',),
+            'prefixed': ('J/K',),
 
-        #
-        # Non S.I. units
-        #
-        'BTU/°R/lb': unit_conversion['agn']['BTU/°R'] / unit_conversion['drv']['lb'],
-    }
-    unit_conversion['idn'] = _set_non_prefixed_units(unit_conversion['idn'])
+            #
+            # Non S.I. units
+            #
+            'BTU/°R': unit_conversion['vrc']['BTU'] / unit_conversion['gtk']['°R'],
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Heat capacity per volume
+    # Heat capacity per mass (indana)
     #
-    unit_conversion['tln'] = {
-        'J/K/m3': unit_conversion['agn']['J/K'] / unit_conversion['ayt']['m3'],
+    # https://en.wiktionary.org/wiki/%E0%A4%88%E0%A4%82%E0%A4%A7%E0%A4%A8#Hindi
+    #
+    for unit in ('idn', 'agn/drv', 'prv/drv', 'vrc/gtk/drv'):
+        unit_conversion[unit] = {
+            'J/K/kg': unit_conversion['agn']['J/K'] / unit_conversion['drv']['kg'],
 
-        'prefixed': ('J/K/m3',),
-    }
-    unit_conversion['tln'] = _set_non_prefixed_units(unit_conversion['tln'])
+            'prefixed': ('J/K/kg',),
+
+            #
+            # Non S.I. units
+            #
+            'BTU/°R/lb': unit_conversion['agn']['BTU/°R'] / unit_conversion['drv']['lb'],
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Electromagnetism is based off these 2 values, how many electric charges
-    # are there in an avesha (see the “e” in avesha below), and that
-    # the pratiroda is exactly the vacuum electric resistance;
+    # Heat capacity per volume (telan)
     #
-    AVESHA_TO_COULOMB = SezimalFraction('12_441_111_434_024_101_213_014_435_504_443 / 124_204_233_524_304_345_140_330_533_411_122_024')
-    PRATIRODA_TO_OHM = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
+    for unit in (
+        'tln',
+        'agn/ayt', 'prv/ayt', 'vrc/gtk/ayt',
+        'agn/pad3', 'prv/pad3', 'vrc/gtk/pad3',
+    ):
+        unit_conversion[unit] = {
+            'J/K/m3': unit_conversion['agn']['J/K'] / unit_conversion['ayt']['m3'],
+
+            'prefixed': ('J/K/m3',),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Electromagnetism is based off these 2 values,
+    # how many INTEGER electric charges are there in one vidyuta,
+    # and that the pratibada is exactly the impedance of free space;
+    #
+    # electric_charge = (mass * length²) / time / IMPEDANCE_FREE_SPACE
+    #
+    electric_charge_vidyuta = (DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE) / ANUGA_TO_SECOND / IMPEDANCE_FREE_SPACE
+    number_elementary_charges_in_vidyutas = round(electric_charge_vidyuta.sqrt() / ELEMENTARY_CHARGE_IN_COULOMBS, 0)
+
+    VIDYUTA_TO_COULOMB = ELEMENTARY_CHARGE_IN_COULOMBS * number_elementary_charges_in_vidyutas * 1000
+    PRATIBADA_TO_OHM = IMPEDANCE_FREE_SPACE
+    DARA_TO_AMPERE = VIDYUTA_TO_COULOMB / ANUGA_TO_SECOND
 
     #
     # Electric charge
     #
-    unit_conversion['avx'] = {
-        'C': AVESHA_TO_COULOMB,
-        'Ah': AVESHA_TO_COULOMB / 24_400,
-        'As': AVESHA_TO_COULOMB / 1_141_440_000,
+    # https://en.wiktionary.org/wiki/%E0%A4%AD%E0%A4%B0%E0%A4%A3#Sanskrit
+    #
+    unit_conversion['vdt'] = {
+        'C': VIDYUTA_TO_COULOMB,
+        'Ah': VIDYUTA_TO_COULOMB / 24_400,
+        'As': VIDYUTA_TO_COULOMB / 1_141_440_000,
         'e': SezimalFraction('115_422_244_443_055_421_554 / 1'),
         'F': SezimalFraction('5_255_312_545_030_054_302_243 / 2_354_124_142_045_012'),
         'prefixed': ('C', 'e', 'Ah', 'As', 'F'),
     }
-    unit_conversion['avx'] = _set_non_prefixed_units(unit_conversion['avx'])
+    unit_conversion['vdt'] = _set_non_prefixed_units(unit_conversion['vdt'])
 
     #
     # Electric current
     #
+    # https://en.wiktionary.org/wiki/%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%BE
+    #
     unit_conversion['dar'] = {
-        'A': unit_conversion['avx']['C'] / unit_conversion['ang']['s'],
+        'A': DARA_TO_AMPERE,
         'prefixed': ('A',),
     }
     unit_conversion['dar'] = _set_non_prefixed_units(unit_conversion['dar'])
@@ -537,70 +815,98 @@ def calculate_conversions():
     #
     # Electric potential difference
     #
-    unit_conversion['vbv'] = {
-        'V': unit_conversion['kry']['J'] / unit_conversion['avx']['C'],
-        # 'V': PRATIRODA_TO_OHM * unit_conversion['dar']['A'],
+    # Antaran
+    # https://en.wiktionary.org/wiki/%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%A3
+    #
+    unit_conversion['atr'] = {
+        'V': unit_conversion['vrc']['J'] / VIDYUTA_TO_COULOMB,
+        # 'V': PRATIBADA_TO_OHM * DARA_TO_AMPERE,
         'prefixed': ('V',),
     }
-    unit_conversion['vbv'] = _set_non_prefixed_units(unit_conversion['vbv'])
+    unit_conversion['atr'] = _set_non_prefixed_units(unit_conversion['atr'])
 
     #
-    # Electric resistance
+    # Electric
+    # resistance (viroda),
+    # impedance (prati-bada), reactance (prati-gata)
     #
-    unit_conversion['ptr'] = {
-        #
-        # The division of other conversions introduces a slight discrepancy,
-        # since this value is supposed to be the vacuum resistance exactly;
-        # so, we define it as a simpler fraction
-        #
-        # 'Ω': unit_conversion['vbv']['V'] / unit_conversion['dar']['A'],
-        'Ω': PRATIRODA_TO_OHM,
-        'ohm': PRATIRODA_TO_OHM,
-        'prefixed': ('Ω', 'ohm'),
-    }
-    unit_conversion['ptr'] = _set_non_prefixed_units(unit_conversion['ptr'])
+    # Vivrda
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%A7#Sanskrit
+    # Bada
+    # https://en.wiktionary.org/wiki/%E0%A4%AC%E0%A4%BE%E0%A4%A7%E0%A4%BE#Sanskrit
+    # Gata
+    # https://en.wiktionary.org/wiki/%E0%A4%98%E0%A4%BE%E0%A4%A4#Sanskrit
+    #
+    for unit in ('vrd', 'bad', 'gat'):
+        unit_conversion[unit] = {
+            #
+            # The division of other conversions intvrduces a slight discrepancy,
+            # since this value is supposed to be the vacuum resistance exactly;
+            # so, we define it as a simpler fraction
+            #
+            # 'Ω': unit_conversion['atr']['V'] / DARA_TO_AMPERE,
+            'Ω': PRATIBADA_TO_OHM,
+            'ohm': PRATIBADA_TO_OHM,
+            'prefixed': ('Ω', 'ohm'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
     # Electric conductance
     #
-    unit_conversion['cln'] = {
-        'S': PRATIRODA_TO_OHM.reciprocal,
+    # Vahatva
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%B9%E0%A4%A4%E0%A4%BF
+    #
+    unit_conversion['vht'] = {
+        'S': PRATIBADA_TO_OHM.reciprocal,
         'prefixed': ('S',),
     }
-    unit_conversion['cln'] = _set_non_prefixed_units(unit_conversion['cln'])
+    unit_conversion['vht'] = _set_non_prefixed_units(unit_conversion['vht'])
 
     #
     # Electric inductance
     #
-    unit_conversion['prk'] = {
-        'H': PRATIRODA_TO_OHM * unit_conversion['ang']['s'],
+    # upapadan
+    # https://sanskritdictionary.com/upap%C4%81dana/40071/1
+    #
+    unit_conversion['upp'] = {
+        'H': PRATIBADA_TO_OHM * unit_conversion['ang']['s'],
         'prefixed': ('H',),
     }
-    unit_conversion['prk'] = _set_non_prefixed_units(unit_conversion['prk'])
+    unit_conversion['upp'] = _set_non_prefixed_units(unit_conversion['upp'])
 
     #
     # Electric capacitance
     #
-    unit_conversion['sam'] = {
-        'F': AVESHA_TO_COULOMB / unit_conversion['vbv']['V'],
+    # Dharayatva
+    # https://en.wiktionary.org/wiki/%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%AF%E0%A4%A4%E0%A4%BF
+    #
+    unit_conversion['dry'] = {
+        'F': VIDYUTA_TO_COULOMB / unit_conversion['atr']['V'],
         'prefixed': ('F',),
     }
-    unit_conversion['sam'] = _set_non_prefixed_units(unit_conversion['sam'])
+    unit_conversion['dry'] = _set_non_prefixed_units(unit_conversion['dry'])
 
     #
     # Magnetic flux
     #
-    unit_conversion['abv'] = {
-        'Wb': unit_conversion['vbv']['V'] * unit_conversion['ang']['s'],
+    # Pravaha
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B5%E0%A4%BE%E0%A4%B9
+    #
+    unit_conversion['pvh'] = {
+        'Wb': unit_conversion['atr']['V'] * unit_conversion['ang']['s'],
         'prefixed': ('Wb',),
     }
-    unit_conversion['abv'] = _set_non_prefixed_units(unit_conversion['abv'])
+    unit_conversion['pvh'] = _set_non_prefixed_units(unit_conversion['pvh'])
 
     #
     # Magnetic flux density
     #
+    # Vistara
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A4%BE%E0%A4%B0
+    #
     unit_conversion['vtr'] = {
-        'T': unit_conversion['abv']['Wb'] / unit_conversion['ktr']['m2'],
+        'T': unit_conversion['pvh']['Wb'] / unit_conversion['ktr']['m2'],
         'prefixed': ('T',),
     }
     unit_conversion['vtr'] = _set_non_prefixed_units(unit_conversion['vtr'])
@@ -608,14 +914,18 @@ def calculate_conversions():
     #
     # Angles and angular units
     #
-    TAU = SezimalFraction('10_141_100_143_234_252_214_513_232_150_255_042_205_002_433_324_012 / 1_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000')
-    PI = TAU / 2
-    GOLA = TAU * 2
+    GOLA_TO_STERADIAN = TWO_TAU
 
     #
     # Plane angle
     #
-    unit_conversion['prd'] = {
+    # Paridi
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%A7%E0%A4%BF#Sanskrit
+    #
+    # Mandala
+    # https://en.wiktionary.org/wiki/%E0%A4%AE%E0%A4%A3%E0%A5%8D%E0%A4%A1%E0%A4%B2#Sanskrit
+    #
+    unit_conversion['mdl'] = {
         'rad': TAU,
         'tau_rad': SezimalFraction('1 / 1'),
         'pi_rad': SezimalFraction('2 / 1'),
@@ -626,37 +936,58 @@ def calculate_conversions():
         'arcsec': SezimalFraction('43_440_000 / 1'),
         'prefixed': ('rad', 'tau_rad', 'pi_rad', 'turn', 'gon', 'arcmin', 'arcsec'),
     }
-    unit_conversion['prd'] = _set_non_prefixed_units(unit_conversion['prd'])
+    unit_conversion['mdl'] = _set_non_prefixed_units(unit_conversion['mdl'])
 
-    # #
-    # # Angular velocity
-    # #
-    # unit_conversion['prd/ang'] = {
-    #     'rad/s': unit_conversion['prd']['rad'] / unit_conversion['ang']['s'],
-    #     'prefixed': ('rad/s',),
-    # }
-    # unit_conversion['prd/ang'] = _set_non_prefixed_units(unit_conversion['prd/ang'])
     #
-    # #
-    # # Angular Acceleration
-    # #
-    # unit_conversion['prd/ang2'] = {
-    #     'rad/s2': unit_conversion['prd']['rad'] / (unit_conversion['ang']['s'] ** 2),
-    #     'prefixed': ('rad/s2',),
-    # }
-    # unit_conversion['prd/ang2'] = _set_non_prefixed_units(unit_conversion['prd/ang2'])
+    # Angular velocity
     #
-    # unit_conversion['pad/prd'] = {
-    #     'm/rad': unit_conversion['pad']['m'] / unit_conversion['rad']['prd'],
-    #     'prefixed': ('m/rad',),
-    # }
-    # unit_conversion['pad/prd'] = _set_non_prefixed_units(unit_conversion['pad/prd'])
+    unit_conversion['kvg'] = {
+        'rad/s': unit_conversion['mdl']['rad'] / unit_conversion['ang']['s'],
+        'prefixed': ('rad/s',),
+    }
+    unit_conversion['kvg'] = _set_non_prefixed_units(unit_conversion['kvg'])
+
+    #
+    # Angular Acceleration
+    #
+    unit_conversion['ktv'] = {
+        'rad/s2': unit_conversion['mdl']['rad'] / (unit_conversion['ang']['s'] ** 2),
+        'prefixed': ('rad/s2',),
+    }
+    unit_conversion['ktv'] = _set_non_prefixed_units(unit_conversion['ktv'])
+
+    #
+    # Torque (gurna)
+    #
+    unit_conversion['grn'] = {
+        'J/rad': unit_conversion['vrc']['J'] / unit_conversion['mdl']['rad'],
+        'N·m': unit_conversion['vrc']['J'] / unit_conversion['mdl']['rad'],
+        'Nm': unit_conversion['vrc']['J'] / unit_conversion['mdl']['rad'],
+        'prefixed': ('J/rad', 'N·m', 'Nm'),
+
+        #
+        # Non S.I. units
+        #
+    }
+    unit_conversion['grn'] = _set_non_prefixed_units(unit_conversion['grn'])
+
+    #
+    #
+    #
+    unit_conversion['kpd'] = {
+        'm/rad': PADA_TO_METRE / unit_conversion['mdl']['rad'],
+        'prefixed': ('m/rad',),
+    }
+    unit_conversion['kpd'] = _set_non_prefixed_units(unit_conversion['kpd'])
 
     #
     # Solid angle
     #
+    # Gola
+    # https://en.wiktionary.org/wiki/%E0%A4%97%E0%A5%8B%E0%A4%B2%E0%A4%BE#Sanskrit
+    #
     unit_conversion['gol'] = {
-        'sr': GOLA,
+        'sr': GOLA_TO_STERADIAN,
         'prefixed': ('sr', 'spat'),
         'spat': SezimalFraction('1 / 1'),
         'deg2': SezimalFraction('2_440_000 / 1') / PI,
@@ -664,24 +995,105 @@ def calculate_conversions():
     unit_conversion['gol'] = _set_non_prefixed_units(unit_conversion['gol'])
 
     #
+    # Luminous intensity
+    #
+    # Prakasha
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A4%BE%E0%A4%B6#Sanskrit
+    #
+    PRAKASHA_TO_CANDELA = LUMINOUS_EFICACY * SHAKITI_TO_WATT / GOLA_TO_STERADIAN
+
+    unit_conversion['pkx'] = {
+        'cd': PRAKASHA_TO_CANDELA,
+        'prefixed': ('cd',),
+    }
+    unit_conversion['pkx'] = _set_non_prefixed_units(unit_conversion['pkx'])
+
+    #
+    # Luminous flux
+    #
+    # Dipaka
+    # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A5%80%E0%A4%AA%E0%A4%95
+    #
+    DIPAKA_TO_LUMEN = PRAKASHA_TO_CANDELA * GOLA_TO_STERADIAN
+
+    unit_conversion['dpk'] = {
+        'lm': DIPAKA_TO_LUMEN,
+        'prefixed': ('lm',),
+    }
+    unit_conversion['dpk'] = _set_non_prefixed_units(unit_conversion['dpk'])
+
+    #
+    # Luminance = luminous intensity / area
+    #
+    # https://en.wiktionary.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%AE#Sanskrit
+    #
+    BAMA_TO_CANDELA_PER_SQUARE_METRE = PRAKASHA_TO_CANDELA / KETRA_TO_SQUARE_METRE
+
+    unit_conversion['bam'] = {
+        'cd/m2': BAMA_TO_CANDELA_PER_SQUARE_METRE,
+        'prefixed': ('cd/m2',),
+    }
+    unit_conversion['bam'] = _set_non_prefixed_units(unit_conversion['bam'])
+
+    #
+    # Luminous efficacy = best vision
+    #
+    # Drishiti
+    # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BF
+    #
+    DRISHITI_TO_LUMEN_PER_WATT = LUMINOUS_EFICACY
+
+    unit_conversion['dxt'] = {
+        'lm/W': DRISHITI_TO_LUMEN_PER_WATT,
+        'prefixed': ('lm/W',),
+    }
+    unit_conversion['dxt'] = _set_non_prefixed_units(unit_conversion['dxt'])
+
+    #
+    # Emitance = luminous flux / area = basvara (light out of surface)
+    # Illuminance = Luminous flux / area = darpana (light onto surface)
+    #
+    # https://en.wiktionary.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%B0#Sanskrit
+    # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%AA%E0%A4%A3#Sanskrit
+    #
+    BASVARA_TO_LUX = DIPAKA_TO_LUMEN / KETRA_TO_SQUARE_METRE
+
+    for unit in ('bvr', 'dpn'):
+        unit_conversion[unit] = {
+            'lx': BASVARA_TO_LUX,
+            'lm/m2': BASVARA_TO_LUX,
+            'prefixed': ('lx', 'lm/m2'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Amount of substance
+    #
+    # Aprox. how many atoms of Water,
+    # weighing 30.003_144_523_110_032_153 (18.015 28) Daltons each,
+    # fit in 30 dravyas
+    #
+    # Aprox. how many atoms of Carbon-20,
+    # weighing 20.002_151_115_202_554_544 (12.0107) Daltons each,
+    # fit in 20 dravyas
+    #
+    # Bahuta
+    # https://en.wiktionary.org/wiki/%E0%A4%AC%E0%A4%B9%E0%A5%81%E0%A4%A4%E0%A5%8D%E0%A4%B5#Sanskrit
+    #
+    BAHUTA_TO_MOLE = SezimalFraction(
+        NUMBER_OF_JALA,
+        '2_420_220_441_202_515_135_044_212_141_344'  # Avogadro number
+    ).simplify()
+
+    unit_conversion['bht'] = {
+        'mol': BAHUTA_TO_MOLE,
+        'prefixed': ('mol',),
+    }
+    unit_conversion['bht'] = _set_non_prefixed_units(unit_conversion['bht'])
+
+    #
     # Proportions
     #
-    # for unit, factor in (
-    #     ('p/n', 2), ('p/a', 3), ('p/sa', 4), ('p/na', 5), ('p/x', 10),
-    #     ('p/sx', 11), ('p/nx', 12), ('p/ax', 13), ('p/sax', 14), ('p/nax', 15),
-    #     ('p/Dx', 20), ('p/Tx', 30), ('p/Cx', 40), ('p/Tx', 50), ('p/Xx', 100),
-    # ):
-    #     unit_conversion[unit] = {
-    #         '%': SezimalFraction(244, SezimalInteger(10) ** factor),
-    #         '‰': SezimalFraction(4344, SezimalInteger(10) ** factor),
-    #         '‱': SezimalFraction(114_144, SezimalInteger(10) ** factor),
-    #         'pcm': SezimalFraction(2_050_544, SezimalInteger(10) ** factor),
-    #         'ppm': SezimalFraction(33_233_344, SezimalInteger(10) ** factor),
-    #         'ppb': SezimalFraction(243_121_245_344, SezimalInteger(10) ** factor),
-    #         'prefixed': (),
-    #     }
-    #     unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
-
     unit_conversion['prt'] = {
         'prefixed': (),
         '%': SezimalFraction('244 / 1'),
@@ -820,7 +1232,7 @@ UNIT_CONVERSION = {
 SEZIMAL_EXPONENT_FACTOR = {
 '''
 
-    for i in SezimalRange(-120, 121):
+    for i in SezimalRange(-130, 131):
         if i == 0:
             continue
 
@@ -867,11 +1279,12 @@ DECIMAL_EXPONENT_FACTOR = {
 
     open('conversion_factor.py', 'w').write(text)
 
-    sezimal_context.precision = _precision
-
 
 def _set_non_prefixed_units(unit_conversion):
     non_prefixed = []
+
+    if 'prefixed' not in unit_conversion:
+        unit_conversion['prefixed'] = []
 
     for unit in unit_conversion:
         if unit not in unit_conversion['prefixed']:
