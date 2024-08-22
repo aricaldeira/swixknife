@@ -5,8 +5,7 @@ __all__ = (
     'DozenalRange',
     'agrimas_since_midnight',
     'uta_posha_agrima_now',
-    'floor',
-    'ceil',
+    'floor', 'ceil', 'gcd',
     'sin', 'arcsin', 'asin', 'csc', 'arccsc', 'acsc',
     'cos', 'arccos', 'acos', 'sec', 'arcsec', 'asec',
     'tan', 'arctan', 'atan', 'cot', 'arccot', 'acot',
@@ -17,5 +16,5 @@ __all__ = (
 
 from .range import SezimalRange, DozenalRange
 from .time import agrimas_since_midnight, uta_posha_agrima_now
-from .math import floor, ceil
+from .math import floor, ceil, gcd
 from .trigonometry import *
