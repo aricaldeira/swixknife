@@ -47,8 +47,8 @@ SEPARATOR_COMBINING_DOT_ABOVE_RIGHT = '\u0358'
 SEPARATOR_COMBINING_COMMA_ABOVE_RIGHT = '\u0315'
 SEPARATOR_SHADARA = '󱹬'  # '\U000f1e6c'  # 󱹬
 SEPARATOR_ARDA = '󱹭'  # '\U000f1e6d'  # 󱹭
-SEPARATOR_SUTRA = '󱹮'  # '\U000f1e6e'  # 󱹮
-SEPARATOR_PUNARAAVARTI = '󱹯'  # '\U000f1e6f'  # 󱹯
+SEPARATOR_WEDGE = '󱹮'  # '\U000f1e6e'  # 󱹮
+SEPARATOR_REPEATING = '󱹯'  # '\U000f1e6f'  # 󱹯
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
@@ -234,7 +234,7 @@ def sezimal_format(
                 fraction, recurring,
                 recurring_digits_notation,
                 group_format,
-                SEPARATOR_SUTRA if sezimal_punctuation else sezimal_separator ,
+                SEPARATOR_WEDGE if sezimal_punctuation else sezimal_separator ,
                 fraction_group_separator,
                 keep_original_aspect,
             )
@@ -256,7 +256,7 @@ def sezimal_format(
                 fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
         if sezimal_punctuation:
-            formatted_number += SEPARATOR_SUTRA
+            formatted_number += SEPARATOR_WEDGE
         else:
             formatted_number += sezimal_separator
 
@@ -839,7 +839,7 @@ def niftimal_format(
                 fraction, recurring,
                 recurring_digits_notation,
                 group_format,
-                SEPARATOR_SUTRA if sezimal_punctuation else niftimal_separator,
+                SEPARATOR_WEDGE if sezimal_punctuation else niftimal_separator,
                 fraction_group_separator
             )
             fraction = ''
@@ -860,7 +860,7 @@ def niftimal_format(
                 fraction = fraction.replace(fraction_group_separator + fraction_subgroup_separator, fraction_group_separator)
 
         if sezimal_punctuation:
-            formatted_number += SEPARATOR_SUTRA
+            formatted_number += SEPARATOR_WEDGE
         else:
             formatted_number += niftimal_separator
 
@@ -944,7 +944,7 @@ def _apply_recurring_mark(
         if (not recurring) or (recurring == '0'):
             return fraction_separator + fraction
 
-    if fraction_separator == SEPARATOR_SUTRA:
+    if fraction_separator == SEPARATOR_WEDGE:
         formatted_recurring = _apply_sezimal_punctuation(recurring.replace('_', ''))
     else:
         formatted_recurring = _apply_format(recurring.replace('_', ''), group_separator, recurring_regrouping)
@@ -981,8 +981,8 @@ def _apply_recurring_mark(
 
         return fraction_separator + marked_fraction
 
-    if fraction_separator == SEPARATOR_SUTRA:
-        recurring_marker = SEPARATOR_PUNARAAVARTI
+    if fraction_separator == SEPARATOR_WEDGE:
+        recurring_marker = SEPARATOR_REPEATING
     else:
         recurring_marker = fraction_separator + fraction_separator
 
