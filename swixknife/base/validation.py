@@ -16,6 +16,18 @@ from .context import sezimal_context
 
 
 _CLEAN_SPACES = {
+    #
+    # Sezimal Punctuation
+    #
+    ord('\U000f1e6c'): '',  # shadara separator 󱹬
+    ord('\U000f1e6d'): '',  # arda separator 󱹭
+    ord('\U000f1e6e'): '.',  # wedge separator 󱹮
+    ord('\U000f1e6f'): '..',  # repeating separator 󱹯
+    #
+    # Common punctuation
+    #
+    ord('\u201e'): '..', # double comma „
+    ord('\u2025'): '..', # double dot ‥
     ord('\u002c'): '.',  # comma is transformed into full stop
     ord('\u0020'): '',   # space
     ord('\u005f'): '',   # undescore
