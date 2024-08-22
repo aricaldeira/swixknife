@@ -35,7 +35,7 @@ class SezimalCalculator:
         self.unit = ''
         self.decimal_unit = ''
         self.unit_as_fraction = False
-        self.angle = 'prd'
+        self.angle = 'mdl'
         self.decimal_angle = 'tau_rad'
         self.angle_as_fraction = True
         self.debug = False
@@ -542,7 +542,7 @@ class SezimalCalculator:
                 decimal_expression += self._format_decimal(part, part=part)
 
                 if trigonometry_opened and self.angle and self.decimal_angle:
-                    if self.angle.endswith('prd'):
+                    if self.angle.endswith('mdl'):
                         number = decimal_to_sezimal_unit(number, self.decimal_angle, self.angle, return_fraction=self.angle_as_fraction)
                     else:
                         number = decimal_to_decimal_unit(number, self.decimal_angle, self.angle, return_fraction=self.angle_as_fraction)
@@ -594,7 +594,7 @@ class SezimalCalculator:
                 sezimal_expression += self._format_sezimal(part, part=part)
 
                 if trigonometry_opened and self.angle and self.decimal_angle:
-                    if self.angle.endswith('prd'):
+                    if self.angle.endswith('mdl'):
                         number = sezimal_to_decimal_unit(number, self.angle, self.decimal_angle, return_fraction=self.angle_as_fraction)
                     else:
                         number = decimal_to_decimal_unit(number, self.angle, self.decimal_angle, return_fraction=self.angle_as_fraction)
