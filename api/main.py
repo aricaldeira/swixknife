@@ -1,5 +1,11 @@
 
-from flask import Flask, request
+
+import pathlib
+
+TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
+
+from flask import Flask, request, send_file, redirect
+
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
 from decimal import Decimal
@@ -21,14 +27,28 @@ from number_conversion import *
 from now import *
 from agòra import *
 from calculator import *
+from shastadari import *
+from digits import *
+
+from  locale_detection import browser_preferred_locale
 
 
 @app.route('/')
-@app.route('/index.html')
-def date_time_text():
-    text = open('template/date_time.html').read()
-    text = SezimalDateTime.now('UTC').format(text, 'en_gb')
-    return text
+def index_route():
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt', code=302)
+
+    return redirect('/en', code=302)
+
+
+@app.route('/en')
+def index_en_route():
+    return send_file(TEMPLATE_PATH.joinpath('sezimal_en.html'), mimetype='text/html')
+
+
+@app.route('/pt')
+def index_pt_route():
+    return send_file(TEMPLATE_PATH.joinpath('sezimal_pt.html'), mimetype='text/html')
 
 
 def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale) -> dict:

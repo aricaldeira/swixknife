@@ -1,175 +1,282 @@
-/*
- *
- *
- *
- */
-
 :root {
-    --o-webclient-color-scheme: blue;
+    --o-webclient-color-scheme: black;
+    --theme: black;
+    background-color: black;
+    color: #fafafa;
 
-    font-size: 1.5em;
+    font-size: 1.2em;
+    line-height: 1.5em;
 
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    /*
-     / Font Andika
-    */
-    font-family: 'Andika', 'Noto Sans', sans-serif;
-    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
-    -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
-    -webkit-font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
+    font-family: 'Sezimal QP', 'Libertinus Math', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', monospace;
+    --font-family-monospace: 'Sezimal QP', monospace;
+}
+html, body {
+    height: 100%;
+    background-color: black;
+    color: #fafafa;
+    margin: 0;
+    max-width: 864px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+}
+.buttons {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+table {
+    table-layout: fixed;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+td {
+    border: 5px;
+    padding: 0;
+    margin: 0;
 }
 
-html, body {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.unit {
+    font-size: 16pt;
+    font-weight: normal;
+    text-align: center;
+    background-color: #212121;
+    color: #F5F5F5;
+}
+
+.settings {
+    font-size: 12pt;
+
+}
+td.settings {
+    vertical-align: top;
+    word-wrap: break-word;
+}
+label {
+    font-weight: bold;
+    font-size: 12pt;
+}
+select {
+    font-family: 'Sezimal QP';
+    font-size: 12pt;
+    height: 2.5em;
+    text-align: center;
+}
+select > option {
+    font-family: 'Sezimal QP';
+}
+option {
+    font-family: 'Sezimal QP';
+}
+option:before {
+    font-family: 'Sezimal QP';
+}
+
+.units {
+    font-size: 12pt;
+}
+td.units {
+    vertical-align: top;
+    word-wrap: break-word;
+}
+
+table.explanation {
+    font-size: 12pt;
+    padding: 6px;
+    border: 1px #fafafa solid;
+    border-collapse: collapse;
+}
+table.explanation td {
+    font-size: 12pt;
+    padding: 6px;
+    border: 1px #fafafa solid;
+    border-collapse: collapse;
+}
+.devanagari {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 1.2em;
+}
+a {
+    color: #fafafa;
+    text-decoration: underline;
+/*     color: #212121; */
+/*     background-color: black; */
+}
+a.devanagari {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #2E7D32;
+}
+
+.horizontal-flip {
+    display: inline-block;
+    transform: scale(-1, 1);
+}
+.vertical-flip {
+    display: inline-block;
+    transform: scale(1, -1);
+}
+.help-text {
+    font-size: 14pt;
+    text-align: left;
+    line-height: 2em;
+/*     font-variant-numeric: diagonal-fractions; */
+}
+math {
+    font-family: 'Sezimal QP';
+}
+mn {
+    margin: 6px;
+}
+.units-explanation {
+    font-size: 14pt;
+    text-align: left;
+
+/*     font-variant-numeric: diagonal-fractions; */
+
+    .title {
+        font-size: 18pt;
+        text-align: center;
+/*         font-weight: bold; */
+        color: black;
+        background: #fafafa;
+    }
+    .origin {
+/*         font-weight: bold; */
+        background: #666;
+        color: #fafafa;
+    }
+    .conversion-title {
+/*         font-weight: bold; */
+        background: #666;
+        color: #fafafa;
+    }
+    .decimal {
+        font-style: italic;
+        color: #777;
+    }
+    td {
+/*         font-size: 10pt; */
+        width: auto;
+        line-height: 2em;
+        overflow: hidden;
+        text-overflow: '…';
+    }
+    mfrac {
+        font-size: 18pt;
+    }
+    a {
+        text-decoration: none;
+        color: #2E7D32;
+    }
+    a.reference {
+        text-decoration: none;
+        color: #fafafa;
+    }
+
+}
+
+}
+.mono-text {
+    font-family: 'Sezimal Mono', monospace;
+}
+.center {
+    text-align: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* If you want dots under the hoverable text */
+/*   border-bottom: 1px dotted #fafafa;  */
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 150px;
+  background-color: #212121;
+  color: #fafafa;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fafafa transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dimension {
+    font-family: 'Noto Sans', 'Noto Sans Math', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Color Emoji', sans-serif;
+    font-weight: normal;
+    font-feature-settings: 'ss04';
+    -moz-font-feature-settings: 'ss04=1';
+    -webkit-font-feature-settings: 'ss04';
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 h1 {
-}
-
-h2 {
-}
-
-blockquote {
-    font-style: italic;
-}
-/*blockquote::before {
-    content: "“";
-    font-size: 1.2em;
-}
-blockquote::after {
-    content: "”";
-    font-size: 1.2em;
-}*/
-
-p {
-}
-
-footer {
-    font-size: 0.8em;
-}
-
-ol {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
-.sezimal {
-/*     font-family: 'Andika', sans-serif; */
-/*     font-size: 0.9em; */
-}
-.explanation {
-    font-size: 0.9em;
-    font-style: italic;
-}
-
-.decimal {
-    font-family: 'Andika', sans-serif;
-    font-size: 0.6em;
-    color: #616161;
-}
-span.decimal::before {
-/*     content: '('; */
-}
-span.decimal::after {
-/*     content: '₁₄'; */
-}
-.decimal_explanation {
-    font-family: 'Andika', sans-serif;
-    font-style: italic;
-    font-size: 0.5em;
-    color: #616161;
-}
-
-.prefix_zero {
-    color: #F57C00;
+    font-size: 18pt;
     font-weight: bold;
 }
 
-.prefix_one {
-    color: #C2185B;
-    font-weight: bold;
+.mono-text {
+    font-family: 'Sezimal Mono', monospace;
 }
 
-.prefix_two {
-    color: #512DA8;
-    font-weight: bold;
-}
-
-.prefix_three {
-    color: #1976D2;
-    font-weight: bold;
-}
-
-.prefix_four {
-    color: #0097A7;
-    font-weight: bold;
-}
-
-.prefix_five {
-    color: #388E3C;
-    font-weight: bold;
-}
-
-.prefix_positive {
-    color: #00B0FF;
-    font-weight: bold;
-}
-
-.prefix_negative {
-    color: #FF1744;
-    font-weight: bold;
-}
-
-.example_unit {
-    color: #BDBDBD;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-/*     margin: 0px auto; */
-}
-
-th{
-    border-color: gray;
-    border-style: solid;
-    border-width: 1px;
-    font-weight: bold;
-    overflow: hidden;
-    padding: 10px;
-    word-break: normal;
-}
-
-td {
-    border-color: gray;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    padding: 10px;
-    word-break: normal;
-}
-
-.center {
+.title {
+    font-size: 18pt;
     text-align: center;
-    vertical-align: middle;
+    color: black;
+    background: #fafafa;
+    line-height: 2em;
+
+    > a {
+        color: black;
+        text-decoration: none;
+    }
 }
 
-.zebra {
-    background-color: #F5F5F5;
+.constant {
+/*     font-family: 'Sezimal QP' !important; */
+    font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP' !important;
+    font-size: 1.2em;
 }
-
-
-.tg .tg-ul38{position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}

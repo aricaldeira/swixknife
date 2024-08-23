@@ -1,5 +1,7 @@
 
-const sezimal_calculator_bz_text = {
+import { sezimal_calculator_pt_text } from './pt.js';
+
+const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text, {
     'title': 'Kawkuladora Sezimal',
     'button-sezimal-clear': 'Z',
     'button-decimal-clear': 'Z',
@@ -12,21 +14,18 @@ const sezimal_calculator_bz_text = {
     'label-sezimal-locale': 'Defina u lokali pra formatasawn dus númerus',
     'label-sezimal-places': 'Defina a kwantidadi di kazas sezimays',
     'label-sezimal-angle': 'Defina a konversawn di unidadis di ângulu<br/>pras funsoyns trigonométrikas',
-
-    'translation-turn': 'vòwta',
-    'translation-deg': 'graw',
-    'translation-arcmin': 'min',
-    'translation-arcseg': 'seg',
+    'translation-sezimal-units': 'Unidadis di Medida Xastadari',
+    'label-sezimal-units': 'Eskolya kwaw unidadi se kèr konverter<br/>das o pras unidadi Xastadari,<br/>y veja as esplikasawn y orientasawn<br/>sobri kada unidadi',
 
     'translation-display-mod': 'mód',
     'translation-display-turn': 'vòwta',
-    'translation-display-deg': '°',
-    'translation-display-arcmin': '′',
-    'translation-display-arcsec': '″',
-    'translation-display-gon': 'gon',
-    'translation-display-rad': 'rad',
-    'translation-display-tau_rad': 'τ rad',
-    'translation-display-pi_rad': 'π rad',
+    // 'translation-display-deg': '°',
+    // 'translation-display-arcmin': '′',
+    // 'translation-display-arcsec': '″',
+    // 'translation-display-gon': 'gon',
+    // 'translation-display-rad': 'rad',
+    // 'translation-display-tau_rad': 'τ rad',
+    // 'translation-display-pi_rad': 'π rad',
 
     'button-sezimal-sin': 'sen',
     'button-sezimal-cos': 'kos',
@@ -48,12 +47,6 @@ const sezimal_calculator_bz_text = {
     'translation-display-cot': 'kot',
     'translation-display-acot': 'akot',
 
-    'button-sezimal-ln': 'log<i>ₑ</i>',
-    'button-sezimal-lsez': 'log₁₀',
-    'button-sezimal-ldec': 'log₁₄',
-    'button-decimal-ln': 'log<i>ₑ</i>',
-    'button-decimal-lsez': 'log₆',
-    'button-decimal-ldec': 'log₁₀',
 
     'help-setting': `
 <h2>U ki kyè isu?</h2>
@@ -72,7 +65,7 @@ const sezimal_calculator_bz_text = {
     <li>[ sen ] - u botawn da funsawn senu awtèrna entri as funsoyns sen, asen, ksk, aksk;</li><br/>
     <li>[ kos ] - u botawn da funsawn kosenu awtèrna entri as funsoyns kos, akos, sek, asek;</li><br/>
     <li>[ tan ] - u botawn da funsawn tanjenti awtèrna entri as funsoyns tan, atan, kot, akot;</li><br/>
-    <li>[ log<i>ₑ</i> ] - u botawn da funsawn logarítimu naturaw awtèrna entri as funsoyns log<i>ₑ</i>, a konstanti <i>e</i>, log₁₀/log₆ (logarítimu sezimaw), log₁₄/log₁₀ (logarítimu desimaw);</li><br/>
+    <li>[ log<sub class="constant">𝑒</sub> ] - u botawn da funsawn logarítimu naturaw awtèrna entri as funsoyns log<sub class="constant">𝑒</sub>, a konstanti <span class="constant">𝑒</span>, log₁₀/log₆ (logarítimu sezimaw), log₁₄/log₁₀ (logarítimu desimaw);</li><br/>
     <li>[ log₁₀ ] - u botawn da funsawn logarítimu sezimaw awtèrna entri as funsoyns log₁₀/log₆ (logarítimu sezimaw) y log₁₄/log₁₀ (logarítimu desimaw);</li><br/>
     <li>[ τ ] - u botawn da konstanti τ awtèrna entri as konstantis τ y π;</li>
 </ul>
@@ -99,17 +92,17 @@ const sezimal_calculator_bz_text = {
 </ul>
 <p>Y us botoyns di ajusti na segunda liỹa du mostrador:</p>
 <ul>
-    <li>[ prd ◕ ° ] - unidadis di medida di ângulus pras funsoyns trigonométrikas sezimays y desimays;</li><br/>
+    <li>[ mdl ◕ ° ] - unidadis di medida di ângulus pras funsoyns trigonométrikas sezimays y desimays;</li><br/>
     <li>[ ⬢ ] - unidadis y prefiksus Xastadari konvertidus di o pra unidadis y prefiksus du Sistema Internasyonaw di Medidas (y awgumas unidadis tradisyonays fòra du SI);</li><br/>
     <li>[ 0󱹮3 ] - in kwantus díjitus depoys du separador sezimays u rezuwtadu vay ser arredondadu; a presizawn in bazi desimaw vay ser ajustada bazeada na presizawn da bazi sezimaw;</li><br/>
 </ul>
 <h2>Notasawn uzada</h2>
 <ul>
-    <li>Nomis dus númerus - 0 zèru; 1 un; 2 doys; 3 treys; 4 kwatru; 5 sinku; 10 sêys; 11 sèti; 12 oytu; 13 nòvi; 14 dèys; 15 onzi; 20 dozi; 21 dozi y un; 22 dozi y doys; 23 dozi y treys; 24 dozi y kwatru; 25 dozi y sinko; 30 treseys; 40 kwaseys; 50 kinseys; 100 nifi (da lingwa ndom <i>nif</i> pra trinta y sêys); 1 000 arda (du sânskritu अर्ध <i>ardha</i> pra meyu, metadi, pra metadi di sêys díjitus); 10 000 sêys arda; 100 000 nifi arda; 1󱹬000 000 xadara (du sânskritu षडार <i>ṣaḍāra</i> prun grupu di sêys, o un ekságonu); di xadara si sègi 10󱹬000 000 sêys xadara, 100󱹬000 000 nifi xadara, 1 000󱹬000 000 arda xadara (in eskala longa, komu in portugez ewropew), 10 000󱹬000 000 sêys arda xadara, 100 000󱹬000 000 nifi arda xadara, dixadara 1󱹬000 000󱹬000 000 (<i>di</i> du sânskritu द्वि <i>dvi</i> pra doys); trixadara pra 10³⁰ (<i>tri</i> du sânskritu त्रि <i>tri</i> pra treys); txarxadara pra 10⁴⁰ (<i>txar</i> du sânskritu चतुर् <i>catur</i> pra kwatru); panxadara pra 10⁵⁰ (<i>pan</i> du sânskritu पञ्चन् <i>pañcan</i>, sinku); xaxadara pra 10¹⁰⁰ (<i>xa</i> du sânskritu षष् <i>ṣaṣ</i> pra sêys); uzi a funsawn di númerus pur estensu pra saber komu ler kwawkèr númeru sezimaw</li><br/>
+    <li>Nomis dus númerus - 0 zèru; 1 un; 2 doys; 3 treys; 4 kwatru; 5 sinku; 10 sêys; 11 sèti; 12 oytu; 13 nòvi; 14 dèys; 15 onzi; 20 dozi; 21 dozi y un; 22 dozi y doys; 23 dozi y treys; 24 dozi y kwatru; 25 dozi y sinko; 30 treseys; 40 kwaseys; 50 kinseys; 100 nifi (da lingwa ndom <i>nif</i> pra trinta y sêys); 1󱹭000 arda (du sânskritu अर्ध <i>ardha</i> pra meyu, metadi, pra metadi di sêys díjitus); 10󱹭000 sêys arda; 100󱹭000 nifi arda; 1󱹬000󱹭000 xadara (du sânskritu षडार <i>ṣaḍāra</i> prun grupu di sêys, o un ekságonu); di xadara si sègi 10󱹬000󱹭000 sêys xadara, 100󱹬000󱹭000 nifi xadara, 1󱹭000󱹬000󱹭000 arda xadara (in eskala longa, komu in portugez ewropew), 10󱹭000󱹬000󱹭000 sêys arda xadara, 100󱹭000󱹬000󱹭000 nifi arda xadara, dixadara 1󱹬000󱹭000󱹬000󱹭000 (<i>di</i> du sânskritu द्वि <i>dvi</i> pra doys); trixadara pra 10³⁰ (<i>tri</i> du sânskritu त्रि <i>tri</i> pra treys); txarxadara pra 10⁴⁰ (<i>txar</i> du sânskritu चतुर् <i>catur</i> pra kwatru); panxadara pra 10⁵⁰ (<i>pan</i> du sânskritu पञ्चन् <i>pañcan</i>, sinku); xaxadara pra 10¹⁰⁰ (<i>xa</i> du sânskritu षष् <i>ṣaṣ</i> pra sêys); uzi a funsawn di númerus pur estensu pra saber komu ler kwawkèr númeru sezimaw</li><br/>
     <li>Separador sezimaw 󱹮 - uma barra in fòrma di agulya, apontandu pra sima, ki si inisia sobri a liỹa bazi da eskrita, pelu meyu da altura X da fonti, y si estendi pra baxu atè u pontu máys baxu dus desendentis da fonti; sew kódigu Unicode è U+F1E6E; konpari u separador sezimaw kwa vírgula y u pontu: ,󱹮.</li><br/>
-    <li>Separador periódiko 󱹯 „ ‥  - dobrando u separador frasyonaryu (sezimaw o desimaw) rezuwta nu separador periódiku; pur ezenplu, a frasawn sezimaw 1⁄5 pòdi ser eskrita 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050 505...; a frasawn desimaw 1⁄3 0„3 (0,3̅) = 0,333...; desimaw 1⁄12 0,08„3 (0,083̅) = 0.083 333...; esi úwtimu ezenplu, seyn u separador periódiku, è anbigwu: è sò u 3 ki si repèti, o 08333? Pru separador periódiku nun úniku karakitèr (komu nesi aplikativu), us kódigus Unicode sawn 󱹯 U+F1E6F, „ U+201E y ‥ U+2025;</li><br/>
-    <li>Separador di arda ⍽ - u espasu inseparávew estreytu, kódigu Unicode U+202F, è uzadu pra markar u primeru grupu di treys díjitus a eskerda y à direyta du separador sezimaw, y, a partir daí, a kada grupu di sêys díjitus, na prátika si awternandu ku separador di xadara;</li><br/>
-    <li>Separador di xadara 󱹬 - teyn a mesma fòrma básika du separador sezimaw, kun sestu du tamaỹu, apontandu pra baxu, si estendendu pra baxu a partir du pontu máys awtu da fonti uzada, y marka a pozisawn dus xadaras a kada grupu di sêys díjitus nus númerus sezimays, tantu a eskerda kwantu a direyta du separador sezimaw; sew kódigu Unicode è U+F1E6C; konpari u separador di xadara ku apóstrofi rètu/aspas sinplis rèta '󱹬;</li><br/>
+    <li>Separador periódiko 󱹯 „ ‥  - dobrando u separador frasyonaryu (sezimaw o desimaw) rezuwta nu separador periódiku; pur ezenplu, a frasawn sezimaw 1⁄5 pòdi ser eskrita 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050󱹭505...; a frasawn desimaw 1⁄3 0„3 (0,3̅) = 0,333...; desimaw 1⁄12 0,08„3 (0,083̅) = 0.083 333...; esi úwtimu ezenplu, seyn u separador periódiku, è anbigwu: è sò u 3 ki si repèti, o 08333? Pru separador periódiku nun úniku karakitèr (komu nesi aplikativu), us kódigus Unicode sawn 󱹯 U+F1E6F, „ U+201E y ‥ U+2025;</li><br/>
+    <li>Separador di arda ⍽ - u espasu inseparávew estreytu, kódigu Unicode U+202F, è uzadu pra markar u primeru grupu di treys díjitus, kontandu a partir du díjitu máys a direyta, a eskerda y a direyta du separador sezimaw, y, a partir daí, a kada grupu di sêys díjitus, na prátika si awternandu ku separador di xadara;</li><br/>
+    <li>Separador di xadara 󱹬 - teyn a mesma fòrma básika du separador sezimaw, kun sestu du tamaỹu, apontandu pra baxu, si estendendu pra baxu a partir du pontu máys awtu da fonti uzada, y marka a pozisawn dus xadaras a kada grupu di sêys díjitus nus númerus sezimays, tantu a eskerda kwantu a direyta du separador sezimaw, kontandu senpri a partir du díjitu máys a direyta; sew kódigu Unicode è U+F1E6C; konpari u separador di xadara ku apóstrofi rètu/aspas sinplis rèta i kwa letra modifikadora liỹa vertikaw 'ˈ󱹬;</li><br/>
     <li>Díjitus sezimays - 󱸀󱸁󱸂󱸃󱸄󱸅 pra 012345; è uma reprezentasawn dedikada eskluziva pra númerus sezimays; è uma eskrita distintiva (<i>featural script</i>), mapeandu treys áreas ki reprezentam valoris: <span class="horizontal-flip">◔</span> superior a eskerda reprezenta u valor 1, ◔ superior a direyta reprezenta u valor 2, ◒ y abaxu tanbeyn reprezenta u valor 2; kada díjitu, afòra u zèru, “abrasa” o “aponta” pras aryas ki us valoris, somadus, reprezentam sew valor: <span class="horizontal-flip">◔</span> 󱸁 un; ◔ 󱸂 doys; <span class="horizontal-flip">◔</span> + ◔ = ◓ 󱸃 treys; ◔ + ◒ = ◕ 󱸄 kwatru; <span class="horizontal-flip">◔</span> + ◔ + ◒ = ● 󱸅 sinku;</li><br/>
     <li>Díjitus nifimays regularizadus - a reprezentasawn konvensyonaw da bazi nifi (trinta y sêys) uza letras prus díjitus a partir di dèys; a reprezentasawn regularizada uza us mesmus sêys díjitus uzadus na numerasawn sezimaw 012345/󱸀󱸁󱸂󱸃󱸄󱸅 y estendi elis pur meyu di sinko sinays diakrítikus (o “asentus”):<br/>
         <ul>
@@ -136,48 +129,55 @@ const sezimal_calculator_bz_text = {
     'optgroup-units-instructions': 'Instrusoyns',
     'option-units-units': 'Unidadis Xastadari',
     'option-units-prefixes': 'Prefiksus Xastadari',
+
+    'optgroup-units-base': 'Unidadis bazi',
+    'option-units-ang': 'Tenpu ‐ ang',
+    'option-units-pad': 'Konprimentu ‐ pad',
+    'option-units-drv': 'Masa ‐ drv',
+    'option-units-gtk': 'Tenperatura tèrmudinâmika ‐ gtk',
+    'option-units-dar': 'Korrenti elétrika ‐ dar',
+    'option-units--': 'Kwantidadi di subistansya – xxx',
+    'option-units-‐': 'Intensidadi luminòza – xxx',
+
     'optgroup-units-mechanics': 'Mekânika',
-    'option-units-ang': 'Tenpu',
-    'option-units-avt': 'Frekwensya',
-    'option-units-pad': 'Konprimentu',
-    'option-units-ktr': 'Arya',
-    'option-units-ayt': 'Volumi',
-    'option-units-veg': 'Velosidadi',
-    'option-units-tvr': 'Aselerasawn',
-    'option-units-drv': 'Masa',
-    'option-units-gan': 'Densidadi',
+    'option-units-avt': 'Frekwensya – ang⁻¹',
+    'option-units-ktr': 'Arya – pad²',
+    'option-units-ayt': 'Volumi – pad³',
+    'option-units-veg': 'Velosidadi ‐ pad·ang⁻¹',
+    'option-units-tvr': 'Aselerasawn ‐ pad·ang⁻²',
+    'option-units-gnt': 'Densidadi ‐ drv·pad⁻³',
     'option-units-bar': 'Forsa/pezu',
-    'option-units-dab': 'Presawn',
-    'option-units-kry': 'Enerjia/trabalyu',
-    'option-units-xat': 'Potensya',
+    'option-units-pdn': 'Presawn',
+    'option-units-vrc': 'Enerjia/trabalyu',
+    'option-units-xkt': 'Potensya',
     // 'option-units-svg': 'Momentu',
-    // 'option-units-pkp': 'Asawn',
+    // 'option-units-agh': 'Asawn',
     // 'option-units-pbv': 'Influensya',
     // 'option-units-tnv': 'Tensawn',
     // 'option-units-upr': 'Intensidadi',
     // 'option-units-nad': 'Viskozidadi dinâmika',
     // 'option-units-bum': 'Viskozidadi sinétika',
-    'optgroup-units-thermodynamics': 'Tèrmudinâmika',
+
+    'optgroup-units-thermodynamics': 'Tèrmodinâmika',
     'option-units-tap': 'Tenperatura komun',
-    'option-units-gtk': 'Tenperatura tèrmudinâmika',
     'option-units-agn': 'Kapasidadi térmika',
     'option-units-idn': 'Kapasidadi térmika pur masa',
     'option-units-tln': 'Kapasidadi térmika pur volumi',
-    'optgroup-units-electromagnetism': 'Elètrumaginetismu',
-    'option-units-avx': 'Karga el.',
-    'option-units-dar': 'Korrenti el.',
-    'option-units-vbv': 'Diferensa di potensiaw el.',
-    'option-units-ptr': 'Rezistensya el.',
-    'option-units-cln': 'Kondutansya el.',
-    'option-units-prk': 'Indutansya el.',
-    'option-units-smi': 'Kapasitansya el.',
-    'option-units-abv': 'Fluksu mag.',
-    'option-units-vtr': 'Densidadi du fluksu mag.',
+
+    'optgroup-units-electromagnetism': 'Elètromaginetismu',
+    'option-units-vdt': 'Karga elétrika',
+    'option-units-atr': 'Diferensa di potensiaw el.',
+    'option-units-vrd': 'Rezistensya elétrika',
+    'option-units-vht': 'Kondutansya elétrika',
+    'option-units-upp': 'Indutansya elétrika',
+    'option-units-smi': 'Kapasitansya elétrika',
+    'option-units-pvh': 'Fluksu maginétiku',
+    'option-units-vtr': 'Densidadi du fluksu maginétiku',
     'optgroup-units-angle': 'Ângulu',
-    'option-units-prd': 'Ângulu planu',
+    'option-units-mdl': 'Ângulu planu',
     'option-units-gol': 'Ângulu sólidu',
     'optgroup-units-proportion': 'Proporsawn',
-    'option-units-prt': 'Proporsawn',
+    'option-units-spn': 'Proporsawn',
     'optgroup-units-data-information': 'Dadus/informasawn',
     'option-units-atk': 'Armazenajen',
     'option-units-pvn': 'Velosidadi',
@@ -193,12 +193,12 @@ const sezimal_calculator_bz_text = {
     'label-unit-decimal-angle': 'Unidadi desimaw',
     'optgroup-units-generic-s-i': 'S.I.',
     'optgroup-units-generic-non-s-i': 'Otras',
-    'optgroup-units-generic-us-uk': 'Reynu Unidu (inperiaw)/EUA',
+    'optgroup-units-generic-imp-us': 'Reynu Unidu (inperiaw)/EUA',
     'optgroup-units-generic-us': 'EUA',
-    'optgroup-units-generic-uk': 'Reynu Unidu (inperiaw)',
+    'optgroup-units-generic-imp': 'Reynu Unidu (inperiaw)',
     'optgroup-units-generic-us-fluid': 'EUA - volumi lík.',
     'optgroup-units-generic-us-dry': 'EUA - volumi seku',
-    'optgroup-units-generic-uk-fluid': 'Reynu Unidu (inperiaw)',
+    'optgroup-units-generic-imp-fluid': 'Reynu Unidu (inperiaw)',
 
     //
     // Sezimal Prefixes
@@ -344,7 +344,7 @@ const sezimal_calculator_bz_text = {
     //
     // Time
     //
-    'unit-ang-explanation': `
+    '-unit-ang-explanation': `
 <br/>
 <p>U tenpu siviw è divididu in sêys unidadis; un dia è divididu di fòrma regular in sestus, y esis sestus sawn agrupadus in subunidadis, da seginti maneyra:</p>
 <ul>
@@ -382,57 +382,57 @@ const sezimal_calculator_bz_text = {
     </tr>
     <tr>
         <td style="text-align: center;">din</td>
-        <td style="text-align: right;">1 din</td>
-        <td style="text-align: right;">100 uta</br>1 Duta</td>
-        <td style="text-align: right;">10⁴ pox</br>1 Cpox</td>
-        <td style="text-align: right;">10¹⁰ agm</br>1 Xagm</td>
-        <td style="text-align: right;"><b>10¹² ang</br>1 XDang</b></td>
-        <td style="text-align: right;">10¹⁴ bod</br>1 XCbod</td>
+        <td style="text-align: right;">1 din</td>
+        <td style="text-align: right;">100 uta</br>1 <span class="tooltip">Duta<span class="tooltip-text">dimauta</span></span></td>
+        <td style="text-align: right;">10⁴ pox</br>1 <span class="tooltip">Cpox<span class="tooltip-text">txarmapoxa</span></span></td>
+        <td style="text-align: right;">10¹⁰ agm</br>1 <span class="tooltip">Xagm<span class="tooltip-text">xamagrima</span></span></td>
+        <td style="text-align: right;"><b>10¹² ang</br>1 <span class="tooltip">XDang<span class="tooltip-text">xadimanuga</span></span></b></td>
+        <td style="text-align: right;">10¹⁴ bod</br>1 <span class="tooltip">XCbod<span class="tooltip-text">xatxarmaboda</span></span></td>
     </tr>
     <tr>
         <td style="text-align: center;">uta</td>
-        <td style="text-align: right;">0,01 din</br>1 ddin</td>
-        <td style="text-align: right;">1 uta</td>
-        <td style="text-align: right;">100 pox</br>1 Dpox</td>
-        <td style="text-align: right;">10⁴ agm</br>1 Cagm</td>
-        <td style="text-align: right;"><b>10¹⁰ ang</br>1 Xang</b></td>
-        <td style="text-align: right;">10¹² bod</br>1 XDbod</td>
+        <td style="text-align: right;">0.01 din</br>1 <span class="tooltip">ddin<span class="tooltip-text">ditidina</span></span></td>
+        <td style="text-align: right;">1 uta</td>
+        <td style="text-align: right;">100 pox</br>1 <span class="tooltip">Dpox<span class="tooltip-text">dimapoxa</span></span></td>
+        <td style="text-align: right;">10⁴ agm</br>1 <span class="tooltip">Cagm<span class="tooltip-text">txarmagrima</span></span></td>
+        <td style="text-align: right;"><b>10¹⁰ ang</br>1 <span class="tooltip">Xang<span class="tooltip-text">xamanuga</span></span></b></td>
+        <td style="text-align: right;">10¹² bod</br>1 <span class="tooltip">XDbod<span class="tooltip-text">xadimaboda</span></span></td>
     </tr>
     <tr>
         <td style="text-align: center;">pox</td>
-        <td style="text-align: right;">10⁻⁴ din</br>1 cdin</td>
-        <td style="text-align: right;">0,01 uta</br>1 duta</td>
-        <td style="text-align: right;">1 pox</td>
-        <td style="text-align: right;">100 agm</br>1 Dagm</td>
-        <td style="text-align: right;"><b>10⁴ ang</br>1 Cang</b></td>
-        <td style="text-align: right;">10¹⁰ bod</br>1 Xbod</td>
+        <td style="text-align: right;">10⁻⁴ din</br>1 <span class="tooltip">cdin<span class="tooltip-text">txartidina</span></span></td>
+        <td style="text-align: right;">0.01 uta</br>1 <span class="tooltip">duta<span class="tooltip-text">ditiuta</span></span></td>
+        <td style="text-align: right;">1 pox</td>
+        <td style="text-align: right;">100 agm</br>1 <span class="tooltip">Dagm<span class="tooltip-text">dimagrima</span></span></td>
+        <td style="text-align: right;"><b>10⁴ ang</br>1 <span class="tooltip">Cang<span class="tooltip-text">txarmanuga</span></span></b></td>
+        <td style="text-align: right;">10¹⁰ bod</br>1 <span class="tooltip">Xbod<span class="tooltip-text">xamaboda</span></span></td>
     </tr>
     <tr>
         <td style="text-align: center;">agm</td>
-        <td style="text-align: right;">10⁻¹⁰ din</br>1 xdin</td>
-        <td style="text-align: right;">10⁻⁴ uta</br>1 cuta</td>
-        <td style="text-align: right;">0,01 pox</br>1 dpox</td>
-        <td style="text-align: right;">1 agm</td>
-        <td style="text-align: right;"><b>100 ang</br>1 Dang</b></td>
-        <td style="text-align: right;">10⁴ bod</br>1 Cbod</td>
+        <td style="text-align: right;">10⁻¹⁰ din</br>1 <span class="tooltip">xdin<span class="tooltip-text">xatidina</span></span></td>
+        <td style="text-align: right;">10⁻⁴ uta</br>1 <span class="tooltip">cuta<span class="tooltip-text">txartiuta</span></span></td>
+        <td style="text-align: right;">0.01 pox</br>1 <span class="tooltip">dpox<span class="tooltip-text">ditipoxa</span></span></td>
+        <td style="text-align: right;">1 agm</td>
+        <td style="text-align: right;"><b>100 ang</br>1 <span class="tooltip">Dang<span class="tooltip-text">dimanuga</span></span></b></td>
+        <td style="text-align: right;">10⁴ bod</br>1 <span class="tooltip">Cbod<span class="tooltip-text">txarmaboda</span></span></td>
     </tr>
     <tr>
         <td style="text-align: center;"><b>ang</b></td>
-        <td style="text-align: right;"><b>10⁻¹² din</br>1 xddin</b></td>
-        <td style="text-align: right;"><b>10⁻¹⁰ uta</br>1 xuta</b></td>
-        <td style="text-align: right;"><b>10⁻⁴ pox</br>1 cpox</b></td>
-        <td style="text-align: right;"><b>0,01 agm</br>1 dagm</b></td>
+        <td style="text-align: right;"><b>10⁻¹² din</br>1 <span class="tooltip">xddin<span class="tooltip-text">xaditidina</span></span></b></td>
+        <td style="text-align: right;"><b>10⁻¹⁰ uta</br>1 <span class="tooltip">xuta<span class="tooltip-text">xatiuta</span></span></b></td>
+        <td style="text-align: right;"><b>10⁻⁴ pox</br>1 <span class="tooltip">cpox<span class="tooltip-text">txartipoxa</span></span></b></td>
+        <td style="text-align: right;"><b>0.01 agm</br>1 <span class="tooltip">dagm<span class="tooltip-text">ditiagrima</span></span></b></td>
         <td style="text-align: right;"><b>1 ang</b></td>
-        <td style="text-align: right;"><b>100 bod</br>1 Dbod</b></td>
+        <td style="text-align: right;"><b>100 bod</br>1 <span class="tooltip">Dbod<span class="tooltip-text">dimaboda</span></span></b></td>
     </tr>
     <tr>
         <td style="text-align: center;">bod</td>
-        <td style="text-align: right;">10⁻¹⁴ din</br>1 xcdin</td>
-        <td style="text-align: right;">10⁻¹² uta</br>1 xduta</td>
-        <td style="text-align: right;">10⁻¹⁰ pox</br>1 xpox</td>
-        <td style="text-align: right;">10⁻⁴ agm</br>1 cagm</td>
-        <td style="text-align: right;"><b>0,01 ang</br>1 dang</b></td>
-        <td style="text-align: right;">1 bod</td>
+        <td style="text-align: right;">10⁻¹⁴ din</br>1 <span class="tooltip">xcdin<span class="tooltip-text">xatxartidina</span></span></td>
+        <td style="text-align: right;">10⁻¹² uta</br>1 <span class="tooltip">xduta<span class="tooltip-text">xaditiuta</span></span></td>
+        <td style="text-align: right;">10⁻¹⁰ pox</br>1 <span class="tooltip">xpox<span class="tooltip-text">xatipoxa</span></span></td>
+        <td style="text-align: right;">10⁻⁴ agm</br>1 <span class="tooltip">cagm<span class="tooltip-text">txartiagrima</span></span></td>
+        <td style="text-align: right;"><b>0.01 ang</br>1 <span class="tooltip">dang<span class="tooltip-text">ditianuga</span></span></b></td>
+        <td style="text-align: right;">1 bod</td>
     </tr>
 </table>
 <p></p>
@@ -451,17 +451,17 @@ const sezimal_calculator_bz_text = {
 <p>Pra fins sientífikus, a unidadi di tenpu da bazi sezimaw è u anuga, pur isu todas as otras unidadis ki derivam du tenpu de awguma fòrma, uzam u anuga nas suas definisoyns.</p>
 <p>A definisawn formaw du anuga è similar in fòrma a definisawn du segundu nu Sistema Internasyonaw, dizendu ki:</p>
 <p></p>
-<p>   a tranzisawn ótika nawn‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) du íon ⁴⁴³Yb⁺ teyn uma frekwensya di <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203 150󱹬505 354󱹬503 234󱹮530 12 avt<sup><a href="#reference_1">1</a></sup>, kwandu esprèsa na unidadi di frekwensya avrita (avt), ki è igwaw a ang⁻¹ (in desimaw, ¹⁷¹Yb⁺ y 688.358.979.309.308,24 Hz<sup><a href="#reference_2">2</a></sup>).</p>
+<p>   a tranzisawn ótika nawn‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) du íon ⁴⁴³Yb⁺ teyn uma frekwensya di <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203󱹭150󱹬505󱹭354󱹬503󱹭234󱹮530󱹭12 avt<sup><a href="#reference_ang_1">1</a></sup>, kwandu esprèsa na unidadi di frekwensya avriti (avt), ki è igwaw a ang⁻¹ (in desimaw, ¹⁷¹Yb⁺ y 688.358.979.309.308,24 Hz<sup><a href="#reference_ang_2">2</a></sup>).</p>
 <p></p>
-<p>Pur fin, a konversawn entri anugas y segundus; pegamus u dia mèdyu di durasawn di 1󱹬504 000 segundus (desimaw 86.400), y divimus u tenpu in segundus pela durasawn mèdya di un dia di 100󱹬000 000 (desimaw 1.679.616) anugas:
+<p>Pur fin, a konversawn entri anugas y segundus; pegamus u dia mèdyu di durasawn di 1󱹬504󱹭000 segundus (desimaw 86.400), y divimus u tenpu in segundus pela durasawn mèdya di un dia di 100󱹬000󱹭000 (desimaw 1.679.616) anugas:
 </p>
-<p>Asin, 1 ang = <math><mfrac><mn>1󱹬504 000</mn><mn>100󱹬000 000</mn></mfrac></math> = <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = 0󱹮015 04 s (desimaw <math><mfrac><mn>25</mn><mn>486</mn></mfrac></math> = 0,0„514 403 292 181 069 958 847 736 625);</p>
-<p>A konversawn invèrsa, 1 s = <math><mfrac><mn>100󱹬000 000</mn><mn>1󱹬504 000</mn></mfrac></math> = <math><mfrac><mn>2 130</mn><mn>41</mn></mfrac></math> = 31󱹯235 01 ang (desimaw <math><mfrac><mn>486</mn><mn>25</mn></mfrac></math> = 19,44);</p>
+<p>Asin, 1 ang = <math><mfrac><mn>1󱹬504󱹭000</mn><mn>100󱹬000󱹭000</mn></mfrac></math> = <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = 0󱹮015󱹭04 s (desimaw <math><mfrac><mn>25</mn><mn>486</mn></mfrac></math> = 0,0„514󱹭403 292 181 069 958 847 736 625);</p>
+<p>A konversawn invèrsa, 1 s = <math><mfrac><mn>100󱹬000󱹭000</mn><mn>1󱹬504󱹭000</mn></mfrac></math> = <math><mfrac><mn>2130</mn><mn>41</mn></mfrac></math> = 31󱹯235󱹭01 ang (desimaw <math><mfrac><mn>486</mn><mn>25</mn></mfrac></math> = 19,44);</p>
 <p></p>
 <p>Referensyas:</p>
-<p id="reference_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Rekomendasoyns adotadas pelu Komite Internasyonaw pra Pezus y Medidas in sua 95ª rewniawn (otubru di 2006), pájinas 123–124 da versawn in fransez, pájinas 249–250 (nu PDF, 115–116) da versawn in inglez.</a>
+<p id="reference_ang_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Rekomendasoyns adotadas pelu Komite Internasyonaw pra Pezus y Medidas in sua 95ª rewniawn (otubru di 2006), pájinas 123–124 da versawn in fransez, pájinas 249–250 (nu PDF, 115–116) da versawn in inglez.</a>
 </p>
-<p id="reference_2"><sup>2</sup> <a href="https://www.bipm.org/documents/20126/69375151/171Yb+_688THz_2021.pdf/6ffc6ec4-76a5-d043-ba4c-af680662fc29">Valoris rekomendadus das frekwensyas padrawn pra aplikasoyns inkluindu a realizasawn prátika du mètru y reprezentasoyns sekundaryas da definisawn du segundu, íon di itèrbyu 171</a>
+<p id="reference_ang_2"><sup>2</sup> <a href="https://www.bipm.org/documents/20126/69375151/171Yb+_688THz_2021.pdf/6ffc6ec4-76a5-d043-ba4c-af680662fc29">Valoris rekomendadus das frekwensyas padrawn pra aplikasoyns inkluindu a realizasawn prátika du mètru y reprezentasoyns sekundaryas da definisawn du segundu, íon di itèrbyu 171</a>
 </p>
 `,
 
@@ -483,9 +483,79 @@ const sezimal_calculator_bz_text = {
     'translation-minute': 'min',
     'translation-second': 's',
 
+    'unit-pad-explanation': `
+<p>U pada, símbolu pad, è a unidadi di medida di konprimentu na bazi sezimaw; pada veyn da palavra in Sânskritu <span class="devanagari-word">पद</span> ‹pada› /&zwj;'pə.d̪ə&zwj;/, ki siginifica pasu, pegada, pè, ki è koginata di <i>pēs</i> in latin.</p>
+
+<p>A definisawn formaw du pada è a distansya perkorrida pela luz numa frasawn di <math><mfrac><mn>1</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> di anuga (<math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> s, veja a definisawn formaw du anuga na pájina das unidadis di tenpu).</p>
+
+<p>A konversawn di y pra mètrus è feyta pegandu a velosidadi da luz, pelu S.I., di 45󱹭425󱹬332󱹭014 (desimaw 299,792,458) m/s, y dividindu esi valor pela ekivalenti velosidadi da luz in Xastadari, ki è di 135󱹭005󱹬235󱹭440 (desimaw 594,838,032) pad/ang (veja a pájina sobre unidadis di velosidadi), y daí muwtiplikandu esi valor pela konversawn di anugas in segundus (veja a pájina sobri as unidadis di tenpu):</p>
+
+<p class="center">1 pad = <math><mfrac><mn>45󱹭425󱹬332󱹭014</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
+<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925󱹭414 830 613 m)</p>
+<p></p>
+
+<p>Uma otra fòrma di si chegar a mesma konversawn è tomar a aselerasawn <b>mèdya</b> da gravidadi du planeta Tèrra (a aselerasawn da gravidadi nuwn è neyn konstanti, neyn 13󱹮450󱹭123 (desimaw 9,806 65) m/s² in toda a superfisyi du planeta), kawkulada<sup><a href="#reference_pad_1">1</a></sup> in 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 (desimaw 9,797 566 850󱹭130 385) m/s², y muwtiplikar esi valor pela konversawn du anuga pru segundu, aw kwadradu:</p>
+<p>Tomandu a aselerasawn da gravidadi in fòrma frasyonarya:</p>
+<p class="center">1 g<sub>mèd</sub> = <math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> = 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 m/s²</p>
+<p class="center">(desimaw <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850 130 385 m/s²)</p>
+<p class="center"><math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
+<br/>(desimaw <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
+<p>Isu siginifika ki u pada è tanbeyn a distansya ki, na Tèrra, in mèdya, un obijètu perkorri numa kèda livri di durasawn di un anuga, devidu a aselerasawn da gravidadi, ki è di 1 pad/ang² (veja máys na pájina das unidadis di aselerasawn):</p>
+<p class="center">konprimentu = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × g × <math><msup><mrow><mi>time</mi></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 1 × <math><msup><mrow><msqrt><mn>2</mn></msqrt></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 2 = 1 pad
+</p>
+<p></p>
+<p>Referensyas:</p>
+<p id="reference_pad_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrolojia Praymèw - Segunda Realidade Mundana: Aselerasawn devidu a Gravidadi da Tèrra</a>
+</p>
+<p></p>
+`,
+    'option-units-pad-pada': 'pada – pad',
+    'option-decimal-units-pad-meter': 'mètru – m',
+    'option-decimal-units-pad-mile': 'milya – ml',
+    'option-decimal-units-pad-yard': 'jarda – yd',
+    'option-decimal-units-pad-foot': 'pè – ft',
+    'option-decimal-units-pad-inch': 'polegada – in',
+
+    'unit-drv-explanation': `
+<td colspan="3" id="unit-drv-explanation" hidden>
+<p>Masa in Xastadari é medida in dravyas, símbolu drv, kun orijen na palavra in sânskritu <span class="devanagari-word">द्रव्यमान</span> ‹dravyamāna› /&zwj;d̪rə.vjə'mɑː.nə&zwj;/, ki siginifika masa;</p>
+<p>A definisawn formaw du dravya uza u valor numériku fiksu da konstanti di Planck <i>h</i> komu sendu 1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰² kwandu esprèsu na unidadi agh (agrarra), ki mèdi asawn, ki è igwaw a drv·pad²·ang⁻¹, in ki u pada è definidu in termus da velosidadi da luz <i>c</i> y u anuga è definidu in termus da frekwensya espesífika da tranzisawn atômika du izótopu Itèrbyu-443 (Yb-171) Δ<i>ν</i><sub>Yb</sub>;</p>
+<p class="center">1 drv = <math><mfrac><mn>10󱹮343󱹭121󱹬532󱹭351󱹬341󱹭124 × 14⁻⁵⁴</mn><mn>1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰²</mn></mfrac></math> × <br/> <math><msup><mrow><mo>(</mo><mfrac><mn>150󱹬223󱹭042󱹬430󱹭000</mn><mn>1󱹬415󱹭503󱹬524󱹭325</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> ÷ <math><mfrac><mn>2130</mn><mn>41</mn></mfrac></math> = <br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
+<br/>(desimaw 0,017 393 934 102 094 kg)</p>
+<p>Uma otra manera di si xegar nu mesmu fator di konversawn è uzandu a densidadi da agwa dosi a uma presawn di 1 atm y a uma tenperatura determinada di 251󱹬255󱹭424󱹮503󱹭520󱹬412󱹭531󱹬122󱹭443 gtk (293,149 986 919 793 K) ~ <span class="tooltip">110 °S<span class="tooltip-text">nifi y sêys graws sezimays</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graws sezimays</span></span> / 20 °C / 68 °F), kalkulada uzandu us dadus da IAPWS R6-95 (2018)<sup><a href="#reference_drv_1">1</a>, <a href="#reference_drv_2">2</a></sup> komu sendu 4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ (998,207 153 168 156 900 kg/m³), y muwtiplikandu èsa densidadi pelu volumi di 1 pad³ in m³:</p>
+<p class="center">1 drv =<br/>
+4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ × 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132³ m³ =
+<br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
+<br/>(desimaw 0,017 393 934 102 094 kg)</p>
+<p>Isu siginifika ki u dravya è a masa korrespondenti aw volumi di 1 pad³ di agwa dosi, sobi a presawn di 1 atm, y a uma tenperatura di <span class="tooltip">110 °S<span class="tooltip-text">nifi y sêys graws sezimays</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graws sezimays</span></span> / 20 °C / 68 °F).</p>
+<p id="reference_drv_1"><sup>1</sup> <a href="http://www.iapws.org/relguide/IAPWS-95.html">IAPWS R6-95(2018) – Distribuisawn revizada da Formulasawn di 1995 pras Propriedadis Tèrmodinâmikas da Subistansya Komun “Agwa” pra Uzu Jeraw y Sientífiku da IAPWS (Asosyasawn Internasyonaw pras Propriedadis da Agwa y du Vapor ‐ AIPAV) – setenbru di 2018</a></p>
+<p id="reference_drv_2"><sup>2</sup> <a href="https://iapws.readthedocs.io/en/latest/iapws.iapws95.html#iapws.iapws95.IAPWS95">Inplementasawn in Python da Formulasawn di 1995 da Subistansya Komun “Agwa” da IAPWS</a></p>
+</td>
+`,
+
+    'option-units-drv-dravya': 'dravya ‐ drv',
+    'option-decimal-units-drv-ton': 'tonelada ‐ ton',
+    'option-decimal-units-drv-gram': 'grama ‐ g',
+    'option-decimal-units-drv-dalton': 'dáwton ‐ Da',
+    'option-decimal-units-drv-gr': 'grawn ‐ gr',
+    'option-decimal-units-drv-dwt': 'pennyweight ‐ dwt',
+    'option-decimal-units-drv-ozt': 'onsa tròy ‐ ozt',
+    'option-decimal-units-drv-lbt': 'libra tròy ‐ lbt',
+    'option-decimal-units-drv-dr': 'drákima ‐ dr',
+    'option-decimal-units-drv-oz': 'onsa ‐ oz',
+    'option-decimal-units-drv-lb': 'libra ‐ lb',
+    'option-decimal-units-drv-st': 'stone ‐ st',
+    'option-decimal-units-drv-sl': 'slug ‐ sl',
+    'option-decimal-units-drv-US-qr': 'kwartu kurtu ‐ US qr',
+    'option-decimal-units-drv-US-cwt': 'hundredweight kurtu ‐ US cwt',
+    'option-decimal-units-drv-US-ton': 'tonelada kurta ‐ US ton',
+    'option-decimal-units-drv-imp-qr': 'kwartu longu ‐ imp. qr',
+    'option-decimal-units-drv-imp-cwt': 'hundredweight longu ‐ imp. cwt',
+    'option-decimal-units-drv-imp-ton': 'tonelada longa ‐ imp. ton',
+
     'unit-avt-explanation': `
 <br/>
-<p>Frekwensya è rejistrada uzandu a unidadi avrita, sínbolu avt, ki reprezenta eventus, siklus, okorrensyas etc. pur anuga (a unidadi bazi di tenpu).</p>
+<p>Frekwensya è rejistrada uzandu a unidadi avriti, sínbolu avt, ki reprezenta eventus, siklus, okorrensyas etc. pur anuga (a unidadi bazi di tenpu); avriti veyn da palavra in sânskritu <span class="devanagari-word">आवृत्ति</span> ‹āvṛtti› /&zwj;ɑːʋ.ɾɪt̪'t̪iː&zwj;/, ki siginifika frekwensya, repetisawn.</p>
 <p>Uma propriedadi interesanti di todas as unidadis ki envòwven tenpu in sezimaw è ki è bastanti sinplis a konversawn das varyas unidadis di tenpu komun/siviw y u anuga:</p>
 <table class="explanation">
     <colgroup>
@@ -509,7 +579,7 @@ const sezimal_calculator_bz_text = {
     <tr>
         <td style="text-align: center;">Davt</td>
         <td style="text-align: right;">1 Davt</br>1/bod</td>
-        <td style="text-align: right;">100 avt</br>100/ang</td>
+        <td style="text-align: right;">100 avt</br>100/ang</td>
         <td style="text-align: right;">10⁴ davt</br>10⁴/agm</td>
         <td style="text-align: right;">10¹⁰ cavt</br>10¹⁰/pox</td>
         <td style="text-align: right;">10¹² xavt</br>10¹²/uta</td>
@@ -517,9 +587,9 @@ const sezimal_calculator_bz_text = {
     </tr>
     <tr>
         <td style="text-align: center;">avt</td>
-        <td style="text-align: right;">0,01 Davt</br>1/100 bod</td>
-        <td style="text-align: right;">1 avt</br>1/ang</td>
-        <td style="text-align: right;">100 davt</br>100/agm</td>
+        <td style="text-align: right;">0,01 Davt</br>1/100 bod</td>
+        <td style="text-align: right;">1 avt</br>1/ang</td>
+        <td style="text-align: right;">100 davt</br>100/agm</td>
         <td style="text-align: right;">10⁴ cavt</br>10⁴/pox</td>
         <td style="text-align: right;">10¹⁰ xavt</br>10¹⁰/uta</td>
         <td style="text-align: right;">10¹² xdavt</br>10¹²/din</td>
@@ -527,9 +597,9 @@ const sezimal_calculator_bz_text = {
     <tr>
         <td style="text-align: center;">davt</td>
         <td style="text-align: right;">10⁻⁴ Davt</br>1/10⁴ bod</td>
-        <td style="text-align: right;">0,01 avt</br>1/100 ang</td>
-        <td style="text-align: right;">1 davt</br>1/agm</td>
-        <td style="text-align: right;">100 cavt</br>100/pox</td>
+        <td style="text-align: right;">0,01 avt</br>1/100 ang</td>
+        <td style="text-align: right;">1 davt</br>1/agm</td>
+        <td style="text-align: right;">100 cavt</br>100/pox</td>
         <td style="text-align: right;">10⁴ xavt</br>10⁴/uta</td>
         <td style="text-align: right;">10¹⁰ xdavt</br>10¹⁰/din</td>
     </tr>
@@ -537,9 +607,9 @@ const sezimal_calculator_bz_text = {
         <td style="text-align: center;">cavt</td>
         <td style="text-align: right;">10⁻¹⁰ Davt</br>1/10¹⁰ bod</td>
         <td style="text-align: right;">10⁻⁴ avt</br>1/10⁴ ang</td>
-        <td style="text-align: right;">0,01 davt</br>1/100 agm</td>
-        <td style="text-align: right;">1 cavt<br/>1/pox</td>
-        <td style="text-align: right;">100 xavt</br>100/uta</td>
+        <td style="text-align: right;">0,01 davt</br>1/100 agm</td>
+        <td style="text-align: right;">1 cavt<br/>1/pox</td>
+        <td style="text-align: right;">100 xavt</br>100/uta</td>
         <td style="text-align: right;">10⁴ xdavt</br>1/10⁴ din</td>
     </tr>
     <tr>
@@ -547,9 +617,9 @@ const sezimal_calculator_bz_text = {
         <td style="text-align: right;">10⁻¹² Davt</br>1/10¹² bod</td>
         <td style="text-align: right;">10⁻¹⁰ avt</br>1/10¹⁰ ang</td>
         <td style="text-align: right;">10⁻⁴ davt</br>1/10⁴ agm</td>
-        <td style="text-align: right;">0,01 cavt</br>1/100 pox</td>
+        <td style="text-align: right;">0,01 cavt</br>1/100 pox</td>
         <td style="text-align: right;">1 xavt<br/>1/uta</td>
-        <td style="text-align: right;">100 dxavt</br>100/din</td>
+        <td style="text-align: right;">100 dxavt</br>100/din</td>
     </tr>
     <tr>
         <td style="text-align: center;">xdavt</td>
@@ -557,47 +627,44 @@ const sezimal_calculator_bz_text = {
         <td style="text-align: right;">10⁻¹² avt</br>1/10¹² ang</td>
         <td style="text-align: right;">10⁻¹⁰ davt</br>1/10¹⁰ agm</td>
         <td style="text-align: right;">10⁻⁴ cavt</br>1/10⁴ pox</td>
-        <td style="text-align: right;">0,01 xavt</br>1/100 uta</b></td>
-        <td style="text-align: right;">1 xdavt<br/>1/din</td>
+        <td style="text-align: right;">0,01 xavt</br>1/100 uta</b></td>
+        <td style="text-align: right;">1 xdavt<br/>1/din</td>
     </tr>
 </table>
 <br/>
 `,
-    'option-units-avt-avrita': 'avrita – avt',
+    'option-units-avt-avriti': 'avriti – avt',
     'option-decimal-units-avt-hertz': 'Hèrtz – Hz',
     'option-decimal-units-avt-rpm': 'rpm',
 
-    'unit-pad-explanation': `
-<p>U pada, símbolu pad, è a unidadi di medida di konprimentu na bazi sezimaw;</p>
 
-<p>A definisawn formaw du pada è a distansya perkorrida pela luz numa frasawn di <math><mfrac><mn>1</mn><mn>135 005󱹬235 440</mn></mfrac></math> di anuga (<math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> s, veja a definisawn formaw du anuga na pájina das unidadis di tenpu).</p>
-
-<p>A konversawn di y pra mètrus è feyta pegandu a velosidadi da luz, pelu S.I., di 45 425󱹬332 014 (desimaw 299,792,458) m/s, y dividindu esi valor pela ekivalenti velosidadi da luz in Xastadari, ki è di 135 005󱹬235 440 (desimaw 594,838,032) pad/ang (veja a pájina sobre unidadis di velosidadi), y daí muwtiplikandu esi valor pela konversawn di anugas in segundus (veja a pájina sobri as unidadis di tenpu):</p>
-
-<p class="center">1 pad = <math><mfrac><mn>45 425󱹬332 014</mn><mn>135 005󱹬235 440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2 130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
-<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
-<p></p>
-
-<p>Uma otra fòrma di si chegar a mesma konversawn è tomar a aselerasawn <b>mèdya</b> da gravidadi du planeta Tèrra (a aselerasawn da gravidadi nuwn è neyn konstanti, neyn 13󱹮450 123 (desimaw 9,806 65) m/s² in toda a superfisyi du planeta), kawkulada<sup><a href="#reference_1">1</a></sup> in 13󱹮444 135󱹬140 131󱹬050 515 (desimaw 9,797 566 850 130 385) m/s², y muwtiplikar esi valor pela konversawn du anuga pru segundu, aw kwadradu:</p>
-<p>Tomandu a aselerasawn da gravidadi in fòrma frasyonarya:</p>
-<p class="center">1 g<sub>mèd</sub> = <math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> = 13󱹮444 135󱹬140 131󱹬050 515 m/s²</p>
-<p class="center">(desimaw <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850 130 385 m/s²)</p>
-<p class="center"><math><mfrac><mn>5󱹬324 444󱹬301 513</mn><mn>322 545󱹬201 312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2 130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415 503󱹬524 325</mn><mn>150󱹬223 042󱹬430 000</mn></mfrac></math><br/>= 0󱹮005 333󱹬324 241󱹬020 132 m
-<br/>(desimaw <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
-<p>Isu siginifika ki u pada è tanbeyn a distansya ki, na Tèrra, in mèdya, un obijètu perkorri numa kèda livri di durasawn di un anuga, devidu a aselerasawn da gravidadi, ki è di 1 pad/ang² (veja máys na pájina das unidadis di aselerasawn).</p>
-<p></p>
-<p>Referensyas:</p>
-<p id="reference_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrolojia Praymèw - Segunda Realidade Mundana: Aselerasawn devidu a Gravidadi da Tèrra</a>
-</p>
-<p></p>
+    'unit-ktr-explanation': `
+<p>A unidadi di arya è u ketra, símbolu ktr, ki è iwuaw aw pada (a unidadi di konprimentu) aw kwadradu, pad²; u nome ketra veyn da palavra in sânskritu <span class="devanagari-word">क्षेत्रफल</span> ‹kṣetraphala› /&zwj;'kʂeːt̪rə.pʰə.lə&zwj;/, ki siginifika arya.</p>
+<p>Se pòdi espresar medida di arya uzandu sò pad², mays uzar prefiksu kun unidadi konpòsta (komu pad·pad) pòdi ser konfuzu, ja ki 1 Dpad² nuwn è 100 pad², è 10󱹭000 pad², akí nesi aplikativu a jenti sò uza ketra;
+    </p>
+    <p>Awgumas ekivalensyas di prefiksu entri ktr y pad²:</p>
+    <table>
+        <colgroup>
+            <col span="1" style="width: 45%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 45%;">
+        </colgroup>
+        <tr><td style="text-align: right;">1 ktr</td>          <td style="text-align: center;">=</td> <td style="text-align: left;">1 pad²</td></tr>
+        <tr><td style="text-align: right;">1 Ektr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 pad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>D</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>E</b>pad²</td></tr>
+        <tr><td style="text-align: right;">1 Tktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Epad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>C</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>D</b>pad²</td></tr>
+        <tr><td style="text-align: right;">1 Pktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Dpad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>X</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>T</b>pad²</td></tr>
+        <tr><td style="text-align: right;">1 XEktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Tpad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>XD</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>C</b>pad²</td></tr>
+        <tr><td style="text-align: right;">1 XTktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Cpad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>XC</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>P</b>pad²</td></tr>
+        <tr><td style="text-align: right;">1 XPktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Ppad²</td></tr>
+        <tr><td style="text-align: right;">1 <b>DX</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>X</b>pad²</td></tr>
+    </table>
+    <p></p>
 `,
-    'option-units-pad-pada': 'pada – pad',
-    'option-decimal-units-pad-meter': 'mètru – m',
-    'option-decimal-units-pad-mile': 'milya – ml',
-    'option-decimal-units-pad-yard': 'jarda – yd',
-    'option-decimal-units-pad-foot': 'pè – ft',
-    'option-decimal-units-pad-inch': 'polegada – in',
-
     'option-units-ktr-ketra': 'ketra – ktr',
     'option-units-ktr-sq-pada': 'pada kwad. – pad²',
     'option-decimal-units-ktr-sq-meter': 'mètru kwad. – m²',
@@ -610,16 +677,16 @@ const sezimal_calculator_bz_text = {
 
     'option-units-ayt-aytan': 'aytan – ayt',
 
-    'option-decimal-units-prd-prd': 'paridis',
-    'option-decimal-units-prd-tau_rad': 'τ radianus',
-    'option-decimal-units-prd-pi_rad': 'π radianus',
-    'option-decimal-units-prd-rad': 'radianus',
-    'option-decimal-units-prd-deg': 'graws',
-    'option-decimal-units-prd-arcmin': 'minutus',
-    'option-decimal-units-prd-arcsec': 'segundus',
-    'option-decimal-units-prd-turn': 'vòwtas',
-    'option-decimal-units-prd-gon': 'gradianus (gon)',
+    'option-decimal-units-mdl-mdl': 'mandalas',
+    'option-decimal-units-mdl-tau_rad': 'τ radianus',
+    'option-decimal-units-mdl-pi_rad': 'π radianus',
+    'option-decimal-units-mdl-rad': 'radianus',
+    'option-decimal-units-mdl-deg': 'graws',
+    'option-decimal-units-mdl-arcmin': 'minutus',
+    'option-decimal-units-mdl-arcsec': 'segundus',
+    'option-decimal-units-mdl-turn': 'vòwtas',
+    'option-decimal-units-mdl-gon': 'gradianus (gon)',
 
-};
+});
 
 export { sezimal_calculator_bz_text };

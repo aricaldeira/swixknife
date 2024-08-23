@@ -10,6 +10,7 @@ const prefixed_units = [
     'Bpm',
     'Bps',
     'C',
+    'Da',
     'F',
     'deg',
     'H',
@@ -122,16 +123,16 @@ function set_unit_type() {
         set_unit_type_sezimal_decimal(unit_type, '-', 'tvr', '-', 'm/s2');
     } else if (unit_type == 'drv') {
         set_unit_type_sezimal_decimal(unit_type, 'D', 'drv', 'k', 'g');
-    } else if (unit_type == 'gan') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'gan', 'k', 'g/L');
+    } else if (unit_type == 'gnt') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'gnt', 'k', 'g/L');
     } else if (unit_type == 'bar') {
         set_unit_type_sezimal_decimal(unit_type, 'D', 'bar', '-', 'N');
-    } else if (unit_type == 'dab') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'dab', 'k', 'Pa');
-    } else if (unit_type == 'kry') {
-        set_unit_type_sezimal_decimal(unit_type, 'DX', 'kry', 'k', 'Wh');
-    } else if (unit_type == 'xat') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'xat', '-', 'W');
+    } else if (unit_type == 'pdn') {
+        set_unit_type_sezimal_decimal(unit_type, 'D', 'pdn', 'k', 'Pa');
+    } else if (unit_type == 'vrc') {
+        set_unit_type_sezimal_decimal(unit_type, 'DX', 'vrc', 'k', 'Wh');
+    } else if (unit_type == 'xkt') {
+        set_unit_type_sezimal_decimal(unit_type, 'D', 'xkt', '-', 'W');
     } else if (unit_type == 'gtk') {
         set_unit_type_sezimal_decimal(unit_type, 'X', 'gtk', '-', 'K');
     } else if (unit_type == 'tap') {
@@ -142,30 +143,30 @@ function set_unit_type() {
         set_unit_type_sezimal_decimal(unit_type, '', 'idn', '', 'J/K/kg');
     } else if (unit_type == 'tln') {
         set_unit_type_sezimal_decimal(unit_type, '', 'tln', '', 'J/K/m3');
-    } else if (unit_type == 'avx') {
-        set_unit_type_sezimal_decimal(unit_type, 'X', 'avx', 'm', 'Ah');
+    } else if (unit_type == 'vdt') {
+        set_unit_type_sezimal_decimal(unit_type, 'X', 'vdt', 'm', 'Ah');
     } else if (unit_type == 'dar') {
         set_unit_type_sezimal_decimal(unit_type, 'T', 'dar', '-', 'A');
-    } else if (unit_type == 'vbv') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'vbv', '-', 'V');
-    } else if (unit_type == 'ptr') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'ptr', '-', 'Ω');
-    } else if (unit_type == 'cln') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'cln', '-', 'S');
-    } else if (unit_type == 'prk') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'prk', '-', 'H');
-    } else if (unit_type == 'sam') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'sam', '-', 'F');
-    } else if (unit_type == 'abv') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'abv', '-', 'Wb');
+    } else if (unit_type == 'atr') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'atr', '-', 'V');
+    } else if (unit_type == 'vrd') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'vrd', '-', 'Ω');
+    } else if (unit_type == 'vht') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'vht', '-', 'S');
+    } else if (unit_type == 'upp') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'upp', '-', 'H');
+    } else if (unit_type == 'dry') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'dry', '-', 'F');
+    } else if (unit_type == 'pvh') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'pvh', '-', 'Wb');
     } else if (unit_type == 'vtr') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'vtr', '-', 'T');
-    } else if (unit_type == 'prd') {
-        set_unit_type_sezimal_decimal(unit_type, 'd', 'prd', '-', 'pi_rad');
+    } else if (unit_type == 'mdl') {
+        set_unit_type_sezimal_decimal(unit_type, 'd', 'mdl', '-', 'pi_rad');
     } else if (unit_type == 'gol') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'gol', '-', 'sr');
-    } else if (unit_type == 'prt') {
-        set_unit_type_sezimal_decimal(unit_type, 'd', 'prt', '-', '%');
+    } else if (unit_type == 'spn') {
+        set_unit_type_sezimal_decimal(unit_type, 'd', 'spn', '-', '%');
     } else if (unit_type == 'atk') {
         set_unit_type_sezimal_decimal(unit_type, 'DX', 'atk', 'Gi', 'B');
     } else if (unit_type == 'pvn') {
@@ -311,20 +312,20 @@ function hide_all_units() {
     document.getElementById('unit-ayt').hidden = true;
     document.getElementById('unit-drv-explanation').hidden = true;
     document.getElementById('unit-drv').hidden = true;
-    document.getElementById('unit-gan-explanation').hidden = true;
-    document.getElementById('unit-gan').hidden = true;
+    document.getElementById('unit-gnt-explanation').hidden = true;
+    document.getElementById('unit-gnt').hidden = true;
     document.getElementById('unit-veg-explanation').hidden = true;
     document.getElementById('unit-veg').hidden = true;
     document.getElementById('unit-tvr-explanation').hidden = true;
     document.getElementById('unit-tvr').hidden = true;
     document.getElementById('unit-bar-explanation').hidden = true;
     document.getElementById('unit-bar').hidden = true;
-    document.getElementById('unit-dab-explanation').hidden = true;
-    document.getElementById('unit-dab').hidden = true;
-    document.getElementById('unit-kry-explanation').hidden = true;
-    document.getElementById('unit-kry').hidden = true;
-    document.getElementById('unit-xat-explanation').hidden = true;
-    document.getElementById('unit-xat').hidden = true;
+    document.getElementById('unit-pdn-explanation').hidden = true;
+    document.getElementById('unit-pdn').hidden = true;
+    document.getElementById('unit-vrc-explanation').hidden = true;
+    document.getElementById('unit-vrc').hidden = true;
+    document.getElementById('unit-xkt-explanation').hidden = true;
+    document.getElementById('unit-xkt').hidden = true;
     document.getElementById('unit-gtk-explanation').hidden = true;
     document.getElementById('unit-gtk').hidden = true;
     document.getElementById('unit-tap-explanation').hidden = true;
@@ -335,30 +336,30 @@ function hide_all_units() {
     document.getElementById('unit-idn').hidden = true;
     document.getElementById('unit-tln-explanation').hidden = true;
     document.getElementById('unit-tln').hidden = true;
-    document.getElementById('unit-avx-explanation').hidden = true;
-    document.getElementById('unit-avx').hidden = true;
+    document.getElementById('unit-vdt-explanation').hidden = true;
+    document.getElementById('unit-vdt').hidden = true;
     document.getElementById('unit-dar-explanation').hidden = true;
     document.getElementById('unit-dar').hidden = true;
-    document.getElementById('unit-vbv-explanation').hidden = true;
-    document.getElementById('unit-vbv').hidden = true;
-    document.getElementById('unit-ptr-explanation').hidden = true;
-    document.getElementById('unit-ptr').hidden = true;
-    document.getElementById('unit-cln-explanation').hidden = true;
-    document.getElementById('unit-cln').hidden = true;
-    document.getElementById('unit-prk-explanation').hidden = true;
-    document.getElementById('unit-prk').hidden = true;
-    document.getElementById('unit-sam-explanation').hidden = true;
-    document.getElementById('unit-sam').hidden = true;
-    document.getElementById('unit-abv-explanation').hidden = true;
-    document.getElementById('unit-abv').hidden = true;
+    document.getElementById('unit-atr-explanation').hidden = true;
+    document.getElementById('unit-atr').hidden = true;
+    document.getElementById('unit-vrd-explanation').hidden = true;
+    document.getElementById('unit-vrd').hidden = true;
+    document.getElementById('unit-vht-explanation').hidden = true;
+    document.getElementById('unit-vht').hidden = true;
+    document.getElementById('unit-upp-explanation').hidden = true;
+    document.getElementById('unit-upp').hidden = true;
+    document.getElementById('unit-dry-explanation').hidden = true;
+    document.getElementById('unit-dry').hidden = true;
+    document.getElementById('unit-pvh-explanation').hidden = true;
+    document.getElementById('unit-pvh').hidden = true;
     document.getElementById('unit-vtr-explanation').hidden = true;
     document.getElementById('unit-vtr').hidden = true;
-    document.getElementById('unit-prd-explanation').hidden = true;
-    document.getElementById('unit-prd').hidden = true;
+    document.getElementById('unit-mdl-explanation').hidden = true;
+    document.getElementById('unit-mdl').hidden = true;
     document.getElementById('unit-gol-explanation').hidden = true;
     document.getElementById('unit-gol').hidden = true;
-    document.getElementById('unit-prt-explanation').hidden = true;
-    document.getElementById('unit-prt').hidden = true;
+    document.getElementById('unit-spn-explanation').hidden = true;
+    document.getElementById('unit-spn').hidden = true;
     document.getElementById('unit-atk-explanation').hidden = true;
     document.getElementById('unit-atk').hidden = true;
     document.getElementById('unit-pvn-explanation').hidden = true;

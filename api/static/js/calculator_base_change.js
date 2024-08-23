@@ -2,13 +2,13 @@
 function toggle_base_ten() {
     localStorage.setItem('sezimal-calculator-base', 14);
     update_base();
-    update_angle_unit(false);
+    update_angle_units_conversion(false);
 };
 
 function toggle_base_six() {
     localStorage.setItem('sezimal-calculator-base', 10);
     update_base();
-    update_angle_unit(false);
+    update_angle_units_conversion(false);
 };
 
 function update_base(calculation_refresh = true) {

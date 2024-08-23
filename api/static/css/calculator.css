@@ -23,7 +23,7 @@ html, body {
     background-color: black;
     color: #fafafa;
     margin: 0;
-    max-width: 500px;
+    max-width: 864px;
     width: 100%;
     position: relative;
     margin: auto;
@@ -57,7 +57,7 @@ button {
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
-    border-radius: 18%;
+    border-radius: 12pt;
     border: 0;
     padding: 0;
     margin: 0;
@@ -124,7 +124,15 @@ button {
         font-weight: bold;
     }
 }
+.constant {
+    font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP';
+    font-size: 1em;
+/*     font-weight: bold; */
+}
 .button-constant {
+    font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP';
+    font-size: 2em;
+/*     font-weight: bold; */
     background-color: #8BC34A;
     color: #F1F8E9;
 
@@ -334,6 +342,7 @@ table.explanation td {
 }
 .devanagari-word {
     font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 16pt;
 }
 a {
     color: #fafafa;
@@ -385,4 +394,51 @@ mn {
 }
 .center {
     text-align: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* If you want dots under the hoverable text */
+/*   border-bottom: 1px dotted #fafafa;  */
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #212121;
+  color: #fafafa;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fafafa transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

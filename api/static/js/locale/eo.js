@@ -1,19 +1,19 @@
 
-const sezimal_calculator_pt_text = {
-    'title': 'Calculadora Sezimal',
+const sezimal_calculator_eo_text = {
+    'title': 'Sesuma Kalkulilo',
     'button-sezimal-clear': 'Z',
     'button-decimal-clear': 'Z',
-    // 'button-base-ten': 'dec',
-    // 'button-base-six': 'sez',
-    'translation-txt': 'ext',
-    'translation-nif': 'nife',
+    'button-base-ten': 'dek',
+    'button-base-six': 'ses',
+    'translation-txt': 'ltr',
+    'translation-nif': 'nif',
 
-    'translation-sezimal-calculator': 'Calculadora Sezimal',
+    'translation-sezimal-calculator': 'Sesuma Kalkulilo',
     'label-sezimal-locale': 'Defina o locale para a formatação dos números',
     'label-sezimal-places': 'Defina a quantidade de casas sezimais',
     'label-sezimal-angle': 'Defina a conversão de unidades de ângulo<br/>para as funções trigonométricas',
-    'translation-sezimal-units': 'Unidades de Medida Xastadári',
-    'label-sezimal-units': 'Escolha qual unidade você deseja converter<br/>de ou para as unidades Xastadári,<br/>e veja as explicações e orientações<br/>sobre cada unidade',
+    'translation-sezimal-units': 'Ŝastadariaj Mezurunuoj',
+    'label-sezimal-units': 'Escolha qual unidade você deseja converter<br/>de ou para as unidades Ŝastadaria,<br/>e veja as explicações e orientações<br/>sobre cada unidade',
 
     'translation-display-mod': 'mód',
     'translation-display-turn': 'volta',
@@ -25,25 +25,25 @@ const sezimal_calculator_pt_text = {
     // 'translation-display-tau_rad': 'τ rad',
     // 'translation-display-pi_rad': 'π rad',
 
-    'button-sezimal-sin': 'sen',
-    // 'button-sezimal-cos': 'cos',
+    // 'button-sezimal-sin': 'sin',
+    'button-sezimal-cos': 'kos',
     // 'button-sezimal-tan': 'tan',
-    'button-decimal-sin': 'sen',
-    // 'button-decimal-cos': 'cos',
+    // 'button-decimal-sin': 'sin',
+    'button-decimal-cos': 'kos',
     // 'button-decimal-tan': 'tan',
 
-    'translation-display-sin': 'sen',
-    'translation-display-asin': 'asen',
-    // 'translation-display-csc': 'csc',
-    // 'translation-display-acsc': 'acsc',
-    // 'translation-display-cos': 'cos',
-    // 'translation-display-acos': 'acos',
-    // 'translation-display-sec': 'sec',
-    // 'translation-display-asec': 'asec',
+    // 'translation-display-sin': 'sen',
+    // 'translation-display-asin': 'asen',
+    'translation-display-csc': 'ksk',
+    'translation-display-acsc': 'aksk',
+    'translation-display-cos': 'kos',
+    'translation-display-acos': 'akos',
+    'translation-display-sec': 'sek',
+    'translation-display-asec': 'asek',
     // 'translation-display-tan': 'tan',
     // 'translation-display-atan': 'atan',
-    // 'translation-display-cot': 'cot',
-    // 'translation-display-acot': 'acot',
+    'translation-display-cot': 'kot',
+    'translation-display-acot': 'akot',
 
     // 'button-sezimal-ln': 'log<sub class="constant">𝑒</sub>',
     // 'button-sezimal-lsez': 'log₁₀',
@@ -97,16 +97,16 @@ const sezimal_calculator_pt_text = {
 <p>E os botões de ajuste na segunda linha do mostrador:</p>
 <ul>
     <li>[ mdl ◕ ° ] - unidades de medida de ângulos para as funções trigonométricas sezimais e decimais;</li><br/>
-    <li>[ ⬢ ] - unidades e prefixos Xastadári convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
+    <li>[ ⬢ ] - unidades e prefixos Ŝastadaria convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
     <li>[ 0󱹮3 ] - em quantos dígitos depois do separador sezimais o resultado vai ser arredondado; a precisão em base decimal vai ser ajustada baseada na precisão da base sezimal;</li><br/>
 </ul>
 <h2>Notação usada</h2>
 <ul>
     <li>Nomes dos números - 0 zero; 1 um; 2 dois; 3 três; 4 quatro; 5 cinco; 10 seis; 11 sete; 12 oito; 13 nove; 14 dez; 15 onze; 20 doze; 21 doze e um; 22 doze e dois; 23 doze e três; 24 doze e quatro; 25 doze e cinco; 30 tresseis; 40 quasseis; 50 quinseis; 100 nife (da língua ndom <i>nif</i> para trinta e seis); 1󱹭000 arda (do sânscrito अर्ध <i>ardha</i> para meio, metade, para metade de seis dígitos); 10󱹭000 seis arda; 100󱹭000 nife arda; 1󱹬000󱹭000 xadara (do sânscrito षडार <i>ṣaḍāra</i> para um grupo de seis, ou um hexágono); de xadara se segue 10󱹬000󱹭000 seis xadara, 100󱹬000󱹭000 nife xadara, 1󱹭000󱹬000󱹭000 arda xadara (em escala longa, como em português europeu), 10󱹭000󱹬000󱹭000 seis arda xadara, 100󱹭000󱹬000󱹭000 nife arda xadara, dixadara 1󱹬000󱹭000󱹬000󱹭000 (<i>di</i> do sânscrito द्वि <i>dvi</i> para dois); trixadara para 10³⁰ (<i>tri</i> do sânscrito त्रि <i>tri</i> para três); tcharxadara para 10⁴⁰ (<i>tchar</i> do sânscrito चतुर् <i>catur</i> para quatro); panxadara para 10⁵⁰ (<i>pan</i> do sânscrito पञ्चन् <i>pañcan</i>, cinco); xaxadara para 10¹⁰⁰ (<i>xa</i> do sânscrito षष् <i>ṣaṣ</i> para seis); use a função de números por extenso para saber como ler qualquer número sezimal</li><br/>
     <li>Separador sezimal 󱹮 - uma barra em forma de agulha, apontando para cima, que se inicia sobre a linha base da escrita, pelo meio da altura X da fonte, e se extende para baixo até o ponto mais baixo dos descendentes da fonte; seu código Unicode é U+F1E6E; compare o separador sezimal com a vírgula e o ponto: ,󱹮.</li><br/>
-    <li>Separador periódico 󱹯 „ ‥  - dobrando o separador fracionário (sezimal ou decimal) resulta no separador periódico; por exemplo, a fração sezimal 1⁄5 pode ser escrita 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050󱹭505...; a fração decimal 1⁄3 0„3 (0,3̅) = 0,333...; decimal 1⁄12 0,08„3 (0,083̅) = 0.083 333...; esse último exemplo, se o separador periódico, é ambíguo: é só o 3 que se repete, ou 08333? Para o separador periódico num único caracter(como neste aplicativo), os códigos Unicode são 󱹯 U+F1E6F, „ U+201E e ‥ U+2025; o separador periódico sezimal se parece com um sinal de idem ".</li><br/>
-    <li>Separador de arda ⍽ - o espaço inseparável estreito, código Unicode U+202F, é usado para marcar o primeiro grupo de três dígitos<!--, contando a partir do dígito mais à direita-->, à esquerda e à direita do separador sezimal, e, a partir daí, a cada grupo de seis dígitos, na prática se alternando com o separador de xadara;</li><br/>
-    <li>Separador de xadara 󱹬 - tem a mesma forma básica do separador sezimal, com um sexto do tamanho, apontando para baixo, se extendendo para baixo a partir do ponto mais alto da fonte usada, e marca a posição dos xadaras a cada grupo de seis dígitos nos números sezimais, tanto à esquerda quanto à direita do separador sezimal, contando sempre a partir do dígito mais à direita; seu código Unicode é U+F1E6C; compare o separador de xadara com o apóstrofe reto/aspas simples reta e com a letra modificadora linha vertical 'ˈ󱹬;</li><br/>
+    <li>Separador periódico 󱹯 „ ‥  - dobrando o separador fracionário (sezimal ou decimal) resulta no separador periódico; por exemplo, a fração sezimal 1⁄5 pode ser escrita 0󱹯1 (0󱹮1̅) = 0󱹮111...; 1⁄11 0󱹯05 = 0󱹮0̅5̅ = 0󱹮050󱹭505...; a fração decimal 1⁄3 0„3 (0,3̅) = 0,333...; decimal 1⁄12 0,08„3 (0,083̅) = 0.083 333...; esse último exemplo, se o separador periódico, é ambíguo: é só o 3 que se repete, ou 08333? Para o separador periódico num único caracter(como neste aplicativo), os códigos Unicode são 󱹯 U+F1E6F, „ U+201E e ‥ U+2025;</li><br/>
+    <li>Separador de arda ⍽ - o espaço inseparável estreito, código Unicode U+202F, é usado para marcar o primeiro grupo de três dígitos à esquerda e à direita do separador sezimal, e, a partir daí, a cada grupo de seis dígitos, na prática se alternando com o separador de xadara;</li><br/>
+    <li>Separador de xadara 󱹬 - tem a mesma forma básica do separador sezimal, com um sexto do tamanho, apontando para baixo, se extendendo para baixo a partir do ponto mais alto da fonte usada, e marca a posição dos xadaras a cada grupo de seis dígitos nos números sezimais, tanto à esquerda quanto à direita do separador sezimal; seu código Unicode é U+F1E6C; compare o separador de xadara com o apóstrofe reto/aspas simples reta '󱹬;</li><br/>
     <li>Dígitos sezimais - 󱸀󱸁󱸂󱸃󱸄󱸅 para 012345; é uma representação dedicada exclusiva para números sezimais; é uma escrita distintiva (<i>featural script</i>), mapeando três áreas que representam valores: <span class="horizontal-flip">◔</span> superior à esquerda representa o valor 1, ◔ superior à direita representa o valor 2, ◒ e abaixo também representa o valor 2; cada dígito, afora o zero, “abraça” ou “aponta” para as áreas cujos valores, somados, representam seu valor: <span class="horizontal-flip">◔</span> 󱸁 um; ◔ 󱸂 dois; <span class="horizontal-flip">◔</span> + ◔ = ◓ 󱸃 três; ◔ + ◒ = ◕ 󱸄 quatro; <span class="horizontal-flip">◔</span> + ◔ + ◒ = ● 󱸅 cinco;</li><br/>
     <li>Dígitos nifemais regularizados - a representação convencional da base nife (trinta e seis) usa letras para os dígitos a partir de dez; a representação regularizada usa os mesmos seis dígitos usados na numeração sezimal 012345/󱸀󱸁󱸂󱸃󱸄󱸅 e os extende por meio de cinco sinais diacríticos (ou “acentos”):<br/>
         <ul>
@@ -127,33 +127,26 @@ const sezimal_calculator_pt_text = {
     //
     // Unidades
     //
-    'td-shastadari-units': 'Unidades de Medida Xastadári',
-    'optgroup-units-no-conversion': 'Sem conversão',
-    'option-units-no-conversion': 'Sem conversão (só calculadora)',
+    'td-shastadari-units': 'Ŝastadariaj Mezurunuoj',
+    'optgroup-units-no-conversion': 'Nenia konverto',
+    'option-units-no-conversion': 'Nenia konverto (nur kalkulilo)',
     'optgroup-units-instructions': 'Instruções',
-    'option-units-units': 'Unidades Xastadári',
-    'option-units-prefixes': 'Prefixos Xastadári',
-
-    'optgroup-units-base': 'Unidades base',
-    'option-units-ang': 'Tempo – ang',
-    'option-units-pad': 'Comprimento – pad',
-    'option-units-drv': 'Massa – drv',
-    'option-units-gtk': 'Temperatura termodinâmica – gtk',
-    'option-units-dar': 'Corrente elétrica – dar',
-    'option-units--': 'Quantidade de substância – xxx',
-    'option-units-‐': 'Intensidade luminosa – xxx',
-
+    'option-units-units': 'Ŝastadariaj Unuoj',
+    'option-units-prefixes': 'Ŝastadariaj Prefiksoj',
     'optgroup-units-mechanics': 'Mecânica',
-    'option-units-avt': 'Frequência – ang⁻¹',
-    'option-units-ktr': 'Área – pad²',
-    'option-units-ayt': 'Volume – pad³',
-    'option-units-veg': 'Velocidade – pad·ang⁻¹',
-    'option-units-tvr': 'Aceleração – pad·ang⁻²',
-    'option-units-gnt': 'Densidade – drv·pad⁻³',
-    'option-units-bar': 'Força/peso – drv·pad·ang⁻²',
-    'option-units-pdn': 'Pressão – drv·pad⁻¹·ang⁻²',
-    'option-units-vrc': 'Energia/trabalho – drv·pad²·ang⁻²',
-    'option-units-xkt': 'Potência – drv·pad²·ang⁻³',
+    'option-units-ang': 'Tempo',
+    'option-units-avt': 'Frequência',
+    'option-units-pad': 'Comprimento',
+    'option-units-ktr': 'Área',
+    'option-units-ayt': 'Volume',
+    'option-units-veg': 'Velocidade',
+    'option-units-tvr': 'Aceleração',
+    'option-units-drv': 'Massa',
+    'option-units-gnt': 'Densidade',
+    'option-units-bar': 'Força/peso',
+    'option-units-pdn': 'Pressão',
+    'option-units-vrc': 'Energia/trabalho',
+    'option-units-xkt': 'Potência',
     // 'option-units-svg': 'Momento',
     // 'option-units-agh': 'Ação',
     // 'option-units-pbv': 'Influência',
@@ -162,20 +155,21 @@ const sezimal_calculator_pt_text = {
     // 'option-units-nad': 'Viscosidade dinâmica',
     // 'option-units-bum': 'Viscosidade cinética',
     'optgroup-units-thermodynamics': 'Termodinâmica',
-    'option-units-tap': 'Temperatura comum – gtk⁻⁵',
-    'option-units-agn': 'Capacidade térmica ‐ drv·pad²·ang⁻²·gtk⁻¹',
+    'option-units-tap': 'Temperatura comum',
+    'option-units-gtk': 'Temperatura termodinâmica',
+    'option-units-agn': 'Capacidade térmica',
     'option-units-idn': 'Capacidade térmica por massa',
     'option-units-tln': 'Capacidade térmica por volume',
-
     'optgroup-units-electromagnetism': 'Eletromagnetismo',
-    'option-units-vdt': 'Carga elétrica – dar·ang⁻¹',
+    'option-units-vdt': 'Carga el.',
+    'option-units-dar': 'Corrente el.',
     'option-units-atr': 'Diferença de potencial el.',
-    'option-units-vrd': 'Resistência elétrica',
-    'option-units-vht': 'Condutância elétrica',
-    'option-units-upp': 'Indutância elétrica',
-    'option-units-smi': 'Capacitância elétrica',
-    'option-units-pvh': 'Fluxo magnético',
-    'option-units-vtr': 'Densidade do fluxo magnético',
+    'option-units-vrd': 'Resistência el.',
+    'option-units-vht': 'Condutância el.',
+    'option-units-upp': 'Indutância el.',
+    'option-units-smi': 'Capacitância el.',
+    'option-units-pvh': 'Fluxo mag.',
+    'option-units-vtr': 'Densidade do fluxo mag.',
     'optgroup-units-angle': 'Ângulo',
     'option-units-mdl': 'Ângulo plano',
     'option-units-gol': 'Ângulo sólido',
@@ -185,122 +179,122 @@ const sezimal_calculator_pt_text = {
     'option-units-atk': 'Armazenagem',
     'option-units-pvn': 'Velocidade',
 
-    'label-prefix-sezimal': 'Prefixo sezimal',
-    'label-prefix-sezimal-angle': 'Prefixo sezimal',
-    'label-unit-sezimal': 'Unidade sezimal',
-    'label-prefix-decimal': 'Prefixo decimal',
-    'label-prefix-decimal-angle': 'Prefixo decimal',
-    'label-prefix-decimal-binary': 'Prefixo decimal/binário',
-    'label-unit-decimal': 'Unidade decimal',
-    'optgroup-units-generic-shastadari': 'Xastadári',
-    'optgroup-units-generic-s-i': 'S.I.',
-    'optgroup-units-generic-non-s-i': 'Outras',
-    'optgroup-units-generic-imp-us': 'Reino Unido (imperial)/EUA',
-    'optgroup-units-generic-us': 'EUA',
-    'optgroup-units-generic-imp': 'Reino Unido (imperial)',
-    'optgroup-units-generic-us-fluid': 'EUA - volume líq.',
-    'optgroup-units-generic-us-dry': 'EUA - volume seco',
-    'optgroup-units-generic-imp-fluid': 'Reino Unido (imperial)',
+    'label-prefix-sezimal': 'Sesuma prefikso',
+    'label-prefix-sezimal-angle': 'Sesuma prefikso',
+    'label-unit-sezimal': 'Sesuma unuo',
+    'label-prefix-decimal': 'Dekuma prefikso',
+    'label-prefix-decimal-angle': 'Dekuma prefikso',
+    'label-prefix-decimal-binary': 'Dekuma/duuma prefikso',
+    'label-unit-decimal': 'Dekuma unuo',
+    'optgroup-units-generic-shastadari': 'Ŝastadaria',
+    'optgroup-units-generic-s-i': 'I.S.',
+    'optgroup-units-generic-non-s-i': 'Aliaj',
+    'optgroup-units-generic-imp-us': 'Anglaj/Usonaj',
+    'optgroup-units-generic-us': 'Usonaj',
+    'optgroup-units-generic-imp': 'Anglaj',
+    'optgroup-units-generic-us-fluid': 'Usonaj - lik. volumeno',
+    'optgroup-units-generic-us-dry': 'Usonaj - seka volumeno',
+    'optgroup-units-generic-imp-fluid': 'Anglaj',
 
     //
     // Sezimal Prefixes
     //
-    'option-sezimal-prefix-ndxm': 'NDX – nidixama  – 10¹²⁰',
-    'option-sezimal-prefix-nxpm': 'NXP – nixapama  – 10¹¹⁵',
-    'option-sezimal-prefix-nxcm': 'NXC – nixacharma – 10¹¹⁴',
-    'option-sezimal-prefix-nxtm': 'NXT – nixatrima – 10¹¹³',
-    'option-sezimal-prefix-nxdm': 'NXD – nixadima  – 10¹¹²',
-    'option-sezimal-prefix-nxem': 'NXE – nixaecama – 10¹¹¹',
-    'option-sezimal-prefix-nxm': 'NX – nixama – 10¹¹⁰',
+    'option-sezimal-prefix-ndxm': 'NDX – nidiŝama  – 10¹²⁰',
+    'option-sezimal-prefix-nxpm': 'NXP – niŝapama  – 10¹¹⁵',
+    'option-sezimal-prefix-nxcm': 'NXC – niŝaĉarma – 10¹¹⁴',
+    'option-sezimal-prefix-nxtm': 'NXT – niŝatrima – 10¹¹³',
+    'option-sezimal-prefix-nxdm': 'NXD – niŝadima  – 10¹¹²',
+    'option-sezimal-prefix-nxem': 'NXE – niŝaekama – 10¹¹¹',
+    'option-sezimal-prefix-nxm': 'NX – niŝama – 10¹¹⁰',
     'option-sezimal-prefix-npm': 'NP – nipama – 10¹⁰⁵',
-    'option-sezimal-prefix-ncm': 'NC – nicharma  – 10¹⁰⁴',
+    'option-sezimal-prefix-ncm': 'NC – niĉarma  – 10¹⁰⁴',
     'option-sezimal-prefix-ntm': 'NT – nitrima – 10¹⁰³',
     'option-sezimal-prefix-ndm': 'ND – nidima – 10¹⁰²',
-    'option-sezimal-prefix-nem': 'NE – niecama – 10¹⁰¹',
+    'option-sezimal-prefix-nem': 'NE – niekama – 10¹⁰¹',
     'option-sezimal-prefix-nm': 'N – nima – 10¹⁰⁰',
     'option-sezimal-prefix-ppm': 'PP – panpama – 10⁵⁵',
-    'option-sezimal-prefix-pcm': 'PC – pancharma – 10⁵⁴',
+    'option-sezimal-prefix-pcm': 'PC – panĉarma – 10⁵⁴',
     'option-sezimal-prefix-ptm': 'PT – pantrima  – 10⁵³',
     'option-sezimal-prefix-pdm': 'PD – pandima – 10⁵²',
-    'option-sezimal-prefix-pem': 'PE – panecama  – 10⁵¹',
-    'option-sezimal-prefix-pxm': 'PX – panxama  – 10⁵⁰',
-    'option-sezimal-prefix-cpm': 'CP – charpama  – 10⁴⁵',
-    'option-sezimal-prefix-ccm': 'CC – charcharma  – 10⁴⁴',
-    'option-sezimal-prefix-ctm': 'CT – chartrima – 10⁴³',
-    'option-sezimal-prefix-cdm': 'CD – chardima  – 10⁴²',
-    'option-sezimal-prefix-cem': 'CE – charecama – 10⁴¹',
-    'option-sezimal-prefix-cxm': 'CX – charxama – 10⁴⁰',
+    'option-sezimal-prefix-pem': 'PE – panekama  – 10⁵¹',
+    'option-sezimal-prefix-pxm': 'PX – panŝama  – 10⁵⁰',
+    'option-sezimal-prefix-cpm': 'CP – ĉarpama  – 10⁴⁵',
+    'option-sezimal-prefix-ccm': 'CC – ĉarĉarma  – 10⁴⁴',
+    'option-sezimal-prefix-ctm': 'CT – ĉartrima – 10⁴³',
+    'option-sezimal-prefix-cdm': 'CD – ĉardima  – 10⁴²',
+    'option-sezimal-prefix-cem': 'CE – ĉarekama – 10⁴¹',
+    'option-sezimal-prefix-cxm': 'CX – ĉarŝama – 10⁴⁰',
     'option-sezimal-prefix-tpm': 'TP – tripama – 10³⁵',
-    'option-sezimal-prefix-tcm': 'TC – tricharma – 10³⁴',
+    'option-sezimal-prefix-tcm': 'TC – triĉarma – 10³⁴',
     'option-sezimal-prefix-ttm': 'TT – tritrima  – 10³³',
     'option-sezimal-prefix-tdm': 'TD – tridima – 10³²',
-    'option-sezimal-prefix-tem': 'TE – triecama  – 10³¹',
-    'option-sezimal-prefix-txm': 'TX – trixama  – 10³⁰',
+    'option-sezimal-prefix-tem': 'TE – triekama  – 10³¹',
+    'option-sezimal-prefix-txm': 'TX – triŝama  – 10³⁰',
     'option-sezimal-prefix-dpm': 'DP – dipama – 10²⁵',
-    'option-sezimal-prefix-dcm': 'DC – dicharma  – 10²⁴',
+    'option-sezimal-prefix-dcm': 'DC – diĉarma  – 10²⁴',
     'option-sezimal-prefix-dtm': 'DT – ditrima – 10²³',
     'option-sezimal-prefix-ddm': 'DD – didima – 10²²',
-    'option-sezimal-prefix-dem': 'DE – diecama – 10²¹',
-    'option-sezimal-prefix-dxm': 'DX – dixama – 10²⁰',
-    'option-sezimal-prefix-xpm': 'XP – xapama – 10¹⁵',
-    'option-sezimal-prefix-xcm': 'XC – xacharma – 10¹⁴',
-    'option-sezimal-prefix-xtm': 'XT – xatrima  – 10¹³',
-    'option-sezimal-prefix-xdm': 'XD – xadima – 10¹²',
-    'option-sezimal-prefix-xem': 'XE – xaecama  – 10¹¹',
-    'option-sezimal-prefix-xm': 'X – xama – 10¹⁰',
+    'option-sezimal-prefix-dem': 'DE – diekama – 10²¹',
+    'option-sezimal-prefix-dxm': 'DX – diŝama – 10²⁰',
+    'option-sezimal-prefix-xpm': 'XP – ŝapama – 10¹⁵',
+    'option-sezimal-prefix-xcm': 'XC – ŝaĉarma – 10¹⁴',
+    'option-sezimal-prefix-xtm': 'XT – ŝatrima  – 10¹³',
+    'option-sezimal-prefix-xdm': 'XD – ŝadima – 10¹²',
+    'option-sezimal-prefix-xem': 'XE – ŝaekama  – 10¹¹',
+    'option-sezimal-prefix-xm': 'X – ŝama – 10¹⁰',
     'option-sezimal-prefix-pm': 'P – pama – 10⁵',
-    'option-sezimal-prefix-cm': 'C – charma – 10⁴',
+    'option-sezimal-prefix-cm': 'C – ĉarma – 10⁴',
     'option-sezimal-prefix-tm': 'T – trima – 10³',
     'option-sezimal-prefix-dm': 'D – dima – 10²',
-    'option-sezimal-prefix-em': 'E – ecama – 10¹',
-    'option-sezimal-prefix-ei': 'e – ecati – 10⁻¹',
+    'option-sezimal-prefix-em': 'E – ekama – 10¹',
+    'option-sezimal-prefix-ei': 'e – ekati – 10⁻¹',
     'option-sezimal-prefix-di': 'd – diti – 10⁻²',
     'option-sezimal-prefix-ti': 't – triti – 10⁻³',
-    'option-sezimal-prefix-ci': 'c – charti – 10⁻⁴',
+    'option-sezimal-prefix-ci': 'c – ĉarti – 10⁻⁴',
     'option-sezimal-prefix-pi': 'p – panti – 10⁻⁵',
-    'option-sezimal-prefix-xi': 'x – xati – 10⁻¹⁰',
-    'option-sezimal-prefix-xei': 'xe – xaecati – 10⁻¹¹',
-    'option-sezimal-prefix-xdi': 'xd – xaditi – 10⁻¹²',
-    'option-sezimal-prefix-xti': 'xt – xatriti – 10⁻¹³',
-    'option-sezimal-prefix-xci': 'xc – xacharti – 10⁻¹⁴',
-    'option-sezimal-prefix-xpi': 'xp – xapanti – 10⁻¹⁵',
-    'option-sezimal-prefix-dxi': 'dx – dixati – 10⁻²⁰',
-    'option-sezimal-prefix-dei': 'de – diecati – 10⁻²¹',
+    'option-sezimal-prefix-xi': 'x – ŝati – 10⁻¹⁰',
+    'option-sezimal-prefix-xei': 'xe – ŝaekati – 10⁻¹¹',
+    'option-sezimal-prefix-xdi': 'xd – ŝaditi – 10⁻¹²',
+    'option-sezimal-prefix-xti': 'xt – ŝatriti – 10⁻¹³',
+    'option-sezimal-prefix-xci': 'xc – ŝaĉarti – 10⁻¹⁴',
+    'option-sezimal-prefix-xpi': 'xp – ŝapanti – 10⁻¹⁵',
+    'option-sezimal-prefix-dxi': 'dx – diŝati – 10⁻²⁰',
+    'option-sezimal-prefix-dei': 'de – diekati – 10⁻²¹',
     'option-sezimal-prefix-ddi': 'dd – diditi – 10⁻²²',
     'option-sezimal-prefix-dti': 'dt – ditriti – 10⁻²³',
-    'option-sezimal-prefix-dci': 'dc – dicharti – 10⁻²⁴',
+    'option-sezimal-prefix-dci': 'dc – diĉarti – 10⁻²⁴',
     'option-sezimal-prefix-dpi': 'dp – dipanti – 10⁻²⁵',
-    'option-sezimal-prefix-txi': 'tx – trixati – 10⁻³⁰',
-    'option-sezimal-prefix-tei': 'te – triecati – 10⁻³¹',
+    'option-sezimal-prefix-txi': 'tx – triŝati – 10⁻³⁰',
+    'option-sezimal-prefix-tei': 'te – triekati – 10⁻³¹',
     'option-sezimal-prefix-tdi': 'td – triditi – 10⁻³²',
     'option-sezimal-prefix-tti': 'tt – tritriti – 10⁻³³',
-    'option-sezimal-prefix-tci': 'tc – tricharti – 10⁻³⁴',
+    'option-sezimal-prefix-tci': 'tc – triĉarti – 10⁻³⁴',
     'option-sezimal-prefix-tpi': 'tp – tripanti – 10⁻³⁵',
-    'option-sezimal-prefix-cxi': 'cx – charxati – 10⁻⁴⁰',
-    'option-sezimal-prefix-cei': 'ce – charecati – 10⁻⁴¹',
-    'option-sezimal-prefix-cdi': 'cd – charditi – 10⁻⁴²',
-    'option-sezimal-prefix-cti': 'ct – chartriti – 10⁻⁴³',
-    'option-sezimal-prefix-cci': 'cc – charcharti – 10⁻⁴⁴',
-    'option-sezimal-prefix-cpi': 'cp – charpanti – 10⁻⁴⁵',
-    'option-sezimal-prefix-pxi': 'px – panxati – 10⁻⁵⁰',
-    'option-sezimal-prefix-pei': 'pe – panecati – 10⁻⁵¹',
+    'option-sezimal-prefix-cxi': 'cx – ĉarŝati – 10⁻⁴⁰',
+    'option-sezimal-prefix-cei': 'ce – ĉarekati – 10⁻⁴¹',
+    'option-sezimal-prefix-cdi': 'cd – ĉarditi – 10⁻⁴²',
+    'option-sezimal-prefix-cti': 'ct – ĉartriti – 10⁻⁴³',
+    'option-sezimal-prefix-cci': 'cc – ĉarĉarti – 10⁻⁴⁴',
+    'option-sezimal-prefix-cpi': 'cp – ĉarpanti – 10⁻⁴⁵',
+    'option-sezimal-prefix-pxi': 'px – panŝati – 10⁻⁵⁰',
+    'option-sezimal-prefix-pei': 'pe – panekati – 10⁻⁵¹',
     'option-sezimal-prefix-pdi': 'pd – panditi – 10⁻⁵²',
     'option-sezimal-prefix-pti': 'pt – pantriti – 10⁻⁵³',
-    'option-sezimal-prefix-pci': 'pc – pancharti – 10⁻⁵⁴',
+    'option-sezimal-prefix-pci': 'pc – panĉarti – 10⁻⁵⁴',
     'option-sezimal-prefix-ppi': 'pp – panpanti – 10⁻⁵⁵',
     'option-sezimal-prefix-ni': 'n – niti – 10⁻¹⁰⁰',
-    'option-sezimal-prefix-nei': 'ne – niecati – 10⁻¹⁰¹',
+    'option-sezimal-prefix-nei': 'ne – niekati – 10⁻¹⁰¹',
     'option-sezimal-prefix-ndi': 'nd – niditi – 10⁻¹⁰²',
     'option-sezimal-prefix-nti': 'nt – nitriti – 10⁻¹⁰³',
-    'option-sezimal-prefix-nci': 'nc – nicharti – 10⁻¹⁰⁴',
+    'option-sezimal-prefix-nci': 'nc – niĉarti – 10⁻¹⁰⁴',
     'option-sezimal-prefix-npi': 'np – nipanti – 10⁻¹⁰⁵',
-    'option-sezimal-prefix-nxi': 'nx – nixati – 10⁻¹¹⁰',
-    'option-sezimal-prefix-nxei': 'nxe – nixaecati – 10⁻¹¹¹',
-    'option-sezimal-prefix-nxdi': 'nxd – nixaditi – 10⁻¹¹²',
-    'option-sezimal-prefix-nxti': 'nxt – nixatriti – 10⁻¹¹³',
-    'option-sezimal-prefix-nxci': 'nxc – nixacharti – 10⁻¹¹⁴',
-    'option-sezimal-prefix-nxpi': 'nxp – nixapanti – 10⁻¹¹⁵',
-    'option-sezimal-prefix-ndxi': 'ndx – nidixati – 10⁻¹²⁰',
+    'option-sezimal-prefix-nxi': 'nx – niŝati – 10⁻¹¹⁰',
+    'option-sezimal-prefix-nxei': 'nxe – niŝaekati – 10⁻¹¹¹',
+    'option-sezimal-prefix-nxdi': 'nxd – niŝaditi – 10⁻¹¹²',
+    'option-sezimal-prefix-nxti': 'nxt – niŝatriti – 10⁻¹¹³',
+    'option-sezimal-prefix-nxci': 'nxc – niŝaĉarti – 10⁻¹¹⁴',
+    'option-sezimal-prefix-nxpi': 'nxp – niŝapanti – 10⁻¹¹⁵',
+    'option-sezimal-prefix-ndxi': 'ndx – nidiŝati – 10⁻¹²⁰',
 
     //
     // Decimal Prefixes
@@ -333,7 +327,7 @@ const sezimal_calculator_pt_text = {
     //
     // Binary Prefixes
     //
-    'optgroup-units-generic-binary': 'Binários',
+    'optgroup-units-generic-binary': 'Duumaj',
     'option-binary-prefix-yobi': 'Yi – yobi – 2⁸⁰',
     'option-binary-prefix-zebi': 'Zi – zebi – 2⁷⁰',
     'option-binary-prefix-exbi': 'Ei – exbi – 2⁶⁰',
@@ -382,55 +376,55 @@ const sezimal_calculator_pt_text = {
     <tr>
         <td style="text-align: center;">din</td>
         <td style="text-align: right;">1 din</td>
-        <td style="text-align: right;">100 uta</br>1 <span class="tooltip">Duta<span class="tooltip-text">dimauta</span></span></td>
-        <td style="text-align: right;">10⁴ pox</br>1 <span class="tooltip">Cpox<span class="tooltip-text">tcharmapoxa</span></span></td>
-        <td style="text-align: right;">10¹⁰ agm</br>1 <span class="tooltip">Xagm<span class="tooltip-text">xamagrima</span></span></td>
-        <td style="text-align: right;"><b>10¹² ang</br>1 <span class="tooltip">XDang<span class="tooltip-text">xadimanuga</span></span></b></td>
-        <td style="text-align: right;">10¹⁴ bod</br>1 <span class="tooltip">XCbod<span class="tooltip-text">xatcharmaboda</span></span></td>
+        <td style="text-align: right;">100 uta</br>1 Duta</td>
+        <td style="text-align: right;">10⁴ pox</br>1 Cpox</td>
+        <td style="text-align: right;">10¹⁰ agm</br>1 Xagm</td>
+        <td style="text-align: right;"><b>10¹² ang</br>1 XDang</b></td>
+        <td style="text-align: right;">10¹⁴ bod</br>1 XCbod</td>
     </tr>
     <tr>
         <td style="text-align: center;">uta</td>
-        <td style="text-align: right;">0.01 din</br>1 <span class="tooltip">ddin<span class="tooltip-text">ditidina</span></span></td>
+        <td style="text-align: right;">0,01 din</br>1 ddin</td>
         <td style="text-align: right;">1 uta</td>
-        <td style="text-align: right;">100 pox</br>1 <span class="tooltip">Dpox<span class="tooltip-text">dimapoxa</span></span></td>
-        <td style="text-align: right;">10⁴ agm</br>1 <span class="tooltip">Cagm<span class="tooltip-text">tcharmagrima</span></span></td>
-        <td style="text-align: right;"><b>10¹⁰ ang</br>1 <span class="tooltip">Xang<span class="tooltip-text">xamanuga</span></span></b></td>
-        <td style="text-align: right;">10¹² bod</br>1 <span class="tooltip">XDbod<span class="tooltip-text">xadimaboda</span></span></td>
+        <td style="text-align: right;">100 pox</br>1 Dpox</td>
+        <td style="text-align: right;">10⁴ agm</br>1 Cagm</td>
+        <td style="text-align: right;"><b>10¹⁰ ang</br>1 Xang</b></td>
+        <td style="text-align: right;">10¹² bod</br>1 XDbod</td>
     </tr>
     <tr>
         <td style="text-align: center;">pox</td>
-        <td style="text-align: right;">10⁻⁴ din</br>1 <span class="tooltip">cdin<span class="tooltip-text">tchartidina</span></span></td>
-        <td style="text-align: right;">0.01 uta</br>1 <span class="tooltip">duta<span class="tooltip-text">ditiuta</span></span></td>
+        <td style="text-align: right;">10⁻⁴ din</br>1 cdin</td>
+        <td style="text-align: right;">0,01 uta</br>1 duta</td>
         <td style="text-align: right;">1 pox</td>
-        <td style="text-align: right;">100 agm</br>1 <span class="tooltip">Dagm<span class="tooltip-text">dimagrima</span></span></td>
-        <td style="text-align: right;"><b>10⁴ ang</br>1 <span class="tooltip">Cang<span class="tooltip-text">tcharmanuga</span></span></b></td>
-        <td style="text-align: right;">10¹⁰ bod</br>1 <span class="tooltip">Xbod<span class="tooltip-text">xamaboda</span></span></td>
+        <td style="text-align: right;">100 agm</br>1 Dagm</td>
+        <td style="text-align: right;"><b>10⁴ ang</br>1 Cang</b></td>
+        <td style="text-align: right;">10¹⁰ bod</br>1 Xbod</td>
     </tr>
     <tr>
         <td style="text-align: center;">agm</td>
-        <td style="text-align: right;">10⁻¹⁰ din</br>1 <span class="tooltip">xdin<span class="tooltip-text">xatidina</span></span></td>
-        <td style="text-align: right;">10⁻⁴ uta</br>1 <span class="tooltip">cuta<span class="tooltip-text">tchartiuta</span></span></td>
-        <td style="text-align: right;">0.01 pox</br>1 <span class="tooltip">dpox<span class="tooltip-text">ditipoxa</span></span></td>
+        <td style="text-align: right;">10⁻¹⁰ din</br>1 xdin</td>
+        <td style="text-align: right;">10⁻⁴ uta</br>1 cuta</td>
+        <td style="text-align: right;">0,01 pox</br>1 dpox</td>
         <td style="text-align: right;">1 agm</td>
-        <td style="text-align: right;"><b>100 ang</br>1 <span class="tooltip">Dang<span class="tooltip-text">dimanuga</span></span></b></td>
-        <td style="text-align: right;">10⁴ bod</br>1 <span class="tooltip">Cbod<span class="tooltip-text">tcharmaboda</span></span></td>
+        <td style="text-align: right;"><b>100 ang</br>1 Dang</b></td>
+        <td style="text-align: right;">10⁴ bod</br>1 Cbod</td>
     </tr>
     <tr>
         <td style="text-align: center;"><b>ang</b></td>
-        <td style="text-align: right;"><b>10⁻¹² din</br>1 <span class="tooltip">xddin<span class="tooltip-text">xaditidina</span></span></b></td>
-        <td style="text-align: right;"><b>10⁻¹⁰ uta</br>1 <span class="tooltip">xuta<span class="tooltip-text">xatiuta</span></span></b></td>
-        <td style="text-align: right;"><b>10⁻⁴ pox</br>1 <span class="tooltip">cpox<span class="tooltip-text">tchartipoxa</span></span></b></td>
-        <td style="text-align: right;"><b>0.01 agm</br>1 <span class="tooltip">dagm<span class="tooltip-text">ditiagrima</span></span></b></td>
+        <td style="text-align: right;"><b>10⁻¹² din</br>1 xddin</b></td>
+        <td style="text-align: right;"><b>10⁻¹⁰ uta</br>1 xuta</b></td>
+        <td style="text-align: right;"><b>10⁻⁴ pox</br>1 cpox</b></td>
+        <td style="text-align: right;"><b>0,01 agm</br>1 dagm</b></td>
         <td style="text-align: right;"><b>1 ang</b></td>
-        <td style="text-align: right;"><b>100 bod</br>1 <span class="tooltip">Dbod<span class="tooltip-text">dimaboda</span></span></b></td>
+        <td style="text-align: right;"><b>100 bod</br>1 Dbod</b></td>
     </tr>
     <tr>
         <td style="text-align: center;">bod</td>
-        <td style="text-align: right;">10⁻¹⁴ din</br>1 <span class="tooltip">xcdin<span class="tooltip-text">xatchartidina</span></span></td>
-        <td style="text-align: right;">10⁻¹² uta</br>1 <span class="tooltip">xduta<span class="tooltip-text">xaditiuta</span></span></td>
-        <td style="text-align: right;">10⁻¹⁰ pox</br>1 <span class="tooltip">xpox<span class="tooltip-text">xatipoxa</span></span></td>
-        <td style="text-align: right;">10⁻⁴ agm</br>1 <span class="tooltip">cagm<span class="tooltip-text">tchartiagrima</span></span></td>
-        <td style="text-align: right;"><b>0.01 ang</br>1 <span class="tooltip">dang<span class="tooltip-text">ditianuga</span></span></b></td>
+        <td style="text-align: right;">10⁻¹⁴ din</br>1 xcdin</td>
+        <td style="text-align: right;">10⁻¹² uta</br>1 xduta</td>
+        <td style="text-align: right;">10⁻¹⁰ pox</br>1 xpox</td>
+        <td style="text-align: right;">10⁻⁴ agm</br>1 cagm</td>
+        <td style="text-align: right;"><b>0,01 ang</br>1 dang</b></td>
         <td style="text-align: right;">1 bod</td>
     </tr>
 </table>
@@ -450,7 +444,7 @@ const sezimal_calculator_pt_text = {
 <p>Para fins científicos, a unidade de tempo da base sezimal é o anuga, portanto todas as outras unidades que derivam do tempo de alguma maneira, usam o anuga nas suas definições.</p>
 <p>A definição formal do anuga é similar em forma à definição do segundo no Sistema Internacional, estabelecendo que:</p>
 <p></p>
-<p>   a transição óptica não‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) do íon ⁴⁴³Yb⁺ tem uma frequência de <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203󱹭150󱹬505󱹭354󱹬503󱹭234󱹮530󱹭12 avt<sup><a href="#reference_ang_1">1</a></sup>, quando expressa na unidade de frequência avríti (avt), que é igual a ang⁻¹ (em decimal, ¹⁷¹Yb⁺ e 688.358.979.309.308,24 Hz<sup><a href="#reference_ang_2">2</a></sup>).</p>
+<p>   a transição óptica não‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) do íon ⁴⁴³Yb⁺ tem uma frequência de <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203󱹭150󱹬505󱹭354󱹬503󱹭234󱹮530󱹭12 avt<sup><a href="#reference_ang_1">1</a></sup>, quando expressa na unidade de frequência avriti (avt), que é igual a ang⁻¹ (em decimal, ¹⁷¹Yb⁺ e 688.358.979.309.308,24 Hz<sup><a href="#reference_ang_2">2</a></sup>).</p>
 <p></p>
 <p>Por fim, a conversão entre anugas e segundos; pegamos o dia médio de duração de 1󱹬504󱹭000 segundos (decimal 86.400), e divimos o tempo em segundos pela duração média de um dia de 100󱹬000󱹭000 (decimal 1.679.616) anugas:
 </p>
@@ -464,92 +458,26 @@ const sezimal_calculator_pt_text = {
 </p>
 `,
     // 'optgroup-units-ang-common': 'Comum/civil',
-    'option-units-ang-dina': 'dina – din = dia',
-    'option-units-ang-uta': 'uta – uta ~ hora',
-    'option-units-ang-posha': 'poxa – pox ~ minuto',
-    'option-units-ang-agrima': 'agrima – agm ~ segundo',
-    'option-units-ang-anuga': 'anuga – ang ~ cent. seg.',
-    'option-units-ang-boda': 'boda – bod ~ mil. seg.',
+    'option-units-ang-dina': 'dinao – din = tago',
+    'option-units-ang-uta': 'utao – uta ~ horo',
+    'option-units-ang-posha': 'poŝao – pox ~ minuto',
+    'option-units-ang-agrima': 'agrimao – agm ~ sekundo',
+    'option-units-ang-anuga': 'anugao – ang ~ sek. centonoj',
+    'option-units-ang-boda': 'bodao – bod ~ sek. milonoj',
 
-    'option-decimal-units-ang-day': 'dia',
-    'option-decimal-units-ang-hour': 'hora – h',
+    'option-decimal-units-ang-day': 'tago',
+    'option-decimal-units-ang-hour': 'horo – h',
     'option-decimal-units-ang-minute': 'minuto – min',
     'option-decimal-units-ang-second': 'segundo – s',
 
-    'translation-day': 'dia',
+    'translation-day': 'tago',
     'translation-hour': 'h',
     'translation-minute': 'min',
     'translation-second': 's',
 
-    'unit-pad-explanation': `
-<p>O pada, símbolo pad, é a unidade de medida de comprimento na base sezimal; pada vem da palavra em Sânscrito <span class="devanagari-word">पद</span> ‹pada› /&zwj;'pə.d̪ə&zwj;/, que significa passo, pegada, pé, que é cognata de <i>pēs</i> em latim.</p>
-
-<p>A definição formal do pada é a distância percorrida pela luz numa fração de <math><mfrac><mn>1</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> de anuga (<math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> s, veja a definição formal do anuga na página das unidades de tempo).</p>
-<p>A conversão de e para metros é feita pegando a velocidade da luz, pelo S.I., de 45󱹭425󱹬332󱹭014 (decimal 299,792,458) m/s, e dividindo esse valor pela equivalente velocidade da luz em Xastadári, que é de 135󱹭005󱹬235󱹭440 (decimal 594,838,032) pad/ang (veja a página sobre unidades de velocidade), e daí multiplicando esse valor pela conversão de anugas em segundos (veja a página sobre as unidades de tempo):</p>
-<p class="center">1 pad = <math><mfrac><mn>45󱹭425󱹬332󱹭014</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
-<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
-<p></p>
-<p>Uma outra forma de se chegar à mesma conversão é tomar a aceleração <b>média</b> da gravidade do planeta Terra<sup><a href="#reference_pad_1">1</a></sup> (a aceleração da gravidade não é nem constante, nem 13󱹮450󱹭123 (decimal 9,806 65) m/s² em toda a superfície do planeta), calculada em 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 (decimal 9,797 566 850 130 385) m/s², e multiplicar esse valor pela conversão do anuga para o segundo, ao quadrado:</p>
-<p>Tomando a aceleração da gravidade em forma fracionária:</p>
-<p class="center">1 g<sub>méd</sub> = <math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> = 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 m/s²</p>
-<p class="center">(decimal <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850󱹭130 385 m/s²)</p>
-<p class="center"><math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
-<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925󱹭414 830 613 m)</p>
-<p>Isso significa que o pada é também a distância que, na Terra, em média, um objeto percorre numa queda livre de duração de um anuga, devido a aceleração da gravidade, que é de 1 pad/ang² (veja mais na página das unidades de aceleração):</p>
-<p class="center">comprimento = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × g × <math><msup><mrow><mi>time</mi></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 1 × <math><msup><mrow><msqrt><mn>2</mn></msqrt></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 2 = 1 pad
-</p>
-<p></p>
-<p>Referências:</p>
-<p id="reference_pad_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrologia Primel - Segunda Realidade Mundana: Aceleração devido à Gravidade da Terra</a>
-</p>
-<p></p>
-`,
-    'option-units-pad-pada': 'pada – pad',
-    'option-decimal-units-pad-meter': 'metro – m',
-    'option-decimal-units-pad-mile': 'milha – ml',
-    'option-decimal-units-pad-yard': 'jarda – yd',
-    'option-decimal-units-pad-foot': 'pé – ft',
-    'option-decimal-units-pad-inch': 'polegada – in',
-
-    'unit-drv-explanation': `
-<td colspan="3" id="unit-drv-explanation" hidden>
-<p>Massa em Xastadári é medida em drávias, símbolo drv, com origem na palavra em sânscrito <span class="devanagari-word">द्रव्यमान</span> ‹dravyamāna› /&zwj;d̪rə.vjə'mɑː.nə&zwj;/, que significa massa;</p>
-<p>A definição formal do drávia usa o valor numérico fixo da constante de Planck <i>h</i> como sendo 1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰² quando expresso na unidade agh (agrarra), que mede ação, que é igual a drv·pad²·ang⁻¹, em que o pada é definido em termos da velocidade da luz <i>c</i> e o anuga é definido em termos da frequência específica da transição atômica do isótopo Itérbio-443 (Yb-171) Δ<i>ν</i><sub>Yb</sub>;</p>
-<p class="center">1 drv = <math><mfrac><mn>10󱹮343󱹭121󱹬532󱹭351󱹬341󱹭124 × 14⁻⁵⁴</mn><mn>1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰²</mn></mfrac></math> × <br/> <math><msup><mrow><mo>(</mo><mfrac><mn>150󱹬223󱹭042󱹬430󱹭000</mn><mn>1󱹬415󱹭503󱹬524󱹭325</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> ÷ <math><mfrac><mn>2130</mn><mn>41</mn></mfrac></math> = <br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
-<br/>(decimal 0,017 393 934 102 094 kg)</p>
-<p>Uma outra maneira de se chegar ao mesmo fator de conversão é usando a densidade da água doce a uma pressão de 1 atm e a uma temperatura determinada de 251󱹬255󱹭424󱹮503󱹭520󱹬412󱹭531󱹬122󱹭443 gtk (293,149 986 919 793 K) ~ <span class="tooltip">110 °S<span class="tooltip-text">nife e seis graus sezimais</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graus sezimais</span></span> / 20 °C / 68 °F), calculada usando os dados da IAPWS R6-95 (2018)<sup><a href="#reference_drv_1">1</a>, <a href="#reference_drv_2">2</a></sup> como sendo 4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ (998,207 153 168 156 900 kg/m³), e multiplicando essa densidade pelo volume de 1 pad³ em m³:</p>
-<p class="center">1 drv =<br/>
-4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ × 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132³ m³ =
-<br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
-<br/>(decimal 0,017 393 934 102 094 kg)</p>
-<p>Isso significa que o drávia é a massa correspondente ao volume de 1 pad³ de água doce, sob a pressão de 1 atm, e a uma temperatura de <span class="tooltip">110 °S<span class="tooltip-text">nife e seis graus sezimais</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graus sezimais</span></span> / 20 °C / 68 °F).</p>
-<p id="reference_drv_1"><sup>1</sup> <a href="http://www.iapws.org/relguide/IAPWS-95.html">IAPWS R6-95(2018) – Distribuição revisada da Formulação de 1995 para as Propriedades Termodinâmicas da Substância Comum “Água” para Uso Geral e Científico da IAPWS (Associação Internacional para as Propriedades da Água e do Vapor ‐ AIPAV) – setembro de 2018</a></p>
-<p id="reference_drv_2"><sup>2</sup> <a href="https://iapws.readthedocs.io/en/latest/iapws.iapws95.html#iapws.iapws95.IAPWS95">Implementação em Python da Formulação de 1995 da Substância Comum “Água” da IAPWS</a></p>
-</td>
-`,
-    'option-units-drv-dravya': 'drávia ‐ drv',
-    'option-decimal-units-drv-ton': 'tonelada ‐ ton',
-    'option-decimal-units-drv-gram': 'grama ‐ g',
-    'option-decimal-units-drv-dalton': 'dalton ‐ Da',
-    'option-decimal-units-drv-gr': 'grão ‐ gr',
-    'option-decimal-units-drv-dwt': 'pennyweight ‐ dwt',
-    'option-decimal-units-drv-ozt': 'onça troy ‐ ozt',
-    'option-decimal-units-drv-lbt': 'libra troy ‐ lbt',
-    'option-decimal-units-drv-dr': 'dracma ‐ dr',
-    'option-decimal-units-drv-oz': 'onça ‐ oz',
-    'option-decimal-units-drv-lb': 'libra ‐ lb',
-    'option-decimal-units-drv-st': 'stone ‐ st',
-    'option-decimal-units-drv-sl': 'slug ‐ sl',
-    'option-decimal-units-drv-US-qr': 'quarto curto ‐ US qr',
-    'option-decimal-units-drv-US-cwt': 'hundredweight curto ‐ US cwt',
-    'option-decimal-units-drv-US-ton': 'tonelada curta ‐ US ton',
-    'option-decimal-units-drv-imp-qr': 'quarto longo ‐ imp. qr',
-    'option-decimal-units-drv-imp-cwt': 'hundredweight longo ‐ imp. cwt',
-    'option-decimal-units-drv-imp-ton': 'tonelada longa ‐ imp. ton',
-
     'unit-avt-explanation': `
 <br/>
-<p>Frequência é registrada usando a unidade avríti, símbolo avt, que representa eventos, ciclos, ocorrências etc. por anuga (a unidade base de tempo); avríti vem da palavra em sânscrito <span class="devanagari-word">आवृत्ति</span> ‹āvṛtti› /&zwj;ɑːʋ.ɾɪt̪'t̪iː&zwj;/, que significa frequência, repetição.</p>
+<p>Frequência é registrada usando a unidade avriti, símbolo avt, que representa eventos, ciclos, ocorrências etc. por anuga (a unidade base de tempo).</p>
 <p>Uma propriedade interessante de todas as unidades que envolvem tempo em sezimal é que é bastante simples a conversão das várias unidades de tempo comum/civil e o anuga:</p>
 <table class="explanation">
     <colgroup>
@@ -628,37 +556,39 @@ const sezimal_calculator_pt_text = {
 <br/>
 `,
 
-    'option-units-avt-avriti': 'avríti – avt',
+    'option-units-avt-avriti': 'avritio – avt',
     'option-decimal-units-avt-hertz': 'Hertz – Hz',
     'option-decimal-units-avt-rpm': 'rpm',
 
-    'unit-ktr-explanation': `
-<p>A unidade de área é o quetra (quêtra, não quétra), símbolo ktr, que é igual ao pada (a unidade de comprimento) ao quadrado, pad²; o nome quetra vem da palavra em sânscrito <span class="devanagari-word">क्षेत्रफल</span> ‹kṣetraphala› /&zwj;'kʂeːt̪rə.pʰə.lə&zwj;/, que significa área.</p>
-<p>Você pode expressar medidas de área usando somente pad², mas usar prefixos com unidades compostas (como pad·pad) pode ser causa de confusão, no sentido de que 1 Dpad² não é 100 pad², mas sim 10󱹭000 pad², este aplicativo só usa quetras;
-    </p>
-    <p>Algumas equivalências de prefixos entre ktr e pad²:</p>
-    <table>
-        <colgroup>
-            <col span="1" style="width: 45%;">
-            <col span="1" style="width: 10%;">
-            <col span="1" style="width: 45%;">
-        </colgroup>
-        <tr><td style="text-align: right;">1 ktr</td>          <td style="text-align: center;">=</td> <td style="text-align: left;">1 pad²</td></tr>
-        <tr><td style="text-align: right;">1 Ektr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 pad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>D</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>E</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 Tktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Epad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>C</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>D</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 Pktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Dpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>X</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>T</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XEktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Tpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>XD</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>C</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XTktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Cpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>XC</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>P</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XPktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Ppad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>DX</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>X</b>pad²</td></tr>
-    </table>
-    <p></p>
+    'unit-pad-explanation': `
+<p>O pada, símbolo pad, é a unidade de medida de comprimento na base sezimal;</p>
+
+<p>A definição formal do pada é a distância percorrida pela luz numa fração de <math><mfrac><mn>1</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> de anuga (<math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> s, veja a definição formal do anuga na página das unidades de tempo).</p>
+<p>A conversão de e para metros é feita pegando a velocidade da luz, pelo S.I., de 45󱹭425󱹬332󱹭014 (decimal 299,792,458) m/s, e dividindo esse valor pela equivalente velocidade da luz em Ŝastadaria, que é de 135󱹭005󱹬235󱹭440 (decimal 594,838,032) pad/ang (veja a página sobre unidades de velocidade), e daí multiplicando esse valor pela conversão de anugas em segundos (veja a página sobre as unidades de tempo):</p>
+<p class="center">1 pad = <math><mfrac><mn>45󱹭425󱹬332󱹭014</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
+<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
+<p></p>
+
+<p>Uma outra forma de se chegar à mesma conversão é tomar a aceleração <b>média</b> da gravidade do planeta Terra<sup><a href="#reference_pad_1">1</a></sup> (a aceleração da gravidade não é nem constante, nem 13󱹮450󱹭123 (decimal 9,806 65) m/s² em toda a superfície do planeta), calculada em 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 (decimal 9,797 566 850 130 385) m/s², e multiplicar esse valor pela conversão do anuga para o segundo, ao quadrado:</p>
+<p>Tomando a aceleração da gravidade em forma fracionária:</p>
+<p class="center">1 g<sub>méd</sub> = <math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> = 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 m/s²</p>
+<p class="center">(decimal <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850󱹭130 385 m/s²)</p>
+<p class="center"><math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
+<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925󱹭414 830 613 m)</p>
+<p>Isso significa que o pada é também a distância que, na Terra, em média, um objeto percorre numa queda livre de duração de um anuga, devido a aceleração da gravidade, que é de 1 pad/ang² (veja mais na página das unidades de aceleração).</p>
+<p></p>
+<p>Referências:</p>
+<p id="reference_pad_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrologia Primel - Segunda Realidade Mundana: Aceleração devido à Gravidade da Terra</a>
+</p>
+<p></p>
 `,
+    'option-units-pad-pada': 'pada – pad',
+    'option-decimal-units-pad-meter': 'metro – m',
+    'option-decimal-units-pad-mile': 'milha – ml',
+    'option-decimal-units-pad-yard': 'jarda – yd',
+    'option-decimal-units-pad-foot': 'pé – ft',
+    'option-decimal-units-pad-inch': 'polegada – in',
+
     'option-units-ktr-ketra': 'quetra – ktr',
     'option-units-ktr-sq-pada': 'pada quad. – pad²',
     'option-decimal-units-ktr-sq-meter': 'metro quad. – m²',
@@ -682,4 +612,4 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-mdl-gon': 'gradianos (gon)',
 };
 
-export { sezimal_calculator_pt_text };
+export { sezimal_calculator_eo_text };

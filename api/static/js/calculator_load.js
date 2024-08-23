@@ -98,7 +98,7 @@ function calculator_load() {
     *  First run angle unit definition
     */
     if (localStorage.getItem('sezimal-calculator-angle-unit') === null) {
-        localStorage.setItem('sezimal-calculator-angle-unit', 'prd');
+        localStorage.setItem('sezimal-calculator-angle-unit', 'mdl');
         localStorage.setItem('sezimal-calculator-angle-prefix', '-');
     };
     if (localStorage.getItem('sezimal-calculator-decimal-angle-unit') === null) {

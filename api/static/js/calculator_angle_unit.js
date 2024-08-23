@@ -1,6 +1,6 @@
 
 const sezimal_prefixed_units = [
-    'prd',
+    'mdl',
     'gol',
 
     'deg',
@@ -80,9 +80,9 @@ function update_angle_units_conversion() {
     let decimal_unit = localStorage.getItem('sezimal-calculator-decimal-angle-unit');
     let decimal_prefix = localStorage.getItem('sezimal-calculator-decimal-angle-prefix');
 
-    document.getElementById('calculator-sezimal-unit-angle-prd').value = sezimal_unit;
+    document.getElementById('calculator-sezimal-unit-angle-mdl').value = sezimal_unit;
     document.getElementById('calculator-prefix-sezimal-angle').value = sezimal_prefix;
-    document.getElementById('calculator-decimal-angle-unit-prd').value = decimal_unit;
+    document.getElementById('calculator-decimal-angle-unit-mdl').value = decimal_unit;
     document.getElementById('calculator-prefix-decimal-angle').value = decimal_prefix;
 
     show_sezimal_decimal_angle_prefix(sezimal_unit, decimal_unit);
