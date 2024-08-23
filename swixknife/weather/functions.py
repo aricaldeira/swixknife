@@ -49,7 +49,7 @@ def convert_pressure(pressure: float) -> Sezimal:
 
 
 def convert_percentage(percentage: float) -> Sezimal:
-    return round(decimal_to_sezimal_unit(Decimal(str(percentage)), '%', 'dprt'), 0)
+    return round(decimal_to_sezimal_unit(Decimal(str(percentage)), '%', 'dspn'), 0)
 
 
 def convert_precipitation(precipitation: float) -> Sezimal:

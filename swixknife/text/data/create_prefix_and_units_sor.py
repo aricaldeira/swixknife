@@ -30,25 +30,25 @@ UNIT-trg taranga
 UNIT-bht barruta
 UNIT-bal bala
 UNIT-bar bara
-UNIT-pdn pídana
+UNIT-pdn pidana
 UNIT-vay váiu
 UNIT-pbl pratibala
 UNIT-vrc varcha
 UNIT-xrm xarama
 UNIT-xky xáquia
-UNIT-uxn úxuna
-UNIT-xkt xákiti
+UNIT-uxn uxuna
+UNIT-xkt xakiti
 UNIT-svg sanvega
-UNIT-kry quíria
+UNIT-agh agrarra
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upári
 UNIT-nad nádi
 UNIT-bum búmi
-UNIT-idn índana
+UNIT-idn indana
 UNIT-tln têlan
 UNIT-agn aguení
-UNIT-prv parivártana
+UNIT-prv varivartana
 UNIT-gtk gatica
 UNIT-tap tapa
 UNIT-dar dara
@@ -57,7 +57,7 @@ UNIT-atr antarã
 UNIT-bad bada
 UNIT-vrd viroda
 UNIT-ptg pratigata
-UNIT-vht várrata
+UNIT-vht varrata
 UNIT-upp upapadã
 UNIT-dry daraiata
 UNIT-pvh pravarra
@@ -65,8 +65,8 @@ UNIT-vst vistara
 UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx pracaxa
-UNIT-dpk dípaca
-UNIT-prt práti
+UNIT-dpk dipaca
+UNIT-spn sanpurna
 UNIT-p/s por seis
 UNIT-p/n por nife
 UNIT-p/a por arda
@@ -120,25 +120,25 @@ UNIT-trg taranga
 UNIT-bht barruta
 UNIT-bal bala
 UNIT-bar bara
-UNIT-pdn pídana
+UNIT-pdn pidana
 UNIT-vay vayu
 UNIT-pbl pratibala
 UNIT-vrc varxa
 UNIT-xrm xarama
 UNIT-xky xakya
-UNIT-uxn úxuna
-UNIT-xkt xákiti
+UNIT-uxn uxuna
+UNIT-xkt xakiti
 UNIT-svg sanvega
-UNIT-kry kirya
+UNIT-agh agrarra
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upari
 UNIT-nad nadi
 UNIT-bum bumi
-UNIT-idn índana
+UNIT-idn indana
 UNIT-tln têlan
 UNIT-agn agení
-UNIT-prv parivártana
+UNIT-prv varivartana
 UNIT-gtk gátika
 UNIT-tap tapa
 UNIT-dar dara
@@ -147,7 +147,7 @@ UNIT-atr antaran
 UNIT-bad bada
 UNIT-vrd viroda
 UNIT-ptg pratigata
-UNIT-vht várrata
+UNIT-vht varrata
 UNIT-upp upapadan
 UNIT-dry darayata
 UNIT-pvh pravarra
@@ -155,8 +155,8 @@ UNIT-vst vistara
 UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakaxa
-UNIT-dpk dípaka
-UNIT-prt prati
+UNIT-dpk dipaka
+UNIT-spn sampurna
 UNIT-p/s pur sêys
 UNIT-p/n pur nifi
 UNIT-p/a pur arda
@@ -219,7 +219,7 @@ UNIT-xky ŝakjao
 UNIT-uxn uŝunao
 UNIT-xkt ŝakitio
 UNIT-svg sanvegao
-UNIT-kry kirjao
+UNIT-agh agrahao
 UNIT-pbv prabavao
 UNIT-tnv tanavao
 UNIT-upr upario
@@ -246,7 +246,7 @@ UNIT-mdl mandalao
 UNIT-gol golao
 UNIT-pkx prakaŝao
 UNIT-dpk dipakao
-UNIT-prt pratio
+UNIT-spn sampurnao
 UNIT-p/s per ses
 UNIT-p/n per nif
 UNIT-p/a per arad
@@ -309,7 +309,7 @@ UNIT−xky shakya
 UNIT-uxn ushuna
 UNIT-xkt shakiti
 UNIT-svg sanvega
-UNIT-kry kirya
+UNIT-agh agraha
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upari
@@ -336,7 +336,7 @@ UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakasha
 UNIT-dpk dipaka
-UNIT-prt prati
+UNIT-spn sampurna
 UNIT-p/s per six
 UNIT-p/n per nif
 UNIT-p/a per arda

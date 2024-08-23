@@ -615,11 +615,11 @@ def calculate_conversions():
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
-    # Action (kirya)
+    # Action (agraha)
     #
-    # https://en.wiktionary.org/wiki/%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE
+    # https://en.wiktionary.org/wiki/%E0%A4%86%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%B9#Sanskrit
     #
-    for unit in ('kry', 'svg·pad', 'drv·pad2/ang'):
+    for unit in ('agh', 'svg·pad', 'drv·pad2/ang'):
         unit_conversion[unit] = {
             'kg·m2/s': DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE / ANUGA_TO_SECOND,
             'J·s': DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE / ANUGA_TO_SECOND,
@@ -1094,7 +1094,10 @@ def calculate_conversions():
     #
     # Proportions
     #
-    unit_conversion['prt'] = {
+    # Sampurna
+    # https://en.wiktionary.org/wiki/%E0%A4%B8%E0%A4%82%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3#Hindi
+    #
+    unit_conversion['spn'] = {
         'prefixed': (),
         '%': SezimalFraction('244 / 1'),
         '‰': SezimalFraction('4344 / 1'),
@@ -1105,12 +1108,14 @@ def calculate_conversions():
         'ppt': SezimalFraction('2_043_221_010_301_344 / 1'),
         'ppq': SezimalFraction('13_502_453_354_043_313_344 / 1'),
     }
-    unit_conversion['prt'] = _set_non_prefixed_units(unit_conversion['prt'])
+    unit_conversion['spn'] = _set_non_prefixed_units(unit_conversion['spn'])
 
     #
     # Information store
     #
     # atk ashtaka = octet = byte = 12 bits
+    # https://en.wiktionary.org/wiki/%E0%A4%85%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%95
+    #
     # xtk shataka = sextet = 10 bits
     #
     unit_conversion['atk'] = {
@@ -1135,6 +1140,8 @@ def calculate_conversions():
     # Information speed/rate
     #
     # pvn pavana = atk/ang
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A4%B5%E0%A4%A8#Sanskrit
+    #
     # tvt tevashta = xtk/ang
     #
     unit_conversion['pvn'] = {
