@@ -20,9 +20,9 @@ UNIT-bod boda
 UNIT-avt avríti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevaran
+UNIT-tvr tevarã
 UNIT-ktr quetra
-UNIT-ayt aytan
+UNIT-ayt aitã
 UNIT-vrt várti
 UNIT-drv drávia
 UNIT-gnt ganata
@@ -37,7 +37,7 @@ UNIT-vrc varcha
 UNIT-xrm xarama
 UNIT-xky xáquia
 UNIT-uxn uxuna
-UNIT-xkt xakiti
+UNIT-xkt xakíti
 UNIT-svg sanvega
 UNIT-agh agrarra
 UNIT-pbv prabava
@@ -46,17 +46,17 @@ UNIT-upr upári
 UNIT-nad nádi
 UNIT-bum búmi
 UNIT-idn indana
-UNIT-tln têlan
-UNIT-agn aguení
-UNIT-prv varivartana
+UNIT-tln telã
+UNIT-agn aguíni
+UNIT-prv parivartana
 UNIT-gtk gatica
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-vdt vidiúta
+UNIT-vdt vijuta
 UNIT-atr antarã
 UNIT-bad bada
 UNIT-vrd viroda
-UNIT-ptg pratigata
+UNIT-gat gata
 UNIT-vht varrata
 UNIT-upp upapadã
 UNIT-dry daraiata
@@ -66,7 +66,7 @@ UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx pracaxa
 UNIT-dpk dipaca
-UNIT-spn sanpurna
+UNIT-spn sampurna
 UNIT-p/s por seis
 UNIT-p/n por nife
 UNIT-p/a por arda
@@ -83,10 +83,8 @@ UNIT-p/Tx por trixadara
 UNIT-p/Cx por charxadara
 UNIT-p/Px por panxadara
 UNIT-p/Xx por xaxadara
-UNIT-atk ástaca
-UNIT-pvn pávana
-UNIT-xtk xátaca
-UNIT-tvt tevasta
+UNIT-atk astaca
+UNIT-pvn pavana
 
 EXP-2 quadrado
 EXP-² quadrado
@@ -110,9 +108,9 @@ UNIT-bod boda
 UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevarã
+UNIT-tvr tevaran
 UNIT-ktr ketra
-UNIT-ayt aitã
+UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
 UNIT-gnt ganata
@@ -136,17 +134,17 @@ UNIT-upr upari
 UNIT-nad nadi
 UNIT-bum bumi
 UNIT-idn indana
-UNIT-tln têlan
-UNIT-agn agení
-UNIT-prv varivartana
-UNIT-gtk gátika
+UNIT-tln telan
+UNIT-agn agini
+UNIT-prv parivartana
+UNIT-gtk gatika
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-vdt vidyuta
+UNIT-vdt vijuta
 UNIT-atr antaran
 UNIT-bad bada
 UNIT-vrd viroda
-UNIT-ptg pratigata
+UNIT-gat gata
 UNIT-vht varrata
 UNIT-upp upapadan
 UNIT-dry darayata
@@ -156,7 +154,7 @@ UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakaxa
 UNIT-dpk dipaka
-UNIT-spn sampurna
+UNIT-spn sanpurna
 UNIT-p/s pur sêys
 UNIT-p/n pur nifi
 UNIT-p/a pur arda
@@ -173,10 +171,8 @@ UNIT-p/Tx pur trixadara
 UNIT-p/Cx pur charxadara
 UNIT-p/Px pur panxadara
 UNIT-p/Xx pur xaxadara
-UNIT-atk ástaka
-UNIT-pvn pávana
-UNIT-xtk xátaka
-UNIT-tvt tevasta
+UNIT-atk astaka
+UNIT-pvn pavana
 
 EXP-2 kwadradu
 EXP-² kwadradu
@@ -236,7 +232,7 @@ UNIT-vdt vidjutao
 UNIT-atr antarano
 UNIT-bad badao
 UNIT-vrd virodao
-UNIT-ptg pratigatao
+UNIT-gat gatao
 UNIT-vht vahatao
 UNIT-upp upapadano
 UNIT-dry darayatao
@@ -265,8 +261,6 @@ UNIT-p/Px per panŝadar
 UNIT-p/Xx per ŝaŝadar
 UNIT-atk aŝtakao
 UNIT-pvn pavanao
-UNIT-xtk ŝatakao
-UNIT-tvt tevaŝtao
 
 EXP-2 kvadrata
 EXP-² kvadrata
@@ -326,7 +320,7 @@ UNIT-vdt vidyuta
 UNIT-atr antaran
 UNIT-bad bada
 UNIT-vrd viroda
-UNIT-ptg pratigata
+UNIT-gat gata
 UNIT-vht vahata
 UNIT-upp upapadan
 UNIT-dry darayata
@@ -355,8 +349,6 @@ UNIT-p/Px per panshadara
 UNIT-p/Xx per shashadara
 UNIT-atk ashtaka
 UNIT-pvn pavana
-UNIT-xtk shataka
-UNIT-tvt tevashta
 
 EXP-2 square
 EXP-² square
@@ -546,7 +538,11 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 "tapa" grau sezimal \(tapa\)
 "tapas" graus sezimais \(tapas\)
 (.+)ma([aâàáãä])(.+) \\1m\\2\\3
+(.+)ma(r[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1mar\\2\\3
+(.+)ma(s[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1mas\\2\\3
 (.+)ti([iîìíĩï])(.+) \\1t\\2\\3
+(.+)ti(r[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1tir\\2\\3
+(.+)ti(s[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1tis\\2\\3
 (.+) \\1
 '''
 
@@ -556,7 +552,9 @@ def create_rules(conjunction='and', preposition='', lang='', plural_marker='s', 
 "tapa" graw sezimaw \(tapa\)
 "tapas" graws sezimays \(tapas\)
 (.+)ma([aâàáãä])(.+) \\1m\\2\\3
+(.+)ma(r[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1mar\\2\\3
 (.+)ti([iîìíĩï])(.+) \\1t\\2\\3
+(.+)ti(r[aâàáãäeêèéẽëiîìíĩïoôòóõöuûùúũüyw])(.+) \\1tir\\2\\3
 (.+) \\1
 '''
 

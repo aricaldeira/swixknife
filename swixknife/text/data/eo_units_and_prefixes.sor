@@ -13,26 +13,26 @@ UNIT-bod bodao
 UNIT-avt avritio
 UNIT-pad padao
 UNIT-veg vegao
-UNIT-tvr tevarao
+UNIT-tvr tevarano
 UNIT-ktr ketrao
-UNIT-ayt ajtano
+UNIT-ayt ajtanao
 UNIT-vrt vartio
 UNIT-drv dravjao
-UNIT-gan ganao
+UNIT-gnt ganatao
 UNIT-trg tarangao
-UNIT-mnu manuo
+UNIT-bht bahutao
 UNIT-bal balao
 UNIT-bar barao
-UNIT-dab dabao
+UNIT-pdn pidanao
+UNIT-vay vajuo
 UNIT-pbl pratibalao
 UNIT-vrx varŝao
-UNIT-urj urĵao
-UNIT-kry karjao
-UNIT-stt stitio
-UNIT-uxm uŝmao
-UNIT-xat ŝatio
+UNIT-xrm ŝaramao
+UNIT-xky ŝakjao
+UNIT-uxn uŝunao
+UNIT-xkt ŝakitio
 UNIT-svg sanvegao
-UNIT-pkp prakepao
+UNIT-agh agrahao
 UNIT-pbv prabavao
 UNIT-tnv tanavao
 UNIT-upr upario
@@ -41,24 +41,25 @@ UNIT-bum bumio
 UNIT-idn indanao
 UNIT-tln telano
 UNIT-agn aginio
+UNIT-prv parivartanao
 UNIT-gtk gatikao
 UNIT-tap tapao
 UNIT-dar darao
-UNIT-avx aveŝao
-UNIT-vbv vibavao
-UNIT-rod rodao
+UNIT-vdt vidjutao
+UNIT-atr antarano
 UNIT-bad badao
+UNIT-vrd virodao
 UNIT-gat gatao
-UNIT-cln ĉalanao
-UNIT-prk prerakao
-UNIT-sam samaio
-UNIT-abv abivao
+UNIT-vht vahatao
+UNIT-upp upapadano
+UNIT-dry darayatao
+UNIT-pvh pravahao
 UNIT-vst vistarao
-UNIT-prd paridio
+UNIT-mdl mandalao
 UNIT-gol golao
 UNIT-pkx prakaŝao
 UNIT-dpk dipakao
-UNIT-prt pratio
+UNIT-spn sampurnao
 UNIT-p/s per ses
 UNIT-p/n per nif
 UNIT-p/a per arad
@@ -77,8 +78,6 @@ UNIT-p/Px per panŝadar
 UNIT-p/Xx per ŝaŝadar
 UNIT-atk aŝtakao
 UNIT-pvn pavanao
-UNIT-xtk ŝatakao
-UNIT-tvt tevaŝtao
 
 EXP-2 kvadrata
 EXP-² kvadrata

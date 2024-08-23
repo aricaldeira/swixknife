@@ -13,26 +13,26 @@ UNIT-bod boda
 UNIT-avt avriti
 UNIT-pad pada
 UNIT-veg vega
-UNIT-tvr tevara
+UNIT-tvr tevaran
 UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
 UNIT-drv dravya
-UNIT-gan gana
+UNIT-gnt ganata
 UNIT-trg taranga
-UNIT-mnu manu
+UNIT-bht bahuta
 UNIT-bal bala
 UNIT-bar bara
-UNIT-dab daba
+UNIT-pdn pidana
+UNIT-vay vayu
 UNIT-pbl pratibala
 UNIT-vrc varcha
-UNIT-urj urja
-UNIT-kry karya
-UNIT−stt stiti
-UNIT-uxm ushma
-UNIT-xat shati
+UNIT-xrm sharama
+UNIT−xky shakya
+UNIT-uxn ushuna
+UNIT-xkt shakiti
 UNIT-svg sanvega
-UNIT-pkp prakepa
+UNIT-agh agraha
 UNIT-pbv prabava
 UNIT-tnv tanava
 UNIT-upr upari
@@ -41,24 +41,25 @@ UNIT-bum bumi
 UNIT-idn indana
 UNIT-tln telan
 UNIT-agn agini
+UNIT-prv parivartana
 UNIT-gtk gatika
 UNIT-tap tapa
 UNIT-dar dara
-UNIT-avx avesha
-UNIT-vbv vibava
-UNIT-rod roda
+UNIT-vdt vidyuta
+UNIT-atr antaran
 UNIT-bad bada
+UNIT-vrd viroda
 UNIT-gat gata
-UNIT-cln chalana
-UNIT-prk preraka
-UNIT-sam samai
-UNIT-abv abiva
+UNIT-vht vahata
+UNIT-upp upapadan
+UNIT-dry darayata
+UNIT-pvh pravaha
 UNIT-vst vistara
-UNIT-prd paridi
+UNIT-mdl mandala
 UNIT-gol gola
 UNIT-pkx prakasha
 UNIT-dpk dipaka
-UNIT-prt prati
+UNIT-spn sampurna
 UNIT-p/s per six
 UNIT-p/n per nif
 UNIT-p/a per arda
@@ -77,8 +78,6 @@ UNIT-p/Px per panshadara
 UNIT-p/Xx per shashadara
 UNIT-atk ashtaka
 UNIT-pvn pavana
-UNIT-xtk shataka
-UNIT-tvt tevashta
 
 EXP-2 square
 EXP-² square
