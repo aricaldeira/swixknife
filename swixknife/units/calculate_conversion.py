@@ -154,6 +154,7 @@ def calculate_conversions():
     #
     # PADA_TO_METRE = SezimalFraction('1_415_503_524_325 / 150_223_042_430_000')
     PADA_TO_METRE = GRAVITY * (TIME ** 2)
+    PADA_TO_MILLIMETER = PADA_TO_METRE * 4344
 
     for unit in ('pad', 'vrp'):
         unit_conversion[unit] = {
@@ -180,15 +181,31 @@ def calculate_conversions():
             'ml': PADA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
             'le': PADA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 ml
 
-
             'nmi': PADA_TO_METRE / 12_324,  # Nautical mile
             'NM': PADA_TO_METRE / 12_324,  # Nautical mile
             'au': PADA_TO_METRE / 152_420_241_314_420,
             'parsec': PADA_TO_METRE / 152_420_241_314_420 / 4_230_533,
             'ly': SezimalFraction('10_142_015 / 252_331_101_020_221_154_110_000_000_000'),
             'sly': SezimalFraction('2 / 53_134_100_033_433_015_020_311'),
+
+            #
+            # Length in pixels
+            #
+            'px_72_dpi': PADA_TO_MILLIMETER * SezimalFraction('3200 / 1102'),
+            'px_96_dpi': PADA_TO_MILLIMETER * SezimalFraction('4240 / 1102'),
+            'px_150_dpi': PADA_TO_MILLIMETER * SezimalFraction('10_540 / 1102'),
+            'px_300_dpi': PADA_TO_MILLIMETER * SezimalFraction('21_520 / 1102'),
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Image resolution
+    #
+    # Citra
+    # https://en.wiktionary.org/wiki/%E0%A4%95%E0%A5%87%E0%A4%A4%E0%A5%81#Sanskrit
+    #
+    # CITRA_TO_PX_300 =
+
 
     #
     # Spatial frequency / Wavenumber (taranga)
