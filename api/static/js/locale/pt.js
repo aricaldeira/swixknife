@@ -24,6 +24,7 @@ const sezimal_calculator_pt_text = {
     // 'translation-display-rad': 'rad',
     // 'translation-display-tau_rad': 'τ rad',
     // 'translation-display-pi_rad': 'π rad',
+    'translation-display-deg2': 'grau²',
 
     'button-sezimal-sin': 'sen',
     // 'button-sezimal-cos': 'cos',
@@ -130,60 +131,58 @@ const sezimal_calculator_pt_text = {
     'td-shastadari-units': 'Unidades de Medida Xastadári',
     'optgroup-units-no-conversion': 'Sem conversão',
     'option-units-no-conversion': 'Sem conversão (só calculadora)',
-    'optgroup-units-instructions': 'Instruções',
-    'option-units-units': 'Unidades Xastadári',
-    'option-units-prefixes': 'Prefixos Xastadári',
 
-    'optgroup-units-base': 'Unidades base',
+    'optgroup-units-base': '13 unidades fundamentais',
     'option-units-ang': 'Tempo – ang',
     'option-units-pad': 'Comprimento – pad',
     'option-units-drv': 'Massa – drv',
-    'option-units-gtk': 'Temperatura termodinâmica – gtk',
+    'option-units-gtk': 'Temperatura absoluta – gtk',
     'option-units-dar': 'Corrente elétrica – dar',
-    'option-units--': 'Quantidade de substância – xxx',
-    'option-units-‐': 'Intensidade luminosa – xxx',
+    'option-units-mdl': 'Ângulo plano – mdl',
+    'option-units-gol': 'Ângulo sólido – gol',
+    'option-units-pkx': 'Intensidade luminosa – pkx',
+    'option-units-bht': 'Quantidade de substância – bht',
 
-    'optgroup-units-mechanics': 'Mecânica',
-    'option-units-avt': 'Frequência – ang⁻¹',
-    'option-units-ktr': 'Área – pad²',
-    'option-units-ayt': 'Volume – pad³',
-    'option-units-veg': 'Velocidade – pad·ang⁻¹',
-    'option-units-tvr': 'Aceleração – pad·ang⁻²',
-    'option-units-gnt': 'Densidade – drv·pad⁻³',
-    'option-units-bar': 'Força/peso – drv·pad·ang⁻²',
-    'option-units-pdn': 'Pressão – drv·pad⁻¹·ang⁻²',
-    'option-units-vrc': 'Energia/trabalho – drv·pad²·ang⁻²',
-    'option-units-xkt': 'Potência – drv·pad²·ang⁻³',
-    // 'option-units-svg': 'Momento',
-    // 'option-units-agh': 'Ação',
+    'optgroup-units-derived': 'Unidades derivadas',
+    'option-units-avt': 'Frequência – avt',
+    'option-units-ktr': 'Área – ktr',
+    'option-units-ayt': 'Volume – ayt',
+    'option-units-veg': 'Velocidade – veg',
+    'option-units-tvr': 'Aceleração – tvr',
+    'option-units-gnt': 'Densidade – gnt',
+    'option-units-bar': 'Força/peso – bar',
+    'option-units-pdn': 'Pressão – pdn',
+    'option-units-vrc': 'Energia/trabalho – vrc',
+    'option-units-xkt': 'Potência – xkt',
+    'option-units-svg': 'Momento linear – svg',
+    'option-units-agh': 'Ação – agh',
     // 'option-units-pbv': 'Influência',
     // 'option-units-tnv': 'Tensão',
     // 'option-units-upr': 'Intensidade',
     // 'option-units-nad': 'Viscosidade dinâmica',
     // 'option-units-bum': 'Viscosidade cinética',
-    'optgroup-units-thermodynamics': 'Termodinâmica',
-    'option-units-tap': 'Temperatura comum – gtk⁻⁵',
-    'option-units-agn': 'Capacidade térmica ‐ drv·pad²·ang⁻²·gtk⁻¹',
-    'option-units-idn': 'Capacidade térmica por massa',
-    'option-units-tln': 'Capacidade térmica por volume',
 
-    'optgroup-units-electromagnetism': 'Eletromagnetismo',
-    'option-units-vdt': 'Carga elétrica – dar·ang⁻¹',
-    'option-units-atr': 'Diferença de potencial el.',
-    'option-units-vrd': 'Resistência elétrica',
-    'option-units-vht': 'Condutância elétrica',
-    'option-units-upp': 'Indutância elétrica',
-    'option-units-smi': 'Capacitância elétrica',
-    'option-units-pvh': 'Fluxo magnético',
-    'option-units-vtr': 'Densidade do fluxo magnético',
-    'optgroup-units-angle': 'Ângulo',
-    'option-units-mdl': 'Ângulo plano',
-    'option-units-gol': 'Ângulo sólido',
-    'optgroup-units-proportion': 'Proporção',
-    'option-units-spn': 'Proporção',
-    'optgroup-units-data-information': 'Dados/informação',
-    'option-units-atk': 'Armazenagem',
-    'option-units-pvn': 'Velocidade',
+    'option-units-tap': 'Temperatura comum – tap',
+    'option-units-agn': 'Capacidade térmica ‐ agn',
+    'option-units-idn': 'Calor específico – idn',
+    // 'option-units-tln': 'Capacidade térmica por volume',
+
+    'option-units-vdt': 'Carga elétrica – vdt',
+    'option-units-atr': 'Diferença de potencial el. – atr',
+    'option-units-vrd': 'Resistência el. – vrd',
+    'option-units-vht': 'Condutância el. – vht',
+    // 'option-units-upp': 'Indutância el. – upp',
+    'option-units-dry': 'Capacitância el. – dry',
+    'option-units-pvh': 'Fluxo magnético – pvh',
+    'option-units-vtr': 'Dens. do fluxo magético – vtr',
+    'option-units-dpk': 'Fluxo luminoso – dpk',
+    'option-units-dxt': 'Rendimento luminoso – dxt',
+    'option-units-dul': 'Massa atômica – dul',
+
+    'optgroup-units-others': 'Outras unidades',
+    'option-units-spn': 'Proporção – spn',
+    'option-units-atk': 'Armazenagem de dados – atk',
+    'option-units-pvn': 'Vel. de transm. de dados – pvn',
 
     'label-prefix-sezimal': 'Prefixo sezimal',
     'label-prefix-sezimal-angle': 'Prefixo sezimal',
@@ -194,7 +193,7 @@ const sezimal_calculator_pt_text = {
     'label-unit-decimal': 'Unidade decimal',
     'optgroup-units-generic-shastadari': 'Xastadári',
     'optgroup-units-generic-s-i': 'S.I.',
-    'optgroup-units-generic-non-s-i': 'Outras',
+    'optgroup-units-generic-others': 'Outras',
     'optgroup-units-generic-imp-us': 'Reino Unido (imperial)/EUA',
     'optgroup-units-generic-us': 'EUA',
     'optgroup-units-generic-imp': 'Reino Unido (imperial)',
@@ -343,127 +342,7 @@ const sezimal_calculator_pt_text = {
     'option-binary-prefix-mebi': 'Mi – mebi – 2²⁰',
     'option-binary-prefix-kibi': 'Ki – kibi – 2¹⁰',
 
-    'unit-ang-explanation': `
-<br/>
-<p>O tempo civil é dividido em seis unidades; um dia é dividido de forma regular em sextos, e esses sextos são agrupados em subunidades, da seguinte maneira:</p>
-<ul>
-    <li>o dina, símbolo din, correspondente ao dia mesmo;</li>
-    <li>o uta, símbolo uta, correspondente às duas primeiras divisões/sextos, com valor mais próximo da hora;</li>
-    <li>o poxa (pôxa, não póxa), símbolo pox, correspondente às duas próximas divisões/sextos, com valor mais próximo do minuto;</li>
-    <li>o agrima, símbolo agm, correspondente às duas divisões/sextos seguintes, com valor mais próximo do segundo;</li>
-    <li>o anuga, símbolo ang, correspondente às próximas duas divisões/sextos, com valor mais próximo do centésimo de segundo (centissegundo);</li>
-    <li>o boda (bôda, não bóda), símbolo bod, correspondente às duas últimas divisões/sextos, com valor mais próximo do milésimo de segundo (milissegundo);</li>
-</ul>
-<p>Então, um dia é divido:</p>
-<p style="text-align: center;"><span style="color: #9E9E9E;">5.</span><span style="font-weight: bold;">55:55:55</span><span style="color: #9E9E9E;">:55:55</span></p>
-<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">   5 .  </span><span style="font-weight: bold;">55 :   55 :     55</span><span style="color: #9E9E9E;"> :    55 :   55</span></p>
-<p style="text-align: center;" class="mono-text"><span style="color: #9E9E9E;">dina . </span><span style="font-weight: bold;">uta : poxa : agrima</span><span style="color: #9E9E9E;"> : anuga : boda</span></p>
-<p>Para uso científico, a unidade base de tempo é o anuga, por isso, todas as outras unidades que derivam da dimensão tempo, em alguma forma, usam o anuga nas suas definições.</p>
-<p>Os prefixos podem ser usados com qualquer uma das unidades de tempo, e a conversão entre as unidades e os prefixos é a seguinte:</p>
-<table class="explanation">
-    <colgroup>
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-    </colgroup>
-    <tr>
-        <td style="text-align: center;">―</td>
-        <td style="text-align: center;">din</td>
-        <td style="text-align: center;">uta</td>
-        <td style="text-align: center;">pox</td>
-        <td style="text-align: center;">agm</td>
-        <td style="text-align: center;"><b>ang</b></td>
-        <td style="text-align: center;">bod</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">din</td>
-        <td style="text-align: right;">1 din</td>
-        <td style="text-align: right;">100 uta</br>1 <span class="tooltip">Duta<span class="tooltip-text">dimauta</span></span></td>
-        <td style="text-align: right;">10⁴ pox</br>1 <span class="tooltip">Cpox<span class="tooltip-text">tcharmapoxa</span></span></td>
-        <td style="text-align: right;">10¹⁰ agm</br>1 <span class="tooltip">Xagm<span class="tooltip-text">xamagrima</span></span></td>
-        <td style="text-align: right;"><b>10¹² ang</br>1 <span class="tooltip">XDang<span class="tooltip-text">xadimanuga</span></span></b></td>
-        <td style="text-align: right;">10¹⁴ bod</br>1 <span class="tooltip">XCbod<span class="tooltip-text">xatcharmaboda</span></span></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">uta</td>
-        <td style="text-align: right;">0.01 din</br>1 <span class="tooltip">ddin<span class="tooltip-text">ditidina</span></span></td>
-        <td style="text-align: right;">1 uta</td>
-        <td style="text-align: right;">100 pox</br>1 <span class="tooltip">Dpox<span class="tooltip-text">dimapoxa</span></span></td>
-        <td style="text-align: right;">10⁴ agm</br>1 <span class="tooltip">Cagm<span class="tooltip-text">tcharmagrima</span></span></td>
-        <td style="text-align: right;"><b>10¹⁰ ang</br>1 <span class="tooltip">Xang<span class="tooltip-text">xamanuga</span></span></b></td>
-        <td style="text-align: right;">10¹² bod</br>1 <span class="tooltip">XDbod<span class="tooltip-text">xadimaboda</span></span></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">pox</td>
-        <td style="text-align: right;">10⁻⁴ din</br>1 <span class="tooltip">cdin<span class="tooltip-text">tchartidina</span></span></td>
-        <td style="text-align: right;">0.01 uta</br>1 <span class="tooltip">duta<span class="tooltip-text">ditiuta</span></span></td>
-        <td style="text-align: right;">1 pox</td>
-        <td style="text-align: right;">100 agm</br>1 <span class="tooltip">Dagm<span class="tooltip-text">dimagrima</span></span></td>
-        <td style="text-align: right;"><b>10⁴ ang</br>1 <span class="tooltip">Cang<span class="tooltip-text">tcharmanuga</span></span></b></td>
-        <td style="text-align: right;">10¹⁰ bod</br>1 <span class="tooltip">Xbod<span class="tooltip-text">xamaboda</span></span></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">agm</td>
-        <td style="text-align: right;">10⁻¹⁰ din</br>1 <span class="tooltip">xdin<span class="tooltip-text">xatidina</span></span></td>
-        <td style="text-align: right;">10⁻⁴ uta</br>1 <span class="tooltip">cuta<span class="tooltip-text">tchartiuta</span></span></td>
-        <td style="text-align: right;">0.01 pox</br>1 <span class="tooltip">dpox<span class="tooltip-text">ditipoxa</span></span></td>
-        <td style="text-align: right;">1 agm</td>
-        <td style="text-align: right;"><b>100 ang</br>1 <span class="tooltip">Dang<span class="tooltip-text">dimanuga</span></span></b></td>
-        <td style="text-align: right;">10⁴ bod</br>1 <span class="tooltip">Cbod<span class="tooltip-text">tcharmaboda</span></span></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;"><b>ang</b></td>
-        <td style="text-align: right;"><b>10⁻¹² din</br>1 <span class="tooltip">xddin<span class="tooltip-text">xaditidina</span></span></b></td>
-        <td style="text-align: right;"><b>10⁻¹⁰ uta</br>1 <span class="tooltip">xuta<span class="tooltip-text">xatiuta</span></span></b></td>
-        <td style="text-align: right;"><b>10⁻⁴ pox</br>1 <span class="tooltip">cpox<span class="tooltip-text">tchartipoxa</span></span></b></td>
-        <td style="text-align: right;"><b>0.01 agm</br>1 <span class="tooltip">dagm<span class="tooltip-text">ditiagrima</span></span></b></td>
-        <td style="text-align: right;"><b>1 ang</b></td>
-        <td style="text-align: right;"><b>100 bod</br>1 <span class="tooltip">Dbod<span class="tooltip-text">dimaboda</span></span></b></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">bod</td>
-        <td style="text-align: right;">10⁻¹⁴ din</br>1 <span class="tooltip">xcdin<span class="tooltip-text">xatchartidina</span></span></td>
-        <td style="text-align: right;">10⁻¹² uta</br>1 <span class="tooltip">xduta<span class="tooltip-text">xaditiuta</span></span></td>
-        <td style="text-align: right;">10⁻¹⁰ pox</br>1 <span class="tooltip">xpox<span class="tooltip-text">xatipoxa</span></span></td>
-        <td style="text-align: right;">10⁻⁴ agm</br>1 <span class="tooltip">cagm<span class="tooltip-text">tchartiagrima</span></span></td>
-        <td style="text-align: right;"><b>0.01 ang</br>1 <span class="tooltip">dang<span class="tooltip-text">ditianuga</span></span></b></td>
-        <td style="text-align: right;">1 bod</td>
-    </tr>
-</table>
-<p></p>
-<p>A Luz disse: eu não sei nada sobre o teu tempo, e ainda assim, eu ergo o teu dia da escuridão, alimento tudo o que vive, dirijo teus pensamentos ao infinito; segue-me ainda que ao teu passo, e eu vou-te permitir ver tudo, e medir tudo o que há.</p>
-<p></p>
-<p>O nome de cada uma das unidades vem das seguintes palavras em sânscrito::</p>
-<ul>
-    <li><span class="devanagari-word">दिन</span> ‹dina› /'d̪i.nə/: Dia, cognato do latim <i>diēs</i>;</li>
-    <li><span class="devanagari-word">उत्थानम्</span> ‹utthānam› /ut̪'t̪ʰɑː.nəm/: que ergue, que dá origem (falando da luz, sobre o dia, acréscimo nosso);</li>
-    <li><span class="devanagari-word">पोषण</span> ‹poṣaṇa› /'poː.ʂə.ɳə/: que nutre, que cuida (falando da luz, sobre o dia);</li>
-    <li><span class="devanagari-word">अग्रिम</span> ‹agrima› /ə'gri.mə/: o que conduz, que vem antes (idem);</li>
-    <li><span class="devanagari-word">अनुगामी</span> ‹anugāmī› /ə.nu'gɑː.miː/: o que segue;</li>
-    <li><span class="devanagari-word">बोध</span> ‹bodha› /'boː.d̪ʰə/: entendimento, conhecimento;</li>
-</ul>
-<p></p>
-<p>Para fins científicos, a unidade de tempo da base sezimal é o anuga, portanto todas as outras unidades que derivam do tempo de alguma maneira, usam o anuga nas suas definições.</p>
-<p>A definição formal do anuga é similar em forma à definição do segundo no Sistema Internacional, estabelecendo que:</p>
-<p></p>
-<p>   a transição óptica não‐perturbada 6s ²S<sub>1⁄2</sub> (<i>F</i> = 0) – 5d ²D<sub>3⁄2</sub> (<i>F</i> = 2) do íon ⁴⁴³Yb⁺ tem uma frequência de <i>f</i><sub>⁴⁴³Yb⁺</sub> = 203󱹭150󱹬505󱹭354󱹬503󱹭234󱹮530󱹭12 avt<sup><a href="#reference_ang_1">1</a></sup>, quando expressa na unidade de frequência avríti (avt), que é igual a ang⁻¹ (em decimal, ¹⁷¹Yb⁺ e 688.358.979.309.308,24 Hz<sup><a href="#reference_ang_2">2</a></sup>).</p>
-<p></p>
-<p>Por fim, a conversão entre anugas e segundos; pegamos o dia médio de duração de 1󱹬504󱹭000 segundos (decimal 86.400), e divimos o tempo em segundos pela duração média de um dia de 100󱹬000󱹭000 (decimal 1.679.616) anugas:
-</p>
-<p>Portanto, 1 ang = <math><mfrac><mn>1󱹬504󱹭000</mn><mn>100󱹬000󱹭000</mn></mfrac></math> = <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = 0󱹮015󱹭04 s (decimal <math><mfrac><mn>25</mn><mn>486</mn></mfrac></math> = 0,0„514󱹭403 292 181 069 958 847 736 625);</p>
-<p>A conversão inversa, 1 s = <math><mfrac><mn>100󱹬000󱹭000</mn><mn>1󱹬504󱹭000</mn></mfrac></math> = <math><mfrac><mn>2130</mn><mn>41</mn></mfrac></math> = 31󱹯235󱹭01 ang (decimal <math><mfrac><mn>486</mn><mn>25</mn></mfrac></math> = 19,44);</p>
-<p></p>
-<p>Referências:</p>
-<p id="reference_ang_1"><sup>1</sup> <a href="https://www.bipm.org/documents/20126/17315032/CIPM2006-EN.pdf/e58fcb97-69f8-008b-050b-378d5f0d8a77">Recomendações adotadas pelo Comitê Internacional para Pesos e Medidas em sua 95ª reunião (outubro de 2006), páginas 123–124 da versão francesa, páginas 249–250 (no PDF, 115–116) da versão inglesa.</a>
-</p>
-<p id="reference_ang_2"><sup>2</sup> <a href="https://www.bipm.org/documents/20126/69375151/171Yb+_688THz_2021.pdf/6ffc6ec4-76a5-d043-ba4c-af680662fc29">Valores recomendados das frequências padrão para aplicações incluindo a realização prática do metro e representações secundárias da definição do segundo, íon de itérbio 171</a>
-</p>
-`,
-    // 'optgroup-units-ang-common': 'Comum/civil',
+    'optgroup-units-ang-common': 'Comum/civil',
     'option-units-ang-dina': 'dina – din = dia',
     'option-units-ang-uta': 'uta – uta ~ hora',
     'option-units-ang-posha': 'poxa – pox ~ minuto',
@@ -481,52 +360,13 @@ const sezimal_calculator_pt_text = {
     'translation-minute': 'min',
     'translation-second': 's',
 
-    'unit-pad-explanation': `
-<p>O pada, símbolo pad, é a unidade de medida de comprimento na base sezimal; pada vem da palavra em Sânscrito <span class="devanagari-word">पद</span> ‹pada› /&zwj;'pə.d̪ə&zwj;/, que significa passo, pegada, pé, que é cognata de <i>pēs</i> em latim.</p>
-
-<p>A definição formal do pada é a distância percorrida pela luz numa fração de <math><mfrac><mn>1</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> de anuga (<math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> s, veja a definição formal do anuga na página das unidades de tempo).</p>
-<p>A conversão de e para metros é feita pegando a velocidade da luz, pelo S.I., de 45󱹭425󱹬332󱹭014 (decimal 299,792,458) m/s, e dividindo esse valor pela equivalente velocidade da luz em Xastadári, que é de 135󱹭005󱹬235󱹭440 (decimal 594,838,032) pad/ang (veja a página sobre unidades de velocidade), e daí multiplicando esse valor pela conversão de anugas em segundos (veja a página sobre as unidades de tempo):</p>
-<p class="center">1 pad = <math><mfrac><mn>45󱹭425󱹬332󱹭014</mn><mn>135󱹭005󱹬235󱹭440</mn></mfrac></math> × <math><mfrac><mn>41</mn><mn>2130</mn></mfrac></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
-<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925 414 830 613 m)</p>
-<p></p>
-<p>Uma outra forma de se chegar à mesma conversão é tomar a aceleração <b>média</b> da gravidade do planeta Terra<sup><a href="#reference_pad_1">1</a></sup> (a aceleração da gravidade não é nem constante, nem 13󱹮450󱹭123 (decimal 9,806 65) m/s² em toda a superfície do planeta), calculada em 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 (decimal 9,797 566 850 130 385) m/s², e multiplicar esse valor pela conversão do anuga para o segundo, ao quadrado:</p>
-<p>Tomando a aceleração da gravidade em forma fracionária:</p>
-<p class="center">1 g<sub>méd</sub> = <math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> = 13󱹮444󱹭135󱹬140󱹭131󱹬050󱹭515 m/s²</p>
-<p class="center">(decimal <math><mfrac><mn>12.141.594.549</mn><mn>1.239.245.900</mn></mfrac></math> = 9,797 566 850󱹭130 385 m/s²)</p>
-<p class="center"><math><mfrac><mn>5󱹬324󱹭444󱹬301󱹭513</mn><mn>322󱹭545󱹬201󱹭312</mn></mfrac></math> × <math><msup><mrow><mo>(</mo><mfrac><mn>41</mn><mn>2130</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1󱹬415󱹭503󱹬524󱹭325</mn><mn>150󱹬223󱹭042󱹬430󱹭000</mn></mfrac></math><br/>= 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132 m
-<br/>(decimal <math><mfrac><mn>3.747.405.725</mn><mn>144.545.641.776</mn></mfrac></math> = 0,025 925󱹭414 830 613 m)</p>
-<p>Isso significa que o pada é também a distância que, na Terra, em média, um objeto percorre numa queda livre de duração de um anuga, devido a aceleração da gravidade, que é de 1 pad/ang² (veja mais na página das unidades de aceleração):</p>
-<p class="center">comprimento = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × g × <math><msup><mrow><mi>time</mi></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 1 × <math><msup><mrow><msqrt><mn>2</mn></msqrt></mrow><mn>2</mn></msup></math> = <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math> × 2 = 1 pad
-</p>
-<p></p>
-<p>Referências:</p>
-<p id="reference_pad_1"><sup>1</sup> <a href="https://primelmetrology.atlassian.net/wiki/x/pAB9">Metrologia Primel - Segunda Realidade Mundana: Aceleração devido à Gravidade da Terra</a>
-</p>
-<p></p>
-`,
     'option-units-pad-pada': 'pada – pad',
-    'option-decimal-units-pad-meter': 'metro – m',
+    'option-decimal-units-pad-metre': 'metro – m',
     'option-decimal-units-pad-mile': 'milha – ml',
     'option-decimal-units-pad-yard': 'jarda – yd',
     'option-decimal-units-pad-foot': 'pé – ft',
     'option-decimal-units-pad-inch': 'polegada – in',
 
-    'unit-drv-explanation': `
-<td colspan="3" id="unit-drv-explanation" hidden>
-<p>Massa em Xastadári é medida em drávias, símbolo drv, com origem na palavra em sânscrito <span class="devanagari-word">द्रव्यमान</span> ‹dravyamāna› /&zwj;d̪rə.vjə'mɑː.nə&zwj;/, que significa massa;</p>
-<p>A definição formal do drávia usa o valor numérico fixo da constante de Planck <i>h</i> como sendo 1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰² quando expresso na unidade agh (agrarra), que mede ação, que é igual a drv·pad²·ang⁻¹, em que o pada é definido em termos da velocidade da luz <i>c</i> e o anuga é definido em termos da frequência específica da transição atômica do isótopo Itérbio-443 (Yb-171) Δ<i>ν</i><sub>Yb</sub>;</p>
-<p class="center">1 drv = <math><mfrac><mn>10󱹮343󱹭121󱹬532󱹭351󱹬341󱹭124 × 14⁻⁵⁴</mn><mn>1󱹮025󱹭500󱹬342󱹭435󱹬151󱹭430 × 10⁻¹⁰²</mn></mfrac></math> × <br/> <math><msup><mrow><mo>(</mo><mfrac><mn>150󱹬223󱹭042󱹬430󱹭000</mn><mn>1󱹬415󱹭503󱹬524󱹭325</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup></math> ÷ <math><mfrac><mn>2130</mn><mn>41</mn></mfrac></math> = <br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
-<br/>(decimal 0,017 393 934 102 094 kg)</p>
-<p>Uma outra maneira de se chegar ao mesmo fator de conversão é usando a densidade da água doce a uma pressão de 1 atm e a uma temperatura determinada de 251󱹬255󱹭424󱹮503󱹭520󱹬412󱹭531󱹬122󱹭443 gtk (293,149 986 919 793 K) ~ <span class="tooltip">110 °S<span class="tooltip-text">nife e seis graus sezimais</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graus sezimais</span></span> / 20 °C / 68 °F), calculada usando os dados da IAPWS R6-95 (2018)<sup><a href="#reference_drv_1">1</a>, <a href="#reference_drv_2">2</a></sup> como sendo 4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ (998,207 153 168 156 900 kg/m³), e multiplicando essa densidade pelo volume de 1 pad³ em m³:</p>
-<p class="center">1 drv =<br/>
-4342󱹮112󱹭424󱹬534󱹭353󱹬142󱹭402 kg/m³ × 0󱹮005󱹭333󱹬324󱹭241󱹬020󱹭132³ m³ =
-<br/>0󱹮003󱹭431󱹬310󱹭440󱹬301󱹭302 kg
-<br/>(decimal 0,017 393 934 102 094 kg)</p>
-<p>Isso significa que o drávia é a massa correspondente ao volume de 1 pad³ de água doce, sob a pressão de 1 atm, e a uma temperatura de <span class="tooltip">110 °S<span class="tooltip-text">nife e seis graus sezimais</span></span> (<span class="tooltip">42 °S<span class="tooltip-text">graus sezimais</span></span> / 20 °C / 68 °F).</p>
-<p id="reference_drv_1"><sup>1</sup> <a href="http://www.iapws.org/relguide/IAPWS-95.html">IAPWS R6-95(2018) – Distribuição revisada da Formulação de 1995 para as Propriedades Termodinâmicas da Substância Comum “Água” para Uso Geral e Científico da IAPWS (Associação Internacional para as Propriedades da Água e do Vapor ‐ AIPAV) – setembro de 2018</a></p>
-<p id="reference_drv_2"><sup>2</sup> <a href="https://iapws.readthedocs.io/en/latest/iapws.iapws95.html#iapws.iapws95.IAPWS95">Implementação em Python da Formulação de 1995 da Substância Comum “Água” da IAPWS</a></p>
-</td>
-`,
     'option-units-drv-dravya': 'drávia ‐ drv',
     'option-decimal-units-drv-ton': 'tonelada ‐ ton',
     'option-decimal-units-drv-gram': 'grama ‐ g',
@@ -547,121 +387,41 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-drv-imp-cwt': 'hundredweight longo ‐ imp. cwt',
     'option-decimal-units-drv-imp-ton': 'tonelada longa ‐ imp. ton',
 
-    'unit-avt-explanation': `
-<br/>
-<p>Frequência é registrada usando a unidade avríti, símbolo avt, que representa eventos, ciclos, ocorrências etc. por anuga (a unidade base de tempo); avríti vem da palavra em sânscrito <span class="devanagari-word">आवृत्ति</span> ‹āvṛtti› /&zwj;ɑːʋ.ɾɪt̪'t̪iː&zwj;/, que significa frequência, repetição.</p>
-<p>Uma propriedade interessante de todas as unidades que envolvem tempo em sezimal é que é bastante simples a conversão das várias unidades de tempo comum/civil e o anuga:</p>
-<table class="explanation">
-    <colgroup>
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 15%;">
-    </colgroup>
-    <tr>
-        <td style="text-align: center;">―</td>
-        <td style="text-align: center;">Davt</br>por boda</td>
-        <td style="text-align: center;">avt</br>por anuga</td>
-        <td style="text-align: center;">davt</br>por agrima</td>
-        <td style="text-align: center;">cavt</br>por poxa</td>
-        <td style="text-align: center;">xavt</br>por uta</td>
-        <td style="text-align: center;">xdavt</br>por dina/dia</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">Davt</td>
-        <td style="text-align: right;">1 Davt</br>1/bod</td>
-        <td style="text-align: right;">100 avt</br>100/ang</td>
-        <td style="text-align: right;">10⁴ davt</br>10⁴/agm</td>
-        <td style="text-align: right;">10¹⁰ cavt</br>10¹⁰/pox</td>
-        <td style="text-align: right;">10¹² xavt</br>10¹²/uta</td>
-        <td style="text-align: right;">10¹⁴ xdavt</br>10¹⁴/din</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">avt</td>
-        <td style="text-align: right;">0,01 Davt</br>1/100 bod</td>
-        <td style="text-align: right;">1 avt</br>1/ang</td>
-        <td style="text-align: right;">100 davt</br>100/agm</td>
-        <td style="text-align: right;">10⁴ cavt</br>10⁴/pox</td>
-        <td style="text-align: right;">10¹⁰ xavt</br>10¹⁰/uta</td>
-        <td style="text-align: right;">10¹² xdavt</br>10¹²/din</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">davt</td>
-        <td style="text-align: right;">10⁻⁴ Davt</br>1/10⁴ bod</td>
-        <td style="text-align: right;">0,01 avt</br>1/100 ang</td>
-        <td style="text-align: right;">1 davt</br>1/agm</td>
-        <td style="text-align: right;">100 cavt</br>100/pox</td>
-        <td style="text-align: right;">10⁴ xavt</br>10⁴/uta</td>
-        <td style="text-align: right;">10¹⁰ xdavt</br>10¹⁰/din</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">cavt</td>
-        <td style="text-align: right;">10⁻¹⁰ Davt</br>1/10¹⁰ bod</td>
-        <td style="text-align: right;">10⁻⁴ avt</br>1/10⁴ ang</td>
-        <td style="text-align: right;">0,01 davt</br>1/100 agm</td>
-        <td style="text-align: right;">1 cavt<br/>1/pox</td>
-        <td style="text-align: right;">100 xavt</br>100/uta</td>
-        <td style="text-align: right;">10⁴ xdavt</br>1/10⁴ din</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">xavt</td>
-        <td style="text-align: right;">10⁻¹² Davt</br>1/10¹² bod</td>
-        <td style="text-align: right;">10⁻¹⁰ avt</br>1/10¹⁰ ang</td>
-        <td style="text-align: right;">10⁻⁴ davt</br>1/10⁴ agm</td>
-        <td style="text-align: right;">0,01 cavt</br>1/100 pox</td>
-        <td style="text-align: right;">1 xavt<br/>1/uta</td>
-        <td style="text-align: right;">100 dxavt</br>100/din</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">xdavt</td>
-        <td style="text-align: right;">10⁻¹⁴ Davt</br>1/10¹⁴ bod</td>
-        <td style="text-align: right;">10⁻¹² avt</br>1/10¹² ang</td>
-        <td style="text-align: right;">10⁻¹⁰ davt</br>1/10¹⁰ agm</td>
-        <td style="text-align: right;">10⁻⁴ cavt</br>1/10⁴ pox</td>
-        <td style="text-align: right;">0,01 xavt</br>1/100 uta</b></td>
-        <td style="text-align: right;">1 xdavt<br/>1/din</td>
-    </tr>
-</table>
-<br/>
-`,
+    'option-units-gtk-gatika': 'gatica ‐ gtk',
+    'option-units-tap-tapa': 'tapa ‐ tap',
+    'option-decimal-units-gtk-kelvin': 'kelvin ‐ K',
+    'option-decimal-units-gtk-celsius': 'grau Celsius ‐ °C',
+    'option-decimal-units-gtk-fahrenheit': 'grau Fahrenheit ‐ °F',
+    'option-decimal-units-gtk-rankine': 'grau Rankine – °R',
+
+    'option-sezimal-units-mdl-mandala': 'mandala ‐ mdl',
+    'option-decimal-units-mdl-tau_rad': 'τ radianos',
+    'option-decimal-units-mdl-pi_rad': 'π radianos',
+    'option-decimal-units-mdl-rad': 'radiano',
+    'option-decimal-units-mdl-deg': 'grau',
+    'option-decimal-units-mdl-arcmin': 'minuto',
+    'option-decimal-units-mdl-arcsec': 'segundo',
+    'option-decimal-units-mdl-turn': 'volta',
+    'option-decimal-units-mdl-gon': 'gradiano (gon)',
+
+    'option-sezimal-units-gol-gola': 'gola ‐ gol',
+    'option-decimal-units-gol-sterradian': 'esferorradiano ‐ sr',
+    'option-decimal-units-gol-spat': 'espaço ‐ spat',
+    'option-decimal-units-gol-deg2': 'graus ao quadrado – grau²',
+
+    'option-units-pkx-prakasha': 'pracaxa ‐ pkx',
+    'option-decimal-units-pkx-candela': 'candela ‐ cd',
+
+    'option-units-bht-bahuta': 'barruta ‐ bht',
+    'option-decimal-units-bht-mole': 'mol ‐ mol',
 
     'option-units-avt-avriti': 'avríti – avt',
     'option-decimal-units-avt-hertz': 'Hertz – Hz',
     'option-decimal-units-avt-rpm': 'rpm',
 
-    'unit-ktr-explanation': `
-<p>A unidade de área é o quetra (quêtra, não quétra), símbolo ktr, que é igual ao pada (a unidade de comprimento) ao quadrado, pad²; o nome quetra vem da palavra em sânscrito <span class="devanagari-word">क्षेत्रफल</span> ‹kṣetraphala› /&zwj;'kʂeːt̪rə.pʰə.lə&zwj;/, que significa área.</p>
-<p>Você pode expressar medidas de área usando somente pad², mas usar prefixos com unidades compostas (como pad·pad) pode ser causa de confusão, no sentido de que 1 Dpad² não é 100 pad², mas sim 10󱹭000 pad², este aplicativo só usa quetras;
-    </p>
-    <p>Algumas equivalências de prefixos entre ktr e pad²:</p>
-    <table>
-        <colgroup>
-            <col span="1" style="width: 45%;">
-            <col span="1" style="width: 10%;">
-            <col span="1" style="width: 45%;">
-        </colgroup>
-        <tr><td style="text-align: right;">1 ktr</td>          <td style="text-align: center;">=</td> <td style="text-align: left;">1 pad²</td></tr>
-        <tr><td style="text-align: right;">1 Ektr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 pad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>D</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>E</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 Tktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Epad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>C</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>D</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 Pktr</td>         <td style="text-align: center;">=</td> <td style="text-align: left;">10 Dpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>X</b>ktr</td>  <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>T</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XEktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Tpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>XD</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>C</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XTktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Cpad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>XC</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>P</b>pad²</td></tr>
-        <tr><td style="text-align: right;">1 XPktr</td>        <td style="text-align: center;">=</td> <td style="text-align: left;">10 Ppad²</td></tr>
-        <tr><td style="text-align: right;">1 <b>DX</b>ktr</td> <td style="text-align: center;">=</td> <td style="text-align: left;">1 <b>X</b>pad²</td></tr>
-    </table>
-    <p></p>
-`,
     'option-units-ktr-ketra': 'quetra – ktr',
     'option-units-ktr-sq-pada': 'pada quad. – pad²',
-    'option-decimal-units-ktr-sq-meter': 'metro quad. – m²',
+    'option-decimal-units-ktr-sq-metre': 'metro quad. – m²',
     'option-decimal-units-ktr-are': 'are - a',
     'option-decimal-units-ktr-acre': 'acre - ac',
     'option-decimal-units-ktr-sq-mile': 'milha quad. – ml²',
@@ -670,16 +430,63 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-ktr-sq-inch': 'polegada quad. – in²',
 
     'option-units-ayt-aytan': 'aitã – ayt',
+    'option-units-ayt-cb-pada': 'pada cúbico – pad³',
+    'option-decimal-units-ayt-cb-metre': 'metro cúbico ‐ m³',
+    'option-decimal-units-ayt-litre': 'litro ‐ L',
+    'option-decimal-units-ayt-cb-mile': 'milha cúbica ‐ ml³',
+    'option-decimal-units-ayt-cb-yard': 'jarda cúbica ‐ yd³',
+    'option-decimal-units-ayt-cb-foot': 'pé cúbico ‐ ft³',
+    'option-decimal-units-ayt-cb-inch': 'polegada cúbica ‐ in³',
 
-    'option-decimal-units-mdl-mdl': 'mandalas',
-    'option-decimal-units-mdl-tau_rad': 'τ radianos',
-    'option-decimal-units-mdl-pi_rad': 'π radianos',
-    'option-decimal-units-mdl-rad': 'radianos',
-    'option-decimal-units-mdl-deg': 'graus',
-    'option-decimal-units-mdl-arcmin': 'minutos',
-    'option-decimal-units-mdl-arcsec': 'segundos',
-    'option-decimal-units-mdl-turn': 'voltas',
-    'option-decimal-units-mdl-gon': 'gradianos (gon)',
+    'translation-display-US-fl-dr': 'fl dr EUA',
+    'translation-display-US-tsp': 'cc EUA',
+    'translation-display-US-tbsp': 'cs EUA',
+    'translation-display-US-fl-oz': 'fl oz EUA',
+    'translation-display-US-cup': 'xíc EUA',
+    'translation-display-US-pt': 'pt EUA',
+    'translation-display-US-qt': 'qt EUA',
+    'translation-display-US-gal': 'gal EUA',
+    'translation-display-US-pt-dry': 'pt (seco)',
+    'translation-display-US-qt-dry': 'qt (seco)',
+    'translation-display-US-gal-dry': 'gal (seco)',
+    'translation-display-US-pk-dry': 'pk (seco)',
+    'translation-display-US-bu-dry': 'bu (seco)',
+
+    'translation-display-imp-fl-dr': 'fl dr imp.',
+    'translation-display-imp-fl-oz': 'fl oz imp.',
+    'translation-display-imp-pt': 'pt imp.',
+    'translation-display-imp-qt': 'qt imp.',
+    'translation-display-imp-gal': 'gal imp.',
+
+    'option-decimal-units-ayt-imp-fl-dr': 'dracma ‐ fl dr imp.',
+    'option-decimal-units-ayt-imp-fl-oz': 'onça ‐ fl oz imp.',
+    'option-decimal-units-ayt-imp-pt': 'pinta ‐ pt imp.',
+    'option-decimal-units-ayt-imp-qt': 'quarto ‐ imp. qt',
+    'option-decimal-units-ayt-imp-gal': 'galão ‐ gal imp.',
+
+    'option-decimal-units-ayt-us-fl-dr': 'dracma ‐ fl dr EUA',
+    'option-decimal-units-ayt-us-tsp': 'colher de chá ‐ cc EUA',
+    'option-decimal-units-ayt-us-tbsp': 'colher de sopa ‐ cs EUA',
+    'option-decimal-units-ayt-us-fl-oz': 'onça ‐ fl oz EUA',
+    'option-decimal-units-ayt-us-cup': 'xícara ‐ xíc EUA',
+    'option-decimal-units-ayt-us-pt': 'pinta ‐ pt EUA',
+    'option-decimal-units-ayt-us-qt': 'quarto ‐ qt EUA',
+    'option-decimal-units-ayt-us-gal': 'galão ‐ gal EUA',
+
+    'option-decimal-units-ayt-us-pt-dry': 'pinta ‐ pt (seco) EUA',
+    'option-decimal-units-ayt-us-qt-dry': 'quarto ‐ qt (seco) EUA',
+    'option-decimal-units-ayt-us-gal-dry': 'galão ‐ gal (seco) EUA',
+    'option-decimal-units-ayt-us-pk-dry': 'peque ‐ pk (seco) EUA',
+    'option-decimal-units-ayt-us-bu-dry': 'buxel ‐ bu (seco) EUA',
+
+    'option-units-veg-vega': 'vega – veg',
+    'option-decimal-units-veg-mh': 'metros por hora ‐ m/h',
+    'option-decimal-units-veg-ms': 'metros por segundo ‐ m/s',
+    'option-decimal-units-veg-mph': 'milhas por hora ‐ mph',
+    'option-decimal-units-veg-fps': 'pés por segundo ‐ fps',
+    'option-decimal-units-veg-kn': 'nós ‐ kn',
+    'option-decimal-units-veg-c': 'velocidade da luz ‐ c',
+
 };
 
 export { sezimal_calculator_pt_text };

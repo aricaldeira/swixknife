@@ -1,0 +1,47 @@
+<td colspan="2" style="text-align: center;">
+    <br/>
+    <label id="label-prefix-decimal" for="calculator-prefix-decimal">Prefix</label><br/>
+    <label id="label-prefix-decimal-binary" for="calculator-prefix-decimal" hidden>Decimal/Binary Prefix</label>
+    <select id="calculator-prefix-decimal" style="font-size: 10pt;" onchange="set_decimal_prefix(this)">
+        <optgroup name="optgroup-units-generic-s-i" label="S.I.">
+            <option value="Q"  name="option-decimal-prefix-quetta">Q – quetta – 10³⁰</option>
+            <option value="R"  name="option-decimal-prefix-ronna" >R – ronna – 10²⁷</option>
+            <option value="Y"  name="option-decimal-prefix-yotta" >Y – yotta – 10²⁴</option>
+            <option value="Z"  name="option-decimal-prefix-zetta" >Z – zetta – 10²¹</option>
+            <option value="E"  name="option-decimal-prefix-exa"   >E – exa – 10¹⁸</option>
+            <option value="P"  name="option-decimal-prefix-peta"  >P – peta – 10¹⁵</option>
+            <option value="T"  name="option-decimal-prefix-tera"  >T – tera – 10¹²</option>
+            <option value="G"  name="option-decimal-prefix-giga"  >G – giga – 10⁹</option>
+            <option value="M"  name="option-decimal-prefix-mega"  >M – mega – 10⁶</option>
+            <option value="k"  name="option-decimal-prefix-kilo"  >k – kilo – 10³</option>
+            <option value="h"  name="option-decimal-prefix-hecto" >h – hecto – 10²</option>
+            <option value="da" name="option-decimal-prefix-deca"  >da – deka – 10¹</option>
+            <option value="-"  name="option-decimal-prefix-none" selected>     ―</option>
+            <option value="d"  name="option-decimal-prefix-deci"  >d – deci – 10⁻¹</option>
+            <option value="c"  name="option-decimal-prefix-centi" >c – centi – 10⁻²</option>
+            <option value="m"  name="option-decimal-prefix-milli" >m – milli – 10⁻³</option>
+            <option value="µ"  name="option-decimal-prefix-micro" >µ – micro – 10⁻⁶</option>
+            <option value="n"  name="option-decimal-prefix-nano"  >n – nano – 10⁻⁹</option>
+            <option value="p"  name="option-decimal-prefix-pico"  >p – pico – 10⁻¹²</option>
+            <option value="f"  name="option-decimal-prefix-femto" >f – femto – 10⁻¹⁵</option>
+            <option value="a"  name="option-decimal-prefix-atto"  >a – atto – 10⁻¹⁸</option>
+            <option value="z"  name="option-decimal-prefix-zepto" >z – zepto – 10⁻²¹</option>
+            <option value="y"  name="option-decimal-prefix-yocto" >y – yocto – 10⁻²⁴</option>
+            <option value="r"  name="option-decimal-prefix-ronto" >r – ronto – 10⁻²⁷</option>
+            <option value="q"  name="option-decimal-prefix-quecto">q – quecto – 10⁻³⁰</option>
+        </optgroup>
+        <optgroup name="optgroup-units-generic-binary" label="Binary" hidden>
+            <option value="Yi"  name="option-binary-prefix-yobi">Yi – yobi – 2⁸⁰</option>
+            <option value="Zi"  name="option-binary-prefix-zebi">Zi – zebi – 2⁷⁰</option>
+            <option value="Ei"  name="option-binary-prefix-exbi">Ei – exbi – 2⁶⁰</option>
+            <option value="Pi"  name="option-binary-prefix-pebi">Ei – pebi – 2⁵⁰</option>
+            <option value="Ti"  name="option-binary-prefix-tebi">Ti – tebi – 2⁴⁰</option>
+            <option value="Gi"  name="option-binary-prefix-gibi">Gi – gibi – 2³⁰</option>
+            <option value="Mi"  name="option-binary-prefix-mebi">Mi – mebi – 2²⁰</option>
+            <option value="Ki"  name="option-binary-prefix-kibi">Ki – kibi – 2¹⁰</option>
+            <option value="-"   name="option-binary-prefix-none">     ―</option>
+        </optgroup>
+    </select>
+    <br/>
+    <label id="label-unit-decimal" for="calculator-unit-decimal">Decimal Unit</label>
+</td>

@@ -1,6 +1,15 @@
 
-from flask import send_file, Response, request, jsonify
+import pathlib
+
+TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
+CALCULATOR_TEMPLATE_PATH = TEMPLATE_PATH.joinpath('calculator')
+
+
+import os
 import json
+from io import StringIO
+
+from flask import send_file, Response, request, jsonify
 from swixknife.localization import sezimal_locale
 from swixknife.calculator import SezimalCalculator
 from swixknife import Sezimal
@@ -26,20 +35,23 @@ UNIT_SIMPLIFIED_SYMBOL = {
     'p/Cx': '󱺅 (p/Cx)',
     'p/Px': '󱺆 (p/Px)',
     'p/Xx': '󱺇 (p/Xx)',
-    'eprt': '\N{NNBSP}eprt (󱹰)',
-    'dprt': '\N{NNBSP}dprt (󱹱)',
-    'tprt': '\N{NNBSP}tprt (󱹲)',
-    'cprt': '\N{NNBSP}cprt (󱹳)',
-    'pprt': '\N{NNBSP}pprt (󱹴)',
-    'xprt': '\N{NNBSP}xprt (󱹵)',
-    'xeprt': '\N{NNBSP}xeprt (󱹶)',
-    'xdprt': '\N{NNBSP}xdprt (󱹷)',
+    'espn': '\N{NNBSP}espn (󱹰)',
+    'dspn': '\N{NNBSP}dspn (󱹱)',
+    'tspn': '\N{NNBSP}tspn (󱹲)',
+    'cspn': '\N{NNBSP}cspn (󱹳)',
+    'pspn': '\N{NNBSP}pspn (󱹴)',
+    'xspn': '\N{NNBSP}xspn (󱹵)',
+    'xespn': '\N{NNBSP}xespn (󱹶)',
+    'xdspn': '\N{NNBSP}xdspn (󱹷)',
 }
 
 
 @app.route('/calculator')
 def api_calculator() -> Response:
-    return send_file('template/calculator.html', mimetype='text/html', as_attachment=False)
+    text = open(TEMPLATE_PATH.joinpath('calculator.html'), 'r').read()
+    locals().update(_get_calculator_templates())
+    text = eval(f'f"""{text}"""')
+    return Response(text, mimetype='text/html')
 
 
 @app.route('/static/css/calculator.css')
@@ -297,7 +309,11 @@ def api_calculator_process() -> dict:
             calculator.expression = dados['expression'] + dados['value']
 
     display = calculator.display
-    niftimal_display = calculator.niftimal_display
+
+    if dados['niftimal'] == '-':
+        niftimal_display = ''
+    else:
+        niftimal_display = calculator.niftimal_display
 
     if calculator.sezimal_digits:
         display = display.replace(calculator.locale.SEZIMAL_SEPARATOR, '󱹮')
@@ -316,9 +332,18 @@ def api_calculator_process() -> dict:
 
     decimal_display = calculator.decimal_display.replace(',,', '„').replace('..', '‥')
 
-    display = display.replace('ₑ', '<i>ₑ</i>')
-    niftimal_display = niftimal_display.replace('ₑ', '<i>ₑ</i>')
-    decimal_display = decimal_display.replace('ₑ', '<i>ₑ</i>')
+    display = display.replace('ₑ', '<sub class="constant">𝑒</sub>')
+    niftimal_display = niftimal_display.replace('ₑ', '<sub class="constant">𝑒</sub>')
+    decimal_display = decimal_display.replace('ₑ', '<sub class="constant">𝑒</sub>')
+
+    display = display.replace('e', '<span class="constant">𝑒</span>')
+    niftimal_display = niftimal_display.replace('e', '<span class="constant">𝑒</span>')
+    decimal_display = decimal_display.replace('e', '<span class="constant">𝑒</span>')
+
+    for c in ('τ', 'π', 'φ'):
+        display = display.replace(c, f'<span class="constant">{c}</span>')
+        niftimal_display = niftimal_display.replace(c, f'<span class="constant">{c}</span>')
+        decimal_display = decimal_display.replace(c, f'<span class="constant">{c}</span>')
 
     #
     # Chrome doesn’t play nice with the fraction slash,
@@ -482,3 +507,15 @@ def _fraction_to_mathml(display):
                 display += subparts_parentheses[0] + '</mn></mfrac></math>' + ' '.join(subparts_parentheses[1:])
 
     return display
+
+
+def _get_calculator_templates() -> dict:
+    templates = {}
+
+    for file_name in os.listdir(CALCULATOR_TEMPLATE_PATH):
+        if '.html' not in file_name:
+            continue
+
+        templates[file_name.replace('.html', '').replace('-', '_')] = open(CALCULATOR_TEMPLATE_PATH.joinpath(file_name), 'r').read()
+
+    return templates

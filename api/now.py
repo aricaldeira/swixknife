@@ -242,10 +242,7 @@ def now_manifest() -> str:
     return text
 
 
-@app.route('/now/now-icon.svg')
-def now_icon() -> str:
-    text = open('static/img/now-icon.svg').read()
-
+def _icon(text: str, sezimal_digits: bool = False) -> str:
     locale = sezimal_locale(browser_preferred_locale())
 
     date_time = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
@@ -254,10 +251,16 @@ def now_icon() -> str:
     posha_angle = round(date_time.posha / 100 * 1400, 0)
     agrima_angle = round((date_time.agrima + (date_time.anuga / 100) + (date_time.boda / 10_000)) / 100 * 1400, 0)
 
-    date_parts = date_time.format(
-        locale.DATE_FORMAT.replace('#d', '#-d').replace('#?d', '#?-d').replace('#m', '#M').replace('#?m', '#M'),
-        locale,
-    ).split(locale.DATE_SEPARATOR)
+    if sezimal_digits:
+        date_parts = date_time.format(
+            locale.DATE_FORMAT.replace('#d', '#-d').replace('#?d', '#-d').replace('#m', '#M').replace('#?m', '#M').replace('#?Y', '#Y').replace('#', '#!'),
+            locale,
+        ).split(locale.DATE_SEPARATOR)
+    else:
+        date_parts = date_time.format(
+            locale.DATE_FORMAT.replace('#d', '#-d').replace('#?d', '#?-d').replace('#m', '#M').replace('#?m', '#M'),
+            locale,
+        ).split(locale.DATE_SEPARATOR)
 
     text = text.replace(
         'id="date-1">213 212',
@@ -284,49 +287,28 @@ def now_icon() -> str:
         f'id="face_agrima" transform="rotate({agrima_angle.decimal + 10},216,216)"',
     )
 
+    return text
+
+
+@app.route('/now/now-icon.svg')
+def now_icon() -> str:
+    text = open('static/img/now-icon.svg').read()
+    return Response(_icon(text), mimetype='image/svg+xml')
+
+
+@app.route('/now/now-icon-mono.svg')
+def now_icon_mono() -> str:
+    text = open('static/img/now-icon-mono.svg').read()
     return Response(text, mimetype='image/svg+xml')
 
 
 @app.route('/now/now-icon-sd.svg')
 def now_icon_sd() -> str:
     text = open('static/img/now-icon-sd.svg').read()
+    return Response(_icon(text, True), mimetype='image/svg+xml')
 
-    locale = sezimal_locale(browser_preferred_locale())
 
-    date_time = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
-
-    uta_angle = round(date_time.uta / 100 * 1400, 0)
-    posha_angle = round(date_time.posha / 100 * 1400, 0)
-    agrima_angle = round((date_time.agrima + (date_time.anuga / 100) + (date_time.boda / 10_000)) / 100 * 1400, 0)
-
-    date_parts = date_time.format(
-        locale.DATE_FORMAT.replace('#d', '#-d').replace('#?d', '#-d').replace('#m', '#M').replace('#?m', '#M').replace('#?Y', '#Y').replace('#', '#!'),
-        locale,
-    ).split(locale.DATE_SEPARATOR)
-
-    text = text.replace(
-        'id="date-1">213 212',
-        'id="date-1">' + date_parts[0],
-    )
-    text = text.replace(
-        'id="date-2">11',
-        'id="date-2">' + date_parts[1],
-    )
-    text = text.replace(
-        'id="date-3">01',
-        'id="date-3">' + date_parts[2],
-    )
-    text = text.replace(
-        'id="face_uta" transform="rotate(300,216,216)"',
-        f'id="face_uta" transform="rotate({uta_angle.decimal},216,216)"',
-    )
-    text = text.replace(
-        'id="face_posha" transform="rotate(60,216,216)"',
-        f'id="face_posha" transform="rotate({posha_angle.decimal},216,216)"',
-    )
-    text = text.replace(
-        'id="face_agrima" transform="rotate(150,216,216)"',
-        f'id="face_agrima" transform="rotate({agrima_angle.decimal + 10},216,216)"',
-    )
-
+@app.route('/now/now-icon-sd-mono.svg')
+def now_icon_sd_mono() -> str:
+    text = open('static/img/now-icon-sd-mono.svg').read()
     return Response(text, mimetype='image/svg+xml')

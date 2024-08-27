@@ -1,0 +1,105 @@
+<td style="text-align: center;">
+    <br/>
+    <label id="label-prefix-sezimal" for="calculator-prefix-sezimal">Sezimal Prefix</label><br/>
+    <select id="calculator-prefix-sezimal" style="font-size: 10pt;" onchange="set_sezimal_prefix(this)">
+        <option value="NDX" name="option-sezimal-prefix-ndxm" hidden>NDX – nidishama  – 10¹²⁰</option>
+        <option value="NXP" name="option-sezimal-prefix-nxpm" hidden>NXP – nishapama  – 10¹¹⁵</option>
+        <option value="NXC" name="option-sezimal-prefix-nxcm" hidden>NXC – nishacharma – 10¹¹⁴</option>
+        <option value="NXT" name="option-sezimal-prefix-nxtm" hidden>NXT – nishatrima – 10¹¹³</option>
+        <option value="NXD" name="option-sezimal-prefix-nxdm" hidden>NXD – nishadima  – 10¹¹²</option>
+        <option value="NXE" name="option-sezimal-prefix-nxem" hidden>NXE – nishaekama – 10¹¹¹</option>
+        <option value="NX"  name="option-sezimal-prefix-nxm" >NX – nishama – 10¹¹⁰</option>
+        <option value="NP"  name="option-sezimal-prefix-npm" >NP – nipama – 10¹⁰⁵</option>
+        <option value="NC"  name="option-sezimal-prefix-ncm" >NC – nicharma  – 10¹⁰⁴</option>
+        <option value="NT"  name="option-sezimal-prefix-ntm" >NT – nitrima – 10¹⁰³</option>
+        <option value="ND"  name="option-sezimal-prefix-ndm" >ND – nidima – 10¹⁰²</option>
+        <option value="NE"  name="option-sezimal-prefix-nem" >NE – niekama – 10¹⁰¹</option>
+        <option value="N"   name="option-sezimal-prefix-nm"  >N – nima – 10¹⁰⁰</option>
+        <option value="PP"  name="option-sezimal-prefix-ppm" >PP – panpama – 10⁵⁵</option>
+        <option value="PC"  name="option-sezimal-prefix-pcm" >PC – pancharma – 10⁵⁴</option>
+        <option value="PT"  name="option-sezimal-prefix-ptm" >PT – pantrima  – 10⁵³</option>
+        <option value="PD"  name="option-sezimal-prefix-pdm" >PD – pandima – 10⁵²</option>
+        <option value="PE"  name="option-sezimal-prefix-pem" >PE – panekama  – 10⁵¹</option>
+        <option value="PX"  name="option-sezimal-prefix-pxm" >PX – panshama  – 10⁵⁰</option>
+        <option value="CP"  name="option-sezimal-prefix-cpm" >CP – charpama  – 10⁴⁵</option>
+        <option value="CC"  name="option-sezimal-prefix-ccm" >CC – charcharma  – 10⁴⁴</option>
+        <option value="CT"  name="option-sezimal-prefix-ctm" >CT – chartrima – 10⁴³</option>
+        <option value="CD"  name="option-sezimal-prefix-cdm" >CD – chardima  – 10⁴²</option>
+        <option value="CE"  name="option-sezimal-prefix-cem" >CE – charekama – 10⁴¹</option>
+        <option value="CX"  name="option-sezimal-prefix-cxm" >CX – charshama – 10⁴⁰</option>
+        <option value="TP"  name="option-sezimal-prefix-tpm" >TP – tripama – 10³⁵</option>
+        <option value="TC"  name="option-sezimal-prefix-tcm" >TC – tricharma – 10³⁴</option>
+        <option value="TT"  name="option-sezimal-prefix-ttm" >TT – tritrima  – 10³³</option>
+        <option value="TD"  name="option-sezimal-prefix-tdm" >TD – tridima – 10³²</option>
+        <option value="TE"  name="option-sezimal-prefix-tem" >TE – triekama  – 10³¹</option>
+        <option value="TX"  name="option-sezimal-prefix-txm" >TX – trishama  – 10³⁰</option>
+        <option value="DP"  name="option-sezimal-prefix-dpm" >DP – dipama – 10²⁵</option>
+        <option value="DC"  name="option-sezimal-prefix-dcm" >DC – dicharma  – 10²⁴</option>
+        <option value="DT"  name="option-sezimal-prefix-dtm" >DT – ditrima – 10²³</option>
+        <option value="DD"  name="option-sezimal-prefix-ddm" >DD – didima – 10²²</option>
+        <option value="DE"  name="option-sezimal-prefix-dem" >DE – diekama – 10²¹</option>
+        <option value="DX"  name="option-sezimal-prefix-dxm" >DX – dishama – 10²⁰</option>
+        <option value="XP"  name="option-sezimal-prefix-xpm" >XP – shapama – 10¹⁵</option>
+        <option value="XC"  name="option-sezimal-prefix-xcm" >XC – shacharma – 10¹⁴</option>
+        <option value="XT"  name="option-sezimal-prefix-xtm" >XT – shatrima  – 10¹³</option>
+        <option value="XD"  name="option-sezimal-prefix-xdm" >XD – shadima – 10¹²</option>
+        <option value="XE"  name="option-sezimal-prefix-xem" >XE – shaekama  – 10¹¹</option>
+        <option value="X"   name="option-sezimal-prefix-xm"  >X – shama – 10¹⁰</option>
+        <option value="P"   name="option-sezimal-prefix-pm"  >P – pama – 10⁵</option>
+        <option value="C"   name="option-sezimal-prefix-cm"  >C – charma – 10⁴</option>
+        <option value="T"   name="option-sezimal-prefix-tm"  >T – trima – 10³</option>
+        <option value="D"   name="option-sezimal-prefix-dm"  >D – dima – 10²</option>
+        <option value="E"   name="option-sezimal-prefix-em"  >E – ekama – 10¹</option>
+        <option value="-"   name="option-sezimal-prefix-none" selected>     ―</option>
+        <option value="e"   name="option-sezimal-prefix-ei"  >e – ekati – 10⁻¹</option>
+        <option value="d"   name="option-sezimal-prefix-di"  >d – diti – 10⁻²</option>
+        <option value="t"   name="option-sezimal-prefix-ti"  >t – triti – 10⁻³</option>
+        <option value="c"   name="option-sezimal-prefix-ci"  >c – charti – 10⁻⁴</option>
+        <option value="p"   name="option-sezimal-prefix-pi"  >p – panti – 10⁻⁵</option>
+        <option value="x"   name="option-sezimal-prefix-xi"  >x – shati – 10⁻¹⁰</option>
+        <option value="xe"  name="option-sezimal-prefix-xei" >xe – shaekati – 10⁻¹¹</option>
+        <option value="xd"  name="option-sezimal-prefix-xdi" >xd – shaditi – 10⁻¹²</option>
+        <option value="xt"  name="option-sezimal-prefix-xti" >xt – shatriti – 10⁻¹³</option>
+        <option value="xc"  name="option-sezimal-prefix-xci" >xc – shacharti – 10⁻¹⁴</option>
+        <option value="xp"  name="option-sezimal-prefix-xpi" >xp – shapanti – 10⁻¹⁵</option>
+        <option value="dx"  name="option-sezimal-prefix-dxi" >dx – dishati – 10⁻²⁰</option>
+        <option value="de"  name="option-sezimal-prefix-dei" >de – diekati – 10⁻²¹</option>
+        <option value="dd"  name="option-sezimal-prefix-ddi" >dd – diditi – 10⁻²²</option>
+        <option value="dt"  name="option-sezimal-prefix-dti" >dt – ditriti – 10⁻²³</option>
+        <option value="dc"  name="option-sezimal-prefix-dci" >dc – dicharti – 10⁻²⁴</option>
+        <option value="dp"  name="option-sezimal-prefix-dpi" >dp – dipanti – 10⁻²⁵</option>
+        <option value="tx"  name="option-sezimal-prefix-txi" >tx – trishati – 10⁻³⁰</option>
+        <option value="te"  name="option-sezimal-prefix-tei" >te – triekati – 10⁻³¹</option>
+        <option value="td"  name="option-sezimal-prefix-tdi" >td – triditi – 10⁻³²</option>
+        <option value="tt"  name="option-sezimal-prefix-tti" >tt – tritriti – 10⁻³³</option>
+        <option value="tc"  name="option-sezimal-prefix-tci" >tc – tricharti – 10⁻³⁴</option>
+        <option value="tp"  name="option-sezimal-prefix-tpi" >tp – tripanti – 10⁻³⁵</option>
+        <option value="cx"  name="option-sezimal-prefix-cxi" >cx – charshati – 10⁻⁴⁰</option>
+        <option value="ce"  name="option-sezimal-prefix-cei" >ce – charekati – 10⁻⁴¹</option>
+        <option value="cd"  name="option-sezimal-prefix-cdi" >cd – charditi – 10⁻⁴²</option>
+        <option value="ct"  name="option-sezimal-prefix-cti" >ct – chartriti – 10⁻⁴³</option>
+        <option value="cc"  name="option-sezimal-prefix-cci" >cc – charcharti – 10⁻⁴⁴</option>
+        <option value="cp"  name="option-sezimal-prefix-cpi" >cp – charpanti – 10⁻⁴⁵</option>
+        <option value="px"  name="option-sezimal-prefix-pxi" >px – panshati – 10⁻⁵⁰</option>
+        <option value="pe"  name="option-sezimal-prefix-pei" >pe – panekati – 10⁻⁵¹</option>
+        <option value="pd"  name="option-sezimal-prefix-pdi" >pd – panditi – 10⁻⁵²</option>
+        <option value="pt"  name="option-sezimal-prefix-pti" >pt – pantriti – 10⁻⁵³</option>
+        <option value="pc"  name="option-sezimal-prefix-pci" >pc – pancharti – 10⁻⁵⁴</option>
+        <option value="pp"  name="option-sezimal-prefix-ppi" >pp – panpanti – 10⁻⁵⁵</option>
+        <option value="n"   name="option-sezimal-prefix-ni"  >n – niti – 10⁻¹⁰⁰</option>
+        <option value="ne"  name="option-sezimal-prefix-nei" >ne – niekati – 10⁻¹⁰¹</option>
+        <option value="nd"  name="option-sezimal-prefix-ndi" >nd – niditi – 10⁻¹⁰²</option>
+        <option value="nt"  name="option-sezimal-prefix-nti" >nt – nitriti – 10⁻¹⁰³</option>
+        <option value="nc"  name="option-sezimal-prefix-nci" >nc – nicharti – 10⁻¹⁰⁴</option>
+        <option value="np"  name="option-sezimal-prefix-npi" >np – nipanti – 10⁻¹⁰⁵</option>
+        <option value="nx"  name="option-sezimal-prefix-nxi" >nx – nishati – 10⁻¹¹⁰</option>
+        <option value="nxe" name="option-sezimal-prefix-nxei" hidden>nxe – nishaekati – 10⁻¹¹¹</option>
+        <option value="nxd" name="option-sezimal-prefix-nxdi" hidden>nxd – nishaditi – 10⁻¹¹²</option>
+        <option value="nxt" name="option-sezimal-prefix-nxti" hidden>nxt – nishatriti – 10⁻¹¹³</option>
+        <option value="nxc" name="option-sezimal-prefix-nxci" hidden>nxc – nishacharti – 10⁻¹¹⁴</option>
+        <option value="nxp" name="option-sezimal-prefix-nxpi" hidden>nxp – nishapanti – 10⁻¹¹⁵</option>
+        <option value="ndx" name="option-sezimal-prefix-ndxi" hidden>ndx – nidishati – 10⁻¹²⁰</option>
+    </select>
+    <br/>
+    <label id="label-unit-sezimal" for="calculator-unit-sezimal">Sezimal Unit</label>
+</td>

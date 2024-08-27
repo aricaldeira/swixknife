@@ -10,11 +10,19 @@
     "prefer_related_applications": false,
     "shortcuts": [],
     "categories": ["education", "math", "calculator", "sezimal", "base six", "senary base", "number base conversion", "decimal conversion", "units of measure", "sanskrit", "world building", "constructed script", "https://en.wikipedia.org/wiki/Senary", "https://www.seximal.net", "https://www.youtube.com/watch?v=qID2B4MK7Y0"],
-    "icons": [{
-        "src": "/static/img/calculator-icon.svg",
-        "sizes": "any",
-        "type": "image/svg+xml",
-        "purpose": "any"
-    }],
+    "icons": [
+        {
+          "src": "https://midia.tauga.online/img/sezimal/calculator-icon-mono.svg",
+          "sizes": "any",
+          "type": "image/svg+xml",
+          "purpose": "monochrome"
+        },
+        {
+          "src": "https://midia.tauga.online/img/sezimal/calculator-icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml",
+          "purpose": "maskable"
+        }
+    ],
     "author": "Ari Caldeira"
 }

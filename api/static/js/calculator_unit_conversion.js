@@ -10,6 +10,7 @@ const prefixed_units = [
     'Bpm',
     'Bps',
     'C',
+    'cd',
     'Da',
     'F',
     'deg',
@@ -21,6 +22,7 @@ const prefixed_units = [
     'J/K/m3',
     'K',
     'L',
+    'mol',
     'N',
     'Pa',
     'S',
@@ -134,7 +136,7 @@ function set_unit_type() {
     } else if (unit_type == 'xkt') {
         set_unit_type_sezimal_decimal(unit_type, 'D', 'xkt', '-', 'W');
     } else if (unit_type == 'gtk') {
-        set_unit_type_sezimal_decimal(unit_type, 'X', 'gtk', '-', 'K');
+        set_unit_type_sezimal_decimal(unit_type, 'P', 'gtk', '-', 'K');
     } else if (unit_type == 'tap') {
         set_unit_type_sezimal_decimal(unit_type, '', 'tap', '', '°C');
     } else if (unit_type == 'agn') {
@@ -146,7 +148,7 @@ function set_unit_type() {
     } else if (unit_type == 'vdt') {
         set_unit_type_sezimal_decimal(unit_type, 'X', 'vdt', 'm', 'Ah');
     } else if (unit_type == 'dar') {
-        set_unit_type_sezimal_decimal(unit_type, 'T', 'dar', '-', 'A');
+        set_unit_type_sezimal_decimal(unit_type, '-', 'dar', '-', 'A');
     } else if (unit_type == 'atr') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'atr', '-', 'V');
     } else if (unit_type == 'vrd') {
@@ -165,6 +167,10 @@ function set_unit_type() {
         set_unit_type_sezimal_decimal(unit_type, 'd', 'mdl', '-', 'pi_rad');
     } else if (unit_type == 'gol') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'gol', '-', 'sr');
+    } else if (unit_type == 'pkx') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'pkx', '-', 'cd');
+    } else if (unit_type == 'bht') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'bht', '-', 'mol');
     } else if (unit_type == 'spn') {
         set_unit_type_sezimal_decimal(unit_type, 'd', 'spn', '-', '%');
     } else if (unit_type == 'atk') {
@@ -225,20 +231,16 @@ function set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, 
     hide_all_units();
 
     if (unit_type == 'no-conversion') {
-        document.getElementById('unit-units-explanation').hidden = false;
         document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else if (unit_type == 'units') {
-        document.getElementById('unit-units-explanation').hidden = false;
         document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else if (unit_type == 'prefixes') {
-        document.getElementById('unit-prefixes-explanation').hidden = false;
         document.getElementById('toggle_units').innerHTML = '[ ⬢ ]';
     } else {
         document.getElementById('units-title').hidden = false;
 
         show_decimal_binary_prefix(sezimal_unit, decimal_unit);
 
-        document.getElementById(`unit-${unit_type}-explanation`).hidden = false;
         document.getElementById(`unit-${unit_type}`).hidden = false;
         document.getElementById('calculator-prefix-sezimal').value = sezimal_prefix;
         document.getElementById(`calculator-sezimal-unit-${unit_type}`).value = sezimal_unit;
@@ -296,72 +298,40 @@ function show_decimal_binary_prefix(sezimal_unit, decimal_unit) {
 };
 
 function hide_all_units() {
-    document.getElementById('unit-units-explanation').hidden = true;
-    document.getElementById('unit-prefixes-explanation').hidden = true;
     document.getElementById('units-title').hidden = true;
 
-    document.getElementById('unit-ang-explanation').hidden = true;
     document.getElementById('unit-ang').hidden = true;
-    document.getElementById('unit-avt-explanation').hidden = true;
     document.getElementById('unit-avt').hidden = true;
-    document.getElementById('unit-pad-explanation').hidden = true;
     document.getElementById('unit-pad').hidden = true;
-    document.getElementById('unit-ktr-explanation').hidden = true;
     document.getElementById('unit-ktr').hidden = true;
-    document.getElementById('unit-ayt-explanation').hidden = true;
     document.getElementById('unit-ayt').hidden = true;
-    document.getElementById('unit-drv-explanation').hidden = true;
     document.getElementById('unit-drv').hidden = true;
-    document.getElementById('unit-gnt-explanation').hidden = true;
     document.getElementById('unit-gnt').hidden = true;
-    document.getElementById('unit-veg-explanation').hidden = true;
     document.getElementById('unit-veg').hidden = true;
-    document.getElementById('unit-tvr-explanation').hidden = true;
     document.getElementById('unit-tvr').hidden = true;
-    document.getElementById('unit-bar-explanation').hidden = true;
     document.getElementById('unit-bar').hidden = true;
-    document.getElementById('unit-pdn-explanation').hidden = true;
     document.getElementById('unit-pdn').hidden = true;
-    document.getElementById('unit-vrc-explanation').hidden = true;
     document.getElementById('unit-vrc').hidden = true;
-    document.getElementById('unit-xkt-explanation').hidden = true;
     document.getElementById('unit-xkt').hidden = true;
-    document.getElementById('unit-gtk-explanation').hidden = true;
     document.getElementById('unit-gtk').hidden = true;
-    document.getElementById('unit-tap-explanation').hidden = true;
     document.getElementById('unit-tap').hidden = true;
-    document.getElementById('unit-agn-explanation').hidden = true;
     document.getElementById('unit-agn').hidden = true;
-    document.getElementById('unit-idn-explanation').hidden = true;
     document.getElementById('unit-idn').hidden = true;
-    document.getElementById('unit-tln-explanation').hidden = true;
     document.getElementById('unit-tln').hidden = true;
-    document.getElementById('unit-vdt-explanation').hidden = true;
     document.getElementById('unit-vdt').hidden = true;
-    document.getElementById('unit-dar-explanation').hidden = true;
     document.getElementById('unit-dar').hidden = true;
-    document.getElementById('unit-atr-explanation').hidden = true;
     document.getElementById('unit-atr').hidden = true;
-    document.getElementById('unit-vrd-explanation').hidden = true;
     document.getElementById('unit-vrd').hidden = true;
-    document.getElementById('unit-vht-explanation').hidden = true;
     document.getElementById('unit-vht').hidden = true;
-    document.getElementById('unit-upp-explanation').hidden = true;
     document.getElementById('unit-upp').hidden = true;
-    document.getElementById('unit-dry-explanation').hidden = true;
     document.getElementById('unit-dry').hidden = true;
-    document.getElementById('unit-pvh-explanation').hidden = true;
     document.getElementById('unit-pvh').hidden = true;
-    document.getElementById('unit-vtr-explanation').hidden = true;
     document.getElementById('unit-vtr').hidden = true;
-    document.getElementById('unit-mdl-explanation').hidden = true;
     document.getElementById('unit-mdl').hidden = true;
-    document.getElementById('unit-gol-explanation').hidden = true;
     document.getElementById('unit-gol').hidden = true;
-    document.getElementById('unit-spn-explanation').hidden = true;
+    document.getElementById('unit-pkx').hidden = true;
+    document.getElementById('unit-bht').hidden = true;
     document.getElementById('unit-spn').hidden = true;
-    document.getElementById('unit-atk-explanation').hidden = true;
     document.getElementById('unit-atk').hidden = true;
-    document.getElementById('unit-pvn-explanation').hidden = true;
     document.getElementById('unit-pvn').hidden = true;
 };

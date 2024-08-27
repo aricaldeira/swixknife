@@ -7,10 +7,10 @@ const sezimal_calculator_en_us_text = {
 
     'option-decimal-prefix-deca': 'da – deca – 10¹',
 
-    'option-decimal-units-pad-meter': 'meter – m',
-    'option-decimal-units-ktr-sq-meter': 'sq. meter – m²',
-    'option-decimal-units-ayt-cb-meter': 'cb. meter – m³',
-    'option-decimal-units-ayt-liter': 'liter – L',
+    'option-decimal-units-pad-metre': 'meter – m',
+    'option-decimal-units-ktr-sq-metre': 'sq. meter – m²',
+    'option-decimal-units-ayt-cb-metre': 'cb. meter – m³',
+    'option-decimal-units-ayt-litre': 'liter – L',
 
     'option-decimal-units-drv-US-qr': 'quarter ‐ qr',
     'option-decimal-units-drv-US-cwt': 'hundredweight ‐ cwt',
@@ -58,6 +58,10 @@ const sezimal_calculator_en_us_text = {
     'translation-display-imp-pt': 'imp. pt',
     'translation-display-imp-qt': 'imp. qt',
     'translation-display-imp-gal': 'imp. gal',
+
+    'option-decimal-units-veg-mh': 'meters per hour ‐ m/h',
+    'option-decimal-units-veg-ms': 'meters per second ‐ m/s',
+
 };
 
 export { sezimal_calculator_en_us_text };

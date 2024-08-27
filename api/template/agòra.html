@@ -10,46 +10,51 @@
         <link rel="manifest" href="/agòra/manifest.webmanifest" crossorigin="use-credentials" />
         <link rel="icon" type="image/svg+xml" href="/agòra/now-icon.svg" />
         <link rel="stylesheet" type="text/css" href="/static/css/font-andika.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/font-iosevka-qp.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/font-noto.css" />
+        <link rel="stylesheet" type="text/css" href="https://midia.tauga.online/fonts/iosevka/font-iosevka-qp.css" />
+        <link rel="stylesheet" type="text/css" href="https://midia.tauga.online/fonts/noto/font-noto.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/now.css" />
     </head>
     <body>
         <span {'dir="rtl"' if locale.RTL else ""}>
             {date_time.format('#W', locale)}<br/>
-            <table id="landscape_content" width="100%" hidden>
+            <table id="landscape_content" width="100%">
                 <tbody>
                     <tr>
                         <td colspan="3">
-                            <span id="sezimal_time_ls" class="sezimal_time_landscape" data-tooltip=" 99:99:99 " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(time_format, locale)}</span>
+                            <span id="sezimal_time_ls" class="sezimal_time_landscape sezimal_digits" data-tooltip=" 99:99:99 " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(time_format, locale)}</span><br/>
+                            <span id="sezimal_time_spellout_uta_ls"    class="spellout" style="text-align: right;"  {'dir="rtl"' if locale.RTL else ""}></span>
+                            <span id="sezimal_time_spellout_posha_ls"  class="spellout" style="text-align: center;" {'dir="rtl"' if locale.RTL else ""}></span>
+                            <span id="sezimal_time_spellout_agrima_ls" class="spellout" style="text-align: left;"   {'dir="rtl"' if locale.RTL else ""}></span>
+                            <br/>
+                            <br/>
                         </td>
                     </tr>
                     <tr>
                         <td width="33.33%">
-                            <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(season_format, locale)}</span>
+                            <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""} class="emoji">{date_time.format(season_format, locale)}</span>
                         </td>
                         <td width="33.33%">
                             <span class="sezimal_date" data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(date_format, locale)}</span><br/>
                             <span class="sezimal_temperature" data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span>
                         </td>
                         <td width="33.33%">
-                            <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(moon_format, locale)}</span>
+                            <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""} class="emoji">{date_time.format(moon_format, locale)}</span>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <span id="portrait_content" hidden>
-                <span id="sezimal_time_pt" class="sezimal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
+                <span id="sezimal_time_pt" class="sezimal_time sezimal_digits" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
                 <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}<br/><!-- <span class="sezimal_digits">{date_time.format(date_format.replace("#", "#@!").replace('/', '‐'), locale)}</span> --></span><br/>
                 <span data-tooltip=" {decimal_temperature} " {'dir="rtl"' if locale.RTL else ""}>{sezimal_temperature}</span><br/>
-                <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
-                <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
+                <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " class="emoji">{date_time.format(season_format, locale)}</span><br/>
+                <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " class="emoji">{date_time.format(moon_format, locale)}</span><br/>
             </span>
         </span>
         <br />
         <table>
             <thead>
-                <tr><th colspan="7" data-tooltip=" ISO {locale.digit_replace(date_time.format('#9gy', locale))} ― Sezimal Holocene {locale.digit_replace(date_time.format('#9Y', locale))}{' ― ' + spellout_year if spellout_year else ''} ">{locale.digit_replace(date_time.format('#Y', locale))}</th></tr>
+                <tr><th colspan="7" data-tooltip=" ISO {locale.digit_replace(date_time.format('#9gy', locale))} ― Sezimal Holocene {locale.digit_replace(date_time.format('#9Y', locale))}{' ― ' + spellout_year if spellout_year else ''} ">{locale.digit_replace(date_time.format('#!Y', locale))}</th></tr>
                 <tr><th colspan="7">{date_time.format('#!M', locale)}</th></tr>
                 <tr>
                     <th {'class="weekday_monday"'    if date_time.weekday ==  1 else ''} data-tooltip=" {locale.WEEKDAY_NAME[0]} "> {locale.WEEKDAY_ABBREVIATED_NAME[0]} </th>
@@ -116,6 +121,90 @@ function auto_refresh(){{
     var seconds = date.getTime();
     var digits = '{digits}';
     var lang = '{locale.LANG[0:2]}';
+    const PAIRS = {{
+        '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
+        '10': '󱸁󱸀', '11': '󱸁󱸁', '12': '󱸁󱸂', '13': '󱸁󱸃', '14': '󱸁󱸄', '15': '󱸁󱸅',
+        '20': '󱸂󱸀', '21': '󱸂󱸁', '22': '󱸂󱸂', '23': '󱸂󱸃', '24': '󱸂󱸄', '25': '󱸂󱸅',
+        '30': '󱸃󱸀', '31': '󱸃󱸁', '32': '󱸃󱸂', '33': '󱸃󱸃', '34': '󱸃󱸄', '35': '󱸃󱸅',
+        '40': '󱸄󱸀', '41': '󱸄󱸁', '42': '󱸄󱸂', '43': '󱸄󱸃', '44': '󱸄󱸄', '45': '󱸄󱸅',
+        '50': '󱸅󱸀', '51': '󱸅󱸁', '52': '󱸅󱸂', '53': '󱸅󱸃', '54': '󱸅󱸄', '55': '󱸅󱸅',
+    }};
+    // const NAMES = {{
+    //     '00': 'zèru',
+    //     '01': 'un',
+    //     '02': 'doys',
+    //     '03': 'treys',
+    //     '04': 'kwatru',
+    //     '05': 'sinku',
+    //     '10': 'sêys',
+    //     '11': 'sèti',
+    //     '12': 'oytu',
+    //     '13': 'nòvi',
+    //     '14': 'dèys',
+    //     '15': 'onzi',
+    //     '20': 'dozi',
+    //     '21': 'dozi y un',
+    //     '22': 'dozi y doys',
+    //     '23': 'dozi y treys',
+    //     '24': 'dozi y kwatru',
+    //     '25': 'dozi y sinku',
+    //     '30': 'treseys',
+    //     '31': 'treseys y un',
+    //     '32': 'treseys y doys',
+    //     '33': 'treseys y treys',
+    //     '34': 'treseys y kwatru',
+    //     '35': 'treseys y sinku',
+    //     '40': 'kwaseys',
+    //     '41': 'kwaseys y un',
+    //     '42': 'kwaseys y doys',
+    //     '43': 'kwaseys y treys',
+    //     '44': 'kwaseys y kwatru',
+    //     '45': 'kwaseys y sinku',
+    //     '50': 'kinseys',
+    //     '51': 'kinseys y un',
+    //     '52': 'kinseys y doys',
+    //     '53': 'kinseys y treys',
+    //     '54': 'kinseys y kwatru',
+    //     '55': 'kinseys y sinku',
+    // }};
+    const NAMES = {{
+        '00': 'zero',
+        '01': 'um',
+        '02': 'dois',
+        '03': 'três',
+        '04': 'quatro',
+        '05': 'cinco',
+        '10': 'seis',
+        '11': 'sete',
+        '12': 'oito',
+        '13': 'nove',
+        '14': 'dez',
+        '15': 'onze',
+        '20': 'doze',
+        '21': 'doze e um',
+        '22': 'doze e dois',
+        '23': 'doze e três',
+        '24': 'doze e quatro',
+        '25': 'doze e cinco',
+        '30': 'tresseis',
+        '31': 'tresseis e um',
+        '32': 'tresseis e dois',
+        '33': 'tresseis e três',
+        '34': 'tresseis e quatro',
+        '35': 'tresseis e cinco',
+        '40': 'quasseis',
+        '41': 'quasseis e um',
+        '42': 'quasseis e dois',
+        '43': 'quasseis e três',
+        '44': 'quasseis e quatro',
+        '45': 'quasseis e cinco',
+        '50': 'quinseis',
+        '51': 'quinseis e um',
+        '52': 'quinseis e dois',
+        '53': 'quinseis e três',
+        '54': 'quinseis e quatro',
+        '55': 'quinseis e cinco',
+    }};
 
     seconds = (seconds + {time_zone_offset.decimal}) / 1000 / 86400;
     seconds = seconds - Math.floor(seconds);
@@ -136,7 +225,25 @@ function auto_refresh(){{
         }}
     }};
 
-    time = uta + ':' + posha + ':' + agrima;
+    time = PAIRS[uta] + ':' + PAIRS[posha] + ':' + PAIRS[agrima];
+
+    if (uta == '01') {{
+        document.getElementById("sezimal_time_spellout_uta_ls").innerText = NAMES[uta]; // + ' uta';
+    }} else {{
+        document.getElementById("sezimal_time_spellout_uta_ls").innerText = NAMES[uta]; // + ' utas';
+    }};
+
+    if (posha == '01') {{
+        document.getElementById("sezimal_time_spellout_posha_ls").innerText = NAMES[posha]; // + ' poxa';
+    }} else {{
+        document.getElementById("sezimal_time_spellout_posha_ls").innerText = NAMES[posha]; // + ' poxas';
+    }};
+
+    if (agrima == '01') {{
+        document.getElementById("sezimal_time_spellout_agrima_ls").innerText = NAMES[agrima]; // + ' agrima';
+    }} else {{
+        document.getElementById("sezimal_time_spellout_agrima_ls").innerText = NAMES[agrima]; // + ' agrimas';
+    }};
 
     //
     // Regular time in tooltip
@@ -176,6 +283,8 @@ function auto_refresh(){{
             decimal_time = decimal_time.replaceAll(i.toString(), digits.slice(i, i+1));
         }};
     }};
+
+    console.log('time', time);
 
     document.getElementById("sezimal_time_ls").innerText = time;
     document.getElementById("sezimal_time_ls").textContent = time;
