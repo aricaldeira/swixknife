@@ -85,6 +85,7 @@ UNIT-p/Px por panxadara
 UNIT-p/Xx por xaxadara
 UNIT-atk astaca
 UNIT-pvn pavana
+UNIT-dul dúli
 
 EXP-2 quadrado
 EXP-² quadrado
@@ -173,6 +174,7 @@ UNIT-p/Px pur panxadara
 UNIT-p/Xx pur xaxadara
 UNIT-atk astaka
 UNIT-pvn pavana
+UNIT-dul duli
 
 EXP-2 kwadradu
 EXP-² kwadradu
@@ -261,6 +263,7 @@ UNIT-p/Px per panŝadar
 UNIT-p/Xx per ŝaŝadar
 UNIT-atk aŝtakao
 UNIT-pvn pavanao
+UNIT-dul dulio
 
 EXP-2 kvadrata
 EXP-² kvadrata
@@ -349,6 +352,7 @@ UNIT-p/Px per panshadara
 UNIT-p/Xx per shashadara
 UNIT-atk ashtaka
 UNIT-pvn pavana
+UNIT-dul duli
 
 EXP-2 square
 EXP-² square
