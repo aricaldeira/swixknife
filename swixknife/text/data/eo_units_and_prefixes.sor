@@ -11,9 +11,11 @@ UNIT-agm agrimao
 UNIT-ang anugao
 UNIT-bod bodao
 UNIT-avt avritio
+UNIT-brx branŝao
 UNIT-pad padao
 UNIT-veg vegao
 UNIT-tvr tevarano
+UNIT-grt gurutao
 UNIT-ktr ketrao
 UNIT-ayt ajtanao
 UNIT-vrt vartio
@@ -31,7 +33,8 @@ UNIT-xrm ŝaramao
 UNIT-xky ŝakjao
 UNIT-uxn uŝunao
 UNIT-xkt ŝakitio
-UNIT-svg sanvegao
+UNIT-svg samvegao
+UNIT-jut ĝutio
 UNIT-agh agrahao
 UNIT-pbv prabavao
 UNIT-tnv tanavao

@@ -11,9 +11,11 @@ UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
 UNIT-avt avriti
+UNIT-brx branxa
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevaran
+UNIT-grt guruta
 UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
@@ -32,6 +34,7 @@ UNIT-xky xakya
 UNIT-uxn uxuna
 UNIT-xkt xakiti
 UNIT-svg sanvega
+UNIT-jut juti
 UNIT-agh agrarra
 UNIT-pbv prabava
 UNIT-tnv tanava

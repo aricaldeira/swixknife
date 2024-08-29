@@ -18,9 +18,11 @@ UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
 UNIT-avt avríti
+UNIT-brx branxa
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevarã
+UNIT-grt guruta
 UNIT-ktr quetra
 UNIT-ayt aitã
 UNIT-vrt várti
@@ -39,6 +41,7 @@ UNIT-xky xáquia
 UNIT-uxn uxuna
 UNIT-xkt xakíti
 UNIT-svg sanvega
+UNIT-jut júti
 UNIT-agh agrarra
 UNIT-pbv prabava
 UNIT-tnv tanava
@@ -107,9 +110,11 @@ UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
 UNIT-avt avriti
+UNIT-brx branxa
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevaran
+UNIT-grt guruta
 UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
@@ -128,6 +133,7 @@ UNIT-xky xakya
 UNIT-uxn uxuna
 UNIT-xkt xakiti
 UNIT-svg sanvega
+UNIT-jut juti
 UNIT-agh agrarra
 UNIT-pbv prabava
 UNIT-tnv tanava
@@ -196,9 +202,11 @@ UNIT-agm agrimao
 UNIT-ang anugao
 UNIT-bod bodao
 UNIT-avt avritio
+UNIT-brx branŝao
 UNIT-pad padao
 UNIT-veg vegao
 UNIT-tvr tevarano
+UNIT-grt gurutao
 UNIT-ktr ketrao
 UNIT-ayt ajtanao
 UNIT-vrt vartio
@@ -216,7 +224,8 @@ UNIT-xrm ŝaramao
 UNIT-xky ŝakjao
 UNIT-uxn uŝunao
 UNIT-xkt ŝakitio
-UNIT-svg sanvegao
+UNIT-svg samvegao
+UNIT-jut ĝutio
 UNIT-agh agrahao
 UNIT-pbv prabavao
 UNIT-tnv tanavao
@@ -285,9 +294,11 @@ UNIT-agm agrima
 UNIT-ang anuga
 UNIT-bod boda
 UNIT-avt avriti
+UNIT-brx bramsha
 UNIT-pad pada
 UNIT-veg vega
 UNIT-tvr tevaran
+UNIT-grt guruta
 UNIT-ktr ketra
 UNIT-ayt aytan
 UNIT-vrt varti
@@ -305,7 +316,8 @@ UNIT-xrm sharama
 UNIT−xky shakya
 UNIT-uxn ushuna
 UNIT-xkt shakiti
-UNIT-svg sanvega
+UNIT-svg samvega
+UNIT-jut juti
 UNIT-agh agraha
 UNIT-pbv prabava
 UNIT-tnv tanava

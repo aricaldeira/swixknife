@@ -74,6 +74,8 @@ ELEMENTARY_CHARGE_IN_COULOMBS = SezimalFraction('211_254_034_113 / 252_412_511_4
 LUMINOUS_EFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
 
 
+ONNE_TO_ONE = SezimalFraction('1 / 1')
+
 
 def calculate_conversions():
     unit_conversion = {}
@@ -134,20 +136,29 @@ def calculate_conversions():
     #
     # Frequency (avriti)
     #
+    # Avriti
+    # https://en.wiktionary.org/wiki/%E0%A4%86%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF#Sanskrit
+    #
+    # Bramsha (decay)
+    # https://en.wiktionary.org/wiki/%E0%A4%AD%E0%A5%8D%E0%A4%B0%E0%A4%82%E0%A4%B6#Sanskrit
+    #
     AVRITI_TO_HERTZ = ANUGA_TO_SECOND.reciprocal
 
-    unit_conversion['avt'] = {
-        'Hz': AVRITI_TO_HERTZ,
-        's-1': AVRITI_TO_HERTZ,
-        'prefixed': ('Hz', 's-1'),
-        'comparable': ('avt', 'ang-1'),
-        'avt': 1,
-        #
-        # Non S.I. units
-        #
-        'rpm': AVRITI_TO_HERTZ * 140,
-    }
-    unit_conversion['avt'] = _set_non_prefixed_units(unit_conversion['avt'])
+    for unit in ('avt', 'brx'):
+        unit_conversion[unit] = {
+            'Hz': AVRITI_TO_HERTZ,
+            'Bq': AVRITI_TO_HERTZ,
+            's-1': AVRITI_TO_HERTZ,
+            'prefixed': ('Hz', 's-1', 'Bq'),
+            'comparable': ('avt', 'ang-1'),
+            'avt': ONE_TO_ONE,
+            'brx': ONE_TO_ONE,
+            #
+            # Non S.I. units
+            #
+            'rpm': AVRITI_TO_HERTZ * 140,
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
     # Length (pada) / Deformation (virupana)
@@ -161,7 +172,7 @@ def calculate_conversions():
             'm': PADA_TO_METRE,
             'prefixed': ('m', 'au', 'parsec'),
             'comparable': ('pad', 'vrp'),
-            'pad': 1,
+            'pad': ONNE_TO_ONE,
             #
             # Non S.I. units
             #
@@ -215,7 +226,7 @@ def calculate_conversions():
             'm-1': 1 / PADA_TO_METRE,
             'prefixed': ('m-1',),
             'comparable': ('trg', 'pad-1'),
-            'trg': 1,
+            'trg': ONNE_TO_ONE,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -233,7 +244,7 @@ def calculate_conversions():
             'a': KETRA_TO_SQUARE_METRE / 244,
             'prefixed': ('m2', 'a'),
             'comparable': ('ktr', 'pad2'),
-            'ktr': 1,
+            'ktr': ONNE_TO_ONE,
 
             'in2': unit_conversion['pad']['in'] ** 2,
             'li2': unit_conversion['pad']['li'] ** 2,
@@ -348,18 +359,25 @@ def calculate_conversions():
     #
     # Acceleration (tevaran)
     #
+    # Tevaran
+    # https://en.wiktionary.org/wiki/%E0%A4%A4%E0%A5%8D%E0%A4%B5%E0%A4%B0%E0%A4%A3#Sanskrit
+    #
+    # Guruta
+    # https://en.wiktionary.org/wiki/%E0%A4%97%E0%A5%81%E0%A4%B0%E0%A5%81%E0%A4%A4%E0%A5%8D%E0%A4%B5#Sanskrit
+    #
     TEVARAN_TO_METRE_PER_SQUARE_SECOND = VEGA_TO_METRE_PER_SECOND / ANUGA_TO_SECOND
 
-    for unit in ('tvr', 'pad/ang2'):
+    for unit in ('tvr', 'grt', 'pad/ang2'):
         unit_conversion[unit] = {
             'm/s2': TEVARAN_TO_METRE_PER_SQUARE_SECOND,
-            'prefixed': ('m/s2',),
+            'N/kg': TEVARAN_TO_METRE_PER_SQUARE_SECOND,
+            'prefixed': ('m/s2', 'gal', 'Gal', 'g', 'N/kg'),
             #
             # Non S.I. units
             #
-            'gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
-            'Gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
-            'cm/s2': TEVARAN_TO_METRE_PER_SQUARE_SECOND / 244,
+            'gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND * 244,
+            'Gal': TEVARAN_TO_METRE_PER_SQUARE_SECOND * 244,
+            'cm/s2': TEVARAN_TO_METRE_PER_SQUARE_SECOND * 244,
             'ft/s2': unit_conversion['veg']['ft/s'] / ANUGA_TO_SECOND,
             'g': TEVARAN_TO_METRE_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
             'g0': TEVARAN_TO_METRE_PER_SQUARE_SECOND / SezimalFraction('4_112_005 / 232_332'),
@@ -478,7 +496,11 @@ def calculate_conversions():
         unit_conversion[unit] = {
             'N': BALA_TO_NEWTON,
             'kg·m/s2': BALA_TO_NEWTON,
-            'prefixed': ('N', 'gf'),
+            'g·m/s2': BALA_TO_NEWTON * 4344,
+            'prefixed': ('N', 'gf', 'g·m/s2'),
+
+            'bar': ONE_TO_ONE,
+            'bal': ONE_TO_ONE,
 
             #
             # Non S.I. units
@@ -486,6 +508,8 @@ def calculate_conversions():
             'gf': BALA_TO_NEWTON / SezimalFraction('4_112_005 / 1_552_400_332'),
             'lbf': BALA_TO_NEWTON / SezimalFraction('115_400_451 / 14_414_452'),
             'dyn': BALA_TO_NEWTON / SezimalFraction('1 / 2_050_544'),
+            'pdl': BALA_TO_NEWTON / SezimalFraction('11_534_510_234_053 / 133_231_343_451_412'),
+            'lb·ft/s2': BALA_TO_NEWTON / SezimalFraction('11_534_510_234_053 / 133_231_343_451_412'),
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -517,7 +541,7 @@ def calculate_conversions():
             'Pa': DABA_TO_PASCAL,
             'J/m3': DABA_TO_PASCAL,
             'kg/m/s2': DABA_TO_PASCAL,
-            'prefixed': ('Pa', 'J/m3', 'psi', 'bar'),
+            'prefixed': ('Pa', 'J/m3', 'psi', 'bar', 'Torr', 'torr'),
 
             #
             # Non S.I. units
@@ -528,6 +552,8 @@ def calculate_conversions():
             'bar': DABA_TO_PASCAL / 2_050_544,
             'mmHg': DABA_TO_PASCAL / SezimalFraction('1_232_341 / 2_152'),
             'inHg': DABA_TO_PASCAL / SezimalFraction('11_131_435 / 244'),
+            'Torr': DABA_TO_PASCAL / SezimalFraction('2_101_033 / 3304'),
+            'torr': DABA_TO_PASCAL / SezimalFraction('2_101_033 / 3304'),
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -575,14 +601,20 @@ def calculate_conversions():
             'N·m': VARCHA_TO_JOULE,
             'Pa·m3': VARCHA_TO_JOULE,
             'C·V': VARCHA_TO_JOULE,
-            'prefixed': ('J', 'Wh', 'BTU', 'cal', 'erg', 'eV', 'TNT', 'N·m', 'Pa·m3', 'C·V'),
+            'prefixed': ('J', 'Wh', 'W·h', 'BTU', 'cal', 'erg', 'eV', 'TNT', 'N·m', 'Pa·m3', 'C·V'),
+
+            'vrc': ONE_TO_ONE,
+            'uxn': ONE_TO_ONE,
+            'xrm': ONE_TO_ONE,
+            'xky': ONE_TO_ONE,
 
             #
             # Non S.I. units
             #
             'Wh': VARCHA_TO_JOULE / 4344 / SezimalFraction('30 / 5'),
-            'ft⋅lb': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
-            'ftlb': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
+            'W·h': VARCHA_TO_JOULE / 4344 / SezimalFraction('30 / 5'),
+            'ft⋅lbf': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
+            'ftlbf': VARCHA_TO_JOULE / SezimalFraction('22_310_245 / 14_414_452'),
             'BTU': VARCHA_TO_JOULE / SezimalFraction('40_122_335_231_451 / 4_543_401_252'),
             'cal': VARCHA_TO_JOULE / SezimalFraction('2_231 / 325'),
             'erg': VARCHA_TO_JOULE * 554_200_144,
@@ -610,10 +642,11 @@ def calculate_conversions():
             #
             # Non S.I. units
             #
-            'hp': SHAKITI_TO_WATT / SezimalFraction('54_305 / 14'),
-            'ft⋅lb/s': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['s'],
-            'ft⋅lb/min': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['min'],
-            'ft⋅lb/h': unit_conversion['vrc']['ft⋅lb'] / unit_conversion['ang']['h'],
+            'cv': SHAKITI_TO_WATT / SezimalFraction('20_340_023 / 3412'),
+            'ft⋅lbf/s': unit_conversion['vrc']['ft⋅lbf'] / unit_conversion['ang']['s'],
+            'ft⋅lbf/min': unit_conversion['vrc']['ft⋅lbf'] / unit_conversion['ang']['min'],
+            'ft⋅lbf/h': unit_conversion['vrc']['ft⋅lbf'] / unit_conversion['ang']['h'],
+            'hp':  unit_conversion['vrc']['ft⋅lbf'] / unit_conversion['ang']['s'] / 2314,
             'BTU/h': unit_conversion['vrc']['BTU'] / unit_conversion['ang']['h'],
             'cal/s': unit_conversion['vrc']['cal'] / unit_conversion['ang']['s'],
             'kcal/h': unit_conversion['vrc']['cal'] / 4344 / unit_conversion['ang']['h'],
@@ -623,11 +656,29 @@ def calculate_conversions():
     #
     # Momentum (sanvega)
     #
+    # Samvega (momentum)
     # https://en.wiktionary.org/wiki/%E0%A4%B8%E0%A4%82%E0%A4%B5%E0%A5%87%E0%A4%97#Sanskrit
     #
-    for unit in ('svg', 'drv·veg', 'drv·pad/ang'):
+    # Juti (impulse)
+    # https://en.wiktionary.org/wiki/%E0%A4%9C%E0%A5%82%E0%A4%A4%E0%A4%BF
+    #
+    JUTI_TO_NEWTON_SECOND = BALA_TO_NEWTON * ANUGA_TO_SECOND
+
+    for unit in ('svg', 'jut', 'drv·veg', 'drv·pad/ang'):
         unit_conversion[unit] = {
-            'kg·m/s': DRAVYA_TO_KILOGRAM * VEGA_TO_METRE_PER_SECOND,
+            'g·m/s': JUTI_TO_NEWTON_SECOND * 4344,
+            'gm/s': JUTI_TO_NEWTON_SECOND * 4344,
+            'N·s': JUTI_TO_NEWTON_SECOND,
+            'prefixed': ('g·m/s', 'gm/s', 'N·s'),
+
+            'svg': ONE_TO_ONE,
+            'jut': ONE_TO_ONE,
+
+            #
+            # Non S.I. units
+            #
+            'lb·ft/s': unit_conversion['drv']['lb'] * unit_conversion['veg']['ft/s'],
+            'sl·ft/s': unit_conversion['drv']['sl'] * unit_conversion['veg']['ft/s'],
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -944,10 +995,10 @@ def calculate_conversions():
     #
     unit_conversion['mdl'] = {
         'rad': TAU,
-        'tau_rad': SezimalFraction('1 / 1'),
+        'tau_rad': ONE_TO_ONE,
         'pi_rad': SezimalFraction('2 / 1'),
         'deg': SezimalFraction('1400 / 1'),
-        'turn': SezimalFraction('1 / 1'),
+        'turn': ONE_TO_ONE,
         'gon': SezimalFraction('1504 / 1'),
         'arcmin': SezimalFraction('244_000 / 1'),
         'arcsec': SezimalFraction('43_440_000 / 1'),
@@ -1006,7 +1057,7 @@ def calculate_conversions():
     unit_conversion['gol'] = {
         'sr': GOLA_TO_STERADIAN,
         'prefixed': ('sr', 'spat'),
-        'spat': SezimalFraction('1 / 1'),
+        'spat': ONE_TO_ONE,
         'deg2': SezimalFraction('2_440_000 / 1') / PI,
     }
     unit_conversion['gol'] = _set_non_prefixed_units(unit_conversion['gol'])
@@ -1139,8 +1190,8 @@ def calculate_conversions():
         'prefixed': ('bit', 'b', 'B'),
         'bit': SezimalFraction('12 / 1'),
         'b': SezimalFraction('12 / 1'),
-        'byte':  SezimalFraction('1 / 1'),
-        'B': SezimalFraction('1 / 1'),
+        'byte':  ONE_TO_ONE,
+        'B': ONE_TO_ONE,
     }
     unit_conversion['atk'] = _set_non_prefixed_units(unit_conversion['atk'])
 
