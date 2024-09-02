@@ -85,7 +85,8 @@ def api_calculator_process() -> dict:
     calculator.unit_as_fraction = False
     calculator.angle = dados['sezimal_angle_unit']
     calculator.decimal_angle = dados['decimal_angle_unit']
-    calculator.angle_as_fraction = True
+    calculator.angle_as_fraction = calculator.angle == 'mdl'
+    # calculator.angle_as_fraction = False
 
     if calculator.decimal_unit.endswith('turn') \
         or calculator.decimal_unit.startswith('tau_') \

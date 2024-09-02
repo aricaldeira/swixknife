@@ -101,7 +101,7 @@ function update_angle_units_conversion() {
         decimal_unit = localStorage.getItem(`sezimal-translation-display-${decimal_unit}`);
     };
 
-    document.getElementById('toggle_angle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ◕ ' + decimal_prefix + decimal_unit + ' ]';
+    document.getElementById('toggle_angle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' <img src="https://midia.tauga.online/img/sezimal/mandala-logo-black-on-white-small.svg" width="12rem" /> ' + decimal_prefix + decimal_unit + ' ]';
 };
 
 

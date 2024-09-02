@@ -280,3 +280,15 @@ h1 {
     font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP' !important;
     font-size: 1.2em;
 }
+
+.scale-img:hover{
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+    opacity: 1;
+    transform: scale(2.5);
+    -ms-transform: scale(2.5); /* IE 9 */
+    -webkit-transform: scale(2.5); /* Safari and Chrome */
+}

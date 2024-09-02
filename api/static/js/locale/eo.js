@@ -97,8 +97,8 @@ const sezimal_calculator_eo_text = {
 </ul>
 <p>E os botões de ajuste na segunda linha do mostrador:</p>
 <ul>
-    <li>[ mdl ◕ ° ] - unidades de medida de ângulos para as funções trigonométricas sezimais e decimais;</li><br/>
-    <li>[ ⬢ ] - unidades e prefixos Ŝastadaria convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
+    <li>[ mdl <img src="https://midia.tauga.online/img/sezimal/mandala-logo-black-on-white-small.svg" width="12rem" /> ° ] - unidades de medida de ângulos para as funções trigonométricas sezimais e decimais;</li><br/>
+    <li>[ <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-black-on-white-small.svg" width="12rem" /> ] - unidades e prefixos Ŝastadaria convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
     <li>[ 0󱹮3 ] - em quantos dígitos depois do separador sezimais o resultado vai ser arredondado; a precisão em base decimal vai ser ajustada baseada na precisão da base sezimal;</li><br/>
 </ul>
 <h2>Notação usada</h2>

@@ -102,3 +102,22 @@ def shastadari_other_units_en_route() -> Response:
 @app.route('/pt/xastadári/outras-unidades')
 def shastadari_other_units_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('other_units_pt.html'), mimetype='text/html')
+
+
+@app.route('/shastadari/scales')
+def shastadari_scales_route() -> Response:
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/xastadári/escalas', code=302)
+
+    return redirect('/en/shastadari/scales', code=302)
+
+@app.route('/en/shastadari/scales')
+def shastadari_scales_en_route() -> Response:
+    if browser_preferred_locale().lower() == 'en-us':
+        return send_file(TEMPLATE_PATH.joinpath('scales_en_us.html'), mimetype='text/html')
+
+    return send_file(TEMPLATE_PATH.joinpath('scales_en.html'), mimetype='text/html')
+
+@app.route('/pt/xastadári/escalas')
+def shastadari_scales_pt_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('scales_pt.html'), mimetype='text/html')
