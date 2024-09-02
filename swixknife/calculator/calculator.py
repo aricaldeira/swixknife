@@ -37,7 +37,7 @@ class SezimalCalculator:
         self.unit_as_fraction = False
         self.angle = 'mdl'
         self.decimal_angle = 'tau_rad'
-        self.angle_as_fraction = True
+        self.angle_as_fraction = False
         self.debug = False
         self.expression = expression
 

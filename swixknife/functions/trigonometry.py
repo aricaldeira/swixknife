@@ -30,14 +30,14 @@ from ..base import sezimal_context
 from ..units import sezimal_to_sezimal_unit, decimal_to_sezimal_unit
 
 
-def _angle_to_paridi_fraction(angle, unit: str = 'prd') -> SezimalFraction | SympyRational:
+def _angle_to_paridi_fraction(angle, unit: str = 'mdl') -> SezimalFraction | SympyRational:
     if not unit:
-        unit = 'prd'
+        unit = 'mdl'
 
-    if unit.endswith('prd'):
-        angle = sezimal_to_sezimal_unit(angle, unit, 'prd', return_fraction=True)
+    if unit.endswith('mdl'):
+        angle = sezimal_to_sezimal_unit(angle, unit, 'mdl', return_fraction=True)
     else:
-        angle = decimal_to_sezimal_unit(angle, unit, 'prd', return_fraction=True)
+        angle = decimal_to_sezimal_unit(angle, unit, 'mdl', return_fraction=True)
 
     if sympy:
         num = sympy.Integer(str(angle.numerator.decimal))
@@ -63,7 +63,7 @@ def _float_to_sezimal(result: float) -> Sezimal:
 
 def sin(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -77,7 +77,7 @@ def sin(
 
 def arcsin(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -94,7 +94,7 @@ asin = arcsin
 
 def csc(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -108,7 +108,7 @@ def csc(
 
 def arccsc(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -125,7 +125,7 @@ acsc = arccsc
 
 def cos(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -139,7 +139,7 @@ def cos(
 
 def arccos(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -156,7 +156,7 @@ acos = arccos
 
 def sec(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -170,7 +170,7 @@ def sec(
 
 def arcsec(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -187,7 +187,7 @@ asec = arcsec
 
 def tan(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -201,7 +201,7 @@ def tan(
 
 def arctan(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -218,7 +218,7 @@ atan = arctan
 
 def cot(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -232,7 +232,7 @@ def cot(
 
 def arccot(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -249,7 +249,7 @@ acot = arccot
 
 def sinh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -263,7 +263,7 @@ def sinh(
 
 def arcsinh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -280,7 +280,7 @@ asinh = arcsinh
 
 def csch(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -294,7 +294,7 @@ def csch(
 
 def arccsch(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -311,7 +311,7 @@ acsch = arccsch
 
 def cosh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -325,7 +325,7 @@ def cosh(
 
 def arccosh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -342,7 +342,7 @@ acosh = arccosh
 
 def sech(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -356,7 +356,7 @@ def sech(
 
 def arcsech(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -373,7 +373,7 @@ asech = arcsech
 
 def tanh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -387,7 +387,7 @@ def tanh(
 
 def arctanh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -404,7 +404,7 @@ atanh = arctanh
 
 def coth(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
@@ -418,7 +418,7 @@ def coth(
 
 def arccoth(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
-    unit: str = 'prd',
+    unit: str = 'mdl',
 ) -> Sezimal:
     angle = _angle_to_paridi_fraction(angle, unit)
 
