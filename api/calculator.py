@@ -148,10 +148,15 @@ def api_calculator_process() -> dict:
             pass
 
         elif '.' in dados['expression'] and dados['expression'][-1] != '.':
-            parts = dados['expression'].replace('_', '').split('.')
+            if ' ' in dados['expression']:
+                parts = dados['expression'].split(' ')[-1].replace('_', '').split('.')
+            else:
+                parts = dados['expression'].replace('_', '').split('.')
 
             if len(parts) >= 2 and parts[-1].isdigit() and parts[-2].isdigit():
                 calculator.expression = dados['expression'] + dados['value'] + dados['value']
+            elif parts[-1].isdigit():
+                calculator.expression = dados['expression'] + dados['value']
 
         else:
             calculator.expression = dados['expression'] + dados['value']

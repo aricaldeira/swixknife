@@ -41,10 +41,11 @@ UNIT-tnv tanavao
 UNIT-upr upario
 UNIT-nad nadio
 UNIT-bum bumio
-UNIT-idn indanao
-UNIT-tln telano
 UNIT-agn aginio
 UNIT-prv parivartanao
+UNIT-kdn kadanao
+UNIT-idn indanao
+UNIT-tln telano
 UNIT-gtk gatikao
 UNIT-tap tapao
 UNIT-dar darao
