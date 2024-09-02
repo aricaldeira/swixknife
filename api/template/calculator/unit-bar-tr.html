@@ -1,17 +1,20 @@
 <tr id="unit-bar" hidden>
     <td style="text-align: center;">
         <select id="calculator-sezimal-unit-bar" onchange="set_sezimal_unit(this)">
-            <option value="bar">bar</option>
+            <option value="bal" name="option-units-bar-bala">bala (force) – bal</option>
+            <option value="bar" name="option-units-bar-bara">bara (weight) – bar</option>
         </select>
     </td>
     <td colspan="2" style="text-align: center;">
         <select id="calculator-decimal-unit-bar" onchange="set_decimal_unit(this)">
             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                <option value="N">N</option>
+                <option value="N" name="option-decimal-units-bar-newton">newton – N</option>
+                <option value="g·m/s2" name="option-decimal-units-bar-gms2">gram-metre per sq. second – g·m/s²</option>
             <optgroup name="optgroup-units-generic-others" label="Others">
-                <option value="gf">gf</option>
-                <option value="dyn">dyn</option>
-                <option value="lbf">lbf</option>
+                <option value="gf" name="option-decimal-units-bar-gf">gram-force – gf</option>
+                <option value="dyn" name="option-decimal-units-bar-dyn">dyne – dyn</option>
+                <option value="lbf" name="option-decimal-units-bar-lbf">pound-force – lbf</option>
+                <option value="lb·ft/s2" name="option-decimal-units-bar-lbfts2">pound-feet per sq. second – lb·ft/s²</option>
             </optgroup>
         </select>
     </td>

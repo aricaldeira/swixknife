@@ -12,12 +12,12 @@ const sezimal_calculator_en_us_text = {
     'option-decimal-units-ayt-cb-metre': 'cb. meter – m³',
     'option-decimal-units-ayt-litre': 'liter – L',
 
-    'option-decimal-units-drv-US-qr': 'quarter ‐ qr',
-    'option-decimal-units-drv-US-cwt': 'hundredweight ‐ cwt',
-    'option-decimal-units-drv-US-ton': 'ton ‐ ton',
-    'option-decimal-units-drv-imp-qr': 'long quarter ‐ qr',
-    'option-decimal-units-drv-imp-cwt': 'long hundredweight ‐ cwt',
-    'option-decimal-units-drv-imp-ton': 'long ton ‐ ton',
+    'option-decimal-units-drv-US-qr': 'quarter – qr',
+    'option-decimal-units-drv-US-cwt': 'hundredweight – cwt',
+    'option-decimal-units-drv-US-ton': 'ton – ton',
+    'option-decimal-units-drv-imp-qr': 'long quarter – qr',
+    'option-decimal-units-drv-imp-cwt': 'long hundredweight – cwt',
+    'option-decimal-units-drv-imp-ton': 'long ton – ton',
 
     'option-decimal-units-ayt-imp-fl-dr': 'fluid dram - imp. fl dr',
     'option-decimal-units-ayt-imp-fl-oz': 'fluid ounce - imp. fl oz',
@@ -59,8 +59,19 @@ const sezimal_calculator_en_us_text = {
     'translation-display-imp-qt': 'imp. qt',
     'translation-display-imp-gal': 'imp. gal',
 
-    'option-decimal-units-veg-mh': 'meters per hour ‐ m/h',
-    'option-decimal-units-veg-ms': 'meters per second ‐ m/s',
+    'option-decimal-units-veg-mh': 'meters per hour – m/h',
+    'option-decimal-units-veg-ms': 'meters per second – m/s',
+
+    'option-decimal-units-tvr-ms2': 'meters per sq. second – m/s²',
+
+    'option-decimal-units-gnt-gm3': 'grams per cb. meter – g/m³',
+    'option-decimal-units-gnt-gl': 'grams per liter – g/L',
+
+    'option-decimal-units-bar-gms2': 'gram-meter per sq. second – g·m/s²',
+
+    'option-decimal-units-pdn-mmhg': 'millimeters of mercury – mm Hg',
+
+    'option-decimal-units-svg-gms': 'gram-meter per second – g·m/s',
 
 };
 

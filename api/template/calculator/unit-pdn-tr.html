@@ -1,20 +1,23 @@
 <tr id="unit-pdn" hidden>
     <td style="text-align: center;">
         <select id="calculator-sezimal-unit-pdn" onchange="set_sezimal_unit(this)">
-            <option value="pdn">pdn</option>
+            <option value="pdn" name="option-units-pdn-pidana">pidana – pdn</option>
+            <option value="vay" name="option-units-pdn-vayu">vayu (atmosphere) – vay</option>
+            <option value="pbl" name="option-units-pdn-pratibala">pratibala (stress) – pbl</option>
         </select>
     </td>
     <td colspan="2" style="text-align: center;">
         <select id="calculator-decimal-unit-pdn" onchange="set_decimal_unit(this)">
             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                <option value="Pa">Pa</option>
+                <option value="Pa" name="option-decimal-units-pdn-pa">pascal – Pa</option>
             </optgroup>
             <optgroup name="optgroup-units-generic-others" label="Others">
-                <option value="atm">atm</option>
-                <option value="psi">psi</option>
-                <option value="bar">bar</option>
-                <option value="mmHg">mmHg</option>
-                <option value="inHg">inHg</option>
+                <option value="atm" name="option-decimal-units-pdn-atm">atmosphere –  atm</option>
+                <option value="psi" name="option-decimal-units-pdn-psi">pounds per sq. inch – psi</option>
+                <option value="bar" name="option-decimal-units-pdn-bar">bar – bar</option>
+                <option value="mmHg" name="option-decimal-units-pdn-mmhg">millimetres of mercury – mm Hg</option>
+                <option value="inHg" name="option-decimal-units-pdn-inhg">inches of mercury – in Hg</option>
+                <option value="Torr" name="option-decimal-units-pdn-torr">torr – Torr</option>
             </optgroup>
         </select>
     </td>

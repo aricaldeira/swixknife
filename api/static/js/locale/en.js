@@ -14,6 +14,12 @@ const sezimal_calculator_en_text = {
     'translation-display-px_96_dpi': 'px (96 dpi)',
     'translation-display-px_150_dpi': 'px (150 dpi)',
     'translation-display-px_300_dpi': 'px (300 dpi)',
+    'translation-display-m/s2': 'm/s²',
+    'translation-display-ft/s2': 'ft/s²',
+    'translation-display-mmHg': 'mm Hg',
+    'translation-display-inHg': 'in Hg',
+    'translation-display-g·m/s2': 'g·m/s²',
+    'translation-display-lb·ft/s2': 'lb·ft/s²',
 
     // 'button-sezimal-lsez': 'log₁₀',
     // 'button-sezimal-ldec': 'log₁₄',

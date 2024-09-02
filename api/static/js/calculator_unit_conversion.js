@@ -1,60 +1,61 @@
 
 const prefixed_units = [
     'A',
-    'Ah',
-    'As',
-    'B',
-    'B/min',
-    'B/s',
-    'BTU',
-    'Bpm',
-    'Bps',
-    'C',
-    'cd',
-    'Da',
-    'F',
-    'deg',
-    'H',
-    'Hz',
-    'J',
-    'J/K',
-    'J/K/kg',
-    'J/K/m3',
-    'K',
-    'L',
-    'mol',
-    'N',
-    'Pa',
-    'S',
-    'T',
-    'TNT',
-    'V',
-    'W',
-    'Wb',
-    'Wh',
     'a',
+    'A·h',
     'arcmin',
     'arcsec',
+    'As',
+    'B',
     'b',
+    'B/min',
+    'B/s',
     'bar',
     'bit',
     'bit/min',
     'bit/s',
+    'Bpm',
     'bpm',
+    'Bps',
     'bps',
+    'Bq',
+    'BTU',
+    'C',
+    'Cal',
     'cal',
+    'cd',
+    'Da',
     'day',
+    'deg',
     'e',
-    'eV',
     'erg',
+    'eV',
+    'F',
+    'g·m/s',
+    'g·m/s2',
     'g',
     'g/L',
     'g/l',
     'g/m3',
+    'Gal',
     'gf',
     'gon',
+    'H',
     'h',
+    'Hz',
+    'J',
+    'J·s',
+    'J/g',
+    'J/Hz',
+    'J/K',
+    'J/Kg',
+    'J/K/kg',
+    'J/K/m3',
+    'K',
+    'L',
     'l',
+    'lm',
+    'lm/W',
     'm',
     'm/h',
     'm/s',
@@ -62,14 +63,26 @@ const prefixed_units = [
     'm2',
     'm3',
     'min',
+    'mol',
     'month',
+    'N·s',
+    'N',
     'ohm',
+    'Pa',
     'psi',
     'rad',
+    'S',
     's',
     'spat',
     'sr',
+    'T',
+    'TNT',
+    'Torr',
     'turn',
+    'V',
+    'W·h',
+    'W',
+    'Wb',
     'week',
     'year',
     'Ω',
@@ -120,47 +133,93 @@ function set_unit_type() {
             set_unit_type_sezimal_decimal(unit_type, 'D', 'ayt', '-', 'L');
         }
     } else if (unit_type == 'veg') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'veg', 'k', 'm/h');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'veg', '-', 'mph');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'veg', 'k', 'm/h');
+        }
     } else if (unit_type == 'tvr') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'tvr', '-', 'm/s2');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'tvr', '-', 'ft/s2');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'tvr', '-', 'm/s2');
+        }
     } else if (unit_type == 'drv') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'drv', 'k', 'g');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'drv', '-', 'lb');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'drv', 'k', 'g');
+        }
     } else if (unit_type == 'gnt') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'gnt', 'k', 'g/L');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'gnt', '-', 'lb/gal');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'gnt', 'k', 'g/L');
+        }
     } else if (unit_type == 'bar') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'bar', '-', 'N');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'bar', '-', 'lb·ft/s2');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'bar', '-', 'N');
+        }
     } else if (unit_type == 'pdn') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'pdn', 'k', 'Pa');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'pdn', '-', 'psi');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'pdn', 'k', 'Pa');
+        }
     } else if (unit_type == 'vrc') {
-        set_unit_type_sezimal_decimal(unit_type, 'DX', 'vrc', 'k', 'Wh');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'DX', 'vrc', '-', 'ft·lbf');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'DX', 'vrc', 'k', 'W·h');
+        }
     } else if (unit_type == 'xkt') {
-        set_unit_type_sezimal_decimal(unit_type, 'D', 'xkt', '-', 'W');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'xkt', '-', 'hp');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'D', 'xkt', '-', 'W');
+        }
+    } else if (unit_type == 'svg') {
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'svg', '-', 'lb·ft/s');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, '-', 'svg', 'k', 'g·m/s');
+        }
+    } else if (unit_type == 'agh') {
+        set_unit_type_sezimal_decimal(unit_type, 'X', 'agh', '-', 'J·s');
     } else if (unit_type == 'gtk') {
         set_unit_type_sezimal_decimal(unit_type, 'P', 'gtk', '-', 'K');
     } else if (unit_type == 'tap') {
-        set_unit_type_sezimal_decimal(unit_type, '', 'tap', '', '°C');
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, '', 'tap', '', '°F');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, '', 'tap', '', '°C');
+        }
     } else if (unit_type == 'agn') {
         set_unit_type_sezimal_decimal(unit_type, '', 'agn', '', 'J/K');
+    } else if (unit_type == 'kdn') {
+        set_unit_type_sezimal_decimal(unit_type, 'XT', 'kdn', 'k', 'Cal');
     } else if (unit_type == 'idn') {
         set_unit_type_sezimal_decimal(unit_type, '', 'idn', '', 'J/K/kg');
     } else if (unit_type == 'tln') {
         set_unit_type_sezimal_decimal(unit_type, '', 'tln', '', 'J/K/m3');
-    } else if (unit_type == 'vdt') {
-        set_unit_type_sezimal_decimal(unit_type, 'X', 'vdt', 'm', 'Ah');
     } else if (unit_type == 'dar') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'dar', '-', 'A');
+    } else if (unit_type == 'vdt') {
+        set_unit_type_sezimal_decimal(unit_type, 'T', 'vdt', 'm', 'A·h');
     } else if (unit_type == 'atr') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'atr', '-', 'V');
+        set_unit_type_sezimal_decimal(unit_type, 'T', 'atr', '-', 'V');
     } else if (unit_type == 'vrd') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'vrd', '-', 'Ω');
+        set_unit_type_sezimal_decimal(unit_type, 't', 'vrd', '-', 'Ω');
     } else if (unit_type == 'vht') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'vht', '-', 'S');
-    } else if (unit_type == 'upp') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'upp', '-', 'H');
+        set_unit_type_sezimal_decimal(unit_type, 'T', 'vht', '-', 'S');
     } else if (unit_type == 'dry') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'dry', '-', 'F');
+    } else if (unit_type == 'upp') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'upp', '-', 'H');
     } else if (unit_type == 'pvh') {
-        set_unit_type_sezimal_decimal(unit_type, '-', 'pvh', '-', 'Wb');
+        set_unit_type_sezimal_decimal(unit_type, 'T', 'pvh', '-', 'Wb');
     } else if (unit_type == 'vtr') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'vtr', '-', 'T');
     } else if (unit_type == 'mdl') {
@@ -169,8 +228,14 @@ function set_unit_type() {
         set_unit_type_sezimal_decimal(unit_type, '-', 'gol', '-', 'sr');
     } else if (unit_type == 'pkx') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'pkx', '-', 'cd');
+    } else if (unit_type == 'dpk') {
+        set_unit_type_sezimal_decimal(unit_type, 't', 'dpk', '-', 'lm');
+    } else if (unit_type == 'dxt') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'dxt', '-', 'lm/W');
     } else if (unit_type == 'bht') {
         set_unit_type_sezimal_decimal(unit_type, '-', 'bht', '-', 'mol');
+    } else if (unit_type == 'dul') {
+        set_unit_type_sezimal_decimal(unit_type, '-', 'dul', '-', 'Da');
     } else if (unit_type == 'spn') {
         set_unit_type_sezimal_decimal(unit_type, 'd', 'spn', '-', '%');
     } else if (unit_type == 'atk') {
@@ -282,15 +347,18 @@ function update_units_conversion() {
 
 function show_decimal_binary_prefix(sezimal_unit, decimal_unit) {
     if ((sezimal_unit == 'atk') || (sezimal_unit == 'pvn')) {
+        document.getElementById('label-prefix-decimal').hidden = true;
         document.getElementById('label-prefix-decimal-binary').hidden = false;
         document.getElementById('calculator-prefix-decimal').hidden = false;
         document.getElementsByName('optgroup-units-generic-binary')[0].hidden = false;
     } else if ((decimal_unit == '') || (prefixed_units.includes(decimal_unit))) {
         document.getElementById('label-prefix-decimal').hidden = false;
+        document.getElementById('label-prefix-decimal-binary').hidden = true;
         document.getElementById('calculator-prefix-decimal').hidden = false;
         document.getElementsByName('optgroup-units-generic-binary')[0].hidden = true;
     } else {
         document.getElementById('label-prefix-decimal').hidden = true;
+        document.getElementById('label-prefix-decimal-binary').hidden = true;
         document.getElementById('calculator-prefix-decimal').hidden = true;
         document.getElementById('calculator-prefix-decimal').value = '-';
         document.getElementsByName('optgroup-units-generic-binary')[0].hidden = true;
@@ -313,16 +381,20 @@ function hide_all_units() {
     document.getElementById('unit-pdn').hidden = true;
     document.getElementById('unit-vrc').hidden = true;
     document.getElementById('unit-xkt').hidden = true;
+    document.getElementById('unit-svg').hidden = true;
+    document.getElementById('unit-agh').hidden = true;
     document.getElementById('unit-gtk').hidden = true;
     document.getElementById('unit-tap').hidden = true;
     document.getElementById('unit-agn').hidden = true;
+    document.getElementById('unit-kdn').hidden = true;
     document.getElementById('unit-idn').hidden = true;
     document.getElementById('unit-tln').hidden = true;
-    document.getElementById('unit-vdt').hidden = true;
     document.getElementById('unit-dar').hidden = true;
+    document.getElementById('unit-vdt').hidden = true;
     document.getElementById('unit-atr').hidden = true;
     document.getElementById('unit-vrd').hidden = true;
     document.getElementById('unit-vht').hidden = true;
+    document.getElementById('unit-dry').hidden = true;
     document.getElementById('unit-upp').hidden = true;
     document.getElementById('unit-dry').hidden = true;
     document.getElementById('unit-pvh').hidden = true;
@@ -330,7 +402,10 @@ function hide_all_units() {
     document.getElementById('unit-mdl').hidden = true;
     document.getElementById('unit-gol').hidden = true;
     document.getElementById('unit-pkx').hidden = true;
+    document.getElementById('unit-dpk').hidden = true;
+    document.getElementById('unit-dxt').hidden = true;
     document.getElementById('unit-bht').hidden = true;
+    document.getElementById('unit-dul').hidden = true;
     document.getElementById('unit-spn').hidden = true;
     document.getElementById('unit-atk').hidden = true;
     document.getElementById('unit-pvn').hidden = true;

@@ -1,18 +1,19 @@
 <tr id="unit-tap" hidden>
     <td style="text-align: center;">
         <select id="calculator-sezimal-unit-tap" onchange="set_sezimal_unit(this)">
-            <option value="tap">tap – °S</option>
+            <option value="tap" name="option-units-tap-tapa">tapa (common) – tap/°S</option>
+            <option value="gtk" name="option-units-tap-gatika">gatika (absolute) – gtk</option>
         </select>
     </td>
     <td colspan="2" style="text-align: center;">
         <select id="calculator-decimal-unit-tap" onchange="set_decimal_unit(this)">
-            <optgrnon-s-ioup name="optgroup-units-generic-s-i" label="S.I.">
-                <option value="°C">°C</option>
-                <option value="K">K</option>
+            <optgroup name="optgroup-units-generic-s-i" label="S.I.">
+                <option value="°C" name="option-decimal-units-tap-celsius">Celsius degree – °C</option>
+                <option value="K" name="option-decimal-units-tap-kelvin">kelvin – K</option>
             </optgroup>
             <optgroup name="optgroup-units-generic-others" label="Others">
-                <option value="°F">°F</option>
-                <option value="°R">°R</option>
+                <option value="°F" name="option-decimal-units-tap-fahrenheit">Fahrenheit degree – °F</option>
+                <option value="°R" name="option-decimal-units-tap-rankine">Rankine degree – °R</option>
             </optgroup>
         </select>
     </td>

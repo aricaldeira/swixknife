@@ -1,22 +1,25 @@
 <tr id="unit-vrc" hidden>
     <td style="text-align: center;">
         <select id="calculator-sezimal-unit-vrc" onchange="set_sezimal_unit(this)">
-            <option value="vrc">vrc</option>
+            <option value="vrc" name="option-units-vrc-varcha">varcha (energy) – vrc</option>
+            <option value="xrm" name="option-units-vrc-sharama">sharama (work) – xrm    </option>
+            <option value="uxn" name="option-units-vrc-ushuna">ushuna (heat) – uxn</option>
+            <option value="xky" name="option-units-vrc-shakya">shakya (electric pot. energy) – xky</option>
         </select>
     </td>
     <td colspan="2" style="text-align: center;">
         <select id="calculator-decimal-unit-vrc" onchange="set_decimal_unit(this)">
             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                <option value="J">J</option>
+                <option value="J" name="option-decimal-units-vrc-joule">joule – J</option>
             </optgroup>
             <optgroup name="optgroup-units-generic-others" label="Others">
-                <option value="Wh">Wh</option>
-                <option value="cal">cal</option>
-                <option value="BTU">BTU</option>
-                <option value="TNT">ton TNT</option>
-                <option value="erg">erg</option>
-                <option value="eV">eV</option>
-                <option value="ft⋅lb">ft⋅lb</option>
+                <option value="W·h" name="option-decimal-units-vrc-wh">watt-hour – W·h</option>
+                <option value="cal" name="option-decimal-units-vrc-cal">calorie – cal</option>
+                <option value="BTU" name="option-decimal-units-vrc-btu">BTU – BTU</option>
+                <option value="TNT" name="option-decimal-units-vrc-tnt">tons of TNT – TNT</option>
+                <option value="erg" name="option-decimal-units-vrc-erg">erg – erg</option>
+                <option value="eV" name="option-decimal-units-vrc-ev">electron-volt – eV</option>
+                <option value="ft⋅lbf" name="option-decimal-units-vrc-ftlb">foot-pound-force – ft⋅lbf</option>
             </optgroup>
         </select>
     </td>

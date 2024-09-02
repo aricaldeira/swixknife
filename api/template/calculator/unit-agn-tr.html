@@ -1,16 +1,17 @@
 <tr id="unit-agn" hidden>
     <td style="text-align: center;">
         <select id="calculator-sezimal-unit-agn" onchange="set_sezimal_unit(this)">
-            <option value="agn">agn</option>
+            <option value="agn" name="option-units-agn-agini">agini (heat capacity) – agn</option>
+            <option value="prv" name="option-units-agn-parivartana">parivartana (entropy) – prv</option>
         </select>
     </td>
     <td colspan="2" style="text-align: center;">
         <select id="calculator-decimal-unit-agn" onchange="set_decimal_unit(this)">
             <optgroup name="optgroup-units-generic-s-i" label="S.I.">
-                <option value="J/K">J/K</option>
+                <option value="J/K" name="option-units-agn-jk">joule per kelvin – J/K</option>
             </optgroup>
             <optgroup name="optgroup-units-generic-others" label="Others">
-                <option value="BTU/°R">BTU/°R</option>
+                <option value="BTU/°R" name="option-units-agn-btur">BTU per degree Rankine – BTU/°R</option>
             </optgroup>
         </select>
     </td>
