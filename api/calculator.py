@@ -96,7 +96,7 @@ def api_calculator_process() -> dict:
     print('dados antes', dados)
     print()
 
-    calculator.debug = True
+    # calculator.debug = True
 
     if not dados['value']:
         calculator.expression = dados['expression']

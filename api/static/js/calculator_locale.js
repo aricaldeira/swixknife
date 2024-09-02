@@ -20,6 +20,8 @@ function toggle_locale() {
 function update_locale(calculation_refresh = true) {
     const locale = localStorage.getItem('sezimal-calculator-locale');
 
+    document.documentElement.lang = locale;
+
     if (locale.search('_')) {
         parts = locale.split('_');
         document.getElementById('toggle_locale').innerHTML = '[ ' + parts[0] + ' ]';
