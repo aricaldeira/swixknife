@@ -74,7 +74,7 @@ ELEMENTARY_CHARGE_IN_COULOMBS = SezimalFraction('211_254_034_113 / 252_412_511_4
 LUMINOUS_EFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
 
 
-ONNE_TO_ONE = SezimalFraction('1 / 1')
+ONE_TO_ONE = SezimalFraction('1 / 1')
 
 
 def calculate_conversions():
@@ -172,7 +172,7 @@ def calculate_conversions():
             'm': PADA_TO_METRE,
             'prefixed': ('m', 'au', 'parsec'),
             'comparable': ('pad', 'vrp'),
-            'pad': ONNE_TO_ONE,
+            'pad': ONE_TO_ONE,
             #
             # Non S.I. units
             #
@@ -226,7 +226,7 @@ def calculate_conversions():
             'm-1': 1 / PADA_TO_METRE,
             'prefixed': ('m-1',),
             'comparable': ('trg', 'pad-1'),
-            'trg': ONNE_TO_ONE,
+            'trg': ONE_TO_ONE,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
@@ -244,7 +244,7 @@ def calculate_conversions():
             'a': KETRA_TO_SQUARE_METRE / 244,
             'prefixed': ('m2', 'a'),
             'comparable': ('ktr', 'pad2'),
-            'ktr': ONNE_TO_ONE,
+            'ktr': ONE_TO_ONE,
 
             'in2': unit_conversion['pad']['in'] ** 2,
             'li2': unit_conversion['pad']['li'] ** 2,
@@ -808,11 +808,28 @@ def calculate_conversions():
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
+    # Specific energy (kadana)
+    #
+    # Kadana
+    # https://en.wiktionary.org/wiki/%E0%A4%96%E0%A4%BE%E0%A4%A6%E0%A4%A8#Sanskrit
+    #
+    for unit in ('kdn', 'vrc/drv'):
+        unit_conversion[unit] = {
+            'J/kg': VARCHA_TO_JOULE / DRAVYA_TO_KILOGRAM,
+            'J/g': VARCHA_TO_JOULE / DRAVYA_TO_GRAM,
+            'cal': VARCHA_TO_JOULE / DRAVYA_TO_GRAM / SezimalFraction('2231 / 325'),
+            'Cal': VARCHA_TO_JOULE / DRAVYA_TO_GRAM / SezimalFraction('2231 / 325'),
+
+            'prefixed': ('J/g', 'J/kg', 'cal', 'Cal'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
     # Heat capacity per mass (indana)
     #
     # https://en.wiktionary.org/wiki/%E0%A4%88%E0%A4%82%E0%A4%A7%E0%A4%A8#Hindi
     #
-    for unit in ('idn', 'agn/drv', 'prv/drv', 'vrc/gtk/drv'):
+    for unit in ('idn', 'agn/drv', 'prv/drv', 'kdn/gtk', 'vrc/gtk/drv'):
         unit_conversion[unit] = {
             'J/K/kg': unit_conversion['agn']['J/K'] / unit_conversion['drv']['kg'],
 
@@ -862,10 +879,12 @@ def calculate_conversions():
     unit_conversion['vdt'] = {
         'C': VIDYUTA_TO_COULOMB,
         'Ah': VIDYUTA_TO_COULOMB / 24_400,
+        'A·h': VIDYUTA_TO_COULOMB / 24_400,
         'As': VIDYUTA_TO_COULOMB / 1_141_440_000,
+        'A·s': VIDYUTA_TO_COULOMB / 1_141_440_000,
         'e': SezimalFraction('115_422_244_443_055_421_554 / 1'),
         'F': SezimalFraction('5_255_312_545_030_054_302_243 / 2_354_124_142_045_012'),
-        'prefixed': ('C', 'e', 'Ah', 'As', 'F'),
+        'prefixed': ('C', 'e', 'Ah', 'A·h', 'As', 'A·s', 'F'),
     }
     unit_conversion['vdt'] = _set_non_prefixed_units(unit_conversion['vdt'])
 
@@ -898,7 +917,7 @@ def calculate_conversions():
     # resistance (viroda),
     # impedance (prati-bada), reactance (prati-gata)
     #
-    # Vivrda
+    # Viroda
     # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%A7#Sanskrit
     # Bada
     # https://en.wiktionary.org/wiki/%E0%A4%AC%E0%A4%BE%E0%A4%A7%E0%A4%BE#Sanskrit
