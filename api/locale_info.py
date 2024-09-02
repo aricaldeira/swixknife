@@ -26,7 +26,7 @@ LOCALE_LIST = [
     'en_in',
     'en_nyoo_speling',
     'en_nz',
-    'en_shavian',
+    'en_shaw',
     'en_us',
     'en',
     'eo_br',
