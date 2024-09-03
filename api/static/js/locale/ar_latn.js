@@ -1,13 +1,13 @@
 
-const sezimal_calculator_ar_Latn_text = {
-    // 'button-sezimal-sin': 'jayb',
+const sezimal_calculator_ar_latn_text = {
+    'button-sezimal-sin': 'jayb',
     // 'button-sezimal-cos': 'حتا',
     // 'button-sezimal-tan': 'طا',
-    // 'button-decimal-sin': 'حا',
+    'button-decimal-sin': 'jayb',
     // 'button-decimal-cos': 'حتا',
     // 'button-decimal-tan': 'طا',
     //
-    // 'translation-display-sin': 'jayb',
+    'translation-display-sin': 'jayb',
     // 'translation-display-asin': 'حا⁻١',
     // 'translation-display-csc': 'ٯتا',
     // 'translation-display-acsc': 'ٯتا⁻١',
@@ -28,4 +28,4 @@ const sezimal_calculator_ar_Latn_text = {
     // 'button-decimal-ldec': 'log₁₀',
 };
 
-export { sezimal_calculator_ar_Latn_text };
+export { sezimal_calculator_ar_latn_text };
