@@ -76,7 +76,6 @@ function load_translation(first_run = false) {
             };
             _store_display_translation(locale, locales_text[locale]);
             _assign_ids_text(locales_text[locale]);
-            return true;
         })
         .catch((e) => {
             if (locale.search('_')) {
@@ -87,10 +86,15 @@ function load_translation(first_run = false) {
                     locales_text[locale] = Object.assign(locales_text[locale], sezimal_calculator_text);
                     _store_display_translation(locale, locales_text[locale]);
                     _assign_ids_text(locales_text[locale]);
-                    return true;
                 }).catch((e) => {
-                    return false;
+                    locales_text[locale] = Object.assign({}, locales_text['en']);
+                    _store_display_translation(locale, locales_text[locale]);
+                    _assign_ids_text(locales_text[locale]);
                 });
+            } else {
+                locales_text[locale] = Object.assign({}, locales_text['en']);
+                _store_display_translation(locale, locales_text[locale]);
+                _assign_ids_text(locales_text[locale]);
             };
         });
     };
