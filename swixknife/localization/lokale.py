@@ -389,6 +389,9 @@ class SezimalLocale:
         if (not sezimal_digits) and native_digits and self.DIGITS:
             res = self.digit_replace(res)
 
+            if self.RTL:
+                res = '\N{LRO}' + res + '\N{PDF}'
+
         return res
 
     def format_decimal_number(self,
@@ -440,6 +443,9 @@ class SezimalLocale:
         if native_digits and self.DIGITS:
             res = self.digit_replace(res)
 
+            if self.RTL:
+                res = '\N{LRO}' + res + '\N{PDF}'
+
         return res
 
     def format_dozenal_number(self,
@@ -481,6 +487,9 @@ class SezimalLocale:
 
         if native_digits and self.DIGITS:
             res = self.digit_replace(res)
+
+            if self.RTL:
+                res = '\N{LRO}' + res + '\N{PDF}'
 
         return res
 
@@ -531,6 +540,9 @@ class SezimalLocale:
 
         if (not sezimal_digits) and native_digits and self.DIGITS:
             res = self.digit_replace(res)
+
+            if self.RTL:
+                res = '\N{LRO}' + res + '\N{PDF}'
 
         return res
 

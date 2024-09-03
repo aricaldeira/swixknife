@@ -110,13 +110,23 @@ class SezimalCalculator:
     @property
     def display(self):
         if self.sezimal_digits:
-            return default_to_sezimal_digits(self._display)
+            res = default_to_sezimal_digits(self._display)
         else:
-            return self._display
+            res = self._display
+
+        if self.locale and self.locale.RTL:
+            return '\N{RLO}' + res + '\N{PDF}'
+
+        return res
 
     @property
     def decimal_display(self):
-        return self._decimal_display
+        res = self._decimal_display
+
+        if self.locale and self.locale.RTL:
+            return '\N{RLO}' + res + '\N{PDF}'
+
+        return res
 
     @property
     def niftimal_display(self):

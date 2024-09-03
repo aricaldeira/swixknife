@@ -8,7 +8,7 @@ from ..sezimal import SezimalInteger
 
 from .en import SezimalLocaleEN
 
-class SezimalLocaleEN_SHAVIAN(SezimalLocaleEN):
+class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     LANG = 'en'
     LANGUAGE = '𐑦𐑙𐑜𐑤𐑦𐑖'
 

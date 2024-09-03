@@ -130,4 +130,3 @@ class SezimalLocaleFA(SezimalLocale):
     ERROR = 'خطا'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
-

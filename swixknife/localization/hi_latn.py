@@ -145,7 +145,7 @@ class SezimalLocaleHI_LATN(SezimalLocale):
         wan_man_van_grouping: bool = False,
         native_digits: bool = True,
     ) -> str:
-        return super().format_number(
+        return super().format_decimal_number(
             number,
             decimal_places,
             use_group_separator,
