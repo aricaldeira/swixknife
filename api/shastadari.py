@@ -121,3 +121,19 @@ def shastadari_scales_en_route() -> Response:
 @app.route('/pt/xastadári/escalas')
 def shastadari_scales_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('scales_pt.html'), mimetype='text/html')
+
+
+@app.route('/shastadari/fractions')
+def sezimal_fractions_route() -> Response:
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/xastadári/frações', code=302)
+
+    return redirect('/en/shastadari/fractions', code=302)
+
+@app.route('/en/shastadari/fractions')
+def sezimal_fractions_en_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('fractions_en.html'), mimetype='text/html')
+
+@app.route('/pt/xastadári/frações')
+def sezimal_fractions_pt_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('fractions_pt.html'), mimetype='text/html')
