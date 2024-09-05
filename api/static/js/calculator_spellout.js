@@ -13,7 +13,11 @@ function toggle_spellout() {
 
 function update_spellout(calculation_refresh = true) {
     const spellout = localStorage.getItem('sezimal-calculator-spellout');
-    const txt_translation = localStorage.getItem('sezimal-translation-txt');
+    let txt_translation = localStorage.getItem('sezimal-translation-txt');
+
+    if (txt_translation == null) {
+        txt_translation = 'txt';
+    }
 
     if ((spellout == null) || (spellout == '') || (spellout == false)  || (spellout == 'false')) {
         document.getElementById('toggle_spellout').innerHTML = `[ <span style="text-decoration: line-through;">${txt_translation}</span> ]`

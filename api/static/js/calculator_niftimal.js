@@ -19,7 +19,11 @@ function toggle_niftimal() {
 function update_niftimal(calculation_refresh = true) {
     const niftimal_type = localStorage.getItem('sezimal-calculator-niftimal');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
-    const nif_translation = localStorage.getItem('sezimal-translation-nif');
+    let nif_translation = localStorage.getItem('sezimal-translation-nif');
+
+    if (nif_translation == null) {
+        nif_translation = 'nif';
+    }
 
     if (niftimal_type == '5') {
         if ((sezimal_digits == 'true') || (sezimal_digits == true)) {
