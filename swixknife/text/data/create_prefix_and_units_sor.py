@@ -90,6 +90,8 @@ UNIT-p/Xx por xaxadara
 UNIT-atk astaca
 UNIT-pvn pavana
 UNIT-dul dúli
+UNIT-clt chaláti
+UNIT-pbt pibáti
 
 EXP-2 quadrado
 EXP-² quadrado
@@ -183,6 +185,8 @@ UNIT-p/Xx pur xaxadara
 UNIT-atk astaka
 UNIT-pvn pavana
 UNIT-dul duli
+UNIT-clt xalati
+UNIT-pbt pibati
 
 EXP-2 kwadradu
 EXP-² kwadradu
@@ -276,6 +280,8 @@ UNIT-p/Xx per ŝaŝadar
 UNIT-atk aŝtakao
 UNIT-pvn pavanao
 UNIT-dul dulio
+UNIT-clt ĉalatio
+UNIT-pbt pibatio
 
 EXP-2 kvadrata
 EXP-² kvadrata
@@ -369,6 +375,8 @@ UNIT-p/Xx per shashadara
 UNIT-atk ashtaka
 UNIT-pvn pavana
 UNIT-dul duli
+UNIT-clt chalati
+UNIT-pbt pibati
 
 EXP-2 square
 EXP-² square

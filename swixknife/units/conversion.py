@@ -200,10 +200,12 @@ def _identify_validate_prefix_unit(sezimal_unit: str, decimal_unit: str):
     return factor, da
 
 
-def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit: str, decimal_unit: str, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
+def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit: str, decimal_unit: str, return_fraction: bool = False, simplify_fraction: bool = True) -> Sezimal | SezimalInteger | SezimalFraction:
     factor, adjust = _identify_validate_prefix_unit(sezimal_unit, decimal_unit)
 
     sezimal_context.use_ultra_precision()
+    original_fraction_simplify = sezimal_context.fractions_simplify
+    sezimal_context.fractions_simplify = False
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -211,20 +213,26 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     if return_fraction and type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
 
-    measure *= factor
+    if factor >= 0:
+        measure *= factor
+    else:
+        measure = (1 / measure) * (factor * -1)
 
     if adjust:
         measure += adjust
 
     sezimal_context.back_to_regular_precision()
+    sezimal_context.fractions_simplify = original_fraction_simplify
 
     if not return_fraction:
         measure = round(measure, sezimal_context.precision)
+    elif type(measure) == SezimalFraction and simplify_fraction:
+        measure = measure.simplify()
 
     return measure
 
 
-def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit_1: str, sezimal_unit_2, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
+def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit_1: str, sezimal_unit_2, return_fraction: bool = False, simplify_fraction: bool = True) -> Sezimal | SezimalInteger | SezimalFraction:
     sp_1, su_1, spf_1 = _identify_validate_sezimal_unit(sezimal_unit_1)
     sp_2, su_2, spf_2 = _identify_validate_sezimal_unit(sezimal_unit_2)
 
@@ -236,10 +244,16 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
         and (not (
             su_1 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
             and su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+        )) \
+        and (not (
+            su_1 in ('clt', 'pbt')
+            and su_2 in ('clt', 'pbt')
         )):
         raise ValueError(f'Invalid conversion between units [{sezimal_unit_1}] and [{sezimal_unit_2}]')
 
     sezimal_context.use_ultra_precision()
+    original_fraction_simplify = sezimal_context.fractions_simplify
+    sezimal_context.fractions_simplify = False
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -262,20 +276,30 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     if su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure *= UNIT_CONVERSION[su_2]['ang']
 
+    #
+    # Reciprocal conversion
+    #
+    if (su_1 == 'clt' and su_2 == 'pbt') or (su_1 == 'pbt' and su_2 == 'clt'):
+        measure = 1 / measure
+
     measure /= spf_2
 
     sezimal_context.back_to_regular_precision()
 
     if not return_fraction:
         measure = round(measure, sezimal_context.precision)
+    elif type(measure) == SezimalFraction and simplify_fraction:
+        measure = measure.simplify()
 
     return measure
 
 
-def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, decimal_unit: str, sezimal_unit: str, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
+def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, decimal_unit: str, sezimal_unit: str, return_fraction: bool = False, simplify_fraction: bool = True) -> Sezimal | SezimalInteger | SezimalFraction:
     factor, adjust = _identify_validate_prefix_unit(sezimal_unit, decimal_unit)
 
     sezimal_context.use_ultra_precision()
+    original_fraction_simplify = sezimal_context.fractions_simplify
+    sezimal_context.fractions_simplify = False
 
     if type(measure) in (str, int, float, Decimal):
         measure = Sezimal(measure)
@@ -289,31 +313,52 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     measure /= factor
 
     sezimal_context.back_to_regular_precision()
+    sezimal_context.fractions_simplify = original_fraction_simplify
 
     if not return_fraction:
         measure = round(measure, sezimal_context.precision)
+    elif type(measure) == SezimalFraction and simplify_fraction:
+        measure = measure.simplify()
 
     return measure
 
 
-def decimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, decimal_unit_1: str, decimal_unit_2: str, return_fraction: bool = False) -> Sezimal | SezimalInteger | SezimalFraction:
-    sezimal_unit = ''
+def decimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, decimal_unit_1: str, decimal_unit_2: str, return_fraction: bool = False, simplify_fraction: bool = True) -> Sezimal | SezimalInteger | SezimalFraction:
+    sezimal_unit_1 = ''
+    sezimal_unit_2 = ''
 
     for su in UNIT_CONVERSION:
         if decimal_unit_1 in UNIT_CONVERSION[su]:
-            sezimal_unit = su
+            sezimal_unit_1 = su
             break
 
-    if not sezimal_unit:
+    if not sezimal_unit_1:
         for su in UNIT_CONVERSION:
             if decimal_unit_1[1:] in UNIT_CONVERSION[su]:
-                sezimal_unit = su
+                sezimal_unit_1 = su
                 break
 
-    measure = decimal_to_sezimal_unit(measure, decimal_unit_1, sezimal_unit, return_fraction=True)
-    measure = sezimal_to_decimal_unit(measure, sezimal_unit, decimal_unit_2, return_fraction=True)
+    for su in UNIT_CONVERSION:
+        if decimal_unit_2 in UNIT_CONVERSION[su]:
+            sezimal_unit_2 = su
+            break
+
+    if not sezimal_unit_2:
+        for su in UNIT_CONVERSION:
+            if decimal_unit_2[1:] in UNIT_CONVERSION[su]:
+                sezimal_unit_2 = su
+                break
+
+    measure = decimal_to_sezimal_unit(measure, decimal_unit_1, sezimal_unit_1, return_fraction=True, simplify_fraction=False)
+
+    if sezimal_unit_1 != sezimal_unit_2:
+        measure = sezimal_to_sezimal_unit(measure, sezimal_unit_1, sezimal_unit_2, return_fraction=True, simplify_fraction=False)
+
+    measure = sezimal_to_decimal_unit(measure, sezimal_unit_2, decimal_unit_2, return_fraction=True, simplify_fraction=False)
 
     if not return_fraction:
         measure = round(measure, sezimal_context.precision)
+    elif type(measure) == SezimalFraction and simplify_fraction:
+        measure = measure.simplify()
 
     return measure
