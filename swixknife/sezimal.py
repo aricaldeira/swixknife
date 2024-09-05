@@ -1495,20 +1495,23 @@ class SezimalFraction(Sezimal):
         if not using_ultra_precision:
             sezimal_context.use_ultra_precision()
 
-        while True:
-            x = num.decimal
-            y = den.decimal
+        with localcontext() as context:
+            context.prec = sezimal_context.decimal_precision
 
-            while y:
-                x, y = y, x % y
+            while True:
+                x = num.decimal
+                y = den.decimal
 
-            x = abs(x)
+                while y:
+                    x, y = y, x % y
 
-            if x == 1 or x == 0:
-                break
+                x = abs(x)
 
-            num = SezimalInteger(num.decimal / x)
-            den = SezimalInteger(den.decimal / x)
+                if x == 1 or x == 0:
+                    break
+
+                num = SezimalInteger(num.decimal / x)
+                den = SezimalInteger(den.decimal / x)
 
         if not using_ultra_precision:
             sezimal_context.back_to_regular_precision()
