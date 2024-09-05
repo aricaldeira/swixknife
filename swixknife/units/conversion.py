@@ -193,7 +193,10 @@ def _identify_validate_prefix_unit(sezimal_unit: str, decimal_unit: str):
 
     sezimal_context.use_ultra_precision()
 
-    factor = spf * UNIT_CONVERSION[su][du] / dpf
+    if UNIT_CONVERSION[su][du] > 0:
+        factor = spf * UNIT_CONVERSION[su][du] / dpf
+    else:
+        factor = (1 / spf) * UNIT_CONVERSION[su][du] / (1 / dpf)
 
     sezimal_context.back_to_regular_precision()
 
