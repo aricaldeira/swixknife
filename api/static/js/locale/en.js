@@ -32,6 +32,14 @@ const sezimal_calculator_en_text = {
     'translation-display-imp-pt': 'pt',
     'translation-display-imp-qt': 'qt',
     'translation-display-imp-gal': 'gal',
+
+    'option-decimal-units-clt-usmpg': 'miles per US gallon – mpg US',
+    'option-decimal-units-clt-impmpg': 'miles per gallon – mpg',
+
+    'translation-display-L/100km': 'L/100 km',
+    'translation-display-km/20L': 'km/20 L',
+    'translation-display-US-mpg': 'mpg US',
+    'translation-display-imp-mpg': 'mpg',
 };
 
 export { sezimal_calculator_en_text };

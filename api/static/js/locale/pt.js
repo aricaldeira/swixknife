@@ -184,6 +184,7 @@ const sezimal_calculator_pt_text = {
     'option-units-spn': 'Proporção – spn',
     'option-units-atk': 'Armazenagem de dados – atk',
     'option-units-pvn': 'Vel. de transm. de dados – pvn',
+    'option-units-clt': 'Consumo de combustível – clt',
 
     'label-prefix-sezimal': 'Prefixo sezimal',
     'label-prefix-sezimal-angle': 'Prefixo sezimal',
@@ -647,6 +648,14 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-pvn-bps': 'bits por segundo – bps',
     'option-decimal-units-pvn-Bps': 'bytes por segundo – Bps',
     'option-decimal-units-pvn-Bpm': 'bytes por minuto – Bpm',
+
+    'option-units-clt-chalati': 'chalátis (distância por volume) – clt',
+    'option-units-clt-pibati': 'pibátis (volume por distância) – pbt',
+    'option-decimal-units-clt-kml': 'quilômetros por litro – km/L',
+    'option-decimal-units-clt-l100km': 'litros por 100 quilômetros – L/100 L',
+    'option-decimal-units-clt-km20l': 'quilômetros por 20 litros – km/20 L',
+    'option-decimal-units-clt-usmpg': 'milhas por galão EUA – mpg EUA',
+    'option-decimal-units-clt-impmpg': 'milhas por galão imperial – mpg imp.',
 
 };
 

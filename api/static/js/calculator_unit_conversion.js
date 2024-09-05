@@ -245,6 +245,12 @@ function set_unit_type() {
         set_unit_type_sezimal_decimal(unit_type, 'DX', 'atk', 'Gi', 'B');
     } else if (unit_type == 'pvn') {
         set_unit_type_sezimal_decimal(unit_type, 'X', 'pvn', 'M', 'bps');
+    } else if (unit_type == 'clt') {
+        if (locale == 'en_us') {
+            set_unit_type_sezimal_decimal(unit_type, 'T', 'clt', '', 'US mpg');
+        } else {
+            set_unit_type_sezimal_decimal(unit_type, 'C', 'clt', '', 'km/L');
+        }
     } else {
         set_unit_type_sezimal_decimal(unit_type, '-', '', '-', '');
     };
@@ -412,4 +418,5 @@ function hide_all_units() {
     document.getElementById('unit-spn').hidden = true;
     document.getElementById('unit-atk').hidden = true;
     document.getElementById('unit-pvn').hidden = true;
+    document.getElementById('unit-clt').hidden = true;
 };

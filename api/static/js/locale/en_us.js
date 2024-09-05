@@ -73,6 +73,14 @@ const sezimal_calculator_en_us_text = {
 
     'option-decimal-units-svg-gms': 'gram-meter per second – g·m/s',
 
+    'option-decimal-units-clt-kml': 'kilometers per liter – km/L',
+    'option-decimal-units-clt-l100km': 'liters per 100 kilometers – L/100 L',
+    'option-decimal-units-clt-km20l': 'kilometers per 20 liters – km/20 L',
+    'option-decimal-units-clt-usmpg': 'miles per gallon – mpg',
+    'option-decimal-units-clt-impmpg': 'miles per imperial gallon – mpg imp.',
+
+    'translation-display-US-mpg': 'mpg',
+    'translation-display-imp-mpg': 'mpg imp.',
 };
 
 export { sezimal_calculator_en_us_text };
