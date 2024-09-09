@@ -38,17 +38,22 @@ def index_route():
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt', code=302)
 
-    return redirect('/en', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz', code=302)
 
+    return redirect('/en', code=302)
 
 @app.route('/en')
 def index_en_route():
     return send_file(TEMPLATE_PATH.joinpath('sezimal_en.html'), mimetype='text/html')
 
-
 @app.route('/pt')
 def index_pt_route():
     return send_file(TEMPLATE_PATH.joinpath('sezimal_pt.html'), mimetype='text/html')
+
+@app.route('/bz')
+def index_bz_route():
+    return send_file(TEMPLATE_PATH.joinpath('sezimal_bz.html'), mimetype='text/html')
 
 
 def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale) -> dict:
