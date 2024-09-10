@@ -13,6 +13,8 @@ from  locale_detection import browser_preferred_locale
 def shastadari_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari', code=302)
 
     return redirect('/en/shastadari', code=302)
 
@@ -24,11 +26,17 @@ def shastadari_en_route() -> Response:
 def shastadari_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('shastadari_pt.html'), mimetype='text/html')
 
+@app.route('/bz/xastadari')
+def shastadari_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('shastadari_bz.html'), mimetype='text/html')
+
 
 @app.route('/shastadari/prefixes')
 def shastadari_prefixes_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/prefixos', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/prefiksus', code=302)
 
     return redirect('/en/shastadari/prefixes', code=302)
 
@@ -39,6 +47,10 @@ def shastadari_prefixes_en_route() -> Response:
 @app.route('/pt/xastadári/prefixos')
 def shastadari_prefixes_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('prefixes_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/prefiksus')
+def shastadari_prefixes_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('prefixes_bz.html'), mimetype='text/html')
 
 
 @app.route('/shastadari/base-units')
@@ -92,6 +104,8 @@ def shastadari_derived_units_pt_route() -> Response:
 def shastadari_other_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/outras-unidades', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/otras-unidadis', code=302)
 
     return redirect('/en/shastadari/other-units', code=302)
 
@@ -102,6 +116,10 @@ def shastadari_other_units_en_route() -> Response:
 @app.route('/pt/xastadári/outras-unidades')
 def shastadari_other_units_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('other_units_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/otras-unidadis')
+def shastadari_other_units_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('other_units_bz.html'), mimetype='text/html')
 
 
 @app.route('/shastadari/scales')
@@ -115,6 +133,10 @@ def shastadari_scales_route() -> Response:
 def shastadari_scales_en_route() -> Response:
     if browser_preferred_locale().lower() == 'en-us':
         return send_file(TEMPLATE_PATH.joinpath('scales_en_us.html'), mimetype='text/html')
+    elif browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/xastadári/escalas', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/eskalas', code=302)
 
     return send_file(TEMPLATE_PATH.joinpath('scales_en.html'), mimetype='text/html')
 
@@ -122,11 +144,17 @@ def shastadari_scales_en_route() -> Response:
 def shastadari_scales_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('scales_pt.html'), mimetype='text/html')
 
+@app.route('/bz/xastadari/eskalas')
+def shastadari_scales_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('scales_bz.html'), mimetype='text/html')
+
 
 @app.route('/shastadari/fractions')
 def sezimal_fractions_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/frações', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/frasoyns', code=302)
 
     return redirect('/en/shastadari/fractions', code=302)
 
@@ -137,3 +165,7 @@ def sezimal_fractions_en_route() -> Response:
 @app.route('/pt/xastadári/frações')
 def sezimal_fractions_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('fractions_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/frasoyns')
+def sezimal_fractions_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('fractions_bz.html'), mimetype='text/html')
