@@ -1,10 +1,5 @@
 
-import pathlib
-
-TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
-CALCULATOR_TEMPLATE_PATH = TEMPLATE_PATH.joinpath('calculator')
-
-from flask import send_file, redirect, Response
+from flask import render_template, redirect, Response
 from main import app
 from  locale_detection import browser_preferred_locale
 
@@ -20,15 +15,15 @@ def shastadari_route() -> Response:
 
 @app.route('/en/shastadari')
 def shastadari_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('shastadari_en.html'), mimetype='text/html')
+    return render_template('shastadari_en.html')
 
 @app.route('/pt/xastadári')
 def shastadari_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('shastadari_pt.html'), mimetype='text/html')
+    return render_template('shastadari_pt.html')
 
 @app.route('/bz/xastadari')
 def shastadari_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('shastadari_bz.html'), mimetype='text/html')
+    return render_template('shastadari_bz.html')
 
 
 @app.route('/shastadari/prefixes')
@@ -42,15 +37,15 @@ def shastadari_prefixes_route() -> Response:
 
 @app.route('/en/shastadari/prefixes')
 def shastadari_prefixes_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('prefixes_en.html'), mimetype='text/html')
+    return render_template('prefixes_en.html')
 
 @app.route('/pt/xastadári/prefixos')
 def shastadari_prefixes_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('prefixes_pt.html'), mimetype='text/html')
+    return render_template('prefixes_pt.html')
 
 @app.route('/bz/xastadari/prefiksus')
 def shastadari_prefixes_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('prefixes_bz.html'), mimetype='text/html')
+    return render_template('prefixes_bz.html')
 
 
 @app.route('/shastadari/base-units')
@@ -64,18 +59,18 @@ def shastadari_base_units_route() -> Response:
 
 @app.route('/en/shastadari/base-units')
 def shastadari_base_units_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('base_units_en.html'), mimetype='text/html')
+    return render_template('base_units_en.html')
 
 @app.route('/pt/xastadári/unidades-fundamentais')
 def shastadari_base_units_pt_route() -> Response:
     if browser_preferred_locale()[-2:] in ('BR', 'br'):
-        return send_file(TEMPLATE_PATH.joinpath('base_units_pt_br.html'), mimetype='text/html')
+        return render_template('base_units_pt_br.html')
 
-    return send_file(TEMPLATE_PATH.joinpath('base_units_pt.html'), mimetype='text/html')
+    return render_template('base_units_pt.html')
 
 @app.route('/bz/xastadari/unidadis-fundamentays')
 def shastadari_base_units_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('base_units_bz.html'), mimetype='text/html')
+    return render_template('base_units_bz.html')
 
 
 @app.route('/shastadari/time-units')
@@ -89,15 +84,15 @@ def shastadari_time_units_route() -> Response:
 
 @app.route('/en/shastadari/time-units')
 def shastadari_time_units_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('time_units_en.html'), mimetype='text/html')
+    return render_template('time_units_en.html')
 
 @app.route('/pt/xastadári/unidades-de-tempo')
 def shastadari_time_units_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('time_units_pt.html'), mimetype='text/html')
+    return render_template('time_units_pt.html')
 
 @app.route('/bz/xastadari/unidadis-di-tenpu')
 def shastadari_time_units_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('time_units_bz.html'), mimetype='text/html')
+    return render_template('time_units_bz.html')
 
 
 @app.route('/shastadari/derived-units')
@@ -109,18 +104,18 @@ def shastadari_derived_units_route() -> Response:
 
 @app.route('/en/shastadari/derived-units')
 def shastadari_derived_units_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('derived_units_en.html'), mimetype='text/html')
+    return render_template('derived_units_en.html')
 
 @app.route('/pt/xastadári/unidades-derivadas')
 def shastadari_derived_units_pt_route() -> Response:
     if browser_preferred_locale()[-2:] in ('BR', 'br'):
-        return send_file(TEMPLATE_PATH.joinpath('derived_units_pt_br.html'), mimetype='text/html')
+        return render_template('derived_units_pt_br.html')
 
-    return send_file(TEMPLATE_PATH.joinpath('derived_units_pt.html'), mimetype='text/html')
+    return render_template('derived_units_pt.html')
 
 @app.route('/bz/xastadari/unidadis-derivadas')
 def shastadari_derived_units_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('derived_units_bz.html'), mimetype='text/html')
+    return render_template('derived_units_bz.html')
 
 
 @app.route('/shastadari/other-units')
@@ -134,15 +129,15 @@ def shastadari_other_units_route() -> Response:
 
 @app.route('/en/shastadari/other-units')
 def shastadari_other_units_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('other_units_en.html'), mimetype='text/html')
+    return render_template('other_units_en.html')
 
 @app.route('/pt/xastadári/outras-unidades')
 def shastadari_other_units_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('other_units_pt.html'), mimetype='text/html')
+    return render_template('other_units_pt.html')
 
 @app.route('/bz/xastadari/otras-unidadis')
 def shastadari_other_units_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('other_units_bz.html'), mimetype='text/html')
+    return render_template('other_units_bz.html')
 
 
 @app.route('/shastadari/scales')
@@ -155,21 +150,21 @@ def shastadari_scales_route() -> Response:
 @app.route('/en/shastadari/scales')
 def shastadari_scales_en_route() -> Response:
     if browser_preferred_locale().lower() == 'en-us':
-        return send_file(TEMPLATE_PATH.joinpath('scales_en_us.html'), mimetype='text/html')
+        return render_template('scales_en_us.html')
     elif browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/escalas', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
         return redirect('/bz/xastadari/eskalas', code=302)
 
-    return send_file(TEMPLATE_PATH.joinpath('scales_en.html'), mimetype='text/html')
+    return render_template('scales_en.html')
 
 @app.route('/pt/xastadári/escalas')
 def shastadari_scales_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('scales_pt.html'), mimetype='text/html')
+    return render_template('scales_pt.html')
 
 @app.route('/bz/xastadari/eskalas')
 def shastadari_scales_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('scales_bz.html'), mimetype='text/html')
+    return render_template('scales_bz.html')
 
 
 @app.route('/shastadari/fractions')
@@ -183,12 +178,12 @@ def sezimal_fractions_route() -> Response:
 
 @app.route('/en/shastadari/fractions')
 def sezimal_fractions_en_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('fractions_en.html'), mimetype='text/html')
+    return render_template('fractions_en.html')
 
 @app.route('/pt/xastadári/frações')
 def sezimal_fractions_pt_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('fractions_pt.html'), mimetype='text/html')
+    return render_template('fractions_pt.html')
 
 @app.route('/bz/xastadari/frasoyns')
 def sezimal_fractions_bz_route() -> Response:
-    return send_file(TEMPLATE_PATH.joinpath('fractions_bz.html'), mimetype='text/html')
+    return render_template('fractions_bz.html')

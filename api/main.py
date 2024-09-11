@@ -1,10 +1,9 @@
 
-
 import pathlib
 
 TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
 
-from flask import Flask, request, send_file, redirect
+from flask import Flask, request, render_template, redirect
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
@@ -21,6 +20,8 @@ app.json.sort_keys = False
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 )
+app.template_folder = TEMPLATE_PATH
+
 
 from locale_info import *
 from number_conversion import *
@@ -45,15 +46,15 @@ def index_route():
 
 @app.route('/en')
 def index_en_route():
-    return send_file(TEMPLATE_PATH.joinpath('sezimal_en.html'), mimetype='text/html')
+    return render_template('sezimal_en.html')
 
 @app.route('/pt')
 def index_pt_route():
-    return send_file(TEMPLATE_PATH.joinpath('sezimal_pt.html'), mimetype='text/html')
+    return render_template('sezimal_pt.html')
 
 @app.route('/bz')
 def index_bz_route():
-    return send_file(TEMPLATE_PATH.joinpath('sezimal_bz.html'), mimetype='text/html')
+    return render_template('sezimal_bz.html')
 
 
 def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale) -> dict:
