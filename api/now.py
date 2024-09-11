@@ -1,5 +1,5 @@
 
-from main import app
+from main import app, sitemapper
 from  locale_detection import browser_preferred_locale
 from flask import Response
 
@@ -15,7 +15,7 @@ from swixknife.units import sezimal_to_decimal_unit
 @app.route('/long-now/<string:locale>/<path:time_zone>')
 def api_long_now(locale: str = None, time_zone: str = None) -> str:
     url = _manifest_url('long-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
+    locale = sezimal_locale(locale or browser_preferred_locale())
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
     digits = locale.DIGITS
 
@@ -60,6 +60,7 @@ def _manifest_url(base, locale, time_zone):
     return url
 
 
+@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/now')
 @app.route('/now/<string:locale>')
 @app.route('/now/<string:locale>/<path:time_zone>')
@@ -123,7 +124,7 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
 @app.route('/decimal-now/<string:locale>/<path:time_zone>')
 def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
     url = _manifest_url('decimal-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
+    locale = sezimal_locale(locale or browser_preferred_locale())
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
     digits = locale.DIGITS
 
@@ -132,7 +133,9 @@ def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
 
     text = open('template/decimal-now.html').read()
 
-    date_format = locale.DATE_FORMAT
+    date_format = locale.DATE_FORMAT.replace('#', '#9').replace('#9Y', '#9gy').replace('#9X', '#9gy').replace('#9?Y', '#9?gy').replace('#9y', '#9gy') # .replace('#9?m', '%m')
+
+    print(date_format)
 
     if date_time.is_dst:
         if locale.RTL:
@@ -154,7 +157,7 @@ def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
 @app.route('/dozenal-now/<string:locale>/<path:time_zone>')
 def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
     url = _manifest_url('dozenal-now', locale, time_zone)
-    locale = sezimal_locale(locale or 'en')
+    locale = sezimal_locale(locale or browser_preferred_locale())
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
     digits = locale.DIGITS
 

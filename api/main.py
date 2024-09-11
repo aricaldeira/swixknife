@@ -4,6 +4,7 @@ import pathlib
 TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
 
 from flask import Flask, request, render_template, redirect
+from flask_sitemapper import Sitemapper
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
@@ -22,6 +23,9 @@ app.wsgi_app = ProxyFix(
 )
 app.template_folder = TEMPLATE_PATH
 
+sitemapper = Sitemapper()
+sitemapper.init_app(app)
+
 
 from locale_info import *
 from number_conversion import *
@@ -34,6 +38,7 @@ from digits import *
 from  locale_detection import browser_preferred_locale
 
 
+@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/')
 def index_route():
     if browser_preferred_locale()[0:2] == 'pt':
@@ -44,14 +49,17 @@ def index_route():
 
     return redirect('/en', code=302)
 
+@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/en')
 def index_en_route():
     return render_template('sezimal_en.html')
 
+@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/pt')
 def index_pt_route():
     return render_template('sezimal_pt.html')
 
+@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/bz')
 def index_bz_route():
     return render_template('sezimal_bz.html')
@@ -222,3 +230,15 @@ def api_date(locale: str = None, time_zone: str = None) -> str:
         return date_time.format(request.args['format'], locale)
 
     return date_time.format(locale.DATE_TIME_FORMAT, locale)
+
+@app.route('/sitemap.xml')
+def sitemap():
+  return sitemapper.generate()
+
+
+@app.route('/robots.txt')
+def robots():
+    text = '''User-agent: *
+Sitemap: https://sezimal.tauga.online/sitemap.xml
+'''
+    return Response(text, status=200, mimetype='text/plain')
