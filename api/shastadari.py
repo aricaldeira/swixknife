@@ -57,6 +57,8 @@ def shastadari_prefixes_bz_route() -> Response:
 def shastadari_base_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/unidades-fundamentais', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/unidadis-fundamentays', code=302)
 
     return redirect('/en/shastadari/base-units', code=302)
 
@@ -66,13 +68,22 @@ def shastadari_base_units_en_route() -> Response:
 
 @app.route('/pt/xastadári/unidades-fundamentais')
 def shastadari_base_units_pt_route() -> Response:
+    if browser_preferred_locale()[-2:] in ('BR', 'br'):
+        return send_file(TEMPLATE_PATH.joinpath('base_units_pt_br.html'), mimetype='text/html')
+
     return send_file(TEMPLATE_PATH.joinpath('base_units_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/unidadis-fundamentays')
+def shastadari_base_units_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('base_units_bz.html'), mimetype='text/html')
 
 
 @app.route('/shastadari/time-units')
 def shastadari_time_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/unidades-de-tempo', code=302)
+    elif browser_preferred_locale()[0:2] == 'bf':
+        return redirect('/bz/xastadari/unidadis-di-tenpu', code=302)
 
     return redirect('/en/shastadari/time-units', code=302)
 
@@ -83,6 +94,10 @@ def shastadari_time_units_en_route() -> Response:
 @app.route('/pt/xastadári/unidades-de-tempo')
 def shastadari_time_units_pt_route() -> Response:
     return send_file(TEMPLATE_PATH.joinpath('time_units_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/unidadis-di-tenpu')
+def shastadari_time_units_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('time_units_bz.html'), mimetype='text/html')
 
 
 @app.route('/shastadari/derived-units')
@@ -98,7 +113,15 @@ def shastadari_derived_units_en_route() -> Response:
 
 @app.route('/pt/xastadári/unidades-derivadas')
 def shastadari_derived_units_pt_route() -> Response:
+    if browser_preferred_locale()[-2:] in ('BR', 'br'):
+        return send_file(TEMPLATE_PATH.joinpath('derived_units_pt_br.html'), mimetype='text/html')
+
     return send_file(TEMPLATE_PATH.joinpath('derived_units_pt.html'), mimetype='text/html')
+
+@app.route('/bz/xastadari/unidadis-derivadas')
+def shastadari_derived_units_bz_route() -> Response:
+    return send_file(TEMPLATE_PATH.joinpath('derived_units_bz.html'), mimetype='text/html')
+
 
 @app.route('/shastadari/other-units')
 def shastadari_other_units_route() -> Response:
