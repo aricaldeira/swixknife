@@ -38,7 +38,7 @@ from digits import *
 from  locale_detection import browser_preferred_locale
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/')
 def index_route():
     if browser_preferred_locale()[0:2] == 'pt':

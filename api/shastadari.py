@@ -3,7 +3,7 @@ from flask import render_template, redirect, Response
 from main import app, sitemapper
 from  locale_detection import browser_preferred_locale
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/shastadari')
 def shastadari_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -29,7 +29,7 @@ def shastadari_bz_route() -> Response:
     return render_template('shastadari_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/prefixes')
 def shastadari_prefixes_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -55,7 +55,7 @@ def shastadari_prefixes_bz_route() -> Response:
     return render_template('prefixes_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/base-units')
 def shastadari_base_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -84,7 +84,7 @@ def shastadari_base_units_bz_route() -> Response:
     return render_template('base_units_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/time-units')
 def shastadari_time_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -110,7 +110,7 @@ def shastadari_time_units_bz_route() -> Response:
     return render_template('time_units_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/derived-units')
 def shastadari_derived_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -137,7 +137,7 @@ def shastadari_derived_units_bz_route() -> Response:
     return render_template('derived_units_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/other-units')
 def shastadari_other_units_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
@@ -163,11 +163,13 @@ def shastadari_other_units_bz_route() -> Response:
     return render_template('other_units_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/scales')
 def shastadari_scales_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/escalas', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/iskalas', code=302)
 
     return redirect('/en/shastadari/scales', code=302)
 
@@ -176,10 +178,6 @@ def shastadari_scales_route() -> Response:
 def shastadari_scales_en_route() -> Response:
     if browser_preferred_locale().lower() == 'en-us':
         return render_template('scales_en_us.html')
-    elif browser_preferred_locale()[0:2] == 'pt':
-        return redirect('/pt/xastadári/escalas', code=302)
-    elif browser_preferred_locale()[0:2] == 'bz':
-        return redirect('/bz/xastadari/eskalas', code=302)
 
     return render_template('scales_en.html')
 
@@ -189,12 +187,12 @@ def shastadari_scales_pt_route() -> Response:
     return render_template('scales_pt.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
-@app.route('/bz/xastadari/eskalas')
+@app.route('/bz/xastadari/iskalas')
 def shastadari_scales_bz_route() -> Response:
     return render_template('scales_bz.html')
 
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/fractions')
 def sezimal_fractions_route() -> Response:
     if browser_preferred_locale()[0:2] == 'pt':
