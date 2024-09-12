@@ -202,17 +202,17 @@ def sezimal_fractions_route() -> Response:
 
     return redirect('/en/shastadari/fractions', code=302)
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-12', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/fractions')
 def sezimal_fractions_en_route() -> Response:
     return render_template('fractions_en.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-12', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/frações')
 def sezimal_fractions_pt_route() -> Response:
     return render_template('fractions_pt.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-12', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/frasoyns')
 def sezimal_fractions_bz_route() -> Response:
     return render_template('fractions_bz.html')
