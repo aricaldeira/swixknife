@@ -58,6 +58,7 @@ RECURRING_DIGITS_NOTATION_NONE = False
 RECURRING_DIGITS_NOTATION_SIMPLE = True
 RECURRING_DIGITS_NOTATION_WITH_ELLIPSIS = '...'
 RECURRING_DIGITS_NOTATION_WITH_TYPOGRAPHICAL_ELLIPSIS = 'typographical_ellipsis'
+RECURRING_DIGITS_NOTATION_WITH_TYPOGRAPHICAL_ELLIPSIS_CHARACTER = '…'
 RECURRING_DIGITS_NOTATION_OVERLINE = 'ol'  # Classical
 RECURRING_DIGITS_NOTATION_DOT_ABOVE = 'da'  # Some locales
 
@@ -992,9 +993,11 @@ def _apply_recurring_mark(
     else:
         marked_fraction = recurring_marker + formatted_recurring
 
-    if recurring_digits_notation == RECURRING_DIGITS_NOTATION_WITH_ELLIPSIS:
-        marked_fraction += '...'
-    elif recurring_digits_notation == RECURRING_DIGITS_NOTATION_WITH_TYPOGRAPHICAL_ELLIPSIS:
-        marked_fraction += '…'
+    if marked_fraction and marked_fraction[-1] == '0':
+        if recurring_digits_notation == RECURRING_DIGITS_NOTATION_WITH_ELLIPSIS:
+            marked_fraction += '...'
+        elif recurring_digits_notation == RECURRING_DIGITS_NOTATION_WITH_TYPOGRAPHICAL_ELLIPSIS \
+            or recurring_digits_notation == RECURRING_DIGITS_NOTATION_WITH_TYPOGRAPHICAL_ELLIPSIS_CHARACTER:
+            marked_fraction += '…'
 
     return marked_fraction
