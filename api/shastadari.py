@@ -173,7 +173,7 @@ def shastadari_scales_route() -> Response:
 
     return redirect('/en/shastadari/scales', code=302)
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/scales')
 def shastadari_scales_en_route() -> Response:
     if browser_preferred_locale().lower() == 'en-us':
@@ -181,12 +181,12 @@ def shastadari_scales_en_route() -> Response:
 
     return render_template('scales_en.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/escalas')
 def shastadari_scales_pt_route() -> Response:
     return render_template('scales_pt.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/iskalas')
 def shastadari_scales_bz_route() -> Response:
     return render_template('scales_bz.html')
