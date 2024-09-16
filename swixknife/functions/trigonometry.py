@@ -30,7 +30,7 @@ from ..base import sezimal_context
 from ..units import sezimal_to_sezimal_unit, decimal_to_sezimal_unit
 
 
-def _angle_to_paridi_fraction(angle, unit: str = 'mdl') -> SezimalFraction | SympyRational:
+def _angle_to_mandala_fraction(angle, unit: str = 'mdl') -> SezimalFraction | SympyRational:
     if not unit:
         unit = 'mdl'
 
@@ -65,7 +65,7 @@ def sin(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.sin(angle * (sympy.pi * 2)))
@@ -79,10 +79,10 @@ def arcsin(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arcsin(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.asin(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arcsin(angle.decimal))
 
@@ -96,7 +96,7 @@ def csc(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.csc(angle * (sympy.pi * 2)))
@@ -110,10 +110,10 @@ def arccsc(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccsc(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acsc(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccsc(angle.decimal))
 
@@ -127,7 +127,7 @@ def cos(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.cos(angle * (sympy.pi * 2)))
@@ -141,10 +141,10 @@ def arccos(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccos(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acos(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccos(angle.decimal))
 
@@ -158,7 +158,7 @@ def sec(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.sec(angle * (sympy.pi * 2)))
@@ -172,10 +172,10 @@ def arcsec(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arcsec(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.asec(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arcsec(angle.decimal))
 
@@ -189,7 +189,7 @@ def tan(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.tan(angle * (sympy.pi * 2)))
@@ -203,10 +203,10 @@ def arctan(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arctan(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.atan(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arctan(angle.decimal))
 
@@ -220,7 +220,7 @@ def cot(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.cot(angle * (sympy.pi * 2)))
@@ -234,10 +234,10 @@ def arccot(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccot(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acot(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccot(angle.decimal))
 
@@ -251,7 +251,7 @@ def sinh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.sinh(angle * (sympy.pi * 2)))
@@ -265,10 +265,10 @@ def arcsinh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arcsinh(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.asinh(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arcsinh(angle.decimal))
 
@@ -282,7 +282,7 @@ def csch(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.csch(angle * (sympy.pi * 2)))
@@ -296,10 +296,10 @@ def arccsch(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccsch(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acsch(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccsch(angle.decimal))
 
@@ -313,7 +313,7 @@ def cosh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.cosh(angle * (sympy.pi * 2)))
@@ -327,10 +327,10 @@ def arccosh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccosh(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acosh(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccosh(angle.decimal))
 
@@ -344,7 +344,7 @@ def sech(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.sech(angle * (sympy.pi * 2)))
@@ -358,10 +358,10 @@ def arcsech(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arcsech(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.asech(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arcsech(angle.decimal))
 
@@ -375,7 +375,7 @@ def tanh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.tanh(angle * (sympy.pi * 2)))
@@ -389,10 +389,10 @@ def arctanh(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arctanh(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.atanh(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arctanh(angle.decimal))
 
@@ -406,7 +406,7 @@ def coth(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
         result = _sympy_to_sezimal(sympy.coth(angle * (sympy.pi * 2)))
@@ -420,10 +420,10 @@ def arccoth(
     angle: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction,
     unit: str = 'mdl',
 ) -> Sezimal:
-    angle = _angle_to_paridi_fraction(angle, unit)
+    angle = _angle_to_mandala_fraction(angle, unit)
 
     if sympy:
-        result = _sympy_to_sezimal(sympy.arccoth(angle * (sympy.pi * 2)))
+        result = _sympy_to_sezimal(sympy.acoth(angle * (sympy.pi * 2)))
     else:
         result = _sympy_to_sezimal(math.arccoth(angle.decimal))
 
