@@ -1,6 +1,12 @@
 #
 # Units
 #
+UNIT-xad xadarenyu
+UNIT-nrd nifardenyu
+UNIT-srd sezardenyu
+UNIT-ard ardenyu
+UNIT-nif nifenyu
+UNIT-sez sezenyu
 UNIT-vrx varxa
 UNIT-mas masa
 UNIT-spt sápita

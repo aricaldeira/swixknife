@@ -8,6 +8,12 @@ def create_units(lang='en'):
         text = '''#
 # Units
 #
+UNIT-xad xadarênio
+UNIT-nrd nifardênio
+UNIT-srd sezardênio
+UNIT-ard ardênio
+UNIT-nif nifênio
+UNIT-sez sezênio
 UNIT-vrx varxa
 UNIT-mas massa
 UNIT-spt sapta
@@ -103,6 +109,12 @@ EXP-³ cúbico
         text = '''#
 # Units
 #
+UNIT-xad xadarenyu
+UNIT-nrd nifardenyu
+UNIT-srd sezardenyu
+UNIT-ard ardenyu
+UNIT-nif nifenyu
+UNIT-sez sezenyu
 UNIT-vrx varxa
 UNIT-mas masa
 UNIT-spt sápita
@@ -198,6 +210,12 @@ EXP-³ kúbiku
         text = '''#
 # Mezurunuoj
 #
+UNIT-xad ŝadarjaro
+UNIT-nrd nifaradjaro
+UNIT-srd sesaradjaro
+UNIT-ard aradjaro
+UNIT-nif nifjaro
+UNIT-sez sesjaro
 UNIT-vrx varŝao
 UNIT-mas masao
 UNIT-spt saptao
@@ -293,6 +311,12 @@ EXP-³ kuba
         text = '''#
 # Units
 #
+UNIT-xad shadarenium
+UNIT-nrd nifardenium
+UNIT-srd sezardenium
+UNIT-ard ardenium
+UNIT-nif nifenium
+UNIT-sez sixenium
 UNIT-vrx varsha
 UNIT-mas masa
 UNIT-spt sapta

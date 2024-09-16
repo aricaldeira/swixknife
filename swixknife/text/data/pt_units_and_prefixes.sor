@@ -1,6 +1,12 @@
 #
 # Units
 #
+UNIT-xad xadarênio
+UNIT-nrd nifardênio
+UNIT-srd sezardênio
+UNIT-ard ardênio
+UNIT-nif nifênio
+UNIT-sez sezênio
 UNIT-vrx varxa
 UNIT-mas massa
 UNIT-spt sapta

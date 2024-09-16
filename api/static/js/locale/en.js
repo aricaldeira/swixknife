@@ -40,6 +40,18 @@ const sezimal_calculator_en_text = {
     'translation-display-km/20L': 'km/20 L',
     'translation-display-US-mpg': 'mpg US',
     'translation-display-imp-mpg': 'mpg',
+
+    'translation-display-sez': 'sixeniums',
+    'translation-display-nif': 'nifeniums',
+    'translation-display-ard': 'ardeniums',
+    'translation-display-srd': 'sixardeniums',
+    'translation-display-nrd': 'nifardeniums',
+    'translation-display-xad': 'shadareniums',
+
+    'translation-display-decade': 'decs.',
+    'translation-display-century': 'cens.',
+    'translation-display-millenium': 'mils.',
+
 };
 
 export { sezimal_calculator_en_text };

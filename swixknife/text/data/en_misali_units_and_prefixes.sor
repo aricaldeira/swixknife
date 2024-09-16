@@ -1,6 +1,12 @@
 #
 # Units
 #
+UNIT-xad shadarennium
+UNIT-nrd nifardennium
+UNIT-srd sezardennium
+UNIT-ard ardennium
+UNIT-nif nifennium
+UNIT-sez sixennium
 UNIT-vrx varsha
 UNIT-mas masa
 UNIT-spt sapta

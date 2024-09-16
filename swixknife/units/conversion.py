@@ -245,8 +245,8 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
             and su_2 in ('tap', 'gtk')
         )) \
         and (not (
-            su_1 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
-            and su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            su_1 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            and su_2 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
         )) \
         and (not (
             su_1 in ('clt', 'pbt')
@@ -273,10 +273,10 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
         measure -= SezimalInteger('240_234_312')
         measure /= SezimalInteger('100_000')
 
-    if su_1 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+    if su_1 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure /= UNIT_CONVERSION[su_1]['ang']
 
-    if su_2 in ('vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
+    if su_2 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure *= UNIT_CONVERSION[su_2]['ang']
 
     #

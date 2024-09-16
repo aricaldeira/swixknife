@@ -89,6 +89,30 @@ def calculate_conversions():
 
     for unit, factor in (
         #
+        # Shadarenium - shadara years
+        #
+        ('xad', SezimalFraction('1_205 / 2_143_240') / 1_000_000),
+        #
+        # Nifardenium - nif arda years
+        #
+        ('nrd', SezimalFraction('1_205 / 2_143_240') / 100_000),
+        #
+        # Sezardenium - six arda years
+        #
+        ('srd', SezimalFraction('1_205 / 2_143_240') / 10_000),
+        #
+        # Ardenium - arda years
+        #
+        ('ard', SezimalFraction('1_205 / 2_143_240') / 1000),
+        #
+        # Nifenium - nif years
+        #
+        ('nif', SezimalFraction('1_205 / 2_143_240') / 100),
+        #
+        # Sezenium - six years
+        #
+        ('sez', SezimalFraction('1_205 / 2_143_240') / 10),
+        #
         # Varsha (year) is the Symmetry454 mean year:
         # 1405 + 155⁄1205 din
         # 2143240⁄1205 din
@@ -130,6 +154,9 @@ def calculate_conversions():
             #
             'month': SezimalFraction('2_323_320 / 210_141_213') / factor,
             'year': SezimalFraction('114_144 / 210_141_213') / factor,
+            'decade': SezimalFraction('114_144 / 210_141_213') / factor / 14,
+            'century': SezimalFraction('114_144 / 210_141_213') / factor / 244,
+            'millenium': SezimalFraction('114_144 / 210_141_213') / factor / 4344,
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
