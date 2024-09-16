@@ -94,17 +94,17 @@ def shastadari_time_units_route() -> Response:
 
     return redirect('/en/shastadari/time-units', code=302)
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/time-units')
 def shastadari_time_units_en_route() -> Response:
     return render_template('time_units_en.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/unidades-de-tempo')
 def shastadari_time_units_pt_route() -> Response:
     return render_template('time_units_pt.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/unidadis-di-tenpu')
 def shastadari_time_units_bz_route() -> Response:
     return render_template('time_units_bz.html')

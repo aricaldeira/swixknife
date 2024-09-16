@@ -5,7 +5,7 @@
      height="25.924999mm"
      viewBox="0 0 97.984249 97.984249"
      version="1.1"
-     sodipodi:docname="sezimal_clock.svg"
+     sodipodi:docname="sezimal_clock_uta_posha_agrima_anuga.svg"
      inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
      inkscape:export-filename="sezimal_clock.png"
      inkscape:export-xdpi="96"
@@ -26,14 +26,14 @@
          inkscape:pagecheckerboard="0"
          inkscape:deskcolor="#d1d1d1"
          inkscape:zoom="7.2124892"
-         inkscape:cx="48.992123"
-         inkscape:cy="48.992123"
+         inkscape:cx="49.150853"
+         inkscape:cy="49.012205"
          inkscape:window-width="1920"
          inkscape:window-height="1014"
          inkscape:window-x="0"
          inkscape:window-y="0"
          inkscape:window-maximized="1"
-         inkscape:current-layer="svg6"
+         inkscape:current-layer="sezimal_time"
          inkscape:document-units="mm" />
     <g
          id="face"
@@ -444,15 +444,17 @@
     </g>
     <g
          id="uta"
-         inkscape:label="uta" transform="rotate(0,48.992123,48.992123)" style="display:inline">
-         <animateTransform
-              attributeName="transform"
-              begin="0s"
-              dur="86400s"
-              type="rotate"
-              from="0 48.992123 48.992123"
-              to="360 48.992123 48.992123"
-              repeatCount="indefinite" />
+         inkscape:label="uta"
+         style="display:inline"
+         transform="rotate(0,48.992123,48.992123)">
+        <animateTransform
+             attributeName="transform"
+             begin="0s"
+             dur="86400s"
+             type="rotate"
+             from="0 48.992123 48.992123"
+             to="360 48.992123 48.992123"
+             repeatCount="indefinite" />
         <circle
              style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
              id="circle4"
@@ -462,58 +464,58 @@
              inkscape:label="anchor_uta" />
         <g
              id="g5"
-             inkscape:label="face_uta"
-             sodipodi:insensitive="true">
+             inkscape:label="face_uta">
             <rect
-                 style="fill:#000000;stroke-width:0.14908"
+                 style="fill:#0066ff;stroke-width:0.14908;fill-opacity:1"
                  id="rect4"
-                 width="2.449134"
+                 width="2.4491341"
                  height="28.306562"
-                 x="47.767556"
+                 x="47.767555"
                  y="48.992126"
                  inkscape:label="hand_uta" />
             <circle
-                 style="fill:#000000;stroke-width:1.31688"
+                 style="fill:#0066ff;stroke-width:1.31688;fill-opacity:1"
                  id="circle5"
                  cx="48.992123"
                  cy="48.992123"
-                 r="1.224567"
+                 r="1.2245671"
                  inkscape:label="anchor_hand_uta" />
         </g>
     </g>
     <g
          id="posha"
-         inkscape:label="posha" transform="rotate(0,48.992123,48.992123)" style="display:inline">
-         <animateTransform
-              attributeName="transform"
-              begin="0s"
-              dur="2400s"
-              type="rotate"
-              from="0 48.992123 48.992123"
-              to="360 48.992123 48.992123"
-              repeatCount="indefinite" />
+         inkscape:label="posha"
+         style="display:inline"
+         transform="rotate(0,48.992123,48.992123)">
+        <animateTransform
+             attributeName="transform"
+             begin="0s"
+             dur="2400s"
+             type="rotate"
+             from="0 48.992123 48.992123"
+             to="360 48.992123 48.992123"
+             repeatCount="indefinite" />
         <circle
              style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
-             id="circle4"
+             id="circle1"
              cx="48.992123"
              cy="48.992123"
              r="48.992126"
              inkscape:label="anchor_posha" />
         <g
-             id="g5"
-             inkscape:label="face_posha"
-             sodipodi:insensitive="true">
+             id="g2"
+             inkscape:label="face_posha">
             <rect
-                 style="fill:#000000;stroke-width:0.14908"
-                 id="rect4"
+                 style="fill:#44aa00;stroke-width:0.14908;fill-opacity:1"
+                 id="rect1"
                  width="1.6330709"
                  height="35.383938"
                  x="48.175591"
                  y="48.992126"
                  inkscape:label="hand_posha" />
             <circle
-                 style="fill:#000000;stroke-width:1.31688"
-                 id="circle5"
+                 style="fill:#44aa00;stroke-width:1.31688;fill-opacity:1"
+                 id="circle2"
                  cx="48.992123"
                  cy="48.992123"
                  r="0.81653547"
@@ -522,37 +524,37 @@
     </g>
     <g
          id="agrima"
-         inkscape:label="agrima" transform="rotate(0,48.992123,48.992123)" style="display:inline">
-         <animateTransform
-              attributeName="transform"
-              begin="0s"
-              dur="66666.666ms"
-              type="rotate"
-              from="0 48.992123 48.992123"
-              to="360 48.992123 48.992123"
-              repeatCount="indefinite" />
+         inkscape:label="agrima"
+         style="display:inline">
+        <animateTransform
+             attributeName="transform"
+             begin="0s"
+             dur="66666.666ms"
+             type="rotate"
+             from="0 48.992123 48.992123"
+             to="360 48.992123 48.992123"
+             repeatCount="indefinite" />
         <circle
              style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
-             id="circle1"
+             id="circle3"
              cx="48.992123"
              cy="48.992123"
              r="48.992126"
              inkscape:label="anchor_agrima" />
         <g
-             id="g2"
-             inkscape:label="face_agrima"
-             sodipodi:insensitive="true">
+             id="g6"
+             inkscape:label="face_agrima">
             <rect
-                 style="fill:#aa0000;stroke-width:0.115464"
-                 id="rect1"
+                 style="fill:#ffcc00;stroke-width:0.115464"
+                 id="rect3"
                  width="0.816378"
                  height="42.459843"
                  x="48.583935"
                  y="48.992126"
                  inkscape:label="hand_agrima" />
             <circle
-                 style="fill:#aa0000;stroke-width:0.658313"
-                 id="circle3"
+                 style="fill:#ffcc00;stroke-width:0.658313"
+                 id="circle6"
                  cx="48.992123"
                  cy="48.992123"
                  r="0.408189"
@@ -561,37 +563,37 @@
     </g>
     <g
          id="anuga"
-         inkscape:label="anuga" transform="rotate(0,48.992123,48.992123)" style="display:inline">
-         <animateTransform
-              attributeName="transform"
-              begin="0s"
-              dur="1851.851ms"
-              type="rotate"
-              from="0 48.992123 48.992123"
-              to="360 48.992123 48.992123"
-              repeatCount="indefinite" />
+         inkscape:label="anuga"
+         style="display:inline">
+        <animateTransform
+             attributeName="transform"
+             begin="0s"
+             dur="1851.851ms"
+             type="rotate"
+             from="0 48.992123 48.992123"
+             to="360 48.992123 48.992123"
+             repeatCount="indefinite" />
         <circle
              style="fill:#ffffff;fill-opacity:0;stroke-width:6.55315;stroke-linecap:round;-inkscape-stroke:none"
-             id="circle1"
+             id="circle7"
              cx="48.992123"
              cy="48.992123"
              r="48.992126"
              inkscape:label="anchor_anuga" />
         <g
-             id="g2"
-             inkscape:label="face_anuga"
-             sodipodi:insensitive="true">
+             id="g8"
+             inkscape:label="face_anuga">
             <rect
-                 style="fill:#fc02b5;stroke-width:0.115464"
-                 id="rect1"
+                 style="fill:#d40000;stroke-width:0.115464"
+                 id="rect7"
                  width="0.612284"
                  height="42.459843"
-                 x="48.685981"
+                 x="48.685982"
                  y="48.992126"
                  inkscape:label="hand_anuga" />
             <circle
-                 style="fill:#fc02b5;stroke-width:0.658313"
-                 id="circle3"
+                 style="fill:#d40000;stroke-width:0.658313"
+                 id="circle8"
                  cx="48.992123"
                  cy="48.992123"
                  r="0.306142"
