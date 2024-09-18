@@ -11,6 +11,7 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
     LANGUAGE = 'Autralian English'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+    DEFAULT_TIME_ZONE = 'Australia/Sydney'
 
     HOLIDAYS = [
         #

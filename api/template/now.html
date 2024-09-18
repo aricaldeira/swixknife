@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{locale.LANG}">
+<html lang="{locale.LANGUAGE_TAG}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
         <meta name="description" content="Current Sezimal date and time">
         <meta name="author" content="Ari Caldeira">
         <meta name="theme-color" content="black">
-        <link rel="manifest" href="/now/manifest.webmanifest" crossorigin="use-credentials" />
+        <link rel="manifest" href="{url}" crossorigin="use-credentials" />
         <link rel="icon" type="image/svg+xml" href="/now/now-icon.svg" />
 
         <link rel="preconnect" href="https://midia.tauga.online" crossorigin="anonymous"/>
@@ -31,13 +31,13 @@
                     </tr>
                     <tr>
                         <td width="33.33%">
-                            <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(season_format, locale)}</span>
+                            <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""} class="emoji">{date_time.format(season_format, locale)}</span>
                         </td>
                         <td width="33.33%">
                             <span class="sezimal_date" data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(date_format, locale)}</span>
                         </td>
                         <td width="33.33%">
-                            <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""}>{date_time.format(moon_format, locale)}</span>
+                            <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " {'dir="rtl"' if locale.RTL else ""} class="emoji">{date_time.format(moon_format, locale)}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -46,8 +46,8 @@
                 <span id="sezimal_time_pt" class="sezimal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format, locale)}</span><br/>
                 <span data-tooltip=" ISO {date_time.format(locale.ISO_DATE_FORMAT, locale)}{' ― ' + spellout if spellout else ''} ">{date_time.format(date_format, locale)}</span><br/>
                 <br/>
-                <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
-                <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
+                <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} " class="emoji">{date_time.format(season_format, locale)}</span><br/>
+                <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} " class="emoji">{date_time.format(moon_format, locale)}</span><br/>
             </span>
         </span>
         <br />

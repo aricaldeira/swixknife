@@ -13,7 +13,7 @@ from .context import sezimal_context
 
 def decimal_to_sezimal(number: int | float | Decimal | str | Sezimal | SezimalInteger | SezimalFraction, sezimal_precision: int | str | SezimalInteger = None) -> str:
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-        return str(number)
+        return str(number.decimal)
 
     number = validate_clean_decimal(str(number))
 
@@ -76,8 +76,13 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
     with localcontext() as context:
         context.prec = sezimal_precision * 2
 
+        nines = '.' + '9' * ((context.prec // 4) + 1)
+
         for i in range(sezimal_precision):
             fraction = fraction * 6
+
+            if nines in str(fraction):
+                fraction = round(fraction, 0)
 
             if fraction == 6:
                 sezimal_integer = '1'
@@ -89,23 +94,6 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
 
             if fraction <= 0:
                 break
-
-    while sezimal_fraction and len(sezimal_fraction) >= 5 \
-        and sezimal_fraction[-5:] in (
-            '55555', '55554', '55553', '55552', '55551', '55550',
-            '55545', '55544', '55543', '55542', '55541', '55540',
-            '55535', '55534', '55533', '55532', '55531', '55530',
-        ):
-        sezimal_fraction = sezimal_fraction[:-4]
-
-        if sezimal_fraction.replace('5', '') == '':
-            sezimal_integer = _decimal_integer_to_sezimal(int(sezimal_integer, 6) + 1)
-            sezimal_fraction = '0'
-            break
-
-        size = len(sezimal_fraction)
-        sezimal_fraction = _decimal_integer_to_sezimal(int(sezimal_fraction, 6) + 1)
-        sezimal_fraction = sezimal_fraction.zfill(size)
 
     #
     # Remove trailing zeroes

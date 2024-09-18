@@ -1,7 +1,7 @@
 
 from main import app, sitemapper
 from  locale_detection import browser_preferred_locale
-from flask import Response
+from flask import Response, render_template
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
@@ -48,15 +48,27 @@ def api_long_now(locale: str = None, time_zone: str = None) -> str:
     return eval(f'f"""{text}"""')
 
 
-def _manifest_url(base, locale, time_zone):
-    url = base
+def _locale_time_zone_url(locale, time_zone):
+    url = ''
 
     if locale:
         url += '___' + locale
 
-    if time_zone:
-        url += '___' + time_zone.replace('/', '__')
+        if time_zone:
+            url += '___' + time_zone.replace('/', '__')
 
+    return url
+
+
+def _manifest_url(base, locale, time_zone):
+    url = '/' + base
+    url += _locale_time_zone_url(locale, time_zone)
+    url += '/manifest.webmanifest'
+    return url
+
+def _icon_url(base, locale, time_zone):
+    url = '/' + base
+    url += _locale_time_zone_url(locale, time_zone)
     return url
 
 
@@ -122,20 +134,25 @@ def api_short_now(locale: str = None, time_zone: str = None) -> str:
 @app.route('/decimal-now')
 @app.route('/decimal-now/<string:locale>')
 @app.route('/decimal-now/<string:locale>/<path:time_zone>')
-def api_decimal_now(locale: str = None, time_zone: str = None) -> str:
+def decimal_now(locale: str = None, time_zone: str = None) -> str:
     url = _manifest_url('decimal-now', locale, time_zone)
     locale = sezimal_locale(locale or browser_preferred_locale())
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
+    print('locale', locale, time_zone)
     digits = locale.DIGITS
 
-    date_time = SezimalDateTime.now(time_zone=time_zone)
+    try:
+        date_time = SezimalDateTime.now(time_zone=time_zone)
+    except:
+        date_time = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
     time_zone_offset = sezimal_to_decimal_unit(date_time.time._time_zone_offset, 'agm', 'ms')
 
     text = open('template/decimal-now.html').read()
 
     date_format = locale.DATE_FORMAT.replace('#', '#9').replace('#9Y', '#9gy').replace('#9X', '#9gy').replace('#9?Y', '#9?gy').replace('#9y', '#9gy') # .replace('#9?m', '%m')
 
-    print(date_format)
+    print(date_time, date_format)
 
     if date_time.is_dst:
         if locale.RTL:
@@ -219,10 +236,20 @@ _TRANSLATIONS = {
 
 
 @app.route('/now/manifest.webmanifest')
-def now_manifest() -> str:
-    text = open('template/manifest_now.json').read()
+@app.route('/now___<string:locale>/manifest.webmanifest')
+@app.route('/now___<string:locale>___<string:time_zone>/manifest.webmanifest')
+def now_manifest(locale: str = None, time_zone: str = None) -> str:
+    url = '/now'
 
-    pl = browser_preferred_locale()
+    if locale:
+        url += '/' + locale
+
+        if time_zone:
+            url += '/' + time_zone.replace('__', '/')
+
+    url_icon = _icon_url('now', locale, time_zone)
+
+    pl = locale or browser_preferred_locale()
 
     if '_' in pl:
         lang = pl.split('_')[0]
@@ -231,24 +258,36 @@ def now_manifest() -> str:
     else:
         lang = pl
 
+    name = 'Now'
+    description = 'Sezimal Calendar and Clock'
+
     if lang in _TRANSLATIONS:
         if pl in _TRANSLATIONS:
-            text = text.replace('"Sezimal Now"', f'"{_TRANSLATIONS[pl]}"')
+            name = _TRANSLATIONS[pl]
         else:
-            text = text.replace('"Sezimal Now"', f'"{_TRANSLATIONS[lang]}"')
+            name = _TRANSLATIONS[lang]
 
     if 'pt-' in pl or pl == 'pt':
-        text = text.replace('"Sezimal calendar and clock"', '"Calendário e relógio sezimais"')
+        description = 'Calendário e relógio sezimais'
     elif 'bz-' in pl or pl == 'bz':
-        text = text.replace('"Sezimal calendar and clock"', '"Kalendaryu i relòjyu sezimaw"')
+        description = 'Kalendaryu y relòjyu sezimays'
 
-    return text
+    return render_template(
+        'manifest_now.json',
+        name=name,
+        description=description,
+        url=url,
+        url_icon=url_icon,
+    )
 
 
-def _icon(text: str, sezimal_digits: bool = False) -> str:
-    locale = sezimal_locale(browser_preferred_locale())
+def _icon(text: str, sezimal_digits: bool = False, locale: str = None, time_zone: str = None) -> str:
+    locale = sezimal_locale(locale or browser_preferred_locale())
 
-    date_time = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    if time_zone:
+        time_zone = time_zone.replace('__', '/')
+
+    date_time = SezimalDateTime.now(time_zone=time_zone or locale.DEFAULT_TIME_ZONE)
 
     uta_angle = round(date_time.uta / 100 * 1400, 0)
     posha_angle = round(date_time.posha / 100 * 1400, 0)
@@ -294,24 +333,91 @@ def _icon(text: str, sezimal_digits: bool = False) -> str:
 
 
 @app.route('/now/now-icon.svg')
-def now_icon() -> str:
+@app.route('/now___<string:locale>/now-icon.svg')
+@app.route('/now___<string:locale>___<string:time_zone>/now-icon.svg')
+@app.route('/decimal-now/now-icon.svg')
+@app.route('/decimal-now___<string:locale>/now-icon.svg')
+@app.route('/decimal-now___<string:locale>___<string:time_zone>/now-icon.svg')
+@app.route('/dozenal-now/now-icon.svg')
+@app.route('/dozenal-now___<string:locale>/now-icon.svg')
+@app.route('/dozenal-now___<string:locale>___<string:time_zone>/now-icon.svg')
+def now_icon(locale: str = None, time_zone: str = None) -> str:
     text = open('static/img/now-icon.svg').read()
-    return Response(_icon(text), mimetype='image/svg+xml')
+    return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
 
 
 @app.route('/now/now-icon-mono.svg')
-def now_icon_mono() -> str:
+@app.route('/now___<string:locale>/now-icon-mono.svg')
+@app.route('/now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+@app.route('/decimal-now/now-icon-mono.svg')
+@app.route('/decimal-now___<string:locale>/now-icon-mono.svg')
+@app.route('/decimal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+@app.route('/dozenal-now/now-icon-mono.svg')
+@app.route('/dozenal-now___<string:locale>/now-icon-mono.svg')
+@app.route('/dozenal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+def now_icon_mono(locale: str = None, time_zone: str = None) -> str:
     text = open('static/img/now-icon-mono.svg').read()
-    return Response(text, mimetype='image/svg+xml')
+    return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
 
 
-@app.route('/now/now-icon-sd.svg')
-def now_icon_sd() -> str:
-    text = open('static/img/now-icon-sd.svg').read()
-    return Response(_icon(text, True), mimetype='image/svg+xml')
+# @app.route('/now/now-icon-sd.svg')
+# def now_icon_sd() -> str:
+#     text = open('static/img/now-icon-sd.svg').read()
+#     return Response(_icon(text, True), mimetype='image/svg+xml')
+#
+#
+# @app.route('/now/now-icon-sd-mono.svg')
+# def now_icon_sd_mono() -> str:
+#     text = open('static/img/now-icon-sd-mono.svg').read()
+#     return Response(text, mimetype='image/svg+xml')
 
 
-@app.route('/now/now-icon-sd-mono.svg')
-def now_icon_sd_mono() -> str:
-    text = open('static/img/now-icon-sd-mono.svg').read()
-    return Response(text, mimetype='image/svg+xml')
+@app.route('/now/month')
+def now_month() -> str:
+    return render_template('calendar_month.html')
+
+
+@app.route('/decimal-now/manifest.webmanifest')
+@app.route('/decimal-now___<string:locale>/manifest.webmanifest')
+@app.route('/decimal-now___<string:locale>___<string:time_zone>/manifest.webmanifest')
+def decimal_now_manifest(locale: str = None, time_zone: str = None) -> str:
+    url = '/decimal-now'
+
+    if locale:
+        url += '/' + locale
+
+        if time_zone:
+            url += '/' + time_zone.replace('__', '/')
+
+    url_icon = _icon_url('decimal-now', locale, time_zone)
+
+    pl = locale or browser_preferred_locale()
+
+    if '_' in pl:
+        lang = pl.split('_')[0]
+    elif '-' in pl:
+        lang = pl.split('-')[0]
+    else:
+        lang = pl
+
+    name = 'Now'
+    description = 'Symmetry454 Calendar and Clock'
+
+    if lang in _TRANSLATIONS:
+        if pl in _TRANSLATIONS:
+            name = _TRANSLATIONS[pl]
+        else:
+            name = _TRANSLATIONS[lang]
+
+    if 'pt-' in pl or pl == 'pt':
+        description = 'Calendário e relógio simétricos'
+    elif 'bz-' in pl or pl == 'bz':
+        description = 'Kalendaryu y relòjyu simétrikus'
+
+    return render_template(
+        'manifest_decimal_now.json',
+        name=name,
+        description=description,
+        url=url,
+        url_icon=url_icon,
+    )

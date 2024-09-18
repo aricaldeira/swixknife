@@ -12,6 +12,7 @@ class SezimalLocaleEN_BR(SezimalLocaleEN):
     LANGUAGE = 'English - Brazil'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+    DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
 
     HOLIDAYS = SezimalLocalePT_BR.HOLIDAYS
     HOLIDAYS_OTHER_CALENDAR = SezimalLocalePT_BR.HOLIDAYS_OTHER_CALENDAR

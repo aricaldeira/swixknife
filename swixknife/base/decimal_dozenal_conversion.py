@@ -83,10 +83,15 @@ def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int
     dozenal_fraction = ''
 
     with localcontext() as context:
-        # context.prec = dozenal_precision * 2
+        context.prec = dozenal_precision * 2
+
+        nines = '.' + '9' * ((context.prec // 4) + 1)
 
         for i in range(dozenal_precision):
             fraction = fraction * 12
+
+            if nines in str(fraction):
+                fraction = round(fraction, 0)
 
             if fraction == 12:
                 dozenal_integer = '1'
@@ -106,23 +111,6 @@ def _decimal_fraction_to_dozenal(fraction: str | Decimal, dozenal_precision: int
 
             if fraction <= 0:
                 break
-
-    while dozenal_fraction.endswith('BBBB') \
-        or dozenal_fraction.endswith('BBBA') \
-        or dozenal_fraction.endswith('BBB9') \
-        or dozenal_fraction.endswith('BBB8') \
-        or dozenal_fraction.endswith('BBB7') \
-        or dozenal_fraction.endswith('BBB6'):
-        dozenal_fraction = dozenal_fraction[:-4]
-
-        if dozenal_fraction.replace('B', '') == '':
-            dozenal_integer = _decimal_integer_to_dozenal(int(dozenal_integer, 12) + 1)
-            dozenal_fraction = '0'
-            break
-
-        size = len(dozenal_fraction)
-        dozenal_fraction = _decimal_integer_to_dozenal(int(dozenal_fraction, 12) + 1)
-        dozenal_fraction = dozenal_fraction.zfill(size)
 
     #
     # Remove trailing zeroes

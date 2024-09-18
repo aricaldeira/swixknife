@@ -15,7 +15,7 @@ from swixknife.weather.weather import SezimalWeather
 # @app.route('/agòra/<string:locale>')
 # @app.route('/agòra/<string:locale>/<path:time_zone>')
 def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False) -> str:
-    locale = sezimal_locale('pt_br')
+    locale = sezimal_locale('bz')
 
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
     digits = locale.DIGITS
@@ -25,7 +25,8 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
 
     text = open('template/agòra.html').read()
 
-    date_format = locale.DATE_FORMAT.replace('#', '#!')
+    # date_format = locale.DATE_FORMAT.replace('#', '#!')
+    date_format = locale.DATE_FORMAT.replace('#Y', '#X')
 
     if date_time.is_dst:
         if locale.RTL:
@@ -68,7 +69,7 @@ def api_agòra(locale: str = None, time_zone: str = None, weather: bool = False)
 
     sw = SezimalWeather(locale, time_zone)
     sw.get_openweathermap_conditions()
-    sezimal_temperature = locale.format_number(sw.temperature_sensation, 0, sezimal_digits=True) + '\u202f°S'
+    sezimal_temperature = locale.format_number(sw.temperature_sensation, 0, sezimal_digits=False) + '\u202f°S'
     decimal_temperature = locale.format_decimal_number(sezimal_to_decimal_unit(sw.temperature_sensation, 'tap', '°C'), 1) + '\u202f°C'
 
     return eval(f'f"""{text}"""')

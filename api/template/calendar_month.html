@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title">Month Calendar</title>
+        <meta name="description" content="Sezimal Month Calendar" />
+        <meta name="author" content="Ari Caldeira" />
+        {% include 'sezimal_css.html' %}
+
+<style>
+.calendar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #111;
+}
+.calendar .month {
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.calendar .month .previous-month,
+.calendar .month .next-month {
+  cursor: pointer;
+}
+.calendar .weekdays {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-weight: bold;
+}
+.calendar .week .day {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  cursor: pointer;
+  color: var(--primary-clr);
+  border: 1px solid #f5f5f5;
+}
+</style>
+    </head>
+    <body>
+    <div class="container">
+      <div class="left">
+        <div class="calendar">
+          <div class="month">
+            <div class="previous-month">‹</div>
+            <div class="date">setenbru di 213󱹭212</div>
+            <div class="next-month">›</div>
+          </div>
+          <div class="weekdays">
+            <div class="">sig</div>
+            <div class="">ter</div>
+            <div class="">kwa</div>
+            <div class="">kin</div>
+            <div class="">ses</div>
+            <div class="">sáb</div>
+            <div class="">dum</div>
+          </div>
+          <div class="week week_number">
+            <div class="day">1ᵘ̱</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+          </div>
+          <div class="goto-today">
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="today-date">
+          <div class="event-day">wed</div>
+          <div class="event-date">12th december 2022</div>
+        </div>
+        <div class="events"></div>
+        <div class="add-event-wrapper">
+          <div class="add-event-header">
+            <div class="title">Add Event</div>
+            <i class="fas fa-times close"></i>
+          </div>
+          <div class="add-event-body">
+            <div class="add-event-input">
+              <input type="text" placeholder="Event Name" class="event-name" />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time From"
+                class="event-time-from"
+              />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time To"
+                class="event-time-to"
+              />
+            </div>
+          </div>
+          <div class="add-event-footer">
+            <button class="add-event-btn">Add Event</button>
+          </div>
+        </div>
+      </div>
+      <button class="add-event">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    </body>
+</html>
