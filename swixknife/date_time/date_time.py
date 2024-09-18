@@ -410,7 +410,12 @@ class SezimalDateTime:
     @classmethod
     def now(cls, time_zone: str = None) -> Self:
         time = SezimalTime.now(time_zone=time_zone)
-        date = SezimalDate.today()
+
+        if time.day:
+            date = SezimalDate.from_days(SezimalDate.today().as_days + 1)
+        else:
+            date = SezimalDate.today()
+
         return cls(year=date, uta=time)
 
     @classmethod
@@ -461,6 +466,10 @@ class SezimalDateTime:
             return self
 
         utc_agrimas = self.as_agrimas - self.time._time_zone_offset # - self._dst_offset
+
+        if self.time.day:
+            utc_agrimas -= Sezimal('1_000_000') * self.time.day
+
         tz_offset, dst_offset = tz_agrimas_offset(time_zone)
         tz_agrimas = utc_agrimas + tz_offset # + dst_offset
         tz_days = tz_agrimas / 1_000_000
