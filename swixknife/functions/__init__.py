@@ -1,7 +1,7 @@
 
 
 __all__ = (
-    'SezimalRange',
+    'SezimalRange', 'SezimalDictionary', 'SezimalList', 'SezimalTuple',
     'DozenalRange',
     'agrimas_since_midnight',
     'uta_posha_agrima_now',
@@ -15,6 +15,8 @@ __all__ = (
 )
 
 from .range import SezimalRange, DozenalRange
+from .dictionary import SezimalDictionary
+from .list import SezimalList, SezimalTuple
 from .time import agrimas_since_midnight, uta_posha_agrima_now
 from .math import floor, ceil, gcd
 from .trigonometry import *
