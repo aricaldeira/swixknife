@@ -18,11 +18,10 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         decimal = number.decimal
 
-        try:
-            if decimal_precision is not None:
-                decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
-        except:
-            pass
+        if decimal_precision is not None:
+            with localcontext() as context:
+                context.prec = decimal_precision * 2
+                decimal = decimal.quantize(Decimal(f'1e-{decimal_precision}'))
 
         return validate_clean_decimal(str(decimal))
 
@@ -92,7 +91,10 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
             decimal_fraction += int(d, 6) * (Decimal('6') ** i)
             i -= 1
 
-    decimal_fraction = decimal_fraction.quantize(Decimal(f'1e-{decimal_precision}'))
+    with localcontext() as context:
+        context.prec = decimal_precision * 2
+        decimal_fraction = decimal_fraction.quantize(Decimal(f'1e-{decimal_precision}'))
+
     decimal_fraction = validate_clean_decimal(decimal_fraction)
     decimal_integer, decimal_fraction = decimal_fraction.split('.')
 

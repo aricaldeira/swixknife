@@ -18,11 +18,10 @@ def dozenal_to_decimal(number: int | float | Decimal | str | Dozenal | DozenalIn
     if type(number).__name__ in ('Dozenal', 'DozenalInteger', 'DozenalFraction'):
         decimal = number.decimal
 
-        try:
-            if decimal_precision is not None:
-                decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
-        except:
-            pass
+        if decimal_precision is not None:
+            with localcontext() as context:
+                context.prec = decimal_precision * 2
+                decimal = decimal.quantize(Decimal(f'1e-{decimal_precision}'))
 
         return validate_clean_decimal(str(decimal))
 
