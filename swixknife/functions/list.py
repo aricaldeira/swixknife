@@ -67,7 +67,7 @@ class SezimalList(list):
             key = Sezimal(str(key))
             key = int(key)
         elif type(key) == Decimal:
-            if key.quantize(Decimal('1')) == key:
+            if round(key, 0) == key:
                 key = SezimalInteger(key)
             else:
                 key = Sezimal(key)

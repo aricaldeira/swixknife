@@ -2,7 +2,7 @@
 
 __all__ = ('SezimalCalculator',)
 
-from decimal import Decimal
+from decimal import Decimal, localcontext
 from fractions import Fraction as DecimalFraction
 
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
@@ -612,10 +612,9 @@ class SezimalCalculator:
                         number = decimal_to_decimal_unit(number, self.angle, self.decimal_angle, return_fraction=self.angle_as_fraction)
 
                     if not self.angle_as_fraction:
-                        try:
+                        with localcontext() as context:
+                            context.prec = int(self._decimal_precision) * 2
                             number = round(number.decimal, int(self._decimal_precision))
-                        except:
-                            number = number.decimal
 
                 elif self.unit and self.decimal_unit:
                     number = sezimal_to_decimal_unit(number, self.unit, self.decimal_unit, return_fraction=self.unit_as_fraction)

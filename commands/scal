@@ -71,7 +71,7 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
             calendar_parameters['month_format'] = '#M'
             calendar_parameters['year_format'] = '#↋?Y'
             calendar_parameters['month_year_format'] = '#M #↋?Y'
-            calendar_parameters['time_format'] = '#↋↋?u:#↋↋?p:#↋↋?a'
+            calendar_parameters['time_format'] = '#↋↋?u#↋↋?p.#↋↋?a'
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
 
         else:
@@ -79,7 +79,7 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
             calendar_parameters['month_format'] = '#M'
             calendar_parameters['year_format'] = '#↋Y'
             calendar_parameters['month_year_format'] = '#M #↋Y'
-            calendar_parameters['time_format'] = '#↋↋u:#↋↋p:#↋↋a'
+            calendar_parameters['time_format'] = '#↋↋u#↋↋p.#↋↋a'
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#↋')
 
     elif arguments.niftimal:

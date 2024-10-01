@@ -21,7 +21,7 @@ def dozenal_to_decimal(number: int | float | Decimal | str | Dozenal | DozenalIn
         if decimal_precision is not None:
             with localcontext() as context:
                 context.prec = decimal_precision * 2
-                decimal = decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+                decimal = round(decimal, decimal_precision)
 
         return validate_clean_decimal(str(decimal))
 

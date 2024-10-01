@@ -21,7 +21,7 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
         if decimal_precision is not None:
             with localcontext() as context:
                 context.prec = decimal_precision * 2
-                decimal = decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+                decimal = round(decimal, decimal_precision)
 
         return validate_clean_decimal(str(decimal))
 
@@ -93,7 +93,7 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
 
     with localcontext() as context:
         context.prec = decimal_precision * 2
-        decimal_fraction = decimal_fraction.quantize(Decimal(f'1e-{decimal_precision}'))
+        decimal_fraction = round(decimal_fraction, decimal_precision)
 
     decimal_fraction = validate_clean_decimal(decimal_fraction)
     decimal_integer, decimal_fraction = decimal_fraction.split('.')
