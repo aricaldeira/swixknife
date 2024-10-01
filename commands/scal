@@ -38,7 +38,15 @@ from swixknife.date_time.calendar import SezimalCalendarTerminal
 
 
 def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
-    if arguments.decimal:
+    if arguments.gregorian:
+        calendar_parameters['day_format'] = '%-d'
+        calendar_parameters['month_format'] = '%B'
+        calendar_parameters['year_format'] = '%Y'
+        calendar_parameters['month_year_format'] = '%B %Y'
+        calendar_parameters['time_format'] = '%H:%M:%S'
+        calendar_parameters['date_format'] = locale.ISO_DATE_FORMAT
+
+    elif arguments.decimal:
         if '?' in locale.DATE_FORMAT:
             calendar_parameters['day_format'] = '#9?-d'
             calendar_parameters['month_format'] = '#9M'
@@ -90,14 +98,6 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
             calendar_parameters['month_year_format'] = '#M #@y'
             calendar_parameters['time_format'] = '#@u:#@p:#@a'
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#@')
-
-    elif arguments.gregorian:
-        calendar_parameters['day_format'] = '%-d'
-        calendar_parameters['month_format'] = '%B'
-        calendar_parameters['year_format'] = '%Y'
-        calendar_parameters['month_year_format'] = '%B %Y'
-        calendar_parameters['time_format'] = '%H:%M:%S'
-        calendar_parameters['date_format'] = locale.ISO_DATE_FORMAT
 
     else:
         if arguments.sezimal_digits:
