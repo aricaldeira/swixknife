@@ -10,6 +10,7 @@ from .date_time import SezimalDateTime
 from .sezimal_functions import system_time_zone, tz_days_offset, ZoneInfo
 from ..sezimal import SezimalInteger, Sezimal
 from ..localization import SezimalLocale
+from ..functions import SezimalRange
 from .format_tokens import SEASON_MOON_TEXT_FORMAT_TOKENS, SEASON_MOON_TIME_FORMAT_TOKENS
 
 
@@ -311,7 +312,7 @@ SezimalDate._moon_time = _moon_time
 SezimalDate._apply_season_format = _apply_season_format
 
 
-def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone: str | ZoneInfo = None) -> list[str]:
+def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone: str | ZoneInfo = None, only_sun: bool = False, only_moon: bool = False, event: str = None, only_four: bool = False) -> list[str]:
     connection = sqlite3.connect(DB_NAME)
     cursor = connection.cursor()
 
@@ -346,6 +347,14 @@ from
 where
     sm.date_time_as_days >= '{search_start}'
     and sm.date_time_as_days <= '{search_end}'
+    {"and sm.sun_moon = 'sun'" if only_sun else ''}
+    {"""and sm.sun_moon = 'sun'
+        and sm.name not like '%cross%'""" if only_sun and only_four else ''}
+    {"and sm.sun_moon = 'moon'" if only_moon else ''}
+    {"""and sm.sun_moon = 'moon'
+        and sm.name not like '%waxing%'
+        and sm.name not like '%waning%'""" if only_moon and only_four else ''}
+    {f"and sm.name = '{event}'" if event else ''}
 
 order by
     sm.date_time_as_days;
