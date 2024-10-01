@@ -28,6 +28,7 @@ from .digit_conversion import (
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
     sezimal_to_default_numerator_digits, sezimal_to_default_denominator_digits,
     dozenal_letters_to_digits, dozenal_digits_to_letters,
+    default_niftimal_to_letter_digits,
 )
 from .formatting import (
     sezimal_format, sezimal_format_fraction,

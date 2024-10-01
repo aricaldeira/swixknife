@@ -16,7 +16,12 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
         return validate_clean_decimal(str(number))
 
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
-        return validate_clean_decimal(str(number.decimal))
+        decimal = number.decimal
+
+        if decimal_precision is not None:
+            decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+
+        return validate_clean_decimal(str(decimal))
 
     if decimal_precision is None:
         decimal_precision = sezimal_context.decimal_precision
@@ -84,26 +89,8 @@ def _sezimal_fraction_to_decimal(fraction: str, decimal_precision: int = None) -
             decimal_fraction += int(d, 6) * (Decimal('6') ** i)
             i -= 1
 
+    decimal_fraction = decimal_fraction.quantize(Decimal(f'1e-{decimal_precision}'))
     decimal_fraction = validate_clean_decimal(decimal_fraction)
     decimal_integer, decimal_fraction = decimal_fraction.split('.')
-
-    if len(decimal_fraction) > decimal_precision:
-        decimal_fraction = decimal_fraction[:decimal_precision]
-
-    while decimal_fraction.endswith('9999') \
-        or decimal_fraction.endswith('9998') \
-        or decimal_fraction.endswith('9997') \
-        or decimal_fraction.endswith('9996') \
-        or decimal_fraction.endswith('9995'):
-        decimal_fraction = decimal_fraction[:-4]
-
-        if decimal_fraction.replace('9', '') == '':
-            decimal_integer = str(int(decimal_integer) + 1)
-            decimal_fraction = '0'
-            break
-
-        size = len(decimal_fraction)
-        decimal_fraction = str(int(decimal_fraction) + 1)
-        decimal_fraction = decimal_fraction.zfill(size)
 
     return decimal_integer, decimal_fraction

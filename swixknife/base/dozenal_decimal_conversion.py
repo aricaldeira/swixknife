@@ -16,7 +16,12 @@ def dozenal_to_decimal(number: int | float | Decimal | str | Dozenal | DozenalIn
         return validate_clean_decimal(str(number))
 
     if type(number).__name__ in ('Dozenal', 'DozenalInteger', 'DozenalFraction'):
-        return validate_clean_decimal(str(number.decimal))
+        decimal = number.decimal
+
+        if decimal_precision is not None:
+            decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+
+        return validate_clean_decimal(str(decimal))
 
     number = validate_clean_dozenal(str(number))
 
