@@ -41,19 +41,21 @@ def _calendar_formats(calendar_parameters: dict, arguments, locale) -> dict:
     if arguments.decimal:
         if '?' in locale.DATE_FORMAT:
             calendar_parameters['day_format'] = '#9?-d'
-            calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#9?Y'
-            calendar_parameters['month_year_format'] = '#M #9?Y'
+            calendar_parameters['month_format'] = '#9M'
+            calendar_parameters['year_format'] = '#9?sY'
+            calendar_parameters['month_year_format'] = '#9M #9?sY'
             calendar_parameters['time_format'] = '%?H:%?M:%?S'
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+            calendar_parameters['date_format'] = calendar_parameters['date_format'].replace('Y', 'sY')
 
         else:
             calendar_parameters['day_format'] = '#9-d'
             calendar_parameters['month_format'] = '#M'
-            calendar_parameters['year_format'] = '#9Y'
-            calendar_parameters['month_year_format'] = '#M #9Y'
+            calendar_parameters['year_format'] = '#9sY'
+            calendar_parameters['month_year_format'] = '#M #9sY'
             calendar_parameters['time_format'] = '%H:%M:%S'
             calendar_parameters['date_format'] = locale.DATE_FORMAT.replace('#', '#9')
+            calendar_parameters['date_format'] = calendar_parameters['date_format'].replace('Y', 'sY')
 
     elif arguments.dozenal:
         if '?' in locale.DATE_FORMAT:
