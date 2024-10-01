@@ -55,7 +55,7 @@ class Sezimal:
 
         if type(number) == Decimal:
             original_decimal = number
-            cleaned_number = decimal_to_sezimal(str(number))
+            cleaned_number = validate_clean_sezimal(decimal_to_sezimal(str(number)))
 
         elif type(number).__name__ in ('Sezimal', 'SezimalInteger'):
             cleaned_number = str(number)
