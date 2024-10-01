@@ -460,28 +460,34 @@ class SezimalDate:
         #
         # And now, the text formats
         #
-        for regex, token, base, case, month_week in DATE_TEXT_FORMAT_TOKENS:
+        for regex, token, base, size, case, month_week in DATE_TEXT_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
 
             if month_week == 'M':
-                if base == '@':
-                    text = locale.month_abbreviated_name(self.month)
+                if size == '@':
+                    if base:
+                        text = locale.iso_month_abbreviated_name(self.month)
+                    else:
+                        text = locale.month_abbreviated_name(self.month)
                 else:
-                    text = locale.month_name(self.month)
+                    if base:
+                        text = locale.iso_month_name(self.month)
+                    else:
+                        text = locale.month_name(self.month)
 
             else:
-                if base == '@':
+                if size == '@':
                     text = locale.weekday_abbreviated_name(self.weekday)
                 else:
                     text = locale.weekday_name(self.weekday)
 
-            if base == '1':
-                text = text[0]
-            elif base == '2':
+            if size == '1':
+                text = locale.weekday_symbol(self.weekday)
+            elif size == '2':
                 if len(text) > 2:
                     text = text[0:2]
-            elif base == '3':
+            elif size == '3':
                 if len(text) > 3:
                     text = text[0:3]
 
