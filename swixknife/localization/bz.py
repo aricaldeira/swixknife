@@ -214,6 +214,7 @@ class SezimalLocaleBZ(SezimalLocale):
     ERROR = 'Erru'
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
     MONTH_ERROR = 'Mez inválidu {month}'
+    WEEK_NUMBER_SYMBOL = 'sem'
 
     COLLATION_RULES = '''
 [caseFirst upper]

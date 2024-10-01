@@ -73,6 +73,10 @@ class SezimalLocale:
         'Sun',
     ]
 
+    @property
+    def WEEKDAY_SYMBOL(self) -> list[str]:
+        return [wdn[0] for wdn in self.WEEKDAY_NAME]
+
     MONTH_NAME: list[str] = [
         'January',
         'February',
@@ -88,6 +92,10 @@ class SezimalLocale:
         'December',
     ]
 
+    @property
+    def ISO_MONTH_NAME(self) -> list[str]:
+        return self.MONTH_NAME
+
     MONTH_ABBREVIATED_NAME: list[str] = [
         'Jan',
         'Feb',
@@ -102,6 +110,10 @@ class SezimalLocale:
         'Nov',
         'Dec',
     ]
+
+    @property
+    def ISO_MONTH_ABBREVIATED_NAME(self) -> list[str]:
+        return self.MONTH_ABBREVIATED_NAME
 
     ERA_NAME: list[str] = [
         #
@@ -244,6 +256,7 @@ class SezimalLocale:
     ERROR = 'Error'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
+    WEEK_NUMBER_SYMBOL = 'w#'
 
     #
     # Collation rules
@@ -309,6 +322,16 @@ class SezimalLocale:
 
         return self.WEEKDAY_ABBREVIATED_NAME[int(weekday.decimal)]
 
+    def weekday_symbol(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 1 or weekday > 11:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        weekday -= 1
+
+        return self.WEEKDAY_SYMBOL[int(weekday.decimal)]
+
     def month_name(self, month: SezimalInteger, case: str = None) -> str:
         month = SezimalInteger(month)
 
@@ -328,6 +351,26 @@ class SezimalLocale:
         month -= 1
 
         return self.MONTH_ABBREVIATED_NAME[int(month.decimal)]
+
+    def iso_month_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 1 or month > 20:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        month -= 1
+
+        return self.ISO_MONTH_NAME[int(month.decimal)]
+
+    def iso_month_abbreviated_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 1 or month > 20:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        month -= 1
+
+        return self.ISO_MONTH_ABBREVIATED_NAME[int(month.decimal)]
 
     def era_name(self, year: SezimalInteger, case: str = None) -> str:
         year = SezimalInteger(year)
@@ -501,6 +544,7 @@ class SezimalLocale:
         use_fraction_group_separator: bool = False,
         use_fraction_subgroup_separator: bool = False,
         regularized_digits: bool = True,
+        regularized_letter_digits: bool = False,
         sezimal_digits: bool = False,
         sezimal_punctuation: bool = False,
         financial_digits: bool = False,
@@ -526,6 +570,7 @@ class SezimalLocale:
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
             regularized_digits,
+            regularized_letter_digits,
             sezimal_digits,
             sezimal_punctuation,
             financial_digits,

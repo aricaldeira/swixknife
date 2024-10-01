@@ -112,3 +112,4 @@ class SezimalLocaleYO(SezimalLocale):
     ERROR = 'Asise'
     WEEKDAY_ERROR = 'Ọjọ ọsẹ ti ko wulo {weekday}'
     MONTH_ERROR = 'Oṣu ti ko tọ {month}'
+    WEEK_NUMBER_SYMBOL = 'ọ̀sẹ̀'

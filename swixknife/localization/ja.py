@@ -54,25 +54,50 @@ class SezimalLocaleJA(SezimalLocale):
         '日',  # nichi
     ]
 
+    WEEKDAY_SYMBOL = [
+        '月',  # getsu
+        '火',  # ka
+        '水',  # sui
+        '木',  # moku
+        '金',  # kin
+        '土',  # do
+        '日',  # nichi
+    ]
+
     MONTH_NAME= [
-        '1月',   # ichigatsu
-        '2月',   # nigatsu
-        '3月',   # sangatsu
-        '4月',   # shigatsu
-        '5月',   # gogatsu
-        '10月',  # rokugatsu
+        '一月',   # ichigatsu
+        '二月',   # nigatsu
+        '三月',   # sangatsu
+        '四月',   # shigatsu
+        '五月',   # gogatsu
+        '六月',   # rokugatsu
         # '7月',    # nanagatsu
         # '8月',    # hachigatsu
         # '9月',    # kugatsu
         # '10月',   # jūgatsu
         # '11月',   # jūichigatsu
         # '12月',   # jūnigatsu
-        '11月',  # muichigatsu
-        '12月',  # munigatsu
-        '13月',  # musangatsu
-        '14月',  # mushigatsu
-        '15月',  # mugogatsu
-        '20月',  # nimugatsu
+        '六一月',  # muichigatsu
+        '六二月',  # munigatsu
+        '六三月',  # musangatsu
+        '六四月',  # mushigatsu
+        '六五月',  # mugogatsu
+        '二六月',  # nimugatsu
+    ]
+
+    ISO_MONTH_NAME = [
+        '一月',   # ichigatsu
+        '二月',   # nigatsu
+        '三月',   # sangatsu
+        '四月',   # shigatsu
+        '五月',   # gogatsu
+        '六月',   # rokugatsu
+        '七月',   # nanagatsu
+        '八月',   # hachigatsu
+        '九月',   # kugatsu
+        '十月',   # jūgatsu
+        '十一月',  # jūichigatsu
+        '十二月',  # jūnigatsu
     ]
 
     MONTH_ABBREVIATED_NAME = [
@@ -88,6 +113,21 @@ class SezimalLocaleJA(SezimalLocale):
         '14月',
         '15月',
         '20月',
+    ]
+
+    ISO_MONTH_ABBREVIATED_NAME = [
+        '1月',
+        '2月',
+        '3月',
+        '4月',
+        '5月',
+        '6月',
+        '7月',
+        '8月',
+        '9月',
+        '10月',
+        '11月',
+        '12月',
     ]
 
     DATE_FORMAT = '#?Y/#?m/#?d'
@@ -127,6 +167,7 @@ class SezimalLocaleJA(SezimalLocale):
     ERROR = 'エラー'
     WEEKDAY_ERROR = '{weekday}は曜日が無効です'
     MONTH_ERROR = '{month}は月が無効です'
+    WEEK_NUMBER_SYMBOL = '週'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

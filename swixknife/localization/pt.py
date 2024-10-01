@@ -131,6 +131,7 @@ class SezimalLocalePT(SezimalLocale):
     ERROR = 'Erro'
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'
     MONTH_ERROR = 'Mês inválido {month}'
+    WEEK_NUMBER_SYMBOL = 'sem'
 
     COLLATION_RULES = '''
 [caseFirst upper]

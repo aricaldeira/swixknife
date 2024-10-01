@@ -90,6 +90,7 @@ class SezimalLocaleDE(SezimalLocale):
     DST_NAME = 'Sommerzeit'
     DST_SHORT_NAME = 'SZ'
     DEFAULT_TIME_ZONE = 'Europe/Berlin'
+    WEEK_NUMBER_SYMBOL = 'W.'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Übergang Winter – Frühling',

@@ -32,6 +32,16 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
         'xqr',  # 周日
     ]
 
+    WEEKDAY_SYMBOL = [
+        '1',   # 周一
+        '2',   # 周二
+        '3',   # 周三
+        '4',   # 周四
+        '5',   # 周五
+        '6',  # 周六
+        'r',  # 周日
+    ]
+
     MONTH_NAME= [
         'yī yuè',        # 一月
         'èr yuè',        # 二月
@@ -53,6 +63,21 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
         'èrliǔ yuè',     # 二六月
     ]
 
+    ISO_MONTH_NAME = [
+        'yī yuè',        # 一月
+        'èr yuè',        # 二月
+        'sān yuè',       # 三月
+        'sì yuè',        # 四月
+        'wǔ yuè',        # 五月
+        'liù yuè',       # 六月
+        'qī yuè',      # 七月
+        'bā yuè',      # 八月
+        'jiǔ yuè',     # 九月
+        'shí yuè',     # 十月
+        'shíyī yuè',   # 十一月
+        'shí’èr yuè',  # 十二月
+    ]
+
     MONTH_ABBREVIATED_NAME = [
         '1y',
         '2y',
@@ -66,6 +91,21 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
         '14y',
         '15y',
         '20y',
+    ]
+
+    ISO_MONTH_ABBREVIATED_NAME = [
+        '1y',
+        '2y',
+        '3y',
+        '4y',
+        '5y',
+        '6y',
+        '7y',
+        '8y',
+        '9y',
+        '10y',
+        '11y',
+        '12y',
     ]
 
     DATE_LONG_FORMAT = '#Y nián #m yuè #d rì'
@@ -101,3 +141,4 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
     ERROR = 'Cuòwù'
     WEEKDAY_ERROR = '{weekday} shì wúxiào xīngqí jǐ'
     MONTH_ERROR = '{month} shì wúxiào yuèfèn'
+    WEEK_NUMBER_SYMBOL = 'xq'

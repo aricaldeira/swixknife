@@ -125,6 +125,7 @@ class SezimalLocaleFA_LATN(SezimalLocale):
     ERROR = 'Khatá'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
+    WEEK_NUMBER_SYMBOL = 'haf'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         return 'ᵒᵐ'

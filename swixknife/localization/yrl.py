@@ -3,10 +3,10 @@
 __all__ = ('SezimalLocaleYRL',)
 
 
-from .pt import SezimalLocalePT
+from .pt_br import SezimalLocalePT_BR
 
 
-class SezimalLocaleYRL(SezimalLocalePT):
+class SezimalLocaleYRL(SezimalLocalePT_BR):
     LANG = 'yrl'
     LANGUAGE = 'ỹengatu'
 

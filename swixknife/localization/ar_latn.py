@@ -148,4 +148,4 @@ class SezimalLocaleAR_LATN(SezimalLocale):
     ERROR = 'Khat’áq'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
-
+    WEEK_NUMBER_SYMBOL = 'asb'

@@ -132,6 +132,7 @@ class SezimalLocaleGA(SezimalLocale):
     ERROR = 'Earráid'
     WEEKDAY_ERROR = 'Lá seachtaine neamhbhailí {weekday}'
     MONTH_ERROR = 'Mí neamhbhailí {month}'
+    WEEK_NUMBER_SYMBOL = 'sea'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

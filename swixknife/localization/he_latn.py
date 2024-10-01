@@ -116,4 +116,4 @@ class SezimalLocaleHE_LATN(SezimalLocale):
     ERROR = 'Shegiá'
     WEEKDAY_ERROR = 'Yom shavúa lo chuki {weekday}'
     MONTH_ERROR = 'Hodesh lo chuki {month}'
-
+    WEEK_NUMBER_SYMBOL = 'shv'

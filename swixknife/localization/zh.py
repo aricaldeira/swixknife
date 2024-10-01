@@ -59,6 +59,16 @@ class SezimalLocaleZH(SezimalLocale):
         '日',  # zhōurì
     ]
 
+    WEEKDAY_SYMBOL = [
+        '一',  # zhōuyī
+        '二',  # zhōu’èr
+        '三',  # zhōusān
+        '四',  # zhōusì
+        '五',  # zhōuwǔ
+        '六',  # zhōuliù
+        '日',  # zhōurì
+    ]
+
     MONTH_NAME= [
         '一月',   # yī yuè
         '二月',   # èr yuè
@@ -80,6 +90,21 @@ class SezimalLocaleZH(SezimalLocale):
         '二六月',  # èrliǔ yuè
     ]
 
+    ISO_MONTH_NAME = [
+        '一月',   # yī yuè
+        '二月',   # èr yuè
+        '三月',   # sān yuè
+        '四月',   # sì yuè
+        '五月',   # wǔ yuè
+        '六月',   # liù yuè
+        '七月',    # qī yuè
+        '八月',    # bā yuè
+        '九月',    # jiǔ yuè
+        '十月',    # shí yuè
+        '十一月',  # shíyī yuè
+        '十二月',  # shí’èr yuè
+    ]
+
     MONTH_ABBREVIATED_NAME = [
         '1月',
         '2月',
@@ -93,6 +118,21 @@ class SezimalLocaleZH(SezimalLocale):
         '14月',
         '15月',
         '20月',
+    ]
+
+    ISO_MONTH_ABBREVIATED_NAME = [
+        '1月',
+        '2月',
+        '3月',
+        '4月',
+        '5月',
+        '6月',
+        '7月',
+        '8月',
+        '9月',
+        '10月',
+        '11月',
+        '12月',
     ]
 
     DATE_FORMAT = '#?Y/#?m/#?d'
@@ -131,6 +171,7 @@ class SezimalLocaleZH(SezimalLocale):
     ERROR = '错误'
     WEEKDAY_ERROR = '{weekday}是星期几无效'
     MONTH_ERROR = '{month}是月份无效'
+    WEEK_NUMBER_SYMBOL = '星期'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

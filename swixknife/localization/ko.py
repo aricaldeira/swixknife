@@ -75,19 +75,49 @@ class SezimalLocaleKO(SezimalLocale):
         '20월',  # i-yu-wol
     ]
 
+    ISO_MONTH_NAME= [
+        '1월',   # il-wol
+        '2월',   # i-wol
+        '3월',   # sam-wol
+        '4월',   # sa-wol
+        '5월',   # o-wol
+        '6월',  # yu-wol
+        '7월',    # chil-wol
+        '8월',    # pal-wol
+        '9월',    # gu-wol
+        '10월',   # si-wol
+        '11월',   # sip-il-wol
+        '12월',   # sip-i-wol
+    ]
+
     MONTH_ABBREVIATED_NAME = [
-        '１월',
-        '２월',
-        '３월',
-        '４월',
-        '５월',
-        '１０월',
-        '１１월',
-        '１２월',
-        '１３월',
-        '１４월',
-        '１５월',
-        '２０월',
+        '1월',
+        '2월',
+        '3월',
+        '4월',
+        '5월',
+        '10월',
+        '11월',
+        '12월',
+        '13월',
+        '14월',
+        '15월',
+        '20월',
+    ]
+
+    ISO_MONTH_ABBREVIATED_NAME = [
+        '1월',   # il-wol
+        '2월',   # i-wol
+        '3월',   # sam-wol
+        '4월',   # sa-wol
+        '5월',   # o-wol
+        '6월',  # yu-wol
+        '7월',    # chil-wol
+        '8월',    # pal-wol
+        '9월',    # gu-wol
+        '10월',   # si-wol
+        '11월',   # sip-il-wol
+        '12월',   # sip-i-wol
     ]
 
     DATE_FORMAT = '#?Y/#?m/#?d'
@@ -127,6 +157,7 @@ class SezimalLocaleKO(SezimalLocale):
     ERROR = '오류'
     WEEKDAY_ERROR = '{weekday}잘못된 평일'
     MONTH_ERROR = '{month}잘못된 달'
+    WEEK_NUMBER_SYMBOL = '주'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

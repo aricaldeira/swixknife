@@ -119,6 +119,7 @@ class SezimalLocaleHI_LATN(SezimalLocale):
     ERROR = 'Truṭi'
     WEEKDAY_ERROR = 'Amāni kāryadivas {weekday}'
     MONTH_ERROR = 'Amāni mahīna {month}'
+    WEEK_NUMBER_SYMBOL = 'sap'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

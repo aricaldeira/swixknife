@@ -124,6 +124,7 @@ class SezimalLocaleCA(SezimalLocale):
     ERROR = 'Error'
     WEEKDAY_ERROR = 'Dia de la setmana no vàlid {weekday}'
     MONTH_ERROR = 'Mes no vàlid {month}'
+    WEEK_NUMBER_SYMBOL = 'set'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

@@ -113,3 +113,4 @@ class SezimalLocaleNL(SezimalLocale):
     ERROR = 'Fout'
     WEEKDAY_ERROR = 'Ongeldige weekdag {weekday}'
     MONTH_ERROR = 'Ongeldige maand {month}'
+    WEEK_NUMBER_SYMBOL = 'wk'

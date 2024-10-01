@@ -1,6 +1,6 @@
 
 
-__all__ = ('SezimalLocaleHI',)
+__all__ = ('SezimalLocaleBN',)
 
 
 from typing import TypeVar
@@ -15,11 +15,11 @@ from ..sezimal import SezimalInteger
 from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
 
 
-class SezimalLocaleHI(SezimalLocale):
-    LANG = 'hi'
-    LANGUAGE = 'हिन्दी'  # hindi
+class SezimalLocaleBN(SezimalLocale):
+    LANG = 'bn'
+    LANGUAGE = 'বাংলা'  # bangla
 
-    DIGITS = '०१२३४५६७८९'
+    DIGITS = '০১২৩৪৫৬৭৮৯'
 
     SEZIMAL_SEPARATOR = SEPARATOR_DOT
 
@@ -30,53 +30,53 @@ class SezimalLocaleHI(SezimalLocale):
     FRACTION_SUBGROUP_SEPARATOR = ''
 
     WEEKDAY_NAME = [
-        'सोमवार',  # somvār
-        'मंगलवार',  # maṅgalvār
-        'बुधवार',  # budhvār
-        'गुरुवार',  # guruvār
-        'शुक्रवार',  # śukravār
-        'शनिवार',  # śanivār
-        'रविवार',  # ravivār
+        'সোমবার',  # sōmabāra
+        'মঙ্গলবার',  # maṅgalabāra
+        'বুধবার',  # budhabāra
+        'বৃহস্পতিবার',  # br̥haspatibāra
+        'শুক্রবার',  # śukrabāra
+        'শনিবার',  # śanibāra
+        'রবিবার',  # rabibāra
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'सोम',  # som
-        'मंग',  # maṅ
-        'बुध',  # budh
-        'गुरु',  # gur
-        'शुक्र',  # śuk
-        'शनि',  # śani
-        'रवि',  # ravi
+        'সোম',  # sōma
+        'মঙ্গ',  # maṅga
+        'বুধ',  # budha
+        'বৃহ',  # br̥ha
+        'শুক্র',  # śukra
+        'শনি',  # śani
+        'রবি',  # rabi
     ]
 
     MONTH_NAME= [
-        'जनवरी',  # janvarī
-        'फ़रवरी',  # farvarī
-        'मार्च',  # mārc
-        'अप्रैल',  # aprel
-        'मई',  # maī
-        'जून',  # jūn
-        'जुलाई',  # julāī
-        'अगस्त',  # agast
-        'सितंबर',  # sitambar
-        'अक्तूबर',  # akṭūbar
-        'नवंबर',  # navambar
-        'दिसंबर',  # disambar
+        'জানুয়ারী',    # jānuẏārī
+        'ফেব্রুয়ারী',  # phēbruẏārī
+        'মার্চ',        # mārca
+        'এপ্রিল',       # ēprila
+        'হতেপারে',      # hatē pārē
+        'জুন',          # juna
+        'জুলাই',        # julā’i
+        'আগস্ট',        # āgasṭa
+        'সেপ্টেম্বর',   # sēpṭēmbara
+        'অক্টোবর',      # akṭōbara
+        'নভেম্বর',      # nabhēmbara
+        'ডিসেম্বর',     # ḍisēmbara
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        'जन॰',  # jan
-        'फ़र॰',  # far
-        'मार्च',  # mārc
-        'अप्रैल',   # aprail,
-        'मई',  # maī
-        'जून',  # jūn
-        'जुल॰',  # jul
-        'अग॰',  # agast
-        'सित॰',  # sit
-        'अक्तू॰',  # akṭū
-        'नव॰',  # nav
-        'दिस॰',  # dis
+        'জানুয়ারী',    # jānuẏārī
+        'ফেব্রুয়ারী',  # phēbruẏārī
+        'মার্চ',        # mārca
+        'এপ্রিল',       # ēprila
+        'হতেপারে',      # hatē pārē
+        'জুন',          # juna
+        'জুলাই',        # julā’i
+        'আগস্ট',        # āgasṭa
+        'সেপ্টেম্বর',   # sēpṭēmbara
+        'অক্টোবর',      # akṭōbara
+        'নভেম্বর',      # nabhēmbara
+        'ডিসেম্বর',     # ḍisēmbara
     ]
 
     DATE_FORMAT = '#?d/#?m/#?Y'
@@ -88,7 +88,7 @@ class SezimalLocaleHI(SezimalLocale):
     DST_SHORT_NAME = 'DST'
 
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
-    DEFAULT_TIME_ZONE = 'Asia/Kolkata'
+    DEFAULT_TIME_ZONE = 'Asia/Dhaka'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',
@@ -118,10 +118,10 @@ class SezimalLocaleHI(SezimalLocale):
     #
     # Error messages
     #
-    ERROR = 'त्रुटि'
-    WEEKDAY_ERROR = 'अमान्य कार्यदिवस {weekday}'
-    MONTH_ERROR = 'अमान्य महीना {month}'
-    WEEK_NUMBER_SYMBOL = 'सप्त'
+    ERROR = 'ত্রুটি'  # truṭi
+    WEEKDAY_ERROR = 'অবৈধ কর্মদিবস {weekday}'
+    MONTH_ERROR = 'অবৈধ মাস {month}'
+    WEEK_NUMBER_SYMBOL = 'সপ্তাহ'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

@@ -112,3 +112,4 @@ class SezimalLocaleUK(SezimalLocale):
     ERROR = 'Помилка'
     WEEKDAY_ERROR = 'Недійсний день тижня {weekday}'
     MONTH_ERROR = 'Недійсний місяць {month}'
+    WEEK_NUMBER_SYMBOL = 'тиж'

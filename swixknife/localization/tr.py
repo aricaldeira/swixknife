@@ -91,24 +91,24 @@ class SezimalLocaleTR(SezimalLocale):
     DEFAULT_TIME_ZONE = 'Europe/Istanbul'
 
     SEASON_NAME = {
-        'spring_cross_quarter': 'Kıştan İlkbahara Geçiş',
+        'spring_cross_quarter': 'Kıştan i̇lkbahara geçiş',
         'spring_equinox': 'İlkbahar',
-        'summer_cross_quarter': 'İlkbahardan Yaza Geçiş',
+        'summer_cross_quarter': 'İlkbahardan yaza geçiş',
         'summer_solstice': 'Yaz',
-        'autumn_cross_quarter': 'Yazdan Sonbahara Geçiş',
+        'autumn_cross_quarter': 'Yazdan sonbahara geçiş',
         'autumn_equinox': 'Sonbahar',
-        'winter_cross_quarter': 'Sonbahardan Kışa Geçiş',
+        'winter_cross_quarter': 'Sonbahardan kışa geçiş',
         'winter_solstice': 'Kış',
     }
 
     MOON_PHASE = {
-        'new': 'Yeni Ay',
+        'new': 'Yeni ay',
         'waxing_crescent': 'Hilal',
-        'first_quarter': 'İlk Dördün',
-        'waxing_gibbous': 'Şişkin Hilal',
+        'first_quarter': 'İlk dördün',
+        'waxing_gibbous': 'Şişkin hilal',
         'full': 'Dolunay',
-        'waning_gibbous': 'Şişkin Azalan',
-        'third_quarter': 'Son Dördün',
+        'waning_gibbous': 'Şişkin azalan',
+        'third_quarter': 'Son dördün',
         'waning_crescent': 'Azalan',
     }
 
@@ -118,3 +118,4 @@ class SezimalLocaleTR(SezimalLocale):
     ERROR = 'Hata'
     WEEKDAY_ERROR = 'Geçersiz hafta günü {weekday}'
     MONTH_ERROR = 'Geçersiz ay {month}'
+    WEEK_NUMBER_SYMBOL = 'haf'

@@ -47,6 +47,16 @@ class SezimalLocaleAR(SezimalLocale):
         'يو١',
     ]
 
+    WEEKDAY_SYMBOL = [
+        '٢',
+        '٣',
+        '٤',
+        '٥',
+        'ج',
+        'س',
+        '١',
+    ]
+
     MONTH_NAME= [
         'يناير',
         'فبراير',
@@ -119,4 +129,4 @@ class SezimalLocaleAR(SezimalLocale):
     ERROR = 'خطأ'
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
-
+    WEEK_NUMBER_SYMBOL = 'أسب'

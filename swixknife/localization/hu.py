@@ -112,3 +112,4 @@ class SezimalLocaleHU(SezimalLocale):
     ERROR = 'Hiba'
     WEEKDAY_ERROR = 'Érvénytelen hétköznap {weekday}'
     MONTH_ERROR = 'Érvénytelen hónap {month}'
+    WEEK_NUMBER_SYMBOL = 'hét'

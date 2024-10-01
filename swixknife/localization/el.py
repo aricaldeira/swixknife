@@ -314,6 +314,7 @@ class SezimalLocaleEL(SezimalLocale):
     ERROR = 'Λάθος'
     WEEKDAY_ERROR = 'Μη έγκυρη ημέρα της εβδομάδας {weekday}'
     MONTH_ERROR = 'Μη έγκυρος μήνας {month}'
+    WEEK_NUMBER_SYMBOL = 'εβδ'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)

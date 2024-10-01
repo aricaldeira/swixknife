@@ -99,3 +99,4 @@ class SezimalLocaleGN(SezimalLocaleES_PY):
     ERROR = 'Jejavy'
     WEEKDAY_ERROR = 'Arapokõindy ára ndojeporúiva {weekday}'
     MONTH_ERROR = 'Jasy ndojeporúiva {month}'
+    WEEK_NUMBER_SYMBOL = 'sem'

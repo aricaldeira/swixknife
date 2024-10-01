@@ -47,6 +47,16 @@ class SezimalLocaleVI(SezimalLocale):
         'CN',
     ]
 
+    WEEKDAY_SYMBOL = [
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        'C',
+    ]
+
     MONTH_NAME= [
         'tháng giêng',
         'tháng hai',
@@ -59,7 +69,7 @@ class SezimalLocaleVI(SezimalLocale):
         'tháng chín',
         'tháng mười',
         'tháng mười một',
-        'tháng chạp',
+        'tháng mười hai',
     ]
 
     MONTH_ABBREVIATED_NAME = [
@@ -84,6 +94,21 @@ class SezimalLocaleVI(SezimalLocale):
         'thg 20',
     ]
 
+    ISO_MONTH_ABBREVIATED_NAME = [
+        'thg 1',
+        'thg 2',
+        'thg 3',
+        'thg 4',
+        'thg 5',
+        'thg 6',
+        'thg 7',
+        'thg 8',
+        'thg 9',
+        'thg 10',
+        'thg 11',
+        'thg 12',
+    ]
+
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#d/#m/#Y #@W'
     TIME_FORMAT = '#u:#p:#a'
@@ -96,14 +121,14 @@ class SezimalLocaleVI(SezimalLocale):
     DEFAULT_TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
     SEASON_NAME = {
-        'spring_cross_quarter': 'Spring Cross-Quarter',
-        'spring_equinox': 'Spring',
-        'summer_cross_quarter': 'Summer Cross-Quarter',
-        'summer_solstice': 'Summer',
-        'autumn_cross_quarter': 'Autumn Cross-Quarter',
-        'autumn_equinox': 'Autumn',
-        'winter_cross_quarter': 'Winter Cross-Quarter',
-        'winter_solstice': 'Winter',
+        'spring_cross_quarter': 'Từ mùa đông sang mùa xuân',
+        'spring_equinox': 'Mùa xuân',
+        'summer_cross_quarter': 'Từ mùa xuân sang mùa hè',
+        'summer_solstice': 'Mùa hè',
+        'autumn_cross_quarter': 'Từ mùa hè sang mùa thu',
+        'autumn_equinox': 'Mùa thu',
+        'winter_cross_quarter': 'Từ mùa thu sang mùa đông',
+        'winter_solstice': 'Mùa đông',
     }
 
     MOON_PHASE = {
@@ -126,6 +151,7 @@ class SezimalLocaleVI(SezimalLocale):
     ERROR = 'Lỗi'
     WEEKDAY_ERROR = 'Ngày trong tuần không hợp lệ {weekday}'
     MONTH_ERROR = 'Tháng không hợp lệ {month}'
+    WEEK_NUMBER_SYMBOL = 'tuần'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

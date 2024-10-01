@@ -264,6 +264,7 @@ class SezimalLocaleRU(SezimalLocale):
     ERROR = 'Ошибка'
     WEEKDAY_ERROR = 'Неверный день недели {weekday}'
     MONTH_ERROR = 'Неверный месяц {month}'
+    WEEK_NUMBER_SYMBOL = 'нед'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)

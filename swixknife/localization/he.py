@@ -47,6 +47,16 @@ class SezimalLocaleHE(SezimalLocale):
         'א׳',
     ]
 
+    WEEKDAY_SYMBOL = [
+        'ב',
+        'ג',
+        'ד',
+        'ה',
+        'ו',
+        'ש',
+        'א',
+    ]
+
     MONTH_NAME= [
         'ינואר',  # yánuar
         'פברואר',  # fébruar
@@ -119,3 +129,4 @@ class SezimalLocaleHE(SezimalLocale):
     ERROR = 'שגיאה'
     WEEKDAY_ERROR = '{weekday} יום שבוע לא חוקי'
     MONTH_ERROR = '{month} חודש לא חוקי'
+    WEEK_NUMBER_SYMBOL = 'שבו'

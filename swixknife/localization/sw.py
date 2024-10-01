@@ -42,6 +42,16 @@ class SezimalLocaleSW(SezimalLocale):
         'J02',
     ]
 
+    WEEKDAY_SYMBOL = [
+        '3',
+        '4',
+        '5',
+        'A',
+        'I',
+        '1',
+        '2',
+    ]
+
     MONTH_NAME= [
         'Januari',
         'Februari',
@@ -114,3 +124,4 @@ class SezimalLocaleSW(SezimalLocale):
     ERROR = 'Hitilafu'
     WEEKDAY_ERROR = 'Siku ya juma si sahihi {weekday}'
     MONTH_ERROR = 'Mwezi batili {month}'
+    WEEK_NUMBER_SYMBOL = 'jum'
