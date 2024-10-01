@@ -39,6 +39,8 @@ DEFAULT_NIFTIMAL_DIGITS = tuple(digit[0] for digit in NIFTIMAL_DIGITS_MAP)
 SEZIMAL_NIFTIMAL_DIGITS = tuple(digit[1] for digit in NIFTIMAL_DIGITS_MAP)
 REGULARIZED_NIFTIMAL_DIGITS = tuple(digit[2] for digit in NIFTIMAL_DIGITS_MAP)
 FINANCIAL_NIFTIMAL_DIGITS = tuple(digit[3] for digit in NIFTIMAL_DIGITS_MAP)
+NORMAL_NIFTIMAL_DIGITS = ('0', '1', '2', '3', '4', '5', '̇', '̈')
+LETTER_NIFTIMAL_DIGITS = ('o', 'ᴜ', 'ɔ', 'ⱷ', 'z', 'e', '̍', '̎')
 
 
 DEFAULT_NUMERATOR_DIGITS = (
@@ -78,6 +80,11 @@ def default_niftimal_to_sezimal_digits(number:str) -> str:
 
 def default_niftimal_to_regularized_digits(number:str) -> str:
     return _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_NIFTIMAL_DIGITS)
+
+
+def default_niftimal_to_letter_digits(number:str) -> str:
+    res = _change_digits(number, DEFAULT_NIFTIMAL_DIGITS, REGULARIZED_NIFTIMAL_DIGITS)
+    return _change_digits(res, NORMAL_NIFTIMAL_DIGITS, LETTER_NIFTIMAL_DIGITS)
 
 
 def default_niftimal_to_niftimal_digits(number:str) -> str:

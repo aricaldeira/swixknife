@@ -25,6 +25,7 @@ class SezimalCalculator:
         self.sezimal_digits = False
         self.sezimal_punctuation = True
         self.regularized_digits = True
+        self.regularized_letter_digits = False
         self.decimal = False
         self.precision = 3
         self.locale = locale
@@ -337,6 +338,7 @@ class SezimalCalculator:
             'use_fraction_group_separator': True,
             'suffix': self.suffix,
             'regularized_digits': self.regularized_digits,
+            'regularized_letter_digits': self.regularized_letter_digits,
             # 'niftimal_separator': '󱹮',
             # 'group_separator': ' ',
             # 'fraction_group_separator': ' ',

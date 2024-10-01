@@ -24,7 +24,7 @@ from .digit_conversion import (
     default_to_dedicated_numerator_digits, default_to_dedicated_denominator_digits,
     default_niftimal_to_regularized_digits, default_niftimal_to_financial_digits,
     default_niftimal_to_niftimal_digits, default_niftimal_to_financial_sezimal_digits,
-    dozenal_letters_to_digits,
+    dozenal_letters_to_digits, default_niftimal_to_letter_digits,
 )
 from .context import sezimal_context
 
@@ -694,6 +694,7 @@ def niftimal_format(
         fraction_group_separator: str = SEPARATOR_UNDERSCORE,
         fraction_subgroup_separator: str = '',
         regularized_digits: bool = True,
+        regularized_letter_digits: bool = False,
         sezimal_digits: bool = False,
         sezimal_punctuation: bool = False,
         financial_digits: bool = False,
@@ -874,11 +875,14 @@ def niftimal_format(
         else:
             formatted_number = default_niftimal_to_financial_digits(formatted_number)
 
-    elif regularized_digits:
-        if sezimal_digits:
+    elif regularized_digits or regularized_letter_digits:
+        if regularized_letter_digits:
+            formatted_number = default_niftimal_to_letter_digits(formatted_number)
+        elif sezimal_digits:
             formatted_number = default_niftimal_to_niftimal_digits(formatted_number)
         else:
             formatted_number = default_niftimal_to_regularized_digits(formatted_number)
+
 
     formatted_number = _finish_formatting(
         formatted_number, prefix, suffix,
