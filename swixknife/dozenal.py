@@ -518,13 +518,13 @@ class Dozenal:
     def __round_half_up__(self, precision: IntegerSelf, last_digit: str, next_digit: str, to_discard: str) -> Self:
         adjust = Dozenal(0)
 
-        if next_digit == '3':
+        if next_digit == '6':
             if to_discard.replace('0', '') != '':
                 adjust = Dozenal(f'1e-{precision}') * self._sign
-            elif last_digit in '135':
+            elif last_digit in '13579↋Bb':
                 adjust = Dozenal(f'1e-{precision}') * self._sign
 
-        elif next_digit in '45':
+        elif next_digit in '689↊↋ABab':
             adjust = Dozenal(f'1e-{precision}') * self._sign
 
         return adjust
@@ -532,11 +532,11 @@ class Dozenal:
     def __round_half_down__(self, precision: IntegerSelf, last_digit: str, next_digit: str, to_discard: str) -> Self:
         adjust = Dozenal(0)
 
-        if next_digit == '3':
+        if next_digit == '6':
             if to_discard.replace('0', '') != '':
                 adjust = Dozenal(f'1e-{precision}') * self._sign
 
-        elif next_digit in '45':
+        elif next_digit in '789↊↋ABab':
             adjust = Dozenal(f'1e-{precision}') * self._sign
 
         return adjust
@@ -1130,9 +1130,9 @@ class DozenalInteger(Dozenal):
 
 
 class DozenalFraction(Dozenal):
-    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', '_numerator', '_denominator', '_dozenal']
+    __slots__ = ['_value', '_sign', '_integer', '_fraction', '_precision', '_digits', '_numerator', '_denominator', '_dozenal', '_precalculated_value', '_precalculated_reciprocal']
 
-    def __init__(self, numerator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction, denominator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction = None) -> Self:
+    def __init__(self, numerator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction, denominator: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction = None, _precalculated_value: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction = None, _precalculated_reciprocal: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | Sezimal | SezimalInteger | SezimalFraction = None) -> Self:
         if type(numerator) == str:
             if '/' in numerator:
                 numerator, denominator = numerator.split('/')
@@ -1166,16 +1166,24 @@ class DozenalFraction(Dozenal):
         else:
             cleaned_denominator = validate_clean_dozenal(denominator)
 
+        # self._numerator, self._denominator = \
+        #     self.__simplify(
+        #         Dozenal(cleaned_numerator),
+        #         Dozenal(cleaned_denominator),
+        #     )
         self._numerator, self._denominator = \
-            self.__simplify(
-                Dozenal(cleaned_numerator),
-                Dozenal(cleaned_denominator),
-            )
+                Dozenal(cleaned_numerator), \
+                Dozenal(cleaned_denominator)
 
-        if sezimal_context.fractions_use_decimal:
+        if _precalculated_value is not None:
+            self._dozenal = Dozenal(_precalculated_value)
+        elif sezimal_context.fractions_use_decimal:
             self._dozenal = Dozenal(self._numerator.decimal / self._denominator.decimal)
         else:
             self._dozenal = self._numerator / self._denominator
+
+        self._precalculated_value = _precalculated_value
+        self._precalculated_reciprocal = _precalculated_reciprocal
 
         super().__init__(self._dozenal)
 
@@ -1197,7 +1205,7 @@ class DozenalFraction(Dozenal):
 
     @property
     def reciprocal(self) -> FractionSelf:
-        return DozenalFraction(self._denominator, self._numerator)
+        return DozenalFraction(self._denominator, self._numerator, self._precalculated_reciprocal, self._precalculated_value)
 
     @reciprocal.setter
     def reciprocal(self, value):
