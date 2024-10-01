@@ -18,8 +18,11 @@ def sezimal_to_decimal(number: int | float | Decimal | str | Sezimal | SezimalIn
     if type(number).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         decimal = number.decimal
 
-        if decimal_precision is not None:
-            decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+        try:
+            if decimal_precision is not None:
+                decimal=  decimal.quantize(Decimal(f'1e-{decimal_precision}'))
+        except:
+            pass
 
         return validate_clean_decimal(str(decimal))
 
