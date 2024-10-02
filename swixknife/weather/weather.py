@@ -197,12 +197,15 @@ class SezimalWeather:
             if (not longitude) and 'WEATHER_LONGITUDE' in up:
                 longitude = up['WEATHER_LONGITUDE']
 
-        conditions = get_weather_conditions(
-            api_key=api_key, latitude=latitude, longitude=longitude,
-            time_zone=self.time_zone,
-        )
+        try:
+            conditions = get_weather_conditions(
+                api_key=api_key, latitude=latitude, longitude=longitude,
+                time_zone=self.time_zone,
+            )
 
-        fill_sezimal_weather(self, conditions)
+            fill_sezimal_weather(self, conditions)
+        except:
+            self._get_last_reading('open_weather_map', fill_sezimal_weather)
 
     def get_weatherapi_conditions(self, api_key: str = None, location: str = None, latitude: float = None, longitude: float = None):
         from .weather_api import get_weather_conditions, fill_sezimal_weather
@@ -231,12 +234,15 @@ class SezimalWeather:
             if (not location) and 'WEATHER_LOCATION' in up:
                 location = up['WEATHER_LOCATION']
 
-        conditions = get_weather_conditions(
-            api_key=api_key, location=location, latitude=latitude, longitude=longitude,
-            language=lang, time_zone=self.time_zone,
-        )
+        try:
+            conditions = get_weather_conditions(
+                api_key=api_key, location=location, latitude=latitude, longitude=longitude,
+                language=lang, time_zone=self.time_zone,
+            )
 
-        fill_sezimal_weather(self, conditions)
+            fill_sezimal_weather(self, conditions)
+        except:
+            self._get_last_reading('weather_api', fill_sezimal_weather)
 
     def _get_last_reading(self, api_type: str, fill_sezimal_weather):
         if not os.path.isfile(os.path.expanduser('~/.sweather.json')):
