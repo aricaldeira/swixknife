@@ -57,7 +57,7 @@ SPECIFIC_HEAT = SezimalFraction('323_245_314_040_541_203_352_340_150_141 / 10_21
 # fraction form:
 # https://en.wikipedia.org/wiki/Impedance_of_free_space
 #
-IMPEDANCE_FREE_SPACE = SezimalFraction('111_133_351_303_345 / 40_450_211_224')
+IMPEDANCE_FREE_SPACE = SezimalFraction('111_133_351_303_201 / 40_450_211_224')
 
 #
 # Elementary charge in coulombos, converted to
