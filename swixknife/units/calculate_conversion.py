@@ -894,7 +894,7 @@ def calculate_conversions():
     electric_charge_vidyuta = (DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE) / ANUGA_TO_SECOND / IMPEDANCE_FREE_SPACE
     number_elementary_charges_in_vidyutas = round(electric_charge_vidyuta.sqrt() / ELEMENTARY_CHARGE_IN_COULOMBS, 0)
 
-    VIDYUTA_TO_COULOMB = ELEMENTARY_CHARGE_IN_COULOMBS * number_elementary_charges_in_vidyutas * 1000
+    VIDYUTA_TO_COULOMB = ELEMENTARY_CHARGE_IN_COULOMBS * number_elementary_charges_in_vidyutas
     PRATIBADA_TO_OHM = IMPEDANCE_FREE_SPACE
     DARA_TO_AMPERE = VIDYUTA_TO_COULOMB / ANUGA_TO_SECOND
 

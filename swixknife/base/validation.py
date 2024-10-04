@@ -12,7 +12,7 @@ from swixknife.base.digit_conversion import sezimal_to_default_digits, \
     dedicated_niftimal_to_default_digits, dozenal_digits_to_letters, \
     dozenal_letters_to_digits
 
-from .context import sezimal_context
+from swixknife.base.context import sezimal_context
 
 
 _CLEAN_SPACES = {
@@ -149,13 +149,13 @@ _FRACTION_SEPARATOR = '\\.'
 _RECURRING_MARKER = re.compile('\\.\\.')
 _CLOSING_RECURRING_MARKER = re.compile('\\.\\.\\.$')
 
-_VALID_SEZIMAL_FORMAT = re.compile(r'''^[+-]?[0-5]{1,}\.{0,2}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.[0-5]{1,}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.\.[0-5]{1,}(\.\.\.)?$|^[+-]?[0-5]*\.[0-5]{1,}\.\.[0-5]{1,}(\.\.\.)?|[ΦφΠπΤτ]$''')
+_VALID_SEZIMAL_FORMAT = re.compile(r'''^[+-]?[0-5]{1,}\.{0,2}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.[0-5]{1,}([Ee][+-]?[0-5]{1,})?$|^[+-]?[0-5]*\.\.[0-5]{1,}(\.\.\.$)?$|^[+-]?[0-5]*\.[0-5]{1,}\.\.[0-5]{1,}(\.\.\.$)?$|^[ΦφΠπΤτ]$''')
 
-_VALID_DECIMAL_FORMAT = re.compile(r'''^[+-]?[0-9]{1,}\.{0,2}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.[0-9]{1,}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.\.[0-9]{1,}(\.\.\.)?$|^[+-]?[0-9]*\.[0-9]{1,}\.\.[0-9]{1,}(\.\.\.)?|[ΦφΠπΤτ]$''')
+_VALID_DECIMAL_FORMAT = re.compile(r'''^[+-]?[0-9]{1,}\.{0,2}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.[0-9]{1,}([Ee][+-]?[0-9]{1,})?$|^[+-]?[0-9]*\.\.[0-9]{1,}(\.\.\.$)?$|^[+-]?[0-9]*\.[0-9]{1,}\.\.[0-9]{1,}(\.\.\.$)?$|^[ΦφΠπΤτ]$''')
 
-_VALID_NIFTIMAL_FORMAT = re.compile(r'''^[+-]?[0-9A-Za-z]{1,}\.{0,2}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.\.[0-9A-Za-z]{1,}(\.\.\.)?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}\.\.[0-9A-Za-z]{1,}(\.\.\.)?|[ΦφΠπΤτ]$''')
+_VALID_NIFTIMAL_FORMAT = re.compile(r'''^[+-]?[0-9A-Za-z]{1,}\.{0,2}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}([Ee][+-][0-9A-Za-z]{1,})?$|^[+-]?[0-9A-Za-z]*\.\.[0-9A-Za-z]{1,}(\.\.\.$)?$|^[+-]?[0-9A-Za-z]*\.[0-9A-Za-z]{1,}\.\.[0-9A-Za-z]{1,}(\.\.\.$)?$|^[ΦφΠπΤτ]$''')
 
-_VALID_DOZENAL_FORMAT = re.compile(r'''^[+-]?[0-9↊↋ABab]{1,}\.{0,2}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.\.[0-9↊↋ABab]{1,}(\.\.\.)?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}\.\.[0-9↊↋ABab]{1,}(\.\.\.)?|[ΦφΠπΤτ]$''')
+_VALID_DOZENAL_FORMAT = re.compile(r'''^[+-]?[0-9↊↋ABab]{1,}\.{0,2}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}([Ee][+-]?[0-9↊↋ABab]{1,})?$|^[+-]?[0-9↊↋ABab]*\.\.[0-9↊↋ABab]{1,}(\.\.\.$)?$|^[+-]?[0-9↊↋ABab]*\.[0-9↊↋ABab]{1,}\.\.[0-9↊↋ABab]{1,}(\.\.\.$)?$|^[ΦφΠπΤτ]$''')
 
 
 def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | SezimalInteger | SezimalFraction, double_precision: bool = False) -> str:
@@ -171,7 +171,7 @@ def validate_clean_sezimal(number: int | float | str | Decimal | Sezimal | Sezim
     if not _VALID_SEZIMAL_FORMAT.match(cleaned_number):
         raise ValueError(f'The number {number} has an invalid format for a sezimal number')
 
-    if double_precision:
+    if double_precision or '..' in cleaned_number:
         cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal * 2)
     else:
         cleaned_number = _clean_recurring_digits(cleaned_number, sezimal_context.sezimal_precision_decimal)
@@ -475,9 +475,12 @@ _DOZENAL_CONSTANTS = {
 }
 
 
-def _make_validation_expression(all_digits='[0-5]') -> re.Pattern:
-    fraction_separator = _FRACTION_SEPARATOR
-    recurring_marker = f'{_RECURRING_MARKER.pattern}'
+def _make_validation_expression(
+    all_digits='[0-5]',
+    fraction_separator=_FRACTION_SEPARATOR,
+    recurring_marker=_RECURRING_MARKER,
+) -> re.Pattern:
+    recurring_marker = f'{recurring_marker.pattern}'
     closing_recurring_marker = f'({_CLOSING_RECURRING_MARKER.pattern})?'
 
     required_digits = f'{all_digits}{{1,}}'
@@ -501,7 +504,7 @@ def _make_validation_expression(all_digits='[0-5]') -> re.Pattern:
 
     constants = '[ΦφΠπΤτ]'
 
-    all_pattern = f'^{integer}{exponent}$|^{common_fractional}{exponent}$|^{recurring_fractional}$|^{complex_recurring_fraction}|{constants}$'
+    all_pattern = f'^{integer}{exponent}$|^{common_fractional}{exponent}$|^{recurring_fractional}$|^{complex_recurring_fraction}$|^{constants}$'
 
     return re.compile(all_pattern)
 
