@@ -12,3 +12,6 @@ class SezimalLocaleES_UY(SezimalLocaleES):
 
     DEFAULT_TIME_ZONE = 'America/Montevideo'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'

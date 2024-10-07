@@ -55,13 +55,28 @@ function update_sezimal_places(calculation_refresh = true) {
     var sezimal_places = localStorage.getItem('sezimal-calculator-sezimal-places');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
     const sezimal_punctuation = localStorage.getItem('sezimal-calculator-sezimal-punctuation');
+    const currency_mode = localStorage.getItem('sezimal-calculator-currency-mode');
 
     let separator;
 
     if (sezimal_punctuation == 'true') {
-        separator = '󱹮'
+        if (currency_mode == 'true') {
+            separator = '󱹶';
+        } else {
+            separator = '󱹮';
+        };
     } else {
         separator = document.getElementById('button-sezimal-separator').innerHTML;
+
+        if (currency_mode == 'true') {
+            if (separator == '.') {
+                separator = ';';
+            } else if (separator == '٫') {
+                separator = '؛';
+            } else {
+                separator = ';';
+            };
+        };
     };
 
     if (sezimal_places == 0) {

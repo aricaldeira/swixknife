@@ -11,3 +11,6 @@ class SezimalLocalePT_CH(SezimalLocalePT_PT):
     LANGUAGE = 'português suíço'
 
     DEFAULT_TIME_ZONE = 'Europe/Zurich'
+
+    CURRENCY_UNIT_SYMBOL = 'fr.'
+    CURRENCY_SUBUNIT_SYMBOL = 'c.'

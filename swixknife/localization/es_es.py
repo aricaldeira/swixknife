@@ -12,3 +12,7 @@ class SezimalLocaleES_ES(SezimalLocaleES):
 
     DATE_LONG_FORMAT = '#-d de #M de #Y'
     DATE_TIME_LONG_FORMAT = '#W, #-d de #M de #Y, #u:#p:#a'
+
+    CURRENCY_UNIT_SYMBOL = '€'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'
+    CURRENCY_UNIT_SYMBOL_POSITION = 'R'

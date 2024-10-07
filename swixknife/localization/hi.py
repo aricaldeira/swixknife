@@ -29,6 +29,9 @@ class SezimalLocaleHI(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
 
+    CURRENCY_UNIT_SYMBOL = '₹'
+    CURRENCY_SUBUNIT_SYMBOL = 'प'
+
     WEEKDAY_NAME = [
         'सोमवार',  # somvār
         'मंगलवार',  # maṅgalvār

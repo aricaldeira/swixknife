@@ -14,6 +14,10 @@ class SezimalLocalePT_PT(SezimalLocalePT):
     DEFAULT_TIME_ZONE = 'Europe/Lisbon'
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
 
+    CURRENCY_UNIT_SYMBOL = '€'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'
+    CURRENCY_UNIT_SYMBOL_POSITION = 'R'
+
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)
 

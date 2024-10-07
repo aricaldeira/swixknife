@@ -12,6 +12,9 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
 
     DEFAULT_TIME_ZONE = 'America/Toronto'
 
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = '¢'
+
     FIRST_WEEKDAY = 'SUN'
 
     SEASON_NAME = {

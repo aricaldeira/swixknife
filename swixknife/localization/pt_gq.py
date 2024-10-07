@@ -11,3 +11,7 @@ class SezimalLocalePT_GQ(SezimalLocalePT_PT):
     LANGUAGE = 'português guineense'
 
     DEFAULT_TIME_ZONE = 'Africa/Malabo'
+
+    CURRENCY_UNIT_SYMBOL = 'F.CFA'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'
+    CURRENCY_UNIT_SYMBOL_POSITION = 'L'

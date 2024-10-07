@@ -90,13 +90,14 @@ const sezimal_calculator_pt_text = {
         <ul>
             <li>[ nife 5̆ ] / [ nife 󱸣 ] - o mostrator nifimal usa dígitos regularizados (veja abaixo);</li><br/>
             <li>[ nife Z ] - o mostrator nifimal usa os dígitos 0123456789 e letras a partir do número 14 (em decimal, dez);</li><br/>
-            <li>[ <span style="text-decoration: line-through;">nife</span> ] - oculta o mostrador nifimal;</li>
+            <li>[ <span style="color: #666;">nife</span> ] - oculta o mostrador nifimal;</li>
         </ul>
     </li><br/>
-    <li>[ ext ] - ativa [ ext ] / desativa [ <span style="text-decoration: line-through;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>
+    <li>[ ext ] - ativa [ ext ] / desativa [ <span style="color: #666;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>
 </ul>
 <p>E os botões de ajuste na segunda linha do mostrador:</p>
 <ul>
+    <li>[ R$ ] - ativa [ R$ ] / desativa [ <span style="color: #666;">R$</span> ] o modo moeda, onde a entrada é dividida por um “separador de moeda” “󱹶” ou “;”, que indica que o número representa na verdade duas unidades de medida de valor monetário, convertidas de forma independente, a moeda em si, e a sua subunidade (reais󱹶centavos ou reais;centavos);</li><br/>
     <li>[ mdl <img src="https://midia.tauga.online/img/sezimal/mandala-logo-black-on-white-small.svg" width="12rem" /> ° ] - unidades de medida de ângulos para as funções trigonométricas sezimais e decimais;</li><br/>
     <li>[ <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-black-on-white-small.svg" width="12rem" /> ] - unidades e prefixos Xastadári convertidos de ou para unidades e prefixo do Sistema Internacional de Medidas (e algumas unidades tradicionais fora do SI);</li><br/>
     <li>[ 0󱹮3 ] - em quantos dígitos depois do separador sezimais o resultado vai ser arredondado; a precisão em base decimal vai ser ajustada baseada na precisão da base sezimal;</li><br/>

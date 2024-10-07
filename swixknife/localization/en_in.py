@@ -19,6 +19,9 @@ class SezimalLocaleEN_IN(SezimalLocaleEN):
 
     DEFAULT_TIME_ZONE = 'Asia/Kolkata'
 
+    CURRENCY_UNIT_SYMBOL = '₹'
+    CURRENCY_SUBUNIT_SYMBOL = 'प'
+
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
         decimal_places: str | int | Decimal | SezimalInteger = 2,

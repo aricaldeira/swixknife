@@ -179,7 +179,7 @@ def _decimal_fraction_to_sezimal(fraction: str | Decimal, sezimal_precision: int
 
     fraction = str(fraction)[::-1]
 
-    while fraction[0] == '0':
+    while fraction and fraction[0] == '0':
         fraction = fraction[1:]
 
     if not fraction:

@@ -24,14 +24,32 @@ function update_grouping(calculation_refresh = true) {
     const grouping = localStorage.getItem('sezimal-calculator-grouping');
     const sezimal_digits = localStorage.getItem('sezimal-calculator-sezimal-digits');
     const sezimal_punctuation = localStorage.getItem('sezimal-calculator-sezimal-punctuation');
+    const currency_mode = localStorage.getItem('sezimal-calculator-currency-mode');
     let separator;
+    let decimal_separator;
 
     if (sezimal_punctuation == 'true') {
         separator = '󱹬';
-        document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
+        if (currency_mode == 'true') {
+            document.getElementById('button-sezimal-separator').innerHTML = '󱹶';
+        } else {
+            document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
+        }
     } else {
         separator = localStorage.getItem('sezimal-calculator-group-separator');
-        document.getElementById('button-sezimal-separator').innerHTML = document.getElementById('button-decimal-separator').innerHTML;
+        decimal_separator = document.getElementById('button-decimal-separator').innerHTML;
+
+        if (currency_mode == 'true') {
+            if (decimal_separator == '.') {
+                decimal_separator = ';';
+            } else if (decimal_separator == '٫') {
+                decimal_separator = '؛';
+            } else {
+                decimal_separator = ';';
+            };
+        };
+
+        document.getElementById('button-sezimal-separator').innerHTML = decimal_separator;
     }
 
     if (grouping == 3) {

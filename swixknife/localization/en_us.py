@@ -10,6 +10,9 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
     LANG = 'en'
     LANGUAGE = 'American English'
 
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = '¢'
+
     DATE_FORMAT = '#m/#d/#Y'
     DATE_LONG_FORMAT = '#M #-d, #Y'
     DATE_TIME_FORMAT = ' #@W #m/#d/#Y #u:#p:#a'

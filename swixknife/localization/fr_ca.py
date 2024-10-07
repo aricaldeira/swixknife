@@ -12,6 +12,9 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
 
     DEFAULT_TIME_ZONE = 'America/Montreal'
 
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = '¢'
+
     SEASON_EMOJI_NORTHERN_HEMISPHERE = {
         'spring_cross_quarter': '\ufe0f❄️\ufe0f〰\ufe0f🌱',
         'spring_equinox': '\ufe0f🌱',

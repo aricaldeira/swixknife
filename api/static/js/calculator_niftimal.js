@@ -6,6 +6,8 @@ function toggle_niftimal() {
     if ((niftimal_type == null) || (niftimal_type == '') || (niftimal_type == '-')) {
         niftimal_type = '5';
     } else if (niftimal_type == '5') {
+        niftimal_type = 'z';
+    } else if (niftimal_type == 'z') {
         niftimal_type = 'Z';
     } else if (niftimal_type == 'Z') {
         niftimal_type = '-';
@@ -32,11 +34,14 @@ function update_niftimal(calculation_refresh = true) {
             document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} 5̆ ]`;
         };
         document.getElementById('niftimal_display').hidden = false;
+    } else if (niftimal_type == 'z') {
+        document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} z̆ ]`
+        document.getElementById('niftimal_display').hidden = false;
     } else if (niftimal_type == 'Z') {
         document.getElementById('toggle_niftimal').innerHTML = `[ ${nif_translation} Z ]`
         document.getElementById('niftimal_display').hidden = false;
     } else if ((niftimal_type == null) || (niftimal_type == '') || (niftimal_type == '-')) {
-        document.getElementById('toggle_niftimal').innerHTML = `[ <span style="text-decoration: line-through;">${nif_translation}</span> ]`
+        document.getElementById('toggle_niftimal').innerHTML = `[ <span style="color: #666;">${nif_translation}</span> ]`
         document.getElementById('niftimal_display').hidden = true;
     };
 

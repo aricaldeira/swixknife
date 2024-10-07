@@ -18,6 +18,9 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 
+    CURRENCY_UNIT_SYMBOL = 'R$'
+    CURRENCY_SUBUNIT_SYMBOL = '¢'
+
     HOLIDAYS = [
         #
         # Moving Holidays

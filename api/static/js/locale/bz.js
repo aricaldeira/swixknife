@@ -86,13 +86,14 @@ const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text,
         <ul>
             <li>[ nifi 5̆ ] / [ nifi 󱸣 ] - u mostrador nifimaw uza díjitus regularizadus (veja abaxu);</li><br/>
             <li>[ nifi Z ] - u mostrator nifimaw uza us díjitus 0123456789 y letras a partir du númeru 14 (in desimaw, dèys);</li><br/>
-            <li>[ <span style="text-decoration: line-through;">nifi</span> ] - okuwta u mostrador nifimaw;</li>
+            <li>[ <span style="color: #666;">nifi</span> ] - okuwta u mostrador nifimaw;</li>
         </ul>
     </li><br/>
-    <li>[ est ] - ativa [ est ] / desativa [ <span style="text-decoration: line-through;">est</span> ] a ezibisawn dus númerus sezimays pur estensu (pur inkuantu, sòmenti disponívew in brazileru, portugez, inglez y Esperantu);</li><br/>
+    <li>[ est ] - ativa [ est ] / dizativa [ <span style="color: #666;">est</span> ] a ezibisawn dus númerus sezimays pur estensu (pur inkuantu, sòmenti disponívew in brazileru, portugez, inglez y Esperantu);</li><br/>
 </ul>
 <p>Y us botoyns di ajusti na segunda liỹa du mostrador:</p>
 <ul>
+    <li>[ R$ ] - ativa [ R$ ] / dizativa [ <span style="color: #666;">R$</span> ] u mòdu moèda, ondi a entrada è dividida pur un “separador di moèda” “󱹶” o “;”, ki indika ki u númeru reprezenta na verdadi duas unidadis di medida, konvertidas di fòrma independente, a moèda in sí, y a sua subunidadi (reays󱹶sentavus o reays;sentavus);</li><br/>
     <li>[ mdl <img src="https://midia.tauga.online/img/sezimal/mandala-logo-black-on-white-small.svg" width="12rem" /> ° ] - unidadis di medida di ângulus pras funsoyns trigonométrikas sezimays y desimays;</li><br/>
     <li>[ <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-black-on-white-small.svg" width="12rem" /> ] - unidadis y prefiksus Xastadari konvertidus di o pra unidadis y prefiksus du Sistema Internasyonaw di Medidas (y awgumas unidadis tradisyonays fòra du SI);</li><br/>
     <li>[ 0󱹮3 ] - in kwantus díjitus depoys du separador sezimays u rezuwtadu vay ser arredondadu; a presizawn in bazi desimaw vay ser ajustada bazeada na presizawn da bazi sezimaw;</li><br/>

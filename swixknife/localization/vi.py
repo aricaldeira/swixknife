@@ -27,6 +27,9 @@ class SezimalLocaleVI(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
 
+    CURRENCY_UNIT_SYMBOL = '₫'
+    CURRENCY_SUBUNIT_DECIMAL_SIZE = 0
+
     WEEKDAY_NAME = [
         'thứ hai',
         'thứ ba',

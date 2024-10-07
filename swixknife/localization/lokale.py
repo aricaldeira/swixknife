@@ -9,13 +9,14 @@ import locale as system_locale
 from decimal import Decimal
 
 from .constants import UNPRINTABLE_CHARACTERS, EMOJI_CHARACTERS, IDEOGRAPHIC_CHARACTERS
-from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
+from ..sezimal import Sezimal, SezimalInteger, SezimalFraction, SezimalDecimalUnit
 from ..functions import SezimalRange
 from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
     SEPARATOR_COMBINING_DOT_ABOVE_RIGHT, \
     RECURRING_DIGITS_NOTATION_SIMPLE, \
     sezimal_format, decimal_format, dozenal_format, \
-    niftimal_format
+    niftimal_format, SEPARATOR_WEDGE, \
+    SEPARATOR_DECIMAL_CURRENCY
 from ..text import sezimal_spellout
 
 
@@ -257,6 +258,80 @@ class SezimalLocale:
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
     WEEK_NUMBER_SYMBOL = 'w#'
+
+    #
+    # Currency symbols and format
+    #
+    CURRENCY_UNIT_SYMBOL = '¤'
+    CURRENCY_SUBUNIT_SYMBOL = '¤'
+    CURRENCY_SUBUNIT_DECIMAL_SIZE = 2
+    CURRENCY_UNIT_SYMBOL_POSITION = 'L'  # Left
+    CURRENCY_UNIT_SYMBOL_WITH_SPACE = True
+    CURRENCY_SUBUNIT_SYMBOL_WITH_SPACE = True
+
+    @property
+    def CURRENCY_SUBUNIT_SYMBOL_POSITION(self):
+        return self.CURRENCY_UNIT_SYMBOL_POSITION
+
+    @property
+    def CURRENCY_SEPARATOR(self):
+        if self.SEZIMAL_SEPARATOR == '.':
+            return ';'
+        elif self.SEZIMAL_SEPARATOR == '٫':
+            return '؛'
+
+        return ';'
+
+    @property
+    def CURRENCY_LONG_FORMAT(self):
+        if self.CURRENCY_UNIT_SYMBOL_POSITION == 'L':
+            if self.CURRENCY_UNIT_SYMBOL_WITH_SPACE:
+                res = '{unit_symbol} {unit}'
+            else:
+                res = '{unit_symbol}{unit}'
+        else:
+            if self.CURRENCY_UNIT_SYMBOL_WITH_SPACE:
+                res = '{unit} {unit_symbol}'
+            else:
+                res = '{unit}{unit_symbol}'
+
+        res += ' '
+
+        if self.CURRENCY_SUBUNIT_SYMBOL_POSITION == 'L':
+            if self.CURRENCY_SUBUNIT_SYMBOL_WITH_SPACE:
+                res += '{subunit_symbol} {subunit}'
+            else:
+                res += '{subunit_symbol}{subunit}'
+        else:
+            if self.CURRENCY_SUBUNIT_SYMBOL_WITH_SPACE:
+                res += '{subunit} {subunit_symbol}'
+            else:
+                res += '{subunit}{subunit_symbol}'
+
+        return res
+
+    @property
+    def CURRENCY_SHORT_FORMAT(self):
+        if self.CURRENCY_UNIT_SYMBOL_POSITION == 'L':
+            if self.CURRENCY_UNIT_SYMBOL_WITH_SPACE:
+                res = '{unit_symbol} {unit}'
+            else:
+                res = '{unit_symbol}{unit}'
+
+            res += self.CURRENCY_SEPARATOR
+            res += '{subunit}'
+
+        else:
+            res = '{unit}'
+            res += self.CURRENCY_SEPARATOR
+            res += '{subunit}'
+
+            if self.CURRENCY_UNIT_SYMBOL_WITH_SPACE:
+                res += ' {unit_symbol}'
+            else:
+                res += '{unit_symbol}'
+
+        return res
 
     #
     # Collation rules
@@ -582,6 +657,81 @@ class SezimalLocale:
             negative_format,
             recurring_digits_notation,
         )
+
+        if (not sezimal_digits) and native_digits and self.DIGITS:
+            res = self.digit_replace(res)
+
+            if self.RTL:
+                res = '\N{LRO}' + res + '\N{PDF}'
+
+        return res
+
+    def format_currency(self,
+        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | SezimalDecimalUnit,
+        sezimal_places: str | int | Decimal | SezimalInteger = None,
+        decimal_places: str | int | Decimal | SezimalInteger = None,
+        use_group_separator: bool = True,
+        use_subgroup_separator: bool = False,
+        sezimal_digits: bool = False,
+        sezimal_punctuation: bool = False,
+        typographical_negative: bool = True,
+        minimum_size: str | int | Decimal | Sezimal | SezimalInteger = 0,
+        unit_symbol: str = None,
+        subunit_symbol: str = None,
+        grouping_digits: int = 3,
+        native_digits: bool = True,
+        long_format: bool = False,
+        **kwargs
+    ) -> str:
+        group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
+        subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
+
+        if type(number) != SezimalDecimalUnit:
+            number = SezimalDecimalUnit(number)
+
+        unit_symbol = unit_symbol or self.CURRENCY_UNIT_SYMBOL
+        subunit_symbol = subunit_symbol or self.CURRENCY_SUBUNIT_SYMBOL
+
+        if not decimal_places:
+            decimal_places = self.CURRENCY_SUBUNIT_DECIMAL_SIZE
+
+        if not sezimal_places:
+            sezimal_places = len(str(SezimalInteger(14) ** decimal_places))
+
+        unit = sezimal_format(
+            number.unit, 0, self.SEZIMAL_SEPARATOR,
+            group_separator, subgroup_separator, '', '',
+            sezimal_digits, sezimal_punctuation, typographical_negative,
+            minimum_size,
+            grouping_digits=grouping_digits,
+        )
+
+        if not sezimal_places:
+            minimum_size = 0
+        else:
+            minimum_size = '0' * int(sezimal_places)
+            minimum_size += 'X'
+
+        subunit = sezimal_format(
+            number.subunit, 0, self.SEZIMAL_SEPARATOR,
+            group_separator, subgroup_separator, '', '',
+            sezimal_digits, sezimal_punctuation, typographical_negative,
+            minimum_size,
+            grouping_digits=grouping_digits,
+        )
+
+        if long_format:
+            final_format = self.CURRENCY_LONG_FORMAT
+        else:
+            final_format = self.CURRENCY_SHORT_FORMAT
+
+        if sezimal_punctuation:
+            final_format = final_format.replace(
+                self.CURRENCY_SEPARATOR,
+                SEPARATOR_DECIMAL_CURRENCY,
+            )
+
+        res = eval(f"f'{final_format}'")
 
         if (not sezimal_digits) and native_digits and self.DIGITS:
             res = self.digit_replace(res)

@@ -5,7 +5,8 @@ __all__ = ('SezimalCalculator',)
 from decimal import Decimal, localcontext
 from fractions import Fraction as DecimalFraction
 
-from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
+from ..sezimal import Sezimal, SezimalInteger, SezimalFraction, \
+    SezimalDecimalUnit
 from ..base import default_to_sezimal_digits, validate_clean_decimal, \
     sezimal_format, decimal_format, niftimal_format, sezimal_context
 from ..base.formatting import PER_SYMBOLS
@@ -40,6 +41,7 @@ class SezimalCalculator:
         self.decimal_angle = 'tau_rad'
         self.angle_as_fraction = False
         self.debug = False
+        self.currency_mode = False
         self.expression = expression
 
     @property
@@ -164,6 +166,15 @@ class SezimalCalculator:
             elif self.unit and part.replace('/', '').replace('⁄', '').isdigit():
                 spellout += sezimal_spellout(f'SH-{self.unit} {part}', lang, self.sezimal_punctuation) + ' '
             else:
+                if self.currency_mode:
+                    try:
+                        part = SezimalDecimalUnit(part)
+                        spellout += sezimal_spellout(part.unit, lang, self.sezimal_punctuation) + '; '
+                        spellout += sezimal_spellout(part.subunit, lang, self.sezimal_punctuation) + ' '
+                        continue
+                    except:
+                        pass
+
                 spellout += sezimal_spellout(part, lang, self.sezimal_punctuation) + ' '
 
         return spellout.strip()
@@ -173,6 +184,14 @@ class SezimalCalculator:
 
         if '.' in number and number[-1] != '.':
             precision = SezimalInteger(Decimal(len(number.split('.')[1])))
+
+            if result:
+                while number and number.endswith('0'):
+                    precision -= 1
+                    number = number[:-1]
+
+        elif ';' in number and number[-1] != ';':
+            precision = SezimalInteger(Decimal(len(number.split(';')[1])))
 
             if result:
                 while number and number.endswith('0'):
@@ -238,7 +257,22 @@ class SezimalCalculator:
                 number = round(number, precision)
 
         if display:
+            if self.currency_mode and type(number) == SezimalDecimalUnit:
+                del params['sezimal_places']
+                return self.locale.format_currency(number, **params)
+
             return self.locale.format_number(number, **params)
+
+        if self.currency_mode and type(number) == SezimalDecimalUnit:
+            del params['sezimal_places']
+            res = sezimal_format(number.unit, **params)
+
+            if part and part[-1] == ';':
+                res += ';'
+            elif number.subunit:
+                res += ';' + sezimal_format(number.subunit, **params)
+
+            return res
 
         return sezimal_format(number, **params)
 
@@ -518,7 +552,7 @@ class SezimalCalculator:
 
                 continue
 
-            if part == '.':
+            if part == '.' or part == ';':
                 continue
 
             previous_part = part
@@ -546,6 +580,9 @@ class SezimalCalculator:
                 elif part.endswith('.'):
                     number = Decimal(validate_clean_decimal(part[:-1]))
                     prepared_expression += f"Decimal('{number}')"
+                elif part.endswith(';'):
+                    number = Decimal(validate_clean_decimal(part[:-1]))
+                    prepared_expression += f"Decimal('{number}')"
                 else:
                     number = Decimal(validate_clean_decimal(part))
                     prepared_expression += f"Decimal('{number}')"
@@ -568,9 +605,13 @@ class SezimalCalculator:
                     if not self.unit_as_fraction:
                         number = round(number, self._sezimal_precision)
 
+                elif self.currency_mode:
+                    number = SezimalDecimalUnit(number)
+
                 elif self.factor:
                     number *= self.factor
                     number = round(number, self._sezimal_precision)
+
                 else:
                     number = Sezimal(number)
 
@@ -597,13 +638,27 @@ class SezimalCalculator:
                     cleaned_part = part[:-1]
                     number = Sezimal(part[:-1])
                     prepared_expression += f"Sezimal('{number}')"
+                elif self.currency_mode:
+                    number = SezimalDecimalUnit(part)
+
+                    if part[-1] == ';':
+                        prepared_expression += f"SezimalDecimalUnit('{number};')"
+                    else:
+                        prepared_expression += f"SezimalDecimalUnit('{number}')"
+
+                    cleaned_part = str(number.sezimal)
                 else:
                     number = Sezimal(part)
                     prepared_expression += f"Sezimal('{number}')"
 
-                display += self._format_sezimal(part, display=True, part=part)
-                niftimal_display += self._format_niftimal(cleaned_part, part=part)
-                sezimal_expression += self._format_sezimal(part, part=part)
+                if self.currency_mode:
+                    display += self._format_sezimal(number, display=True, part=part)
+                    niftimal_display += self._format_niftimal(cleaned_part, part=part)
+                    sezimal_expression += self._format_sezimal(number, part=part)
+                else:
+                    display += self._format_sezimal(part, display=True, part=part)
+                    niftimal_display += self._format_niftimal(cleaned_part, part=part)
+                    sezimal_expression += self._format_sezimal(part, part=part)
 
                 if trigonometry_opened and self.angle and self.decimal_angle:
                     if self.angle.endswith('mdl'):
@@ -613,7 +668,7 @@ class SezimalCalculator:
 
                     if not self.angle_as_fraction:
                         with localcontext() as context:
-                            context.prec = int(self._decimal_precision) * 2
+                            context.prec = int(self._decimal_precision)
                             number = round(number.decimal, int(self._decimal_precision))
 
                 elif self.unit and self.decimal_unit:
@@ -624,6 +679,9 @@ class SezimalCalculator:
                             number = round(number.decimal, int(self._decimal_precision))
                         except:
                             number = number.decimal
+
+                elif self.currency_mode:
+                    number = number.decimal
 
                 elif self.factor:
                     number /= self.factor

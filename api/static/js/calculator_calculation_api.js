@@ -39,6 +39,7 @@ function update_calculation(value = '') {
 
     dados = {
         locale: localStorage.getItem('sezimal-calculator-locale'),
+        currency_mode: localStorage.getItem('sezimal-calculator-currency-mode'),
         places: localStorage.getItem('sezimal-calculator-sezimal-places'),
         base: localStorage.getItem('sezimal-calculator-base'),
         sezimal_digits: localStorage.getItem('sezimal-calculator-sezimal-digits'),
@@ -74,9 +75,17 @@ function update_calculation(value = '') {
         localStorage.setItem('sezimal-calculator-sezimal-separator', dados.separator);
 
         if (dados.sezimal_punctuation) {
-            document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
+            if (dados.currency_mode) {
+                document.getElementById('button-sezimal-separator').innerHTML = '󱹶';
+            } else {
+                document.getElementById('button-sezimal-separator').innerHTML = '󱹮';
+            }
         } else {
-            document.getElementById('button-sezimal-separator').innerHTML = dados.separator;
+            if (dados.currency_mode) {
+                document.getElementById('button-sezimal-separator').innerHTML = dados.currency_separator;
+            } else {
+                document.getElementById('button-sezimal-separator').innerHTML = dados.separator;
+            }
         };
         update_sezimal_places(false);
 
@@ -84,6 +93,9 @@ function update_calculation(value = '') {
 
         localStorage.setItem('sezimal-calculator-group-separator', dados.group_separator);
         update_grouping(false);
+
+        localStorage.setItem('sezimal-calculator-currency-unit-symbol', dados.currency_unit_symbol);
+        update_currency_mode(false);
 
         if (dados.show_spellout) {
             document.getElementById('spellout').innerHTML = dados.spellout;

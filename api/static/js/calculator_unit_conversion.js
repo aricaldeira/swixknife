@@ -1,6 +1,7 @@
 
 // const SHASTADARI_LOGO = '⬢';
 const SHASTADARI_LOGO = ' <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-black-on-white-small.svg" width="12rem" /> ';
+const SHASTADARI_OFF_LOGO = ' <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-black-on-white-small-off.svg" width="12rem" /> ';
 
 const prefixed_units = [
     'A',
@@ -305,7 +306,7 @@ function set_unit_type_sezimal_decimal(unit_type, sezimal_prefix, sezimal_unit, 
     hide_all_units();
 
     if (unit_type == 'no-conversion') {
-        document.getElementById('toggle_units').innerHTML = '[ ' + SHASTADARI_LOGO + ' ]';
+        document.getElementById('toggle_units').innerHTML = '[ ' + SHASTADARI_OFF_LOGO + ' ]';
     } else if (unit_type == 'units') {
         document.getElementById('toggle_units').innerHTML = '[  ' + SHASTADARI_LOGO + '  ]';
     } else if (unit_type == 'prefixes') {
@@ -350,7 +351,7 @@ function update_units_conversion() {
     if ((sezimal_unit != '') && (decimal_unit != '')) {
         document.getElementById('toggle_units').innerHTML = '[ ' + sezimal_prefix + sezimal_unit + ' ' + SHASTADARI_LOGO + ' ' + decimal_prefix + decimal_unit + ' ]';
     } else {
-        document.getElementById('toggle_units').innerHTML = '[ ' + SHASTADARI_LOGO + ' ]';
+        document.getElementById('toggle_units').innerHTML = '[ ' + SHASTADARI_OFF_LOGO + ' ]';
     };
 };
 

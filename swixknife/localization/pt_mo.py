@@ -11,3 +11,6 @@ class SezimalLocalePT_MO(SezimalLocalePT_PT):
     LANGUAGE = 'português macaense'
 
     DEFAULT_TIME_ZONE = 'Europe/Macau'
+
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = 'a'

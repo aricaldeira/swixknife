@@ -132,6 +132,7 @@ function update_locale(calculation_refresh = true) {
         update_sezimal_places(false);
         update_spellout(false);
         update_niftimal(false);
+        update_currency_mode(false);
     };
 
     load_translation();

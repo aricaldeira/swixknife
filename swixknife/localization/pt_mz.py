@@ -12,3 +12,6 @@ class SezimalLocalePT_MZ(SezimalLocalePT_PT):
 
     DEFAULT_TIME_ZONE = 'Africa/Maputo'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+
+    CURRENCY_UNIT_SYMBOL = 'MT'
+    CURRENCY_SUBUNIT_DECIMAL_SIZE = 0

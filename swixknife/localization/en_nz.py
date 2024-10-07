@@ -12,3 +12,6 @@ class SezimalLocaleEN_NZ(SezimalLocaleEN):
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'Pacific/Auckland'
+
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'

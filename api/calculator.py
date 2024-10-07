@@ -69,16 +69,19 @@ def api_calculator_process() -> dict:
     dados['sezimal_digits'] = dados['sezimal_digits'] == 'true'
     dados['sezimal_punctuation'] = dados['sezimal_punctuation'] == 'true'
     dados['spellout'] = dados['spellout'] == 'true'
+    dados['currency_mode'] = dados['currency_mode'] == 'true'
 
     calculator = SezimalCalculator()
     calculator.locale = dados['locale']
     calculator.grouping_digits = dados['grouping']
+    calculator.currency_mode = dados['currency_mode']
     calculator.decimal = False
     calculator.precision = dados['places']
     calculator.decimal = dados['base'] == 14
     calculator.sezimal_digits = dados['sezimal_digits']
     calculator.sezimal_punctuation = dados['sezimal_punctuation']
-    calculator.regularized_digits = dados['niftimal'] != 'Z'
+    calculator.regularized_digits = dados['niftimal'] != 'Z' and dados['niftimal'] != 'z'
+    calculator.regularized_letter_digits = dados['niftimal'] == 'z'
     calculator.unit = dados['sezimal_unit']
     # calculator.suffix = dados['sezimal_unit']
     calculator.decimal_unit = dados['decimal_unit']
@@ -97,7 +100,7 @@ def api_calculator_process() -> dict:
     print('dados antes', dados)
     print()
 
-    # calculator.debug = True
+    calculator.debug = True
 
     if not dados['value']:
         calculator.expression = dados['expression']
@@ -145,7 +148,27 @@ def api_calculator_process() -> dict:
             calculator.expression = dados['expression'].strip()[:-5]
         else:
             calculator.expression = dados['expression'].strip()[:-1]
-    elif dados['value'] == '.':
+
+    elif dados['value'] == '.' and (not calculator.decimal) and dados['currency_mode']:
+        if dados['expression'].endswith(';'):
+            pass
+
+        elif ';' in dados['expression'] and dados['expression'][-1] != ';':
+            if ' ' in dados['expression']:
+                parts = dados['expression'].split(' ')[-1].replace('_', '').split(';')
+            else:
+                parts = dados['expression'].replace('_', '').split(';')
+
+            if len(parts) >= 2 and parts[-1].isdigit() and parts[-2].isdigit():
+                pass
+
+            elif parts[-1].isdigit():
+                calculator.expression = dados['expression'] + ';'
+
+        else:
+            calculator.expression = dados['expression'] + ';'
+
+    elif dados['value'] == '.' and not dados['currency_mode']:
         if dados['expression'].endswith('..'):
             pass
 
@@ -373,6 +396,8 @@ def api_calculator_process() -> dict:
         'group_separator': calculator.locale.GROUP_SEPARATOR,
         'digits': calculator.locale.DIGITS,
         'sezimal_digits': calculator.sezimal_digits,
+        'currency_separator': calculator.locale.CURRENCY_SEPARATOR,
+        'currency_unit_symbol': calculator.locale.CURRENCY_UNIT_SYMBOL,
     }
 
     if not calculator.error:

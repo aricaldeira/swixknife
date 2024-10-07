@@ -90,10 +90,10 @@ const sezimal_calculator_eo_text = {
         <ul>
             <li>[ nife 5̆ ] / [ nife 󱸣 ] - o mostrator nifimal usa dígitos regularizados (veja abaixo);</li><br/>
             <li>[ nife Z ] - o mostrator nifimal usa os dígitos 0123456789 e letras a partir do número 14 (em decimal, dez);</li><br/>
-            <li>[ <span style="text-decoration: line-through;">nife</span> ] - oculta o mostrador nifimal;</li>
+            <li>[ <span style="color: #666;">nife</span> ] - oculta o mostrador nifimal;</li>
         </ul>
     </li><br/>
-    <li>[ ext ] - ativa [ ext ] / desativa [ <span style="text-decoration: line-through;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>
+    <li>[ ext ] - ativa [ ext ] / desativa [ <span style="color: #666;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>
 </ul>
 <p>E os botões de ajuste na segunda linha do mostrador:</p>
 <ul>

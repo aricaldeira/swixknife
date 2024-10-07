@@ -8,12 +8,12 @@ from typing import TypeVar
 SezimalDate = TypeVar('SezimalDate', bound='SezimalDate')
 
 
-from .lokale import SezimalLocale
+from .lokale import SezimalLocale, EuroCurrency
 from ..sezimal import SezimalInteger
 from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
 
 
-class SezimalLocaleFR(SezimalLocale):
+class SezimalLocaleFR(EuroCurrency, SezimalLocale):
     LANG = 'fr'
     LANGUAGE = 'français'
 
@@ -24,6 +24,10 @@ class SezimalLocaleFR(SezimalLocale):
 
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
+
+    CURRENCY_UNIT_SYMBOL = '€'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'
+    CURRENCY_UNIT_SYMBOL_POSITION = 'R'
 
     WEEKDAY_NAME = [
         'lundi',

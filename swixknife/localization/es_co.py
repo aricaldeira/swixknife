@@ -12,4 +12,7 @@ class SezimalLocaleES_CO(SezimalLocaleES):
 
     DEFAULT_TIME_ZONE = 'America/Bogota'
 
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_DECIMAL_SIZE = 0
+
     FIRST_WEEKDAY = 'SUN'

@@ -20,6 +20,10 @@ class SezimalLocaleYO(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
 
+    CURRENCY_UNIT_SYMBOL = '₦'
+    CURRENCY_SUBUNIT_SYMBOL = 'kb'
+    CURRENCY_SUBUNIT_SYMBOL_POSITION = 'R'
+
     WEEKDAY_NAME = [
         'Ọjọ́ Ajé',
         'Ọjọ́ Ìsẹ́gun',

@@ -20,7 +20,7 @@ function update_spellout(calculation_refresh = true) {
     }
 
     if ((spellout == null) || (spellout == '') || (spellout == false)  || (spellout == 'false')) {
-        document.getElementById('toggle_spellout').innerHTML = `[ <span style="text-decoration: line-through;">${txt_translation}</span> ]`
+        document.getElementById('toggle_spellout').innerHTML = `[ <span style="color: #666;">${txt_translation}</span> ]`
     } else {
         document.getElementById('toggle_spellout').innerHTML = `[ ${txt_translation} ]`
     };

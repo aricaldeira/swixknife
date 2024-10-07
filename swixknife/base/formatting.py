@@ -5,6 +5,7 @@ from typing import TypeVar
 Sezimal = TypeVar('Sezimal', bound='Sezimal')
 SezimalInteger = TypeVar('SezimalInteger', bound='SezimalInteger')
 SezimalFraction = TypeVar('SezimalFraction', bound='SezimalFraction')
+SezimalDecimalUnit = TypeVar('SezimalDecimalUnit', bound='SezimalDecimalUnit')
 Decimal = TypeVar('Decimal', bound='Decimal')
 Dozenal = TypeVar('Dozenal', bound='Dozenal')
 DozenalInteger = TypeVar('DozenalInteger', bound='DozenalInteger')
@@ -46,10 +47,12 @@ SEPARATOR_LOW_VERTICAL_LINE = 'ˌ'
 SEPARATOR_MIDDLE_DOT = '·'
 SEPARATOR_COMBINING_DOT_ABOVE_RIGHT = '\u0358'
 SEPARATOR_COMBINING_COMMA_ABOVE_RIGHT = '\u0315'
+SEPARATOR_COMBINING_RING_ABOVE = '\u030a'
 SEPARATOR_SHADARA = '󱹬'  # '\U000f1e6c'  # 󱹬
 SEPARATOR_ARDA = '󱹭'  # '\U000f1e6d'  # 󱹭
 SEPARATOR_WEDGE = '󱹮'  # '\U000f1e6e'  # 󱹮
 SEPARATOR_REPEATING = '󱹯'  # '\U000f1e6f'  # 󱹯
+SEPARATOR_DECIMAL_CURRENCY = '󱹶'  # '\U000f1e76'  # 󱹶
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
@@ -74,7 +77,7 @@ _RECURRING_DIGITS_COMBINING_DOT_ABOVE = '\u0307'
 
 
 def sezimal_format(
-        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
+        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | SezimalDecimalUnit,
         sezimal_places: str | int | Decimal | Sezimal | SezimalInteger | SezimalFraction = 2,
         sezimal_separator: str = SEPARATOR_DOT,
         group_separator: str = SEPARATOR_UNDERSCORE,
@@ -105,6 +108,9 @@ def sezimal_format(
     if type(number).__name__ == 'SezimalFraction':
         number = number.sezimal
 
+    if type(number).__name__ == 'SezimalDecimalUnit':
+        number = number.sezimal
+
     if grouping_digits < 2 or grouping_digits > 4:
         if grouping_digits == 1:
             raise ValueError(f'Invalid grouping digits by each {grouping_digits} digit')
@@ -124,10 +130,20 @@ def sezimal_format(
         group_format = _TWO_DIGITS_GROUP_FORMAT
 
     sezimal_places = validate_clean_sezimal(sezimal_places)
-    minimum_size = validate_clean_sezimal(minimum_size)
-
     sezimal_places = int(sezimal_to_decimal(sezimal_places))
-    minimum_size = int(sezimal_to_decimal(minimum_size))
+
+    filling_character = ' '
+
+    if type(minimum_size) == str:
+        if 'X' in minimum_size.upper():
+            filling_character = minimum_size[0]
+            minimum_size = len(minimum_size) - 1
+        else:
+            minimum_size = validate_clean_sezimal(minimum_size)
+            minimum_size = int(sezimal_to_decimal(minimum_size))
+
+    else:
+        minimum_size = int(sezimal_to_decimal(minimum_size))
 
     if keep_original_aspect:
         number = str(number).replace('_', '')
@@ -215,7 +231,7 @@ def sezimal_format(
             integer = integer.replace(group_separator + subgroup_separator, group_separator)
 
         if minimum_size > 0:
-            integer = integer.rjust(minimum_size, ' ')
+            integer = integer.rjust(minimum_size, filling_character)
 
     formatted_number = integer
 
@@ -686,7 +702,7 @@ def dozenal_format(
 
 
 def niftimal_format(
-        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,
+        number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | SezimalDecimalUnit,
         niftimal_places: str | int | Decimal | Sezimal | SezimalInteger | SezimalFraction = 2,
         niftimal_separator: str = SEPARATOR_DOT,
         group_separator: str = SEPARATOR_UNDERSCORE,
@@ -712,6 +728,8 @@ def niftimal_format(
         number = sezimal_to_niftimal(number)
     elif type(number).__name__ == 'Decimal':
         number = sezimal_to_niftimal(decimal_to_sezimal(number))
+    elif type(number).__name__ == 'SezimalDecimalUnit':
+        number = sezimal_to_niftimal(number.sezimal)
 
     if type(niftimal_places).__name__ in ('Sezimal', 'SezimalInteger', 'SezimalFraction'):
         niftimal_places = sezimal_to_niftimal(niftimal_places)

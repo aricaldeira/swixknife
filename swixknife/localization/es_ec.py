@@ -12,3 +12,6 @@ class SezimalLocaleES_EC(SezimalLocaleES):
 
     DEFAULT_TIME_ZONE = 'America/Guayaquil'
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
+
+    CURRENCY_UNIT_SYMBOL = '$'
+    CURRENCY_SUBUNIT_SYMBOL = '¢'

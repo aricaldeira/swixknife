@@ -11,3 +11,6 @@ class SezimalLocaleEN_IE(SezimalLocaleEN):
     LANGUAGE = 'Irish English'
 
     DEFAULT_TIME_ZONE = 'Europe/Dublin'
+
+    CURRENCY_UNIT_SYMBOL = '€'
+    CURRENCY_SUBUNIT_SYMBOL = 'c'

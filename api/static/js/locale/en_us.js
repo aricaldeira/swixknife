@@ -1,5 +1,9 @@
 
-const sezimal_calculator_en_us_text = {
+import { sezimal_calculator_en_text } from './en.js';
+
+const sezimal_calculator_en_us_text = Object.assign({}, sezimal_calculator_en_text, {
+    'help-setting': sezimal_calculator_en_text['help-setting'].replaceAll('€', '$').replaceAll('euro', 'dollar'),
+
     'optgroup-units-generic-imp-us': 'Customary/Imperial',
     'optgroup-units-generic-us': 'Customary',
     'optgroup-units-generic-us-fluid': 'Fluid',
@@ -81,6 +85,8 @@ const sezimal_calculator_en_us_text = {
 
     'translation-display-US-mpg': 'mpg',
     'translation-display-imp-mpg': 'mpg imp.',
-};
+});
+
+console.log('passou aqui', sezimal_calculator_en_us_text['help-setting']);
 
 export { sezimal_calculator_en_us_text };
