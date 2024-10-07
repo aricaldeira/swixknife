@@ -10,9 +10,9 @@
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP', 'Libertinus Math', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', monospace;
-    --font-family-monospace: 'Sezimal QP', monospace;
+    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal QP', 'Noto Sans Mono', monospace;
 }
 html, body {
     height: 100%;
@@ -133,7 +133,7 @@ a.devanagari {
 /*     font-variant-numeric: diagonal-fractions; */
 }
 math {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP', 'Noto Sans';
 }
 mn {
     margin: 6px;
@@ -188,7 +188,7 @@ mn {
 
 }
 .mono-text {
-    font-family: 'Sezimal Mono', monospace;
+    font-family: 'Sezimal Mono', 'Noto Sans Mono', monospace;
 }
 .center {
     text-align: center;
@@ -291,4 +291,41 @@ h1 {
     transform: scale(2.5);
     -ms-transform: scale(2.5); /* IE 9 */
     -webkit-transform: scale(2.5); /* Safari and Chrome */
+}
+
+.emoji {
+    font-family: 'Noto Color Emoji';
+}
+
+.rainbow {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+.rainbow-red {
+    color: #d40000;
+}
+.rainbow-orange {
+    color: #ff6600;
+}
+.rainbow-yellow {
+    color: #ffcc00;
+}
+.rainbow-green {
+    color: #44aa00;
+}
+.rainbow-blue {
+    color: #0066ff;
+}
+.rainbow-indigo {
+    color: #0000ff;
+}
+.rainbow-purple {
+    color: #5500d4;
+}
+.rainbow-magenta {
+    color: #d40055;
+}
+.rainbow-violet {
+    color: #aa00d4;
 }
