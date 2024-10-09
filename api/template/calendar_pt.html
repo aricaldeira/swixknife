@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title">Calendário Sezimal</title>
+        <meta name="description" content="Calendário Sezimal" />
+        <meta name="author" content="Ari Caldeira" />
+        {% include 'sezimal_css.html' %}
+    </head>
+    <body>
+<p class="center">
+{% include 'menu_pt.html' %} <a href="/bz/xastadari/kalendaryu">Brazileru</a> <span style="color: white;">|</span> <a href="/en/shastadari/calendar">English</a>
+</p>
+<p class="center">
+    <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="25%"/>
+</p>
+<h1 class="center">Calendário Sezimal</h1>
+<p>O calendário sezimal é um calendário solar perpétuo, que tem trimestres simétricos e iguais, cada trimestre contendo 4 + 5 + 4 semanas, e que começa todos os meses na segunda‐feira; É a versão sezimal do <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Calendário Simetria 454</a>;</p>
+<h2>O Calendário</h2>
+<p class="center"><b>Hoje</b> é a dia sezimal <b>{{sezimal_today}}</b>, no calendário ISO, dia {{iso_today}}</p>
+<p class="center">{{sezimal_today_full}}</p>
+<p class="center">{{sezimal_today_full_text}}</p>
+<p class="center">{{sezimal_month}}</p>
+{% include 'calendar_yearly.html' %}
+<p>O calendário mostrado acima, deste ano, mostra como, para cada mês, cada dia cai sempre no mesmo dia da semana, então não é preciso nem adivinhar nem ter dúvida para se saber qual é o dia da semana, qual é a semana no mês, já que isso nunca muda de ano a ano;</p>
+<p>Para cada trimestre, o dia 30 (tresseis, decimal 18) do mês central do trimestre, fevereiro, maio, agosto ou novembro, marca o meio do trimestre;</p>
+<p>Toda data tem seu número de ordem fixo para a semana dentro do mês, a semana dentro do trimestre, a semana dentro do ano, o dia dentro do mês e da semana, o dia dentro do trimestre, o dia dentro do ano;</p>
+<p>Cada mês termina ou no dia 44 (quatrosseis e quatro, decimal 28), às 55:55:55, ou no dia 55 (quinseis e cinco, decimal 35), também às 55:55:55;</p>
+<p>O modelo acima também mostra os eventos astronômicos das mudanças das estações e das fases da lua para o Hemisfério {{ 'Norte' if locale.DEFAULT_HEMISPHERE == 'N' else 'Sul' }}; O modelo também tem um degradê suave nas cores fluindo de uma estação para a outra, {% if locale.DEFAULT_HEMISPHERE == 'N' %}
+<span style="background-color: #03a9f4;"> inverno </span>, <span style="background-color: #8bc34a;"> primavera </span>, <span style="background-color: #ff5722;"> verão </span>, <span style="background-color: #e91e63;"> outono </span> e <span style="background-color: #03a9f4;"> inverno </span> de novo;
+{% else %}
+<span style="background-color: #ff5722;"> verão </span>, <span style="background-color: #e91e63;"> outono </span>, <span style="background-color: #03a9f4;"> inverno </span>, <span style="background-color: #8bc34a;"> primavera </span> e <span style="background-color: #ff5722;"> verão </span> de novo;
+{% endif %}
+Isso foi feito pela beleza das cores, e também para mostrar que o calendário demonstra não só o ciclo da rotação da Terra ao redor do Sol, mas também o ciclo da Lua ao redor da Terra, mudando mais ou menos a cada semana, já que uma lunação é um pouco mais do que 44 dias, ou 4 semanas: ~ 45󱹮310󱹭335 dias;
+</p>
+<h2>Época</h2>
+<p>A <a href="https://pt.wikipedia.org/wiki/%C3%89poca_(cronologia)" target="_blank">época</a> do calendário sezimal foi escolhida para acomodar o <a href="https://pt.wikipedia.org/wiki/Calend%C3%A1rio_Holoceno" target="_blank">Calendário Holoceno</a>, mas com o ajuste sezimal de que, ao invés de somar 114󱹭144 (nife e dez arda, nife quatrosseis e quatro, decimal 10.000) ao número do ano atual no calendário ISO, ou mesmo o sezimal 100󱹭000 (nife arda, decimal 7776), se soma 200󱹭000 (dunife arda, decimal 15.552), assim cobrindo todo o período de tempo analisado por recentes descobertas arqueológicas sobre a História da Humanidade, como o sítio arqueológico de <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, dando a esses pontos no tempo números de ano positivos: aproximadamente do ano 44󱹭000 (quatrosseis e quatro arda, ISO -9504, 11,454 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>) até o ano 55󱹭000 (quinseis e cinco arda, ISO -7993, 9943 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>);</p>
+<p>Essa decisão também tem o efeito de, para os números de ano da era atual, fazer com que os números de ano sezimais tenham seis dígitos;</p>
+<p>Assim, a data sezimal de 200󱹭001-01-01 é a data ISO 0001-01-01, a data sezimal 000󱹭001-01-01 é a ISO −15,551-01-04, e a data sezimal 000󱹭000-01-01 é a ISO −15,552-01-06, todas elas caindo numa segunda-feira;</p>
+<h2>Regra dos Anos Bissextos</h2>
+<p>O calendário sezimal é um calendário de <i>semana intercalar</i>, o que significa dizer que, de acordo com a regra dos anos bissextos (ou itercalares, ou de ajuste), uma semana completa é acrescentada ao final do último mês do ano, para manter o calendário sincronizado com o ciclo solar;</p>
+<p>Anos comuns, não bissextos, têm 124 (nife doze e quatro, decimal 52) semanas, isso são 1404 (arda quatronife e quatro, decimal 364) dias, e os anos bissextos incluem uma semana no mês de dezembro, fazendo esses anos terem 125 (nife doze e cinco, decimal 53) semanas, 1415 (arda quatronife e onze, decimal 371) dias;</p>
+<p>Um ano é bissexto se a seguinte expressão for verdadeira:</p>
+<p class="center"><span style="color: white;">|</span>(124 × (ano − 200󱹭000)) + 402<span style="color: white;">|</span> mód 1205 &lt; 124</p>
+<!-- <p class="center"><i><span style="color: white;">|</span>(52 × (ano − 15,552)) + 146<span style="color: white;">|</span> mód 293 &lt; 52</i></p> -->
+<p class="center"><i>o módulo (resto) do valor absoluto de nife doze e quatro multiplicado pelo número do ano menos dunife arda, mais quatronife e dois, dividido por arda dunife e cinco, for menor do que nife doze e quatro</i></p>
+<p>Essa regra cria 124 anos bissextos em cada ciclo de 1205 anos, e esses 124 anos bissextos se distribuem em intervalos em grupos de ou <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> = <span style="color: #44aa00; font-weight: bold;">25</span> anos ou <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> = <span style="color: #ffcc00; font-weight: bold;">15</span> anos, que por sua vez se agrupam de forma simétrica em subciclos de <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 113 anos ou subciclos de <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 211 anos; esses subciclos então se repetem num padrão de 113 + 211 + 113 + 211 + 113 = 1205 anos; o ciclo completo de 1205 anos com intervalos dos anos bissextos fica assim:</p>
+<p class="center">
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+<span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+<span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span></p>
+<p>Ou, mostrando os anos comuns como • e os anos bissextos como |, como os anos se distribuem ao longo de todo o ciclo:</p>
+<p class="center">
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+                     <span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span></p>
+<p>Com 124 semanas intercalares no ciclo, e 124 semanas num ano comun, o ciclo fixado tem exatamente 1210 (arda dunife e seis, decimal 294) anos comuns, e o intervalo <i>médio</i> entre as semanas intercalares é de exatamete 1210 semanas.</p>
+<p>A duração média do ano no calendário sezimal é de 1405 155⁄1205 dias = 1405󱹮124󱹭201 dias + 551⁄1205 agrimas = 1405 dias, 12:42:01 + 551⁄1205 agrimas; Esse período é <b>intencionalmente mais curto</b> do que o ano norte-equinocial médio (o intervalo médio entre o Equinócio de Março de cada ano) de aproximadamente 1405󱹮124󱹭203 dias, garantindo assim, em essência, um alinhamento com a precessão dos equinócios por mais de 30 (tresseis, 18) ardênios futuros (ardênio é um período de arda anos, decimal 216).</p>
+<p>Graças ao arranjo simétrico dos anos bissextos, o ponto médio para o equinócio de março cai sempre no meio do ciclo no primeiro ano de cada ciclo de 1205 anos. <a href="http://individual.utoronto.ca/kalendis/leap/index.htm#slc" target="_blank">Essa característica simplifica avaliações de performance astronômicas</a>.</p>
+<p>Usando o ciclo intercalar descrito acima, na era atual, a data <i>média</i> para o Equinócio de Março cai próxima do dia 30 de março; saiba mais sobre a duração e precessão das estações ao longo do calendário na página <a href="http://individual.utoronto.ca/kalendis/seasons.htm" target="_blank">The Lengths of the Seasons (on Earth)</a>;</p>
+<h2>Ano Novo</h2>
+<p>Nos anos bissextos (a cada seis anos na maioria das vezes) o ano termina no dia 55 de dezembro, às 55:55:55;</p>
+
+<h2>Créditos</h2>
+<p>Todos os créditos pela pesquisa astronômica e matemática, e pelo projeto do calendário, vai para o <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Dr. Irv Bromberg</a> da Universidade de Toronto, no Canadá; A maior parte do texto aqui também é originalmente dele;</p>
+<p>Meu papel foi tanto de tradutor quanto de adaptador do trabalho dele à base sezimal, e adicionar a Época Holocena Sezimal; a ideia de distribuir os anos bissextos em intervalos de seis anos é toda dele :);</p>
+    <p> </p>
+    </body>
+</html>

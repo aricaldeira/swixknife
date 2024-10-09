@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title">Sezimal Calendar</title>
+        <meta name="description" content="Sezimal Calendar" />
+        <meta name="author" content="Ari Caldeira" />
+        {% include 'sezimal_css.html' %}
+    </head>
+    <body>
+<p class="center">
+{% include 'menu_en.html' %} <a href="/bz/xastadari/kalendaryu">Brazileru</a> <span style="color: white;">|</span> <a href="/pt/xastadári/calendário">Português</a>
+</p>
+<p class="center">
+    <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="25%"/>
+</p>
+<h1 class="center">Sezimal Calendar</h1>
+<p>The sezimal calendar is a perpetual solar calendar that has symmetrical equal quarters, each having 4 + 5 + 4 weeks, and starts every month on Monday; It’s a sezimal version of the <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Symmetry 454 Calendar</a>;</p>
+<h2>The Calendar</h2>
+<p class="center"><b>Today</b> is sezimal date <b>{{sezimal_today}}</b>, ISO date {{iso_today}}</p>
+<p class="center">{{sezimal_today_full}}</p>
+<p class="center">{{sezimal_today_full_text}}</p>
+<p class="center">{{sezimal_month}}</p>
+{% include 'calendar_yearly.html' %}
+<p>This year’s calendar above shows how, for each month, each day falls always on the same day of the week, so that no guessing or memorising is needed to know which day of the week it is, which week on the month it is, since this is also always the same for each day;</p>
+<p>For each quarter, the 30th (thirsieth, decimal 18th) day of the quarter’s central month, February, May, August or November, marks the quarter’s middle;</p>
+<p>Every date has a fixed ordinal number for the week‐in‐month, week‐in‐quarter, week‐in‐year, day‐in‐week, day‐in‐quarter, day‐in‐year;</p>
+<p>Each month ends either on the 44th at 55:55:55 or on the 55th at 55:55:55;</p>
+<p>The design above has the astronomical events of Seasons’ change and Moon phases for the {{ 'Northern' if locale.DEFAULT_HEMISPHERE == 'N' else 'Southern' }} Hemisphere; The design also adds the slightly fading of the colors from one season into the other,
+{% if locale.DEFAULT_HEMISPHERE == 'N' %}
+<span style="background-color: #03a9f4;"> Winter </span>, <span style="background-color: #8bc34a;"> Spring </span>, <span style="background-color: #ff5722;"> Summer </span>, <span style="background-color: #e91e63;"> {% if locale.LANGUAGE_TAG != 'en-US' %}Autumn{% else %}Fall{% endif %} </span> and <span style="background-color: #03a9f4;"> Winter </span> again;
+{% else %}
+<span style="background-color: #ff5722;"> Summer </span>, <span style="background-color: #e91e63;"> {% if locale.LANGUAGE_TAG != 'en-US' %}Autumn{% else %}Fall{% endif %} </span>, <span style="background-color: #03a9f4;"> Winter </span>, <span style="background-color: #8bc34a;"> Spring </span> and <span style="background-color: #ff5722;"> Summer </span> again;
+{% endif %}
+This is for the beauty of it, and to show that the calendar tracks not only the cycle of Earth around the Sun, but also the cycle of the Moon around the Earth, changing roughly every week, since a Lunation is a little more than 44 days, or 4 weeks: ~ 45󱹮310󱹭335 days;
+</p>
+<h2>Epoch</h2>
+<p>The sezimal calendar’s <a href="https://en.wikipedia.org/wiki/Epoch" target="_blank">epoch</a> is chosen to fit the <a href="https://en.wikipedia.org/wiki/Holocene_calendar" target="_blank">Holocene Calendar</a>, but with the sezimal take that, instead of adding 114󱹭144 (nif and ten arda, nif forsy-four, decimal 10,000) to the current year number, or sezimal 100󱹭000 (nif arda, decimal 7776), we add 200󱹭000 (two nif arda, decimal 15,552), thus encompassing even the timespan covered by recent archaelogical discoveries on human history, like <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, giving then to those points in time a positive year number: from about sezimal year 44󱹭000 (foursy-four arda, ISO -9504, 11,454 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>) up to 55󱹭000 (fifsy-five arda, ISO -7993, 9943 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>);</p>
+<p>This choice also has the effect of the current era’s year number’s having always six digits;</p>
+<p>So, sezimal date 200󱹭001-01-01 is ISO date 0001-01-01, sezimal date 000󱹭001-01-01 is ISO −15,551-01-04, and sezimal date 000󱹭000-01-01 is ISO −15,552-01-06, all of them falling on a Monday;</p>
+<h2>Leap Year Rule</h2>
+<p>The sezimal calendar is a <i>leap week</i> calendar, meaning according to it’s leap year rule, an entire week is added to the last month of the year, to keep it synchronised with the astronomical solar cycle;</p>
+<p>Common non-leap years have 124 (nif dozen-four, decimal 52) weeks, that is 1404 (arda four nif and four, decimal 364) days, and leap years add an extra week to December, making those years 125 (nif dozen-five, decimal 53) weeks, 1415 (arda four nif and eleven, decimal 371) days long;</p>
+<p>A year is leap if the following expression is true:</p>
+<p class="center"><span style="color: white;">|</span>(124 × (year − 200󱹭000)) + 402<span style="color: white;">|</span> mod 1205 &lt; 124</p>
+<!-- <p class="center"><i><span style="color: white;">|</span>(52 × (year − 15,552)) + 146<span style="color: white;">|</span> mod 293 &lt; 52</i></p> -->
+<p class="center"><i>the modulo (remainder) of the absolute value of nif dozen-four multiplied by the year number minus two nif arda, plus four nif two, divided by arda two nif and five, is less than nif dozen-four</i></p>
+<p>This leap rule creates 124 leap years in each cycle of 1205 years, and those 124 leap years spread accross intervals in groups of either <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> = <span style="color: #44aa00; font-weight: bold;">25</span> years or <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> = <span style="color: #ffcc00; font-weight: bold;">15</span> years, which then symmetrically group into sub-cycles of <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 113 years or sub-cycles of <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 211 years; those sub-cycles then repeat as 113 + 211 + 113 + 211 + 113 = 1205 years; a full 1205 years of leap years intervals looks like this:</p>
+<p class="center">
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+<span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+<span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>
+                     <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span></p>
+<p>Or, showing short years as • and long years as |, how the years distribute accross the whole cycle:</p>
+<p class="center">
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+                     <span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><br/>
+<span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #ffcc00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span><br/><span style="color: #44aa00; font-weight: bold;">••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••◦••<span style="color: white;">|</span>••</span></p>
+<p>With 124 leap weeks in the cycle, and 124 weeks in a regular year, the fixed cycle has exactly 1210 (arda two nif and six, decimal 294) regular years, and the <i>average</i> interval between leap weeks is exactly 1210 weeks.</p>
+<p>The mean duration of the year in the sezimal calendar is of 1405 155⁄1205 days = 1405󱹮124󱹭201 days + 551⁄1205 agrimas = 1405 days, 12:42:01 + 551⁄1205 agrimas; This is <b>intentionally slightly shorter</b> than the present era mean northward equinoctial year (the mean time interval between each year’s March Equinox) of about 1405󱹮124󱹭203 days, ensuring essentially drift-free performance for more than 30 (thirsy, 18) future ardenia (ardenium is a period of arda years, decimal 216).</p>
+<p>Due to the symmetrical arrangement of leap years, the timing of the mean northward equinox moment always falls at the cycle average in the first year of every 1205 years cycle. <a href="http://individual.utoronto.ca/kalendis/leap/index.htm#slc" target="_blank">This feature simplifies astronomical performance evaluations</a>.</p>
+<p>Using this leap cycle as described, in the present era the <i>mean</i> March Equinox lands near the sezimal date of 30th of March; know more about the length and drifting of the Seasons around the calendar on <a href="http://individual.utoronto.ca/kalendis/seasons.htm" target="_blank">The Lengths of the Seasons (on Earth)</a> page;</p>
+<h2>End of the year</h2>
+<p>On leap years, for the most part at every six years, the year ends on the 55th of December at 55:55:55 o’clock;</p>
+
+<h2>Credits</h2>
+<p>All credits for the astronomical and mathematical research and design of the calendar goes to <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Dr. Irv Bromberg</a> from the University of Toronto, Canada; Most of the text here is also originally his;</p>
+<p>All I did was convert his work to sezimal base, and add the Sezimal Holocene Epoch, the idea of spreading the leap years in intervals of six years is all his :);</p>
+    <p> </p>
+    </body>
+</html>

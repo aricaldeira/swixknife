@@ -26,6 +26,19 @@ app.template_folder = TEMPLATE_PATH
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
 
+def sezimal_render_template(template_name_or_list, **context) -> str:
+    res = render_template(template_name_or_list, **context)
+    #
+    # Protects the sezimal punctuation from being
+    # treated as spaces
+    #
+    res = res.replace('󱹮', '\u200d󱹮\u200d')
+    res = res.replace('󱹯', '\u200d󱹯\u200d')
+    res = res.replace('󱹭', '\u200d󱹭\u200d')
+    res = res.replace('󱹬', '\u200d󱹬\u200d')
+    res = res.replace('󱹶', '\u200d󱹶\u200d')
+    return res
+
 
 from locale_info import *
 from number_conversion import *
@@ -52,17 +65,69 @@ def index_route():
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/en')
 def index_en_route():
-    return render_template('sezimal_en.html')
+    return sezimal_render_template('sezimal_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/pt')
 def index_pt_route():
-    return render_template('sezimal_pt.html')
+    return sezimal_render_template('sezimal_pt.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/bz')
 def index_bz_route():
-    return render_template('sezimal_bz.html')
+    return sezimal_render_template('sezimal_bz.html')
+
+
+@app.route('/comparing-fractions')
+def comparing_fractions_route():
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/comparando-frações', code=302)
+
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz', code=302)
+
+    return redirect('/en/comparing-fractions', code=302)
+
+@sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
+@app.route('/en/comparing-fractions')
+def comparing_fractions_en_route():
+    return sezimal_render_template('comparing_fractions_en.html')
+
+@sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
+@app.route('/pt/comparando-frações')
+def comparing_fractions_pt_route():
+    return sezimal_render_template('comparing_fractions_pt.html')
+
+@sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
+@app.route('/bz/konparandu-frasoyns')
+def comparing_fractions_bz_route():
+    return sezimal_render_template('comparing_fractions_bz.html')
+
+
+@app.route('/comparing-bases')
+def comparing_bases_route():
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/comparando-bases', code=302)
+
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz', code=302)
+
+    return redirect('/en/comparing-bases', code=302)
+
+@sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
+@app.route('/en/comparing-bases')
+def comparing_bases_en_route():
+    return sezimal_render_template('comparing_bases_en.html')
+
+@sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
+@app.route('/pt/comparando-bases')
+def comparing_bases_pt_route():
+    return sezimal_render_template('comparing_bases_pt.html')
+
+@sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
+@app.route('/bz/konparandu-bazis')
+def comparing_bases_bz_route():
+    return sezimal_render_template('comparing_bases_bz.html')
 
 
 def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale) -> dict:
