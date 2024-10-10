@@ -14,6 +14,7 @@ parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOp
 parser.add_argument('-A', '--all', dest='all', action=argparse.BooleanOptionalAction, help='List all, including hidden files/directories')
 parser.add_argument('-NP', '--no-prefixes', dest='no_prefixes', action=argparse.BooleanOptionalAction, help='Numbers without prefixes')
 parser.add_argument('-SD', '--sezimal-digits', dest='sezimal_digits', action=argparse.BooleanOptionalAction, help='Numbers are sezimal digits')
+parser.add_argument('-SP', '--sezimal-punctuation', dest='sezimal_punctuation', action=argparse.BooleanOptionalAction, help='Separators are sezimal punctuation')
 
 
 from swixknife import sezimal_locale
@@ -51,10 +52,17 @@ if __name__ == '__main__':
     elif arguments.dozenal:
         sdl.date_time_format = arguments.date_time_format or '#↋d/#↋m/#↋>y #@W #↋↋u:#↋↋p'
     elif arguments.sezimal_digits:
-        sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!>y #@W #!u:#!p'
+        if arguments.sezimal_punctuation:
+            sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!>y #@W #!u󱹮#!p'
+        else:
+            sdl.date_time_format = arguments.date_time_format or '#!d/#!m/#!>y #@W #!u:#!p'
     else:
-        sdl.date_time_format = arguments.date_time_format or '#d/#m/#>y #@W #u:#p'
+        if arguments.sezimal_punctuation:
+            sdl.date_time_format = arguments.date_time_format or '#d/#m/#>y #@W #u󱹮#p'
+        else:
+            sdl.date_time_format = arguments.date_time_format or '#d/#m/#>y #@W #u:#p'
 
     sdl.use_prefixes = not arguments.no_prefixes
     sdl.use_sezimal_digits = arguments.sezimal_digits
+    sdl.use_sezimal_punctuation = arguments.sezimal_punctuation
     sdl.terminal_list()

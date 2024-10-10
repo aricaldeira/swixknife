@@ -6,7 +6,7 @@ from .. import Sezimal, SezimalInteger, SezimalDateTime, \
 from decimal import Decimal
 
 
-def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool | int = True, sezimal_digits: bool = False) -> str:
+def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool | int = True, sezimal_digits: bool = False, sezimal_punctuation: bool = False) -> str:
     sezimal_places = SezimalInteger(sezimal_places)
 
     if type(use_prefixes) == int and use_prefixes > 0:
@@ -31,7 +31,7 @@ def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
     # power = power.replace('3', '³').replace('4', '⁴').replace('5', '⁵')
     # unit = power + unit
     # unit = Sezimal(Decimal(power)).formatted_number + '↑' + unit
-    return locale.format_number(value, sezimal_places, suffix=unit, sezimal_digits=sezimal_digits)
+    return locale.format_number(value, sezimal_places, suffix=unit, sezimal_digits=sezimal_digits, sezimal_punctuation=sezimal_punctuation)
 
 
 def decimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, decimal_places: SezimalInteger = 0, use_prefixes: bool = True) -> str:
