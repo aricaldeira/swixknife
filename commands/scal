@@ -25,7 +25,7 @@ parser.add_argument('-EE', '--exclude-events', dest='exclude_events', action=arg
 parser.add_argument('-H', '--html', dest='html', action=argparse.BooleanOptionalAction, help='HTML mode - replaces spaces for &nbsp;')
 parser.add_argument('-V', '--visible-spaces', dest='visible_spaces', action=argparse.BooleanOptionalAction, help='HTML mode - replaces spaces for dots')
 
-parser.add_argument('-df', '--day-format', dest='day_format', default=None, nargs='?', help='Day format')
+parser.add_argument('-df', '--date-format', dest='date_format', default=None, nargs='?', help='Date format')
 parser.add_argument('-mf', '--month-format', dest='month_format', default=None, nargs='?', help='Month format')
 parser.add_argument('-yf', '--year-format', dest='year_format', default=None, nargs='?', help='Year format')
 parser.add_argument('-myf', '--month-year-format', dest='month_year_format', default=None, nargs='?', help='Month-Year format')
@@ -198,8 +198,8 @@ if __name__ == '__main__':
 
     _calendar_formats(calendar_parameters, arguments, locale)
 
-    if arguments.day_format:
-        calendar_parameters['day_format'] = arguments.day_format
+    if arguments.date_format:
+        calendar_parameters['date_format'] = arguments.date_format
 
     if arguments.month_format:
         calendar_parameters['month_format'] = arguments.month_format
