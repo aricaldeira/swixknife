@@ -24,6 +24,7 @@ class SezimalDirectoryList:
         self.use_prefixes = True
         self.use_sezimal_digits = False
         self.use_sezimal_punctuation = False
+        self.unit_steps = 3
         self.original_path = ''
 
         if directory_list is None:
@@ -133,9 +134,9 @@ class SezimalDirectoryList:
 
             else:
                 if file_info.is_directory:
-                    info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, sezimal_digits=self.use_sezimal_digits, sezimal_punctuation=self.use_sezimal_punctuation)
+                    info['size'] = sezimal_format(file_info.itens_in_directory, unit='it.', locale=self.locale, use_prefixes=False, sezimal_digits=self.use_sezimal_digits, sezimal_punctuation=self.use_sezimal_punctuation, unit_steps=1)
                 else:
-                    info['size'] = sezimal_format(file_info.file_size, unit='atk', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits, sezimal_punctuation=self.use_sezimal_punctuation)
+                    info['size'] = sezimal_format(file_info.file_size, unit='atk', locale=self.locale, use_prefixes=self.use_prefixes, sezimal_places=1, sezimal_digits=self.use_sezimal_digits, sezimal_punctuation=self.use_sezimal_punctuation, unit_steps=self.unit_steps)
 
             lines.append(info)
 

@@ -6,7 +6,7 @@ from .. import Sezimal, SezimalInteger, SezimalDateTime, \
 from decimal import Decimal
 
 
-def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool | int = True, sezimal_digits: bool = False, sezimal_punctuation: bool = False) -> str:
+def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLocale, sezimal_places: SezimalInteger = 0, use_prefixes: bool | int = True, sezimal_digits: bool = False, sezimal_punctuation: bool = False, unit_steps: int = 3) -> str:
     sezimal_places = SezimalInteger(sezimal_places)
 
     if type(use_prefixes) == int and use_prefixes > 0:
@@ -21,11 +21,14 @@ def sezimal_format(value: Sezimal | SezimalInteger, unit: str, locale: SezimalLo
     else:
         power = len(str(value)) - 1
 
-    if (not use_prefixes) or (power == 0) or (not unit):
+    if not unit_steps:
+        unit_steps = 1
+
+    if (not use_prefixes) or (power < unit_steps) or (not unit):
         return locale.format_number(value, sezimal_places=0, suffix=unit, sezimal_digits=sezimal_digits)
 
-    value = value / (Sezimal(10) ** Sezimal(Decimal(power)))
-    unit = sezimal_exponent_to_symbol(Decimal(power)) + unit
+    value = value / Sezimal(10) ** Sezimal(Decimal(power // unit_steps) * unit_steps)
+    unit = sezimal_exponent_to_symbol(Decimal(power // unit_steps) * unit_steps) + unit
     # power = Sezimal(Decimal(power)).formatted_number
     # power = power.replace('0', '⁰').replace('1', '¹').replace('2', '²')
     # power = power.replace('3', '³').replace('4', '⁴').replace('5', '⁵')
