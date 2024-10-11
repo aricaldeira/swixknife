@@ -294,7 +294,7 @@ def sezimal_format(
     return formatted_number
 
 
-def _apply_sezimal_punctuation(number: str, is_fraction: bool = True) -> str:
+def _apply_sezimal_punctuation(number: str, is_fraction: bool = True, arda_shadara: bool = True) -> str:
     is_negative = number[0] in '-−⁻₋'
 
     if is_negative:
@@ -305,9 +305,11 @@ def _apply_sezimal_punctuation(number: str, is_fraction: bool = True) -> str:
 
     if len(number) <= 4:
         formatted_number = number
-    else:
+    elif arda_shadara:
         formatted_number = _apply_format(number[:-3], SEPARATOR_ARDA, _ARDA_DIGITS_GROUP_FORMAT, False) + SEPARATOR_ARDA + number[-3:]
         formatted_number = _apply_format(formatted_number, SEPARATOR_SHADARA, _SHADARA_DIGITS_GROUP_FORMAT, False)
+    else:
+        formatted_number = _apply_format(number, SEPARATOR_SHADARA, _THREE_DIGITS_GROUP_FORMAT, False)
 
     if is_fraction:
         formatted_number = formatted_number[::-1]
@@ -832,7 +834,7 @@ def niftimal_format(
             integer = integer.rjust(minimum_size, '0')
 
         if sezimal_punctuation:
-            integer = _apply_sezimal_punctuation(integer, False)
+            integer = _apply_sezimal_punctuation(integer, False, arda_shadara=False)
         else:
             integer = _apply_format(integer, group_separator, group_format, False)
 
@@ -847,7 +849,7 @@ def niftimal_format(
         if recurring:
             if fraction and fraction_group_separator:
                 if sezimal_punctuation:
-                    fraction = _apply_sezimal_punctuation(fraction)
+                    fraction = _apply_sezimal_punctuation(fraction, arda_shadara=False)
                 else:
                     fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
@@ -871,7 +873,7 @@ def niftimal_format(
     if fraction:
         if fraction_group_separator:
             if sezimal_punctuation:
-                fraction = _apply_sezimal_punctuation(fraction)
+                fraction = _apply_sezimal_punctuation(fraction, arda_shadara=False)
             else:
                 fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
