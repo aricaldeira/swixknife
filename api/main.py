@@ -37,6 +37,7 @@ def sezimal_render_template(template_name_or_list, **context) -> str:
     res = res.replace('󱹭', '\u200d󱹭\u200d')
     res = res.replace('󱹬', '\u200d󱹬\u200d')
     res = res.replace('󱹶', '\u200d󱹶\u200d')
+    res = res.replace('󱹷', '\u200d󱹷\u200d')
     return res
 
 

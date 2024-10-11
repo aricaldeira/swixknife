@@ -19,8 +19,8 @@
     /*
      / Font Andika
     */
-    font-family: 'Sezimal QP', 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
-    --font-family-sans-serif: 'Sezimal QP', 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
+    font-family: 'Sezimal QP Light', 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
+    --font-family-sans-serif: 'Sezimal QP Light', 'Andika', 'Noto Color Emoji', 'Noto Sans', sans-serif;
     --font-family-monospace: 'Sezimal Mono', 'Noto Color Emoji', 'Noto Sans Mono', monospace;
 /*    font-feature-settings: 'cv31', 'cv34', 'cv35', 'cv39', 'cv52', 'cv25', 'cv79', 'cv70', 'cv01', 'cv04';
     -moz-font-feature-settings: 'cv31=1,cv34=1,cv35=1,cv39=1,cv52=1,cv25=1,cv79=1,cv70=1,cv01=1,cv04=1';
@@ -89,7 +89,7 @@ span, p {
 }
 
 .sezimal_digits {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP Light';
 }
 
 .emoji {

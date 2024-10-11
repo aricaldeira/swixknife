@@ -10,9 +10,9 @@
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
-    --font-family-monospace: 'Sezimal QP', 'Noto Sans Mono', monospace;
+    font-family: 'Sezimal QP Light', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP Light', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal QP Light', 'Noto Sans Mono', monospace;
 }
 html, body {
     height: 100%;
@@ -66,19 +66,19 @@ label {
     font-size: 12pt;
 }
 select {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP Light';
     font-size: 12pt;
     height: 2.5em;
     text-align: center;
 }
 select > option {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP Light';
 }
 option {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP Light';
 }
 option:before {
-    font-family: 'Sezimal QP';
+    font-family: 'Sezimal QP Light';
 }
 
 .units {
@@ -133,7 +133,7 @@ a.devanagari {
 /*     font-variant-numeric: diagonal-fractions; */
 }
 math {
-    font-family: 'Sezimal QP', 'Noto Sans';
+    font-family: 'Sezimal QP Light', 'Noto Sans';
 }
 mn {
     margin: 6px;
@@ -276,8 +276,8 @@ h1 {
 }
 
 .constant {
-/*     font-family: 'Sezimal QP' !important; */
-    font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP' !important;
+/*     font-family: 'Sezimal QP Light' !important; */
+    font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP Light' !important;
     font-size: 1.2em;
 }
 

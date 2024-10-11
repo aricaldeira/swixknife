@@ -6,6 +6,7 @@ from  locale_detection import browser_preferred_locale
 from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger
 from swixknife.date_time import SezimalDateTime
 from swixknife.date_time.seasons_colors import weekly_season_colors
+from swixknife.functions import SezimalList, SezimalDictionary
 
 from decimal import Decimal
 from datetime import datetime
@@ -254,6 +255,8 @@ def _calendar_data(locale, tz_locale, date=None, gray_scale=False):
     )
 
     data = {
+        'SezimalList': SezimalList,
+        'SezimalDictionary': SezimalDictionary,
         'str': str,
         'eval': eval,
         'sezimal_today': date.format('#X-#m-#d'),
@@ -430,5 +433,6 @@ def teste_calendar_route(
     data = _calendar_data(locale, locale, date)
     return sezimal_render_template(
         'calendar_teste.html',
+        sezimal_month_number=date.month,
         **data,
     )

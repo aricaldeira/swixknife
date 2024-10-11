@@ -1,7 +1,7 @@
 
-from main import app, sitemapper
 from  locale_detection import browser_preferred_locale
-from flask import Response, render_template
+from flask import Response
+from main import app, sitemapper, sezimal_render_template
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
@@ -272,7 +272,7 @@ def now_manifest(locale: str = None, time_zone: str = None) -> str:
     elif 'bz-' in pl or pl == 'bz':
         description = 'Kalendaryu y relòjyu sezimays'
 
-    return render_template(
+    return sezimal_render_template(
         'manifest_now.json',
         name=name,
         description=description,
@@ -374,7 +374,7 @@ def now_icon_mono(locale: str = None, time_zone: str = None) -> str:
 
 @app.route('/now/month')
 def now_month() -> str:
-    return render_template('calendar_month.html')
+    return sezimal_render_template('calendar_month.html')
 
 
 @app.route('/decimal-now/manifest.webmanifest')
@@ -414,7 +414,7 @@ def decimal_now_manifest(locale: str = None, time_zone: str = None) -> str:
     elif 'bz-' in pl or pl == 'bz':
         description = 'Kalendaryu y relòjyu simétrikus'
 
-    return render_template(
+    return sezimal_render_template(
         'manifest_decimal_now.json',
         name=name,
         description=description,
