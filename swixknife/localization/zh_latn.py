@@ -142,3 +142,4 @@ class SezimalLocaleZH_LATN(SezimalLocaleZH):
     WEEKDAY_ERROR = '{weekday} shì wúxiào xīngqí jǐ'
     MONTH_ERROR = '{month} shì wúxiào yuèfèn'
     WEEK_NUMBER_SYMBOL = 'xq'
+    DAY_NUMBER_SYMBOL = 'rì'

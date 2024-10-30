@@ -123,3 +123,13 @@ class SezimalLocaleTR(SezimalLocale):
     WEEKDAY_ERROR = 'Geçersiz hafta günü {weekday}'
     MONTH_ERROR = 'Geçersiz ay {month}'
     WEEK_NUMBER_SYMBOL = 'haf'
+    DAY_NUMBER_SYMBOL = 'gün'
+
+    UPPERCASE_MAPPING = {
+        ord('ı'): 'I',
+        ord('i'): 'İ'
+    }
+    LOWERCASE_MAPPING = {
+        ord('I'): 'ı',
+        ord('İ'): 'i',
+    }

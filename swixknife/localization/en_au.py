@@ -12,6 +12,8 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'Australia/Sydney'
+    ISO_TIME_FORMAT = '%I:%M:%S %P'
+    ISO_HOUR_MINUTE_FORMAT = '%I:%M %P'
 
     CURRENCY_UNIT_SYMBOL = '$'
     CURRENCY_SUBUNIT_SYMBOL = 'c'
@@ -21,7 +23,7 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-2',   '\ufe0f🕆 🥀 Good Friday'),
+        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Good Friday'),
         ('EASTER-1',   '\ufe0f🐣🌱 Easter Saturday'),
         ('EASTER',     '\ufe0f🐣🌱 Easter Sunday'),
         ('EASTER+1',   '\ufe0f🐣🌱 Easter Monday'),
@@ -58,7 +60,7 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         #
         # Moving Holidays
         #
-        ('ISO+EASTER-2',   '\ufe0f🕆 🥀 Good Friday (%d/%m)'),
+        ('ISO+EASTER-2',   '\ufe0f🕆\ufe0f🥀 Good Friday (%d/%m)'),
         ('ISO+EASTER-1',   '\ufe0f🐣🌱 Easter Saturday (%d/%m)'),
         ('ISO+EASTER',     '\ufe0f🐣🌱 Easter Sunday (%d/%m)'),
         ('ISO+EASTER+1',   '\ufe0f🐣🌱 Easter Monday (%d/%m)'),

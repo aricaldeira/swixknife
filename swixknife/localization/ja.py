@@ -133,11 +133,11 @@ class SezimalLocaleJA(SezimalLocale):
         '12月',
     ]
 
-    DATE_FORMAT = '#?Y/#?m/#?d'
-    DATE_LONG_FORMAT = '#?Y年#?m月#?d日'
-    TIME_FORMAT = '#?u:#?p:#?a'
-    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u:#?p:#?a'
+    DATE_FORMAT = '#Y/#m/#d'
+    DATE_LONG_FORMAT = '#Y年#m月#d日'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#Y年#-m月#-d日#W #u:#p:#a'
     DEFAULT_TIME_ZONE = 'Asia/Tokyo'
     DST_NAME = '夏時間'  # natsu jikan
     DST_SHORT_NAME = 'DST'
@@ -171,6 +171,7 @@ class SezimalLocaleJA(SezimalLocale):
     WEEKDAY_ERROR = '{weekday}は曜日が無効です'
     MONTH_ERROR = '{month}は月が無効です'
     WEEK_NUMBER_SYMBOL = '週'
+    DAY_NUMBER_SYMBOL = '日'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

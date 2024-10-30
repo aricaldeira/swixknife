@@ -183,15 +183,15 @@ class SezimalLocaleEL(SezimalLocale):
     MONTH_ABBREVIATED_NAME = [
         'Ιαν',
         'Φεβ',
-        'Μαρ',
+        'Μάρ',
         'Απρ',
-        'Μαΐ',
-        'Ιουν',
-        'Ιουλ',
-        'Αυγ',
+        'Μάι',
+        'Ιούν',
+        'Ιούλ',
+        'Αύγ',
         'Σεπ',
         'Οκτ',
-        'Νοε',
+        'Νοέ',
         'Δεκ',
     ]
 
@@ -282,13 +282,17 @@ class SezimalLocaleEL(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = '#-d#O #M #Y'
+    DATE_LONG_FORMAT = '#-d#O #$GM #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d#O #$GM #Y, #u:#p:#a'
     DST_NAME = 'Θερινή Ώρα'
     DST_SHORT_NAME = 'ΘΏ'
     DEFAULT_TIME_ZONE = 'Europe/Athens'
+    ISO_DATE_LONG_FORMAT = '%-d%O %b. %Y'
+    DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
+    TEXT_MONTH_DAY_FORMAT = '#-d#O #$GM'
+    YEAR_TEXT_MONTH_FORMAT = '#$NM #Y'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Μετάβαση Χειμώνας – Άνοιξη',
@@ -319,6 +323,7 @@ class SezimalLocaleEL(SezimalLocale):
     WEEKDAY_ERROR = 'Μη έγκυρη ημέρα της εβδομάδας {weekday}'
     MONTH_ERROR = 'Μη έγκυρος μήνας {month}'
     WEEK_NUMBER_SYMBOL = 'εβδ'
+    DAY_NUMBER_SYMBOL = 'ημέρα'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)

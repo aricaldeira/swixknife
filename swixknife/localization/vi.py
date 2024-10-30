@@ -113,7 +113,7 @@ class SezimalLocaleVI(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = '#d/#m/#Y #@W'
+    DATE_LONG_FORMAT = '#d/#m/#Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d/#m/#Y #@W #u:#p:#a'
@@ -155,6 +155,7 @@ class SezimalLocaleVI(SezimalLocale):
     WEEKDAY_ERROR = 'Ngày trong tuần không hợp lệ {weekday}'
     MONTH_ERROR = 'Tháng không hợp lệ {month}'
     WEEK_NUMBER_SYMBOL = 'tuần'
+    DAY_NUMBER_SYMBOL = 'ngày'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

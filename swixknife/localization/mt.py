@@ -100,6 +100,7 @@ class SezimalLocaleMT(SezimalLocale):
     DST_SHORT_NAME = 'OL'
     DEFAULT_TIME_ZONE = 'Europe/Malta'
     WEEK_NUMBER_SYMBOL = 'ġim'
+    DAY_NUMBER_SYMBOL = 'jum'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transizione Inverno – Primavera',

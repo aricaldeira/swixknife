@@ -75,10 +75,10 @@ class SezimalLocaleHU(SezimalLocale):
     ]
 
     DATE_FORMAT = '#y. #m. #d.'
-    DATE_LONG_FORMAT = '#y. #m. #d. #@W'
+    DATE_LONG_FORMAT = '#y. #M #-d.'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#y. #m. #d. #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#y. #m. #d. #@W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#y. #M #-d., #W, #u:#p:#a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 
@@ -117,3 +117,4 @@ class SezimalLocaleHU(SezimalLocale):
     WEEKDAY_ERROR = 'Érvénytelen hétköznap {weekday}'
     MONTH_ERROR = 'Érvénytelen hónap {month}'
     WEEK_NUMBER_SYMBOL = 'hét'
+    DAY_NUMBER_SYMBOL = 'nap'

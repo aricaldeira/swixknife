@@ -75,7 +75,7 @@ class SezimalLocaleYO(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = '#d/#m/#Y #@W'
+    DATE_LONG_FORMAT = '#d/#m/#Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d/#m/#Y #@W #u:#p:#a'
@@ -114,6 +114,7 @@ class SezimalLocaleYO(SezimalLocale):
     # Error messages
     #
     ERROR = 'Asise'
-    WEEKDAY_ERROR = 'Ọjọ ọsẹ ti ko wulo {weekday}'
+    WEEKDAY_ERROR = 'Ọjọ́ ọ̀sẹ̀ ti ko wulo {weekday}'
     MONTH_ERROR = 'Oṣu ti ko tọ {month}'
     WEEK_NUMBER_SYMBOL = 'ọ̀sẹ̀'
+    WEEK_NUMBER_SYMBOL = 'ọjọ́'

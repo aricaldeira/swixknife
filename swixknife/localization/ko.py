@@ -123,11 +123,11 @@ class SezimalLocaleKO(SezimalLocale):
         '12월',   # sip-i-wol
     ]
 
-    DATE_FORMAT = '#?Y/#?m/#?d'
-    DATE_LONG_FORMAT = '#?Y년 #?m월 #?d일'
-    TIME_FORMAT = '#?u:#?p:#?a'
-    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y년 #?-m월 #?-d일 #W #?u:#?p:#?a'
+    DATE_FORMAT = '#Y/#m/#d'
+    DATE_LONG_FORMAT = '#Y년 #m월 #d일'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#Y년 #-m월 #-d일 #W #u:#p:#a'
     DEFAULT_TIME_ZONE = 'Asia/Seoul'
     DST_NAME = '일광 절약 시간제'  # ilgwang jeol-yag siganje
     DST_SHORT_NAME = 'DST'
@@ -161,6 +161,7 @@ class SezimalLocaleKO(SezimalLocale):
     WEEKDAY_ERROR = '{weekday}잘못된 평일'
     MONTH_ERROR = '{month}잘못된 달'
     WEEK_NUMBER_SYMBOL = '주'
+    DAY_NUMBER_SYMBOL = '일'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

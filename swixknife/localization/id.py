@@ -112,3 +112,4 @@ class SezimalLocaleID(SezimalLocale):
     WEEKDAY_ERROR = 'Hari kerja tidak valid {weekday}'
     MONTH_ERROR = 'Bulan tidak valid {month}'
     WEEK_NUMBER_SYMBOL = 'ming'
+    DAY_NUMBER_SYMBOL = 'hari'

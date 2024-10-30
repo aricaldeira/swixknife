@@ -18,9 +18,3 @@ class SezimalLocaleCODE(SezimalLocale):
 
     FRACTION_GROUP_SEPARATOR = SEPARATOR_UNDERSCORE
     FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-
-    DATE_FORMAT = '#y-#m-#d'
-    DATE_LONG_FORMAT = '#y-W#wY-#w'
-    TIME_FORMAT = '#u:#p:#a#:t'
-    DATE_TIME_FORMAT = '#y-#m-#d #u:#p:#a#:t'
-    DATE_TIME_LONG_FORMAT = '#y-W#wY-#w #u:#p:#a#:t'

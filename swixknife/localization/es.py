@@ -91,6 +91,7 @@ class SezimalLocaleES(SezimalLocale):
     DST_SHORT_NAME = 'HV'
     DEFAULT_TIME_ZONE = 'Europe/Madrid'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'día'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transición Invierno – Primavera',

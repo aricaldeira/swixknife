@@ -8,12 +8,12 @@ from typing import TypeVar
 SezimalDate = TypeVar('SezimalDate', bound='SezimalDate')
 
 
-from .lokale import SezimalLocale, EuroCurrency
+from .lokale import SezimalLocale
 from ..sezimal import SezimalInteger
 from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
 
 
-class SezimalLocaleFR(EuroCurrency, SezimalLocale):
+class SezimalLocaleFR(SezimalLocale):
     LANG = 'fr'
     LANGUAGE = 'français'
 
@@ -128,6 +128,7 @@ class SezimalLocaleFR(EuroCurrency, SezimalLocale):
     WEEKDAY_ERROR = 'Jour de la semaine invalide {weekday}'
     MONTH_ERROR = 'Mois invalide {month}'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'jour'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

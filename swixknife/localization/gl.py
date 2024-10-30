@@ -124,6 +124,7 @@ class SezimalLocaleGL(SezimalLocale):
     WEEKDAY_ERROR = 'Día da semana non válido {weekday}'
     MONTH_ERROR = 'Mes non válido {month}'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'día'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

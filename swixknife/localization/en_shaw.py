@@ -62,6 +62,10 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ]
 
     DATE_TIME_LONG_FORMAT = '#W, 𐑞 #-d#O #M #Y, #u:#p:#a'
+    ISO_TIME_FORMAT = '%I:%M:%S %P'
+    ISO_HOUR_MINUTE_FORMAT = '%I:%M %P'
+    AM = '𐑱𐑧𐑥'
+    PM = '𐑐𐑰𐑧𐑥'
 
     SEASON_NAME = {
         'spring_cross_quarter': '𐑕𐑐𐑮𐑦𐑙 𐑒𐑮𐑪𐑕-𐑒𐑢𐑹𐑑𐑼',

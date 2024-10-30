@@ -100,6 +100,7 @@ class SezimalLocaleIT(SezimalLocale):
     DST_SHORT_NAME = 'OL'
     DEFAULT_TIME_ZONE = 'Europe/Rome'
     WEEK_NUMBER_SYMBOL = 'set'
+    DAY_NUMBER_SYMBOL = 'giorno'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transizione Inverno – Primavera',

@@ -30,7 +30,7 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         #
         # Moving Holidays
         #
-        ('ISO+EASTER-2',   '\ufe0f🕆 🥀 Vendredi saint (%d/%m)'),
+        ('ISO+EASTER-2',   '\ufe0f🕆\ufe0f🥀 Vendredi saint (%d/%m)'),
         # ('ISO+EASTER',     '\ufe0f🐣🌱 Pâques (%d/%m)'),
         ('ISO+EASTER+1',   '\ufe0f🐣🌱 Lundi de Pâques (%d/%m)'),
 

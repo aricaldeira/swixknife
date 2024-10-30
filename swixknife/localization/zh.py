@@ -135,11 +135,11 @@ class SezimalLocaleZH(SezimalLocale):
         '12月',
     ]
 
-    DATE_FORMAT = '#?Y/#?m/#?d'
-    DATE_LONG_FORMAT = '#?Y年#?m月#?d日'
-    TIME_FORMAT = '#?u:#?p:#?a'
-    DATE_TIME_FORMAT = '#?Y/#?m/#?d #@W #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?Y年#?-m月#?-d日#W #?u:#?p:#?a'
+    DATE_FORMAT = '#Y/#m/#d'
+    DATE_LONG_FORMAT = '#Y年#m月#d日'
+    TIME_FORMAT = '#u:#p:#a'
+    DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#Y年#-m月#-d日#W #u:#p:#a'
     DST_NAME = '夏时制'  # xià shí zhì
     DST_SHORT_NAME = '夏时制'
 
@@ -172,6 +172,7 @@ class SezimalLocaleZH(SezimalLocale):
     WEEKDAY_ERROR = '{weekday}是星期几无效'
     MONTH_ERROR = '{month}是月份无效'
     WEEK_NUMBER_SYMBOL = '星期'
+    DAY_NUMBER_SYMBOL = '日'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

@@ -69,13 +69,23 @@ class SezimalLocaleAR_LATN(SezimalLocale):
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'yu2',
-        'yu3',
-        'yu4',
-        'yu5',
+        'etn',
+        'tal',
+        'àrb',
+        'kha',
         'gom',
         'sab',
-        'yu1',
+        'ħad',
+    ]
+
+    WEEKDAY_SYMBOL = [
+        'e',
+        't',
+        'à',
+        'k',
+        'g',
+        's',
+        'ħ',
     ]
 
     MONTH_NAME= [
@@ -110,7 +120,7 @@ class SezimalLocaleAR_LATN(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = '#d/#m/#Y #@W'
+    DATE_LONG_FORMAT = '#d/#m/#Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d/#m/#Y #@W #u:#p:#a'
@@ -152,3 +162,4 @@ class SezimalLocaleAR_LATN(SezimalLocale):
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
     WEEK_NUMBER_SYMBOL = 'asb'
+    DAY_NUMBER_SYMBOL = 'yom'

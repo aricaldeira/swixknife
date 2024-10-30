@@ -232,13 +232,17 @@ class SezimalLocaleRU(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d.#m.#Y'
-    DATE_LONG_FORMAT = '#-d #M #Y г.'
+    DATE_LONG_FORMAT = '#-d-#O #$GM #Y г.'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#W, #-d #M #Y г., #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d-#O #$GM #Y г., #u:#p:#a'
     DST_NAME = 'Летнее Время'
     DST_SHORT_NAME = 'ЛВ'
     DEFAULT_TIME_ZONE = 'Europe/Moscow'
+    ISO_DATE_LONG_FORMAT = '%-d. %b %Y г.'
+    DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
+    TEXT_MONTH_DAY_FORMAT = '#-d-#O #$GM'
+    YEAR_TEXT_MONTH_FORMAT = '#$NM #Y г.'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Переход Зима – Весна',
@@ -269,6 +273,7 @@ class SezimalLocaleRU(SezimalLocale):
     WEEKDAY_ERROR = 'Неверный день недели {weekday}'
     MONTH_ERROR = 'Неверный месяц {month}'
     WEEK_NUMBER_SYMBOL = 'нед'
+    DAY_NUMBER_SYMBOL = 'день'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)

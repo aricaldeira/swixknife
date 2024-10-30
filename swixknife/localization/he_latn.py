@@ -78,7 +78,7 @@ class SezimalLocaleHE_LATN(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d.#m.#Y'
-    DATE_LONG_FORMAT = '#d.#m.#Y #@W'
+    DATE_LONG_FORMAT = '#d.#m.#Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d.#m.#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d.#m.#Y #@W #u:#p:#a'
@@ -120,3 +120,50 @@ class SezimalLocaleHE_LATN(SezimalLocale):
     WEEKDAY_ERROR = 'Yom shavúa lo chuki {weekday}'
     MONTH_ERROR = 'Hodesh lo chuki {month}'
     WEEK_NUMBER_SYMBOL = 'shv'
+    DAY_NUMBER_SYMBOL = 'yom'
+
+    JEWISH_CALENDAR_MONTH_NAME = [
+        'nisan',
+        '’íyar',
+        'sívan',
+        'tammuz',
+        'av',
+        '’élul',
+        'tíshri',
+        'héshvan',
+        'kíslev',
+        'tevet',
+        'shevat',
+        'adar',
+        'adar bet',
+    ]
+
+    JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'nis',
+        'iya',
+        'siv',
+        'tam',
+        'av',
+        'elu',
+        'tiŝ',
+        'heŝ',
+        'kis',
+        'tev',
+        'she',
+        'ada',
+        'ad2',
+    ]
+
+    HOLIDAYS_OTHER_CALENDAR = [
+        ('HEB+07-01', '🍎🍯 Rosh haShaná (%d.%m.%Y)'),
+        ('HEB+07-10', '🤍🙏🏻 Yom Kippur (%d.%m.%Y)'),
+        ('HEB+07-15', '🍋⛺ Sukkot (%d.%m.%Y)'),
+        ('HEB+07-22', '🙏🏻🌧️ Shemini Atzeret (%d.%m.%Y)'),
+        ('HEB+07-23', '😊📜 Simchat Torah (%d.%m.%Y)'),
+        ('HEB+09-25', '🕯🕍 Hanukkah (%d.%m.%Y)'),
+        ('HEB+11-15', '🌳💮 Tu biShvat (%d.%m.%Y)'),
+        ('HEB+12-14', '🍷🍬 Purim (%d.%m.%Y)'),
+        ('HEB+01-15', '🐑🫓 Pesach (%d.%m.%Y)'),
+        ('HEB+02-18', '🔥 Lag baOmer (%d.%m.%Y)'),
+        ('HEB+03-06', '💐📜 Shavuot (%d.%m.%Y)'),
+    ]

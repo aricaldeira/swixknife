@@ -8,12 +8,12 @@ from typing import TypeVar
 SezimalDate = TypeVar('SezimalDate', bound='SezimalDate')
 
 
-from .lokale import SezimalLocale, EuroCurrency
+from .lokale import SezimalLocale
 from ..sezimal import SezimalInteger
 from ..base import SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE
 
 
-class SezimalLocalePL(EuroCurrency, SezimalLocale):
+class SezimalLocalePL(SezimalLocale):
     LANG = 'pl'
     LANGUAGE = 'polski'
 
@@ -276,13 +276,18 @@ class SezimalLocalePL(EuroCurrency, SezimalLocale):
     ]
 
     DATE_FORMAT = '#d.#m.#Y'
-    DATE_LONG_FORMAT = '#-d. #M #Y r.'
+    DATE_LONG_FORMAT = '#-d. #$GM #Y r.'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#W, #-d. #M #Y r., #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#W, #-d. #$GM #Y r., #u:#p:#a'
     DST_NAME = 'Czas Letni'
     DST_SHORT_NAME = 'CzL'
     DEFAULT_TIME_ZONE = 'Europe/Warsaw'
+    ISO_DATE_LONG_FORMAT = '%-d. %b. %Y r.'
+    DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
+    TEXT_MONTH_DAY_FORMAT = '#-d. #$GM'
+    YEAR_TEXT_MONTH_FORMAT = '#$NM #Y r.'
+    # MONTH_DAY_FORMAT = '#d.#m.'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Przejście Zima – Wiosna',
@@ -316,6 +321,7 @@ class SezimalLocalePL(EuroCurrency, SezimalLocale):
     WEEKDAY_ERROR = 'Nieprawidłowy dzień tygodnia {weekday}'
     MONTH_ERROR = 'Nieprawidłowy miesiąc {month}'
     WEEK_NUMBER_SYMBOL = 'tydz'
+    DAY_NUMBER_SYMBOL = 'dzień'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_ACCUSATIVE) -> str:
         weekday = SezimalInteger(weekday)

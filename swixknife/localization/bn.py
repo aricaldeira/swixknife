@@ -83,10 +83,10 @@ class SezimalLocaleBN(SezimalLocale):
     ]
 
     DATE_FORMAT = '#?d/#?m/#?Y'
-    DATE_LONG_FORMAT = '#?d/#?m/#?Y #@W'
+    DATE_LONG_FORMAT = '#?d #M #?Y'
     TIME_FORMAT = '#?u:#?p:#?a'
     DATE_TIME_FORMAT = '#?d/#?m/#?Y #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W #?u:#?p:#?a'
+    DATE_TIME_LONG_FORMAT = '#W, #?d #M #?Y, #?u:#?p:#?a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 
@@ -125,6 +125,7 @@ class SezimalLocaleBN(SezimalLocale):
     WEEKDAY_ERROR = 'অবৈধ কর্মদিবস {weekday}'
     MONTH_ERROR = 'অবৈধ মাস {month}'
     WEEK_NUMBER_SYMBOL = 'সপ্তাহ'
+    DAY_NUMBER_SYMBOL = 'দিন'
 
     def format_decimal_number(self,
         number: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction,

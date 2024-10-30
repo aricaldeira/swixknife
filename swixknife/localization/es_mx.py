@@ -14,5 +14,3 @@ class SezimalLocaleES_MX(SezimalLocaleES):
 
     CURRENCY_UNIT_SYMBOL = '$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'
-
-    FIRST_WEEKDAY = 'SUN'

@@ -20,8 +20,6 @@ class SezimalLocaleSW(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = ''
 
-    FIRST_WEEKDAY = 'SAT'
-
     WEEKDAY_NAME = [
         'Jumatatu',
         'Jumanne',
@@ -83,7 +81,7 @@ class SezimalLocaleSW(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = '#d/#m/#Y #@W'
+    DATE_LONG_FORMAT = '#d/#m/#Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d/#m/#Y #@W #u:#p:#a'
@@ -125,3 +123,4 @@ class SezimalLocaleSW(SezimalLocale):
     WEEKDAY_ERROR = 'Siku ya juma si sahihi {weekday}'
     MONTH_ERROR = 'Mwezi batili {month}'
     WEEK_NUMBER_SYMBOL = 'jum'
+    DAY_NUMBER_SYMBOL = 'siku'

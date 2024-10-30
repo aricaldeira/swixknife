@@ -95,6 +95,7 @@ class SezimalLocaleDE(SezimalLocale):
     DST_SHORT_NAME = 'SZ'
     DEFAULT_TIME_ZONE = 'Europe/Berlin'
     WEEK_NUMBER_SYMBOL = 'W.'
+    DAY_NUMBER_SYMBOL = 'Tag'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Übergang Winter – Frühling',
@@ -127,3 +128,10 @@ class SezimalLocaleDE(SezimalLocale):
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         return '.'
+
+    UPPERCASE_MAPPING = {
+        ord('ß'): 'ẞ',
+    }
+    LOWERCASE_MAPPING = {
+        ord('ẞ'): 'ß',
+    }

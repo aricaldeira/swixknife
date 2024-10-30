@@ -135,6 +135,7 @@ class SezimalLocalePT(SezimalLocale):
     WEEKDAY_ERROR = 'Dia da semana inválido {weekday}'
     MONTH_ERROR = 'Mês inválido {month}'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'dia'
 
     COLLATION_RULES = '''
 [caseFirst upper]
@@ -239,3 +240,141 @@ class SezimalLocalePT(SezimalLocale):
                 fmt = fmt.replace(f'#${word}W', palavra)
 
         return fmt
+
+    TITLE_ALWAYS_LOWERCASE_WORDS = [
+        'e',
+        'o',
+        'os',
+        'a',
+        'as',
+        'um',
+        'uns',
+        'uma',
+        'umas',
+        'de',
+        'do',
+        'dos',
+        'da',
+        'das',
+        'dum',
+        'duns',
+        'duma',
+        'dumas',
+        'em',
+        'no',
+        'nos',
+        'na',
+        'nas',
+        'num',
+        'nuns',
+        'numa',
+        'numas',
+        'com',
+        'para',
+        'que',
+        'a',
+        'ao',
+        'aos',
+        'à',
+        'às',
+        'até',
+        'por',
+        'pelo',
+        'pelos',
+        'pela',
+        'pelas',
+        'sob',
+        'entre',
+        'ou',
+        'não',
+        #
+        # Nomes estrangeiros
+        #
+        'al',
+        'el',
+        'ul',
+        'il',
+        'ibn',
+        'ibnat',
+        'bin',
+        'bint',
+        'ben',
+        'bat',
+        'fi',
+        'd',
+        'di',
+        'dell',
+        'dello',
+        'della',
+        'dalla',
+        'del',
+        'dal',
+        'dall',
+        'in',
+        'con',
+        'su',
+        'per',
+        'fra',
+        'tra',
+        'nel',
+        'nell',
+        'nello',
+        'nella',
+        'and',
+        'at',
+        'upon',
+        'by',
+        'in',
+        'aus',
+        'auf',
+        'von',
+        'über',
+        'uber',
+        'der',
+        'die',
+        'dem',
+        'den',
+        'van',
+        'en',
+        'sur',
+        'et',
+        'le',
+        'la',
+        'les',
+        'du',
+        'des',
+        'y',
+        'u',
+    ]
+    TITLE_ALWAYS_UPPERCASE_WORDS = []
+
+    CALENDAR_TYPE = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sezimal',
+        'SYM': 'Simétrico',
+        'ISO': 'ISO / Gregoriano',
+        'ISR': 'Israelense',
+        'IND': 'Indiano',
+
+        #
+        # Religious calendars
+        #
+        'JUL': 'Ortodoxo (Juliano)',
+        'JEW': 'Judaico',
+        'HIJ': 'Islâmico (Hegírico)',
+        'IRN': 'Iraniano (Hegírico Solar)',
+
+        #
+        # Easter referencial
+        #
+        'SEZ+EASTER': 'Páscoa Sezimal - 11 de abril',
+        'SYM+EASTER': 'Páscoa Simétrica - 7 de abril',
+        'ISO+EASTER': 'Páscoa (Gregoriano)',
+        'JUL+EASTER': 'Páscoa Ortodoxa (Juliano)',
+        'JEW+EASTER': 'Páscoa Judaica (Pêssach)',
+    }
+    CALENDAR_DATE_ERROR = 'Data inválida para o calendário {calendar_type}'
+    CALENDAR_TIME_ERROR = 'Horário inválido'
+    CALENDAR_TIME_AFTER_ERROR = 'Horário inválido: o horário de início do evento não pode vir depois do horário final'

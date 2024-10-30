@@ -91,7 +91,7 @@ class SezimalLocaleHE(SezimalLocale):
     ]
 
     DATE_FORMAT = '#d.#m.#Y'
-    DATE_LONG_FORMAT = '#d.#m.#Y #@W'
+    DATE_LONG_FORMAT = '#-d #M #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d.#m.#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#d.#m.#Y #@W #u:#p:#a'
@@ -133,3 +133,50 @@ class SezimalLocaleHE(SezimalLocale):
     WEEKDAY_ERROR = '{weekday} יום שבוע לא חוקי'
     MONTH_ERROR = '{month} חודש לא חוקי'
     WEEK_NUMBER_SYMBOL = 'שבו'
+    DAY_NUMBER_SYMBOL = 'יום'
+
+    JEWISH_CALENDAR_MONTH_NAME = [
+        'ניסן',
+        'אייר‎',
+        'סיון‎',
+        'תמוז‎',
+        'אב',
+        'אלול‎',
+        'תשרי‎',
+        'חשוון',
+        'כסלו',
+        'טבת',
+        'שבט',
+        'אדר',
+        'אדר ב׳',
+    ]
+
+    JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'ניסן',
+        'אייר‎',
+        'סיון‎',
+        'תמוז‎',
+        'אב',
+        'אלול‎',
+        'תשרי‎',
+        'חשוון',
+        'כסלו',
+        'טבת',
+        'שבט',
+        'אדר',
+        'אדר ב׳',
+    ]
+
+    HOLIDAYS_OTHER_CALENDAR = [
+        ('HEB+07-01', '🍎🍯 \u202d(%d.%m.%Y)\u202c ראש השנה'),
+        ('HEB+07-10', '🤍🙏🏻 \u202d(%d.%m.%Y)\u202c יום כפור‎'),
+        ('HEB+07-15', '🍋⛺ \u202d(%d.%m.%Y)\u202c סוכות'),
+        ('HEB+07-22', '🙏🏻🌧️ \u202d(%d.%m.%Y)\u202c שמיני עצרת‎'),
+        ('HEB+07-23', '😊📜 \u202d(%d.%m.%Y)\u202c שמחת תורה'),
+        ('HEB+09-25', '🕯🕍 \u202d(%d.%m.%Y)\u202c חנכה‎'),
+        ('HEB+11-15', '🌳💮 \u202d(%d.%m.%Y)\u202c ט״ו בשבט'),
+        ('HEB+12-14', '🍷🍬 \u202d(%d.%m.%Y)\u202c פ   ורים‎'),
+        ('HEB+01-15', '🐑🫓 \u202d(%d.%m.%Y)\u202c חג הפסח'),
+        ('HEB+02-18', '🔥 \u202d(%d.%m.%Y)\u202c ל״ג בעומר'),
+        ('HEB+03-06', '💐📜 \u202d(%d.%m.%Y)\u202c שבועות'),
+    ]

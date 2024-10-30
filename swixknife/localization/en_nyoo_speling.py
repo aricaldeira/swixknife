@@ -63,6 +63,8 @@ class SezimalLocaleEN_NYOO_SPELING(SezimalLocaleEN):
 
     DATE_TIME_LONG_FORMAT = '#W, dhu #-d#O #M #Y, #u:#p:#a'
     DST_NAME = 'Deylayt Seyving Taym'
+    ISO_TIME_FORMAT = '%I:%M:%S %P'
+    ISO_HOUR_MINUTE_FORMAT = '%I:%M %P'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Kros‐Kwartur',

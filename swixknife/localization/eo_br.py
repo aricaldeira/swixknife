@@ -29,7 +29,7 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         ('EASTER-120', '\ufe0f🎉🎭 Karnavalo'),
         ('EASTER-115', '\ufe0f🎉🎭 Karnavalo'),
         ('EASTER-114', '\ufe0f🎉🎭 Cindra Merkredo'),
-        ('EASTER-2',   '\ufe0f🕆 🥀 Pasio de la Kristo'),
+        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Pasio de la Kristo'),
         ('EASTER',     '\ufe0f🐣🌱 Pasko'),
         ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
 
@@ -78,7 +78,7 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         ('ISO+EASTER-120', '\ufe0f🎉🎭 Karnavalo (%d-%b)'),
         ('ISO+EASTER-115', '\ufe0f🎉🎭 Karnavalo (%d-%b)'),
         ('ISO+EASTER-114', '\ufe0f🎉🎭 Cindra Merkredo (%d-%b)'),
-        ('ISO+EASTER-2',   '\ufe0f🕆 🥀 Pasio de la Kristo (%d-%b)'),
+        ('ISO+EASTER-2',   '\ufe0f🕆\ufe0f🥀 Pasio de la Kristo (%d-%b)'),
         ('ISO+EASTER',     '\ufe0f🐣🌱 Pasko (%d-%b)'),
         ('ISO+EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d-%b)'),
 

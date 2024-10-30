@@ -91,7 +91,7 @@ class SezimalLocaleAR(SezimalLocale):
     ]
 
     DATE_FORMAT = '#?d/#?m/#?Y'
-    DATE_LONG_FORMAT = '#?d/#?m/#?Y #@W'
+    DATE_LONG_FORMAT = '#?d #M #?Y'
     TIME_FORMAT = '#?u:#?p:#?a'
     DATE_TIME_FORMAT = '#?d/#?m/#?Y #?u:#?p:#?a'
     DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W #?u:#?p:#?a'
@@ -133,3 +133,4 @@ class SezimalLocaleAR(SezimalLocale):
     WEEKDAY_ERROR = 'Invalid weekday {weekday}'
     MONTH_ERROR = 'Invalid month {month}'
     WEEK_NUMBER_SYMBOL = 'أسب'
+    DAY_NUMBER_SYMBOL = 'يوم'

@@ -98,6 +98,7 @@ class SezimalLocaleEO(SezimalLocale):
     DST_NAME = 'Somera Tempo'
     DST_SHORT_NAME = 'ST'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'jartago'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transiĝo Vintro – Primtempo',

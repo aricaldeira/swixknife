@@ -131,7 +131,7 @@ class SezimalLocaleBZ(SezimalLocale):
         # ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
         ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
         # ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '\ufe0f🕆 🥀 Paxawn di Kristu'),
+        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Paxawn di Kristu'),
         ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
         ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
 
@@ -179,7 +179,7 @@ class SezimalLocaleBZ(SezimalLocale):
         # ('ISO+EASTER-120', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
         ('ISO+EASTER-115', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
         # ('ISO+EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas (%d/%m)'),
-        ('ISO+EASTER-2',   '\ufe0f🕆 🥀 Payxawn di Kristu (%d/%m)'),
+        ('ISO+EASTER-2',   '\ufe0f🕆\ufe0f🥀 Payxawn di Kristu (%d/%m)'),
         ('ISO+EASTER',     '\ufe0f🐣🌱 Paskwa (%d/%m)'),
         ('ISO+EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d/%m)'),
 
@@ -218,6 +218,7 @@ class SezimalLocaleBZ(SezimalLocale):
     WEEKDAY_ERROR = 'Dia da semana inválidu {weekday}'
     MONTH_ERROR = 'Mez inválidu {month}'
     WEEK_NUMBER_SYMBOL = 'sem'
+    DAY_NUMBER_SYMBOL = 'dia'
 
     COLLATION_RULES = '''
 [caseFirst upper]
@@ -324,3 +325,35 @@ class SezimalLocaleBZ(SezimalLocale):
                 fmt = fmt.replace(f'#${word}W', palavra)
 
         return fmt
+
+    CALENDAR_TYPE = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sezimaw',
+        'SYM': 'Simétriku',
+        'ISO': 'ISO / Gregorianu',
+        'ISR': 'Israelensi',
+        'IND': 'Indianu',
+
+        #
+        # Religious calendars
+        #
+        'JUL': 'Ortodòksu (Julianu)',
+        'JEW': 'Judayku',
+        'HIJ': 'Islâmiku (Ejíriku)',
+        'IRN': 'Iranianu (Ejíriku Solar)',
+
+        #
+        # Easter referencial
+        #
+        'SEZ+EASTER': 'Paskwa Sezimaw - 11 di abriw',
+        'SYM+EASTER': 'Paskwa Simétrika - 7 di abriw',
+        'ISO+EASTER': 'Paskwa (Gregorianu)',
+        'JUL+EASTER': 'Paskwa Ortodòksa (Julianu)',
+        'JEW+EASTER': 'Paskwa Judayka (Pêsach)',
+    }
+
+    CALENDAR_DATE_ERROR = 'Data inválida pru kalendaryu {calendar_type}'
+    CALENDAR_TIME_ERROR = 'Oráryu inválidu'
+    CALENDAR_TIME_AFTER_ERROR = 'Oraryu inválidu: u oraryu di inisyu du eventu nuwn pòdi vir depoys du oraryu finaw'
