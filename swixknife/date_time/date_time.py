@@ -378,7 +378,7 @@ class SezimalDateTime:
     def as_seconds(self) -> Decimal:
         return self._date.as_seconds + self._time.as_seconds
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None, season_moon_time_format: str = None) -> str:
         if locale:
             if isinstance(locale, SezimalLocale):
                 lang = locale.LANG
@@ -396,7 +396,7 @@ class SezimalDateTime:
         fmt = fmt.replace('##', '_|_HASHTAG_|_')
         fmt = fmt.replace('%%', '_|_PERCENT_|_')
 
-        fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone)
+        fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone, season_moon_time_format=season_moon_time_format)
         fmt = self._time.format(fmt, locale=locale, skip_strftime=True)
 
         if type(self.iso_date_time) != tuple and '%' in fmt:
@@ -515,3 +515,39 @@ class SezimalDateTime:
         julian_date = Sezimal(julian_date)
         ordinal_date = julian_date - ISO_EPOCH_JULIAN_DATE
         return cls.from_days(ordinal_date, time_zone)
+
+    def previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.previous(days, weeks, months, quarters, years)
+        return self.combine(date, self._time, self.time_zone)
+
+    def next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.next(days, weeks, months, quarters, years)
+        return self.combine(date, self._time, self.time_zone)
+
+    @property
+    def week_proportion_ellapsed(self) -> Sezimal:
+        return self.date.week_proportion_ellapsed
+
+    @property
+    def month_proportion_ellapsed(self) -> Sezimal:
+        return self.date.month_proportion_ellapsed
+
+    @property
+    def quarter_proportion_ellapsed(self) -> Sezimal:
+        return self.date.quarter_proportion_ellapsed
+
+    @property
+    def year_proportion_ellapsed(self) -> Sezimal:
+        return self.date.year_proportion_ellapsed

@@ -31,9 +31,9 @@ VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[+-−]?[0-5]{6}-[0-5]{2}-[0-5]{2
 # using other calendars
 #
 VALID_MONTH_DAY_STRING = re.compile(r'^[0-5]{2}-[0-5]{2}$')
-VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)[+-−]?[0-9]{4}-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
-VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^(SEZ|ISO|GRE|JUL|HEB|HIJ|JAL|IND|LUN)[+-−][0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
-VALID_EASTER_DATE_STRING = re.compile(r'((SEZ|ISO|GRE|JUL|HEB)[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?')
+VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−]?[0-5]{6}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN)[+-−]?[0-9]{4,5}-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
+VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−][0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN)[+-−][0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
+VALID_EASTER_DATE_STRING = re.compile(r'(SEZ[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?|((SYM|ISO|GRE|JUL|HEB|JEW)[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-9]{1,4})?')
 
 #
 # ISO Epoch

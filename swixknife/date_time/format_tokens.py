@@ -12,6 +12,17 @@ DATE_NUMBER_FORMAT_TOKENS = tuple(
         ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
         ('\\*\\-', '\\-', '\\*\\>', '\\>', '\\*', ''),
         (
+            ('tdM', 'total_days_in_month', 2, 2, 2),      # 44/55 (28_dec/35_dec)
+            ('tdQ', 'total_days_in_quarter', 3, 2, 2),    # 231/242 (91_dec/98_dec)
+            ('tdY', 'total_days_in_year', 4, 2, 3),       # 1404/1415 (364_dec/371_dec)
+
+            ('twM', 'total_weeks_in_month', 1, 1, 1),     # 4/5
+            ('twQ', 'total_weeks_in_quarter', 2, 1, 2),   # 21/22 (13_dec/14_dec)
+            ('twY', 'total_weeks_in_year', 3, 2, 2),      # 124/125 (52_dec/53_dec)
+
+            ('tmQ', 'total_months_in_quarter', 1, 1, 1),  # 3
+            ('tmY', 'total_months_in_year', 2, 2, 2),     # 20
+
             ('dQ', 'day_in_quarter', 3, 2, 2),    # 001 – 231/242 (01_dec – 91_dec/98_dec)
             ('dY', 'day_in_year', 4, 2, 3),       # 0001 – 1404/1415 (001_dec – 364_dec/371_dec)
 
@@ -56,6 +67,8 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
             ('ghY', 'gregorian_holocene_year'),
             ('sY', 'symmetric_year'),
             ('shY', 'symmetric_holocene_year'),
+            ('>Y', 'year'),
+            ('>X', 'year'),
         )
     )
 )
@@ -127,7 +140,7 @@ SEASON_MOON_TIME_FORMAT_TOKENS = tuple(
         base.replace('\\', ''), number, season_moon
     )
     for base, number, season_moon in product(
-        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?', '99', '↋↋', '99\\?', '↋↋\\?'),
+        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?', '99', '↋↋', '99\\?', '↋↋\\?', '%'),
         ('4', ''),  # number
         ('L', 'S'),  # season or moon phase
     )
@@ -172,4 +185,3 @@ ISO_TIME_NUMBER_FORMAT_TOKENS = tuple(
         ),
     )
 )
-

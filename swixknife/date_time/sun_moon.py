@@ -171,6 +171,9 @@ def _season_time(self, fmt: str, locale: SezimalLocale, four_seasons: bool = Fal
 
     season_date_time = season_date_time.at_time_zone(time_zone)
 
+    fmt = fmt.replace('#%u', '%H')
+    fmt = fmt.replace('#%p', '%M')
+
     return season_date_time.format(fmt, locale)
 
 
@@ -230,7 +233,7 @@ def _moon_time(self, fmt: str, locale: SezimalLocale, four_phases: bool = False,
     return moon_phase_date_time.format(fmt, locale)
 
 
-def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str | ZoneInfo = None) -> str:
+def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str | ZoneInfo = None, season_moon_time_format: str = None) -> str:
     for regex, base, hemisphere, number, case, season_moon in SEASON_MOON_TEXT_FORMAT_TOKENS:
         if not regex.findall(fmt):
             continue
@@ -271,11 +274,14 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
                 )
 
         if case == '!':
-            text = text.upper()
+            text = locale.upper(text) if locale else text.upper()
         elif case == '?':
-            text = text.lower()
+            text = locale.lower(text) if locale else text.lower()
         elif case == '>':
-            text = text[0].upper() + text[1:].lower()
+            if locale:
+                text = locale.upper(text[0]) + locale.lower(text[1:])
+            else:
+                text = text[0].upper() + text[1:].lower()
 
         fmt = regex.sub(text, fmt)
 
@@ -285,14 +291,14 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
 
         if season_moon == 'S':
             text = self._season_time(
-                f'#{base}u:#{base}p',
+                season_moon_time_format or f'#{base}u:#{base}p',
                 locale=locale,
                 four_seasons=number == '4',
                 time_zone=time_zone,
             )
         else:
             text = self._moon_time(
-                f'#{base}u:#{base}p',
+                season_moon_time_format or f'#{base}u:#{base}p',
                 locale=locale,
                 four_phases=number == '4',
                 time_zone=time_zone,

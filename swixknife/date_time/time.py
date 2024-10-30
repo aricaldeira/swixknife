@@ -28,7 +28,6 @@ from ..base import sezimal_format, sezimal_to_niftimal, default_to_sezimal_digit
     default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_niftimal_digits, \
     sezimal_to_dozenal
-from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, \
@@ -324,9 +323,15 @@ class SezimalTime:
             elif '?' in token:
                 value = locale.digit_replace(value)
 
+        if locale and locale.RTL:
+            value = '\N{LRI}' + value + '\N{PDI}'
+
         return value
 
     def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False) -> str:
+        if not fmt:
+            return fmt
+
         fmt = fmt.replace('##', '__HASHTAG__')
 
         if locale:
@@ -354,6 +359,9 @@ class SezimalTime:
                 value = self._apply_number_format(token, value_name, size_decimal, locale)
             else:
                 value = self._apply_number_format(token, value_name, size, locale)
+
+            if locale and locale.RTL:
+                value = '\N{LRI}' + value + '\N{PDI}'
 
             fmt = regex.sub(value, fmt)
 
@@ -466,6 +474,9 @@ class SezimalTime:
             elif '?' in token:
                 text = locale.digit_replace(text)
 
+            if locale and locale.RTL:
+                text = '\N{LRI}' + text + '\N{PDI}'
+
             fmt = regex.sub(text, fmt)
 
         if '#T' in fmt:
@@ -509,12 +520,19 @@ class SezimalTime:
                 else:
                     value = self._apply_number_format(token, value_name, size_sezimal, locale, from_decimal=True)
 
+                if locale and locale.RTL:
+                    value = '\N{LRI}' + value + '\N{PDI}'
+
                 fmt = regex.sub(value, fmt)
 
             if '%z' in fmt or '%5z':
                 if self._time_zone_offset == 0:
-                    fmt = fmt.replace('%z', '+0000')
-                    fmt = fmt.replace('%5z', '+0000')
+                    if locale and locale.RTL:
+                        fmt = fmt.replace('%z', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%5z', '\N{LRI}+0000\N{PDI}')
+                    else:
+                        fmt = fmt.replace('%z', '+0000')
+                        fmt = fmt.replace('%5z', '+0000')
                 else:
                     if self._time_zone_offset > 0:
                         text = '+'
@@ -529,15 +547,27 @@ class SezimalTime:
 
                     if '%5z' in fmt:
                         text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+
+                        if locale and locale.RTL:
+                            text = '\N{LRI}' + text + '\N{PDI}'
+
                         fmt = fmt.replace('%5z', text)
                     else:
                         text += str(tzo_hour).zfill(2) + str(tzo_minute).zfill(2)
+
+                        if locale and locale.RTL:
+                            text = '\N{LRI}' + text + '\N{PDI}'
+
                         fmt = fmt.replace('%z', text)
 
             if '%:z' in fmt or '%:5z' in fmt:
                 if self._time_zone_offset == 0:
-                    fmt = fmt.replace('%:z', '+00:00')
-                    fmt = fmt.replace('%:5z', '+00:00')
+                    if locale and locale.RTL:
+                        fmt = fmt.replace('%:z', '\N{LRI}+00:00\N{PDI}')
+                        fmt = fmt.replace('%:5z', '\N{LRI}+00:00\N{PDI}')
+                    else:
+                        fmt = fmt.replace('%:z', '+00:00')
+                        fmt = fmt.replace('%:5z', '+00:00')
                 else:
                     if self._time_zone_offset > 0:
                         text = '+'
@@ -552,13 +582,33 @@ class SezimalTime:
 
                     if '%:5z' in fmt:
                         text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + ':' + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+
+                        if locale and locale.RTL:
+                            text = '\N{LRI}' + text + '\N{PDI}'
+
                         fmt = fmt.replace('%:5z', text)
                     else:
                         text += str(tzo_hour).zfill(2) + ':' + str(tzo_minute).zfill(2)
+
+                        if locale and locale.RTL:
+                            text = '\N{LRI}' + text + '\N{PDI}'
+
                         fmt = fmt.replace('%:z', text)
 
             if '%Z' in fmt:
                 fmt = fmt.replace('%Z', self.time_zone)
+
+            if '%P' in fmt:
+                if self.uta < 30:
+                    fmt = fmt.replace('%P', locale.lower(locale.AM))
+                else:
+                    fmt = fmt.replace('%P', locale.lower(locale.PM))
+
+            if '%p' in fmt:
+                if self.uta < 30:
+                    fmt = fmt.replace('%p', locale.upper(locale.AM))
+                else:
+                    fmt = fmt.replace('%p', locale.upper(locale.PM))
 
         if skip_strftime:
             return fmt

@@ -24,9 +24,9 @@ DateConversion: TypeAlias = tuple[
 
 try:
     from convertdate.julian import from_gregorian as gregorian_to_julian, to_gregorian as julian_to_gregorian
-    from convertdate.hebrew import from_gregorian as gregorian_to_hebrew, to_gregorian as hebrew_to_gregorian
+    from convertdate.hebrew import from_gregorian as gregorian_to_hebrew, to_gregorian as hebrew_to_gregorian, to_civil as hebrew_to_civil_hebrew
     from convertdate.islamic import from_gregorian as gregorian_to_hijri, to_gregorian as hijri_to_gregorian
-    from convertdate.persian import from_gregorian as gregorian_to_jalali, to_gregorian as jalali_to_gregorian
+    from convertdate.persian import from_gregorian as gregorian_to_iranian, to_gregorian as iranian_to_gregorian
     from convertdate.indian_civil import from_gregorian as gregorian_to_indian, to_gregorian as indian_to_gregorian
 
     CAN_CONVERT_CALENDARS = True
@@ -57,7 +57,7 @@ EASTER_HEBREW = 4
 # Also converts dates relative to Easter in Sezimal,
 # Gregorian, Julian and Hebrew calendars
 #
-def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalInteger = None) -> DateConversion:
+def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalInteger = None, return_original_date: bool = False) -> DateConversion:
     #
     # Sets a Gregorian/ISO date as a point of reference for
     # other calendars’ conversion
@@ -70,24 +70,28 @@ def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalI
 
         reference_year = year
 
-    date_time = date_time.replace('_', '')
+    # date_time = date_time.replace('_', '')
 
     if VALID_DATE_STRING.match(date_time) or VALID_MONTH_DAY_STRING.match(date_time):
-        return _other_calendar_to_ordinal_date('SEZ-' + date_time, reference_year)
+        return _other_calendar_to_ordinal_date('SEZ-' + date_time, reference_year, return_original_date)
 
     elif VALID_DATE_OTHER_CALENDAR_STRING.match(date_time) or VALID_MONTH_DAY_OTHER_CALENDAR_STRING.match(date_time):
-        return _other_calendar_to_ordinal_date(date_time, reference_year)
+        return _other_calendar_to_ordinal_date(date_time, reference_year, return_original_date)
 
     elif VALID_EASTER_DATE_STRING.match(date_time):
-        return _easter_calendar_to_ordinal_date(date_time, reference_year)
+        if return_original_date:
+            return *_easter_calendar_to_ordinal_date(date_time, reference_year), None
+        else:
+            return _easter_calendar_to_ordinal_date(date_time, reference_year)
 
     raise ValueError(f'Invalid format for calendar date: {date_time}')
 
 
-def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteger) -> DateConversion:
+def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteger, return_original_date: bool = False) -> DateConversion:
     calendar = date_time[0:3]
+    original_date = None
 
-    if (calendar not in ('SEZ', 'ISO', 'GRE') ) and (not CAN_CONVERT_CALENDARS):
+    if (calendar not in ('SEZ', 'SYM', 'ISO', 'GRE') ) and (not CAN_CONVERT_CALENDARS):
         raise ValueError(f'Can’t convert date {date_time} from specified calendar; please install convertdate')
 
     date_time = date_time[4:]
@@ -135,14 +139,32 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         weekday, weekday_count = weekday.split('_')
         weekday_count = SezimalInteger(weekday_count)
 
-    if calendar == 'SEZ':
+    if year:
+        if calendar == 'SEZ':
+            original_date = (year, month, day)
+        else:
+            original_date = (Decimal(year), Decimal(month), Decimal(day))
+
+    if calendar == 'SEZ' or calendar == 'SYM':
         if not year:
             year = reference_year
         else:
-            year = SezimalInteger(year)
+            if calendar == 'SYM':
+                year = SezimalInteger(Decimal(year))
+            else:
+                year = SezimalInteger(year)
 
-        month = SezimalInteger(month)
-        day = SezimalInteger(day)
+        if calendar == 'SYM':
+            year += ISO_YEAR_DIFF
+            month = SezimalInteger(Decimal(month))
+            day = SezimalInteger(Decimal(day))
+
+            if original_date:
+                original_date = (year, month, day)
+
+        else:
+            month = SezimalInteger(month)
+            day = SezimalInteger(day)
 
         original_year = year
         year = reference_year
@@ -160,7 +182,13 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
         ordinal_date = year_month_day_to_ordinal(*ymd)
 
-        return ordinal_date, ymd, age
+        if return_original_date:
+            if original_date:
+                original_date = year_month_day_to_ordinal(*original_date)
+
+            return ordinal_date, ymd, age, original_date
+        else:
+            return ordinal_date, ymd, age
 
     year_start_ordinal = year_month_day_to_ordinal(reference_year, SezimalInteger('1'), SezimalInteger('1'))
 
@@ -254,7 +282,17 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             )
             ymd = ordinal_date_to_gregorian_year_month_day(ordinal_date)
 
-        return ordinal_date, ymd, age
+        if return_original_date:
+            if original_date:
+                original_date = gregorian_year_month_day_to_ordinal_date(
+                    int(original_date[0]),
+                    int(original_date[1]),
+                    int(original_date[2]),
+                )
+
+            return ordinal_date, ymd, age, original_date
+        else:
+            return ordinal_date, ymd, age
 
     if calendar == 'JUL':
         if not year:
@@ -266,6 +304,9 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         iso_date = _datetime.date(*julian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if original_date:
+            original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
         if age != 0:
@@ -273,15 +314,27 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             ymd = (year, month, day)
             iso_date = _datetime.date(*julian_to_gregorian(*ymd))
 
-    elif calendar == 'HEB':
-        if not year:
-            year, *x = gregorian_to_hebrew(iso_reference.year, iso_reference.month, iso_reference.day)
+            while iso_date.year < iso_reference.year:
+                year += 1
+                age += 1
+                ymd = (year, month, day)
+                iso_date = _datetime.date(*julian_to_gregorian(*ymd))
 
-        original_ymd = (year, month, day)
+    elif calendar == 'HEB' or calendar == 'JEW' or calendar == 'ISR':
+        if not year:
+            year, hm, hd = gregorian_to_hebrew(iso_reference.year, iso_reference.month, iso_reference.day)
+
+            # if calendar == 'ISR':
+            #     year, * = hebrew_to_civil_hebrew(year, hm, hd)
+
         ymd = (year, month, day)
+        original_ymd = (year, month, day)
 
         iso_date = _datetime.date(*hebrew_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
+        if original_date:
+            original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
@@ -289,6 +342,12 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             year += int(age.decimal)
             ymd = (year, month, day)
             iso_date = _datetime.date(*hebrew_to_gregorian(*ymd))
+
+            while iso_date.year < iso_reference.year:
+                year += 1
+                age += 1
+                ymd = (year, month, day)
+                iso_date = _datetime.date(*hebrew_to_gregorian(*ymd))
 
     elif calendar == 'HIJ':
         if not year:
@@ -300,6 +359,9 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         iso_date = _datetime.date(*hijri_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if original_date:
+            original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
         if age != 0:
@@ -307,22 +369,37 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             ymd = (year, month, day)
             iso_date = _datetime.date(*hijri_to_gregorian(*ymd))
 
-    elif calendar == 'JAL':
+            while iso_date.year < iso_reference.year:
+                year += 1
+                age += 1
+                ymd = (year, month, day)
+                iso_date = _datetime.date(*hijri_to_gregorian(*ymd))
+
+    elif calendar == 'IRN':
         if not year:
-            year, *x = gregorian_to_jalali(iso_reference.year, iso_reference.month, iso_reference.day)
+            year, *x = gregorian_to_iranian(iso_reference.year, iso_reference.month, iso_reference.day)
 
         original_ymd = (year, month, day)
         ymd = (year, month, day)
 
-        iso_date = _datetime.date(*jalali_to_gregorian(*original_ymd))
+        iso_date = _datetime.date(*iranian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
+        if original_date:
+            original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
         if age != 0:
             year += int(age.decimal)
             ymd = (year, month, day)
-            iso_date = _datetime.date(*jalali_to_gregorian(*ymd))
+            iso_date = _datetime.date(*iranian_to_gregorian(*ymd))
+
+            while iso_date.year < iso_reference.year:
+                year += 1
+                age += 1
+                ymd = (year, month, day)
+                iso_date = _datetime.date(*hijri_to_gregorian(*ymd))
 
     elif calendar == 'IND':
         if not year:
@@ -334,6 +411,9 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         iso_date = _datetime.date(*indian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if original_date:
+            original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
         if age != 0:
@@ -342,6 +422,12 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             iso_date = _datetime.date(*indian_to_gregorian(*ymd))
 
     ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
+    if calendar in ('HEB', 'JEW'):
+        ordinal_date -= Sezimal('0.13')
+
+    if return_original_date:
+        return ordinal_date, ymd, age, original_date
 
     return ordinal_date, ymd, age
 
@@ -370,6 +456,11 @@ def _easter_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInte
         date_time = date_time.replace('HEB−', '-')
         date_time = date_time.replace('HEB-', '-')
 
+    elif calendar == 'SYM':
+        easter = EASTER_SEZIMAL
+        date_time = date_time.replace('SYM+', '')
+        date_time = date_time.replace('SYM−', '-')
+        date_time = date_time.replace('SYM-', '-')
     else:
         easter = EASTER_SEZIMAL
         date_time = date_time.replace('SEZ+', '')
@@ -390,6 +481,7 @@ def _easter_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInte
         easter_ordinal_date = year_month_day_to_ordinal(reference_year, 4, 11)
 
     expression = date_time.replace('EASTER', f"SezimalInteger('{easter_ordinal_date}')")
+
     ordinal_date = eval(expression)
 
     iso_ymd = _datetime.date.fromordinal(int(ordinal_date.decimal)).timetuple()[0:3]

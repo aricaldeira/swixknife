@@ -33,7 +33,6 @@ from ..base import decimal_format, sezimal_format, \
 from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
 from ..units import sezimal_to_decimal_unit
 from .date_time_delta import SezimalDateTimeDelta
-from ..text import sezimal_spellout
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
@@ -199,8 +198,29 @@ class SezimalDate:
         return SezimalInteger(5)
 
     @property
+    def total_weeks_in_month(self) -> SezimalInteger:
+        if self.is_long_month:
+            return SezimalInteger(5)
+
+        return SezimalInteger(4)
+
+    @property
+    def total_days_in_year(self) -> SezimalInteger:
+        if self.is_leap:
+            return SezimalInteger('1415')
+
+        return SezimalInteger('1404')
+
+    @property
     def day_in_year(self) -> SezimalInteger:
         return self._day_in_year
+
+    @property
+    def total_weeks_in_year(self) -> SezimalInteger:
+        if self.is_leap:
+            return SezimalInteger('125')
+
+        return SezimalInteger('124')
 
     @property
     def week_in_year(self) -> SezimalInteger:
@@ -211,16 +231,45 @@ class SezimalDate:
         return self._quarter
 
     @property
+    def total_days_in_quarter(self) -> SezimalInteger:
+        if self.quarter == 4 and self.is_leap:
+            return SezimalInteger('242')
+
+        return SezimalInteger('231')
+
+    @property
     def day_in_quarter(self) -> SezimalInteger:
         return self._day_in_quarter
+
+    @property
+    def total_weeks_in_quarter(self) -> SezimalInteger:
+        if self.quarter == 4 and self.is_leap:
+            return SezimalInteger('22')
+
+        return SezimalInteger('21')
 
     @property
     def week_in_quarter(self) -> SezimalInteger:
         return self._week_in_quarter
 
     @property
+    def total_months_in_quarter(self) -> SezimalInteger:
+        return SezimalInteger('4')
+
+    @property
     def month_in_quarter(self) -> SezimalInteger:
         return self._month_in_quarter
+
+    @property
+    def total_months_in_year(self) -> SezimalInteger:
+        return SezimalInteger('20')
+
+    @property
+    def total_days_in_month(self) -> SezimalInteger:
+        if self.is_long_month:
+            return SezimalInteger('55')
+
+        return SezimalInteger('44')
 
     @property
     def weekday_name(self) -> str:
@@ -295,7 +344,7 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 3 digits
                 #
-                if token.endswith('>y'):
+                if token.endswith('>y') and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
 
             elif '↋' in token:
@@ -328,7 +377,7 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 3 digits
                 #
-                if token.endswith('>y'):
+                if token.endswith('>y') and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
 
             if size and '-' not in token and '>' not in token:
@@ -348,7 +397,10 @@ class SezimalDate:
 
         return value
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None, season_moon_time_format: str = None) -> str:
+        if not fmt:
+            return fmt
+
         if locale:
             if isinstance(locale, SezimalLocale):
                 lang = locale.LANG
@@ -368,7 +420,16 @@ class SezimalDate:
         #
         # Astronomical formats: seasons and moon phases
         #
-        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
+        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone, season_moon_time_format=season_moon_time_format)
+
+        #
+        # Locale’s date separator
+        #
+        if '#/' in fmt:
+            if locale:
+                fmt = fmt.replace('#/', locale.DATE_SEPARATOR)
+            else:
+                fmt = fmt.replace('#/', '-')
 
         #
         # Year’s explicit sign
@@ -394,6 +455,9 @@ class SezimalDate:
             else:
                 value = self._apply_number_format(token, value_name, size, locale)
 
+            if locale and locale.RTL:
+                value = '\N{LRI}' + value + '\N{PDI}'
+
             fmt = regex.sub(value, fmt)
 
         #
@@ -405,7 +469,7 @@ class SezimalDate:
 
             year = getattr(self, value_name, 0)
 
-            if character == 'X' and not separator:
+            if 'X' in character and not separator:
                 separator = '\U000f1e6d'  # Arda separator
 
             if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
@@ -415,6 +479,10 @@ class SezimalDate:
                     year = SezimalInteger(Decimal(year))
 
             if base in ['', '!', '?']:
+                if '>' in character and value_name == 'year' \
+                    and year >= '213100' and year < '214000':
+                    year -= 213_000
+
                 year = locale.format_number(
                     year,
                     sezimal_digits='!' in base,
@@ -455,6 +523,9 @@ class SezimalDate:
                 if separator != locale.GROUP_SEPARATOR:
                     year = year.replace(locale.GROUP_SEPARATOR, separator)
 
+            if locale and locale.RTL:
+                year = '\N{LRI}' + year + '\N{PDI}'
+
             fmt = regex.sub(year, fmt)
 
         #
@@ -492,11 +563,14 @@ class SezimalDate:
                     text = text[0:3]
 
             if case == '!':
-                text = text.upper()
+                text = locale.upper(text) if locale else text.upper()
             elif case == '?':
-                text = text.lower()
+                text = locale.lower(text) if locale else text.lower()
             elif case == '>':
-                text = text[0].upper() + text[1:].lower()
+                if locale:
+                    text = locale.upper(text[0]) + locale.lower(text[1:])
+                else:
+                    text = text[0].upper() + text[1:].lower()
 
             fmt = regex.sub(text, fmt)
 
@@ -537,6 +611,9 @@ class SezimalDate:
                 else:
                     value = self._apply_number_format(token, value_name, size_decimal, locale, from_decimal=True)
 
+                if locale and locale.RTL:
+                    value = '\N{LRI}' + value + '\N{PDI}'
+
                 fmt = regex.sub(value, fmt)
 
             if '%A' in fmt:
@@ -548,11 +625,14 @@ class SezimalDate:
             if '%o' in fmt:
                 fmt = fmt.replace('%o', locale.day_ordinal_suffix(Decimal(self.gregorian_day)))
 
+            if '%O' in fmt:
+                fmt = fmt.replace('%O', locale.day_ordinal_suffix(Decimal(self.gregorian_day)))
+
             if '%B' in fmt:
-                fmt = fmt.replace('%B', locale.month_name(Decimal(self.gregorian_month)))
+                fmt = fmt.replace('%B', locale.iso_month_name(Decimal(self.gregorian_month)))
 
             if '%b' in fmt:
-                fmt = fmt.replace('%b', locale.month_abbreviated_name(Decimal(self.gregorian_month)))
+                fmt = fmt.replace('%b', locale.iso_month_abbreviated_name(Decimal(self.gregorian_month)))
 
             if not skip_strftime:
                 if type(self.gregorian_date) == _datetime.date:
@@ -683,13 +763,13 @@ class SezimalDate:
         month: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
     ) -> Self:
-        if year is None:
+        if year is None or not year:
             year = self._year
 
-        if month is None:
+        if month is None or not month:
             month = self._month
 
-        if day is None:
+        if day is None or not day:
             day = self._day
         else:
             day = SezimalInteger(day)
@@ -849,6 +929,94 @@ class SezimalDate:
             phase = 'waning_crescent'
 
         return phase
+
+    def previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        res = self
+
+        if days:
+            res = res.from_days(res.as_days - days)
+
+        if weeks:
+            res = res.from_days(res.as_days - (weeks * SezimalInteger(11)))
+
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if months:
+            year = res.year
+            month = res.month - months
+
+            while month <= 0:
+                year -= 1
+                month += 20
+
+            res = res.replace(year=year, month=month)
+
+        return res
+
+    def next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        res = self
+
+        if days:
+            res = res.from_days(res.as_days + days)
+
+        if weeks:
+            res = res.from_days(res.as_days + (weeks * SezimalInteger(11)))
+
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if months:
+            year = res.year
+            month = res.month + months
+
+            while month > 20:
+                year += 1
+                month -= 20
+
+            res = res.replace(year=year, month=month)
+
+        return res
+
+    @property
+    def week_proportion_ellapsed(self) -> Sezimal:
+        return self.weekday / 11
+
+    @property
+    def month_proportion_ellapsed(self) -> Sezimal:
+        return self.day / self.total_days_in_month
+
+    @property
+    def quarter_proportion_ellapsed(self) -> Sezimal:
+        return self.day_in_quarter / self.total_days_in_quarter
+
+    @property
+    def year_proportion_ellapsed(self) -> Sezimal:
+        return self.day_in_year / self.total_days_in_year
 
 
 SezimalDate.min = SezimalDate(1, 1, 1)
