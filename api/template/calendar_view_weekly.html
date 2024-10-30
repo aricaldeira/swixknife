@@ -121,16 +121,16 @@ function auto_refresh(){
         seconds = seconds / (parseInt('30', 6) * 86400 / 36 / 36);
 
         {% if format_token == '!' %}
-            time_display = PAIRS[uta] + ':' + PAIRS[posha];
+            time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
         {% else %}
-            time_display = uta + ':' + posha;
+            time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
         {% endif %}
 
-        time_display = time_display + ' - ' + hours + ':' + minutes;
+        time_display = time_display + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
 
         setTimeout(auto_refresh, 33333);
     {% elif base == 14 %}
-        time_display = hours + ':' + minutes;
+        time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
 
         //
         // Seconds is adjusted to a proportion of 30 posha,
@@ -174,7 +174,7 @@ function auto_refresh(){
 
         seconds = seconds / (parseInt('60', 12) * 86400 / 12 / 12);
 
-        time_display = '.' + time + ' - ' + hours + ':' + minutes;
+        time_display = '{{ locale.SEZIMAL_SEPARATOR }}' + time + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
 
         setTimeout(auto_refresh, 25000);
     {% endif %}
