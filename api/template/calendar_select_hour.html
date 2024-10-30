@@ -1,0 +1,33 @@
+
+<select id="event_time_hour{{ time_start_finish }}" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Hora
+{% elif locale.LANG == 'bz' %}
+Òra
+{% else %}
+Hour
+{% endif %}">
+    <option id="event_time_hour_00{{ time_start_finish }}" value="00">{{'12' if hour_format == '12h' else '00'}}</option>
+    <option id="event_time_hour_01{{ time_start_finish }}" value="01">{{'01' if hour_format == '12h' else '01'}}</option>
+    <option id="event_time_hour_02{{ time_start_finish }}" value="02">{{'02' if hour_format == '12h' else '02'}}</option>
+    <option id="event_time_hour_03{{ time_start_finish }}" value="03">{{'03' if hour_format == '12h' else '03'}}</option>
+    <option id="event_time_hour_04{{ time_start_finish }}" value="04">{{'04' if hour_format == '12h' else '04'}}</option>
+    <option id="event_time_hour_05{{ time_start_finish }}" value="05">{{'05' if hour_format == '12h' else '05'}}</option>
+    <option id="event_time_hour_06{{ time_start_finish }}" value="06">{{'06' if hour_format == '12h' else '06'}}</option>
+    <option id="event_time_hour_07{{ time_start_finish }}" value="07">{{'07' if hour_format == '12h' else '07'}}</option>
+    <option id="event_time_hour_08{{ time_start_finish }}" value="08">{{'08' if hour_format == '12h' else '08'}}</option>
+    <option id="event_time_hour_09{{ time_start_finish }}" value="09">{{'09' if hour_format == '12h' else '09'}}</option>
+    <option id="event_time_hour_10{{ time_start_finish }}" value="10">{{'10' if hour_format == '12h' else '10'}}</option>
+    <option id="event_time_hour_11{{ time_start_finish }}" value="11">{{'11' if hour_format == '12h' else '11'}}</option>
+    <option id="event_time_hour_12{{ time_start_finish }}" value="12">{{'12' if hour_format == '12h' else '12'}}</option>
+    <option id="event_time_hour_13{{ time_start_finish }}" value="13">{{'01' if hour_format == '12h' else '13'}}</option>
+    <option id="event_time_hour_14{{ time_start_finish }}" value="14">{{'02' if hour_format == '12h' else '14'}}</option>
+    <option id="event_time_hour_15{{ time_start_finish }}" value="15">{{'03' if hour_format == '12h' else '15'}}</option>
+    <option id="event_time_hour_16{{ time_start_finish }}" value="16">{{'04' if hour_format == '12h' else '16'}}</option>
+    <option id="event_time_hour_17{{ time_start_finish }}" value="17">{{'05' if hour_format == '12h' else '17'}}</option>
+    <option id="event_time_hour_18{{ time_start_finish }}" value="18">{{'06' if hour_format == '12h' else '18'}}</option>
+    <option id="event_time_hour_19{{ time_start_finish }}" value="19">{{'07' if hour_format == '12h' else '19'}}</option>
+    <option id="event_time_hour_20{{ time_start_finish }}" value="20">{{'08' if hour_format == '12h' else '20'}}</option>
+    <option id="event_time_hour_21{{ time_start_finish }}" value="21">{{'09' if hour_format == '12h' else '21'}}</option>
+    <option id="event_time_hour_22{{ time_start_finish }}" value="22">{{'10' if hour_format == '12h' else '22'}}</option>
+    <option id="event_time_hour_23{{ time_start_finish }}" value="23">{{'11' if hour_format == '12h' else '23'}}</option>
+</select>

@@ -1,0 +1,359 @@
+<h1>
+    {% if locale.LANG == 'pt' %}
+        Evento
+    {% elif locale.LANG == 'bz' %}
+        Eventu
+    {% else %}
+        Event
+    {% endif %}
+</h1>
+<p>
+    <input id="event_emoji" style="width: 8rem;" placeholder="{% if locale.LANG == 'pt' %}
+Emoji/abrev.
+{% elif locale.LANG == 'bz' %}
+Emoji/abrev.
+{% else %}
+Emoji/abbr.
+{% endif %}" required />
+    <input id="event_name" style="width: 27rem;" placeholder="{% if locale.LANG == 'pt' %}
+Nome do evento
+{% elif locale.LANG == 'bz' %}
+Nomi du eventu
+{% else %}
+Event’s title
+{% endif %}" required />
+</p>
+<table width="100%">
+    <colgroup>
+        <col span="1" width="40%;">
+        <col span="1">
+    </colgroup>
+    <tr style="vertical-align: top;">
+        <td style="font-size: 1.2rem; font-weight: bold;" class="center">
+            {% if locale.LANG == 'pt' %}
+                Data
+            {% elif locale.LANG == 'bz' %}
+                Data
+            {% else %}
+                Date
+            {% endif %}
+        </td>
+        <td id="date_this_year" rowspan="4">
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td class="center">
+            {% include 'calendar_select_calendar_type.html' %}
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td class="center">
+            {% include 'calendar_input_easter.html' %}
+            {% if locale.DATE_ENDIANNESS == 'B' %}
+                {% include 'calendar_input_year.html' %}
+                {% include 'calendar_select_month.html' %}
+                {% include 'calendar_select_day.html' %}
+            {% elif locale.DATE_ENDIANNESS == 'L' %}
+                {% include 'calendar_select_day.html' %}
+                {% include 'calendar_select_month.html' %}
+                {% include 'calendar_input_year.html' %}
+            {% else %}
+                {% include 'calendar_select_month.html' %}
+                {% include 'calendar_select_day.html' %}
+                {% include 'calendar_input_year.html' %}
+            {% endif %}
+            {% include 'calendar_select_weekday.html' %}
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td class="center">
+            <span id="date_error" style="color: red;" hidden></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">
+            <span style="font-size: 1.2rem; font-weight: bold;">
+            {% if locale.LANG == 'pt' %}
+                Horário
+            {% elif locale.LANG == 'bz' %}
+                Oraryu
+            {% else %}
+                Time
+            {% endif %}
+            </span>
+            ―
+            {% if locale.LANG == 'pt' %}
+                o dia inteiro?
+            {% elif locale.LANG == 'bz' %}
+                u dia interu?
+            {% else %}
+                all day?
+            {% endif %}
+            <input id="event_full_day" type="checkbox" onchange="build_date_string()" checked />
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr hidden>
+        <td class="center">
+            {% if locale.LANG == 'pt' %}
+                Fuso horário
+            {% elif locale.LANG == 'bz' %}
+                Fuzu oraryu
+            {% else %}
+                Time zone
+            {% endif %}
+            {% include 'calendar_select_time_zone.html' %}
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">
+            <span id="event_time_start">
+            {% with time_start_finish = '' %}
+                {% include 'calendar_select_hour.html' %}{{ locale.TIME_SEPARATOR }}{% include 'calendar_select_minute.html' %}
+            {% endwith %}
+            </span>
+            <span id="event_time_finish">
+            —
+            {% with time_start_finish = '_finish' %}
+                {% include 'calendar_select_hour.html' %}{{ locale.TIME_SEPARATOR }}{% include 'calendar_select_minute.html' %}
+            {% endwith %}
+            </span>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span id="time_error" style="color: red;" hidden></span>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr class="center">
+        <td>
+            <button onclick="save_event()">
+            {% if locale.LANG == 'pt' %}
+                Salvar
+            {% elif locale.LANG == 'bz' %}
+                Sawvar
+            {% else %}
+                Save
+            {% endif %}
+            </button>
+        </td>
+        <td>
+            <button onclick="close_event()">
+            {% if locale.LANG == 'pt' %}
+                Fechar
+            {% elif locale.LANG == 'bz' %}
+                Fexar
+            {% else %}
+                Close
+            {% endif %}
+            </button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<script>
+var ISO_MONTH_NAME = [
+    {% for i in range(12) %}
+    '{{ locale.MONTH_NAME[i]}}',
+    {% endfor %}
+]
+
+var JEWISH_MONTH_NAME = [
+    {% for i in range(13) %}
+    '{{ locale.JEWISH_CALENDAR_MONTH_NAME[i]}}',
+    {% endfor %}
+]
+
+var HIJRI_MONTH_NAME = [
+    {% for i in range(12) %}
+    '{{ locale.HIJRI_CALENDAR_MONTH_NAME[i]}}',
+    {% endfor %}
+]
+
+var IRANIAN_MONTH_NAME = [
+    {% for i in range(12) %}
+    '{{ locale.IRANIAN_CALENDAR_MONTH_NAME[i]}}',
+    {% endfor %}
+]
+
+var INDIAN_MONTH_NAME = [
+    {% for i in range(12) %}
+    '{{ locale.INDIAN_CALENDAR_MONTH_NAME[i]}}',
+    {% endfor %}
+]
+
+function set_date_parameters() {
+    const calendar_type = document.getElementById('event_calendar_type').value;
+
+    document.getElementById('event_easter_sign').hidden = true;
+    document.getElementById('event_easter_days').hidden = true;
+    document.getElementById('event_easter_days_text').hidden = true;
+    document.getElementById('event_date_year_input').hidden = false;
+    document.getElementById('event_date_month').hidden = false;
+    document.getElementById('event_date_day_input').hidden = false;
+    document.getElementById('event_date_weekday_input').hidden = true;
+
+    if (calendar_type == 'ISO') {
+        // console.log('year', document.getElementById('event_date_year').value)
+        // if (document.getElementById('event_date_year').value == '') {
+        //     document.getElementById('event_date_year_input').hidden = false;
+        //     document.getElementById('event_date_weekday_input').hidden = false;
+        // } else {
+        //     document.getElementById('event_date_year_input').hidden = false;
+        //     document.getElementById('event_date_weekday_input').hidden = true;
+        // };
+        //
+        // if ((document.getElementById('event_date_weekday_sign').value == '+')
+        //     || (document.getElementById('event_date_weekday_sign').value == '-')) {
+        //     document.getElementById('event_date_year_input').hidden = true;
+        // } else {
+        //     document.getElementById('event_date_year_input').hidden = false;
+        // };
+
+    } else if (!((calendar_type == 'ISO') || (calendar_type == 'SYM') || (calendar_type == 'SEZ') || (calendar_type == 'IND') || (calendar_type == 'ISR'))) {
+        if ((calendar_type == 'ISO+EASTER') || (calendar_type == 'SYM+EASTER') || (calendar_type == 'JUl+EASTER') || (calendar_type == 'JEW+EASTER')) {
+            document.getElementById('event_easter_sign').hidden = false;
+            document.getElementById('event_easter_days').hidden = false;
+            document.getElementById('event_easter_days_text').hidden = false;
+            document.getElementById('event_date_year_input').hidden = true;
+            document.getElementById('event_date_month').hidden = true;
+            document.getElementById('event_date_day_input').hidden = true;
+        } else {
+            document.getElementById('event_easter_sign').hidden = true;
+            document.getElementById('event_easter_days').hidden = true;
+            document.getElementById('event_easter_days_text').hidden = true;
+            // document.getElementById('event_date_year_sign').hidden = true;
+            document.getElementById('event_date_year').hidden = false;
+            document.getElementById('event_date_month').hidden = false;
+            document.getElementById('event_date_day_input').hidden = false;
+        };
+    };
+
+    var month_name = ISO_MONTH_NAME;
+    document.getElementById('event_date_month_13').hidden = true;
+
+    if ((calendar_type == 'ISR') || (calendar_type == 'JEW')) {
+        month_name = JEWISH_MONTH_NAME;
+        document.getElementById('event_date_month_13').innerHTML = JEWISH_MONTH_NAME[12];
+        document.getElementById('event_date_month_13').hidden = false;
+    } else if (calendar_type == 'IND') {
+        month_name = INDIAN_MONTH_NAME;
+    } else if (calendar_type == 'HIJ') {
+        month_name = HIJRI_MONTH_NAME;
+    } else if (calendar_type == 'IRN') {
+        month_name = IRANIAN_MONTH_NAME;
+    };
+
+    document.getElementById('event_date_month_01').innerHTML = month_name[0];
+    document.getElementById('event_date_month_02').innerHTML = month_name[1];
+    document.getElementById('event_date_month_03').innerHTML = month_name[2];
+    document.getElementById('event_date_month_04').innerHTML = month_name[3];
+    document.getElementById('event_date_month_05').innerHTML = month_name[4];
+    document.getElementById('event_date_month_06').innerHTML = month_name[5];
+    document.getElementById('event_date_month_07').innerHTML = month_name[6];
+    document.getElementById('event_date_month_08').innerHTML = month_name[7];
+    document.getElementById('event_date_month_09').innerHTML = month_name[8];
+    document.getElementById('event_date_month_10').innerHTML = month_name[9];
+    document.getElementById('event_date_month_11').innerHTML = month_name[10];
+    document.getElementById('event_date_month_12').innerHTML = month_name[11];
+
+    if (!document.getElementById('event_date_weekday_sign').hidden) {
+        document.getElementById('event_date_weekday').hidden = document.getElementById('event_date_weekday_sign').value == '_';
+        document.getElementById('event_date_weekday_number').hidden = document.getElementById('event_date_weekday_sign').value == '_';
+    };
+
+    {% if locale.HOUR_FORMAT == '12h' %}
+        if (document.getElementById('event_time_hour').value < '12') {
+            document.getElementById('event_time_am').hidden = false;
+            document.getElementById('event_time_pm').hidden = true;
+        } else {
+            document.getElementById('event_time_am').hidden = true;
+            document.getElementById('event_time_pm').hidden = false;
+        };
+
+        if (document.getElementById('event_time_hour_finish').value < '12') {
+            document.getElementById('event_time_am_finish').hidden = false;
+            document.getElementById('event_time_pm_finish').hidden = true;
+        } else {
+            document.getElementById('event_time_am_finish').hidden = true;
+            document.getElementById('event_time_pm_finish').hidden = false;
+        };
+    {% endif %}
+
+    if (document.getElementById('event_full_day').checked) {
+        document.getElementById('event_time_start').hidden = true;
+        document.getElementById('event_time_finish').hidden = true;
+    } else {
+        document.getElementById('event_time_start').hidden = false;
+        document.getElementById('event_time_finish').hidden = false;
+    };
+};
+
+function build_date_string() {
+    set_date_parameters()
+
+    const calendar_type = document.getElementById('event_calendar_type').value;
+    let dados = {};
+
+    dados = {
+        base: localStorage.getItem('sezimal-calendar-base'),
+        format_token: localStorage.getItem('sezimal-calendar-format-token'),
+        locale: localStorage.getItem('sezimal-calendar-locale'),
+        time_zone: localStorage.getItem('sezimal-calendar-time-zone'),
+        hour_format: localStorage.getItem('sezimal-calendar-hour-format'),
+
+        calendar_type: calendar_type,
+        easter_sign: document.getElementById('event_easter_sign').value,
+        easter_days: document.getElementById('event_easter_days').value,
+        year_sign: document.getElementById('event_date_year_sign').value,
+        year: document.getElementById('event_date_year').value,
+        month: document.getElementById('event_date_month').value,
+        day: document.getElementById('event_date_day').value,
+        weekday_sign: document.getElementById('event_date_weekday_sign').value,
+        weekday: document.getElementById('event_date_weekday').value,
+        weekday_number: document.getElementById('event_date_weekday_number').value,
+    };
+
+    fetch('/calendar/build-date-string', {
+        method: 'post',
+        body: JSON.stringify(dados),
+        headers: {
+            'Accept': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json; charset=UTF-8'
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((dados) => {
+        document.getElementById('date_error').innerHTML = dados.date_error;
+        document.getElementById('time_error').innerHTML = dados.time_error;
+
+        if (dados.date_error == '') {
+            document.getElementById('date_error').hidden = true;
+            document.getElementById('date_this_year').innerHTML = dados.date_this_year;
+        } else {
+            document.getElementById('date_error').hidden = false;
+        };
+    });
+};
+
+
+function set_today() {
+    var today = new Date();
+    console.log('data', today);
+    document.getElementById('event_calendar_type').value = 'ISO';
+    document.getElementById('event_date_year').value = today.getFullYear().toString();
+    document.getElementById('event_date_month').value = (today.getMonth() + 1).toString().padStart(2, '0');
+    document.getElementById('event_date_day').value = today.getDate().toString().padStart(2, '0');
+};
+
+set_today();
+build_date_string();
+</script>

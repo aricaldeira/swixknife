@@ -1,6 +1,8 @@
 
+import urllib
+
 from  locale_detection import browser_preferred_locale
-from flask import Response
+from flask import Response, request
 from main import app, sitemapper, sezimal_render_template
 
 from swixknife.localization import sezimal_locale, SezimalLocale
@@ -77,9 +79,23 @@ def _icon_url(base, locale, time_zone):
 @app.route('/now/<string:locale>')
 @app.route('/now/<string:locale>/<path:time_zone>')
 def api_short_now(locale: str = None, time_zone: str = None) -> str:
-    url = _manifest_url('now', locale, time_zone)
-    locale = sezimal_locale(locale or browser_preferred_locale())
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        base, format_token, locale, time_zone, hour_format, hemisphere = cookie.split('|')
+
+        url = _manifest_url('now', locale, time_zone)
+        print('pegou', cookie)
+        locale = sezimal_locale(locale)
+        locale.DEFAULT_TIME_ZONE = time_zone
+        locale.HOUR_FORMAT = hour_format
+        locale.DEFAULT_HEMISPHERE = hemisphere
+
+
+    else:
+        url = _manifest_url('now', locale, time_zone)
+        locale = sezimal_locale(locale or browser_preferred_locale())
+        time_zone = time_zone or locale.DEFAULT_TIME_ZONE
+
     digits = locale.DIGITS
 
     date_time = SezimalDateTime.now(time_zone=time_zone)
@@ -138,7 +154,6 @@ def decimal_now(locale: str = None, time_zone: str = None) -> str:
     url = _manifest_url('decimal-now', locale, time_zone)
     locale = sezimal_locale(locale or browser_preferred_locale())
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-    print('locale', locale, time_zone)
     digits = locale.DIGITS
 
     try:
@@ -151,8 +166,6 @@ def decimal_now(locale: str = None, time_zone: str = None) -> str:
     text = open('template/decimal-now.html').read()
 
     date_format = locale.DATE_FORMAT.replace('#', '#9').replace('#9Y', '#9gy').replace('#9X', '#9gy').replace('#9?Y', '#9?gy').replace('#9y', '#9gy') # .replace('#9?m', '%m')
-
-    print(date_time, date_format)
 
     if date_time.is_dst:
         if locale.RTL:

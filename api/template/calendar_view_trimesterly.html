@@ -1,0 +1,90 @@
+{% if not dark_mode %}
+    {% include 'calendar_light_mode.html' %}
+{% endif %}
+<div id="calendar_header" class="calendar-header-fixed">
+{% include 'calendar_view_change_view.html' %}
+<table class="center" style="border-spacing: 0px;">
+    <colgroup>
+        <col span="1" width="5%">
+        <col span="1">
+        <col span="1" width="5%">
+    </colgroup>
+    <tr>
+        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+    </tr>
+    <tr style="vertical-align: middle;">
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'quarter')">‹</td>
+        {% if base == 10 %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {% if date_last_month.year == date_next_month.year %}
+                {{ date_last_month.format((locale.SEZIMAL_YEAR_FORMAT if format_token == '!' else locale.YEAR_FORMAT) + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' else ''}}{{ date_last_month.format('#M', locale) }} — {{ date_next_month.format('#M', locale) }}{{ date_next_month.format(locale.DATE_SEPARATOR + (locale.SEZIMAL_YEAR_FORMAT if format_token == '!' else locale.YEAR_FORMAT), locale) if locale.DATE_ENDIANNESS != 'B' else ''}}
+            {% elif format_token == '!' %}
+                {{ date_last_month.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ date_next_month.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% else %}
+                {{ date_last_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ date_next_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% endif %}
+            </td>
+        {% elif base == 14 %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {% if date_last_month.year == quarter_last_month.year %}
+                {{ date_last_month.format('#' + format_token +'sy' + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' else ''}}{{ date_last_month.format('#9M', locale) }} — {{ date_next_month.format('#9M', locale) }}{{ date_next_month.format(locale.DATE_SEPARATOR + '#' + format_token +'sy', locale) if locale.DATE_ENDIANNESS != 'B' else ''}}
+            {% else %}
+                {{ date_last_month.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ date_next_month.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% endif %}
+            </td>
+        {% elif base == 20 %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {% if date_last_month.year == quarter_last_month.year %}
+                {{ date_last_month.format('#' + format_token +'sy' + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' else ''}}{{ date_last_month.format('#9M', locale) }} — {{ date_next_month.format('#9M', locale) }}{{ date_next_month.format(locale.DATE_SEPARATOR + '#' + format_token +'sy', locale) if locale.DATE_ENDIANNESS != 'B' else ''}}
+            {% else %}
+                {{ date_last_month.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ date_next_month.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% endif %}
+            </td>
+        {% endif %}
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'quarter')">›</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+    </tr>
+</table>
+</div>
+<table class="center" style="border-spacing: 0px;" id="trimester_table">
+    <colgroup>
+        <col span="1">
+        <col span="1" width="1%">
+        <col span="1">
+        <col span="1" width="1%">
+        <col span="1">
+    </colgroup>
+    <tr style="vertical-align: top;">
+        <td>
+        {% with year_view=True, reference_date=date_last_month, sezimal_month_number=date_last_month.month, sezimal_year_number=date_last_month.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view=True, sezimal_month_number=date.month, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view=True, reference_date=date_next_month, sezimal_month_number=date_next_month.month, sezimal_year_number=date_next_month.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript" id="view_script">
+function auto_refresh(){
+    const header_height = document.getElementById('calendar_header').getBoundingClientRect().height;
+
+    document.getElementById('trimester_table').setAttribute(
+        'style',
+        'border-spacing: 0px; padding-top: ' + header_height + 'px;'
+    );
+};
+auto_refresh();
+</script>

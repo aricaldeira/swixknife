@@ -4,26 +4,58 @@
     background-color: black;
     color: #fafafa;
 
-    font-size: 1.2em;
-    line-height: 1.5em;
+    font-size: 1.5em;
+    line-height: 1.875em;
 
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP Light', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP Light', 'Noto Sans Mono', monospace;
-    --font-family-monospace: 'Sezimal QP Light', 'Noto Sans Mono', monospace;
+    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Mono', monospace;
 }
 html, body {
     height: 100%;
     background-color: black;
     color: #fafafa;
-    margin: 0;
-    max-width: 864px;
-    width: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+/*     max-width: 864px; */
+    width: 96%;
     position: relative;
-    margin: auto;
+/*     margin: auto; */
 }
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.17rem;
+}
+h4 {
+    font-size: 1rem;
+}
+h5 {
+    font-size: 0.83rem;
+}
+h6 {
+    font-size: 0.67rem;
+}
+input, p, select, option {
+    font-size: 1rem;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Mono', monospace;
+}
+input {
+/*     height: 1.5rem; */
+    vertical-align: middle;
+}
+
 .buttons {
     position: absolute;
     bottom: 0px;
@@ -139,13 +171,13 @@ mn {
     margin: 6px;
 }
 .units-explanation {
-    font-size: 14pt;
+/*     font-size: 14pt; */
     text-align: left;
 
 /*     font-variant-numeric: diagonal-fractions; */
 
     .title {
-        font-size: 18pt;
+/*         font-size: 18pt; */
         text-align: center;
 /*         font-weight: bold; */
         color: black;
@@ -172,9 +204,9 @@ mn {
         overflow: hidden;
         text-overflow: '…';
     }
-    mfrac {
+/*    mfrac {
         font-size: 18pt;
-    }
+    }*/
     a {
         text-decoration: none;
         color: #2E7D32;
@@ -207,7 +239,7 @@ mn {
   width: 150px;
   background-color: #212121;
   color: #fafafa;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   line-height: 1.5em;
   text-align: center;
   padding: 5px 0;
@@ -253,21 +285,16 @@ mn {
     margin-right: 3px;
 }
 
-h1 {
-    font-size: 18pt;
-    font-weight: bold;
-}
-
 .mono-text {
     font-family: 'Sezimal Mono', monospace;
 }
 
 .title {
-    font-size: 18pt;
+    font-size: 2rem;
     text-align: center;
     color: black;
     background: #fafafa;
-    line-height: 2em;
+    line-height: 2rem;
 
     > a {
         color: black;
@@ -278,7 +305,7 @@ h1 {
 .constant {
 /*     font-family: 'Sezimal QP Light' !important; */
     font-family: 'Libertinus Serif', 'Libertinus Math', 'Sezimal QP Light' !important;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .scale-img:hover{
@@ -328,4 +355,100 @@ h1 {
 }
 .rainbow-violet {
     color: #aa00d4;
+}
+
+.calendar-time-pointer {
+    position: absolute;
+    top: 9rem;
+    left: 0;
+    width: 100%;
+    color: #ff0000;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    text-align: center;
+
+    span {
+        display: flex;
+        flex-direction: row;
+/*         margin-left: 12.5%; */
+    }
+    span:before, span:after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 2px solid #ff0000;
+        margin: auto;
+    }
+}
+
+.calendar-time-pointer-weekly {
+    position: absolute;
+    top: 9rem;
+    left: 0;
+    width: 100%;
+    color: #ff0000;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    text-align: center;
+
+    span {
+        display: flex;
+        flex-direction: row;
+/*        margin-left: 6%;*/
+    }
+    span:before, span:after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 2px solid #ff0000;
+        margin: auto;
+    }
+}
+
+.calendar-header-fixed {
+    position: fixed;
+    top: 0px;
+    background: black;
+    z-index: 999;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        font-size: 0.55em;
+        line-height: 0.7em;
+    }
+
+    .calendar-time-pointer-weekly {
+        span:before, span:after {
+            border-bottom: 1px solid #ff0000;
+        }
+    }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.calendar-event-window {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    border: 4px solid white;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 2%;
+    margin-top: 3rem;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: auto;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+/*  background-color: rgba(0,0,0,0.4);*/
 }

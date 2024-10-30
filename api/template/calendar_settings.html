@@ -1,0 +1,220 @@
+<div id="calendar_settings" hidden>
+<table class="center" style="width: 66.67%">
+    <tr>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Locale
+            {% elif locale.LANG == 'bz' %}
+                Lokali
+            {% else %}
+                Locale
+            {% endif %}
+        </td>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Fuso horário
+            {% elif locale.LANG == 'bz' %}
+                Fuzu oraryu
+            {% else %}
+                Time zone
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            {% include 'calculator/locale-select.html' %}
+        </td>
+        <td style="vertical-align: top;">
+            {% include 'calendar_select_time_zone.html' %}
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Hemisfério
+            {% elif locale.LANG == 'bz' %}
+                Emisfèryu
+            {% else %}
+                Hemisphere
+            {% endif %}
+        </td>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Formato de hora
+            {% elif locale.LANG == 'bz' %}
+                Formatu di òra
+            {% else %}
+                Hour format
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <select id="hemisphere_select">
+                <option value="locale">
+                    {% if locale.LANG == 'pt' %}
+                        Padrão do locale
+                    {% elif locale.LANG == 'bz' %}
+                        Padrawn du lokali
+                    {% else %}
+                        Locale’s default
+                    {% endif %}
+                </option>
+                <option value="N">
+                    {% if locale.LANG == 'pt' %}
+                        Norte
+                    {% elif locale.LANG == 'bz' %}
+                        Nòrti
+                    {% else %}
+                        Northern
+                    {% endif %}
+                </option>
+                <option value="S">
+                    {% if locale.LANG == 'pt' %}
+                        Sul
+                    {% elif locale.LANG == 'bz' %}
+                        Suw
+                    {% else %}
+                        Southern
+                    {% endif %}
+                </option>
+            </select>
+            {# {% include 'calendar_input_date_formats.html' %} #}
+        </td>
+        <td style="vertical-align: top;">
+            <select id="hour_format_select">
+                <option value="locale">
+                    {% if locale.LANG == 'pt' %}
+                        Padrão do locale
+                    {% elif locale.LANG == 'bz' %}
+                        Padrawn du lokali
+                    {% else %}
+                        Locale’s default
+                    {% endif %}
+                </option>
+                <option value="24h">24 h</option>
+                <option value="12h">12 h</option>
+            </select>
+{#
+            <select id="holocene_select">
+                <option value="iso">
+                    {% if locale.LANG == 'pt' %}
+                        Padrão ISO
+                    {% elif locale.LANG == 'bz' %}
+                        Padrawn ISO
+                    {% else %}
+                        ISO’s default
+                    {% endif %}
+                </option>
+                <option value="holocene">
+                    {% if locale.LANG == 'pt' %}
+                        Holoceno (ISO + 10.000)
+                    {% elif locale.LANG == 'bz' %}
+                        Oloseno (ISO + 10.000)
+                    {% else %}
+                        Holocene (ISO + 10,000)
+                    {% endif %}
+                </option>
+            </select>
+#}
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Base numérica
+            {% elif locale.LANG == 'bz' %}
+                Bazi numérika
+            {% else %}
+                Number base
+            {% endif %}
+        </td>
+        <td style="vertical-align: top;">
+            {% if locale.LANG == 'pt' %}
+                Tema
+            {% elif locale.LANG == 'bz' %}
+                Tema
+            {% else %}
+                Theme
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <input type="radio" id="base_select_10" name="base_select" value="10">
+            <label for="base_select_10">
+                {% if locale.LANG == 'pt' %}
+                    Sezimal (seis; 012345)
+                {% elif locale.LANG == 'bz' %}
+                    Sezimaw (sêys; 012345)
+                {% else %}
+                    Sezimal (six; 012345)
+                {% endif %}
+            </label>
+            <br/>
+            <input type="radio" id="base_select_10!" name="base_select" value="10!">
+            <label for="base_select_10!">
+                {% if locale.LANG == 'pt' %}
+                    Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                {% elif locale.LANG == 'bz' %}
+                    Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                {% else %}
+                    Sezimal (six; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                {% endif %}
+            </label>
+            <br/>
+            <input type="radio" id="base_select_14" name="base_select" value="14">
+            <label for="base_select_14">
+                {% if locale.LANG == 'pt' %}
+                    Decimal (dez)
+                {% elif locale.LANG == 'bz' %}
+                    Desimaw (dèys)
+                {% else %}
+                    Decimal (ten)
+                {% endif %}
+            </label>
+            <br/>
+            <input type="radio" id="base_select_20" name="base_select" value="20">
+            <label for="base_select_20">
+                {% if locale.LANG == 'pt' %}
+                    Dozenal (doze; 0123456789↊↋)
+                {% elif locale.LANG == 'bz' %}
+                    Dozenaw (dozi; 0123456789↊↋)
+                {% else %}
+                    Dozenal (twelve; 0123456789↊↋)
+                {% endif %}
+            </label>
+        </td>
+        <td style="vertical-align: top;">
+            <input type="radio" id="theme_select_full_color" name="theme_select" value="FULL_COLOR">
+            <label for="theme_select_full_color">
+                {% if locale.LANG == 'pt' %}
+                    Colorido
+                {% elif locale.LANG == 'bz' %}
+                    Koloridu
+                {% elif locale.LANGUAGE_TAG == 'en-US' %}
+                    Colorful
+                {% else %}
+                    Colourful
+                {% endif %}
+            </label>
+            <br/>
+            <input type="radio" id="theme_select_gray" name="theme_select" value="GRAY">
+            <label for="theme_select_gray">
+                {% if locale.LANG == 'pt' %}
+                    Monocromático
+                {% elif locale.LANG == 'bz' %}
+                    Monokromátiku
+                {% elif locale.LANGUAGE_TAG == 'en-US' %}
+                    Grayscale
+                {% else %}
+                    Greyscale
+                {% endif %}
+            </label>
+        </td>
+    </tr>
+</table>
+<p class="center">
+<button onclick="apply_settings()">      Ok      </button>
+</p>
+</div>

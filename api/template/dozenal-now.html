@@ -22,7 +22,7 @@
         <p{'dir="rtl"' if locale.RTL else ""}>
             {date_time.format('#W', locale)}<br/>
             <span id="dozenal_time" class="dozenal_time" data-tooltip=" 99:99:99 ">{date_time.format(time_format.replace('#', '#↋↋'), locale)}</span><br/>
-            <span data-tooltip=" {date_time.format(locale.ISO_DATE_FORMAT, locale)} ">{date_time.format(date_format.replace('#', '#↋').replace('#↋Y', '#↋shY').replace('#↋y', '#↋-shy').replace('?', ''), locale)}</span><br/>
+            <span data-tooltip=" {date_time.format(locale.ISO_DATE_FORMAT, locale)} ">{date_time.format(date_format.replace('#', '#↋').replace('#↋Y', '#↋gY').replace('#↋y', '#↋-gY').replace('?', ''), locale)}</span><br/>
             <br/>
             <span data-tooltip=" {date_time.format(season_format.replace('@', ''), locale)} ">{date_time.format(season_format, locale)}</span><br/>
             <span data-tooltip=" {date_time.format(moon_format.replace('@', ''), locale)} ">{date_time.format(moon_format, locale)}</span><br/>
@@ -30,7 +30,7 @@
         <br />
         <table>
             <thead>
-                <tr><th colspan="7" data-tooltip=" ISO {locale.digit_replace(date_time.format('#9gy', locale))} ― Sezimal Holocene {locale.digit_replace(date_time.format('#9Y', locale))} ">{date_time.format('#↋shY', locale)}</th></tr>
+                <tr><th colspan="7" data-tooltip=" ISO {locale.digit_replace(date_time.format('#9gy', locale))} ― Sezimal Holocene {locale.digit_replace(date_time.format('#9Y', locale))} ">{date_time.format('#↋gY', locale)}</th></tr>
                 <tr><th colspan="7">{date_time.format('#!M', locale)}</th></tr>
                 <tr>
                     <th {'class="weekday_monday"'    if date_time.weekday ==  1 else ''} data-tooltip=" {locale.WEEKDAY_NAME[0]} "> {locale.WEEKDAY_ABBREVIATED_NAME[0]} </th>

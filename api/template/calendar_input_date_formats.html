@@ -1,0 +1,133 @@
+<input id="date_format" value="{{ locale.DATE_FORMAT }}" style="width: 12rem; text-align: center;" />
+<input id="date_long_format" value="{{ locale.DATE_LONG_FORMAT }}" style="width: 12rem; text-align: center;" />
+<p style="font-weight: bold; text-align: left;">Number Format Tags</p>
+<pre style="text-align: left;">
+<b>#</b><i>{% if base == 10 %}[1][2][3]{% else %}[1][2]{% endif %}</i><b>[x]</b>
+<b>#</b> is mandatory, it starts the formatting tag;
+<b>[x]</b> is mandatory, it has to be on of the following:
+    <b>d</b> day: {{ date.format('#' + format_token + 'd') }}
+    <b>w</b> weekday number: {{ date.format('#' + format_token + 'w (#W)') }}
+    <b>m</b> month: {{ date.format('#' + format_token + 'm (#M)') }}
+    <b>q</b> quarter: {{ date.format('#' + format_token + 'q') }}{% if base != 10 %}
+    <b>Y</b> year: {{ date.format('#' + format_token + 'sY') }}{% else %}
+    <b>y</b> year with Shastadari Holocene Epoch (+ 200,000): {{ date.format('#y') }}
+    <b>sy</b> Symmetry454 plain year: {{ date.format('#sy') }}
+    <b>shy</b> Symmetry454 year with Decimal Holocene Epoch (+ 10,000 ₁₄): {{ date.format('#shy') }}
+{% endif %}
+    <b>dQ</b> day in quarter: {{ date.format('#' + format_token + 'dQ') }}
+    <b>dY</b> day in year: {{ date.format('#' + format_token + 'dY') }}
+    <b>wM</b> week in month: {{ date.format('#' + format_token + 'wM') }}
+    <b>wQ</b> week in quarter: {{ date.format('#' + format_token + 'wQ') }}
+    <b>wY</b> week in year: {{ date.format('#' + format_token + 'wY') }}
+    <b>mQ</b> month in quarter: {{ date.format('#' + format_token + 'mQ') }}
+    <b>tdM</b> total days in month: {{ date.format('#' + format_token + 'tdM') }}
+    <b>tdQ</b> total days in quarter: {{ date.format('#' + format_token + 'tdQ') }}
+    <b>tdY</b> total days in year: {{ date.format('#' + format_token + 'tdY') }}
+    <b>twM</b> total weeks in month: {{ date.format('#' + format_token + 'twM') }}
+    <b>twQ</b> total weeks in quarter: {{ date.format('#' + format_token + 'twQ') }}
+    <b>twY</b> total weeks in year: {{ date.format('#' + format_token + 'twY') }}{% if base == 10 %}
+<i>[1]</i> is optional, it may be one of the following:
+    <b>9</b> forces use of base ten (default is base six)
+    <b>↋</b> forces use of base twelve (default is base six)
+    <b>Z</b> compresses base six into base thirty-six, using letters as digits
+    <b>@</b> compresses base six into base thirty-six, using regularized digits (with diacritics)
+    <b>!</b> uses Shastadari digits (only for base six)
+    <b>@!</b> same as <b>@</b>, but using Shastadari digits
+<i>[2]</i> is optional, it may only be <b>?</b>, and it forces the use of native digits;
+    it only has effect on locales that use a different set of digits:
+        Arabic, Farsi, Bangla, Hindi etc.
+<i>[3]</i> is optional, it may be one of the following:
+    <b>-</b> remove left padding zeroes from result: 01 -> 1
+    <b>></b> only for year: uses only the last digts: {{ date.format('#y') }} -> {{ date.format('#>y') }};
+      valid only for years between 213100 and 213555,
+      otherwise it uses the full year number{% else %}
+<i>[1]</i> is optional, it may only be <b>?</b>, and it forces the use of native digits;
+    it only has effect on locales that use a different set of digits:
+        Arabic, Farsi, Bangla, Hindi etc.
+<i>[2]</i> is optional, it may only be <b>-</b>, and it removes left padding
+        zeroes from the result: 01 -> 1{% endif %}
+</pre>
+{% if base == 10 %}
+<p style="font-weight: bold; text-align: left;">Year Format Tags</p>
+<pre style="text-align: left;">
+<b>#</b><i>[1][2][3]</i><b>[x]</b>
+<b>#</b> is mandatory, it starts the formatting tag;
+<b>[x]</b> is mandatory, it has to be on of the following:
+    Y year with Sezimal Holocene Epoch (+ 200,000): {{ date.format('#y -> #Y') }}
+    sY plain year: {{ date.format('#sy -> #sY') }}
+    shY year with Holocene Epoch (+ 10,000 ₁₀): {{ date.format('#shy -> #shY') }}
+
+1 is optional, it may be one of the following:
+    9 forces use of base ten (default is base six)
+    ↋ forces use of base twelve (default is base six)
+    Z compresses base six into base thirty-six, using letters as digits
+    @ compresses base six into base thirty-six, using regularized digits (with diacritics)
+    ! uses Shastadari digits (only for base six)
+    @! same as @, but using Shastadari digits
+
+2 is optional, it’s used to force a particular digits group separator; it may be one of the following:
+    narrow no-break space (\u202f) - ISO’s default
+    a full stop . (\u002e)
+    a comma , (\u02c)
+    an underscore _ (\u005f)
+    a vertical apostrophe ' (\u0027)
+    a right single quotation mark/typographical apostrophe ’ (\u2019)
+    a modifier letter apostrophe ʼ (\u02bc)
+    a dot abot ˙ (\u02d9)
+    a plain space (\u0020)
+    a non-break space (\u00a0)
+    en quad space (\u2000)
+    em quad space (\u2001)
+    en space (\u2002)
+    em space (\u2003)
+    three-per-em space (\u2004)
+    four-per-em space (\u2005)
+    six-per-em space (\u2006)
+    figure space (\u2007)
+    punctuation space (\u2008)
+    thin space (\u2009)
+    hair space (\u200a)
+    medium mathematical space (\u205f)
+    Shastadari’s shadara (6⁶) separator 󱹬 (\U000f1e6c)
+    Shastadari’s arda (6³) separator 󱹭 (\U000f1e6d)
+
+3 is optional, it may only be:
+    > uses only the last digts: 213212 -> 212, only for years between 213100 and 213555, otherwise it uses the full year number
+    > uses only the last digts: 2024 -> 24, only for years between 2010 and 2099, otherwise it uses the full year number
+</pre>
+{% endif %}
+<p style="font-weight: bold; text-align: left;">Text Format Tags</p>
+<pre style="text-align: left;">
+<b>#</b><i>[1][2]</i><b>[x]</b>
+<b>#</b> is mandatory, it starts the formatting tag;
+<b>[x]</b> is mandatory, it has to be on of the following:
+    <b>M</b> month name
+    <b>W</b> weekday name
+    <b>O</b> locale’s ordinal number suffix;
+        some locales use the ordinal suffix only for the 1st day
+        of the month, others, with any date;
+<i>[1]</i> is optional, it may be one of the following:
+    <b>@</b> use locale’s abbreviated form for the weekday or month name;
+      e.g. French abbreviations:
+          lundi, mardi, mercr., jeudi, vendr., sam., dim.
+          janv., févr., mars, avr., mai, juin, juill. etc.
+    <b>3</b> use the first 3 characters;
+      e.g. French:
+          lun, mar, mer, jeu, ven, sam, dim
+          jan, fév, mar, avr, mai, jui, jui etc.
+    <b>2</b> use the first 2 characters;
+      e.g. French:
+          lu, ma, me, je, ve, sa, di
+          ja, fé, ma, av, ma, ju, ju etc.
+    <b>1</b> use only the first character;
+      e.g. French:
+          l, m, m, j, v, s, d
+          j, f, m, a, m, j, j etc.
+<i>[2]</i> is optional, it may be one of the following:
+    <b>!</b> forces all uppercase result
+    <b>?</b> forces all lowercase result
+    <b>></b> forces title case result
+    otherwise, the locale’s case is used as is, for example:
+        French defaults to all lowercase: lundi, mardi etc.
+        German defaults to all title case: Montag, Dienstag etc.
+</pre>

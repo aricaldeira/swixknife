@@ -1,0 +1,21 @@
+<select id="event_date_month" style="text-align: center;" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Mês
+{% elif locale.LANG == 'bz' %}
+Mez
+{% else %}
+Month
+{% endif %}">
+    <option id="event_date_month_01" value="01">{{ locale.MONTH_NAME[0] }}</option>
+    <option id="event_date_month_02" value="02">{{ locale.MONTH_NAME[1] }}</option>
+    <option id="event_date_month_03" value="03">{{ locale.MONTH_NAME[2] }}</option>
+    <option id="event_date_month_04" value="04">{{ locale.MONTH_NAME[3] }}</option>
+    <option id="event_date_month_05" value="05">{{ locale.MONTH_NAME[4] }}</option>
+    <option id="event_date_month_06" value="06">{{ locale.MONTH_NAME[5] }}</option>
+    <option id="event_date_month_07" value="07">{{ locale.MONTH_NAME[6] }}</option>
+    <option id="event_date_month_08" value="08">{{ locale.MONTH_NAME[7] }}</option>
+    <option id="event_date_month_09" value="09">{{ locale.MONTH_NAME[8] }}</option>
+    <option id="event_date_month_10" value="10">{{ locale.MONTH_NAME[9] }}</option>
+    <option id="event_date_month_11" value="11">{{ locale.MONTH_NAME[10] }}</option>
+    <option id="event_date_month_12" value="12">{{ locale.MONTH_NAME[11] }}</option>
+    <option id="event_date_month_13" value="13">Adar Bet אדר ב׳</option>
+</select>

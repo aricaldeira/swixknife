@@ -1,0 +1,41 @@
+<select id="event_easter_sign" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Sinal
+{% elif locale.LANG == 'bz' %}
+Sinaw
+{% else %}
+Sign
+{% endif %}">
+    <option id="event_easter_sign_posivite" value="+">
+        {% if locale.LANG == 'pt' %}
+            mais
+        {% elif locale.LANG == 'bz' %}
+            máys
+        {% else %}
+            plus
+        {% endif %}
+    </option>
+    <option id="event_easter_sign_negative" value="-">
+        {% if locale.LANG == 'pt' %}
+            menos
+        {% elif locale.LANG == 'bz' %}
+            menus
+        {% else %}
+            minus
+        {% endif %}
+    </option>
+</select>
+<span id="event_easter_days_text">
+    <input hidden id="event_easter_days" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Dias
+{% elif locale.LANG == 'bz' %}
+Dias
+{% else %}
+Days
+{% endif %}" style="width: 4rem; text-align: center;" type="number" />{% if locale.LANG == 'pt' %}
+dias
+{% elif locale.LANG == 'bz' %}
+dias
+{% else %}
+days
+{% endif %}
+</span>

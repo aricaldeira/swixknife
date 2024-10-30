@@ -226,7 +226,9 @@ function auto_refresh(){{
     }};
 
     // time = PAIRS[uta] + ':' + PAIRS[posha] + ':' + PAIRS[agrima];
-    time = uta + ':' + posha + ':' + agrima;
+    // time = PAIRS[uta] + '󱹷' + PAIRS[posha] + '󱹷' + PAIRS[agrima];
+    //time = uta + ':' + posha + ':' + agrima;
+    time = uta + '󱹮' + posha + '󱹮' + agrima;
 
     if (uta == '01') {{
         document.getElementById("sezimal_time_spellout_uta_ls").innerText = NAMES[uta]; // + ' uta';

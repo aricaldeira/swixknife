@@ -1,0 +1,144 @@
+{% if not calendar_presentation %}
+{% if not dark_mode %}
+    {% include 'calendar_light_mode.html' %}
+{% endif %}
+<div id="calendar_header" class="calendar-header-fixed">
+{% include 'calendar_view_change_view.html' %}
+{% endif %}
+<table class="center" style="border-spacing: 0px;">
+    <colgroup>
+        <col span="1" width="5%">
+        <col span="1" width="5%">
+        <col span="1" width="5%">
+        <col span="1">
+        <col span="1" width="5%">
+        <col span="1" width="5%">
+        <col span="1" width="5%">
+    </colgroup>
+    <tr>
+        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+    </tr>
+    <tr style="vertical-align: middle;">
+        {% if calendar_presentation %}
+            <td colspan="2" style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;"> </td>
+        {% else %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', '100_years')">‹«</td>
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', '10_years')">«</td>
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'year')">‹</td>
+        {% endif %}
+        {% if base != 10 %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format('#' + format_token + 'sy', locale)}}</td>
+        {% else %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.SEZIMAL_YEAR_FORMAT if format_token == '!' else locale.YEAR_FORMAT, locale)}}</td>
+        {% endif %}
+        {% if calendar_presentation %}
+            <td colspan="2" style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;"> </td>
+        {% else %}
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'year')">›</td>
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', '10_years')">»</td>
+            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', '100_years')">»›</td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+    </tr>
+</table>
+</div>
+<table class="center" style="border-spacing: 0px;" id="year_table">
+    <colgroup>
+        <col span="1">
+        <col span="1" width="1%">
+        <col span="1">
+        <col span="1" width="1%">
+        <col span="1">
+    </colgroup>
+    <tr style="vertical-align: top;">
+        <td>
+        {% with year_view = True, sezimal_month_number=1, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=2, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=3, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td>
+        {% with year_view = True, sezimal_month_number=4, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=5, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=10, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td>
+        {% with year_view = True, sezimal_month_number=11, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=12, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=13, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+    </tr>
+    <tr style="vertical-align: top;">
+        <td>
+        {% with year_view = True, sezimal_month_number=14, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=15, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+        <td> </td>
+        <td>
+        {% with year_view = True, sezimal_month_number=20, sezimal_year_number=date.year, weekday_name_size=1 %}
+            {% include 'calendar_base_month.html' %}
+        {% endwith %}
+        </td>
+    </tr>
+</table>
+{% if not calendar_presentation %}
+<script type="text/javascript" id="view_script">
+function auto_refresh(){
+    const header_height = document.getElementById('calendar_header').getBoundingClientRect().height;
+
+    document.getElementById('year_table').setAttribute(
+        'style',
+        'border-spacing: 0px; padding-top: ' + header_height + 'px;'
+    );
+};
+auto_refresh();
+</script>
+{% endif %}

@@ -1,5 +1,5 @@
 
-const per_symbols = ['%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵', '󱹶', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿'];
+const per_symbols = ['%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵'];
 
 function button_click(button) {
     update_calculation(button.value);

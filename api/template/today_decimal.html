@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ locale.LANGUAGE_TAG }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title">Symmetry454 Calendar</title>
+        <meta name="description" content="Symmetry454 Calendar" />
+        <meta name="author" content="Ari Caldeira" />
+        {% include 'sezimal_css.html' %}
+<style>
+html, body {
+    max-width: 100%;
+    width: 100%;
+    margin: auto;
+}
+</style>
+    </head>
+    <body>
+    {% include 'calendar_settings.html' %}
+    <div id="calendar_view"></div>
+    <div id="calendar_event_view" class="calendar-event-window">
+    </body>
+    <script src="/static/js/calendar_today_api.js"></script>
+    <script src="/static/js/calendar_load.js"></script>
+    <script>
+        localStorage.setItem('sezimal-calendar-base', '14');
+        localStorage.setItem('sezimal-calendar-format-token', '9');
+        calendar_load();
+    </script>
+</html>

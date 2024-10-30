@@ -2,6 +2,8 @@
 const LANGUAGE_TAGS = {
     'ar_latn': 'ar-Latn',
     'ar': 'ar',
+    'bn_latn': 'bn-Latn',
+    'bn': 'bn',
     'bz_br': 'bz-BR',
     'bz_pt': 'bz-PT',
     'bz': 'bz',
@@ -58,6 +60,7 @@ const LANGUAGE_TAGS = {
     'ja': 'ja',
     'kea': 'kea',
     'ko': 'ko',
+    'mt': 'mt',
     'nl': 'nl',
     'pl': 'pl',
     'pt_ao': 'pt-AO',

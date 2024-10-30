@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{locale.LANGUAGE_TAG}">
+<html lang="{locale.LANGUAGE_TAG}" dir="{'rtl' if locale.RTL else 'ltr'}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -131,6 +131,7 @@ function auto_refresh(){{
     var agrima = time.slice(4, 6);
 
     time = uta + ':' + posha + ':' + agrima;
+    // time = uta + '󱹷' + posha + '󱹷' + agrima;
 
     //
     // Regular time in tooltip

@@ -1,0 +1,72 @@
+<select id="event_calendar_type" onchange="build_date_string()">
+    <optgroup label="{% if locale.LANG == 'pt' %}
+Calendários civis
+{% elif locale.LANG == 'bz' %}
+Kalendaryus sivís
+{% else %}
+Civil calendars
+{% endif %}">
+        <option id="event_calendar_sezimal" value="SYM">
+            {% if base == 10 %}
+                {{ locale.CALENDAR_TYPE['SEZ'] }}
+            {% else %}
+                {{ locale.CALENDAR_TYPE['SYM'] }}
+            {% endif %}
+        </option>
+        <option id="event_calendar_iso" value="ISO">
+            {{ locale.CALENDAR_TYPE['ISO'] }}
+        </option>
+{#
+        <option id="event_calendar_israeli" value="ISR">
+            {{ locale.CALENDAR_TYPE['ISR'] }}
+        </option>
+        <option id="event_calendar_indian" value="IND">
+            {{ locale.CALENDAR_TYPE['IND'] }}
+        </option>
+#}
+    </optgroup>
+    <optgroup label="{% if locale.LANG == 'pt' %}
+Calendários religiosos
+{% elif locale.LANG == 'bz' %}
+Kalendaryus relijiòzus
+{% else %}
+Religious calendars
+{% endif %}">
+        <option id="event_calendar_julian" value="JUL">
+            {{ locale.CALENDAR_TYPE['JUL'] }}
+        </option>
+        <option id="event_calendar_jewish" value="JEW">
+            {{ locale.CALENDAR_TYPE['JEW'] }}
+        </option>
+        <option id="event_calendar_islamic" value="HIJ">
+            {{ locale.CALENDAR_TYPE['HIJ'] }}
+        </option>
+        <option id="event_calendar_iranian" value="IRN">
+            {{ locale.CALENDAR_TYPE['IRN'] }}
+        </option>
+    </optgroup>
+    <optgroup label="{% if locale.LANG == 'pt' %}
+Páscoa (referencial)
+{% elif locale.LANG == 'bz' %}
+Paskwa (referensyaw)
+{% else %}
+Easter (referencial)
+{% endif %}">
+        <option id="event_calendar_sezimal_easter" value="SYM+EASTER">
+            {% if base == 10 %}
+                {{ locale.CALENDAR_TYPE['SEZ+EASTER'] }}
+            {% else %}
+                {{ locale.CALENDAR_TYPE['SYM+EASTER'] }}
+            {% endif %}
+        </option>
+        <option id="event_calendar_iso_easter" value="ISO+EASTER">
+            {{ locale.CALENDAR_TYPE['ISO+EASTER'] }}
+        </option>
+        <option id="event_calendar_julian_easter" value="JUL+EASTER">
+            {{ locale.CALENDAR_TYPE['JUL+EASTER'] }}
+        </option>
+        <option id="event_calendar_jewish_easter" value="JEW+EASTER">
+            {{ locale.CALENDAR_TYPE['JEW+EASTER'] }}
+        </option>
+    </optgroup>
+</select>

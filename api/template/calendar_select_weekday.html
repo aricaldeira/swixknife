@@ -1,0 +1,90 @@
+<span id="event_date_weekday_input">
+<select id="event_date_weekday_sign" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Sinal
+{% elif locale.LANG == 'bz' %}
+Sinaw
+{% else %}
+Sign
+{% endif %}">
+    <option id="event_date_weekday_sign_none" value="_"> </option>
+    <option id="event_date_weekday_sign_posivite" value="+">
+        {% if locale.LANG == 'pt' %}
+            e avança para
+        {% elif locale.LANG == 'bz' %}
+            i avansa pra
+        {% else %}
+            on/next
+        {% endif %}
+    </option>
+    <option id="event_date_weekday_sign_negative" value="-">
+        {% if locale.LANG == 'pt' %}
+            e adianta para
+        {% elif locale.LANG == 'bz' %}
+            i adianta pra
+        {% else %}
+            on/previous
+        {% endif %}
+    </option>
+</select>
+<select hidden id="event_date_weekday_number" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Quantos dias
+{% elif locale.LANG == 'bz' %}
+Kwantus dias
+{% else %}
+How many days
+{% endif %}">
+    <option id="event_date_weekday_number_none" value="_"> </option>
+    <option id="event_date_weekday_number_1" value="1">
+        {% if locale.LANG == 'pt' %}
+            1ª/1º
+        {% elif locale.LANG == 'bz' %}
+            1ᵃ̱/1ᵘ̱
+        {% else %}
+            1st
+        {% endif %}
+    </option>
+    <option id="event_date_weekday_number_2" value="2">
+        {% if locale.LANG == 'pt' %}
+            2ª/2º
+        {% elif locale.LANG == 'bz' %}
+            2ᵃ̱/2ᵘ̱
+        {% else %}
+            2nd
+        {% endif %}
+    </option>
+    <option id="event_date_weekday_number_3" value="3">
+        {% if locale.LANG == 'pt' %}
+            3ª/3º
+        {% elif locale.LANG == 'bz' %}
+            3ᵃ̱/3ᵘ̱
+        {% else %}
+            3rd
+        {% endif %}
+    </option>
+    <option id="event_date_weekday_number_4" value="4">
+        {% if locale.LANG == 'pt' %}
+            4ª/4º
+        {% elif locale.LANG == 'bz' %}
+            4ᵃ̱/4ᵘ̱
+        {% else %}
+            4th
+        {% endif %}
+    </option>
+</select>
+<select hidden id="event_date_weekday" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+Dia da semana
+{% elif locale.LANG == 'bz' %}
+Dia da semana
+{% else %}
+Weekday
+{% endif %}">
+    <option id="event_date_weekday_none" value="_"> </option>
+    <option id="event_date_weekday_monday" value="MON">{{ locale.WEEKDAY_NAME[0] }}</option>
+    <option id="event_date_weekday_monday" value="TUE">{{ locale.WEEKDAY_NAME[1] }}</option>
+    <option id="event_date_weekday_monday" value="WED">{{ locale.WEEKDAY_NAME[2] }}</option>
+    <option id="event_date_weekday_monday" value="THU">{{ locale.WEEKDAY_NAME[3] }}</option>
+    <option id="event_date_weekday_monday" value="FRI">{{ locale.WEEKDAY_NAME[4] }}</option>
+    <option id="event_date_weekday_monday" value="SAT">{{ locale.WEEKDAY_NAME[5] }}</option>
+    <option id="event_date_weekday_monday" value="SUN">{{ locale.WEEKDAY_NAME[6] }}</option>
+</select>
+</span>

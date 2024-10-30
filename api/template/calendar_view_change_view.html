@@ -1,0 +1,72 @@
+<div style="font-size: 0.5rem; line-height: 0.5rem;"> </div>
+<table class="center" style="border-spacing: 0px; vertical-align: middle;">
+    <tr>
+        <td onclick="open_settings()">☰</td>
+        <td onclick="change_view('yearly')">
+            {{ change_view_twelve }}
+        </td>
+        <td onclick="change_view('quarterly')">
+        {% if date.month >= 14 and date.is_leap %}
+            {{ change_view_four }}-<b><i>{{ change_view_five }}</i></b>-{{ change_view_five }}
+        {% else %}
+            {% if date.month in (1, 4, 11, 14) %}
+                <b><i>{{ change_view_four }}</i></b>-{{ change_view_five }}-{{ change_view_four }}
+            {% elif date.month in (3, 10, 13, 20) %}
+                {{ change_view_four }}-{{ change_view_five }}-<b><i>{{ change_view_four }}</i></b>
+            {% else %}
+                {{ change_view_four }}-<b><i>{{ change_view_five }}</i></b>-{{ change_view_four }}
+            {% endif %}
+        {% endif %}
+        </td>
+        {% if (not date.is_long_month) or date.month == 20 %}
+            <td onclick="change_view('trimesterly')">
+            {% if date.month == 20 and date.is_leap %}
+                {{ change_view_five }}-<b><i>{{ change_view_five }}</i></b>-{{ change_view_four }}
+            {% elif date.month == 1 and date_last_month.is_leap %}
+                {{ change_view_five }}-<b><i>{{ change_view_four }}</i></b>-{{ change_view_five }}
+            {% elif date.month in (1, 4, 11, 14) %}
+                {{ change_view_four }}-<b><i>{{ change_view_four }}</i></b>-{{ change_view_five }}
+            {% else %}
+                {{ change_view_five }}-<b><i>{{ change_view_four }}</i></b>-{{ change_view_four }}
+            {% endif %}
+            </td>
+        {% endif %}
+        <td onclick="change_view('monthly')">
+        {% if date.is_long_month %}
+            {{ change_view_five }}
+        {% else %}
+            {{ change_view_four }}
+        {% endif %}
+        </td>
+        <td onclick="change_view('weekly')">
+            {{ change_view_seven }}
+        </td>
+        <td onclick="change_view('daily')">
+            {{ change_view_one }}
+        </td>
+        {% if str(now.date) != str(date.date) %}
+            <td onclick="update_calendar('today')">
+            {% if base == 10 %}
+                {% if now.year != date.year %}
+                    {{ now.format(locale.SEZIMAL_DATE_TEXT_SHORT_MONTH_FORMAT if format_token == '!' else locale.DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
+                {% else %}
+                    {{ now.format(locale.SEZIMAL_TEXT_SHORT_MONTH_DAY_FORMAT if format_token == '!' else locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
+                {% endif %}
+            {% elif base == 14 %}
+                {% if now.year != date.year %}
+                    {{ now.format(locale.DECIMAL_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
+                {% else %}
+                    {{ now.format(locale.DECIMAL_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
+                {% endif %}
+            {% elif base == 20 %}
+                {% if now.year != date.year %}
+                    {{ now.format(locale.DOZENAL_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
+                {% else %}
+                    {{ now.format(locale.DOZENAL_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
+                {% endif %}
+            {% endif %}
+            </td>
+        {% endif %}
+        <td onclick="open_event_window()">◎</td>
+    </tr>
+</table>

@@ -97,9 +97,6 @@ def api_calculator_process() -> dict:
         or calculator.decimal_unit.startswith('pi_'):
         calculator.unit_as_fraction = True
 
-    print('dados antes', dados)
-    print()
-
     calculator.debug = True
 
     if not dados['value']:
@@ -420,14 +417,6 @@ def api_calculator_process() -> dict:
         if dados['spellout']:
             resposta['show_spellout'] = True
             resposta['spellout'] = calculator.spellout
-
-    # resposta['display'] += ' ⹁ ⹂ ⹉ :'
-    print('dados', dados)
-    print()
-    print('expressão', calculator.expression)
-    print()
-    print('resposta', resposta)
-    print()
 
     return jsonify(resposta)
 

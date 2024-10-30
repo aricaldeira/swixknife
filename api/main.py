@@ -32,12 +32,22 @@ def sezimal_render_template(template_name_or_list, **context) -> str:
     # Protects the sezimal punctuation from being
     # treated as spaces
     #
-    res = res.replace('󱹮', '\u200d󱹮\u200d')
-    res = res.replace('󱹯', '\u200d󱹯\u200d')
-    res = res.replace('󱹭', '\u200d󱹭\u200d')
-    res = res.replace('󱹬', '\u200d󱹬\u200d')
-    res = res.replace('󱹶', '\u200d󱹶\u200d')
-    res = res.replace('󱹷', '\u200d󱹷\u200d')
+    res = res.replace('󱹮', '''\u200d󱹮\u200d''')
+    res = res.replace('󱹯', '''\u200d󱹯\u200d''')
+    res = res.replace('󱹭', '''\u200d󱹭\u200d''')
+    res = res.replace('󱹬', '''\u200d󱹬\u200d''')
+    res = res.replace('󱹶', '''\u200d󱹶\u200d''')
+    res = res.replace('󱹷', '''\u200d󱹷\u200d''')
+    res = res.replace('󱹱', '''\u200d󱹱\u200d''')
+    res = res.replace('󱹲', '''\u200d󱹲\u200d''')
+    res = res.replace('󱹳', '''\u200d󱹳\u200d''')
+    res = res.replace('󱹴', '''\u200d󱹴\u200d''')
+    res = res.replace('󱹴', '''\u200d󱹴\u200d''')
+
+    # res = res.replace('\u202c', 'V')  # '&#8236;')
+    # res = res.replace('\u202d', 'E-D')  # '&#8237;')
+    # res = res.replace('\u202e', 'D-E')  # '&#8238;')
+
     return res
 
 
@@ -46,8 +56,9 @@ from number_conversion import *
 from now import *
 from agòra import *
 from calculator import *
-from shastadari import *
 from digits import *
+from today import *
+from shastadari import *
 
 from  locale_detection import browser_preferred_locale
 
