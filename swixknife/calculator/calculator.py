@@ -783,9 +783,9 @@ class SezimalCalculator:
         self.error = True
 
         if self.locale:
-            self._display = self.locale.ERROR.upper()
-            self._decimal_display = self.locale.ERROR.upper()
-            self._niftimal_display = self.locale.ERROR.upper()
+            self._display = self.locale.upper(self.locale.ERROR)
+            self._decimal_display = self.locale.upper(self.locale.ERROR)
+            self._niftimal_display = self.locale.upper(self.locale.ERROR)
         else:
             self._display = 'ERROR'
             self._decimal_display = 'ERROR'

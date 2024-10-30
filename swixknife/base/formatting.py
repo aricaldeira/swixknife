@@ -30,7 +30,7 @@ from .digit_conversion import (
 from .context import sezimal_context
 
 
-PER_SYMBOLS = ('%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵', '󱹶', '󱹷', '󱹸', '󱹹', '󱹺', '󱹻', '󱹼', '󱹽', '󱹾', '󱹿')
+PER_SYMBOLS = ('%', '‰', '‱', '󱹰', '󱹱', '󱹲', '󱹳', '󱹴', '󱹵')
 
 SEPARATOR_COMMA = ','
 SEPARATOR_DOT = '.'
