@@ -3,10 +3,10 @@
 __all__ = ('SezimalLocaleFR_CH',)
 
 
-from .fr import SezimalLocaleFR
+from .fr_fr import SezimalLocaleFR_FR
 
 
-class SezimalLocaleFR_CH(SezimalLocaleFR):
+class SezimalLocaleFR_CH(SezimalLocaleFR_FR):
     LANG = 'fr'
     LANGUAGE = 'français de Suisse'
 
