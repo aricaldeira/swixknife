@@ -82,11 +82,13 @@ class SezimalLocaleHI(SezimalLocale):
         'दिस॰',  # dis
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#?d/#?m/#?Y'
-    DATE_LONG_FORMAT = '#?d #M #?Y'
+    DATE_LONG_FORMAT = '#?-d #M #?Y'
     TIME_FORMAT = '#?u:#?p:#?a'
     DATE_TIME_FORMAT = '#?d/#?m/#?Y #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#W, #?d #M #?Y, #?u:#?p:#?a'
+    DATE_TIME_LONG_FORMAT = '#W, #?-d #M #?Y, #?u:#?p:#?a'
+    ISO_TIME_FORMAT = '%?H:%?M:%?S'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 

@@ -85,6 +85,7 @@ class SezimalLocaleTR(SezimalLocale):
         'AİÇÖ',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#X'
     DATE_LONG_FORMAT = '#-d #M #Y'
     TIME_FORMAT = '#u:#p:#a'

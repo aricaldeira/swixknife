@@ -86,6 +86,7 @@ class SezimalLocaleDE(SezimalLocale):
         'v. SZM',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#X'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'

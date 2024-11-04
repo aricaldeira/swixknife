@@ -31,15 +31,15 @@ VALID_DATE_PARTIAL_TIME_STRING = re.compile(r'^[+-−]?[0-5]{6}-[0-5]{2}-[0-5]{2
 # using other calendars
 #
 VALID_MONTH_DAY_STRING = re.compile(r'^[0-5]{2}-[0-5]{2}$')
-VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−]?[0-5]{6}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN)[+-−]?[0-9]{4,5}-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
-VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−][0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN)[+-−][0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
-VALID_EASTER_DATE_STRING = re.compile(r'(SEZ[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?|((SYM|ISO|GRE|JUL|HEB|JEW)[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-9]{1,4})?')
+VALID_DATE_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−]?[0-5]{6}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{3}_[0-5]{3}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^SEZ[+-−]?[0-5]{2}_[0-5]{4}-[0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN|CHR|ORT)[+-−]?[0-9]{4,5}-[0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
+VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−][0-5]{2}-[0-5]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-5]{1,2})?)?$|^(SYM|ISO|GRE|JUL|HEB|JEW|ISR|HIJ|IRN|IND|LUN|CHR|ORT)[+-−][0-9]{2}-[0-9]{2}((\-|\+|\±)(MON|TUE|WED|THU|FRI|SAT|SUN)(\_[0-9]{1,2})?)?$')
+VALID_EASTER_DATE_STRING = re.compile(r'(SEZ[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?|((SYM|ISO|GRE|JUL|HEB|JEW|CHR|ORT)[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-9]{1,4})?')
 
 #
 # ISO Epoch
 #
 ISO_EPOCH = SezimalInteger('1')
-ISO_EPOCH_JULIAN_DATE = Sezimal('100_521_320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
+ISO_EPOCH_JULIAN_DAY = Sezimal('100_521_320.3')  # 1_721_424.5_dec → 00-12-31_dec GREGORIAN
 
 #
 # Using the same Epoch as the ISO calendar,
@@ -47,35 +47,35 @@ ISO_EPOCH_JULIAN_DATE = Sezimal('100_521_320.3')  # 1_721_424.5_dec → 00-12-31
 # as created by Dr. Irv Bromberg
 #
 # EPOCH = ISO_EPOCH
-# EPOCH_JULIAN_DATE = ISO_EPOCH_JULIAN_DATE
+# EPOCH_JULIAN_DAY = ISO_EPOCH_JULIAN_DAY
 # ISO_YEAR_DIFF = 0
 # ISO_HOLOCENE_YEAR_DIFF = 0
 
 #
 # Holocene Epoch
 #
-# Julian date -105_215_450.3 → -1_930_998.5_dec → -9_999-01-02_dec ISO
+# Julian day -105_215_450.3 → -1_930_998.5_dec → -9_999-01-02_dec ISO
 #
 # The one day difference (actually it should be -9_999-01-01_dec ISO)
 # compensates the fact that the ordinal date / Rada Die starts
 # with 1, not zero
 #
 EPOCH = SezimalInteger('-210_141_212')  # -3_652_424_dec
-EPOCH_JULIAN_DATE = Sezimal('-105_215_450.3')  # -1_930_998.5_dec
+EPOCH_JULIAN_DAY = Sezimal('-105_215_450.3')  # -1_930_998.5_dec
 ISO_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 
 #
 # Sezimal Holocene Epoch
 #
-# Julian date -220_511_131.3 → -3_959_551.5_dec → -15_553-01-06_dec ISO
+# Julian day -220_511_131.3 → -3_959_551.5_dec → -15_553-01-06_dec ISO
 #
 # The one day difference (actually it should be -15_553-01-05_dec ISO)
 # compensates the fact that the ordinal date / Rada Die starts
 # with 1, not zero
 #
 EPOCH = SezimalInteger('-321_432_452')  # -5_680_976_dec
-EPOCH_JULIAN_DATE = Sezimal('-220_511_131.3')  # -3_959_550.5_dec
+EPOCH_JULIAN_DAY = Sezimal('-220_511_131.3')  # -3_959_550.5_dec
 ISO_YEAR_DIFF = SezimalInteger('200_000')  # 15_552_dec
 ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 
@@ -87,7 +87,7 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 # Summer Solstice
 #
 # EPOCH = SezimalInteger('-202_510_230')  # -3_492_810_dec
-# EPOCH_JULIAN_DATE = Sezimal('-101_544_505.3')  # -1_771_385.5_dec
+# EPOCH_JULIAN_DAY = Sezimal('-101_544_505.3')  # -1_771_385.5_dec
 # ISO_YEAR_DIFF = SezimalInteger('112_135')  # 9_563_dec
 # ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('112_135')  # 9_563_dec
 #
@@ -97,7 +97,7 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 # Summer Solstice
 #
 # EPOCH = SezimalInteger('-202_512_034')  # -3_493_174_dec
-# EPOCH_JULIAN_DATE = Sezimal('-101_550_313.3')  # -1_771_749.5_dec
+# EPOCH_JULIAN_DAY = Sezimal('-101_550_313.3')  # -1_771_749.5_dec
 # ISO_YEAR_DIFF = SezimalInteger('112_134')  # 9_562_dec
 # ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('112_134')  # 9_562_dec
 #
@@ -395,7 +395,7 @@ def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str |
     return total_agrimas / 1_000_000, total_agrimas_dst / 1_000_000
 
 
-def mars_sol_date(julian_date: Sezimal) -> Sezimal:
+def mars_sol(julian_day: Sezimal) -> Sezimal:
     #
     # Ref. https://en.wikipedia.org/wiki/Timekeeping_on_Mars#Mars_Sol_Date
     #
@@ -405,7 +405,7 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     #
     MARS_SOL_EPOCH = Sezimal('123_320_402.000_312_520_354_244_205_014_402_545_442_033_201_055_341_404_131')
     #
-    # Julian date 131_315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
+    # Julian day 131_315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
     #
     JULIAN_DATE_131_315 = Sezimal('124_313_425')
 
@@ -426,13 +426,19 @@ def mars_sol_date(julian_date: Sezimal) -> Sezimal:
     # Formula from:
     # http://marsclock.com/
     #
-    julian_date = julian_date + TAI_UTC_OFFSET - JULIAN_DATE_131_315
-    mars_sol_date = julian_date - 4.3
-    mars_sol_date /= MARS_SOL_IN_DAYS
-    mars_sol_date += Sezimal('543_220')  # 44_796_dec
-    mars_sol_date -= Decimal('0.000_96')  # adjustment from Mars24
+    julian_day = julian_day + TAI_UTC_OFFSET - JULIAN_DATE_131_315
+    sol = julian_day - 4.3
+    sol /= MARS_SOL_IN_DAYS
+    sol += Sezimal('543_220')  # 44_796_dec
+    sol -= Decimal('0.000_96')  # adjustment from Mars24
 
-    return mars_sol_date
+    #
+    # For reference:
+    # 1 Mars sol = SezimalFraction('25_341_305 / 25_051_412') Earth day
+    # 1 sol = 1.005_534_344_243_221_121 day
+    #
+
+    return sol
 
 #
 # Leap seconds to TAI “time zone”

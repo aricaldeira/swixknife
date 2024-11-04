@@ -90,11 +90,12 @@ class SezimalLocaleHE(SezimalLocale):
         'דצמ׳',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#-d #M #Y'
-    TIME_FORMAT = '#u:#p:#a'
-    DATE_TIME_FORMAT = '#d.#m.#Y #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#d.#m.#Y #@W #u:#p:#a'
+    TIME_FORMAT = '\N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_FORMAT = '#d.#m.#Y \N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_LONG_FORMAT = '#d.#m.#Y #@W \N{LRI}#?u:#?p:#?a\N{PDI}'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 
@@ -168,15 +169,15 @@ class SezimalLocaleHE(SezimalLocale):
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
-        ('HEB+07-01', '🍎🍯 \u202d(%d.%m.%Y)\u202c ראש השנה'),
-        ('HEB+07-10', '🤍🙏🏻 \u202d(%d.%m.%Y)\u202c יום כפור‎'),
-        ('HEB+07-15', '🍋⛺ \u202d(%d.%m.%Y)\u202c סוכות'),
-        ('HEB+07-22', '🙏🏻🌧️ \u202d(%d.%m.%Y)\u202c שמיני עצרת‎'),
-        ('HEB+07-23', '😊📜 \u202d(%d.%m.%Y)\u202c שמחת תורה'),
-        ('HEB+09-25', '🕯🕍 \u202d(%d.%m.%Y)\u202c חנכה‎'),
-        ('HEB+11-15', '🌳💮 \u202d(%d.%m.%Y)\u202c ט״ו בשבט'),
-        ('HEB+12-14', '🍷🍬 \u202d(%d.%m.%Y)\u202c פ   ורים‎'),
-        ('HEB+01-15', '🐑🫓 \u202d(%d.%m.%Y)\u202c חג הפסח'),
-        ('HEB+02-18', '🔥 \u202d(%d.%m.%Y)\u202c ל״ג בעומר'),
-        ('HEB+03-06', '💐📜 \u202d(%d.%m.%Y)\u202c שבועות'),
+        ('JEW+07-01', '🍎\ufe0f🍯\ufe0f \u202d(%d.%m.%Y)\u202c ראש השנה'),
+        ('JEW+07-10', '🤍\ufe0f🙏🏻\ufe0f \u202d(%d.%m.%Y)\u202c יום כפור‎'),
+        ('JEW+07-15', '🍋\ufe0f⛺\ufe0f \u202d(%d.%m.%Y)\u202c סוכות'),
+        ('JEW+07-22', '🙏🏻\ufe0f🌧\ufe0f️ \u202d(%d.%m.%Y)\u202c שמיני עצרת‎'),
+        ('JEW+07-23', '😊📜\ufe0f \u202d(%d.%m.%Y)\u202c שמחת תורה'),
+        ('JEW+09-25', '🕯\ufe0f🕍\ufe0f \u202d(%d.%m.%Y)\u202c חנכה‎'),
+        ('JEW+11-15', '🌳\ufe0f💮\ufe0f \u202d(%d.%m.%Y)\u202c ט״ו בשבט'),
+        ('JEW+12-14', '🍷\ufe0f🍬\ufe0f \u202d(%d.%m.%Y)\u202c פ   ורים‎'),
+        ('JEW+01-15', '🐑\ufe0f🫓\ufe0f \u202d(%d.%m.%Y)\u202c חג הפסח'),
+        ('JEW+02-18', '🔥\ufe0f \u202d(%d.%m.%Y)\u202c ל״ג בעומר'),
+        ('JEW+03-06', '💐\ufe0f📜\ufe0f \u202d(%d.%m.%Y)\u202c שבועות'),
     ]

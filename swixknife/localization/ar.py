@@ -90,11 +90,13 @@ class SezimalLocaleAR(SezimalLocale):
         'ديس',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#?d/#?m/#?Y'
-    DATE_LONG_FORMAT = '#?d #M #?Y'
-    TIME_FORMAT = '#?u:#?p:#?a'
-    DATE_TIME_FORMAT = '#?d/#?m/#?Y #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W #?u:#?p:#?a'
+    DATE_LONG_FORMAT = '#?-d #M #?Y'
+    TIME_FORMAT = '\N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_FORMAT = '#?-d/#?m/#?Y \N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W \N{LRI}#?u:#?p:#?a\N{PDI}'
+    ISO_TIME_FORMAT = '%?H:%?M:%?S'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 

@@ -36,8 +36,27 @@ from .date_time_delta import SezimalDateTimeDelta
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
-    YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKENS, \
+    YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKEN, \
     ISO_DATE_NUMBER_FORMAT_TOKENS
+
+
+try:
+    from convertdate.julian import \
+        from_gregorian as gregorian_to_julian, \
+        to_gregorian as julian_to_gregorian, \
+        month_length as julian_month_length
+    from convertdate.hebrew import \
+        from_gregorian as gregorian_to_hebrew, \
+        to_gregorian as hebrew_to_gregorian, \
+        month_days as hebrew_month_length
+    from convertdate.islamic import \
+        from_gregorian as gregorian_to_hijri, \
+        to_gregorian as hijri_to_gregorian, \
+        month_length as hijri_month_length
+
+    CAN_CONVERT_CALENDARS = True
+except:
+    CAN_CONVERT_CALENDARS = False
 
 
 class SezimalDate:
@@ -397,7 +416,7 @@ class SezimalDate:
 
         return value
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None, season_moon_time_format: str = None) -> str:
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
         if not fmt:
             return fmt
 
@@ -420,7 +439,7 @@ class SezimalDate:
         #
         # Astronomical formats: seasons and moon phases
         #
-        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone, season_moon_time_format=season_moon_time_format)
+        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
 
         #
         # Locale’s date separator
@@ -531,9 +550,8 @@ class SezimalDate:
         #
         # And now, the text formats
         #
-        for regex, token, base, size, case, month_week in DATE_TEXT_FORMAT_TOKENS:
-            if not regex.findall(fmt):
-                continue
+        for base, size, case, month_week in DATE_TEXT_FORMAT_TOKEN.findall(fmt):
+            regex = re.compile(fr'#{base}{size}{case}{month_week}')
 
             if month_week == 'M':
                 if size == '@':
@@ -548,7 +566,7 @@ class SezimalDate:
                         text = locale.month_name(self.month)
 
             else:
-                if size == '@':
+                if size:
                     text = locale.weekday_abbreviated_name(self.weekday)
                 else:
                     text = locale.weekday_name(self.weekday)
@@ -556,11 +574,9 @@ class SezimalDate:
             if size == '1':
                 text = locale.weekday_symbol(self.weekday)
             elif size == '2':
-                if len(text) > 2:
-                    text = text[0:2]
+                text = locale.slice(text, 0, 2)
             elif size == '3':
-                if len(text) > 3:
-                    text = text[0:3]
+                text = locale.slice(text, 0, 3)
 
             if case == '!':
                 text = locale.upper(text) if locale else text.upper()
@@ -751,12 +767,12 @@ class SezimalDate:
         return self.gregorian_date.isocalendar()
 
     @property
-    def julian_date(self) -> Sezimal:
-        return self.ordinal_date + ISO_EPOCH_JULIAN_DATE
+    def julian_day(self) -> Sezimal:
+        return self.ordinal_date + ISO_EPOCH_JULIAN_DAY
 
     @property
-    def mars_sol_date(self) -> Sezimal:
-        return mars_sol_date(self.julian_date)
+    def mars_sol(self) -> Sezimal:
+        return mars_sol(self.julian_day)
 
     def replace(self,
         year: str | int | float | Decimal | Sezimal | SezimalInteger = None,
@@ -1017,6 +1033,323 @@ class SezimalDate:
     @property
     def year_proportion_ellapsed(self) -> Sezimal:
         return self.day_in_year / self.total_days_in_year
+
+    def julian_date(self, locale: SezimalLocale = None):
+        if not CAN_CONVERT_CALENDARS:
+            return ''
+
+        year, month, day = gregorian_to_julian(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+
+        if not locale:
+            jd = f'{str(year).zfill(4)}-{str(month).zfill(2)}-{str(day).zfill(2)}'
+        elif locale.DATE_ENDIANNESS == 'B':
+            jd = f'{str(year).zfill(4)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}'
+        elif locale.DATE_ENDIANNESS == 'L':
+            jd = f'{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+        else:
+            jd = f'{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+
+        return jd
+
+    def julian_previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        #
+        # Days and weeks are the same, so we just use the regular
+        # function for them
+        #
+        res = self.previous(days, weeks)
+
+        #
+        # Months, quarters and years, have different durations,
+        # so let’s see
+        #
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if not months:
+            return res
+
+        #
+        # We have a number of months that we have to
+        # go back in the calendar
+        #
+        jy, jm, jd = res.julian_date().split('-')
+        jy = int(jy)
+        jm = int(jm)
+        jd = int(jd)
+
+        jm -= int(months)
+
+        #
+        # Since all years have 12 months, we
+        # go back 1 year for every 12 months we need
+        # to go back in the calendar
+        #
+        while jm <= 0:
+            jy -= 1
+            jm += 12
+
+        #
+        # Finally, let’s see if the day, 29, 30, 31,
+        # exists for that particular month we landed
+        #
+        if julian_month_length(jy, jm) < jd:
+            jd = julian_month_length(jy, jm)
+
+        gregorian_date = julian_to_gregorian(jy, jm, jd)
+        ordinal_date = gregorian_year_month_day_to_ordinal_date(*gregorian_date)
+
+        return SezimalDate.from_ordinal_date(ordinal_date)
+
+    def julian_next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        #
+        # Days and weeks are the same, so we just use the regular
+        # function for them
+        #
+        res = self.next(days, weeks)
+
+        #
+        # Months, quarters and years, have different durations,
+        # so let’s see
+        #
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if not months:
+            return res
+
+        #
+        # We have a number of months that we have to
+        # go back in the calendar
+        #
+        jy, jm, jd = res.julian_date().split('-')
+        jy = int(jy)
+        jm = int(jm)
+        jd = int(jd)
+
+        jm += int(months)
+
+        #
+        # Since all years have 12 months, we
+        # advance 1 year for every 12 months we need
+        # to go further in the calendar
+        #
+        while jm > 12:
+            jy += 1
+            jm -= 12
+
+        #
+        # Finally, let’s see if the day, 29, 30, 31,
+        # exists for that particular month we landed
+        #
+        if julian_month_length(jy, jm) < jd:
+            jd = julian_month_length(jy, jm)
+
+        gregorian_date = julian_to_gregorian(jy, jm, jd)
+        ordinal_date = gregorian_year_month_day_to_ordinal_date(*gregorian_date)
+
+        return SezimalDate.from_ordinal_date(ordinal_date)
+
+    def hebrew_date(self, locale: SezimalLocale = None):
+        if not CAN_CONVERT_CALENDARS:
+            return ''
+
+        year, month, day = gregorian_to_hebrew(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+
+        if not locale:
+            hd = f'{str(year).zfill(4)}-{str(month).zfill(2)}-{str(day).zfill(2)}'
+        elif locale.DATE_ENDIANNESS == 'B':
+            hd = f'{str(year).zfill(4)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}'
+        elif locale.DATE_ENDIANNESS == 'L':
+            hd = f'{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+        else:
+            hd = f'{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+
+        return hd
+
+    def hijri_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
+        if not CAN_CONVERT_CALENDARS:
+            return ''
+
+        year, month, day = gregorian_to_hijri(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+
+        year = str(year).zfill(4)
+
+        if (not locale) or number:
+            day = str(day).zfill(2)
+            month = str(month).zfill(2)
+
+        elif locale and (not number):
+            day = str(day)
+
+            if short:
+                month = locale.HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME[month - 1]
+            else:
+                month = locale.HIJRI_CALENDAR_MONTH_NAME[month - 1]
+
+        if not locale:
+            hd = f'{year}-{month}-{day}'
+        elif locale.DATE_ENDIANNESS == 'B':
+            if number:
+                hd = f'{year}{locale.DATE_SEPARATOR}{month}{locale.DATE_SEPARATOR}{day}'
+            else:
+                hd = f'{year} AH {month} {day}'
+        elif locale.DATE_ENDIANNESS == 'L':
+            if number:
+                hd = f'{day}{locale.DATE_SEPARATOR}{month}{locale.DATE_SEPARATOR}{year}'
+            else:
+                hd = f'{day} {month} {year} AH'
+        elif number:
+            hd = f'{month}{locale.DATE_SEPARATOR}{day}{locale.DATE_SEPARATOR}{year}'
+        else:
+            hd = f'{month} {day} {year} AH'
+
+        return hd
+
+    def hijri_previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        #
+        # Days and weeks are the same, so we just use the regular
+        # function for them
+        #
+        res = self.previous(days, weeks)
+
+        #
+        # Months, quarters and years, have different durations,
+        # so let’s see
+        #
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if not months:
+            return res
+
+        #
+        # We have a number of months that we have to
+        # go back in the calendar
+        #
+        hy, hm, hd = res.hijri_date().split('-')
+        hy = int(hy)
+        hm = int(hm)
+        hd = int(hd)
+
+        hm -= int(months)
+
+        #
+        # Since all years have 12 months, we
+        # go back 1 year for every 12 months we need
+        # to go back in the calendar
+        #
+        while hm <= 0:
+            hy -= 1
+            hm += 12
+
+        #
+        # Finally, let’s see if the day, 29, 30, 31,
+        # exists for that particular month we landed
+        #
+        if hijri_month_length(hy, hm) < hd:
+            hd = hijri_month_length(hy, hm)
+
+        gregorian_date = hijri_to_gregorian(hy, hm, hd)
+        ordinal_date = gregorian_year_month_day_to_ordinal_date(*gregorian_date)
+
+        return SezimalDate.from_ordinal_date(ordinal_date)
+
+    def hijri_next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        #
+        # Days and weeks are the same, so we just use the regular
+        # function for them
+        #
+        res = self.next(days, weeks)
+
+        #
+        # Months, quarters and years, have different durations,
+        # so let’s see
+        #
+        if not months:
+            months = SezimalInteger(0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if not months:
+            return res
+
+        #
+        # We have a number of months that we have to
+        # go back in the calendar
+        #
+        hy, hm, hd = res.hijri_date().split('-')
+        hy = int(hy)
+        hm = int(hm)
+        hd = int(hd)
+
+        hm += int(months)
+
+        #
+        # Since all years have 12 months, we
+        # advance 1 year for every 12 months we need
+        # to go further in the calendar
+        #
+        while hm > 12:
+            hy += 1
+            hm -= 12
+
+        #
+        # Finally, let’s see if the day 30
+        # exists for that particular month we landed
+        #
+        if hijri_month_length(hy, hm) < hd:
+            hd = hijri_month_length(hy, hm)
+
+        gregorian_date = hijri_to_gregorian(hy, hm, hd)
+        ordinal_date = gregorian_year_month_day_to_ordinal_date(*gregorian_date)
+
+        return SezimalDate.from_ordinal_date(ordinal_date)
 
 
 SezimalDate.min = SezimalDate(1, 1, 1)

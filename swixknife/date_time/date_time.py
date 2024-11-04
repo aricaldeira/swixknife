@@ -311,12 +311,18 @@ class SezimalDateTime:
         return self._date.isocalendar()
 
     @property
-    def julian_date(self) -> Sezimal:
-        return self.as_days + ISO_EPOCH_JULIAN_DATE
+    def julian_day(self) -> Sezimal:
+        if self.time_zone == 'UTC':
+            return self.as_days + ISO_EPOCH_JULIAN_DAY
+
+        return self.at_time_zone('UTC').as_days + ISO_EPOCH_JULIAN_DAY
 
     @property
-    def mars_sol_date(self) -> Sezimal:
-        return mars_sol_date(self.julian_date)
+    def mars_sol(self) -> Sezimal:
+        if self.time_zone == 'UTC':
+            return mars_sol(self.julian_day)
+
+        return mars_sol(self.at_time_zone('UTC').julian_day)
 
     @property
     def uta(self) -> SezimalInteger:
@@ -378,7 +384,7 @@ class SezimalDateTime:
     def as_seconds(self) -> Decimal:
         return self._date.as_seconds + self._time.as_seconds
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None, season_moon_time_format: str = None) -> str:
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
         if locale:
             if isinstance(locale, SezimalLocale):
                 lang = locale.LANG
@@ -396,7 +402,7 @@ class SezimalDateTime:
         fmt = fmt.replace('##', '_|_HASHTAG_|_')
         fmt = fmt.replace('%%', '_|_PERCENT_|_')
 
-        fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone, season_moon_time_format=season_moon_time_format)
+        fmt = self._date.format(fmt, locale=locale, skip_strftime=True, time_zone=self.time_zone)
         fmt = self._time.format(fmt, locale=locale, skip_strftime=True)
 
         if type(self.iso_date_time) != tuple and '%' in fmt:
@@ -513,7 +519,7 @@ class SezimalDateTime:
     @classmethod
     def from_julian_date(cls, julian_date: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction, time_zone: str | ZoneInfo = None) -> Self:
         julian_date = Sezimal(julian_date)
-        ordinal_date = julian_date - ISO_EPOCH_JULIAN_DATE
+        ordinal_date = julian_date - ISO_EPOCH_JULIAN_DAY
         return cls.from_days(ordinal_date, time_zone)
 
     def previous(self,
@@ -551,3 +557,9 @@ class SezimalDateTime:
     @property
     def year_proportion_ellapsed(self) -> Sezimal:
         return self.date.year_proportion_ellapsed
+
+    def hebrew_date(self, locale: SezimalLocale = None):
+        return self._date.hebrew_date(locale)
+
+    def hijri_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
+        return self._date.hijri_date(locale, number, short)

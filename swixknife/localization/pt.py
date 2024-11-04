@@ -92,6 +92,7 @@ class SezimalLocalePT(SezimalLocale):
         'aEHS',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O de #M de #Y'
     TIME_FORMAT = '#u:#p:#a'

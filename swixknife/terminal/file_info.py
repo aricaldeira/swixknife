@@ -281,10 +281,10 @@ class SezimalFileInfo:
                 extension = '*.' + self.file_name.split('.')[-1]
 
                 if extension == '*.py':
-                    return [' \ufe0f🐍', colorama.ansi.code_to_chars('38:5:106')]
+                    return [' 🐍\ufe0f', colorama.ansi.code_to_chars('38:5:106')]
 
                 elif extension == '*.sql':
-                    return [' \ufe0f🐘', colorama.ansi.code_to_chars('38:5:102')]
+                    return [' 🐘\ufe0f', colorama.ansi.code_to_chars('38:5:102')]
 
                 if extension in LS_COLORS:
                     return ['', LS_COLORS[extension]]

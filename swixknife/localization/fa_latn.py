@@ -86,6 +86,7 @@ class SezimalLocaleFA_LATN(SezimalLocale):
         'des',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O e #M e #Y'
     TIME_FORMAT = '#u:#p:#a'

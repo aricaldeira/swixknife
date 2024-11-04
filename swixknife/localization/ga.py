@@ -93,6 +93,7 @@ class SezimalLocaleGA(SezimalLocale):
         'Nol',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = ' #-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'

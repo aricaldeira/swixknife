@@ -90,6 +90,7 @@ class SezimalLocaleFR(SezimalLocale):
         'av. l’ÈHS',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -98,6 +99,8 @@ class SezimalLocaleFR(SezimalLocale):
     DST_NAME = 'Heure d’été'
     DST_SHORT_NAME = 'HÉ'
     DEFAULT_TIME_ZONE = 'Europe/Paris'
+    ISO_DATE_LONG_FORMAT = '%-d%O %b. %Y'
+    TEXT_MONTH_DAY_FORMAT = '#-d#O #M'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transition hiver – printemps',

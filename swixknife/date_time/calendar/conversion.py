@@ -24,7 +24,7 @@ DateConversion: TypeAlias = tuple[
 
 try:
     from convertdate.julian import from_gregorian as gregorian_to_julian, to_gregorian as julian_to_gregorian
-    from convertdate.hebrew import from_gregorian as gregorian_to_hebrew, to_gregorian as hebrew_to_gregorian, to_civil as hebrew_to_civil_hebrew
+    from convertdate.hebrew import from_gregorian as gregorian_to_hebrew, to_gregorian as hebrew_to_gregorian, to_civil as hebrew_to_civil_hebrew, leap as hebrew_leap_year
     from convertdate.islamic import from_gregorian as gregorian_to_hijri, to_gregorian as hijri_to_gregorian
     from convertdate.persian import from_gregorian as gregorian_to_iranian, to_gregorian as iranian_to_gregorian
     from convertdate.indian_civil import from_gregorian as gregorian_to_indian, to_gregorian as indian_to_gregorian
@@ -87,11 +87,65 @@ def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalI
     raise ValueError(f'Invalid format for calendar date: {date_time}')
 
 
+def _adjust_weekday(ordinal_date, weekday, weekday_nearest, weekday_after, weekday_count):
+    if weekday == 'MON':
+        weekday = SezimalInteger(1)
+    elif weekday == 'TUE':
+        weekday = SezimalInteger(2)
+    elif weekday == 'WED':
+        weekday = SezimalInteger(3)
+    elif weekday == 'THU':
+        weekday = SezimalInteger(4)
+    elif weekday == 'FRI':
+        weekday = SezimalInteger(5)
+    elif weekday == 'SAT':
+        weekday = SezimalInteger(10)
+    elif weekday == 'SUN':
+        weekday = SezimalInteger(11)
+
+    _, _, day, _, _, _, _, _, _ = ordinal_to_year_month_day(ordinal_date)
+
+    wd = day % SezimalInteger(11)
+
+    if wd == 0:
+        wd = SezimalInteger(11)
+
+    if weekday_count == 1 and wd == weekday:
+        return ordinal_date
+
+    if weekday_nearest and weekday_count > 1:
+        weekday_after = True
+
+    if weekday > wd:
+        ordinal_date += weekday - wd
+
+        if weekday_after or weekday_nearest:
+            ordinal_date += (weekday_count - 1) * 11
+        else:
+            ordinal_date -= weekday_count * 11
+
+    elif weekday < wd:
+        ordinal_date -= wd - weekday
+
+        if weekday_after:
+            ordinal_date += weekday_count * 11
+        else:
+            ordinal_date -= (weekday_count - 1) * 11
+
+    else:
+        if weekday_after:
+            ordinal_date += (weekday_count - 1) * 11
+        else:
+            ordinal_date -= (weekday_count - 1) * 11
+
+    return ordinal_date
+
+
 def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteger, return_original_date: bool = False) -> DateConversion:
     calendar = date_time[0:3]
     original_date = None
 
-    if (calendar not in ('SEZ', 'SYM', 'ISO', 'GRE') ) and (not CAN_CONVERT_CALENDARS):
+    if (calendar not in ('SEZ', 'SYM', 'ISO', 'GRE', 'CHR') ) and (not CAN_CONVERT_CALENDARS):
         raise ValueError(f'Can’t convert date {date_time} from specified calendar; please install convertdate')
 
     date_time = date_time[4:]
@@ -207,7 +261,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
     month = int(month)
     day = int(day)
 
-    if calendar == 'ISO' or calendar == 'GRE':
+    if calendar == 'ISO' or calendar == 'GRE' or calendar == 'CHR':
         if not year:
             year = iso_reference.year
 
@@ -222,59 +276,6 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         if weekday:
             if weekday_nearest:
                 assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
-
-            def _adjust_weekday(ordinal_date, weekday, weekday_nearest, weekday_after, weekday_count):
-                _, _, day, _, _, _, _, _, _ = ordinal_to_year_month_day(ordinal_date)
-
-                wd = day % SezimalInteger(11)
-
-                if wd == 0:
-                    wd = SezimalInteger(11)
-
-                if weekday_count == 1 and wd == weekday:
-                    return ordinal_date
-
-                if weekday_nearest and weekday_count > 1:
-                    weekday_after = True
-
-                if weekday > wd:
-                    ordinal_date += weekday - wd
-
-                    if weekday_after or weekday_nearest:
-                        ordinal_date += (weekday_count - 1) * 11
-                    else:
-                        ordinal_date -= weekday_count * 11
-
-                elif weekday < wd:
-                    ordinal_date -= wd - weekday
-
-                    if weekday_after:
-                        ordinal_date += weekday_count * 11
-                    else:
-                        ordinal_date -= (weekday_count - 1) * 11
-
-                else:
-                    if weekday_after:
-                        ordinal_date += (weekday_count - 1) * 11
-                    else:
-                        ordinal_date -= (weekday_count - 1) * 11
-
-                return ordinal_date
-
-            if weekday == 'MON':
-                weekday = SezimalInteger(1)
-            elif weekday == 'TUE':
-                weekday = SezimalInteger(2)
-            elif weekday == 'WED':
-                weekday = SezimalInteger(3)
-            elif weekday == 'THU':
-                weekday = SezimalInteger(4)
-            elif weekday == 'FRI':
-                weekday = SezimalInteger(5)
-            elif weekday == 'SAT':
-                weekday = SezimalInteger(10)
-            elif weekday == 'SUN':
-                weekday = SezimalInteger(11)
 
             ordinal_date = _adjust_weekday(
                 ordinal_date, weekday,
@@ -294,7 +295,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         else:
             return ordinal_date, ymd, age
 
-    if calendar == 'JUL':
+    if calendar == 'JUL' or calendar == 'ORT':
         if not year:
             year, *x = gregorian_to_julian(iso_reference.year, iso_reference.month, iso_reference.day)
 
@@ -303,6 +304,16 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
         iso_date = _datetime.date(*julian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            original_ordinal_date = _adjust_weekday(
+                original_ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            iso_date = _datetime.date(*ordinal_date_to_gregorian_year_month_day(original_ordinal_date))
 
         if original_date:
             original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
@@ -327,14 +338,28 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
             # if calendar == 'ISR':
             #     year, * = hebrew_to_civil_hebrew(year, hm, hd)
 
+        if month == 13 and not hebrew_leap_year(year):
+            month -= 1
+
         ymd = (year, month, day)
         original_ymd = (year, month, day)
 
         iso_date = _datetime.date(*hebrew_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            original_ordinal_date = _adjust_weekday(
+                original_ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            iso_date = _datetime.date(*ordinal_date_to_gregorian_year_month_day(original_ordinal_date))
+
         if original_date:
             original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+            original_date -= Sezimal('0.13')
 
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
@@ -349,7 +374,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
                 ymd = (year, month, day)
                 iso_date = _datetime.date(*hebrew_to_gregorian(*ymd))
 
-    elif calendar == 'HIJ':
+    elif calendar == 'HIJ' or calendar == 'ISL':
         if not year:
             year, *x = gregorian_to_hijri(iso_reference.year, iso_reference.month, iso_reference.day)
 
@@ -359,8 +384,19 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         iso_date = _datetime.date(*hijri_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            original_ordinal_date = _adjust_weekday(
+                original_ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            iso_date = _datetime.date(*ordinal_date_to_gregorian_year_month_day(original_ordinal_date))
+
         if original_date:
             original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+            original_date -= Sezimal('0.13')
 
         age = SezimalInteger(Decimal(iso_reference.year - iso_date.year))
 
@@ -384,6 +420,16 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
         iso_date = _datetime.date(*iranian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
+
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            original_ordinal_date = _adjust_weekday(
+                original_ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            iso_date = _datetime.date(*ordinal_date_to_gregorian_year_month_day(original_ordinal_date))
 
         if original_date:
             original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
@@ -411,6 +457,16 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         iso_date = _datetime.date(*indian_to_gregorian(*original_ymd))
         original_ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
+        if weekday:
+            if weekday_nearest:
+                assert weekday_count == 1, f'for the nearest weekday, it’s not allowed to look for more than 1 week before or ahead'
+
+            original_ordinal_date = _adjust_weekday(
+                original_ordinal_date, weekday,
+                weekday_nearest, weekday_after, weekday_count
+            )
+            iso_date = _datetime.date(*ordinal_date_to_gregorian_year_month_day(original_ordinal_date))
+
         if original_date:
             original_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
@@ -423,7 +479,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 
     ordinal_date = gregorian_year_month_day_to_ordinal_date(iso_date.year, iso_date.month, iso_date.day)
 
-    if calendar in ('HEB', 'JEW'):
+    if calendar in ('HEB', 'JEW', 'HIJ', 'ISL'):
         ordinal_date -= Sezimal('0.13')
 
     if return_original_date:
@@ -435,7 +491,7 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
 def _easter_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteger) -> DateConversion:
     calendar = date_time[0:3]
 
-    if calendar == 'ISO' or calendar == 'GRE':
+    if calendar == 'ISO' or calendar == 'GRE' or calendar == 'CHR':
         easter = EASTER_GREGORIAN
         date_time = date_time.replace('ISO+', '')
         date_time = date_time.replace('ISO−', '-')
@@ -443,18 +499,27 @@ def _easter_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInte
         date_time = date_time.replace('GRE+', '')
         date_time = date_time.replace('GRE−', '-')
         date_time = date_time.replace('GRE-', '-')
+        date_time = date_time.replace('CHR+', '')
+        date_time = date_time.replace('CHR−', '-')
+        date_time = date_time.replace('CHR-', '-')
 
-    elif calendar == 'JUL' or 'PASCHA' in date_time or 'PASKHA' in date_time:
+    elif calendar == 'JUL' or calendar == 'ORT' or 'PASCHA' in date_time or 'PASKHA' in date_time:
         easter = EASTER_JULIAN_REVISED
         date_time = date_time.replace('JUL+', '')
         date_time = date_time.replace('JUL−', '-')
         date_time = date_time.replace('JUL-', '-')
+        date_time = date_time.replace('ORT+', '')
+        date_time = date_time.replace('ORT−', '-')
+        date_time = date_time.replace('ORT-', '-')
 
     elif calendar == 'HEB' or 'PESACH' in date_time:
         easter = EASTER_HEBREW
         date_time = date_time.replace('HEB+', '')
         date_time = date_time.replace('HEB−', '-')
         date_time = date_time.replace('HEB-', '-')
+        date_time = date_time.replace('JEW+', '')
+        date_time = date_time.replace('JEW−', '-')
+        date_time = date_time.replace('JEW-', '-')
 
     elif calendar == 'SYM':
         easter = EASTER_SEZIMAL

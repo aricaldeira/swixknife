@@ -54,18 +54,18 @@ class SezimalLocaleFR_ORTOGRAF(SezimalLocaleFR):
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        'jan',
-        'fév',
-        'mar',
-        'avr',
+        'jan.',
+        'fév.',
+        'mars',
+        'avr.',
         'mè',
-        'jun',
-        'juy'
+        'juin',
+        'juiyè'
         'ou',
-        'sep',
-        'okt',
-        'nov',
-        'dés',
+        'sep.',
+        'okt.',
+        'nov.',
+        'dés.',
     ]
 
     ERA_NAME = [
@@ -79,6 +79,7 @@ class SezimalLocaleFR_ORTOGRAF(SezimalLocaleFR):
         'av. l’ÈUS',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -87,6 +88,8 @@ class SezimalLocaleFR_ORTOGRAF(SezimalLocaleFR):
     DST_NAME = 'Er d’étè'
     DST_SHORT_NAME = 'EÉ'
     DEFAULT_TIME_ZONE = 'Europe/Paris'
+    ISO_DATE_LONG_FORMAT = '%-d%O %b. %Y'
+    TEXT_MONTH_DAY_FORMAT = '#-d#O #M'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Tranzisyon de l’ivèr o printan',

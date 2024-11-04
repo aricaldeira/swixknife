@@ -12,7 +12,7 @@ from .constants import UNPRINTABLE_CHARACTERS, EMOJI_CHARACTERS, IDEOGRAPHIC_CHA
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction, SezimalDecimalUnit
 from ..functions import SezimalRange
 from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
-    SEPARATOR_COMBINING_DOT_ABOVE_RIGHT, \
+    SEPARATOR_NARROW_NOBREAK_SPACE, \
     RECURRING_DIGITS_NOTATION_SIMPLE, \
     sezimal_format, decimal_format, dozenal_format, \
     niftimal_format, SEPARATOR_WEDGE, \
@@ -40,10 +40,10 @@ class SezimalLocale:
     SEZIMAL_SEPARATOR = SEPARATOR_COMMA
 
     GROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-    SUBGROUP_SEPARATOR = SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
+    SUBGROUP_SEPARATOR = ''
 
     FRACTION_GROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-    FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
+    FRACTION_SUBGROUP_SEPARATOR = ''
 
     RECURRING_DIGITS_NOTATION = RECURRING_DIGITS_NOTATION_SIMPLE
 
@@ -76,7 +76,7 @@ class SezimalLocale:
 
     @property
     def WEEKDAY_SYMBOL(self) -> list[str]:
-        return [wdn[0] for wdn in self.WEEKDAY_NAME]
+        return [self.slice(wdn, 0, 1) for wdn in self.WEEKDAY_ABBREVIATED_NAME]
 
     MONTH_NAME: list[str] = [
         'January',
@@ -127,14 +127,17 @@ class SezimalLocale:
         'BSHE',
     ]
 
+    ISO_MODE = False
+    DATE_SEPARATOR = '-'
     DATE_FORMAT = '#Y-#m-#d'
     DATE_LONG_FORMAT = '#Y-#m-#d'
+    TIME_SEPARATOR = ':'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y-#m-#d #@W #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#Y-#m-#d #@W #u:#p:#a'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
-    DST_EMOJI = '‍\ufe0f⏰   \ufe0f🌞'
+    DST_EMOJI = '‍\ufe0f⏰   🌞\ufe0f'
 
     @property
     def ISO_DATE_FORMAT(self):
@@ -143,6 +146,21 @@ class SezimalLocale:
     @property
     def ISO_DATE_LONG_FORMAT(self):
         return self._to_iso_date_format(self.DATE_LONG_FORMAT)
+
+    ISO_TIME_FORMAT = '%H:%M:%S'
+
+    @property
+    def SHORT_TIME_FORMAT(self):
+        if 'fD' in self.TIME_FORMAT:
+            return self.TIME_FORMAT.split('.')[0] + '.0fD'
+
+        parts = self.TIME_FORMAT.split(self.TIME_SEPARATOR)
+        stf = self.TIME_SEPARATOR.join(parts[0:2])
+
+        if '%P' in self.TIME_FORMAT:
+            stf += ' %P'
+
+        return stf
 
     def _to_iso_date_format(self, date_format) -> str:
         for separator in (
@@ -155,6 +173,10 @@ class SezimalLocale:
         ):
             date_format = date_format.replace(f'#{separator}', '%')
 
+        date_format = date_format.replace('!', '')
+        date_format = date_format.replace('9', '')
+        date_format = date_format.replace('↋', '')
+        date_format = date_format.replace('Z', '')
         date_format = date_format.replace('y', 'Y')
         date_format = date_format.replace('O', 'o')
         date_format = date_format.replace('M', 'B')
@@ -164,157 +186,28 @@ class SezimalLocale:
         date_format = date_format.replace('%#', '%')
         date_format = date_format.replace('%@B', '%b')
         date_format = date_format.replace('%>Y', '%Y')
-        date_format = date_format.replace('%?>Y', '%Y')
-
-        return date_format
-
-    def _to_sezimal_date_format(self, date_format) -> str:
-        date_format = date_format.replace('#d', '#!d')
-        date_format = date_format.replace('#?d', '#!d')
-        date_format = date_format.replace('#-d', '#!-d')
-        date_format = date_format.replace('#m', '#!m')
-        date_format = date_format.replace('#?m', '#!m')
-        date_format = date_format.replace('#Y', '#!Y')
-        date_format = date_format.replace('#?Y', '#!Y')
-        date_format = date_format.replace('#y', '#!y')
-        date_format = date_format.replace('#?y', '#!y')
-        date_format = date_format.replace('#wY', '#!wY')
-        date_format = date_format.replace('#w', '#!w')
-        date_format = date_format.replace('#X', '#!X')
-
-        date_format = date_format.replace('#>Y', '#!>Y')
-        date_format = date_format.replace('#?>Y', '#!>Y')
-        date_format = date_format.replace('#>X', '#!>X')
-        date_format = date_format.replace('#?>X', '#!>X')
-        date_format = date_format.replace('#>y', '#!>y')
-        date_format = date_format.replace('#?>y', '#!>y')
-
-        return date_format
-
-    def _to_short_year_format(self, date_format) -> str:
-        date_format = date_format.replace('#Y', '#>Y')
-        date_format = date_format.replace('#!Y', '#!>Y')
-        date_format = date_format.replace('#?Y', '#?>Y')
-        date_format = date_format.replace('#X', '#>X')
-        date_format = date_format.replace('#!X', '#!>X')
-        date_format = date_format.replace('#?X', '#?>X')
-        date_format = date_format.replace('#y', '#>y')
-        date_format = date_format.replace('#!y', '#!>y')
-        date_format = date_format.replace('#?y', '#?>y')
-        return date_format
-
-    def _to_decimal_date_format(self, date_format) -> str:
-        date_format = date_format.replace('#d', '#9d')
-        date_format = date_format.replace('#?d', '#9?d')
-        date_format = date_format.replace('#-d', '#9-d')
-        date_format = date_format.replace('#m', '#9m')
-        date_format = date_format.replace('#?m', '#9?m')
-        date_format = date_format.replace('#Y', '#9sy')
-        date_format = date_format.replace('#?Y', '#9?sy')
-        date_format = date_format.replace('#y', '#9sy')
-        date_format = date_format.replace('#?y', '#9?sy')
-        date_format = date_format.replace('#M', '#9M')
-        date_format = date_format.replace('#wY', '#9wY')
-        date_format = date_format.replace('#w', '#9w')
-        date_format = date_format.replace('#X', '#9sy')
-
-        date_format = date_format.replace('#>Y', '#9sy')
-        date_format = date_format.replace('#?>Y', '#9?sy')
-        date_format = date_format.replace('#>X', '#9sy')
-        date_format = date_format.replace('#?>X', '#9?sy')
-        date_format = date_format.replace('#>y', '#9sy')
-        date_format = date_format.replace('#?>y', '#9?sy')
-
-        return date_format
-
-    def _to_dozenal_date_format(self, date_format) -> str:
-        date_format = date_format.replace('#d', '#↋d')
-        date_format = date_format.replace('#?d', '#↋?d')
-        date_format = date_format.replace('#-d', '#↋-d')
-        date_format = date_format.replace('#m', '#↋m')
-        date_format = date_format.replace('#?m', '#↋?m')
-        date_format = date_format.replace('#Y', '#↋sy')
-        date_format = date_format.replace('#?Y', '#↋?sy')
-        date_format = date_format.replace('#y', '#↋sy')
-        date_format = date_format.replace('#?y', '#↋?sy')
-        date_format = date_format.replace('#M', '#9M')
-        date_format = date_format.replace('#wY', '#↋wY')
-        date_format = date_format.replace('#w', '#↋w')
-        date_format = date_format.replace('#X', '#↋sy')
-
-        date_format = date_format.replace('#>Y', '#↋sy')
-        date_format = date_format.replace('#?>Y', '#↋?sy')
-        date_format = date_format.replace('#>X', '#↋sy')
-        date_format = date_format.replace('#?>X', '#↋?sy')
-        date_format = date_format.replace('#>y', '#↋sy')
-        date_format = date_format.replace('#?>y', '#↋?sy')
+        date_format = date_format.replace('%?>Y', '%?Y')
+        date_format = date_format.replace('%sY', '%Y')
+        date_format = date_format.replace('%?sY', '%?Y')
+        date_format = date_format.replace('@', '')
 
         return date_format
 
     @property
-    def SEZIMAL_DATE_FORMAT(self):
-        return self._to_sezimal_date_format(self.DATE_FORMAT)
+    def ISO_SHORT_TIME_FORMAT(self) -> str:
+        ihmf = self.ISO_TIME_FORMAT
 
-    @property
-    def SEZIMAL_DATE_LONG_FORMAT(self):
-        return self._to_sezimal_date_format(self.DATE_LONG_FORMAT)
+        if self.RTL:
+            ihmf = ihmf.replace('\N{LRI}', '')
+            ihmf = ihmf.replace('\N{PDI}', '')
 
-    @property
-    def DECIMAL_DATE_FORMAT(self):
-        return self._to_decimal_date_format(self.DATE_FORMAT)
+        parts = ihmf.split(self.TIME_SEPARATOR)
+        ihmf = self.TIME_SEPARATOR.join(parts[0:2])
 
-    @property
-    def DECIMAL_DATE_LONG_FORMAT(self):
-        return self._to_decimal_date_format(self.DATE_LONG_FORMAT)
+        if self.RTL:
+            ihmf = '\N{LRI}' + ihmf + '\N{PDI}'
 
-    @property
-    def DOZENAL_DATE_FORMAT(self):
-        return self._to_dozenal_date_format(self.DATE_FORMAT)
-
-    @property
-    def DOZENAL_DATE_LONG_FORMAT(self):
-        return self._to_dozenal_date_format(self.DATE_LONG_FORMAT)
-
-    @property
-    def ISO_TIME_FORMAT(self) -> str:
-        itf = self.TIME_FORMAT.replace('#', '%')
-        itf = itf.replace('u', 'H')
-        itf = itf.replace('p', 'M')
-        itf = itf.replace('a', 'S')
-        return itf
-
-    @property
-    def ISO_HOUR_MINUTE_FORMAT(self) -> str:
-        parts = self.ISO_TIME_FORMAT.split(self.TIME_SEPARATOR)
-        return self.TIME_SEPARATOR.join(parts[0:2])
-
-    @property
-    def DATE_SEPARATOR(self) -> str:
-        if not self.DATE_FORMAT:
-            return ''
-
-        separator = self.DATE_FORMAT.lower()
-
-        for sep in (
-            '_', '.', ',', '˙', 'ʼ',
-            '’', "'", '•', '◦', '\u0020', '\u00a0',
-            '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
-            '\u2006', '\u2007', '\u2008', '\u2009', '\u200a', '\u202f',
-            '\u205f', '\U000f1e6c', '\U000f1e6d', '\U000f1e6e', '\U000f1e6f',
-        ):
-            separator = separator.replace(f'#{sep}', '#')
-
-        separator = separator.replace('#', '')
-        separator = separator.replace('?', '')
-        separator = separator.replace('!', '')
-        separator = separator.replace('y', '')
-        separator = separator.replace('m', '')
-        separator = separator.replace('d', '')
-
-        if not separator:
-            return ''
-
-        return separator[0]
+        return ihmf
 
     @property
     def DATE_ENDIANNESS(self) -> str:
@@ -350,18 +243,6 @@ class SezimalLocale:
         return self._to_iso_date_format(self.YEAR_FORMAT)
 
     @property
-    def SEZIMAL_YEAR_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.YEAR_FORMAT)
-
-    @property
-    def DECIMAL_YEAR_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.YEAR_FORMAT)
-
-    @property
-    def DOZENAL_YEAR_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.YEAR_FORMAT)
-
-    @property
     def YEAR_MONTH_FORMAT(self) -> str:
         parts = self.DATE_FORMAT.split(self.DATE_SEPARATOR)
 
@@ -376,41 +257,37 @@ class SezimalLocale:
     def ISO_YEAR_MONTH_FORMAT(self) -> str:
         return self._to_iso_date_format(self.YEAR_MONTH_FORMAT)
 
-    @property
-    def SEZIMAL_YEAR_MONTH_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.YEAR_MONTH_FORMAT)
-
-    @property
-    def DECIMAL_YEAR_MONTH_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.YEAR_MONTH_FORMAT)
-
-    @property
-    def DOZENAL_YEAR_MONTH_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.YEAR_MONTH_FORMAT)
+    def _to_text_short_month_format(self, fmt: str) -> str:
+        fmt = fmt.replace('#m', '#@M')
+        fmt = fmt.replace('#?m', '#@M')
+        fmt = fmt.replace('#9m', '#@M')
+        fmt = fmt.replace('#↋m', '#@M')
+        fmt = fmt.replace('#@m', '#@M')
+        fmt = fmt.replace('#!m', '#@M')
+        fmt = fmt.replace('#@!m', '#@M')
+        return fmt
 
     @property
     def DATE_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self.DATE_FORMAT.replace('#m', '#@M').replace('#?m', '#@M')
+        return self._to_text_short_month_format(self.DATE_FORMAT)
 
     @property
     def ISO_DATE_TEXT_SHORT_MONTH_FORMAT(self) -> str:
         return self._to_iso_date_format(self.DATE_TEXT_SHORT_MONTH_FORMAT)
 
-    @property
-    def SEZIMAL_DATE_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.DATE_TEXT_SHORT_MONTH_FORMAT)
-
-    @property
-    def DECIMAL_DATE_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.DATE_TEXT_SHORT_MONTH_FORMAT)
-
-    @property
-    def DOZENAL_DATE_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.DATE_TEXT_SHORT_MONTH_FORMAT)
+    def _to_text_month_format(self, fmt: str) -> str:
+        fmt = fmt.replace('#m', '#M')
+        fmt = fmt.replace('#?m', '#M')
+        fmt = fmt.replace('#9m', '#M')
+        fmt = fmt.replace('#↋m', '#M')
+        fmt = fmt.replace('#@m', '#M')
+        fmt = fmt.replace('#!m', '#M')
+        fmt = fmt.replace('#@!m', '#M')
+        return fmt
 
     @property
     def YEAR_TEXT_MONTH_FORMAT(self) -> str:
-        df = self.DATE_FORMAT.replace('#m', '#M').replace('#?m', '#M')
+        df = self._to_text_month_format(self.DATE_FORMAT)
         parts = df.split(self.DATE_SEPARATOR)
 
         for i in range(len(parts)):
@@ -419,22 +296,10 @@ class SezimalLocale:
                 break
 
         return self.DATE_SEPARATOR.join(parts)
-
-    @property
-    def SEZIMAL_YEAR_TEXT_MONTH_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.YEAR_TEXT_MONTH_FORMAT)
-
-    @property
-    def DECIMAL_YEAR_TEXT_MONTH_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.YEAR_TEXT_MONTH_FORMAT)
-
-    @property
-    def DOZENAL_YEAR_TEXT_MONTH_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.YEAR_TEXT_MONTH_FORMAT)
 
     @property
     def YEAR_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        df = self.DATE_FORMAT.replace('#m', '#@M').replace('#?m', '#@M')
+        df = self._to_text_short_month_format(self.DATE_FORMAT)
         parts = df.split(self.DATE_SEPARATOR)
 
         for i in range(len(parts)):
@@ -445,19 +310,10 @@ class SezimalLocale:
         return self.DATE_SEPARATOR.join(parts)
 
     @property
-    def SEZIMAL_YEAR_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.YEAR_TEXT_SHORT_MONTH_FORMAT)
-
-    @property
-    def DECIMAL_YEAR_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.YEAR_TEXT_SHORT_MONTH_FORMAT)
-
-    @property
-    def DOZENAL_YEAR_TEXT_SHORT_MONTH_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.YEAR_TEXT_SHORT_MONTH_FORMAT)
-
-    @property
     def MONTH_DAY_FORMAT(self) -> str:
+        if self.ISO_MODE:
+            return self.DATE_FORMAT
+
         parts = self.DATE_FORMAT.split(self.DATE_SEPARATOR)
 
         for i in range(len(parts)):
@@ -472,26 +328,15 @@ class SezimalLocale:
         return self._to_iso_date_format(self.MONTH_DAY_FORMAT)
 
     @property
-    def SEZIMAL_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.MONTH_DAY_FORMAT)
-
-    @property
-    def DECIMAL_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.MONTH_DAY_FORMAT)
-
-    @property
-    def DOZENAL_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.MONTH_DAY_FORMAT)
-
-    @property
     def TEXT_MONTH_DAY_FORMAT(self) -> str:
-        df = self.DATE_FORMAT.replace('#m', '#M').replace('#?m', '#M')
+        df = self._to_text_month_format(self.DATE_FORMAT)
         parts = df.split(self.DATE_SEPARATOR)
 
-        for i in range(len(parts)):
-            if parts[i][-1] in ('y', 'Y', 'x', 'X'):
-                del parts[i]
-                break
+        if not self.ISO_MODE:
+            for i in range(len(parts)):
+                if parts[i][-1] in ('y', 'Y', 'x', 'X'):
+                    del parts[i]
+                    break
 
         return self.DATE_SEPARATOR.join(parts)
 
@@ -499,21 +344,20 @@ class SezimalLocale:
     def ISO_TEXT_MONTH_DAY_FORMAT(self) -> str:
         return self._to_iso_date_format(self.TEXT_MONTH_DAY_FORMAT)
 
-    @property
-    def SEZIMAL_TEXT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.TEXT_MONTH_DAY_FORMAT)
-
-    @property
-    def DECIMAL_TEXT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.TEXT_MONTH_DAY_FORMAT)
-
-    @property
-    def DOZENAL_TEXT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.TEXT_MONTH_DAY_FORMAT)
+    def _to_short_day_format(self, fmt: str) -> str:
+        fmt = fmt.replace('#d', '#-d')
+        fmt = fmt.replace('#?d', '#?-d')
+        fmt = fmt.replace('#9d', '#9-d')
+        fmt = fmt.replace('#↋d', '#↋-d')
+        fmt = fmt.replace('#@d', '#@-d')
+        fmt = fmt.replace('#!d', '#!-d')
+        fmt = fmt.replace('#@!d', '#@!-d')
+        return fmt
 
     @property
     def TEXT_SHORT_MONTH_DAY_FORMAT(self) -> str:
-        df = self.DATE_FORMAT.replace('#m', '#@M').replace('#?m', '#@M')
+        df = self._to_text_short_month_format(self.DATE_FORMAT)
+        df = self._to_short_day_format(df)
         parts = df.split(self.DATE_SEPARATOR)
 
         for i in range(len(parts)):
@@ -526,32 +370,6 @@ class SezimalLocale:
     @property
     def ISO_TEXT_SHORT_MONTH_DAY_FORMAT(self) -> str:
         return self._to_iso_date_format(self.TEXT_SHORT_MONTH_DAY_FORMAT)
-
-    @property
-    def SEZIMAL_TEXT_SHORT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_sezimal_date_format(self.TEXT_SHORT_MONTH_DAY_FORMAT)
-
-    @property
-    def DECIMAL_TEXT_SHORT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_decimal_date_format(self.TEXT_SHORT_MONTH_DAY_FORMAT)
-
-    @property
-    def DOZENAL_TEXT_SHORT_MONTH_DAY_FORMAT(self) -> str:
-        return self._to_dozenal_date_format(self.TEXT_SHORT_MONTH_DAY_FORMAT)
-
-    @property
-    def TIME_SEPARATOR(self):
-        separator = self.TIME_FORMAT.lower().replace('#', '')
-        separator = separator.replace('?', '')
-        separator = separator.replace('!', '')
-        separator = separator.replace('u', '')
-        separator = separator.replace('p', '')
-        separator = separator.replace('a', '')
-
-        if not separator:
-            return ''
-
-        return separator[0]
 
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'UTC'
@@ -575,25 +393,25 @@ class SezimalLocale:
     # between Northern and Southern Hemispheres, generally speaking
     #
     SEASON_EMOJI_NORTHERN_HEMISPHERE = {
-        'spring_cross_quarter': '\ufe0f❄️\ufe0f〰\ufe0f🌷',
-        'spring_equinox': '\ufe0f🌷',
-        'summer_cross_quarter': '\ufe0f🌷\ufe0f〰\ufe0f🌞',
-        'summer_solstice': '\ufe0f🌞',
-        'autumn_cross_quarter': '\ufe0f🌞\ufe0f〰\ufe0f🍂',
-        'autumn_equinox': '\ufe0f🍂',
-        'winter_cross_quarter': '\ufe0f🍂\ufe0f〰\ufe0f❄️',
-        'winter_solstice': '\ufe0f❄️',
+        'spring_cross_quarter': '❄️\ufe0f\ufe0f〰\ufe0f🌷\ufe0f',
+        'spring_equinox': '🌷\ufe0f',
+        'summer_cross_quarter': '🌷\ufe0f〰\ufe0f🌞\ufe0f',
+        'summer_solstice': '🌞\ufe0f',
+        'autumn_cross_quarter': '🌞\ufe0f〰\ufe0f🍂\ufe0f',
+        'autumn_equinox': '🍂\ufe0f',
+        'winter_cross_quarter': '🍂\ufe0f〰\ufe0f❄️\ufe0f',
+        'winter_solstice': '❄️\ufe0f',
     }
 
     SEASON_EMOJI_SOUTHERN_HEMISPHERE = {
-        'autumn_cross_quarter': '\ufe0f🌞\ufe0f〰\ufe0f🍂',
-        'autumn_equinox': '\ufe0f🍂',
-        'winter_cross_quarter': '\ufe0f🍂\ufe0f〰\ufe0f❄️',
-        'winter_solstice': '\ufe0f❄️',
-        'spring_cross_quarter': '\ufe0f❄️\ufe0f〰\ufe0f🌺',
-        'spring_equinox': '\ufe0f🌺',
-        'summer_cross_quarter': '\ufe0f🌺\ufe0f〰\ufe0f🌞',
-        'summer_solstice': '\ufe0f🌞',
+        'autumn_cross_quarter': '🌞\ufe0f〰\ufe0f🍂\ufe0f',
+        'autumn_equinox': '🍂\ufe0f',
+        'winter_cross_quarter': '🍂\ufe0f〰\ufe0f❄️\ufe0f',
+        'winter_solstice': '❄️\ufe0f',
+        'spring_cross_quarter': '❄️\ufe0f\ufe0f〰\ufe0f🌺\ufe0f',
+        'spring_equinox': '🌺\ufe0f',
+        'summer_cross_quarter': '🌺\ufe0f〰\ufe0f🌞\ufe0f',
+        'summer_solstice': '🌞\ufe0f',
     }
 
     MOON_PHASE = {
@@ -1197,6 +1015,7 @@ class SezimalLocale:
 
         start = SezimalInteger(start)
         finish = SezimalInteger(finish)
+        max_size = finish - start
 
         if start < 0:
             start = self.len(text) + start
@@ -1207,21 +1026,19 @@ class SezimalLocale:
         sliced_text = ''
 
         j = start
-        for i in SezimalRange(start, finish):
+        size = SezimalInteger(0)
+
+        while size < max_size and j.decimal < len(text):
             c = text[int(j.decimal)]
             sliced_text += c
+            size += 1
             j += 1
 
-            while self.strip_unprintable_combining(c) == '':
-                if len(text) > j.decimal:
-                    break
-
+            while j.decimal < len(text) \
+                and self.strip_unprintable_combining(c) == '':
                 c = text[int(j.decimal)]
                 sliced_text += c
                 j += 1
-
-            if int(j.decimal) >= len(text):
-                break
 
         #
         # If the next character is unprintable, get it too
@@ -1337,10 +1154,20 @@ class SezimalLocale:
         # Presume that the 2 characters are a country code
         #
         elif len(parts[1]) == 2:
-            name = parts[0].lower() + '-' + parts[1]
+            name = parts[0].lower()
 
             if len(parts) > 2:
-                name += '-' + '-'.join(parts[2:]).capitalize()
+                if parts[-2] == 'NU' and parts[-1] == 'LATN':
+                    if parts[1] == 'NU':
+                        name += '-u-nu-Latn'
+                    else:
+                        name += '-' + '-'.join(parts[2:]).capitalize() + '-u-nu-Latn'
+
+                else:
+                    name += '-' + '-'.join(parts[2:]).capitalize()
+
+            else:
+                name += '-' + parts[1]
 
             lt = name
 
@@ -1356,19 +1183,32 @@ class SezimalLocale:
         return lt
 
     JEWISH_CALENDAR_MONTH_NAME = [
-        'Nisan ניסן',
-        'Iyyar אייר‎',
-        'Sivan סיון‎',
-        'Tammuz תמוז‎',
-        'Av אב',
-        'Elul אלול‎',
-        'Tishri תשרי‎',
-        'Heshvan חשוון',
-        'Kislev כסלו',
-        'Tevet טבת',
-        'Shevat שבט',
-        'Adar אדר',
-        'Adar bet אדר ב׳',
+        # 'Nisan ניסן',
+        # 'Iyyar אייר‎',
+        # 'Sivan סיון‎',
+        # 'Tammuz תמוז‎',
+        # 'Av אב',
+        # 'Elul אלול‎',
+        # 'Tishri תשרי‎',
+        # 'Heshvan חשוון',
+        # 'Kislev כסלו',
+        # 'Tevet טבת',
+        # 'Shevat שבט',
+        # 'Adar אדר',
+        # 'Adar bet אדר ב׳',
+        'Nisan',
+        'Iyyar',
+        'Sivan',
+        'Tammuz',
+        'Av',
+        'Elul',
+        'Tishri',
+        'Heshvan',
+        'Kislev',
+        'Tevet',
+        'Shevat',
+        'Adar',
+        'Adar bet',
     ]
 
     JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME = [
@@ -1388,33 +1228,45 @@ class SezimalLocale:
     ]
 
     HIJRI_CALENDAR_MONTH_NAME = [
-        'Al-muḥarram المحرم',
-        'Ṣafar صفر',
-        'Rabīʿ al-ʾawwal ربيع الأول',
-        'Rabīʿ al-ʾākhir ربيع الآخر',
-        'Jumādā al-ʾūlā جمادى الأولى',
-        'Jumādā al-ʾākhirah جمادى الآخرة',
-        'Rajab رجب',
-        'Shaʿbān شعبان',
-        'Ramaḍān رمضان',
-        'Shawwāl شوال',
-        'Ḏū al-qaʿdah ذو القعدة',
-        'Ḏū al-ḥijjah ذو الحجة',
+        # 'Al-muḥarram المحرم',
+        # 'Ṣafar صفر',
+        # 'Rabīʿ al-ʾawwal ربيع الأول',
+        # 'Rabīʿ al-ʾākhir ربيع الآخر',
+        # 'Jumādā al-ʾūlā جمادى الأولى',
+        # 'Jumādā al-ʾākhirah جمادى الآخرة',
+        # 'Rajab رجب',
+        # 'Shaʿbān شعبان',
+        # 'Ramaḍān رمضان',
+        # 'Shawwāl شوال',
+        # 'Ḏū al-qaʿdah ذو القعدة',
+        # 'Ḏū al-ḥijjah ذو الحجة',
+        'Muḥarram',
+        'Ṣafar',
+        'Rabīʿ I',
+        'Rabīʿ II',
+        'Jumādā I',
+        'Jumādā II',
+        'Rajab',
+        'Shaʿbān',
+        'Ramaḍān',
+        'Shawwāl',
+        'Ḏū al-Qiʿdah',
+        'Ḏū al-Ḥijjah',
     ]
 
     HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
-        'Ammu',
-        'Ṣafa',
-        'Rʾaw',
-        'Rʾāk',
-        'Jʾūl',
-        'Jʾāk',
-        'Raja',
+        'Muḥ',
+        'Ṣaf',
+        'Rb1',
+        'Rb2',
+        'Jm1',
+        'Jm2',
+        'Raj',
         'Shaʿ',
-        'Rama',
-        'Shaw',
-        'Ḏūqa',
-        'Ḏūḥi',
+        'Ram',
+        'Sha',
+        'ḎQʿ',
+        'ḎḤj',
     ]
 
     IRANIAN_CALENDAR_MONTH_NAME = [
@@ -1522,3 +1374,225 @@ class SezimalLocale:
     @HOUR_FORMAT.setter
     def HOUR_FORMAT(self, value):
         self._hour_format = value
+
+    def to_short_year_format(self):
+        if self.ISO_MODE:
+            return
+
+        def _to_short_year_format(fmt) -> str:
+            fmt = fmt.replace('#Y', '#>Y')
+            fmt = fmt.replace('#!Y', '#!>Y')
+            fmt = fmt.replace('#?Y', '#?>Y')
+            fmt = fmt.replace('#X', '#>X')
+            fmt = fmt.replace('#!X', '#!>X')
+            fmt = fmt.replace('#?X', '#?>X')
+            fmt = fmt.replace('#y', '#>y')
+            fmt = fmt.replace('#!y', '#!>y')
+            fmt = fmt.replace('#?y', '#?>y')
+            return fmt
+
+        self.DATE_FORMAT = _to_short_year_format(self.DATE_FORMAT)
+        self.DATE_LONG_FORMAT = _to_short_year_format(self.DATE_LONG_FORMAT)
+        self.DATE_TIME_FORMAT = _to_short_year_format(self.DATE_TIME_FORMAT)
+        self.DATE_TIME_LONG_FORMAT = _to_short_year_format(self.DATE_TIME_LONG_FORMAT)
+
+        try:
+            self.YEAR_TEXT_MONTH_FORMAT = _to_short_year_format(self.YEAR_TEXT_MONTH_FORMAT)
+        except:
+            pass
+
+    def _to_other_base(self, base: int, fmt: str = None,
+        sezimal_digits: bool = False, text_digits: bool = False) -> str | None:
+        def _to_decimal_format(fmt) -> str:
+            fmt = fmt.replace('#d', '#9d')
+            fmt = fmt.replace('#?d', '#9?d')
+            fmt = fmt.replace('#-d', '#9-d')
+            fmt = fmt.replace('#?-d', '#9?-d')
+            fmt = fmt.replace('#m', '#9m')
+            fmt = fmt.replace('#?m', '#9?m')
+            fmt = fmt.replace('#Y', '#9sy')
+            fmt = fmt.replace('#?Y', '#9?sy')
+            fmt = fmt.replace('#y', '#9sy')
+            fmt = fmt.replace('#?y', '#9?sy')
+            fmt = fmt.replace('#M', '#9M')
+            fmt = fmt.replace('#wY', '#9wY')
+            fmt = fmt.replace('#w', '#9w')
+            fmt = fmt.replace('#X', '#9sy')
+            fmt = fmt.replace('#>Y', '#9sy')
+            fmt = fmt.replace('#?>Y', '#9?sy')
+            fmt = fmt.replace('#>X', '#9sy')
+            fmt = fmt.replace('#?>X', '#9?sy')
+            fmt = fmt.replace('#>y', '#9sy')
+            fmt = fmt.replace('#?>y', '#9?sy')
+            return fmt
+
+        def _to_dozenal_format(fmt: str) -> str:
+            return _to_decimal_format(fmt).replace('9', '↋')
+
+        def _to_sezimal_digits_format(fmt: str) -> str:
+            fmt = fmt.replace('#?', '#')
+            fmt = fmt.replace('#d', '#!d')
+            fmt = fmt.replace('#-d', '#!-d')
+            fmt = fmt.replace('#m', '#!m')
+            fmt = fmt.replace('#Y', '#!Y')
+            fmt = fmt.replace('#y', '#!y')
+            fmt = fmt.replace('#wY', '#!wY')
+            fmt = fmt.replace('#w', '#!w')
+            fmt = fmt.replace('#X', '#!X')
+
+            fmt = fmt.replace('#>Y', '#!>Y')
+            fmt = fmt.replace('#>X', '#!>X')
+            fmt = fmt.replace('#>y', '#!>y')
+
+            fmt = fmt.replace('#u', '#!u')
+            fmt = fmt.replace('#p', '#!p')
+            fmt = fmt.replace('#a', '#!a')
+            fmt = fmt.replace('#n', '#!n')
+            fmt = fmt.replace('#b', '#!b')
+            fmt = fmt.replace('#e', '#!e')
+            fmt = fmt.replace('#-u', '#!-u')
+            fmt = fmt.replace('#-p', '#!-p')
+            fmt = fmt.replace('#-a', '#!-a')
+            fmt = fmt.replace('#-n', '#!-n')
+            fmt = fmt.replace('#-b', '#!-b')
+            fmt = fmt.replace('#-e', '#!-e')
+
+            return fmt
+
+        def _to_niftimal_format(fmt: str) -> str:
+            fmt = _to_sezimal_digits_format(fmt)
+
+            if sezimal_digits:
+                fmt = fmt.replace('!', '@!')
+            elif text_digits:
+                fmt = fmt.replace('!', 'Z')
+            else:
+                fmt = fmt.replace('!', '@')
+
+            return fmt
+
+        if base == 10:
+            conversion_function = _to_sezimal_digits_format
+        elif base == 14:
+            conversion_function = _to_decimal_format
+        elif base == 20:
+            conversion_function = _to_dozenal_format
+        elif base == 100:
+            conversion_function = _to_niftimal_format
+
+        if fmt:
+            return conversion_function(fmt)
+
+        self.DATE_FORMAT = conversion_function(self.DATE_FORMAT)
+        self.DATE_LONG_FORMAT = conversion_function(self.DATE_LONG_FORMAT)
+        self.DATE_TIME_FORMAT = conversion_function(self.DATE_TIME_FORMAT)
+        self.DATE_TIME_LONG_FORMAT = conversion_function(self.DATE_TIME_LONG_FORMAT)
+
+        try:
+            self.YEAR_TEXT_MONTH_FORMAT = conversion_function(self.YEAR_TEXT_MONTH_FORMAT)
+        except:
+            pass
+
+        if base == 10:
+            self.TIME_FORMAT = conversion_function(self.TIME_FORMAT)
+            self.DIGITS = []
+
+        elif base == 100:
+            self.TIME_FORMAT = conversion_function(self.TIME_FORMAT)
+            self.DIGITS = []
+
+        elif base == 14:
+            self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, self.ISO_TIME_FORMAT)
+            self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, self.ISO_TIME_FORMAT)
+            self.TIME_FORMAT = self.ISO_TIME_FORMAT
+
+        elif base == 20:
+            self.DIGITS = []
+            self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
+            self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
+            self.TIME_FORMAT = '#3.2fD'
+
+        if base == 14 or base == 20:
+            self.MONTH_NAME = self.ISO_MONTH_NAME
+            self.MONTH_ABBREVIATED_NAME = self.ISO_MONTH_ABBREVIATED_NAME
+
+    def to_decimal_base(self):
+        self._to_other_base(14)
+
+    def to_dozenal_base(self):
+        self._to_other_base(20)
+
+    def to_niftimal_base(self, sezimal_digits: bool = False):
+        self._to_other_base(100, sezimal_digits=sezimal_digits)
+
+    def to_niftimal_text_base(self):
+        self._to_other_base(100, text_digits=True)
+
+    def to_sezimal_digits(self):
+        self._to_other_base(10, sezimal_digits=True)
+
+    def to_iso_format(self):
+        self.DATE_SEPARATOR = '-'
+        self.TIME_SEPARATOR = ':'
+        self.GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
+        self.FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
+        self.ISO_MODE = True
+
+        self.DATE_FORMAT = '#Y-#m-#d'
+        self.DATE_LONG_FORMAT = '#Y-#m-#d'
+        self.TIME_FORMAT = '#u:#p:#a'
+        self.ISO_TIME_FORMAT = '%H:%M:%S'
+
+    CHRISTIAN_HOLIDAYS = [
+        ('CHR+01-01',     '🕆\ufe0f Solemnity of Mary, Mother of God'),
+        ('CHR+01-06',     '🕆\ufe0f Epiphany'),
+        ('CHR+01-06+SUN', '🕆\ufe0f Baptism of the Lord'),
+        ('CHR+02-02',     '🕆\ufe0f Candlemas'),
+        ('CHR+EASTER-124', '🕆\ufe0f Fat Thursday'),
+        ('CHR+EASTER-120', '🕆\ufe0f Shrove Monday'),
+        ('CHR+EASTER-115', '🕆\ufe0f Shrove Tuesday'),
+        ('CHR+EASTER-114', '🕆\ufe0f Ash Wednesday'),
+        ('CHR+EASTER-11',  '🕆\ufe0f Palm Sunday'),
+        ('CHR+EASTER-4',   '🕆\ufe0f Holy Wednesday'),
+        ('CHR+EASTER-3',   '🕆\ufe0f Maundy Thursday'),
+        ('CHR+EASTER-2',   '🕆\ufe0f🥀\ufe0f Good Friday'),
+        ('CHR+EASTER-1',   '🕆\ufe0f Holy Saturday'),
+        ('CHR+EASTER',     '🕆\ufe0f🐣\ufe0f🌱\ufe0f Easter'),
+        ('CHR+EASTER+1',   '🕆\ufe0f Easter Monday'),
+        ('CHR+EASTER+11',  '🕆\ufe0f Divine Mercy Sunday'),
+        ('CHR+EASTER+103', '🕆\ufe0f Ascension of Jesus'),
+        ('CHR+EASTER+121', '🕆\ufe0f Pentecost'),
+        ('CHR+EASTER+122', '🕆\ufe0f Whit Monday'),
+        ('CHR+EASTER+132', '🕆\ufe0f🛆 Trinity Sunday'),
+        ('CHR+EASTER+140', '🕆\ufe0f🥖\ufe0f🍷\ufe0f Corpus Christi'),
+        ('CHR+11-01',      '🕆\ufe0f All Saint’s'),
+        ('CHR+11-02',      '🕆\ufe0f All Soul’s'),
+        ('CHR+12-25-SUN_4','🕆\ufe0f Advent'),
+        ('CHR+12-25',      '🕆\ufe0f🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas'),
+    ]
+
+    JEWISH_HOLIDAYS = [
+        ('JEW+11-15', '🌳\ufe0f💮\ufe0f Tu biShvat'),
+        # ('JEW+12-14', '🍷\ufe0f🍬\ufe0f Purim'),  # Adar bet (13) in leap years, Adar (12) in regular years
+        ('JEW+13-14', '🍷\ufe0f🍬\ufe0f Purim'),  # Adar bet (13) in leap years, Adar (12) in regular years
+        ('JEW+01-15', '🐑\ufe0f🫓\ufe0f Pesach'),
+        ('JEW+02-14', '🐑\ufe0f🫓\ufe0f Pesach Sheni'),
+        ('JEW+02-18', '🔥\ufe0f Lag baOmer'),
+        ('JEW+03-06', '💐\ufe0f📜\ufe0f Shavuot'),
+        ('JEW+05-09', '🕍\ufe0f🔥\ufe0f Tisha b’Av'),
+
+        ('JEW+07-01', '🍎\ufe0f🍯\ufe0f Rosh haShaná'),
+        ('JEW+07-10', '🤍\ufe0f🙏🏻\ufe0f Yom Kippur'),
+        ('JEW+07-15', '🍋\ufe0f⛺\ufe0f Sukkot'),
+        ('JEW+07-22', '🙏🏻\ufe0f🌧\ufe0f️ Shemini Atzeret'),
+        ('JEW+07-23', '😊📜\ufe0f Simchat Torah'),
+        ('JEW+09-25', '🕯\ufe0f🕍\ufe0f Hanukkah'),
+    ]
+
+    ISLAMIC_HOLIDAYS = [
+        ('HIJ+09-01', '🍯\ufe0f🥙\ufe0f 1st day of Ramaḍān'),
+        ('HIJ+09-30', '🍯\ufe0f🥙\ufe0f Laylat ul-Jāʾizah'),
+        ('HIJ+10-01-FRI', '🍯\ufe0f🥙\ufe0f Jumuʿat ul-Widāʿ'),
+        ('HIJ+10-01', '🍯\ufe0f🥙\ufe0f ʻĪd ul-Fiṭr'),
+        ('HIJ+12-10', '🐑\ufe0f🕋\ufe0f ʿĪd ul-ʾAḍḥā'),
+    ]

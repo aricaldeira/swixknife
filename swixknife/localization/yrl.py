@@ -60,6 +60,7 @@ class SezimalLocaleYRL(SezimalLocalePT_BR):
         'yym',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d #M #Y'
     TIME_FORMAT = '#u:#p:#a'

@@ -70,8 +70,10 @@ class SezimalLocaleSV(SezimalLocale):
         'dec.',
     ]
 
+    DATE_SEPARATOR = '-'
     DATE_FORMAT = '#Y-#m-#d'
     DATE_LONG_FORMAT = '#-d #M #Y'
+    TIME_SEPARATOR = '.'
     TIME_FORMAT = '#u.#p.#a'
     DATE_TIME_FORMAT = '#Y-#m-#d #u.#p.#a'
     DATE_TIME_LONG_FORMAT = '#W #-d #M #Y #u.#p.#a'

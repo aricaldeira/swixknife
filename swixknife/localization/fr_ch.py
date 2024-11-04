@@ -14,6 +14,7 @@ class SezimalLocaleFR_CH(SezimalLocaleFR_FR):
     CURRENCY_SUBUNIT_SYMBOL = 'c.'
     CURRENCY_UNIT_SYMBOL_POSITION = 'R'
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#Y'
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DEFAULT_TIME_ZONE = 'Europe/Zurich'

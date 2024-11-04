@@ -27,11 +27,13 @@ from ..units import sezimal_to_decimal_unit
 from ..base import sezimal_format, sezimal_to_niftimal, default_to_sezimal_digits, \
     default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_niftimal_digits, \
-    sezimal_to_dozenal
+    sezimal_to_dozenal, niftimal_to_sezimal, dozenal_to_sezimal, \
+    decimal_to_sezimal
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, \
-    TIME_ZONE_OFFSET_FORMAT_TOKENS, ISO_TIME_NUMBER_FORMAT_TOKENS
+    TIME_ZONE_OFFSET_FORMAT_TOKENS, ISO_TIME_NUMBER_FORMAT_TOKENS, \
+    DAY_FRACTION_FORMAT_TOKEN
 
 
 class SezimalTime:
@@ -500,6 +502,55 @@ class SezimalTime:
         if '#@-V' in fmt:
             fmt = fmt.replace('#@-V', ' ' + locale.DST_EMOJI if self.is_dst else '')
 
+        for base, integer, fraction in DAY_FRACTION_FORMAT_TOKEN.findall(fmt):
+            regex = re.compile(fr'#{base}{integer}\.{fraction}fD')
+
+            if base in ['@', '@!', 'Z', 'Z?']:
+                integer = SezimalInteger(niftimal_to_sezimal(integer))
+                fraction = SezimalInteger(niftimal_to_sezimal(fraction))
+
+                text = locale.format_niftimal_number(
+                    self.as_days * (SezimalInteger('100') ** integer),
+                    niftimal_places=fraction,
+                    sezimal_digits='!' in base,
+                    sezimal_punctuation='!' in base,
+                    regularized_digits='@' in base,
+                )
+
+            elif base in ['9', '9?']:
+                integer = SezimalInteger(decimal_to_sezimal(integer))
+                fraction = SezimalInteger(decimal_to_sezimal(fraction))
+
+                text = locale.format_decimal_number(
+                    self.as_days * (SezimalInteger('14') ** integer),
+                    decimal_places=fraction,
+                    native_digits='?' in base
+                )
+
+            elif base in ['↋', '↋?']:
+                integer = SezimalInteger(dozenal_to_sezimal(integer))
+                fraction = SezimalInteger(dozenal_to_sezimal(fraction))
+
+                text = locale.format_dozenal_number(
+                    self.as_days * (SezimalInteger('20') ** integer),
+                    dozenal_places=fraction,
+                    native_digits='?' in base
+                )
+
+            else:
+                integer = SezimalInteger(integer)
+                fraction = SezimalInteger(fraction)
+
+                text = locale.format_number(
+                    self.as_days * (SezimalInteger('10') ** integer),
+                    sezimal_places=fraction,
+                    sezimal_digits='!' in base,
+                    sezimal_punctuation='!' in base,
+                    native_digits='?' in base
+                )
+
+            fmt = regex.sub(text, fmt)
+
         fmt = fmt.replace('__HASHTAG__', '#')
 
         #
@@ -619,7 +670,7 @@ class SezimalTime:
         return self.format(fmt)
 
     @property
-    def julian_date(self) -> Sezimal:
+    def julian_day(self) -> Sezimal:
         total_agrimas = self.as_agrimas
 
         if self.time_zone:
@@ -631,8 +682,8 @@ class SezimalTime:
         return jd
 
     @property
-    def mars_sol_date(self) -> Sezimal:
-        return mars_sol_date(self.julian_date)
+    def mars_sol(self) -> Sezimal:
+        return mars_sol(self.julian_day)
 
     @property
     def as_days(self) -> Sezimal:

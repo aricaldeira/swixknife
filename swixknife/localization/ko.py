@@ -58,39 +58,39 @@ class SezimalLocaleKO(SezimalLocale):
     ]
 
     MONTH_NAME= [
-        '1월',   # il-wol
-        '2월',   # i-wol
-        '3월',   # sam-wol
-        '4월',   # sa-wol
-        '5월',   # o-wol
-        '10월',  # yu-wol
+        '일월',   # il-wol
+        '이월',   # i-wol
+        '삼월',   # sam-wol
+        '사월',   # sa-wol
+        '오월',   # o-wol
+        '육월',  # yu-wol
         # '7월',    # chil-wol
         # '8월',    # pal-wol
         # '9월',    # gu-wol
         # '10월',   # si-wol
         # '11월',   # sip-il-wol
         # '12월',   # sip-i-wol
-        '11월',  # yu-il-wol
-        '12월',  # yu-i-wol
-        '13월',  # yu-sam-wol
-        '14월',  # yu-sa-wol
-        '15월',  # yu-o-wol
-        '20월',  # i-yu-wol
+        '육일월',  # yu-il-wol
+        '육이월',  # yu-i-wol
+        '육삼월',  # yu-sam-wol
+        '육사월',  # yu-sa-wol
+        '육오월',  # yu-o-wol
+        '이육월',  # i-yu-wol
     ]
 
     ISO_MONTH_NAME= [
-        '1월',   # il-wol
-        '2월',   # i-wol
-        '3월',   # sam-wol
-        '4월',   # sa-wol
-        '5월',   # o-wol
-        '6월',  # yu-wol
-        '7월',    # chil-wol
-        '8월',    # pal-wol
-        '9월',    # gu-wol
-        '10월',   # si-wol
-        '11월',   # sip-il-wol
-        '12월',   # sip-i-wol
+         '일월',  # il-wol
+         '이월',  # i-wol
+         '삼월',  # sam-wol
+         '사월',  # sa-wol
+         '오월',  # o-wol
+         '육월',  # yu-wol
+         '칠월',  # chil-wol
+         '팔월',  # pal-wol
+         '구월',  # gu-wol
+         '십월',  # si-wol
+        '십일월',  # sip-il-wol
+        '십이월',  # sip-i-wol
     ]
 
     MONTH_ABBREVIATED_NAME = [
@@ -123,11 +123,12 @@ class SezimalLocaleKO(SezimalLocale):
         '12월',   # sip-i-wol
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#Y/#m/#d'
-    DATE_LONG_FORMAT = '#Y년 #m월 #d일'
+    DATE_LONG_FORMAT = '#Y년 #M #-d일'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#Y년 #-m월 #-d일 #W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#Y년 #M #-d일 #W #u:#p:#a'
     DEFAULT_TIME_ZONE = 'Asia/Seoul'
     DST_NAME = '일광 절약 시간제'  # ilgwang jeol-yag siganje
     DST_SHORT_NAME = 'DST'

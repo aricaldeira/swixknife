@@ -73,17 +73,9 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
     )
 )
 
-DATE_TEXT_FORMAT_TOKENS = tuple(
-    (
-        re.compile(f'#{base}{size}{case}{month_week}'),
-        f'#{base}{size}{case}{month_week}'.replace('\\', ''), base.replace('\\', ''), size.replace('\\', ''), case.replace('\\', ''), month_week
-    )
-    for base, size, case, month_week in product(
-        ('', 'Z', '9', '↋'),
-        ('', '@', '1', '2', '3'),
-        ('', '\\!', '\\?', '\\>'),
-        ('M', 'W'),
-    )
+
+DATE_TEXT_FORMAT_TOKEN = re.compile(
+    r'#(?P<base>Z|9|↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week>M|W)'
 )
 
 
@@ -117,6 +109,11 @@ TIME_ZONE_OFFSET_FORMAT_TOKENS = tuple(
         ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '99', '↋↋', '\\?', '9\\?', '↋\\?', 'Z\\?', '99\\?', '↋↋\\?'),
         ('', '\\:'),
     )
+)
+
+
+DAY_FRACTION_FORMAT_TOKEN = re.compile(
+    r'#(?P<base>@|!|@!|Z|9|↋|\?|Z\?|9\?|↋\?)?(?P<integer>[0-9A-Z↊↋]{1,2})\.(?P<fraction>[0-9A-Z↊↋]{1,2})fD'
 )
 
 

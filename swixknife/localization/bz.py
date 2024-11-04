@@ -90,6 +90,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'aÈUS',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O di #M di #Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -128,24 +129,24 @@ class SezimalLocaleBZ(SezimalLocale):
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        # ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
-        ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
-        # ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Paxawn di Kristu'),
-        ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
-        ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
+        # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
+        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw'),
-        ('05-01', '\ufe0f🐝🐜 Dia du Trabalyu'),
-        ('14-20', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida'),
-        ('15-02', '\ufe0f🪦🕊️  Finadus'),
-        ('20-40', '\ufe0f🥂🍽️  Véspera di Nataw'),
-        ('20-41', '\ufe0f🌟👼🏼 Nataw'),
-        ('20-55', '\ufe0f🍾🎆 Véspera di Anu Novu'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
+        ('05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
+        ('14-20', '⛪\ufe0f👸\ufe0f🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️  Finadus'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera di Nataw'),
+        ('20-41', '🌟\ufe0f👼\ufe0f🏼\ufe0f Nataw'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
         # National Holidays
@@ -159,41 +160,41 @@ class SezimalLocaleBZ(SezimalLocale):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('212_144-04-32', '\ufe0f🇧🇷🔺 Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
-        # ('212_540-11-10', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        # ('212_234-13-10', '\ufe0f🇧🇷🕊️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        # ('212_425-15-31', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        # ('211_503-15-33', '\ufe0f👨🏿 Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        # ('212_144-04-32', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
+        # ('212_234-13-10', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        # ('212_425-15-31', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        # ('211_503-15-33', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
 
-        ('212_144-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
-        ('212_540-11-13', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
-        ('212_234-13-11', '\ufe0f🇧🇷🕊️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
-        ('212_425-15-23', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
-        ('211_503-15-32', '\ufe0f👨🏿 Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+        ('212_144-04-33', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
+        ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
+        ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
+        ('211_503-15-32', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
         #
         # Moving Holidays
         #
-        # ('ISO+EASTER-120', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
-        ('ISO+EASTER-115', '\ufe0f🎉🎭 Karnavaw (%d/%m)'),
-        # ('ISO+EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas (%d/%m)'),
-        ('ISO+EASTER-2',   '\ufe0f🕆\ufe0f🥀 Payxawn di Kristu (%d/%m)'),
-        ('ISO+EASTER',     '\ufe0f🐣🌱 Paskwa (%d/%m)'),
-        ('ISO+EASTER+140', '\ufe0f🥖🍷 Corpus Christi (%d/%m)'),
+        # ('ISO+EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        ('ISO+EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        # ('ISO+EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
+        ('ISO+EASTER-2',   '🕆\ufe0f🥀\ufe0f Payxawn di Kristu'),
+        ('ISO+EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
+        ('ISO+EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('ISO+01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw (%d/%m)'),
-        ('ISO+05-01', '\ufe0f🐝🐜 Dia du Trabalyu (%d/%m)'),
-        ('ISO+10-12', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida (%d/%m)'),
-        ('ISO+11-02', '\ufe0f🪦🕊️  Finadus (%d/%m)'),
-        ('ISO+12-24', '\ufe0f🥂🍽️  Véspera di Nataw (%d/%m)'),
-        ('ISO+12-25', '\ufe0f🌟👼🏼 Nataw (%d/%m)'),
-        ('ISO+12-31', '\ufe0f🍾🎆 Véspera di Anu Novu (%d/%m)'),
+        ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
+        ('ISO+05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
+        ('ISO+10-12', '⛪\ufe0f👸\ufe0f🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️ Finadus'),
+        ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️ Véspera di Nataw'),
+        ('ISO+12-25', '🌟\ufe0f👼\ufe0f🏼\ufe0f Nataw'),
+        ('ISO+12-31', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
         # National Holidays
@@ -204,11 +205,11 @@ class SezimalLocaleBZ(SezimalLocale):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO+1792-04-21', '\ufe0f🇧🇷🔺 Tiradentis (%d/%m)'),                      # sábadu  212_144-04-32 ~ 1792-04-21_dec
-        ('ISO+1932-07-09', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540) (%d/%m - %i)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        ('ISO+1822-09-07', '\ufe0f🇧🇷🕊️ Independensya du Braziw (%d/%m - %i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        ('ISO+1889-11-15', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (%d/%m - %i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        ('ISO+1695-11-20', '\ufe0f👨🏿 Konsyensya Negra (%d/%m)'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        ('ISO+1792-04-21', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (%i)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
+        ('ISO+1822-09-07', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (%i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        ('ISO+1889-11-15', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (%i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        ('ISO+1695-11-20', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
     ]
 
     #

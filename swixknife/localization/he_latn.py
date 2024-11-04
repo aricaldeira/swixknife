@@ -77,6 +77,7 @@ class SezimalLocaleHE_LATN(SezimalLocale):
         'det',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#d.#m.#Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -154,16 +155,4 @@ class SezimalLocaleHE_LATN(SezimalLocale):
         'ad2',
     ]
 
-    HOLIDAYS_OTHER_CALENDAR = [
-        ('HEB+07-01', '🍎🍯 Rosh haShaná (%d.%m.%Y)'),
-        ('HEB+07-10', '🤍🙏🏻 Yom Kippur (%d.%m.%Y)'),
-        ('HEB+07-15', '🍋⛺ Sukkot (%d.%m.%Y)'),
-        ('HEB+07-22', '🙏🏻🌧️ Shemini Atzeret (%d.%m.%Y)'),
-        ('HEB+07-23', '😊📜 Simchat Torah (%d.%m.%Y)'),
-        ('HEB+09-25', '🕯🕍 Hanukkah (%d.%m.%Y)'),
-        ('HEB+11-15', '🌳💮 Tu biShvat (%d.%m.%Y)'),
-        ('HEB+12-14', '🍷🍬 Purim (%d.%m.%Y)'),
-        ('HEB+01-15', '🐑🫓 Pesach (%d.%m.%Y)'),
-        ('HEB+02-18', '🔥 Lag baOmer (%d.%m.%Y)'),
-        ('HEB+03-06', '💐📜 Shavuot (%d.%m.%Y)'),
-    ]
+    HOLIDAYS_OTHER_CALENDAR = SezimalLocale.JEWISH_HOLIDAYS

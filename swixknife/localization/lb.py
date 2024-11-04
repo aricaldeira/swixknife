@@ -3,10 +3,12 @@
 __all__ = ('SezimalLocaleLB',)
 
 
+from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, SEPARATOR_NARROW_NOBREAK_SPACE
+
 from .fr_lu import SezimalLocaleFR_LU
 
 
-class SezimalLocaleFR_LU(SezimalLocaleFR_LU):
+class SezimalLocaleLB(SezimalLocaleFR_LU):
     LANG = 'lb'
     LANGUAGE = 'Lëtzebuergesch'
 
@@ -68,6 +70,7 @@ class SezimalLocaleFR_LU(SezimalLocaleFR_LU):
         'Dez.',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d #M #y'
     TIME_FORMAT = '#u:#p:#a'

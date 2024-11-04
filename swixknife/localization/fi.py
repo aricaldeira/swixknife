@@ -70,8 +70,10 @@ class SezimalLocaleFI(SezimalLocale):
         'jouluk.',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d #Mta #y'
+    TIME_SEPARATOR = '.'
     TIME_FORMAT = '#u.#p.#a'
     DATE_TIME_FORMAT = '#d.#m.#y #u.#p.#a'
     DATE_TIME_LONG_FORMAT = '#Wna #-d #Mta #y, #u.#p.#a'

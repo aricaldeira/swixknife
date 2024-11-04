@@ -15,21 +15,21 @@ from ..json import json
 import os
 import requests
 
-# nublado fechado ☁️
-# raios 🌩️
-# raios e chuva ⛈️
-# neve 🌨️
-# chuva 🌧️
-# sol com chuva 🌦️
-# sol bastante nublado 🌥️
-# sol pouco nublado 🌤️
-# sol nublado médio ⛅
-# vento 🌬️
-# sol ☀️
-# lua crescente 🌘
-# chuva ☔
-# neblina 🌫
-# ciclone 🌪
+# nublado fechado ☁\ufe0f️
+# raios 🌩\ufe0f️
+# raios e chuva ⛈\ufe0f️
+# neve 🌨\ufe0f️
+# chuva 🌧\ufe0f️
+# sol com chuva 🌦\ufe0f️
+# sol bastante nublado 🌥\ufe0f️
+# sol pouco nublado 🌤\ufe0f️
+# sol nublado médio ⛅\ufe0f
+# vento 🌬\ufe0f️
+# sol ☀\ufe0f️
+# lua crescente 🌘\ufe0f
+# chuva ☔\ufe0f
+# neblina 🌫\ufe0f
+# ciclone 🌪\ufe0f
 
 
 def get_weather_conditions(

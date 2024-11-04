@@ -62,8 +62,8 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ]
 
     DATE_TIME_LONG_FORMAT = '#W, 𐑞 #-d#O #M #Y, #u:#p:#a'
-    ISO_TIME_FORMAT = '%I:%M:%S %P'
-    ISO_HOUR_MINUTE_FORMAT = '%I:%M %P'
+    ISO_TIME_FORMAT = '%I:%M:%S %P'
+    ISO_SHORT_TIME_FORMAT = '%I:%M %P'
     AM = '𐑱𐑧𐑥'
     PM = '𐑐𐑰𐑧𐑥'
 
@@ -95,7 +95,8 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ERROR = '𐑧𐑮𐑼'
     WEEKDAY_ERROR = '𐑦𐑯𐑝𐑩𐑤𐑦𐑛 𐑢𐑰𐑒𐑛𐑱 {weekday}'
     MONTH_ERROR = '𐑦𐑯𐑝𐑩𐑤𐑦𐑛 𐑥𐑩𐑯𐑔 {month}'
-    WEEK_NUMBER_SYMBOL = '𐑢𐑒#'
+    WEEK_NUMBER_SYMBOL = '𐑢𐑰𐑒'
+    DAY_NUMBER_SYMBOL = '𐑛𐑱'
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
         day = SezimalInteger(day)

@@ -91,6 +91,7 @@ class SezimalLocaleIT(SezimalLocale):
         'aEUS',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -132,18 +133,18 @@ class SezimalLocaleIT(SezimalLocale):
     MONTH_ERROR = 'Mese non valido {month}'
 
     HOLIDAYS = [
-        ('01-01', '\ufe0f🕊️  Capodanno'),
-        ('01-10', '\ufe0f🍬 Epifania'),
+        ('01-01', '🕊\ufe0f️  Capodanno'),
+        ('01-10', '🍬\ufe0f Epifania'),
         # ('EASTER', 'Pasqua'),
-        ('04-12', '\ufe0f🧺 Pasquetta'),
-        ('04-41', '\ufe0f🇮🇹 Festa della Liberazione'),
-        ('05-01', '\ufe0f🐝 Festa del Lavoro'),
-        ('10-02', '\ufe0f🇮🇹 Festa della Repubblica Italiana'),
-        ('12-21', '\ufe0f🏖️ Ferragosto'),
-        ('15-01', '\ufe0f🪦 Ognissanti'),
-        ('20-12', '\ufe0f⛪ Immacolata Concezione'),
-        ('20-41', '\ufe0f👼🏼 Natale'),
-        ('20-42', '\ufe0f⛪ Santo Stefano'),
+        ('04-12', '🧺\ufe0f Pasquetta'),
+        ('04-41', '🇮\ufe0f🇹\ufe0f Festa della Liberazione'),
+        ('05-01', '🐝\ufe0f Festa del Lavoro'),
+        ('10-02', '🇮\ufe0f🇹\ufe0f Festa della Repubblica Italiana'),
+        ('12-21', '🏖\ufe0f️ Ferragosto'),
+        ('15-01', '🪦\ufe0f Ognissanti'),
+        ('20-12', '⛪\ufe0f Immacolata Concezione'),
+        ('20-41', '👼\ufe0f🏼\ufe0f Natale'),
+        ('20-42', '⛪\ufe0f Santo Stefano'),
     ]
 
     def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:

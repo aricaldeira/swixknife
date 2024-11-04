@@ -3,18 +3,10 @@
 __all__ = ('SezimalLocaleCODE',)
 
 
-from .lokale import SezimalLocale
-from ..base import SEPARATOR_DOT, SEPARATOR_UNDERSCORE
+from .iso_dot import SezimalLocaleISO_DOT
+from ..base import SEPARATOR_UNDERSCORE
 
 
-class SezimalLocaleCODE(SezimalLocale):
-    LANG = 'en'
-    LANGUAGE = 'English'
-
-    SEZIMAL_SEPARATOR = SEPARATOR_DOT
-
+class SezimalLocaleCODE(SezimalLocaleISO_DOT):
     GROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-    SUBGROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-
     FRACTION_GROUP_SEPARATOR = SEPARATOR_UNDERSCORE
-    FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_UNDERSCORE

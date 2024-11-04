@@ -18,8 +18,8 @@ class SezimalLocaleEN_IN(SezimalLocaleEN):
     LANGUAGE = 'Indian English'
 
     DEFAULT_TIME_ZONE = 'Asia/Kolkata'
-    ISO_TIME_FORMAT = '%I:%M:%S %P'
-    ISO_HOUR_MINUTE_FORMAT = '%I:%M %P'
+    ISO_TIME_FORMAT = '%I:%M:%S %P'
+    ISO_SHORT_TIME_FORMAT = '%I:%M %P'
 
     CURRENCY_UNIT_SYMBOL = '₹'
     CURRENCY_SUBUNIT_SYMBOL = 'प'

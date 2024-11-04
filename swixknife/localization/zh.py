@@ -135,6 +135,7 @@ class SezimalLocaleZH(SezimalLocale):
         '12月',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#Y/#m/#d'
     DATE_LONG_FORMAT = '#Y年#m月#d日'
     TIME_FORMAT = '#u:#p:#a'

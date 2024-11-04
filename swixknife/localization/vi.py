@@ -112,6 +112,7 @@ class SezimalLocaleVI(SezimalLocale):
         'thg 12',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#d/#m/#Y'
     TIME_FORMAT = '#u:#p:#a'

@@ -91,11 +91,13 @@ class SezimalLocaleFA(SezimalLocale):
         'دسا',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#?d/#?m/#?Y'
-    DATE_LONG_FORMAT = '#?d/#?m/#?Y'
-    TIME_FORMAT = '#?u:#?p:#?a'
-    DATE_TIME_FORMAT = '#?d/#?m/#?Y #?u:#?p:#?a'
-    DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W #?u:#?p:#?a'
+    DATE_LONG_FORMAT = '#?-d#O #M #?Y'
+    TIME_FORMAT = '\N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_FORMAT = '#?d/#?m/#?Y \N{LRI}#?u:#?p:#?a\N{PDI}'
+    DATE_TIME_LONG_FORMAT = '#W, #?-d#O #M #?Y, \N{LRI}#?u:#?p:#?a\N{PDI}'
+    ISO_TIME_FORMAT = '%?H:%?M:%?S'
     DST_NAME = 'Daylight Saving Time'
     DST_SHORT_NAME = 'DST'
 
@@ -135,3 +137,6 @@ class SezimalLocaleFA(SezimalLocale):
     MONTH_ERROR = 'Invalid month {month}'
     WEEK_NUMBER_SYMBOL = 'هف'
     DAY_NUMBER_SYMBOL = 'روز'
+
+    def day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
+        return 'م'

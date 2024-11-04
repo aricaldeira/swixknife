@@ -16,7 +16,7 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, \
 
 class SezimalLocaleLAT(SezimalLocale):
     LANG = 'lat'
-    LANGUAGE = 'lingua latīna'
+    LANGUAGE = 'Latīnum'
 
     SEZIMAL_SEPARATOR = SEPARATOR_COMMA
 
@@ -47,101 +47,91 @@ class SezimalLocaleLAT(SezimalLocale):
     ]
 
     WEEKDAY_NAME = [
-        'diēs Lūnae ',
-        'diēs Mārtis',
-        'diēs Mercuriī ',
-        'diēs Iovis',
-        'diēs Veneris',
-        'diēs Sāturnī',
-        'diēs Sōlis',
+        'diēs Lūnae ',
+        'diēs Mārtis',
+        'diēs Mercuriī ',
+        'diēs Iouis',
+        'diēs Ueneris',
+        'diēs Sāturnī',
+        'diēs Sōlis',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'Lūn',
-        'Mār',
+        'Lūn',
+        'Mār',
         'Mer',
-        'Iov',
-        'Ven',
+        'Iou',
+        'Uen',
         'Sat',
-        'Sōl',
-    ]
-
-    WEEKDAY_SYMBOL = [
-        'L',
-        'M',
-        'M',
-        'I',
-        'V',
-        'S',
-        'S',
+        'Sōl',
     ]
 
     WEEKDAY_NAME_GENITIVE = [
-        'diēī Lūnae',
-        'diēī Mārtis',
-        'diēs Mercuriī',
-        'diēs Iovis',
-        'diēs Veneris',
-        'diēs Sāturnī',
-        'diēs Sōlis',
+        'diēī Lūnae',
+        'diēī Mārtis',
+        'diēs Mercuriī',
+        'diēs Iouis',
+        'diēs Ueneris',
+        'diēs Sāturnī',
+        'diēs Sōlis',
     ]
 
     WEEKDAY_NAME_DATIVE = [
-        'diēī Lūnae',
-        'diēī Mārtis',
-        'diēī Mercuriī',
-        'diēī Iovis',
-        'diēī Veneris',
-        'diēī Sāturnī',
-        'diēī Sōlis',
+        'diēī Lūnae',
+        'diēī Mārtis',
+        'diēī Mercuriī',
+        'diēī Iouis',
+        'diēī Ueneris',
+        'diēī Sāturnī',
+        'diēī Sōlis',
     ]
 
     WEEKDAY_NAME_ACCUSATIVE = [
-        'diēm Lūnae',
-        'diem Mārtis',
-        'diem Mercuriī',
-        'diem Iovis',
-        'diem Veneris',
-        'diem Sāturnī',
-        'diem Sōlis',
+        'diēm Lūnae',
+        'diem Mārtis',
+        'diem Mercuriī',
+        'diem Iouis',
+        'diem Ueneris',
+        'diem Sāturnī',
+        'diem Sōlis',
     ]
 
     WEEKDAY_NAME_ABLATIVE = [
-        'diē Lūnae',
-        'diē Mārtis',
-        'diē Mercuriī',
-        'diē Iovis',
-        'diē Veneris',
-        'diē Sāturnī',
-        'diē Sōlis',
+        'diē Lūnae',
+        'diē Mārtis',
+        'diē Mercuriī',
+        'diē Iouis',
+        'diē Ueneris',
+        'diē Sāturnī',
+        'diē Sōlis',
     ]
 
-    WEEKDAY_NAME_VOCATIVE = [
-        'diēs Lūnae',
-        'diēs Mārtis',
-        'diēs Mercuriī',
-        'diēs Iovis',
-        'diēs Veneris',
-        'diēs Sāturnī',
-        'diēs Sōlis',
+    WEEKDAY_NAME_UOCATIVE = [
+        'diēs Lūnae',
+        'diēs Mārtis',
+        'diēs Mercuriī',
+        'diēs Iouis',
+        'diēs Ueneris',
+        'diēs Sāturnī',
+        'diēs Sōlis',
     ]
 
     # WEEKDAY_NAME = [
-    #     'diēs Lūnae ',
-    #     'diēs Mārtis',
-    #     'diēs Mercuriī ',
-    #     'diēs Iovis',
-    #     'diēs Veneris',
-    #     'diēs Sabbatī',
-    #     'diēs Dominicus',
+    #     'diēs Lūnae ',
+    #     'diēs Mārtis',
+    #     'diēs Mercuriī ',
+    #     'diēs Iouis',
+    #     'diēs Ueneris',
+    #     'diēs Sabbatī',
+    #     'diēs Dominicus',
     # ]
     #
     # WEEKDAY_ABBREVIATED_NAME = [
-    #     'Lūn',
-    #     'Mār',
+    #     'Lūn',
+    #     'Mār',
     #     'Mer',
-    #     'Iov',
-    #     'Ven',
+    #     'Iou',
+    #     'Uen',
     #     'Sab',
     #     'Dom',
     # ]
@@ -151,166 +141,167 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'M',
     #     'M',
     #     'I',
-    #     'V',
+    #     'U',
     #     'S',
     #     'D',
     # ]
     #
     # WEEKDAY_NAME_GENITIVE = [
-    #     'diēī Lūnae',
-    #     'diēī Mārtis',
-    #     'diēī Mercuriī',
-    #     'diēī Iovis',
-    #     'diēī Veneris',
-    #     'diēī Sabbatī',
-    #     'diēī Dominicī',
+    #     'diēī Lūnae',
+    #     'diēī Mārtis',
+    #     'diēī Mercuriī',
+    #     'diēī Iouis',
+    #     'diēī Ueneris',
+    #     'diēī Sabbatī',
+    #     'diēī Dominicī',
     # ]
     #
     # WEEKDAY_NAME_DATIVE = [
-    #     'diēī Lūnae',
-    #     'diēī Mārtis',
-    #     'diēī Mercuriī',
-    #     'diēī Iovis',
-    #     'diēī Veneris',
-    #     'diēī Sabbatī',
-    #     'diēī Dominicō',
+    #     'diēī Lūnae',
+    #     'diēī Mārtis',
+    #     'diēī Mercuriī',
+    #     'diēī Iouis',
+    #     'diēī Ueneris',
+    #     'diēī Sabbatī',
+    #     'diēī Dominicō',
     # ]
     #
     # WEEKDAY_NAME_ACCUSATIVE = [
-    #     'diēm Lūnae',
-    #     'diem Mārtis',
-    #     'diem Mercuriī',
-    #     'diem Iovis',
-    #     'diem Veneris',
-    #     'diem Sabbatī',
+    #     'diēm Lūnae',
+    #     'diem Mārtis',
+    #     'diem Mercuriī',
+    #     'diem Iouis',
+    #     'diem Ueneris',
+    #     'diem Sabbatī',
     #     'diem Dominicum',
     # ]
     #
     # WEEKDAY_NAME_ABLATIVE = [
-    #     'diē Lūnae',
-    #     'diē Mārtis',
-    #     'diē Mercuriī',
-    #     'diē Iovis',
-    #     'diē Veneris',
-    #     'diē Sabbatī',
-    #     'diē Dominicō',
+    #     'diē Lūnae',
+    #     'diē Mārtis',
+    #     'diē Mercuriī',
+    #     'diē Iouis',
+    #     'diē Ueneris',
+    #     'diē Sabbatī',
+    #     'diē Dominicō',
     # ]
     #
-    # WEEKDAY_NAME_VOCATIVE = [
-    #     'diēs Lūnae',
-    #     'diēs Mārtis',
-    #     'diēs Mercuriī',
-    #     'diēs Iovis',
-    #     'diēs Veneris',
-    #     'diēs Sabbatī',
-    #     'diēs Dominice',
+    # WEEKDAY_NAME_UOCATIVE = [
+    #     'diēs Lūnae',
+    #     'diēs Mārtis',
+    #     'diēs Mercuriī',
+    #     'diēs Iouis',
+    #     'diēs Ueneris',
+    #     'diēs Sabbatī',
+    #     'diēs Dominice',
     # ]
 
     MONTH_NAME = [
-        'Iānuārius',
-        'Februārius',
-        'Mārtius',
-        'Aprīlis',
+        'Iānuārius',
+        'Februārius',
+        'Mārtius',
+        'Aprīlis',
         'Maius',
-        'Iūnius',
-        'Iūlius',
+        'Iūnius',
+        'Iūlius',
         'Augustus',
         'September',
-        'Octōber',
-        'November',
+        'Octōber',
+        'Nouember',
         'December',
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        'Iān',
+        'Iān',
         'Feb',
-        'Mār',
+        'Mār',
         'Apr',
         'Mai',
-        'Iūn',
-        'Iūl',
+        'Iūn',
+        'Iūl',
         'Aug',
         'Sep',
         'Oct',
-        'Nov',
+        'Nou',
         'Dec',
     ]
 
     MONTH_NAME_GENITIVE = [
-        'Iānuāriī',
-        'Februāriī',
-        'Mārtiī',
-        'Aprīlis',
-        'Maiī',
-        'Iūniī',
-        'Iūliī',
-        'Augustī',
+        'Iānuāriī',
+        'Februāriī',
+        'Mārtiī',
+        'Aprīlis',
+        'Maiī',
+        'Iūniī',
+        'Iūliī',
+        'Augustī',
         'Septembris',
-        'Octōbris',
-        'Novembris',
+        'Octōbris',
+        'Nouembris',
         'Decembris',
     ]
 
     MONTH_NAME_DATIVE = [
-        'Iānuāriō',
-        'Februāriō',
-        'Mārtiō',
-        'Aprīlī',
-        'Maiō',
-        'Iūniō',
-        'Iūliō',
-        'Augustō',
-        'Septembrī',
-        'Octōbrī',
-        'Novembrī',
-        'Decembrī',
+        'Iānuāriō',
+        'Februāriō',
+        'Mārtiō',
+        'Aprīlī',
+        'Maiō',
+        'Iūniō',
+        'Iūliō',
+        'Augustō',
+        'Septembrī',
+        'Octōbrī',
+        'Nouembrī',
+        'Decembrī',
     ]
 
     MONTH_NAME_ACCUSATIVE = [
-        'Iānuārium',
-        'Februārium',
-        'Mārtium',
-        'Aprīlem',
+        'Iānuārium',
+        'Februārium',
+        'Mārtium',
+        'Aprīlem',
         'Maium',
-        'Iūnium',
-        'Iūlium',
+        'Iūnium',
+        'Iūlium',
         'Augustum',
         'Septembrem',
-        'Octōbrem',
-        'Novembrem',
+        'Octōbrem',
+        'Nouembrem',
         'Decembrem',
     ]
 
     MONTH_NAME_ABLATIVE = [
-        'Iānuāriō',
-        'Februāriō',
-        'Mārtiō',
-        'Aprīlī',
-        'Maiō',
-        'Iūniō',
-        'Iūliō',
-        'Augustō',
-        'Septembrī',
-        'Octōbrī',
-        'Novembrī',
-        'Decembrī',
+        'Iānuāriō',
+        'Februāriō',
+        'Mārtiō',
+        'Aprīlī',
+        'Maiō',
+        'Iūniō',
+        'Iūliō',
+        'Augustō',
+        'Septembrī',
+        'Octōbrī',
+        'Nouembrī',
+        'Decembrī',
     ]
 
-    MONTH_NAME_VOCATIVE = [
-        'Iānuārie',
-        'Februārie',
-        'Mārtie',
-        'Aprīlis',
+    MONTH_NAME_UOCATIVE = [
+        'Iānuārie',
+        'Februārie',
+        'Mārtie',
+        'Aprīlis',
         'Maie',
-        'Iūnie',
-        'Iūlie',
+        'Iūnie',
+        'Iūlie',
         'Auguste',
         'September',
-        'Octōber',
-        'November',
+        'Octōber',
+        'Nouember',
         'December',
     ]
 
+    DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#$ND #$GM #Y'
     TIME_FORMAT = '#u:#p:#a'
@@ -320,40 +311,41 @@ class SezimalLocaleLAT(SezimalLocale):
     DST_SHORT_NAME = 'OL'
     DEFAULT_TIME_ZONE = 'Europe/Rome'
     WEEK_NUMBER_SYMBOL = 'heb'
-    DAY_NUMBER_SYMBOL = 'diēs'
+    DAY_NUMBER_SYMBOL = 'diēs'
     ISO_DATE_LONG_FORMAT = '%-d %b. %Y'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
+    # TEXT_SHORT_MONTH_DAY_FORMAT = '#-d/#3M'
     TEXT_MONTH_DAY_FORMAT = '#-d #$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y'
 
     SEASON_NAME = {
-        'spring_cross_quarter': 'Hieme vēr',
-        'spring_equinox': 'Vēr',
-        'summer_cross_quarter': 'Vēre aestātem',
-        'summer_solstice': 'Aestās',
-        'autumn_cross_quarter': 'Aestāte autumnum',
+        'spring_cross_quarter': 'Hieme vēr',
+        'spring_equinox': 'Vēr',
+        'summer_cross_quarter': 'Vēre aestātem',
+        'summer_solstice': 'Aestās',
+        'autumn_cross_quarter': 'Aestāte autumnum',
         'autumn_equinox': 'Autumnus',
-        'winter_cross_quarter': 'Autumnō hiemem',
+        'winter_cross_quarter': 'Autumnō hiemem',
         'winter_solstice': 'Hiems',
     }
 
     MOON_PHASE = {
-        'new': 'Lūna nova',
-        'waxing_crescent': 'Lūna accrēscēns corniculātā',
-        'first_quarter': 'Lūna accrēscēns dīmidiātā',
-        'waxing_gibbous': 'Lūna accrēscēns in orbem īnsinuāta',
-        'full': 'Lūna plēna',
-        'waning_gibbous': 'Lūna dēcrēscēns in orbem īnsinuāta',
-        'third_quarter': 'Lūna dēcrēscēns dīmidiātā',
-        'waning_crescent': 'Lūna dēcrēscēns corniculātā',
+        'new': 'Lūna nova',
+        'waxing_crescent': 'Lūna accrēscēns corniculātā',
+        'first_quarter': 'Lūna accrēscēns dīmidiātā',
+        'waxing_gibbous': 'Lūna accrēscēns in orbem īnsinuāta',
+        'full': 'Lūna plēna',
+        'waning_gibbous': 'Lūna dēcrēscēns in orbem īnsinuāta',
+        'third_quarter': 'Lūna dēcrēscēns dīmidiātā',
+        'waning_crescent': 'Lūna dēcrēscēns corniculātā',
     }
 
     #
     # Error messages
     #
     ERROR = 'Error'
-    WEEKDAY_ERROR = 'Non acceptābilis diēs hebdomadis {weekday}'
-    MONTH_ERROR = 'Non acceptābilis mēnsis {month}'
+    WEEKDAY_ERROR = 'Non acceptābilis diēs hebdomadis {weekday}'
+    MONTH_ERROR = 'Non acceptābilis mēnsis {month}'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_NOMINATIVE) -> str:
         weekday = SezimalInteger(weekday)
@@ -409,38 +401,38 @@ class SezimalLocaleLAT(SezimalLocale):
 
     DAY_NAME = [
         'Calendae',
-        'Nōnae',
-        'Īdūs',
+        'Nōnae',
+        'Īdūs',
     ]
 
     DAY_NAME_GENITIVE = [
-        'Calendārum',
+        'Calendārum',
         'Īduum',
-        'Nōnārum',
+        'Nōnārum',
     ]
 
     DAY_NAME_DATIVE = [
-        'Calendīs',
+        'Calendīs',
         'Īdibus',
-        'Nōnīs',
+        'Nōnīs',
     ]
 
     DAY_NAME_ACCUSATIVE = [
-        'Calendās',
-        'Īdūs',
-        'Nōnās',
+        'Calendās',
+        'Īdūs',
+        'Nōnās',
     ]
 
     DAY_NAME_ABLATIVE = [
-        'Calendīs',
+        'Calendīs',
         'Īdibus',
-        'Nōnīs',
+        'Nōnīs',
     ]
 
     DAY_NAME_VOCATIVE = [
         'Calendae',
-        'Īdūs',
-        'Nōnae',
+        'Īdūs',
+        'Nōnae',
     ]
 
     def day_name(self, date: SezimalDate, case: str = CASE_NOMINATIVE) -> str:
@@ -483,3 +475,12 @@ class SezimalLocaleLAT(SezimalLocale):
                 fmt = fmt.replace(f'#${case}D', self.day_name(date, case))
 
         return fmt
+
+    UPPERCASE_MAPPING = {
+        ord('U'): 'V',
+        ord('u'): 'V',
+    }
+    LOWERCASE_MAPPING = {
+        ord('V'): 'u',
+        ord('v'): 'u',
+    }

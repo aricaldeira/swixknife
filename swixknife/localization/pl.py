@@ -275,6 +275,7 @@ class SezimalLocalePL(SezimalLocale):
         'aSHE',
     ]
 
+    DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#-d. #$GM #Y r.'
     TIME_FORMAT = '#u:#p:#a'

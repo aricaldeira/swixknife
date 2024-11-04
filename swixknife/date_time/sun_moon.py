@@ -171,9 +171,6 @@ def _season_time(self, fmt: str, locale: SezimalLocale, four_seasons: bool = Fal
 
     season_date_time = season_date_time.at_time_zone(time_zone)
 
-    fmt = fmt.replace('#%u', '%H')
-    fmt = fmt.replace('#%p', '%M')
-
     return season_date_time.format(fmt, locale)
 
 
@@ -196,21 +193,21 @@ def _moon_emoji(self, hemisphere: str, four_phases: bool = False, nearest: bool 
     emoji = moon_phase
 
     if moon_phase == 'new':
-        emoji = '\ufe0f🌑'
+        emoji = '🌑\ufe0f'
     elif moon_phase == 'waxing_crescent':
-        emoji = '\ufe0f🌒' if hemisphere == 'N' else '\ufe0f🌘'
+        emoji = '🌒\ufe0f' if hemisphere == 'N' else '🌘\ufe0f'
     elif moon_phase == 'first_quarter':
-        emoji = '\ufe0f🌓' if hemisphere == 'N' else '\ufe0f🌗'
+        emoji = '🌓\ufe0f' if hemisphere == 'N' else '🌗\ufe0f'
     elif moon_phase == 'waxing_gibbous':
-        emoji = '\ufe0f🌔' if hemisphere == 'N' else '\ufe0f🌖'
+        emoji = '🌔\ufe0f' if hemisphere == 'N' else '🌖\ufe0f'
     elif moon_phase == 'full':
-        emoji = '\ufe0f🌕'
+        emoji = '🌕\ufe0f'
     elif moon_phase == 'waning_gibbous':
-        emoji = '\ufe0f🌖' if hemisphere == 'N' else '\ufe0f🌔'
+        emoji = '🌖\ufe0f' if hemisphere == 'N' else '🌔\ufe0f'
     elif moon_phase == 'third_quarter':
-        emoji = '\ufe0f🌗' if hemisphere == 'N' else '\ufe0f🌓'
+        emoji = '🌗\ufe0f' if hemisphere == 'N' else '🌓\ufe0f'
     elif moon_phase == 'waning_crescent':
-        emoji = '\ufe0f🌘' if hemisphere == 'N' else '\ufe0f🌒'
+        emoji = '🌘\ufe0f' if hemisphere == 'N' else '🌒\ufe0f'
 
     return emoji
 
@@ -289,16 +286,21 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
         if not regex.findall(fmt):
             continue
 
+        if base:
+            season_moon_time_format = f'#{base}u:#{base}p'
+        else:
+            season_moon_time_format = locale.SHORT_TIME_FORMAT
+
         if season_moon == 'S':
             text = self._season_time(
-                season_moon_time_format or f'#{base}u:#{base}p',
+                season_moon_time_format,
                 locale=locale,
                 four_seasons=number == '4',
                 time_zone=time_zone,
             )
         else:
             text = self._moon_time(
-                season_moon_time_format or f'#{base}u:#{base}p',
+                season_moon_time_format,
                 locale=locale,
                 four_phases=number == '4',
                 time_zone=time_zone,

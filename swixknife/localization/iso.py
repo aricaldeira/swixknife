@@ -8,8 +8,8 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_NARROW_NOBREAK_SPACE
 
 
 class SezimalLocaleISO(SezimalLocale):
-    LANG = 'en'
-    LANGUAGE = 'English'
+    LANG = 'fr'
+    LANGUAGE = 'français'
 
     SEZIMAL_SEPARATOR = SEPARATOR_COMMA
 
@@ -19,8 +19,9 @@ class SezimalLocaleISO(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
 
-    # DATE_FORMAT = '#y-#m-#d'
-    # DATE_LONG_FORMAT = '#y-W#wY-#w'
-    # TIME_FORMAT = '#u:#p:#a#:t'
-    # DATE_TIME_FORMAT = '#y-#m-#dT#u:#p:#a#:t'
-    # DATE_TIME_LONG_FORMAT = '#y-W#wY-#w #u:#p:#a#:t'
+    DATE_SEPARATOR = '-'
+    DATE_FORMAT = '#y-#m-#d'
+    DATE_LONG_FORMAT = '#y-W#wY-#w'
+    TIME_FORMAT = '#u:#p:#a#:t'
+    DATE_TIME_FORMAT = '#y-#m-#dT#u:#p:#a#:t'
+    DATE_TIME_LONG_FORMAT = '#y-W#wY-#w #u:#p:#a#:t'

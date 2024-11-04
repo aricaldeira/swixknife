@@ -34,7 +34,7 @@ for year in tqdm(SezimalRange(0, 140_001)):
     line += date.symmetric_isoformat + '|'
     line += date.gregorian_holocene_isoformat + '|'
     line += date.gregorian_isoformat + '|'
-    line += str(round(date.julian_date.decimal,1)) + '|'
+    line += str(round(date.julian_day.decimal,1)) + '|'
     line += str(date.ordinal_date.decimal) + '|'
 
     for date in [
@@ -51,7 +51,7 @@ for year in tqdm(SezimalRange(0, 140_001)):
         line += date.symmetric_isoformat + ' ' + date.format('%H:%M:%S') + '|'
         line += date.gregorian_holocene_isoformat + ' ' + date.format('%H:%M:%S') + '|'
         line += date.gregorian_isoformat  + ' ' + date.format('%H:%M:%S') + '|'
-        line += str(round(date.julian_date.decimal,9)) + '|'
+        line += str(round(date.julian_day.decimal,9)) + '|'
         line += str(round(date.as_days.decimal, 9)) + '|'
 
     arq.write(line + '\n')
