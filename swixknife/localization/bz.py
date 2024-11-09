@@ -142,10 +142,10 @@ class SezimalLocaleBZ(SezimalLocale):
         #
         ('01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
         ('05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
-        ('14-20', '⛪\ufe0f👸\ufe0f🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('14-20', '⛪\ufe0f👸🏿\ufe0f Nòsa Seỹòra Aparesida'),
         ('15-02', '🪦\ufe0f🕊\ufe0f️  Finadus'),
         ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera di Nataw'),
-        ('20-41', '🌟\ufe0f👼\ufe0f🏼\ufe0f Nataw'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Nataw'),
         ('20-55', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
@@ -164,13 +164,23 @@ class SezimalLocaleBZ(SezimalLocale):
         # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
         # ('212_234-13-10', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
         # ('212_425-15-31', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        # ('211_503-15-33', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        # ('211_503-15-33', '👨🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
 
         ('212_144-04-33', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
         ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
         ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
         ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
-        ('211_503-15-32', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+        ('211_503-15-32', '👨🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+
+        ('213_123-12-24', '👨\ufe0f\u200d❤\ufe0f\u200d👩\ufe0f Namoru (#i)'),       # tersa  213_123-12-24 ~ 1995-08-15_dec
+        ('213_132-01-10', '🤵\ufe0f\u200d♂️\ufe0f🏡\ufe0f👰\ufe0f\u200d♀️\ufe0f Kazamentu (#i)'),  # sábadu 213_132-01-10 ~ 2000-01-08_dec
+
+        ('213_050-12-43', '🎂\ufe0f Siwvya (#i)'),                     # sábadu 213_050-12-43 ~ 1974-08-24_dec
+        ('213_051-04-43', '🎂\ufe0f Arí (#i)'),                        # sábadu 213_051-04-43 ~ 1975-04-26_dec
+        ('213_134-05-40', '🎂\ufe0f Bárbara (#i)'),                    # kwarta 213_134-05-40 ~ 2002-05-22_dec
+        ('213_140-04-15', '🎂\ufe0f Nícolas (#i)'),                    # kinta  213_140-04-15 ~ 2004-04-08_dec
+        ('213_142-10-04', '🎂\ufe0f Bernardu (#i)'),                   # kinta  213_142-10-04 ~ 2006-06-08_dec
+
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -190,10 +200,10 @@ class SezimalLocaleBZ(SezimalLocale):
         #
         ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
         ('ISO+05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
-        ('ISO+10-12', '⛪\ufe0f👸\ufe0f🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('ISO+10-12', '⛪\ufe0f👸🏿\ufe0f Nòsa Seỹòra Aparesida'),
         ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️ Finadus'),
         ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️ Véspera di Nataw'),
-        ('ISO+12-25', '🌟\ufe0f👼\ufe0f🏼\ufe0f Nataw'),
+        ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Nataw'),
         ('ISO+12-31', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
@@ -209,7 +219,19 @@ class SezimalLocaleBZ(SezimalLocale):
         ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (%i)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
         ('ISO+1822-09-07', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (%i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
         ('ISO+1889-11-15', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (%i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        ('ISO+1695-11-20', '👨\ufe0f🏿\ufe0f Konsyensya Negra'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        ('ISO+1695-11-20', '👨🏿\ufe0f Konsyensya Negra'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
+
+        ('ISO+1995-08-15', '👨\ufe0f\u200d❤\ufe0f\u200d👩\ufe0f Namoru (%i)'),       # segunda
+        ('ISO+2000-01-08', '🤵\ufe0f\u200d♂️\ufe0f🏡\ufe0f👰\ufe0f\u200d♀️\ufe0f Kazamentu (%i)'),  # segunda
+
+        ('ISO+1974-08-24', '🎂\ufe0f Siwvya (%i)'),                     # kwarta
+        ('ISO+1975-04-26', '🎂\ufe0f Arí (%i)'),                        # sesta
+        ('ISO+1977-08-23', '🎂\ufe0f Jana (%i)'),                        # sesta
+        ('ISO+1979-04-02', '🎂\ufe0f Jiw (%i)'),                        # sesta
+        ('ISO+2002-05-22', '🎂\ufe0f Bárbara (%i)'),                    # segunda
+        ('ISO+2004-04-08', '🎂\ufe0f Níkolas (%i)'),                    # segunda
+        ('ISO+2006-06-08', '🎂\ufe0f Bernardu (%i)'),                   # segunda
+        ('ISO+1975-11-04', '🎂\ufe0f Andrè Kitu (%i)'),                   # segunda
     ]
 
     #
@@ -333,17 +355,17 @@ class SezimalLocaleBZ(SezimalLocale):
         #
         'SEZ': 'Sezimaw',
         'SYM': 'Simétriku',
-        'ISO': 'ISO / Gregorianu',
+        'ISO': 'Gregorianu',
         'ISR': 'Israelensi',
         'IND': 'Indianu',
 
         #
         # Religious calendars
         #
-        'JUL': 'Ortodòksu (Julianu)',
+        'JUL': 'Ortodòksu/Julianu',
         'JEW': 'Judayku',
-        'HIJ': 'Islâmiku (Ejíriku)',
-        'IRN': 'Iranianu (Ejíriku Solar)',
+        'HIJ': 'Islâmiku',
+        'IRN': 'Iranianu Solar',
 
         #
         # Easter referencial
@@ -358,3 +380,90 @@ class SezimalLocaleBZ(SezimalLocale):
     CALENDAR_DATE_ERROR = 'Data inválida pru kalendaryu {calendar_type}'
     CALENDAR_TIME_ERROR = 'Oráryu inválidu'
     CALENDAR_TIME_AFTER_ERROR = 'Oraryu inválidu: u oraryu di inisyu du eventu nuwn pòdi vir depoys du oraryu finaw'
+
+    JEWISH_CALENDAR_MONTH_NAME = [
+        # 'Nisan ניסן',
+        # 'Iyyar אייר‎',
+        # 'Sivan סיון‎',
+        # 'Tammuz תמוז‎',
+        # 'Av אב',
+        # 'Elul אלול‎',
+        # 'Tishri תשרי‎',
+        # 'Heshvan חשוון',
+        # 'Kislev כסלו',
+        # 'Tevet טבת',
+        # 'Shevat שבט',
+        # 'Adar אדר',
+        # 'Adar bet אדר ב׳',
+        'Nisan',
+        'Iyar',
+        'Sivan',
+        'Tamuz',
+        'Av',
+        'Eluw',
+        'Tixrey',
+        'Rexvan',
+        'Kislevi',
+        'Teveti',
+        'Xevati',
+        'Adar 1',
+        'Adar 2',
+    ]
+
+    JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Nis',
+        'Iya',
+        'Siv',
+        'Tam',
+        'Av',
+        'Elu',
+        'Tix',
+        'Rex',
+        'Kis',
+        'Tev',
+        'Xev',
+        'Ad1',
+        'Ad2',
+    ]
+
+    HIJRI_CALENDAR_MONTH_NAME = [
+        # 'Al-muḥarram المحرم',
+        # 'Ṣafar صفر',
+        # 'Rabīʿ al-ʾawwal ربيع الأول',
+        # 'Rabīʿ al-ʾākhir ربيع الآخر',
+        # 'Jumādā al-ʾūlā جمادى الأولى',
+        # 'Jumādā al-ʾākhirah جمادى الآخرة',
+        # 'Rajab رجب',
+        # 'Shaʿbān شعبان',
+        # 'Ramaḍān رمضان',
+        # 'Shawwāl شوال',
+        # 'Ḏū al-qaʿdah ذو القعدة',
+        # 'Ḏū al-ḥijjah ذو الحجة',
+        'Murraran',
+        'Sáfar',
+        'Rabi Aluaw',
+        'Rabi Atani',
+        'Jumada Aluaw',
+        'Jumada Atani',
+        'Rajabi',
+        'Xaban',
+        'Ramadan',
+        'Xawaw',
+        'Duwkada',
+        'Dulrija',
+    ]
+
+    HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Mur',
+        'Sáf',
+        'Rb1',
+        'Rb2',
+        'Jm1',
+        'Jm2',
+        'Raj',
+        'Xab',
+        'Ram',
+        'Xaw',
+        'Dkd',
+        'Drj',
+    ]

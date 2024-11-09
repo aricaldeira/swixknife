@@ -1335,17 +1335,17 @@ class SezimalLocale:
         #
         'SEZ': 'Sezimal',
         'SYM': 'Symmetry454',
-        'ISO': 'ISO / Gregorian',
+        'ISO': 'Gregorian',
         'ISR': 'Israeli',
         'IND': 'Indian National',
 
         #
         # Religious calendars
         #
-        'JUL': 'Orthodox (Julian)',
+        'JUL': 'Orthodox/Julian',
         'JEW': 'Jewish',
-        'HIJ': 'Islamic (Hijri)',
-        'IRN': 'Iranian (Solar Hijri)',
+        'HIJ': 'Islamic',
+        'IRN': 'Iranian Solar',
 
         #
         # Easter referencial
@@ -1568,7 +1568,7 @@ class SezimalLocale:
         ('CHR+11-01',      '🕆\ufe0f All Saint’s'),
         ('CHR+11-02',      '🕆\ufe0f All Soul’s'),
         ('CHR+12-25-SUN_4','🕆\ufe0f Advent'),
-        ('CHR+12-25',      '🕆\ufe0f🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas'),
+        ('CHR+12-25',      '🕆\ufe0f🌟\ufe0f👼🏼\ufe0f Christmas'),
     ]
 
     JEWISH_HOLIDAYS = [
@@ -1596,3 +1596,6 @@ class SezimalLocale:
         ('HIJ+10-01', '🍯\ufe0f🥙\ufe0f ʻĪd ul-Fiṭr'),
         ('HIJ+12-10', '🐑\ufe0f🕋\ufe0f ʿĪd ul-ʾAḍḥā'),
     ]
+
+    DECIMAL_TEMPERATURE = '°C'
+    DECIMAL_SPEED = 'km/h'

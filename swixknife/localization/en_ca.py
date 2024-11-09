@@ -41,7 +41,7 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         'winter_solstice': '❄️',
     }
 
-    HOLIDAYS_OTHER_CALENDAR = [
+    HOLIDAYS = [
         #
         # Moving Holidays
         #
@@ -57,7 +57,7 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         ('13-44', '🇨\ufe0f🇦\ufe0f Truth and Reconciliation Day #Sym454'),
         ('10-40', '🇫\ufe0f🇮\ufe0f Saint-Jean-Baptiste #Sym454'),
         ('15-15', '🪦\ufe0f🪖\ufe0f Rememberance Day #Sym454'),
-        ('20-41', '🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas Day #Sym454'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas Day #Sym454'),
         ('20-42', '🎁\ufe0f Boxing Day #Sym454'),
 
         #
@@ -66,7 +66,7 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         ('13-01', '🐝\ufe0f🐜\ufe0f Labour Day #Sym454'),
         ('05-34', '👸\ufe0f🏻\ufe0f Victoria Day #Sym454'),
         ('12-01', '🇨\ufe0f🇦\ufe0f Civic Holiday #Sym454'),
-        ('14-12', '🙏 Thanks Giving Day #Sym454'),
+        ('14-12', '🙏\ufe0f Thanks Giving Day #Sym454'),
 
         #
         # And the one’s that do have a year of reference
@@ -90,7 +90,7 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         ('ISO+09-30', '🇨\ufe0f🇦\ufe0f Truth and Reconciliation Day'),
         ('ISO+06-24', '🇫\ufe0f🇮\ufe0f Saint-Jean-Baptiste'),
         ('ISO+11-11', '🪦\ufe0f🪖\ufe0f Rememberance Day'),
-        ('ISO+12-25', '🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas Day'),
+        ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Christmas Day'),
         ('ISO+12-26', '🎁\ufe0f Boxing Day'),
 
         #
@@ -99,7 +99,7 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         ('ISO+09-01+MON', '🐝\ufe0f🐜\ufe0f Labour Day'),
         ('ISO+05-24-MON', '👸\ufe0f🏻\ufe0f Victoria Day'),
         ('ISO+08-01+MON', '🇨\ufe0f🇦\ufe0f Civic Holiday'),
-        ('ISO+10-01+MON_2', '🙏 Thanks Giving Day'),
+        ('ISO+10-01+MON_2', '🙏\ufe0f Thanks Giving Day'),
 
         #
         # And the one’s that do have a year of reference

@@ -34,7 +34,7 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         #
         ('01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day'),
         ('20-40', '🥂\ufe0f🍽\ufe0f️  Christmas Eve'),
-        ('20-41', '🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas'),
         ('20-55', '🍾\ufe0f🎆\ufe0f New Year’s Eve'),
 
         #
@@ -52,8 +52,8 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # ('130_324-01-43', '🇦\ufe0f🇺\ufe0f Australia Day (#i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
         # ('131_055-04-33', '🇦\ufe0f🇺\ufe0f Anzac Day (#i)'),      # Sunday   131_055-04-33 ~ 1915-04-25_dec
 
-        ('130_324-01-42', '🇦\ufe0f🇺\ufe0f Australia Day (#i)'),  # Saturday 01-42 ~ 01-26_desc
-        ('131_055-04-41', '🇦\ufe0f🇺\ufe0f Anzac Day (#i)'),      # Sunday   04-41 ~ 04-25_dec
+        ('212_140-01-43', '🇦\ufe0f🇺\ufe0f Australia Day (#i)'),  # Saturday 01-42 ~ 01-26_desc
+        ('212_511-04-33', '🇦\ufe0f🇺\ufe0f Anzac Day (#i)'),      # Sunday   04-41 ~ 04-25_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -71,7 +71,7 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         #
         ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day'),
         ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️  Christmas Eve'),
-        ('ISO+12-25', '🌟\ufe0f👼\ufe0f🏼\ufe0f Christmas'),
+        ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Christmas'),
         ('ISO+12-31', '🍾\ufe0f🎆\ufe0f New Year’s Eve'),
 
         #

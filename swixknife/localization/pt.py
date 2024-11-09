@@ -355,17 +355,17 @@ class SezimalLocalePT(SezimalLocale):
         #
         'SEZ': 'Sezimal',
         'SYM': 'Simétrico',
-        'ISO': 'ISO / Gregoriano',
+        'ISO': 'Gregoriano',
         'ISR': 'Israelense',
         'IND': 'Indiano',
 
         #
         # Religious calendars
         #
-        'JUL': 'Ortodoxo (Juliano)',
+        'JUL': 'Ortodoxo/Juliano',
         'JEW': 'Judaico',
-        'HIJ': 'Islâmico (Hegírico)',
-        'IRN': 'Iraniano (Hegírico Solar)',
+        'HIJ': 'Islâmico',
+        'IRN': 'Islâmico Solar',
 
         #
         # Easter referencial
@@ -379,3 +379,90 @@ class SezimalLocalePT(SezimalLocale):
     CALENDAR_DATE_ERROR = 'Data inválida para o calendário {calendar_type}'
     CALENDAR_TIME_ERROR = 'Horário inválido'
     CALENDAR_TIME_AFTER_ERROR = 'Horário inválido: o horário de início do evento não pode vir depois do horário final'
+
+    JEWISH_CALENDAR_MONTH_NAME = [
+        # 'Nisan ניסן',
+        # 'Iyyar אייר‎',
+        # 'Sivan סיון‎',
+        # 'Tammuz תמוז‎',
+        # 'Av אב',
+        # 'Elul אלול‎',
+        # 'Tishri תשרי‎',
+        # 'Heshvan חשוון',
+        # 'Kislev כסלו',
+        # 'Tevet טבת',
+        # 'Shevat שבט',
+        # 'Adar אדר',
+        # 'Adar bet אדר ב׳',
+        'Nissan',
+        'Iyar',
+        'Sivan',
+        'Tamuz',
+        'Av',
+        'Elul',
+        'Tishrei',
+        'Cheshvan',
+        'Kislêv',
+        'Tevêt',
+        'Shevat',
+        'Adar I',
+        'Adar II',
+    ]
+
+    JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Nis',
+        'Iya',
+        'Siv',
+        'Tam',
+        'Av',
+        'Elu',
+        'Tis',
+        'Che',
+        'Kis',
+        'Tev',
+        'She',
+        'Ad1',
+        'Ad2',
+    ]
+
+    HIJRI_CALENDAR_MONTH_NAME = [
+        # 'Al-muḥarram المحرم',
+        # 'Ṣafar صفر',
+        # 'Rabīʿ al-ʾawwal ربيع الأول',
+        # 'Rabīʿ al-ʾākhir ربيع الآخر',
+        # 'Jumādā al-ʾūlā جمادى الأولى',
+        # 'Jumādā al-ʾākhirah جمادى الآخرة',
+        # 'Rajab رجب',
+        # 'Shaʿbān شعبان',
+        # 'Ramaḍān رمضان',
+        # 'Shawwāl شوال',
+        # 'Ḏū al-qaʿdah ذو القعدة',
+        # 'Ḏū al-ḥijjah ذو الحجة',
+        'Murrarã',
+        'Sáfar',
+        'Rabi Alual',
+        'Rabi Atani',
+        'Jumada Alual',
+        'Jumada Atani',
+        'Rajabe',
+        'Xabã',
+        'Ramadã',
+        'Xaual',
+        'Dulcada',
+        'Dulrija',
+    ]
+
+    HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Mur',
+        'Sáf',
+        'Rb1',
+        'Rb2',
+        'Jm1',
+        'Jm2',
+        'Raj',
+        'Xab',
+        'Ram',
+        'Xau',
+        'Dcd',
+        'Drj',
+    ]

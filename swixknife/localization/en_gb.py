@@ -16,3 +16,5 @@ class SezimalLocaleEN_GB(SezimalLocaleEN):
 
     CURRENCY_UNIT_SYMBOL = '£'
     CURRENCY_SUBUNIT_SYMBOL = 'p'
+
+    DECIMAL_SPEED = 'mph'

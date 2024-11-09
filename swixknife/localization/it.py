@@ -143,7 +143,7 @@ class SezimalLocaleIT(SezimalLocale):
         ('12-21', '🏖\ufe0f️ Ferragosto'),
         ('15-01', '🪦\ufe0f Ognissanti'),
         ('20-12', '⛪\ufe0f Immacolata Concezione'),
-        ('20-41', '👼\ufe0f🏼\ufe0f Natale'),
+        ('20-41', '👼🏼\ufe0f Natale'),
         ('20-42', '⛪\ufe0f Santo Stefano'),
     ]
 

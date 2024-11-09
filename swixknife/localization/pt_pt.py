@@ -45,7 +45,7 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         ('12-23', '⛪\ufe0f Assunção de Nossa Senhora'),
         ('15-01', '🪦\ufe0f Todos os Santos'),
         ('20-12', '⛪\ufe0f Imaculada Conceição'),
-        ('20-41', '👼\ufe0f🏼\ufe0f Natal'),
+        ('20-41', '👼🏼\ufe0f Natal'),
 
         #
         # National Holidays
@@ -88,7 +88,7 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         ('ISO+08-15', '⛪\ufe0f Assunção de Nossa Senhora'),
         ('ISO+11-02', '🪦\ufe0f Todos os Santos'),
         ('ISO+12-08', '⛪\ufe0f Imaculada Conceição'),
-        ('ISO+12-25', '👼\ufe0f🏼\ufe0f Natal'),
+        ('ISO+12-25', '👼🏼\ufe0f Natal'),
 
         #
         # National Holidays
@@ -104,3 +104,29 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         ('ISO+1640-12-01', '🇵\ufe0f🇹\ufe0f Restauração da Independência (%i)'),
     ]
 
+    HIJRI_CALENDAR_MONTH_NAME = [
+        # 'Al-muḥarram المحرم',
+        # 'Ṣafar صفر',
+        # 'Rabīʿ al-ʾawwal ربيع الأول',
+        # 'Rabīʿ al-ʾākhir ربيع الآخر',
+        # 'Jumādā al-ʾūlā جمادى الأولى',
+        # 'Jumādā al-ʾākhirah جمادى الآخرة',
+        # 'Rajab رجب',
+        # 'Shaʿbān شعبان',
+        # 'Ramaḍān رمضان',
+        # 'Shawwāl شوال',
+        # 'Ḏū al-qaʿdah ذو القعدة',
+        # 'Ḏū al-ḥijjah ذو الحجة',
+        'Murrarão',
+        'Sáfar',
+        'Rabi Alual',
+        'Rabi Atani',
+        'Jumada Alual',
+        'Jumada Atani',
+        'Rajabe',
+        'Xabão',
+        'Ramadão',
+        'Xaual',
+        'Dulcada',
+        'Dulrija',
+    ]

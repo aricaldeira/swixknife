@@ -163,3 +163,45 @@ class SezimalLocaleAR_LATN(SezimalLocale):
     MONTH_ERROR = 'Invalid month {month}'
     WEEK_NUMBER_SYMBOL = 'asb'
     DAY_NUMBER_SYMBOL = 'yom'
+
+    HIJRI_CALENDAR_MONTH_NAME = [
+        # 'Al-muḥarram المحرم',
+        # 'Ṣafar صفر',
+        # 'Rabīʿ al-ʾawwal ربيع الأول',
+        # 'Rabīʿ al-ʾākhir ربيع الآخر',
+        # 'Jumādā al-ʾūlā جمادى الأولى',
+        # 'Jumādā al-ʾākhirah جمادى الآخرة',
+        # 'Rajab رجب',
+        # 'Shaʿbān شعبان',
+        # 'Ramaḍān رمضان',
+        # 'Shawwāl شوال',
+        # 'Ḏū al-qaʿdah ذو القعدة',
+        # 'Ḏū al-ḥijjah ذو الحجة',
+        'Muħarram',
+        'Sàfàr',
+        'Ràbégħ el Qawwal',
+        'Ràbégħ et Tâní',
+        'Gumádá el Qawwal',
+        'Gumádá et Tâneyàh',
+        'Ragab',
+        'Xàgħbân',
+        'Ràmàdân',
+        'Xawwál',
+        'Dó el Kegħdàh',
+        'Dó el Ħiggah',
+    ]
+
+    HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Muħ',
+        'Sàf',
+        'Rb1',
+        'Rb2',
+        'Gm1',
+        'Gm2',
+        'Rag',
+        'Xàgħ',
+        'Ràm',
+        'Xaw',
+        'DKgħ',
+        'DĦg',
+    ]

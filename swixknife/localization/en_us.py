@@ -83,5 +83,7 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
         ('ISO-09-01+MON', '🐝\ufe0f Labour Day'),        # First Monday in September
         ('ISO-10-01+MON_2', '🇺\ufe0f🇸\ufe0f Columbus Day'),      # Second Monday in October
         ('ISO−11-01+THU_4', '🦃\ufe0f Thanksgiving Day'),  # Fourth Thursday in November
-        ('ISO+1994-11-01', '🍪\ufe0f⬢ Graham’s Hexagonal Day (%i)'),
     ]
+
+    DECIMAL_TEMPERATURE = '°F'
+    DECIMAL_SPEED = 'mph'
