@@ -26,19 +26,13 @@ class SezimalWeather:
         self = object.__new__(cls)
 
         if locale:
-            if isinstance(locale, SezimalLocale):
-                lang = locale.LANG
-            else:
-                lang = locale
-                locale = sezimal_locale(lang)
-
+            if isinstance(locale, str):
+                locale = sezimal_locale(locale)
         else:
             locale = DEFAULT_LOCALE
-            lang = locale.LANG
 
         self.locale = locale
-        self.lang = lang
-        self.time_zone = time_zone
+        self.time_zone = time_zone or locale.DEFAULT_TIME_ZONE
         self._reference_date_time = None
         self._sunrise_date_time = None
         self._sunset_date_time = None
@@ -87,7 +81,7 @@ class SezimalWeather:
 
     @property
     def wind_speed_formatted(self) -> str:
-        return self.locale.format_number(self._wind_speed, sezimal_places=0, suffix='veg')
+        return self.locale.format_number(self._wind_speed, sezimal_places=1, suffix='veg')
 
     @property
     def wind_gust(self) -> SezimalInteger:
@@ -95,7 +89,7 @@ class SezimalWeather:
 
     @property
     def wind_gust_formatted(self) -> str:
-        return self.locale.format_number(self._wind_gust, sezimal_places=0, suffix='veg')
+        return self.locale.format_number(self._wind_gust, sezimal_places=1, suffix='veg')
 
     @property
     def wind_direction(self) -> Sezimal:
@@ -107,7 +101,7 @@ class SezimalWeather:
 
     @property
     def humidity_formatted(self) -> str:
-        return self.locale.format_number(self._humidity, sezimal_places=0, suffix='‰')
+        return self.locale.format_number(self._humidity, sezimal_places=0, suffix='󱹱')
 
     @property
     def pressure(self) -> SezimalInteger:
@@ -115,7 +109,7 @@ class SezimalWeather:
 
     @property
     def pressure_formatted(self) -> str:
-        return self.locale.format_number(self._pressure, sezimal_places=0, suffix='Cpdn')
+        return self.locale.format_number(self._pressure, sezimal_places=3, suffix='vay')
 
     @property
     def pressure_sea_level(self) -> SezimalInteger:
@@ -123,7 +117,7 @@ class SezimalWeather:
 
     @property
     def pressure_sea_level_formatted(self) -> str:
-        return self.locale.format_number(self._pressure_sea_level, sezimal_places=0, suffix='Cpdn')
+        return self.locale.format_number(self._pressure_sea_level, sezimal_places=3, suffix='vay')
 
     @property
     def temperature(self) -> SezimalInteger:
@@ -171,19 +165,22 @@ class SezimalWeather:
 
     @property
     def visibility_formatted(self) -> str:
-        return self.locale.format_number(self._visibility, sezimal_places=0, suffix='Cpad')
+        if self._visibility < 1:
+            return self.locale.format_number(self._visibility, sezimal_places=3, suffix='Xpad')
+        else:
+            return self.locale.format_number(self._visibility, sezimal_places=0, suffix='Xpad')
 
     def get_openweathermap_conditions(self, api_key: str = None, latitude: float = None, longitude: float = None):
         from .open_weather_map import get_weather_conditions, fill_sezimal_weather
 
         if self._use_last_reading \
-            and self._get_last_reading('open_weather_map', fill_sezimal_weather):
+            and self._get_last_reading('open_weather_map', fill_sezimal_weather, latitude, longitude):
             return
 
-        lang = self.lang
-
-        if lang == 'bz':
+        if self.locale.LANG == 'bz':
             lang = 'pt-br'
+        else:
+            lang = self.locale.LANGUAGE_TAG
 
         if not (api_key and latitude and longitude):
             up = user_preferences(self.locale)
@@ -197,21 +194,21 @@ class SezimalWeather:
             if (not longitude) and 'WEATHER_LONGITUDE' in up:
                 longitude = up['WEATHER_LONGITUDE']
 
-        try:
-            conditions = get_weather_conditions(
-                api_key=api_key, latitude=latitude, longitude=longitude,
-                time_zone=self.time_zone,
-            )
+        # try:
+        conditions = get_weather_conditions(
+            api_key=api_key, latitude=latitude, longitude=longitude,
+            time_zone=self.time_zone,
+        )
 
-            fill_sezimal_weather(self, conditions)
-        except:
-            self._get_last_reading('open_weather_map', fill_sezimal_weather)
+        fill_sezimal_weather(self, conditions)
+        # except:
+        #     self._get_last_reading('open_weather_map', fill_sezimal_weather, latitude, longitude)
 
     def get_weatherapi_conditions(self, api_key: str = None, location: str = None, latitude: float = None, longitude: float = None):
         from .weather_api import get_weather_conditions, fill_sezimal_weather
 
         if self._use_last_reading \
-            and self._get_last_reading('weather_api', fill_sezimal_weather):
+            and self._get_last_reading('weather_api', fill_sezimal_weather, latitude, longitude):
             return
 
         lang = self.lang
@@ -242,13 +239,17 @@ class SezimalWeather:
 
             fill_sezimal_weather(self, conditions)
         except:
-            self._get_last_reading('weather_api', fill_sezimal_weather)
+            self._get_last_reading('weather_api', fill_sezimal_weather, latitude, longitude)
 
-    def _get_last_reading(self, api_type: str, fill_sezimal_weather):
-        if not os.path.isfile(os.path.expanduser('~/.sweather.json')):
+    def _get_last_reading(self, api_type: str, fill_sezimal_weather, latitude, longitude):
+        file_name = os.path.expanduser(
+            f'~/.sezimal/weather__{str(latitude).replace('.', '_')}__{str(longitude).replace('.', '_')}.json'
+        )
+
+        if not os.path.isfile(file_name):
             return False
 
-        last_reading = json.loads(open(os.path.expanduser('~/.sweather.json'), 'r').read())
+        last_reading = json.loads(open(file_name, 'r').read())
 
         if not 'api_type' in last_reading:
             return False
