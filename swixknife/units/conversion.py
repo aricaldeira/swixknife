@@ -168,10 +168,11 @@ def _identify_validate_decimal_unit(decimal_unit: str, sezimal_unit: str = None)
         else:
             raise ValueError(f'Invalid S.I. prefix [{dp}]')
 
-    if du[-1] == '2':
-        de *= 2
-    elif du[-1] == '3':
-        de *= 3
+    if '/' not in du:
+        if du[-1] == '2':
+            de *= 2
+        elif du[-1] == '3':
+            de *= 3
 
     if binary_prefix:
         dpf = binary_exponent_to_factor(de, True)
