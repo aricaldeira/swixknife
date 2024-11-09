@@ -1,7 +1,7 @@
 :root {
-    --o-webclient-color-scheme: black;
-    --theme: black;
-    background-color: black;
+    --o-webclient-color-scheme: #000;
+    --theme: #000;
+    background-color: #000;
     color: #fafafa;
 
     font-size: 1.5em;
@@ -16,7 +16,7 @@
 }
 html, body {
     height: 100%;
-    background-color: black;
+    background-color: #000;
     color: #fafafa;
     margin-left: 2%;
     margin-right: 2%;
@@ -180,7 +180,7 @@ mn {
 /*         font-size: 18pt; */
         text-align: center;
 /*         font-weight: bold; */
-        color: black;
+        color: #000;
         background: #fafafa;
     }
     .origin {
@@ -292,12 +292,12 @@ mn {
 .title {
     font-size: 2rem;
     text-align: center;
-    color: black;
+    color: #000;
     background: #fafafa;
     line-height: 2rem;
 
     > a {
-        color: black;
+        color: #000;
         text-decoration: none;
     }
 }
@@ -340,6 +340,9 @@ mn {
 }
 .rainbow-green {
     color: #44aa00;
+}
+.rainbow-cyan {
+    color: #00aad4;
 }
 .rainbow-blue {
     color: #0066ff;
@@ -406,23 +409,9 @@ mn {
 .calendar-header-fixed {
     position: fixed;
     top: 0px;
-    background: black;
+    background: #000;
     z-index: 999;
 }
-
-@media only screen and (max-width: 600px) {
-    :root {
-        font-size: 0.55em;
-        line-height: 0.7em;
-    }
-
-    .calendar-time-pointer-weekly {
-        span:before, span:after {
-            border-bottom: 1px solid #ff0000;
-        }
-    }
-}
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -451,4 +440,135 @@ input[type=number] {
     overflow: auto;
     background-color: rgb(0,0,0);
 /*  background-color: rgba(0,0,0,0.4);*/
+}
+
+.hide-in-mobile {
+    display: inline;
+}
+.hide-in-mobile-daily-view-day-in-quarter-year {
+    display: inline;
+}
+.hide-in-mobile-daily-view-am-pm {
+    display: inline;
+}
+
+.now-content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calendar-header-now {
+    top: 0px;
+    background: #000;
+}
+
+.now-time-24h {
+    font-size: 4rem;
+    line-height: 0.5rem;
+    font-weight: bold;
+}
+.now-time-12h {
+    font-size: 4rem;
+    line-height: 0.5rem;
+    font-weight: bold;
+}
+.now-iso-time {
+    font-size: 0.8rem;
+    line-height: 0.1rem;
+}
+.now-weekday {
+    font-size: 1.5rem;
+}
+.now-date {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.now-weather {
+    font-size: 1.5rem;
+}
+.now-iso-date {
+    font-size: 0.8rem;
+    line-height: 0.1rem;
+}
+
+
+@media only screen and (max-width: 640px) {
+    :root {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
+
+    .calendar-time-pointer-weekly {
+        span:before, span:after {
+            border-bottom: 1px solid #ff0000;
+        }
+    }
+
+    .now-content {
+        width: 100%;
+    }
+    .now-time-12h {
+        font-size: 3.5rem;
+        line-height: 0.5rem;
+        font-weight: bold;
+    }
+
+    .hide-in-mobile {
+        display: none;
+    }
+    .hide-in-mobile-daily-view-day-in-quarter-year {
+        display: none;
+    }
+    .hide-in-mobile-daily-view-am-pm {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .now-content {
+        width: 100%;
+    }
+    .hide-in-mobile {
+        display: none;
+    }
+    .hide-in-mobile-daily-view-day-in-quarter-year {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 640px) and (orientation: landscape) {
+    :root {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
+    .now-content {
+        width: 100%;
+    }
+    .hide-in-mobile {
+        display: inline;
+    }
+    .hide-in-mobile-daily-view-day-in-quarter-year {
+        display: none;
+    }
+    .hide-in-mobile-daily-view-am-pm {
+        display: inline;
+    }
+}
+
+@media only screen and (max-height: 1024px) and (orientation: landscape) {
+    .now-content {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1280px) and (orientation: landscape) {
+    .now-content {
+        width: 40%;
+    }
+}
+
+.air-quality {
+    background: -moz-linear-gradient(90deg, rgba(0,188,212,1) 10%, rgba(76,175,80,1) 30%, rgba(255,193,7,1) 50%, rgba(255,87,34,1) 70%, rgba(244,67,54,1) 90%);
+    background: -webkit-linear-gradient(90deg, rgba(0,188,212,1) 10%, rgba(76,175,80,1) 30%, rgba(255,193,7,1) 50%, rgba(255,87,34,1) 70%, rgba(244,67,54,1) 90%);
+    background: linear-gradient(90deg, rgba(0,188,212,1) 10%, rgba(76,175,80,1) 30%, rgba(255,193,7,1) 50%, rgba(255,87,34,1) 70%, rgba(244,67,54,1) 90%);
 }

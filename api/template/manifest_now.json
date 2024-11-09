@@ -1,29 +1,192 @@
+{% set
+    NOW_TRANSLATIONS = {
+        'ar': 'دلوقتي',
+        'bn': 'এখন',
+        'bz': 'Agòra',
+        'ca': 'Ara',
+        'da': 'Nu',
+        'de': 'Jetzt',
+        'ee': 'Nüüd',
+        'el': 'Τώρα',
+        'en': 'Now',
+        'eo': 'Nun',
+        'es': 'Ahora',
+        'fa': 'حالا',
+        'fi': 'Nyt',
+        'fr': 'Maintenant',
+        'ga': 'Anois',
+        'gl': 'Agora',
+        'gn': 'Koꞌág̃a',
+        'he': 'עכשיו',
+        'hi': 'अब',
+        'hu': 'Most',
+        'id': 'Kini',
+        'is': 'Nú',
+        'it': 'Adesso',
+        'iu': 'ᒫᓐᓇ',
+        'ja': '今',
+        'kea': 'Agora',
+        'ko': '지금',
+        'lat': 'Nunc',
+        'lb': 'Elo',
+        'mt': 'Issa',
+        'nb': 'Nå',
+        'nl': 'Nu',
+        'nn': 'No',
+        'pl': 'Teraz',
+        'pt': 'Agora',
+        'ro': 'Acum',
+        'ru': 'Сейчас',
+        'sv': 'Nu',
+        'sw': 'Sasa',
+        'tr': 'Şimdi',
+        'uk': 'Тепер',
+        'vi': 'Bây giờ',
+        'yo': 'Báyìí',
+        'zh': '現在',
+        'zh_CN': '现在',
+    }
+%}
+{% set TITLE = NOW_TRANSLATIONS[locale.LANG] if locale.LANG in NOW_TRANSLATIONS else 'Now' %}
 {
-    "name": "{{name}}",
-    "short_name": "{{name}}",
+    "name": "{{ TITLE }}",
+    "short_name": "{{ TITLE }}",
     "description": "{{description}}",
-    "theme_color": "black",
-    "background_color": "black",
+    "theme_color": "#000",
+    "background_color": "#000",
     "display": "fullscreen",
+    "display_override": ["fullscreen", "standalone"],
     "orientation": "any",
-    "scope": "{{url}}",
-    "start_url": "{{url}}",
+    "scope": "https://sezimal.tauga.online/now",
+    "start_url": "https://sezimal.tauga.online/now",
     "prefer_related_applications": false,
     "shortcuts": [],
-    "categories": ["education", "time", "clock", "calendar", "sezimal", "base six", "senary base", "symmetry454 calendar", "gregorian calendar", "holocene calendar", "calendar reform", "world building", "constructed script", "https://en.wikipedia.org/wiki/Senary", "https://www.seximal.net", "https://www.youtube.com/watch?v=qID2B4MK7Y0", "http://individual.utoronto.ca/kalendis/symmetry.htm", "https://en.wikipedia.org/wiki/Symmetry454"],
+    "categories": ["business", "education", "productivity", "utilities", "weather", "time", "clock", "calendar", "sezimal", "base six", "senary base", "symmetry454 calendar", "gregorian calendar", "holocene calendar", "calendar reform", "world building", "constructed script", "https://en.wikipedia.org/wiki/Senary", "https://www.seximal.net", "https://www.youtube.com/watch?v=qID2B4MK7Y0", "http://individual.utoronto.ca/kalendis/symmetry.htm", "https://en.wikipedia.org/wiki/Symmetry454"],
     "icons": [
         {
-          "src": "{{url_icon}}/now-icon-mono.svg",
+          "src": "https://sezimal.tauga.online/now/{{ now.format('#Y#m#d#u#p#a') }}/icon-any.svg",
           "sizes": "any",
           "type": "image/svg+xml",
-          "purpose": "monochrome"
-        },
-        {
-          "src": "{{url_icon}}/now-icon.svg",
-          "sizes": "any",
-          "type": "image/svg+xml",
-          "purpose": "maskable"
+          "purpose": "any"
         }
     ],
-    "author": "Ari Caldeira"
+    "author": "Ari Caldeira",
+    "dir": "auto",
+    "lang": "{{ locale.LANGUAGE_TAG }}",
+    "id": "ccae3d2a-8fe0-459c-811b-c2f0614d428d",
+    "screenshots": [
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-pt-br-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Brazilian Portuguese locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-ca-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Canadian English locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-us-dozenal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using American English locale, dozenal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-au-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Australian English locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-he-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Hebrew locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-ar-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Arabic locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-zh-cn-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using Mainland Chinese locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-Shaw-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "wide",
+          "label": "Now using English with Shavian script locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-pt-br-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Brazilian Portuguese locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-ca-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Canadian English locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-us-dozenal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using American English locale, dozenal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-au-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Australian English locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-he-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Hebrew locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-ar-decimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Arabic locale, decimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-zh-cn-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using Mainland Chinese locale, sezimal base"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/now-en-Shaw-sezimal.png",
+          "type": "image/png",
+          "sizes": "788x842",
+          "form_factor": "narrow",
+          "label": "Now using English with Shavian script locale, sezimal base"
+        }
+    ]
+
 }

@@ -72,6 +72,96 @@ Event’s title
     </tr>
     <tr>
         <td class="center">
+            <select>
+                <option id="" value="one_time">
+                    {% if locale.LANG == 'pt' %}
+                        Não se repete
+                    {% elif locale.LANG == 'bz' %}
+                        Nuwn si repèti
+                    {% else %}
+                        Doesn’t repeat
+                    {% endif %}
+                </option>
+                <option id="" value="day">
+                    {% if locale.LANG == 'pt' %}
+                        Todo dia
+                    {% elif locale.LANG == 'bz' %}
+                        Todu dia
+                    {% else %}
+                        Every day
+                    {% endif %}
+                </option>
+                <option id="" value="week">
+                    {% if locale.LANG == 'pt' %}
+                        Toda semana
+                    {% elif locale.LANG == 'bz' %}
+                        Toda semana
+                    {% else %}
+                        Every week
+                    {% endif %}
+                </option>
+                <option id="" value="weekday">
+                    {% if locale.LANG == 'pt' %}
+                        Todo dia da semana
+                    {% elif locale.LANG == 'bz' %}
+                        Todu dia da semana
+                    {% else %}
+                        Every weekday
+                    {% endif %}
+                </option>
+                <option id="" value="month">
+                    {% if locale.LANG == 'pt' %}
+                        Todo mês
+                    {% elif locale.LANG == 'bz' %}
+                        Todu mez
+                    {% else %}
+                        Every month
+                    {% endif %}
+                </option>
+                <option id="" value="quarter">
+                    {% if locale.LANG == 'pt' %}
+                        Todo trimestre
+                    {% elif locale.LANG == 'bz' %}
+                        Todu trimèstri
+                    {% else %}
+                        Every quarter
+                    {% endif %}
+                </option>
+                <option id="" value="year">
+                    {% if locale.LANG == 'pt' %}
+                        Todo ano
+                    {% elif locale.LANG == 'bz' %}
+                        Todu anu
+                    {% else %}
+                        Every year
+                    {% endif %}
+                </option>
+            </select>
+            <span>
+                {% if locale.LANG == 'pt' %}
+                    por
+                {% elif locale.LANG == 'bz' %}
+                    pur
+                {% else %}
+                    for
+                {% endif %}
+                <input id="event_repeat_times" type="number" style="width: 2rem; text-align: center;" type="number" />
+                <span>
+                {% if locale.LANG == 'pt' %}
+                    dia
+                {% elif locale.LANG == 'bz' %}
+                    dia
+                {% else %}
+                    day
+                {% endif %}
+                </span>
+            </span>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">
             <span style="font-size: 1.2rem; font-weight: bold;">
             {% if locale.LANG == 'pt' %}
                 Horário
@@ -86,10 +176,14 @@ Event’s title
                 o dia inteiro?
             {% elif locale.LANG == 'bz' %}
                 u dia interu?
+            {% elif locale.LANG == 'es' %}
+                ¿el día todo?
+            {% elif locale.LANG == 'el' %}
+                all day;
             {% else %}
-                all day?
+                all day{{ '؟' if locale.RTL and locale.LANG != 'he' else '?' }}
             {% endif %}
-            <input id="event_full_day" type="checkbox" onchange="build_date_string()" checked />
+            <input id="event_full_day" type="checkbox" onchange="build_date_string()" {{ 'checked' if event.full_day else '' }}/>
         </td>
         <td>
         </td>
@@ -157,6 +251,16 @@ Event’s title
         </td>
     </tr>
 </table>
+<textarea rows="18" cols="60">
+{
+    &quot;origin&quot;: &quot;{{ event.origin }}&quot;,
+    &quot;emoji&quot;: &quot;{{ event.emoji }}&quot;,
+    &quot;name&quot;: &quot;{{ event.name }}&quot;,
+    &quot;date&quot;: &quot;{{ event.date.format('#y-#m-#d') }}&quot;,
+    &quot;full_day&quot;: {{ 'true' if event.full_day else 'false' }},
+    &quot;id&quot;: &quot;{{ event.id }}&quot;
+}
+</textarea>
 </div>
 
 <script>
@@ -301,26 +405,18 @@ function build_date_string() {
     set_date_parameters()
 
     const calendar_type = document.getElementById('event_calendar_type').value;
-    let dados = {};
+    let dados = _base_data();
 
-    dados = {
-        base: localStorage.getItem('sezimal-calendar-base'),
-        format_token: localStorage.getItem('sezimal-calendar-format-token'),
-        locale: localStorage.getItem('sezimal-calendar-locale'),
-        time_zone: localStorage.getItem('sezimal-calendar-time-zone'),
-        hour_format: localStorage.getItem('sezimal-calendar-hour-format'),
-
-        calendar_type: calendar_type,
-        easter_sign: document.getElementById('event_easter_sign').value,
-        easter_days: document.getElementById('event_easter_days').value,
-        year_sign: document.getElementById('event_date_year_sign').value,
-        year: document.getElementById('event_date_year').value,
-        month: document.getElementById('event_date_month').value,
-        day: document.getElementById('event_date_day').value,
-        weekday_sign: document.getElementById('event_date_weekday_sign').value,
-        weekday: document.getElementById('event_date_weekday').value,
-        weekday_number: document.getElementById('event_date_weekday_number').value,
-    };
+    dados['calendar_type'] = calendar_type;
+    dados['easter_sign'] = document.getElementById('event_easter_sign').value;
+    dados['easter_days'] = document.getElementById('event_easter_days').value;
+    dados['year_sign'] = document.getElementById('event_date_year_sign').value;
+    dados['year'] = document.getElementById('event_date_year').value;
+    dados['month'] = document.getElementById('event_date_month').value;
+    dados['day'] = document.getElementById('event_date_day').value;
+    dados['weekday_sign'] = document.getElementById('event_date_weekday_sign').value;
+    dados['weekday'] = document.getElementById('event_date_weekday').value;
+    dados['weekday_number'] = document.getElementById('event_date_weekday_number').value;
 
     fetch('/calendar/build-date-string', {
         method: 'post',
@@ -354,6 +450,6 @@ function set_today() {
     document.getElementById('event_date_day').value = today.getDate().toString().padStart(2, '0');
 };
 
-set_today();
+// set_today();
 build_date_string();
 </script>

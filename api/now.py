@@ -75,9 +75,9 @@ def _icon_url(base, locale, time_zone):
 
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
-@app.route('/now')
-@app.route('/now/<string:locale>')
-@app.route('/now/<string:locale>/<path:time_zone>')
+@app.route('/old-now')
+@app.route('/old-now/<string:locale>')
+@app.route('/old-now/<string:locale>/<path:time_zone>')
 def api_short_now(locale: str = None, time_zone: str = None) -> str:
     if 'sezimal' in request.cookies:
         cookie = urllib.parse.unquote(request.cookies['sezimal'])
@@ -215,13 +215,16 @@ def api_dozenal_now(locale: str = None, time_zone: str = None) -> str:
 
 _TRANSLATIONS = {
     'ar': 'دلوقتي',  # delwaqti
+    'bn': 'এখন',
     'bz': 'Agòra',
     'ca': 'Ara',
+    'da': 'Nu',
     'de': 'Jetzt',
     'el': 'Τώρα',
     'eo': 'Nun',
     'es': 'Ahora',
     'fa': 'حالا',
+    'fi': 'Nyt',
     'fr': 'Maintenant',
     'ga': 'Anois',
     'gl': 'Agora',
@@ -230,14 +233,22 @@ _TRANSLATIONS = {
     'hi': 'अब',
     'hu': 'Most',
     'id': 'Kini',
+    'is': 'Nú',
     'it': 'Adesso',
     'ja': '今',
+    'kea': 'Agora',
     'ko': '지금',
+    'lat': 'Nunc',
+    'lb': 'Elo',
+    'mt': 'Issa',
+    'nb': 'Nå',
     'nl': 'Nu',
+    'nn': 'No',
     'pl': 'Teraz',
     'pt': 'Agora',
     'ro': 'Acum',
     'ru': 'Сейчас',
+    'sv': 'Nu',
     'sw': 'Sasa',
     'tr': 'Şimdi',
     'uk': 'Тепер',
@@ -248,50 +259,50 @@ _TRANSLATIONS = {
 }
 
 
-@app.route('/now/manifest.webmanifest')
-@app.route('/now___<string:locale>/manifest.webmanifest')
-@app.route('/now___<string:locale>___<string:time_zone>/manifest.webmanifest')
-def now_manifest(locale: str = None, time_zone: str = None) -> str:
-    url = '/now'
-
-    if locale:
-        url += '/' + locale
-
-        if time_zone:
-            url += '/' + time_zone.replace('__', '/')
-
-    url_icon = _icon_url('now', locale, time_zone)
-
-    pl = locale or browser_preferred_locale()
-
-    if '_' in pl:
-        lang = pl.split('_')[0]
-    elif '-' in pl:
-        lang = pl.split('-')[0]
-    else:
-        lang = pl
-
-    name = 'Now'
-    description = 'Sezimal Calendar and Clock'
-
-    if lang in _TRANSLATIONS:
-        if pl in _TRANSLATIONS:
-            name = _TRANSLATIONS[pl]
-        else:
-            name = _TRANSLATIONS[lang]
-
-    if 'pt-' in pl or pl == 'pt':
-        description = 'Calendário e relógio sezimais'
-    elif 'bz-' in pl or pl == 'bz':
-        description = 'Kalendaryu y relòjyu sezimays'
-
-    return sezimal_render_template(
-        'manifest_now.json',
-        name=name,
-        description=description,
-        url=url,
-        url_icon=url_icon,
-    )
+# @app.route('/now/manifest.webmanifest')
+# @app.route('/now___<string:locale>/manifest.webmanifest')
+# @app.route('/now___<string:locale>___<string:time_zone>/manifest.webmanifest')
+# def now_manifest(locale: str = None, time_zone: str = None) -> str:
+#     url = '/now'
+#
+#     if locale:
+#         url += '/' + locale
+#
+#         if time_zone:
+#             url += '/' + time_zone.replace('__', '/')
+#
+#     url_icon = _icon_url('now', locale, time_zone)
+#
+#     pl = locale or browser_preferred_locale()
+#
+#     if '_' in pl:
+#         lang = pl.split('_')[0]
+#     elif '-' in pl:
+#         lang = pl.split('-')[0]
+#     else:
+#         lang = pl
+#
+#     name = 'Now'
+#     description = 'Sezimal Calendar and Clock'
+#
+#     if lang in _TRANSLATIONS:
+#         if pl in _TRANSLATIONS:
+#             name = _TRANSLATIONS[pl]
+#         else:
+#             name = _TRANSLATIONS[lang]
+#
+#     if 'pt-' in pl or pl == 'pt':
+#         description = 'Calendário e relógio sezimais'
+#     elif 'bz-' in pl or pl == 'bz':
+#         description = 'Kalendaryu y relòjyu sezimays'
+#
+#     return sezimal_render_template(
+#         'manifest_now.json',
+#         name=name,
+#         description=description,
+#         url=url,
+#         url_icon=url_icon,
+#     )
 
 
 def _icon(text: str, sezimal_digits: bool = False, locale: str = None, time_zone: str = None) -> str:
@@ -345,32 +356,24 @@ def _icon(text: str, sezimal_digits: bool = False, locale: str = None, time_zone
     return text
 
 
-@app.route('/now/now-icon.svg')
-@app.route('/now___<string:locale>/now-icon.svg')
-@app.route('/now___<string:locale>___<string:time_zone>/now-icon.svg')
-@app.route('/decimal-now/now-icon.svg')
-@app.route('/decimal-now___<string:locale>/now-icon.svg')
-@app.route('/decimal-now___<string:locale>___<string:time_zone>/now-icon.svg')
-@app.route('/dozenal-now/now-icon.svg')
-@app.route('/dozenal-now___<string:locale>/now-icon.svg')
-@app.route('/dozenal-now___<string:locale>___<string:time_zone>/now-icon.svg')
-def now_icon(locale: str = None, time_zone: str = None) -> str:
-    text = open('static/img/now-icon.svg').read()
-    return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
+# @app.route('/now/<string:time>/icon.svg')
+# def now_icon(time: str = None) -> str:
+#     text = open('static/img/now-icon.svg').read()
+#     return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
 
 
-@app.route('/now/now-icon-mono.svg')
-@app.route('/now___<string:locale>/now-icon-mono.svg')
-@app.route('/now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
-@app.route('/decimal-now/now-icon-mono.svg')
-@app.route('/decimal-now___<string:locale>/now-icon-mono.svg')
-@app.route('/decimal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
-@app.route('/dozenal-now/now-icon-mono.svg')
-@app.route('/dozenal-now___<string:locale>/now-icon-mono.svg')
-@app.route('/dozenal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
-def now_icon_mono(locale: str = None, time_zone: str = None) -> str:
-    text = open('static/img/now-icon-mono.svg').read()
-    return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
+# @app.route('/now/now-icon-mono.svg')
+# @app.route('/now___<string:locale>/now-icon-mono.svg')
+# @app.route('/now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+# @app.route('/decimal-now/now-icon-mono.svg')
+# @app.route('/decimal-now___<string:locale>/now-icon-mono.svg')
+# @app.route('/decimal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+# @app.route('/dozenal-now/now-icon-mono.svg')
+# @app.route('/dozenal-now___<string:locale>/now-icon-mono.svg')
+# @app.route('/dozenal-now___<string:locale>___<string:time_zone>/now-icon-mono.svg')
+# def now_icon_mono(locale: str = None, time_zone: str = None) -> str:
+#     text = open('static/img/now-icon-mono.svg').read()
+#     return Response(_icon(text, False, locale, time_zone), mimetype='image/svg+xml')
 
 
 # @app.route('/now/now-icon-sd.svg')

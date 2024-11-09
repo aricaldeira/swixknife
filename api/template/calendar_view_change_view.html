@@ -1,5 +1,21 @@
 <div style="font-size: 0.5rem; line-height: 0.5rem;"> </div>
 <table class="center" style="border-spacing: 0px; vertical-align: middle;">
+    <colgroup>
+        <col span="1" width="5%">
+        <col span="1" width="10%">
+        <col span="1" width="15%">
+        {% if (not date.is_long_month) or date.month == 20 %}
+            <col span="1" width="15%">
+        {% endif %}
+        <col span="1" width="10%">
+        <col span="1" width="10%">
+        <col span="1" width="10%">
+        {% if str(now.date) != str(date.date) %}
+            <col span="1" width="20%">
+        {% endif %}
+        <col span="1" width="5%">
+    </colgroup>
+
     <tr>
         <td onclick="open_settings()">☰</td>
         <td onclick="change_view('yearly')">
@@ -46,27 +62,13 @@
         </td>
         {% if str(now.date) != str(date.date) %}
             <td onclick="update_calendar('today')">
-            {% if base == 10 %}
-                {% if now.year != date.year %}
-                    {{ now.format(locale.SEZIMAL_DATE_TEXT_SHORT_MONTH_FORMAT if format_token == '!' else locale.DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                {% else %}
-                    {{ now.format(locale.SEZIMAL_TEXT_SHORT_MONTH_DAY_FORMAT if format_token == '!' else locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                {% endif %}
-            {% elif base == 14 %}
-                {% if now.year != date.year %}
-                    {{ now.format(locale.DECIMAL_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                {% else %}
-                    {{ now.format(locale.DECIMAL_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                {% endif %}
-            {% elif base == 20 %}
-                {% if now.year != date.year %}
-                    {{ now.format(locale.DOZENAL_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                {% else %}
-                    {{ now.format(locale.DOZENAL_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                {% endif %}
+            {% if now.year != date.year %}
+                {{ now.format(locale.DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
+            {% else %}
+                {{ now.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
             {% endif %}
             </td>
         {% endif %}
-        <td onclick="open_event_window()">◎</td>
+        <td onclick="open_event_list_window()">◎</td>
     </tr>
 </table>

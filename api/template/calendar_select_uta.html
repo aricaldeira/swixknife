@@ -1,4 +1,4 @@
-<select id="event_time_uta_{{ time_start_finish }}" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="Uta">
+<select id="event_time_uta_{{ time_start_finish }}" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="Uta" style="direction:ltr;">
     <option id="event_time_uta_00_{{ time_start_finish }}" value="00">{{ '󱸀󱸀' if '!' in format_token else '00' }}</option>
     <option id="event_time_uta_01_{{ time_start_finish }}" value="01">{{ '󱸀󱸁' if '!' in format_token else '01' }}</option>
     <option id="event_time_uta_02_{{ time_start_finish }}" value="02">{{ '󱸀󱸂' if '!' in format_token else '02' }}</option>

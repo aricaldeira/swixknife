@@ -301,7 +301,7 @@ function auto_refresh(){{
 }};
 auto_refresh();
 
-if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {{
+if (navigator.userAgent.toUpperCase().indexOf('MOBILE') > 0) {{
     document.querySelector("body").requestFullscreen();
 }};
 

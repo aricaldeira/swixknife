@@ -106,7 +106,7 @@ function calculator_load() {
         localStorage.setItem('sezimal-calculator-decimal-angle-prefix', '-');
     };
 
-    if (navigator.userAgentData != undefined && navigator.userAgentData.mobile) {
+    if ((navigator.userAgent.toUpperCase().indexOf('MOBILE') > 0) || (navigator.userAgent.toUpperCase().indexOf('ANDROID') > 0)) {
         document.querySelector("body").requestFullscreen();
     };
 

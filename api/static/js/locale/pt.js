@@ -57,7 +57,7 @@ const sezimal_calculator_pt_text = {
 <h2>O que é isso?</h2>
 <p>Uma calculadora e um conversor de base numérica e unidades de medida, entre as bases sezimal (seis) e decimal (dez).</p>
 <p>Você pode usar o aplicativo como uma calculadora decimal comum, e ele vai convertendo os cálculos usando base sezimal, ensinando você como ler os números no processo.</p>
-<p>Clicando ou tocando em cada um dos mostradores (sezimal, nifimal, extenso ou decimal), o conteúdo é copiado para a área de transferência.</p>
+<p>Clicando ou tocando em cada um dos mostradores (sezimal, nifesimal, extenso ou decimal), o conteúdo é copiado para a área de transferência.</p>
 <h3>Uso dos botões</h3>
 <p>Alguns botões dão acesso a mais de uma operação ou função, quando pressionados um certo número de vezes em sequência:</p>
 <ul>
@@ -78,7 +78,7 @@ const sezimal_calculator_pt_text = {
 <ul>
     <li>[ ? ] - mostra este texto de ajuda;</li><br/>
     <li>[ en ] - permite selecionar o idioma e o país, o que determina como os números vão ser formatados, e define o idioma do aplicativo;</li><br/>
-    <li>[ 3 ] / [ 󱸃 ] - usa dígitos comuns [ 3 ] ou dígitos sezimais [ 󱸃 ] (veja mais abaixo) para os mostradores sezimal e nifimal, e para os botões sezimais (a base decimal sempre usa os dígitos comuns);</li><br/>
+    <li>[ 3 ] / [ 󱸃 ] - usa dígitos comuns [ 3 ] ou dígitos sezimais [ 󱸃 ] (veja mais abaixo) para os mostradores sezimal e nifesimal, e para os botões sezimais (a base decimal sempre usa os dígitos comuns);</li><br/>
     <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - determina como os números são agrupados e separados:<br/>
         <ul>
             <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - separadores sezimais (veja mais abaixo), a cada três dígitos;</li><br/>
@@ -86,11 +86,11 @@ const sezimal_calculator_pt_text = {
             <li>[ 4.4 ] / [ 󱸄.󱸄 ] - separadores decimais/tradicionais, de acordo com o locale (idioma e país) selecionados, a cada quatro dígitos (como no site seximal.net); isso também altera, em inglês, o resultado do mostrador do número por extenso, que passa a usar seis nife e unexião no lugar de arda e xadara;</li>
         </ul>
     </li><br/>
-    <li>[ nife 5̆ ] / [ nife 󱸣 ] - define o uso e conversão do mostrador nifimal:<br/>
+    <li>[ nife 5̆ ] / [ nife 󱸣 ] - define o uso e conversão do mostrador nifesimal:<br/>
         <ul>
-            <li>[ nife 5̆ ] / [ nife 󱸣 ] - o mostrator nifimal usa dígitos regularizados (veja abaixo);</li><br/>
-            <li>[ nife Z ] - o mostrator nifimal usa os dígitos 0123456789 e letras a partir do número 14 (em decimal, dez);</li><br/>
-            <li>[ <span style="color: #666;">nife</span> ] - oculta o mostrador nifimal;</li>
+            <li>[ nife 5̆ ] / [ nife 󱸣 ] - o mostrator nifesimal usa dígitos regularizados (veja abaixo);</li><br/>
+            <li>[ nife Z ] - o mostrator nifesimal usa os dígitos 0123456789 e letras a partir do número 14 (em decimal, dez);</li><br/>
+            <li>[ <span style="color: #666;">nife</span> ] - oculta o mostrador nifesimal;</li>
         </ul>
     </li><br/>
     <li>[ ext ] - ativa [ ext ] / desativa [ <span style="color: #666;">ext</span> ] a exibição dos números sezimais por extenso (por enquanto, somente disponível em português, brasileiro [ortografia fonêmica], inglês e Esperanto);</li><br/>

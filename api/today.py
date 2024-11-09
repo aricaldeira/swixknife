@@ -1,17 +1,22 @@
 
 import json
+import pathlib
 import urllib
+import uuid
 
 from flask import redirect, Response, request, render_template, jsonify
 from main import app, sitemapper, sezimal_render_template
 from  locale_detection import browser_preferred_locale
 
-from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger
-from swixknife import default_to_sezimal_digits, Dozenal
+from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger, Sezimal
+from swixknife import default_to_sezimal_digits, Dozenal, DozenalInteger
 from swixknife.date_time import SezimalDateTime, SezimalDate, SezimalTime
 from swixknife.date_time.seasons_colors import weekly_season_colors
 from swixknife.functions import SezimalList, SezimalDictionary, SezimalRange
 from swixknife.date_time.calendar import other_calendar_date_to_ordinal_date
+from swixknife.weather import SezimalWeather
+from swixknife.units import sezimal_to_decimal_unit
+
 
 from decimal import Decimal
 from datetime import datetime
@@ -36,13 +41,17 @@ def _calendar_context(locale, date=None, gray_scale=False):
         'SezimalDictionary': SezimalDictionary,
         'SezimalRange': SezimalRange,
         'SezimalInteger': SezimalInteger,
+        'Sezimal': Sezimal,
+        'Decimal': Decimal,
+        'Dozenal': Dozenal,
+        'round': round,
+        'sdu': sezimal_to_decimal_unit,
         'str': str,
         'int': int,
         'eval': eval,
         'len': len,
         'sorted': sorted,
         'locale': locale,
-        'tz_locale': locale,
         'gray_scale': gray_scale,
         'dark_mode': True,
         'small_screen': False,
@@ -178,12 +187,14 @@ def decimal_today_route() -> Response:
     data = _calendar_context(locale, date)
     data['base'] = 14
     data['format_token'] = '9'
+    data['hide_base'] = True
+    data['force_decimal'] = True
 
     if locale.DIGITS:
         data['format_token'] += '?'
 
     return sezimal_render_template(
-        'today_decimal.html',
+        'today.html',
         sezimal_month_number=date.month,
         **data,
     )
@@ -198,6 +209,7 @@ def dozenal_today_route() -> Response:
     data = _calendar_context(locale, date)
     data['base'] = 20
     data['format_token'] = '↋'
+    data['hide_base'] = True
 
     if locale.DIGITS:
         data['format_token'] += '?'
@@ -213,43 +225,41 @@ def dozenal_today_route() -> Response:
 def today_route() -> Response:
     if 'sezimal' in request.cookies:
         cookie = urllib.parse.unquote(request.cookies['sezimal'])
-        base, format_token, locale, time_zone, hour_format, hemisphere = cookie.split('|')
-
-        locale = sezimal_locale(locale)
-        locale.DEFAULT_TIME_ZONE = time_zone
-        locale.HOUR_FORMAT = hour_format
-        locale.DEFAULT_HEMISPHERE = hemisphere
-
+        locale = _prepare_locale_from_cookie(cookie)
+        mobile = locale.mobile
+        base = locale.base
     else:
         locale = sezimal_locale(browser_preferred_locale())
+        base = 10
+        mobile = False
 
     date = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
+    context = _calendar_context(locale, date)
+    context['mobile'] = mobile
+    context['base'] = base
 
-    data = _calendar_context(locale, date)
-
-    if locale.DIGITS:
-        data['format_token'] = (data['format_token'] or '') + '?'
+    # if locale.DIGITS:
+    #     context['format_token'] = (context['format_token'] or '') + '?'
 
     return sezimal_render_template(
         'today.html',
         sezimal_month_number=date.month,
-        **data,
+        **context,
     )
 
 @app.route('/calendar/process', methods=['POST'])
 def api_calendar_process():
     dados = json.loads(request.data.decode('utf-8'))
+
     dados['base'] = int(dados['base'])
+    base = dados['base']
+    format_token = dados['format_token'] or ''
 
     locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
-    locale.DEFAULT_TIME_ZONE = dados['time_zone'] or locale.DEFAULT_TIME_ZONE
     gray_scale = dados['theme'] == 'GRAY'
 
-    if dados['hemisphere'] == 'locale':
-        dados['hemisphere'] = locale.DEFAULT_HEMISPHERE
-
-    locale.DEFAULT_HEMISPHERE = dados['hemisphere'] or locale.DEFAULT_HEMISPHERE
+    locale = _prepare_locale(locale, dados)
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -304,11 +314,7 @@ def api_calendar_process():
     context['now'] = now
     context['base'] = dados['base']
     context['format_token'] = (dados['format_token'] or '')
-    context['short_year'] = True
-
-    if context['short_year']:
-        locale.DATE_FORMAT = locale._to_short_year_format(locale.DATE_FORMAT)
-        locale.DATE_LONG_FORMAT = locale._to_short_year_format(locale.DATE_LONG_FORMAT)
+    context['mobile'] = dados['mobile']
 
     #
     # Digits for the change view line
@@ -341,6 +347,26 @@ def api_calendar_process():
         context['change_view_four'] = '4'
         context['change_view_one'] = '1'
 
+    elif context['base'] == 100:
+        if '!' in context['format_token']:
+            context['change_view_twelve'] = '󱸌'
+            context['change_view_seven'] = '󱸇'
+            context['change_view_five'] = '󱸅'
+            context['change_view_four'] = '󱸄'
+            context['change_view_one'] = '󱸁'
+        elif 'Z' in context['format_token']:
+            context['change_view_twelve'] = 'C'
+            context['change_view_seven'] = '7'
+            context['change_view_five'] = '5'
+            context['change_view_four'] = '4'
+            context['change_view_one'] = '1'
+        else:
+            context['change_view_twelve'] = '0̈'
+            context['change_view_seven'] = '1̇'
+            context['change_view_five'] = '5'
+            context['change_view_four'] = '4'
+            context['change_view_one'] = '1'
+
     if locale.DIGITS:
         context['format_token'] += '?'
 
@@ -353,7 +379,14 @@ def api_calendar_process():
     if dados['hour_format'] != 'locale':
         locale.HOUR_FORMAT = dados['hour_format']
 
-    context['events'] = _calendar_events(locale, date, context)
+    if locale.RTL:
+        context['change_view_twelve'] = '\N{LRI}' + context['change_view_twelve'] + '\N{PDI}'
+        context['change_view_seven'] = '\N{LRI}' + context['change_view_seven'] + '\N{PDI}'
+        context['change_view_five'] = '\N{LRI}' + context['change_view_five'] + '\N{PDI}'
+        context['change_view_four'] = '\N{LRI}' + context['change_view_four'] + '\N{PDI}'
+        context['change_view_one'] = '\N{LRI}' + context['change_view_one'] + '\N{PDI}'
+
+    context['events'] = _calendar_events(locale, date, context) or {}
 
     script = ''
 
@@ -376,20 +409,56 @@ def api_calendar_process():
 
 
 class SezimalEvent:
-    date: SezimalDate = None
-    time: SezimalTime = None
-    emoji: str = ''
-    name: str = ''
-    full_day: bool = True
-    end_date: SezimalDate = None
-    end_time: SezimalTime = None
-    origin: str = ''
+    def __init__(
+        self, origin: str = '', emoji: str = '', name: str = '',
+        date: str | SezimalDate = None, full_day: bool = True,
+        start_time: str | SezimalTime = None,
+        finish_time: str | SezimalTime = None,
+        id: str = None,
+    ):
+        if not date:
+            self.date = SezimalDate.today()
+        elif type(date) == SezimalDate:
+            self.date = date
+        else:
+            self.date = SezimalDate(date)
+
+        if not origin:
+            self.origin = 'SYM+' + self.date.format('#9sY-#9m-#9d')
+        else:
+            self.origin = origin
+
+        self.emoji = emoji
+        self.name = name
+
+
+        self.full_day = full_day
+
+        if not start_time:
+            self.start_time = None
+        elif type(start_time) == SezimalTime:
+            self.start_time = start_time
+        else:
+            self.start_time = SezimalTime(start_time)
+
+        if not finish_time:
+            self.finish_time = None
+        elif type(finish_time) == SezimalTime:
+            self.finish_time = finish_time
+        else:
+            self.finish_time = SezimalTime(finish_time)
+
+        if not id:
+            number = int(SezimalDateTime.now('UTC').format('#>y#dY#u#p#a'))
+            self.id = str(uuid.uuid1(node=number, clock_seq=number))
+        else:
+            self.id = id
 
     def __repr__(self):
-        return f"SezimalEvent({self.date}, {self.time}, {self.emoji}, {self.name}, {self.full_day}, {self.end_date}, {self.end_time}, {self.origin})"
+        return f"""SezimalEvent('{self.origin}', '{self.emoji}', '{self.name}', {"'" + str(self.date) + "'" if self.date else None}, {self.full_day}, {"'" + str(self.start_time) + "'" if self.start_time else None}, {"'" + str(self.finish_time) + "'" if self.finish_time else None}, id={"'" + self.id + "'" if self.id else None})"""
 
     def __str__(self):
-        return f"SezimalEvent({self.date}, {self.time}, {self.emoji}, {self.name}, {self.full_day}, {self.end_date}, {self.end_time}, {self.origin})"
+        return self.__repr__()
 
     @property
     def daily_view(self):
@@ -403,19 +472,113 @@ class SezimalEvent:
 
         return line
 
+    @property
+    def origin_calendar(self):
+        if (not self.origin) or len(self.origin) <= 3:
+            return ''
+
+        if self.origin[0:3] in ('SYM', 'SEZ',
+            'ISO', 'GRE', 'ISR', 'IND',
+            'JUL', 'HEB', 'JEW', 'HIJ', 'IRN', 'CHR', 'ORT', 'ISL'):
+            return self.origin[0:3]
+
+        return 'SEZ'
+
+    @property
+    def day(self) -> str:
+        if self.origin_calendar in ('SYM', 'SEZ'):
+            return str(self.date.symmetric_day).zfill(2)
+        elif self.origin_calendar in ('ISO', 'GRE', 'CHR'):
+            return str(self.date.gregorian_day).zfill(2)
+        elif self.origin_calendar in ('HEB', 'JEW'):
+            return self.hebrew_date().split('-')[-1]
+        elif self.origin_calendar in ('HIJ', 'ISL'):
+            return self.islamic_date().split('-')[-1]
+
+        return ''
+
+    @property
+    def month(self) -> str:
+        if self.origin_calendar in ('SYM', 'SEZ'):
+            return str(self.date.symmetric_month).zfill(2)
+        elif self.origin_calendar in ('ISO', 'GRE', 'CHR'):
+            return str(self.date.gregorian_month).zfill(2)
+        elif self.origin_calendar in ('HEB', 'JEW'):
+            return self.hebrew_date().split('-')[1]
+        elif self.origin_calendar in ('HIJ', 'ISL'):
+            return self.islamic_date().split('-')[1]
+
+        return ''
+
+    @property
+    def year(self) -> str:
+        if self.origin_calendar in ('SYM', 'SEZ'):
+            return str(self.date.symmetric_year).zfill(4)
+        elif self.origin_calendar in ('ISO', 'GRE', 'CHR'):
+            return str(self.date.gregorian_year).zfill(4)
+        elif self.origin_calendar in ('HEB', 'JEW'):
+            return self.hebrew_date().split('-')[0]
+        elif self.origin_calendar in ('HIJ', 'ISL'):
+            return self.islamic_date().split('-')[0]
+
+        return ''
+
+
+def _write_calendar_cache(cache_key: str, events: SezimalDictionary) -> None:
+    file_path = pathlib.Path.home().joinpath(
+        f".sezimal/{cache_key.replace('|', '_').replace('/', '_')}.json"
+    )
+    text = str(events)
+
+    for i in range(1, 60):
+        text = text.replace(f" == Decimal('{i}')", '')
+
+    open(file_path, 'w').write(text)
+
+def _read_calendar_cache(cache_key: str) -> SezimalDictionary | None:
+    file_path = pathlib.Path.home().joinpath(
+        f".sezimal/{cache_key.replace('|', '_').replace('/', '_')}.json"
+    )
+
+    if not file_path.is_file():
+        return
+
+    text = open(file_path, 'r').read()
+    return eval(text)
+
 
 def _calendar_events(locale, date, context):
     cache_key = str(date.year)
     cache_key += '|' + locale.LANGUAGE_TAG
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
+    cache_key += '|' + locale.HOUR_FORMAT
     cache_key += '|' + str(context['base']) + context['format_token']
 
     if cache_key in EVENTS_CACHE:
         return EVENTS_CACHE[cache_key]
 
+    EVENTS_CACHE[cache_key] = _read_calendar_cache(cache_key)
+
+    if EVENTS_CACHE[cache_key]:
+        print('leu cache do disco')
+        return EVENTS_CACHE[cache_key]
+
     events = SezimalDictionary({})
 
-    for event_origin, event_name in locale.HOLIDAYS + locale.HOLIDAYS_OTHER_CALENDAR:
+    all_events = locale.HOLIDAYS
+    all_events += locale.HOLIDAYS_OTHER_CALENDAR
+    all_events += locale.CHRISTIAN_HOLIDAYS
+    all_events += locale.JEWISH_HOLIDAYS
+    all_events += locale.ISLAMIC_HOLIDAYS
+
+    processed_origins = []
+
+    for event_origin, event_name in all_events:
+        # if event_origin in processed_origins:
+        #     continue
+        #
+        # processed_origins.append(event_origin)
+
         for reference_year in (date.year - 1, date.year, date.year + 1):
             event_ordinal_date, (event_year, event_month, event_day), age = \
                 other_calendar_date_to_ordinal_date(event_origin, reference_year)
@@ -425,14 +588,14 @@ def _calendar_events(locale, date, context):
             if event_date.year != date.year:
                 continue
 
-            event_name = event_name.replace('🕆', '🕇')
+            event_name = event_name.replace('🕆\ufe0f', '🕇\ufe0f')
             event_emoji = event_name.split(' ')[0]
             event_name = event_name.replace(event_emoji, '').strip()
 
             if context['base'] == 10:
                 if context['format_token'] == '!':
                     event_name = event_name.replace('#i', default_to_sezimal_digits(str(age)))
-                    event_name = locale._to_sezimal_date_format(event_name)
+                    # event_name = locale.to_sezimal_digits(event_name)
 
                 elif '?' in context['format_token'] and locale.DIGITS:
                     event_name = event_name.replace('#i', locale.digit_replace(str(age)))
@@ -446,9 +609,9 @@ def _calendar_events(locale, date, context):
                 else:
                     event_name = event_name.replace('#i', str(age.decimal))
 
-                if '%P' in locale.ISO_TIME_FORMAT.upper():
+                if locale.HOUR_FORMAT == '12h':
                     event_name = event_name.replace('#u', '%I')
-                    event_name = event_name.replace('#p', '%M %P')
+                    event_name = event_name.replace('#p', '%M %P')
                 else:
                     event_name = event_name.replace('#u', '%H')
                     event_name = event_name.replace('#p', '%M')
@@ -459,7 +622,7 @@ def _calendar_events(locale, date, context):
                 else:
                     event_name = event_name.replace('#i', age.dozenal)
 
-                event_name = locale._to_dozenal_date_format(event_name)
+                event_name = locale._to_other_base(20, event_name)
                 event_name = event_name.replace('#u', '.#↋↋u')
                 event_name = event_name.replace('#p', '#↋↋p')
 
@@ -475,10 +638,10 @@ def _calendar_events(locale, date, context):
                 event_name = event_name.replace('%d', str(event_day).zfill(2))
 
             event = SezimalEvent()
-            event.date = event_date
+            event.origin = event_origin
             event.emoji = event_emoji
             event.name = event_name
-            event.origin = event_origin
+            event.date = event_date
 
             if event.date.month not in events:
                 events[event.date.month] = SezimalDictionary({})
@@ -489,6 +652,7 @@ def _calendar_events(locale, date, context):
             events[event.date.month][event.date.day].append(event)
 
     EVENTS_CACHE[cache_key] = events
+    _write_calendar_cache(cache_key, events)
 
     return events
 
@@ -585,24 +749,24 @@ def sezimal_calendar_pt_route() -> Response:
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        # ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
-        ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
-        # ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Paxawn di Kristu'),
-        ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
-        ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
+        # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
+        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw'),
-        ('05-01', '\ufe0f🐝🐜 Dia du Trabalyu'),
-        ('14-20', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida'),
-        ('15-02', '\ufe0f🪦🕊️  Finadus'),
-        ('20-40', '\ufe0f🥂🍽️  Véspera di Nataw'),
-        ('20-41', '\ufe0f🌟👼🏼 Nataw'),
-        ('20-55', '\ufe0f🍾🎆 Véspera di Anu Novu'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
+        ('05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
+        ('14-20', '⛪\ufe0f👸🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️  Finadus'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera di Nataw'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Nataw'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
         # National Holidays
@@ -616,22 +780,22 @@ def sezimal_calendar_pt_route() -> Response:
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('212_144-04-32', '\ufe0f🇧🇷🔺 Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
-        # ('212_540-11-10', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        # ('212_234-13-10', '\ufe0f🇧🇷🕊️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        # ('212_425-15-31', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        # ('211_503-15-33', '\ufe0f👨🏿 Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        # ('212_144-04-32', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
+        # ('212_234-13-10', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        # ('212_425-15-31', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        # ('211_503-15-33', '👨🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
 
-        ('212_144-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
-        ('212_540-11-13', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
-        ('212_234-13-11', '\ufe0f🇧🇷🕊️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
-        ('212_425-15-23', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
-        ('211_503-15-32', '\ufe0f👨🏿 Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+        ('212_144-04-33', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
+        ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
+        ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
+        ('211_503-15-32', '👨🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
     ]
     locale.HOLIDAYS_OTHER_CALENDAR = []
     locale.CALENDAR = 'symmetry454'
 
-    context['events'] = _calendar_events(locale, now, context)
+    context['events'] = _calendar_events(locale, now, context) or {}
 
     return sezimal_render_template(
         'calendar_pt.html',
@@ -706,24 +870,24 @@ def sezimal_calendar_bz_route() -> Response:
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        # ('EASTER-120', '\ufe0f🎉🎭 Karnavaw'),
-        ('EASTER-115', '\ufe0f🎉🎭 Karnavaw'),
-        # ('EASTER-114', '\ufe0f🎉🎭 Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '\ufe0f🕆\ufe0f🥀 Paxawn di Kristu'),
-        ('EASTER',     '\ufe0f🐣🌱 Paskwa'),
-        ('EASTER+140', '\ufe0f🥖🍷 Corpus Christi'),
+        # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
+        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '\ufe0f🕊️ 🌎 Konfraternizasawn Universaw'),
-        ('05-01', '\ufe0f🐝🐜 Dia du Trabalyu'),
-        ('14-20', '\ufe0f⛪👸🏿 Nòsa Seỹòra Aparesida'),
-        ('15-02', '\ufe0f🪦🕊️  Finadus'),
-        ('20-40', '\ufe0f🥂🍽️  Véspera di Nataw'),
-        ('20-41', '\ufe0f🌟👼🏼 Nataw'),
-        ('20-55', '\ufe0f🍾🎆 Véspera di Anu Novu'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
+        ('05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
+        ('14-20', '⛪\ufe0f👸🏿\ufe0f Nòsa Seỹòra Aparesida'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️  Finadus'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera di Nataw'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Nataw'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
 
         #
         # National Holidays
@@ -737,22 +901,22 @@ def sezimal_calendar_bz_route() -> Response:
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('212_144-04-32', '\ufe0f🇧🇷🔺 Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
-        # ('212_540-11-10', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        # ('212_234-13-10', '\ufe0f🇧🇷🕊️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        # ('212_425-15-31', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
-        # ('211_503-15-33', '\ufe0f👨🏿 Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
+        # ('212_144-04-32', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
+        # ('212_234-13-10', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        # ('212_425-15-31', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        # ('211_503-15-33', '👨🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
 
-        ('212_144-04-33', '\ufe0f🇧🇷🔺 Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
-        ('212_540-11-13', '\ufe0f🪖📜 Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
-        ('212_234-13-11', '\ufe0f🇧🇷🕊️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
-        ('212_425-15-23', '\ufe0f🇧🇷📜 Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
-        ('211_503-15-32', '\ufe0f👨🏿 Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+        ('212_144-04-33', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
+        ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
+        ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
+        ('211_503-15-32', '👨🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
     ]
     locale.HOLIDAYS_OTHER_CALENDAR = []
     locale.CALENDAR = 'symmetry454'
 
-    context['events'] = _calendar_events(locale, now, context)
+    context['events'] = _calendar_events(locale, now, context) or {}
 
     return sezimal_render_template(
         'calendar_bz.html',
@@ -760,14 +924,16 @@ def sezimal_calendar_bz_route() -> Response:
     )
 
 
-@app.route('/calendar/event-window', methods=['POST'])
-def api_event_window():
+@app.route('/calendar/event-list-window', methods=['POST'])
+def api_event_list_window():
     dados = json.loads(request.data.decode('utf-8'))
     dados['base'] = int(dados['base'])
 
     locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
-    locale.DEFAULT_TIME_ZONE = dados['time_zone'] or locale.DEFAULT_TIME_ZONE
+    locale = _prepare_locale(locale, dados)
+
     gray_scale = dados['theme'] == 'GRAY'
+    format_token = dados['format_token'] or ''
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -782,6 +948,52 @@ def api_event_window():
     context['now'] = now
     context['base'] = dados['base']
     context['format_token'] = (dados['format_token'] or '')
+
+    script = ''
+
+    view = sezimal_render_template(
+        f'''calendar_view_event_list.html''',
+        **context,
+    )
+
+    if '<script>' in view:
+        view, script = view.split('<script>')
+        script = script.split('</script>')[0]
+
+    res = {
+        'date_to_store': str(date.date),
+        'view': view,
+        'script_text': script,
+    }
+
+    return jsonify(res)
+
+
+@app.route('/calendar/event-window', methods=['POST'])
+def api_event_window():
+    dados = json.loads(request.data.decode('utf-8'))
+    dados['base'] = int(dados['base'])
+
+    locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
+    locale = _prepare_locale(locale, dados)
+
+    gray_scale = dados['theme'] == 'GRAY'
+    format_token = dados['format_token'] or ''
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    if 'date' in dados and dados['date']:
+        date = SezimalDateTime.combine(SezimalDate(dados['date']), now.time, locale.DEFAULT_TIME_ZONE)
+
+    else:
+        date = now
+
+    context = _calendar_context(locale, date, gray_scale)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = dados['base']
+    context['format_token'] = (dados['format_token'] or '')
+    context['event'] = SezimalEvent()
 
     script = ''
 
@@ -811,9 +1023,10 @@ def api_calendar_build_date_string() -> dict:
     dados['easter_days'] = int(dados['easter_days'] or 0)
 
     base = dados['base']
+    format_token = dados['format_token'] or ''
 
     locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
-    locale.DEFAULT_TIME_ZONE = dados['time_zone'] or locale.DEFAULT_TIME_ZONE
+    locale = _prepare_locale(locale, dados)
 
     date_string = dados['calendar_type']
     date_error = ''
@@ -825,7 +1038,7 @@ def api_calendar_build_date_string() -> dict:
             date_string += dados['easter_sign'].replace('_', '+') or '+'
 
             try:
-                if base == 10:
+                if base == 10 or base == 100:
                     date_string += str(SezimalInteger(dados['easter_days']))
                 elif base == 14:
                     date_string += str(SezimalInteger(Decimal(dados['easter_days'])))
@@ -843,8 +1056,26 @@ def api_calendar_build_date_string() -> dict:
         date_string += dados['year_sign'].replace('_', '+') or '+'
 
         if dados['year']:
-            try:
-                dados['year'] = int(dados['year'])
+            # try:
+            if True:
+                if 'SYM' in date_string:
+                    if base == 10 or base == 100:
+                        if len(dados['year']) <= 3:
+                            dados['year'] = SezimalInteger(dados['year'])
+                            dados['year'] += 213_000
+                        else:
+                            dados['year'] = SezimalInteger(dados['year'])
+
+                        dados['year'] = int((dados['year'] - 200_000).decimal)
+
+                    elif base == 14:
+                        dados['year'] = int(dados['year'])
+
+                    elif base == 20:
+                        dados['year'] = int(DozenalInteger(dados['year']).decimal)
+
+                else:
+                    dados['year'] = int(dados['year'])
 
                 if dados['year'] <= 0:
                     date_error = 'Invalid year'
@@ -854,13 +1085,13 @@ def api_calendar_build_date_string() -> dict:
                     }
                     return jsonify(res)
 
-            except:
-                date_error = 'Invalid date'
-                res = {
-                    'date_error': date_error,
-                    'time_error': time_error,
-                }
-                return jsonify(res)
+            # except:
+            #     date_error = 'Invalid date'
+            #     res = {
+            #         'date_error': date_error,
+            #         'time_error': time_error,
+            #     }
+            #     return jsonify(res)
 
             date_string += str(dados['year']).zfill(4) + '-'
 
@@ -895,22 +1126,8 @@ def api_calendar_build_date_string() -> dict:
     if dados['calendar_type'] == 'SYM':
         year -= 200_000
 
-    if base == 10:
-        if dados['format_token'] == '!':
-            date_format = locale.SEZIMAL_DATE_TEXT_SHORT_MONTH_FORMAT
-        else:
-            date_format = locale.DATE_TEXT_SHORT_MONTH_FORMAT
-
-    elif base == 14:
-        date_format = locale.DECIMAL_DATE_TEXT_SHORT_MONTH_FORMAT
-
-    elif base == 20:
-        date_format = locale.DOZENAL_DATE_TEXT_SHORT_MONTH_FORMAT
-
-    if base == 10:
-        month_names = locale.MONTH_ABBREVIATED_NAME
-    else:
-        month_names = locale.ISO_MONTH_ABBREVIATED_NAME
+    date_format = locale.DATE_TEXT_SHORT_MONTH_FORMAT
+    month_names = locale.MONTH_ABBREVIATED_NAME
 
     if 'JEW' in date_string or 'ISR' in date_string:
         month_names = locale.JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME
@@ -966,7 +1183,7 @@ def api_calendar_build_date_string() -> dict:
         if dados['calendar_type'] not in ('SEZ', 'SYM'):
             date_this_year += '    • '
 
-            if base == 10:
+            if base == 10 or base == 100:
                 date_this_year += locale.CALENDAR_TYPE['SEZ']
             else:
                 date_this_year += locale.CALENDAR_TYPE['SYM']
@@ -1002,7 +1219,7 @@ def api_calendar_build_date_string() -> dict:
         if dados['calendar_type'] not in ('SEZ', 'SYM'):
             date_this_year += '    • '
 
-            if base == 10:
+            if base == 10 or base == 100:
                 date_this_year += locale.CALENDAR_TYPE['SEZ']
             else:
                 date_this_year += locale.CALENDAR_TYPE['SYM']
@@ -1017,5 +1234,438 @@ def api_calendar_build_date_string() -> dict:
             date_this_year += 'ISO: ' + res['date_iso_formatted']
 
     res['date_this_year'] = date_this_year
+
+    return jsonify(res)
+
+
+@app.route('/now')
+def now_route() -> Response:
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        locale = _prepare_locale_from_cookie(cookie)
+        base = locale.base
+        format_token = locale.format_token
+        theme = locale.theme
+        mobile = locale.mobile
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+        hour_format = locale.HOUR_FORMAT
+        base = 10
+        format_token = ''
+        mobile = False
+        theme = 'FULL_COLOR'
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    date = now
+
+    context = _calendar_context(locale, date, gray_scale=theme == 'GRAY')
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = int(base)
+    context['format_token'] = format_token
+    context['hour_format'] = locale.HOUR_FORMAT
+    context['mobile'] = mobile
+
+    return sezimal_render_template(
+        'now.html',
+        sezimal_month_number=date.month,
+        **context,
+    )
+
+
+def _prepare_locale_from_cookie(cookie):
+    try:
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+    except:
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+        show_holiday = 'ISO_SEZ_SYM'
+
+    locale = sezimal_locale(locale)
+
+    dados = {
+        'base': base,
+        'format_token': format_token,
+        'locale': locale,
+        'time_zone': time_zone,
+        'hour_format': hour_format,
+        'hemisphere': hemisphere,
+        'theme': theme,
+        'mobile': mobile == 'true',
+        'show_holiday': show_holiday,
+    }
+
+    locale = _prepare_locale(locale, dados)
+
+    return locale
+
+
+def _prepare_locale(locale, dados):
+    base = int(dados['base'])
+    format_token = dados['format_token']
+
+    if dados['time_zone'] != 'locale':
+        locale.DEFAULT_TIME_ZONE = dados['time_zone']
+
+    if dados['hemisphere'] != 'locale':
+        locale.DEFAULT_HEMISPHERE = dados['hemisphere']
+
+    if dados['hour_format'] == 'iso':
+        locale.to_iso_format()
+    elif dados['hour_format'] == '24h':
+        if locale.DIGITS:
+            locale.ISO_TIME_FORMAT = '%?H:%?M:%?S'
+        else:
+            locale.ISO_TIME_FORMAT = '%H:%M:%S'
+    elif dados['hour_format'] == '12h':
+        if locale.DIGITS:
+            locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
+        else:
+            locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
+
+    if base == 10:
+        locale.to_short_year_format()
+
+        if '!' in format_token:
+            locale.to_sezimal_digits()
+
+    elif base == 14:
+        locale.to_decimal_base()
+    elif base == 20:
+        locale.to_dozenal_base()
+    elif base == 100:
+        if format_token == 'Z':
+            locale.to_niftimal_text_base()
+        else:
+            locale.to_niftimal_base(sezimal_digits='!' in format_token)
+
+    if 'show_holiday' in dados:
+        locale.SHOW_HOLIDAYS = dados['show_holiday']
+    else:
+        locale.SHOW_HOLIDAYS = 'ISO'
+
+    if type(dados['mobile']) == bool:
+        locale.mobile = dados['mobile']
+    else:
+        locale.mobile = dados['mobile'] == 'true'
+
+    locale.format_token = dados['format_token']
+    locale.base = int(dados['base'])
+    locale.theme = dados['theme']
+
+    return locale
+
+
+def _now_icon(text: str, locale) -> str:
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    if now.weekday >= 10:
+        text = text.replace('#2a7fff', '#d40000')
+
+    if locale.base == 10 or locale.base == 100:
+        locale.to_short_year_format()
+        uta_angle = now.time.as_days
+        posha_angle = (now.time.as_days * 100) - round(now.time.as_days * 100, 0)
+        agrima_angle = (now.time.as_days * 10_000) - round(now.time.as_days * 10_000, 0)
+        uta_angle = round(uta_angle * 1400, 0).decimal
+        posha_angle = round(posha_angle * 1400, 0).decimal
+        agrima_angle = round(agrima_angle * 1400, 0).decimal
+
+    elif locale.base == 14:
+        locale.to_decimal_base()
+        text = text.replace('id="sezimal_marks" style="display: inline;"', 'id="sezimal_marks" style="display: none;"')
+        text = text.replace('id="dozenal_marks" style="display: none;"', 'id="dozenal_marks" style="display: inline;"')
+        text = text.replace('dur="66667ms"', 'dur="60000ms"')
+        text = text.replace('dur="2400s"', 'dur="3600s"')
+        text = text.replace('dur="86400s"', 'dur="43200s"')
+
+        hour = now.iso_date_time.hour
+
+        if now.iso_date_time.hour >= 12:
+            hour -= 12
+
+        hour /= 12
+        hour += now.iso_date_time.minute / 60 / 12
+        hour += now.iso_date_time.second / 60 / 60 / 12
+
+        minute = now.iso_date_time.minute / 60
+        minute += now.iso_date_time.second / 60 / 60
+
+        second = now.iso_date_time.second / 60
+
+        uta_angle = round(hour * 360, 0) + 180
+        posha_angle = round(minute * 360, 0) + 180
+        agrima_angle = round(second * 360, 0) + 180
+
+    elif locale.base == 20:
+        locale.to_dozenal_base()
+        text = text.replace('id="sezimal_marks" style="display: inline;"', 'id="sezimal_marks" style="display: none;"')
+        text = text.replace('id="dozenal_marks" style="display: none;"', 'id="dozenal_marks" style="display: inline;"')
+        text = text.replace('dur="66667ms"', 'dur="50s"')
+        text = text.replace('dur="2400s"', 'dur="600s"')
+        text = text.replace('dur="86400s"', 'dur="7200s"')
+
+        uta_angle = now.time.as_days
+        posha_angle = (now.time.as_days * Dozenal('100')) - round(now.time.as_days * Dozenal('100'), 0)
+        agrima_angle = (now.time.as_days * Dozenal('1000')) - round(now.time.as_days * Dozenal('1000'), 0)
+        uta_angle = round(uta_angle * 1400, 0).decimal
+        posha_angle = round(posha_angle * 1400, 0).decimal
+        agrima_angle = round(agrima_angle * 1400, 0).decimal
+
+    date_parts = now.format(locale.DATE_FORMAT.replace('d', '-d').replace('m', 'M'), locale).split(locale.DATE_SEPARATOR)
+
+    text = text.replace(
+        'id="date-1">213 212',
+        'id="date-1">' + date_parts[0],
+    )
+    text = text.replace(
+        'id="date-2">11',
+        'id="date-2">' + date_parts[1],
+    )
+    text = text.replace(
+        'id="date-3">01',
+        'id="date-3">' + date_parts[2],
+    )
+    text = text.replace(
+        'id="face_uta" transform="rotate(300,216,216)"',
+        f'id="face_uta" transform="rotate({uta_angle},216,216)"',
+    )
+    text = text.replace(
+        'id="face_posha" transform="rotate(60,216,216)"',
+        f'id="face_posha" transform="rotate({posha_angle},216,216)"',
+    )
+    text = text.replace(
+        'id="face_agrima" transform="rotate(150,216,216)"',
+        f'id="face_agrima" transform="rotate({agrima_angle + 10},216,216)"',
+    )
+
+    return text
+
+
+@app.route('/now/<string:when>/icon-mono.svg')
+@app.route('/now/<string:when>/icon-<string:size>.svg')
+@app.route('/now/icon.svg')
+@app.route('/now/icon-<string:size>.svg')
+def now_icon(when: str = None, size: str = None) -> str:
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        locale = _prepare_locale_from_cookie(cookie)
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+        locale.base = 10
+        print("não veio cookies no ícone")
+
+    text = open('static/img/now-icon.svg').read()
+
+    if size and size != 'any':
+        text = text.replace('width="1632.7559"', f'width="{size}"')
+        text = text.replace('height="1632.7559"', f'height="{size}"')
+
+    return Response(_now_icon(text, locale), mimetype='image/svg+xml')
+
+
+@app.route('/now/manifest.json')
+def now_manifest() -> str:
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        locale = _prepare_locale_from_cookie(cookie)
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+        locale.base = 10
+        print("não veio cookies no manifest")
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    text = sezimal_render_template(
+        'manifest_now.json',
+        locale=locale,
+        now=now,
+    )
+
+    return jsonify(json.loads(text))
+
+
+@app.route('/today/<string:when>/icon-mono.svg')
+@app.route('/today/<string:when>/icon-<string:size>.svg')
+@app.route('/today/icon.svg')
+@app.route('/today/icon-<string:size>.svg')
+def today_icon(when: str = None, size: str = None) -> str:
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        locale = _prepare_locale_from_cookie(cookie)
+        base = locale.base
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+        locale.base = 10
+        base = 10
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    print('data do ícone', now)
+
+    text = open('static/img/today-icon.svg').read()
+
+    if size and size != 'any':
+        text = text.replace('width="1632.7559"', f'width="{size}"')
+        text = text.replace('height="1632.7559"', f'height="{size}"')
+
+    if now.weekday >= 10:
+        text = text.replace('#2a7fff', '#d40000')
+
+    if base == 10 or base == 100:
+        day = str(now.date.day)
+        month = str(now.date.month)
+
+    elif base == 14:
+        day = str(now.date.day.decimal)
+        month = str(now.date.month.decimal)
+
+    else:
+        day = str(now.date.day.dozenal)
+        month = str(now.date.month.dozenal)
+
+    print('dia, mes', day, month)
+
+    text = text.replace('>20</tspan>', '>' + month.rjust(2, ' ') + 'm</tspan>')
+    text = text.replace('>55</tspan>', '>' + day.rjust(2, ' ') + '</tspan>')
+    text = text.replace('>' + month.rjust(2, ' ')+ 'm</tspan>', '>' + month.rjust(2, ' ') + '</tspan>')
+
+    return Response(text, mimetype='image/svg+xml')
+
+
+@app.route('/today/manifest.json')
+def today_manifest() -> str:
+    if 'sezimal' in request.cookies:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+        locale = _prepare_locale_from_cookie(cookie)
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+        locale.base = 10
+        print("não veio cookies no manifest")
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    text = sezimal_render_template(
+        'manifest_today.json',
+        locale=locale,
+        now=now,
+    )
+
+    return jsonify(json.loads(text))
+
+
+@app.route('/now/process', methods=['POST'])
+def api_now_process():
+    dados = json.loads(request.data.decode('utf-8'))
+
+    dados['base'] = int(dados['base'])
+    base = dados['base']
+    format_token = dados['format_token'] or ''
+
+    locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
+    gray_scale = dados['theme'] == 'GRAY'
+
+    locale = _prepare_locale(locale, dados)
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    date = now
+
+    context = _calendar_context(locale, date, gray_scale)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = dados['base']
+    context['format_token'] = (dados['format_token'] or '')
+    context['mobile'] = dados['mobile']
+
+    if locale.DIGITS:
+        context['format_token'] += '?'
+
+    if dados['hour_format'] != 'locale':
+        locale.HOUR_FORMAT = dados['hour_format']
+
+    context['events'] = _calendar_events(locale, date, context) or {}
+
+    script = ''
+
+    view = sezimal_render_template(
+        f'''calendar_view_now.html''',
+        **context,
+    )
+
+    if '<script type="text/javascript" id="view_script">' in view:
+        view, script = view.split('<script type="text/javascript" id="view_script">')
+        script = script.split('</script>')[0]
+
+    res = {
+        'view': view,
+        'script_text': script,
+    }
+
+    return jsonify(res)
+
+
+@app.route('/weather/process', methods=['POST'])
+def api_weather_process():
+    dados = json.loads(request.data.decode('utf-8'))
+
+    dados['base'] = int(dados['base'])
+    base = dados['base']
+    format_token = dados['format_token'] or ''
+
+    locale = sezimal_locale(dados['locale'] or browser_preferred_locale())
+    gray_scale = dados['theme'] == 'GRAY'
+
+    locale = _prepare_locale(locale, dados)
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    date = now
+
+    context = _calendar_context(locale, date, gray_scale)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = dados['base']
+    context['format_token'] = (dados['format_token'] or '')
+    context['mobile'] = dados['mobile']
+    context['weather'] = None
+
+    if 'latitude' in dados and 'longitude' in dados \
+        and dados['latitude'] and dados['longitude']:
+        weather = SezimalWeather(
+            locale,
+            locale.DEFAULT_TIME_ZONE,
+            use_last_reading=False,
+        )
+        weather.get_openweathermap_conditions(
+            latitude=dados['latitude'],
+            longitude=dados['longitude'],
+        )
+        context['weather'] = weather
+
+    if locale.DIGITS:
+        context['format_token'] += '?'
+
+    if dados['hour_format'] != 'locale':
+        locale.HOUR_FORMAT = dados['hour_format']
+
+    view = sezimal_render_template(
+        f'''calendar_view_weather.html''',
+        **context,
+    )
+
+    if '-metric' in dados['locale']:
+        locale.DECIMAL_TEMPERATURE = '°C'
+        locale.DECIMAL_SPEED = 'km/h'
+
+    decimal_weather = ' ― ' + locale.format_decimal_number(
+        round(sezimal_to_decimal_unit(
+            weather.temperature,
+            'tap', locale.DECIMAL_TEMPERATURE
+        ).decimal, 1),
+        decimal_places=1
+    ) + ' ' + locale.DECIMAL_TEMPERATURE
+
+    res = {
+        'view': view,
+        'decimal_weather': decimal_weather
+    }
 
     return jsonify(res)

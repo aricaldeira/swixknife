@@ -14,14 +14,22 @@ function calendar_load() {
 
     if (base == '10') {
         if (format_token == '!') {
-            document.getElementById('base_select_10!').setAttribute('checked', 'checked');
+            document.getElementById('base_select').value = '10!';
         } else {
-            document.getElementById('base_select_10').setAttribute('checked', 'checked');
+            document.getElementById('base_select').value = '10';
+        };
+    } else if (base == '100') {
+        if (format_token == '@!') {
+            document.getElementById('base_select').value = '100!';
+        } else if (format_token == 'Z') {
+            document.getElementById('base_select').value = '100Z';
+        } else {
+            document.getElementById('base_select').value = '100';
         };
     } else if (base == '14') {
-        document.getElementById('base_select_14').setAttribute('checked', 'checked');
+        document.getElementById('base_select').value = '14';
     } else if (base == '20') {
-        document.getElementById('base_select_20').setAttribute('checked', 'checked');
+        document.getElementById('base_select').value = '20';
     };
 
     /*
@@ -58,12 +66,7 @@ function calendar_load() {
         localStorage.setItem('sezimal-calendar-theme', 'FULL_COLOR');
         theme = 'FULL_COLOR';
     };
-
-    if (theme == 'FULL_COLOR') {
-        document.getElementById('theme_select_full_color').setAttribute('checked', 'checked');
-    } else if (theme == 'GRAY') {
-        document.getElementById('theme_select_gray').setAttribute('checked', 'checked');
-    };
+    document.getElementById('theme_select').value = theme;
 
     /*
     *  First run view definition
@@ -87,6 +90,49 @@ function calendar_load() {
         localStorage.setItem('sezimal-calendar-hemisphere', 'locale');
     };
     document.getElementById('hemisphere_select').value = localStorage.getItem('sezimal-calendar-hemisphere');
+
+    /*
+    *  First run holidays calendar definition
+    */
+    if (localStorage.getItem('sezimal-calendar-show-holiday') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday', 'ISO_SEZ_SYM');
+    };
+    document.getElementById('show_holiday_select').value = localStorage.getItem('sezimal-calendar-show-holiday');
+
+    if (localStorage.getItem('sezimal-calendar-show-holiday-christian') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday-christian', false);
+    };
+    document.getElementById('religious_calendar_input_christian').checked = (
+        (localStorage.getItem('sezimal-calendar-show-holiday-christian') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-christian') == 'true')
+    );
+
+    // if (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') === null) {
+    //     localStorage.setItem('sezimal-calendar-show-holiday-orthodox', false);
+    // };
+    // document.getElementById('religious_calendar_input_orthodox').checked = (
+    //     (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') == true)
+    //     || (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') == 'true')
+    // );
+
+    if (localStorage.getItem('sezimal-calendar-show-holiday-islamic') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday-islamic', false);
+    };
+    document.getElementById('religious_calendar_input_islamic').checked = (
+        (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == 'true')
+    );
+
+    if (localStorage.getItem('sezimal-calendar-show-holiday-jewish') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday-jewish', false);
+    };
+    document.getElementById('religious_calendar_input_jewish').checked = (
+        (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == 'true')
+    );
+
+    document.getElementById('sezimal-latitude-input').value = localStorage.getItem('sezimal-latitude');
+    document.getElementById('sezimal-longitude-input').value = localStorage.getItem('sezimal-longitude');
 
     update_calendar();
 };

@@ -1,0 +1,77 @@
+{% if base == 10 %}
+    <p class="now-weather" onclick="open_close_weather()">
+        {{ locale.format_number(round(weather.temperature, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+    </p>
+    <div id="weather" style="display: none;">
+        <p>
+            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_number(round(weather.temperature_sensation, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_number(round(weather.temperature_minimum, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S / {{ locale.format_number(round(weather.temperature_maximum, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S
+        </p>
+        <p>
+            {% if weather._air_quality == 1 %}<span style="font-weight: bold; color: white; background-color: #00ccff"> ༄&#xfe0f; 1 </span>{% elif weather._air_quality == 2 %}<span style="font-weight: bold; color: white; background-color: #44aa00"> ༄&#xfe0f; 2 </span>{% elif weather._air_quality == 3 %}<span style="font-weight: bold; color: white; background-color: #ffcc00"> ༄&#xfe0f; 3 </span>{% elif weather._air_quality == 4 %}<span style="font-weight: bold; color: white; background-color: #ff6600"> ༄&#xfe0f; 4 </span>{% elif weather._air_quality == 5 %}<span style="font-weight: bold; color: white; background-color: #d40000"> ༄&#xfe0f; 5 </span>{% endif %}   <span class="emoji">🔭&#xfe0f;</span> {{ locale.format_number(round(weather.visibility, 1), sezimal_places=1, sezimal_digits='!' in format_token) }} Xpad   <span class="emoji">💧&#xfe0f;</span> {{ locale.format_number(round(weather.humidity, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} 󱹱
+        </p>
+        <p>
+            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_number(round(weather.wind_speed, 1), sezimal_places=1, sezimal_digits='!' in format_token) }} veg   <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_number(round(weather.wind_direction, 1), sezimal_places=1, sezimal_digits='!' in format_token) }} dmdl   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {{ locale.format_number(round(weather.pressure, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} Xpdn
+        </p>
+        <p>
+            <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.SHORT_TIME_FORMAT, locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.SHORT_TIME_FORMAT, locale) }}
+        </p>
+    </div>
+{% elif base == 14 %}
+    <p class="now-weather" onclick="open_close_weather()">
+        {{ locale.format_decimal_number(round(sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+    </p>
+    <div id="weather" style="display: none;">
+        <p>
+            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_sensation, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_minimum, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }} / {{ locale.format_decimal_number(round(sdu(weather.temperature_maximum, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}
+        </p>
+        <p>
+            {% if weather._air_quality == 1 %}<span style="font-weight: bold; color: white; background-color: #00ccff"> ༄&#xfe0f; 1 </span>{% elif weather._air_quality == 2 %}<span style="font-weight: bold; color: white; background-color: #44aa00"> ༄&#xfe0f; 2 </span>{% elif weather._air_quality == 3 %}<span style="font-weight: bold; color: white; background-color: #ffcc00"> ༄&#xfe0f; 3 </span>{% elif weather._air_quality == 4 %}<span style="font-weight: bold; color: white; background-color: #ff6600"> ༄&#xfe0f; 4 </span>{% elif weather._air_quality == 5 %}<span style="font-weight: bold; color: white; background-color: #d40000"> ༄&#xfe0f; 5 </span>{% endif %}   <span class="emoji">🔭&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.visibility, 'Xpad', 'km' if locale.DECIMAL_SPEED == 'km/h' else 'ml'), 1), decimal_places=1) }} {{ 'km' if locale.DECIMAL_SPEED == 'km/h' else 'ml' }}   <span class="emoji">💧&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.humidity, 'dspn', '%'), 0), decimal_places=0) }} %
+        </p>
+        <p>
+            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_speed, 'veg', locale.DECIMAL_SPEED), 0), decimal_places=0) }} {{ locale.DECIMAL_SPEED }}   <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_direction, 'dmdl', 'deg'), 0), decimal_places=0) }}°   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {% if locale.DECIMAL_SPEED == 'km/h' %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'hPa'), 0), decimal_places=0) }} hPa{% else %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'inHg'), 1), decimal_places=1) }} in Hg{% endif %}
+        </p>
+        <p>
+            <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.ISO_SHORT_TIME_FORMAT, locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.ISO_SHORT_TIME_FORMAT, locale) }}
+        </p>
+    </div>
+{% elif base == 20 %}
+    {% set TEMPERATURE = Dozenal('0.491_86↊_351_860') %}
+    {% set SPEED = Dozenal('0.349_9↊↊_↋75_848_532') %}
+    {% set LENGTH = Dozenal('1220.↋35_851_8↋7_0↋↋_↋91') %}
+    {% set PRESSURE = Dozenal('68.424_110_5↊2_↋↋5_411') %}
+    <p class="now-weather" onclick="open_close_weather()">
+        {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature, 'tap', '°C')) / TEMPERATURE) + 40, 0), dozenal_places=0) }} ⚀ς<sub>f</sub>°  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+    </p>
+    <div id="weather" style="display: none;">
+        <p>
+            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature_sensation, 'tap', '°C')) / TEMPERATURE) + 40, 0), dozenal_places=0) }} ⚀ς<sub>f</sub>°   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature_minimum, 'tap', '°C')) / TEMPERATURE) + 40, 0), dozenal_places=0) }} ⚀ς<sub>f</sub>° / {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature_maximum, 'tap', '°C')) / TEMPERATURE) + 40, 0), dozenal_places=0) }} ⚀ς<sub>f</sub>°
+        </p>
+        <p>
+            {% if weather._air_quality == 1 %}<span style="font-weight: bold; color: white; background-color: #00ccff"> ༄&#xfe0f; 1 </span>{% elif weather._air_quality == 2 %}<span style="font-weight: bold; color: white; background-color: #44aa00"> ༄&#xfe0f; 2 </span>{% elif weather._air_quality == 3 %}<span style="font-weight: bold; color: white; background-color: #ffcc00"> ༄&#xfe0f; 3 </span>{% elif weather._air_quality == 4 %}<span style="font-weight: bold; color: white; background-color: #ff6600"> ༄&#xfe0f; 4 </span>{% elif weather._air_quality == 5 %}<span style="font-weight: bold; color: white; background-color: #d40000"> ༄&#xfe0f; 5 </span>{% endif %}   <span class="emoji">🔭&#xfe0f;</span> {{ locale.format_dozenal_number(round(Dozenal(sdu(weather.visibility, 'Xpad', 'm')) / LENGTH, 1), dozenal_places=1) }} ⚀p↑lgℓ   <span class="emoji">💧&#xfe0f;</span> {{ locale.format_dozenal_number(round(Dozenal(weather.humidity / 100) * 100, 0), dozenal_places=0) }} p/g
+        </p>
+        <p>
+            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_dozenal_number(round(Dozenal(sdu(weather.wind_speed, 'veg', 'm/s')) / SPEED, 1), dozenal_places=1) }} ⚀vcℓ  <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_dozenal_number(round((weather.wind_direction / 100) * 400, 1), dozenal_places=1) }} b↓⊙   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {{ locale.format_decimal_number(round(Dozenal(sdu(weather.pressure, 'Xpdn', 'Pa')) / PRESSURE, 0), decimal_places=0) }} ⚀psℓ
+        </p>
+        <p>
+            <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋0.3fD', locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋0.3fD', locale) }}
+        </p>
+    </div>
+{% elif base == 100 %}
+    <p class="now-weather" onclick="open_close_weather()">
+        {{ locale.format_niftimal_number(round(weather.temperature, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} °S  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+    </p>
+    <div id="weather" style="display: none;">
+        <p>
+            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_niftimal_number(round(weather.temperature_sensation, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} °S   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.temperature_minimum, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} °S / {{ locale.format_niftimal_number(round(weather.temperature_maximum, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} °S
+        </p>
+        <p>
+            {% if weather._air_quality == 1 %}<span style="font-weight: bold; color: white; background-color: #00ccff"> ༄&#xfe0f; 1 </span>{% elif weather._air_quality == 2 %}<span style="font-weight: bold; color: white; background-color: #44aa00"> ༄&#xfe0f; 2 </span>{% elif weather._air_quality == 3 %}<span style="font-weight: bold; color: white; background-color: #ffcc00"> ༄&#xfe0f; 3 </span>{% elif weather._air_quality == 4 %}<span style="font-weight: bold; color: white; background-color: #ff6600"> ༄&#xfe0f; 4 </span>{% elif weather._air_quality == 5 %}<span style="font-weight: bold; color: white; background-color: #d40000"> ༄&#xfe0f; 5 </span>{% endif %}   <span class="emoji">🔭&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.visibility, 2), niftimal_places=1, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} Xpad   <span class="emoji">💧&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.humidity, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} 󱹱
+        </p>
+        <p>
+            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.wind_speed, 2), niftimal_places=1, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} veg   <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.wind_direction, 2), niftimal_places=1, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} dmdl   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {{ locale.format_niftimal_number(round(weather.pressure, 0), niftimal_places=0, sezimal_digits='!' in format_token, regularized_digits='Z' not in format_token) }} Xpdn
+        </p>
+        <p>
+            <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.SHORT_TIME_FORMAT, locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.SHORT_TIME_FORMAT, locale) }}
+        </p>
+    </div>
+{% endif %}

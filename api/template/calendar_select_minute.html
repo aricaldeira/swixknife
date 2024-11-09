@@ -4,7 +4,7 @@ Hora
 Òra
 {% else %}
 Hour
-{% endif %}">
+{% endif %}" style="direction:ltr;">
     <option id="event_time_minute_00{{ time_start_finish }}" value="00">00</option>
     <option id="event_time_minute_01{{ time_start_finish }}" value="01">01</option>
     <option id="event_time_minute_02{{ time_start_finish }}" value="02">02</option>
@@ -67,6 +67,6 @@ Hour
     <option id="event_time_minute_59{{ time_start_finish }}" value="59">59</option>
 </select>
 {% if locale.HOUR_FORMAT == '12h' %}
-<span id="event_time_am{{ time_start_finish }}" hidden>{{ locale.AM }}</span>
-<span id="event_time_pm{{ time_start_finish }}" hidden>{{ locale.PM }}</span>
+<span id="event_time_am{{ time_start_finish }}" hidden>{{ ' ' + locale.AM }}</span>
+<span id="event_time_pm{{ time_start_finish }}" hidden>{{ ' ' + locale.PM }}</span>
 {% endif %}

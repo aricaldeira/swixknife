@@ -53,7 +53,7 @@ const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text,
 <h2>U ki kyè isu?</h2>
 <p>Uma kawkuladora y un konversor di bazi numérika y unidadis di medida, entri as bazis sezimaw (sêys) y desimaw (dèys).</p>
 <p>Vose pòdi uzar u aplikativu komu uma kawkuladora desimaw komun, y eli vay konvertendu us káwkulus uzando bazi sezimaw, ensinandu vose komu ler us númerus nu prosèsu.</p>
-<p>Klikandu o tokandu in kada un dus mostradoris (sezimaw, nifimaw, estensu o desimaw), u konteudu è kopiadu pra arya di transferensya.</p>
+<p>Klikandu o tokandu in kada un dus mostradoris (sezimaw, nifezimaw, estensu o desimaw), u konteudu è kopiadu pra arya di transferensya.</p>
 <h3>Uzu dus botoyns</h3>
 <p>Awguns botoyns dawn asèsu a máys duma operasawn o funsawn, kwandu presionadus un sèrtu númeru di vezis in sekwensya:</p>
 <ul>
@@ -74,7 +74,7 @@ const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text,
 <ul>
     <li>[ ? ] - mòstra esi testu di ajuda;</li><br/>
     <li>[ en ] - permiti selesyonar u idioma y u paiz, u ki determina komu us númerus vawn ser formatadus, y defini u idioma du aplikativu;</li><br/>
-    <li>[ 3 ] / [ 󱸃 ] - uza díjitus komuns [ 3 ] o díjitus sezimays [ 󱸃 ] (veja máys abaxu) prus mostradoris sezimaw y nifimaw, y prus botoyns sezimays (a bazi desimaw senpri uza us díjitus komuns);</li><br/>
+    <li>[ 3 ] / [ 󱸃 ] - uza díjitus komuns [ 3 ] o díjitus sezimays [ 󱸃 ] (veja máys abaxu) prus mostradoris sezimaw y nifezimaw, y prus botoyns sezimays (a bazi desimaw senpri uza us díjitus komuns);</li><br/>
     <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - determina komu us númerus sawn agrupadus y separadus:<br/>
         <ul>
             <li>[ 3󱹬3 ] / [ 󱸃󱹬󱸃 ] - separadoris sezimays (veja máys abaxu), a kada treys díjitus;</li><br/>
@@ -82,11 +82,11 @@ const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text,
             <li>[ 4.4 ] / [ 󱸄.󱸄 ] - separadoris desimays/tradisyonays, di akordu ku lokali (idioma y paiz) selesyonadus, a kada kwatru díjitus (komu nu sayti seximal.net); isu tanbeyn awtèra, in inglez, u rezuwtadu du mostrador du númeru pur estensu, ki pasa a uzar sêys nifi y uneksiawn nu lugar di arda y xadara;</li>
         </ul>
     </li><br/>
-    <li>[ nifi 5̆ ] / [ nifi 󱸣 ] - defini u uzu y konversawn du mostrador nifimaw:<br/>
+    <li>[ nifi 5̆ ] / [ nifi 󱸣 ] - defini u uzu y konversawn du mostrador nifezimaw:<br/>
         <ul>
-            <li>[ nifi 5̆ ] / [ nifi 󱸣 ] - u mostrador nifimaw uza díjitus regularizadus (veja abaxu);</li><br/>
-            <li>[ nifi Z ] - u mostrator nifimaw uza us díjitus 0123456789 y letras a partir du númeru 14 (in desimaw, dèys);</li><br/>
-            <li>[ <span style="color: #666;">nifi</span> ] - okuwta u mostrador nifimaw;</li>
+            <li>[ nifi 5̆ ] / [ nifi 󱸣 ] - u mostrador nifezimaw uza díjitus regularizadus (veja abaxu);</li><br/>
+            <li>[ nifi Z ] - u mostrator nifezimaw uza us díjitus 0123456789 y letras a partir du númeru 14 (in desimaw, dèys);</li><br/>
+            <li>[ <span style="color: #666;">nifi</span> ] - okuwta u mostrador nifezimaw;</li>
         </ul>
     </li><br/>
     <li>[ est ] - ativa [ est ] / dizativa [ <span style="color: #666;">est</span> ] a ezibisawn dus númerus sezimays pur estensu (pur inkuantu, sòmenti disponívew in brazileru, portugez, inglez y Esperantu);</li><br/>

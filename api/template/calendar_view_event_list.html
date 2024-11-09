@@ -1,0 +1,70 @@
+<table>
+    <th>
+        <td>
+            {% if locale.LANG == 'pt' %}
+                Evento
+            {% elif locale.LANG == 'bz' %}
+                Eventu
+            {% else %}
+                Event
+            {% endif %}
+        </td>
+        <td>
+            {% if locale.LANG == 'pt' %}
+                Data
+            {% elif locale.LANG == 'bz' %}
+                Data
+            {% else %}
+                Date
+            {% endif %}
+        </td>
+        <td>
+            {% if locale.LANG == 'pt' %}
+                Recorrência
+            {% elif locale.LANG == 'bz' %}
+                Rekorrensya
+            {% else %}
+                Recurrence
+            {% endif %}
+        </td>
+        <td>
+            {% if locale.LANG == 'pt' %}
+                Horário
+            {% elif locale.LANG == 'bz' %}
+                Oraryu
+            {% else %}
+                Time
+            {% endif %}
+        </td>
+    </th>
+    <tr>
+
+    </tr>
+</table>
+<table>
+    <tr class="center">
+        <td>
+            <button onclick="open_event_window()">
+            {% if locale.LANG == 'pt' %}
+                Novo evento
+            {% elif locale.LANG == 'bz' %}
+                Novu eventu
+            {% else %}
+                New event
+            {% endif %}
+            </button>
+        </td>
+        <td>
+            <button onclick="close_event_list()">
+            {% if locale.LANG == 'pt' %}
+                Fechar
+            {% elif locale.LANG == 'bz' %}
+                Fexar
+            {% else %}
+                Close
+            {% endif %}
+            </button>
+        </td>
+    </tr>
+</table>
+</div>

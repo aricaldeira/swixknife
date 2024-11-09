@@ -12,7 +12,6 @@
     {% set HALF = '30' %}
     {% set SEPARATOR = locale.TIME_SEPARATOR %}
     {% set MIDDAY = 20 %}
-    {% set SEASON_MOON_TIME_FORMAT = locale.ISO_HOUR_MINUTE_FORMAT %}
 
     {% if locale.HOUR_FORMAT == '12h' %}
         {% set UTAS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: '10', 15: '11', 20: '12', 21: '1', 22: '2', 23: '3', 24: '4', 25: '5', 30: '6', 31: '7', 32: '8', 33: '9', 34: '10', 35: '11'}) %}
@@ -20,13 +19,29 @@
 {% elif base == 20 %}
     {% set NUMBERS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: '↊', 15: '↋', 20: '10', 21: '11', 22: '12', 23: '13', 24: '14', 25: '15', 30: '16', 31: '17', 32: '18', 33: '19', 34: '1↊', 35: '1↋', 40: '20', 41: '21', 42: '22', 43: '23', 44: '24', 45: '25', 50: '26', 51: '27', 52: '28', 53: '29', 54: '2↊', 55: '2↋', 100: '30', 101: '31', 102: '32', 103: '33', 104: '34', 105: '35', 110: '36', 111: '37', 112: '38', 113: '39', 114: '3↊', 115: '3↋', 120: '40', 121: '41', 122: '42', 123: '43', 124: '44', 125: '45', 1404: '264', 1415: '26↋'}) %}
 
-    {% set UTAS = SezimalDictionary({0: '.0', 1: '.1', 2: '.2', 3: '.3', 4: '.4', 5: '.5', 10: '.6', 11: '.7', 12: '.8', 13: '.9', 14: '.↊', 15: '.↋'}) %}
-    {% set HOURS_24 = SezimalDictionary({0: '.0', 1: '.1', 2: '.2', 3: '.3', 4: '.4', 5: '.5', 10: '.6', 11: '.7', 12: '.8', 13: '.9', 14: '.↊', 15: '.↋'}) %}
+    {% set UTAS = SezimalDictionary({0: '00', 1: '03', 2: '06', 3: '09', 4: '10', 5: '13', 10: '16', 11: '19', 12: '20', 13: '23', 14: '26', 15: '29', 20: '30', 21: '33', 22: '36', 23: '39', 24: '40', 25: '43', 30: '46', 31: '49', 32: '50', 33: '53', 34: '56', 35: '59', 40: '60', 41: '63', 42: '66', 43: '69', 44: '70', 45: '73', 50: '76', 51: '79', 52: '80', 53: '83', 54: '86', 55: '89', 100: '90', 101: '93', 102: '96', 103: '99', 104: '↊0', 105: '↊3', 110: '↊6', 111: '↊9', 112: '↋0', 113: '↋3', 114: '↋6', 115: '↋9'}) %}
+    {% set HOURS_24 = SezimalDictionary({0: '00', 1: '03', 2: '06', 3: '09', 4: '10', 5: '13', 10: '16', 11: '19', 12: '20', 13: '23', 14: '26', 15: '29', 20: '30', 21: '33', 22: '36', 23: '39', 24: '40', 25: '43', 30: '46', 31: '49', 32: '50', 33: '53', 34: '56', 35: '59', 40: '60', 41: '63', 42: '66', 43: '69', 44: '70', 45: '73', 50: '76', 51: '79', 52: '80', 53: '83', 54: '86', 55: '89', 100: '90', 101: '93', 102: '96', 103: '99', 104: '↊0', 105: '↊3', 110: '↊6', 111: '↊9', 112: '↋0', 113: '↋3', 114: '↋6', 115: '↋9'}) %}
     {% set HALF = '6' %}
     {% set SEPARATOR = '' %}
-    {% set MIDDAY = 10 %}
-    {% set SEASON_MOON_TIME_FORMAT = '.#↋↋u#↋↋p' %}
+    {% set MIDDAY = 40 %}
+{% elif base == 100 %}
+    {% set NUMBERS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '0̇', 11: '1̇', 12: '2̇', 13: '3̇', 14: '4̇', 15: '5̇', 20: '0̈', 21: '1̈', 22: '2̈', 23: '3̈', 24: '4̈', 25: '5̈', 30: '0̊', 31: '1̊', 32: '2̊', 33: '3̊', 34: '4̊', 35: '5̊', 40: '0̄', 41: '1̄', 42: '2̄', 43: '3̄', 44: '4̄', 45: '5̄', 50: '0̆', 51: '1̆', 52: '2̆', 53: '3̆', 54: '4̆', 55: '5̆', 100: '10', 101: '11', 102: '12', 103: '13', 104: '14', 105: '15', 110: '10̇', 111: '11̇', 112: '12̇', 113: '13̇', 114: '14̇', 115: '15̇', 120: '10̈', 121: '11̈', 122: '12̈', 123: '13̈', 124: '14̈', 125: '15̈', 1404: '4̇4', 1415: '4̇5̇'}) %}
+    {% set UTAS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '0̇', 11: '1̇', 12: '2̇', 13: '3̇', 14: '4̇', 15: '5̇', 20: '0̈', 21: '1̈', 22: '2̈', 23: '3̈', 24: '4̈', 25: '5̈', 30: '0̊', 31: '1̊', 32: '2̊', 33: '3̊', 34: '4̊', 35: '5̊', 40: '0̄', 41: '1̄', 42: '2̄', 43: '3̄', 44: '4̄', 45: '5̄', 50: '0̆', 51: '1̆', 52: '2̆', 53: '3̆', 54: '4̆', 55: '5̆'}) %}
+    {% set HOURS_24 = SezimalDictionary({0: '00', 1: '01', 2: '02', 3: '03', 4: '04', 5: '05', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 20: '20', 21: '21', 22: '22', 23: '23', 24: '24', 25: '25', 30: '30', 31: '31', 32: '32', 33: '33', 34: '34', 35: '35', 40: '40', 41: '41', 42: '42', 43: '43', 44: '44', 45: '45', 50: '50', 51: '51', 52: '52', 53: '53', 54: '54', 55: '55'}) %}
+    {% set HALF = '0̊' %}
+    {% set SEPARATOR = locale.TIME_SEPARATOR %}
+    {% set MIDDAY = 30 %}
 
+    {% if sezimal_digits or format_token == '@!' %}
+        {% set NUMBERS = SezimalDictionary({0: '󱸀', 1: '󱸁', 2: '󱸂', 3: '󱸃', 4: '󱸄', 5: '󱸅', 10: '󱸆', 11: '󱸇', 12: '󱸈', 13: '󱸉', 14: '󱸊', 15: '󱸋', 20: '󱸌', 21: '󱸍', 22: '󱸎', 23: '󱸏', 24: '󱸐', 25: '󱸑', 30: '󱸒', 31: '󱸓', 32: '󱸔', 33: '󱸕', 34: '󱸖', 35: '󱸗', 40: '󱸘', 41: '󱸙', 42: '󱸚', 43: '󱸛', 44: '󱸜', 45: '󱸝', 50: '󱸞', 51: '󱸟', 52: '󱸠', 53: '󱸡', 54: '󱸢', 55: '󱸣', 100: '󱸁󱸀', 101: '󱸁󱸁', 102: '󱸁󱸂', 103: '󱸁󱸃', 104: '󱸁󱸄', 105: '󱸁󱸅', 110: '󱸁󱸆', 111: '󱸁󱸇', 112: '󱸁󱸈', 113: '󱸁󱸉', 114: '󱸁󱸊', 115: '󱸁󱸋', 120: '󱸁󱸌', 121: '󱸁󱸍', 122: '󱸁󱸎', 123: '󱸁󱸏', 124: '󱸁󱸐', 125: '󱸁󱸑', 1404: '󱸊󱸄', 1415: '󱸊󱸋'}) %}
+        {% set UTAS = SezimalDictionary({0: '󱸀', 1: '󱸁', 2: '󱸂', 3: '󱸃', 4: '󱸄', 5: '󱸅', 10: '󱸆', 11: '󱸇', 12: '󱸈', 13: '󱸉', 14: '󱸊', 15: '󱸋', 20: '󱸌', 21: '󱸍', 22: '󱸎', 23: '󱸏', 24: '󱸐', 25: '󱸑', 30: '󱸒', 31: '󱸓', 32: '󱸔', 33: '󱸕', 34: '󱸖', 35: '󱸗', 40: '󱸘', 41: '󱸙', 42: '󱸚', 43: '󱸛', 44: '󱸜', 45: '󱸝', 50: '󱸞', 51: '󱸟', 52: '󱸠', 53: '󱸡', 54: '󱸢', 55: '󱸣'}) %}
+        {% set HALF = '󱸒' %}
+        {% set SEPARATOR = locale.TIME_SEPARATOR %}
+    {% elif format_token == 'Z' %}
+        {% set NUMBERS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: 'A', 15: 'B', 20: 'C', 21: 'D', 22: 'E', 23: 'F', 24: 'G', 25: 'H', 30: 'I', 31: 'J', 32: 'K', 33: 'L', 34: 'M', 35: 'N', 40: 'O', 41: 'P', 42: 'Q', 43: 'R', 44: 'S', 45: 'T', 50: 'U', 51: 'V', 52: 'W', 53: 'X', 54: 'Y', 55: 'Z', 100: '10', 101: '11', 102: '12', 103: '13', 104: '14', 105: '15', 110: '16', 111: '17', 112: '18', 113: '19', 114: '1A', 115: '1B', 120: '1C', 121: '1D', 122: '1E', 123: '1F', 124: '1G', 125: '1H', 1404: 'A4', 1415: 'AB'}) %}
+        {% set UTAS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: 'A', 15: 'B', 20: 'C', 21: 'D', 22: 'E', 23: 'F', 24: 'G', 25: 'H', 30: 'I', 31: 'J', 32: 'K', 33: 'L', 34: 'M', 35: 'N', 40: 'O', 41: 'P', 42: 'Q', 43: 'R', 44: 'S', 45: 'T', 50: 'U', 51: 'V', 52: 'W', 53: 'X', 54: 'Y', 55: 'Z'}) %}
+        {% set HALF = 'I' %}
+    {% endif %}
 {% else %}
     {% set NUMBERS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 20: '20', 21: '21', 22: '22', 23: '23', 24: '24', 25: '25', 30: '30', 31: '31', 32: '32', 33: '33', 34: '34', 35: '35', 40: '40', 41: '41', 42: '42', 43: '43', 44: '44', 45: '45', 50: '50', 51: '51', 52: '52', 53: '53', 54: '54', 55: '55', 100: '100', 101: '101', 102: '102', 103: '103', 104: '104', 105: '105', 110: '110', 111: '111', 112: '112', 113: '113', 114: '114', 115: '115', 120: '120', 121: '121', 122: '122', 123: '123', 124: '124', 125: '125', 1404: '1404', 1415: '1415'}) %}
 
@@ -35,7 +50,6 @@
     {% set HALF = '30' %}
     {% set SEPARATOR = locale.TIME_SEPARATOR %}
     {% set MIDDAY = 30 %}
-    {% set SEASON_MOON_TIME_FORMAT = '#u:#p' %}
 
     {% if sezimal_digits or format_token == '!' %}
         {% set NUMBERS = SezimalDictionary({0: '󱸀', 1: '󱸁', 2: '󱸂', 3: '󱸃', 4: '󱸄', 5: '󱸅', 10: '󱸁󱸀', 11: '󱸁󱸁', 12: '󱸁󱸂', 13: '󱸁󱸃', 14: '󱸁󱸄', 15: '󱸁󱸅', 20: '󱸂󱸀', 21: '󱸂󱸁', 22: '󱸂󱸂', 23: '󱸂󱸃', 24: '󱸂󱸄', 25: '󱸂󱸅', 30: '󱸃󱸀', 31: '󱸃󱸁', 32: '󱸃󱸂', 33: '󱸃󱸃', 34: '󱸃󱸄', 35: '󱸃󱸅', 40: '󱸄󱸀', 41: '󱸄󱸁', 42: '󱸄󱸂', 43: '󱸄󱸃', 44: '󱸄󱸄', 45: '󱸄󱸅', 50: '󱸅󱸀', 51: '󱸅󱸁', 52: '󱸅󱸂', 53: '󱸅󱸃', 54: '󱸅󱸄', 55: '󱸅󱸅', 100: '󱸁󱸀󱸀', 101: '󱸁󱸀󱸁', 102: '󱸁󱸀󱸂', 103: '󱸁󱸀󱸃', 104: '󱸁󱸀󱸄', 105: '󱸁󱸀󱸅', 110: '󱸁󱸁󱸀', 111: '󱸁󱸁󱸁', 112: '󱸁󱸁󱸂', 113: '󱸁󱸁󱸃', 114: '󱸁󱸁󱸄', 115: '󱸁󱸁󱸅', 120: '󱸁󱸂󱸀', 121: '󱸁󱸂󱸁', 122: '󱸁󱸂󱸂', 123: '󱸁󱸂󱸃', 124: '󱸁󱸂󱸄', 125: '󱸁󱸂󱸅', 1404: '󱸁󱸄󱸀󱸄', 1415: '󱸁󱸄󱸁󱸅'}) %}
@@ -43,7 +57,6 @@
         {% set UTAS = SezimalDictionary({0: '󱸀󱸀', 1: '󱸀󱸁', 2: '󱸀󱸂', 3: '󱸀󱸃', 4: '󱸀󱸄', 5: '󱸀󱸅', 10: '󱸁󱸀', 11: '󱸁󱸁', 12: '󱸁󱸂', 13: '󱸁󱸃', 14: '󱸁󱸄', 15: '󱸁󱸅', 20: '󱸂󱸀', 21: '󱸂󱸁', 22: '󱸂󱸂', 23: '󱸂󱸃', 24: '󱸂󱸄', 25: '󱸂󱸅', 30: '󱸃󱸀', 31: '󱸃󱸁', 32: '󱸃󱸂', 33: '󱸃󱸃', 34: '󱸃󱸄', 35: '󱸃󱸅', 40: '󱸄󱸀', 41: '󱸄󱸁', 42: '󱸄󱸂', 43: '󱸄󱸃', 44: '󱸄󱸄', 45: '󱸄󱸅', 50: '󱸅󱸀', 51: '󱸅󱸁', 52: '󱸅󱸂', 53: '󱸅󱸃', 54: '󱸅󱸄', 55: '󱸅󱸅'}) %}
         {% set HALF = '󱸃󱸀' %}
         {% set SEPARATOR = locale.TIME_SEPARATOR %}
-        {% set SEASON_MOON_TIME_FORMAT = '#!u:#!p' %}
     {% endif %}
 {% endif %}
 
@@ -57,7 +70,7 @@
 {% set EVENTS_FONT_SIZE = '1rem' %}
 {% set EVENTS_LINE_HEIGHT = '2rem' %}
 
-{% if locale.DIGITS and format_token != '!' %}
+{% if locale.DIGITS and (base in (10, 14)) and (format_token != '!') %}
     {% for i in NUMBERS %}
         {% set NUMBERS = NUMBERS.update({i: locale.digit_replace(NUMBERS[i])}) %}
     {% endfor %}
@@ -80,17 +93,9 @@
     </tr>
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'day')">‹</td>
-        {% if base == 10 %}
-            {% if format_token == '!' %}
-                <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.SEZIMAL_DATE_LONG_FORMAT.replace('Y', 'X'), locale)}}</td>
-            {% else %}
-                <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.DATE_LONG_FORMAT, locale)}}</td>
-            {% endif %}
-        {% elif base == 14 %}
-            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.DECIMAL_DATE_LONG_FORMAT, locale)}}</td>
-        {% elif base == 20 %}
-            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.DOZENAL_DATE_LONG_FORMAT, locale)}}</td>
-        {% endif %}
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {{date.format(locale.DATE_LONG_FORMAT, locale)}}
+        </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'day')">›</td>
     </tr>
     <tr>
@@ -100,25 +105,22 @@
 <table class="center" style="border-spacing: 0px;">
     <colgroup>
         <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
+        <col span="1" width="40%">
         <col span="1">
     </colgroup>
     <tr style="vertical-align: middle; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">
-        <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}};">
+        <td style="line-height: {{MONTH_LINE_HEIGHT}};">
             <div id="" style="z-index: 1; width: 100%; float: {{ 'right' if locale.RTL else 'left' }}; border-{{ 'left' if locale.RTL else 'right' }}: 2px solid {{colors[date.week_in_year][back_shade_04]}};">
-                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wQ/#' + format_token + 'twQ', locale) }} ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dQ/#' + format_token + 'tdQ', locale) }}
+                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wQ/#' + format_token + 'twQ', locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dQ/#' + format_token + 'tdQ', locale) }}</span>
             </div>
             <div id="quarter_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][back_shade_04]}}; width: {{ date.quarter_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
-        <td colspan="4" style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">{{date.format('#W', locale)}}</td>
-        <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}};">
+        <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
+            {{date.format('#W', locale)}}
+        </td>
+        <td style="line-height: {{MONTH_LINE_HEIGHT}};">
             <div id="" style="z-index: 1; width: 100%; float: {{ 'left' if locale.RTL else 'right' }}; border-{{ 'right' if locale.RTL else 'left' }}: 2px solid {{colors[date.week_in_year][back_shade_04]}};">
-                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wY/#' + format_token + 'twY', locale) }} ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dY/#' + format_token + 'tdY', locale) }}
+                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wY/#' + format_token + 'twY', locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dY/#' + format_token + 'tdY', locale) }}</span>
             </div>
             <div id="year_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][back_shade_04]}}; width: {{ date.year_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
@@ -126,38 +128,60 @@
         {#
         {% if base == 10 %}
             {% if format_token == '!' %}
-                <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT.replace('Y', 'X'), locale)}}</td>
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT.replace('Y', 'X'), locale)}}</td>
             {% else %}
-                <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
             {% endif %}
         {% elif base == 14 %}
-            <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
+            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
         {% elif base == 20 %}
-            <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
+            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
         {% endif %}
         #}
     </tr>
+</table>
+<table class="center" style="border-spacing: 0px;">
+    <colgroup>
+        <col span="1">
+        <col span="1">
+    </colgroup>
     <tr style="vertical-align: middle; color: {{colors[date.week_in_year][shade_01]}}; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EVENTS_LINE_HEIGHT}};">
-        <td colspan="5" style="text-align: {{ 'right' if locale.RTL else 'left' }};">
+        <td style="text-align: {{ 'right' if locale.RTL else 'left' }};">
             {% if date.month in events %}
                 {% if date.day in events[date.month] %}
                     {% for event in events[date.month][date.day] %}
-                        &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};&nbsp;
+                        {% if event.origin_calendar in locale.SHOW_HOLIDAYS %}
+                            &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};&nbsp;
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#TS', tz_locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + tz_locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>{{ date.format(' - #' + tz_locale.DEFAULT_HEMISPHERE + 'S (#TS)', tz_locale, season_moon_time_format=SEASON_MOON_TIME_FORMAT)}}</span>
-                {% if date.format('#TL', tz_locale) %}
+            {% if date.format('#TS', locale) %}
+                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'S \N{LRI}(#TS)\N{PDI}', locale)}}</span>
+                {% if date.format('#TL', locale) %}
                 <br />
                 {% endif %}
             {% endif %}
-            {% if date.format('#TL', tz_locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + tz_locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + tz_locale.DEFAULT_HEMISPHERE + 'L (#TL)', tz_locale, season_moon_time_format=SEASON_MOON_TIME_FORMAT)}}</span>
+            {% if date.format('#TL', locale) %}
+                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
             {% endif %}
         </td>
-        <td colspan="3" style="text-align: {{ 'left' if locale.RTL else 'right' }};">ISO: {{date.format(locale.ISO_DATE_LONG_FORMAT, locale)}} </td>
+        <td style="text-align: {{ 'left' if locale.RTL else 'right' }};">
+            &nbsp;{{date.format(locale.ISO_DATE_LONG_FORMAT, locale)}}&nbsp;
+            {% if 'JUL' in locale.SHOW_HOLIDAYS %}
+                <br/>
+                &nbsp;{{date.julian_date(locale)}}&nbsp;
+            {% endif %}
+            {% if 'JEW' in locale.SHOW_HOLIDAYS %}
+                <br/>
+                &nbsp;{{date.hebrew_date(locale, number=False, short=False)}}&nbsp;
+            {% endif %}
+            {% if 'HIJ' in locale.SHOW_HOLIDAYS %}
+                <br/>
+                &nbsp;{{date.hijri_date(locale, number=False, short=False)}}&nbsp;
+            {% endif %}
+        </td>
     </tr>
 </table>
 </div>
@@ -174,18 +198,36 @@
     </colgroup>
     {% for uta in SezimalList(UTAS.keys())[uta_first:uta_last] %}
         {% set time_id = HOURS_24[uta] %}
-        <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
-            <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
-                {{UTAS[uta]}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};">{{ (' ' + locale.lower(locale.AM)) if uta < 20 else (' ' + locale.lower(locale.PM)) }}</span>{% endif %}
-            </td>
-            <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-        </tr>
-        <tr style="vertical-align: top;" id="time_{{time_id}}_half">
-            <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
-                {{UTAS[uta]}}{{SEPARATOR}}{{HALF}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};">{{ ' am' if uta < 20 else ' pm' }}</span>{% endif %}
-            </td>
-            <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-        </tr>
+        {% if base != 20 %}
+            <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    {{UTAS[uta]}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};" class="hide-in-mobile-daily-view-am-pm">{{ (' ' + locale.lower(locale.AM)) if uta < 20 else (' ' + locale.lower(locale.PM)) }}</span>{% endif %}
+                </td>
+                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+            </tr>
+            <tr style="vertical-align: top;" id="time_{{time_id}}_half">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    <span class="hide-in-mobile">{{UTAS[uta]}}{{SEPARATOR}}</span>{{HALF}}
+                </td>
+                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+            </tr>
+        {% else %}
+            {% if uta % 2 == 0 %}
+                <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                        {{UTAS[uta]}}
+                    </td>
+                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                </tr>
+            {% else %}
+                <tr style="vertical-align: top;" id="time_{{time_id}}">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                        {{UTAS[uta]}}
+                    </td>
+                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                </tr>
+            {% endif %}
+        {% endif %}
     {% endfor %}
 </table>
 <div class="calendar-time-pointer" id="time_pointer"></div>
@@ -224,17 +266,17 @@ function auto_refresh(){
     {% if locale.HOUR_FORMAT == '12h' %}
         if (hours > 12) {
             hours = hours - 12;
-            minutes = minutes + ' {{ locale.lower(locale.PM) }}';
+            minutes = minutes + ' {{ locale.lower(locale.PM) }}';
         } else if (hours == 12) {
-            minutes = minutes + ' {{ locale.lower(locale.PM) }}';
+            minutes = minutes + ' {{ locale.lower(locale.PM) }}';
         } else {
-            minutes = minutes + ' {{ locale.lower(locale.AM) }}';
+            minutes = minutes + ' {{ locale.lower(locale.AM) }}';
         };
     {% endif %}
 
     hours = hours.toString().padStart(2, '0');
 
-    {% if base == 10 %}
+    {% if base == 10 or base == 100 %}
         {% if format_token == '!' %}
             const PAIRS = {
                 '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
@@ -243,6 +285,33 @@ function auto_refresh(){
                 '30': '󱸃󱸀', '31': '󱸃󱸁', '32': '󱸃󱸂', '33': '󱸃󱸃', '34': '󱸃󱸄', '35': '󱸃󱸅',
                 '40': '󱸄󱸀', '41': '󱸄󱸁', '42': '󱸄󱸂', '43': '󱸄󱸃', '44': '󱸄󱸄', '45': '󱸄󱸅',
                 '50': '󱸅󱸀', '51': '󱸅󱸁', '52': '󱸅󱸂', '53': '󱸅󱸃', '54': '󱸅󱸄', '55': '󱸅󱸅',
+            };
+        {% elif format_token == '@' %}
+            const PAIRS = {
+                '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
+                '10': '0̇', '11': '1̇', '12': '2̇', '13': '3̇', '14': '4̇', '15': '5̇',
+                '20': '0̈', '21': '1̈', '22': '2̈', '23': '3̈', '24': '4̈', '25': '5̈',
+                '30': '0̊', '31': '1̊', '32': '2̊', '33': '3̊', '34': '4̊', '35': '5̊',
+                '40': '0̄', '41': '1̄', '42': '2̄', '43': '3̄', '44': '4̄', '45': '5̄',
+                '50': '0̆', '51': '1̆', '52': '2̆', '53': '3̆', '54': '4̆', '55': '5̆',
+            };
+        {% elif format_token == '@!' %}
+            const PAIRS = {
+                '00': '󱸀', '01': '󱸁', '02': '󱸂', '03': '󱸃', '04': '󱸄', '05': '󱸅',
+                '10': '󱸆', '11': '󱸇', '12': '󱸈', '13': '󱸉', '14': '󱸊', '15': '󱸋',
+                '20': '󱸌', '21': '󱸍', '22': '󱸎', '23': '󱸏', '24': '󱸐', '25': '󱸑',
+                '30': '󱸒', '31': '󱸓', '32': '󱸔', '33': '󱸕', '34': '󱸖', '35': '󱸗',
+                '40': '󱸘', '41': '󱸙', '42': '󱸚', '43': '󱸛', '44': '󱸜', '45': '󱸝',
+                '50': '󱸞', '51': '󱸟', '52': '󱸠', '53': '󱸡', '54': '󱸢', '55': '󱸣',
+            };
+        {% elif format_token == 'Z' %}
+            const PAIRS = {
+                '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
+                '10': '6', '11': '7', '12': '8', '13': '9', '14': 'A', '15': 'B',
+                '20': 'C', '21': 'D', '22': 'E', '23': 'F', '24': 'G', '25': 'H',
+                '30': 'I', '31': 'J', '32': 'K', '33': 'L', '34': 'M', '35': 'N',
+                '40': 'O', '41': 'P', '42': 'Q', '43': 'R', '44': 'S', '45': 'T',
+                '50': 'U', '51': 'V', '52': 'W', '53': 'X', '54': 'Y', '55': 'Z',
             };
         {% endif %}
 
@@ -269,17 +338,25 @@ function auto_refresh(){
 
         seconds = seconds / (parseInt('30', 6) * 86400 / 36 / 36);
 
-        {% if format_token == '!' %}
+        {% if format_token in ('!', '@', '@!', 'Z') %}
             time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
         {% else %}
             time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
         {% endif %}
 
-        time_display = time_display + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% if locale.RTL %}
+            time_display = '\u{2066}' + time_display + '\u{2069} - \u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
+        {% else %}
+            time_display = time_display + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% endif %}
 
         setTimeout(auto_refresh, 33333);
     {% elif base == 14 %}
-        time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% if locale.RTL %}
+            time_display = '\u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
+        {% else %}
+            time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% endif %}
 
         //
         // Seconds is adjusted to a proportion of 30 posha,
@@ -302,28 +379,35 @@ function auto_refresh(){
     {% elif base == 20 %}
         var time = seconds * 12 * 12 * 12;
         time = Math.floor(time).toString(12).padStart(3, '0');
-        var minute = time.slice(1, 3);
 
         //
-        // Seconds is adjusted to a proportion of 30 posha,
+        // Seconds is adjusted to a proportion of 30 minutes,
         // so the time pointer gets positioned within
-        // each halt uta time line
+        // each 30 minutes time line
         //
-        seconds = parseInt(minute, 12) * 86400 / 12 / 12 / 12 / 12;
-
-        time = time.replaceAll('a', '↊').replaceAll('b', '↋');
-
-        if (time.slice(1, 2) >= '6') {
-            time_line_id = 'time_.' + time.slice(0, 1) + '_half';
-            seconds = seconds + ((parseInt(minute, 12) - parseInt('60', 12)) * 86400 / 12 / 12);
+        if ((time.slice(1, 2) == '0') || (time.slice(1, 2) == '1') || (time.slice(1, 2) == '2')) {
+            time_line_id = 'time_' + time.slice(0, 1) + '0';
+            seconds = parseInt(time.slice(1, 3), '12');
+        } else if ((time.slice(1, 2) == '3') || (time.slice(1, 2) == '4') || (time.slice(1, 2) == '5')) {
+            time_line_id = 'time_' + time.slice(0, 1) + '3';
+            seconds = parseInt(time.slice(1, 3), '12') - parseInt('30', 12);
+        } else if ((time.slice(1, 2) == '6') || (time.slice(1, 2) == '7') || (time.slice(1, 2) == '8')) {
+            time_line_id = 'time_' + time.slice(0, 1) + '6';
+            seconds = parseInt(time.slice(1, 3), '12') - parseInt('60', 12);
         } else {
-            time_line_id = 'time_.' + time.slice(0, 1);
-            seconds = seconds + (parseInt(minutes, 12) * 86400 / 12 / 12);
+            time_line_id = 'time_' + time.slice(0, 1) + '9';
+            seconds = parseInt(time.slice(1, 3), '12') - parseInt('90', 12);
         }
 
-        seconds = seconds / (parseInt('60', 12) * 86400 / 12 / 12);
+        time = time.replaceAll('a', '↊').replaceAll('b', '↋');
+        time_line_id = time_line_id.replaceAll('a', '↊').replaceAll('b', '↋');
+        seconds = seconds / parseInt('30', 12);
 
-        time_display = '{{ locale.SEZIMAL_SEPARATOR }}' + time + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% if locale.RTL %}
+            time_display = '\u{2066}' + time + '\u{2069} - \u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
+        {% else %}
+            time_display = time + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+        {% endif %}
 
         setTimeout(auto_refresh, 25000);
     {% endif %}
@@ -331,17 +415,28 @@ function auto_refresh(){
     time_line_rect = document.getElementById(time_line_id).getBoundingClientRect();
     position = (seconds * time_line_rect.height) + time_line_rect.top + window.scrollY - time_pointer_half_height;
 
-    {% if locale.DIGITS %}
-        time_display = time_display.replace('0', '{{ locale.DIGITS[0] }}');
-        time_display = time_display.replace('1', '{{ locale.DIGITS[1] }}');
-        time_display = time_display.replace('2', '{{ locale.DIGITS[2] }}');
-        time_display = time_display.replace('3', '{{ locale.DIGITS[3] }}');
-        time_display = time_display.replace('4', '{{ locale.DIGITS[4] }}');
-        time_display = time_display.replace('5', '{{ locale.DIGITS[5] }}');
-        time_display = time_display.replace('6', '{{ locale.DIGITS[6] }}');
-        time_display = time_display.replace('7', '{{ locale.DIGITS[7] }}');
-        time_display = time_display.replace('8', '{{ locale.DIGITS[8] }}');
-        time_display = time_display.replace('9', '{{ locale.DIGITS[9] }}');
+    {% if locale.DIGITS and (base in (10, 14)) and (format_token != '!') %}
+        time_display = time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
+        time_display = time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
+        time_display = time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
+        time_display = time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
+        time_display = time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
+        time_display = time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
+        time_display = time_display.replaceAll('6', '{{ locale.DIGITS[6] }}');
+        time_display = time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
+        time_display = time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
+        time_display = time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
+
+        iso_time_display = iso_time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
+        iso_time_display = iso_time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
+        iso_time_display = iso_time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
+        iso_time_display = iso_time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
+        iso_time_display = iso_time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
+        iso_time_display = iso_time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
+        iso_time_display = iso_time_display.replaceAll('6', '{{ locale.DIGITS[6] }}');
+        iso_time_display = iso_time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
+        iso_time_display = iso_time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
+        iso_time_display = iso_time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
     {% endif %}
 
     if (document.getElementById('time_pointer')) {

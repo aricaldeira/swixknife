@@ -2,25 +2,38 @@
 const LANGUAGE_TAGS = {
     'ar_latn': 'ar-Latn',
     'ar': 'ar',
+    'ar_nu_latn': 'ar-u-nu-Latn',
     'bn_latn': 'bn-Latn',
     'bn': 'bn',
+    'bn_nu_latn': 'bn-u-nu-Latn',
     'bz_br': 'bz-BR',
     'bz_pt': 'bz-PT',
     'bz': 'bz',
     'ca': 'ca',
     'code': 'code',
+    'da': 'da',
+    'de_at': 'de-AT',
+    'de_be': 'de-BE',
+    'de_de': 'de-DE',
+    'de_it': 'de-IT',
+    'de_li': 'de-LI',
+    'de_lu': 'de-LU',
     'de': 'de',
     'el': 'el',
+    'el_colloquial': 'el',
     'en_au': 'en-AU',
     'en_br': 'en-BR',
     'en_ca': 'en-CA',
     'en_gb': 'en-GB',
+    'en_gb-metric': 'en-GB-metric',
     'en_ie': 'en-IE',
     'en_in': 'en-IN',
     'en_nyoo_speling': 'en-NYOO-SPELING',
     'en_nz': 'en-NZ',
     'en_shaw': 'en-Shaw',
     'en_us': 'en-US',
+    'en_us-metric': 'en-US-metric',
+    'en_za': 'en-ZA',
     'en': 'en',
     'eo_br': 'eo-BR',
     'eo': 'eo',
@@ -35,10 +48,16 @@ const LANGUAGE_TAGS = {
     'es_py': 'es-PY',
     'es_uy': 'es-UY',
     'es': 'es',
+    'et': 'et',
     'fa_latn': 'fa-Latn',
     'fa': 'fa',
+    'fa_nu_latn': 'fa-u-nu-Latn',
+    'fi': 'fi',
+    'fr_be': 'fr-BE',
     'fr_ca': 'fr-CA',
     'fr_ch': 'fr-CH',
+    'fr_fr': 'fr-FR',
+    'fr_lu': 'fr-LU',
     'fr_ortograf': 'fr-Ortograf',
     'fr': 'fr',
     'ga_clo_gaelach': 'ga-CLO-GAELACH',
@@ -50,8 +69,10 @@ const LANGUAGE_TAGS = {
     'he': 'he',
     'hi_latn': 'hi-Latn',
     'hi': 'hi',
+    'hi_nu_latn': 'hi-u-nu-Latn',
     'hu': 'hu',
     'id': 'id',
+    'is': 'is',
     'iso_dot': 'iso-Dot',
     'iso': 'iso',
     'it': 'it',
@@ -59,9 +80,16 @@ const LANGUAGE_TAGS = {
     'iu': 'iu',
     'ja': 'ja',
     'kea': 'kea',
+    'kn': 'kn',
+    'kn_nu_latn': 'kn-u-nu-Latn',
     'ko': 'ko',
+    'lat': 'lat',
+    'lb': 'lb',
     'mt': 'mt',
-    'nl': 'nl',
+    'nb': 'nb',
+    'nl_be': 'nl-BE',
+    'nl': 'nl-NL',
+    'nn': 'nn',
     'pl': 'pl',
     'pt_ao': 'pt-AO',
     'pt_br': 'pt-BR',
@@ -78,6 +106,9 @@ const LANGUAGE_TAGS = {
     'pt': 'pt',
     'ro': 'ro',
     'ru': 'ru',
+    'sv_fi': 'sv-FI',
+    'sv_se': 'sv-SE',
+    'sv': 'sv',
     'sw_traditional': 'sw-Traditional',
     'sw': 'sw',
     'tr': 'tr',
@@ -96,10 +127,9 @@ const LANGUAGE_TAGS = {
     'zh': 'zh',
 }
 
-
-function update_calendar(direction = '', direction_type = '') {
+function _base_data(direction = '', direction_type = '') {
     let dados = {};
-   let expiration = new Date(Date.now() + 604800000);
+    let expiration = new Date(Date.now() + 604800000);
 
     const base = localStorage.getItem('sezimal-calendar-base');
     const format_token = localStorage.getItem('sezimal-calendar-format-token');
@@ -107,11 +137,44 @@ function update_calendar(direction = '', direction_type = '') {
     const time_zone = localStorage.getItem('sezimal-calendar-time-zone');
     const hour_format = localStorage.getItem('sezimal-calendar-hour-format');
     const hemisphere = localStorage.getItem('sezimal-calendar-hemisphere');
+    const theme = localStorage.getItem('sezimal-calendar-theme');
+    const mobile = ((navigator.userAgent.toUpperCase().indexOf('MOBILE') > 0) || (navigator.userAgent.toUpperCase().indexOf('ANDROID') > 0));
+    let show_holiday = localStorage.getItem('sezimal-calendar-show-holiday');
+
+    if (
+        (localStorage.getItem('sezimal-calendar-show-holiday-christian') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-christian') == 'true')
+    ) {
+        show_holiday = show_holiday + '_CHR';
+    };
+
+    if (
+        (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') == 'true')
+    ) {
+        show_holiday = show_holiday + '_ORT';
+    };
+
+    if (
+        (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == 'true')
+    ) {
+        show_holiday = show_holiday + '_HIJ';
+    };
+
+    if (
+        (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == 'true')
+    ) {
+        show_holiday = show_holiday + '_JEW';
+    };
 
     document.documentElement.lang = LANGUAGE_TAGS[locale];
-    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
+    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
 
-    if ((locale == 'ar') || (locale == 'fa') || (locale == 'he')) {
+    if ((locale == 'ar') || (locale == 'ar_nu_latn') ||
+        (locale == 'fa') || (locale == 'fa_nu_latn') ||
+        (locale == 'he')) {
         document.documentElement.dir = 'rtl';
     } else {
         document.documentElement.dir = 'ltr';
@@ -124,12 +187,20 @@ function update_calendar(direction = '', direction_type = '') {
         time_zone: time_zone,
         hour_format: hour_format,
         hemisphere: hemisphere,
+        theme: theme,
         date: localStorage.getItem('sezimal-calendar-date'),
         view: localStorage.getItem('sezimal-calendar-view'),
-        theme: localStorage.getItem('sezimal-calendar-theme'),
         direction: direction,
         direction_type: direction_type,
+        mobile: mobile,
+        show_holiday: show_holiday,
     };
+
+    return dados;
+}
+
+function update_calendar(direction = '', direction_type = '') {
+    let dados = _base_data(direction, direction_type)
 
     fetch('/calendar/process', {
         method: 'post',
@@ -157,7 +228,6 @@ function update_calendar(direction = '', direction_type = '') {
             view_script.async = false;
             view_script.nounce = 'sezimaw';
             view_script.textContent = dados.script_text;
-            console.log('calendar_view', document.getElementById('calendar_view'));
             document.getElementById('calendar_view').appendChild(view_script);
         };
     });
@@ -184,26 +254,54 @@ function apply_settings() {
     localStorage.setItem('sezimal-calendar-time-zone', document.getElementById('time_zone_select').value);
     localStorage.setItem('sezimal-calendar-hour-format', document.getElementById('hour_format_select').value);
     localStorage.setItem('sezimal-calendar-hemisphere', document.getElementById('hemisphere_select').value);
+    localStorage.setItem(
+        'sezimal-calendar-show-holiday',
+        document.getElementById('show_holiday_select').value
+    );
+    localStorage.setItem(
+        'sezimal-calendar-show-holiday-christian',
+        document.getElementById('religious_calendar_input_christian').checked
+    );
+    // localStorage.setItem(
+    //     'sezimal-calendar-show-holiday-orthodox',
+    //     document.getElementById('religious_calendar_input_orthodox').checked
+    // );
+    localStorage.setItem(
+        'sezimal-calendar-show-holiday-islamic',
+        document.getElementById('religious_calendar_input_islamic').checked
+    );
+    localStorage.setItem(
+        'sezimal-calendar-show-holiday-jewish',
+        document.getElementById('religious_calendar_input_jewish').checked
+    );
 
-    if (document.getElementById('base_select_10').checked) {
+    if (document.getElementById('base_select').value == '10') {
         localStorage.setItem('sezimal-calendar-base', 10);
         localStorage.setItem('sezimal-calendar-format-token', '');
-    } else if (document.getElementById('base_select_10!').checked) {
+    } else if (document.getElementById('base_select').value == '10!') {
         localStorage.setItem('sezimal-calendar-base', 10);
         localStorage.setItem('sezimal-calendar-format-token', '!');
-    } else if (document.getElementById('base_select_14').checked) {
+    } else if (document.getElementById('base_select').value == '14') {
         localStorage.setItem('sezimal-calendar-base', 14);
         localStorage.setItem('sezimal-calendar-format-token', '9');
-    } else if (document.getElementById('base_select_20').checked) {
+    } else if (document.getElementById('base_select').value == '20') {
         localStorage.setItem('sezimal-calendar-base', 20);
         localStorage.setItem('sezimal-calendar-format-token', '↋');
+    } if (document.getElementById('base_select').value == '100') {
+        localStorage.setItem('sezimal-calendar-base', 100);
+        localStorage.setItem('sezimal-calendar-format-token', '@');
+    } else if (document.getElementById('base_select').value == '100!') {
+        localStorage.setItem('sezimal-calendar-base', 100);
+        localStorage.setItem('sezimal-calendar-format-token', '@!');
+    } else if (document.getElementById('base_select').value == '100Z') {
+        localStorage.setItem('sezimal-calendar-base', 100);
+        localStorage.setItem('sezimal-calendar-format-token', 'Z');
     };
 
-    if (document.getElementById('theme_select_full_color').checked) {
-        localStorage.setItem('sezimal-calendar-theme', 'FULL_COLOR');
-    } else if (document.getElementById('theme_select_gray').checked) {
-        localStorage.setItem('sezimal-calendar-theme', 'GRAY');
-    };
+    localStorage.setItem('sezimal-calendar-theme', document.getElementById('theme_select').value);
+
+    localStorage.setItem('sezimal-latitude', document.getElementById('sezimal-latitude-input').value);
+    localStorage.setItem('sezimal-longitude', document.getElementById('sezimal-longitude-input').value);
 
     // document.getElementById('calendar_settings').hidden = true;
     // document.getElementById('calendar_view').hidden = false;
@@ -212,21 +310,28 @@ function apply_settings() {
 };
 
 
-function open_event_window() {
-    let dados = {};
-
-    dados = {
-        base: localStorage.getItem('sezimal-calendar-base'),
-        format_token: localStorage.getItem('sezimal-calendar-format-token'),
-        locale: localStorage.getItem('sezimal-calendar-locale'),
-        time_zone: localStorage.getItem('sezimal-calendar-time-zone'),
-        date: localStorage.getItem('sezimal-calendar-date'),
-        view: 'event',
-        theme: localStorage.getItem('sezimal-calendar-theme'),
-        hour_format: localStorage.getItem('sezimal-calendar-hour-format'),
+function update_weather() {
+    if (
+        (!localStorage.getItem('sezimal-latitude'))
+        || (!localStorage.getItem('sezimal-longitude'))
+    ) {
+        document.getElementById('weather_view').style = "display: none;";
+        document.getElementById('decimal_weather_display').style = "display: none;";
+        return;
     };
 
-    fetch('/calendar/event-window', {
+    document.getElementById('weather_view').style = "display: inline;";
+
+    let dados = _base_data()
+
+    if (dados['base'] != 14) {
+        document.getElementById('decimal_weather_display').style = "display: inline;";
+    };
+
+    dados['latitude'] = localStorage.getItem('sezimal-latitude');
+    dados['longitude'] = localStorage.getItem('sezimal-longitude');
+
+    fetch('/weather/process', {
         method: 'post',
         body: JSON.stringify(dados),
         headers: {
@@ -236,42 +341,9 @@ function open_event_window() {
     }).then((response) => {
         return response.json();
     }).then((dados) => {
-        console.log('dados', dados);
-
-        document.getElementById('calendar_event_view').innerHTML = dados.view;
-
-        if  (document.getElementById('event_view_script')) {
-            document.getElementById('event_view_script').remove();
+        document.getElementById('weather_view').innerHTML = dados.view;
+        if (dados['base'] != 14) {
+            document.getElementById('decimal_weather_display').innerHTML = dados.decimal_weather;
         };
-        if (dados.script_text) {
-            var view_script = null;
-            view_script = document.createElement('script');
-            view_script.id = 'event_view_script';
-            view_script.type = 'text/javascript';
-            view_script.async = false;
-            view_script.nounce = 'sezimaw';
-            view_script.textContent = dados.script_text;
-            console.log('calendar_event_view', document.getElementById('calendar_event_view'));
-            document.getElementById('calendar_event_view').appendChild(view_script);
-        };
-
-        document.getElementById('calendar_event_view').style = 'display: block;';
     });
-};
-
-
-function save_event() {
-    document.getElementById('calendar_event_view').style = 'display: none;';
-    if  (document.getElementById('event_view_script')) {
-        document.getElementById('event_view_script').remove();
-    };
-    document.getElementById('calendar_event_view').innerHTML = '';
-};
-
-function close_event() {
-    document.getElementById('calendar_event_view').style = 'display: none;';
-    if  (document.getElementById('event_view_script')) {
-        document.getElementById('event_view_script').remove();
-    };
-    document.getElementById('calendar_event_view').innerHTML = '';
 };

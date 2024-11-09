@@ -1,0 +1,204 @@
+{% set
+    TODAY_TRANSLATIONS = {
+        'ar': 'النهارده',
+        'bn': 'আজ',
+        'bz': 'Oji',
+        'ca': 'Avui',
+        'da': 'I Dag',
+        'de': 'Heute',
+        'ee': 'Täna',
+        'el': 'Σήμερα',
+        'en': 'Today',
+        'eo': 'Hodiaŭ',
+        'es': 'Hoy',
+        'fa': 'امروز',
+        'fi': 'Tänään',
+        'fr': 'Aujourd’hui',
+        'ga': 'Inniu',
+        'gl': 'Hoxe',
+        'gn': 'Ange',
+        'he': 'היום',
+        'hi': 'आज',
+        'hu': 'Ma',
+        'id': 'Hari Ini',
+        'is': 'Í Dag',
+        'it': 'Oggi',
+        'iu': 'ᐅᓪᓗᒥ',
+        'ja': '今日',
+        'kea': 'Oji',
+        'ko': '오늘',
+        'lat': 'Hodie',
+        'lb': 'Haut',
+        'mt': 'Illum',
+        'nb': 'I Dag',
+        'nl': 'Vandaag',
+        'nn': 'I Dag',
+        'pl': 'Dzisiaj',
+        'pt': 'Hoje',
+        'ro': 'Astăzi',
+        'ru': 'Сегодня',
+        'sv': 'Idag',
+        'sw': 'Leo',
+        'tr': 'Bugün',
+        'uk': 'Сьогодні',
+        'vi': 'Hôm nay',
+        'yo': 'Lónìí',
+        'zh': '今天',
+    }
+%}
+{% set TITLE = TODAY_TRANSLATIONS[locale.LANG] if locale.LANG in TODAY_TRANSLATIONS else 'Today' %}
+{
+    "name": "{{ TITLE }}",
+    "short_name": "{{ TITLE }}",
+    "description": "{{description}}",
+    "theme_color": "#000",
+    "background_color": "#000",
+    "display": "fullscreen",
+    "display_override": ["fullscreen", "standalone"],
+    "orientation": "any",
+    "scope": "https://sezimal.tauga.online/today",
+    "start_url": "https://sezimal.tauga.online/today",
+    "prefer_related_applications": false,
+    "shortcuts": [],
+    "categories": ["business", "education", "productivity", "utilities", "weather", "time", "clock", "calendar", "sezimal", "base six", "senary base", "symmetry454 calendar", "gregorian calendar", "holocene calendar", "calendar reform", "world building", "constructed script", "https://en.wikipedia.org/wiki/Senary", "https://www.seximal.net", "https://www.youtube.com/watch?v=qID2B4MK7Y0", "http://individual.utoronto.ca/kalendis/symmetry.htm", "https://en.wikipedia.org/wiki/Symmetry454"],
+    "icons": [
+        {
+          "src": "https://sezimal.tauga.online/today/{{ now.format('#Y#m#d#u#p#a') }}/icon-any.svg",
+          "sizes": "any",
+          "type": "image/svg+xml",
+          "purpose": "any"
+        }
+    ],
+    "author": "Ari Caldeira",
+    "dir": "auto",
+    "lang": "{{ locale.LANGUAGE_TAG }}",
+    "id": "57368d1c-50e8-4038-abce-379f1020d469",
+    "screenshots": [
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-pt-br-sezimal-year.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-pt-br-sezimal-month.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-pt-br-sezimal-day.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, daily view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-he-decimal-year.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Hebrew locale, decimal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-he-decimal-month.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Hebrew locale, decimal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-he-decimal-day.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using Hebrew locale, decimal base, daily view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-en-us-dozenal-year.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using American English locale, dozenal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-en-us-dozenal-month.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using American English locale, dozenal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-wide-en-us-dozenal-day.png",
+          "type": "image/png",
+          "sizes": "1322x859",
+          "form_factor": "wide",
+          "label": "Today using American English locale, dozenal base, daily view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-pt-br-sezimal-year.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-pt-br-sezimal-month.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-pt-br-sezimal-day.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Brazilian Portuguese locale, sezimal base, daily view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-he-decimal-year.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Hebrew locale, decimal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-he-decimal-month.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Hebrew locale, decimal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-he-decimal-day.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using Hebrew locale, decimal base, daily view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-en-us-dozenal-year.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using American English locale, dozenal base, yearly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-en-us-dozenal-month.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using American English locale, dozenal base, monthly view"
+        },
+        {
+          "src": "https://sezimal.tauga.online/static/img/screenshot/today-narrow-en-us-dozenal-day.png",
+          "type": "image/png",
+          "sizes": "372x808",
+          "form_factor": "narrow",
+          "label": "Today using American English locale, dozenal base, daily view"
+        }
+    ]
+}

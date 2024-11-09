@@ -14,13 +14,9 @@
     </tr>
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'month')">‹</td>
-        {% if base == 10 %}
-            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT if format_token == '!' else locale.YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-        {% elif base == 14 %}
-            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-        {% elif base == 20 %}
-            <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">{{date.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-        {% endif %}
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}
+        </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'month')">›</td>
     </tr>
     <tr>

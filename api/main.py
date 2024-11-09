@@ -156,11 +156,11 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale) -> dict:
             'moon_emoji': sdt.format(f'#@~{locale.DEFAULT_HEMISPHERE}L', locale),
             'date_time': sdt.format('#y-#m-#d #u:#p:#a.#n#b#x #:t', locale),
             'iso': sdt.format('%5Y-%5m-%5d %5H:%5M:%5S.%5f %:5z'),
-            'julian_date': float(str(sdt.julian_date)),
+            'julian_day': float(str(sdt.julian_day)),
             'rata_die': float(str(sdt.as_days)),
             'decimal_symmetry454': str(int(sdt.symmetric_year)).zfill(4) + sdt.format('-#9m-#9d %H:%M:%S.%f %:z', locale),
             'decimal_iso': sdt.format('%Y-%m-%d %H:%M:%S.%f %:z', locale),
-            'decimal_julian_date': float(sdt.julian_date.decimal),
+            'decimal_julian_day': float(sdt.julian_day.decimal),
             'decimal_rata_die': float(sdt.as_days.decimal),
         },
 

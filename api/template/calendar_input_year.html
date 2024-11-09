@@ -34,7 +34,7 @@ Ano
 Anu
 {% else %}
 Year
-{% endif %}" style="width: 4rem; text-align: center;" type="number" />
+{% endif %}" style="width: 4rem; text-align: center;" type="number" value="{% if event.origin_calendar == 'SYM' %}{% if base == 10 or base == 100 %}{{ event.date.format('#>Y') }}{% elif base == 14 %}{{ event.date.symmetric_year }}{% else %}{{ (event.date.year - 200_000).dozenal }}{% endif %}{% else %}{{ event.year }}{% endif %}" />
     {% if locale.DATE_ENDIANNESS == 'B' %}
         {{ locale.DATE_SEPARATOR }}
     {% endif %}

@@ -1,56 +1,108 @@
 <div id="calendar_settings" hidden>
-<table class="center" style="width: 66.67%">
-    <tr>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Locale
-            {% elif locale.LANG == 'bz' %}
-                Lokali
-            {% else %}
-                Locale
-            {% endif %}
-        </td>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Fuso horário
-            {% elif locale.LANG == 'bz' %}
-                Fuzu oraryu
-            {% else %}
-                Time zone
-            {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Locale
+                {% elif locale.LANG == 'bz' %}
+                    Lokali
+                {% else %}
+                    Locale
+                {% endif %}
+            </div>
             {% include 'calculator/locale-select.html' %}
-        </td>
-        <td style="vertical-align: top;">
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Fuso horário
+                {% elif locale.LANG == 'bz' %}
+                    Fuzu oraryu
+                {% else %}
+                    Time zone
+                {% endif %}
+            </div>
             {% include 'calendar_select_time_zone.html' %}
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Hemisfério
-            {% elif locale.LANG == 'bz' %}
-                Emisfèryu
-            {% else %}
-                Hemisphere
-            {% endif %}
-        </td>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Formato de hora
-            {% elif locale.LANG == 'bz' %}
-                Formatu di òra
-            {% else %}
-                Hour format
-            {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
-            <select id="hemisphere_select">
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+    </div>
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Formato de data e hora (24 h/12 h)
+                {% elif locale.LANG == 'bz' %}
+                    Formatu di data i òra (24 h/12 h)
+                {% else %}
+                    Date and hour format {{ locale.digit_replace('\N{LRI}(24 h/12 h\N{PDI})') }}
+                {% endif %}
+            </div>
+            <select id="hour_format_select" style="direction:ltr;">
+                <option value="locale">
+                    {% if locale.LANG == 'pt' %}
+                        Padrão do locale
+                    {% elif locale.LANG == 'bz' %}
+                        Padrawn du lokali
+                    {% else %}
+                        Locale’s default
+                    {% endif %}
+                </option>
+                <option value="24h">
+                    {% if locale.LANG == 'pt' %}
+                        Data: padrão do locale; hora:
+                    {% elif locale.LANG == 'bz' %}
+                        Data: padrawn du lokali; òra:
+                    {% else %}
+                        Date: locale’s default; hour:
+                    {% endif %}
+                    {{ locale.digit_replace(' \N{LRI}24 h\N{PDI}') }}
+                </option>
+                <option value="12h">
+                    {% if locale.LANG == 'pt' %}
+                        Data: padrão do locale; hora:
+                    {% elif locale.LANG == 'bz' %}
+                        Data: padrawn du lokali; òra:
+                    {% else %}
+                        Date: locale’s default; hour:
+                    {% endif %}
+                    {{ locale.digit_replace(' \N{LRI}12 h\N{PDI}') }}
+                </option>
+                <option value="iso">
+                    {% if locale.LANG == 'pt' %}
+                        Padrão ISO: AAAA-MM-DD e 24 h
+                    {% elif locale.LANG == 'bz' %}
+                        Padrawn ISO: AAAA-MM-DD y 24 h
+                    {% else %}
+                        ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}24 h\N{PDI}') }}
+                    {% endif %}
+                </option>
+            </select>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Hemisfério
+                {% elif locale.LANG == 'bz' %}
+                    Emisfèryu
+                {% else %}
+                    Hemisphere
+                {% endif %}
+            </div>
+            <select id="hemisphere_select" style="direction:ltr;">
                 <option value="locale">
                     {% if locale.LANG == 'pt' %}
                         Padrão do locale
@@ -79,142 +131,303 @@
                     {% endif %}
                 </option>
             </select>
-            {# {% include 'calendar_input_date_formats.html' %} #}
-        </td>
-        <td style="vertical-align: top;">
-            <select id="hour_format_select">
-                <option value="locale">
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+    </div>
+
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Feriados oficiais
+                {% elif locale.LANG == 'bz' %}
+                    Feriadus ofisiays
+                {% else %}
+                    Official Holidays
+                {% endif %}
+            </div>
+            <select id="show_holiday_select" style="direction:ltr;">
+                <option value="ISO_SEZ_SYM">
                     {% if locale.LANG == 'pt' %}
-                        Padrão do locale
+                        Mostrar todos
                     {% elif locale.LANG == 'bz' %}
-                        Padrawn du lokali
+                        Mostrar todus
                     {% else %}
-                        Locale’s default
+                        Show all
                     {% endif %}
                 </option>
-                <option value="24h">24 h</option>
-                <option value="12h">12 h</option>
+                <option value="SEZ_SYM">
+                    {% if locale.LANG == 'pt' %}
+                        Só no calendário
+                        {% if base == 10 or base == 100 %}
+                            {{ locale.CALENDAR_TYPE['SEZ'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                    {% elif locale.LANG == 'bz' %}
+                        Sò nu kalendaryu
+                        {% if base == 10 or base == 100 %}
+                            {{ locale.CALENDAR_TYPE['SEZ'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                    {% else %}
+                        Only on the
+                        {% if (base == 10) or (base == 100) %}
+                            {{ locale.CALENDAR_TYPE['SEZ'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        calendar
+                    {% endif %}
+                </option>
+                <option value="ISO">
+                    {% if locale.LANG == 'pt' %}
+                        Só no calendário {{ locale.CALENDAR_TYPE['ISO'] }}
+                    {% elif locale.LANG == 'bz' %}
+                        Sò nu kalendaryu {{ locale.CALENDAR_TYPE['ISO'] }}
+                    {% else %}
+                        Only on the {{ locale.CALENDAR_TYPE['ISO'] }} calendar
+                    {% endif %}
+                </option>
             </select>
-{#
-            <select id="holocene_select">
-                <option value="iso">
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Datas religiosas
+                {% elif locale.LANG == 'bz' %}
+                    Datas relijiòzas
+                {% else %}
+                    Religious Dates
+                {% endif %}
+            </div>
+            <div>
+                <input id="religious_calendar_input_christian" name="religious_calendar_input_christian" type="checkbox">
+                <label for="religious_calendar_input_christian">
                     {% if locale.LANG == 'pt' %}
-                        Padrão ISO
+                        Cristianismo
                     {% elif locale.LANG == 'bz' %}
-                        Padrawn ISO
+                        Kristianismu
                     {% else %}
-                        ISO’s default
+                        Christian
+                    {% endif %}
+                </label>
+            </div>
+            {#
+            <div>
+                <input id="religious_calendar_input_orthodox" name="religious_calendar_input_orthodox" type="checkbox">
+                <label for="religious_calendar_input_orthodox">
+                    {% if locale.LANG == 'pt' %}
+                        Cristianismo Ortodoxo [pendendente]
+                    {% elif locale.LANG == 'bz' %}
+                        Kristianismu Ortodòksu [pendendenti]
+                    {% else %}
+                        Orthodox Christian [pending]
+                    {% endif %}
+                </label>
+            </div>
+            #}
+            <div>
+                <input id="religious_calendar_input_islamic" name="religious_calendar_input_islamic" type="checkbox">
+                <label for="religious_calendar_input_islamic">
+                    {% if locale.LANG == 'pt' %}
+                        Islamismo
+                    {% elif locale.LANG == 'bz' %}
+                        Islamismu
+                    {% else %}
+                        Islamic
+                    {% endif %}
+                </label>
+            </div>
+            <div>
+                <input id="religious_calendar_input_jewish" name="religious_calendar_input_jewish" type="checkbox">
+                <label for="religious_calendar_input_jewish">
+                    {% if locale.LANG == 'pt' %}
+                        Judaismo
+                    {% elif locale.LANG == 'bz' %}
+                        Judaismu
+                    {% else %}
+                        Jewish
+                    {% endif %}
+                </label>
+            </div>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+    </div>
+
+
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Latitude e longitude
+                {% elif locale.LANG == 'bz' %}
+                    Latitudi y Lonjitudi
+                {% else %}
+                    Latitude and longitude
+                {% endif %}
+                {% if base != 14 %}
+                    {% if locale.LANG == 'bz' %}
+                        (desimaw)
+                    {% else %}
+                        (decimal)
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div>
+                ↕ <input id="sezimal-latitude-input" type="number" style="width: 9rem; text-align: center;" />
+            </div>
+            <div>
+                ↔ <input id="sezimal-longitude-input" type="number" style="width: 9rem; text-align: center;" />
+            </div>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+    </div>
+
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Tema
+                {% elif locale.LANG == 'bz' %}
+                    Tema
+                {% else %}
+                    Theme
+                {% endif %}
+            </div>
+            <select id="theme_select" style="direction:ltr;">
+                <option value="FULL_COLOR">
+                    {% if locale.LANG == 'pt' %}
+                        Colorido
+                    {% elif locale.LANG == 'bz' %}
+                        Koloridu
+                    {% elif locale.LANGUAGE_TAG == 'en-US' %}
+                        Colorful
+                    {% else %}
+                        Colourful
                     {% endif %}
                 </option>
-                <option value="holocene">
+                <option value="GRAY">
                     {% if locale.LANG == 'pt' %}
-                        Holoceno (ISO + 10.000)
+                        Monocromático
                     {% elif locale.LANG == 'bz' %}
-                        Oloseno (ISO + 10.000)
+                        Monokromátiku
+                    {% elif locale.LANGUAGE_TAG == 'en-US' %}
+                        Grayscale
                     {% else %}
-                        Holocene (ISO + 10,000)
+                        Greyscale
                     {% endif %}
                 </option>
             </select>
-#}
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Base numérica
-            {% elif locale.LANG == 'bz' %}
-                Bazi numérika
-            {% else %}
-                Number base
-            {% endif %}
-        </td>
-        <td style="vertical-align: top;">
-            {% if locale.LANG == 'pt' %}
-                Tema
-            {% elif locale.LANG == 'bz' %}
-                Tema
-            {% else %}
-                Theme
-            {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
-            <input type="radio" id="base_select_10" name="base_select" value="10">
-            <label for="base_select_10">
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;{% if hide_base %} display: none;{% endif %}">
                 {% if locale.LANG == 'pt' %}
-                    Sezimal (seis; 012345)
+                    Base numérica
                 {% elif locale.LANG == 'bz' %}
-                    Sezimaw (sêys; 012345)
+                    Bazi numérika
                 {% else %}
-                    Sezimal (six; 012345)
+                    Number base
                 {% endif %}
-            </label>
-            <br/>
-            <input type="radio" id="base_select_10!" name="base_select" value="10!">
-            <label for="base_select_10!">
-                {% if locale.LANG == 'pt' %}
-                    Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                {% elif locale.LANG == 'bz' %}
-                    Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                {% else %}
-                    Sezimal (six; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                {% endif %}
-            </label>
-            <br/>
-            <input type="radio" id="base_select_14" name="base_select" value="14">
-            <label for="base_select_14">
-                {% if locale.LANG == 'pt' %}
-                    Decimal (dez)
-                {% elif locale.LANG == 'bz' %}
-                    Desimaw (dèys)
-                {% else %}
-                    Decimal (ten)
-                {% endif %}
-            </label>
-            <br/>
-            <input type="radio" id="base_select_20" name="base_select" value="20">
-            <label for="base_select_20">
-                {% if locale.LANG == 'pt' %}
-                    Dozenal (doze; 0123456789↊↋)
-                {% elif locale.LANG == 'bz' %}
-                    Dozenaw (dozi; 0123456789↊↋)
-                {% else %}
-                    Dozenal (twelve; 0123456789↊↋)
-                {% endif %}
-            </label>
-        </td>
-        <td style="vertical-align: top;">
-            <input type="radio" id="theme_select_full_color" name="theme_select" value="FULL_COLOR">
-            <label for="theme_select_full_color">
-                {% if locale.LANG == 'pt' %}
-                    Colorido
-                {% elif locale.LANG == 'bz' %}
-                    Koloridu
-                {% elif locale.LANGUAGE_TAG == 'en-US' %}
-                    Colorful
-                {% else %}
-                    Colourful
-                {% endif %}
-            </label>
-            <br/>
-            <input type="radio" id="theme_select_gray" name="theme_select" value="GRAY">
-            <label for="theme_select_gray">
-                {% if locale.LANG == 'pt' %}
-                    Monocromático
-                {% elif locale.LANG == 'bz' %}
-                    Monokromátiku
-                {% elif locale.LANGUAGE_TAG == 'en-US' %}
-                    Grayscale
-                {% else %}
-                    Greyscale
-                {% endif %}
-            </label>
-        </td>
-    </tr>
-</table>
-<p class="center">
-<button onclick="apply_settings()">      Ok      </button>
-</p>
+            </div>
+            <select id="base_select" style="direction:ltr;{% if hide_base %} display: none;{% endif %}">
+                <option value="10">
+                    {% if locale.LANG == 'pt' %}
+                        Sezimal (seis; 012345)
+                    {% elif locale.LANG == 'bz' %}
+                        Sezimaw (sêys; 012345)
+                    {% else %}
+                        Sezimal (six; {{ locale.digit_replace('\N{LRI}012345\N{PDI}') }})
+                    {% endif %}
+                </option>
+                <option value="10!">
+                    {% if locale.LANG == 'pt' %}
+                        Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                    {% elif locale.LANG == 'bz' %}
+                        Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                    {% else %}
+                        Sezimal (six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅\N{PDI}' }})
+                    {% endif %}
+                </option>
+                <option value="14">
+                    {% if locale.LANG == 'pt' %}
+                        Decimal (dez; 0123456789)
+                    {% elif locale.LANG == 'bz' %}
+                        Desimaw (dèys; 0123456789)
+                    {% else %}
+                        Decimal (ten; {{ locale.digit_replace('\N{LRI}0123456789\N{PDI}') }})
+                    {% endif %}
+                </option>
+                <option value="20">
+                    {% if locale.LANG == 'pt' %}
+                        Dozenal (doze; 0123456789↊↋)
+                    {% elif locale.LANG == 'bz' %}
+                        Dozenaw (dozi; 0123456789↊↋)
+                    {% else %}
+                        Dozenal (twelve; {{ '\N{LRI}0123456789↊↋\N{PDI}' }})
+                    {% endif %}
+                </option>
+                <option value="100">
+                    {% if locale.LANG == 'pt' %}
+                        Nifesimal (trinta e seis; 012345 0̇–5̆)
+                    {% elif locale.LANG == 'bz' %}
+                        Nifezimaw (trinta y sêys; 012345 0̇–5̆)
+                    {% else %}
+                        Niftimal (thirty-six; {{ '\N{LRI}012345 0̇–5̆\N{PDI}' }})
+                    {% endif %}
+                </option>
+                <option value="100!">
+                    {% if locale.LANG == 'pt' %}
+                        Nifesimal (trinta e seis; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
+                    {% elif locale.LANG == 'bz' %}
+                        Nifezimaw (trinta y sêys; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
+                    {% else %}
+                        Niftimal (thirty-six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣\N{PDI}' }})
+                    {% endif %}
+                </option>
+                <option value="100Z">
+                    {% if locale.LANG == 'pt' %}
+                        Nifesimal (trinta e seis; 0123456789 A–Z)
+                    {% elif locale.LANG == 'bz' %}
+                        Nifezimaw (trinta y sêys; 0123456789 A–Z)
+                    {% else %}
+                        Niftimal (thirty-six; {{ '\N{LRI}0123456789 A–Z\N{PDI}' }})
+                    {% endif %}
+                </option>
+            </select>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+    </div>
+    <p class="center" style="clear: both; width: 100%;">
+        <button onclick="apply_settings()">      Ok      </button>
+    </p>
 </div>

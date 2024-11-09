@@ -1,12 +1,64 @@
+{% set
+    TODAY_TRANSLATIONS = {
+        'ar': 'النهارده',
+        'bn': 'আজ',
+        'bz': 'Oji',
+        'ca': 'Avui',
+        'da': 'I Dag',
+        'de': 'Heute',
+        'ee': 'Täna',
+        'el': 'Σήμερα',
+        'en': 'Today',
+        'eo': 'Hodiaŭ',
+        'es': 'Hoy',
+        'fa': 'امروز',
+        'fi': 'Tänään',
+        'fr': 'Aujourd’hui',
+        'ga': 'Inniu',
+        'gl': 'Hoxe',
+        'gn': 'Ange',
+        'he': 'היום',
+        'hi': 'आज',
+        'hu': 'Ma',
+        'id': 'Hari Ini',
+        'is': 'Í Dag',
+        'it': 'Oggi',
+        'iu': 'ᐅᓪᓗᒥ',
+        'ja': '今日',
+        'kea': 'Oji',
+        'kn': 'ಇಂದು',
+        'ko': '오늘',
+        'lat': 'Hodie',
+        'lb': 'Haut',
+        'mt': 'Illum',
+        'nb': 'I Dag',
+        'nl': 'Vandaag',
+        'nn': 'I Dag',
+        'pl': 'Dzisiaj',
+        'pt': 'Hoje',
+        'ro': 'Astăzi',
+        'ru': 'Сегодня',
+        'sv': 'Idag',
+        'sw': 'Leo',
+        'tr': 'Bugün',
+        'uk': 'Сьогодні',
+        'vi': 'Hôm nay',
+        'yo': 'Lónìí',
+        'zh': '今天',
+    }
+%}
+{% set TITLE = TODAY_TRANSLATIONS[locale.LANG] if locale.LANG in TODAY_TRANSLATIONS else 'Today' %}
 <!doctype html>
 <html lang="{{ locale.LANGUAGE_TAG }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="title">Sezimal Today</title>
-        <meta name="description" content="Sezimal Today" />
+        <title id="title">{{ TITLE }}</title>
+        <meta name="description" content="{{ TITLE }}" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
+        <link rel="manifest" href="https://sezimal.tauga.online/today/manifest.json" crossorigin="use-credentials" />
+        <link rel="icon" type="image/svg+xml" href="https://sezimal.tauga.online/today/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}" />
 <style>
 html, body {
     max-width: 100%;
@@ -20,8 +72,69 @@ html, body {
     <div id="calendar_view"></div>
     <div id="calendar_event_view" class="calendar-event-window">
     </div>
+    <div id="calendar_event_list_view" class="calendar-event-list-window">
+    </div>
     </body>
     <script src="/static/js/calendar_today_api.js"></script>
     <script src="/static/js/calendar_load.js"></script>
-    <script>calendar_load();</script>
+    <script src="/static/js/calendar_event.js"></script>
+    <script>
+        {% if force_decimal %}
+            localStorage.setItem('sezimal-calendar-base', '14');
+            localStorage.setItem('sezimal-calendar-format-token', '9');
+        {% elif force_dozenal %}
+            localStorage.setItem('sezimal-calendar-base', '20');
+            localStorage.setItem('sezimal-calendar-format-token', '↋');
+        {% endif %}
+        calendar_load();
+
+        var initialTouchX, initialTouchY, finalTouchX, finalTouchY;
+        const swipeThreshold = 100;
+
+        function handleTouch(startX, endX) {
+            const horizontalDistance = finalTouchX - initialTouchX;
+            const verticalDistance = finalTouchY - initialTouchY;
+            let view = localStorage.getItem('sezimal-calendar-view')
+
+            view = view.replaceAll('ly', '').replaceAll('dai', 'day');
+            view = view.replaceAll('trimester', 'quarter');
+
+            if (
+                (Math.abs(horizontalDistance) > Math.abs(verticalDistance))
+                 && (Math.abs(horizontalDistance) > swipeThreshold)) {
+                if (finalTouchX - initialTouchX < 0) {
+                    {% if locale.RTL %}
+                        update_calendar('previous', view);
+                    {% else %}
+                        update_calendar('next', view);
+                    {% endif %}
+                } else {
+                    {% if locale.RTL %}
+                        update_calendar('next', view);
+                    {% else %}
+                        update_calendar('previous', view);
+                    {% endif %}
+                }
+            }
+        };
+
+        window.onload = function () {
+            window.addEventListener(
+                'touchstart',
+                function (event) {
+                    initialTouchX = event.touches[0].clientX;
+                    initialTouchY = event.touches[0].clientY;
+                }
+            );
+
+            window.addEventListener(
+                'touchend',
+                function (event) {
+                    finalTouchX = event.changedTouches[0].clientX;
+                    finalTouchY = event.changedTouches[0].clientY;
+                    handleTouch(initialTouchX, finalTouchX);
+                }
+            );
+        };
+    </script>
 </html>
