@@ -1130,14 +1130,14 @@ class Sezimal:
         if self.is_integer():
             return SezimalInteger(self), SezimalInteger(1)
 
-        numerator = Sezimal(self._integer + self._fraction, _internal=True)
-        denominator = Sezimal(f'1e+{SezimalInteger(Decimal(self._precision))}')
+        numerator = SezimalInteger(self._integer + self._fraction, _internal=True)
+        denominator = SezimalInteger(f'1e+{SezimalInteger(Decimal(self._precision))}')
 
-        gcd = self._find_gcd(numerator, denominator)
-        numerator //= gcd
-        denominator //= gcd
+        # gcd = self._find_gcd(numerator, denominator)
+        # numerator //= gcd
+        # denominator //= gcd
 
-        return SezimalInteger(numerator), SezimalInteger(denominator)
+        return numerator, denominator
 
 
 class SezimalInteger(Sezimal):
@@ -1202,6 +1202,7 @@ class SezimalFraction(Sezimal):
 
         if denominator is None:
             numerator = Sezimal(cleaned_numerator)
+            _precalculated_value = numerator
             numerator, denominator = numerator.as_integer_ratio()
             cleaned_numerator = str(numerator)
             cleaned_denominator = str(denominator)
