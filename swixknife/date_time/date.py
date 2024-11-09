@@ -45,14 +45,14 @@ try:
         from_gregorian as gregorian_to_julian, \
         to_gregorian as julian_to_gregorian, \
         month_length as julian_month_length
-    from convertdate.hebrew import \
-        from_gregorian as gregorian_to_hebrew, \
-        to_gregorian as hebrew_to_gregorian, \
-        month_days as hebrew_month_length
-    from convertdate.islamic import \
-        from_gregorian as gregorian_to_hijri, \
-        to_gregorian as hijri_to_gregorian, \
-        month_length as hijri_month_length
+
+    from pyluach.dates import \
+        GregorianDate as GregorianToHebrew, \
+        HebrewDate as HebrewToGregorian
+
+    from hijridate import \
+        Gregorian as GregorianToHijri, \
+        Hijri as HijriToGregorian
 
     CAN_CONVERT_CALENDARS = True
 except:
@@ -1173,20 +1173,49 @@ class SezimalDate:
 
         return SezimalDate.from_ordinal_date(ordinal_date)
 
-    def hebrew_date(self, locale: SezimalLocale = None):
+    def hebrew_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
         if not CAN_CONVERT_CALENDARS:
             return ''
 
-        year, month, day = gregorian_to_hebrew(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+        year, month, day = GregorianToHebrew(self.gregorian_year, self.gregorian_month, self.gregorian_day).to_heb().tuple()
 
-        if not locale:
-            hd = f'{str(year).zfill(4)}-{str(month).zfill(2)}-{str(day).zfill(2)}'
-        elif locale.DATE_ENDIANNESS == 'B':
-            hd = f'{str(year).zfill(4)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}'
-        elif locale.DATE_ENDIANNESS == 'L':
-            hd = f'{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+        year = str(year).zfill(4) + ' AM'
+
+        if (not locale):
+            day = str(day).zfill(2)
+            month = str(month).zfill(2)
+            return f'{year}-{month}-{day}'
+
+        if number:
+            day = str(day).zfill(2)
+            month = str(month).zfill(2)
         else:
-            hd = f'{str(month).zfill(2)}{locale.DATE_SEPARATOR}{str(day).zfill(2)}{locale.DATE_SEPARATOR}{str(year).zfill(4)}'
+            day = str(day)
+
+            if short:
+                month = locale.JEWISH_CALENDAR_MONTH_ABBREVIATED_NAME[month - 1]
+            else:
+                month = locale.JEWISH_CALENDAR_MONTH_NAME[month - 1]
+
+        if number:
+            hd = locale.ISO_DATE_FORMAT
+
+        elif short:
+            hd = locale.ISO_DATE_TEXT_SHORT_MONTH_FORMAT
+
+        else:
+            hd = locale.ISO_DATE_LONG_FORMAT
+
+        hd = hd.replace('%d', day).replace('%-d', day)
+        hd = hd.replace('%?d', day).replace('%?-d', day)
+        hd = hd.replace('%m', month).replace('%-m', month)
+        hd = hd.replace('%?m', month).replace('%?-m', month)
+        hd = hd.replace('%y', year).replace('%-y', year)
+        hd = hd.replace('%?y', year).replace('%?-y', year)
+        hd = hd.replace('%Y', year).replace('%-Y', year)
+        hd = hd.replace('%?Y', year).replace('%?-Y', year)
+        hd = hd.replace('%o', locale.day_ordinal_suffix(SezimalInteger(Decimal(int(day)))))
+        hd = hd.replace('%b', month).replace('%B', month)
 
         return hd
 
@@ -1194,15 +1223,19 @@ class SezimalDate:
         if not CAN_CONVERT_CALENDARS:
             return ''
 
-        year, month, day = gregorian_to_hijri(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+        year, month, day = GregorianToHijri(self.gregorian_year, self.gregorian_month, self.gregorian_day).to_hijri().datetuple()
 
-        year = str(year).zfill(4)
+        year = str(year).zfill(4) + ' AH'
 
-        if (not locale) or number:
+        if (not locale):
             day = str(day).zfill(2)
             month = str(month).zfill(2)
+            return f'{year}-{month}-{day}'
 
-        elif locale and (not number):
+        if number:
+            day = str(day).zfill(2)
+            month = str(month).zfill(2)
+        else:
             day = str(day)
 
             if short:
@@ -1210,22 +1243,25 @@ class SezimalDate:
             else:
                 month = locale.HIJRI_CALENDAR_MONTH_NAME[month - 1]
 
-        if not locale:
-            hd = f'{year}-{month}-{day}'
-        elif locale.DATE_ENDIANNESS == 'B':
-            if number:
-                hd = f'{year}{locale.DATE_SEPARATOR}{month}{locale.DATE_SEPARATOR}{day}'
-            else:
-                hd = f'{year} AH {month} {day}'
-        elif locale.DATE_ENDIANNESS == 'L':
-            if number:
-                hd = f'{day}{locale.DATE_SEPARATOR}{month}{locale.DATE_SEPARATOR}{year}'
-            else:
-                hd = f'{day} {month} {year} AH'
-        elif number:
-            hd = f'{month}{locale.DATE_SEPARATOR}{day}{locale.DATE_SEPARATOR}{year}'
+        if number:
+            hd = locale.ISO_DATE_FORMAT
+
+        elif short:
+            hd = locale.ISO_DATE_TEXT_SHORT_MONTH_FORMAT
+
         else:
-            hd = f'{month} {day} {year} AH'
+            hd = locale.ISO_DATE_LONG_FORMAT
+
+        hd = hd.replace('%d', day).replace('%-d', day)
+        hd = hd.replace('%?d', day).replace('%?-d', day)
+        hd = hd.replace('%m', month).replace('%-m', month)
+        hd = hd.replace('%?m', month).replace('%?-m', month)
+        hd = hd.replace('%y', year).replace('%-y', year)
+        hd = hd.replace('%?y', year).replace('%?-y', year)
+        hd = hd.replace('%Y', year).replace('%-Y', year)
+        hd = hd.replace('%?Y', year).replace('%?-Y', year)
+        hd = hd.replace('%o', locale.day_ordinal_suffix(SezimalInteger(Decimal(int(day)))))
+        hd = hd.replace('%b', month).replace('%B', month)
 
         return hd
 

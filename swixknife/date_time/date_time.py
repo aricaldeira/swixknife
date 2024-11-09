@@ -75,9 +75,13 @@ class SezimalDateTime:
 
         elif type(year) == str:
             if VALID_DATE_TIME_STRING.match(year):
-                year, uta = year.strip().split(' ')
+                try:
+                    year, uta = year.strip().split(' ')
+                except:
+                    year, uta, time_zone = year.strip().split(' ')[0:3]
+
                 date = SezimalDate(year)
-                time = SezimalTime(uta)
+                time = SezimalTime(uta, time_zone=time_zone)
                 return cls.combine(date, time, time_zone)
 
             elif VALID_DATE_PARTIAL_TIME_STRING.match(year):
@@ -139,7 +143,7 @@ class SezimalDateTime:
         return str(self)
 
     def isoformat(self) -> str:
-        return self.format(f'#y-#m-#d #u:#p:#a.#n#b#x #t#-V')
+        return self.format(f'#y-#m-#d #u:#p:#a.#n#b#x #T')
 
     __str__ = isoformat
 
@@ -558,8 +562,8 @@ class SezimalDateTime:
     def year_proportion_ellapsed(self) -> Sezimal:
         return self.date.year_proportion_ellapsed
 
-    def hebrew_date(self, locale: SezimalLocale = None):
-        return self._date.hebrew_date(locale)
+    def hebrew_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
+        return self._date.hebrew_date(locale, number, short)
 
     def hijri_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
         return self._date.hijri_date(locale, number, short)
