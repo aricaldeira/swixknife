@@ -86,11 +86,11 @@ html, body {
             localStorage.setItem('sezimal-calendar-format-token', '↋');
         {% endif %}
 
-        function auto_refresh(){
+        var time_display = '';
+        var iso_time_display = '';
+
+        function auto_refresh_iso_display(){
             var seconds = new Date().getTime();
-            var position = 0;
-            var time_display = '';
-            var iso_time_display = '';
 
             seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
             seconds = seconds - Math.floor(seconds);
@@ -106,6 +106,7 @@ html, body {
 
             minutes = minutes.toString().padStart(2, '0');
             sec = sec.toString().padStart(2, '0');
+
             var hours_24 = hours.toString().padStart(2, '0');
 
             {% if locale.HOUR_FORMAT == '12h' %}
@@ -127,7 +128,67 @@ html, body {
                 iso_time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '{{ locale.TIME_SEPARATOR }}' + sec;
             {% endif %}
 
-            {% if (base == 10) or (base == 100) %}
+            {% if locale.DIGITS %}
+                iso_time_display = iso_time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
+                iso_time_display = iso_time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
+                iso_time_display = iso_time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
+                iso_time_display = iso_time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
+                iso_time_display = iso_time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
+                iso_time_display = iso_time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
+                iso_time_display = iso_time_display.replaceAll('6', '{{ locale.DIGITS[6] }}');
+                iso_time_display = iso_time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
+                iso_time_display = iso_time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
+                iso_time_display = iso_time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
+            {% endif %}
+
+            {% if base == 14 %}
+                if (document.getElementById('time_display')) {
+                    document.getElementById('time_display').innerHTML = iso_time_display;
+                };
+            {% else %}
+                if (document.getElementById('iso_time_display')) {
+                    document.getElementById('iso_time_display').innerHTML = iso_time_display;
+                };
+            {% endif %}
+
+            //
+            // Reload page to update the date at midnight
+            //
+            if (hours_24 === '00' && minutes === '00') {
+                location.reload();
+            } else if (sec == '00') {
+                console.log('sec', sec, minutes);
+
+                //
+                // Update weather info every 10 minutes
+                //
+                if (
+                    (minutes == '00')
+                    || (minutes == '10')
+                    || (minutes == '20')
+                    || (minutes == '30')
+                    || (minutes == '40')
+                    || (minutes == '50')
+                ) {
+                    console.log('atualizou tempo');
+                    update_weather();
+                }
+            };
+
+            //
+            // Update every 1 second
+            //
+            setTimeout(auto_refresh_iso_display, 1000);
+        };
+        auto_refresh_iso_display();
+
+        {% if base == 10 or base == 100 %}
+            function auto_refresh_sezimal_time(){
+                var seconds = new Date().getTime();
+
+                seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
+                seconds = seconds - Math.floor(seconds);
+
                 {% if format_token == '!' %}
                     const PAIRS = {
                         '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
@@ -166,8 +227,7 @@ html, body {
                     };
                 {% endif %}
 
-                var agrima = seconds * 36 * 36 * 36;
-                var time = Math.floor(agrima).toString(6).padStart(6, '0');
+                var time = Math.floor(seconds * 36 * 36 * 36).toString(6).padStart(6, '0');
                 var uta = time.slice(0, 2);
                 var posha = time.slice(2, 4);
                 var agrima = time.slice(4, 6);
@@ -182,12 +242,29 @@ html, body {
                     time_display = '\u{2066}' + time_display + '\u{2069}';
                 {% endif %}
 
-                setTimeout(auto_refresh, 1000);
-            {% elif base == 14 %}
-                time_display = iso_time_display;
+                {% if (base == 10) and (format_token != '!') and locale.DIGITS %}
+                    time_display = time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
+                    time_display = time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
+                    time_display = time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
+                    time_display = time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
+                    time_display = time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
+                    time_display = time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
+                {% endif %}
 
-                setTimeout(auto_refresh, 1000);
-            {% elif base == 20 %}
+                if (document.getElementById('time_display')) {
+                    document.getElementById('time_display').innerHTML = time_display;
+                };
+
+                setTimeout(auto_refresh_sezimal_time, 1851.851851);
+            };
+            auto_refresh_sezimal_time();
+        {% elif base == 20 %}
+            function auto_refresh_dozenal_time(){
+                var seconds = new Date().getTime();
+
+                seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
+                seconds = seconds - Math.floor(seconds);
+
                 var integer_time = seconds * 12 * 12 * 12;
                 integer_time = Math.floor(integer_time);
                 seconds = (seconds * 12 * 12 * 12) - integer_time;
@@ -204,60 +281,14 @@ html, body {
                     time_display = '\u{2066}' + time_display + '\u{2069}';
                 {% endif %}
 
-                setTimeout(auto_refresh, 347);
-            {% endif %}
+                if (document.getElementById('time_display')) {
+                    document.getElementById('time_display').innerHTML = time_display;
+                };
 
-            {% if locale.DIGITS and (base in (10, 14)) and (format_token != '!') %}
-                time_display = time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
-                time_display = time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
-                time_display = time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
-                time_display = time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
-                time_display = time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
-                time_display = time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
-                time_display = time_display.replaceAll('6', '{{ locale.DIGITS[6] }}');
-                time_display = time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
-                time_display = time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
-                time_display = time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
-
-                iso_time_display = iso_time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
-                iso_time_display = iso_time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
-                iso_time_display = iso_time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
-                iso_time_display = iso_time_display.replaceAll('3', '{{ locale.DIGITS[3] }}');
-                iso_time_display = iso_time_display.replaceAll('4', '{{ locale.DIGITS[4] }}');
-                iso_time_display = iso_time_display.replaceAll('5', '{{ locale.DIGITS[5] }}');
-                iso_time_display = iso_time_display.replaceAll('6', '{{ locale.DIGITS[6] }}');
-                iso_time_display = iso_time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
-                iso_time_display = iso_time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
-                iso_time_display = iso_time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
-            {% endif %}
-
-            if (document.getElementById('time_display')) {
-                document.getElementById('time_display').innerHTML = time_display;
+                setTimeout(auto_refresh_dozenal_time, 4166.666666);
             };
-            if (document.getElementById('iso_time_display')) {
-                document.getElementById('iso_time_display').innerHTML = iso_time_display;
-            };
-
-
-            if (hours_24 === '00' && minutes === '00') {
-                location.reload();
-            } else if (sec == '00') {
-                console.log('sec', sec, minutes);
-
-                if (
-                    (minutes == '00')
-                    || (minutes == '10')
-                    || (minutes == '20')
-                    || (minutes == '30')
-                    || (minutes == '40')
-                    || (minutes == '50')
-                ) {
-                    console.log('atualizou tempo');
-                    update_weather();
-                }
-            };
-        };
-        auto_refresh();
+            auto_refresh_dozenal_time();
+        {% endif %}
 
         let weather_open = false;
 
