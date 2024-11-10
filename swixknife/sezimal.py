@@ -57,11 +57,11 @@ class Sezimal:
 
         if type(number) == Decimal:
             original_decimal = number
-            cleaned_number = validate_clean_sezimal(decimal_to_sezimal(str(number)))
+            cleaned_number = decimal_to_sezimal(str(number))
 
         elif type(number).__name__ == 'SezimalDecimalUnit':
             original_decimal = number.decimal
-            cleaned_number = validate_clean_sezimal(decimal_to_sezimal(str(number.decimal)))
+            cleaned_number = decimal_to_sezimal(str(number.decimal))
 
         elif type(number).__name__ in ('Sezimal', 'SezimalInteger'):
             cleaned_number = str(number)
@@ -102,20 +102,7 @@ class Sezimal:
 
         self._precision = len(self._fraction)
         self._digits = list(self._integer + self._fraction)
-
-        #
-        # Converts and stores as decimal
-        #
-        if original_decimal is None:
-            dec = sezimal_to_decimal(cleaned_number)
-
-            if self._sign < 0 and dec[0] != '-':
-                dec = '-' + dec
-
-            self._value = Decimal(dec)
-
-        else:
-            self._value = original_decimal
+        self._value = original_decimal
 
     def __str__(self) -> str:
         if self._sign == -1 and self._integer[0] != '-':
@@ -145,6 +132,14 @@ class Sezimal:
 
     @property
     def decimal(self) -> Decimal:
+        if not self._value:
+            dec = sezimal_to_decimal(self._integer + '.' + self._fraction)
+
+            if self._sign < 0 and dec[0] != '-':
+                dec = '-' + dec
+
+            self._value = Decimal(dec)
+
         return self._value
 
     @property
@@ -1158,23 +1153,7 @@ class SezimalInteger(Sezimal):
         self._fraction = ''
         self._precision = 0
         self._digits = list(self._integer)
-
-        #
-        # Converts and stores as decimal
-        #
-        if original_decimal is None:
-            dec = sezimal_to_decimal(self._integer)
-
-            if self._sign == -1:
-                dec = '-' + dec
-
-            if '.' in dec:
-                dec = dec.split('.')[0]
-
-            self._value = Decimal(dec)
-
-        else:
-            self._value = original_decimal
+        self._value = original_decimal
 
     def __repr__(self) -> str:
         return super().__repr__().replace('Sezimal', 'SezimalInteger')
