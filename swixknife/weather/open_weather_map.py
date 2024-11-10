@@ -120,7 +120,7 @@ def get_weather_conditions(api_key: str, latitude: float = None, longitude: floa
         observation['dt'] = SezimalDateTime.from_timestamp(
             observation['dt'],
             'UTC',
-        ).at_time_zone(time_zone)
+        )
 
     if 'sys' in observation:
         observation['sys']['sunrise'] = SezimalDateTime.from_timestamp(
@@ -156,6 +156,9 @@ def get_weather_conditions(api_key: str, latitude: float = None, longitude: floa
 
 
 def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
+    if 'dt' in conditions:
+        weather._reference_date_time = conditions['dt']
+
     if 'weather' in conditions:
         weather._emoji = _EMOJI[conditions['weather'][0]['id']]
 
@@ -198,6 +201,11 @@ def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'sys' in conditions:
         weather.sunrise = SezimalDateTime(str(conditions['sys']['sunrise']))
         weather.sunset = SezimalDateTime(str(conditions['sys']['sunset']))
+
+        if weather._reference_date_time \
+            and weather._reference_date_time.as_days > weather.sunset.as_days \
+            and weather._emoji and weather._emoji == _EMOJI[800]:
+            weather._emoji = weather._reference_date_time.format('#@~' + weather.locale.DEFAULT_HEMISPHERE + 'L', weather.locale)
 
     if 'polution' in conditions:
         polution = conditions['polution']
