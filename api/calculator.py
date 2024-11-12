@@ -97,7 +97,7 @@ def api_calculator_process() -> dict:
         or calculator.decimal_unit.startswith('pi_'):
         calculator.unit_as_fraction = True
 
-    calculator.debug = True
+    # calculator.debug = True
 
     if not dados['value']:
         calculator.expression = dados['expression']

@@ -1,5 +1,10 @@
 
 const sezimal_calculator_en_text = {
+    'button-base-ten': 'dec',
+    'button-base-six': 'sez',
+    'translation-txt': 'txt',
+    'translation-nif': 'nif',
+
     'translation-display-mod': 'mod',
     'translation-display-turn': 'trn',
     'translation-display-arcmin': '′',
