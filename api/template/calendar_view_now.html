@@ -95,15 +95,15 @@
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#TS', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'S \N{LRI}(#TS)\N{PDI}', locale)}}</span>
-                {% if date.format('#TL', locale) %}
+            {% if date.format('#T4S', locale) %}
+                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + '4S', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + '4S \N{LRI}(#TS)\N{PDI}', locale)}}</span>
+                {% if date.format('#T4L', locale) %}
                 <br />
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#TL', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
+            {% if date.format('#T4L', locale) %}
+                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + '4L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + '4L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
             {% endif %}
         </p>
         <p class="now-iso-date">

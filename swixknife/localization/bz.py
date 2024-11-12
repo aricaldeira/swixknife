@@ -30,7 +30,7 @@ class SezimalLocaleBZ(SezimalLocale):
     CURRENCY_SUBUNIT_SYMBOL = '¢'
 
     WEEKDAY_NAME = [
-        'sigunda',
+        'segunda',
         'tersa',
         'kwarta',
         'kinta',
@@ -40,7 +40,7 @@ class SezimalLocaleBZ(SezimalLocale):
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'sig',
+        'seg',
         'ter',
         'kwa',
         'kin',
