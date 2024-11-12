@@ -191,6 +191,31 @@ class SezimalLocale:
         date_format = date_format.replace('%?sY', '%?Y')
         date_format = date_format.replace('@', '')
 
+        date_format = self._iso_to_base_format(date_format)
+
+        return date_format
+
+    def _iso_to_base_format(self, date_format) -> str:
+        if getattr(self, 'iso_date_decimal', True) \
+            or '9' in self.DATE_FORMAT:
+            return date_format
+
+        if '↋' in self.DATE_FORMAT:
+            token = '↋'
+        elif '@!' in self.DATE_FORMAT:
+            token = '@!'
+        elif '@' in self.DATE_FORMAT:
+            token = '@'
+        elif 'Z' in self.DATE_FORMAT:
+            token = 'Z'
+        elif '!' in self.DATE_FORMAT:
+            token = '5!'
+        else:
+            token = '5'
+
+        for part in ('%d', '%-d', '%m', '%-m', '%y', '%-y', '%Y', '%-Y'):
+            date_format = date_format.replace(part,part.replace('%', '%' + token))
+
         return date_format
 
     @property
