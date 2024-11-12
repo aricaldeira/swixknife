@@ -165,6 +165,13 @@ def _calendar_context(locale, date=None, gray_scale=False):
     data['shade_december'] = data[f"shade_{str(colors['december'].weekday).zfill(2)}"]
 
     month_date = date.date.replace(day=1).previous(days=1)
+
+    if locale.use_first_weekday:
+        if locale.FIRST_WEEKDAY == 'SUN':
+            month_date = month_date.previous(days=1)
+        elif locale.FIRST_WEEKDAY == 'SAT':
+            month_date = month_date.previous(days=2)
+
     data['month_dates'] = SezimalList([])
 
     for week in SezimalRange(10):

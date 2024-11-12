@@ -18,7 +18,7 @@
 
 {% if USE_LOCALE_FIRST_WEEKDAY %}
     {% if locale.FIRST_WEEKDAY == 'SUN' %}
-        {% if sezimal_month_number in (2, 5, 12, 15) %}
+        {% if (sezimal_month_number in (2, 5, 12, 15)) or (sezimal_month_number == 20 and (reference_date and reference_date.is_leap) or date.is_leap) %}
             {% set DAYS = SezimalList([
                 SezimalList([ 0,  1,  2,  3,  4,  5, 10]),
                 SezimalList([11, 12, 13, 14, 15, 20, 21]),
@@ -43,10 +43,10 @@
 
         {# This is for most countries where the week starts on Sunday #}
         {% if locale.DAY_OF_REST == 'SUN' %}
-            {% set WEEKDAY_BORDER_LEFT = 6 %}
+            {% set WEEKDAY_BORDER_RIGHT = 6 %}
 
             {% if locale.OPTIONAL_DAY_OF_REST == 'SAT' %}
-                {% set WEEKDAY_BORDER_RIGHT = 5 %}
+                {% set WEEKDAY_BORDER_LEFT = 5 %}
             {% endif %}
 
         {# This is Hebrew and Arabic #}
@@ -190,7 +190,7 @@
     {% set month_number = 11 %}
     {% set moon_month = 'moon_20' %}
 
-    {% if (reference_date and date.is_leap) or date.is_leap %}
+    {% if (reference_date and reference_date.is_leap) or date.is_leap %}
         {% if USE_LOCALE_FIRST_WEEKDAY %}
             {% set weeks = SezimalList([121, 122, 123, 124, 125, 1]) %}
         {% else %}
@@ -361,7 +361,7 @@
         {% if (not week_view) or (date.week_in_year == week_in_year) %}
             <tr style="vertical-align: middle;">
                 {% if (not year_view) %}
-                    <td rowspan="4" style="color: {{colors[week_in_year][shade_week_number]}}; line-height: {{WEEK_FONT_SIZE}}; font-size: {{WEEK_FONT_SIZE}}; {% if date.week_in_year == week_in_year %}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{% endif %} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};"><span style="display: block; margin-bottom: 0.3rem;">{{NUMBERS[week_in_year]}}<br/></span><span style="border-top: 2px solid {{ colors[weeks[0]][text_shade_week_number] }};"><span class="hide-in-mobile">  </span>{{NUMBERS[125 if month_dates[week_in_month][0].is_leap else 124]}}<span class="hide-in-mobile">  </span></span></td>
+                    <td rowspan="4" style="color: {{colors[week_in_year][shade_week_number]}}; line-height: {{WEEK_FONT_SIZE}}; font-size: {{WEEK_FONT_SIZE}}; {% if date.week_in_year == week_in_year %}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{% endif %} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};"><span style="display: block; margin-bottom: 0.3rem;">{{NUMBERS[week_in_year]}}<br/></span><span style="border-top: 2px solid {{ colors[weeks[0]][text_shade_week_number] }};"><span class="hide-in-mobile">  </span>{{NUMBERS[125 if month_dates[week_in_month][-1].is_leap else 124]}}<span class="hide-in-mobile">  </span></span></td>
                 {% else %}
                     <td style="line-height: {{WEEK_LINE_HEIGHT}}; color: {{colors[week_in_year][shade_week_number]}}; font-size: {{WEEK_FONT_SIZE}}; {% if date.week_in_year == week_in_year %}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{% endif %} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};">{{NUMBERS[week_in_year]}}</td>
                 {% endif %}
@@ -437,8 +437,8 @@
                                             {% endfor %}
                                         {% endif %}
                                     {% endif %}
-                                    {{month_dates[week_in_month][0].format('#@' + locale.DEFAULT_HEMISPHERE + 'S', locale)}}
-                                    {{month_dates[week_in_month][0].format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale)}}
+                                    {{month_dates[week_in_month][i].format('#@' + locale.DEFAULT_HEMISPHERE + 'S', locale)}}
+                                    {{month_dates[week_in_month][i].format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale)}}
                                 {% endif %}
                             </span>
                         </td>
@@ -448,7 +448,7 @@
         {% endif %}
     {% endfor %}
     {% if (not month_view) and (not week_view) %}
-        {% if len(weeks) == 4 %}
+        {% if (USE_LOCALE_FIRST_WEEKDAY and len(weeks) == 5) or ((not USE_LOCALE_FIRST_WEEKDAY) and len(weeks) == 4) %}
             <tr style="vertical-align: middle;">
                 <td colspan="8"> </td>
             </tr>

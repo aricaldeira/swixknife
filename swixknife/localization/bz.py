@@ -171,16 +171,6 @@ class SezimalLocaleBZ(SezimalLocale):
         ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
         ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
         ('211_503-15-32', '👨🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
-
-        ('213_123-12-24', '👨\ufe0f\u200d❤\ufe0f\u200d👩\ufe0f Namoru (#i)'),       # tersa  213_123-12-24 ~ 1995-08-15_dec
-        ('213_132-01-10', '🤵\ufe0f\u200d♂️\ufe0f🏡\ufe0f👰\ufe0f\u200d♀️\ufe0f Kazamentu (#i)'),  # sábadu 213_132-01-10 ~ 2000-01-08_dec
-
-        ('213_050-12-43', '🎂\ufe0f Siwvya (#i)'),                     # sábadu 213_050-12-43 ~ 1974-08-24_dec
-        ('213_051-04-43', '🎂\ufe0f Arí (#i)'),                        # sábadu 213_051-04-43 ~ 1975-04-26_dec
-        ('213_134-05-40', '🎂\ufe0f Bárbara (#i)'),                    # kwarta 213_134-05-40 ~ 2002-05-22_dec
-        ('213_140-04-15', '🎂\ufe0f Nícolas (#i)'),                    # kinta  213_140-04-15 ~ 2004-04-08_dec
-        ('213_142-10-04', '🎂\ufe0f Bernardu (#i)'),                   # kinta  213_142-10-04 ~ 2006-06-08_dec
-
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -220,18 +210,6 @@ class SezimalLocaleBZ(SezimalLocale):
         ('ISO+1822-09-07', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (%i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
         ('ISO+1889-11-15', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (%i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
         ('ISO+1695-11-20', '👨🏿\ufe0f Konsyensya Negra'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
-
-        ('ISO+1995-08-15', '👨\ufe0f\u200d❤\ufe0f\u200d👩\ufe0f Namoru (%i)'),       # segunda
-        ('ISO+2000-01-08', '🤵\ufe0f\u200d♂️\ufe0f🏡\ufe0f👰\ufe0f\u200d♀️\ufe0f Kazamentu (%i)'),  # segunda
-
-        ('ISO+1974-08-24', '🎂\ufe0f Siwvya (%i)'),                     # kwarta
-        ('ISO+1975-04-26', '🎂\ufe0f Arí (%i)'),                        # sesta
-        ('ISO+1977-08-23', '🎂\ufe0f Jana (%i)'),                        # sesta
-        ('ISO+1979-04-02', '🎂\ufe0f Jiw (%i)'),                        # sesta
-        ('ISO+2002-05-22', '🎂\ufe0f Bárbara (%i)'),                    # segunda
-        ('ISO+2004-04-08', '🎂\ufe0f Níkolas (%i)'),                    # segunda
-        ('ISO+2006-06-08', '🎂\ufe0f Bernardu (%i)'),                   # segunda
-        ('ISO+1975-11-04', '🎂\ufe0f Andrè Kitu (%i)'),                   # segunda
     ]
 
     #
