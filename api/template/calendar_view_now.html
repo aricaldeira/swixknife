@@ -77,14 +77,11 @@
             <p id="time_display" class="now-time-24h"></p>
         {% endif %}
         <p class="now-date">
-            {{ now.format(locale.DATE_FORMAT, locale) }}
-{#
-        {% if base == 20 %}
-            {{ now.format(locale.ISO_DATE_FORMAT.replace('%', '%↋'), locale) }}
-        {% else %}
-            {{ now.format(locale.DATE_FORMAT, locale) }}
-        {% endif %}
-#}
+            {% if not locale.iso_date_decimal %}
+                {{ now.format(locale.ISO_DATE_FORMAT, locale) }}
+            {% else %}
+                {{ now.format(locale.DATE_FORMAT, locale) }}
+            {% endif %}
         </p>
         <div id="weather_view" style="display:none;"></div>
         <p clas="now-events">
@@ -109,12 +106,23 @@
                 &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
             {% endif %}
         </p>
-        <p class="now-iso-date">{{ now.format(locale.ISO_DATE_FORMAT, locale) }}{% if base != 14 %} — <span id="iso_time_display"></span><span id="decimal_weather_display" style="display:none;"></span>{% endif %}</p>
+        <p class="now-iso-date">
+            {% if locale.iso_date_decimal %}
+                {{ now.format(locale.ISO_DATE_FORMAT, locale) }}
+                {% if base != 14 %} — {% endif %}
+            {% endif %}
+            {% if base != 14 %}
+                <span id="iso_time_display"></span>
+                <span id="decimal_weather_display" style="display:none;"></span>
+            {% endif %}
+        </p>
         <p> </p>
-        {% set year_view = True %}
-        {% set now_view = True %}
-        {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
+        {% if locale.iso_date_decimal %}
+            {% set year_view = True %}
+            {% set now_view = True %}
+            {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
+                {% include 'calendar_base_month.html' %}
+            {% endwith %}
+        {% endif %}
     </div>
 </div>

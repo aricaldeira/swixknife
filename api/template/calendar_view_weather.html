@@ -35,10 +35,10 @@
         </p>
     </div>
 {% elif base == 20 %}
-    {% set TEMPERATURE = Dozenal('0.491_86↊_351_860') %}
+    {% set TEMPERATURE = Dozenal('0.491_86↊_351_86↊_352') %}
     {% set SPEED = Dozenal('0.349_9↊↊_↋75_848_532') %}
-    {% set LENGTH = Dozenal('1220.↋35_851_8↋7_0↋↋_↋91') %}
-    {% set PRESSURE = Dozenal('68.424_110_5↊2_↋↋5_411') %}
+    {% set LENGTH = Dozenal('1220.↋35_851_8↋7_1↋3_2↋3') %}
+    {% set PRESSURE = Dozenal('68.424_110_583_941_693') %}
     <p class="now-weather" onclick="open_close_weather()">
         {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature, 'tap', '°C')) / TEMPERATURE) + 40, 0), dozenal_places=0) }} ⚀ς<sub>f</sub>°  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
     </p>
@@ -53,7 +53,7 @@
             <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_dozenal_number(round(Dozenal(sdu(weather.wind_speed, 'veg', 'm/s')) / SPEED, 1), dozenal_places=1) }} ⚀vcℓ  <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_dozenal_number(round((weather.wind_direction / 100) * 400, 1), dozenal_places=1) }} b↓⊙   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {{ locale.format_decimal_number(round(Dozenal(sdu(weather.pressure, 'Xpdn', 'Pa')) / PRESSURE, 0), decimal_places=0) }} ⚀psℓ
         </p>
         <p>
-            <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>   <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋0.3fD', locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋0.3fD', locale) }}   <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>
+            <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>   <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋3.0fD', locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format('#↋3.0fD', locale) }}   <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>
         </p>
     </div>
 {% elif base == 100 %}

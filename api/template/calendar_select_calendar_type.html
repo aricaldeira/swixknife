@@ -6,21 +6,21 @@ Kalendaryus sivís
 {% else %}
 Civil calendars
 {% endif %}">
-        <option id="event_calendar_sezimal" value="SYM"{{ ' selected=selected' if event.origin_calendar == 'SYM' else '' }}>
+        <option name="event_calendar_sezimal" value="SYM"{{ ' selected=selected' if event.origin_calendar == 'SYM' else '' }}>
             {% if base == 10 or base == 100 %}
                 {{ locale.CALENDAR_TYPE['SEZ'] }}
             {% else %}
                 {{ locale.CALENDAR_TYPE['SYM'] }}
             {% endif %}
         </option>
-        <option id="event_calendar_iso" value="ISO"{{ ' selected="selected"' if event.origin_calendar == 'ISO' else '' }}>
+        <option name="event_calendar_iso" value="ISO"{{ ' selected="selected"' if event.origin_calendar == 'ISO' else '' }}>
             {{ locale.CALENDAR_TYPE['ISO'] }}
         </option>
 {#
-        <option id="event_calendar_israeli" value="ISR"{{ ' selected="selected"' if event.origin_calendar == 'ISR' else '' }}>
+        <option name="event_calendar_israeli" value="ISR"{{ ' selected="selected"' if event.origin_calendar == 'ISR' else '' }}>
             {{ locale.CALENDAR_TYPE['ISR'] }}
         </option>
-        <option id="event_calendar_indian" value="IND"{{ ' selected="selected"' if event.origin_calendar == 'IND' else '' }}>
+        <option name="event_calendar_indian" value="IND"{{ ' selected="selected"' if event.origin_calendar == 'IND' else '' }}>
             {{ locale.CALENDAR_TYPE['IND'] }}
         </option>
 #}
@@ -32,17 +32,17 @@ Kalendaryus relijiòzus
 {% else %}
 Religious calendars
 {% endif %}">
-        <option id="event_calendar_julian" value="JUL"{{ ' selected="selected"' if event.origin_calendar == 'JUL' else '' }}>
+        <option name="event_calendar_julian" value="JUL"{{ ' selected="selected"' if event.origin_calendar == 'JUL' else '' }}>
             {{ locale.CALENDAR_TYPE['JUL'] }}
         </option>
-        <option id="event_calendar_jewish" value="JEW"{{ ' selected="selected"' if event.origin_calendar == 'JEW' else '' }}>
+        <option name="event_calendar_jewish" value="JEW"{{ ' selected="selected"' if event.origin_calendar == 'JEW' else '' }}>
             {{ locale.CALENDAR_TYPE['JEW'] }}
         </option>
-        <option id="event_calendar_islamic" value="HIJ"{{ ' selected="selected"' if event.origin_calendar == 'HIJ' else '' }}>
+        <option name="event_calendar_islamic" value="HIJ"{{ ' selected="selected"' if event.origin_calendar == 'HIJ' else '' }}>
             {{ locale.CALENDAR_TYPE['HIJ'] }}
         </option>
 {#
-        <option id="event_calendar_iranian" value="IRN">
+        <option name="event_calendar_iranian" value="IRN">
             {{ locale.CALENDAR_TYPE['IRN'] }}
         </option>
 #}
@@ -54,20 +54,20 @@ Paskwa (referensyaw)
 {% else %}
 Easter (referencial)
 {% endif %}">
-        <option id="event_calendar_sezimal_easter" value="SYM+EASTER">
+        <option name="event_calendar_sezimal_easter" value="SYM+EASTER">
             {% if base == 10 %}
                 {{ locale.CALENDAR_TYPE['SEZ+EASTER'] }}
             {% else %}
                 {{ locale.CALENDAR_TYPE['SYM+EASTER'] }}
             {% endif %}
         </option>
-        <option id="event_calendar_iso_easter" value="ISO+EASTER">
+        <option name="event_calendar_iso_easter" value="ISO+EASTER">
             {{ locale.CALENDAR_TYPE['ISO+EASTER'] }}
         </option>
-        <option id="event_calendar_julian_easter" value="JUL+EASTER">
+        <option name="event_calendar_julian_easter" value="JUL+EASTER">
             {{ locale.CALENDAR_TYPE['JUL+EASTER'] }}
         </option>
-        <option id="event_calendar_jewish_easter" value="JEW+EASTER">
+        <option name="event_calendar_jewish_easter" value="JEW+EASTER">
             {{ locale.CALENDAR_TYPE['JEW+EASTER'] }}
         </option>
     </optgroup>

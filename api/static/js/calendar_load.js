@@ -32,6 +32,11 @@ function calendar_load() {
         document.getElementById('base_select').value = '20';
     };
 
+    if (localStorage.getItem('sezimal-calendar-iso-date-decimal') === null) {
+        localStorage.setItem('sezimal-calendar-iso-date-decimal', 'true');
+    };
+    document.getElementById('iso_date_decimal_input').checked = localStorage.getItem('sezimal-calendar-iso-date-decimal') == 'true';
+
     /*
     *  First run locale definition
     */
@@ -40,9 +45,6 @@ function calendar_load() {
         locale = navigator.languages && navigator.languages.length
         ? navigator.languages[0]
         : navigator.language;
-
-        console.log('locale detectado', locale);
-
         locale = locale.replace('-', '_').toLowerCase();
         localStorage.setItem('sezimal-calendar-locale', locale);
     };
@@ -53,8 +55,6 @@ function calendar_load() {
     */
     if (localStorage.getItem('sezimal-calendar-time-zone') === null) {
         localStorage.setItem('sezimal-calendar-time-zone', Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC');
-
-        console.log('fuso horário detectado', Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC');
     };
     document.getElementById('time_zone_select').value = localStorage.getItem('sezimal-calendar-time-zone');
 
@@ -82,6 +82,16 @@ function calendar_load() {
         localStorage.setItem('sezimal-calendar-hour-format', 'locale');
     };
     document.getElementById('hour_format_select').value = localStorage.getItem('sezimal-calendar-hour-format');
+
+    if (localStorage.getItem('sezimal-calendar-show-seconds') === null) {
+        localStorage.setItem('sezimal-calendar-show-seconds', 'true');
+    };
+    document.getElementById('show_seconds_input').checked = localStorage.getItem('sezimal-calendar-show-seconds') == 'true';
+
+    if (localStorage.getItem('sezimal-calendar-locale-first-weekday') === null) {
+        localStorage.setItem('sezimal-calendar-locale-first-weekday', 'false');
+    };
+    document.getElementById('locale_first_weekday_input').checked = localStorage.getItem('sezimal-calendar-locale-first-weekday') == 'true';
 
     /*
     *  First run hemisphere definition

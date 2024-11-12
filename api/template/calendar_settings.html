@@ -13,7 +13,21 @@
                     Locale
                 {% endif %}
             </div>
-            {% include 'calculator/locale-select.html' %}
+            <div>
+                {% include 'calculator/locale-select.html' %}
+            </div>
+            <div>
+                <input id="locale_first_weekday_input" name="locale_first_weekday_input" type="checkbox">
+                <label for="locale_first_weekday_input">
+                    {% if locale.LANG == 'pt' %}
+                        Usar o primeiro dia da semana do locale?
+                    {% elif locale.LANG == 'bz' %}
+                        Uzar u primeru dia da semana du lokali?
+                    {% else %}
+                        Use locale’s first weekday?
+                    {% endif %}
+                </label>
+            </div>
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
@@ -48,46 +62,78 @@
                     Date and hour format {{ locale.digit_replace('\N{LRI}(24 h/12 h\N{PDI})') }}
                 {% endif %}
             </div>
-            <select id="hour_format_select" style="direction:ltr;">
-                <option value="locale">
+            <div>
+                <select id="hour_format_select" style="direction:ltr;">
+                    <option value="locale">
+                        {% if locale.LANG == 'pt' %}
+                            Padrão do locale
+                        {% elif locale.LANG == 'bz' %}
+                            Padrawn du lokali
+                        {% else %}
+                            Locale’s default
+                        {% endif %}
+                    </option>
+                    <option value="24h">
+                        {% if locale.LANG == 'pt' %}
+                            Data: padrão do locale; hora:
+                        {% elif locale.LANG == 'bz' %}
+                            Data: padrawn du lokali; òra:
+                        {% else %}
+                            Date: locale’s default; hour:
+                        {% endif %}
+                        {{ locale.digit_replace(' \N{LRI}24 h\N{PDI}') }}
+                    </option>
+                    <option value="12h">
+                        {% if locale.LANG == 'pt' %}
+                            Data: padrão do locale; hora:
+                        {% elif locale.LANG == 'bz' %}
+                            Data: padrawn du lokali; òra:
+                        {% else %}
+                            Date: locale’s default; hour:
+                        {% endif %}
+                        {{ locale.digit_replace(' \N{LRI}12 h\N{PDI}') }}
+                    </option>
+                    <option value="iso">
+                        {% if locale.LANG == 'pt' %}
+                            Padrão ISO: AAAA-MM-DD e 24 h
+                        {% elif locale.LANG == 'bz' %}
+                            Padrawn ISO: AAAA-MM-DD y 24 h
+                        {% else %}
+                            ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}24 h\N{PDI}') }}
+                        {% endif %}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <input id="show_seconds_input" name="show_seconds_input" type="checkbox" checked>
+                <label for="show_seconds_input">
                     {% if locale.LANG == 'pt' %}
-                        Padrão do locale
+                        {% if base == 10 or base == 100 %}
+                            Mostrar agrimas no relógio ••:••<b>:55</b>?
+                        {% elif base == 14 %}
+                            Mostrar segundos no relógio ••:••<b>:59</b>?
+                        {% elif base == 20 %}
+                            Mostrar subunidade de tempo no relógio •••<b>{{ locale.SEZIMAL_SEPARATOR }}↋</b>?
+                        {% endif %}
                     {% elif locale.LANG == 'bz' %}
-                        Padrawn du lokali
+                        {% if base == 10 or base == 100 %}
+                            Mostrar agrimas nu relòjyu ••:••<b>:55</b>?
+                        {% elif base == 14 %}
+                            Mostrar segundus nu relòjyu ••:••<b>:59</b>?
+                        {% elif base == 20 %}
+                            Mostrar subunidadi di tenpu nu relòjyu •••<b>{{ locale.SEZIMAL_SEPARATOR }}↋</b>?
+                        {% endif %}
                     {% else %}
-                        Locale’s default
+                        {% if base == 10 or base == 100 %}
+                            Show agrimas on the clock ••:••<b>:55</b>?
+                        {% elif base == 14 %}
+                            Show seconds on the clock ••:••<b>:59</b>?
+                        {% elif base == 20 %}
+                            Show time subunit on the clock •••<b>{{ locale.SEZIMAL_SEPARATOR }}↋</b>?
+                        {% endif %}
                     {% endif %}
-                </option>
-                <option value="24h">
-                    {% if locale.LANG == 'pt' %}
-                        Data: padrão do locale; hora:
-                    {% elif locale.LANG == 'bz' %}
-                        Data: padrawn du lokali; òra:
-                    {% else %}
-                        Date: locale’s default; hour:
-                    {% endif %}
-                    {{ locale.digit_replace(' \N{LRI}24 h\N{PDI}') }}
-                </option>
-                <option value="12h">
-                    {% if locale.LANG == 'pt' %}
-                        Data: padrão do locale; hora:
-                    {% elif locale.LANG == 'bz' %}
-                        Data: padrawn du lokali; òra:
-                    {% else %}
-                        Date: locale’s default; hour:
-                    {% endif %}
-                    {{ locale.digit_replace(' \N{LRI}12 h\N{PDI}') }}
-                </option>
-                <option value="iso">
-                    {% if locale.LANG == 'pt' %}
-                        Padrão ISO: AAAA-MM-DD e 24 h
-                    {% elif locale.LANG == 'bz' %}
-                        Padrawn ISO: AAAA-MM-DD y 24 h
-                    {% else %}
-                        ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}24 h\N{PDI}') }}
-                    {% endif %}
-                </option>
-            </select>
+                </label>
+            </div>
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
@@ -357,71 +403,86 @@
                     Number base
                 {% endif %}
             </div>
-            <select id="base_select" style="direction:ltr;{% if hide_base %} display: none;{% endif %}">
-                <option value="10">
+            <div>
+                <select id="base_select" style="direction:ltr;{% if hide_base %} display: none;{% endif %}">
+                    <option value="10">
+                        {% if locale.LANG == 'pt' %}
+                            Sezimal (seis; 012345)
+                        {% elif locale.LANG == 'bz' %}
+                            Sezimaw (sêys; 012345)
+                        {% else %}
+                            Sezimal (six; {{ locale.digit_replace('\N{LRI}012345\N{PDI}') }})
+                        {% endif %}
+                    </option>
+                    <option value="10!">
+                        {% if locale.LANG == 'pt' %}
+                            Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                        {% elif locale.LANG == 'bz' %}
+                            Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
+                        {% else %}
+                            Sezimal (six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="14">
+                        {% if locale.LANG == 'pt' %}
+                            Decimal (dez; 0123456789)
+                        {% elif locale.LANG == 'bz' %}
+                            Desimaw (dèys; 0123456789)
+                        {% else %}
+                            Decimal (ten; {{ locale.digit_replace('\N{LRI}0123456789\N{PDI}') }})
+                        {% endif %}
+                    </option>
+                    <option value="20">
+                        {% if locale.LANG == 'pt' %}
+                            Dozenal (doze; 0123456789↊↋)
+                        {% elif locale.LANG == 'bz' %}
+                            Dozenaw (dozi; 0123456789↊↋)
+                        {% else %}
+                            Dozenal (twelve; {{ '\N{LRI}0123456789↊↋\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="100">
+                        {% if locale.LANG == 'pt' %}
+                            Nifesimal (trinta e seis; 012345 0̇–5̆)
+                        {% elif locale.LANG == 'bz' %}
+                            Nifezimaw (trinta y sêys; 012345 0̇–5̆)
+                        {% else %}
+                            Niftimal (thirty-six; {{ '\N{LRI}012345 0̇–5̆\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="100!">
+                        {% if locale.LANG == 'pt' %}
+                            Nifesimal (trinta e seis; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
+                        {% elif locale.LANG == 'bz' %}
+                            Nifezimaw (trinta y sêys; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
+                        {% else %}
+                            Niftimal (thirty-six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="100Z">
+                        {% if locale.LANG == 'pt' %}
+                            Nifesimal (trinta e seis; 0123456789 A–Z)
+                        {% elif locale.LANG == 'bz' %}
+                            Nifezimaw (trinta y sêys; 0123456789 A–Z)
+                        {% else %}
+                            Niftimal (thirty-six; {{ '\N{LRI}0123456789 A–Z\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <input id="iso_date_decimal_input" name="iso_date_decimal_input" type="checkbox" checked>
+                <label for="show_seconds_input">
                     {% if locale.LANG == 'pt' %}
-                        Sezimal (seis; 012345)
+                        Datas ISO em decimal?
                     {% elif locale.LANG == 'bz' %}
-                        Sezimaw (sêys; 012345)
+                        Datas ISO in desimaw?
                     {% else %}
-                        Sezimal (six; {{ locale.digit_replace('\N{LRI}012345\N{PDI}') }})
+                        ISO dates in decimal?
                     {% endif %}
-                </option>
-                <option value="10!">
-                    {% if locale.LANG == 'pt' %}
-                        Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                    {% elif locale.LANG == 'bz' %}
-                        Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                    {% else %}
-                        Sezimal (six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅\N{PDI}' }})
-                    {% endif %}
-                </option>
-                <option value="14">
-                    {% if locale.LANG == 'pt' %}
-                        Decimal (dez; 0123456789)
-                    {% elif locale.LANG == 'bz' %}
-                        Desimaw (dèys; 0123456789)
-                    {% else %}
-                        Decimal (ten; {{ locale.digit_replace('\N{LRI}0123456789\N{PDI}') }})
-                    {% endif %}
-                </option>
-                <option value="20">
-                    {% if locale.LANG == 'pt' %}
-                        Dozenal (doze; 0123456789↊↋)
-                    {% elif locale.LANG == 'bz' %}
-                        Dozenaw (dozi; 0123456789↊↋)
-                    {% else %}
-                        Dozenal (twelve; {{ '\N{LRI}0123456789↊↋\N{PDI}' }})
-                    {% endif %}
-                </option>
-                <option value="100">
-                    {% if locale.LANG == 'pt' %}
-                        Nifesimal (trinta e seis; 012345 0̇–5̆)
-                    {% elif locale.LANG == 'bz' %}
-                        Nifezimaw (trinta y sêys; 012345 0̇–5̆)
-                    {% else %}
-                        Niftimal (thirty-six; {{ '\N{LRI}012345 0̇–5̆\N{PDI}' }})
-                    {% endif %}
-                </option>
-                <option value="100!">
-                    {% if locale.LANG == 'pt' %}
-                        Nifesimal (trinta e seis; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
-                    {% elif locale.LANG == 'bz' %}
-                        Nifezimaw (trinta y sêys; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
-                    {% else %}
-                        Niftimal (thirty-six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣\N{PDI}' }})
-                    {% endif %}
-                </option>
-                <option value="100Z">
-                    {% if locale.LANG == 'pt' %}
-                        Nifesimal (trinta e seis; 0123456789 A–Z)
-                    {% elif locale.LANG == 'bz' %}
-                        Nifezimaw (trinta y sêys; 0123456789 A–Z)
-                    {% else %}
-                        Niftimal (thirty-six; {{ '\N{LRI}0123456789 A–Z\N{PDI}' }})
-                    {% endif %}
-                </option>
-            </select>
+                </label>
+            </div>
+
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>

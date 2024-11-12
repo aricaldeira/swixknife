@@ -89,7 +89,7 @@ html, body {
         var time_display = '';
         var iso_time_display = '';
 
-        function auto_refresh_iso_display(){
+        async function auto_refresh_iso_display(){
             var seconds = new Date().getTime();
 
             seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
@@ -112,20 +112,40 @@ html, body {
             {% if locale.HOUR_FORMAT == '12h' %}
                 if (hours > 12) {
                     hours = hours - 12;
-                    sec = sec + ' {{ locale.lower(locale.PM) }}';
+                    {% if locale.show_seconds %}
+                        sec = sec + ' {{ locale.lower(locale.PM) }}';
+                    {% else %}
+                        minutes = minutes + ' {{ locale.lower(locale.PM) }}';
+                    {% endif %}
                 } else if (hours == 12) {
-                    sec = sec + ' {{ locale.lower(locale.PM) }}';
+                    {% if locale.show_seconds %}
+                        sec = sec + ' {{ locale.lower(locale.PM) }}';
+                    {% else %}
+                        minutes = minutes + ' {{ locale.lower(locale.PM) }}';
+                    {% endif %}
                 } else {
-                    sec = sec + ' {{ locale.lower(locale.AM) }}';
+                    {% if locale.show_seconds %}
+                        sec = sec + ' {{ locale.lower(locale.AM) }}';
+                    {% else %}
+                        minutes = minutes + ' {{ locale.lower(locale.AM) }}';
+                    {% endif %}
                 };
             {% endif %}
 
             hours = hours.toString().padStart(2, '0');
 
             {% if locale.RTL %}
-                iso_time_display = '\u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '{{ locale.TIME_SEPARATOR }}' + sec + '\u{2069}';
+                {% if locale.show_seconds %}
+                    iso_time_display = '\u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '{{ locale.TIME_SEPARATOR }}' + sec + '\u{2069}';
+                {% else %}
+                    iso_time_display = '\u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
+                {% endif %}
             {% else %}
-                iso_time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '{{ locale.TIME_SEPARATOR }}' + sec;
+                {% if locale.show_seconds %}
+                    iso_time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '{{ locale.TIME_SEPARATOR }}' + sec;
+                {% else %}
+                    iso_time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
+                {% endif %}
             {% endif %}
 
             {% if locale.DIGITS %}
@@ -157,8 +177,6 @@ html, body {
             if (hours_24 === '00' && minutes === '00') {
                 location.reload();
             } else if (sec == '00') {
-                console.log('sec', sec, minutes);
-
                 //
                 // Update weather info every 10 minutes
                 //
@@ -170,7 +188,6 @@ html, body {
                     || (minutes == '40')
                     || (minutes == '50')
                 ) {
-                    console.log('atualizou tempo');
                     update_weather();
                 }
             };
@@ -183,7 +200,7 @@ html, body {
         auto_refresh_iso_display();
 
         {% if base == 10 or base == 100 %}
-            function auto_refresh_sezimal_time(){
+            async function auto_refresh_sezimal_time(){
                 var seconds = new Date().getTime();
 
                 seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
@@ -233,9 +250,17 @@ html, body {
                 var agrima = time.slice(4, 6);
 
                 {% if format_token in ('!', '@', '@!', 'Z') %}
-                    time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[agrima];
+                    {% if locale.show_seconds %}
+                        time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[agrima];
+                    {% else %}
+                        time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
+                    {% endif %}
                 {% else %}
-                    time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha + '{{ locale.TIME_SEPARATOR }}' + agrima;
+                    {% if locale.show_seconds %}
+                        time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha + '{{ locale.TIME_SEPARATOR }}' + agrima;
+                    {% else %}
+                        time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
+                    {% endif %}
                 {% endif %}
 
                 {% if locale.RTL %}
@@ -259,7 +284,7 @@ html, body {
             };
             auto_refresh_sezimal_time();
         {% elif base == 20 %}
-            function auto_refresh_dozenal_time(){
+            async function auto_refresh_dozenal_time(){
                 var seconds = new Date().getTime();
 
                 seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
@@ -270,10 +295,13 @@ html, body {
                 seconds = (seconds * 12 * 12 * 12) - integer_time;
                 var dozenal_time = Math.floor(seconds * 12);
 
-                time_display = '' //'{{ locale.SEZIMAL_SEPARATOR }}'
-                    + integer_time.toString(12).padStart(3, '0')
-                    + '{{ locale.SEZIMAL_SEPARATOR }}'
-                    + dozenal_time.toString(12).padStart(1, '0');
+                {% if locale.show_seconds %}
+                    time_display = integer_time.toString(12).padStart(3, '0')
+                        + '{{ locale.SEZIMAL_SEPARATOR }}'
+                        + dozenal_time.toString(12).padStart(1, '0');
+                {% else %}
+                    time_display = integer_time.toString(12).padStart(3, '0');
+                {% endif %}
 
                 time_display = time_display.replaceAll('a', '↊').replaceAll('b', '↋');
 

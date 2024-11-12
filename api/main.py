@@ -14,13 +14,16 @@ from swixknife.weather.weather import SezimalWeather
 
 
 from werkzeug.middleware.proxy_fix import ProxyFix
-
+from werkzeug.middleware.profiler import ProfilerMiddleware
 
 app = Flask(__name__)
 app.json.sort_keys = False
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 )
+# app.wsgi_app = ProfilerMiddleware(ProxyFix(
+#     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+# ))
 app.template_folder = TEMPLATE_PATH
 
 sitemapper = Sitemapper()

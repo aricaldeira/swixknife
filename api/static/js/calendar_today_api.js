@@ -138,8 +138,11 @@ function _base_data(direction = '', direction_type = '') {
     const hour_format = localStorage.getItem('sezimal-calendar-hour-format');
     const hemisphere = localStorage.getItem('sezimal-calendar-hemisphere');
     const theme = localStorage.getItem('sezimal-calendar-theme');
-    const mobile = ((navigator.userAgent.toUpperCase().indexOf('MOBILE') > 0) || (navigator.userAgent.toUpperCase().indexOf('ANDROID') > 0));
+    const mobile = (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     let show_holiday = localStorage.getItem('sezimal-calendar-show-holiday');
+    const show_seconds = localStorage.getItem('sezimal-calendar-show-seconds');
+    const locale_first_weekday = localStorage.getItem('sezimal-calendar-locale-first-weekday');
+    const iso_date_decimal = localStorage.getItem('sezimal-calendar-iso-date-decimal');
 
     if (
         (localStorage.getItem('sezimal-calendar-show-holiday-christian') == true)
@@ -170,7 +173,7 @@ function _base_data(direction = '', direction_type = '') {
     };
 
     document.documentElement.lang = LANGUAGE_TAGS[locale];
-    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
+    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${iso_date_decimal}|${locale_first_weekday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
 
     if ((locale == 'ar') || (locale == 'ar_nu_latn') ||
         (locale == 'fa') || (locale == 'fa_nu_latn') ||
@@ -194,12 +197,15 @@ function _base_data(direction = '', direction_type = '') {
         direction_type: direction_type,
         mobile: mobile,
         show_holiday: show_holiday,
+        show_seconds: show_seconds,
+        iso_date_decimal: iso_date_decimal,
+        locale_first_weekday: locale_first_weekday,
     };
 
     return dados;
 }
 
-function update_calendar(direction = '', direction_type = '') {
+async function update_calendar(direction = '', direction_type = '') {
     let dados = _base_data(direction, direction_type)
 
     fetch('/calendar/process', {
@@ -212,7 +218,6 @@ function update_calendar(direction = '', direction_type = '') {
     }).then((response) => {
         return response.json();
     }).then((dados) => {
-        // console.log('dados', dados);
         localStorage.setItem('sezimal-calendar-date', dados.date_to_store);
         document.getElementById('calendar_view').innerHTML = dados.view;
         return dados;
@@ -233,12 +238,12 @@ function update_calendar(direction = '', direction_type = '') {
     });
 };
 
-function change_view(new_view = 'dayly') {
+async function change_view(new_view = 'dayly') {
     localStorage.setItem('sezimal-calendar-view', new_view);
     update_calendar();
 };
 
-function change_date(new_date) {
+async function change_date(new_date) {
     localStorage.setItem('sezimal-calendar-date', new_date);
     update_calendar();
 };
@@ -253,6 +258,8 @@ function apply_settings() {
     localStorage.setItem('sezimal-calendar-locale', document.getElementById('calculator-sezimal-locale').value);
     localStorage.setItem('sezimal-calendar-time-zone', document.getElementById('time_zone_select').value);
     localStorage.setItem('sezimal-calendar-hour-format', document.getElementById('hour_format_select').value);
+    localStorage.setItem('sezimal-calendar-show-seconds', document.getElementById('show_seconds_input').checked);
+    localStorage.setItem('sezimal-calendar-locale-first-weekday', document.getElementById('locale_first_weekday_input').checked);
     localStorage.setItem('sezimal-calendar-hemisphere', document.getElementById('hemisphere_select').value);
     localStorage.setItem(
         'sezimal-calendar-show-holiday',
@@ -298,6 +305,8 @@ function apply_settings() {
         localStorage.setItem('sezimal-calendar-format-token', 'Z');
     };
 
+    localStorage.setItem('sezimal-calendar-iso-date-decimal', document.getElementById('iso_date_decimal_input').checked);
+
     localStorage.setItem('sezimal-calendar-theme', document.getElementById('theme_select').value);
 
     localStorage.setItem('sezimal-latitude', document.getElementById('sezimal-latitude-input').value);
@@ -310,7 +319,7 @@ function apply_settings() {
 };
 
 
-function update_weather() {
+async function update_weather() {
     if (
         (!localStorage.getItem('sezimal-latitude'))
         || (!localStorage.getItem('sezimal-longitude'))

@@ -6,7 +6,7 @@ Mez
 Month
 {% endif %}" value="{{ event.month }}">
     {% for i in range(1, 13) %}
-    <option id="event_date_month_{{ str(i).zfill(2) }}" value="{{ str(i).zfill(2) }}"{{ ' selected="selected"' if event.month == str(i).zfill(2) else '' }}>{{ locale.MONTH_NAME[i - 1] }}</option>
+        <option id="event_date_month_{{ str(i).zfill(2) }}" value="{{ str(i).zfill(2) }}"{{ ' selected="selected"' if event.month == str(i).zfill(2) else '' }}>{{ locale.MONTH_NAME[i - 1] }}</option>
     {% endfor %}
     <option id="event_date_month_13" value="13"{{ ' selected="selected"' if event.month == '13' else '' }}>Adar Bet אדר ב׳</option>
 </select>

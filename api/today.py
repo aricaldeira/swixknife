@@ -35,6 +35,7 @@ def _calendar_context(locale, date=None, gray_scale=False):
         locale.DEFAULT_TIME_ZONE,
         gray_scale=gray_scale,
     )
+    colors[SezimalInteger(130)] = colors[SezimalInteger(1)]
 
     data = {
         'SezimalList': SezimalList,
@@ -166,7 +167,7 @@ def _calendar_context(locale, date=None, gray_scale=False):
     month_date = date.date.replace(day=1).previous(days=1)
     data['month_dates'] = SezimalList([])
 
-    for week in SezimalRange(5):
+    for week in SezimalRange(10):
         data['month_dates'].append(SezimalList([]))
 
         for day in SezimalRange(11):
@@ -260,6 +261,7 @@ def api_calendar_process():
     gray_scale = dados['theme'] == 'GRAY'
 
     locale = _prepare_locale(locale, dados)
+    print('aqui', locale.ISO_DATE_FORMAT)
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -1274,11 +1276,21 @@ def now_route() -> Response:
 
 
 def _prepare_locale_from_cookie(cookie):
+    show_seconds = 'true'
+    iso_date_decimal = 'true'
+    locale_first_weekday = 'false'
+
     try:
-        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, iso_date_decimal, locale_first_weekday = cookie.split('|')
     except:
-        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
-        show_holiday = 'ISO_SEZ_SYM'
+        try:
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, iso_date_decimal = cookie.split('|')
+        except:
+            try:
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+            except:
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                show_holiday = 'ISO_SEZ_SYM'
 
     locale = sezimal_locale(locale)
 
@@ -1292,6 +1304,9 @@ def _prepare_locale_from_cookie(cookie):
         'theme': theme,
         'mobile': mobile == 'true',
         'show_holiday': show_holiday,
+        'show_seconds': show_seconds,
+        'iso_date_decimal': iso_date_decimal,
+        'locale_first_weekday': locale_first_weekday,
     }
 
     locale = _prepare_locale(locale, dados)
@@ -1322,6 +1337,8 @@ def _prepare_locale(locale, dados):
         else:
             locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
 
+    locale.iso_date_decimal = dados['iso_date_decimal'] == 'true'
+
     if base == 10:
         locale.to_short_year_format()
 
@@ -1351,6 +1368,9 @@ def _prepare_locale(locale, dados):
     locale.format_token = dados['format_token']
     locale.base = int(dados['base'])
     locale.theme = dados['theme']
+
+    locale.show_seconds = dados['show_seconds'] == 'true'
+    locale.use_first_weekday = dados['locale_first_weekday'] == 'true'
 
     return locale
 
@@ -1655,7 +1675,7 @@ def api_weather_process():
         locale.DECIMAL_TEMPERATURE = '°C'
         locale.DECIMAL_SPEED = 'km/h'
 
-    decimal_weather = ' ― ' + locale.format_decimal_number(
+    decimal_weather = ' ―  ' + locale.format_decimal_number(
         round(sezimal_to_decimal_unit(
             weather.temperature,
             'tap', locale.DECIMAL_TEMPERATURE

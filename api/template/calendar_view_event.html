@@ -48,7 +48,7 @@ Event’s title
     </tr>
     <tr style="vertical-align: top;">
         <td class="center">
-            {% include 'calendar_input_easter.html' %}
+            {# {% include 'calendar_input_easter.html' %} #}
             {% if locale.DATE_ENDIANNESS == 'B' %}
                 {% include 'calendar_input_year.html' %}
                 {% include 'calendar_select_month.html' %}
@@ -62,102 +62,12 @@ Event’s title
                 {% include 'calendar_select_day.html' %}
                 {% include 'calendar_input_year.html' %}
             {% endif %}
-            {% include 'calendar_select_weekday.html' %}
+            {# {% include 'calendar_select_weekday.html' %} #}
         </td>
     </tr>
     <tr style="vertical-align: top;">
         <td class="center">
             <span id="date_error" style="color: red;" hidden></span>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">
-            <select>
-                <option id="" value="one_time">
-                    {% if locale.LANG == 'pt' %}
-                        Não se repete
-                    {% elif locale.LANG == 'bz' %}
-                        Nuwn si repèti
-                    {% else %}
-                        Doesn’t repeat
-                    {% endif %}
-                </option>
-                <option id="" value="day">
-                    {% if locale.LANG == 'pt' %}
-                        Todo dia
-                    {% elif locale.LANG == 'bz' %}
-                        Todu dia
-                    {% else %}
-                        Every day
-                    {% endif %}
-                </option>
-                <option id="" value="week">
-                    {% if locale.LANG == 'pt' %}
-                        Toda semana
-                    {% elif locale.LANG == 'bz' %}
-                        Toda semana
-                    {% else %}
-                        Every week
-                    {% endif %}
-                </option>
-                <option id="" value="weekday">
-                    {% if locale.LANG == 'pt' %}
-                        Todo dia da semana
-                    {% elif locale.LANG == 'bz' %}
-                        Todu dia da semana
-                    {% else %}
-                        Every weekday
-                    {% endif %}
-                </option>
-                <option id="" value="month">
-                    {% if locale.LANG == 'pt' %}
-                        Todo mês
-                    {% elif locale.LANG == 'bz' %}
-                        Todu mez
-                    {% else %}
-                        Every month
-                    {% endif %}
-                </option>
-                <option id="" value="quarter">
-                    {% if locale.LANG == 'pt' %}
-                        Todo trimestre
-                    {% elif locale.LANG == 'bz' %}
-                        Todu trimèstri
-                    {% else %}
-                        Every quarter
-                    {% endif %}
-                </option>
-                <option id="" value="year">
-                    {% if locale.LANG == 'pt' %}
-                        Todo ano
-                    {% elif locale.LANG == 'bz' %}
-                        Todu anu
-                    {% else %}
-                        Every year
-                    {% endif %}
-                </option>
-            </select>
-            <span>
-                {% if locale.LANG == 'pt' %}
-                    por
-                {% elif locale.LANG == 'bz' %}
-                    pur
-                {% else %}
-                    for
-                {% endif %}
-                <input id="event_repeat_times" type="number" style="width: 2rem; text-align: center;" type="number" />
-                <span>
-                {% if locale.LANG == 'pt' %}
-                    dia
-                {% elif locale.LANG == 'bz' %}
-                    dia
-                {% else %}
-                    day
-                {% endif %}
-                </span>
-            </span>
-        </td>
-        <td>
         </td>
     </tr>
     <tr>
@@ -204,17 +114,40 @@ Event’s title
     </tr>
     <tr>
         <td class="center">
-            <span id="event_time_start">
-            {% with time_start_finish = '' %}
-                {% include 'calendar_select_hour.html' %}{{ locale.TIME_SEPARATOR }}{% include 'calendar_select_minute.html' %}
-            {% endwith %}
-            </span>
-            <span id="event_time_finish">
-            —
-            {% with time_start_finish = '_finish' %}
-                {% include 'calendar_select_hour.html' %}{{ locale.TIME_SEPARATOR }}{% include 'calendar_select_minute.html' %}
-            {% endwith %}
-            </span>
+            <div id="time_start_finish">
+                <span id="event_time_start">
+                {% with time_start_finish = '' %}
+                    {% if base == 10 or base == 100 %}
+                        {% include 'calendar_select_time_sezimal.html' %}
+                    {% elif base == 20 %}
+                        {% include 'calendar_select_time_dozenal.html' %}
+                    {% endif %}
+                {% endwith %}
+                </span>
+                <span id="event_time_finish">
+                —
+                {% with time_start_finish = '_finish' %}
+                    {% if base == 10 or base == 100 %}
+                        {% include 'calendar_select_time_sezimal.html' %}
+                    {% elif base == 20 %}
+                        {% include 'calendar_select_time_dozenal.html' %}
+                    {% endif %}
+                {% endwith %}
+                </span>
+            </div>
+            <div id="iso_time_start_finish">
+                <span id="event_iso_time_start">
+                {% with time_start_finish = '' %}
+                    {% include 'calendar_select_time_iso.html' %}
+                {% endwith %}
+                </span>
+                <span id="event_iso_time_finish">
+                —
+                {% with time_start_finish = '_finish' %}
+                    {% include 'calendar_select_time_iso.html' %}
+                {% endwith %}
+                </span>
+            </div>
         </td>
         <td>
         </td>
@@ -222,6 +155,100 @@ Event’s title
     <tr>
         <td>
             <span id="time_error" style="color: red;" hidden></span>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">
+            <select>
+                <option id="" value="one_time">
+                    {% if locale.LANG == 'pt' %}
+                        Não se repete
+                    {% elif locale.LANG == 'bz' %}
+                        Nuwn si repèti
+                    {% else %}
+                        Doesn’t repeat
+                    {% endif %}
+                </option>
+{#
+                <option id="" value="day">
+                    {% if locale.LANG == 'pt' %}
+                        Todo dia
+                    {% elif locale.LANG == 'bz' %}
+                        Todu dia
+                    {% else %}
+                        Every day
+                    {% endif %}
+                </option>
+                <option id="" value="week">
+                    {% if locale.LANG == 'pt' %}
+                        Toda semana
+                    {% elif locale.LANG == 'bz' %}
+                        Toda semana
+                    {% else %}
+                        Every week
+                    {% endif %}
+                </option>
+                <option id="" value="weekday">
+                    {% if locale.LANG == 'pt' %}
+                        Todo dia da semana
+                    {% elif locale.LANG == 'bz' %}
+                        Todu dia da semana
+                    {% else %}
+                        Every weekday
+                    {% endif %}
+                </option>
+                <option id="" value="month">
+                    {% if locale.LANG == 'pt' %}
+                        Todo mês
+                    {% elif locale.LANG == 'bz' %}
+                        Todu mez
+                    {% else %}
+                        Every month
+                    {% endif %}
+                </option>
+                <option id="" value="quarter">
+                    {% if locale.LANG == 'pt' %}
+                        Todo trimestre
+                    {% elif locale.LANG == 'bz' %}
+                        Todu trimèstri
+                    {% else %}
+                        Every quarter
+                    {% endif %}
+                </option>
+#}
+                <option id="" value="year">
+                    {% if locale.LANG == 'pt' %}
+                        Todo ano
+                    {% elif locale.LANG == 'bz' %}
+                        Todu anu
+                    {% else %}
+                        Every year
+                    {% endif %}
+                </option>
+            </select>
+{#
+            <span>
+                {% if locale.LANG == 'pt' %}
+                    por
+                {% elif locale.LANG == 'bz' %}
+                    pur
+                {% else %}
+                    for
+                {% endif %}
+                <input id="event_repeat_times" type="number" style="width: 2rem; text-align: center;" type="number" />
+                <span>
+                {% if locale.LANG == 'pt' %}
+                    dia
+                {% elif locale.LANG == 'bz' %}
+                    dia
+                {% else %}
+                    day
+                {% endif %}
+                </span>
+            </span>
+#}
         </td>
         <td>
         </td>
@@ -294,54 +321,87 @@ var INDIAN_MONTH_NAME = [
     {% endfor %}
 ]
 
-function set_date_parameters() {
+function build_date_string() {
     const calendar_type = document.getElementById('event_calendar_type').value;
+    let dados = _base_data();
 
-    document.getElementById('event_easter_sign').hidden = true;
-    document.getElementById('event_easter_days').hidden = true;
-    document.getElementById('event_easter_days_text').hidden = true;
-    document.getElementById('event_date_year_input').hidden = false;
-    document.getElementById('event_date_month').hidden = false;
-    document.getElementById('event_date_day_input').hidden = false;
-    document.getElementById('event_date_weekday_input').hidden = true;
+    dados['calendar_type'] = calendar_type;
+    dados['easter_sign'] = '_'; //document.getElementById('event_easter_sign').value;
+    dados['easter_days'] = 0; // document.getElementById('event_easter_days').value;
+    dados['year_sign'] = '+'; // document.getElementById('event_date_year_sign').value;
+    dados['year'] = document.getElementById('event_date_year').value;
+    dados['month'] = document.getElementById('event_date_month').value;
+    dados['day'] = document.getElementById('event_date_day_select').value;
+    dados['weekday_sign'] = '_'; //document.getElementById('event_date_weekday_sign').value;
+    dados['weekday'] = '_'; // document.getElementById('event_date_weekday').value;
+    dados['weekday_number'] = 0; // document.getElementById('event_date_weekday_number').value;
 
-    if (calendar_type == 'ISO') {
-        // console.log('year', document.getElementById('event_date_year').value)
-        // if (document.getElementById('event_date_year').value == '') {
-        //     document.getElementById('event_date_year_input').hidden = false;
-        //     document.getElementById('event_date_weekday_input').hidden = false;
-        // } else {
-        //     document.getElementById('event_date_year_input').hidden = false;
-        //     document.getElementById('event_date_weekday_input').hidden = true;
-        // };
-        //
-        // if ((document.getElementById('event_date_weekday_sign').value == '+')
-        //     || (document.getElementById('event_date_weekday_sign').value == '-')) {
-        //     document.getElementById('event_date_year_input').hidden = true;
-        // } else {
-        //     document.getElementById('event_date_year_input').hidden = false;
-        // };
+    _change_days_base(dados);
+    _change_months_calendar(dados);
+    _change_time_start_finish(dados);
 
-    } else if (!((calendar_type == 'ISO') || (calendar_type == 'SYM') || (calendar_type == 'SEZ') || (calendar_type == 'IND') || (calendar_type == 'ISR'))) {
-        if ((calendar_type == 'ISO+EASTER') || (calendar_type == 'SYM+EASTER') || (calendar_type == 'JUl+EASTER') || (calendar_type == 'JEW+EASTER')) {
-            document.getElementById('event_easter_sign').hidden = false;
-            document.getElementById('event_easter_days').hidden = false;
-            document.getElementById('event_easter_days_text').hidden = false;
-            document.getElementById('event_date_year_input').hidden = true;
-            document.getElementById('event_date_month').hidden = true;
-            document.getElementById('event_date_day_input').hidden = true;
+    fetch('/calendar/build-date-string', {
+        method: 'post',
+        body: JSON.stringify(dados),
+        headers: {
+            'Accept': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json; charset=UTF-8'
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((dados) => {
+        document.getElementById('date_error').innerHTML = dados.date_error;
+        document.getElementById('time_error').innerHTML = dados.time_error;
+
+        if (dados.date_error == '') {
+            document.getElementById('date_error').hidden = true;
+            document.getElementById('date_this_year').innerHTML = dados.date_this_year;
         } else {
-            document.getElementById('event_easter_sign').hidden = true;
-            document.getElementById('event_easter_days').hidden = true;
-            document.getElementById('event_easter_days_text').hidden = true;
-            // document.getElementById('event_date_year_sign').hidden = true;
-            document.getElementById('event_date_year').hidden = false;
-            document.getElementById('event_date_month').hidden = false;
-            document.getElementById('event_date_day_input').hidden = false;
+            document.getElementById('date_error').hidden = false;
         };
+    });
+};
+
+function _change_days_base(dados) {
+    const VALUES = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'];
+
+    {% if base == 10 or base == 100 %}
+        {% if '!' in format_token %}
+            const DAYS = ['󱸀󱸀', '󱸀󱸁', '󱸀󱸂', '󱸀󱸃', '󱸀󱸄', '󱸀󱸅', '󱸁󱸀', '󱸁󱸁', '󱸁󱸂', '󱸁󱸃', '󱸁󱸄', '󱸁󱸅', '󱸂󱸀', '󱸂󱸁', '󱸂󱸂', '󱸂󱸃', '󱸂󱸄', '󱸂󱸅', '󱸃󱸀', '󱸃󱸁', '󱸃󱸂', '󱸃󱸃', '󱸃󱸄', '󱸃󱸅', '󱸄󱸀', '󱸄󱸁', '󱸄󱸂', '󱸄󱸃', '󱸄󱸄', '󱸄󱸅', '󱸅󱸀', '󱸅󱸁', '󱸅󱸂', '󱸅󱸃', '󱸅󱸄', '󱸅󱸅'];
+        {% else %}
+            const DAYS = ['00', '01', '02', '03', '04', '05', '10', '11', '12', '13', '14', '15', '20', '21', '22', '23', '24', '25', '30', '31', '32', '33', '34', '35', '40', '41', '42', '43', '44', '45', '50', '51', '52', '53', '54', '55'];
+        {% endif %}
+    {% elif base == 14 %}
+        const DAYS = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'];
+    {% elif base == 20 %}
+        const DAYS = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '0↊', '0↋', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '1↊', '1↋', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '2↊', '2↋'];
+    {% elif base == 100 %}
+        {% if '!' in format_token %}
+            const DAYS = ['󱸀', '󱸁', '󱸂', '󱸃', '󱸄', '󱸅', '󱸆', '󱸇', '󱸈', '󱸉', '󱸊', '󱸋', '󱸌', '󱸍', '󱸎', '󱸏', '󱸐', '󱸑', '󱸒', '󱸓', '󱸔', '󱸕', '󱸖', '󱸗', '󱸘', '󱸙', '󱸚', '󱸛', '󱸜', '󱸝', '󱸞', '󱸟', '󱸠', '󱸡', '󱸢', '󱸣'];
+        {% elif 'Z' in format_token %}
+            const DAYS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        {% else %}
+            const DAYS = ['0', '1', '2', '3', '4', '5', '0̇', '1̇', '2̇', '3̇', '4̇', '5̇', '0̈', '1̈', '2̈', '3̈', '4̈', '5̈', '0̊', '1̊', '2̊', '3̊', '4̊', '5̊', '0̄', '1̄', '2̄', '3̄', '4̄', '5̄', '0̆', '1̆', '2̆', '3̆', '4̆', '5̆'];
+        {% endif %}
+    {% endif %}
+
+    let days = VALUES;
+
+    if (dados['calendar_type'] ==  'SYM') {
+        days=  DAYS;
     };
 
-    var month_name = ISO_MONTH_NAME;
+    for (let i = 1; i <= 35; i++) {
+        let value = VALUES[i];
+        let day = days[i];
+        document.getElementById('event_date_day_select').namedItem(`event_date_day_${value}`).innerHTML = day;
+    };
+};
+
+function _change_months_calendar(dados) {
+    const calendar_type = dados['calendar_type'];
+    let month_name = ISO_MONTH_NAME;
+
     document.getElementById('event_date_month_13').hidden = true;
 
     if ((calendar_type == 'ISR') || (calendar_type == 'JEW')) {
@@ -368,82 +428,70 @@ function set_date_parameters() {
     document.getElementById('event_date_month_10').innerHTML = month_name[9];
     document.getElementById('event_date_month_11').innerHTML = month_name[10];
     document.getElementById('event_date_month_12').innerHTML = month_name[11];
+};
 
-    if (!document.getElementById('event_date_weekday_sign').hidden) {
-        document.getElementById('event_date_weekday').hidden = document.getElementById('event_date_weekday_sign').value == '_';
-        document.getElementById('event_date_weekday_number').hidden = document.getElementById('event_date_weekday_sign').value == '_';
+function _change_time_start_finish(dados) {
+    if (document.getElementById('event_full_day').checked) {
+        document.getElementById('time_start_finish').hidden = true;
+        document.getElementById('iso_time_start_finish').hidden = true;
+        return;
     };
 
-    {% if locale.HOUR_FORMAT == '12h' %}
-        if (document.getElementById('event_time_hour').value < '12') {
-            document.getElementById('event_time_am').hidden = false;
-            document.getElementById('event_time_pm').hidden = true;
-        } else {
-            document.getElementById('event_time_am').hidden = true;
-            document.getElementById('event_time_pm').hidden = false;
-        };
-
-        if (document.getElementById('event_time_hour_finish').value < '12') {
-            document.getElementById('event_time_am_finish').hidden = false;
-            document.getElementById('event_time_pm_finish').hidden = true;
-        } else {
-            document.getElementById('event_time_am_finish').hidden = true;
-            document.getElementById('event_time_pm_finish').hidden = false;
-        };
+    {% if base == 10 or base == 100 %}
+        {% include 'calendar_view_event_time_iso_to_sezimal.html' %}
+    {% elif base == 20 %}
+        {% include 'calendar_view_event_time_iso_to_dozenal.html' %}
     {% endif %}
 
-    if (document.getElementById('event_full_day').checked) {
-        document.getElementById('event_time_start').hidden = true;
-        document.getElementById('event_time_finish').hidden = true;
+    if ((dados['calendar_type'] == 'SYM') && (dados['base'] != 14)) {
+        document.getElementById('time_start_finish').hidden = false;
+        document.getElementById('iso_time_start_finish').hidden = true;
+
+        //
+        // Let’s convert sezimal/dozenal time to ISO time
+        //
+        {% if base == 10 or base == 100 %}
+            let time = parseInt(document.getElementById('event_time_uta').value, 6) * 36;
+            time = time + parseInt(document.getElementById('event_time_posha').value, 6);
+            time = time / 36 / 36;
+        {% elif base == 20 %}
+            let time = parseInt(document.getElementById('event_time_dozenal_1').value.replaceAll('↊', 'a').replaceAll('↋', 'b'), 12) * 12 * 12;
+            time = time + (parseInt(document.getElementById('event_time_dozenal_2').value.replaceAll('↊', 'a').replaceAll('↋', 'b'), 12) * 12);
+            time = time + parseInt(document.getElementById('event_time_dozenal_3').value.replaceAll('↊', 'a').replaceAll('↋', 'b'), 12);
+            time = time / 12 / 12 / 12;
+        {% endif %}
+
+        document.getElementById('event_time_hour').value = Math.floor(time * 24).toString().padStart(2, '0');
+        time = (time * 24) - Math.floor(time * 24);
+        document.getElementById('event_time_minute').value = Math.floor(time * 60).toString().padStart(2, '0');
+
     } else {
-        document.getElementById('event_time_start').hidden = false;
-        document.getElementById('event_time_finish').hidden = false;
+        document.getElementById('time_start_finish').hidden = true;
+        document.getElementById('iso_time_start_finish').hidden = false;
+
+        //
+        // Let’s convert ISO time to sezimal/dozenal time
+        //
+        let time = parseInt(document.getElementById('event_time_hour').value || 0) * 60 * 60;
+        time = time + parseInt(document.getElementById('event_time_minute').value || 0) * 60;
+        time = time / 86400;
+
+        {% if base == 10 or base == 100 %}
+            time = Math.floor(time * 36 * 36).toString(6).padStart(4, '0');
+            document.getElementById('event_time_uta').value = time.slice(0, 2);
+            document.getElementById('event_time_posha').value = time.slice(2, 4);
+        {% elif base == 20 %}
+            time = Math.floor(time * 12 * 12 * 12).toString(12).padStart(3, '0');
+            time = time.replaceAll('a', '↊').replaceAll('b', '↋');
+            document.getElementById('event_time_dozenal_1').value = time.slice(0, 1);
+            document.getElementById('event_time_dozenal_2').value = time.slice(1, 2);
+            document.getElementById('event_time_dozenal_3').value = time.slice(2, 3);
+        {% endif %}
     };
 };
-
-function build_date_string() {
-    set_date_parameters()
-
-    const calendar_type = document.getElementById('event_calendar_type').value;
-    let dados = _base_data();
-
-    dados['calendar_type'] = calendar_type;
-    dados['easter_sign'] = document.getElementById('event_easter_sign').value;
-    dados['easter_days'] = document.getElementById('event_easter_days').value;
-    dados['year_sign'] = document.getElementById('event_date_year_sign').value;
-    dados['year'] = document.getElementById('event_date_year').value;
-    dados['month'] = document.getElementById('event_date_month').value;
-    dados['day'] = document.getElementById('event_date_day').value;
-    dados['weekday_sign'] = document.getElementById('event_date_weekday_sign').value;
-    dados['weekday'] = document.getElementById('event_date_weekday').value;
-    dados['weekday_number'] = document.getElementById('event_date_weekday_number').value;
-
-    fetch('/calendar/build-date-string', {
-        method: 'post',
-        body: JSON.stringify(dados),
-        headers: {
-            'Accept': 'application/json; charset=UTF-8',
-            'Content-Type': 'application/json; charset=UTF-8'
-        }
-    }).then((response) => {
-        return response.json();
-    }).then((dados) => {
-        document.getElementById('date_error').innerHTML = dados.date_error;
-        document.getElementById('time_error').innerHTML = dados.time_error;
-
-        if (dados.date_error == '') {
-            document.getElementById('date_error').hidden = true;
-            document.getElementById('date_this_year').innerHTML = dados.date_this_year;
-        } else {
-            document.getElementById('date_error').hidden = false;
-        };
-    });
-};
-
 
 function set_today() {
     var today = new Date();
-    console.log('data', today);
     document.getElementById('event_calendar_type').value = 'ISO';
     document.getElementById('event_date_year').value = today.getFullYear().toString();
     document.getElementById('event_date_month').value = (today.getMonth() + 1).toString().padStart(2, '0');

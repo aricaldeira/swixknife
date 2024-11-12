@@ -25,15 +25,15 @@
     {% if locale.DATE_ENDIANNESS != 'L' %}
         {{ locale.DATE_SEPARATOR }}
     {% endif %}
-    <select id="event_date_day" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
+    <select id="event_date_day_select" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
 Dia
 {% elif locale.LANG == 'bz' %}
 Dia
 {% else %}
 Day
 {% endif %}" style="direction:ltr;" value="{{ event.day }}">
-    {% for i in range(1, 37) %}
-        <option id="event_date_day_{{ VALUES[i] }}" value="{{ VALUES[i] }}"{{ ' selected="selected"' if event.day == VALUES[i] else '' }}>{{ DAYS[i] }}</option>
+    {% for i in range(1, 36) %}
+        <option name="event_date_day_{{ VALUES[i] }}" value="{{ VALUES[i] }}"{{ ' selected="selected"' if event.day == VALUES[i] else '' }}>{{ DAYS[i] }}</option>
     {% endfor %}
     </select>
     {% if locale.DATE_ENDIANNESS == 'L' %}

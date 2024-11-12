@@ -48,8 +48,6 @@ function open_event_window() {
     }).then((response) => {
         return response.json();
     }).then((dados) => {
-        console.log('dados', dados);
-
         document.getElementById('calendar_event_view').innerHTML = dados.view;
 
         if  (document.getElementById('event_view_script')) {
@@ -63,7 +61,6 @@ function open_event_window() {
             view_script.async = false;
             view_script.nounce = 'sezimaw';
             view_script.textContent = dados.script_text;
-            console.log('calendar_event_view', document.getElementById('calendar_event_view'));
             document.getElementById('calendar_event_view').appendChild(view_script);
         };
 
