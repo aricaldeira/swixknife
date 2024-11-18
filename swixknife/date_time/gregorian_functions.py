@@ -172,3 +172,36 @@ def gregorian_year_month_day_to_ordinal_date(year, month, day):
     ordinal_date = SezimalInteger(Decimal(ordinal_date))
 
     return ordinal_date
+
+
+def gregorian_year_to_iso_first_monday_ordinal_date(year):
+    first_monday = gregorian_year_month_day_to_ordinal_date(year, 1, 1).decimal
+    first_weekday = (first_monday + 6) % 7
+    first_monday -= first_weekday
+
+    if first_weekday > 3:
+        first_monday += 7
+
+    return first_monday
+
+
+def gregorian_year_month_day_to_iso_year_week_day(year, month, day):
+    first_monday = gregorian_year_to_iso_first_monday_ordinal_date(year)
+    ordinal_date = gregorian_year_month_day_to_ordinal_date(year, month, day).decimal
+
+    week, day = divmod(ordinal_date - first_monday, 7)
+
+    if week < 0:
+        year -= 1
+        first_monday = gregorian_year_to_iso_first_monday_ordinal_date(year)
+        week, day = divmod(ordinal_date - first_monday, 7)
+
+    elif week >= 52:
+        if ordinal_date >= gregorian_year_to_iso_first_monday_ordinal_date(year + 1):
+            year += 1
+            week = 0
+
+    week += 1
+    day += 1
+
+    return year, int(week), int(day)

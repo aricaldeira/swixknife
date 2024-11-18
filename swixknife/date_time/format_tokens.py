@@ -150,16 +150,20 @@ ISO_DATE_NUMBER_FORMAT_TOKENS = tuple(
         f'%{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
-        ('', '5', '5\\!', '@', '\\!', '@\\!', 'Z', '↋', '\\?', '↋\\?', 'Z\\?'),
+        ('', '5', '5\\!', '@', '\\!', '@\\!', 'Z', '↋', '\\?', '↋\\?', 'Z\\?', '9'),
         ('\\*\\-', '\\-', '\\*\\>', '\\>', '\\*', ''),
         (
+            ('W', 'iso_week', 2, 2, 3),
+            ('yW', 'iso_year', 4, 3, 5),
+            ('dW', 'iso_weekday', 1, 1, 2),
+
             ('d', 'gregorian_day', 2, 1, 2),
             ('m', 'gregorian_month', 2, 1, 2),
             ('Y', 'gregorian_year', 4, 3, 5),
             ('y', 'gregorian_year', 4, 3, 5),
             ('e', 'gregorian_day', 2, 1, 2),
+            ('j', 'gregorian_day_in_year', 3, 2, 4),
             ('w', 'weekday', 1, 1, 2),
-            ('W', 'weekday', 1, 1, 2),
         ),
     )
 )

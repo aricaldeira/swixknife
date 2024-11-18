@@ -30,7 +30,8 @@ from ..base import decimal_format, sezimal_format, \
     sezimal_to_niftimal, default_to_sezimal_digits, \
     default_niftimal_to_sezimal_digits, default_niftimal_to_regularized_digits, \
     default_niftimal_to_niftimal_digits
-from .gregorian_functions import ordinal_date_to_gregorian_year_month_day
+from .gregorian_functions import ordinal_date_to_gregorian_year_month_day, \
+    gregorian_year_month_day_to_iso_year_week_day
 from ..units import sezimal_to_decimal_unit
 from .date_time_delta import SezimalDateTimeDelta
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
@@ -366,6 +367,11 @@ class SezimalDate:
                 if token.endswith('>y') and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
 
+                if len(value) >= 5:
+                    value = value[::-1]
+                    value = value[0:3] + locale.GROUP_SEPARATOR + value[3:]
+                    value = value[::-1]
+
             elif '↋' in token:
                 value = str(DozenalInteger(value))
 
@@ -659,6 +665,10 @@ class SezimalDate:
 
         return fmt
 
+    @classmethod
+    def from_gregorian(cls, year: int, month: int, day: int) -> Self:
+        return cls(_datetime.date(year, month, day))
+
     @property
     def gregorian_year(self) -> int:
         if type(self._gregorian_date) in (list, tuple):
@@ -679,6 +689,71 @@ class SezimalDate:
             return self._gregorian_date[2]
 
         return self.gregorian_date.day
+
+    @property
+    def gregorian_is_leap(self) -> int:
+        return \
+            (self.gregorian_year % 4 == 0) \
+            and (
+                self.gregorian_year % 100 != 0
+                or self.gregorian_year % 400 == 0
+            )
+
+    @property
+    def gregorian_day_in_year(self) -> int:
+        last_years_last_ordinal_date = gregorian_year_month_day_to_ordinal_date(self.gregorian_year - 1, 12, 31)
+
+        return int(self.ordinal_date - last_years_last_ordinal_date)
+
+    @property
+    def gregorian_total_days_in_year(self) -> int:
+        if self.gregorian_is_leap:
+            return 366
+
+        return 365
+
+    @property
+    def iso_year(self) -> int:
+        y, w, d = gregorian_year_month_day_to_iso_year_week_day(
+            self.gregorian_year,
+            self.gregorian_month,
+            self.gregorian_day,
+        )
+
+        return y
+
+    @property
+    def iso_week(self) -> int:
+        y, w, d = gregorian_year_month_day_to_iso_year_week_day(
+            self.gregorian_year,
+            self.gregorian_month,
+            self.gregorian_day,
+        )
+
+        return w
+
+    @property
+    def iso_weekday(self) -> int:
+        y, w, d = gregorian_year_month_day_to_iso_year_week_day(
+            self.gregorian_year,
+            self.gregorian_month,
+            self.gregorian_day,
+        )
+
+        return d
+
+    @property
+    def iso_total_weeks_in_year(self) -> int:
+        first_day_of_year = SezimalDate.from_gregorian(self.gregorian_year, 1, 1)
+
+        if first_day_of_year.weekday == 4:
+            return 53
+
+        return 52
+
+    @property
+    def iso_weekformat(self) -> str:
+        return f'{str(self.iso_year).zfill(4)}-W{str(self.iso_week).zfill(2)}-{self.iso_weekday}'
 
     @property
     def gregorian_isoformat(self) -> str:
