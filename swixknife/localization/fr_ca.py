@@ -39,8 +39,8 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         # that (usually) don’t have a year of reference
         #
         ('01-01', '🕊\ufe0f️ 🌎\ufe0f Jour de l’An #Sym454'),
-        ('10-40', '🇫\ufe0f🇮\ufe0f Saint-Jean-Baptiste #Sym454'),
-        ('13-44', '🇨\ufe0f🇦\ufe0f Journée de la vérité et de la réconciliation #Sym454'),
+        ('10-40', '🇫🇮\ufe0f Saint-Jean-Baptiste #Sym454'),
+        ('13-44', '🇨🇦\ufe0f Journée de la vérité et de la réconciliation #Sym454'),
         ('15-15', '🪦\ufe0f🪖\ufe0f Jour du Souvenir #Sym454'),
         ('20-41', '🌟\ufe0f👼🏼\ufe0f Noël #Sym454'),
         ('20-42', '🎁\ufe0f Lendemain de Noël #Sym454'),
@@ -50,13 +50,13 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         #
         ('13-01', '🐝\ufe0f🐜\ufe0f Fête du travail #Sym454'),
         ('05-34', '👸\ufe0f🏻\ufe0f Journée nationale des patriotes #Sym454'),
-        ('12-01', '🇨\ufe0f🇦\ufe0f Premier lundi d’août #Sym454'),
+        ('12-01', '🇨🇦\ufe0f Premier lundi d’août #Sym454'),
         ('14-12', '🙏\ufe0f Action de grâce #Sym454'),
 
         #
         # And the one’s that do have a year of reference
         #
-        ('212_351-11-01', '🇨\ufe0f🇦\ufe0f Fête du Canada (#i) #Sym454'),
+        ('212_351-11-01', '🇨🇦\ufe0f Fête du Canada (#i) #Sym454'),
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -72,8 +72,8 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         # that (usually) don’t have a year of reference
         #
         ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Jour de l’An'),
-        ('ISO+06-24', '🇫\ufe0f🇮\ufe0f Saint-Jean-Baptiste'),
-        ('ISO+09-30', '🇨\ufe0f🇦\ufe0f Journée de la vérité et de la réconciliation'),
+        ('ISO+06-24', '🇫🇮\ufe0f Saint-Jean-Baptiste'),
+        ('ISO+09-30', '🇨🇦\ufe0f Journée de la vérité et de la réconciliation'),
         ('ISO+11-11', '🪦\ufe0f🪖\ufe0f Jour du Souvenir'),
         ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Noël'),
         ('ISO+12-26', '🎁\ufe0f Lendemain de Noël'),
@@ -83,11 +83,11 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         #
         ('ISO+09-01+MON', '🐝\ufe0f🐜\ufe0f Fête du travail'),
         ('ISO+05-24-MON', '👸\ufe0f🏻\ufe0f Journée nationale des patriotes'),
-        ('ISO+08-01+MON', '🇨\ufe0f🇦\ufe0f Premier lundi d’août'),
+        ('ISO+08-01+MON', '🇨🇦\ufe0f Premier lundi d’août'),
         ('ISO+10-01+MON_2', '🙏\ufe0f Action de grâce'),
 
         #
         # And the one’s that do have a year of reference
         #
-        ('ISO+1867-07-01', '🇨\ufe0f🇦\ufe0f Fête du Canada (%i)'),
+        ('ISO+1867-07-01', '🇨🇦\ufe0f Fête du Canada (%i)'),
     ]

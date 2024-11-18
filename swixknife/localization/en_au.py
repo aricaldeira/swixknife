@@ -49,11 +49,11 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('130_324-01-43', '🇦\ufe0f🇺\ufe0f Australia Day (#i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
-        # ('131_055-04-33', '🇦\ufe0f🇺\ufe0f Anzac Day (#i)'),      # Sunday   131_055-04-33 ~ 1915-04-25_dec
+        # ('130_324-01-43', '🇦🇺\ufe0f Australia Day (#i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
+        # ('131_055-04-33', '🇦🇺\ufe0f Anzac Day (#i)'),      # Sunday   131_055-04-33 ~ 1915-04-25_dec
 
-        ('212_140-01-43', '🇦\ufe0f🇺\ufe0f Australia Day (#i)'),  # Saturday 01-42 ~ 01-26_desc
-        ('212_511-04-33', '🇦\ufe0f🇺\ufe0f Anzac Day (#i)'),      # Sunday   04-41 ~ 04-25_dec
+        ('212_140-01-43', '🇦🇺\ufe0f Australia Day (#i)'),  # Saturday 01-42 ~ 01-26_desc
+        ('212_511-04-33', '🇦🇺\ufe0f Anzac Day (#i)'),      # Sunday   04-41 ~ 04-25_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -83,6 +83,6 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO+1788-01-26', '🇦\ufe0f🇺\ufe0f Australia Day (%i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
-        ('ISO+1915-04-25', '🇦\ufe0f🇺\ufe0f Anzac Day (%i)'),      # Sunday   130_324-01-43 ~ 1915-04-25_dec
+        ('ISO+1788-01-26', '🇦🇺\ufe0f Australia Day (%i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
+        ('ISO+1915-04-25', '🇦🇺\ufe0f Anzac Day (%i)'),      # Sunday   130_324-01-43 ~ 1915-04-25_dec
     ]

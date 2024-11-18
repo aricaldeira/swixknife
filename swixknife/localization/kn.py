@@ -177,9 +177,9 @@ class SezimalLocaleKN(SezimalLocale):
         # National Holidays
         # that occur on a specific date
         #
-        ('213010-01-41', '🇮\ufe0f🇳\ufe0f ಗಣರಾಜ್ಯೋತ್ಸವ (#i) #Sym454'),
-        ('213003-12-31', '🇮\ufe0f🇳\ufe0f ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ (#i) #Sym454'),
-        ('212353-13-43', '🇮\ufe0f🇳\ufe0f👳🏽‍♂️ ಗಾಂಧಿ ಜಯಂತಿ (#i) #Sym454'),
+        ('213010-01-41', '🇮🇳\ufe0f ಗಣರಾಜ್ಯೋತ್ಸವ (#i) #Sym454'),
+        ('213003-12-31', '🇮🇳\ufe0f ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ (#i) #Sym454'),
+        ('212353-13-43', '🇮🇳\ufe0f👳🏽‍♂️ ಗಾಂಧಿ ಜಯಂತಿ (#i) #Sym454'),
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -187,7 +187,7 @@ class SezimalLocaleKN(SezimalLocale):
         # National Holidays
         # that occur on a specific date
         #
-        ('ISO-1950-01-26', '🇮\ufe0f🇳\ufe0f ಗಣರಾಜ್ಯೋತ್ಸವ (%i)'),
-        ('ISO-1947-08-15', '🇮\ufe0f🇳\ufe0f ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ (%i)'),
-        ('ISO-1869-10-02', '🇮\ufe0f🇳\ufe0f👳🏽‍♂️ ಗಾಂಧಿ ಜಯಂತಿ (%i)'),
+        ('ISO-1950-01-26', '🇮🇳\ufe0f ಗಣರಾಜ್ಯೋತ್ಸವ (%i)'),
+        ('ISO-1947-08-15', '🇮🇳\ufe0f ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ (%i)'),
+        ('ISO-1869-10-02', '🇮🇳\ufe0f👳🏽‍♂️ ಗಾಂಧಿ ಜಯಂತಿ (%i)'),
     ]

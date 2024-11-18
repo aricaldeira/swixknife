@@ -59,15 +59,15 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('131_234-04-41', '🇵\ufe0f🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira 131_234-04-41 ~ 1974-04-25_dec
-        # ('125_340-10-13', '🇵\ufe0f🇹\ufe0f Dia de Portugal (#i)'),               # terça-feira  125_340-10-13 ~ 1580-06-10_dec
-        # ('131_050-14-03', '🇵\ufe0f🇹\ufe0f Implantação da República (#i)'),      # quarta-feira 131_050-14-03 ~ 1910-10-05_dec
-        # ('125_520-15-54', '🇵\ufe0f🇹\ufe0f Restauração da Independência (#i)'),  # sábado       125_520-15-54 ~ 1640-12-01_dec
+        # ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira 131_234-04-41 ~ 1974-04-25_dec
+        # ('125_340-10-13', '🇵🇹\ufe0f Dia de Portugal (#i)'),               # terça-feira  125_340-10-13 ~ 1580-06-10_dec
+        # ('131_050-14-03', '🇵🇹\ufe0f Implantação da República (#i)'),      # quarta-feira 131_050-14-03 ~ 1910-10-05_dec
+        # ('125_520-15-54', '🇵🇹\ufe0f Restauração da Independência (#i)'),  # sábado       125_520-15-54 ~ 1640-12-01_dec
 
-        ('131_234-04-41', '🇵\ufe0f🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira,  04-41 ~ 04-25_dec
-        ('125_340-10-14', '🇵\ufe0f🇹\ufe0f Dia de Portugal (#i)'),               # quarta-feira,  10-14 ~ 06-10_dec
-        ('131_050-14-05', '🇵\ufe0f🇹\ufe0f Implantação da República (#i)'),      # sexta-feira,   14-05 ~ 10-05_dec
-        ('125_520-20-01', '🇵\ufe0f🇹\ufe0f Restauração da Independência (#i)'),  # segunda-feira, 20-01 ~ 12-01_dec
+        ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira,  04-41 ~ 04-25_dec
+        ('125_340-10-14', '🇵🇹\ufe0f Dia de Portugal (#i)'),               # quarta-feira,  10-14 ~ 06-10_dec
+        ('131_050-14-05', '🇵🇹\ufe0f Implantação da República (#i)'),      # sexta-feira,   14-05 ~ 10-05_dec
+        ('125_520-20-01', '🇵🇹\ufe0f Restauração da Independência (#i)'),  # segunda-feira, 20-01 ~ 12-01_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -98,10 +98,10 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO+1974-04-25', '🇵\ufe0f🇹\ufe0f Dia da Liberdade (%i)'),
-        ('ISO+1580-06-10', '🇵\ufe0f🇹\ufe0f Dia de Portugal (%i)'),
-        ('ISO+1910-10-05', '🇵\ufe0f🇹\ufe0f Implantação da República (%i)'),
-        ('ISO+1640-12-01', '🇵\ufe0f🇹\ufe0f Restauração da Independência (%i)'),
+        ('ISO+1974-04-25', '🇵🇹\ufe0f Dia da Liberdade (%i)'),
+        ('ISO+1580-06-10', '🇵🇹\ufe0f Dia de Portugal (%i)'),
+        ('ISO+1910-10-05', '🇵🇹\ufe0f Implantação da República (%i)'),
+        ('ISO+1640-12-01', '🇵🇹\ufe0f Restauração da Independência (%i)'),
     ]
 
     HIJRI_CALENDAR_MONTH_NAME = [

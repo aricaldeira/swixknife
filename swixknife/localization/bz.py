@@ -29,6 +29,8 @@ class SezimalLocaleBZ(SezimalLocale):
     CURRENCY_UNIT_SYMBOL = 'R$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'
 
+    FIRST_WEEKDAY = 'SUN'
+
     WEEKDAY_NAME = [
         'segunda',
         'tersa',
@@ -160,16 +162,16 @@ class SezimalLocaleBZ(SezimalLocale):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('212_144-04-32', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        # ('212_144-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
         # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        # ('212_234-13-10', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        # ('212_425-15-31', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        # ('212_234-13-10', '🇧🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        # ('212_425-15-31', '🇧🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
         # ('211_503-15-33', '👨🏿\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
 
-        ('212_144-04-33', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('212_144-04-33', '🇧🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
         ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
-        ('212_234-13-11', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
-        ('212_425-15-23', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
+        ('212_234-13-11', '🇧🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
+        ('212_425-15-23', '🇧🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
         ('211_503-15-32', '👨🏿\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
     ]
 
@@ -205,10 +207,10 @@ class SezimalLocaleBZ(SezimalLocale):
         # Also, the original date in the original calendar can also be shown,
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO+1792-04-21', '🇧\ufe0f🇷\ufe0f🔺\ufe0f Tiradentis'),                      # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        ('ISO+1792-04-21', '🇧🇷\ufe0f🔺\ufe0f Tiradentis'),                      # sábadu  212_144-04-32 ~ 1792-04-21_dec
         ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (%i)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
-        ('ISO+1822-09-07', '🇧\ufe0f🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (%i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
-        ('ISO+1889-11-15', '🇧\ufe0f🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (%i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        ('ISO+1822-09-07', '🇧🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (%i)'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        ('ISO+1889-11-15', '🇧🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (%i)'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
         ('ISO+1695-11-20', '👨🏿\ufe0f Konsyensya Negra'),                  # dumingu 211_503-15-33 ~ 1695-11-20_dec
     ]
 

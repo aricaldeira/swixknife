@@ -282,6 +282,10 @@ class SezimalLocale:
     def ISO_YEAR_MONTH_FORMAT(self) -> str:
         return self._to_iso_date_format(self.YEAR_MONTH_FORMAT)
 
+    @property
+    def ISO_YEAR_TEXT_MONTH_FORMAT(self) -> str:
+        return self._to_iso_date_format(self.YEAR_TEXT_MONTH_FORMAT)
+
     def _to_text_short_month_format(self, fmt: str) -> str:
         fmt = fmt.replace('#m', '#@M')
         fmt = fmt.replace('#?m', '#@M')
