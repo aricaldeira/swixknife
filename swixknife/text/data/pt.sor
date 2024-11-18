@@ -86,13 +86,17 @@ cbrt\( raiz cúbica de
 3 três
 4 quatro
 5 cinco
+
 10 seis
-11 sete
-12 oito
-13 nove
-14 dez
-15 onze
-20 doze
+
+11 sete # [:pt-PT:]
+12 oito # [:pt-PT:]
+13 nove # [:pt-PT:]
+14 dez # [:pt-PT:]
+15 onze # [:pt-PT:]
+20 doze # [:pt-PT:]
+
+20 dusseis
 30 tresseis
 40 quasseis
 50 quinseis
@@ -103,7 +107,6 @@ cbrt\( raiz cúbica de
 300 trenife
 400 quatronife
 500 quinife
-
 (\d)(0\d) $(\100) e $2
 (\d)(1\d) $(\100) e $2
 (\d)(\d0) $(\100) e $2

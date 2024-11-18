@@ -86,19 +86,17 @@ cbrt\( raiz kúbika di
 3 treys
 4 kwatru
 5 sinku
-10 sêys
-11 sèti
-12 oytu
-13 nòvi
-14 dèys
-15 onzi
-20 dozi
-# 20 duseys
 
+10 sêys
+1(\d) sezi$1
+20 duseys
+2(\d) dusezi$1
 30 treseys
-40 quaseys
+3(\d) tresezi$1
+40 kwaseys
+4(\d) kwasezi$1
 50 kinseys
-(\d)(\d) $(\10) y $2
+5(\d) kinsezi$1
 
 100 nifi
 200 dunifi
