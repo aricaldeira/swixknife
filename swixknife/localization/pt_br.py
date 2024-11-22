@@ -45,16 +45,16 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         ('212_144-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentes (#i) #sim'),                # sábado      212_144-04-32 ~ 1792-04-21_dec
         ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolução de 1932 (212.540) (#i) #sim'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
         ('212_234-13-10', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (#i) #sim'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
-        ('213_100-14-22', '⛪\ufe0f👸🏿\ufe0f Nossa Senhora Aparecida (#i) #sim'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
+        ('213_100-14-22', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida (#i) #sim'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
         ('212_425-15-31', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (#i) #sim'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec
-        ('211_503-15-33', '👨🏿\ufe0f Consciência Negra (#i) #sim'),           # domingo     211_503-15-33 ~ 1695-11-20_dec
+        ('211_503-15-33', '👨🏾\ufe0f Consciência Negra (#i) #sim'),           # domingo     211_503-15-33 ~ 1695-11-20_dec
 
         #('212_144-04-33', '🇧🇷\ufe0f🔺\ufe0f Tiradentes #sim'),                     # domingo,       04-33 ~ 04-21_dec
         #('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolução de 1932 (212.540) (#i) #sim'),   # terça-feira,   11-13 ~ 07-09_dec
         #('212_234-13-11', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (#i) #sim'),   # domingo,       13-11 ~ 09-07_dec
-        #('213_100-14-20', '⛪\ufe0f👸🏿\ufe0f Nossa Senhora Aparecida #sim'),     # sexta-feira      14-20 ~ 10-12_dec
+        #('213_100-14-20', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida #sim'),     # sexta-feira      14-20 ~ 10-12_dec
         #('212_425-15-23', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (#i) #sim'),  # segunda-feira, 15-23 ~ 11-15_dec
-        #('211_503-15-32', '👨🏿\ufe0f Consciência Negra #sim'),                # sábado,        15-32 ~ 11-20_dec
+        #('211_503-15-32', '👨🏾\ufe0f Consciência Negra #sim'),                # sábado,        15-32 ~ 11-20_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
@@ -91,7 +91,7 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         ('ISO+1792-04-21', '🇧🇷\ufe0f🔺\ufe0f Tiradentes (%i)'),                     # sábado      212_144-04-32 ~ 1792-04-21_dec
         ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolução de 1932 (1̈5̈0̄/540) (%i)'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
         ('ISO+1822-09-07', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (%i)'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
-        ('ISO+1980-10-12', '⛪\ufe0f👸🏿\ufe0f Nossa Senhora Aparecida (%i)'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
+        ('ISO+1980-10-12', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida (%i)'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
         ('ISO+1889-11-15', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (%i)'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec
-        ('ISO+1695-11-20', '👨🏿\ufe0f Consciência Negra (%i)'),                # domingo     211_503-15-33 ~ 1695-11-20_dec
+        ('ISO+1695-11-20', '👨🏾\ufe0f Consciência Negra (%i)'),                # domingo     211_503-15-33 ~ 1695-11-20_dec
     ]

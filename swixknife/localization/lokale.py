@@ -116,6 +116,14 @@ class SezimalLocale:
     def ISO_MONTH_ABBREVIATED_NAME(self) -> list[str]:
         return self.MONTH_ABBREVIATED_NAME
 
+    @property
+    def MONTH_SYMBOL(self) -> list[str]:
+        return [self.slice(month, 0, 1) for month in self.MONTH_ABBREVIATED_NAME]
+
+    @property
+    def ISO_MONTH_SYMBOL(self) -> list[str]:
+        return [self.slice(month, 0, 1) for month in self.ISO_MONTH_ABBREVIATED_NAME]
+
     ERA_NAME: list[str] = [
         #
         # Sezimal Human Era
@@ -634,6 +642,16 @@ class SezimalLocale:
 
         return self.MONTH_ABBREVIATED_NAME[int(month.decimal)]
 
+    def month_symbol(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 1 or month > 20:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        month -= 1
+
+        return self.MONTH_SYMBOL[int(month.decimal)]
+
     def iso_month_name(self, month: SezimalInteger, case: str = None) -> str:
         month = SezimalInteger(month)
 
@@ -653,6 +671,16 @@ class SezimalLocale:
         month -= 1
 
         return self.ISO_MONTH_ABBREVIATED_NAME[int(month.decimal)]
+
+    def iso_month_symbol(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 1 or month > 20:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        month -= 1
+
+        return self.ISO_MONTH_SYMBOL[int(month.decimal)]
 
     def era_name(self, year: SezimalInteger, case: str = None) -> str:
         year = SezimalInteger(year)
