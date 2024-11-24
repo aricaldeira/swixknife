@@ -667,7 +667,7 @@ class SezimalDate:
 
     @classmethod
     def from_gregorian(cls, year: int, month: int, day: int) -> Self:
-        return cls(_datetime.date(year, month, day))
+        return cls.from_ordinal_date(gregorian_year_month_day_to_ordinal_date(year, month, day))
 
     @property
     def gregorian_year(self) -> int:
