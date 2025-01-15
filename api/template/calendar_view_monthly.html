@@ -15,7 +15,13 @@
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'month')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}
+            {% if locale.calendar_displayed == 'SYM' %}
+                {{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}
+            {% elif locale.calendar_displayed == 'ISO' %}
+                {{date.format(locale.ISO_YEAR_TEXT_MONTH_FORMAT, locale)}}
+            {% elif locale.calendar_displayed == 'DCC' %}
+                {{date.format(locale.DCC_YEAR_TEXT_MONTH_FORMAT, locale)}}
+            {% endif %}
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'month')">›</td>
     </tr>
@@ -24,18 +30,51 @@
     </tr>
 </table>
 {% set month_view = True %}
-{% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
-    {% include 'calendar_base_month.html' %}
-{% endwith %}
+{% if locale.calendar_displayed == 'DCC' %}
+    {% with weekday_name_size=3, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
+        {% include 'calendar_base_dcc_month.html' %}
+    {% endwith %}
+{% else %}
+    {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
+        {% if locale.calendar_displayed == 'SYM' %}
+            {% include 'calendar_base_month.html' %}
+        {% elif locale.calendar_displayed == 'ISO' %}
+            {% include 'calendar_base_iso_month.html' %}
+        {% endif %}
+    {% endwith %}
+{% endif %}
 
 <script type="text/javascript" id="view_script">
 function auto_refresh(){
     const header_height = document.getElementById('calendar_header').getBoundingClientRect().height;
 
-    document.getElementById('month_table_{{date.month}}').setAttribute(
-        'style',
-        'border-spacing: 0px; padding-top: ' + header_height + 'px;'
-    );
+    {% if locale.calendar_displayed == 'DCC' %}
+        document.getElementById('month_table_{{date.dcc_month}}').setAttribute(
+            'style',
+            'border-spacing: 0px; padding-top: ' + header_height + 'px;'
+        );
+    {% else %}
+        document.getElementById('month_table_{{date.month}}').setAttribute(
+            'style',
+            'border-spacing: 0px; padding-top: ' + header_height + 'px;'
+        );
+    {% endif %}
 };
 auto_refresh();
+
+//
+// When first loading the page, makes
+// shure today’s date is visible
+//
+function center_today() {
+    const today_rect = document.getElementById('today').getBoundingClientRect();
+    window.scrollTo(
+        0,
+        //
+        // Page middle
+        //
+        (today_rect.top + window.pageYOffset) - (window.innerHeight / 2)
+    );
+};
+center_today();
 </script>

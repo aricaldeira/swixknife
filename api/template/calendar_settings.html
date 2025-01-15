@@ -16,18 +16,6 @@
             <div>
                 {% include 'calculator/locale-select.html' %}
             </div>
-            <div>
-                <input id="locale_first_weekday_input" name="locale_first_weekday_input" type="checkbox">
-                <label for="locale_first_weekday_input">
-                    {% if locale.LANG == 'pt' %}
-                        Usar o primeiro dia da semana do locale?
-                    {% elif locale.LANG == 'bz' %}
-                        Uzar u primeru dia da semana du lokali?
-                    {% else %}
-                        Use locale’s first weekday?
-                    {% endif %}
-                </label>
-            </div>
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
@@ -55,11 +43,11 @@
         <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%"{% endif %}>
             <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
                 {% if locale.LANG == 'pt' %}
-                    Formato de data e hora (24 h/12 h)
+                    Formato de data e hora
                 {% elif locale.LANG == 'bz' %}
-                    Formatu di data i òra (24 h/12 h)
+                    Formatu di data i òra
                 {% else %}
-                    Date and hour format {{ locale.digit_replace('\N{LRI}(24 h/12 h\N{PDI})') }}
+                    Date and hour format
                 {% endif %}
             </div>
             <div>
@@ -190,6 +178,418 @@
         <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
             <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
                 {% if locale.LANG == 'pt' %}
+                    Calendário exibido
+                {% elif locale.LANG == 'bz' %}
+                    Kalendaryu ezibidu
+                {% else %}
+                    Calendar displayed
+                {% endif %}
+            </div>
+            <select id="calendar_displayed_select" style="direction:ltr;">
+                <optgroup label="{% if locale.LANG == 'pt' %}
+    {{ locale.CALENDAR_TYPE['SYM'] }}
+{% elif locale.LANG == 'bz' %}
+    {{ locale.CALENDAR_TYPE['SYM'] }}
+{% else %}
+    {{ locale.CALENDAR_TYPE['SYM'] }}
+{% endif %}
+">
+                    <option value="SYM">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 0–5)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 0–5)
+                        {% else %}
+                            sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
+                        {% endif %}
+                    </option>
+<!--                    <option value="SYM+!">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 󱸀–󱸅)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 󱸀–󱸅)
+                        {% else %}
+                            sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+                    <option value="SYM+9">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            decimal (dez; 0–9)
+                        {% elif locale.LANG == 'bz' %}
+                            desimaw (dèys; 0–9)
+                        {% else %}
+                            decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
+                        {% endif %}
+                    </option>
+                    <option value="SYM+↋">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            dozenal (doze; 0–9 ↊↋)
+                        {% elif locale.LANG == 'bz' %}
+                            dozenaw (dozi; 0–9 ↊↋)
+                        {% else %}
+                            dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
+                        {% endif %}
+                    </option>
+<!--                    <option value="SYM+@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–5 0̇–5̆)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–5 0̇–5̆)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–5 0̇–5̆\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="SYM+!@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 󱸀–󱸅 󱸆–󱸣)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 󱸀–󱸅 󱸆–󱸣)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}󱸀–󱸅 󱸆–󱸣\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="SYM+Z">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['SYM'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–9 A–Z)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–9 A–Z)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–9 A–Z\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+                </optgroup>
+                <optgroup label="{% if locale.LANG == 'pt' %}
+    {{ locale.CALENDAR_TYPE['ISO'] }}
+{% elif locale.LANG == 'bz' %}
+    {{ locale.CALENDAR_TYPE['ISO'] }}
+{% else %}
+    {{ locale.CALENDAR_TYPE['ISO'] }}
+{% endif %}
+">
+                    <option value="ISO">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 0–5)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 0–5)
+                        {% else %}
+                            sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
+                        {% endif %}
+                    </option>
+<!--                    <option value="ISO+!">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 󱸀–󱸅)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 󱸀–󱸅)
+                        {% else %}
+                            sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+                    <option value="ISO+9">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            decimal (dez; 0–9)
+                        {% elif locale.LANG == 'bz' %}
+                            desimaw (dèys; 0–9)
+                        {% else %}
+                            decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
+                        {% endif %}
+                    </option>
+                    <option value="ISO+↋">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            dozenal (doze; 0–9 ↊↋)
+                        {% elif locale.LANG == 'bz' %}
+                            dozenaw (dozi; 0–9 ↊↋)
+                        {% else %}
+                            dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
+                        {% endif %}
+                    </option>
+<!--                    <option value="ISO+@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–5 0̇–5̆)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–5 0̇–5̆)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–5 0̇–5̆\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="ISO+!@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 󱸀–󱸅 󱸆–󱸣)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 󱸀–󱸅 󱸆–󱸣)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}󱸀–󱸅 󱸆–󱸣\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="ISO+Z">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['ISO'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–9 A–Z)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–9 A–Z)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–9 A–Z\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+                </optgroup>
+                <optgroup label="{% if locale.LANG == 'pt' %}
+    {{ locale.CALENDAR_TYPE['DCC'] }}
+{% elif locale.LANG == 'bz' %}
+    {{ locale.CALENDAR_TYPE['DCC'] }}
+{% else %}
+    {{ locale.CALENDAR_TYPE['DCC'] }}
+{% endif %}
+">
+                    <option value="DCC">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 0–5)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 0–5)
+                        {% else %}
+                            sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
+                        {% endif %}
+                    </option>
+<!--                    <option value="DCC+!">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            sezimal (seis; 󱸀–󱸅)
+                        {% elif locale.LANG == 'bz' %}
+                            sezimaw (sêys; 󱸀–󱸅)
+                        {% else %}
+                            sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+<!--                    <option value="DCC+9">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            decimal (dez; 0–9)
+                        {% elif locale.LANG == 'bz' %}
+                            desimaw (dèys; 0–9)
+                        {% else %}
+                            decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
+                        {% endif %}
+                    </option>
+                    <option value="DCC+↋">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            dozenal (doze; 0–9 ↊↋)
+                        {% elif locale.LANG == 'bz' %}
+                            dozenaw (dozi; 0–9 ↊↋)
+                        {% else %}
+                            dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+<!--                    <option value="DCC+@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–5 0̇–5̆)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–5 0̇–5̆)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–5 0̇–5̆\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="DCC+!@">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 󱸀–󱸅 󱸆–󱸣)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 󱸀–󱸅 󱸆–󱸣)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}󱸀–󱸅 󱸆–󱸣\N{PDI}' }})
+                        {% endif %}
+                    </option>
+                    <option value="DCC+Z">
+                        {% if locale.LANG == 'pt' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% elif locale.LANG == 'bz' %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% else %}
+                            {{ locale.CALENDAR_TYPE['DCC'] }}
+                        {% endif %}
+                        —
+                        {% if locale.LANG == 'pt' %}
+                            nifesimal (trinta e seis; 0–9 A–Z)
+                        {% elif locale.LANG == 'bz' %}
+                            nifezimaw (trinta y sêys; 0–9 A–Z)
+                        {% else %}
+                            niftimal (thirty-six; {{ '\N{LRI}0–9 A–Z\N{PDI}' }})
+                        {% endif %}
+                    </option>-->
+                </optgroup>
+            </select>
+            <div>
+                <input id="locale_first_weekday_input" name="locale_first_weekday_input" type="checkbox">
+                <label for="locale_first_weekday_input">
+                    {% if locale.LANG == 'pt' %}
+                        Usar o primeiro dia da semana do locale?
+                    {% elif locale.LANG == 'bz' %}
+                        Uzar u primeru dia da semana du lokali?
+                    {% else %}
+                        Use locale’s first weekday?
+                    {% endif %}
+                </label>
+            </div>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
                     Feriados oficiais
                 {% elif locale.LANG == 'bz' %}
                     Feriadus ofisiays
@@ -242,6 +642,40 @@
                     {% endif %}
                 </option>
             </select>
+        </div>
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
+        {% endif %}
+    </div>
+
+
+    <div style="clear: both;">
+        {% if not mobile %}
+            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
+        {% endif %}
+        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
+            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
+                {% if locale.LANG == 'pt' %}
+                    Latitude e longitude
+                {% elif locale.LANG == 'bz' %}
+                    Latitudi y Lonjitudi
+                {% else %}
+                    Latitude and longitude
+                {% endif %}
+                {% if base != 14 %}
+                    {% if locale.LANG == 'bz' %}
+                        (desimaw)
+                    {% else %}
+                        (decimal)
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div>
+                ↕ <input id="sezimal-latitude-input" type="number" style="width: 9rem; text-align: center;" />
+            </div>
+            <div>
+                ↔ <input id="sezimal-longitude-input" type="number" style="width: 9rem; text-align: center;" />
+            </div>
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
@@ -312,45 +746,6 @@
         {% endif %}
     </div>
 
-
-    <div style="clear: both;">
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
-        {% endif %}
-        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
-            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;">
-                {% if locale.LANG == 'pt' %}
-                    Latitude e longitude
-                {% elif locale.LANG == 'bz' %}
-                    Latitudi y Lonjitudi
-                {% else %}
-                    Latitude and longitude
-                {% endif %}
-                {% if base != 14 %}
-                    {% if locale.LANG == 'bz' %}
-                        (desimaw)
-                    {% else %}
-                        (decimal)
-                    {% endif %}
-                {% endif %}
-            </div>
-            <div>
-                ↕ <input id="sezimal-latitude-input" type="number" style="width: 9rem; text-align: center;" />
-            </div>
-            <div>
-                ↔ <input id="sezimal-longitude-input" type="number" style="width: 9rem; text-align: center;" />
-            </div>
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
-        {% endif %}
-        <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
-        {% endif %}
-    </div>
-
     <div style="clear: both;">
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>
@@ -394,95 +789,6 @@
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 5%;"> </div>
         {% endif %}
         <div {% if not mobile %}style="float: {{ 'right' if locale.RTL else 'left' }}; width: 27.5%;"{% endif %}>
-            <div style="font-weight: bold; font-size: 1.1rem; line-height: 2.5rem;{% if hide_base %} display: none;{% endif %}">
-                {% if locale.LANG == 'pt' %}
-                    Base numérica
-                {% elif locale.LANG == 'bz' %}
-                    Bazi numérika
-                {% else %}
-                    Number base
-                {% endif %}
-            </div>
-            <div>
-                <select id="base_select" style="direction:ltr;{% if hide_base %} display: none;{% endif %}">
-                    <option value="10">
-                        {% if locale.LANG == 'pt' %}
-                            Sezimal (seis; 012345)
-                        {% elif locale.LANG == 'bz' %}
-                            Sezimaw (sêys; 012345)
-                        {% else %}
-                            Sezimal (six; {{ locale.digit_replace('\N{LRI}012345\N{PDI}') }})
-                        {% endif %}
-                    </option>
-                    <option value="10!">
-                        {% if locale.LANG == 'pt' %}
-                            Sezimal (seis; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                        {% elif locale.LANG == 'bz' %}
-                            Sezimaw (sêys; 󱸀󱸁󱸂󱸃󱸄󱸅)
-                        {% else %}
-                            Sezimal (six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅\N{PDI}' }})
-                        {% endif %}
-                    </option>
-                    <option value="14">
-                        {% if locale.LANG == 'pt' %}
-                            Decimal (dez; 0123456789)
-                        {% elif locale.LANG == 'bz' %}
-                            Desimaw (dèys; 0123456789)
-                        {% else %}
-                            Decimal (ten; {{ locale.digit_replace('\N{LRI}0123456789\N{PDI}') }})
-                        {% endif %}
-                    </option>
-                    <option value="20">
-                        {% if locale.LANG == 'pt' %}
-                            Dozenal (doze; 0123456789↊↋)
-                        {% elif locale.LANG == 'bz' %}
-                            Dozenaw (dozi; 0123456789↊↋)
-                        {% else %}
-                            Dozenal (twelve; {{ '\N{LRI}0123456789↊↋\N{PDI}' }})
-                        {% endif %}
-                    </option>
-                    <option value="100">
-                        {% if locale.LANG == 'pt' %}
-                            Nifesimal (trinta e seis; 012345 0̇–5̆)
-                        {% elif locale.LANG == 'bz' %}
-                            Nifezimaw (trinta y sêys; 012345 0̇–5̆)
-                        {% else %}
-                            Niftimal (thirty-six; {{ '\N{LRI}012345 0̇–5̆\N{PDI}' }})
-                        {% endif %}
-                    </option>
-                    <option value="100!">
-                        {% if locale.LANG == 'pt' %}
-                            Nifesimal (trinta e seis; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
-                        {% elif locale.LANG == 'bz' %}
-                            Nifezimaw (trinta y sêys; 󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣)
-                        {% else %}
-                            Niftimal (thirty-six; {{ '\N{LRI}󱸀󱸁󱸂󱸃󱸄󱸅 󱸆–󱸣\N{PDI}' }})
-                        {% endif %}
-                    </option>
-                    <option value="100Z">
-                        {% if locale.LANG == 'pt' %}
-                            Nifesimal (trinta e seis; 0123456789 A–Z)
-                        {% elif locale.LANG == 'bz' %}
-                            Nifezimaw (trinta y sêys; 0123456789 A–Z)
-                        {% else %}
-                            Niftimal (thirty-six; {{ '\N{LRI}0123456789 A–Z\N{PDI}' }})
-                        {% endif %}
-                    </option>
-                </select>
-            </div>
-            <div>
-                <input id="iso_date_decimal_input" name="iso_date_decimal_input" type="checkbox" checked>
-                <label for="show_seconds_input">
-                    {% if locale.LANG == 'pt' %}
-                        Datas ISO em decimal?
-                    {% elif locale.LANG == 'bz' %}
-                        Datas ISO in desimaw?
-                    {% else %}
-                        ISO dates in decimal?
-                    {% endif %}
-                </label>
-            </div>
-
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 20%;"> </div>

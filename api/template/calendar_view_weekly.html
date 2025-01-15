@@ -3,6 +3,40 @@
 {% endif %}
 <div id="calendar_header" class="calendar-header-fixed">
 {% include 'calendar_view_change_view.html' %}
+
+{% set first_weekday = date.previous(days=date.weekday - 1) %}
+
+{% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
+
+{% if USE_LOCALE_FIRST_WEEKDAY %}
+    {% if locale.FIRST_WEEKDAY == 'SUN' %}
+        {% set first_weekday = first_weekday.previous(days=1) %}
+    {# This is basically just Iran #}
+    {% elif locale.FIRST_WEEKDAY == 'SAT' %}
+        {% set first_weekday = first_weekday.previous(days=2) %}
+    {% endif %}
+{% endif %}
+
+{% if locale.calendar_displayed in ('SYM', 'ISO') %}
+    {% set last_weekday = first_weekday.next(days=10) %}
+{% elif locale.calendar_displayed == 'DCC' %}
+    {% set first_weekday = date.previous(days=date.dcc_weekday) %}
+    {% set last_weekday = first_weekday.next(days=5) %}
+{% endif %}
+
+{% set SHOW_YEAR = False %}
+
+{% if locale.calendar_displayed == 'SYM' %}
+    {% if (first_weekday.year != last_weekday.year) or (first_weekday.year != date.year) or (last_weekday.year != date.year) %}
+        {% set SHOW_YEAR = True %}
+    {% endif %}
+{% elif locale.calendar_displayed == 'ISO' %}
+    {% if (first_weekday.gregorian_year != last_weekday.gregorian_year) or (first_weekday.gregorian_year != date.gregorian_year) or (last_weekday.gregorian_year != date.gregorian_year) %}
+        {% set SHOW_YEAR = True %}
+    {% endif %}
+{% endif %}
+
+
 <table class="center" style="border-spacing: 0px;">
     <colgroup>
         <col span="1" width="5%">
@@ -15,7 +49,24 @@
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'week')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {{ date.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{month_dates[int(date.week_in_month) - 1][0].format(locale.TEXT_MONTH_DAY_FORMAT, locale) }} — {{month_dates[int(date.week_in_month) - 1][-1].format(locale.TEXT_MONTH_DAY_FORMAT, locale) }}{{ date.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+            <span class="show-in-mobile">
+                {% if locale.calendar_displayed == 'SYM' %}
+                    {{ first_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+                {% elif locale.calendar_displayed == 'ISO' %}
+                    {{ first_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.ISO_YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+                {% elif locale.calendar_displayed == 'DCC' %}
+                    {{ first_weekday.format('&>Y&DS&@M&DS&d' if SHOW_YEAR else '&>Y&DS&@M, &-d', locale) }} — {{ last_weekday.format('&>Y&DS&@M&DS&d' if SHOW_YEAR else '&-d', locale) }}
+                {% endif %}
+            </span>
+            <span class="hide-in-mobile">
+                {% if locale.calendar_displayed == 'SYM' %}
+                    {{ first_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.TEXT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.TEXT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+                {% elif locale.calendar_displayed == 'ISO' %}
+                    {{ first_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.ISO_TEXT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.ISO_TEXT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.ISO_YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+                {% elif locale.calendar_displayed == 'DCC' %}
+                    {{ first_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&yC, &mC, &-d', locale) }} — {{ last_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&dC', locale) }}
+                {% endif %}
+            </span>
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'week')">›</td>
     </tr>
@@ -24,8 +75,14 @@
     </tr>
 </table>
 {% set week_view = True %}
-{% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
-    {% include 'calendar_base_month.html' %}
+{% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
+    {% if locale.calendar_displayed == 'SYM' %}
+        {% include 'calendar_base_month.html' %}
+    {% elif locale.calendar_displayed == 'ISO' %}
+        {% include 'calendar_base_iso_month.html' %}
+    {% elif locale.calendar_displayed == 'DCC' %}
+        {% include 'calendar_base_dcc_month.html' %}
+    {% endif %}
 {% endwith %}
 </div>
 {% include 'calendar_base_week_time.html' %}

@@ -1,0 +1,88 @@
+<div style="clear: both;">
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=0, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=1, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+<div style="clear: both;">
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=2, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=3, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+<div style="clear: both;">
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=4, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=5, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+<div style="clear: both;">
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=10, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=11, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+<div style="clear: both;">
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=12, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=13, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+{% if date.dcc_is_long_year %}
+<div style="clear: both;">
+    {% if not mobile %}
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"> </div>
+        <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
+    {% endif %}
+    <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 49.5%;"{% endif %}>
+        {% with year_view = True, dcc_month_number=14, dcc_year_number=date.dcc_year, weekday_name_size=1 %}
+            {% include 'calendar_base_dcc_month.html' %}
+        {% endwith %}
+    </div>
+</div>
+{% endif %}

@@ -1,3 +1,44 @@
+
+{% set WEEKDAYS = SezimalList([0, 1, 2, 3, 4, 5, 6]) %}
+{% set WEEKDAY_BORDER_LEFT = 5 %}
+{% set WEEKDAY_BORDER_RIGHT = -1 %}
+{% set DAYS_IN_WEEK = 11 %}
+{% set SHADES = SezimalList([shade_01, shade_02, shade_03, shade_04, shade_05, shade_10, shade_11]) %}
+{% set BACK_SHADES = SezimalList([back_shade_01, back_shade_02, back_shade_03, back_shade_04, back_shade_05, back_shade_10, back_shade_11]) %}
+{% set TEXT_SHADES = SezimalList([text_shade_01, text_shade_02, text_shade_03, text_shade_04, text_shade_05, text_shade_10, text_shade_11]) %}
+
+{% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
+
+{% if USE_LOCALE_FIRST_WEEKDAY %}
+    {% if locale.FIRST_WEEKDAY == 'SUN' %}
+        {% set WEEKDAYS = SezimalList([6, 0, 1, 2, 3, 4, 5]) %}
+
+        {# This is for most countries where the week starts on Sunday #}
+        {% if locale.DAY_OF_REST == 'SUN' %}
+            {% set WEEKDAY_BORDER_RIGHT = 6 %}
+
+            {% if locale.OPTIONAL_DAY_OF_REST == 'SAT' %}
+                {% set WEEKDAY_BORDER_LEFT = 5 %}
+            {% endif %}
+
+        {# This is Hebrew and Arabic #}
+        {% elif locale.DAY_OF_REST == 'SAT' %}
+            {% if locale.OPTIONAL_DAY_OF_REST == 'FRI' %}
+                {% set WEEKDAY_BORDER_LEFT = 4 %}
+                {% set WEEKDAY_BORDER_RIGHT = -1 %}
+            {% else %}
+                {% set WEEKDAY_BORDER_LEFT = 5 %}
+            {% endif %}
+        {% endif %}
+
+    {# This is basically just Iran #}
+    {% elif locale.FIRST_WEEKDAY == 'SAT' %}
+        {% set WEEKDAYS = SezimalList([5, 6, 0, 1, 2, 3, 4]) %}
+        {% set WEEKDAY_BORDER_LEFT = 4 %}
+        {% set WEEKDAY_BORDER_RIGHT = -1 %}
+    {% endif %}
+{% endif %}
+
 {% if base == 14 %}
     {% set UTAS = SezimalDictionary({0: '00', 1: '01', 2: '02', 3: '03', 4: '04', 5: '05', 10: '06', 11: '07', 12: '08', 13: '09', 14: '10', 15: '11', 20: '12', 21: '13', 22: '14', 23: '15', 24: '16', 25: '17', 30: '18', 31: '19', 32: '20', 33: '21', 34: '22', 35: '23'}) %}
     {% set HOURS_24 = SezimalDictionary({0: '00', 1: '01', 2: '02', 3: '03', 4: '04', 5: '05', 10: '06', 11: '07', 12: '08', 13: '09', 14: '10', 15: '11', 20: '12', 21: '13', 22: '14', 23: '15', 24: '16', 25: '17', 30: '18', 31: '19', 32: '20', 33: '21', 34: '22', 35: '23'}) %}
@@ -52,72 +93,78 @@
     {% set HALF = locale.digit_replace(HALF) %}
 {% endif %}
 
+{% set color_week_in_year = date.week_in_year %}
+
+{% if locale.calendar_displayed == 'DCC' %}
+    {% set WEEKDAY_BORDER_LEFT = 5 %}
+    {% set WEEKDAY_BORDER_RIGHT = 0 %}
+    {% set DAYS_IN_WEEK = 10 %}
+    {% set WEEKDAYS = SezimalList([0, 1, 2, 3, 4, 5]) %}
+    {% set color_week_in_year = date.dcc_week_in_year %}
+{% endif %}
 
 <table class="center" style="border-spacing: 0px;" id="time_table">
     <colgroup>
-        <col span="1" width="6%">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
-        <col span="1">
+        {% if locale.calendar_displayed == 'DCC' %}
+            <col span="1" width="10%">
+            <col span="1" width="15%">
+            <col span="1" width="15%">
+            <col span="1" width="15%">
+            <col span="1" width="15%">
+            <col span="1" width="15%">
+            <col span="1" width="15%">
+        {% else %}
+            <col span="1" width="6%">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+        {% endif %}
     </colgroup>
     {% for uta in SezimalList(UTAS.keys())[uta_first:uta_last] %}
         {% set time_id = HOURS_24[uta] %}
         {% if base != 20 %}
             <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[color_week_in_year][shade_week_number]}};">
                     {{ '\N{LRI}' }}{{UTAS[uta]}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};" class="hide-in-mobile">{{ ' ' + (locale.lower(locale.AM) if uta < 20 else locale.lower(locale.PM)) }}</span>{% endif %}{{ '\N{PDI}' }}
                 </td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_02]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_03]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_04]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_05]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_10]}}; border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[date.week_in_year][shade_10]}}; padding-{{ 'right' if locale.RTL else 'left' }}: 3px;"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_11]}};"></td>
+                {% for i in SezimalRange(DAYS_IN_WEEK) %}
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year][SHADES[i]]}}; {% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}">
+                    </td>
+                {% endfor %}
             </tr>
             <tr style="vertical-align: top;" id="time_{{time_id}}_half">
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[color_week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[color_week_in_year][shade_week_number]}};">
                     {{ '\N{LRI}' }}<span class="hide-in-mobile">{{UTAS[uta]}}{{SEPARATOR}}</span>{{HALF}}{{ '\N{PDI}' }}
                 </td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_02]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_03]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_04]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_05]}};"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_10]}}; border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[date.week_in_year][shade_10]}}; padding-{{ 'right' if locale.RTL else 'left' }}: 3px;"></td>
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_11]}};"></td>
+                {% for i in SezimalRange(DAYS_IN_WEEK) %}
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year][SHADES[i]]}}; {% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}">
+                    </td>
+                {% endfor %}
             </tr>
         {% else %}
             {% if uta % 2 == 0 %}
                 <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[color_week_in_year][shade_week_number]}};">
                         {{ '\N{LRI}' }}{{UTAS[uta]}}{{ '\N{PDI}' }}
                     </td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_02]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_03]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_04]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_05]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_10]}}; border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[date.week_in_year][shade_10]}}; padding-{{ 'right' if locale.RTL else 'left' }}: 3px;"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_11]}};"></td>
+                    {% for i in SezimalRange(DAYS_IN_WEEK) %}
+                        <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year][SHADES[i]]}}; {% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}">
+                        </td>
+                    {% endfor %}
                 </tr>
-
             {% else %}
                 <tr style="vertical-align: top;" id="time_{{time_id}}">
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[color_week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[color_week_in_year][shade_week_number]}};">
                         {{ '\N{LRI}' }}{{UTAS[uta]}}{{ '\N{PDI}' }}
                     </td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_02]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_03]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_04]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_05]}};"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_10]}}; border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[date.week_in_year][shade_10]}}; padding-{{ 'right' if locale.RTL else 'left' }}: 3px;"></td>
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_11]}};"></td>
+                    {% for i in SezimalRange(DAYS_IN_WEEK) %}
+                        <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[color_week_in_year][SHADES[i]]}}; {% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[color_week_in_year][SHADES[i]]}};{% endif %}">
+                        </td>
+                    {% endfor %}
                 </tr>
             {% endif %}
         {% endif %}

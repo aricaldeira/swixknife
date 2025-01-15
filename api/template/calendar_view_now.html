@@ -2,8 +2,6 @@
     {% include 'calendar_light_mode.html' %}
 {% endif %}
 
-{% set WEEKS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 20: '20', 21: '21', 22: '22', 23: '23', 24: '24', 25: '25', 30: '30', 31: '31', 32: '32', 33: '33', 34: '34', 35: '35', 40: '40', 41: '41', 42: '42', 43: '43', 44: '44', 45: '45', 50: '50', 51: '51', 52: '52', 53: '53', 54: '54', 55: '55', 100: '100', 101: '101', 102: '102', 103: '103', 104: '104', 105: '105', 110: '110', 111: '111', 112: '112', 113: '113', 114: '114', 115: '115', 120: '120', 121: '121', 122: '122', 123: '123', 124: '124', 125: '125'}) %}
-
 {% if base == 14 %}
     {% set NUMBERS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: '10', 15: '11', 20: '12', 21: '13', 22: '14', 23: '15', 24: '16', 25: '17', 30: '18', 31: '19', 32: '20', 33: '21', 34: '22', 35: '23', 40: '24', 41: '25', 42: '26', 43: '27', 44: '28', 45: '29', 50: '30', 51: '31', 52: '32', 53: '33', 54: '34', 55: '35', 100: '36', 101: '37', 102: '38', 103: '39', 104: '40', 105: '41', 110: '42', 111: '43', 112: '44', 113: '45', 114: '46', 115: '47', 120: '48', 121: '49', 122: '50', 123: '51', 124: '52', 125: '53', 1404: '364', 1415: '371'}) %}
 
@@ -67,48 +65,73 @@
     {% endif %}
 {% endif %}
 
+{% if locale.calendar_displayed == 'SYM' %}
+    {% set date_format = locale.DATE_FORMAT %}
+    {% set weekday_format = '#W' %}
+    {% set event_month = date.month %}
+    {% set event_day = date.day %}
+{% elif locale.calendar_displayed == 'ISO' %}
+    {% set date_format = locale.ISO_DATE_FORMAT %}
+    {% set weekday_format = '#W' %}
+    {% set event_month = date.gregorian_month %}
+    {% set event_day = date.gregorian_day %}
+{% elif locale.calendar_displayed == 'DCC' %}
+    {% set date_format = locale.DCC_DATE_FORMAT %}
+    {% set weekday_format = '&W' %}
+    {% set event_month = date.dcc_month %}
+    {% set event_day = date.dcc_day %}
+{% endif %}
+
 <div class="center">
     <div class="now-content">
         <div id="calendar_header" class="calendar-header-now">
-        <p class="now-weekday">{{ now.format('#W', locale) }}</p>
+        <p class="now-weekday">
+        {{ now.format(weekday_format, locale) }}
+        </p>
         {% if base == 14 %}
             <p id="time_display" class="now-time-{{ hour_format }}"></p>
         {% else %}
             <p id="time_display" class="now-time-24h"></p>
         {% endif %}
         <p class="now-date">
-            {% if not locale.iso_date_decimal %}
-                {{ now.format(locale.ISO_DATE_FORMAT, locale) }}
-            {% else %}
-                {{ now.format(locale.DATE_FORMAT, locale) }}
-            {% endif %}
+            {{ now.format(date_format, locale) }}
         </p>
         <div id="weather_view" style="display:none;"></div>
         <p clas="now-events">
-            {% if date.month in events %}
-                {% if date.day in events[date.month] %}
-                    {% for event in events[date.month][date.day] %}
+            {% set ns = namespace(event_separator = '') %}
+            {% if event_month in events %}
+                {% if event_day in events[event_month] %}
+                    {% for event in events[event_month][event_day] %}
                         {% if event.origin_calendar in locale.SHOW_HOLIDAYS %}
-                            &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};&nbsp;
+                            {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ event_separator }}
+                            {% if ns.event_separator == '' %}
+                                {% set ns.event_separator = '; ' %}
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#T4S', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + '4S', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + '4S \N{LRI}(#TS)\N{PDI}', locale)}}</span>
-                {% if date.format('#T4L', locale) %}
-                <br />
+            {% if event_month in events['moon'] %}
+                {% if event_day in events['moon'][event_month] %}
+                    {% for event in events['moon'][event_month][event_day] %}
+                        {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ event_separator }}
+                        {% if ns.event_separator == '' %}
+                            {% set ns.event_separator = '; ' %}
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-            {% endif %}
-
-            {% if date.format('#T4L', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + '4L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + '4L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
             {% endif %}
         </p>
         <p class="now-iso-date">
-            {% if locale.iso_date_decimal %}
+            {% if locale.calendar_displayed != 'ISO' %}
+                {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}
+                    {{ now.format('#@W, ', locale) }}
+                {% endif %}
                 {{ now.format(locale.ISO_DATE_FORMAT, locale) }}
+                {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}
+                    {{ now.format(', #@W', locale) }}
+                {% endif %}
                 {% if base != 14 %} — {% endif %}
             {% endif %}
             {% if base != 14 %}
@@ -117,12 +140,16 @@
             {% endif %}
         </p>
         <p> </p>
-        {% if locale.iso_date_decimal %}
-            {% set year_view = True %}
-            {% set now_view = True %}
-            {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
+        {% set year_view = True %}
+        {% set now_view = True %}
+        {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
+            {% if locale.calendar_displayed == 'SYM' %}
                 {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        {% endif %}
+            {% elif locale.calendar_displayed == 'ISO' %}
+                {% include 'calendar_base_iso_month.html' %}
+            {% elif locale.calendar_displayed == 'DCC' %}
+                {% include 'calendar_base_dcc_month.html' %}
+            {% endif %}
+        {% endwith %}
     </div>
 </div>

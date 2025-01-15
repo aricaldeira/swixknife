@@ -1,0 +1,688 @@
+{% set WEEKS = SezimalDictionary({0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 20: '20', 21: '21', 22: '22', 23: '23', 24: '24', 25: '25', 30: '30', 31: '31', 32: '32', 33: '33', 34: '34', 35: '35', 40: '40', 41: '41', 42: '42', 43: '43', 44: '44', 45: '45', 50: '50', 51: '51', 52: '52', 53: '53', 54: '54', 55: '55', 100: '100', 101: '101', 102: '102', 103: '103', 104: '104', 105: '105', 110: '110', 111: '111', 112: '112', 113: '113', 114: '114', 115: '115', 120: '120', 121: '121', 122: '122', 123: '123', 124: '124', 125: '125'}) %}
+{% set WEEKDAYS = SezimalList([0, 1, 2, 3, 4, 5, 6]) %}
+{% set WEEKDAY_BORDER_LEFT = 5 %}
+{% set WEEKDAY_BORDER_RIGHT = -1 %}
+{% set SHADES = SezimalList([shade_01, shade_02, shade_03, shade_04, shade_05, shade_10, shade_11]) %}
+{% set BACK_SHADES = SezimalList([back_shade_01, back_shade_02, back_shade_03, back_shade_04, back_shade_05, back_shade_10, back_shade_11]) %}
+{% set TEXT_SHADES = SezimalList([text_shade_01, text_shade_02, text_shade_03, text_shade_04, text_shade_05, text_shade_10, text_shade_11]) %}
+
+{% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
+
+{% set iso_month = int(SezimalInteger(sezimal_month_number)) %}
+{% set iso_year = int(SezimalInteger(sezimal_year_number) - 200_000) %}
+{% set first_day_of_month = datetime(iso_year, iso_month, 1) %}
+{% set first_week = SezimalInteger(Decimal(first_day_of_month.isocalendar().week)) %}
+{% set is_long_year = datetime(iso_year, 1, 1).weekday() == 3 %}
+{% set is_leap_year = (iso_year % 4 == 0) and (iso_year % 100 != 0 or iso_year % 400 == 0) %}
+
+{% if not USE_LOCALE_FIRST_WEEKDAY %}
+    {% set weekday_offset = 0 %}
+{% else %}
+    {% if locale.FIRST_WEEKDAY == 'SUN' %}
+        {% set weekday_offset = 1 %}
+        {% set WEEKDAYS = SezimalList([6, 0, 1, 2, 3, 4, 5]) %}
+
+        {# This is for most countries where the week starts on Sunday #}
+        {% if locale.DAY_OF_REST == 'SUN' %}
+            {% set WEEKDAY_BORDER_RIGHT = 6 %}
+
+            {% if locale.OPTIONAL_DAY_OF_REST == 'SAT' %}
+                {% set WEEKDAY_BORDER_LEFT = 5 %}
+            {% endif %}
+
+        {# This is Hebrew and Arabic #}
+        {% elif locale.DAY_OF_REST == 'SAT' %}
+            {% if locale.OPTIONAL_DAY_OF_REST == 'FRI' %}
+                {% set WEEKDAY_BORDER_LEFT = 4 %}
+                {% set WEEKDAY_BORDER_RIGHT = -1 %}
+            {% else %}
+                {% set WEEKDAY_BORDER_LEFT = 5 %}
+            {% endif %}
+        {% endif %}
+
+    {# This is basically just Iran #}
+    {% elif locale.FIRST_WEEKDAY == 'SAT' %}
+        {% set weekday_offset = 2 %}
+        {% set WEEKDAYS = SezimalList([5, 6, 0, 1, 2, 3, 4]) %}
+        {% set WEEKDAY_BORDER_LEFT = 4 %}
+        {% set WEEKDAY_BORDER_RIGHT = -1 %}
+    {% endif %}
+{% endif %}
+
+{% set weekday_offset = weekday_offset + first_day_of_month.weekday() %}
+{% if weekday_offset > 6 %}
+    {% set weekday_offset = 0 %}
+{% endif %}
+
+{% if iso_month == 2 %}
+    {% set weeks = SezimalList([
+        first_week,
+        first_week + 1,
+        first_week + 2,
+        first_week + 3,
+        first_week + 4,
+        ])
+    %}
+
+    {% if is_leap_year %}
+        {% if weekday_offset == 0 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 1,  2,  3,  4,  5, 10, 11]),
+                SezimalList([12, 13, 14, 15, 20, 21, 22]),
+                SezimalList([23, 24, 25, 30, 31, 32, 33]),
+                SezimalList([34, 35, 40, 41, 42, 43, 44]),
+                SezimalList([45,  0,  0,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 1 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  1,  2,  3,  4,  5, 10]),
+                SezimalList([11, 12, 13, 14, 15, 20, 21]),
+                SezimalList([22, 23, 24, 25, 30, 31, 32]),
+                SezimalList([33, 34, 35, 40, 41, 42, 43]),
+                SezimalList([44, 45,  0,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 2 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  1,  2,  3,  4,  5]),
+                SezimalList([10, 11, 12, 13, 14, 15, 20]),
+                SezimalList([21, 22, 23, 24, 25, 30, 31]),
+                SezimalList([32, 33, 34, 35, 40, 41, 42]),
+                SezimalList([43, 44, 45,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 3 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  1,  2,  3,  4]),
+                SezimalList([ 5, 10, 11, 12, 13, 14, 15]),
+                SezimalList([20, 21, 22, 23, 24, 25, 30]),
+                SezimalList([31, 32, 33, 34, 35, 40, 41]),
+                SezimalList([42, 43, 44, 45,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 4 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  1,  2,  3]),
+                SezimalList([ 4,  5, 10, 11, 12, 13, 14]),
+                SezimalList([15, 20, 21, 22, 23, 24, 25]),
+                SezimalList([30, 31, 32, 33, 34, 35, 40]),
+                SezimalList([41, 42, 43, 44, 45,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 5 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  0,  1,  2]),
+                SezimalList([ 3,  4,  5, 10, 11, 12, 13]),
+                SezimalList([14, 15, 20, 21, 22, 23, 24]),
+                SezimalList([25, 30, 31, 32, 33, 34, 35]),
+                SezimalList([40, 41, 42, 43, 44, 45,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 6 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  0,  0,  1]),
+                SezimalList([ 2,  3,  4,  5, 10, 11, 12]),
+                SezimalList([13, 14, 15, 20, 21, 22, 23]),
+                SezimalList([24, 25, 30, 31, 32, 33, 34]),
+                SezimalList([35, 40, 41, 42, 43, 44, 45]),
+                ])
+            %}
+        {% endif %}
+    {% else %}
+        {% if weekday_offset == 0 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 1,  2,  3,  4,  5, 10, 11]),
+                SezimalList([12, 13, 14, 15, 20, 21, 22]),
+                SezimalList([23, 24, 25, 30, 31, 32, 33]),
+                SezimalList([34, 35, 40, 41, 42, 43, 44]),
+                ])
+            %}
+            {% set weeks = SezimalList([
+                first_week,
+                first_week + 1,
+                first_week + 2,
+                first_week + 3,
+                ])
+            %}
+        {% elif weekday_offset == 1 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  1,  2,  3,  4,  5, 10]),
+                SezimalList([11, 12, 13, 14, 15, 20, 21]),
+                SezimalList([22, 23, 24, 25, 30, 31, 32]),
+                SezimalList([33, 34, 35, 40, 41, 42, 43]),
+                SezimalList([44,  0,  0,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 2 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  1,  2,  3,  4,  5]),
+                SezimalList([10, 11, 12, 13, 14, 15, 20]),
+                SezimalList([21, 22, 23, 24, 25, 30, 31]),
+                SezimalList([32, 33, 34, 35, 40, 41, 42]),
+                SezimalList([43, 44,  0,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 3 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  1,  2,  3,  4]),
+                SezimalList([ 5, 10, 11, 12, 13, 14, 15]),
+                SezimalList([20, 21, 22, 23, 24, 25, 30]),
+                SezimalList([31, 32, 33, 34, 35, 40, 41]),
+                SezimalList([42, 43, 44,  0,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 4 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  1,  2,  3]),
+                SezimalList([ 4,  5, 10, 11, 12, 13, 14]),
+                SezimalList([15, 20, 21, 22, 23, 24, 25]),
+                SezimalList([30, 31, 32, 33, 34, 35, 40]),
+                SezimalList([41, 42, 43, 44,  0,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 5 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  0,  1,  2]),
+                SezimalList([ 3,  4,  5, 10, 11, 12, 13]),
+                SezimalList([14, 15, 20, 21, 22, 23, 24]),
+                SezimalList([25, 30, 31, 32, 33, 34, 35]),
+                SezimalList([40, 41, 42, 43, 44,  0,  0]),
+                ])
+            %}
+        {% elif weekday_offset == 6 %}
+            {% set DAYS = SezimalList([
+                SezimalList([ 0,  0,  0,  0,  0,  0,  1]),
+                SezimalList([ 2,  3,  4,  5, 10, 11, 12]),
+                SezimalList([13, 14, 15, 20, 21, 22, 23]),
+                SezimalList([24, 25, 30, 31, 32, 33, 34]),
+                SezimalList([35, 40, 41, 42, 43, 44,  0]),
+                ])
+            %}
+        {% endif %}
+    {% endif %}
+
+{% elif iso_month in (1, 3, 5, 7, 8, 10, 12)  %}
+    {% if weekday_offset == 0 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 1,  2,  3,  4,  5, 10, 11]),
+            SezimalList([12, 13, 14, 15, 20, 21, 22]),
+            SezimalList([23, 24, 25, 30, 31, 32, 33]),
+            SezimalList([34, 35, 40, 41, 42, 43, 44]),
+            SezimalList([45, 50, 51,  0,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 1 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  1,  2,  3,  4,  5, 10]),
+            SezimalList([11, 12, 13, 14, 15, 20, 21]),
+            SezimalList([22, 23, 24, 25, 30, 31, 32]),
+            SezimalList([33, 34, 35, 40, 41, 42, 43]),
+            SezimalList([44, 45, 50, 51,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 2 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  1,  2,  3,  4,  5]),
+            SezimalList([10, 11, 12, 13, 14, 15, 20]),
+            SezimalList([21, 22, 23, 24, 25, 30, 31]),
+            SezimalList([32, 33, 34, 35, 40, 41, 42]),
+            SezimalList([43, 44, 45, 50, 51,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 3 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  1,  2,  3,  4]),
+            SezimalList([ 5, 10, 11, 12, 13, 14, 15]),
+            SezimalList([20, 21, 22, 23, 24, 25, 30]),
+            SezimalList([31, 32, 33, 34, 35, 40, 41]),
+            SezimalList([42, 43, 44, 45, 50, 51,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 4 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  1,  2,  3]),
+            SezimalList([ 4,  5, 10, 11, 12, 13, 14]),
+            SezimalList([15, 20, 21, 22, 23, 24, 25]),
+            SezimalList([30, 31, 32, 33, 34, 35, 40]),
+            SezimalList([41, 42, 43, 44, 45, 50, 51]),
+            ])
+        %}
+    {% elif weekday_offset == 5 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  0,  1,  2]),
+            SezimalList([ 3,  4,  5, 10, 11, 12, 13]),
+            SezimalList([14, 15, 20, 21, 22, 23, 24]),
+            SezimalList([25, 30, 31, 32, 33, 34, 35]),
+            SezimalList([40, 41, 42, 43, 44, 45, 50]),
+            SezimalList([51,  0,  0,  0,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 6 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  0,  0,  1]),
+            SezimalList([ 2,  3,  4,  5, 10, 11, 12]),
+            SezimalList([13, 14, 15, 20, 21, 22, 23]),
+            SezimalList([24, 25, 30, 31, 32, 33, 34]),
+            SezimalList([35, 40, 41, 42, 43, 44, 45]),
+            SezimalList([50, 51,  0,  0,  0,  0,  0]),
+            ])
+        %}
+    {% endif %}
+
+    {% if first_week >= 124 %}
+        {% if weekday_offset < 5 %}
+            {% set weeks = SezimalList([
+                first_week,
+                first_week - first_week + 1,
+                first_week - first_week + 2,
+                first_week - first_week + 3,
+                first_week - first_week + 4,
+                ])
+            %}
+        {% else %}
+            {% set weeks = SezimalList([
+                first_week,
+                first_week - first_week + 1,
+                first_week - first_week + 2,
+                first_week - first_week + 3,
+                first_week - first_week + 4,
+                first_week - first_week + 5,
+                ])
+            %}
+        {% endif %}
+    {% else %}
+        {% if weekday_offset < 5 %}
+            {% set weeks = SezimalList([
+                first_week,
+                first_week + 1,
+                first_week + 2,
+                first_week + 3,
+                first_week + 4,
+                ])
+            %}
+        {% else %}
+            {% set weeks = SezimalList([
+                first_week,
+                first_week + 1,
+                first_week + 2,
+                first_week + 3,
+                first_week + 4,
+                first_week + 5,
+                ])
+            %}
+        {% endif %}
+    {% endif %}
+
+{% else %}
+    {% if weekday_offset == 0 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 1,  2,  3,  4,  5, 10, 11]),
+            SezimalList([12, 13, 14, 15, 20, 21, 22]),
+            SezimalList([23, 24, 25, 30, 31, 32, 33]),
+            SezimalList([34, 35, 40, 41, 42, 43, 44]),
+            SezimalList([45, 50,  0,  0,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 1 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  1,  2,  3,  4,  5, 10]),
+            SezimalList([11, 12, 13, 14, 15, 20, 21]),
+            SezimalList([22, 23, 24, 25, 30, 31, 32]),
+            SezimalList([33, 34, 35, 40, 41, 42, 43]),
+            SezimalList([44, 45, 50,  0,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 2 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  1,  2,  3,  4,  5]),
+            SezimalList([10, 11, 12, 13, 14, 15, 20]),
+            SezimalList([21, 22, 23, 24, 25, 30, 31]),
+            SezimalList([32, 33, 34, 35, 40, 41, 42]),
+            SezimalList([43, 44, 45, 50,  0,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 3 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  1,  2,  3,  4]),
+            SezimalList([ 5, 10, 11, 12, 13, 14, 15]),
+            SezimalList([20, 21, 22, 23, 24, 25, 30]),
+            SezimalList([31, 32, 33, 34, 35, 40, 41]),
+            SezimalList([42, 43, 44, 45, 50,  0,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 4 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  1,  2,  3]),
+            SezimalList([ 4,  5, 10, 11, 12, 13, 14]),
+            SezimalList([15, 20, 21, 22, 23, 24, 25]),
+            SezimalList([30, 31, 32, 33, 34, 35, 40]),
+            SezimalList([41, 42, 43, 44, 45, 50,  0]),
+            ])
+        %}
+    {% elif weekday_offset == 5 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  0,  1,  2]),
+            SezimalList([ 3,  4,  5, 10, 11, 12, 13]),
+            SezimalList([14, 15, 20, 21, 22, 23, 24]),
+            SezimalList([25, 30, 31, 32, 33, 34, 35]),
+            SezimalList([40, 41, 42, 43, 44, 45, 50]),
+            ])
+        %}
+    {% elif weekday_offset == 6 %}
+        {% set DAYS = SezimalList([
+            SezimalList([ 0,  0,  0,  0,  0,  0,  1]),
+            SezimalList([ 2,  3,  4,  5, 10, 11, 12]),
+            SezimalList([13, 14, 15, 20, 21, 22, 23]),
+            SezimalList([24, 25, 30, 31, 32, 33, 34]),
+            SezimalList([35, 40, 41, 42, 43, 44, 45]),
+            SezimalList([50,  0,  0,  0,  0,  0,  0]),
+            ])
+        %}
+    {% endif %}
+
+    {% if weekday_offset <= 5 %}
+        {% set weeks = SezimalList([
+            first_week,
+            first_week + 1,
+            first_week + 2,
+            first_week + 3,
+            first_week + 4,
+            ])
+        %}
+    {% else %}
+        {% set weeks = SezimalList([
+            first_week,
+            first_week + 1,
+            first_week + 2,
+            first_week + 3,
+            first_week + 4,
+            first_week + 5,
+            ])
+        %}
+    {% endif %}
+
+{% endif %}
+
+{% if base == 14 %}
+    {% set NUMBERS = SezimalDictionary({0: '', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: '10', 15: '11', 20: '12', 21: '13', 22: '14', 23: '15', 24: '16', 25: '17', 30: '18', 31: '19', 32: '20', 33: '21', 34: '22', 35: '23', 40: '24', 41: '25', 42: '26', 43: '27', 44: '28', 45: '29', 50: '30', 51: '31', 52: '32', 53: '33', 54: '34', 55: '35', 100: '36', 101: '37', 102: '38', 103: '39', 104: '40', 105: '41', 110: '42', 111: '43', 112: '44', 113: '45', 114: '46', 115: '47', 120: '48', 121: '49', 122: '50', 123: '51', 124: '52', 125: '53', 1404: '364', 1405: '365', 1410: '366', 1415: '371'}) %}
+{% elif base == 20 %}
+    {% set NUMBERS = SezimalDictionary({0: '', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: '↊', 15: '↋', 20: '10', 21: '11', 22: '12', 23: '13', 24: '14', 25: '15', 30: '16', 31: '17', 32: '18', 33: '19', 34: '1↊', 35: '1↋', 40: '20', 41: '21', 42: '22', 43: '23', 44: '24', 45: '25', 50: '26', 51: '27', 52: '28', 53: '29', 54: '2↊', 55: '2↋', 100: '30', 101: '31', 102: '32', 103: '33', 104: '34', 105: '35', 110: '36', 111: '37', 112: '38', 113: '39', 114: '3↊', 115: '3↋', 120: '40', 121: '41', 122: '42', 123: '43', 124: '44', 125: '45', 1404: '264', 1405: '265', 1410: '266', 1415: '26↋'}) %}
+{% elif base == 100 %}
+    {% set NUMBERS = SezimalDictionary({0: '', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '0̇', 11: '1̇', 12: '2̇', 13: '3̇', 14: '4̇', 15: '5̇', 20: '0̈', 21: '1̈', 22: '2̈', 23: '3̈', 24: '4̈', 25: '5̈', 30: '0̊', 31: '1̊', 32: '2̊', 33: '3̊', 34: '4̊', 35: '5̊', 40: '0̄', 41: '1̄', 42: '2̄', 43: '3̄', 44: '4̄', 45: '5̄', 50: '0̆', 51: '1̆', 52: '2̆', 53: '3̆', 54: '4̆', 55: '5̆', 100: '10', 101: '11', 102: '12', 103: '13', 104: '14', 105: '15', 110: '10̇', 111: '11̇', 112: '12̇', 113: '13̇', 114: '14̇', 115: '15̇', 120: '10̈', 121: '11̈', 122: '12̈', 123: '13̈', 124: '14̈', 125: '15̈', 1404: '4̇4', 1405: '4̇5', 1410: '4̇0̇', 1415: '4̇5̇'}) %}
+    {% if sezimal_digits or format_token == '@!' %}
+        {% set NUMBERS = SezimalDictionary({0: '', 1: '󱸁', 2: '󱸂', 3: '󱸃', 4: '󱸄', 5: '󱸅', 10: '󱸆', 11: '󱸇', 12: '󱸈', 13: '󱸉', 14: '󱸊', 15: '󱸋', 20: '󱸌', 21: '󱸍', 22: '󱸎', 23: '󱸏', 24: '󱸐', 25: '󱸑', 30: '󱸒', 31: '󱸓', 32: '󱸔', 33: '󱸕', 34: '󱸖', 35: '󱸗', 40: '󱸘', 41: '󱸙', 42: '󱸚', 43: '󱸛', 44: '󱸜', 45: '󱸝', 50: '󱸞', 51: '󱸟', 52: '󱸠', 53: '󱸡', 54: '󱸢', 55: '󱸣', 100: '󱸁󱸀', 101: '󱸁󱸁', 102: '󱸁󱸂', 103: '󱸁󱸃', 104: '󱸁󱸄', 105: '󱸁󱸅', 110: '󱸁󱸆', 111: '󱸁󱸇', 112: '󱸁󱸈', 113: '󱸁󱸉', 114: '󱸁󱸊', 115: '󱸁󱸋', 120: '󱸁󱸌', 121: '󱸁󱸍', 122: '󱸁󱸎', 123: '󱸁󱸏', 124: '󱸁󱸐', 125: '󱸁󱸑', 1404: '󱸊󱸄', 1405: '󱸊󱸅', 1410: '󱸊󱸆', 1415: '󱸊󱸋'}) %}
+    {% elif format_token == 'Z' %}
+        {% set NUMBERS = SezimalDictionary({0: '', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '6', 11: '7', 12: '8', 13: '9', 14: 'A', 15: 'B', 20: 'C', 21: 'D', 22: 'E', 23: 'F', 24: 'G', 25: 'H', 30: 'I', 31: 'J', 32: 'K', 33: 'L', 34: 'M', 35: 'N', 40: 'O', 41: 'P', 42: 'Q', 43: 'R', 44: 'S', 45: 'T', 50: 'U', 51: 'V', 52: 'W', 53: 'X', 54: 'Y', 55: 'Z', 100: '10', 101: '11', 102: '12', 103: '13', 104: '14', 105: '15', 110: '16', 111: '17', 112: '18', 113: '19', 114: '1A', 115: '1B', 120: '1C', 121: '1D', 122: '1E', 123: '1F', 124: '1G', 125: '1H', 1404: 'A4', 1405: 'A5', 1410: 'A6', 1415: 'AB'}) %}
+    {% endif %}
+{% else %}
+    {% set NUMBERS = SezimalDictionary({0: '', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 20: '20', 21: '21', 22: '22', 23: '23', 24: '24', 25: '25', 30: '30', 31: '31', 32: '32', 33: '33', 34: '34', 35: '35', 40: '40', 41: '41', 42: '42', 43: '43', 44: '44', 45: '45', 50: '50', 51: '51', 52: '52', 53: '53', 54: '54', 55: '55', 100: '100', 101: '101', 102: '102', 103: '103', 104: '104', 105: '105', 110: '110', 111: '111', 112: '112', 113: '113', 114: '114', 115: '115', 120: '120', 121: '121', 122: '122', 123: '123', 124: '124', 125: '125', 1404: '1404', 1405: '1405', 1410: '1410', 1415: '1415'}) %}
+
+    {% if sezimal_digits or format_token == '!' %}
+        {% set NUMBERS = SezimalDictionary({0: '', 1: '󱸁', 2: '󱸂', 3: '󱸃', 4: '󱸄', 5: '󱸅', 10: '󱸁󱸀', 11: '󱸁󱸁', 12: '󱸁󱸂', 13: '󱸁󱸃', 14: '󱸁󱸄', 15: '󱸁󱸅', 20: '󱸂󱸀', 21: '󱸂󱸁', 22: '󱸂󱸂', 23: '󱸂󱸃', 24: '󱸂󱸄', 25: '󱸂󱸅', 30: '󱸃󱸀', 31: '󱸃󱸁', 32: '󱸃󱸂', 33: '󱸃󱸃', 34: '󱸃󱸄', 35: '󱸃󱸅', 40: '󱸄󱸀', 41: '󱸄󱸁', 42: '󱸄󱸂', 43: '󱸄󱸃', 44: '󱸄󱸄', 45: '󱸄󱸅', 50: '󱸅󱸀', 51: '󱸅󱸁', 52: '󱸅󱸂', 53: '󱸅󱸃', 54: '󱸅󱸄', 55: '󱸅󱸅', 100: '󱸁󱸀󱸀', 101: '󱸁󱸀󱸁', 102: '󱸁󱸀󱸂', 103: '󱸁󱸀󱸃', 104: '󱸁󱸀󱸄', 105: '󱸁󱸀󱸅', 110: '󱸁󱸁󱸀', 111: '󱸁󱸁󱸁', 112: '󱸁󱸁󱸂', 113: '󱸁󱸁󱸃', 114: '󱸁󱸁󱸄', 115: '󱸁󱸁󱸅', 120: '󱸁󱸂󱸀', 121: '󱸁󱸂󱸁', 122: '󱸁󱸂󱸂', 123: '󱸁󱸂󱸃', 124: '󱸁󱸂󱸄', 125: '󱸁󱸂󱸅', 1404: '󱸁󱸄󱸀󱸄', 1405: '󱸁󱸄󱸀󱸅', 1410: '󱸁󱸄󱸁󱸀', 1415: '󱸁󱸄󱸁󱸅'}) %}
+    {% endif %}
+{% endif %}
+
+{% if (not year_view) %}
+    {% set MONTH_LINE_HEIGHT = '3rem' %}
+    {% set WEEK_LINE_HEIGHT = '2.5rem' %}
+    {% set MONTH_FONT_SIZE = '1.5rem' %}
+    {% set WEEK_FONT_SIZE = '0.80rem' %}
+    {% set DAY_IN_YEAR_FONT_SIZE = '0.50rem' %}
+    {% set EMOJI_FONT_SIZE = '1.5rem' %}
+    {% set DATE_FONT_SIZE = '1.30rem' %}
+    {% set TODAY_FONT_SIZE = '1.60rem' %}
+    {% set EVENTS_FONT_SIZE = '1rem' %}
+{% else %}
+    {% set MONTH_LINE_HEIGHT = '2rem' %}
+    {% set WEEK_LINE_HEIGHT = '1.5rem' %}
+    {% set MONTH_FONT_SIZE = '1rem' %}
+    {% set WEEK_FONT_SIZE = '0.50rem' %}
+    {% set DAY_IN_YEAR_FONT_SIZE = '0.30rem' %}
+    {% set EMOJI_FONT_SIZE = '1.2rem' %}
+    {% set DATE_FONT_SIZE = '1rem' %}
+    {% set TODAY_FONT_SIZE = '1.10rem' %}
+    {% set EVENTS_FONT_SIZE = '0.75rem' %}
+{% endif %}
+
+{% if locale.DIGITS and (base in (10, 14)) and (format_token != '!') %}
+    {% for i in NUMBERS %}
+        {% set NUMBERS = NUMBERS.update({i: locale.digit_replace(NUMBERS[i])}) %}
+    {% endfor %}
+{% endif %}
+
+{% if base == 10 %}
+    {% set format_token = '5' + format_token %}
+{% endif %}
+
+{% if week_view and date.gregorian_month == iso_month %}
+    {% set week_color = date.week_in_year %}
+{% else %}
+    {% set week_color = weeks[0] %}
+{% endif %}
+
+
+{% if month_view or week_view %}
+{% else %}
+<table class="center" style="border-spacing: 0px;">
+    <colgroup>
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+    </colgroup>
+    <tr style="vertical-align: middle;">
+        {% if locale.RTL %}
+            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[Decimal(iso_month)]}}</td>
+        {% else %}
+            {% if iso_month in (1, 2, 3) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[1]}}</td>
+            {% elif iso_month in (4, 5, 6) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[2]}}</td>
+            {% elif iso_month in (7, 8, 9) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[3]}}</td>
+            {% else %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[4]}}</td>
+            {% endif %}
+        {% endif %}
+        {% if (not base) or base == 10 %}
+        <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold; font-size: {{MONTH_FONT_SIZE}};">
+            {% if now_view %}
+                {{ now.format(locale.ISO_YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% else %}
+                {{locale.upper(locale.ISO_MONTH_NAME[iso_month - 1])}}
+            {% endif %}
+        </td>
+        {% else %}
+        <td colspan="2" style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold; font-size: {{MONTH_FONT_SIZE}};">
+            {% if now_view %}
+                {{ now.format(locale.ISO_YEAR_TEXT_MONTH_FORMAT, locale) }}
+            {% else %}
+                {{locale.upper(locale.ISO_MONTH_NAME[iso_month - 1])}}
+            {% endif %}
+        </td>
+        {% endif %}
+        {% if locale.RTL %}
+            {% if iso_month in (1, 2, 3) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[1]}}</td>
+            {% elif iso_month in (4, 5, 6) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[2]}}</td>
+            {% elif iso_month in (7, 8, 9) %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[3]}}</td>
+            {% else %}
+                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[4]}}</td>
+            {% endif %}
+        {% else %}
+            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[weeks[0]][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{NUMBERS[Decimal(iso_month)]}}</td>
+        {% endif %}
+    </tr>
+</table>
+{% endif %}
+<table class="center" style="border-spacing: 0px;">
+    <colgroup>
+    {% if not year_view %}
+        <col span="1" width="6%">
+    {% else %}
+        <col span="1">
+    {% endif %}
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+    </colgroup>
+    <tr style="vertical-align: middle;">
+        <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_color][shade_week_number]}}; font-size: {{WEEK_FONT_SIZE}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[week_color][shade_week_number]}}; border-bottom: 1px solid {{colors[week_color][shade_week_number]}};">{{ locale.WEEK_NUMBER_SYMBOL }}</td>
+        {% if weekday_name_size > 1 %}
+            {% for i in SezimalRange(11) %}
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_color][SHADES[i]]}}; {% if date.gregorian_month == iso_month and date.weekday == Decimal(WEEKDAYS[i]) + 1 %}background-color: {{ colors[week_color][BACK_SHADES[i]] }}; color: {{ colors[week_color][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %} border-bottom: 1px solid;{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_color][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_color][SHADES[i]]}};{% endif %}">{{locale.slice(locale.upper(locale.WEEKDAY_ABBREVIATED_NAME[WEEKDAYS[i]]), 0, weekday_name_size)}}</td>
+            {% endfor %}
+        {% else %}
+            {% for i in SezimalRange(11) %}
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_color][SHADES[i]]}}; {% if date.gregorian_month == iso_month and date.weekday == Decimal(WEEKDAYS[i]) + 1 %}background-color: {{ colors[week_color][BACK_SHADES[i]] }}; color: {{ colors[week_color][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %} border-bottom: 1px solid;{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_color][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_color][SHADES[i]]}};{% endif %}">{{locale.upper(locale.WEEKDAY_SYMBOL[WEEKDAYS[i]])}}</td>
+            {% endfor %}
+        {% endif %}
+    </tr>
+</table>
+{% if month_view %}
+</div>
+{% endif %}
+<table class="center" style="border-spacing: 0px;" id="month_table_{{sezimal_month_number}}">
+    <colgroup>
+    {% if not year_view %}
+        <col span="1" width="6%">
+    {% else %}
+        <col span="1">
+    {% endif %}
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+        <col span="1">
+    </colgroup>
+    {% for week_in_year in weeks %}
+        {% set week_in_month = weeks.index(week_in_year) %}
+
+        {% if (not week_view) or (date.week_in_year == week_in_year) %}
+            <tr style="vertical-align: middle;">
+                {% if (not year_view) %}
+                    <td rowspan="3" style="color: {{colors[week_in_year][shade_week_number]}}; line-height: {{WEEK_FONT_SIZE}}; font-size: {{WEEK_FONT_SIZE}}; {% if date.week_in_year == week_in_year %}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{% endif %} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};"><span style="display: block; margin-bottom: 0.3rem;">{{NUMBERS[week_in_year]}}<br/></span><span style="border-top: 2px solid {{ colors[weeks[0]][text_shade_week_number] }};"><span class="hide-in-mobile">  </span>{{NUMBERS[125 if month_dates[week_in_month][-1].is_leap else 124]}}<span class="hide-in-mobile">  </span></span></td>
+                {% else %}
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; color: {{colors[week_in_year][shade_week_number]}}; font-size: {{WEEK_FONT_SIZE}}; {% if date.week_in_year == week_in_year %}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{% endif %} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};">{{NUMBERS[week_in_year]}}</td>
+                {% endif %}
+                {% for i in SezimalRange(11) %}
+                    {% if NUMBERS[ DAYS[week_in_month][i] ] == '' %}
+                        {% if week_view %}
+                            <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {% if month_view or week_view %}font-weight: bold;{% endif %} {% if date.gregorian_month == iso_month and SezimalInteger(Decimal(date.gregorian_day)) == DAYS[week_in_month][i] %}background-color: {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }}; color: {{ colors[weeks[week_in_month]][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}" onclick="change_date('{{ month_dates[week_in_month][i] }}')" {% if date.gregorian_month == iso_month and SezimalInteger(Decimal(date.gregorian_day)) == DAYS[week_in_month][i] %}id="today"{% endif %}>
+                                {{ month_dates[week_in_month][i].format('%' + format_token + '-d', locale) }}
+                            </td>
+                        {% else %}
+                            <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {% if month_view or week_view %}font-weight: bold;{% endif %} {% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}">
+                            </td>
+                        {% endif %}
+                    {% else %}
+                        <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {% if month_view or week_view %}font-weight: bold;{% endif %} {% if date.gregorian_month == iso_month and SezimalInteger(Decimal(date.gregorian_day)) == DAYS[week_in_month][i] %}background-color: {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }}; color: {{ colors[weeks[week_in_month]][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}" onclick="change_date('{{ SezimalDate.from_gregorian(iso_year, iso_month, int(SezimalInteger(DAYS[week_in_month][i]))) }}')">{{ NUMBERS[ DAYS[week_in_month][i] ] }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% if (not year_view) %}
+                <tr style="vertical-align: middle;">
+                    {% for i in SezimalRange(11) %}
+                        <td style="font-size: {{WEEK_FONT_SIZE}}; line-height: {{WEEK_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {% if date.gregorian_month == iso_month and SezimalInteger(Decimal(date.gregorian_day)) == DAYS[week_in_month][i] %}background-color: {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }}; color: {{ colors[weeks[week_in_month]][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}">
+                            <span style="font-size: {{WEEK_FONT_SIZE}};">
+                                {% if (not week_view) and NUMBERS[ DAYS[week_in_month][i] ] == '' %}
+                                    &nbsp;
+                                {% else %}
+                                    {{month_dates[week_in_month][i].format(locale.MONTH_DAY_FORMAT, locale)}}
+                                    {% if 'CHR' in locale.SHOW_HOLIDAYS %}
+                                        <span class="hide-in-mobile">
+                                            <br/>
+                                            {{month_dates[week_in_month][i].julian_date(locale)}}
+                                        </span>
+                                    {% endif %}
+                                    {% if 'JEW' in locale.SHOW_HOLIDAYS %}
+                                        <span class="hide-in-mobile">
+                                            <br/>
+                                            {{month_dates[week_in_month][i].hebrew_date(locale)}}
+                                        </span>
+                                    {% endif %}
+                                    {% if 'HIJ' in locale.SHOW_HOLIDAYS %}
+                                        <span class="hide-in-mobile">
+                                            <br/>
+                                            {{month_dates[week_in_month][i].hijri_date(locale)}}
+                                        </span>
+                                    {% endif %}
+                                {% endif %}
+                            </span>
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr style="vertical-align: middle;">
+                    {% for i in SezimalRange(11) %}
+                        <td class="emoji" style="font-size: {{WEEK_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {% if date.gregorian_month == iso_month and SezimalInteger(Decimal(date.gregorian_day)) == DAYS[week_in_month][i] %}background-color: {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }}; color: {{ colors[weeks[week_in_month]][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT %} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}{% if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT %} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{% endif %}">
+                            <span style="font-size: {{WEEK_FONT_SIZE}};">
+                                {% if (not week_view) and NUMBERS[ DAYS[week_in_month][i] ] == '' %}
+                                    &nbsp;
+                                {% else %}
+                                    {% if SezimalInteger(sezimal_month_number) in events %}
+                                        {% for event_day in sorted(events[sezimal_month_number].keys()) %}
+                                            {% for event in events[SezimalInteger(sezimal_month_number)][event_day] %}
+                                                {% if event.origin_calendar in locale.SHOW_HOLIDAYS and event.date.gregorian_day == int(SezimalInteger(DAYS[week_in_month][i])) %}
+                                                    {{ event.emoji }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    {{month_dates[week_in_month][i].format('#@' + locale.DEFAULT_HEMISPHERE + '4S', locale)}}
+                                    {{month_dates[week_in_month][i].format('#@' + locale.DEFAULT_HEMISPHERE + '4L', locale)}}
+                                {% endif %}
+                            </span>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% if (not month_view) and (not week_view) %}
+        {% if len(weeks) == 4 %}
+            <tr style="vertical-align: middle;">
+                <td colspan="8"> </td>
+            </tr>
+        {% endif %}
+        <tr style="vertical-align: middle; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EMOJI_FONT_SIZE}};">
+            <td colspan="8" style="color: {{colors[weeks[2]][shade_04]}}">
+            &nbsp;
+            {% if SezimalInteger(sezimal_month_number) in events %}
+                {% for event_day in sorted(events[sezimal_month_number].keys()) %}
+                    {% for event in events[SezimalInteger(sezimal_month_number)][event_day] %}
+                        {% if event.origin_calendar in locale.SHOW_HOLIDAYS %}
+                            {{ event.date.format('%' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            &nbsp;
+            </td>
+        </tr>
+        <tr style="vertical-align: middle; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EMOJI_FONT_SIZE}};">
+            <td colspan="8" style="font-size: {{WEEK_FONT_SIZE}}; line-height: {{EMOJI_FONT_SIZE}}; color: {{colors[weeks[2]][shade_04]}}">
+            {% if SezimalInteger(sezimal_month_number) in events['moon'] %}
+                {% for event_day in sorted(events['moon'][sezimal_month_number].keys()) %}
+                    {% for event in events['moon'][SezimalInteger(sezimal_month_number)][event_day] %}
+                        {% if month_view or 'ing' not in event.obs %}
+                            {{ event.date.format('%' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            </td>
+        </tr>
+        <tr style="vertical-align: middle;">
+            <td colspan="8" style="font-size: {{WEEK_FONT_SIZE}}; line-height: {{WEEK_FONT_SIZE}};"> </td>
+        </tr>
+    {% endif %}
+</table>

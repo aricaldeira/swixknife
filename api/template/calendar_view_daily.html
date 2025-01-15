@@ -80,8 +80,42 @@
     {% set HALF = locale.digit_replace(HALF) %}
 {% endif %}
 
+{% if locale.calendar_displayed in ('SYM', 'ISO') %}
+    {% set DAILY_COLORS = colors[date.week_in_year] %}
+{% elif locale.calendar_displayed == 'DCC' %}
+    {% set DAILY_COLORS = colors[date.dcc_week_in_year] %}
+{% endif %}
+
+{% if locale.calendar_displayed == 'SYM' %}
+    {% set date_format = locale.DATE_LONG_FORMAT %}
+    {% set week_in_quarter_format = '#' + format_token + '-wQ/#' + format_token + 'twQ' %}
+    {% set day_in_quarter_format = '#' + format_token + '-dQ/#' + format_token + 'tdQ' %}
+    {% set week_in_year_format = '#' + format_token + '-wY/#' + format_token + 'twY' %}
+    {% set day_in_year_format = '#' + format_token + '-dY/#' + format_token + 'tdY' %}
+    {% set event_month = date.month %}
+    {% set event_day = date.day %}
+{% elif locale.calendar_displayed == 'ISO' %}
+    {% set date_format = locale.ISO_DATE_LONG_FORMAT %}
+    {% set week_in_quarter_format = '#' + format_token + '-wQ/#' + format_token + 'twQ' %}
+    {% set day_in_quarter_format = '#' + format_token + '-dQ/#' + format_token + 'tdQ' %}
+    {% set week_in_year_format = '#' + format_token + '-wY/#' + format_token + 'twY' %}
+    {% set day_in_year_format = '#' + format_token + '-dY/#' + format_token + 'tdY' %}
+    {% set event_month = date.gregorian_month %}
+    {% set event_day = date.gregorian_day %}
+{% elif locale.calendar_displayed == 'DCC' %}
+    {% set date_format = locale.DCC_DATE_LONG_FORMAT %}
+    {% set week_in_quarter_format = '&' + format_token + '-wT/&' + format_token + 'twT' %}
+    {% set day_in_quarter_format = '&' + format_token + '-dT/&' + format_token + 'tdT' %}
+    {% set week_in_year_format = '&' + format_token + '-wY/&' + format_token + 'twY' %}
+    {% set day_in_year_format = '&' + format_token + '-dY/&' + format_token + 'tdY' %}
+    {% set event_month = date.dcc_month %}
+    {% set event_day = date.dcc_day %}
+{% endif %}
+
+
 <div id="calendar_header" class="calendar-header-fixed">
 {% include 'calendar_view_change_view.html' %}
+
 <table class="center" style="border-spacing: 0px;">
     <colgroup>
         <col span="1" width="5%">
@@ -94,7 +128,7 @@
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'day')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {{date.format(locale.DATE_LONG_FORMAT, locale)}}
+            {{ date.format(date_format, locale) }}
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'day')">›</td>
     </tr>
@@ -108,36 +142,22 @@
         <col span="1" width="40%">
         <col span="1">
     </colgroup>
-    <tr style="vertical-align: middle; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">
+    <tr style="vertical-align: middle; background-color: {{DAILY_COLORS[shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">
         <td style="line-height: {{MONTH_LINE_HEIGHT}};">
-            <div id="" style="z-index: 1; width: 100%; float: {{ 'right' if locale.RTL else 'left' }}; border-{{ 'left' if locale.RTL else 'right' }}: 2px solid {{colors[date.week_in_year][back_shade_04]}};">
-                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wQ/#' + format_token + 'twQ', locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dQ/#' + format_token + 'tdQ', locale) }}</span>
+            <div id="" style="z-index: 1; width: 100%; float: {{ 'right' if locale.RTL else 'left' }}; border-{{ 'left' if locale.RTL else 'right' }}: 2px solid {{DAILY_COLORS[back_shade_04]}};">
+                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format(week_in_quarter_format, locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format(day_in_quarter_format, locale) }}</span>
             </div>
-            <div id="quarter_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][back_shade_04]}}; width: {{ date.quarter_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
+            <div id="quarter_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{DAILY_COLORS[back_shade_04]}}; width: {{ date.dcc_term_proportion_ellapsed.decimal * 100 if locale.calendar_displayed == 'DCC' else date.quarter_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
-            {{date.format('#W', locale)}}
+            {{ date.format('#W', locale) }}
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}};">
-            <div id="" style="z-index: 1; width: 100%; float: {{ 'left' if locale.RTL else 'right' }}; border-{{ 'right' if locale.RTL else 'left' }}: 2px solid {{colors[date.week_in_year][back_shade_04]}};">
-                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-wY/#' + format_token + 'twY', locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format('#' + format_token + '-dY/#' + format_token + 'tdY', locale) }}</span>
+            <div id="" style="z-index: 1; width: 100%; float: {{ 'left' if locale.RTL else 'right' }}; border-{{ 'right' if locale.RTL else 'left' }}: 2px solid {{DAILY_COLORS[back_shade_04]}};">
+                {{locale.WEEK_NUMBER_SYMBOL}} {{ date.format(week_in_year_format, locale) }}<span class="hide-in-mobile-daily-view-day-in-quarter-year"> ― {{locale.DAY_NUMBER_SYMBOL}} {{ date.format(day_in_year_format, locale) }}</span>
             </div>
-            <div id="year_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][back_shade_04]}}; width: {{ date.year_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
+            <div id="year_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{DAILY_COLORS[back_shade_04]}}; width: {{ date.dcc_year_proportion_ellapsed.decimal * 100 if locale.calendar_displayed == 'DCC' else date.year_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
-
-        {#
-        {% if base == 10 %}
-            {% if format_token == '!' %}
-                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.SEZIMAL_YEAR_TEXT_MONTH_FORMAT.replace('Y', 'X'), locale)}}</td>
-            {% else %}
-                <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-            {% endif %}
-        {% elif base == 14 %}
-            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DECIMAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-        {% elif base == 20 %}
-            <td style="line-height: {{MONTH_LINE_HEIGHT}}; background-color: {{colors[date.week_in_year][shade_month]}}; color: {{'black' if gray_scale else 'white'}}; font-weight: bold;">{{date.format(locale.DOZENAL_YEAR_TEXT_MONTH_FORMAT, locale)}}</td>
-        {% endif %}
-        #}
     </tr>
 </table>
 <table class="center" style="border-spacing: 0px;">
@@ -145,30 +165,45 @@
         <col span="1">
         <col span="1">
     </colgroup>
-    <tr style="vertical-align: middle; color: {{colors[date.week_in_year][shade_01]}}; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EVENTS_LINE_HEIGHT}};">
+    <tr style="vertical-align: middle; color: {{DAILY_COLORS[shade_01]}}; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EVENTS_LINE_HEIGHT}};">
         <td style="text-align: {{ 'right' if locale.RTL else 'left' }};">
-            {% if date.month in events %}
-                {% if date.day in events[date.month] %}
-                    {% for event in events[date.month][date.day] %}
+            {% set ns = namespace(event_separator='') %}
+            {% if event_month in events %}
+                {% if event_day in events[event_month] %}
+                    {% for event in events[event_month][event_day] %}
                         {% if event.origin_calendar in locale.SHOW_HOLIDAYS %}
-                            &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};&nbsp;
+                            {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
+                            {% if ns.event_separator == '' %}
+                                {% set ns.event_separator = '; ' %}
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#TS', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'S \N{LRI}(#TS)\N{PDI}', locale)}}</span>
-                {% if date.format('#TL', locale) %}
-                <br />
-                {% endif %}
-            {% endif %}
             {% if date.format('#TL', locale) %}
-                &nbsp;<span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}</span>
+                {% if ns.event_separator == '' %}
+                    &nbsp;
+                {% else %}
+                    <br/>
+                {% endif %}
+                <span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}
             {% endif %}
         </td>
         <td style="text-align: {{ 'left' if locale.RTL else 'right' }};">
-            &nbsp;{{date.format(locale.ISO_DATE_LONG_FORMAT, locale)}}&nbsp;
+            {% if locale.calendar_displayed == 'SYM' %}
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
+                <br/>
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
+            {% elif locale.calendar_displayed == 'ISO' %}
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
+                <br/>
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
+            {% elif locale.calendar_displayed == 'DCC' %}
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
+                <br/>
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
+            {% endif %}
             {% if 'JUL' in locale.SHOW_HOLIDAYS %}
                 <br/>
                 &nbsp;{{date.julian_date(locale)}}&nbsp;
@@ -199,32 +234,32 @@
     {% for uta in SezimalList(UTAS.keys())[uta_first:uta_last] %}
         {% set time_id = HOURS_24[uta] %}
         {% if base != 20 %}
-            <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+            <tr style="vertical-align: top; background-color: {% if dark_mode %}#000{% else %}#fff{% endif %};" id="time_{{time_id}}">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                     {{UTAS[uta]}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};" class="hide-in-mobile-daily-view-am-pm">{{ (' ' + locale.lower(locale.AM)) if uta < 20 else (' ' + locale.lower(locale.PM)) }}</span>{% endif %}
                 </td>
-                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
             </tr>
-            <tr style="vertical-align: top;" id="time_{{time_id}}_half">
-                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+            <tr style="vertical-align: top; background-color: {% if dark_mode %}#111{% else %}#eee{% endif %}" id="time_{{time_id}}_half">
+                <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                     <span class="hide-in-mobile">{{UTAS[uta]}}{{SEPARATOR}}</span>{{HALF}}
                 </td>
-                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
             </tr>
         {% else %}
             {% if uta % 2 == 0 %}
                 <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                         {{UTAS[uta]}}
                     </td>
-                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
                 </tr>
             {% else %}
                 <tr style="vertical-align: top;" id="time_{{time_id}}">
-                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{colors[date.week_in_year]['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[date.week_in_year][shade_week_number]}};">
+                    <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                         {{UTAS[uta]}}
                     </td>
-                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[date.week_in_year][shade_01]}};"></td>
+                    <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
                 </tr>
             {% endif %}
         {% endif %}

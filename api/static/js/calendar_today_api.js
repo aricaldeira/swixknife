@@ -142,7 +142,11 @@ function _base_data(direction = '', direction_type = '') {
     let show_holiday = localStorage.getItem('sezimal-calendar-show-holiday');
     const show_seconds = localStorage.getItem('sezimal-calendar-show-seconds');
     const locale_first_weekday = localStorage.getItem('sezimal-calendar-locale-first-weekday');
-    const iso_date_decimal = localStorage.getItem('sezimal-calendar-iso-date-decimal');
+    let calendar_displayed = localStorage.getItem('sezimal-calendar-displayed');
+
+    if (calendar_displayed.indexOf('+') != -1) {
+        calendar_displayed = calendar_displayed.split('+')[0];
+    };
 
     if (
         (localStorage.getItem('sezimal-calendar-show-holiday-christian') == true)
@@ -173,7 +177,7 @@ function _base_data(direction = '', direction_type = '') {
     };
 
     document.documentElement.lang = LANGUAGE_TAGS[locale];
-    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${iso_date_decimal}|${locale_first_weekday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
+    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${calendar_displayed}|${locale_first_weekday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
 
     if ((locale == 'ar') || (locale == 'ar_nu_latn') ||
         (locale == 'fa') || (locale == 'fa_nu_latn') ||
@@ -198,7 +202,7 @@ function _base_data(direction = '', direction_type = '') {
         mobile: mobile,
         show_holiday: show_holiday,
         show_seconds: show_seconds,
-        iso_date_decimal: iso_date_decimal,
+        calendar_displayed: calendar_displayed,
         locale_first_weekday: locale_first_weekday,
     };
 
@@ -282,30 +286,23 @@ function apply_settings() {
         document.getElementById('religious_calendar_input_jewish').checked
     );
 
-    if (document.getElementById('base_select').value == '10') {
+    const calendar_displayed = document.getElementById('calendar_displayed_select').value;
+
+    localStorage.setItem('sezimal-calendar-displayed', calendar_displayed);
+
+    if (calendar_displayed.indexOf('+') == -1) {
         localStorage.setItem('sezimal-calendar-base', 10);
         localStorage.setItem('sezimal-calendar-format-token', '');
-    } else if (document.getElementById('base_select').value == '10!') {
+    } else if (calendar_displayed.endsWith('+!')) {
         localStorage.setItem('sezimal-calendar-base', 10);
         localStorage.setItem('sezimal-calendar-format-token', '!');
-    } else if (document.getElementById('base_select').value == '14') {
+    } else if (calendar_displayed.endsWith('+9')) {
         localStorage.setItem('sezimal-calendar-base', 14);
         localStorage.setItem('sezimal-calendar-format-token', '9');
-    } else if (document.getElementById('base_select').value == '20') {
+    } else if (calendar_displayed.endsWith('+↋')) {
         localStorage.setItem('sezimal-calendar-base', 20);
         localStorage.setItem('sezimal-calendar-format-token', '↋');
-    } if (document.getElementById('base_select').value == '100') {
-        localStorage.setItem('sezimal-calendar-base', 100);
-        localStorage.setItem('sezimal-calendar-format-token', '@');
-    } else if (document.getElementById('base_select').value == '100!') {
-        localStorage.setItem('sezimal-calendar-base', 100);
-        localStorage.setItem('sezimal-calendar-format-token', '@!');
-    } else if (document.getElementById('base_select').value == '100Z') {
-        localStorage.setItem('sezimal-calendar-base', 100);
-        localStorage.setItem('sezimal-calendar-format-token', 'Z');
     };
-
-    localStorage.setItem('sezimal-calendar-iso-date-decimal', document.getElementById('iso_date_decimal_input').checked);
 
     localStorage.setItem('sezimal-calendar-theme', document.getElementById('theme_select').value);
 

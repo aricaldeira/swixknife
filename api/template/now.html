@@ -4,6 +4,7 @@
         'bn': 'এখন',
         'bz': 'Agòra',
         'ca': 'Ara',
+        'cy': 'Yn Awr',
         'da': 'Nu',
         'de': 'Jetzt',
         'ee': 'Nüüd',
@@ -71,6 +72,13 @@ html, body {
     <body>
     <div id="now_view">
     {% include 'calendar_view_now.html' %}
+    </div>
+    <div style="display: none;">
+        <audio id="audio">
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.ogg" type="audio/ogg" preload="auto" />
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.mp3" type="audio/mpeg" preload="auto" />
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.wav" type="audio/wav" preload="auto" />
+        </audio>
     </div>
     </body>
     <script src="/static/js/calendar_today_api.js"></script>
@@ -333,5 +341,57 @@ html, body {
         };
 
         update_weather();
+
+        async function registerServiceWorker () {
+            const swRegistration = await navigator.serviceWorker.register('/today/today_service.js'); //notice the file name
+            return swRegistration;
+        };
+
+        async function requestNotificationPermission() {
+            const permission = await window.Notification.requestPermission();
+            return permission;
+        };
+
+        async function showLocalNotification(title, body, silent = true, alarm = false) {
+            const swRegistration = await registerServiceWorker();
+            const permission =  await requestNotificationPermission();
+
+            if (permission != 'granted') {
+                return;
+            };
+
+            let options = {
+                body,
+                icon: 'https://sezimal.tauga.online/now/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}',
+                silent: silent,
+            };
+            swRegistration.showNotification(title, options);
+        };
+
+        async function prepareForNotification () {
+            await registerServiceWorker();
+            await requestNotificationPermission();
+{#
+            await showLocalNotification(
+                {% if locale.LANG == 'pt' %}
+                'Esse é um teste do app “{{ TITLE }}”',
+                {% elif locale.LANGUAGE_TAG in ('bz', 'en-BR', 'pt-BR') %}
+                'Esi è un tèsti du app “{{ TITLE }}”',
+                {% else %}
+                'This is a test from the “{{ TITLE }}” app',
+                {% endif %}
+
+                {% if locale.LANG == 'pt' %}
+                'Testando as notificações, como outros apps de alarme e tempo',
+                {% elif locale.LANGUAGE_TAG in ('bz', 'en-BR', 'pt-BR') %}
+                'Testandu as notifikasoyns, komu otrus apss di alarmi y tenpu',
+                {% else %}
+                'Testing notifications, like other alarm and weather apps',
+                {% endif %}
+            );
+#}
+        };
+
+        prepareForNotification();
     </script>
 </html>

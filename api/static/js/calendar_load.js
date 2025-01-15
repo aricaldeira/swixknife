@@ -12,30 +12,18 @@ function calendar_load() {
         localStorage.setItem('sezimal-calendar-format-token', '');
     };
 
-    if (base == '10') {
-        if (format_token == '!') {
-            document.getElementById('base_select').value = '10!';
+    if (localStorage.getItem('sezimal-calendar-displayed') === null) {
+        if (localStorage.getItem('sezimal-calendar-iso-date-decimal') === 'true') {
+            localStorage.setItem('sezimal-calendar-displayed', 'ISO');
+            localStorage.removeItem('sezimal-calendar-iso-date-decimal');
+        } else if (localStorage.getItem('sezimal-calendar-iso-date-decimal') === 'false') {
+            localStorage.setItem('sezimal-calendar-displayed', 'SYM');
+            localStorage.removeItem('sezimal-calendar-iso-date-decimal');
         } else {
-            document.getElementById('base_select').value = '10';
+            localStorage.setItem('sezimal-calendar-displayed', 'SYM');
         };
-    } else if (base == '100') {
-        if (format_token == '@!') {
-            document.getElementById('base_select').value = '100!';
-        } else if (format_token == 'Z') {
-            document.getElementById('base_select').value = '100Z';
-        } else {
-            document.getElementById('base_select').value = '100';
-        };
-    } else if (base == '14') {
-        document.getElementById('base_select').value = '14';
-    } else if (base == '20') {
-        document.getElementById('base_select').value = '20';
     };
-
-    if (localStorage.getItem('sezimal-calendar-iso-date-decimal') === null) {
-        localStorage.setItem('sezimal-calendar-iso-date-decimal', 'true');
-    };
-    document.getElementById('iso_date_decimal_input').checked = localStorage.getItem('sezimal-calendar-iso-date-decimal') == 'true';
+    document.getElementById('calendar_displayed_select').value = localStorage.getItem('sezimal-calendar-displayed');
 
     /*
     *  First run locale definition

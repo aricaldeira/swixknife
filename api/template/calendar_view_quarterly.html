@@ -6,229 +6,117 @@
 <table class="center" style="border-spacing: 0px;">
     <colgroup>
         <col span="1" width="5%">
+        <col span="1" width="5%">
         <col span="1">
+        <col span="1" width="5%">
         <col span="1" width="5%">
     </colgroup>
     <tr>
-        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+        <td colspan="5" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
     </tr>
     <tr style="vertical-align: middle;">
-        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'quarter')">‹</td>
-         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {% if locale.ISO_MODE %}
-                {{ quarter_first_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ quarter_last_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }}
-            {% else %}
-                {{ quarter_first_month.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{ quarter_first_month.format('#M', locale) }} — {{ quarter_last_month.format('#M', locale) }}{{ quarter_last_month.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'quarter')">«</td>
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'month')">‹</td>
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
+            {% if locale.calendar_displayed in ('SYM', 'ISO') %}
+                {% if date_last_month.year == date_next_month.year and not locale.ISO_MODE %}
+                    {{ date_last_month.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if locale.DATE_ENDIANNESS == 'B' else ''}}{{ date_last_month.format('#M', locale) }} — {{ date_next_month.format('#M', locale) }}{{ date_next_month.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if locale.DATE_ENDIANNESS != 'B' else ''}}
+                {% else %}
+                    {{ date_last_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }} — {{ date_next_month.format(locale.YEAR_TEXT_MONTH_FORMAT, locale) }}
+                {% endif %}
+            {% elif locale.calendar_displayed == 'DCC' %}
+                <span class="hide-in-mobile">
+                    {% if date_last_month.dcc_year == date_next_month.dcc_year %}
+                        {{ date_last_month.format('&>Y&DS&M', locale) }} — {{ date_next_month.format('&M', locale) }}
+                    {% else %}
+                        {{ date_last_month.format('&>Y&DS&M', locale) }} — {{ date_next_month.format('&>Y&DS&M', locale) }}
+                    {% endif %}
+                </span>
+                <span class="show-in-mobile">
+                    {% if date_last_month.dcc_year == date_next_month.dcc_year %}
+                        {{ date_last_month.format('&>Y&DS&@M', locale) }} — {{ date_next_month.format('&@M', locale) }}
+                    {% else %}
+                        {{ date_last_month.format('&>Y&DS&@M', locale) }} — {{ date_next_month.format('&>Y&DS&@M', locale) }}
+                    {% endif %}
+                </span>
             {% endif %}
         </td>
-        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'quarter')">›</td>
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'month')">›</td>
+        <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'quarter')">»</td>
     </tr>
     <tr>
-        <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
+        <td colspan="5" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
     </tr>
 </table>
 </div>
-<div id="quarter_table">
-    {% if date.quarter == 1 %}
+<div id="trimester_table">
     <div style="clear: both;">
         <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=1, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
+            {% with year_view=True, reference_date=date_last_month, sezimal_month_number=date_last_month.month, sezimal_year_number=date_last_month.year, weekday_name_size=1, dcc_month_number=date_last_month.dcc_month, dcc_year_number=date_last_month.dcc_year %}
+                {% if locale.calendar_displayed == 'SYM' %}
+                    {% include 'calendar_base_month.html' %}
+                {% elif locale.calendar_displayed == 'ISO' %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% elif locale.calendar_displayed == 'DCC' %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endif %}
             {% endwith %}
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
         {% endif %}
         <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=2, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
+            {% with year_view=True, sezimal_month_number=date.month, sezimal_year_number=date.year, weekday_name_size=1, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
+                {% if locale.calendar_displayed == 'SYM' %}
+                    {% include 'calendar_base_month.html' %}
+                {% elif locale.calendar_displayed == 'ISO' %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% elif locale.calendar_displayed == 'DCC' %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endif %}
             {% endwith %}
         </div>
         {% if not mobile %}
             <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
         {% endif %}
         <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=3, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
+            {% with year_view=True, reference_date=date_next_month, sezimal_month_number=date_next_month.month, sezimal_year_number=date_next_month.year, weekday_name_size=1, dcc_month_number=date_next_month.dcc_month, dcc_year_number=date_next_month.dcc_year %}
+                {% if locale.calendar_displayed == 'SYM' %}
+                    {% include 'calendar_base_month.html' %}
+                {% elif locale.calendar_displayed == 'ISO' %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% elif locale.calendar_displayed == 'DCC' %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endif %}
             {% endwith %}
         </div>
     </div>
-    {% elif date.quarter == 2 %}
-    <div style="clear: both;">
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=4, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=5, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=10, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-    </div>
-    {% elif date.quarter == 3 %}
-    <div style="clear: both;">
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=11, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=12, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=13, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-    </div>
-    {% else %}
-    <div style="clear: both;">
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=14, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=15, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-        {% if not mobile %}
-            <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
-        {% endif %}
-        <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-            {% with year_view = True, sezimal_month_number=20, sezimal_year_number=date.year, weekday_name_size=1 %}
-                {% include 'calendar_base_month.html' %}
-            {% endwith %}
-        </div>
-    </div>
-    {% endif %}
 </div>
-
-{#
-<table class="center" style="border-spacing: 0px;" id="quarter_table">
-    <colgroup>
-        <col span="1">
-        <col span="1" width="1%">
-        <col span="1">
-        <col span="1" width="1%">
-        <col span="1">
-    </colgroup>
-    {% if date.quarter == 1 %}
-    <tr style="vertical-align: top;">
-        <td>
-        {% with year_view=True, sezimal_month_number=1, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=2, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=3, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-    </tr>
-    {% elif date.quarter == 2 %}
-    <tr style="vertical-align: top;">
-        <td>
-        {% with year_view=True, sezimal_month_number=4, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=5, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=10, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-    </tr>
-    {% elif date.quarter == 3 %}
-    <tr style="vertical-align: top;">
-        <td>
-        {% with year_view=True, sezimal_month_number=11, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=12, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=13, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-    </tr>
-    {% else %}
-    <tr style="vertical-align: top;">
-        <td>
-        {% with year_view=True, sezimal_month_number=14, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=15, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-        <td> </td>
-        <td>
-        {% with year_view=True, sezimal_month_number=20, sezimal_year_number=date.year, weekday_name_size=1 %}
-            {% include 'calendar_base_month.html' %}
-        {% endwith %}
-        </td>
-    </tr>
-    {% endif %}
-</table>
-#}
 
 <script type="text/javascript" id="view_script">
 function auto_refresh(){
     const header_height = document.getElementById('calendar_header').getBoundingClientRect().height;
 
-    document.getElementById('quarter_table').setAttribute(
+    document.getElementById('trimester_table').setAttribute(
         'style',
         'border-spacing: 0px; padding-top: ' + header_height + 'px;'
     );
 };
 auto_refresh();
+
+//
+// When first loading the page, makes
+// shure today’s date is visible
+//
+function center_today() {
+    const today_rect = document.getElementById('today').getBoundingClientRect();
+    window.scrollTo(
+        0,
+        //
+        // Page middle
+        //
+        (today_rect.top + window.pageYOffset) - (window.innerHeight / 2)
+    );
+};
+center_today();
 </script>

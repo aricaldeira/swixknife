@@ -4,6 +4,7 @@
         'bn': 'আজ',
         'bz': 'Oji',
         'ca': 'Avui',
+        'cy': 'Heddiw',
         'da': 'I Dag',
         'de': 'Heute',
         'ee': 'Täna',
@@ -58,7 +59,7 @@
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
         <link rel="manifest" href="https://sezimal.tauga.online/today/manifest.json" crossorigin="use-credentials" />
-        <link rel="icon" type="image/svg+xml" href="https://sezimal.tauga.online/today/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}" />
+        <link id="icon" rel="icon" type="image/svg+xml" href="https://sezimal.tauga.online/today/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}" />
 <style>
 html, body {
     max-width: 100%;
@@ -73,6 +74,13 @@ html, body {
     <div id="calendar_event_view" class="calendar-event-window">
     </div>
     <div id="calendar_event_list_view" class="calendar-event-list-window">
+    </div>
+    <div>
+        <audio id="audio">
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.ogg" type="audio/ogg" preload="auto" />
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.mp3" type="audio/mpeg" preload="auto" />
+            <source src="https://midia.tauga.online/audio/sezimal/hexagon.wav" type="audio/wav" preload="auto" />
+        </audio>
     </div>
     </body>
     <script src="/static/js/calendar_today_api.js"></script>
@@ -136,5 +144,65 @@ html, body {
                 }
             );
         };
+
+        async function registerServiceWorker () {
+            const swRegistration = await navigator.serviceWorker.register('/today/today_service.js'); //notice the file name
+            return swRegistration;
+        };
+
+        async function requestNotificationPermission() {
+            const permission = await window.Notification.requestPermission();
+            return permission;
+        };
+
+        async function showLocalNotification(title, body, silent = true, alarm = false) {
+            const swRegistration = await registerServiceWorker();
+            const permission =  await requestNotificationPermission();
+
+            if (permission != 'granted') {
+                return;
+            };
+
+            let options = {
+                body,
+                icon: 'https://sezimal.tauga.online/today/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}',
+                silent: silent,
+            };
+            swRegistration.showNotification(title, options);
+
+            document.getElementById('audio').play();
+        };
+
+        async function prepareForNotification () {
+            await registerServiceWorker();
+            await requestNotificationPermission();
+
+            {#
+            {% if locale.LANGUAGE_TAG in ('bz', 'en-BR', 'pt-BR') %}
+            await showLocalNotification(
+                {% if locale.LANG == 'pt' %}
+                'Esse é um teste do app “{{ TITLE }}”',
+                {% elif locale.LANGUAGE_TAG in ('bz', 'en-BR', 'pt-BR') %}
+                'Esi è un tèsti du app “{{ TITLE }}”',
+                {% else %}
+                'This is a test from the “{{ TITLE }}” app',
+                {% endif %}
+
+                {% if locale.LANG == 'pt' %}
+                'Testando as notificações, como outros apps de agenda',
+                {% elif locale.LANGUAGE_TAG in ('bz', 'en-BR', 'pt-BR') %}
+                'Testandu as notifikasoyns, <i>komu</i> otrus <b>apps</b> di ajenda',
+                {% else %}
+                'Testing notifications, like other calendar apps',
+                {% endif %}
+
+                alarm=true,
+            );
+            {% endif %}
+            #}
+        };
+
+        prepareForNotification();
+
     </script>
 </html>
