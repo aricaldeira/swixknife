@@ -899,21 +899,13 @@ class Sezimal:
 
         elif self._sign == 1 and other_number._sign == -1:
             quotient *= -1
-            remainder *= -1
-
-            if remainder != 0:
-                quotient -= 1
-                remainder = dividend + (quotient * divisor)
 
         elif self._sign == -1 and other_number._sign == -1:
             remainder *= -1
 
         elif self._sign == -1 and other_number._sign == 1:
             quotient *= -1
-
-            if remainder != 0:
-                quotient -= 1
-                remainder = (dividend + (quotient * divisor)) * -1
+            remainder *= -1
 
         return quotient, remainder
 
