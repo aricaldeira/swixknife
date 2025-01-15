@@ -470,6 +470,10 @@ input[type=number] {
     display: inline;
 }
 
+.show-in-mobile {
+    display: none;
+}
+
 .now-content {
     margin-left: auto;
     margin-right: auto;
@@ -540,6 +544,10 @@ input[type=number] {
     .hide-in-mobile-daily-view-am-pm {
         display: none;
     }
+
+    .show-in-mobile {
+        display: inline;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -552,6 +560,9 @@ input[type=number] {
     .hide-in-mobile-daily-view-day-in-quarter-year {
         display: none;
     }
+    .show-in-mobile {
+        display: inline;
+    }
 }
 
 @media only screen and (max-height: 640px) and (orientation: landscape) {
@@ -562,14 +573,17 @@ input[type=number] {
     .now-content {
         width: 100%;
     }
-    .hide-in-mobile {
-        display: inline;
-    }
     .hide-in-mobile-daily-view-day-in-quarter-year {
         display: none;
     }
     .hide-in-mobile-daily-view-am-pm {
         display: inline;
+    }
+    .hide-in-mobile {
+        display: inline;
+    }
+    .show-in-mobile {
+        display: none;
     }
 }
 
@@ -577,11 +591,23 @@ input[type=number] {
     .now-content {
         width: 70%;
     }
+    .hide-in-mobile {
+        display: inline;
+    }
+    .show-in-mobile {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1280px) and (orientation: landscape) {
     .now-content {
         width: 40%;
+    }
+    .hide-in-mobile {
+        display: inline;
+    }
+    .show-in-mobile {
+        display: none;
     }
 }
 
