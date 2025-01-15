@@ -5,7 +5,6 @@ from  locale_detection import browser_preferred_locale
 
 from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger
 from swixknife.date_time import SezimalDateTime
-from swixknife.date_time.seasons_colors import weekly_season_colors
 from swixknife.functions import SezimalList, SezimalDictionary, SezimalRange
 
 from decimal import Decimal
