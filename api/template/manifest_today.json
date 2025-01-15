@@ -4,6 +4,7 @@
         'bn': 'আজ',
         'bz': 'Oji',
         'ca': 'Avui',
+        'cy': 'Heddiw',
         'da': 'I Dag',
         'de': 'Heute',
         'ee': 'Täna',
@@ -70,7 +71,7 @@
         }
     ],
     "author": "Ari Caldeira",
-    "dir": "auto",
+    "dir": "{{ 'rtl' if locale.RTL else 'ltr' }}",
     "lang": "{{ locale.LANGUAGE_TAG }}",
     "id": "57368d1c-50e8-4038-abce-379f1020d469",
     "screenshots": [

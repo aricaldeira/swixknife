@@ -4,6 +4,7 @@
         'bn': 'এখন',
         'bz': 'Agòra',
         'ca': 'Ara',
+        'cy': 'Yn Awr',
         'da': 'Nu',
         'de': 'Jetzt',
         'ee': 'Nüüd',
@@ -71,7 +72,7 @@
         }
     ],
     "author": "Ari Caldeira",
-    "dir": "auto",
+    "dir": "{{ 'rtl' if locale.RTL else 'ltr' }}",
     "lang": "{{ locale.LANGUAGE_TAG }}",
     "id": "ccae3d2a-8fe0-459c-811b-c2f0614d428d",
     "screenshots": [
