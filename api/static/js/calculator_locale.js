@@ -11,6 +11,7 @@ const LANGUAGE_TAGS = {
     'bz': 'bz',
     'ca': 'ca',
     'code': 'code',
+    'cy': 'cy',
     'da': 'da',
     'de_at': 'de-AT',
     'de_be': 'de-BE',
