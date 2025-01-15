@@ -33,6 +33,16 @@ class SezimalDictionary(OrderedDict):
         return super().__setitem__(key, value)
 
     def __getattr__(self, key):
+        if type(key) == int:
+            key = SezimalInteger(str(key))
+        elif type(key) == float:
+            key = Sezimal(str(key))
+        elif type(key) == Decimal:
+            if round(key, 0) == key:
+                key = SezimalInteger(key)
+            else:
+                key = Sezimal(key)
+
         if key not in self:
             return ''
 
@@ -48,4 +58,14 @@ class SezimalDictionary(OrderedDict):
         return attr
 
     def __setattr__(self, key, value):
+        if type(key) == int:
+            key = SezimalInteger(str(key))
+        elif type(key) == float:
+            key = Sezimal(str(key))
+        elif type(key) == Decimal:
+            if round(key, 0) == key:
+                key = SezimalInteger(key)
+            else:
+                key = Sezimal(key)
+
         self[key] = value
