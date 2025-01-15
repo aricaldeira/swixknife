@@ -130,3 +130,92 @@ class SezimalLocaleES(SezimalLocale):
             return '.º'
 
         return ''
+
+    DCC_TERM_NAME = [
+        'Bimestre‐Cero',
+        'Bimestre‐Uno',
+        'Bimestre‐Dos',
+        'Bimestre‐Tres',
+        'Bimestre‐Cuatro',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'Mes‐Cero',
+        'Mes‐Uno',
+        'Mes‐Dos',
+        'Mes‐Tres',
+        'Mes‐Cuatro',
+        'Mes‐Cinco',
+        'Mes‐Seis',
+        'Mes‐Seisiuno',
+        'Mes‐Seisidós',
+        'Mes‐Seisitrés',
+        'Mes‐Seisicuatro',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'Día‐de‐la‐Semana‐Cero',
+        'Día‐de‐la‐Semana‐Uno',
+        'Día‐de‐la‐Semana‐Dos',
+        'Día‐de‐la‐Semana‐Tres',
+        'Día‐de‐la‐Semana‐Cuatro',
+        'Día‐de‐la‐Semana‐Cinco',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'DS0',
+        'DS1',
+        'DS2',
+        'DS3',
+        'DS4',
+        'DS5',
+    ]
+
+    DCC_NUMBER = [
+        'cero',
+        'uno',
+        'dos',
+        'tres',
+        'cuatro',
+        'cinco',
+        'seis',
+        'seisiuno',
+        'seisidós',
+        'seisitrés',
+        'seisicuatro',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y años',
+        SezimalInteger('1'): '&>Y año',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimestres',
+        SezimalInteger('1'): '&-t bimestre',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m meses',
+        SezimalInteger('1'): '&-m mes',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w semanas',
+        SezimalInteger('1'): '&-w semana',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d días',
+        SezimalInteger('1'): '&-d día',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' y '

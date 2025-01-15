@@ -336,6 +336,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'SEZ': 'Sezimaw',
         'SYM': 'Simétriku',
         'ISO': 'Gregorianu',
+        'DCC': 'Kwantus‐Dias',
         'ISR': 'Israelensi',
         'IND': 'Indianu',
 
@@ -355,6 +356,25 @@ class SezimalLocaleBZ(SezimalLocale):
         'ISO+EASTER': 'Paskwa (Gregorianu)',
         'JUL+EASTER': 'Paskwa Ortodòksa (Julianu)',
         'JEW+EASTER': 'Paskwa Judayka (Pêsach)',
+    }
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sez.',
+        'SYM': 'Sim.',
+        'ISO': 'Gre.',
+        'DCC': 'K.D.',
+        'ISR': 'Isr.',
+        'IND': 'Ind.',
+        #
+        # Religious calendars
+        #
+        'JUL': 'Jul.',
+        'JEW': 'Jud.',
+        'HIJ': 'Isl.',
+        'IRN': 'Irn.',
     }
 
     CALENDAR_DATE_ERROR = 'Data inválida pru kalendaryu {calendar_type}'
@@ -447,3 +467,75 @@ class SezimalLocaleBZ(SezimalLocale):
         'Dkd',
         'Drj',
     ]
+
+    DCC_MONTH_NAME = [
+        'mez‐zèru',
+        'mez‐un',
+        'mez‐doys',
+        'mez‐treys',
+        'mez‐kwatru',
+        'mez‐sinku',
+        'mez‐seys',
+        'mez‐seziun',
+        'mez‐sezidoys',
+        'mez‐sezitreys',
+        'mez‐sezikwatru',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'dia‐da‐semana‐zèru',
+        'dia‐da‐semana‐un',
+        'dia‐da‐semana‐doys',
+        'dia‐da‐semana‐treys',
+        'dia‐da‐semana‐kwatru',
+        'dia‐da‐semana‐sinko',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'DS0',
+        'DS1',
+        'DS2',
+        'DS3',
+        'DS4',
+        'DS5',
+    ]
+
+    DCC_NUMBER = [
+        'zèru',
+        'un',
+        'doys',
+        'treys',
+        'kwatru',
+        'sinku',
+        'seys',
+        'seziun',
+        'sezidoys',
+        'sezitreys',
+        'sezikwatru',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y anus',
+        SezimalInteger('1'): '&>Y anu',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimèstris',
+        SezimalInteger('1'): '&-t bimèstri',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m mezis',
+        SezimalInteger('1'): '&-m mez',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w semanas',
+        SezimalInteger('1'): '&-w semana',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d dias',
+        SezimalInteger('1'): '&-d dia',
+    }
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' y '

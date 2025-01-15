@@ -26,6 +26,8 @@ class SezimalLocaleLAT(SezimalLocale):
     FRACTION_GROUP_SEPARATOR = SEPARATOR_NARROW_NOBREAK_SPACE
     FRACTION_SUBGROUP_SEPARATOR = SEPARATOR_COMBINING_DOT_ABOVE_RIGHT
 
+    FIRST_WEEKDAY = 'SUN'
+
     CURRENCY_UNIT_SYMBOL = '€'
     CURRENCY_SUBUNIT_SYMBOL = 'c'
     CURRENCY_UNIT_SYMBOL_POSITION = 'R'
@@ -310,13 +312,15 @@ class SezimalLocaleLAT(SezimalLocale):
     DST_NAME = 'Ora Legale'
     DST_SHORT_NAME = 'OL'
     DEFAULT_TIME_ZONE = 'Europe/Rome'
-    WEEK_NUMBER_SYMBOL = 'heb'
+    WEEK_NUMBER_SYMBOL = 'sep'
     DAY_NUMBER_SYMBOL = 'diēs'
     ISO_DATE_LONG_FORMAT = '%-d %b. %Y'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     # TEXT_SHORT_MONTH_DAY_FORMAT = '#-d/#3M'
     TEXT_MONTH_DAY_FORMAT = '#-d #$GM'
+    ISO_TEXT_MONTH_DAY_FORMAT = '%-d %B'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%B %Y'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Hieme vēr',
@@ -344,7 +348,7 @@ class SezimalLocaleLAT(SezimalLocale):
     # Error messages
     #
     ERROR = 'Error'
-    WEEKDAY_ERROR = 'Non acceptābilis diēs hebdomadis {weekday}'
+    WEEKDAY_ERROR = 'Non acceptābilis diēs septimānae {weekday}'
     MONTH_ERROR = 'Non acceptābilis mēnsis {month}'
 
     def weekday_name(self, weekday: SezimalInteger, case: str = CASE_NOMINATIVE) -> str:
@@ -484,3 +488,92 @@ class SezimalLocaleLAT(SezimalLocale):
         ord('V'): 'u',
         ord('v'): 'u',
     }
+
+    DCC_TERM_NAME = [
+        'Bimēnsis‐Nihil',
+        'Bimēnsis‐Ūnus',
+        'Bimēnsis‐Duo',
+        'Bimēnsis‐Trēs',
+        'Bimēnsis‐Quattuor',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'Mēnsis‐Nihil',
+        'Mēnsis‐Ūnus',
+        'Mēnsis‐Duo',
+        'Mēnsis‐Trēs',
+        'Mēnsis‐Quattuor',
+        'Mēnsis‐Quīnque',
+        'Mēnsis‐Sex',
+        'Mēnsis‐Sex‐Ūnus',
+        'Mēnsis‐Sex‐Duo',
+        'Mēnsis‐Sex‐Trēs',
+        'Mēnsis‐Sex‐Quattuor',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'Diēs‐Sextānae‐Nihil',
+        'Diēs‐Sextānae‐Ūnus',
+        'Diēs‐Sextānae‐Duo',
+        'Diēs‐Sextānae‐Trēs',
+        'Diēs‐Sextānae‐Quattuor',
+        'Diēs‐Sextānae‐Quīnque',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'DS0',
+        'DS1',
+        'DS2',
+        'DS3',
+        'DS4',
+        'DS5',
+    ]
+
+    DCC_NUMBER = [
+        'Nihil',
+        'Ūnus',
+        'Duo',
+        'Trēs',
+        'Quattuor',
+        'Quīnque',
+        'Sex',
+        'Sex‐Ūnus',
+        'Sex‐Duo',
+        'Sex‐Trēs',
+        'Sex‐Quattuor',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y annī',
+        SezimalInteger('1'): '&>Y annus',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimēnsēs',
+        SezimalInteger('1'): '&-t bimēnsis',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m mēnsēs',
+        SezimalInteger('1'): '&-m mēnsis',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w sextānae',
+        SezimalInteger('1'): '&-w sextāna',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d diēs',
+        SezimalInteger('1'): '&-d diēs',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' et '

@@ -166,3 +166,92 @@ class SezimalLocaleFR(SezimalLocale):
                 fmt = fmt.replace(f'#@${word}M', mot)
 
         return fmt
+
+    DCC_TERM_NAME = [
+        'bimestre‐zéro',
+        'bimestre‐un',
+        'bimestre‐deux',
+        'bimestre‐trois',
+        'bimestre‐quatre',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'mois‐zéro',
+        'mois‐un',
+        'mois‐deux',
+        'mois‐trois',
+        'mois‐quatre',
+        'mois‐cinq',
+        'mois‐six',
+        'mois‐six‐et‐un',
+        'mois‐six‐deux',
+        'mois‐six‐trois',
+        'mois‐six‐quatre',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'jour‐de‐la‐semaine‐zéro',
+        'jour‐de‐la‐semaine‐un',
+        'jour‐de‐la‐semaine‐deux',
+        'jour‐de‐la‐semaine‐trois',
+        'jour‐de‐la‐semaine‐quatre',
+        'jour‐de‐la‐semaine‐cinq',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'JS0',
+        'JS1',
+        'JS2',
+        'JS3',
+        'JS4',
+        'JS5',
+    ]
+
+    DCC_NUMBER = [
+        'zéro',
+        'un',
+        'deux',
+        'trois',
+        'quatre',
+        'cinq',
+        'six',
+        'six‐et‐un',
+        'six‐deux',
+        'six‐trois',
+        'six‐quatre',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y années',
+        SezimalInteger('1'): '&>Y année',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimestres',
+        SezimalInteger('1'): '&-t bimestre',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m mois',
+        SezimalInteger('1'): '&-m mois',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w semaines',
+        SezimalInteger('1'): '&-w semaine',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d jours',
+        SezimalInteger('1'): '&-d jour',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' et '

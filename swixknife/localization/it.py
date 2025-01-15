@@ -192,3 +192,92 @@ class SezimalLocaleIT(SezimalLocale):
                 fmt = fmt.replace(f'#${word}M', parola)
 
         return fmt
+
+    DCC_TERM_NAME = [
+        'bimestre‐zero',
+        'bimestre‐uno',
+        'bimestre‐due',
+        'bimestre‐tre',
+        'bimestre‐quattro',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'mese‐zero',
+        'mese‐unoi',
+        'mese‐due',
+        'mese‐tre',
+        'mese‐quattro',
+        'mese‐cinque',
+        'mese‐sei',
+        'mese‐seiuno',
+        'mese‐seidue',
+        'mese‐seitré',
+        'mese‐seiquattro',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'giorno‐della‐setimana‐zero',
+        'giorno‐della‐setimana‐uno',
+        'giorno‐della‐setimana‐due',
+        'giorno‐della‐setimana‐tre',
+        'giorno‐della‐setimana‐quattro',
+        'giorno‐della‐setimana‐cinque',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'GS0',
+        'GS1',
+        'GS2',
+        'GS3',
+        'GS4',
+        'GS5',
+    ]
+
+    DCC_NUMBER = [
+        'zero',
+        'unoi',
+        'due',
+        'tre',
+        'quattro',
+        'cinque',
+        'sei',
+        'seiuno',
+        'seidue',
+        'seitré',
+        'seiquattro',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y anni',
+        SezimalInteger('1'): '&>Y anno',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimestre',
+        SezimalInteger('1'): '&-t bimestre',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m mesi',
+        SezimalInteger('1'): '&-m mese',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w settimane',
+        SezimalInteger('1'): '&-w settimana',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d giorni',
+        SezimalInteger('1'): '&-d giorno',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' e '

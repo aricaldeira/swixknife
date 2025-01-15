@@ -356,6 +356,7 @@ class SezimalLocalePT(SezimalLocale):
         'SEZ': 'Sezimal',
         'SYM': 'Simétrico',
         'ISO': 'Gregoriano',
+        'DCC': 'Quantos‐Dias',
         'ISR': 'Israelense',
         'IND': 'Indiano',
 
@@ -376,6 +377,26 @@ class SezimalLocalePT(SezimalLocale):
         'JUL+EASTER': 'Páscoa Ortodoxa (Juliano)',
         'JEW+EASTER': 'Páscoa Judaica (Pêssach)',
     }
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sez.',
+        'SYM': 'Sim.',
+        'ISO': 'Gre.',
+        'DCC': 'Q.D.',
+        'ISR': 'Isr.',
+        'IND': 'Ind.',
+        #
+        # Religious calendars
+        #
+        'JUL': 'Jul.',
+        'JEW': 'Jud.',
+        'HIJ': 'Isl.',
+        'IRN': 'Irn.',
+    }
+
     CALENDAR_DATE_ERROR = 'Data inválida para o calendário {calendar_type}'
     CALENDAR_TIME_ERROR = 'Horário inválido'
     CALENDAR_TIME_AFTER_ERROR = 'Horário inválido: o horário de início do evento não pode vir depois do horário final'
@@ -466,3 +487,92 @@ class SezimalLocalePT(SezimalLocale):
         'Dcd',
         'Drj',
     ]
+
+    DCC_TERM_NAME = [
+        'bimestre‐zero',
+        'bimestre‐um',
+        'bimestre‐dois',
+        'bimestre‐três',
+        'bimestre‐quatro',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'mês‐zero',
+        'mês‐um',
+        'mês‐dois',
+        'mês‐três',
+        'mês‐quatro',
+        'mês‐cinco',
+        'mês‐seis',
+        'mês‐seis‐e‐um',
+        'mês‐seis‐e‐dois',
+        'mês‐seis‐e‐três',
+        'mês‐seis‐e‐quatro',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'dia‐da‐semana‐zero',
+        'dia‐da‐semana‐um',
+        'dia‐da‐semana‐dois',
+        'dia‐da‐semana‐três',
+        'dia‐da‐semana‐quatro',
+        'dia‐da‐semana‐cinco',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'DS0',
+        'DS1',
+        'DS2',
+        'DS3',
+        'DS4',
+        'DS5',
+    ]
+
+    DCC_NUMBER = [
+        'zero',
+        'um',
+        'dois',
+        'três',
+        'quatro',
+        'cinco',
+        'seis',
+        'seis‐e‐um',
+        'seis‐e‐dois',
+        'seis‐e‐três',
+        'seis‐e‐quatro',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y anos',
+        SezimalInteger('1'): '&>Y ano',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t bimestres',
+        SezimalInteger('1'): '&-t bimestre',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m meses',
+        SezimalInteger('1'): '&-m mês',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w semanas',
+        SezimalInteger('1'): '&-w semana',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d dias',
+        SezimalInteger('1'): '&-d dia',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' e '

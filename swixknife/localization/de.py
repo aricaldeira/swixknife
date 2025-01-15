@@ -136,3 +136,92 @@ class SezimalLocaleDE(SezimalLocale):
     LOWERCASE_MAPPING = {
         ord('ẞ'): 'ß',
     }
+
+    DCC_TERM_NAME = [
+        'Jahrfünftel‐Null',
+        'Jahrfünftel‐Eins',
+        'Jahrfünftel‐Zwei',
+        'Jahrfünftel‐Drei',
+        'Jahrfünftel‐Vier',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'JF0',
+        'JF1',
+        'JF2',
+        'JF3',
+        'JF4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'Monat‐Null',
+        'Monat‐Eins',
+        'Monat‐Zwei',
+        'Monat‐Drei',
+        'Monat‐Vier',
+        'Monat‐Fünf',
+        'Monat‐Sechs',
+        'Monat‐Einundsechs',
+        'Monat‐Zweiundsechs',
+        'Monat‐Dreiundsechs',
+        'Monat‐Vierundsechs',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'Wochentag‐Null',
+        'Wochentag‐Eins',
+        'Wochentag‐Zwei',
+        'Wochentag‐Drei',
+        'Wochentag‐Vier',
+        'Wochentag‐Fünf',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'WT0',
+        'WT1',
+        'WT2',
+        'WT3',
+        'WT4',
+        'WT5',
+    ]
+
+    DCC_NUMBER = [
+        'Null',
+        'Eins',
+        'Zwei',
+        'Drei',
+        'Vier',
+        'Fünf',
+        'Sechs',
+        'Einundsechs',
+        'Zweiundsechs',
+        'Dreiundsechs',
+        'Vierundsechs',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y Jahre',
+        SezimalInteger('1'): '&>Y Jahr',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t Bimester',
+        SezimalInteger('1'): '&-t Bimester',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m Monate',
+        SezimalInteger('1'): '&-m Monat',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w Wochen',
+        SezimalInteger('1'): '&-w Woche',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d Tage',
+        SezimalInteger('1'): '&-d Tag',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' und '

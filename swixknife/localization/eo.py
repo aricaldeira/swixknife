@@ -99,7 +99,7 @@ class SezimalLocaleEO(SezimalLocale):
     DST_NAME = 'Somera Tempo'
     DST_SHORT_NAME = 'ST'
     WEEK_NUMBER_SYMBOL = 'sem'
-    DAY_NUMBER_SYMBOL = 'jartago'
+    DAY_NUMBER_SYMBOL = 'tago'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Transiĝo Vintro – Primtempo',
@@ -233,3 +233,91 @@ class SezimalLocaleEO(SezimalLocale):
 
         return fmt
 
+    DCC_TERM_NAME = [
+        'dumonato‐nul',
+        'dumonato‐unu',
+        'dumonato‐du',
+        'dumonato‐tri',
+        'dumonato‐kvar',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'DM0',
+        'DM1',
+        'DM2',
+        'DM3',
+        'DM4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'Monato‐Nul',
+        'Monato‐Unu',
+        'Monato‐Du',
+        'Monato‐Tri',
+        'Monato‐Kvar',
+        'Monato‐Kvin',
+        'Monato‐Ses',
+        'Monato‐Ses‐Unu',
+        'Monato‐Ses‐Du',
+        'Monato‐Ses‐Tri',
+        'Monato‐Ses‐Kvar',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'Semajntago‐Nul',
+        'Semajntago‐Unu',
+        'Semajntago‐Du',
+        'Semajntago‐Tri',
+        'Semajntago‐Kvar',
+        'Semajntago‐Kvin',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'ST0',
+        'ST1',
+        'ST2',
+        'ST3',
+        'ST4',
+        'ST5',
+    ]
+
+    DCC_NUMBER = [
+        'nul',
+        'unu',
+        'du',
+        'tri',
+        'kvar',
+        'kvin',
+        'ses',
+        'ses‐unu',
+        'ses‐du',
+        'ses‐tri',
+        'ses‐kvar',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y jaroj',
+        SezimalInteger('1'): '&>Y jaro',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t dumonatoj',
+        SezimalInteger('1'): '&-t dumonato',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m monatoj',
+        SezimalInteger('1'): '&-m monato',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w semajnoj',
+        SezimalInteger('1'): '&-w semajno',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d tagoj',
+        SezimalInteger('1'): '&-d tago',
+    }
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' kaj '

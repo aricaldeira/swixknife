@@ -16,7 +16,7 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
     RECURRING_DIGITS_NOTATION_SIMPLE, \
     sezimal_format, decimal_format, dozenal_format, \
     niftimal_format, SEPARATOR_WEDGE, \
-    SEPARATOR_DECIMAL_CURRENCY
+    SEPARATOR_DECIMAL_CURRENCY, default_to_sezimal_digits
 from ..text import sezimal_spellout
 
 
@@ -204,8 +204,7 @@ class SezimalLocale:
         return date_format
 
     def _iso_to_base_format(self, date_format) -> str:
-        if getattr(self, 'iso_date_decimal', True) \
-            or '9' in self.DATE_FORMAT:
+        if '9' in self.DATE_FORMAT:
             return date_format
 
         if '↋' in self.DATE_FORMAT:
@@ -1393,6 +1392,7 @@ class SezimalLocale:
         'SEZ': 'Sezimal',
         'SYM': 'Symmetry454',
         'ISO': 'Gregorian',
+        'DCC': 'Day Count',
         'ISR': 'Israeli',
         'IND': 'Indian National',
 
@@ -1412,6 +1412,25 @@ class SezimalLocale:
         'ISO+EASTER': 'Easter (Gregorian)',
         'JUL+EASTER': 'Orthodox Easter (Julian)',
         'JEW+EASTER': 'Pesach (Passover)',
+    }
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sez.',
+        'SYM': 'Sym.',
+        'ISO': 'Gre.',
+        'DCC': 'DCC',
+        'ISR': 'Isr.',
+        'IND': 'Ind.',
+        #
+        # Religious calendars
+        #
+        'JUL': 'Jul.',
+        'JEW': 'Jew.',
+        'HIJ': 'Isl.',
+        'IRN': 'Irn.',
     }
 
     CALENDAR_DATE_ERROR = 'Invalid date for the {calendar_type} calendar'
@@ -1587,6 +1606,61 @@ class SezimalLocale:
 
     def to_sezimal_digits(self):
         self._to_other_base(10, sezimal_digits=True)
+        self.DCC_DATE_FORMAT = '&!>Y&DS&!m&DS&!d'
+        self.DCC_DATE_LONG_FORMAT = '&!yC&DYMS&!mC&DMDS&!dC'
+        self.DCC_YEAR_FORMAT = '&!>Y'
+        self.DCC_YEAR_TEXT_MONTH_FORMAT = '&!yC&DYMS&!mC'
+        self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = '&!@M&DS&!d'
+        self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&!>Y&DS&!@M&DS&!d'
+        self.DCC_TEXT_MONTH_DAY_FORMAT = '&!m&DS&!d'
+
+        for i in range(len(self.DCC_TERM_ABBREVIATED_NAME)):
+            self.DCC_TERM_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_TERM_ABBREVIATED_NAME[i])
+
+        for i in range(len(self.DCC_TERM_SYMBOL)):
+            self.DCC_TERM_SYMBOL[i] = default_to_sezimal_digits(self.DCC_TERM_SYMBOL[i])
+
+        for i in range(len(self.DCC_MONTH_ABBREVIATED_NAME)):
+            self.DCC_MONTH_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_MONTH_ABBREVIATED_NAME[i])
+
+        for i in range(len(self.DCC_MONTH_SYMBOL)):
+            self.DCC_MONTH_SYMBOL[i] = default_to_sezimal_digits(self.DCC_MONTH_SYMBOL[i])
+
+        for i in range(len(self.DCC_WEEKDAY_ABBREVIATED_NAME)):
+            self.DCC_WEEKDAY_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_WEEKDAY_ABBREVIATED_NAME[i])
+
+        for i in range(len(self.DCC_WEEKDAY_SYMBOL)):
+            self.DCC_WEEKDAY_SYMBOL[i] = default_to_sezimal_digits(self.DCC_WEEKDAY_SYMBOL[i])
+
+        for key in self.DCC_YEAR_COUNT:
+            if '!' in self.DCC_YEAR_COUNT[key]:
+                continue
+
+            self.DCC_YEAR_COUNT[key] = self.DCC_YEAR_COUNT[key].replace('&', '&!')
+
+        for key in self.DCC_TERM_COUNT:
+            if '!' in self.DCC_TERM_COUNT[key]:
+                continue
+
+            self.DCC_TERM_COUNT[key] = self.DCC_TERM_COUNT[key].replace('&', '&!')
+
+        for key in self.DCC_MONTH_COUNT:
+            if '!' in self.DCC_MONTH_COUNT[key]:
+                continue
+
+            self.DCC_MONTH_COUNT[key] = self.DCC_MONTH_COUNT[key].replace('&', '&!')
+
+        for key in self.DCC_WEEK_COUNT:
+            if '!' in self.DCC_WEEK_COUNT[key]:
+                continue
+
+            self.DCC_WEEK_COUNT[key] = self.DCC_WEEK_COUNT[key].replace('&', '&!')
+
+        for key in self.DCC_DAY_COUNT:
+            if '!' in self.DCC_DAY_COUNT[key]:
+                continue
+
+            self.DCC_DAY_COUNT[key] = self.DCC_DAY_COUNT[key].replace('&', '&!')
 
     def to_iso_format(self):
         self.DATE_SEPARATOR = '-'
@@ -1656,3 +1730,218 @@ class SezimalLocale:
 
     DECIMAL_TEMPERATURE = '°C'
     DECIMAL_SPEED = 'km/h'
+
+    DCC_TERM_NAME = [
+        'Term‐Zero',
+        'Term‐One',
+        'Term‐Two',
+        'Term‐Three',
+        'Term‐Four',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'T0',
+        'T1',
+        'T2',
+        'T3',
+        'T4',
+    ]
+
+    DCC_TERM_SYMBOL = [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+    ]
+
+    DCC_MONTH_NAME = [
+        'Month‐Zero',
+        'Month‐One',
+        'Month‐Two',
+        'Month‐Three',
+        'Month‐Four',
+        'Month‐Five',
+        'Month‐Six',
+        'Month‐Six‐One',
+        'Month‐Six‐Two',
+        'Month‐Six‐Three',
+        'Month‐Six‐Four',
+    ]
+
+    DCC_MONTH_ABBREVIATED_NAME = [
+        'M00',
+        'M01',
+        'M02',
+        'M03',
+        'M04',
+        'M05',
+        'M10',
+        'M11',
+        'M12',
+        'M13',
+        'M14',
+    ]
+
+    DCC_MONTH_SYMBOL = [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+    ]
+
+    DCC_WEEKDAY_NAME = [
+        'Weekday‐Zero',
+        'Weekday‐One',
+        'Weekday‐Two',
+        'Weekday‐Three',
+        'Weekday‐Four',
+        'Weekday‐Five',
+    ]
+
+    DCC_WEEKDAY_ABBREVIATED_NAME = [
+        'WD0',
+        'WD1',
+        'WD2',
+        'WD3',
+        'WD4',
+        'WD5',
+    ]
+
+    DCC_WEEKDAY_SYMBOL = [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+    ]
+
+    def dcc_term_name(self, term: SezimalInteger, case: str = None) -> str:
+        term = SezimalInteger(term)
+
+        if term < 0 or term > 4:
+            raise ValueError(self.TERM_ERROR.format(term=term))
+
+        return self.DCC_TERM_NAME[int(term.decimal)]
+
+    def dcc_term_abbreviated_name(self, term: SezimalInteger, case: str = None) -> str:
+        term = SezimalInteger(term)
+
+        if term < 0 or term > 4:
+            raise ValueError(self.TERM_ERROR.format(term=term))
+
+        return self.DCC_TERM_ABBREVIATED_NAME[int(term.decimal)]
+
+    def dcc_term_symbol(self, term: SezimalInteger, case: str = None) -> str:
+        term = SezimalInteger(term)
+
+        if term < 0 or term > 4:
+            raise ValueError(self.TERM_ERROR.format(term=term))
+
+        return self.DCC_TERM_SYMBOL[int(term.decimal)]
+
+    def dcc_month_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.DCC_MONTH_NAME[int(month.decimal)]
+
+    def dcc_month_abbreviated_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.DCC_MONTH_ABBREVIATED_NAME[int(month.decimal)]
+
+    def dcc_month_symbol(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.DCC_MONTH_SYMBOL[int(month.decimal)]
+
+    def dcc_weekday_name(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.DCC_WEEKDAY_NAME[int(weekday.decimal)]
+
+    def dcc_weekday_abbreviated_name(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.DCC_WEEKDAY_ABBREVIATED_NAME[int(weekday.decimal)]
+
+    def dcc_weekday_symbol(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.DCC_WEEKDAY_SYMBOL[int(weekday.decimal)]
+
+    DCC_NUMBER = [
+        'Zero',
+        'One',
+        'Two',
+        'Three',
+        'Four',
+        'Five',
+        'Six',
+        'Six‐One',
+        'Six‐Two',
+        'Six‐Three',
+        'Six‐Four',
+    ]
+
+    DCC_YEAR_COUNT = {
+        None: '&>Y years',
+        SezimalInteger('1'): '&>Y year',
+    }
+
+    DCC_TERM_COUNT = {
+        None: '&-t terms',
+        SezimalInteger('1'): '&-t term',
+    }
+
+    DCC_MONTH_COUNT = {
+        None: '&-m months',
+        SezimalInteger('1'): '&-m month',
+    }
+
+    DCC_WEEK_COUNT = {
+        None: '&-w weeks',
+        SezimalInteger('1'): '&-w week',
+    }
+
+    DCC_DAY_COUNT = {
+        None: '&-d days',
+        SezimalInteger('1'): '&-d day',
+    }
+
+    DCC_DATE_SEPARATOR = '–'
+    DCC_DATE_YEAR_MONTH_SEPARATOR = ', '
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' and '
+    DCC_DATE_FORMAT = '&>Y&DS&m&DS&d'
+    DCC_DATE_LONG_FORMAT = '&yC&DYMS&mC&DMDS&dC'
+    DCC_YEAR_FORMAT = '&>Y'
+    DCC_YEAR_TEXT_MONTH_FORMAT = '&yC&DYMS&mC'
+    DCC_TEXT_SHORT_MONTH_DAY_FORMAT = '&@M&DS&d'
+    DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&>Y&DS&@M&DS&d'
+    DCC_TEXT_MONTH_DAY_FORMAT = '&m&DS&d'
