@@ -20,6 +20,7 @@ SezimalDateTime = TypeVar('SezimalDateTime', bound='SezimalDateTime')
 
 import time as _time
 import datetime as _datetime
+from dateutils import relativedelta
 
 from decimal import Decimal
 from zoneinfo import ZoneInfo
@@ -38,7 +39,14 @@ from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
 from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
     YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKEN, \
-    ISO_DATE_NUMBER_FORMAT_TOKENS
+    ISO_DATE_NUMBER_FORMAT_TOKENS, \
+    DCC_DATE_NUMBER_FORMAT_TOKENS, DCC_YEAR_NUMBER_FORMAT_TOKENS, \
+    DCC_DATE_TEXT_FORMAT_TOKEN
+from .dcc_functions import \
+    ordinal_date_to_year_month_day as ordinal_date_to_dcc_year_month_day, \
+    year_month_day_to_ordinal_date as dcc_year_month_day_to_ordinal_date, \
+    is_leap as dcc_is_leap, is_long_year as dcc_is_long_year, \
+    is_short_year as dcc_is_short_year
 
 
 try:
@@ -61,9 +69,13 @@ except:
 
 
 class SezimalDate:
-    __slots__ = '_year', '_month', '_day', '_hashcode', '_gregorian_date', '_is_leap', '_ordinal_date', '_weekday', \
-        '_day_in_year', '_day_in_week', '_week_in_year', \
-        '_quarter', '_day_in_quarter', '_week_in_quarter', '_month_in_quarter'
+    __slots__ = (
+        '_year', '_month', '_day', '_hashcode', '_gregorian_date',
+        '_is_leap', '_ordinal_date', '_weekday',
+        '_day_in_year', '_day_in_week', '_week_in_year',
+        '_quarter', '_day_in_quarter', '_week_in_quarter', '_month_in_quarter',
+        '_dcc_date'
+    )
 
     def __new__(
         cls,
@@ -118,6 +130,8 @@ class SezimalDate:
         else:
             self._gregorian_date = gregorian_date
 
+        self._dcc_date = ordinal_date_to_dcc_year_month_day(self._ordinal_date)
+
         return self
 
     # Additional constructors
@@ -136,10 +150,14 @@ class SezimalDate:
         return float(timestamp)
 
     @classmethod
-    def today(cls) -> Self:
+    def today(cls, time_zone: str = None) -> Self:
         "Construct a date from time.time()."
-        t = _time.time()
-        return cls.from_timestamp(t)
+        if not time_zone:
+            time_zone = system_time_zone()
+
+        t = _datetime.datetime.now(tz=ZoneInfo(time_zone))
+
+        return cls(t)
 
     @classmethod
     def from_ordinal_date(cls, ordinal_date) -> Self:
@@ -364,8 +382,11 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 3 digits
                 #
-                if token.endswith('>y') and value >= '213100' and value < '214000':
+                if '>y' in token and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
+                elif '%5Y' in token and value >= '13100' and value < '14000':
+                    value = value[::-1][0:3][::-1]
+                    size -= 2
 
                 if len(value) >= 5:
                     value = value[::-1]
@@ -379,7 +400,7 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 2 digits
                 #
-                if token.endswith('>y'):
+                if '>y' in token:
                     value = value[::-1][0:2][::-1]
 
             elif '9' in token or from_decimal:
@@ -392,7 +413,7 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 2 digits
                 #
-                if token.endswith('>y'):
+                if '>y' in token:
                     value = value[::-1][0:2][::-1]
 
             else:
@@ -402,7 +423,7 @@ class SezimalDate:
                 # For the year, using “>”
                 # yields only the last 3 digits
                 #
-                if token.endswith('>y') and value >= '213100' and value < '214000':
+                if '>y' in token and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
 
             if size and '-' not in token and '>' not in token:
@@ -422,54 +443,35 @@ class SezimalDate:
 
         return value
 
-    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
-        if not fmt:
-            return fmt
+    def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
+        for token, value, count in (
+            ('y', 'dcc_year', 'DCC_YEAR_COUNT'),
+            ('t', 'dcc_term', 'DCC_TERM_COUNT'),
+            ('m', 'dcc_month', 'DCC_MONTH_COUNT'),
+            ('w', 'dcc_week', 'DCC_WEEK_COUNT'),
+            ('d', 'dcc_day', 'DCC_DAY_COUNT'),
+        ):
+            value = getattr(self, value)
+            count = getattr(locale, count)
 
-        if locale:
-            if isinstance(locale, SezimalLocale):
-                lang = locale.LANG
-            else:
-                lang = locale
-                locale = sezimal_locale(lang)
+            for fmttk in ('', '!', '@', '!@', '9', '↋'):
+                tk = f'&{fmttk}{token}C'
 
-        else:
-            locale = DEFAULT_LOCALE
-            lang = locale.LANG
+                if tk in fmt:
+                    if value in count:
+                        tkfmt = count[value]
+                    else:
+                        tkfmt = count[None]
 
-        if not fmt:
-            fmt = locale.DATE_FORMAT
+                    tkfmt = tkfmt.replace('&', '&' + fmttk)
 
-        fmt = fmt.replace('##', '__HASHTAG__')
-
-        #
-        # Astronomical formats: seasons and moon phases
-        #
-        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
-
-        #
-        # Locale’s date separator
-        #
-        if '#/' in fmt:
-            if locale:
-                fmt = fmt.replace('#/', locale.DATE_SEPARATOR)
-            else:
-                fmt = fmt.replace('#/', '-')
-
-        #
-        # Year’s explicit sign
-        #
-        if '#+' in fmt:
-            if self.year >= 0:
-                fmt = fmt.replace('#+', '+')
-            else:
-                fmt = fmt.replace('#+', '')
+                    fmt = fmt.replace(tk, tkfmt)
 
         #
         # Let’s deal first with the numeric formats
         #
         for regex, token, base, zero, character, value_name, \
-            size, size_niftimal, size_decimal in DATE_NUMBER_FORMAT_TOKENS:
+            size, size_niftimal, size_decimal in DCC_DATE_NUMBER_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
 
@@ -488,7 +490,7 @@ class SezimalDate:
         #
         # Formatted year number
         #
-        for regex, token, base, separator, character, value_name in YEAR_NUMBER_FORMAT_TOKENS:
+        for regex, token, base, separator, character, value_name in DCC_YEAR_NUMBER_FORMAT_TOKENS:
             if not regex.findall(fmt):
                 continue
 
@@ -497,16 +499,14 @@ class SezimalDate:
             if 'X' in character and not separator:
                 separator = '\U000f1e6d'  # Arda separator
 
-            if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
-                if type(year) == Decimal:
-                    year = SezimalInteger(year)
-                else:
-                    year = SezimalInteger(Decimal(year))
-
             if base in ['', '!', '?']:
-                if '>' in character and value_name == 'year' \
-                    and year >= '213100' and year < '214000':
-                    year -= 213_000
+                if '>' in character:
+                    if value_name in ('year', 'dcc_year') \
+                        and year >= '213100' and year < '214000':
+                        year -= 213_000
+                    elif value_name == 'gregorian_year' \
+                        and year >= '13100' and year <= '14000':
+                        year -= 13_000
 
                 year = locale.format_number(
                     year,
@@ -556,29 +556,249 @@ class SezimalDate:
         #
         # And now, the text formats
         #
-        for base, size, case, month_week in DATE_TEXT_FORMAT_TOKEN.findall(fmt):
-            regex = re.compile(fr'#{base}{size}{case}{month_week}')
+        for base, size, case, term_month_week in DCC_DATE_TEXT_FORMAT_TOKEN.findall(fmt):
+            regex = re.compile(fr'&{base}{size}{case}{term_month_week}')
+
+            if term_month_week == 'T':
+                if size == '@':
+                    text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.dcc_term_name(self.dcc_month)
+            elif term_month_week == 'M':
+                if size == '@':
+                    text = locale.dcc_month_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.dcc_month_name(self.dcc_month)
+            else:
+                if size:
+                    text = locale.dcc_weekday_abbreviated_name(self.dcc_weekday)
+                else:
+                    text = locale.dcc_weekday_name(self.dcc_weekday)
+
+            if size == '1':
+                text = locale.dcc_weekday_symbol(self.dcc_weekday)
+            elif size == '2':
+                text = locale.slice(text, 0, 2)
+            elif size == '3':
+                text = locale.slice(text, 0, 3)
+
+            if case == '!':
+                text = locale.upper(text) if locale else text.upper()
+            elif case == '?':
+                text = locale.lower(text) if locale else text.lower()
+            elif case == '>':
+                if locale:
+                    text = locale.upper(text[0]) + locale.lower(text[1:])
+                else:
+                    text = text[0].upper() + text[1:].lower()
+
+            fmt = regex.sub(text, fmt)
+
+        return fmt
+
+    def format(self, fmt: str = None, locale: str | SezimalLocale = None, skip_strftime: bool = False, time_zone: str | ZoneInfo = None) -> str:
+        if not fmt:
+            return fmt
+
+        if locale:
+            if isinstance(locale, SezimalLocale):
+                lang = locale.LANG
+            else:
+                lang = locale
+                locale = sezimal_locale(lang)
+
+        else:
+            locale = DEFAULT_LOCALE
+            lang = locale.LANG
+
+        if not fmt:
+            fmt = locale.DATE_FORMAT
+
+        fmt = fmt.replace('##', '__HASHTAG__')
+
+        #
+        # Astronomical formats: seasons and moon phases
+        #
+        fmt = self._apply_season_format(fmt, locale=locale, time_zone=time_zone)
+
+        #
+        # Day Count Calendar formats
+        #
+        fmt = self._apply_dcc_formats(fmt, locale=locale)
+
+        #
+        # Locale’s date separator
+        #
+        if '#/' in fmt:
+            if locale:
+                fmt = fmt.replace('#/', locale.DATE_SEPARATOR)
+            else:
+                fmt = fmt.replace('#/', '-')
+
+        if '&DS' in fmt:
+            if locale:
+                fmt = fmt.replace('&DS', locale.DCC_DATE_SEPARATOR)
+            else:
+                fmt = fmt.replace('&DS', '‐')
+
+        if '&DYMS' in fmt:
+            if locale:
+                fmt = fmt.replace('&DYMS', locale.DCC_DATE_YEAR_MONTH_SEPARATOR)
+            else:
+                fmt = fmt.replace('&DYMS', ', ')
+
+        if '&DMDS' in fmt:
+            if locale:
+                fmt = fmt.replace('&DMDS', locale.DCC_DATE_MONTH_DAY_SEPARATOR)
+            else:
+                fmt = fmt.replace('&DMDS', ', ')
+
+        #
+        # Year’s explicit sign
+        #
+        if '#+' in fmt:
+            if self.year >= 0:
+                fmt = fmt.replace('#+', '+')
+            else:
+                fmt = fmt.replace('#+', '')
+
+        if '&+' in fmt:
+            if self.dcc_year >= 0:
+                fmt = fmt.replace('&+', '+')
+            else:
+                fmt = fmt.replace('&+', '')
+
+        #
+        # Let’s deal first with the numeric formats
+        #
+        for regex, token, base, zero, character, value_name, \
+            size, size_niftimal, size_decimal in DATE_NUMBER_FORMAT_TOKENS:
+            if not regex.findall(fmt):
+                continue
+
+            if base in ['@', '@!', 'Z']:
+                value = self._apply_number_format(token, value_name, size_niftimal, locale)
+            elif base in ['9', '9?', '↋', '↋?']:
+                value = self._apply_number_format(token, value_name, size_decimal, locale)
+            else:
+                value = self._apply_number_format(token, value_name, size, locale)
+
+            if locale and locale.RTL:
+                value = '\N{LRI}' + value + '\N{PDI}'
+
+            fmt = regex.sub(value, fmt)
+
+        #
+        # Formatted year number
+        #
+        for regex, token, base, separator, character, value_name in YEAR_NUMBER_FORMAT_TOKENS:
+            if not regex.findall(fmt):
+                continue
+
+            year = getattr(self, value_name, 0)
+
+            if 'X' in character and not separator:
+                separator = '\U000f1e6d'  # Arda separator
+
+            if value_name.startswith('gregorian_') or value_name.startswith('symmetric_'):
+                if type(year) == Decimal:
+                    year = SezimalInteger(year)
+                else:
+                    year = SezimalInteger(Decimal(year))
+
+            if base in ['', '!', '?']:
+                if '>' in character:
+                    if value_name in ('year', 'dcc_year') \
+                        and year >= '213100' and year < '214000':
+                        year -= 213_000
+                    elif value_name == 'gregorian_year' \
+                        and year >= '13100' and year <= '14000':
+                        year -= 13_000
+
+                year = locale.format_number(
+                    year,
+                    sezimal_digits='!' in base,
+                    use_group_separator=True,
+                    sezimal_places=0,
+                )
+
+            elif base in ['@', '@!', 'Z', 'Z?']:
+                year = locale.format_niftimal_number(
+                    year,
+                    sezimal_digits='!' in base,
+                    regularized_digits='@' in base,
+                    use_group_separator=True,
+                    niftimal_places=0,
+                )
+
+            elif base in ['9', '9?']:
+                year = locale.format_decimal_number(
+                    year,
+                    use_group_separator=True,
+                    decimal_places=0,
+                )
+
+            elif base in ['↋', '↋?']:
+                year = locale.format_dozenal_number(
+                    year,
+                    use_group_separator=True,
+                    dozenal_places=0,
+                )
+
+            if '?' in base:
+                year = locale.digit_replace(year)
+
+            if separator:
+                if separator[0] == '\\' and len(separator) >= 2:
+                    separator = separator[1:]
+
+                if separator != locale.GROUP_SEPARATOR:
+                    year = year.replace(locale.GROUP_SEPARATOR, separator)
+
+            if locale and locale.RTL:
+                year = '\N{LRI}' + year + '\N{PDI}'
+
+            fmt = regex.sub(year, fmt)
+
+        #
+        # And now, the text formats
+        #
+        for base, size, case, month_week, calendar in DATE_TEXT_FORMAT_TOKEN.findall(fmt):
+            regex = re.compile(fr'#{base}{size}{case}{month_week}{calendar}')
 
             if month_week == 'M':
                 if size == '@':
-                    if base:
+                    if calendar == '&':
+                        text = locale.dcc_month_abbreviated_name(self.dcc_month)
+                    elif base:
                         text = locale.iso_month_abbreviated_name(self.month)
                     else:
                         text = locale.month_abbreviated_name(self.month)
                 else:
-                    if base:
+                    if calendar == '&':
+                        text = locale.dcc_month_name(self.dcc_month)
+                    elif base:
                         text = locale.iso_month_name(self.month)
                     else:
                         text = locale.month_name(self.month)
 
             else:
-                if size:
-                    text = locale.weekday_abbreviated_name(self.weekday)
+                if calendar == '&':
+                    if size:
+                        text = locale.dcc_weekday_abbreviated_name(self.dcc_weekday)
+                    else:
+                        text = locale.dcc_weekday_name(self.dcc_weekday)
                 else:
-                    text = locale.weekday_name(self.weekday)
+                    if size:
+                        text = locale.weekday_abbreviated_name(self.weekday)
+                    else:
+                        text = locale.weekday_name(self.weekday)
 
             if size == '1':
-                text = locale.weekday_symbol(self.weekday)
+                if calendar == '&':
+                    text = locale.dcc_weekday_symbol(self.dcc_weekday)
+                else:
+                    text = locale.weekday_symbol(self.weekday)
             elif size == '2':
                 text = locale.slice(text, 0, 2)
             elif size == '3':
@@ -666,32 +886,32 @@ class SezimalDate:
         return fmt
 
     @classmethod
-    def from_gregorian(cls, year: int, month: int, day: int) -> Self:
-        return cls.from_ordinal_date(gregorian_year_month_day_to_ordinal_date(year, month, day))
+    def from_gregorian(cls, year: int | Decimal, month: int | Decimal, day: int | Decimal) -> Self:
+        return cls.from_ordinal_date(gregorian_year_month_day_to_ordinal_date(int(year), int(month), int(day)))
 
     @property
-    def gregorian_year(self) -> int:
+    def gregorian_year(self) -> Decimal:
         if type(self._gregorian_date) in (list, tuple):
-            return self._gregorian_date[0]
+            return Decimal(self._gregorian_date[0])
 
-        return self.gregorian_date.year
+        return Decimal(self.gregorian_date.year)
 
     @property
-    def gregorian_month(self) -> int:
+    def gregorian_month(self) -> Decimal:
         if type(self._gregorian_date) in (list, tuple):
-            return self._gregorian_date[1]
+            return Decimal(self._gregorian_date[1])
 
-        return self.gregorian_date.month
+        return Decimal(self.gregorian_date.month)
 
     @property
-    def gregorian_day(self) -> int:
+    def gregorian_day(self) -> Decimal:
         if type(self._gregorian_date) in (list, tuple):
-            return self._gregorian_date[2]
+            return Decimal(self._gregorian_date[2])
 
-        return self.gregorian_date.day
+        return Decimal(self.gregorian_date.day)
 
     @property
-    def gregorian_is_leap(self) -> int:
+    def gregorian_is_leap(self) -> bool:
         return \
             (self.gregorian_year % 4 == 0) \
             and (
@@ -1036,8 +1256,7 @@ class SezimalDate:
         if weeks:
             res = res.from_days(res.as_days - (weeks * SezimalInteger(11)))
 
-        if not months:
-            months = SezimalInteger(0)
+        months = SezimalInteger(months or 0)
 
         if quarters:
             months += quarters * SezimalInteger(3)
@@ -1072,8 +1291,7 @@ class SezimalDate:
         if weeks:
             res = res.from_days(res.as_days + (weeks * SezimalInteger(11)))
 
-        if not months:
-            months = SezimalInteger(0)
+        months = SezimalInteger(months or 0)
 
         if quarters:
             months += quarters * SezimalInteger(3)
@@ -1090,6 +1308,62 @@ class SezimalDate:
                 month -= 20
 
             res = res.replace(year=year, month=month)
+
+        return res
+
+    def gregorian_previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        res = self
+
+        if days:
+            res = res.from_days(res.as_days - days)
+
+        if weeks:
+            res = res.from_days(res.as_days - (weeks * SezimalInteger(11)))
+
+        months = SezimalInteger(months or 0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if months:
+            res = SezimalDate(res.gregorian_date + relativedelta(months=int(months.decimal)))
+
+        return res
+
+    def gregorian_next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        res = self
+
+        if days:
+            res = res.from_days(res.as_days + days)
+
+        if weeks:
+            res = res.from_days(res.as_days + (weeks * SezimalInteger(11)))
+
+        months = SezimalInteger(months or 0)
+
+        if quarters:
+            months += quarters * SezimalInteger(3)
+
+        if years:
+            months += years * SezimalInteger(20)
+
+        if months:
+            res = SezimalDate(res.gregorian_date - relativedelta(months=int(months.decimal)))
 
         return res
 
@@ -1466,70 +1740,3 @@ class SezimalDate:
 SezimalDate.min = SezimalDate(1, 1, 1)
 SezimalDate.max = SezimalDate(MAXYEAR, 20, 44)
 SezimalDate.resolution = _datetime.timedelta(days=1)
-
-
-if __name__ == '__main__':
-    try:
-        1/0
-        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-        locale.setlocale(locale.LC_COLLATE, 'pt_BR.UTF-8')
-        documentation_title = '     Datas da Documentação do Calendário'
-        holidays_title = '   Feriados e Eventos Históricos do Brasil'
-        size = 16
-        date_format = '%a. %d-%b-%_Y'
-
-    except:
-        documentation_title = '  Dates from the Symmetry454 Documentation'
-        holidays_title = '   Brazilian Holidays and Historical Events'
-        size = 16
-        date_format = '%_Y-%m-%d %a.'
-
-    print(documentation_title)
-    print(holidays_title)
-    print(' ===========================================')
-
-    dates = [
-        # (( -753,  1,  1), 'Kalendae Ianuarius I AUC => -0753-12-23 CE, -0753-12-24 Gregorian/ISO (no year zero)'),
-        # (( -121,  4, 27), '=> -0121-04-27 CE, -0121-04-26 Gregorian/ISO (no year zero)'),
-        # ((  -91,  9, 22), '=> -0091-09-22 CE, -0091-09-27 Gregorian/ISO (no year zero)'),
-        ((    1,  1,  1), 'First date possible, Python’s date doesn’t deal with years before 1'),
-        ((  122,  9,  7), 'Building of Hadrian’s Wall (circa)'),
-        ((1_776,  7,  4), 'Independence Day - USA'),
-        ((1_867,  7,  1), 'Canadian Confederence - Canada'),
-        ((1_947, 10, 24), ''),
-        ((1_970,  1,  1), 'POSIX epoch'),
-        ((1_995,  8, 10), ''),
-        ((2_000,  2, 29), ''),
-        ((2_004,  5,  2), ''),
-        ((2_004, 12, 31), 'Dr. Irv Bromberg proposed switching calendars on 2005-01-01'),
-        ((2_020,  2, 20), ''),
-        ((2_023,  1, 16), 'Day I commited this code to GitHub'),
-        ((2_222,  2,  6), ''),
-        ((3_333,  3,  1), ''),
-        ((9_998, 12, 27), 'Last date compatible with Python’s date, see code'),
-
-        ((1500,  5,  2), 'Descobrimento do Brasil (22-abr-1500 cal. juliano)'),
-        ((1532,  2,  1), 'Fundação de São Vicente (22-jan-1532 cal. juliano)'),
-        ((1554,  2,  4), 'Fundação de São Paulo (25-jan-1554 cal. juliano)'),
-        ((1792,  4, 21), 'Tiradentes'),
-        ((1822,  9,  7), 'Independência'),
-        ((1857,  5,  8), 'Dia da Mulher'),
-        ((1886,  5,  1), 'Dia do Trabalhador'),
-        ((1888,  5, 13), 'Libertação da Escravatura'),
-        ((1889, 11, 15), 'Proclamação da República'),
-        ((1932,  7,  9), 'Revolução Constitucionalista'),
-        ((1968,  1,  1), 'Fraternidade Universal'),
-        ((1980, 10, 12), 'Nossa Senhora Aparecida'),
-    ]
-
-    for ymd, name in dates:
-        dt = _datetime.date(*ymd)
-        sd = SezimalDate(dt)
-        # print(dt, dt.toordinal(), sd, sd.isoformat_decimal(), sd.toordinal().decimal, Decimal(dt.toordinal()) == sd.toordinal().decimal)
-        print(sd.isoformat_decimal(), decimal_format(sd.toordinal().decimal, decimal_places=0), decimal_format(sd.to_julian_date().decimal))
-        # print(' ', sd.gregorian_date.strftime(date_format).rjust(size), f'Greg. =', sd.strftime(date_format + ' %E').rjust(size), f'({sd.isoformat_decimal()})', name)
-
-    # sd = SezimalDate.today()
-    # dt = sd.gregorian_date
-    # print()
-    # print(' ', sd.gregorian_date.strftime(date_format).rjust(size), f'Greg. =', sd.strftime(date_format + ' %E').rjust(size), f'({sd.isoformat_decimal()})', 'Today')

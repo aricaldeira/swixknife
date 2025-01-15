@@ -419,14 +419,12 @@ class SezimalDateTime:
 
     @classmethod
     def now(cls, time_zone: str = None) -> Self:
-        time = SezimalTime.now(time_zone=time_zone)
+        if not time_zone:
+            time_zone = system_time_zone()
 
-        if time.day:
-            date = SezimalDate.from_days(SezimalDate.today().as_days + 1)
-        else:
-            date = SezimalDate.today()
+        t = _datetime.datetime.now(tz=ZoneInfo(time_zone))
 
-        return cls(year=date, uta=time)
+        return cls(t, time_zone=time_zone)
 
     @classmethod
     def today(cls) -> Self:
@@ -546,6 +544,26 @@ class SezimalDateTime:
         date = self._date.next(days, weeks, months, quarters, years)
         return self.combine(date, self._time, self.time_zone)
 
+    def gregorian_previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.gregorian_previous(days, weeks, months, quarters, years)
+        return self.combine(date, self._time, self.time_zone)
+
+    def gregorian_next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        quarters: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.gregorian_next(days, weeks, months, quarters, years)
+        return self.combine(date, self._time, self.time_zone)
+
     @property
     def week_proportion_ellapsed(self) -> Sezimal:
         return self.date.week_proportion_ellapsed
@@ -567,3 +585,130 @@ class SezimalDateTime:
 
     def hijri_date(self, locale: SezimalLocale = None, number: bool = True, short: bool = False):
         return self._date.hijri_date(locale, number, short)
+
+    @property
+    def dcc_date(self) -> (SezimalInteger, SezimalInteger, SezimalInteger):
+        return self._date.dcc_date
+
+    @property
+    def dcc_year(self) -> SezimalInteger:
+        return self._date.dcc_year
+
+    @property
+    def dcc_month(self) -> SezimalInteger:
+        return self._date.dcc_month
+
+    @property
+    def dcc_week(self) -> SezimalInteger:
+        return self._date.dcc_week
+
+    @property
+    def dcc_day(self) -> SezimalInteger:
+        return self._date.dcc_day
+
+    @property
+    def dcc_day_in_year(self) -> SezimalInteger:
+        return self._date.dcc_day_in_year
+
+    @property
+    def dcc_week_in_year(self) -> SezimalInteger:
+        return self._date.dcc_week_in_year
+
+    @property
+    def dcc_weekday(self) -> SezimalInteger:
+        return self._date.dcc_weekday
+
+    @property
+    def dcc_is_short_year(self) -> bool:
+        return self._date.dcc_is_short_year
+
+    @property
+    def dcc_is_long_year(self) -> bool:
+        return self._date.dcc_is_long_year
+
+    @property
+    def dcc_term(self) -> SezimalInteger:
+        return self._date.dcc_term
+
+    @property
+    def dcc_day_in_term(self) -> SezimalInteger:
+        return self._date.dcc_day_in_term
+
+    @property
+    def dcc_week_in_term(self) -> SezimalInteger:
+        return self._date.dcc_week_in_term
+
+    @property
+    def dcc_total_days_in_year(self):
+        return self._date.dcc_total_days_in_year
+
+    @property
+    def dcc_total_days_in_term(self):
+        return self._date.dcc_total_days_in_term
+
+    @property
+    def dcc_total_days_in_month(self):
+        return self._date.dcc_total_days_in_month
+
+    @property
+    def dcc_total_days_in_week(self):
+        return self._date.dcc_total_days_in_week
+
+    @property
+    def dcc_total_weeks_in_year(self):
+        return self._date.dcc_total_weeks_in_year
+
+    @property
+    def dcc_total_weeks_in_term(self):
+        return self._date.dcc_total_weeks_in_term
+
+    def dcc_total_weeks_in_month(self):
+        return self._date.dcc_total_weeks_in_month
+
+    @property
+    def dcc_total_months_in_year(self):
+        return self._date.dcc_total_months_in_year
+
+    @property
+    def dcc_total_months_in_term(self):
+        return self._date.dcc_total_months_in_term
+
+    @property
+    def dcc_total_terms_in_year(self):
+        return self._date.dcc_total_terms_in_year
+
+    @property
+    def dcc_week_proportion_ellapsed(self) -> Sezimal:
+        return self._date.dcc_week_proportion_ellapsed
+
+    @property
+    def dcc_month_proportion_ellapsed(self) -> Sezimal:
+        return self._date.dcc_month_proportion_ellapsed
+
+    @property
+    def dcc_term_proportion_ellapsed(self) -> Sezimal:
+        return self._date.dcc_term_proportion_ellapsed
+
+    @property
+    def dcc_year_proportion_ellapsed(self) -> Sezimal:
+        return self._date.dcc_year_proportion_ellapsed
+
+    def dcc_previous(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        terms: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.dcc_previous(days, weeks, months, terms, years)
+        return self.combine(date, self._time, self.time_zone)
+
+    def dcc_next(self,
+        days: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        weeks: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        months: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        terms: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+        years: str | int | float | Decimal | Sezimal | SezimalInteger = None,
+    ) -> Self:
+        date = self._date.dcc_next(days, weeks, months, terms, years)
+        return self.combine(date, self._time, self.time_zone)

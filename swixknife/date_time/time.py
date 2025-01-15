@@ -41,7 +41,7 @@ class SezimalTime:
 
     def __new__(
         cls,
-        uta: str | int | float | Decimal | Sezimal | SezimalInteger | _datetime.time = 0,
+        uta: str | int | float | Decimal | Sezimal | SezimalInteger | _datetime.time | _datetime.datetime = 0,
         posha: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         agrima: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
         anuga: str | int | float | Decimal | Sezimal | SezimalInteger = 0,
@@ -57,7 +57,7 @@ class SezimalTime:
             elif VALID_PARTIAL_TIME_STRING.match(uta):
                 uta, posha = uta.split(':')
 
-        elif type(uta) == _datetime.time:
+        elif type(uta) in (_datetime.time, _datetime.datetime):
             seconds = Decimal(str(uta.hour)) * 60 * 60
             seconds += Decimal(str(uta.minute)) * 60
             seconds += Decimal(str(uta.second))
@@ -223,18 +223,9 @@ class SezimalTime:
         if not time_zone:
             time_zone = system_time_zone()
 
-        traditional_utc_now = _datetime.datetime.now(ZoneInfo('UTC'))
-        total_agrimas = date_time_to_agrima(traditional_utc_now)
-        tz_offset, dst_offset = tz_agrimas_offset(time_zone)
-        total_agrimas += tz_offset # + dst_offset
+        t = _datetime.datetime.now(ZoneInfo(time_zone))
 
-        #
-        # Date has shifted?
-        #
-        if total_agrimas < 0:
-            total_agrimas = total_agrimas + Sezimal('1_000_000')
-
-        return cls(agrima=total_agrimas, time_zone=time_zone)
+        return cls(t, time_zone=time_zone)
 
     def at_time_zone(self, time_zone: str = 'UTC') -> Self:
         if not time_zone:

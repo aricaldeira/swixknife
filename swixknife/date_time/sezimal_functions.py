@@ -60,10 +60,10 @@ ISO_EPOCH_JULIAN_DAY = Sezimal('100_521_320.3')  # 1_721_424.5_dec → 00-12-31_
 # compensates the fact that the ordinal date / Rada Die starts
 # with 1, not zero
 #
-EPOCH = SezimalInteger('-210_141_212')  # -3_652_424_dec
-EPOCH_JULIAN_DAY = Sezimal('-105_215_450.3')  # -1_930_998.5_dec
-ISO_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
-ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
+# EPOCH = SezimalInteger('-210_141_212')  # -3_652_424_dec
+# EPOCH_JULIAN_DAY = Sezimal('-105_215_450.3')  # -1_930_998.5_dec
+# ISO_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
+# ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 
 #
 # Sezimal Holocene Epoch
@@ -74,8 +74,8 @@ ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 # compensates the fact that the ordinal date / Rada Die starts
 # with 1, not zero
 #
-EPOCH = SezimalInteger('-321_432_452')  # -5_680_976_dec
-EPOCH_JULIAN_DAY = Sezimal('-220_511_131.3')  # -3_959_550.5_dec
+EPOCH = SezimalInteger('-321_425_235')  # -5_680_976_dec
+EPOCH_JULIAN_DAY = Sezimal('-220_503_514.3')  # -3_959_550.5_dec
 ISO_YEAR_DIFF = SezimalInteger('200_000')  # 15_552_dec
 ISO_HOLOCENE_YEAR_DIFF = SezimalInteger('114_144')  # 10_000_dec
 
@@ -403,7 +403,10 @@ def mars_sol(julian_day: Sezimal) -> Sezimal:
     # This is 130_550-01-01 30:03:12.520_354_244_205(014_402_545_442_033_201_055_341_404_131)
     # Equivalent to Gregorian/ISO 1873-12-29 12:03:36.466559
     #
-    MARS_SOL_EPOCH = Sezimal('123_320_402.000_312_520_354_244_205_014_402_545_442_033_201_055_341_404_131')
+    # MARS_SOL_EPOCH = Sezimal('123_320_402.000_312_520_354_244_205_014_402_545_442_033_201_055_341_404_131')
+    # MARS_SOL_EPOCH = Sezimal('123_320_402.000_312_520_354_244_205_014_402_545_442_033_201_055_341_404_131')
+    MARS_SOL_EPOCH = SezimalFraction('41_325_224_024_251_343 / 255_100_052')
+
     #
     # Julian day 131_315-01-01 30:00:00 = 2000-01-01 12:00:00_dec
     #
@@ -413,24 +416,28 @@ def mars_sol(julian_day: Sezimal) -> Sezimal:
     # 37_dec seconds + 32.184_dec seconds
     # in 86_400_dec seconds in a day
     #
-    TAI_UTC_OFFSET = (Decimal('37') + Decimal('32.184')) / Decimal('86_400')
+    # TAI_UTC_OFFSET = (Decimal('37') + Decimal('32.184')) / Decimal('86_400')
+    TAI_UTC_OFFSET = SezimalFraction('5001 / 44_534_000')
 
     #
     # Length of Mars sol in shaditibodas = 1_005_534_344_243_221_121 ~ 88_775.244_dec seconds
     # Lenght of Earth day in shaditibodas = 1_000_000_000_122_215_525 ~ 86_400.002_dec seconds
     #
     # MARS_SOL_IN_DAYS = SezimalFraction('1_005_534_344_243_221_121', '1_000_000_000_122_215_525')
-    MARS_SOL_IN_DAYS = Sezimal(Decimal('1.027_491_252'))
+    # MARS_SOL_IN_DAYS = Sezimal(Decimal('1.027_491_252'))
+    MARS_SOL_IN_DAYS = SezimalFraction('41_253_401_553 / 40_450_211_224')
 
     #
     # Formula from:
     # http://marsclock.com/
     #
-    julian_day = julian_day + TAI_UTC_OFFSET - JULIAN_DATE_131_315
-    sol = julian_day - 4.3
+    julian_day = SezimalFraction(julian_day) + TAI_UTC_OFFSET - JULIAN_DATE_131_315
+    # sol = julian_day - SezimalFraction(4.3)
+    sol = julian_day - SezimalFraction('13 / 2')
     sol /= MARS_SOL_IN_DAYS
     sol += Sezimal('543_220')  # 44_796_dec
-    sol -= Decimal('0.000_96')  # adjustment from Mars24
+    # sol -= Decimal('0.000_96')  # adjustment from Mars24
+    # sol -= SezimalFraction('3 / 22_245')  # adjustment from Mars24
 
     #
     # For reference:

@@ -75,7 +75,7 @@ YEAR_NUMBER_FORMAT_TOKENS = tuple(
 
 
 DATE_TEXT_FORMAT_TOKEN = re.compile(
-    r'#(?P<base>Z|9|↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week>M|W)'
+    r'#(?P<base>Z|9|↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week>M|W)(?P<calendar>&)?'
 )
 
 
@@ -185,4 +185,82 @@ ISO_TIME_NUMBER_FORMAT_TOKENS = tuple(
             ('f', 'iso_microsecond', 10, 1, 2),
         ),
     )
+)
+
+
+DCC_DATE_NUMBER_FORMAT_TOKENS = tuple(
+    (
+        re.compile(f'&{base}{zero}{value[0]}'),
+        f'&{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
+    )
+    for base, zero, value in product(
+        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
+        ('\\*\\-', '\\-', '\\*\\>', '\\>', '\\*', ''),
+        (
+            ('dY', 'dcc_day_in_year', 4, 2, 3),
+            ('dT', 'dcc_day_in_term', 1, 1, 1),
+            ('dM', 'dcc_day', 2, 1, 2),
+            ('dW', 'dcc_weekday', 1, 1, 1),
+
+            ('wY', 'dcc_week_in_year', 3, 2, 2),
+            ('wT', 'dcc_week_in_term', 1, 1, 1),
+            ('wM', 'dcc_week', 1, 1, 1),
+
+            ('mY', 'dcc_month', 3, 2, 2),
+            ('mT', 'dcc_month_in_term', 1, 1, 1),
+
+            ('tdY', 'dcc_total_days_in_year', 4, 2, 3),
+            ('tdT', 'dcc_total_days_in_term', 3, 2, 2),
+            ('tdM', 'dcc_total_days_in_month', 2, 1, 2),
+            ('tdW', 'dcc_total_days_in_week', 1, 1, 1),
+
+            ('twY', 'dcc_total_weeks_in_year', 3, 2, 2),
+            ('twT', 'dcc_total_weeks_in_term', 2, 1, 2),
+            ('twM', 'dcc_total_weeks_in_month', 1, 1, 1),
+
+            ('tmY', 'dcc_total_months_in_year', 2, 1, 2),
+            ('tmT', 'dcc_total_months_in_term', 1, 1, 1),
+
+            ('ttY', 'dcc_total_terms_in_year', 1, 1, 1),
+
+            ('tY', 'dcc_term', 3, 2, 2),
+
+            ('w', 'dcc_weekday', 1, 1, 1),
+            ('d', 'dcc_day', 2, 1, 2),
+            ('m', 'dcc_month', 2, 1, 2),
+
+            ('t', 'dcc_term', 1, 1, 1),
+
+            ('y', 'dcc_year', 10, 3, 4),
+        ),
+    )
+)
+
+
+DCC_YEAR_NUMBER_FORMAT_TOKENS = tuple(
+    (
+        re.compile(f'&{base}{separator}{value[0]}'),
+        f'&{base}{separator}{value[0]}'.replace('\\', ''), base.replace('\\', ''), separator, *value
+    )
+    for base, separator, value, in product(
+        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
+        (
+            '', '_', '\\.', ',', '˙', 'ʼ',
+            '’', "'", '•', '◦', '\u0020', '\u00a0',
+            '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
+            '\u2006', '\u2007', '\u2008', '\u2009', '\u200a', '\u202f',
+            '\u205f', '\U000f1e6c', '\U000f1e6d', '\U000f1e6e', '\U000f1e6f',
+        ),
+        (
+            ('Y', 'dcc_year'),
+            ('X', 'dcc_year'),
+            ('>Y', 'dcc_year'),
+            ('>X', 'dcc_year'),
+        )
+    )
+)
+
+
+DCC_DATE_TEXT_FORMAT_TOKEN = re.compile(
+    r'&(?P<base>Z|9|↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week_term>M|W|T)'
 )
