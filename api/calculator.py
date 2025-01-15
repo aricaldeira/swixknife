@@ -50,8 +50,10 @@ UNIT_SIMPLIFIED_SYMBOL = {
 @app.route('/calculator')
 def api_calculator() -> Response:
     text = open(TEMPLATE_PATH.joinpath('calculator.html'), 'r').read()
-    locals().update(_get_calculator_templates())
-    text = eval(f'f"""{text}"""')
+    templates = _get_calculator_templates()
+    local_variables = locals()
+    local_variables.update(templates)
+    text = eval(f'f"""{text}"""', globals(), local_variables)
     return Response(text, mimetype='text/html')
 
 
