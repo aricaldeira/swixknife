@@ -1393,6 +1393,7 @@ class SezimalLocale:
         'SYM': 'Symmetry454',
         'ISO': 'Gregorian',
         'DCC': 'Day Count',
+        'ADC': 'Astronomical Day Count',
         'ISR': 'Israeli',
         'IND': 'Indian National',
 
@@ -1422,6 +1423,7 @@ class SezimalLocale:
         'SYM': 'Sym.',
         'ISO': 'Gre.',
         'DCC': 'DCC',
+        'ADC': 'ADC',
         'ISR': 'Isr.',
         'IND': 'Ind.',
         #
@@ -1476,6 +1478,25 @@ class SezimalLocale:
             self.YEAR_TEXT_MONTH_FORMAT = _to_short_year_format(self.YEAR_TEXT_MONTH_FORMAT)
         except:
             pass
+
+    def _dcc_to_adc_format(self, token: str) -> None:
+        for attr in (
+            'DCC_DATE_FORMAT',
+            'DCC_DATE_LONG_FORMAT',
+            'DCC_YEAR_FORMAT',
+            'DCC_YEAR_TEXT_MONTH_FORMAT',
+            'DCC_TEXT_SHORT_MONTH_DAY_FORMAT',
+            'DCC_DATE_TEXT_SHORT_MONTH_FORMAT',
+            'DCC_TEXT_MONTH_DAY_FORMAT',
+            'ADC_DATE_FORMAT',
+            'ADC_DATE_LONG_FORMAT',
+            'ADC_YEAR_TEXT_MONTH_FORMAT',
+        ):
+            value = getattr(self, attr)
+            value = value.replace('&', '&' + token)
+            value = value.replace('&' + token + 'D', '&D')
+            value = value.replace('&' + token + 'c', '&c')
+            setattr(self, attr, value)
 
     def _to_other_base(self, base: int, fmt: str = None,
         sezimal_digits: bool = False, text_digits: bool = False) -> str | None:
@@ -1581,12 +1602,14 @@ class SezimalLocale:
             self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, self.ISO_TIME_FORMAT)
             self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, self.ISO_TIME_FORMAT)
             self.TIME_FORMAT = self.ISO_TIME_FORMAT
+            self._dcc_to_adc_format('c9')
 
         elif base == 20:
             self.DIGITS = []
             self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
             self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
             self.TIME_FORMAT = '#3.2fD'
+            self._dcc_to_adc_format('c↋')
 
         if base == 14 or base == 20:
             self.MONTH_NAME = self.ISO_MONTH_NAME
@@ -1606,13 +1629,7 @@ class SezimalLocale:
 
     def to_sezimal_digits(self):
         self._to_other_base(10, sezimal_digits=True)
-        self.DCC_DATE_FORMAT = '&!>Y&DS&!m&DS&!d'
-        self.DCC_DATE_LONG_FORMAT = '&!yC&DYMS&!mC&DMDS&!dC'
-        self.DCC_YEAR_FORMAT = '&!>Y'
-        self.DCC_YEAR_TEXT_MONTH_FORMAT = '&!yC&DYMS&!mC'
-        self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = '&!@M&DS&!d'
-        self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&!>Y&DS&!@M&DS&!d'
-        self.DCC_TEXT_MONTH_DAY_FORMAT = '&!m&DS&!d'
+        self._dcc_to_adc_format('!')
 
         for i in range(len(self.DCC_TERM_ABBREVIATED_NAME)):
             self.DCC_TERM_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_TERM_ABBREVIATED_NAME[i])
@@ -1661,6 +1678,9 @@ class SezimalLocale:
                 continue
 
             self.DCC_DAY_COUNT[key] = self.DCC_DAY_COUNT[key].replace('&', '&!')
+
+    def to_astronomical_names(self):
+        self._dcc_to_adc_format('c')
 
     def to_iso_format(self):
         self.DATE_SEPARATOR = '-'
@@ -1935,6 +1955,126 @@ class SezimalLocale:
         SezimalInteger('1'): '&-d day',
     }
 
+    ADC_MONTH_NAME = [
+        'Pisces',
+        'Cetus',
+        'Eridanus',
+        'Monoceros',
+        'Hydra',
+        'Leo',
+        'Virgo',
+        'Serpens',
+        'Aquila',
+        'Aquarius',
+        'Libra',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'Psc',
+        'Cet',
+        'Eri',
+        'Mon',
+        'Hya',
+        'Leo',
+        'Vir',
+        'Ser',
+        'Aql',
+        'Aqr',
+        'Lib',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'P',
+        'C',
+        'E',
+        'M',
+        'H',
+        'Le',
+        'V',
+        'S',
+        'Al',
+        'Ar',
+        'Lb',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'Sol',
+        # 'Mercury',
+        'Venus',
+        'Mars',
+        'Jupiter',
+        'Saturn',
+        'Luna',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'Sol',
+        # 'Mer',
+        'Ven',
+        'Mar',
+        'Jup',
+        'Sat',
+        'Lun',
+    ]
+
+    ADC_WEEKDAY_SYMBOL = [
+        'S', # ☉
+        # 'M', # ☿
+        'V', # ♀
+        'M', # ♂
+        'J', # ♃
+        'S', # ♄
+        'L', # ○ ☉
+    ]
+
+    def adc_month_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.ADC_MONTH_NAME[int(month.decimal)]
+
+    def adc_month_abbreviated_name(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.ADC_MONTH_ABBREVIATED_NAME[int(month.decimal)]
+
+    def adc_month_symbol(self, month: SezimalInteger, case: str = None) -> str:
+        month = SezimalInteger(month)
+
+        if month < 0 or month > 14:
+            raise ValueError(self.MONTH_ERROR.format(month=month))
+
+        return self.ADC_MONTH_SYMBOL[int(month.decimal)]
+
+    def adc_weekday_name(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.ADC_WEEKDAY_NAME[int(weekday.decimal)]
+
+    def adc_weekday_abbreviated_name(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.ADC_WEEKDAY_ABBREVIATED_NAME[int(weekday.decimal)]
+
+    def adc_weekday_symbol(self, weekday: SezimalInteger, case: str = None) -> str:
+        weekday = SezimalInteger(weekday)
+
+        if weekday < 0 or weekday > 5:
+            raise ValueError(self.WEEKDAY_ERROR.format(weekday=weekday))
+
+        return self.ADC_WEEKDAY_SYMBOL[int(weekday.decimal)]
+
     DCC_DATE_SEPARATOR = '–'
     DCC_DATE_YEAR_MONTH_SEPARATOR = ', '
     DCC_DATE_MONTH_DAY_SEPARATOR = ' and '
@@ -1945,3 +2085,7 @@ class SezimalLocale:
     DCC_TEXT_SHORT_MONTH_DAY_FORMAT = '&@M&DS&d'
     DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&>Y&DS&@M&DS&d'
     DCC_TEXT_MONTH_DAY_FORMAT = '&m&DS&d'
+
+    ADC_DATE_FORMAT = '&>Y&DS&m&DS&d'
+    ADC_DATE_LONG_FORMAT = '&>Y &cM &-d'
+    ADC_YEAR_TEXT_MONTH_FORMAT = '&>Y &cM'

@@ -337,6 +337,9 @@ class SezimalLocaleBZ(SezimalLocale):
         'SYM': 'Simétriku',
         'ISO': 'Gregorianu',
         'DCC': 'Kwantus‐Dias',
+        'ADC': 'Kwantus‐Dias Astronômiku',
+        'ADC': 'Kwantus‐Dias Astronômiku',
+        'ADC': 'Kwantus‐Dias Astronômiku',
         'ISR': 'Israelensi',
         'IND': 'Indianu',
 
@@ -366,6 +369,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'SYM': 'Sim.',
         'ISO': 'Gre.',
         'DCC': 'K.D.',
+        'ADC': 'K.D.A.',
         'ISR': 'Isr.',
         'IND': 'Ind.',
         #

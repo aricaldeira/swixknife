@@ -194,7 +194,7 @@ DCC_DATE_NUMBER_FORMAT_TOKENS = tuple(
         f'&{base}{zero}{value[0]}'.replace('\\', ''), base.replace('\\', ''), zero.replace('\\', ''), *value
     )
     for base, zero, value in product(
-        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
+        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?', 'c', 'c\\!', 'c9', 'c↋'),
         ('\\*\\-', '\\-', '\\*\\>', '\\>', '\\*', ''),
         (
             ('dY', 'dcc_day_in_year', 4, 2, 3),
@@ -243,7 +243,7 @@ DCC_YEAR_NUMBER_FORMAT_TOKENS = tuple(
         f'&{base}{separator}{value[0]}'.replace('\\', ''), base.replace('\\', ''), separator, *value
     )
     for base, separator, value, in product(
-        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?'),
+        ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '\\?', '9\\?', '↋\\?', 'Z\\?', 'c', 'c\\!', 'c9', 'c↋',),
         (
             '', '_', '\\.', ',', '˙', 'ʼ',
             '’', "'", '•', '◦', '\u0020', '\u00a0',
@@ -262,5 +262,5 @@ DCC_YEAR_NUMBER_FORMAT_TOKENS = tuple(
 
 
 DCC_DATE_TEXT_FORMAT_TOKEN = re.compile(
-    r'&(?P<base>Z|9|↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week_term>M|W|T)'
+    r'&(?P<base>Z|9|↋|c|c9|c↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week_term>M|W|T)'
 )

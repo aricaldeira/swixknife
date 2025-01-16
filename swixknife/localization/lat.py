@@ -69,8 +69,8 @@ class SezimalLocaleLAT(SezimalLocale):
     ]
 
     WEEKDAY_NAME_GENITIVE = [
-        'diēī Lūnae',
-        'diēī Mārtis',
+        'diēs Lūnae',
+        'diēs Mārtis',
         'diēs Mercuriī',
         'diēs Iouis',
         'diēs Ueneris',
@@ -577,3 +577,75 @@ class SezimalLocaleLAT(SezimalLocale):
     }
 
     DCC_DATE_MONTH_DAY_SEPARATOR = ' et '
+
+    ADC_MONTH_NAME = [
+        'mēnsis Piscium',
+        'mēnsis Cētī',
+        'mēnsis Ēridanī',
+        'mēnsis Monōcerotis',
+        'mēnsis Hydrae',
+        'mēnsis Leōnis',
+        'mēnsis Uirginis',
+        'mēnsis Serpentis',
+        'mēnsis Aquilae',
+        'mēnsis Aquāriī',
+        'mēnsis Lībrae',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'Pis',
+        'Cēt',
+        'Ēri',
+        'Mon',
+        'Hyd',
+        'Leō',
+        'Uir',
+        'Ser',
+        'Aql',
+        'Aqr',
+        'Līb',
+    ]
+
+    ADC_MONTH_S = [
+        'P',
+        'C',
+        'Ē',
+        'M',
+        'H',
+        'Le',
+        'U',
+        'S',
+        'Al',
+        'Ar',
+        'Lb',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'diēs Sōlis',
+        # 'diēs Mercuriī ',
+        'diēs Ueneris',
+        'diēs Mārtis',
+        'diēs Iouis',
+        'diēs Sāturnī',
+        'diēs Lūnae ',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'Sōl',
+        # 'Mer',
+        'Uen',
+        'Mār',
+        'Iou',
+        'Sat',
+        'Lūn',
+    ]
+
+    ADC_WEEKDAY_SYMBOL = [
+        'S',
+        # 'M',
+        'U',
+        'M',
+        'I',
+        'S',
+        'L',
+    ]

@@ -454,7 +454,7 @@ class SezimalDate:
             value = getattr(self, value)
             count = getattr(locale, count)
 
-            for fmttk in ('', '!', '@', '!@', '9', '↋'):
+            for fmttk in ('', '!', '@', '!@', '9', '↋', 'c', 'c!', 'c9', 'c↋'):
                 tk = f'&{fmttk}{token}C'
 
                 if tk in fmt:
@@ -477,7 +477,7 @@ class SezimalDate:
 
             if base in ['@', '@!', 'Z']:
                 value = self._apply_number_format(token, value_name, size_niftimal, locale)
-            elif base in ['9', '9?', '↋', '↋?']:
+            elif base in ['9', '9?', '↋', '↋?', 'c9', 'c↋']:
                 value = self._apply_number_format(token, value_name, size_decimal, locale)
             else:
                 value = self._apply_number_format(token, value_name, size, locale)
@@ -499,7 +499,7 @@ class SezimalDate:
             if 'X' in character and not separator:
                 separator = '\U000f1e6d'  # Arda separator
 
-            if base in ['', '!', '?']:
+            if base in ['', '!', '?', 'c', 'c!']:
                 if '>' in character:
                     if value_name in ('year', 'dcc_year') \
                         and year >= '213100' and year < '214000':
@@ -524,16 +524,16 @@ class SezimalDate:
                     niftimal_places=0,
                 )
 
-            elif base in ['9', '9?']:
+            elif base in ['9', '9?', 'c9']:
                 year = locale.format_decimal_number(
-                    year,
+                    year - 200_000,
                     use_group_separator=True,
                     decimal_places=0,
                 )
 
-            elif base in ['↋', '↋?']:
+            elif base in ['↋', '↋?', 'c↋']:
                 year = locale.format_dozenal_number(
-                    year,
+                    year - 200_000,
                     use_group_separator=True,
                     dozenal_places=0,
                 )
@@ -559,21 +559,38 @@ class SezimalDate:
         for base, size, case, term_month_week in DCC_DATE_TEXT_FORMAT_TOKEN.findall(fmt):
             regex = re.compile(fr'&{base}{size}{case}{term_month_week}')
 
-            if term_month_week == 'T':
-                if size == '@':
-                    text = locale.dcc_term_abbreviated_name(self.dcc_month)
+            if 'c' in base:
+                if term_month_week == 'T':
+                    if size == '@':
+                        text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                    else:
+                        text = locale.dcc_term_name(self.dcc_month)
+                elif term_month_week == 'M':
+                    if size == '@':
+                        text = locale.adc_month_abbreviated_name(self.dcc_month)
+                    else:
+                        text = locale.adc_month_name(self.dcc_month)
                 else:
-                    text = locale.dcc_term_name(self.dcc_month)
-            elif term_month_week == 'M':
-                if size == '@':
-                    text = locale.dcc_month_abbreviated_name(self.dcc_month)
-                else:
-                    text = locale.dcc_month_name(self.dcc_month)
+                    if size:
+                        text = locale.adc_weekday_abbreviated_name(self.dcc_weekday)
+                    else:
+                        text = locale.adc_weekday_name(self.dcc_weekday)
             else:
-                if size:
-                    text = locale.dcc_weekday_abbreviated_name(self.dcc_weekday)
+                if term_month_week == 'T':
+                    if size == '@':
+                        text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                    else:
+                        text = locale.dcc_term_name(self.dcc_month)
+                elif term_month_week == 'M':
+                    if size == '@':
+                        text = locale.dcc_month_abbreviated_name(self.dcc_month)
+                    else:
+                        text = locale.dcc_month_name(self.dcc_month)
                 else:
-                    text = locale.dcc_weekday_name(self.dcc_weekday)
+                    if size:
+                        text = locale.dcc_weekday_abbreviated_name(self.dcc_weekday)
+                    else:
+                        text = locale.dcc_weekday_name(self.dcc_weekday)
 
             if size == '1':
                 text = locale.dcc_weekday_symbol(self.dcc_weekday)

@@ -357,6 +357,7 @@ class SezimalLocalePT(SezimalLocale):
         'SYM': 'Simétrico',
         'ISO': 'Gregoriano',
         'DCC': 'Quantos‐Dias',
+        'ADC': 'Quantos‐Dias Astronômico',
         'ISR': 'Israelense',
         'IND': 'Indiano',
 
@@ -386,6 +387,7 @@ class SezimalLocalePT(SezimalLocale):
         'SYM': 'Sim.',
         'ISO': 'Gre.',
         'DCC': 'Q.D.',
+        'ADC': 'Q.D.A.',
         'ISR': 'Isr.',
         'IND': 'Ind.',
         #
@@ -576,3 +578,65 @@ class SezimalLocalePT(SezimalLocale):
     }
 
     DCC_DATE_MONTH_DAY_SEPARATOR = ' e '
+
+    ADC_MONTH_NAME = [
+        'peixes',
+        'baleia',
+        'rio',
+        'unicórnio',
+        'hidra',
+        'leão',
+        'virgem',
+        'serpente',
+        'águia',
+        'aquário',
+        'libra',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'pei',
+        'bal',
+        'rio',
+        'uni',
+        'hid',
+        'leã',
+        'vir',
+        'ser',
+        'águ',
+        'aqu',
+        'lib',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'P',
+        'B',
+        'R',
+        'U',
+        'H',
+        'L',
+        'V',
+        'S',
+        'Á',
+        'A',
+        'L',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'sol',
+        # 'mercúrio',
+        'vênus',
+        'marte',
+        'júpiter',
+        'saturno',
+        'lua',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'sol',
+        # 'mer',
+        'vên',
+        'mar',
+        'júp',
+        'sat',
+        'lua',
+    ]
