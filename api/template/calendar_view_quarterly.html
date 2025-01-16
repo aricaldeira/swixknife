@@ -27,16 +27,16 @@
             {% elif locale.calendar_displayed == 'DCC' %}
                 <span class="hide-in-mobile">
                     {% if date_last_month.dcc_year == date_next_month.dcc_year %}
-                        {{ date_last_month.format('&>Y&DS&M', locale) }} — {{ date_next_month.format('&M', locale) }}
+                        {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }} — {{ date_next_month.format('&' + format_token + 'M', locale) }}
                     {% else %}
-                        {{ date_last_month.format('&>Y&DS&M', locale) }} — {{ date_next_month.format('&>Y&DS&M', locale) }}
+                        {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }} — {{ date_next_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }}
                     {% endif %}
                 </span>
                 <span class="show-in-mobile">
                     {% if date_last_month.dcc_year == date_next_month.dcc_year %}
-                        {{ date_last_month.format('&>Y&DS&@M', locale) }} — {{ date_next_month.format('&@M', locale) }}
+                        {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }} — {{ date_next_month.format('&' + format_token + '@M', locale) }}
                     {% else %}
-                        {{ date_last_month.format('&>Y&DS&@M', locale) }} — {{ date_next_month.format('&>Y&DS&@M', locale) }}
+                        {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }} — {{ date_next_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }}
                     {% endif %}
                 </span>
             {% endif %}

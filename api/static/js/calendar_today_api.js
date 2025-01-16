@@ -302,6 +302,18 @@ function apply_settings() {
     } else if (calendar_displayed.endsWith('+↋')) {
         localStorage.setItem('sezimal-calendar-base', 20);
         localStorage.setItem('sezimal-calendar-format-token', '↋');
+    } else if (calendar_displayed.endsWith('+c')) {
+        localStorage.setItem('sezimal-calendar-base', 10);
+        localStorage.setItem('sezimal-calendar-format-token', 'c');
+    } else if (calendar_displayed.endsWith('+c!')) {
+        localStorage.setItem('sezimal-calendar-base', 10);
+        localStorage.setItem('sezimal-calendar-format-token', 'c!');
+    } else if (calendar_displayed.endsWith('+c9')) {
+        localStorage.setItem('sezimal-calendar-base', 14);
+        localStorage.setItem('sezimal-calendar-format-token', 'c9');
+    } else if (calendar_displayed.endsWith('+c↋')) {
+        localStorage.setItem('sezimal-calendar-base', 20);
+        localStorage.setItem('sezimal-calendar-format-token', 'c↋');
     };
 
     localStorage.setItem('sezimal-calendar-theme', document.getElementById('theme_select').value);

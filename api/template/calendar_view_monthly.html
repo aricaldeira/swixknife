@@ -20,7 +20,11 @@
             {% elif locale.calendar_displayed == 'ISO' %}
                 {{date.format(locale.ISO_YEAR_TEXT_MONTH_FORMAT, locale)}}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {{date.format(locale.DCC_YEAR_TEXT_MONTH_FORMAT, locale)}}
+                {% if 'c' in format_token %}
+                    {{ date.format(locale.ADC_YEAR_TEXT_MONTH_FORMAT, locale) }}
+                {% else %}
+                    {{ date.format(locale.DCC_YEAR_TEXT_MONTH_FORMAT, locale) }}
+                {% endif %}
             {% endif %}
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'month')">›</td>

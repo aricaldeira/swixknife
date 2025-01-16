@@ -15,7 +15,7 @@
         {% if str(now.date) != str(date.date) %}
             <col span="1" width="25%">  {# Today #}
         {% endif %}
-        <col span="1" width="5%">  {# Events #}
+<!--         <col span="1" width="5%">  {# Events #} -->
     </colgroup>
 
     <tr>
@@ -30,7 +30,7 @@
             {% elif locale.calendar_displayed == 'ISO' %}
                 {{ date.format(locale.ISO_YEAR_FORMAT, locale) }}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {{ date.format('&>Y', locale) }}
+                {{ date.format(locale.DCC_YEAR_FORMAT, locale) }}
             {% endif %}
         </td>
         <td onclick="change_view('quarterly')">
@@ -64,12 +64,22 @@
                         {{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month)) - 1) }}-<b><i>{{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month))) }}</i></b>-{{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month)) + 1) }}
                     {% endif %}
                 {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if date.dcc_month == 0 %}
-                        {{ locale.dcc_month_abbreviated_name(14) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
-                    {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
-                        {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(0) }}
+                    {% if 'c' in format_token %}
+                        {% if date.dcc_month == 0 %}
+                            {{ locale.adc_month_abbreviated_name(14) }}–<b><i>{{ locale.adc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.adc_month_abbreviated_name(date.dcc_month + 1) }}
+                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                            {{ locale.adc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.adc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.adc_month_abbreviated_name(0) }}
+                        {% else %}
+                            {{ locale.adc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.adc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.adc_month_abbreviated_name(date.dcc_month + 1) }}
+                        {% endif %}
                     {% else %}
-                        {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
+                        {% if date.dcc_month == 0 %}
+                            {{ locale.dcc_month_abbreviated_name(14) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
+                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                            {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(0) }}
+                        {% else %}
+                            {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             </span>
@@ -103,12 +113,22 @@
                         {{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month)) - 1), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month))), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month)) + 1), 0, 1)) }}
                     {% endif %}
                 {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if date.dcc_month == 0 %}
-                        {{ locale.dcc_month_symbol(14) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
-                    {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
-                        {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(0) }}
+                    {% if 'c' in format_token %}
+                        {% if date.dcc_month == 0 %}
+                            {{ locale.adc_month_symbol(14) }}–<b><i>{{ locale.adc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.adc_month_symbol(date.dcc_month + 1) }}
+                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                            {{ locale.adc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.adc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.adc_month_symbol(0) }}
+                        {% else %}
+                            {{ locale.adc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.adc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.adc_month_symbol(date.dcc_month + 1) }}
+                        {% endif %}
                     {% else %}
-                        {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
+                        {% if date.dcc_month == 0 %}
+                            {{ locale.dcc_month_symbol(14) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
+                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                            {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(0) }}
+                        {% else %}
+                            {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             </span>
@@ -124,7 +144,7 @@
                 {% elif locale.calendar_displayed == 'ISO' %}
                     {{ date.format('%B', locale) }}
                 {% elif locale.calendar_displayed == 'DCC' %}
-                        {{ date.format('#M&', locale) }}
+                    {{ date.format('&' + format_token + 'M', locale) }}
                 {% endif %}
             </span>
             <span class="show-in-mobile">
@@ -137,7 +157,7 @@
                 {% elif locale.calendar_displayed == 'ISO' %}
                     {{ date.format('%b', locale) }}
                 {% elif locale.calendar_displayed == 'DCC' %}
-                        {{ date.format('#@M&', locale) }}
+                        {{ date.format('&' + format_token + '@M', locale) }}
                 {% endif %}
             </span>
         </td>
@@ -145,7 +165,11 @@
             {% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
             <span class="hide-in-mobile">
                 {% if locale.calendar_displayed == 'DCC' %}
-                    {{ locale.dcc_weekday_abbreviated_name(0) }}–{{ locale.dcc_weekday_abbreviated_name(5) }}
+                    {% if 'c' in format_token %}
+                        {{ locale.adc_weekday_abbreviated_name(0) }}–{{ locale.adc_weekday_abbreviated_name(5) }}
+                    {% else %}
+                        {{ locale.dcc_weekday_abbreviated_name(0) }}–{{ locale.dcc_weekday_abbreviated_name(5) }}
+                    {% endif %}
                 {% elif USE_LOCALE_FIRST_WEEKDAY %}
                     {% if locale.FIRST_WEEKDAY == 'SUN' %}
                         {{ locale.weekday_abbreviated_name(11) }}-{{ locale.weekday_abbreviated_name(10) }}
@@ -206,6 +230,6 @@
                 {% endif %}
             </td>
         {% endif %}
-        <td onclick="open_event_list_window()">◎</td>
+<!--         <td onclick="open_event_list_window()">◎</td> -->
     </tr>
 </table>

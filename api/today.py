@@ -3,6 +3,7 @@ import json
 import pathlib
 import urllib
 import uuid
+import threading
 
 from flask import redirect, Response, request, render_template, jsonify
 from main import app, sitemapper, sezimal_render_template
@@ -444,7 +445,33 @@ def api_calendar_process():
     if dados['hour_format'] != 'locale':
         locale.HOUR_FORMAT = dados['hour_format']
 
-    context['events'] = _calendar_events(locale, date, context) or {}
+    tds = []
+
+    if locale.calendar_displayed == 'SYM':
+        context['events'] = _calendar_events(locale, date.year, context) or {}
+
+        # for i in SezimalRange(213_000, 214_000):
+        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
+
+    elif locale.calendar_displayed == 'ISO':
+        context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
+
+        # for i in range(1944, 2161):
+        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, Decimal(i), context)))
+
+    elif locale.calendar_displayed == 'DCC':
+        context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
+
+        # for i in SezimalRange(213_000, 214_000):
+        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
+
+    # for td in tds:
+    #     td.start()
+    #     print('iniciou thread', td)
+
+    # for td in tds:
+    #     td.join()
+    #     print('fechou thread', td)
 
     script = ''
 
@@ -612,24 +639,24 @@ def _read_calendar_cache(cache_key: str) -> SezimalDictionary | None:
     return eval(text)
 
 
-def _calendar_events(locale, date, context):
+def _calendar_events(locale, year, context):
     if locale.calendar_displayed == 'SYM':
-        if date.year >= 0:
-            cache_key = 'SYM+' + str(date.year)
+        if year >= 0:
+            cache_key = 'SYM+' + str(year)
         else:
-            cache_key = 'SYM' + str(date.year)
+            cache_key = 'SYM' + str(year)
 
     elif locale.calendar_displayed == 'ISO':
-        if date.gregorian_year >= 0:
-            cache_key = 'ISO+' + str(date.gregorian_year)
+        if year >= 0:
+            cache_key = 'ISO+' + str(year)
         else:
-            cache_key = 'ISO' + str(date.gregorian_year)
+            cache_key = 'ISO' + str(year)
 
     elif locale.calendar_displayed == 'DCC':
-        if date.dcc_year >= 0:
-            cache_key = 'DCC+' + str(date.dcc_year)
+        if year >= 0:
+            cache_key = 'DCC+' + str(year)
         else:
-            cache_key = 'DCC' + str(date.dcc_year)
+            cache_key = 'DCC' + str(year)
 
     cache_key += '|' + locale.LANGUAGE_TAG
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
@@ -658,7 +685,7 @@ def _calendar_events(locale, date, context):
     # all_events += locale.JEWISH_HOLIDAYS
     # all_events += locale.ISLAMIC_HOLIDAYS
 
-    _process_events_list(all_events, events, locale.calendar_displayed, date, locale, context)
+    _process_events_list(all_events, events, locale.calendar_displayed, year, locale, context)
 
     EVENTS_CACHE[cache_key] = events
     _write_calendar_cache(cache_key, events)
@@ -666,8 +693,14 @@ def _calendar_events(locale, date, context):
     return events
 
 
-def _process_events_list(all_events, events, calendar, date, locale, context):
-    years = (date.year - 1, date.year, date.year + 1)
+def _process_events_list(all_events, events, calendar, year, locale, context):
+    if calendar == 'ISO':
+        years = \
+            SezimalInteger(200_000) + Decimal(year) - 1, \
+            SezimalInteger(200_000) + Decimal(year), \
+            SezimalInteger(200_000) + Decimal(year) + 1
+    else:
+        years = year - 1, year, year + 1
 
     #
     # First the Seasons
@@ -677,13 +710,13 @@ def _process_events_list(all_events, events, calendar, date, locale, context):
 
         for event_date, _, season_name in seasons:
             if calendar == 'SYM':
-                if event_date.year != date.year:
+                if event_date.year != year:
                     continue
             elif calendar == 'ISO':
-                if event_date.gregorian_year != date.gregorian_year:
+                if event_date.gregorian_year != year:
                     continue
             elif calendar == 'DCC':
-                if event_date.dcc_year != date.dcc_year:
+                if event_date.dcc_year != year:
                     continue
 
             event_emoji = event_date.format(f'#@{locale.DEFAULT_HEMISPHERE}S', locale)
@@ -733,13 +766,13 @@ def _process_events_list(all_events, events, calendar, date, locale, context):
 
         for event_date, _, phase_name in phases:
             if calendar == 'SYM':
-                if event_date.year != date.year:
+                if event_date.year != year:
                     continue
             elif calendar == 'ISO':
-                if event_date.gregorian_year != date.gregorian_year:
+                if event_date.gregorian_year != year:
                     continue
             elif calendar == 'DCC':
-                if event_date.dcc_year != date.dcc_year:
+                if event_date.dcc_year != year:
                     continue
 
             event_emoji = event_date.format(f'#@{locale.DEFAULT_HEMISPHERE}L', locale)
@@ -787,13 +820,13 @@ def _process_events_list(all_events, events, calendar, date, locale, context):
             event_date = SezimalDate.from_ordinal_date(event_ordinal_date)
 
             if calendar == 'SYM':
-                if event_date.year != date.year:
+                if event_date.year != year:
                     continue
             elif calendar == 'ISO':
-                if event_date.gregorian_year != date.gregorian_year:
+                if event_date.gregorian_year != year:
                     continue
             elif calendar == 'DCC':
-                if event_date.dcc_year != date.dcc_year:
+                if event_date.dcc_year != year:
                     continue
 
             event_name = event_name_.replace('🕆\ufe0f', '🕇\ufe0f')
@@ -977,7 +1010,7 @@ def sezimal_calendar_pt_route() -> Response:
 
     context['sezimal_today_full_text'] = now.format(sf, locale)
 
-    context['events'] = _calendar_events(locale, now, context) or {}
+    context['events'] = _calendar_events(locale, now.year, context) or {}
 
     return sezimal_render_template(
         'calendar_pt.html',
@@ -1102,7 +1135,7 @@ def sezimal_calendar_bz_route() -> Response:
     ]
     locale.HOLIDAYS_OTHER_CALENDAR = []
 
-    context['events'] = _calendar_events(locale, now, context) or {}
+    context['events'] = _calendar_events(locale, now.year, context) or {}
 
     return sezimal_render_template(
         'calendar_bz.html',
@@ -1451,7 +1484,12 @@ def now_route() -> Response:
     context['hour_format'] = locale.HOUR_FORMAT
     context['mobile'] = mobile
 
-    context['events'] = _calendar_events(locale, now, context) or {}
+    if locale.calendar_displayed == 'SYM':
+        context['events'] = _calendar_events(locale, date.year, context) or {}
+    elif locale.calendar_displayed == 'ISO':
+        context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
+    elif locale.calendar_displayed == 'DCC':
+        context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
 
     return sezimal_render_template(
         'now.html',
@@ -1535,15 +1573,29 @@ def _prepare_locale(locale, dados):
         if '!' in format_token:
             locale.to_sezimal_digits()
 
+        if 'c' in format_token:
+            locale.to_astronomical_names()
+
     elif base == 14:
         locale.to_decimal_base()
+
+        if 'c' in format_token:
+            locale.to_astronomical_names()
+
     elif base == 20:
         locale.to_dozenal_base()
+
+        if 'c' in format_token:
+            locale.to_astronomical_names()
+
     elif base == 100:
         if format_token == 'Z':
             locale.to_niftimal_text_base()
         else:
             locale.to_niftimal_base(sezimal_digits='!' in format_token)
+
+        if 'c' in format_token:
+            locale.to_astronomical_names()
 
     if 'show_holiday' in dados:
         locale.SHOW_HOLIDAYS = dados['show_holiday']
@@ -1817,7 +1869,12 @@ def api_now_process():
     if dados['hour_format'] != 'locale':
         locale.HOUR_FORMAT = dados['hour_format']
 
-    context['events'] = _calendar_events(locale, date, context) or {}
+    if locale.calendar_displayed == 'SYM':
+        context['events'] = _calendar_events(locale, date.year, context) or {}
+    elif locale.calendar_displayed == 'ISO':
+        context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
+    elif locale.calendar_displayed == 'DCC':
+        context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
 
     script = ''
 

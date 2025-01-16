@@ -103,7 +103,11 @@
     {% set event_month = date.gregorian_month %}
     {% set event_day = date.gregorian_day %}
 {% elif locale.calendar_displayed == 'DCC' %}
-    {% set date_format = locale.DCC_DATE_LONG_FORMAT %}
+    {% if 'c' in format_token %}
+        {% set date_format = locale.ADC_DATE_LONG_FORMAT %}
+    {% else %}
+        {% set date_format = locale.DCC_DATE_LONG_FORMAT %}
+    {% endif %}
     {% set week_in_quarter_format = '&' + format_token + '-wT/&' + format_token + 'twT' %}
     {% set day_in_quarter_format = '&' + format_token + '-dT/&' + format_token + 'tdT' %}
     {% set week_in_year_format = '&' + format_token + '-wY/&' + format_token + 'twY' %}
@@ -150,6 +154,10 @@
             <div id="quarter_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{DAILY_COLORS[back_shade_04]}}; width: {{ date.dcc_term_proportion_ellapsed.decimal * 100 if locale.calendar_displayed == 'DCC' else date.quarter_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
+            {% if locale.calendar_displayed == 'DCC' %}
+                {{ date.format('&' + format_token + 'W', locale) }}
+                <span class="hide-in-mobile">&nbsp;―&nbsp;</span><br class="show-in-mobile" />
+            {% endif %}
             {{ date.format('#W', locale) }}
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}};">

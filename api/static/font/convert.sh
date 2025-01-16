@@ -21,3 +21,6 @@ woff2_compress NotoSansSymbols-Regular.ttf
 woff2_compress NotoSansSymbols2-Regular.ttf
 
 woff2_compress DSEG14Classic-Regular.ttf
+
+woff2_compress KsConstellationSymbolsFV.ttf
+woff2_compress KsConstellationSymbolsCV.ttf

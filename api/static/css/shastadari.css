@@ -10,9 +10,9 @@
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
-    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Mono', monospace;
+    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
 }
 html, body {
     height: 100%;
@@ -47,9 +47,9 @@ input, p, select, option {
     font-size: 1rem;
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
-    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Mono', monospace;
-    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Mono', monospace;
+    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
+    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
 }
 input {
 /*     height: 1.5rem; */
@@ -616,3 +616,16 @@ input[type=number] {
     background: -webkit-linear-gradient(90deg, rgba(0,188,212,1) 10%, rgba(76,175,80,1) 30%, rgba(255,193,7,1) 50%, rgba(255,87,34,1) 70%, rgba(244,67,54,1) 90%);
     background: linear-gradient(90deg, rgba(0,188,212,1) 10%, rgba(76,175,80,1) 30%, rgba(255,193,7,1) 50%, rgba(255,87,34,1) 70%, rgba(244,67,54,1) 90%);
 }
+
+.constellation-calligraphic {
+    font-family: 'Constellation Calligraphic';
+}
+.constellation-fixed {
+    font-family: 'Constellation Fixed';
+}
+.constellation {
+    font-family: 'Constellation Fixed';
+    font-size: 1.25em;
+    font-style: bold;
+}
+

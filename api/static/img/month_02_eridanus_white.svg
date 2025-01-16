@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+     width="512"
+     height="512"
+     viewBox="0 0 2572.8 2572.8"
+     version="1.1"
+     id="svg1"
+     sodipodi:docname="month_02_eridanus_white.svg"
+     inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg">
+    <defs
+         id="defs1" />
+    <sodipodi:namedview
+         id="namedview1"
+         pagecolor="#ffffff"
+         bordercolor="#000000"
+         borderopacity="0.25"
+         inkscape:showpageshadow="2"
+         inkscape:pageopacity="0.0"
+         inkscape:pagecheckerboard="0"
+         inkscape:deskcolor="#d1d1d1"
+         inkscape:zoom="1"
+         inkscape:cx="256"
+         inkscape:cy="8"
+         inkscape:window-width="1920"
+         inkscape:window-height="1010"
+         inkscape:window-x="0"
+         inkscape:window-y="0"
+         inkscape:window-maximized="1"
+         inkscape:current-layer="svg1" />
+    <path
+         style="clip-rule:nonzero;fill:none;stroke:#ffffff;stroke-width:128.64;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 750.4,2358.3999 C 679.36,2287.36 639.36,2190.88 639.36,2090.368 c 0,-100.512 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.488 110.976,-268 0,-100.512 -39.872,-196.864 -111.008,-268 -71.008,-71.008 -111.008,-167.488 -111.008,-268 0,-100.51201 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.48799 110.976,-267.99999 0,-100.512 -39.872,-196.864 -111.008,-267.96799 m 536,2143.99988 C 1215.36,2287.392 1175.36,2190.912 1175.36,2090.4 c 0,-100.512 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.488 110.976,-268 0,-100.512 -39.872,-196.864 -111.008,-268 -71.008,-71.008 -111.008,-167.488 -111.008,-268 0,-100.51201 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.48799 110.976,-267.99999 0,-100.512 -39.872,-196.896 -111.008,-267.99999 m 536,2143.99988 C 1751.36,2287.392 1711.36,2190.912 1711.36,2090.4 c 0,-100.512 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.488 110.976,-268 0,-100.512 -39.872,-196.864 -111.008,-268 -71.008,-71.008 -111.008,-167.488 -111.008,-268 0,-100.51201 40,-196.864 111.04,-268 71.104,-71.008 110.976,-167.48799 110.976,-267.99999 0,-100.512 -39.872,-196.896 -111.008,-267.99999"
+         id="path1" />
+</svg>
