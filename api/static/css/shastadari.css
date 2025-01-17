@@ -626,6 +626,8 @@ input[type=number] {
 .constellation {
     font-family: 'Constellation Fixed';
     font-size: 1.25em;
-    font-style: bold;
 }
-
+.planet {
+    font-family: 'Astromoony';
+    font-size: 1.25em;
+}

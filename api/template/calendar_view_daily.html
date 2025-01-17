@@ -132,7 +132,35 @@
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'day')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {{ date.format(date_format, locale) }}
+            {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
+                    {{ date.format(locale.ADC_YEAR_TEXT_MONTH_FORMAT, locale) }}
+                    {% if date.dcc_month == 0 %}
+                        <span class="constellation" title="PISCES">b</span>
+                    {% elif date.dcc_month == 1 %}
+                        <span class="constellation" title="CETUS">5</span>
+                    {% elif date.dcc_month == 2 %}
+                        <span class="constellation" title="ERIDANUS">D</span>
+                    {% elif date.dcc_month == 3 %}
+                        <span class="constellation" title="MONOCEROS">W</span>
+                    {% elif date.dcc_month == 4 %}
+                        <span class="constellation" title="HYDRA">J</span>
+                    {% elif date.dcc_month == 5 %}
+                        <span class="constellation" title="LEO">N</span>
+                    {% elif date.dcc_month == 10 %}
+                        <span class="constellation" title="VIRGO">v</span>
+                    {% elif date.dcc_month == 11 %}
+                        <span class="constellation" title="SERPENS">l</span>
+                    {% elif date.dcc_month == 12 %}
+                        <span class="constellation" title="AQUILA">%</span>
+                    {% elif date.dcc_month == 13 %}
+                        <span class="constellation" title="AQUARIUS">$</span>
+                    {% elif date.dcc_month == 14 %}
+                        <span class="constellation" title="LIBRA">Q</span>
+                    {% endif %}
+                    {{ date.format('&' + format_token + '-d', locale) }}
+            {% else %}
+                {{ date.format(date_format, locale) }}
+            {% endif %}
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'day')">›</td>
     </tr>
@@ -156,9 +184,24 @@
         <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
             {% if locale.calendar_displayed == 'DCC' %}
                 {{ date.format('&' + format_token + 'W', locale) }}
-                <span class="hide-in-mobile">&nbsp;―&nbsp;</span><br class="show-in-mobile" />
+                {% if 'c' in format_token %}
+                    {% if date.dcc_weekday == 0 %}
+                        <span class="planet" title="SOL">☉</span>
+                    {% elif date.dcc_weekday == 1 %}
+                        <span class="planet" title="VENUS">♀</span>
+                    {% elif date.dcc_weekday == 2 %}
+                        <span class="planet" title="MARS">♁</span>
+                    {% elif date.dcc_weekday == 3 %}
+                        <span class="planet" title="JUPITER">♃</span>
+                    {% elif date.dcc_weekday == 4 %}
+                        <span class="planet" title="SATURN">♄</span>
+                    {% elif date.dcc_weekday == 5 %}
+                        <span class="planet" title="LUNA">☽</span>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                {{ date.format('#W', locale) }}
             {% endif %}
-            {{ date.format('#W', locale) }}
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}};">
             <div id="" style="z-index: 1; width: 100%; float: {{ 'left' if locale.RTL else 'right' }}; border-{{ 'right' if locale.RTL else 'left' }}: 2px solid {{DAILY_COLORS[back_shade_04]}};">
@@ -208,9 +251,9 @@
                 <br/>
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
             {% elif locale.calendar_displayed == 'DCC' %}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}{{ now.format('#@W, ', locale) }}{% endif %}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}{{ now.format(', #@W', locale) }}{% endif %}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}{{ now.format('#@W, ', locale) }}{% endif %}{{date.format(locale.DATE_FORMAT, locale)}}{% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}{{ now.format(', #@W', locale) }}{% endif %}&nbsp;
             {% endif %}
             {% if 'JUL' in locale.SHOW_HOLIDAYS %}
                 <br/>

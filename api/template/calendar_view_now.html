@@ -76,8 +76,12 @@
     {% set event_month = date.gregorian_month %}
     {% set event_day = date.gregorian_day %}
 {% elif locale.calendar_displayed == 'DCC' %}
-    {% set date_format = locale.DCC_DATE_FORMAT %}
-    {% set weekday_format = '&W' %}
+    {% if 'c' in format_token %}
+        {% set date_format = locale.ADC_DATE_FORMAT %}
+    {% else %}
+        {% set date_format = locale.DCC_DATE_FORMAT %}
+    {% endif %}
+    {% set weekday_format = '&' + format_token + 'W' %}
     {% set event_month = date.dcc_month %}
     {% set event_day = date.dcc_day %}
 {% endif %}
@@ -87,6 +91,21 @@
         <div id="calendar_header" class="calendar-header-now">
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
+        {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
+            {% if date.dcc_weekday == 0 %}
+                <span class="planet" title="SOL">☉</span>
+            {% elif date.dcc_weekday == 1 %}
+                <span class="planet" title="VENUS">♀</span>
+            {% elif date.dcc_weekday == 2 %}
+                <span class="planet" title="MARS">♁</span>
+            {% elif date.dcc_weekday == 3 %}
+                <span class="planet" title="JUPITER">♃</span>
+            {% elif date.dcc_weekday == 4 %}
+                <span class="planet" title="SATURN">♄</span>
+            {% elif date.dcc_weekday == 5 %}
+                <span class="planet" title="LUNA">☽</span>
+            {% endif %}
+        {% endif %}
         </p>
         {% if base == 14 %}
             <p id="time_display" class="now-time-{{ hour_format }}"></p>
