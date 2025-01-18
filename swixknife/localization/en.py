@@ -40,3 +40,30 @@ class SezimalLocaleEN(SezimalLocale):
             return 'rd'
 
         return 'th'
+
+    ADC_WEEKDAY_NAME = [
+        'Sun',
+        'Venus',
+        'Mars',
+        'Jupiter',
+        'Saturn',
+        'Moon',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'Sun',
+        'Ven',
+        'Mar',
+        'Jup',
+        'Sat',
+        'Moo',
+    ]
+
+    ADC_WEEKDAY_SYMBOL = [
+        'S',
+        'V',
+        'M',
+        'J',
+        'S',
+        'M',
+    ]
