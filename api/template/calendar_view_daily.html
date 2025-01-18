@@ -134,30 +134,14 @@
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
             {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
                     {{ date.format(locale.ADC_YEAR_TEXT_MONTH_FORMAT, locale) }}
-                    {% if date.dcc_month == 0 %}
-                        <span class="constellation" title="PISCES">b</span>
-                    {% elif date.dcc_month == 1 %}
-                        <span class="constellation" title="CETUS">5</span>
-                    {% elif date.dcc_month == 2 %}
-                        <span class="constellation" title="ERIDANUS">D</span>
-                    {% elif date.dcc_month == 3 %}
-                        <span class="constellation" title="MONOCEROS">W</span>
-                    {% elif date.dcc_month == 4 %}
-                        <span class="constellation" title="HYDRA">J</span>
-                    {% elif date.dcc_month == 5 %}
-                        <span class="constellation" title="LEO">N</span>
-                    {% elif date.dcc_month == 10 %}
-                        <span class="constellation" title="VIRGO">v</span>
-                    {% elif date.dcc_month == 11 %}
-                        <span class="constellation" title="SERPENS">l</span>
-                    {% elif date.dcc_month == 12 %}
-                        <span class="constellation" title="AQUILA">%</span>
-                    {% elif date.dcc_month == 13 %}
-                        <span class="constellation" title="AQUARIUS">$</span>
-                    {% elif date.dcc_month == 14 %}
-                        <span class="constellation" title="LIBRA">Q</span>
+                    {% with dcc_month_number = date.dcc_month %}
+                        {% include 'calendar_span_adc_month_symbol.html' %}
+                    {% endwith %}
+                    {% if base in (14, 20) %}
+                        {{ date.format('&-wM‐&-w', locale) }}
+                    {% else %}
+                        {{ date.format('&' + format_token + '-d', locale) }}
                     {% endif %}
-                    {{ date.format('&' + format_token + '-d', locale) }}
             {% else %}
                 {{ date.format(date_format, locale) }}
             {% endif %}
@@ -185,19 +169,9 @@
             {% if locale.calendar_displayed == 'DCC' %}
                 {{ date.format('&' + format_token + 'W', locale) }}
                 {% if 'c' in format_token %}
-                    {% if date.dcc_weekday == 0 %}
-                        <span class="planet" title="SOL">☉</span>
-                    {% elif date.dcc_weekday == 1 %}
-                        <span class="planet" title="VENUS">♀</span>
-                    {% elif date.dcc_weekday == 2 %}
-                        <span class="planet" title="MARS">♁</span>
-                    {% elif date.dcc_weekday == 3 %}
-                        <span class="planet" title="JUPITER">♃</span>
-                    {% elif date.dcc_weekday == 4 %}
-                        <span class="planet" title="SATURN">♄</span>
-                    {% elif date.dcc_weekday == 5 %}
-                        <span class="planet" title="LUNA">☽</span>
-                    {% endif %}
+                    {% with dcc_weekday_number = date.dcc_weekday %}
+                        {% include 'calendar_span_adc_weekday_symbol.html' %}
+                    {% endwith %}
                 {% endif %}
             {% else %}
                 {{ date.format('#W', locale) }}

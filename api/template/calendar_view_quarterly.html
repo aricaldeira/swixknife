@@ -29,110 +29,30 @@
                     {% if date_last_month.dcc_year == date_next_month.dcc_year %}
                         {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_last_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_last_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_last_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_last_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_last_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_last_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_last_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_last_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_last_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_last_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_last_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_last_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                         —
                         {{ date_next_month.format('&' + format_token + 'M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_next_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_next_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_next_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_next_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_next_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_next_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_next_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_next_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_next_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_next_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_next_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_next_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                     {% else %}
                         {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_last_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_last_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_last_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_last_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_last_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_last_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_last_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_last_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_last_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_last_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_last_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_last_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                         —
                         {{ date_next_month.format('&' + format_token + '>Y&DS&' + format_token + 'M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_next_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_next_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_next_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_next_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_next_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_next_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_next_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_next_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_next_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_next_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_next_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_next_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                     {% endif %}
                 </span>
@@ -140,110 +60,30 @@
                     {% if date_last_month.dcc_year == date_next_month.dcc_year %}
                         {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_last_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_last_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_last_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_last_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_last_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_last_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_last_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_last_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_last_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_last_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_last_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_last_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                         —
                         {{ date_next_month.format('&' + format_token + '@M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_next_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_next_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_next_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_next_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_next_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_next_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_next_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_next_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_next_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_next_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_next_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_next_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                     {% else %}
                         {{ date_last_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_last_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_last_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_last_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_last_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_last_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_last_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_last_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_last_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_last_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_last_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_last_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_last_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                         —
                         {{ date_next_month.format('&' + format_token + '>Y&DS&' + format_token + '@M', locale) }}
                         {% if 'c' in format_token %}
-                            {% if date_next_month.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif date_next_month.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif date_next_month.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif date_next_month.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif date_next_month.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif date_next_month.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif date_next_month.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif date_next_month.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif date_next_month.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif date_next_month.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif date_next_month.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = date_next_month.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
                     {% endif %}
                 </span>

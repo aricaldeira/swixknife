@@ -92,19 +92,9 @@
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
         {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
-            {% if date.dcc_weekday == 0 %}
-                <span class="planet" title="SOL">☉</span>
-            {% elif date.dcc_weekday == 1 %}
-                <span class="planet" title="VENUS">♀</span>
-            {% elif date.dcc_weekday == 2 %}
-                <span class="planet" title="MARS">♁</span>
-            {% elif date.dcc_weekday == 3 %}
-                <span class="planet" title="JUPITER">♃</span>
-            {% elif date.dcc_weekday == 4 %}
-                <span class="planet" title="SATURN">♄</span>
-            {% elif date.dcc_weekday == 5 %}
-                <span class="planet" title="LUNA">☽</span>
-            {% endif %}
+            {% with dcc_weekday_number = date.dcc_weekday %}
+                {% include 'calendar_span_adc_weekday_symbol.html' %}
+            {% endwith %}
         {% endif %}
         </p>
         {% if base == 14 %}

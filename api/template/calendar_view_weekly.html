@@ -55,7 +55,34 @@
                 {% elif locale.calendar_displayed == 'ISO' %}
                     {{ first_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.ISO_YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
                 {% elif locale.calendar_displayed == 'DCC' %}
-                    {{ first_weekday.format('&>Y&DS&@M&DS&d' if SHOW_YEAR else '&>Y&DS&@M, &-d', locale) }} — {{ last_weekday.format('&>Y&DS&@M&DS&d' if SHOW_YEAR else '&-d', locale) }}
+                    {% if 'c' in format_token %}
+                        {% if SHOW_YEAR %}
+                            {{ first_weekday.format('&' + format_token + '>Y &cM', locale) }}
+                        {% else %}
+                            {{ first_weekday.format('&' + format_token + '>Y, &cM', locale) }}
+                        {% endif %}
+                        {% with dcc_month_number = first_weekday.dcc_month %}
+                            {% include 'calendar_span_adc_month_symbol.html' %}
+                        {% endwith %}
+                        {% if base in (14, 20) %}
+                            {{ first_weekday.format('&-wM‐&-w', locale) }} —
+                        {% else %}
+                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —
+                        {% endif %}
+                        {% if SHOW_YEAR %}
+                            {{ last_weekday.format('&' + format_token + '>Y &cM', locale) }}
+                            {% with dcc_month_number = last_weekday.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
+                        {% endif %}
+                        {% if base in (14, 20) %}
+                            {{ last_weekday.format('&-wM‐&-w', locale) }}
+                        {% else %}
+                            {{ last_weekday.format('&' + format_token + '-d', locale) }}
+                        {% endif %}
+                    {% else %}
+                        {{ first_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&yC, &mC, &-d', locale) }} — {{ last_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&dC', locale) }}
+                    {% endif %}
                 {% endif %}
             </span>
             <span class="hide-in-mobile">
@@ -70,57 +97,25 @@
                         {% else %}
                             {{ first_weekday.format('&' + format_token + '>Y, &cM', locale) }}
                         {% endif %}
-                        {% if first_weekday.dcc_month == 0 %}
-                            <span class="constellation" title="PISCES">b</span>
-                        {% elif first_weekday.dcc_month == 1 %}
-                            <span class="constellation" title="CETUS">5</span>
-                        {% elif first_weekday.dcc_month == 2 %}
-                            <span class="constellation" title="ERIDANUS">D</span>
-                        {% elif first_weekday.dcc_month == 3 %}
-                            <span class="constellation" title="MONOCEROS">W</span>
-                        {% elif first_weekday.dcc_month == 4 %}
-                            <span class="constellation" title="HYDRA">J</span>
-                        {% elif first_weekday.dcc_month == 5 %}
-                            <span class="constellation" title="LEO">N</span>
-                        {% elif first_weekday.dcc_month == 10 %}
-                            <span class="constellation" title="VIRGO">v</span>
-                        {% elif first_weekday.dcc_month == 11 %}
-                            <span class="constellation" title="SERPENS">l</span>
-                        {% elif first_weekday.dcc_month == 12 %}
-                            <span class="constellation" title="AQUILA">%</span>
-                        {% elif first_weekday.dcc_month == 13 %}
-                            <span class="constellation" title="AQUARIUS">$</span>
-                        {% elif first_weekday.dcc_month == 14 %}
-                            <span class="constellation" title="LIBRA">Q</span>
+                        {% with dcc_month_number = first_weekday.dcc_month %}
+                            {% include 'calendar_span_adc_month_symbol.html' %}
+                        {% endwith %}
+                        {% if base in (14, 20) %}
+                            {{ first_weekday.format('&-wM‐&-w', locale) }} —
+                        {% else %}
+                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —
                         {% endif %}
-                        {{ first_weekday.format('&' + format_token + '-d', locale) }} —
                         {% if SHOW_YEAR %}
                             {{ last_weekday.format('&' + format_token + '>Y &cM', locale) }}
-                            {% if last_weekday.dcc_month == 0 %}
-                                <span class="constellation" title="PISCES">b</span>
-                            {% elif last_weekday.dcc_month == 1 %}
-                                <span class="constellation" title="CETUS">5</span>
-                            {% elif last_weekday.dcc_month == 2 %}
-                                <span class="constellation" title="ERIDANUS">D</span>
-                            {% elif last_weekday.dcc_month == 3 %}
-                                <span class="constellation" title="MONOCEROS">W</span>
-                            {% elif last_weekday.dcc_month == 4 %}
-                                <span class="constellation" title="HYDRA">J</span>
-                            {% elif last_weekday.dcc_month == 5 %}
-                                <span class="constellation" title="LEO">N</span>
-                            {% elif last_weekday.dcc_month == 10 %}
-                                <span class="constellation" title="VIRGO">v</span>
-                            {% elif last_weekday.dcc_month == 11 %}
-                                <span class="constellation" title="SERPENS">l</span>
-                            {% elif last_weekday.dcc_month == 12 %}
-                                <span class="constellation" title="AQUILA">%</span>
-                            {% elif last_weekday.dcc_month == 13 %}
-                                <span class="constellation" title="AQUARIUS">$</span>
-                            {% elif last_weekday.dcc_month == 14 %}
-                                <span class="constellation" title="LIBRA">Q</span>
-                            {% endif %}
+                            {% with dcc_month_number = last_weekday.dcc_month %}
+                                {% include 'calendar_span_adc_month_symbol.html' %}
+                            {% endwith %}
                         {% endif %}
-                        {{ last_weekday.format('&' + format_token + '-d', locale) }}
+                        {% if base in (14, 20) %}
+                            {{ last_weekday.format('&-wM‐&-w', locale) }}
+                        {% else %}
+                            {{ last_weekday.format('&' + format_token + '-d', locale) }}
+                        {% endif %}
                     {% else %}
                         {{ first_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&yC, &mC, &-d', locale) }} — {{ last_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&dC', locale) }}
                     {% endif %}
