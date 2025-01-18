@@ -1603,6 +1603,10 @@ class SezimalLocale:
             self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, self.ISO_TIME_FORMAT)
             self.TIME_FORMAT = self.ISO_TIME_FORMAT
             self._dcc_to_adc_format('c9')
+            self.DCC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            self.ADC_DATE_FORMAT = self.ADC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c9d', '&-wM&DS&-w')
 
         elif base == 20:
             self.DIGITS = []
@@ -1610,6 +1614,11 @@ class SezimalLocale:
             self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
             self.TIME_FORMAT = '#3.2fD'
             self._dcc_to_adc_format('c↋')
+            self.DCC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w').replace('&c↋m', '&c↋-m')
+            self.ADC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w').replace('&c↋m', '&c↋-m')
+            self.ADC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w')
+            self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c↋d', '&-wM&DS&-w')
+            self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c↋d', '&-wM&DS&-w')
 
         if base == 14 or base == 20:
             self.MONTH_NAME = self.ISO_MONTH_NAME
