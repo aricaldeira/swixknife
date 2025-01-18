@@ -1618,7 +1618,11 @@ def _prepare_locale(locale, dados):
 def _now_icon(text: str, locale) -> str:
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
-    if now.weekday >= 10:
+    if locale.calendar_displayed == 'DCC':
+        if now.dcc_weekday in (0, 5):
+            text = text.replace('#2a7fff', '#d40000')
+
+    elif now.weekday >= 10:
         text = text.replace('#2a7fff', '#d40000')
 
     if locale.base == 10 or locale.base == 100:
@@ -1671,7 +1675,22 @@ def _now_icon(text: str, locale) -> str:
         posha_angle = round(posha_angle * 1400, 0).decimal
         agrima_angle = round(agrima_angle * 1400, 0).decimal
 
-    date_parts = now.format(locale.DATE_FORMAT.replace('d', '-d').replace('m', 'M'), locale).split(locale.DATE_SEPARATOR)
+    if locale.calendar_displayed == 'DCC':
+        if locale.base in (14, 20):
+            date_parts = [
+                now.format('&' + locale.format_token + '>Y', locale),
+                now.format('&' + locale.format_token + 'M', locale),
+                now.format('&-wM‐&-w', locale),
+            ]
+        else:
+            date_parts = [
+                now.format('&' + locale.format_token + '>Y', locale),
+                now.format('&' + locale.format_token + 'M', locale),
+                now.format('&' + locale.format_token + '-d', locale),
+            ]
+
+    else:
+        date_parts = now.format(locale.DATE_FORMAT.replace('d', '-d').replace('m', 'M'), locale).split(locale.DATE_SEPARATOR)
 
     text = text.replace(
         'id="date-1">213 212',
@@ -1780,20 +1799,36 @@ def today_icon(when: str = None, size: str = None) -> str:
         text = text.replace('width="1632.7559"', f'width="{size}"')
         text = text.replace('height="1632.7559"', f'height="{size}"')
 
-    if now.weekday >= 10:
+    if locale.calendar_displayed == 'DCC':
+        if now.dcc_weekday in (0, 5):
+            text = text.replace('#2a7fff', '#d40000')
+
+    elif now.weekday >= 10:
         text = text.replace('#2a7fff', '#d40000')
 
     if base == 10 or base == 100:
-        day = str(now.date.day)
-        month = str(now.date.month)
+        if locale.calendar_displayed == 'DCC':
+            day = str(now.date.dcc_day)
+            month = str(now.date.dcc_month)
+        else:
+            day = str(now.date.day)
+            month = str(now.date.month)
 
     elif base == 14:
-        day = str(now.date.day.decimal)
-        month = str(now.date.month.decimal)
+        if locale.calendar_displayed == 'DCC':
+            day = str(now.date.dcc_week) + str(now.date.dcc_weekday)
+            month = str(now.date.dcc_month.decimal)
+        else:
+            day = str(now.date.day.decimal)
+            month = str(now.date.month.decimal)
 
     else:
-        day = str(now.date.day.dozenal)
-        month = str(now.date.month.dozenal)
+        if locale.calendar_displayed == 'DCC':
+            day = str(now.date.dcc_week) + str(now.date.dcc_weekday)
+            month = str(now.date.dcc_month.dozenal)
+        else:
+            day = str(now.date.day.dozenal)
+            month = str(now.date.month.dozenal)
 
     text = text.replace('>20</tspan>', '>' + month.rjust(2, ' ') + 'm</tspan>')
     text = text.replace('>55</tspan>', '>' + day.rjust(2, ' ') + '</tspan>')
