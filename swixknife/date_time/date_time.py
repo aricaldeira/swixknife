@@ -61,13 +61,14 @@ class SezimalDateTime:
                 # UTC[+-]9999
                 # So we try to convert them to Etc/GMT[+-] with a simplified offset
                 #
-                if 'UTC+' in time_zone:
-                    time_zone = time_zone.replace('UTC+', 'Etc/GMT+')[0:10]
-                    time_zone = time_zone.replace('+0', '+')
-
-                elif 'UTC-' in time_zone:
-                    time_zone = time_zone.replace('UTC-', 'Etc/GMT-')[0:10]
-                    time_zone = time_zone.replace('-0', '-')
+                # if 'Natural/' in time_zone:
+                #     if 'UTC+' in time_zone:
+                #         time_zone = time_zone.replace('UTC+', 'Etc/GMT+')[0:10]
+                #         time_zone = time_zone.replace('+0', '+')
+                #
+                #     elif 'UTC-' in time_zone:
+                #         time_zone = time_zone.replace('UTC-', 'Etc/GMT-')[0:10]
+                #         time_zone = time_zone.replace('-0', '-')
 
                 return cls.from_timestamp(year.timestamp(), time_zone=time_zone)
 
