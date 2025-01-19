@@ -5,7 +5,6 @@
 #
 
 from ..sezimal import SezimalInteger, SezimalFraction
-from ..functions import floor, ceil
 
 
 #
