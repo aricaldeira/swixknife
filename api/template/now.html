@@ -164,7 +164,7 @@ html, body {
                     iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) + ')';
                 {% endif %}
 
-                {% if ('/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE) or (base != 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
+                {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
                     var time_passed = (date.getHours() * 60) + date.getMinutes();
 
                     if (time_passed < 240) {
@@ -222,42 +222,6 @@ html, body {
                         document.getElementById('natural_time_10_4').style = 'width: 16.66%;';
                         document.getElementById('natural_time_10_5').style = 'width:' + proportion.toString() + '%';
                     };
-
-                {% elif ('/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13' in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE) or (base == 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
-                    var time_passed = (date.getHours() * 60) + date.getMinutes();
-
-                    if (time_passed < 360) {
-                        time_passed = time_passed + 1080;
-                    } else {
-                        time_passed = time_passed - 360;
-                    };
-
-                    if (time_passed < 360) {
-                        var proportion = time_passed / 360 * 25;
-                        document.getElementById('natural_time_13_0').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_13_1').style = 'width: 0%';
-                        document.getElementById('natural_time_13_2').style = 'width: 0%';
-                        document.getElementById('natural_time_13_3').style = 'width: 0%';
-                    } else if (time_passed < 720) {
-                        var proportion = (time_passed - 360) / 360 * 25;
-                        document.getElementById('natural_time_13_0').style = 'width: 25%;';
-                        document.getElementById('natural_time_13_1').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_13_2').style = 'width: 0%';
-                        document.getElementById('natural_time_13_3').style = 'width: 0%';
-                    } else if (time_passed < 1080) {
-                        var proportion = (time_passed - 720) / 360 * 25;
-                        document.getElementById('natural_time_13_0').style = 'width: 25%;';
-                        document.getElementById('natural_time_13_1').style = 'width: 25%;';
-                        document.getElementById('natural_time_13_2').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_13_3').style = 'width: 0%';
-                    } else {
-                        var proportion = (time_passed - 1080) / 360 * 25;
-                        document.getElementById('natural_time_13_0').style = 'width: 25%;';
-                        document.getElementById('natural_time_13_1').style = 'width: 25%;';
-                        document.getElementById('natural_time_13_2').style = 'width: 25%';
-                        document.getElementById('natural_time_13_3').style = 'width:' + proportion.toString() + '%';
-                    };
-
                 {% endif %}
 
             {% endif %}

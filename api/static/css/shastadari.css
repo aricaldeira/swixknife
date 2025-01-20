@@ -662,7 +662,7 @@ input[type=number] {
     float: left;
 }
 
-.four-morning-color {
+/*.four-morning-color {
     background: rgb(100,181,246);  // '#64b5f6';
     background: linear-gradient(90deg, rgb(100,181,246) 0%, rgb(255,183,77) 100%);
     float: left;
@@ -684,4 +684,4 @@ input[type=number] {
     background: rgb(121,134,203);  // '#7986cb';
     background: linear-gradient(90deg, rgb(121,134,203) 0%, rgb(100,181,246) 100%);
     float: left;
-}
+}*/
