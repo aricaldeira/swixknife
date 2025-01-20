@@ -143,6 +143,7 @@ function _base_data(direction = '', direction_type = '') {
     const show_seconds = localStorage.getItem('sezimal-calendar-show-seconds');
     const locale_first_weekday = localStorage.getItem('sezimal-calendar-locale-first-weekday');
     let calendar_displayed = localStorage.getItem('sezimal-calendar-displayed');
+    const local_time_zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     if (calendar_displayed.indexOf('+') != -1) {
         calendar_displayed = calendar_displayed.split('+')[0];
@@ -177,7 +178,7 @@ function _base_data(direction = '', direction_type = '') {
     };
 
     document.documentElement.lang = LANGUAGE_TAGS[locale];
-    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${calendar_displayed}|${locale_first_weekday};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
+    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${calendar_displayed}|${locale_first_weekday}|${local_time_zone};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
 
     if ((locale == 'ar') || (locale == 'ar_nu_latn') ||
         (locale == 'fa') || (locale == 'fa_nu_latn') ||
@@ -204,6 +205,7 @@ function _base_data(direction = '', direction_type = '') {
         show_seconds: show_seconds,
         calendar_displayed: calendar_displayed,
         locale_first_weekday: locale_first_weekday,
+        local_time_zone: local_time_zone,
     };
 
     return dados;

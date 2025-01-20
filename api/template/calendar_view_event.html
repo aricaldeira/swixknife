@@ -107,7 +107,9 @@ Event’s title
             {% else %}
                 Time zone
             {% endif %}
-            {% include 'calendar_select_time_zone.html' %}
+            {% with TIME_ZONE_SELECT_NAME = 'time_zone_select' %}
+                {% include 'calendar_select_time_zone.html' %}
+            {% endwith %}
         </td>
         <td>
         </td>

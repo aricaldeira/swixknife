@@ -1504,18 +1504,23 @@ def _prepare_locale_from_cookie():
     show_seconds = 'true'
     calendar_displayed = 'SYM'
     locale_first_weekday = 'false'
+    local_time_zone = None
 
     try:
-        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+
     except:
         try:
-            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
         except:
             try:
-                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
             except:
-                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
-                show_holiday = 'ISO_SEZ_SYM'
+                try:
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                except:
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                    show_holiday = 'ISO_SEZ_SYM'
 
     locale = sezimal_locale(locale)
 
@@ -1537,6 +1542,7 @@ def _prepare_locale_from_cookie():
         'show_seconds': show_seconds,
         'calendar_displayed': calendar_displayed,
         'locale_first_weekday': locale_first_weekday,
+        'local_time_zone': local_time_zone or time_zone,
     }
 
     locale = _prepare_locale(locale, dados)
@@ -1611,6 +1617,11 @@ def _prepare_locale(locale, dados):
     locale.show_seconds = dados['show_seconds'] == 'true'
     locale.use_first_weekday = dados['locale_first_weekday'] == 'true'
     locale.calendar_displayed = dados['calendar_displayed'] or 'SYM'
+
+    if 'local_time_zone' in dados:
+        locale.LOCAL_TIME_ZONE = dados['local_time_zone']
+    else:
+        locale.LOCAL_TIME_ZONE = locale.DEFAULT_TIME_ZONE
 
     return locale
 

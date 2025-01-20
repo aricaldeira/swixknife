@@ -98,11 +98,30 @@
         {% endif %}
         </p>
         {% if base == 14 %}
-            <p id="time_display" class="now-time-{{ hour_format }}"></p>
+            <p id="time_display" class="now-time-{{ hour_format }}">
         {% else %}
-            <p id="time_display" class="now-time-24h"></p>
+            <p id="time_display" class="now-time-24h">
         {% endif %}
-        <p class="now-date">
+        {% if ('/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE) or (base != 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
+            <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -1rem; padding-bottom: 1rem;">
+                <div id="natural_time_10_0" style="width: 16.67%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_1" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_2" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_3"  style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_4"  style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_5"  style="width: 16.66%; float: left;">&nbsp;</div>
+            </div>
+        {% elif ('/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13' in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE) or (base == 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
+            <div id="natural_time_13" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -1rem; padding-bottom: 1rem;">
+                <div id="natural_time_13_0" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_1" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_2" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_3"  style="width: 25%; float: left;">&nbsp;</div>
+            </div>
+        {% endif %}
+        </p>
+
+        <p class="now-date" style="clear: both;">
             {{ now.format(date_format, locale) }}
         </p>
         <div id="weather_view" style="display:none;"></div>
@@ -137,7 +156,7 @@
                 {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}
                     {{ now.format('#@W, ', locale) }}
                 {% endif %}
-                {{ now.format(locale.ISO_DATE_FORMAT, locale) }}
+                {{ now.format(locale.ISO_DATE_FORMAT.replace('9', '').replace('5', '').replace('↋', ''), locale) }}
                 {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}
                     {{ now.format(', #@W', locale) }}
                 {% endif %}
