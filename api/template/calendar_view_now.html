@@ -104,19 +104,19 @@
         {% endif %}
         {% if ('/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE) or (base != 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
             <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -1rem; padding-bottom: 1rem;">
-                <div id="natural_time_10_0" style="width: 16.67%; float: left;">&nbsp;</div>
-                <div id="natural_time_10_1" style="width: 16.66%; float: left;">&nbsp;</div>
-                <div id="natural_time_10_2" style="width: 16.66%; float: left;">&nbsp;</div>
-                <div id="natural_time_10_3"  style="width: 16.66%; float: left;">&nbsp;</div>
-                <div id="natural_time_10_4"  style="width: 16.66%; float: left;">&nbsp;</div>
-                <div id="natural_time_10_5"  style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_0" title="Dawn" style="width: 16.67%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_1" title="Morning" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_2" title="Afternoon" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_3" title="Evening" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_4" title="Night" style="width: 16.66%; float: left;">&nbsp;</div>
+                <div id="natural_time_10_5" title="Twilight" style="width: 16.66%; float: left;">&nbsp;</div>
             </div>
         {% elif ('/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13' in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE) or (base == 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
             <div id="natural_time_13" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -1rem; padding-bottom: 1rem;">
-                <div id="natural_time_13_0" style="width: 25%; float: left;">&nbsp;</div>
-                <div id="natural_time_13_1" style="width: 25%; float: left;">&nbsp;</div>
-                <div id="natural_time_13_2" style="width: 25%; float: left;">&nbsp;</div>
-                <div id="natural_time_13_3"  style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_0" title="Morning" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_1" title="Afternoon" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_2" title="Evening" style="width: 25%; float: left;">&nbsp;</div>
+                <div id="natural_time_13_3" title="Night" style="width: 25%; float: left;">&nbsp;</div>
             </div>
         {% endif %}
         </p>

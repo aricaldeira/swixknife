@@ -174,87 +174,88 @@ html, body {
                     }
 
                     if (time_passed < 240) {
-                        var proportion = time_passed / 240 * 100;
-                        document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width:' + proportion.toString();
+                        var proportion = time_passed / 240 * 16.6666;
+                        document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_10_1').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_2').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_3').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_4').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_5').style = 'float: left; width: 16.66%';
                     } else if (time_passed < 480) {
-                        var proportion = (time_passed - 240) / 240 * 100;
+                        var proportion = (time_passed - 240) / 240 * 16.6666;
                         document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_10_2').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_3').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_4').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_5').style = 'float: left; width: 16.66%';
                     } else if (time_passed < 720) {
-                        var proportion = (time_passed - 480) / 240 * 100;
+                        var proportion = (time_passed - 480) / 240 * 16.6666;
                         document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width: 16.67%;';
                         document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width: 16.66%;';
-                        document.getElementById('natural_time_10_2').style = 'background-color: #FFB74D; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_10_2').style = 'background-color: #FFB74D; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_10_3').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_4').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_5').style = 'float: left; width: 16.66%';
                     } else if (time_passed < 960) {
-                        var proportion = (time_passed - 720) / 240 * 100;
+                        var proportion = (time_passed - 720) / 240 * 16.6666;
                         document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width: 16.67%;';
                         document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width: 16.66%;';
                         document.getElementById('natural_time_10_2').style = 'background-color: #FFB74D; float: left; width: 16.66%';
-                        document.getElementById('natural_time_10_3').style = 'background-color: #F06292; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_10_3').style = 'background-color: #F06292; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_10_4').style = 'float: left; width: 16.66%';
                         document.getElementById('natural_time_10_5').style = 'float: left; width: 16.66%';
                     } else if (time_passed < 1200) {
-                        var proportion = (time_passed - 960) / 240 * 100;
+                        var proportion = (time_passed - 960) / 240 * 16.6666;
                         document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width: 16.67%;';
                         document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width: 16.66%;';
                         document.getElementById('natural_time_10_2').style = 'background-color: #FFB74D; float: left; width: 16.66%';
                         document.getElementById('natural_time_10_3').style = 'background-color: #F06292; float: left; width: 16.66%;';
-                        document.getElementById('natural_time_10_4').style = 'background-color: #BA68C8; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_10_4').style = 'background-color: #BA68C8; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_10_5').style = 'float: left; width: 16.66%';
                     } else {
-                        var proportion = (time_passed - 1200) / 240 * 100;
+                        var proportion = (time_passed - 1200) / 240 * 16.6666;
                         document.getElementById('natural_time_10_0').style = 'background-color: #64B5F6; float: left; width: 16.67%;';
                         document.getElementById('natural_time_10_1').style = 'background-color: #FFF176; float: left; width: 16.66%;';
                         document.getElementById('natural_time_10_2').style = 'background-color: #FFB74D; float: left; width: 16.66%';
                         document.getElementById('natural_time_10_3').style = 'background-color: #F06292; float: left; width: 16.66%;';
                         document.getElementById('natural_time_10_4').style = 'background-color: #BA68C8; float: left; width: 16.66%;';
-                        document.getElementById('natural_time_10_5').style = 'background-color: #7986CB; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_10_5').style = 'background-color: #7986CB; float: left; width:' + proportion.toString() + '%';
                     };
 
                 {% elif ('/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13' in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE) or (base == 20 and locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
                     var time_passed = (date.getHours() * 60) + date.getMinutes();
+
                     if (time_passed < 360) {
                         time_passed = time_passed + 1080;
                     } else {
                         time_passed = time_passed - 360;
-                    }
+                    };
 
                     if (time_passed < 360) {
-                        var proportion = time_passed / 360 * 100;
-                        document.getElementById('natural_time_13_0').style = 'background-color: #64B5F6; float: left; width:' + proportion.toString();
+                        var proportion = time_passed / 360 * 25;
+                        document.getElementById('natural_time_13_0').style = 'background-color: #64B5F6; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_13_1').style = 'float: left; width: 25%';
                         document.getElementById('natural_time_13_2').style = 'float: left; width: 25%';
                         document.getElementById('natural_time_13_3').style = 'float: left; width: 25%';
                     } else if (time_passed < 720) {
-                        var proportion = (time_passed - 360) / 360 * 100;
+                        var proportion = (time_passed - 360) / 360 * 25;
                         document.getElementById('natural_time_13_0').style = 'background-color: #64B5F6; float: left; width: 25%;';
-                        document.getElementById('natural_time_13_1').style = 'background-color: #FFB74D; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_13_1').style = 'background-color: #FFB74D; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_13_2').style = 'float: left; width: 25%';
                         document.getElementById('natural_time_13_3').style = 'float: left; width: 25%';
                     } else if (time_passed < 1080) {
-                        var proportion = (time_passed - 720) / 360 * 100;
+                        var proportion = (time_passed - 720) / 360 * 25;
                         document.getElementById('natural_time_13_0').style = 'background-color: #64B5F6; float: left; width: 25%;';
                         document.getElementById('natural_time_13_1').style = 'background-color: #FFB74D; float: left; width: 25%;';
-                        document.getElementById('natural_time_13_2').style = 'background-color: #BA68C8; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_13_2').style = 'background-color: #BA68C8; float: left; width:' + proportion.toString() + '%';
                         document.getElementById('natural_time_13_3').style = 'float: left; width: 25%';
                     } else {
-                        var proportion = (time_passed - 1080) / 360 * 100;
+                        var proportion = (time_passed - 1080) / 360 * 25;
                         document.getElementById('natural_time_13_0').style = 'background-color: #64B5F6; float: left; width: 25%;';
                         document.getElementById('natural_time_13_1').style = 'background-color: #FFB74D; float: left; width: 25%;';
                         document.getElementById('natural_time_13_2').style = 'background-color: #BA68C8; float: left; width: 25%';
-                        document.getElementById('natural_time_13_3').style = 'background-color: #7986CB; float: left; width:' + proportion.toString();
+                        document.getElementById('natural_time_13_3').style = 'background-color: #7986CB; float: left; width:' + proportion.toString() + '%';
                     };
 
                 {% endif %}
