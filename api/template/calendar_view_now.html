@@ -103,13 +103,9 @@
             <p id="time_display" class="now-time-24h">
         {% endif %}
         {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
-            <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -1rem;">
-                <div id="natural_time_10_0" title="Dawn" class="dawn-color">&nbsp;</div>
-                <div id="natural_time_10_1" title="Morning" class="morning-color">&nbsp;</div>
-                <div id="natural_time_10_2" title="Afternoon" class="afternoon-color">&nbsp;</div>
-                <div id="natural_time_10_3" title="Evening" class="evening-color">&nbsp;</div>
-                <div id="natural_time_10_4" title="Night" class="night-color">&nbsp;</div>
-                <div id="natural_time_10_5" title="Twilight" class="twilight-color">&nbsp;</div>
+            <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
+                <div id="natural_time" class="full-day-color">&nbsp;</div>
+                <div id="natural_time_passed" class="day-time-passed">&nbsp;</div>
             </div>
         {% endif %}
         </p>

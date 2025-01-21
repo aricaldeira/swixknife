@@ -173,55 +173,9 @@ html, body {
                         time_passed = time_passed - 240;
                     }
 
-                    if (time_passed < 240) {
-                        var proportion = time_passed / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_10_1').style = 'width: 0%';
-                        document.getElementById('natural_time_10_2').style = 'width: 0%';
-                        document.getElementById('natural_time_10_3').style = 'width: 0%';
-                        document.getElementById('natural_time_10_4').style = 'width: 0%';
-                        document.getElementById('natural_time_10_5').style = 'width: 0%';
-                    } else if (time_passed < 480) {
-                        var proportion = (time_passed - 240) / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_10_2').style = 'width: 0%';
-                        document.getElementById('natural_time_10_3').style = 'width: 0%';
-                        document.getElementById('natural_time_10_4').style = 'width: 0%';
-                        document.getElementById('natural_time_10_5').style = 'width: 0%';
-                    } else if (time_passed < 720) {
-                        var proportion = (time_passed - 480) / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_2').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_10_3').style = 'width: 0%';
-                        document.getElementById('natural_time_10_4').style = 'width: 0%';
-                        document.getElementById('natural_time_10_5').style = 'width: 0%';
-                    } else if (time_passed < 960) {
-                        var proportion = (time_passed - 720) / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_2').style = 'width: 16.66%';
-                        document.getElementById('natural_time_10_3').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_10_4').style = 'width: 0%';
-                        document.getElementById('natural_time_10_5').style = 'width: 0%';
-                    } else if (time_passed < 1200) {
-                        var proportion = (time_passed - 960) / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_2').style = 'width: 16.66%';
-                        document.getElementById('natural_time_10_3').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_4').style = 'width:' + proportion.toString() + '%';
-                        document.getElementById('natural_time_10_5').style = 'width: 0%';
-                    } else {
-                        var proportion = (time_passed - 1200) / 240 * 16.6666;
-                        document.getElementById('natural_time_10_0').style = 'width: 16.67%;';
-                        document.getElementById('natural_time_10_1').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_2').style = 'width: 16.66%';
-                        document.getElementById('natural_time_10_3').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_4').style = 'width: 16.66%;';
-                        document.getElementById('natural_time_10_5').style = 'width:' + proportion.toString() + '%';
-                    };
+                    var proportion = 100 - (time_passed / 1440 * 100);
+
+                    document.getElementById('natural_time_passed').style = 'width: ' + proportion.toString() + '%;';
                 {% endif %}
 
             {% endif %}
