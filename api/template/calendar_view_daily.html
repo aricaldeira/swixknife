@@ -206,13 +206,15 @@
                 {% endif %}
             {% endif %}
 
-            {% if date.format('#TL', locale) %}
-                {% if ns.event_separator == '' %}
-                    &nbsp;
-                {% else %}
-                    <br/>
+            {% if event_month in events['moon'] %}
+                {% if event_day in events['moon'][event_month] %}
+                    {% for event in events['moon'][event_month][event_day] %}
+                        {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
+                        {% if ns.event_separator == '' %}
+                            {% set ns.event_separator = '; ' %}
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-                <span class="emoji">{{date.format('#@' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>{{ date.format(' - #' + locale.DEFAULT_HEMISPHERE + 'L \N{LRI}(#TL)\N{PDI}', locale)}}
             {% endif %}
         </td>
         <td style="text-align: {{ 'left' if locale.RTL else 'right' }};">
