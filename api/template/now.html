@@ -159,9 +159,9 @@ html, body {
 
             {% if '/NT' in locale.DEFAULT_TIME_ZONE or locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM') %}
                 {% if locale.show_seconds %}
-                    iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString('{{ locale.LANGUAGE_TAG }}') + ')';
+                    iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString('{{ locale.LANGUAGE_TAG }}').toLowerCase() + ')';
                 {% else %}
-                    iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString('{{ locale.LANGUAGE_TAG }}', {hour: '2-digit', minute:'2-digit'}) + ')';
+                    iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString('{{ locale.LANGUAGE_TAG }}', {hour: '2-digit', minute:'2-digit'}).toLowerCase() + ')';
                 {% endif %}
 
                 {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
