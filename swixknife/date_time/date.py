@@ -1352,7 +1352,7 @@ class SezimalDate:
             months += years * SezimalInteger(20)
 
         if months:
-            res = SezimalDate(res.gregorian_date + relativedelta(months=int(months.decimal)))
+            res = SezimalDate(res.gregorian_date - relativedelta(months=int(months.decimal)))
 
         return res
 
@@ -1380,7 +1380,7 @@ class SezimalDate:
             months += years * SezimalInteger(20)
 
         if months:
-            res = SezimalDate(res.gregorian_date - relativedelta(months=int(months.decimal)))
+            res = SezimalDate(res.gregorian_date + relativedelta(months=int(months.decimal)))
 
         return res
 
