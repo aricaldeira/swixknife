@@ -45,6 +45,7 @@
         {% set TEMPERATURE_ADJUST = 0 %}
     {% endif %}
 
+    {% set celsius = sdu(weather.temperature, 'tap', '°C').decimal %}
     {% set decimal_temperature = sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE).decimal %}
     {% set dozenal_temperature = Dozenal(sdu(weather.temperature, 'tap', '°C').decimal / TEMPERATURE) + TEMPERATURE_ADJUST %}
 
@@ -52,6 +53,11 @@
     {% set LENGTH = Dozenal('1220.↋35_851_8↋7_1↋3_2↋3') %}
     {% set PRESSURE = Dozenal('68.424_110_583_941_693') %}
     <p class="now-weather" onclick="open_close_weather()">
+        {{ locale.format_decimal_number(round(celsius, 3), decimal_places=3) }} =
+        {{ locale.format_decimal_number(round(celsius, 2), decimal_places=2) }} =
+        {{ locale.format_decimal_number(round(celsius, 1), decimal_places=1) }} =
+        {{ locale.format_decimal_number(round(celsius, 0), decimal_places=0) }}
+        {{ '°C' }}<br/><br/>
         {{ locale.format_decimal_number(round(decimal_temperature, 3), decimal_places=3) }} =
         {{ locale.format_decimal_number(round(decimal_temperature, 2), decimal_places=2) }} =
         {{ locale.format_decimal_number(round(decimal_temperature, 1), decimal_places=1) }} =
