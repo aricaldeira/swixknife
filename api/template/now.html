@@ -167,14 +167,75 @@ html, body {
                 {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
                     var time_passed = (date.getHours() * 60) + date.getMinutes();
 
-                    if (time_passed < 240) {
-                        time_passed = time_passed + 1200;
-                    } else {
-                        time_passed = time_passed - 240;
-                    }
+                    {% if '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+                        if (time_passed < 360) {
+                            time_passed = time_passed + 1080;
+                        } else {
+                            time_passed = time_passed - 360;
+                        }
+
+                        if (time_passed < 60) {
+                            document.getElementById('natural_time_sunrise').hidden = false;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 660) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = false;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 750) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = false;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 1290) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = false;
+                        } else {
+                            document.getElementById('natural_time_sunrise').hidden = false;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        };
+                    {% else %}
+                        if (time_passed < 240) {
+                            time_passed = time_passed + 1200;
+                        } else {
+                            time_passed = time_passed - 240;
+                        }
+
+                        if (time_passed < 120) {
+                            document.getElementById('natural_time_sunrise').hidden = false;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 780) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = false;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 870) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = false;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        } else if (time_passed < 1410) {
+                            document.getElementById('natural_time_sunrise').hidden = true;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = false;
+                        } else {
+                            document.getElementById('natural_time_sunrise').hidden = false;
+                            document.getElementById('natural_time_sun').hidden = true;
+                            document.getElementById('natural_time_sunset').hidden = true;
+                            document.getElementById('natural_time_stars').hidden = true;
+                        };
+                    {% endif %}
 
                     var proportion = 100 - (time_passed / 1440 * 100);
-
                     document.getElementById('natural_time_passed').style = 'width: ' + proportion.toString() + '%;';
                 {% endif %}
 

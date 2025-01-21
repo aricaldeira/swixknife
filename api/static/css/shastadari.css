@@ -632,9 +632,15 @@ input[type=number] {
     font-size: 1.25em;
 }
 
-.full-day-color {
+.full-day-color-4 {
     background: rgb(100,181,246);
     background: linear-gradient(90deg, rgba(100,181,246,1) 8%, rgba(255,241,118,1) 25%, rgba(255,183,77,1) 42%, rgba(240,98,146,1) 58%, rgba(186,104,200,1) 75%, rgba(121,134,203,1) 92%);
+    width: 100%;
+}
+
+.full-day-color-6 {
+    background: rgb(100,181,246);
+    background: linear-gradient(90deg, rgba(100,181,246,1) 2%, rgba(255,241,118,1) 17%, rgba(255,183,77,1) 33%, rgba(240,98,146,1) 50%, rgba(186,104,200,1) 67%, rgba(121,134,203,1) 83%);
     width: 100%;
 }
 
@@ -642,4 +648,7 @@ input[type=number] {
     background-color: rgb(0,0,0);
     float: right;
     margin-top: -0.8rem;
+    text-align: left;
+    overflow: clip; /* required */
+    overflow-clip-margin: 1rem;
 }

@@ -104,8 +104,18 @@
         {% endif %}
         {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
             <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
-                <div id="natural_time" class="full-day-color">&nbsp;</div>
-                <div id="natural_time_passed" class="day-time-passed">&nbsp;</div>
+                {% if '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+                    <div id="natural_time" class="full-day-color-6">&nbsp;</div>
+                {% else %}
+                    <div id="natural_time" class="full-day-color-4">&nbsp;</div>
+                {% endif %}
+                <div id="natural_time_passed" class="day-time-passed">
+                    {{ ' ' }}
+                    <span id="natural_time_sunrise" class="emoji" hidden>🌅</span>
+                    <span id="natural_time_sun" class="emoji" hidden>☀️</span>
+                    <span id="natural_time_sunset" class="emoji" hidden>🌄</span>
+                    <span id="natural_time_stars" class="emoji" hidden>🌌</span>
+                </div>
             </div>
         {% endif %}
         </p>
