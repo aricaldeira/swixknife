@@ -164,7 +164,7 @@ html, body {
                     iso_time_display = iso_time_display + ' (' + date.toLocaleTimeString('{{ locale.LANGUAGE_TAG }}', {hour: '2-digit', minute:'2-digit'}).toLowerCase() + ')';
                 {% endif %}
 
-                {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or (locale.DEFAULT_TIME_ZONE in ('UTC', 'SPM')) %}
+                {% if ('/NT' in locale.DEFAULT_TIME_ZONE) or ('UTC' in locale.DEFAULT_TIME_ZONE) or ('SPM' in locale.DEFAULT_TIME_ZONE) %}
                     var time_passed = (date.getHours() * 60) + date.getMinutes();
 
                     {% if '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
