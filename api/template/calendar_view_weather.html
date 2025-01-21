@@ -46,8 +46,9 @@
     {% endif %}
 
     {% set celsius = sdu(weather.temperature, 'tap', '°C').decimal %}
-    {% set decimal_temperature = sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE).decimal %}
-    {% set dozenal_temperature = Dozenal(sdu(weather.temperature, 'tap', '°C').decimal / TEMPERATURE) + TEMPERATURE_ADJUST %}
+    {% set decimal_temperature = sdu(weather.temperature, 'tap', '°F').decimal %}
+    {% set dozenal_temperature = Dozenal(sdu(weather.temperature, 'tap', '°C').decimal / TEMPERATURE) + 40 %}
+    {% set dozenal_temperature_c = Dozenal(sdu(weather.temperature, 'tap', '°C').decimal / TEMPERATURE) %}
 
     {% set SPEED = Dozenal('0.349_9↊↊_↋75_848_532') %}
     {% set LENGTH = Dozenal('1220.↋35_851_8↋7_1↋3_2↋3') %}
@@ -62,12 +63,17 @@
         {{ locale.format_decimal_number(round(decimal_temperature, 2), decimal_places=2) }} =
         {{ locale.format_decimal_number(round(decimal_temperature, 1), decimal_places=1) }} =
         {{ locale.format_decimal_number(round(decimal_temperature, 0), decimal_places=0) }}
-        {{ locale.DECIMAL_TEMPERATURE }}<br/><br/>
+        {{ '°F' }}<br/><br/>
+        {{ locale.format_dozenal_number(round(dozenal_temperature_c, 3), dozenal_places=3) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature_c, 2), dozenal_places=2) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature_c, 1), dozenal_places=1) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature_c, 0), dozenal_places=0) }}
+        ⚀ς°c<br/><br/>
         {{ locale.format_dozenal_number(round(dozenal_temperature, 3), dozenal_places=3) }} =
         {{ locale.format_dozenal_number(round(dozenal_temperature, 2), dozenal_places=2) }} =
         {{ locale.format_dozenal_number(round(dozenal_temperature, 1), dozenal_places=1) }} =
         {{ locale.format_dozenal_number(round(dozenal_temperature, 0), dozenal_places=0) }}
-        {{ TEMPERATURE_SYMBOL }}
+        ⚀ς°f
         <br/><br/>
         {{ locale.format_dozenal_number(round(dozenal_temperature, 0), dozenal_places=0) }} {{ TEMPERATURE_SYMBOL }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
     </p>
