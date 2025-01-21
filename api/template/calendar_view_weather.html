@@ -18,17 +18,17 @@
     </div>
 {% elif base == 14 %}
     <p class="now-weather" onclick="open_close_weather()">
-        {{ locale.format_decimal_number(round(sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+        {{ locale.format_decimal_number(round(sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE), 1).decimal, decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
     </p>
     <div id="weather" style="display: none;">
         <p>
-            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_sensation, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_minimum, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }} / {{ locale.format_decimal_number(round(sdu(weather.temperature_maximum, 'tap', locale.DECIMAL_TEMPERATURE), 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}
+            <span class="emoji">{{ '🥶\ufe0f' if weather.temperature <= 100 else '😀\ufe0f' if weather.temperature <= 130 else '🥵\ufe0f' }}</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_sensation, 'tap', locale.DECIMAL_TEMPERATURE).decimal, 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}   <span class="emoji">🌡️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.temperature_minimum, 'tap', locale.DECIMAL_TEMPERATURE).decimal, 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }} / {{ locale.format_decimal_number(round(sdu(weather.temperature_maximum, 'tap', locale.DECIMAL_TEMPERATURE).decimal, 1), decimal_places=1) }} {{ locale.DECIMAL_TEMPERATURE }}
         </p>
         <p>
             {% if weather._air_quality == 1 %}<span style="font-weight: bold; color: white; background-color: #00ccff"> ༄&#xfe0f; 1 </span>{% elif weather._air_quality == 2 %}<span style="font-weight: bold; color: white; background-color: #44aa00"> ༄&#xfe0f; 2 </span>{% elif weather._air_quality == 3 %}<span style="font-weight: bold; color: white; background-color: #ffcc00"> ༄&#xfe0f; 3 </span>{% elif weather._air_quality == 4 %}<span style="font-weight: bold; color: white; background-color: #ff6600"> ༄&#xfe0f; 4 </span>{% elif weather._air_quality == 5 %}<span style="font-weight: bold; color: white; background-color: #d40000"> ༄&#xfe0f; 5 </span>{% endif %}   <span class="emoji">🔭&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.visibility, 'Xpad', 'km' if locale.DECIMAL_SPEED == 'km/h' else 'ml'), 1), decimal_places=1) }} {{ 'km' if locale.DECIMAL_SPEED == 'km/h' else 'ml' }}   <span class="emoji">💧&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.humidity, 'dspn', '%'), 0), decimal_places=0) }} %
         </p>
         <p>
-            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_speed, 'veg', locale.DECIMAL_SPEED), 0), decimal_places=0) }} {{ locale.DECIMAL_SPEED }}   <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_direction, 'dmdl', 'deg'), 0), decimal_places=0) }}°   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {% if locale.DECIMAL_SPEED == 'km/h' %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'hPa'), 0), decimal_places=0) }} hPa{% else %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'inHg'), 1), decimal_places=1) }} in Hg{% endif %}
+            <span class="emoji">🌬️&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_speed, 'veg', locale.DECIMAL_SPEED).decimal, 0), decimal_places=0) }} {{ locale.DECIMAL_SPEED }}   <span class="emoji">🧭&#xfe0f;</span> {{ locale.format_decimal_number(round(sdu(weather.wind_direction, 'dmdl', 'deg').decimal, 0), decimal_places=0) }}°   <span class="emoji">🌀&#xfe0f;⚖️&#xfe0f;</span> {% if locale.DECIMAL_SPEED == 'km/h' %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'hPa'), 0).decimal, decimal_places=0) }} hPa{% else %}{{ locale.format_decimal_number(round(sdu(weather.pressure, 'Xpdn', 'inHg').decimal, 1), decimal_places=1) }} in Hg{% endif %}
         </p>
         <p>
             <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'S', locale) }}</span>   <span class="emoji">🌅&#xfe0f;</span> {{ weather.sunrise.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.ISO_SHORT_TIME_FORMAT, locale) }}   <span class="emoji">🌄&#xfe0f;</span> {{ weather.sunset.at_time_zone(locale.DEFAULT_TIME_ZONE).format(locale.ISO_SHORT_TIME_FORMAT, locale) }}   <span class="emoji">{{ now.format('#@~' + locale.DEFAULT_HEMISPHERE + 'L', locale) }}</span>
@@ -45,11 +45,25 @@
         {% set TEMPERATURE_ADJUST = 0 %}
     {% endif %}
 
+    {% set decimal_temperature = sdu(weather.temperature, 'tap', locale.DECIMAL_TEMPERATURE).decimal %}
+    {% set dozenal_temperature = Dozenal(sdu(weather.temperature, 'tap', '°C').decimal / TEMPERATURE) + TEMPERATURE_ADJUST %}
+
     {% set SPEED = Dozenal('0.349_9↊↊_↋75_848_532') %}
     {% set LENGTH = Dozenal('1220.↋35_851_8↋7_1↋3_2↋3') %}
     {% set PRESSURE = Dozenal('68.424_110_583_941_693') %}
     <p class="now-weather" onclick="open_close_weather()">
-        {{ locale.format_dozenal_number(round((Dozenal(sdu(weather.temperature, 'tap', '°C')) / TEMPERATURE) + TEMPERATURE_ADJUST, 0), dozenal_places=0) }} {{ TEMPERATURE_SYMBOL }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+        {{ locale.format_decimal_number(round(decimal_temperature, 3), decimal_places=3) }} =
+        {{ locale.format_decimal_number(round(decimal_temperature, 2), decimal_places=2) }} =
+        {{ locale.format_decimal_number(round(decimal_temperature, 1), decimal_places=1) }} =
+        {{ locale.format_decimal_number(round(decimal_temperature, 0), decimal_places=0) }}
+        {{ locale.DECIMAL_TEMPERATURE }}<br/><br/>
+        {{ locale.format_dozenal_number(round(dozenal_temperature, 3), dozenal_places=3) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature, 2), dozenal_places=2) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature, 1), dozenal_places=1) }} =
+        {{ locale.format_dozenal_number(round(dozenal_temperature, 0), dozenal_places=0) }}
+        {{ TEMPERATURE_SYMBOL }}
+        <br/><br/>
+        {{ locale.format_dozenal_number(round(dozenal_temperature, 0), dozenal_places=0) }} {{ TEMPERATURE_SYMBOL }}  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
     </p>
     <div id="weather" style="display: none;">
         <p>
