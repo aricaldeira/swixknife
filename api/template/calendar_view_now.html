@@ -87,7 +87,7 @@
 {% endif %}
 
 <div class="center">
-    <div class="now-content">
+    <div id="now-content" class="now-content" hidden>
         <div id="calendar_header" class="calendar-header-now">
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
@@ -102,11 +102,30 @@
         {% else %}
             <p id="time_display" class="now-time-24h">
         {% endif %}
-            <div id="natural_time_10" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
-                {% if '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
-                    <div id="natural_time" class="full-day-color-6">&nbsp;</div>
-                {% else %}
+            <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
+                {% if '/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10'  in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-4">&nbsp;</div>
+                    {% if locale.base == 20 %}
+                        <div class="day-tick" style="width: 9.83%;">|</div>
+                        <div class="day-tick" style="width: 34.83%; font-weight: bold;">|</div>
+                        <div class="day-tick" style="width: 59.83%;">|</div>
+                    {% else %}
+                        <div class="day-tick" style="width: 18.17%;">|</div>
+                        <div class="day-tick" style="width: 34.83%; font-weight: bold;">|</div>
+                        <div class="day-tick" style="width: 51.5%;">|</div>
+                        <div class="day-tick" style="width: 68.17%;">|</div>
+                        <div class="day-tick" style="width: 84.83%; font-weight: bold;">|</div>
+                    {% endif %}
+                {% elif '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+                    <div id="natural_time" class="full-day-color-6">&nbsp;</div>
+                    <div class="day-tick" style="width: 25%; font-weight: bold;">|</div>
+                    <div class="day-tick" style="width: 50%;">|</div>
+                    <div class="day-tick" style="width: 75%; font-weight: bold;">|</div>
+                {% else %}
+                    <div id="natural_time" class="full-day-color-0">&nbsp;</div>
+                    <div class="day-tick" style="width: 25%;">|</div>
+                    <div class="day-tick" style="width: 50%; font-weight: bold;">|</div>
+                    <div class="day-tick" style="width: 75%;">|</div>
                 {% endif %}
                 <div id="natural_time_passed" class="day-time-passed">
                     {{ ' ' }}
@@ -177,4 +196,18 @@
             {% endif %}
         {% endwith %}
     </div>
+</div>
+<div id="stopwatch-content">
+    <p> </p>
+    <h1 class="emoji" style="font-size: 9rem;">⏱️</h1>
+    <p> </p>
+    {% if locale.base != 20 %}
+        <p id="stopwatch_display" style="font-size: 3rem;">00:00:00{{ locale.SEZIMAL_SEPARATOR }}00</p>
+    {% else %}
+        <p id="stopwatch_display" style="font-size: 3rem;">000{{ locale.SEZIMAL_SEPARATOR }}00</p>
+    {% endif %}
+    <p id="stopwatch_iso_display" style="font-size: 0.8rem;">00:00:00{{ locale.SEZIMAL_SEPARATOR }}0</p>
+    <p id="stopwatch_play_reset" style="font-size: 3rem;" hidden><span class="emoji"  onclick="stopwatch_reset()">⏪</span>   <span class="emoji" onclick="stopwatch_start()">▶️</span></p>
+    <p id="stopwatch_play" style="font-size: 3rem;"><span class="emoji" onclick="stopwatch_start()">▶️</span></p>
+    <p id="stopwatch_pause" style="font-size: 3rem;" hidden><span class="emoji"><span class="emoji" onclick="stopwatch_pause()">⏸️</span></p>
 </div>

@@ -168,7 +168,40 @@ html, body {
 
             var time_passed = (date.getHours() * 60) + date.getMinutes();
 
-            {% if '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+            {% if '/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10'  in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
+                if (time_passed < 240) {
+                    time_passed = time_passed + 1200;
+                } else {
+                    time_passed = time_passed - 240;
+                }
+
+                if (time_passed < 120) {
+                    document.getElementById('natural_time_sunrise').hidden = false;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = true;
+                } else if (time_passed < 780) {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = false;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = true;
+                } else if (time_passed < 870) {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = false;
+                    document.getElementById('natural_time_stars').hidden = true;
+                } else if (time_passed < 1410) {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = false;
+                } else {
+                    document.getElementById('natural_time_sunrise').hidden = false;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = true;
+                };
+            {% elif '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
                 if (time_passed < 360) {
                     time_passed = time_passed + 1080;
                 } else {
@@ -203,40 +236,39 @@ html, body {
                 };
             {% else %}
                 if (time_passed < 240) {
-                    time_passed = time_passed + 1200;
-                } else {
-                    time_passed = time_passed - 240;
-                }
-
-                if (time_passed < 120) {
-                    document.getElementById('natural_time_sunrise').hidden = false;
-                    document.getElementById('natural_time_sun').hidden = true;
-                    document.getElementById('natural_time_sunset').hidden = true;
-                    document.getElementById('natural_time_stars').hidden = true;
-                } else if (time_passed < 780) {
-                    document.getElementById('natural_time_sunrise').hidden = true;
-                    document.getElementById('natural_time_sun').hidden = false;
-                    document.getElementById('natural_time_sunset').hidden = true;
-                    document.getElementById('natural_time_stars').hidden = true;
-                } else if (time_passed < 870) {
-                    document.getElementById('natural_time_sunrise').hidden = true;
-                    document.getElementById('natural_time_sun').hidden = true;
-                    document.getElementById('natural_time_sunset').hidden = false;
-                    document.getElementById('natural_time_stars').hidden = true;
-                } else if (time_passed < 1410) {
                     document.getElementById('natural_time_sunrise').hidden = true;
                     document.getElementById('natural_time_sun').hidden = true;
                     document.getElementById('natural_time_sunset').hidden = true;
                     document.getElementById('natural_time_stars').hidden = false;
-                } else {
+                } else if (time_passed < 360) {
                     document.getElementById('natural_time_sunrise').hidden = false;
                     document.getElementById('natural_time_sun').hidden = true;
                     document.getElementById('natural_time_sunset').hidden = true;
                     document.getElementById('natural_time_stars').hidden = true;
+                } else if (time_passed < 960) {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = false;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = true;
+                } else if (time_passed < 1110) {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = false;
+                    document.getElementById('natural_time_stars').hidden = true;
+                } else {
+                    document.getElementById('natural_time_sunrise').hidden = true;
+                    document.getElementById('natural_time_sun').hidden = true;
+                    document.getElementById('natural_time_sunset').hidden = true;
+                    document.getElementById('natural_time_stars').hidden = false;
                 };
             {% endif %}
 
-            var proportion = 100 - (time_passed / 1440 * 100);
+            var proportion = (100 - (time_passed / 1440 * 100));
+
+            if (proportion <= 10) {
+                proportion = proportion + 3;
+            };
+
             document.getElementById('natural_time_passed').style = 'width: ' + proportion.toString() + '%;';
 
             {% if locale.DIGITS %}
@@ -476,5 +508,167 @@ html, body {
         };
 
         prepareForNotification();
+
+        var initialTouchX, initialTouchY, finalTouchX, finalTouchY;
+        const swipeThreshold = 100;
+
+        function handleTouch(startX, endX) {
+            const horizontalDistance = finalTouchX - initialTouchX;
+            const verticalDistance = finalTouchY - initialTouchY;
+
+            if (
+                (Math.abs(horizontalDistance) > Math.abs(verticalDistance))
+                 && (Math.abs(horizontalDistance) > swipeThreshold)) {
+                //
+                // Swipe to the left
+                //
+                if (finalTouchX - initialTouchX < 0) {
+                    document.getElementById('now-content').hidden = false;
+                    document.getElementById('stopwatch-content').hidden = true;
+                }
+                //
+                // Swipe to the right
+                //
+                else {
+                    document.getElementById('now-content').hidden = true;
+                    document.getElementById('stopwatch-content').hidden = false;
+                }
+            }
+        };
+
+        window.onload = function () {
+            window.addEventListener(
+                'touchstart',
+                function (event) {
+                    initialTouchX = event.touches[0].clientX;
+                    initialTouchY = event.touches[0].clientY;
+                }
+            );
+
+            window.addEventListener(
+                'touchend',
+                function (event) {
+                    finalTouchX = event.changedTouches[0].clientX;
+                    finalTouchY = event.changedTouches[0].clientY;
+                    handleTouch(initialTouchX, finalTouchX);
+                }
+            );
+        };
+
+        var stopwatch_start_time = null;
+        var stopwatch_paused_time = null;
+        var stopwatch_discount_time = 0;
+        var stopwatch_timeout = null;
+
+        function stopwatch_update() {
+            if (stopwatch_start_time == null) {
+                stopwatch_start_time = Date.now();
+            }
+
+            var seconds_passed = (Date.now() - stopwatch_start_time - stopwatch_discount_time) / 1000;
+            var seconds = seconds_passed;
+
+            var hour = Math.floor(seconds / 60 / 60);
+            seconds = seconds - (hour * 60 * 60);
+            var minute = Math.floor(seconds / 60);
+            seconds = seconds - (minute * 60);
+            var second = Math.floor(seconds);
+            seconds = seconds - second
+            var decisecond = Math.floor(seconds * 10);
+
+            var stopwatch_iso_display =
+                hour.toString().padStart(2, '0') + ':' +
+                minute.toString().padStart(2, '0') + ':' +
+                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                decisecond.toString().padStart(1, '0');
+
+            {% if locale.base == 10 %}
+                var days = seconds_passed / 86400;
+
+                var uta = Math.floor(days * 36);
+                days = (days * 36) - uta;
+                var posha = Math.floor(days * 36);
+                days = (days * 36) - posha;
+                var agrima = Math.floor(days * 36);
+                days = (days * 36) - agrima;
+                var anuga = Math.floor(days * 36);
+
+                var stopwatch_display =
+                    uta.toString(6).padStart(2, '0') + ':' +
+                    posha.toString(6).padStart(2, '0') + ':' +
+                    agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR   }}' +
+                    anuga.toString(6).padStart(2, '0');
+
+            {% elif locale.base == 20 %}
+                var days = seconds_passed / 86400;
+
+                var integer_time = Math.floor(days * 12 * 12 * 12);
+                days = (days * 12 * 12 * 12) - integer_time;
+                var fraction_time = Math.floor(days * 12 * 12);
+
+                var stopwatch_display =
+                    integer_time.toString(12).padStart(3, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    fraction_time.toString(12).padStart(2, '0');
+
+                stopwatch_display = stopwatch_display.replaceAll('a', '↊').replaceAll('b', '↋');
+            {% else %}
+                var stopwatch_display = stopwatch_iso_display;
+            {% endif %}
+
+            document.getElementById('stopwatch_display').innerHTML = stopwatch_display;
+            document.getElementById('stopwatch_iso_display').innerHTML = stopwatch_iso_display;
+
+            stopwatch_timeout = setTimeout(stopwatch_update, 1);
+        }
+
+        function stopwatch_start() {
+            if (stopwatch_start_time == null) {
+                stopwatch_start_time = Date.now();
+            } else if (stopwatch_paused_time !== null) {
+                stopwatch_discount_time += Date.now() - stopwatch_paused_time;
+            }
+
+            stopwatch_paused_time = null;
+
+            document.getElementById('stopwatch_play_reset').hidden = true;
+            document.getElementById('stopwatch_play').hidden = true;
+            document.getElementById('stopwatch_pause').hidden = false;
+
+            stopwatch_update();
+        };
+
+        function stopwatch_reset() {
+            stopwatch_start_time = null;
+            stopwatch_paused_time = null;
+            stopwatch_discount_time = 0;
+            clearTimeout(stopwatch_timeout);
+
+            document.getElementById('stopwatch_play_reset').hidden = true;
+            document.getElementById('stopwatch_play').hidden = false;
+            document.getElementById('stopwatch_pause').hidden = true;
+
+            {% if locale.base != 20 %}
+                document.getElementById('stopwatch_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            {% else %}
+                document.getElementById('stopwatch_display').innerHTML = '000{{ locale.SEZIMAL_SEPARATOR }}00';
+            {% endif %}
+            document.getElementById('stopwatch_iso_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}0';
+        }
+
+        function stopwatch_pause() {
+            stopwatch_paused_time = Date.now();
+            clearTimeout(stopwatch_timeout);
+
+            if (stopwatch_start_time == null) {
+                document.getElementById('stopwatch_play').hidden = false;
+                document.getElementById('stopwatch_play_reset').hidden = true;
+            } else {
+                document.getElementById('stopwatch_play').hidden = true;
+                document.getElementById('stopwatch_play_reset').hidden = false;
+            };
+
+            document.getElementById('stopwatch_pause').hidden = true;
+        }
+
     </script>
 </html>
