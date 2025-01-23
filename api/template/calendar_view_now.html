@@ -87,7 +87,7 @@
 {% endif %}
 
 <div class="center">
-    <div id="now-content" class="now-content" hidden>
+    <div id="now-content" class="now-content">
         <div id="calendar_header" class="calendar-header-now">
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
@@ -197,7 +197,7 @@
         {% endwith %}
     </div>
 </div>
-<div id="stopwatch-content">
+<div id="stopwatch-content" hidden>
     <p> </p>
     <h1 class="emoji" style="font-size: 9rem;">⏱️</h1>
     <p> </p>
