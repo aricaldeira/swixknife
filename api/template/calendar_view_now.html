@@ -106,17 +106,11 @@
             <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
                 {% if '/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10'  in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-4">&nbsp;</div>
-                    {% if locale.base == 20 %}
-                        <div class="day-tick" style="width: 9.83%;">|</div>
-                        <div class="day-tick" style="width: 34.83%; font-weight: bold;">|</div>
-                        <div class="day-tick" style="width: 59.83%;">|</div>
-                    {% else %}
                         <div class="day-tick" style="width: 18.17%;">|</div>
                         <div class="day-tick" style="width: 34.83%; font-weight: bold;">|</div>
                         <div class="day-tick" style="width: 51.5%;">|</div>
                         <div class="day-tick" style="width: 68.17%;">|</div>
                         <div class="day-tick" style="width: 84.83%; font-weight: bold;">|</div>
-                    {% endif %}
                 {% elif '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-6">&nbsp;</div>
                     <div class="day-tick" style="width: 25%; font-weight: bold;">|</div>
@@ -205,10 +199,40 @@
     {% if locale.base != 20 %}
         <p id="stopwatch_display" style="font-size: 3rem;">00:00:00{{ locale.SEZIMAL_SEPARATOR }}00</p>
     {% else %}
-        <p id="stopwatch_display" style="font-size: 3rem;">000{{ locale.SEZIMAL_SEPARATOR }}00</p>
+        <p id="stopwatch_display" style="font-size: 3rem;">000{{ locale.SEZIMAL_SEPARATOR }}000</p>
     {% endif %}
-    <p id="stopwatch_iso_display" style="font-size: 0.8rem;">00:00:00{{ locale.SEZIMAL_SEPARATOR }}0</p>
-    <p id="stopwatch_play_reset" style="font-size: 3rem;" hidden><span class="emoji"  onclick="stopwatch_reset()">⏪</span>   <span class="emoji" onclick="stopwatch_start()">▶️</span></p>
+    <p id="stopwatch_iso_display" style="font-size: 0.8rem;">00:00:00{{ locale.SEZIMAL_SEPARATOR }}00</p>
     <p id="stopwatch_play" style="font-size: 3rem;"><span class="emoji" onclick="stopwatch_start()">▶️</span></p>
     <p id="stopwatch_pause" style="font-size: 3rem;" hidden><span class="emoji"><span class="emoji" onclick="stopwatch_pause()">⏸️</span></p>
+    <p id="stopwatch_reset" style="font-size: 3rem; line-height: 6rem;" hidden>
+        <span class="emoji" onclick="stopwatch_reset()">⏪</span>
+    </p>
+</div>
+<div id="timer-content" hidden>
+    <p> </p>
+    <h1 class="emoji" style="font-size: 9rem;">⏳</h1>
+    <p> </p>
+    {% if locale.base != 20 %}
+        <p id="timer_add" class="mono-text no_selection" style="font-size: 3rem;">
+            &#8200;<span id="timer_add_uta" onclick="timer_uta('+')">+</span>&#8199;&#8200;<span id="timer_add_posha" onclick="timer_posha('+')">+</span>&#8199;&#8200;<span id="timer_add_agrima" onclick="timer_agrima('+')">+</span>&#8199;&#8200;<span id="timer_add_anuga" onclick="timer_anuga('+')">+</span>
+        </p>
+        <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00</p>
+        <p id="timer_subtract" class="mono-text no_selection" style="font-size: 3rem;">
+            &#8200;<span id="timer_subtract_uta" onclick="timer_uta('−')">−</span>&#8199;&#8200;<span id="timer_subtract_posha" onclick="timer_posha('−')">−</span>&#8199;&#8200;<span id="timer_subtract_agrima" onclick="timer_agrima('−')">−</span>&#8199;&#8200;<span id="timer_add_anuga" onclick="timer_anuga('−')">−</span>
+        </p>
+    {% else %}
+        <p id="timer_add" class="mono-text no_selection" style="font-size: 3rem;">
+            &#8200;<span id="timer_add_uta" onclick="timer_uta('+')">+</span><span id="timer_add_posha" onclick="timer_posha('+')">+</span><span id="timer_add_agrima" onclick="timer_agrima('+')">+</span>&#8200;<span id="timer_add_anuga" onclick="timer_anuga('+')">+</span><span id="timer_add_boda" onclick="timer_boda('+')">+</span><span id="timer_add_ekatiboda" onclick="timer_ekatiboda('+')">+</span>
+        </p>
+        <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;000{{ locale.SEZIMAL_SEPARATOR }}000</p>
+        <p id="timer_subtract" class="mono-text no_selection" style="font-size: 3rem;">
+            &#8200;<span id="timer_subtract_uta" onclick="timer_uta('−')">−</span><span id="timer_subtract_posha" onclick="timer_posha('−')">−</span><span id="timer_subtract_agrima" onclick="timer_agrima('−')">−</span>&#8200;<span id="timer_subtract_anuga" onclick="timer_anuga('−')">−</span><span id="timer_add_boda" onclick="timer_boda('−')">−</span><span id="timer_add_ekatiboda" onclick="timer_ekatiboda('−')">−</span>
+        </p>
+    {% endif %}
+    <p id="timer_iso_display" class="mono-text" style="font-size: 0.8rem;">&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00</p>
+    <p id="timer_play" style="font-size: 3rem;"><span class="emoji" onclick="timer_start()">▶️</span></p>
+    <p id="timer_pause" style="font-size: 3rem;" hidden><span class="emoji"><span class="emoji" onclick="timer_pause()">⏸️</span></p>
+    <p id="timer_reset" style="font-size: 3rem; line-height: 6rem;" hidden>
+        <span class="emoji" onclick="timer_reset()">⏪</span>
+    </p>
 </div>

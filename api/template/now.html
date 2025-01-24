@@ -71,8 +71,13 @@ html, body {
     </head>
     <body>
     <div id="selectors" style="position: absolute; width: 100%">
+        <!-- Stopwatch selectors -->
         <span id="show_stopwath" class="emoji" style="float: left; opacity: 0.5; text-align: left;" onclick="show_stopwath()" hidden> ⏱️ </span>
-        <span id="show_clock" class="emoji" style="float: right; opacity: 0.5; text-align: right;" onclick="show_clock()" hidden> ⌚ </span>
+        <span id="show_clock_stopwatch" class="emoji" style="float: right; opacity: 0.5; text-align: right;" onclick="show_clock()" hidden> ⌚ </span>
+
+        <!-- Timer selectors -->
+        <span id="show_clock_timer" class="emoji" style="float: left; opacity: 0.5; text-align: right;" onclick="show_clock()" hidden> ⌚ </span>
+        <span id="show_timer" class="emoji" style="float: right; opacity: 0.5; text-align: right;" onclick="show_timer()" hidden> ⏳ </span>
     </div>
     <div id="now_view">
     {% include 'calendar_view_now.html' %}
@@ -524,18 +529,42 @@ html, body {
                 (Math.abs(horizontalDistance) > Math.abs(verticalDistance))
                  && (Math.abs(horizontalDistance) > swipeThreshold)) {
                 //
-                // Swipe to the left
+                // Swipe to the left:
+                // Stopwatch -> Clock -> Timer
                 //
                 if (finalTouchX - initialTouchX < 0) {
-                    document.getElementById('now-content').hidden = false;
-                    document.getElementById('stopwatch-content').hidden = true;
+                    if (!document.getElementById('stopwatch-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = true;
+                        document.getElementById('now-content').hidden = false;
+                        document.getElementById('timer-content').hidden = true;
+                    } else if (!document.getElementById('now-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = true;
+                        document.getElementById('now-content').hidden = true;
+                        document.getElementById('timer-content').hidden = false;
+                    } else if (!document.getElementById('timer-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = false;
+                        document.getElementById('now-content').hidden = true;
+                        document.getElementById('timer-content').hidden = true;
+                    };
                 }
                 //
                 // Swipe to the right
+                // Stopwatch <- Clock <- Timer
                 //
                 else {
-                    document.getElementById('now-content').hidden = true;
-                    document.getElementById('stopwatch-content').hidden = false;
+                    if (!document.getElementById('timer-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = true;
+                        document.getElementById('now-content').hidden = false;
+                        document.getElementById('timer-content').hidden = true;
+                    } else if (!document.getElementById('now-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = false;
+                        document.getElementById('now-content').hidden = true;
+                        document.getElementById('timer-content').hidden = true;
+                    } else if (!document.getElementById('stopwatch-content').hidden) {
+                        document.getElementById('stopwatch-content').hidden = true;
+                        document.getElementById('now-content').hidden = true;
+                        document.getElementById('timer-content').hidden = false;
+                    };
                 }
             }
         };
@@ -578,13 +607,13 @@ html, body {
             seconds = seconds - (minute * 60);
             var second = Math.floor(seconds);
             seconds = seconds - second
-            var decisecond = Math.floor(seconds * 10);
+            var centisecond = Math.floor(seconds * 100);
 
             var stopwatch_iso_display =
                 hour.toString().padStart(2, '0') + ':' +
                 minute.toString().padStart(2, '0') + ':' +
                 second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
-                decisecond.toString().padStart(1, '0');
+                centisecond.toString().padStart(2, '0');
 
             {% if locale.base == 10 %}
                 var days = seconds_passed / 86400;
@@ -608,11 +637,11 @@ html, body {
 
                 var integer_time = Math.floor(days * 12 * 12 * 12);
                 days = (days * 12 * 12 * 12) - integer_time;
-                var fraction_time = Math.floor(days * 12 * 12);
+                var fraction_time = Math.floor(days * 12 * 12 * 12);
 
                 var stopwatch_display =
                     integer_time.toString(12).padStart(3, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
-                    fraction_time.toString(12).padStart(2, '0');
+                    fraction_time.toString(12).padStart(3, '0');
 
                 stopwatch_display = stopwatch_display.replaceAll('a', '↊').replaceAll('b', '↋');
             {% else %}
@@ -634,9 +663,9 @@ html, body {
 
             stopwatch_paused_time = null;
 
-            document.getElementById('stopwatch_play_reset').hidden = true;
             document.getElementById('stopwatch_play').hidden = true;
             document.getElementById('stopwatch_pause').hidden = false;
+            document.getElementById('stopwatch_reset').hidden = true;
 
             stopwatch_update();
         };
@@ -647,31 +676,499 @@ html, body {
             stopwatch_discount_time = 0;
             clearTimeout(stopwatch_timeout);
 
-            document.getElementById('stopwatch_play_reset').hidden = true;
             document.getElementById('stopwatch_play').hidden = false;
             document.getElementById('stopwatch_pause').hidden = true;
+            document.getElementById('stopwatch_reset').hidden = true;
 
             {% if locale.base != 20 %}
                 document.getElementById('stopwatch_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
             {% else %}
                 document.getElementById('stopwatch_display').innerHTML = '000{{ locale.SEZIMAL_SEPARATOR }}00';
             {% endif %}
-            document.getElementById('stopwatch_iso_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}0';
+            document.getElementById('stopwatch_iso_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
         }
 
         function stopwatch_pause() {
             stopwatch_paused_time = Date.now();
             clearTimeout(stopwatch_timeout);
 
+            document.getElementById('stopwatch_play').hidden = false;
+            document.getElementById('stopwatch_pause').hidden = true;
+
             if (stopwatch_start_time == null) {
-                document.getElementById('stopwatch_play').hidden = false;
-                document.getElementById('stopwatch_play_reset').hidden = true;
+                document.getElementById('stopwatch_reset').hidden = true;
             } else {
-                document.getElementById('stopwatch_play').hidden = true;
-                document.getElementById('stopwatch_play_reset').hidden = false;
+                document.getElementById('stopwatch_reset').hidden = false;
+            };
+        }
+
+        var timer_time_uta = 0;
+        var timer_time_posha = 0;
+        var timer_time_agrima = 0;
+        var timer_time_anuga = 0;
+        var timer_time_boda = 0;
+        var timer_time_ekatiboda = 0;
+
+        var timer_time_set_seconds = 0;
+        var timer_start_time = null;
+        var timer_paused_time = null;
+        var timer_discount_time = 0;
+        var timer_timeout = null;
+        var timer_music_playing = false;
+
+        function set_timer() {
+            {% if locale.base == 10 %}
+                var timer_time_display = '&#8200;' +
+                    timer_time_uta.toString(6).padStart(2, '0') + ':' +
+                    timer_time_posha.toString(6).padStart(2, '0') + ':' +
+                    timer_time_agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    timer_time_anuga.toString(6).padStart(2, '0');
+
+                var anuga =
+                    timer_time_uta * 36 * 36 * 36 +
+                    timer_time_posha * 36 * 36 +
+                    timer_time_agrima * 36 +
+                    timer_time_anuga;
+
+                timer_time_set_seconds = anuga * 25 / 486;
+
+                var hour = Math.floor(anuga / 69984);
+                anuga = anuga - (hour * 69984);
+                var minute = Math.floor(anuga * 5 / 5832);
+                anuga = anuga - (minute / 5 * 5832);
+                var second = Math.floor(anuga * 25 / 486);
+                anuga = anuga - (second / 25 * 486);
+                var centisecond = Math.floor(anuga * 1250 / 243);
+
+            {% elif locale.base == 20 %}
+                var timer_time_display = '&#8200;' +
+                    timer_time_uta.toString(12).padStart(1, '0') +
+                    timer_time_posha.toString(12).padStart(1, '0') +
+                    timer_time_agrima.toString(12).padStart(1, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    timer_time_anuga.toString(12).padStart(1, '0') +
+                    timer_time_boda.toString(12).padStart(1, '0') +
+                    timer_time_ekatiboda.toString(12).padStart(1, '0');
+
+                timer_time_display = timer_time_display.replaceAll('a', '↊').replaceAll('b', '↋');
+
+                var anuga =
+                    timer_time_uta * 12 * 12 * 12 +
+                    timer_time_posha * 12 * 12 +
+                    timer_time_agrima * 12 +
+                    timer_time_anuga +
+                    timer_time_boda / 12 +
+                    timer_time_ekatiboda / 12 / 12;
+
+                timer_time_set_seconds = anuga * 25 / 6;
+
+                var hour = Math.floor(anuga / 864);
+                anuga = anuga - (hour * 864);
+                var minute = Math.floor(anuga * 10 / 144);
+                anuga = anuga - (minute * 144 / 10);
+                var second = Math.floor(anuga * 600 / 144);
+                anuga = anuga - (second * 144 / 600);
+                var centisecond = Math.floor(anuga * 1250 / 3);
+            {% else %}
+            {% endif %}
+
+            var timer_iso_display = '&#8200;' +
+                hour.toString().padStart(2, '0') + ':' +
+                minute.toString().padStart(2, '0') + ':' +
+                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                centisecond.toString().padStart(2, '0');
+
+            document.getElementById('timer_display').innerHTML = timer_time_display;
+            document.getElementById('timer_iso_display').innerHTML = timer_iso_display;
+        }
+
+        function timer_uta(sign='+') {
+            if (sign == '+') {
+                timer_time_uta += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_uta >= 36) {
+                        timer_time_uta = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_uta >= 12) {
+                        timer_time_uta = 0;
+                    }
+                {% else %}
+                    if (timer_time_uta >= 24) {
+                        timer_time_uta = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_uta -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_uta < 0) {
+                        timer_time_uta = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_uta < 0) {
+                        timer_time_uta = 11;
+                    }
+                {% else %}
+                    if (timer_time_uta < 0) {
+                        timer_time_uta = 23;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_posha(sign='+') {
+            if (sign == '+') {
+                timer_time_posha += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_posha >= 36) {
+                        timer_time_posha = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_posha >= 12) {
+                        timer_time_posha = 0;
+                    }
+                {% else %}
+                    if (timer_time_posha >= 60) {
+                        timer_time_posha = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_posha -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_posha < 0) {
+                        timer_time_posha = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_posha < 0) {
+                        timer_time_posha = 11;
+                    }
+                {% else %}
+                    if (timer_time_posha < 0) {
+                        timer_time_posha = 59;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_agrima(sign='+') {
+            if (sign == '+') {
+                timer_time_agrima += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_agrima >= 36) {
+                        timer_time_agrima = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_agrima >= 12) {
+                        timer_time_agrima = 0;
+                    }
+                {% else %}
+                    if (timer_time_agrima >= 60) {
+                        timer_time_agrima = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_agrima -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_agrima < 0) {
+                        timer_time_agrima = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_agrima < 0) {
+                        timer_time_agrima = 11;
+                    }
+                {% else %}
+                    if (timer_time_agrima < 0) {
+                        timer_time_agrima = 59;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_anuga(sign='+') {
+            if (sign == '+') {
+                timer_time_anuga += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_anuga >= 36) {
+                        timer_time_anuga = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_anuga >= 12) {
+                        timer_time_anuga = 0;
+                    }
+                {% else %}
+                    if (timer_time_anuga >= 60) {
+                        timer_time_anuga = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_anuga -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_anuga < 0) {
+                        timer_time_anuga = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_anuga < 0) {
+                        timer_time_anuga = 11;
+                    }
+                {% else %}
+                    if (timer_time_anuga < 0) {
+                        timer_time_anuga = 59;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_boda(sign='+') {
+            if (sign == '+') {
+                timer_time_boda += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_boda >= 36) {
+                        timer_time_boda = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_boda >= 12) {
+                        timer_time_boda = 0;
+                    }
+                {% else %}
+                    if (timer_time_boda >= 60) {
+                        timer_time_boda = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_boda -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_boda < 0) {
+                        timer_time_boda = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_boda < 0) {
+                        timer_time_boda = 11;
+                    }
+                {% else %}
+                    if (timer_time_boda < 0) {
+                        timer_time_boda = 59;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_ekatiboda(sign='+') {
+            if (sign == '+') {
+                timer_time_ekatiboda += 1;
+
+                {% if locale.base == 10 %}
+                    if (timer_time_ekatiboda >= 36) {
+                        timer_time_ekatiboda = 0;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_ekatiboda >= 12) {
+                        timer_time_ekatiboda = 0;
+                    }
+                {% else %}
+                    if (timer_time_ekatiboda >= 60) {
+                        timer_time_ekatiboda = 0;
+                    }
+                {% endif %}
+            } else {
+                timer_time_ekatiboda -= 1;
+                {% if locale.base == 10 %}
+                    if (timer_time_ekatiboda < 0) {
+                        timer_time_ekatiboda = 35;
+                    }
+                {% elif locale.base == 20 %}
+                    if (timer_time_ekatiboda < 0) {
+                        timer_time_ekatiboda = 11;
+                    }
+                {% else %}
+                    if (timer_time_ekatiboda < 0) {
+                        timer_time_ekatiboda = 59;
+                    }
+                {% endif %}
+            }
+
+            set_timer();
+        };
+
+        function timer_update() {
+            if (timer_start_time == null) {
+                timer_start_time = Date.now();
+            }
+
+            var seconds_passed = timer_time_set_seconds - ((Date.now() - timer_start_time - timer_discount_time) / 1000);
+
+            var sign = '&#8200;';
+            var sign_iso = '&#8200;';
+
+            if (seconds_passed < 0) {
+                sign = '−';
+                sign_iso = '−';
+                seconds_passed = seconds_passed * -1;
+            }
+
+            var seconds = Math.abs(seconds_passed);
+
+            var hour = Math.floor(seconds / 60 / 60);
+            seconds = seconds - (hour * 60 * 60);
+            var minute = Math.floor(seconds / 60);
+            seconds = seconds - (minute * 60);
+            var second = Math.floor(seconds);
+            seconds = seconds - second;
+            var centisecond = Math.floor(seconds * 100);
+
+            if ((hour == 0) && (minute == 0) && (second == 0) && (centisecond == 0)) {
+                sign_iso = '&#8200;';
             };
 
-            document.getElementById('stopwatch_pause').hidden = true;
+            var timer_iso_display = sign_iso +
+                hour.toString().padStart(2, '0') + ':' +
+                minute.toString().padStart(2, '0') + ':' +
+                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                centisecond.toString().padStart(2, '0');
+
+            {% if locale.base == 10 %}
+                var days = seconds_passed / 86400;
+
+                var uta = Math.floor(days * 36);
+                days = (days * 36) - uta;
+                var posha = Math.floor(days * 36);
+                days = (days * 36) - posha;
+                var agrima = Math.floor(days * 36);
+                days = (days * 36) - agrima;
+                var anuga = Math.floor(days * 36);
+
+                if ((uta == 0) && (posha == 0) && (agrima == 0) && (anuga == 0)) {
+                    sign = '&#8200;';
+                };
+
+                var timer_display = sign +
+                    uta.toString(6).padStart(2, '0') + ':' +
+                    posha.toString(6).padStart(2, '0') + ':' +
+                    agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    anuga.toString(6).padStart(2, '0');
+
+            {% elif locale.base == 20 %}
+                var days = seconds_passed / 86400;
+                var dias = days;
+
+                var integer_time = Math.floor(days * 12 * 12 * 12);
+                days = (days * 12 * 12 * 12) - integer_time;
+                var fraction_time = Math.floor(days * 12 * 12 * 12);
+
+                if ((integer_time == 0) && (fraction_time == 0)) {
+                    sign = '&#8200;';
+                };
+
+                var timer_display = sign +
+                    integer_time.toString(12).padStart(3, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    fraction_time.toString(12).padStart(3, '0');
+
+                timer_display = timer_display.replaceAll('a', '↊').replaceAll('b', '↋');
+
+            {% else %}
+                var timer_display = timer_iso_display;
+            {% endif %}
+
+            if (
+                (
+                    (timer_time_uta != 0)
+                    || (timer_time_posha != 0)
+                    || (timer_time_agrima != 0)
+                    || (timer_time_anuga != 0)
+                    || (timer_time_boda != 0)
+                    || (timer_time_ekatiboda != 0)
+                ) && (sign == '−') && (!timer_music_playing)
+            ) {
+                timer_music_playing = true;
+                document.getElementById('audio').play();
+            }
+
+            document.getElementById('timer_display').innerHTML = timer_display;
+            document.getElementById('timer_iso_display').innerHTML = timer_iso_display;
+
+            timer_timeout = setTimeout(timer_update, 1);
+        }
+
+        function timer_start() {
+            if (timer_start_time == null) {
+                timer_start_time = Date.now();
+            } else if (timer_paused_time !== null) {
+                timer_discount_time += Date.now() - timer_paused_time;
+            }
+
+            timer_paused_time = null;
+
+            document.getElementById('timer_play').hidden = true;
+            document.getElementById('timer_pause').hidden = false;
+            document.getElementById('timer_reset').hidden = true;
+            document.getElementById('timer_add').hidden = true;
+            document.getElementById('timer_subtract').hidden = true;
+
+            timer_update();
+        };
+
+        function timer_reset() {
+            timer_start_time = null;
+            timer_paused_time = null;
+            timer_discount_time = 0;
+            timer_time_uta = 0;
+            timer_time_posha = 0;
+            timer_time_agrima = 0;
+            timer_time_anuga = 0;
+            timer_time_boda = 0;
+            timer_time_ekatiboda = 0;
+            timer_time_set_seconds = 0;
+            clearTimeout(timer_timeout);
+
+            document.getElementById('timer_play').hidden = false;
+            document.getElementById('timer_pause').hidden = true;
+            document.getElementById('timer_reset').hidden = true;
+            document.getElementById('timer_add').hidden = false;
+            document.getElementById('timer_subtract').hidden = false;
+
+            if (timer_music_playing) {
+                timer_music_playing = false;
+                document.getElementById('audio').pause();
+            }
+
+            {% if locale.base != 20 %}
+                document.getElementById('timer_display').innerHTML = '&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            {% else %}
+                document.getElementById('timer_display').innerHTML = '&#8200;000{{ locale.SEZIMAL_SEPARATOR }}000';
+            {% endif %}
+            document.getElementById('timer_iso_display').innerHTML = '&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+        }
+
+        function timer_pause() {
+            timer_paused_time = Date.now();
+            clearTimeout(timer_timeout);
+
+            if (timer_music_playing) {
+                timer_music_playing = false;
+                document.getElementById('audio').pause();
+            }
+
+            document.getElementById('timer_play').hidden = false;
+            document.getElementById('timer_pause').hidden = true;
+
+            if (timer_start_time == null) {
+                document.getElementById('timer_reset').hidden = true;
+            } else {
+                document.getElementById('timer_reset').hidden = false;
+            };
         }
 
         const browser_is_touchable = 'ontouchstart' in window ||
@@ -681,20 +1178,41 @@ html, body {
 
         if (!browser_is_touchable) {
             document.getElementById('show_stopwath').hidden = false;
+            document.getElementById('show_timer').hidden = false;
         }
 
         function show_stopwath() {
             document.getElementById('show_stopwath').hidden = true;
-            document.getElementById('show_clock').hidden = false;
-            document.getElementById('now-content').hidden = true;
+            document.getElementById('show_clock_stopwatch').hidden = false;
+            document.getElementById('show_clock_timer').hidden = true;
+            document.getElementById('show_timer').hidden = true;
+
             document.getElementById('stopwatch-content').hidden = false;
+            document.getElementById('now-content').hidden = true;
+            document.getElementById('timer-content').hidden = true;
         }
 
         function show_clock() {
             document.getElementById('show_stopwath').hidden = false;
-            document.getElementById('show_clock').hidden = true;
-            document.getElementById('now-content').hidden = false;
+            document.getElementById('show_clock_stopwatch').hidden = true;
+            document.getElementById('show_clock_timer').hidden = true;
+            document.getElementById('show_timer').hidden = false;
+
             document.getElementById('stopwatch-content').hidden = true;
+            document.getElementById('now-content').hidden = false;
+            document.getElementById('timer-content').hidden = true;
         }
+
+        function show_timer() {
+            document.getElementById('show_stopwath').hidden = true;
+            document.getElementById('show_clock_stopwatch').hidden = true;
+            document.getElementById('show_clock_timer').hidden = false;
+            document.getElementById('show_timer').hidden = true;
+
+            document.getElementById('stopwatch-content').hidden = true;
+            document.getElementById('now-content').hidden = true;
+            document.getElementById('timer-content').hidden = false;
+        }
+
     </script>
 </html>
