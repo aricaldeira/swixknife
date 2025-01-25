@@ -203,14 +203,5 @@ html, body {
         };
 
         prepareForNotification();
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(set_coordinates);
-        }
-
-        function set_coordinates(position) {
-            localStorage.setItem('sezimal-latitude', Math.round(position.coords.latitude, 4));
-            localStorage.setItem('sezimal-longitude', Math.round(position.coords.longitude, 4));
-        }
     </script>
 </html>

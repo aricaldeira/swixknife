@@ -332,8 +332,14 @@ function apply_settings() {
 
 async function update_weather() {
     if (
-        (!localStorage.getItem('sezimal-latitude'))
-        || (!localStorage.getItem('sezimal-longitude'))
+        (
+            (!localStorage.getItem('sezimal-latitude'))
+            || (!localStorage.getItem('sezimal-longitude'))
+        ) &&
+        (
+            (!localStorage.getItem('sezimal-gps-latitude'))
+            || (!localStorage.getItem('sezimal-gps-longitude'))
+        )
     ) {
         document.getElementById('weather_view').style = "display: none;";
         document.getElementById('decimal_weather_display').style = "display: none;";
@@ -348,8 +354,16 @@ async function update_weather() {
         document.getElementById('decimal_weather_display').style = "display: inline;";
     };
 
-    dados['latitude'] = localStorage.getItem('sezimal-latitude');
-    dados['longitude'] = localStorage.getItem('sezimal-longitude');
+    if (
+        localStorage.getItem('sezimal-latitude')
+        && localStorage.getItem('sezimal-longitude')
+    ) {
+        dados['latitude'] = localStorage.getItem('sezimal-latitude');
+        dados['longitude'] = localStorage.getItem('sezimal-longitude');
+    } else {
+        dados['latitude'] = localStorage.getItem('sezimal-gps-latitude');
+        dados['longitude'] = localStorage.getItem('sezimal-gps-longitude');
+    };
 
     fetch('/weather/process', {
         method: 'post',

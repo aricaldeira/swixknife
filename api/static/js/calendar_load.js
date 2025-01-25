@@ -129,6 +129,15 @@ function calendar_load() {
         || (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == 'true')
     );
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(set_coordinates);
+    };
+
+    function set_coordinates(position) {
+        localStorage.setItem('sezimal-gps-latitude', Math.floor(position.coords.latitude * 10000) / 10000);
+        localStorage.setItem('sezimal-gps-longitude', Math.floor(position.coords.longitude * 10000) / 10000);
+    };
+
     document.getElementById('sezimal-latitude-input').value = localStorage.getItem('sezimal-latitude');
     document.getElementById('sezimal-longitude-input').value = localStorage.getItem('sezimal-longitude');
 
