@@ -371,9 +371,6 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
     else:
         dt_tz = _datetime.datetime.now(time_zone)
 
-    if str(time_zone) == 'TAI':
-        return _tai_offset(dt_tz)
-
     td = dt_tz.utcoffset()
     total_seconds = Decimal(str(td.days * 86_400))
     total_seconds += Decimal(str(td.seconds))
