@@ -29,6 +29,7 @@
 Zone SPM              +00:46:15 - SPM
 Zone NT4              -03:13:45 - NT4
 Zone NT6              -05:13:45 - NT6
+Zone TAI              -00:00:37 - TAI
 
 #
 # Sezimal Time Zones
