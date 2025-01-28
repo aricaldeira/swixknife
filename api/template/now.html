@@ -338,7 +338,7 @@ html, body {
                 seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
                 seconds = seconds - Math.floor(seconds);
 
-                {% if format_token == '!' %}
+                {% if '!' in format_token %}
                     const PAIRS = {
                         '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
                         '10': '󱸁󱸀', '11': '󱸁󱸁', '12': '󱸁󱸂', '13': '󱸁󱸃', '14': '󱸁󱸄', '15': '󱸁󱸅',
@@ -381,7 +381,7 @@ html, body {
                 var posha = time.slice(2, 4);
                 var agrima = time.slice(4, 6);
 
-                {% if format_token in ('!', '@', '@!', 'Z') %}
+                {% if format_token in ('!', '@', '@!', 'Z', 'c!') %}
                     {% if locale.show_seconds %}
                         time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[agrima];
                     {% else %}
@@ -399,7 +399,7 @@ html, body {
                     time_display = '\u{2066}' + time_display + '\u{2069}';
                 {% endif %}
 
-                {% if (base == 10) and (format_token != '!') and locale.DIGITS %}
+                {% if (base == 10) and ('!' not in format_token) and locale.DIGITS %}
                     time_display = time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
                     time_display = time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
                     time_display = time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');

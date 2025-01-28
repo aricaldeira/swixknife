@@ -37,17 +37,17 @@
     </tr>
 </table>
 {% set month_view = True %}
-{% if locale.calendar_displayed == 'DCC' %}
+{% if locale.calendar_displayed == 'SYM' %}
+    {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
+        {% include 'calendar_base_month.html' %}
+    {% endwith %}
+{% elif locale.calendar_displayed == 'ISO' %}
+    {% with weekday_name_size=3, sezimal_month_number=date.gregorian_month, sezimal_year_number=date.gregorian_year %}
+        {% include 'calendar_base_iso_month.html' %}
+    {% endwith %}
+{% elif locale.calendar_displayed == 'DCC' %}
     {% with weekday_name_size=3, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
         {% include 'calendar_base_dcc_month.html' %}
-    {% endwith %}
-{% else %}
-    {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
-        {% if locale.calendar_displayed == 'SYM' %}
-            {% include 'calendar_base_month.html' %}
-        {% elif locale.calendar_displayed == 'ISO' %}
-            {% include 'calendar_base_iso_month.html' %}
-        {% endif %}
     {% endwith %}
 {% endif %}
 
@@ -55,13 +55,18 @@
 function auto_refresh(){
     const header_height = document.getElementById('calendar_header').getBoundingClientRect().height;
 
-    {% if locale.calendar_displayed == 'DCC' %}
-        document.getElementById('month_table_{{date.dcc_month}}').setAttribute(
+    {% if locale.calendar_displayed == 'SYM' %}
+        document.getElementById('month_table_{{date.month}}').setAttribute(
             'style',
             'border-spacing: 0px; padding-top: ' + header_height + 'px;'
         );
-    {% else %}
-        document.getElementById('month_table_{{date.month}}').setAttribute(
+    {% elif locale.calendar_displayed == 'ISO' %}
+        document.getElementById('month_table_{{date.gregorian_month}}').setAttribute(
+            'style',
+            'border-spacing: 0px; padding-top: ' + header_height + 'px;'
+        );
+    {% elif locale.calendar_displayed == 'DCC' %}
+        document.getElementById('month_table_{{date.dcc_month}}').setAttribute(
             'style',
             'border-spacing: 0px; padding-top: ' + header_height + 'px;'
         );

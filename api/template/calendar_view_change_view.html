@@ -23,7 +23,7 @@
         <td onclick="change_view('yearly')">
             {% if locale.calendar_displayed == 'SYM' %}
                 {% if base == 10 or base == 100 %}
-                    {{ date.format('#>Y', locale) }}
+                    {{ date.format('#' + locale.format_token + '>Y', locale) }}
                 {% else %}
                     {{ date.format(locale.YEAR_FORMAT, locale) }}
                 {% endif %}

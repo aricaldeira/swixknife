@@ -129,15 +129,19 @@
     </tr>
 </table>
 {% set week_view = True %}
-{% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
-    {% if locale.calendar_displayed == 'SYM' %}
+{% if locale.calendar_displayed == 'SYM' %}
+    {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
         {% include 'calendar_base_month.html' %}
-    {% elif locale.calendar_displayed == 'ISO' %}
+    {% endwith %}
+{% elif locale.calendar_displayed == 'ISO' %}
+    {% with weekday_name_size=3, sezimal_month_number=date.gregorian_month, sezimal_year_number=date.gregorian_year %}
         {% include 'calendar_base_iso_month.html' %}
-    {% elif locale.calendar_displayed == 'DCC' %}
+    {% endwith %}
+{% elif locale.calendar_displayed == 'DCC' %}
+    {% with weekday_name_size=3, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
         {% include 'calendar_base_dcc_month.html' %}
-    {% endif %}
-{% endwith %}
+    {% endwith %}
+{% endif %}
 </div>
 {% include 'calendar_base_week_time.html' %}
 <div class="calendar-time-pointer-weekly" id="time_pointer"></div>
@@ -187,7 +191,7 @@ function auto_refresh(){
     hours = hours.toString().padStart(2, '0');
 
     {% if base == 10 or base == 100 %}
-        {% if format_token == '!' %}
+        {% if '!' in format_token %}
             const PAIRS = {
                 '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
                 '10': '󱸁󱸀', '11': '󱸁󱸁', '12': '󱸁󱸂', '13': '󱸁󱸃', '14': '󱸁󱸄', '15': '󱸁󱸅',

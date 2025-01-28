@@ -1,12 +1,18 @@
 <div style="clear: both;">
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=1, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=1, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -14,13 +20,19 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=2, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=2, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -28,26 +40,38 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=3, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=3, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
 </div>
 <div style="clear: both;">
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=4, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=4, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -55,13 +79,19 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=5, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=5, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -69,26 +99,38 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=10, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=10, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
 </div>
 <div style="clear: both;">
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=11, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=11, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -96,13 +138,19 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=12, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=12, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -110,26 +158,38 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=13, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=13, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
 </div>
 <div style="clear: both;">
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=14, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=14, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -137,13 +197,19 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=15, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=15, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
@@ -151,13 +217,19 @@
         <div style="float: {{ 'right' if locale.RTL else 'left' }}; width: 1%;"> </div>
     {% endif %}
     <div{% if not mobile %} style="float: {{ 'right' if locale.RTL else 'left' }}; width: 32.66%;"{% endif %}>
-        {% with year_view = True, sezimal_month_number=20, sezimal_year_number=date.year, weekday_name_size=1 %}
+        {% with year_view = True, sezimal_month_number=20, weekday_name_size=1 %}
             {% if locale.calendar_displayed == 'SYM' %}
-                {% include 'calendar_base_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'ISO' %}
-                {% include 'calendar_base_iso_month.html' %}
+                {% with sezimal_year_number=date.gregorian_year %}
+                    {% include 'calendar_base_iso_month.html' %}
+                {% endwith %}
             {% elif locale.calendar_displayed == 'DCC' %}
-                {% include 'calendar_base_dcc_month.html' %}
+                {% with sezimal_year_number=date.year %}
+                    {% include 'calendar_base_dcc_month.html' %}
+                {% endwith %}
             {% endif %}
         {% endwith %}
     </div>
