@@ -50,6 +50,17 @@
     }
 %}
 {% set TITLE = NOW_TRANSLATIONS[locale.LANG] if locale.LANG in NOW_TRANSLATIONS else 'Now' %}
+{% if locale.base == 10 %}
+    {% if '!' in locale.format_token %}
+        {% set time_separator = '󱹷' %}
+    {% else %}
+        {% set time_separator = locale.TIME_SEPARATOR %}
+    {% endif %}
+    {% set sezimal_separator = '󱹮' %}
+{% else %}
+    {% set time_separator = locale.TIME_SEPARATOR %}
+    {% set sezimal_separator = locale.SEZIMAL_SEPARATOR %}
+{% endif %}
 <!doctype html>
 <html lang="{{ locale.LANGUAGE_TAG }}" dir="{{ 'rtl' if locale.RTL else 'ltr' }}">
     <head>
@@ -383,15 +394,15 @@ html, body {
 
                 {% if format_token in ('!', '@', '@!', 'Z', 'c!') %}
                     {% if locale.show_seconds %}
-                        time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[agrima];
+                        time_display = PAIRS[uta] + '{{ time_separator }}' + PAIRS[posha] + '{{ time_separator }}' + PAIRS[agrima];
                     {% else %}
-                        time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
+                        time_display = PAIRS[uta] + '{{ time_separator }}' + PAIRS[posha];
                     {% endif %}
                 {% else %}
                     {% if locale.show_seconds %}
-                        time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha + '{{ locale.TIME_SEPARATOR }}' + agrima;
+                        time_display = uta + '{{ time_separator }}' + posha + '{{ time_separator }}' + agrima;
                     {% else %}
-                        time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
+                        time_display = uta + '{{ time_separator }}' + posha;
                     {% endif %}
                 {% endif %}
 
@@ -429,7 +440,7 @@ html, body {
 
                 {% if locale.show_seconds %}
                     time_display = integer_time.toString(12).padStart(3, '0')
-                        + '{{ locale.SEZIMAL_SEPARATOR }}'
+                        + '{{ sezimal_separator }}'
                         + dozenal_time.toString(12).padStart(1, '0');
                 {% else %}
                     time_display = integer_time.toString(12).padStart(3, '0');
@@ -610,8 +621,8 @@ html, body {
             var centisecond = Math.floor(seconds * 100);
 
             var stopwatch_iso_display =
-                hour.toString().padStart(2, '0') + ':' +
-                minute.toString().padStart(2, '0') + ':' +
+                hour.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
+                minute.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
                 second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
                 centisecond.toString().padStart(2, '0');
 
@@ -627,10 +638,21 @@ html, body {
                 var anuga = Math.floor(days * 36);
 
                 var stopwatch_display =
-                    uta.toString(6).padStart(2, '0') + ':' +
-                    posha.toString(6).padStart(2, '0') + ':' +
-                    agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR   }}' +
+                    uta.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    posha.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    agrima.toString(6).padStart(2, '0') + '{{ sezimal_separator }}' +
                     anuga.toString(6).padStart(2, '0');
+
+                {% if '!' in locale.format_token %}
+                    stopwatch_display = stopwatch_display.
+                        replaceAll('0', '󱸀').
+                        replaceAll('1', '󱸁').
+                        replaceAll('2', '󱸂').
+                        replaceAll('3', '󱸃').
+                        replaceAll('4', '󱸄').
+                        replaceAll('5', '󱸅').
+                        replaceAll('&#8󱸂󱸀󱸀;', '&#8200;');
+                {% endif %}
 
             {% elif locale.base == 20 %}
                 var days = seconds_passed / 86400;
@@ -680,12 +702,16 @@ html, body {
             document.getElementById('stopwatch_pause').hidden = true;
             document.getElementById('stopwatch_reset').hidden = true;
 
-            {% if locale.base != 20 %}
-                document.getElementById('stopwatch_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            {% if locale.base == 10 %}
+                {% if '!' in locale.format_token %}
+                    document.getElementById('stopwatch_display').innerHTML = '󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ sezimal_separator }}󱸀󱸀';
+                {% else %}
+                    document.getElementById('stopwatch_display').innerHTML = '00{{ time_separator }}00{{ time_separator }}00{{ sezimal_separator }}00';
+                {% endif %}
             {% else %}
                 document.getElementById('stopwatch_display').innerHTML = '000{{ locale.SEZIMAL_SEPARATOR }}00';
             {% endif %}
-            document.getElementById('stopwatch_iso_display').innerHTML = '00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            document.getElementById('stopwatch_iso_display').innerHTML = '00{{ locale.TIME_SEPARATOR }}00{{ locale.TIME_SEPARATOR }}00{{ locale.SEZIMAL_SEPARATOR }}00';
         }
 
         function stopwatch_pause() {
@@ -719,10 +745,21 @@ html, body {
         function set_timer() {
             {% if locale.base == 10 %}
                 var timer_time_display = '&#8200;' +
-                    timer_time_uta.toString(6).padStart(2, '0') + ':' +
-                    timer_time_posha.toString(6).padStart(2, '0') + ':' +
-                    timer_time_agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    timer_time_uta.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    timer_time_posha.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    timer_time_agrima.toString(6).padStart(2, '0') + '{{ sezimal_separator }}' +
                     timer_time_anuga.toString(6).padStart(2, '0');
+
+                {% if '!' in locale.format_token %}
+                    timer_time_display = timer_time_display.
+                        replaceAll('0', '󱸀').
+                        replaceAll('1', '󱸁').
+                        replaceAll('2', '󱸂').
+                        replaceAll('3', '󱸃').
+                        replaceAll('4', '󱸄').
+                        replaceAll('5', '󱸅').
+                        replaceAll('&#8󱸂󱸀󱸀;', '&#8200;');
+                {% endif %}
 
                 var anuga =
                     timer_time_uta * 36 * 36 * 36 +
@@ -744,7 +781,7 @@ html, body {
                 var timer_time_display = '&#8200;' +
                     timer_time_uta.toString(12).padStart(1, '0') +
                     timer_time_posha.toString(12).padStart(1, '0') +
-                    timer_time_agrima.toString(12).padStart(1, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    timer_time_agrima.toString(12).padStart(1, '0') + '{{ sezimal_separator }}' +
                     timer_time_anuga.toString(12).padStart(1, '0') +
                     timer_time_boda.toString(12).padStart(1, '0') +
                     timer_time_ekatiboda.toString(12).padStart(1, '0');
@@ -774,7 +811,7 @@ html, body {
             var timer_iso_display = '&#8200;' +
                 hour.toString().padStart(2, '0') + ':' +
                 minute.toString().padStart(2, '0') + ':' +
-                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                second.toString().padStart(2, '0') + '{{ sezimal_separator }}' +
                 centisecond.toString().padStart(2, '0');
 
             document.getElementById('timer_display').innerHTML = timer_time_display;
@@ -1034,8 +1071,8 @@ html, body {
             };
 
             var timer_iso_display = sign_iso +
-                hour.toString().padStart(2, '0') + ':' +
-                minute.toString().padStart(2, '0') + ':' +
+                hour.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
+                minute.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
                 second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
                 centisecond.toString().padStart(2, '0');
 
@@ -1055,10 +1092,21 @@ html, body {
                 };
 
                 var timer_display = sign +
-                    uta.toString(6).padStart(2, '0') + ':' +
-                    posha.toString(6).padStart(2, '0') + ':' +
-                    agrima.toString(6).padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    uta.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    posha.toString(6).padStart(2, '0') + '{{ time_separator }}' +
+                    agrima.toString(6).padStart(2, '0') + '{{ sezimal_separator }}' +
                     anuga.toString(6).padStart(2, '0');
+
+                {% if '!' in locale.format_token %}
+                    timer_display = timer_display.
+                        replaceAll('0', '󱸀').
+                        replaceAll('1', '󱸁').
+                        replaceAll('2', '󱸂').
+                        replaceAll('3', '󱸃').
+                        replaceAll('4', '󱸄').
+                        replaceAll('5', '󱸅').
+                        replaceAll('&#8󱸂󱸀󱸀;', '&#8200;');
+                {% endif %}
 
             {% elif locale.base == 20 %}
                 var days = seconds_passed / 86400;
@@ -1073,7 +1121,7 @@ html, body {
                 };
 
                 var timer_display = sign +
-                    integer_time.toString(12).padStart(3, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    integer_time.toString(12).padStart(3, '0') + '{{ sezimal_separator }}' +
                     fraction_time.toString(12).padStart(3, '0');
 
                 timer_display = timer_display.replaceAll('a', '↊').replaceAll('b', '↋');
@@ -1144,12 +1192,16 @@ html, body {
                 document.getElementById('audio').pause();
             }
 
-            {% if locale.base != 20 %}
-                document.getElementById('timer_display').innerHTML = '&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            {% if locale.base == 10 %}
+                {% if '!' in locale.format_token %}
+                    document.getElementById('timer_display').innerHTML = '&#8200;󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ sezimal_separator }}󱸀󱸀';
+                {% else %}
+                    document.getElementById('timer_display').innerHTML = '&#8200;00{{ time_separator }}00{{ time_separator }}00{{ sezimal_separator }}00';
+                {% endif %}
             {% else %}
-                document.getElementById('timer_display').innerHTML = '&#8200;000{{ locale.SEZIMAL_SEPARATOR }}000';
+                document.getElementById('timer_display').innerHTML = '&#8200;000{{ sezimal_separator }}000';
             {% endif %}
-            document.getElementById('timer_iso_display').innerHTML = '&#8200;00:00:00{{ locale.SEZIMAL_SEPARATOR }}00';
+            document.getElementById('timer_iso_display').innerHTML = '&#8200;00:00:00{{ sezimal_separator }}00';
         }
 
         function timer_pause() {
