@@ -700,7 +700,6 @@ input[type=number] {
 
 .day-tick {
     text-align: right;
-    font-size: 1.2rem;
     color: black;
     float: left;
     margin-top: -0.8rem;
