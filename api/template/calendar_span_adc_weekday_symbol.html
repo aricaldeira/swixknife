@@ -9,5 +9,9 @@
 {% elif dcc_weekday_number == 4 %}
 <span class="planet">♄</span>
 {% elif dcc_weekday_number == 5 %}
-<span class="planet">☽</span>
+    {% if locale.DEFAULT_HEMISPHERE == 'N' %}
+        <span class="planet">☽</span>
+    {% else %}
+        <span class="planet">☾</span>
+    {% endif %}
 {% endif %}
