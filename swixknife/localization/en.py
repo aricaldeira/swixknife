@@ -43,6 +43,7 @@ class SezimalLocaleEN(SezimalLocale):
 
     ADC_WEEKDAY_NAME = [
         'Sun',
+        # 'Mercury',
         'Venus',
         'Mars',
         'Jupiter',
@@ -52,6 +53,7 @@ class SezimalLocaleEN(SezimalLocale):
 
     ADC_WEEKDAY_ABBREVIATED_NAME = [
         'Sun',
+        # 'Mer',
         'Ven',
         'Mar',
         'Jup',
@@ -61,6 +63,7 @@ class SezimalLocaleEN(SezimalLocale):
 
     ADC_WEEKDAY_SYMBOL = [
         'S',
+        # 'M',
         'V',
         'M',
         'J',

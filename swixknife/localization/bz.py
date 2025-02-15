@@ -542,4 +542,67 @@ class SezimalLocaleBZ(SezimalLocale):
         None: '&-d dias',
         SezimalInteger('1'): '&-d dia',
     }
+
     DCC_DATE_MONTH_DAY_SEPARATOR = ' y '
+
+    ADC_MONTH_NAME = [
+        'pexis',
+        'baleya',
+        'riu',
+        'unikòrnyu',
+        'idra',
+        'leawn',
+        'virjen',
+        'serpenti',
+        'agya',
+        'akwaryu',
+        'libra',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'pex',
+        'bal',
+        'riu',
+        'uni',
+        'idr',
+        'lea',
+        'vir',
+        'ser',
+        'agy',
+        'akw',
+        'lib',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'P',
+        'B',
+        'R',
+        'U',
+        'I',
+        'L',
+        'V',
+        'S',
+        'Ag',
+        'Ak',
+        'L',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'sòw',
+        # 'merkuryu',
+        'venus',
+        'marti',
+        'júpiter',
+        'saturnu',
+        'lua',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'sòw',
+        # 'mer',
+        'ven',
+        'mar',
+        'júp',
+        'sat',
+        'lua',
+    ]
