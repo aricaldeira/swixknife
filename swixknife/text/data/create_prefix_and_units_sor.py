@@ -627,7 +627,7 @@ if __name__ == '__main__':
     arq = open('bz_units_and_prefixes.sor', 'w')
     arq.write(create_units(lang='bz'))
     arq.write(create_prefixes(lang='bz'))
-    arq.write(create_rules(conjunction='y', preposition='dun', lang='bz', plural_marker='s', exponent_first=False, exponent_plural='s'))
+    arq.write(create_rules(conjunction='i', preposition='dun', lang='bz', plural_marker='s', exponent_first=False, exponent_plural='s'))
     arq.close()
 
     arq = open('pt_units_and_prefixes.sor', 'w')

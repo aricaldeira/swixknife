@@ -543,7 +543,7 @@ class SezimalLocaleBZ(SezimalLocale):
         SezimalInteger('1'): '&-d dia',
     }
 
-    DCC_DATE_MONTH_DAY_SEPARATOR = ' y '
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' i '
 
     ADC_MONTH_NAME = [
         'pexis',
