@@ -2,31 +2,31 @@
     <span class="planet">☉</span>
     <span class="planet">☿</span>
     <span class="planet">♀</span>
-    {% if locale.DEFAULT_HEMISPHERE == 'N' %}
+    {%- if locale.DEFAULT_HEMISPHERE == 'N' -%}
         <span class="planet">☽</span>
-    {% else %}
+    {%- else -%}
         <span class="planet">☾</span>
-    {% endif %}
+    {%- endif -%}
     <span class="planet">♂</span>
     <span class="planet">♃</span>
     <span class="planet">♄</span>
     <span class="planet">♅</span>
     <span class="planet">♆</span>
 #}
-{% if dcc_weekday_number == 0 %}
+{%- if dcc_weekday_number == 0 -%}
     <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[0] }}">☉</span> {# Sol #}
-{% elif dcc_weekday_number == 1 %}
+{%- elif dcc_weekday_number == 1 -%}
     <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[1] }}">♀</span> {# Venus #}
-{% elif dcc_weekday_number == 2 %}
+{%- elif dcc_weekday_number == 2 -%}
     <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[2] }}">♂</span> {# Mars #}
-{% elif dcc_weekday_number == 3 %}
+{%- elif dcc_weekday_number == 3 -%}
     <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[3] }}">♃</span> {# Jupiter #}
-{% elif dcc_weekday_number == 4 %}
+{%- elif dcc_weekday_number == 4 -%}
     <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[4] }}">♄</span> {# Saturn #}
-{% elif dcc_weekday_number == 5 %}
-    {% if locale.DEFAULT_HEMISPHERE == 'N' %} {# Luna #}
+{%- elif dcc_weekday_number == 5 -%}
+    {%- if locale.DEFAULT_HEMISPHERE == 'N' -%} {# Luna #}
         <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[5] }}">☽</span>
-    {% else %}
+    {%- else -%}
         <span class="planet" title="{{ locale.ADC_WEEKDAY_NAME[5] }}">☾</span>
-    {% endif %}
-{% endif %}
+    {%- endif -%}
+{%- endif -%}
