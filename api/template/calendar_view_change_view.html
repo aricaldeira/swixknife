@@ -5,356 +5,328 @@
         <col span="1" width="10%">  {# Year #}
         <col span="1" width="15%">  {# Quarter #}
         {#
-        {% if (not date.is_long_month) or date.month == 20 %}
+        {%- if (not date.is_long_month) or date.month == 20 -%}
             <col span="1" width="15%">
-        {% endif %}
+        {%- endif -%}
         #}
         <col span="1" width="15%">  {# Month #}
         <col span="1" width="10%">  {# Week #}
         <col span="1" width="10%">  {# Day #}
-        {% if str(now.date) != str(date.date) %}
+        {%- if str(now.date) != str(date.date) -%}
             <col span="1" width="25%">  {# Today #}
-        {% endif %}
+        {%- endif -%}
 <!--         <col span="1" width="5%">  {# Events #} -->
     </colgroup>
 
     <tr>
         <td onclick="open_settings()">☰</td>
         <td onclick="change_view('yearly')">
-            {% if locale.calendar_displayed == 'SYM' %}
-                {% if base == 10 or base == 100 %}
+            {%- if locale.calendar_displayed == 'SYM' -%}
+                {%- if base == 10 or base == 100 -%}
                     {{ date.format('#' + locale.format_token + '>Y', locale) }}
-                {% else %}
+                {%- else -%}
                     {{ date.format(locale.YEAR_FORMAT, locale) }}
-                {% endif %}
-            {% elif locale.calendar_displayed == 'ISO' %}
+                {%- endif -%}
+            {%- elif locale.calendar_displayed == 'ISO' -%}
                 {{ date.format(locale.ISO_YEAR_FORMAT, locale) }}
-            {% elif locale.calendar_displayed == 'DCC' %}
+            {%- elif locale.calendar_displayed == 'DCC' -%}
                 {{ date.format(locale.DCC_YEAR_FORMAT, locale) }}
-            {% endif %}
+            {%- endif -%}
         </td>
         <td onclick="change_view('quarterly')">
             <span class="hide-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
-                    {% if date.month == 1 %}
-                        {% if base == 10 or base == 100 %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
+                    {%- if date.month == 1 -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.month_abbreviated_name(20) }}-<b><i>{{ locale.month_abbreviated_name(date.month) }}</i></b>-{{ locale.month_abbreviated_name(date.month + 1) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.iso_month_abbreviated_name(20) }}-<b><i>{{ locale.iso_month_abbreviated_name(date.month) }}</i></b>-{{ locale.iso_month_abbreviated_name(date.month + 1) }}
-                        {% endif %}
-                    {% elif date.month == 20 %}
-                        {% if base == 10 or base == 100 %}
+                        {%- endif -%}
+                    {%- elif date.month == 20 -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.month_abbreviated_name(date.month - 1) }}-<b><i>{{ locale.month_abbreviated_name(date.month) }}</i></b>-{{ locale.month_abbreviated_name(1) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.iso_month_abbreviated_name(date.month - 1) }}-<b><i>{{ locale.iso_month_abbreviated_name(date.month) }}</i></b>-{{ locale.iso_month_abbreviated_name(1) }}
-                        {% endif %}
-                    {% else %}
-                        {% if base == 10 or base == 100 %}
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.month_abbreviated_name(date.month - 1) }}-<b><i>{{ locale.month_abbreviated_name(date.month) }}</i></b>-{{ locale.month_abbreviated_name(date.month + 1) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.iso_month_abbreviated_name(date.month - 1) }}-<b><i>{{ locale.iso_month_abbreviated_name(date.month) }}</i></b>-{{ locale.iso_month_abbreviated_name(date.month + 1) }}
-                        {% endif %}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'ISO' %}
-                    {% if date.gregorian_month == 1 %}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
+                    {%- if date.gregorian_month == 1 -%}
                         {{ locale.iso_month_abbreviated_name(20) }}-<b><i>{{ locale.iso_month_abbreviated_name(1) }}</i></b>-{{ locale.iso_month_abbreviated_name(2) }}
-                    {% elif date.gregorian_month == 12 %}
+                    {%- elif date.gregorian_month == 12 -%}
                         {{ locale.iso_month_abbreviated_name(15) }}-<b><i>{{ locale.iso_month_abbreviated_name(20) }}</i></b>-{{ locale.iso_month_abbreviated_name(1) }}
-                    {% else %}
+                    {%- else -%}
                         {{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month)) - 1) }}-<b><i>{{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month))) }}</i></b>-{{ locale.iso_month_abbreviated_name(SezimalInteger(Decimal(date.gregorian_month)) + 1) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
-                        {% if date.dcc_month == 0 %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
+                        {%- if date.dcc_month == 0 -%}
                             {{ locale.adc_month_abbreviated_name(14) }}
-                            {% with dcc_month_number = 14 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
+                            {%- with dcc_month_number = 14 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                            {%- endwith -%}
                             –
                             <b><i>
                                 {{ locale.adc_month_abbreviated_name(date.dcc_month) }}
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                                {%- endwith -%}
                             </i></b>
                             –
                             {{ locale.adc_month_abbreviated_name(date.dcc_month + 1) }}
-                            {% with dcc_month_number = date.dcc_month + 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                            {%- with dcc_month_number = date.dcc_month + 1 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) -%}
                             {{ locale.adc_month_abbreviated_name(date.dcc_month - 1) }}
-                            {% with dcc_month_number = date.dcc_month - 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
+                            {%- with dcc_month_number = date.dcc_month - 1 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                            {%- endwith -%}
                             –
                             <b><i>
                                 {{ locale.adc_month_abbreviated_name(date.dcc_month) }}
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                                {%- endwith -%}
                             </i></b>
                             –
                             {{ locale.adc_month_abbreviated_name(0) }}
-                            {% with dcc_month_number = 0 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% else %}
+                            {%- with dcc_month_number = 0 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- else -%}
                             {{ locale.adc_month_abbreviated_name(date.dcc_month - 1) }}
-                            {% with dcc_month_number = date.dcc_month - 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
+                            {%- with dcc_month_number = date.dcc_month - 1 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                            {%- endwith -%}
                             –
                             <b><i>
                                 {{ locale.adc_month_abbreviated_name(date.dcc_month) }}
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}&nbsp;
+                                {%- endwith -%}
                             </i></b>
                             –
                             {{ locale.adc_month_abbreviated_name(date.dcc_month + 1) }}
-                            {% with dcc_month_number = date.dcc_month + 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                    {% else %}
-                        {% if date.dcc_month == 0 %}
+                            {%- with dcc_month_number = date.dcc_month + 1 -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if date.dcc_month == 0 -%}
                             {{ locale.dcc_month_abbreviated_name(14) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
-                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                        {%- elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) -%}
                             {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(0) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.dcc_month_abbreviated_name(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_abbreviated_name(date.dcc_month) }}</i></b>–{{ locale.dcc_month_abbreviated_name(date.dcc_month + 1) }}
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- endif -%}
             </span>
             <span class="show-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
-                    {% if date.month == 1 %}
-                        {% if base == 10 or base == 100 %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
+                    {%- if date.month == 1 -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.upper(locale.slice(locale.month_name(20), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.month_name(1), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.month_name(2), 0, 1)) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.upper(locale.slice(locale.iso_month_name(20), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(1), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(2), 0, 1)) }}
-                        {% endif %}
-                    {% elif date.month == 20 %}
-                        {% if base == 10 or base == 100 %}
+                        {%- endif -%}
+                    {%- elif date.month == 20 -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.upper(locale.slice(locale.month_name(15), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.month_name(20), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.month_name(1), 0, 1)) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.upper(locale.slice(locale.iso_month_name(15), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(20), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(1), 0, 1)) }}
-                        {% endif %}
-                    {% else %}
-                        {% if base == 10 or base == 100 %}
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if base == 10 or base == 100 -%}
                             {{ locale.upper(locale.slice(locale.month_name(date.month - 1), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.month_name(date.month), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.month_name(date.month + 1), 0, 1)) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.upper(locale.slice(locale.iso_month_name(date.month - 1), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(date.month), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(date.month + 1), 0, 1)) }}
-                        {% endif %}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'ISO' %}
-                    {% if date.gregorian_month == 1 %}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
+                    {%- if date.gregorian_month == 1 -%}
                         {{ locale.upper(locale.slice(locale.iso_month_name(20), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(1), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(2), 0, 1)) }}
-                    {% elif date.gregorian_month == 12 %}
+                    {%- elif date.gregorian_month == 12 -%}
                         {{ locale.upper(locale.slice(locale.iso_month_name(15), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(20), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(1), 0, 1)) }}
-                    {% else %}
+                    {%- else -%}
                         {{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month)) - 1), 0, 1)) }}-<b><i>{{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month))), 0, 1)) }}</i></b>-{{ locale.upper(locale.slice(locale.iso_month_name(SezimalInteger(Decimal(date.gregorian_month)) + 1), 0, 1)) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
-                        {% if date.dcc_month == 0 %}
-<!--                             {{ locale.adc_month_symbol(14) }} -->
-                            {% with dcc_month_number = 14 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                            –
-                            <b><i>
-<!--                                 {{ locale.adc_month_symbol(date.dcc_month) }} -->
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
-                            </i></b>
-                            –
-<!--                             {{ locale.adc_month_symbol(date.dcc_month + 1) }} -->
-                            {% with dcc_month_number = date.dcc_month + 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
-<!--                             {{ locale.adc_month_symbol(date.dcc_month - 1) }} -->
-                            {% with dcc_month_number = date.dcc_month - 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                            –
-                            <b><i>
-<!--                                 {{ locale.adc_month_symbol(date.dcc_month) }} -->
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
-                            </i></b>
-                            –
-<!--                             {{ locale.adc_month_symbol(0) }} -->
-                            {% with dcc_month_number = 0 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% else %}
-<!--                             {{ locale.adc_month_symbol(date.dcc_month - 1) }} -->
-                            {% with dcc_month_number = date.dcc_month - 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                            –
-                            <b><i>
-<!--                                 {{ locale.adc_month_symbol(date.dcc_month) }} -->
-                                {% with dcc_month_number = date.dcc_month %}
-                                    {% include 'calendar_span_adc_month_symbol.html' %}
-                                {% endwith %}
-                            </i></b>
-                            –
-<!--                             {{ locale.adc_month_symbol(date.dcc_month + 1) }} -->
-                            {% with dcc_month_number = date.dcc_month + 1 %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                    {% else %}
-                        {% if date.dcc_month == 0 %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
+                        {%- if date.dcc_month == 0 -%}
+                            {%- with dcc_month_number = 14 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}–<b><i>
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    {%- include 'calendar_span_adc_month_symbol.html' -%}
+                                {%- endwith -%}
+                            </i></b>–
+                            {%- with dcc_month_number = date.dcc_month + 1 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) -%}
+                            {%- with dcc_month_number = date.dcc_month - 1 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}–<b><i>
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    {%- include 'calendar_span_adc_month_symbol.html' -%}
+                                {%- endwith -%}
+                            </i></b>–
+                            {%- with dcc_month_number = 0 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- else -%}
+                            {%- with dcc_month_number = date.dcc_month - 1 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}–<b><i>
+                                {%- with dcc_month_number = date.dcc_month -%}
+                                    {%- include 'calendar_span_adc_month_symbol.html' -%}
+                                {%- endwith -%}
+                            </i></b>–
+                            {%- with dcc_month_number = date.dcc_month + 1 -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if date.dcc_month == 0 -%}
                             {{ locale.dcc_month_symbol(14) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
-                        {% elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) %}
+                        {%- elif ((not date.dcc_is_leap) and date.dcc_month == 14) or (date.dcc_is_leap and date.dcc_month == 13) -%}
                             {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(0) }}
-                        {% else %}
+                        {%- else -%}
                             {{ locale.dcc_month_symbol(date.dcc_month - 1) }}–<b><i>{{ locale.dcc_month_symbol(date.dcc_month) }}</i></b>–{{ locale.dcc_month_symbol(date.dcc_month + 1) }}
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- endif -%}
             </span>
         </td>
         <td onclick="change_view('monthly')">
             <span class="hide-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
-                    {% if base == 10 or base == 100 %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
+                    {%- if base == 10 or base == 100 -%}
                         {{ date.format('#M', locale) }}
-                    {% else %}
+                    {%- else -%}
                         {{ date.format('#9M', locale) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'ISO' %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
                     {{ date.format('%B', locale) }}
-                {% elif locale.calendar_displayed == 'DCC' %}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
                     {{ date.format('&' + format_token + 'M', locale) }}
-                        {% if 'c' in format_token %}
-                            {% with dcc_month_number = date.dcc_month %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                {% endif %}
+                        {%- if 'c' in format_token -%}
+                            {%- with dcc_month_number = date.dcc_month -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- endif -%}
+                {%- endif -%}
             </span>
             <span class="show-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
-                    {% if base == 10 or base == 100 %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
+                    {%- if base == 10 or base == 100 -%}
                         {{ date.format('#@M', locale) }}
-                    {% else %}
+                    {%- else -%}
                         {{ date.format('#9@M', locale) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'ISO' %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
                     {{ date.format('%b', locale) }}
-                {% elif locale.calendar_displayed == 'DCC' %}
-<!--                         {{ date.format('&' + format_token + '@M', locale) }} -->
-                        {% if 'c' in format_token %}
-                            {% with dcc_month_number = date.dcc_month %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                {% endif %}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                        {%- if 'c' in format_token -%}
+                            {%- with dcc_month_number = date.dcc_month -%}
+                                {%- include 'calendar_span_adc_month_symbol.html' -%}
+                            {%- endwith -%}
+                        {%- else -%}
+                            {{ date.format('&' + format_token + '-m', locale) }}
+                        {%- endif -%}
+                {%- endif -%}
             </span>
         </td>
         <td onclick="change_view('weekly')">
-            {% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
+            {%- set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') -%}
             <span class="hide-in-mobile">
-                {% if locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
+                {%- if locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
                         {{ locale.adc_weekday_name(0) }}
-                        {% with dcc_weekday_number = 0 %}
-                            {% include 'calendar_span_adc_weekday_symbol.html' %}
-                        {% endwith %}
-                        –
-                        {{ locale.adc_weekday_name(5) }}
-                        {% with dcc_weekday_number = 5 %}
-                            {% include 'calendar_span_adc_weekday_symbol.html' %}
-                        {% endwith %}
-                    {% else %}
+                        {%- with dcc_weekday_number = 0 -%}
+                            &nbsp;{%- include 'calendar_span_adc_weekday_symbol.html' -%}
+                        {%- endwith -%}&nbsp;–&nbsp;{{ locale.adc_weekday_name(5) }}{%- with dcc_weekday_number = 5 -%}
+                            &nbsp;{%- include 'calendar_span_adc_weekday_symbol.html' -%}
+                        {%- endwith -%}
+                    {%- else -%}
                         {{ locale.dcc_weekday_abbreviated_name(0) }}–{{ locale.dcc_weekday_abbreviated_name(5) }}
-                    {% endif %}
-                {% elif USE_LOCALE_FIRST_WEEKDAY %}
-                    {% if locale.FIRST_WEEKDAY == 'SUN' %}
+                    {%- endif -%}
+                {%- elif USE_LOCALE_FIRST_WEEKDAY -%}
+                    {%- if locale.FIRST_WEEKDAY == 'SUN' -%}
                         {{ locale.weekday_abbreviated_name(11) }}-{{ locale.weekday_abbreviated_name(10) }}
-                    {% else %}
+                    {%- else -%}
                         {{ locale.weekday_abbreviated_name(10) }}-{{ locale.weekday_abbreviated_name(5) }}
-                    {% endif %}
-                {% else %}
+                    {%- endif -%}
+                {%- else -%}
                     {{ locale.weekday_abbreviated_name(1) }}-{{ locale.weekday_abbreviated_name(11) }}
-                {% endif %}
+                {%- endif -%}
             </span>
             <span class="show-in-mobile">
-                {% if locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
-<!--                         {{ locale.dcc_weekday_symbol(0) }} -->
-                        {% with dcc_weekday_number = 0 %}
-                            {% include 'calendar_span_adc_weekday_symbol.html' %}
-                        {% endwith %}
-                        –
-<!--                         {{ locale.dcc_weekday_symbol(5) }} -->
-                        {% with dcc_weekday_number = 5 %}
-                            {% include 'calendar_span_adc_weekday_symbol.html' %}
-                        {% endwith %}
-                    {% else %}
+                {%- if locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
+                        {%- with dcc_weekday_number = 0 -%}{%- include 'calendar_span_adc_weekday_symbol.html' -%}{%- endwith -%}–{%- with dcc_weekday_number = 5 -%}{%- include 'calendar_span_adc_weekday_symbol.html' -%}{%- endwith -%}
+                    {%- else -%}
                         {{ locale.dcc_weekday_symbol(0) }}–{{ locale.dcc_weekday_symbol(5) }}
-                    {% endif %}
+                    {%- endif -%}
 
-                {% elif USE_LOCALE_FIRST_WEEKDAY %}
-                    {% if locale.FIRST_WEEKDAY == 'SUN' %}
+                {%- elif USE_LOCALE_FIRST_WEEKDAY -%}
+                    {%- if locale.FIRST_WEEKDAY == 'SUN' -%}
                         {{ locale.upper(locale.WEEKDAY_SYMBOL[-1]) }}-{{ locale.upper(locale.WEEKDAY_SYMBOL[-2]) }}
-                    {% else %}
+                    {%- else -%}
                         {{ locale.upper(locale.WEEKDAY_SYMBOL[-2]) }}-{{ locale.upper(locale.WEEKDAY_SYMBOL[-3]) }}
-                    {% endif %}
-                {% else %}
+                    {%- endif -%}
+                {%- else -%}
                     {{ locale.upper(locale.WEEKDAY_SYMBOL[0]) }}-{{ locale.upper(locale.WEEKDAY_SYMBOL[-1]) }}
-                {% endif %}
+                {%- endif -%}
             </span>
         </td>
         <td onclick="change_view('daily')">
-            {% if locale.calendar_displayed == 'SYM' %}
+            {%- if locale.calendar_displayed == 'SYM' -%}
                 {{ date.format('#' + format_token + '-d', locale) }}
-            {% elif locale.calendar_displayed == 'ISO' %}
-                {% if format_token in ('', '!') %}
+            {%- elif locale.calendar_displayed == 'ISO' -%}
+                {%- if format_token in ('', '!') -%}
                     {{ date.format('%5' + format_token + '-d', locale) }}
-                {% else %}
+                {%- else -%}
                     {{ date.format('%' + format_token + '-d', locale) }}
-                {% endif %}
-            {% elif locale.calendar_displayed == 'DCC' %}
-                {% if base in (14, 20) %}
+                {%- endif -%}
+            {%- elif locale.calendar_displayed == 'DCC' -%}
+                {%- if base in (14, 20) -%}
                     {{ date.format('&-wM‐&-w', locale) }}
-                {% else %}
+                {%- else -%}
                     {{ date.format('&' + format_token + '-d', locale) }}
-                {% endif %}
-            {% endif %}
+                {%- endif -%}
+            {%- endif -%}
         </td>
-        {% if str(now.date) != str(date.date) %}
+        {%- if str(now.date) != str(date.date) -%}
             <td onclick="update_calendar('today')">
-                {% if locale.calendar_displayed == 'SYM' %}
-                    {% if now.year != date.year %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
+                    {%- if now.year != date.year -%}
                         {{ now.format(locale.DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                    {% else %}
+                    {%- else -%}
                         {{ now.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'ISO' %}
-                    {% if now.year != date.year %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
+                    {%- if now.year != date.year -%}
                         {{ now.format(locale.ISO_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                    {% else %}
+                    {%- else -%}
                         {{ now.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                    {% endif %}
-                {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if now.year != date.year %}
+                    {%- endif -%}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                    {%- if now.year != date.year -%}
                         {{ now.format(locale.DCC_DATE_TEXT_SHORT_MONTH_FORMAT, locale) }}
-                    {% else %}
+                    {%- else -%}
                         {{ now.format(locale.DCC_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}
-                    {% endif %}
-                {% endif %}
+                    {%- endif -%}
+                {%- endif -%}
             </td>
-        {% endif %}
+        {%- endif -%}
 <!--         <td onclick="open_event_list_window()">◎</td> -->
     </tr>
 </table>

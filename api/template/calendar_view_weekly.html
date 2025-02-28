@@ -1,40 +1,40 @@
-{% if not dark_mode %}
-    {% include 'calendar_light_mode.html' %}
-{% endif %}
+{%- if not dark_mode -%}
+    {%- include 'calendar_light_mode.html' -%}
+{%- endif -%}
 <div id="calendar_header" class="calendar-header-fixed">
-{% include 'calendar_view_change_view.html' %}
+{%- include 'calendar_view_change_view.html' -%}
 
-{% set first_weekday = date.previous(days=date.weekday - 1) %}
+{%- set first_weekday = date.previous(days=date.weekday - 1) -%}
 
-{% set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') %}
+{%- set USE_LOCALE_FIRST_WEEKDAY = (getattr(locale, 'use_first_weekday', False) and locale.FIRST_WEEKDAY != 'MON') -%}
 
-{% if USE_LOCALE_FIRST_WEEKDAY %}
-    {% if locale.FIRST_WEEKDAY == 'SUN' %}
-        {% set first_weekday = first_weekday.previous(days=1) %}
+{%- if USE_LOCALE_FIRST_WEEKDAY -%}
+    {%- if locale.FIRST_WEEKDAY == 'SUN' -%}
+        {%- set first_weekday = first_weekday.previous(days=1) -%}
     {# This is basically just Iran #}
-    {% elif locale.FIRST_WEEKDAY == 'SAT' %}
-        {% set first_weekday = first_weekday.previous(days=2) %}
-    {% endif %}
-{% endif %}
+    {%- elif locale.FIRST_WEEKDAY == 'SAT' -%}
+        {%- set first_weekday = first_weekday.previous(days=2) -%}
+    {%- endif -%}
+{%- endif -%}
 
-{% if locale.calendar_displayed in ('SYM', 'ISO') %}
-    {% set last_weekday = first_weekday.next(days=10) %}
-{% elif locale.calendar_displayed == 'DCC' %}
-    {% set first_weekday = date.previous(days=date.dcc_weekday) %}
-    {% set last_weekday = first_weekday.next(days=5) %}
-{% endif %}
+{%- if locale.calendar_displayed in ('SYM', 'ISO') -%}
+    {%- set last_weekday = first_weekday.next(days=10) -%}
+{%- elif locale.calendar_displayed == 'DCC' -%}
+    {%- set first_weekday = date.previous(days=date.dcc_weekday) -%}
+    {%- set last_weekday = first_weekday.next(days=5) -%}
+{%- endif -%}
 
-{% set SHOW_YEAR = False %}
+{%- set SHOW_YEAR = False -%}
 
-{% if locale.calendar_displayed == 'SYM' %}
-    {% if (first_weekday.year != last_weekday.year) or (first_weekday.year != date.year) or (last_weekday.year != date.year) %}
-        {% set SHOW_YEAR = True %}
-    {% endif %}
-{% elif locale.calendar_displayed == 'ISO' %}
-    {% if (first_weekday.gregorian_year != last_weekday.gregorian_year) or (first_weekday.gregorian_year != date.gregorian_year) or (last_weekday.gregorian_year != date.gregorian_year) %}
-        {% set SHOW_YEAR = True %}
-    {% endif %}
-{% endif %}
+{%- if locale.calendar_displayed == 'SYM' -%}
+    {%- if (first_weekday.year != last_weekday.year) or (first_weekday.year != date.year) or (last_weekday.year != date.year) -%}
+        {%- set SHOW_YEAR = True -%}
+    {%- endif -%}
+{%- elif locale.calendar_displayed == 'ISO' -%}
+    {%- if (first_weekday.gregorian_year != last_weekday.gregorian_year) or (first_weekday.gregorian_year != date.gregorian_year) or (last_weekday.gregorian_year != date.gregorian_year) -%}
+        {%- set SHOW_YEAR = True -%}
+    {%- endif -%}
+{%- endif -%}
 
 
 <table class="center" style="border-spacing: 0px;">
@@ -50,76 +50,72 @@
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'week')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
             <span class="show-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
                     {{ first_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
-                {% elif locale.calendar_displayed == 'ISO' %}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
                     {{ first_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.ISO_TEXT_SHORT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.ISO_YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
-                {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
-                        {% if SHOW_YEAR %}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
+                        {%- if SHOW_YEAR -%}
                             {{ first_weekday.format('&' + format_token + '>Y &cM', locale) }}
-                        {% else %}
+                        {%- else -%}
                             {{ first_weekday.format('&' + format_token + '>Y, &cM', locale) }}
-                        {% endif %}
-                        {% with dcc_month_number = first_weekday.dcc_month %}
-                            {% include 'calendar_span_adc_month_symbol.html' %}
-                        {% endwith %}
-                        {% if base in (14, 20) %}
-                            {{ first_weekday.format('&-wM‐&-w', locale) }} —
-                        {% else %}
-                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —
-                        {% endif %}
-                        {% if SHOW_YEAR %}
-                            {{ last_weekday.format('&' + format_token + '>Y &cM', locale) }}
-                            {% with dcc_month_number = last_weekday.dcc_month %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                        {% if base in (14, 20) %}
+                        {%- endif -%}
+                        {%- with dcc_month_number = first_weekday.dcc_month -%}
+                            &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                        {%- endwith -%},&nbsp;
+                        {%- if base in (14, 20) -%}
+                            {{ first_weekday.format('&-wM‐&-w', locale) }} —&nbsp;
+                        {%- else -%}
+                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —&nbsp;
+                        {%- endif -%}
+                        {%- if SHOW_YEAR -%}
+                            {{ last_weekday.format('&' + format_token + '>Y&YMDS&cM', locale) }}
+                            {%- with dcc_month_number = last_weekday.dcc_month -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%},&nbsp;
+                            {%- endwith -%}
+                        {%- endif -%}
+                        {%- if base in (14, 20) -%}
                             {{ last_weekday.format('&-wM‐&-w', locale) }}
-                        {% else %}
+                        {%- else -%}
                             {{ last_weekday.format('&' + format_token + '-d', locale) }}
-                        {% endif %}
-                    {% else %}
-                        {{ first_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&yC, &mC, &-d', locale) }} — {{ last_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&dC', locale) }}
-                    {% endif %}
-                {% endif %}
+                        {%- endif -%}
+                    {%- else -%}
+                        {{ first_weekday.format(locale.DCC_DATE_LONG_FORMAT if SHOW_YEAR else '&yC&DYMS&mC&DYMS&-d', locale) }} — {{ last_weekday.format(locale.DCC_DATE_LONG_FORMAT if SHOW_YEAR else '&dC', locale) }}
+                    {%- endif -%}
+                {%- endif -%}
             </span>
             <span class="hide-in-mobile">
-                {% if locale.calendar_displayed == 'SYM' %}
+                {%- if locale.calendar_displayed == 'SYM' -%}
                     {{ first_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.TEXT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.TEXT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
-                {% elif locale.calendar_displayed == 'ISO' %}
+                {%- elif locale.calendar_displayed == 'ISO' -%}
                     {{ first_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{first_weekday.format(locale.ISO_TEXT_MONTH_DAY_FORMAT, locale) }}{{ first_weekday.format(locale.DATE_SEPARATOR + locale.YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}} — {{ last_weekday.format(locale.ISO_YEAR_FORMAT + locale.DATE_SEPARATOR, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS == 'B' and not locale.ISO_MODE else ''}}{{last_weekday.format(locale.ISO_TEXT_MONTH_DAY_FORMAT, locale) }}{{ last_weekday.format(locale.DATE_SEPARATOR + locale.ISO_YEAR_FORMAT, locale) if SHOW_YEAR and locale.DATE_ENDIANNESS != 'B' and not locale.ISO_MODE else ''}}
-                {% elif locale.calendar_displayed == 'DCC' %}
-                    {% if 'c' in format_token %}
-                        {% if SHOW_YEAR %}
-                            {{ first_weekday.format('&' + format_token + '>Y &cM', locale) }}
-                        {% else %}
-                            {{ first_weekday.format('&' + format_token + '>Y, &cM', locale) }}
-                        {% endif %}
-                        {% with dcc_month_number = first_weekday.dcc_month %}
-                            {% include 'calendar_span_adc_month_symbol.html' %}
-                        {% endwith %}
-                        {% if base in (14, 20) %}
-                            {{ first_weekday.format('&-wM‐&-w', locale) }} —
-                        {% else %}
-                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —
-                        {% endif %}
-                        {% if SHOW_YEAR %}
-                            {{ last_weekday.format('&' + format_token + '>Y &cM', locale) }}
-                            {% with dcc_month_number = last_weekday.dcc_month %}
-                                {% include 'calendar_span_adc_month_symbol.html' %}
-                            {% endwith %}
-                        {% endif %}
-                        {% if base in (14, 20) %}
+                {%- elif locale.calendar_displayed == 'DCC' -%}
+                    {%- if 'c' in format_token -%}
+                        {{ first_weekday.format('&' + format_token + '>Y&DYMS&cM', locale) }}
+                        {%- with dcc_month_number = first_weekday.dcc_month -%}
+                            &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                        {%- endwith -%},&nbsp;
+                        {%- if base in (14, 20) -%}
+                            {{ first_weekday.format('&-wM‐&-w', locale) }} —&nbsp;
+                        {%- else -%}
+                            {{ first_weekday.format('&' + format_token + '-d', locale) }} —&nbsp;
+                        {%- endif -%}
+                        {%- if SHOW_YEAR -%}
+                            {{ last_weekday.format('&' + format_token + '>Y&DYMS&cM', locale) }}
+                            {%- with dcc_month_number = last_weekday.dcc_month -%}
+                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%},&nbsp;
+                            {%- endwith -%}
+                        {%- endif -%}
+                        {%- if base in (14, 20) -%}
                             {{ last_weekday.format('&-wM‐&-w', locale) }}
-                        {% else %}
+                        {%- else -%}
                             {{ last_weekday.format('&' + format_token + '-d', locale) }}
-                        {% endif %}
-                    {% else %}
-                        {{ first_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&yC, &mC, &-d', locale) }} — {{ last_weekday.format('&yC, &mC, &dC' if SHOW_YEAR else '&dC', locale) }}
-                    {% endif %}
-                {% endif %}
+                        {%- endif -%}
+                    {%- else -%}
+                        {{ first_weekday.format(locale.DCC_DATE_LONG_FORMAT if SHOW_YEAR else '&yC&DYMS&mC&DYMS&-d', locale) }} — {{ last_weekday.format(locale.DCC_DATE_LONG_FORMAT if SHOW_YEAR else '&dC', locale) }}
+                    {%- endif -%}
+                {%- endif -%}
             </span>
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'week')">›</td>
@@ -128,22 +124,22 @@
         <td colspan="3" style="font-size: 0.5rem; line-height: 0.5rem;"> </td>
     </tr>
 </table>
-{% set week_view = True %}
-{% if locale.calendar_displayed == 'SYM' %}
-    {% with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year %}
-        {% include 'calendar_base_month.html' %}
-    {% endwith %}
-{% elif locale.calendar_displayed == 'ISO' %}
-    {% with weekday_name_size=3, sezimal_month_number=date.gregorian_month, sezimal_year_number=date.gregorian_year %}
-        {% include 'calendar_base_iso_month.html' %}
-    {% endwith %}
-{% elif locale.calendar_displayed == 'DCC' %}
-    {% with weekday_name_size=3, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year %}
-        {% include 'calendar_base_dcc_month.html' %}
-    {% endwith %}
-{% endif %}
+{%- set week_view = True -%}
+{%- if locale.calendar_displayed == 'SYM' -%}
+    {%- with weekday_name_size=3, sezimal_month_number=date.month, sezimal_year_number=date.year -%}
+        {%- include 'calendar_base_month.html' -%}
+    {%- endwith -%}
+{%- elif locale.calendar_displayed == 'ISO' -%}
+    {%- with weekday_name_size=3, sezimal_month_number=date.gregorian_month, sezimal_year_number=date.gregorian_year -%}
+        {%- include 'calendar_base_iso_month.html' -%}
+    {%- endwith -%}
+{%- elif locale.calendar_displayed == 'DCC' -%}
+    {%- with weekday_name_size=3, dcc_month_number=date.dcc_month, dcc_year_number=date.dcc_year -%}
+        {%- include 'calendar_base_dcc_month.html' -%}
+    {%- endwith -%}
+{%- endif -%}
 </div>
-{% include 'calendar_base_week_time.html' %}
+{%- include 'calendar_base_week_time.html' -%}
 <div class="calendar-time-pointer-weekly" id="time_pointer"></div>
 
 <script type="text/javascript" id="view_script">
@@ -177,7 +173,7 @@ function auto_refresh(){
     sec = sec.toString().padStart(2, '0');
     var hours_24 = hours.toString().padStart(2, '0');
 
-    {% if locale.HOUR_FORMAT == '12h' %}
+    {%- if locale.HOUR_FORMAT == '12h' -%}
         if (hours > 12) {
             hours = hours - 12;
             minutes = minutes + ' {{ locale.lower(locale.PM) }}';
@@ -186,12 +182,12 @@ function auto_refresh(){
         } else {
             minutes = minutes + ' {{ locale.lower(locale.AM) }}';
         };
-    {% endif %}
+    {%- endif -%}
 
     hours = hours.toString().padStart(2, '0');
 
-    {% if base == 10 or base == 100 %}
-        {% if '!' in format_token %}
+    {%- if base == 10 or base == 100 -%}
+        {%- if '!' in format_token -%}
             const PAIRS = {
                 '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
                 '10': '󱸁󱸀', '11': '󱸁󱸁', '12': '󱸁󱸂', '13': '󱸁󱸃', '14': '󱸁󱸄', '15': '󱸁󱸅',
@@ -200,7 +196,7 @@ function auto_refresh(){
                 '40': '󱸄󱸀', '41': '󱸄󱸁', '42': '󱸄󱸂', '43': '󱸄󱸃', '44': '󱸄󱸄', '45': '󱸄󱸅',
                 '50': '󱸅󱸀', '51': '󱸅󱸁', '52': '󱸅󱸂', '53': '󱸅󱸃', '54': '󱸅󱸄', '55': '󱸅󱸅',
             };
-        {% elif format_token == '@' %}
+        {%- elif format_token == '@' -%}
             const PAIRS = {
                 '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
                 '10': '0̇', '11': '1̇', '12': '2̇', '13': '3̇', '14': '4̇', '15': '5̇',
@@ -209,7 +205,7 @@ function auto_refresh(){
                 '40': '0̄', '41': '1̄', '42': '2̄', '43': '3̄', '44': '4̄', '45': '5̄',
                 '50': '0̆', '51': '1̆', '52': '2̆', '53': '3̆', '54': '4̆', '55': '5̆',
             };
-        {% elif format_token == '@!' %}
+        {%- elif format_token == '@!' -%}
             const PAIRS = {
                 '00': '󱸀', '01': '󱸁', '02': '󱸂', '03': '󱸃', '04': '󱸄', '05': '󱸅',
                 '10': '󱸆', '11': '󱸇', '12': '󱸈', '13': '󱸉', '14': '󱸊', '15': '󱸋',
@@ -218,7 +214,7 @@ function auto_refresh(){
                 '40': '󱸘', '41': '󱸙', '42': '󱸚', '43': '󱸛', '44': '󱸜', '45': '󱸝',
                 '50': '󱸞', '51': '󱸟', '52': '󱸠', '53': '󱸡', '54': '󱸢', '55': '󱸣',
             };
-        {% elif format_token == 'Z' %}
+        {%- elif format_token == 'Z' -%}
             const PAIRS = {
                 '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
                 '10': '6', '11': '7', '12': '8', '13': '9', '14': 'A', '15': 'B',
@@ -227,7 +223,7 @@ function auto_refresh(){
                 '40': 'O', '41': 'P', '42': 'Q', '43': 'R', '44': 'S', '45': 'T',
                 '50': 'U', '51': 'V', '52': 'W', '53': 'X', '54': 'Y', '55': 'Z',
             };
-        {% endif %}
+        {%- endif -%}
 
         var agrima = seconds * 36 * 36 * 36;
         var time = Math.floor(agrima).toString(6).padStart(6, '0');
@@ -252,25 +248,25 @@ function auto_refresh(){
 
         seconds = seconds / (parseInt('30', 6) * 86400 / 36 / 36);
 
-        {% if format_token in ('!', '@', '@!', 'Z') %}
+        {%- if format_token in ('!', '@', '@!', 'Z') -%}
             time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
-        {% else %}
+        {%- else -%}
             time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
-        {% endif %}
+        {%- endif -%}
 
-        {% if locale.RTL %}
+        {%- if locale.RTL -%}
             time_display = '\u{2066}' + time_display + '\u{2069} - \u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
-        {% else %}
+        {%- else -%}
             time_display = time_display + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
-        {% endif %}
+        {%- endif -%}
 
         setTimeout(auto_refresh, 33333);
-    {% elif base == 14 %}
-        {% if locale.RTL %}
+    {%- elif base == 14 -%}
+        {%- if locale.RTL -%}
             time_display = '\u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
-        {% else %}
+        {%- else -%}
             time_display = hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
-        {% endif %}
+        {%- endif -%}
 
         //
         // Seconds is adjusted to a proportion of 30 posha,
@@ -290,7 +286,7 @@ function auto_refresh(){
         seconds = seconds / (30 * 86400 / 24 / 60);
 
         setTimeout(auto_refresh, 30000);
-    {% elif base == 20 %}
+    {%- elif base == 20 -%}
         var time = seconds * 12 * 12 * 12;
         time = Math.floor(time).toString(12).padStart(3, '0');
 
@@ -317,19 +313,19 @@ function auto_refresh(){
         time_line_id = time_line_id.replaceAll('a', '↊').replaceAll('b', '↋');
         seconds = seconds / parseInt('30', 12);
 
-        {% if locale.RTL %}
+        {%- if locale.RTL -%}
             time_display = '\u{2066}' + time + '\u{2069} - \u{2066}' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes + '\u{2069}';
-        {% else %}
+        {%- else -%}
             time_display = time + ' - ' + hours + '{{ locale.TIME_SEPARATOR }}' + minutes;
-        {% endif %}
+        {%- endif -%}
 
         setTimeout(auto_refresh, 25000);
-    {% endif %}
+    {%- endif -%}
 
     time_line_rect = document.getElementById(time_line_id).getBoundingClientRect();
     position = (seconds * time_line_rect.height) + time_line_rect.top + window.scrollY - time_pointer_half_height;
 
-    {% if locale.DIGITS and (base in (10, 14)) and (format_token != '!') %}
+    {%- if locale.DIGITS and (base in (10, 14)) and (format_token != '!') -%}
         time_display = time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
         time_display = time_display.replaceAll('1', '{{ locale.DIGITS[1] }}');
         time_display = time_display.replaceAll('2', '{{ locale.DIGITS[2] }}');
@@ -351,7 +347,7 @@ function auto_refresh(){
         iso_time_display = iso_time_display.replaceAll('7', '{{ locale.DIGITS[7] }}');
         iso_time_display = iso_time_display.replaceAll('8', '{{ locale.DIGITS[8] }}');
         iso_time_display = iso_time_display.replaceAll('9', '{{ locale.DIGITS[9] }}');
-    {% endif %}
+    {%- endif -%}
 
     if (document.getElementById('time_pointer')) {
         document.getElementById('time_pointer').innerHTML = '<span style="margin-{{ 'right' if locale.RTL else 'left' }}: 6%;"> ◂ ' + time_display + ' ▸ </span>';

@@ -132,19 +132,19 @@
     <tr style="vertical-align: middle;">
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('previous', 'day')">‹</td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;">
-            {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
+            {%- if locale.calendar_displayed == 'DCC' and 'c' in format_token -%}
                     {{ date.format(locale.ADC_YEAR_TEXT_MONTH_FORMAT, locale) }}
-                    {% with dcc_month_number = date.dcc_month %}
-                        {% include 'calendar_span_adc_month_symbol.html' %}
-                    {% endwith %}
-                    {% if base in (14, 20) %}
+                    {%- with dcc_month_number = date.dcc_month -%}
+                        &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                    {%- endwith -%}
+                    {%- if base in (14, 20) -%}
                         {{ date.format('&-wM‐&-w', locale) }}
-                    {% else %}
-                        {{ date.format('&' + format_token + '-d', locale) }}
-                    {% endif %}
-            {% else %}
+                    {%- else -%}
+                        {{ date.format('&DYMS&' + format_token + '-d', locale) }}
+                    {%- endif -%}
+            {%- else -%}
                 {{ date.format(date_format, locale) }}
-            {% endif %}
+            {%- endif -%}
         </td>
         <td style="font-size: 1.25rem; line-height: 2.25rem; font-weight: bold; background-color: white; color: black;" onclick="update_calendar('next', 'day')">›</td>
     </tr>
@@ -166,16 +166,16 @@
             <div id="quarter_proportion" style="height: {{MONTH_LINE_HEIGHT}}; background-color: {{DAILY_COLORS[back_shade_04]}}; width: {{ date.dcc_term_proportion_ellapsed.decimal * 100 if locale.calendar_displayed == 'DCC' else date.quarter_proportion_ellapsed.decimal * 100 }}%; z-index: -1;"></div>
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
-            {% if locale.calendar_displayed == 'DCC' %}
+            {%- if locale.calendar_displayed == 'DCC' -%}
                 {{ date.format('&' + format_token + 'W', locale) }}
-                {% if 'c' in format_token %}
-                    {% with dcc_weekday_number = date.dcc_weekday %}
-                        {% include 'calendar_span_adc_weekday_symbol.html' %}
-                    {% endwith %}
-                {% endif %}
-            {% else %}
+                {%- if 'c' in format_token -%}
+                    {%- with dcc_weekday_number = date.dcc_weekday -%}
+                        &nbsp;{%- include 'calendar_span_adc_weekday_symbol.html' -%}
+                    {%- endwith -%}
+                {%- endif -%}
+            {%- else -%}
                 {{ date.format('#W', locale) }}
-            {% endif %}
+            {%- endif -%}
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}};">
             <div id="" style="z-index: 1; width: 100%; float: {{ 'left' if locale.RTL else 'right' }}; border-{{ 'right' if locale.RTL else 'left' }}: 2px solid {{DAILY_COLORS[back_shade_04]}};">
@@ -192,57 +192,57 @@
     </colgroup>
     <tr style="vertical-align: middle; color: {{DAILY_COLORS[shade_01]}}; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EVENTS_LINE_HEIGHT}};">
         <td style="text-align: {{ 'right' if locale.RTL else 'left' }};">
-            {% set ns = namespace(event_separator='') %}
-            {% if event_month in events %}
-                {% if event_day in events[event_month] %}
-                    {% for event in events[event_month][event_day] %}
-                        {% if event.origin_calendar in locale.SHOW_HOLIDAYS %}
-                            {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
-                            {% if ns.event_separator == '' %}
-                                {% set ns.event_separator = '; ' %}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endif %}
+            {%- set ns = namespace(event_separator='') -%}
+            {%- if event_month in events -%}
+                {%- if event_day in events[event_month] -%}
+                    {%- for event in events[event_month][event_day] -%}
+                        {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
+                            {%- if ns.event_separator == '' -%}&nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
+                            {%- if ns.event_separator == '' -%}
+                                {%- set ns.event_separator = '; ' -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endif -%}
+            {%- endif -%}
 
-            {% if event_month in events['moon'] %}
-                {% if event_day in events['moon'][event_month] %}
-                    {% for event in events['moon'][event_month][event_day] %}
-                        {% if ns.event_separator == '' %}&nbsp;{% endif %}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
-                        {% if ns.event_separator == '' %}
-                            {% set ns.event_separator = '; ' %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endif %}
+            {%- if event_month in events['moon'] -%}
+                {%- if event_day in events['moon'][event_month] -%}
+                    {%- for event in events['moon'][event_month][event_day] -%}
+                        {%- if ns.event_separator == '' -%}&nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
+                        {%- if ns.event_separator == '' -%}
+                            {%- set ns.event_separator = '; ' -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endif -%}
+            {%- endif -%}
         </td>
         <td style="text-align: {{ 'left' if locale.RTL else 'right' }};">
-            {% if locale.calendar_displayed == 'SYM' %}
+            {%- if locale.calendar_displayed == 'SYM' -%}
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
                 <br/>
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
-            {% elif locale.calendar_displayed == 'ISO' %}
+            {%- elif locale.calendar_displayed == 'ISO' -%}
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
                 <br/>
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
-            {% elif locale.calendar_displayed == 'DCC' %}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}{{ now.format('#@W, ', locale) }}{% endif %}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}{{ now.format(', #@W', locale) }}{% endif %}&nbsp;
+            {%- elif locale.calendar_displayed == 'DCC' -%}
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' %}{{ now.format('#@W, ', locale) }}{% endif %}{{date.format(locale.DATE_FORMAT, locale)}}{% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}{{ now.format(', #@W', locale) }}{% endif %}&nbsp;
-            {% endif %}
-            {% if 'JUL' in locale.SHOW_HOLIDAYS %}
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
+            {%- endif -%}
+            {%- if 'JUL' in locale.SHOW_HOLIDAYS -%}
                 <br/>
                 &nbsp;{{date.julian_date(locale)}}&nbsp;
-            {% endif %}
-            {% if 'JEW' in locale.SHOW_HOLIDAYS %}
+            {%- endif -%}
+            {%- if 'JEW' in locale.SHOW_HOLIDAYS -%}
                 <br/>
                 &nbsp;{{date.hebrew_date(locale, number=False, short=False)}}&nbsp;
-            {% endif %}
-            {% if 'HIJ' in locale.SHOW_HOLIDAYS %}
+            {%- endif -%}
+            {%- if 'HIJ' in locale.SHOW_HOLIDAYS -%}
                 <br/>
                 &nbsp;{{date.hijri_date(locale, number=False, short=False)}}&nbsp;
-            {% endif %}
+            {%- endif -%}
         </td>
     </tr>
 </table>
@@ -258,39 +258,39 @@
         <col span="1">
         <col span="1">
     </colgroup>
-    {% for uta in SezimalList(UTAS.keys())[uta_first:uta_last] %}
-        {% set time_id = HOURS_24[uta] %}
-        {% if base != 20 %}
-            <tr style="vertical-align: top; background-color: {% if dark_mode %}#000{% else %}#fff{% endif %};" id="time_{{time_id}}">
+    {%- for uta in SezimalList(UTAS.keys())[uta_first:uta_last] -%}
+        {%- set time_id = HOURS_24[uta] -%}
+        {%- if base != 20 -%}
+            <tr style="vertical-align: top; background-color: {%- if dark_mode -%}#000{%- else -%}#fff{%- endif -%};" id="time_{{time_id}}">
                 <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
-                    {{UTAS[uta]}}{% if base == 14 and locale.HOUR_FORMAT == '12h' %}<span style="font-size: {{WEEK_FONT_SIZE}};" class="hide-in-mobile-daily-view-am-pm">{{ (' ' + locale.lower(locale.AM)) if uta < 20 else (' ' + locale.lower(locale.PM)) }}</span>{% endif %}
+                    {{UTAS[uta]}}{%- if base == 14 and locale.HOUR_FORMAT == '12h' -%}<span style="font-size: {{WEEK_FONT_SIZE}};" class="hide-in-mobile-daily-view-am-pm">{{ (' ' + locale.lower(locale.AM)) if uta < 20 else (' ' + locale.lower(locale.PM)) }}</span>{%- endif -%}
                 </td>
                 <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
             </tr>
-            <tr style="vertical-align: top; background-color: {% if dark_mode %}#111{% else %}#eee{% endif %}" id="time_{{time_id}}_half">
+            <tr style="vertical-align: top; background-color: {%- if dark_mode -%}#111{%- else -%}#eee{%- endif -%}" id="time_{{time_id}}_half">
                 <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                     <span class="hide-in-mobile">{{UTAS[uta]}}{{SEPARATOR}}</span>{{HALF}}
                 </td>
                 <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
             </tr>
-        {% else %}
-            {% if uta % 2 == 0 %}
+        {%- else -%}
+            {%- if uta % 2 == 0 -%}
                 <tr style="vertical-align: top; background-color: #111;" id="time_{{time_id}}">
                     <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                         {{UTAS[uta]}}
                     </td>
                     <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-weight: bold; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
                 </tr>
-            {% else %}
+            {%- else -%}
                 <tr style="vertical-align: top;" id="time_{{time_id}}">
                     <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{HALF_UTA_FONT_SIZE}}; color: {{DAILY_COLORS['100' if uta < MIDDAY else '300']}}; border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{DAILY_COLORS[shade_week_number]}};">
                         {{UTAS[uta]}}
                     </td>
                     <td colspan="7" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{DAILY_COLORS[shade_01]}};"></td>
                 </tr>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
 </table>
 <div class="calendar-time-pointer" id="time_pointer"></div>
 
