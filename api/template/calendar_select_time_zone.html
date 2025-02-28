@@ -1,4 +1,28 @@
 <select id="time_zone_select" style="text-align: left; direction:ltr;">
+    {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR') %}
+        <optgroup name="brazil_sp" label="Brasil - Brasília (Sul, Sudeste, Goiás e DF)">
+            <option value="America/Sao_Paulo">Hora Oficial de Brasília</option>
+            <option value="Natural/NT4-03"  >NT4-03 (UTC-07:00)</option>
+            <option value="Natural/NT6-03"  >NT6-03 (UTC-09:00)</option>
+        </optgroup>
+        <optgroup name="brazil" label="Brasil - Demais fusos">
+            <option value="America/Maceio">Alagoas, Sergipe</option>
+            <option value="America/Bahia">Bahia</option>
+            <option value="America/Fortaleza">Ceará, Maranhão, Paraíba, Piauí, Rio Grande do Norte</option>
+            <option value="America/Noronha">Fernando de Noronha</option>
+            <option value="America/Recife">Pernambuco</option>
+            <option value="America/Cuiaba">Mato Grosso</option>
+            <option value="America/Campo_Grande">Mato Grosso do Sul</option>
+            <option value="America/Rio_Branco">Acre</option>
+            <option value="America/Manaus">Amazonas (exceto região de Eirunepé)</option>
+            <option value="America/Eirunepe">Amazonas (região de Eirunepé)</option>
+            <option value="America/Belem">Amapá, Pará (exceto região de Santarém)</option>
+            <option value="America/Santarem">Pará (região de Santarém)</option>
+            <option value="America/Porto_Velho">Rondônia</option>
+            <option value="America/Boa_Vista">Roraima</option>
+            <option value="America/Araguaina">Tocantins</option>
+        </optgroup>
+    {% endif %}
     <optgroup name="universal" label="Universal">
         <option value="SPM">SPM - Schleißheim Prime Meridian</option>
         <option value="UTC">UTC - Greenwich Prime Meridian</option>
@@ -368,6 +392,7 @@
         <option value="Australia/West">West</option>
         <option value="Australia/Yancowinna">Yancowinna</option>
     </optgroup>
+    {% if locale.LANGUAGE_TAG not in ('pt-BR', 'bz', 'bz-BR') %}
     <optgroup name="brazil" label="Brasil">
         <option value="America/Sao_Paulo">Brasília (Sul, Sudeste, Goiás e DF)</option>
         <option value="America/Maceio">Alagoas, Sergipe</option>
@@ -386,6 +411,7 @@
         <option value="America/Boa_Vista">Roraima</option>
         <option value="America/Araguaina">Tocantins</option>
     </optgroup>
+    {% endif %}
 
 <!--    <option value="Brazil/Acre">Brazil/Acre</option>
     <option value="Brazil/DeNoronha">Brazil/DeNoronha</option>
