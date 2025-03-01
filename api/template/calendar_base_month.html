@@ -388,14 +388,11 @@
                         {%- endif -%}
                     {%- else -%}
                         {# Let’s see if there’s an event for the date #}
-                        {%- if (not week_view) and (not month_view) and SezimalInteger(sezimal_month_number) in events -%}
-                            {%- if SezimalInteger(DAYS[week_in_month][i]) in events[sezimal_month_number] -%}
-                                {%- for event in events[SezimalInteger(sezimal_month_number)][SezimalInteger(DAYS[week_in_month][i])] -%}
-                                    {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                                        {% set ns.date_has_event = True %}
-                                    {%- endif -%}
-                                {%- endfor -%}
-                            {% endif %}
+                        {%- if (not week_view) and (not month_view)
+                            and SezimalInteger(sezimal_month_number) in events
+                            and SezimalInteger(DAYS[week_in_month][i]) in events[sezimal_month_number]
+                        -%}
+                            {% set ns.date_has_event = True %}
                         {% endif %}
                         <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_in_year][SHADES[i]]}}; {%- if month_view or week_view -%}font-weight: bold;{%- endif -%} {%- if date.month == sezimal_month_number and date.day == DAYS[week_in_month][i] -%}background-color: {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }}; color: {{ colors[weeks[week_in_month]][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{%- elif ns.date_has_event -%}font-style: italic; border: 2px dotted {{ colors[weeks[week_in_month]][BACK_SHADES[i]] }};{%- endif -%} {%- if SHOW_MIDQUARTER_DAY and (sezimal_month_number in (2, 5, 12, 15)) and (week_in_month == 2) and (WEEKDAYS[i] == 3) -%}border-left: 2px dotted {{colors[week_in_year][SHADES[i]]}}; border-right: 2px dotted {{colors[week_in_year][SHADES[i]]}};{%- endif -%} {%- if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT -%} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{%- endif -%}{%- if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT -%} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_in_year][SHADES[i]]}};{%- endif -%}" onclick="change_date('{{ sezimal_year_number }}-{{ str(sezimal_month_number).zfill(2) }}-{{ str(DAYS[week_in_month][i]).zfill(2) }}')" {%- if date.month == sezimal_month_number and date.weekday == Decimal(WEEKDAYS[i]) + 1 -%}id="today"{%- endif -%}>{{ NUMBERS[ DAYS[week_in_month][i] ] }}</td>
                     {%- endif -%}
@@ -458,18 +455,14 @@
                                     {%- if SezimalInteger(sezimal_month_number) in events -%}
                                         {%- if SezimalInteger(DAYS[week_in_month][i]) in events[sezimal_month_number] -%}
                                             {%- for event in events[SezimalInteger(sezimal_month_number)][SezimalInteger(DAYS[week_in_month][i])] -%}
-                                                {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                                                    {{ event.emoji }}
-                                                {%- endif -%}
+                                                {{ event.emoji }}
                                             {%- endfor -%}
                                         {%- endif -%}
                                     {%- endif -%}
                                     {%- if SezimalInteger(sezimal_month_number) in events['moon'] -%}
                                         {%- if SezimalInteger(DAYS[week_in_month][i]) in events['moon'][sezimal_month_number] -%}
                                             {%- for event in events['moon'][SezimalInteger(sezimal_month_number)][SezimalInteger(DAYS[week_in_month][i])] -%}
-                                                {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                                                    {{ event.emoji }}
-                                                {%- endif -%}
+                                                {{ event.emoji }}
                                             {%- endfor -%}
                                         {%- endif -%}
                                     {%- endif -%}
@@ -493,9 +486,7 @@
             {%- if SezimalInteger(sezimal_month_number) in events -%}
                 {%- for event_day in sorted(events[sezimal_month_number].keys()) -%}
                     {%- for event in events[SezimalInteger(sezimal_month_number)][event_day] -%}
-                        {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                            {{ event.date.format(' #' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
-                        {%- endif -%}
+                        {{ event.date.format(' #' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
                     {%- endfor -%}
                 {%- endfor -%}
             {%- endif -%}
