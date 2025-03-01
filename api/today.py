@@ -448,19 +448,25 @@ def api_calendar_process():
     tds = []
 
     if locale.calendar_displayed == 'SYM':
+        context['events_last_year'] = _calendar_events(locale, date.year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.year, context) or {}
+        context['events_next_year'] = _calendar_events(locale, date.year + 1, context) or {}
 
         # for i in SezimalRange(213_000, 214_000):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
 
     elif locale.calendar_displayed == 'ISO':
+        context['events_last_year'] = _calendar_events(locale, date.gregorian_year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
+        context['events_next_year'] = _calendar_events(locale, date.gregorian_year + 1, context) or {}
 
         # for i in range(1944, 2161):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, Decimal(i), context)))
 
     elif locale.calendar_displayed == 'DCC':
+        context['events_last_year'] = _calendar_events(locale, date.dcc_year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
+        context['events_next_year'] = _calendar_events(locale, date.dcc_year + 1, context) or {}
 
         # for i in SezimalRange(213_000, 214_000):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
@@ -923,18 +929,20 @@ def sezimal_calendar_route() -> Response:
 
     return redirect('/en/shastadari/calendar', code=302)
 
-@sitemapper.include(lastmod='2024-09-19', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/calendar')
 def sezimal_calendar_en_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
+
+    if locale.LANG != 'en':
+        locale = sezimal_locale('en-gb')
+
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
     locale.base = 10
     locale.format_token = ''
     locale.SHOW_HOLIDAYS = 'ISO'
-
-    if locale.LANG != 'en':
-        locale = sezimal_locale('en-gb')
+    locale.GROUP_SEPARATOR = '󱹭'
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -945,42 +953,30 @@ def sezimal_calendar_en_route() -> Response:
     context['format_token'] = ''
     context['calendar_presentation'] = True
     context['sezimal_today'] = now.format(locale.DATE_FORMAT, locale)
-    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT, locale)
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
     context['sezimal_today_full'] = now.format(locale.DATE_LONG_FORMAT, locale)
 
-    sf = locale.DATE_LONG_FORMAT
-
-    spellout_year = f'({locale.spellout(now.year)})'
-    sf = sf.replace('#Y', spellout_year)
-    sf = sf.replace('#y', spellout_year)
-    sf = sf.replace('#-y', spellout_year)
-
-    if '#O' in sf and locale.day_ordinal_suffix(now.day) != '':
-        sf = sf.replace('#d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-        sf = sf.replace('#-d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-    else:
-        sf = sf.replace('#d', f"({locale.spellout(now.day)})")
-        sf = sf.replace('#-d', f"({locale.spellout(now.day)})")
-
-    context['sezimal_today_full_text'] = now.format(sf, locale)
+    context['events'] = _calendar_events(locale, now.year, context) or {}
 
     return sezimal_render_template(
         'calendar_en.html',
         **context,
     )
 
-@sitemapper.include(lastmod='2024-09-19', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/calendário')
 def sezimal_calendar_pt_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
+
+    if locale.LANG != 'pt':
+        locale = sezimal_locale('pt-br')
+
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
     locale.base = 10
     locale.format_token = ''
     locale.SHOW_HOLIDAYS = 'ISO'
-
-    if locale.LANG != 'pt':
-        locale = sezimal_locale('pt-br')
+    locale.GROUP_SEPARATOR = '󱹭'
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -991,24 +987,8 @@ def sezimal_calendar_pt_route() -> Response:
     context['format_token'] = ''
     context['calendar_presentation'] = True
     context['sezimal_today'] = now.format(locale.DATE_FORMAT, locale)
-    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT, locale)
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
     context['sezimal_today_full'] = now.format(locale.DATE_LONG_FORMAT, locale)
-
-    sf = locale.DATE_LONG_FORMAT
-
-    spellout_year = f'({locale.spellout(now.year)})'
-    sf = sf.replace('#Y', spellout_year)
-    sf = sf.replace('#y', spellout_year)
-    sf = sf.replace('#-y', spellout_year)
-
-    if '#O' in sf and locale.day_ordinal_suffix(now.day) != '':
-        sf = sf.replace('#d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-        sf = sf.replace('#-d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-    else:
-        sf = sf.replace('#d', f"({locale.spellout(now.day)})")
-        sf = sf.replace('#-d', f"({locale.spellout(now.day)})")
-
-    context['sezimal_today_full_text'] = now.format(sf, locale)
 
     context['events'] = _calendar_events(locale, now.year, context) or {}
 
@@ -1017,18 +997,19 @@ def sezimal_calendar_pt_route() -> Response:
         **context,
     )
 
-@sitemapper.include(lastmod='2024-09-19', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/kalendaryu')
 def sezimal_calendar_bz_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
+    if locale.LANG != 'bz':
+        locale = sezimal_locale('bz-br')
+
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
     locale.base = 10
     locale.format_token = ''
     locale.SHOW_HOLIDAYS = 'ISO'
-
-    if locale.LANG != 'bz':
-        locale = sezimal_locale('bz-br')
+    locale.GROUP_SEPARATOR = '󱹭'
 
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
@@ -1039,51 +1020,8 @@ def sezimal_calendar_bz_route() -> Response:
     context['format_token'] = ''
     context['calendar_presentation'] = True
     context['sezimal_today'] = now.format(locale.DATE_FORMAT, locale)
-    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT, locale)
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
     context['sezimal_today_full'] = now.format(locale.DATE_LONG_FORMAT, locale)
-
-    sf = locale.DATE_LONG_FORMAT
-
-    spellout_year = f'({locale.spellout(now.year)})'
-    sf = sf.replace('#Y', spellout_year)
-    sf = sf.replace('#y', spellout_year)
-    sf = sf.replace('#-y', spellout_year)
-
-    if '#O' in sf and locale.day_ordinal_suffix(now.day) != '':
-        sf = sf.replace('#d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-        sf = sf.replace('#-d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-    else:
-        sf = sf.replace('#d', f"({locale.spellout(now.day)})")
-        sf = sf.replace('#-d', f"({locale.spellout(now.day)})")
-
-    context['sezimal_today_full_text'] = now.format(sf, locale)
-    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
-
-    context = _calendar_context(locale, now)
-    context['locale'] = locale
-    context['now'] = now
-    context['base'] = 10
-    context['format_token'] = ''
-    context['calendar_presentation'] = True
-    context['sezimal_today'] = now.format(locale.DATE_FORMAT, locale)
-    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT, locale)
-    context['sezimal_today_full'] = now.format(locale.DATE_LONG_FORMAT, locale)
-
-    sf = locale.DATE_LONG_FORMAT
-
-    spellout_year = f'({locale.spellout(now.year)})'
-    sf = sf.replace('#Y', spellout_year)
-    sf = sf.replace('#y', spellout_year)
-    sf = sf.replace('#-y', spellout_year)
-
-    if '#O' in sf and locale.day_ordinal_suffix(now.day) != '':
-        sf = sf.replace('#d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-        sf = sf.replace('#-d#O', f"({locale.spellout('ordinal ' + str(now.day))})")
-    else:
-        sf = sf.replace('#d', f"({locale.spellout(now.day)})")
-        sf = sf.replace('#-d', f"({locale.spellout(now.day)})")
-
-    context['sezimal_today_full_text'] = now.format(sf, locale)
 
     locale.HOLIDAYS = [
         #
@@ -2007,3 +1945,164 @@ def api_weather_process():
     }
 
     return jsonify(res)
+
+# @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
+@app.route('/shastadari/day-count-calendar')
+def sezimal_day_count_calendar_route() -> Response:
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/xastadári/calendário-quantos-dias', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/kalendaryu-kwantus-dias', code=302)
+
+    return redirect('/en/shastadari/day-count-calendar', code=302)
+
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
+@app.route('/en/shastadari/day-count-calendar')
+def sezimal_day_count_calendar_en_route() -> Response:
+    locale = sezimal_locale(browser_preferred_locale())
+
+    if locale.LANG != 'en':
+        locale = sezimal_locale('en-gb')
+
+    locale.calendar_displayed = 'DCC'
+    locale.use_first_weekday = False
+    locale.base = 10
+    locale.format_token = 'c'
+    locale.SHOW_HOLIDAYS = 'ISO'
+    locale.GROUP_SEPARATOR = '󱹭'
+    locale.DCC_YEAR_FORMAT = locale.DCC_YEAR_FORMAT.replace('>', '').replace('&Y', '213󱹭&Y')
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    context = _calendar_context(locale, now)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = 10
+    context['format_token'] = 'c'
+    context['calendar_presentation'] = True
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
+
+    context['events'] = _calendar_events(locale, now.year, context) or {}
+
+    return sezimal_render_template(
+        'calendar_day_count_en.html',
+        **context,
+    )
+
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
+@app.route('/pt/xastadári/calendário-quantos-dias')
+def sezimal_day_count_calendar_pt_route() -> Response:
+    locale = sezimal_locale(browser_preferred_locale())
+
+    if locale.LANG != 'pt':
+        locale = sezimal_locale('pt-br')
+
+    locale.calendar_displayed = 'DCC'
+    locale.use_first_weekday = False
+    locale.base = 10
+    locale.format_token = 'c'
+    locale.SHOW_HOLIDAYS = 'ISO'
+    locale.GROUP_SEPARATOR = '󱹭'
+    locale.DCC_YEAR_FORMAT = locale.DCC_YEAR_FORMAT.replace('>', '')
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    context = _calendar_context(locale, now)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = 10
+    context['format_token'] = 'c'
+    context['calendar_presentation'] = True
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
+
+    context['events'] = _calendar_events(locale, now.year, context) or {}
+
+    return sezimal_render_template(
+        'calendar_day_count_pt.html',
+        **context,
+    )
+
+@sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
+@app.route('/bz/xastadari/kalendaryu-kwantus-dias')
+def sezimal_day_count_calendar_bz_route() -> Response:
+    locale = sezimal_locale(browser_preferred_locale())
+
+    if locale.LANG != 'bz':
+        locale = sezimal_locale('bz-br')
+
+    locale.calendar_displayed = 'DCC'
+    locale.use_first_weekday = False
+    locale.base = 10
+    locale.format_token = 'c'
+    locale.SHOW_HOLIDAYS = 'ISO'
+    locale.GROUP_SEPARATOR = '󱹭'
+    locale.DCC_YEAR_FORMAT = locale.DCC_YEAR_FORMAT.replace('>', '').replace('&Y', '213󱹭&Y')
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+
+    locale.HOLIDAYS = [
+        #
+        # Moving Holidays
+        # Using fixed Easter day according to Symmetry454 original proposal
+        #
+        # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
+        # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
+        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
+
+        #
+        # National Holidays
+        # that (usually) don’t have a year of reference
+        #
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Konfraternizasawn Universaw'),
+        ('05-01', '🐝\ufe0f🐜\ufe0f Dia du Trabalyu'),
+        ('14-20', '⛪\ufe0f👸🏾\ufe0f Nòsa Seỹòra Aparesida'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️  Finadus'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera di Nataw'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Nataw'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f Véspera di Anu Novu'),
+
+        #
+        # National Holidays
+        # that have a year of reference;
+        # There are 2 ways of dealing with them:
+        #     1. converting the original date to the Sezimal calendar
+        #     2. using the original month and day without converting the calendar
+        #
+        # Using 2 here, but leaving 1 commented for reference
+        #
+        # When informing the year, the age is calculated,
+        # and can be shown using #i as a format tag
+        #
+        # ('212_144-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentis'),                 # sábadu  212_144-04-32 ~ 1792-04-21_dec
+        # ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540)'),   # sábadu  212_540-11-10 ~ 1932-07-09_dec
+        # ('212_234-13-10', '🇧🇷\ufe0f🕊\ufe0f️ Independensya du Braziw'),    # sábadu  212_234-13-10 ~ 1822-09-07_dec
+        # ('212_425-15-31', '🇧🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika'),  # sesta   212_425-15-31 ~ 1889-11-15_dec
+        # ('211_503-15-33', '👨🏾\ufe0f Konsyensya Negra'),             # dumingu 211_503-15-33 ~ 1695-11-20_dec
+
+        ('212_144-04-33', '🇧🇷\ufe0f🔺\ufe0f Tiradentis'),                      # dumingu, 04-33 ~ 04-21_dec
+        ('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolusawn di 1932 (1̈5̈0̄/540) (#i)'),   # tersa,   11-13 ~ 07-09_dec
+        ('212_234-13-11', '🇧🇷\ufe0f🕊\ufe0f️ Independensya du Braziw (#i)'),    # dumingu, 13-11 ~ 09-07_dec
+        ('212_425-15-23', '🇧🇷\ufe0f📜\ufe0f Proklamasawn da Repúblika (#i)'),  # sigunda, 15-23 ~ 11-15_dec
+        ('211_503-15-32', '👨🏾\ufe0f Konsyensya Negra'),                  # sábadu,  15-32 ~ 11-20_dec
+    ]
+    locale.HOLIDAYS_OTHER_CALENDAR = []
+
+    context = _calendar_context(locale, now)
+    context['locale'] = locale
+    context['now'] = now
+    context['base'] = 10
+    context['format_token'] = 'c'
+    context['calendar_presentation'] = True
+    context['sezimal_today'] = now.format(locale.DCC_DATE_FORMAT, locale)
+    context['iso_today'] = now.format(locale.ISO_DATE_FORMAT.replace('%5Y', '13󱹭%5Y').replace('%↋Y', '13󱹭%↋Y').replace('%Y', '13󱹭%Y'), locale)
+    context['sezimal_today_full'] = now.format(locale.DCC_DATE_LONG_FORMAT, locale)
+
+    context['events'] = _calendar_events(locale, now.year, context) or {}
+
+    return sezimal_render_template(
+        'calendar_bz.html',
+        **context,
+    )
