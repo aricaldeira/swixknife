@@ -13,6 +13,7 @@ class SezimalLocaleEN_BR(SezimalLocaleEN):
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
+    FIRST_WEEKDAY = 'SUN'
 
     CURRENCY_UNIT_SYMBOL = 'R$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'

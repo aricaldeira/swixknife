@@ -472,6 +472,22 @@ class SezimalLocaleBZ(SezimalLocale):
         'Drj',
     ]
 
+    DCC_TERM_NAME = [
+        'bimèstri‐zèru',
+        'bimèstri‐un',
+        'bimèstri‐doys',
+        'bimèstri‐treys',
+        'bimèstri‐kwatru',
+    ]
+
+    DCC_TERM_ABBREVIATED_NAME = [
+        'B0',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+    ]
+
     DCC_MONTH_NAME = [
         'mez‐zèru',
         'mez‐un',
@@ -492,7 +508,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'dia‐da‐semana‐doys',
         'dia‐da‐semana‐treys',
         'dia‐da‐semana‐kwatru',
-        'dia‐da‐semana‐sinko',
+        'dia‐da‐semana‐sinku',
     ]
 
     DCC_WEEKDAY_ABBREVIATED_NAME = [
@@ -534,8 +550,13 @@ class SezimalLocaleBZ(SezimalLocale):
     }
 
     DCC_WEEK_COUNT = {
-        None: '&-w semanas',
-        SezimalInteger('1'): '&-w semana',
+        None: '&-wM semanas',
+        SezimalInteger('1'): '&-wM semana',
+    }
+
+    DCC_WEEK_IN_YEAR_COUNT = {
+        None: '&-wY semanas',
+        SezimalInteger('1'): '&-wY semana',
     }
 
     DCC_DAY_COUNT = {
@@ -543,7 +564,15 @@ class SezimalLocaleBZ(SezimalLocale):
         SezimalInteger('1'): '&-d dia',
     }
 
-    DCC_DATE_MONTH_DAY_SEPARATOR = ' i '
+    DCC_DAY_IN_YEAR_COUNT = {
+        None: '&-dY dias',
+        SezimalInteger('1'): '&-dY dia',
+    }
+
+    DCC_DAY_IN_WEEK_COUNT = {
+        None: '&-dW dias',
+        SezimalInteger('1'): '&-dW dia',
+    }
 
     ADC_MONTH_NAME = [
         'pexis',
@@ -574,17 +603,17 @@ class SezimalLocaleBZ(SezimalLocale):
     ]
 
     ADC_MONTH_SYMBOL = [
-        'P',
-        'B',
-        'R',
-        'U',
-        'I',
-        'L',
-        'V',
-        'S',
-        'Ag',
-        'Ak',
-        'L',
+        'p',
+        'b',
+        'r',
+        'u',
+        'i',
+        'le',
+        'v',
+        's',
+        'ag',
+        'ak',
+        'lb',
     ]
 
     ADC_WEEKDAY_NAME = [
@@ -605,4 +634,36 @@ class SezimalLocaleBZ(SezimalLocale):
         'júp',
         'sat',
         'lua',
+    ]
+
+    DCC_DATE_MONTH_DAY_SEPARATOR = ' i '
+    DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mez &-m, dia &-d'
+    DCC_DATE_LONG_FORMAT_ON_DATE_DAYS = '&󱹭>Y, dia &-dY'
+    DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, semana &-wY, dia &-dW'
+    DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mez &-m, semana &-wM, dia &-dW'
+
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mez &$DEM &cM, dia &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mez &$DEM &cM, semana &wM, dia &$DEW &cW'
+
+    _DE_DO_DA_MES = [
+        'di',  # pexis
+        'da',  # baleya
+        'du',  # riu
+        'du',  # unikòrnyu
+        'da',  # idra
+        'du',  # leawn
+        'di',  # virjen
+        'da',  # serpenti
+        'da',  # agya
+        'di',  # akwaryu
+        'di',  # libra
+    ]
+
+    _DE_DO_DA_SEMANA = [
+         'du',  # sòw
+         'di',  # venus
+         'di',  # marti
+         'di',  # júpiter
+         'di',  # saturnu
+         'da',  # lua
     ]

@@ -209,13 +209,28 @@ class SezimalLocaleES(SezimalLocale):
     }
 
     DCC_WEEK_COUNT = {
-        None: '&-w semanas',
-        SezimalInteger('1'): '&-w semana',
+        None: '&-wM semanas',
+        SezimalInteger('1'): '&-wM semana',
+    }
+
+    DCC_WEEK_IN_YEAR_COUNT = {
+        None: '&-wY semanas',
+        SezimalInteger('1'): '&-wY semana',
     }
 
     DCC_DAY_COUNT = {
         None: '&-d días',
         SezimalInteger('1'): '&-d día',
+    }
+
+    DCC_DAY_IN_YEAR_COUNT = {
+        None: '&-dY días',
+        SezimalInteger('1'): '&-dY día',
+    }
+
+    DCC_DAY_IN_WEEK_COUNT = {
+        None: '&-dW días',
+        SezimalInteger('1'): '&-dW día',
     }
 
     DCC_DATE_MONTH_DAY_SEPARATOR = ' y '

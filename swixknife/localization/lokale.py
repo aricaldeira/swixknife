@@ -1955,13 +1955,28 @@ class SezimalLocale:
     }
 
     DCC_WEEK_COUNT = {
-        None: '&-w weeks',
-        SezimalInteger('1'): '&-w week',
+        None: '&-wM weeks',
+        SezimalInteger('1'): '&-wM week',
+    }
+
+    DCC_WEEK_IN_YEAR_COUNT = {
+        None: '&-wY weeks',
+        SezimalInteger('1'): '&-wY week',
     }
 
     DCC_DAY_COUNT = {
         None: '&-d days',
         SezimalInteger('1'): '&-d day',
+    }
+
+    DCC_DAY_IN_YEAR_COUNT = {
+        None: '&-dY days',
+        SezimalInteger('1'): '&-dY day',
+    }
+
+    DCC_DAY_IN_WEEK_COUNT = {
+        None: '&-dW days',
+        SezimalInteger('1'): '&-dW day',
     }
 
     ADC_MONTH_NAME = [
@@ -2084,17 +2099,34 @@ class SezimalLocale:
 
         return self.ADC_WEEKDAY_SYMBOL[int(weekday.decimal)]
 
+    def dcc_day_ordinal_suffix(self, day: SezimalInteger, case: str = None) -> str:
+        return self.day_ordinal_suffix(day, case)
+
+    def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
+        return fmt
+
     DCC_DATE_SEPARATOR = '–'
     DCC_DATE_YEAR_MONTH_SEPARATOR = ', '
     DCC_DATE_MONTH_DAY_SEPARATOR = ' and '
-    DCC_DATE_FORMAT = '&>Y&DS&m&DS&d'
+    DCC_DATE_FORMAT = '&󱹭>Y&DS&m&DS&d'
     DCC_DATE_LONG_FORMAT = '&yC&DYMS&mC&DMDS&dC'
-    DCC_YEAR_FORMAT = '&>Y'
+    DCC_DATE_LONG_FORMAT_DAYS = '&yC&DMDS&dYC'
+    DCC_DATE_LONG_FORMAT_WEEKS = '&yC&DYMS&wYC&DMDS&dWC'
+    DCC_DATE_LONG_FORMAT_MONTHS_WEEKS = '&yC&DYMS&mC&DYMS&wC&DMDS&dWC'
+    DCC_YEAR_FORMAT = '&󱹭>Y'
     DCC_YEAR_TEXT_MONTH_FORMAT = '&yC&DYMS&mC'
     DCC_TEXT_SHORT_MONTH_DAY_FORMAT = '&@M&DS&d'
-    DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&>Y&DS&@M&DS&d'
+    DCC_DATE_TEXT_SHORT_MONTH_FORMAT = '&󱹭>Y&DS&@M&DS&d'
     DCC_TEXT_MONTH_DAY_FORMAT = '&m&DS&d'
 
-    ADC_DATE_FORMAT = '&>Y&DS&m&DS&d'
-    ADC_DATE_LONG_FORMAT = '&>Y &cM &-d'
-    ADC_YEAR_TEXT_MONTH_FORMAT = '&>Y &cM'
+    ADC_DATE_FORMAT = '&󱹭>Y&DS&m&DS&d'
+    ADC_DATE_LONG_FORMAT = '&󱹭>Y&DYMS&cM&DYMS&-d'
+    ADC_YEAR_TEXT_MONTH_FORMAT = '&󱹭>Y&DYMS&cM'
+
+    DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, month &-m, day &-d'
+    DCC_DATE_LONG_FORMAT_ON_DATE_DAYS = '&󱹭>Y, day &-dY'
+    DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, week &-wY, day &-dW'
+    DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, month &-m, week &-wM, day &-dW'
+
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, month of &cM, day &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week &wM, day of &cW'

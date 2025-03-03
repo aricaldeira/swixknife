@@ -311,8 +311,13 @@ class SezimalLocaleEO(SezimalLocale):
     }
 
     DCC_WEEK_COUNT = {
-        None: '&-w semajnoj',
-        SezimalInteger('1'): '&-w semajno',
+        None: '&-wM semajnoj',
+        SezimalInteger('1'): '&-wM semajno',
+    }
+
+    DCC_WEEK_IN_YEAR_COUNT = {
+        None: '&-wY semajnoj',
+        SezimalInteger('1'): '&-wY semajno',
     }
 
     DCC_DAY_COUNT = {
@@ -320,4 +325,94 @@ class SezimalLocaleEO(SezimalLocale):
         SezimalInteger('1'): '&-d tago',
     }
 
+    DCC_DAY_IN_YEAR_COUNT = {
+        None: '&-dY tagoj',
+        SezimalInteger('1'): '&-dY tago',
+    }
+
+    DCC_DAY_IN_WEEK_COUNT = {
+        None: '&-dW tagoj',
+        SezimalInteger('1'): '&-dW tago',
+    }
+
     DCC_DATE_MONTH_DAY_SEPARATOR = ' kaj '
+
+    ADC_MONTH_NAME = [
+        'Fiŝoj',
+        'Baleno',
+        'Rivero',
+        'Unukornulo',
+        'Hidro',
+        'Leono',
+        'Virgo',
+        'Serpento',
+        'Aglo',
+        'Amforo',
+        'Pesilo',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'Fiŝ',
+        'Bal',
+        'Riv',
+        'Unu',
+        'Hid',
+        'Leo',
+        'Vir',
+        'Ser',
+        'Agl',
+        'Amf',
+        'Pes',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'F',
+        'B',
+        'R',
+        'U',
+        'H',
+        'L',
+        'V',
+        'S',
+        'Ag',
+        'Am',
+        'P',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'Suno',
+        # 'Merkuro',
+        'Venuso',
+        'Marsu',
+        'Jupiteru',
+        'Saturno',
+        'Luno',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'Sun',
+        # 'Mer',
+        'Ven',
+        'Mar',
+        'Jup',
+        'Sat',
+        'Lun',
+    ]
+
+    ADC_WEEKDAY_SYMBOL = [
+        'S', # ☉
+        # 'M', # ☿
+        'V', # ♀
+        'M', # ♂
+        'J', # ♃
+        'S', # ♄
+        'L', # ○ ☉
+    ]
+
+    DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, monato &-m, tago &-d'
+    DCC_DATE_LONG_FORMAT_ON_DATE_DAYS = '&󱹭>Y, tago &-dY'
+    DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, semajno &-wY, tago &-dW'
+    DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, monato &-m, semajno &-wM, tago &-dW'
+
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, monato de &cM, tago &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, monato de &cM, semajno &wM, tago de &cW'
