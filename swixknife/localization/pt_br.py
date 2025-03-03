@@ -25,8 +25,8 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         #
         ('01-01', '🕊\ufe0f️ 🌎\ufe0f Confraternização Universal #sim'),
         ('05-01', '🐝\ufe0f🐜\ufe0f Dia do Trabalho #sim'),
-        ('15-02', '🪦\ufe0f🕊\ufe0f️  Finados #sim'),
-        ('20-40', '🥂\ufe0f🍽\ufe0f️  Véspera de Natal #sim'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️ Finados #sim'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️ Véspera de Natal #sim'),
         ('20-41', '🌟\ufe0f👼🏼\ufe0f Natal #sim'),
         ('20-55', '🍾\ufe0f🎆\ufe0f Véspera de Ano Novo #sim'),
 
@@ -43,7 +43,7 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         # and can be shown using #i as a format tag
         #
         ('212_144-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentes (#i) #sim'),                # sábado      212_144-04-32 ~ 1792-04-21_dec
-        ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolução de 1932 (212.540) (#i) #sim'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
+        ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolução de 1932 (212󱹭540) (#i) #sim'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
         ('212_234-13-10', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (#i) #sim'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
         ('213_100-14-22', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida (#i) #sim'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
         ('212_425-15-31', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (#i) #sim'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec
@@ -74,8 +74,8 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         #
         ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Confraternização Universal'),
         ('ISO+05-01', '🐝\ufe0f🐜\ufe0f Dia do Trabalho'),
-        ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️  Finados'),
-        ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️  Véspera de Natal'),
+        ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️ Finados'),
+        ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️ Véspera de Natal'),
         ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Natal'),
         ('ISO+12-31', '🍾\ufe0f🎆\ufe0f Véspera de Ano Novo'),
 
@@ -89,7 +89,7 @@ class SezimalLocalePT_BR(SezimalLocalePT):
         # using the tags %Y, %m and %d for year, month and day, respectively
         #
         ('ISO+1792-04-21', '🇧🇷\ufe0f🔺\ufe0f Tiradentes (%i)'),                     # sábado      212_144-04-32 ~ 1792-04-21_dec
-        ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolução de 1932 (1̈5̈0̄/540) (%i)'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
+        ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolução de 1932 (%i)'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
         ('ISO+1822-09-07', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (%i)'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
         ('ISO+1980-10-12', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida (%i)'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
         ('ISO+1889-11-15', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (%i)'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec

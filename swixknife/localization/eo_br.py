@@ -26,24 +26,23 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavalo'),
-        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavalo'),
-        ('EASTER-114', '🎉\ufe0f🎭\ufe0f Cindra Merkredo'),
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Pasio de la Kristo'),
-        ('EASTER',     '🐣\ufe0f🌱\ufe0f Pasko'),
-        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
+        # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Carnaval'),
+        ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavalo #sim'),
+        # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Quarta-feira de Cinzas'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Pasio de la Kristo #sim'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Pasko #sim'),
+        ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi #sim'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Universala Kunfrateco'),
-        ('05-01', '🐝\ufe0f🐜\ufe0f Labortago'),
-        ('14-20', '⛪\ufe0f👸🏾\ufe0f Nia Sinjorino el Aparesida'),
-        ('15-02', '🪦\ufe0f🕊\ufe0f️  Ĉiuj Animoj'),
-        ('20-40', '🥂\ufe0f🍽\ufe0f️  Kristnaska Antaŭvespero'),
-        ('20-41', '🌟\ufe0f👼🏼\ufe0f Kristnasko'),
-        ('20-55', '🍾\ufe0f🎆\ufe0f Novjara Antaŭvespero'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Universala Kunfrateco #sim'),
+        ('05-01', '🐝\ufe0f🐜\ufe0f Labortago #sim'),
+        ('15-02', '🪦\ufe0f🕊\ufe0f️ Ĉiuj Animoj #sim'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️ Kristnaska Antaŭvespero #sim'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Kristnasko #sim'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f Novjara Antaŭvespero #sim'),
 
         #
         # National Holidays
@@ -57,42 +56,42 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('130_332-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentes'),                 # Sabato   130_332-04-32 ~ 1792-04-21_dec
-        # ('131_124-11-10', '🪖\ufe0f📜\ufe0f Revolucio de 1932 (3̇1̇4̈)'),    # Sabato   131_124-11-10 ~ 1932-07-09_dec
-        # ('130_422-13-10', '🇧🇷\ufe0f🕊\ufe0f️  Sendependeco de Brazilo'),   # Sabato   130_422-13-10 ~ 1822-09-07_dec
-        # ('131_013-15-31', '🇧🇷\ufe0f📜\ufe0f Proklamo de la Respubliko'),  # Vendredo 131_013-15-31 ~ 1889-11-15_dec
-        # ('130_051-15-33', '👨🏾\ufe0f Nigra Konscienco'),             # Dimanĉo  130_051-15-33 ~ 1695-11-20_dec
+        ('212_144-04-32', '🇧🇷\ufe0f🔺\ufe0f Tiradentoj (#i) #sim'),                # sábado      212_144-04-32 ~ 1792-04-21_dec
+        ('212_540-11-10', '🪖\ufe0f📜\ufe0f Revolucio de 1932 (212󱹭540) (#i) #sim'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
+        ('212_234-13-10', '🇧🇷\ufe0f🕊\ufe0f️ Sendependeco de Brazilo (#i) #sim'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
+        ('213_100-14-22', '⛪\ufe0f👸🏾\ufe0f Nia Sinjorino el Aparesida (#i) #sim'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
+        ('212_425-15-31', '🇧🇷\ufe0f📜\ufe0f Proklamo de la Respubliko (#i) #sim'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec
+        ('211_503-15-33', '👨🏾\ufe0f Nigra Konscienco (#i) #sim'),           # domingo     211_503-15-33 ~ 1695-11-20_dec
 
-        ('130_332-04-33', '🇧🇷\ufe0f🔺\ufe0f Tiradentes'),                      # Dimanĉo, 04-33 ~ 04-21_dec
-        ('131_124-11-13', '🪖\ufe0f📜\ufe0f Revolucio de 1932 (3̇1̇4̈) (#i)'),    # Mardo,   11-13 ~ 07-09_dec
-        ('130_422-13-11', '🇧🇷\ufe0f🕊\ufe0f️  Sendependeco de Brazilo (#i)'),   # Dimanĉo, 13-11 ~ 09-07_dec
-        ('131_013-15-23', '🇧🇷\ufe0f📜\ufe0f Proklamo de la Respubliko (#i)'),  # Lundo,   15-23 ~ 11-15_dec
-        ('130_051-15-32', '👨🏾\ufe0f Nigra Konscienco'),                  # Sabato,  15-32 ~ 11-20_dec
+        #('212_144-04-33', '🇧🇷\ufe0f🔺\ufe0f Tiradentes #sim'),                     # domingo,       04-33 ~ 04-21_dec
+        #('212_540-11-13', '🪖\ufe0f📜\ufe0f Revolução de 1932 (212.540) (#i) #sim'),   # terça-feira,   11-13 ~ 07-09_dec
+        #('212_234-13-11', '🇧🇷\ufe0f🕊\ufe0f️ Independência do Brasil (#i) #sim'),   # domingo,       13-11 ~ 09-07_dec
+        #('213_100-14-20', '⛪\ufe0f👸🏾\ufe0f Nossa Senhora Aparecida #sim'),     # sexta-feira      14-20 ~ 10-12_dec
+        #('212_425-15-23', '🇧🇷\ufe0f📜\ufe0f Proclamação da República (#i) #sim'),  # segunda-feira, 15-23 ~ 11-15_dec
+        #('211_503-15-32', '👨🏾\ufe0f Consciência Negra #sim'),                # sábado,        15-32 ~ 11-20_dec
     ] + SezimalLocaleEO.HOLIDAYS
 
     HOLIDAYS_OTHER_CALENDAR = [
         #
         # Moving Holidays
-        # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('ISO+EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavalo (%d-%b)'),
-        ('ISO+EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavalo (%d-%b)'),
-        ('ISO+EASTER-114', '🎉\ufe0f🎭\ufe0f Cindra Merkredo (%d-%b)'),
-        ('ISO+EASTER-2',   '🕆\ufe0f🥀\ufe0f Pasio de la Kristo (%d-%b)'),
-        ('ISO+EASTER',     '🐣\ufe0f🌱\ufe0f Pasko (%d-%b)'),
-        ('ISO+EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi (%d-%b)'),
+        # ('ISO+EASTER-120', '🎉\ufe0f🎭\ufe0f Carnaval'),
+        ('ISO+EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavalo'),
+        # ('ISO+EASTER-114', '🎉\ufe0f🎭\ufe0f Quarta-feira de Cinzas'),
+        ('ISO+EASTER-2',   '🕆\ufe0f🥀\ufe0f Pasio de la Kristo'),
+        ('ISO+EASTER',     '🐣\ufe0f🌱\ufe0f Pasko'),
+        ('ISO+EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Universala Kunfrateco (%d-%b)'),
-        ('ISO+05-01', '🐝\ufe0f🐜\ufe0f Labortago (%d-%b)'),
-        ('ISO+10-12', '⛪\ufe0f👸🏾\ufe0f Nia Sinjorino el Aparesida (%d-%b)'),
-        ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️  Ĉiuj Animoj (%d-%b)'),
-        ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️  Kristnaska Antaŭvespero (%d-%b)'),
-        ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Kristnasko (%d-%b)'),
-        ('ISO+12-31', '🍾\ufe0f🎆\ufe0f Novjara Antaŭvespero (%d-%b)'),
+        ('ISO+01-01', '🕊\ufe0f️ 🌎\ufe0f Universala Kunfrateco'),
+        ('ISO+05-01', '🐝\ufe0f🐜\ufe0f Labortago'),
+        ('ISO+11-02', '🪦\ufe0f🕊\ufe0f️ Ĉiuj Animoj'),
+        ('ISO+12-24', '🥂\ufe0f🍽\ufe0f️ Kristnaska Antaŭvespero'),
+        ('ISO+12-25', '🌟\ufe0f👼🏼\ufe0f Kristnasko'),
+        ('ISO+12-31', '🍾\ufe0f🎆\ufe0f Novjara Antaŭvespero'),
 
         #
         # National Holidays
@@ -101,11 +100,12 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
         # When informing the year, the age is calculated,
         # and can be shown using %i as a format tag
         # Also, the original date in the original calendar can also be shown,
-        # using the tags %Y, %m and %-d for year, month and day, respectively
+        # using the tags %Y, %m and %d for year, month and day, respectively
         #
-        ('ISO+1792-04-21', '🇧🇷\ufe0f🔺\ufe0f Tiradentes (%d-%b)'),                      # Sabato   130_332-04-32 ~ 1792-04-21_dec
-        ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolucio de 1932 (3̇1̇4̈) (%d-%b - %i)'),    # Sabato   131_124-11-10 ~ 1932-07-09_dec
-        ('ISO+1822-09-07', '🇧🇷\ufe0f🕊\ufe0f️  Sendependeco de Brazilo (%d-%b - %i)'),   # Sabato   130_422-13-10 ~ 1822-09-07_dec
-        ('ISO+1889-11-15', '🇧🇷\ufe0f📜\ufe0f Proklamo de la Respubliko (%d-%b - %i)'),  # Vendredo 131_013-15-31 ~ 1889-11-15_dec
-        ('ISO+1695-11-20', '👨🏾\ufe0f Nigra Konscienco (%d-%b)'),                  # Dimanĉo 130_051-15-33 ~ 1695-11-20_dec
+        ('ISO+1792-04-21', '🇧🇷\ufe0f🔺\ufe0f Tiradentoj (%i)'),                     # sábado      212_144-04-32 ~ 1792-04-21_dec
+        ('ISO+1932-07-09', '🪖\ufe0f📜\ufe0f Revolucio de 1932 (%i)'),   # sábado      212_540-11-10 ~ 1932-07-09_dec
+        ('ISO+1822-09-07', '🇧🇷\ufe0f🕊\ufe0f️ Sendependeco de Brazilo (%i)'),   # sábado      212_234-13-10 ~ 1822-09-07_dec
+        ('ISO+1980-10-12', '⛪\ufe0f👸🏾\ufe0f Nia Sinjorino el Aparesida (%i)'),     # domingo      213_100-14-22 ~ 1980-10-12_dec
+        ('ISO+1889-11-15', '🇧🇷\ufe0f📜\ufe0f Proklamo de la Respubliko (%i)'),  # sexta-feira 212_425-15-31 ~ 1889-11-15_dec
+        ('ISO+1695-11-20', '👨🏾\ufe0f Nigra Konscienco (%i)'),                # domingo     211_503-15-33 ~ 1695-11-20_dec
     ] + SezimalLocaleEO.HOLIDAYS_OTHER_CALENDAR
