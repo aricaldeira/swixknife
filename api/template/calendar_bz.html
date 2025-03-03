@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="title">Kalendaryu Sezimaw</title>
-        <meta name="description" content="Kalendaryu Sezimaw" />
+        <title id="title">Kalendaryu Simétriku</title>
+        <meta name="description" content="Kalendaryu Simétriku" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
     </head>
@@ -15,10 +15,10 @@
 <p class="center">
     <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
 </p>
-<h1 class="center">Kalendaryu Sezimaw</h1>
-<p>U kalendaryu sezimaw è un kalendaryu solar perpètwu, ki teyn trimèstris simétrikus i igways, kada trimèstri kontendu 4 + 5 + 4 semanas, i ki komèsa todus us mezis na sigunda; È a versawn sezimaw du <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Kalendaryu Simetria 454</a>;</p>
+<h1 class="center">Kalendaryu Simétriku</h1>
+<p>U kalendaryu simétriku è un kalendaryu solar perpètwu, ki teyn trimèstris simétrikus i igways, kada trimèstri kontendu 4 + 5 + 4 semanas, i ki komèsa todus us mezis na sigunda; È a versawn sezimaw du <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Kalendaryu Simetria 454</a>;</p>
 <h2>U Kalendaryu</h2>
-<p class="center"><b>Oji</b> è u dia sezimaw <b>{{sezimal_today}}</b>, nu kalendaryu ISO, dia {{iso_today}}</p>
+<p class="center"><b>Oji</b> è dia <b>{{sezimal_today}}</b>, nu kalendaryu ISO, dia {{iso_today}}</p>
 <p class="center">{{sezimal_today_full}}</p>
 <p class="center">{{sezimal_today_full_text}}</p>
 <p class="center">{{sezimal_month}}</p>
@@ -26,7 +26,7 @@
 <p>U kalendaryu mostradu asima, desi anu, mòstra komu, pra kada mez, kada dia kay senpre nu mesmu dia da semana, intawn nuwn è presizu neyn adiviỹar neyn ter dúvida pra si saber kwaw è u dia da semana, kwaw è a semana nu mez, ja ki isu nunka muda di anu pra anu;</p>
 <p>Pra kada trimèstri, u dia 30 (treseys, desimaw 18) du mez sentraw du trimèstri, feverero, mayu, agostu o novenbru, marka u meyu du trimèstri;</p>
 <p>Toda data teyn sew númeru di òrden fiksu pra semana dentru du mez, a semana dentru du trimèstri, a semana dentru du anu, u dia dentru du mez i da semana, u dia dentru du trimèstri, u dia dentru du anu;</p>
-<p>Kada mez termina o nu dia 44 (kwatruseys i kwatru, desimaw 28), as 55󱹷55󱹷55, o nu dia 55 (kinseys i sinku, desimaw 35), tanbeyn as 55󱹷55󱹷55;</p>
+<p>Kada mez termina o nu dia 44 (kwatrusezikwatru, desimaw 28), as 55󱹷55󱹷55, o nu dia 55 (kinsezisinku, desimaw 35), tanbeyn as 55󱹷55󱹷55;</p>
 <p>U modelu asima tanbeyn mòstra us eventus astronômikus das mudansas das estasoyns i das fazis da lua pru Emisfèryu {{ 'Nòrti' if locale.DEFAULT_HEMISPHERE == 'N' else 'Suw' }}; U modelu tanbeyn teyn un degrade suavi nas koris fluindu di uma estasawn pra otra, {% if locale.DEFAULT_HEMISPHERE == 'N' %}
 <span style="background-color: #03a9f4;"> invèrnu </span>, <span style="background-color: #8bc34a;"> primavèra </span>, <span style="background-color: #ff5722;"> verawn </span>, <span style="background-color: #e91e63;"> otonu </span> i <span style="background-color: #03a9f4;"> invèrnu </span> di novu;
 {% else %}
@@ -35,16 +35,16 @@
 Isu foy feytu pela beleza das koris, i tanbeyn pra mostrar ki u kalendaryu demonstra nawn sò u siklu da rotasawn da Tèrra aw redòr du Sòw, mays tanbeyn u siklu da Lua aw redòr da Tèrra, mudandu máys o menus a kada semana, ja ki uma lunasawn è un poku máys du ki 44 dias, o 4 semanas: ~ 45󱹮310󱹭335 dias;
 </p>
 <h2>Époka</h2>
-<p>A <a href="https://pt.wikipedia.org/wiki/%C3%89poca_(cronologia)" target="_blank">époka</a> du kalendaryu sezimaw foy eskolyida pra akomodar u <a href="https://pt.wikipedia.org/wiki/Calend%C3%A1rio_Holoceno" target="_blank">Kalendaryu Olosenu</a>, mays ku ajusti sezimaw di ki, aw invèz di somar 114󱹭144 (nifi i dèys arda, nifi kwatruseys i kwatru, desimaw 10.000) aw númeru du anu atuaw nu kalendaryu ISO, o mesmu u sezimaw 100󱹭000 (nifi arda, desimaw 7776), si soma 200󱹭000 (dunifi arda, desimaw 15.552), asin kobrindu todu u periwdu di tenpu analizadu pur resentis deskobèrtas arkeolójikas sobri a Istòrya da Umanidadi, komu u sityu arkeolójiku di <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, dandu a esis pontus nu tenpu númerus di anu pozitivus: aprosimadamenti du anu 44󱹭000 (kwatruseys i kwatru arda, ISO -9504, 11,454 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>) atè u anu 55󱹭000 (kinseys i sinku arda, ISO -7993, 9943 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>);</p>
-<p>Èsa desizawn tanbeyn teyn u efeito di, prus númerus di anu da èra atuaw, fazer kun ki us númerus di anu sezimays teỹam sêys díjitus;</p>
-<p>Asin, a data sezimaw di 200󱹭001-01-01 è a data ISO 0001-01-01, a data sezimaw 000󱹭001-01-01 è a ISO −15,551-01-04, i a data sezimaw 000󱹭000-01-01 è a ISO −15,552-01-06, todas èlas kaindu numa sigunda;</p>
+<p>A <a href="https://pt.wikipedia.org/wiki/%C3%89poca_(cronologia)" target="_blank">époka</a> du kalendaryu simétriku foy eskolyida pra akomodar u <a href="https://pt.wikipedia.org/wiki/Calend%C3%A1rio_Holoceno" target="_blank">Kalendaryu Olosenu</a>, mays ku ajusti sezimaw di ki, aw invèz di somar 114󱹭144 (nifi sezikwatru arda, nifi kwatrusezikwatru, desimaw 10.000) aw númeru du anu atuaw nu kalendaryu ISO, o mesmu u sezimaw 100󱹭000 (nifi arda, desimaw 7776), si soma 200󱹭000 (dunifi arda, desimaw 15.552), asin kobrindu todu u periwdu di tenpu analizadu pur resentis deskobèrtas arkeolójikas sobri a Istòrya da Umanidadi, komu u sityu arkeolójiku di <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, dandu a esis pontus nu tenpu númerus di anu pozitivus: aprosimadamenti du anu 44󱹭000 (kwatrusezikwatru arda, ISO -9504, 11,454 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>) atè u anu 55󱹭000 (kinsezisinku arda, ISO -7993, 9943 <a href="https://pt.wikipedia.org/wiki/Antes_do_presente" target="_blank">AP</a>);</p>
+<p>Èsa desizawn faz kun ki us númerus di anu da èra atuaw teỹam sêys díjitus; pru intervalu di anus entri 213󱹭100 (dunifi sezitreys arda i nifi, ISO 1980) i 213󱹭555 (dunifi sezitreys arda, kinifi kinsezisinku, ISO 2159), 455 (kwatrunifi kinsezisinku, desimaw 179) anus aw todu, pòdisi eskrever sò us 3 úwtimus díjitus du anu;</p>
+<p>Asin, a data di 200󱹭001-01-01 è a data ISO 0001-01-01, a data 000󱹭001-01-01 è a ISO −15,551-01-04, i a data 000󱹭000-01-01 è a ISO −15,552-01-06, todas èlas kaindu numa sigunda;</p>
 <h2>Règra dus Anus Bisestus</h2>
-<p>U kalendaryu sezimaw è un kalendaryu di <i>semana interkalar</i>, u ki siginifika dizer ki, di akordu kwa règra dus anus bisestus (o iterkalaris, o di ajusti), uma semana konplèta è akresentada nu finaw du úwtimu mez du anu, pra manter u kalendaryu sinkronizadu ku siklu solar;</p>
-<p>Anus komuns, nawn bisestus, teyn 124 (nifi dozi i kwatru, desimaw 52) semanas, isu sawn 1404 (arda kwatrunifi i kwatru, desimaw 364) dias, i us anus bisestus adisionam uma semana nu mez di dezenbru, fazendu esis anus teren 125 (nifi dozi i sinku, desimaw 53) semanas, 1415 (arda kwatrunifi i onzi, desimaw 371) dias;</p>
+<p>U kalendaryu simétriku è un kalendaryu di <i>semana interkalar</i>, u ki siginifika dizer ki, di akordu kwa règra dus anus bisestus (o iterkalaris, o di ajusti), uma semana konplèta è akresentada nu finaw du úwtimu mez du anu, pra manter u kalendaryu sinkronizadu ku siklu solar;</p>
+<p>Anus komuns, nawn bisestus, teyn 124 (nifi dusezikwatru, desimaw 52) semanas, isu sawn 1404 (arda kwatrunifi i kwatru, desimaw 364) dias, i us anus bisestus adisionam uma semana nu mez di dezenbru, fazendu esis anus teren 125 (nifi dozi i sinku, desimaw 53) semanas, 1415 (arda kwatrunifi i onzi, desimaw 371) dias;</p>
 <p>Un anu è bisestu si a siginti espresawn for verdadera:</p>
 <p class="center"><span style="color: white;">|</span>(124 × (anu − 200󱹭000)) + 402<span style="color: white;">|</span> mód 1205 &lt; 124</p>
 <!-- <p class="center"><i><span style="color: white;">|</span>(52 × (anu − 15,552)) + 146<span style="color: white;">|</span> mód 293 &lt; 52</i></p> -->
-<p class="center"><i>u módulu (rèstu) du valor abisolutu di nifi dozi i kwatru muwtiplikadu pelu númeru du anu menus dunifi arda, máys kwatrunifi i doys, divididu pur arda dunifi i sinku, for menòr du ki nifi dozi i kwatru</i></p>
+<p class="center"><i>u módulu (rèstu) du valor abisolutu di nifi dusezikwatru muwtiplikadu pelu númeru du anu menus dunifi arda, máys kwatrunifi i doys, divididu pur arda dunifi i sinku, for menòr du ki nifi dusezikwatru</i></p>
 <p>Èsa règra kria 124 anus bisestus in kada siklu di 1205 anus, i esis 124 anus bisestus si distribuen in intervalus in grupus di o <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> = <span style="color: #44aa00; font-weight: bold;">25</span> anus o <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> = <span style="color: #ffcc00; font-weight: bold;">15</span> anus, ki pur sua vez si agrupam di fòrma simétrika in subisiklus di <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 113 anus o subisiklus di <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #ffcc00; font-weight: bold;">15</span> + <span style="color: #44aa00; font-weight: bold;">25</span> + <span style="color: #44aa00; font-weight: bold;">25</span> = 211 anus; esis subisiklus intawn si repèten nun padrawn di 113 + 211 + 113 + 211 + 113 = 1205 anus; u siklu konplètu di 1205 anus kun intervalus dus anus bisestus fika asin:</p>
 <p class="center">
                      <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span> + <span style="color: #ffcc00; font-weight: bold;">10 + 5</span> + <span style="color: #44aa00; font-weight: bold;">10 + 10 + 5</span><br/>

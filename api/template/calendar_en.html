@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="title">Sezimal Calendar</title>
-        <meta name="description" content="Sezimal Calendar" />
+        <title id="title">Symmetric Calendar</title>
+        <meta name="description" content="Sezimal Symmetric" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
     </head>
@@ -15,10 +15,10 @@
 <p class="center">
     <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
 </p>
-<h1 class="center">Sezimal Calendar</h1>
-<p>The sezimal calendar is a perpetual solar calendar that has symmetrical equal quarters, each having 4 + 5 + 4 weeks, and starts every month on Monday; It’s a sezimal version of the <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Symmetry 454 Calendar</a>;</p>
+<h1 class="center">Symmetric Calendar</h1>
+<p>The Symmetric Calendar is a perpetual solar calendar that has symmetrical equal quarters, each having 4 + 5 + 4 weeks, and starts every month on Monday; it’s the sezimal version of the <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Symmetry 454 Calendar</a>;</p>
 <h2>The Calendar</h2>
-<p class="center"><b>Today</b> is sezimal date <b>{{sezimal_today}}</b>, ISO date {{iso_today}}</p>
+<p class="center"><b>Today</b> is <b>{{sezimal_today}}</b>, ISO date {{iso_today}}</p>
 <p class="center">{{sezimal_today_full}}</p>
 <p class="center">{{sezimal_today_full_text}}</p>
 <p class="center">{{sezimal_month}}</p>
@@ -36,11 +36,11 @@
 This is for the beauty of it, and to show that the calendar tracks not only the cycle of Earth around the Sun, but also the cycle of the Moon around the Earth, changing roughly every week, since a Lunation is a little more than 44 days, or 4 weeks: ~ 45󱹮310󱹭335 days;
 </p>
 <h2>Epoch</h2>
-<p>The sezimal calendar’s <a href="https://en.wikipedia.org/wiki/Epoch" target="_blank">epoch</a> is chosen to fit the <a href="https://en.wikipedia.org/wiki/Holocene_calendar" target="_blank">Holocene Calendar</a>, but with the sezimal take that, instead of adding 114󱹭144 (nif and ten arda, nif forsy-four, decimal 10,000) to the current year number, or sezimal 100󱹭000 (nif arda, decimal 7776), we add 200󱹭000 (two nif arda, decimal 15,552), thus encompassing even the timespan covered by recent archaelogical discoveries on human history, like <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, giving then to those points in time a positive year number: from about sezimal year 44󱹭000 (foursy-four arda, ISO -9504, 11,454 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>) up to 55󱹭000 (fifsy-five arda, ISO -7993, 9943 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>);</p>
-<p>This choice also has the effect of the current era’s year number’s having always six digits;</p>
-<p>So, sezimal date 200󱹭001-01-01 is ISO date 0001-01-01, sezimal date 000󱹭001-01-01 is ISO −15,551-01-04, and sezimal date 000󱹭000-01-01 is ISO −15,552-01-06, all of them falling on a Monday;</p>
+<p>The Symmetric Calendar’s <a href="https://en.wikipedia.org/wiki/Epoch" target="_blank">epoch</a> is chosen to fit the <a href="https://en.wikipedia.org/wiki/Holocene_calendar" target="_blank">Holocene Calendar</a>, but with the sezimal take that, instead of adding 114󱹭144 (nif and ten arda, nif forsy-four, decimal 10,000) to the current year number, or sezimal 100󱹭000 (nif arda, decimal 7776), we add 200󱹭000 (two nif arda, decimal 15,552), thus encompassing even the timespan covered by recent archaelogical discoveries on human history, like <a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe" target="_blank">Göbekli Tepe</a>, giving then to those points in time a positive year number: from about sezimal year 44󱹭000 (foursy-four arda, ISO -9504, 11,454 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>) up to 55󱹭000 (fifsy-five arda, ISO -7993, 9943 <a href="https://en.wikipedia.org/wiki/Before_Present" target="_blank">BP</a>);</p>
+<p>This choice also has the effect of the current era’s year numbers having always six digits; for the year interval between years 213󱹭100 (two nif nine arda and nif, ISO 1980) and 213󱹭555 (two nif nine arda, five nif fifsy‐five, ISO 2159), 455 (four nif fifsy‐five, decimal 179) years in total, one can write only the last 3 digits of the year;</p>
+<p>So, date 200󱹭001-01-01 is ISO date 0001-01-01, date 000󱹭001-01-01 is ISO −15,551-01-04, and date 000󱹭000-01-01 is ISO −15,552-01-06, all of them falling on a Monday;</p>
 <h2>Leap Year Rule</h2>
-<p>The sezimal calendar is a <i>leap week</i> calendar, meaning according to it’s leap year rule, an entire week is added to the last month of the year, to keep it synchronised with the astronomical solar cycle;</p>
+<p>The Symmetric Calendar is a <i>leap week</i> calendar, meaning according to it’s leap year rule, an entire week is added to the last month of the year, to keep it synchronised with the astronomical solar cycle;</p>
 <p>Common non-leap years have 124 (nif dozen-four, decimal 52) weeks, that is 1404 (arda four nif and four, decimal 364) days, and leap years add an extra week to December, making those years 125 (nif dozen-five, decimal 53) weeks, 1415 (arda four nif and eleven, decimal 371) days long;</p>
 <p>A year is leap if the following expression is true:</p>
 <p class="center"><span style="color: white;">|</span>(124 × (year − 200󱹭000)) + 402<span style="color: white;">|</span> mod 1205 &lt; 124</p>

@@ -3,27 +3,49 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="title">Calendário Simétrico</title>
-        <meta name="description" content="Calendário Simétrico" />
+        <title id="title">Day Count Calendar</title>
+        <meta name="description" content="Day Count Calendar" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
     </head>
     <body>
 <p class="center">
-{% include 'menu_pt.html' %} <a href="/bz/xastadari/kalendaryu">Brazileru</a> <span style="color: white;">|</span> <a href="/en/shastadari/calendar">English</a>
+{% include 'menu_en.html' %} <a href="/bz/xastadari/kalendaryu-kwantus-dias">Brazileru</a> <span style="color: white;"> | </span> <a href="/pt/xastadári/calendário-quantos-dias">Português</a>
 </p>
 <p class="center">
     <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
 </p>
-<h1 class="center">Calendário Simétrico</h1>
-<p>O calendário simétrico é um calendário solar perpétuo, que tem trimestres simétricos e iguais, cada trimestre contendo 4 + 5 + 4 semanas, e que começa todos os meses na segunda‐feira; É a versão sezimal do <a href="http://individual.utoronto.ca/kalendis/symmetry.htm" target="_blank">Calendário Simetria 454</a>;</p>
-<h2>O Calendário</h2>
-<p class="center"><b>Hoje</b> é dia <b>{{sezimal_today}}</b>, no calendário ISO, dia {{iso_today}}</p>
-<p class="center">{{sezimal_today_full}}</p>
-<p class="center">{{sezimal_today_full_text}}</p>
+<h1 class="center">Day Count Calendar</h1>
+<p>O calendário quantos‐dias é um calendário “monossexto” que usa somente duas unidades, anos e dias;</p>
+<p>O calendário conta quantos anos se passaram desde a sua <a href="https://pt.wikipedia.org/wiki/%C3%89poca_(cronologia)" target="_blank">época</a>, e quantos dias se passaram dentro de cada ano;</p>
+<p>Como um relógio, que marca o tempo passado num dia, a contagem dos anos, e dos dias num ano, também se iniciam com zero;</p>
+<p>Cada ano pode ter 1410 (arda quatro nife e seis, decimal 366) dias ou 1400 (arda quatro nife, decimal 360) dias; a alternância entre as duas durações possíveis dos anos é explicada mais abaixo na Regra dos Anos Monossextos;</p>
+<p>Como a contagem dos dias no ano começa no zero, ela vai de 0000–1405 (1410 dias) ou 0000–1355 (1400 dias);</p>
+<p>Anos com 1410 dias são chamados de longos ou regulares, e os com 1400 dias curtos ou monossextos;</p>
+<p>Os anos começam no dia do {{ locale.SEASON_NAME['autumn_equinox'] if locale.DEFAULT_HEMISPHERE == 'S' else locale.SEASON_NAME['spring_equinox'] }} Equinox, ou a data do Equinócio acontece dentro dos primeiros seis dias do ano, entre 0000 e 0005 (considerando o horário do Equinócio no fuso horário UTC);</p>
+<p> </p>
+<p>Como as datas representam a quantidade de anos e dias passados, elas são sempre escritas:</p>
+<p class="center">YEARS PASSED‐DAYS PASSED</p>
+<p>Sempre usando base seis, usando anos passados com seis dígitos, e dias passados no ano com quatro dígitos, escrevendo sempre os zeros à esquerda:</p>
+<p class="center">YYYYYY‐DDDD ou YYYYYYDDDD = {{ now.format('&y&DS&m&d', locale) }} ou {{ now.format('&y&m&d', locale) }}</p>
+<p>É permitido usar um separador de grupo na numeração dos anos, e, em textos técnicos, esse separador sempre deve ser o underline (U+0095) _ :</p>
+<p class="center">YYY_YYY‐DDDD = {{ now.format('&_Y&DS&m&d', locale) }}</p>
+<p>A separação do ano em meses pode ser feita simplesmente se colocando um – hífen separando a contagem dos dias dessa forma:</p>
+<p class="center">YYY_YYY‐DD‐DD = AAA_AAA‐MM‐DD = {{ now.format('&_Y&DS&m&DS&d', locale) }}</p>
+<p>Os primeiros dois dígitos da contagem dos dias representa o mês; isso significa que:
+    <ul>
+        <li>anos longos podem ter a contagem dos meses de 00–14, já que a contagem dos dias vai de 0000–1405;</li>
+        <li>anos curtos podem ter a contagem dos meses de 00–13, já que a contagem dos dias vai de 0000–1355;</li>
+    </ul>
+</p>
+<p>Isso também significa que todos os meses têm a contagem de dias de 00–55, com exceção da semana “monossexta” ou último mês nos anos longos;</p>
+<h2>The Calendar</h2>
+<p class="center"><b>Today</b>’s date is <b>{{ now.format(locale.DCC_DATE_FORMAT.replace('>', ''), locale) }}</b>, day {{iso_today}} on the ISO calendar</p>
+<p>Essa data pode ser lida ou escrita por extenso como a contagem das unidades: 213󱹭{{ now.format(locale.DCC_DATE_LONG_FORMAT_DAYS.replace('>', ''), locale) }}; <b>213󱹭{{ now.format(locale.DCC_DATE_LONG_FORMAT.replace('>', ''), locale) }}</b>; 213󱹭{{ now.format(locale.DCC_DATE_LONG_FORMAT_WEEKS.replace('>', ''), locale) }}; 213󱹭{{ now.format(locale.DCC_DATE_LONG_FORMAT_MONTHS_WEEKS.replace('>', ''), locale) }};</p>
+<p>Ou como um ponto no tempo: on the year {{ now.format(locale.DCC_DATE_LONG_FORMAT_ON_DATE_DAYS.replace('>', ''), locale) }}; on the year  <b>{{ now.format(locale.DCC_DATE_LONG_FORMAT_ON_DATE.replace('>', ''), locale) }};</b> on the year {{ now.format(locale.DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS.replace('>', ''), locale) }}; on the year {{ now.format(locale.DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS.replace('>', ''), locale) }}; e usando nomes astronômicos de meses e dias da semana: on the year <b>{{ now.format(locale.ADC_DATE_LONG_FORMAT_ON_DATE.replace('>', ''), locale) }}</b>; on the year {{ now.format(locale.ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY.replace('>', ''), locale) }};</p>
 <p class="center">{{sezimal_month}}</p>
 {% include 'calendar_view_yearly.html' %}
-<p>O calendário mostrado acima, deste ano, mostra como, para cada mês, cada dia cai sempre no mesmo dia da semana, então não é preciso nem adivinhar nem ter dúvida para se saber qual é o dia da semana, qual é a semana no mês, já que isso nunca muda de ano a ano;</p>
+<p>O calendário mostrado acima, deste ano, mostra como o {{ locale.SEASON_NAME['autumn_equinox'] if locale.DEFAULT_HEMISPHERE == 'S' else locale.SEASON_NAME['spring_equinox'] }} Equinox cai na primeira semana do ano, cada dia cai sempre no mesmo dia da semana, então não é preciso nem adivinhar nem ter dúvida para se saber qual é o dia da semana, qual é a semana no mês, já que isso nunca muda de ano a ano;</p>
 <p>Para cada trimestre, o dia 30 (tresseis, decimal 18) do mês central do trimestre, fevereiro, maio, agosto ou novembro, marca o meio do trimestre;</p>
 <p>Toda data tem seu número de ordem fixo para a semana dentro do mês, a semana dentro do trimestre, a semana dentro do ano, o dia dentro do mês e da semana, o dia dentro do trimestre, o dia dentro do ano;</p>
 <p>Cada mês termina ou no dia 44 (quatrosseis e quatro, decimal 28), às 55󱹷55󱹷55, ou no dia 55 (quinseis e cinco, decimal 35), também às 55󱹷55󱹷55;</p>
