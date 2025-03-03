@@ -7,7 +7,7 @@
         {% endif %}
             <option value="America/Sao_Paulo">Hora Oficial de Brasília</option>
             <option value="Natural/NT4-03"  >NT4-03 (UTC-07:00)</option>
-            <option value="Natural/NT6-03"  >NT6-03 (UTC-09:00)</option>
+<!--            <option value="Natural/NT6-03"  >NT6-03 (UTC-09:00)</option>-->
         </optgroup>
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
             <optgroup name="brazil" label="Braziw - Otrus fuzus">
@@ -31,6 +31,41 @@
             <option value="America/Araguaina">Tocantins</option>
         </optgroup>
     {% endif %}
+    {% if locale.LANGUAGE_TAG in ('en-CA', 'fr-CA') %}
+    <optgroup name="canada" label="Canada">
+        <option value="America/Edmonton">Edmonton</option>
+        <option value="America/Halifax">Halifax</option>
+        <option value="America/St_Johns">St. Johns</option>
+        <option value="America/Toronto">Toronto</option>
+        <option value="America/Vancouver">Vancouver</option>
+        <option value="America/Winnipeg">Winnipeg</option>
+<!--        <option value="Canada/Atlantic">Atlantic</option>
+        <option value="Canada/Central">Central</option>
+        <option value="Canada/Eastern">Eastern</option>
+        <option value="Canada/Mountain">Mountain</option>
+        <option value="Canada/Newfoundland">Newfoundland</option>
+        <option value="Canada/Pacific">Pacific</option>
+        <option value="Canada/Saskatchewan">Saskatchewan</option>
+        <option value="Canada/Yukon">Yukon</option>-->
+    </optgroup>
+    {% endif %}
+    {% if locale.LANGUAGE_TAG == 'en-US' %}
+    <optgroup name="usa" label="USA">
+        <option value="America/Anchorage">Anchorage</option>
+        <option value="America/Chicago">Chicago</option>
+        <option value="America/Denver">Denver</option>
+        <option value="Pacific/Honolulu">Honolulu</option>
+        <option value="America/Los_Angeles">Los Angeles</option>
+        <option value="America/New_York">New York</option>
+<!--        <option value="US/Alaska">AKST - Alaska</option>
+        <option value="US/Central">CST - Central</option>
+        <option value="US/Eastern">EST - Eastern</option>
+        <option value="US/Hawaii">HST - Hawaiʻi</option>
+        <option value="US/Mountain">MST - Mountain</option>
+        <option value="US/Pacific">PST - Pacific</option>-->
+    </optgroup>
+    {% endif %}
+
     <optgroup name="universal" label="Universal">
         <option value="SPM">SPM - Schleißheim Prime Meridian</option>
         <option value="UTC">UTC - Greenwich Prime Meridian</option>
@@ -426,6 +461,7 @@
     <option value="Brazil/East">Brazil/East</option>
     <option value="Brazil/West">Brazil/West</option>-->
 <!--     <option value="CST6CDT">CST6CDT</option> -->
+    {% if locale.LANGUAGE_TAG not in ('en-CA', 'fr-CA') %}
     <optgroup name="canada" label="Canada">
         <option value="Canada/Atlantic">Atlantic</option>
         <option value="Canada/Central">Central</option>
@@ -436,6 +472,7 @@
         <option value="Canada/Saskatchewan">Saskatchewan</option>
         <option value="Canada/Yukon">Yukon</option>
     </optgroup>
+    {% endif %}
 <!--     <option value="Chile/Continental">Chile/Continental</option> -->
 <!--     <option value="Chile/EasterIsland">Chile/EasterIsland</option> -->
 <!--     <option value="Cuba">Cuba</option> -->

@@ -2146,3 +2146,71 @@ def sezimal_day_count_calendar_bz_route() -> Response:
         'calendar_bz.html',
         **context,
     )
+
+
+def _create_store_events():
+    for item in (
+        'pt-BR|America/Sao_Paulo',
+        'bz|America/Sao_Paulo',
+        'eo-BR|America/Sao_Paulo',
+        'en-BR|America/Sao_Paulo',
+
+        'pt-BR|Natural/NT4-03',
+        'bz|Natural/NT4-03',
+        'eo-BR|Natural/NT4-03',
+        'en-BR|Natural/NT4-03',
+
+        # 'en-US|America/Anchorage',
+        'en-US|America/Chicago',
+        'en-US|America/Denver',
+        'en-US|Pacific/Honolulu',
+        'en-US|America/Los_Angeles',
+        'en-US|America/New_York',
+
+        'en-AU|Australia/Adelaide',
+        'en-AU|Australia/Sydney',
+        'en-AU|Australia/Brisbane',
+
+        'en-CA|America/Toronto',
+
+        'en-GB|Europe/London',
+
+        'en-IN|Asia/Calcutta',
+
+        'en-MY|Asia/Kuala_Lumpur',
+
+        'fr-CA|America/Montreal',
+        'fr-FR|Europe/Paris',
+
+        'pt-PT|Europe/Lisbon',
+        'it-IT|Europe/Rome',
+        'de-DE|Europe/Berlin',
+        'es-MX|America/Mexico_City',
+    ):
+        loc, tz = item.split('|')
+        locale = sezimal_locale(loc)
+
+        for base in (10, 14, 20):
+            for calendar in ('SYM', 'ISO', 'DCC'):
+                for year in SezimalRange(213_100, 213_300):
+                    locale.base = base
+                    locale.DEFAULT_TIME_ZONE = tz
+                    locale.calendar_displayed = calendar
+
+                    if base == 10:
+                        locale.format_token = ''
+                    elif base == 14:
+                        locale.format_token = '9'
+                    elif base == 20:
+                        locale.format_token = '↋'
+
+                    if calendar == 'DCC':
+                        format_token += 'c'
+
+                    context = {
+                        'base': locale.base,
+                        'format_token': locale.format_token,
+                    }
+
+                    print('vai fazer', item, base, calendar, locale.format_token)
+                    _calendar_events(locale, year, context)
