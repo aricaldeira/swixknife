@@ -1,7 +1,34 @@
 <select id="calculator-sezimal-locale" style="text-align: {{ 'right' if locale.RTL else 'left' }};{% if mobile %} width: 100%;{% endif %} direction:ltr;">
+    {% if '-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz' %}
+        {% if locale.LANG == 'bz' %}
+            <optgroup name="brazil" label="Braziw">
+        {% elif locale.LANG == 'en' %}
+            <optgroup name="brazil" label="Brazil">
+        {% elif locale.LANG == 'eo' %}
+            <optgroup name="brazil" label="Brazilo">
+        {% else %}
+            <optgroup name="brazil" label="Brasil">
+        {% endif %}
+            <option value="bz">Brazileru (bz)</option>
+            <option value="en_br">English - Brazil (en_BR)</option>
+            <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+            <option value="pt_br">Português - Brasil (pt_BR)</option>
+        </optgroup>
+        {% if locale.LANG == 'bz' %}
+            <optgroup name="world" label="Otrus lokalis">
+        {% elif locale.LANG == 'en' %}
+            <optgroup name="world" label="Other locales">
+        {% elif locale.LANG == 'eo' %}
+            <optgroup name="world" label="Aliaj lokaloj">
+        {% else %}
+            <optgroup name="world" label="Outros locales">
+        {% endif %}
+    {% endif %}
     <option value="gn">Avañeꞌẽ (gn)</option>
     <option value="bn_latn">Bangla (bn_Latn)</option>
-    <option value="bz">Brazileru (bz)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        <option value="bz">Brazileru (bz)</option>
+    {% endif %}
     <option value="ca">Català (ca_ES)</option>
 <!--     <option value="code">Code (English 123_450.054_321)</option> -->
     <option value="cy">Cymraeg (cy_GB)</option>
@@ -15,7 +42,9 @@
     <option value="et">Eesti (et_EE)</option>
     <option value="ar_latn">El-għàràbí (ar_Latn)</option>
     <option value="en_au">English - Australia (en_AU)</option>
-    <option value="en_br">English - Brazil (en_BR)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        <option value="en_br">English - Brazil (en_BR)</option>
+    {% endif %}
     <option value="en_ca">English - Canada (en_CA)</option>
     <option value="en_gb">English - GB (en_GB)</option>
     <option value="en_gb-metric">English - GB - °C, km, km/h (en_GB)</option>
@@ -35,7 +64,9 @@
     <option value="es_py">Español - Paraguay (es_PY)</option>
     <option value="es_pe">Español - Perú (es_PE)</option>
     <option value="es_uy">Español - Uruguay (es_UY)</option>
-    <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+    {% endif %}
     <option value="eo">Esperanto (eo)</option>
     <option value="fa_latn">Fârsi (fa_Latn)</option>
     <option value="fr_be">Français - Belgique (fr_BE)</option>
@@ -69,7 +100,9 @@
     <option value="nn">Norsk nynorsk (nn_NO)</option>
     <option value="pl">Polski (pl)</option>
     <option value="pt_ao">Português - Angola (pt_AO)</option>
-    <option value="pt_br">Português - Brasil (pt_BR)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        <option value="pt_br">Português - Brasil (pt_BR)</option>
+    {% endif %}
     <option value="pt_cv">Português - Cabo-Verde (pt_CV)</option>
     <option value="pt_gq">Português - Guiné Equatorial (pt_GQ)</option>
     <option value="pt_gw">Português - Guiné‐Bissau (pt_GW)</option>
@@ -115,4 +148,8 @@
     <option value="zh_tw">中文 - 臺灣 (zh_TW)</option>
     <option value="zh_hk">中文 - 香港 (zh_HK)</option>
     <option value="ja">日本語 (ja)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        </optgroup>
+    {% endif %}
+
 </select>

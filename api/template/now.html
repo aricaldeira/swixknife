@@ -78,6 +78,12 @@ html, body {
     width: 100%;
     margin: auto;
 }
+{% if locale.LANGUAGE_TAG == 'en-Shaw' %}
+:root {
+    font-family: 'Inter Alia', 'Noto Sans Shavian', 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
+    --font-family-sans-serif: 'Inter Alia', 'Noto Sans Shavian', 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif;
+}
+{% endif %}
 </style>
     </head>
     <body>

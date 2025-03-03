@@ -1,11 +1,19 @@
 <select id="time_zone_select" style="text-align: left; direction:ltr;">
     {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR') %}
-        <optgroup name="brazil_sp" label="Brasil - Brasília (Sul, Sudeste, Goiás e DF)">
+        {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
+            <optgroup name="brazil_sp" label="Braziw - Brazilya (Suw, Sudèsti, Goyás i DF)">
+        {% else %}
+            <optgroup name="brazil_sp" label="Brasil - Brasília (Sul, Sudeste, Goiás e DF)">
+        {% endif %}
             <option value="America/Sao_Paulo">Hora Oficial de Brasília</option>
             <option value="Natural/NT4-03"  >NT4-03 (UTC-07:00)</option>
             <option value="Natural/NT6-03"  >NT6-03 (UTC-09:00)</option>
         </optgroup>
-        <optgroup name="brazil" label="Brasil - Demais fusos">
+        {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
+            <optgroup name="brazil" label="Braziw - Otrus fuzus">
+        {% else %}
+            <optgroup name="brazil" label="Brasil - Outros fusos">
+        {% endif %}
             <option value="America/Maceio">Alagoas, Sergipe</option>
             <option value="America/Bahia">Bahia</option>
             <option value="America/Fortaleza">Ceará, Maranhão, Paraíba, Piauí, Rio Grande do Norte</option>

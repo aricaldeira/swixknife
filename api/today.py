@@ -448,25 +448,52 @@ def api_calendar_process():
     tds = []
 
     if locale.calendar_displayed == 'SYM':
-        context['events_last_year'] = _calendar_events(locale, date.year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.year, context) or {}
-        context['events_next_year'] = _calendar_events(locale, date.year + 1, context) or {}
+
+        if dados['view'] == 'quarterly':
+            if date.month == 1:
+                context['events_last_year'] = _calendar_events(locale, date.year - 1, context) or {}
+            else:
+                context['events_last_year'] = context['events']
+
+            if date.month == 20:
+                context['events_next_year'] = _calendar_events(locale, date.year + 1, context) or {}
+            else:
+                context['events_next_year'] = context['events']
 
         # for i in SezimalRange(213_000, 214_000):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
 
     elif locale.calendar_displayed == 'ISO':
-        context['events_last_year'] = _calendar_events(locale, date.gregorian_year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
-        context['events_next_year'] = _calendar_events(locale, date.gregorian_year + 1, context) or {}
+
+        if dados['view'] == 'quarterly':
+            if date.gregorian_month == 1:
+                context['events_last_year'] = _calendar_events(locale, date.gregorian_year - 1, context) or {}
+            else:
+                context['events_last_year'] = context['events']
+
+            if date.gregorian_month == 20:
+                context['events_next_year'] = _calendar_events(locale, date.gregorian_year + 1, context) or {}
+            else:
+                context['events_next_year'] = context['events']
 
         # for i in range(1944, 2161):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, Decimal(i), context)))
 
     elif locale.calendar_displayed == 'DCC':
-        context['events_last_year'] = _calendar_events(locale, date.dcc_year - 1, context) or {}
         context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
-        context['events_next_year'] = _calendar_events(locale, date.dcc_year + 1, context) or {}
+
+        if dados['view'] == 'quarterly':
+            if date.dcc_month == 0:
+                context['events_last_year'] = _calendar_events(locale, date.dcc_year - 1, context) or {}
+            else:
+                context['events_last_year'] = context['events']
+
+            if date.dcc_month == 14 or (date.dcc_month == 13 and date.dcc_is_short_year):
+                context['events_next_year'] = _calendar_events(locale, date.dcc_year + 1, context) or {}
+            else:
+                context['events_next_year'] = context['events']
 
         # for i in SezimalRange(213_000, 214_000):
         #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
@@ -935,7 +962,9 @@ def sezimal_calendar_en_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'en':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('en-gb')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
@@ -969,7 +998,9 @@ def sezimal_calendar_pt_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'pt':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('pt-br')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
@@ -1001,8 +1032,11 @@ def sezimal_calendar_pt_route() -> Response:
 @app.route('/bz/xastadari/kalendaryu')
 def sezimal_calendar_bz_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
+
     if locale.LANG != 'bz':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('bz-br')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'SYM'
     locale.use_first_weekday = False
@@ -1962,7 +1996,9 @@ def sezimal_day_count_calendar_en_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'en':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('en-gb')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'DCC'
     locale.use_first_weekday = False
@@ -1995,7 +2031,9 @@ def sezimal_day_count_calendar_pt_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'pt':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('pt-br')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'DCC'
     locale.use_first_weekday = False
@@ -2028,7 +2066,9 @@ def sezimal_day_count_calendar_bz_route() -> Response:
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'bz':
+        hemisphere = locale.DEFAULT_HEMISPHERE
         locale = sezimal_locale('bz-br')
+        locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'DCC'
     locale.use_first_weekday = False
