@@ -1,11 +1,17 @@
 
+import re
+
 from decimal import Decimal
 
 from ..sezimal import Sezimal, SezimalInteger
+from ..localization import SezimalLocale
 from .dcc_functions import \
     ordinal_date_to_year_month_day, \
     year_month_day_to_ordinal_date, \
     is_leap, is_long_year, is_short_year
+from .format_tokens import DCC_DATE_NUMBER_FORMAT_TOKENS, \
+    DCC_YEAR_NUMBER_FORMAT_TOKENS, \
+    DCC_DATE_TEXT_FORMAT_TOKEN
 
 
 from . import date
@@ -362,3 +368,184 @@ def dcc_next(self,
     return res
 
 date.SezimalDate.dcc_next = dcc_next
+
+
+def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
+    for token, value, count in (
+        ('dY', 'dcc_day_in_year', 'DCC_DAY_IN_YEAR_COUNT'),
+        ('dW', 'dcc_weekday', 'DCC_DAY_IN_WEEK_COUNT'),
+        ('wY', 'dcc_week_in_year', 'DCC_WEEK_IN_YEAR_COUNT'),
+        ('y', 'dcc_year', 'DCC_YEAR_COUNT'),
+        ('t', 'dcc_term', 'DCC_TERM_COUNT'),
+        ('m', 'dcc_month', 'DCC_MONTH_COUNT'),
+        ('w', 'dcc_week', 'DCC_WEEK_COUNT'),
+        ('d', 'dcc_day', 'DCC_DAY_COUNT'),
+    ):
+        value = getattr(self, value)
+        count = getattr(locale, count)
+
+        for fmttk in ('', '!', '@', '!@', '9', '↋', 'c', 'c!', 'c9', 'c↋'):
+            tk = f'&{fmttk}{token}C'
+
+            if tk in fmt:
+                if value in count:
+                    tkfmt = count[value]
+                else:
+                    tkfmt = count[None]
+
+                tkfmt = tkfmt.replace('&', '&' + fmttk)
+
+                fmt = fmt.replace(tk, tkfmt)
+
+    #
+    # Let’s deal first with the numeric formats
+    #
+    for regex, token, base, zero, character, value_name, \
+        size, size_niftimal, size_decimal in DCC_DATE_NUMBER_FORMAT_TOKENS:
+        if not regex.findall(fmt):
+            continue
+
+        if base in ['@', '@!', 'Z']:
+            value = self._apply_number_format(token, value_name, size_niftimal, locale)
+        elif base in ['9', '9?', '↋', '↋?', 'c9', 'c↋']:
+            value = self._apply_number_format(token, value_name, size_decimal, locale)
+        else:
+            value = self._apply_number_format(token, value_name, size, locale)
+
+        if locale and locale.RTL:
+            value = '\N{LRI}' + value + '\N{PDI}'
+
+        fmt = regex.sub(value, fmt)
+
+    #
+    # Formatted year number
+    #
+    for regex, token, base, separator, character, value_name in DCC_YEAR_NUMBER_FORMAT_TOKENS:
+        if not regex.findall(fmt):
+            continue
+
+        year = getattr(self, value_name, 0)
+
+        if 'X' in character and not separator:
+            separator = '\U000f1e6d'  # Arda separator
+
+        if base in ['', '!', '?', 'c', 'c!']:
+            if '>' in character:
+                if value_name in ('year', 'dcc_year') \
+                    and year >= '213100' and year < '214000':
+                    year -= 213_000
+                elif value_name == 'gregorian_year' \
+                    and year >= '13100' and year <= '14000':
+                    year -= 13_000
+
+            year = locale.format_number(
+                year,
+                sezimal_digits='!' in base,
+                use_group_separator=True,
+                sezimal_places=0,
+            )
+
+        elif base in ['@', '@!', 'Z', 'Z?']:
+            year = locale.format_niftimal_number(
+                year,
+                sezimal_digits='!' in base,
+                regularized_digits='@' in base,
+                use_group_separator=True,
+                niftimal_places=0,
+            )
+
+        elif base in ['9', '9?', 'c9']:
+            year = locale.format_decimal_number(
+                year - 200_000,
+                use_group_separator=True,
+                decimal_places=0,
+            )
+
+        elif base in ['↋', '↋?', 'c↋']:
+            year = locale.format_dozenal_number(
+                year - 200_000,
+                use_group_separator=True,
+                dozenal_places=0,
+            )
+
+        if '?' in base:
+            year = locale.digit_replace(year)
+
+        if separator:
+            if separator[0] == '\\' and len(separator) >= 2:
+                separator = separator[1:]
+
+            if separator != locale.GROUP_SEPARATOR:
+                year = year.replace(locale.GROUP_SEPARATOR, separator)
+
+        if locale and locale.RTL:
+            year = '\N{LRI}' + year + '\N{PDI}'
+
+        fmt = regex.sub(year, fmt)
+
+    #
+    # And now, the text formats
+    #
+    for base, size, case, term_month_week in DCC_DATE_TEXT_FORMAT_TOKEN.findall(fmt):
+        regex = re.compile(fr'&{base}{size}{case}{term_month_week}')
+
+        if 'c' in base:
+            if term_month_week == 'T':
+                if size == '@':
+                    text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.dcc_term_name(self.dcc_month)
+            elif term_month_week == 'M':
+                if size == '@':
+                    text = locale.adc_month_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.adc_month_name(self.dcc_month)
+            else:
+                if size:
+                    text = locale.adc_weekday_abbreviated_name(self.dcc_weekday)
+                else:
+                    text = locale.adc_weekday_name(self.dcc_weekday)
+        else:
+            if term_month_week == 'T':
+                if size == '@':
+                    text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.dcc_term_name(self.dcc_month)
+            elif term_month_week == 'M':
+                if size == '@':
+                    text = locale.dcc_month_abbreviated_name(self.dcc_month)
+                else:
+                    text = locale.dcc_month_name(self.dcc_month)
+            else:
+                if size:
+                    text = locale.dcc_weekday_abbreviated_name(self.dcc_weekday)
+                else:
+                    text = locale.dcc_weekday_name(self.dcc_weekday)
+
+        if size == '1':
+            text = locale.dcc_weekday_symbol(self.dcc_weekday)
+        elif size == '2':
+            text = locale.slice(text, 0, 2)
+        elif size == '3':
+            text = locale.slice(text, 0, 3)
+
+        if case == '!':
+            text = locale.upper(text) if locale else text.upper()
+        elif case == '?':
+            text = locale.lower(text) if locale else text.lower()
+        elif case == '>':
+            if locale:
+                text = locale.upper(text[0]) + locale.lower(text[1:])
+            else:
+                text = text[0].upper() + text[1:].lower()
+
+        fmt = regex.sub(text, fmt)
+
+    if '&O' in fmt:
+        fmt = fmt.replace('&O', locale.dcc_day_ordinal_suffix(self.dcc_day))
+
+    fmt = locale.apply_dcc_date_format(self, fmt)
+
+    return fmt
+
+date.SezimalDate._apply_dcc_formats = _apply_dcc_formats
