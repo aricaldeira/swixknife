@@ -5,14 +5,21 @@
     color: #fafafa;
 
     font-size: 1.5em;
-    line-height: 1.875em;
+    line-height: 1.885em;
 
     text-rendering: optimizeLegibility;
-    font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    font-family: 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
+    --font-family-sans-serif: 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif;
     --font-family-monospace: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+
+    -webkit-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    -moz-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    -ms-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+/*
+    font-feature-settings: "dlig", "tnum", "ss03", "cv06", "cv08", "cv05";*/
+
 }
 html, body {
     height: 100%;
@@ -27,29 +34,31 @@ html, body {
 }
 h1 {
     font-size: 2rem;
+    line-height: 2.385rem;
 }
 h2 {
     font-size: 1.5rem;
+    line-height: 1.885rem;
 }
 h3 {
     font-size: 1.17rem;
+    line-height: 1.402rem;
 }
 h4 {
     font-size: 1rem;
+    line-height: 1.385rem;
 }
 h5 {
     font-size: 0.83rem;
+    line-height: 1.215rem;
 }
 h6 {
     font-size: 0.67rem;
+    line-height: 1.055rem;
 }
 input, p, select, option {
     font-size: 1rem;
-    text-rendering: optimizeLegibility;
-    font-variant-ligatures: common-ligatures;
-    font-family: 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
-    --font-family-sans-serif: 'Sezimal QP', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
-    --font-family-monospace: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    line-height: 1.385rem;
 }
 input {
 /*     height: 1.5rem; */
@@ -87,7 +96,6 @@ td {
 
 .settings {
     font-size: 12pt;
-
 }
 td.settings {
     vertical-align: top;
@@ -98,19 +106,19 @@ label {
     font-size: 12pt;
 }
 select {
-    font-family: 'Sezimal QP Light';
+    font-family: 'Andika', 'Sezimal QP Light';
     font-size: 12pt;
     height: 2.5em;
     text-align: center;
 }
 select > option {
-    font-family: 'Sezimal QP Light';
+    font-family: 'Andika', 'Sezimal QP Light';
 }
 option {
-    font-family: 'Sezimal QP Light';
+    font-family: 'Andika', 'Sezimal QP Light';
 }
 option:before {
-    font-family: 'Sezimal QP Light';
+    font-family: 'Andika', 'Sezimal QP Light';
 }
 
 .units {
@@ -136,6 +144,7 @@ table.explanation td {
 .devanagari {
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 1.2em;
+    line-height: 1.585rem;
 }
 a {
     color: #fafafa;
@@ -146,6 +155,7 @@ a {
 a.devanagari {
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 1.2em;
+    line-height: 1.585rem;
     text-decoration: none;
     color: #2E7D32;
 }
@@ -158,6 +168,11 @@ a.devanagari {
     display: inline-block;
     transform: scale(1, -1);
 }
+.punctuation {
+    display: inline-block;
+    transform: scale(1, -1);
+    padding-bottom: 0.3rem;
+}
 .help-text {
     font-size: 14pt;
     text-align: left;
@@ -165,7 +180,7 @@ a.devanagari {
 /*     font-variant-numeric: diagonal-fractions; */
 }
 math {
-    font-family: 'Sezimal QP Light', 'Noto Sans';
+    font-family: 'Andika', 'Sezimal QP Light', 'Noto Sans';
 }
 mn {
     margin: 6px;
@@ -517,7 +532,7 @@ input[type=number] {
 @media only screen and (max-width: 640px) {
     :root {
         font-size: 1rem;
-        line-height: 1.25rem;
+        line-height: 1.385rem;
     }
 
     .calendar-time-pointer-weekly {
