@@ -47,6 +47,7 @@ const LANGUAGE_TAGS = {
     'es_mx': 'es-MX',
     'es_pe': 'es-PE',
     'es_py': 'es-PY',
+    'es_us': 'es-US',
     'es_uy': 'es-UY',
     'es': 'es',
     'et': 'et',
