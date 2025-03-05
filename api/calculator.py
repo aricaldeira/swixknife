@@ -1,5 +1,6 @@
 
 import pathlib
+import urllib
 
 TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
 CALCULATOR_TEMPLATE_PATH = TEMPLATE_PATH.joinpath('calculator')
@@ -9,7 +10,7 @@ import os
 import json
 from io import StringIO
 
-from flask import send_file, Response, request, jsonify
+from flask import send_file, Response, request, jsonify, render_template_string
 from swixknife.localization import sezimal_locale
 from swixknife.calculator import SezimalCalculator
 from swixknife import Sezimal
@@ -53,7 +54,16 @@ def api_calculator() -> Response:
     templates = _get_calculator_templates()
     local_variables = locals()
     local_variables.update(templates)
+
+    if 'sezimal' in request.cookies:
+        locale = _prepare_locale_from_cookie()
+    else:
+        locale = sezimal_locale()
+
+    local_variables['locale'] = locale
+
     text = eval(f'f"""{text}"""', globals(), local_variables)
+    text = render_template_string(text, locale=locale)
     return Response(text, mimetype='text/html')
 
 
@@ -543,3 +553,25 @@ def _get_calculator_templates() -> dict:
         templates[file_name.replace('.html', '').replace('-', '_')] = open(CALCULATOR_TEMPLATE_PATH.joinpath(file_name), 'r').read()
 
     return templates
+
+def _prepare_locale_from_cookie():
+    cookie = urllib.parse.unquote(request.cookies['sezimal'])
+    locale = 'iso'
+
+    try:
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+
+    except:
+        try:
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
+        except:
+            try:
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
+            except:
+                try:
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                except:
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                    show_holiday = 'ISO_SEZ_SYM'
+
+    return sezimal_locale(locale)
