@@ -2,7 +2,7 @@
 import { sezimal_calculator_pt_text } from './pt.js';
 
 const sezimal_calculator_bz_text = Object.assign({}, sezimal_calculator_pt_text, {
-    'title': 'Kawkuladora Sezimal',
+    'title': 'Kawkuladora Sezimaw',
     'button-sezimal-clear': 'Z',
     'button-decimal-clear': 'Z',
     'button-base-ten': 'des',
