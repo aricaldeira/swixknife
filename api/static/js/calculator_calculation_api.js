@@ -119,14 +119,18 @@ function update_calculation(value = '') {
 function set_display_value(value, unit, display_number_name, font_size) {
     const value_size = Array.from(
         value.
-            replace('<math>', '').
-            replace('</math>', '').
-            replace('<mfrac>', '').
-            replace('</mfrac>', '').
-            replace('<mn>', '').
-            replace('</mn>', '')
+            replaceAll('<math>', '').
+            replaceAll('</math>', '').
+            replaceAll('<mfrac>', '').
+            replaceAll('</mfrac>', '').
+            replaceAll('<mn>', '').
+            replaceAll('</mn>', '').
+            replaceAll('<span class="constant">', '').
+            replaceAll('</span>', '')
     ).length;
     var number = document.getElementById(display_number_name);
+
+    console.log('valor', value, value_size);
 
     number.style.fontSize = font_size.toString() + 'px';
 

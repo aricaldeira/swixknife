@@ -354,5 +354,5 @@ _CONSTANTS = ('e', 'π', 'τ', 'φ')
 e = E.sezimal
 π = PI.sezimal
 τ = TAU.sezimal
-φ = GOLDEN_RATIO
+φ = GOLDEN_RATIO.sezimal
 
