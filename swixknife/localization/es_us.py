@@ -6,6 +6,8 @@ __all__ = ('SezimalLocaleES_MX',)
 from .es_mx import SezimalLocaleES_MX
 from .en_us import SezimalLocaleEN_US
 
+from ..base import SEPARATOR_COMMA, SEPARATOR_DOT
+
 
 class SezimalLocaleES_US(SezimalLocaleES_MX):
     LANG = 'es'
@@ -16,13 +18,8 @@ class SezimalLocaleES_US(SezimalLocaleES_MX):
     CURRENCY_UNIT_SYMBOL = '$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'
 
-    # DATE_SEPARATOR = '/'
-    # DATE_FORMAT = '#m/#d/#Y'
-    # DATE_LONG_FORMAT = '#M #-d, #Y'
-    # DATE_TIME_FORMAT = ' #@W #m/#d/#Y #u:#p:#a'
-    # DATE_TIME_LONG_FORMAT = '#W, #M #-d, #Y, #u:#p:#a'
-    ISO_TIME_FORMAT = '%I:%M:%S %P'
-    ISO_SHORT_TIME_FORMAT = '%I:%M %P'
+    SEZIMAL_SEPARATOR = SEPARATOR_DOT
+    GROUP_SEPARATOR = SEPARATOR_COMMA
 
     FIRST_WEEKDAY = 'SUN'
     DECIMAL_TEMPERATURE = '°F'
