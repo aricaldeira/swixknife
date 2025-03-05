@@ -130,8 +130,6 @@ function set_display_value(value, unit, display_number_name, font_size) {
     ).length;
     var number = document.getElementById(display_number_name);
 
-    console.log('valor', value, value_size);
-
     number.style.fontSize = font_size.toString() + 'px';
 
     if (unit != '') {
