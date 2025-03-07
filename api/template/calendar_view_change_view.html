@@ -2,18 +2,18 @@
 <table class="center" style="border-spacing: 0px; vertical-align: middle;">
     <colgroup>
         <col span="1" width="5%">   {# Settings #}
-        <col span="1" width="10%">  {# Year #}
-        <col span="1" width="15%">  {# Quarter #}
-        {#
-        {%- if (not date.is_long_month) or date.month == 20 -%}
-            <col span="1" width="15%">
-        {%- endif -%}
-        #}
-        <col span="1" width="15%">  {# Month #}
-        <col span="1" width="10%">  {# Week #}
-        <col span="1" width="10%">  {# Day #}
+        <col span="1" width="15%">  {# Year #}
         {%- if str(now.date) != str(date.date) -%}
-            <col span="1" width="25%">  {# Today #}
+            <col span="1" width="25%">  {# Quarter #}
+            <col span="1">  {# Month #}
+            <col span="1">  {# Week #}
+            <col span="1">  {# Day #}
+            <col span="1">  {# Today #}
+        {%- else -%}
+            <col span="1" width="35%">  {# Quarter #}
+            <col span="1" width="10%">  {# Month #}
+            <col span="1" width="20%">  {# Week #}
+            <col span="1" width="15%">  {# Day #}
         {%- endif -%}
 <!--         <col span="1" width="5%">  {# Events #} -->
     </colgroup>
