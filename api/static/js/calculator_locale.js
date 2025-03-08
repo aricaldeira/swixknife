@@ -67,6 +67,7 @@ const LANGUAGE_TAGS = {
     'ga': 'ga',
     'gl': 'gl',
     'gn': 'gn',
+    'haw': 'haw',
     'he_latn': 'he-Latn',
     'he': 'he',
     'hi_latn': 'hi-Latn',
