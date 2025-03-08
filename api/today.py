@@ -647,10 +647,11 @@ class SezimalEvent:
         return ''
 
 
-def _write_calendar_cache(cache_key: str, events: SezimalDictionary) -> None:
-    file_path = pathlib.Path.home().joinpath(
-        f".sezimal/{cache_key.replace('|', '_').replace('/', '_')}.json"
-    )
+def _write_calendar_cache(locale: str, cache_key: str, events: SezimalDictionary) -> None:
+    file_path = pathlib.Path.home().joinpath(f'.sezimal/{locale}/')
+    file_path.mkdir(parents=True, exist_ok=True)
+    file_path = file_path.joinpath(f"{cache_key.replace('|', '_').replace('/', '_')}.json")
+
     text = str(events)
 
     for i in range(0, 62):
@@ -659,20 +660,23 @@ def _write_calendar_cache(cache_key: str, events: SezimalDictionary) -> None:
     open(file_path, 'w').write(text)
 
 
-def _read_calendar_cache(cache_key: str) -> SezimalDictionary | None:
+def _read_calendar_cache(locale: str, cache_key: str, only_check: bool = False) -> SezimalDictionary | None | bool:
     file_path = pathlib.Path.home().joinpath(
-        f".sezimal/{cache_key.replace('|', '_').replace('/', '_')}.json"
+        f".sezimal/{locale}/{cache_key.replace('|', '_').replace('/', '_')}.json"
     )
 
     if not file_path.is_file():
         return False
+
+    if only_check:
+        return True
 
     text = open(file_path, 'r').read()
 
     return eval(text)
 
 
-def _calendar_events(locale, year, context):
+def _calendar_events(locale, year, context, only_check: bool = False):
     if locale.calendar_displayed == 'SYM':
         if year >= 0:
             cache_key = 'SYM+' + str(year)
@@ -700,7 +704,7 @@ def _calendar_events(locale, year, context):
     if cache_key in EVENTS_CACHE:
         return EVENTS_CACHE[cache_key]
 
-    cache = _read_calendar_cache(cache_key)
+    cache = _read_calendar_cache(locale.LANGUAGE_TAG, cache_key, only_check=only_check)
 
     if cache:
         EVENTS_CACHE[cache_key] = cache
@@ -721,7 +725,7 @@ def _calendar_events(locale, year, context):
     _process_events_list(all_events, events, locale.calendar_displayed, year, locale, context)
 
     EVENTS_CACHE[cache_key] = events
-    _write_calendar_cache(cache_key, events)
+    _write_calendar_cache(locale.LANGUAGE_TAG, cache_key, events)
 
     return events
 
@@ -2148,69 +2152,122 @@ def sezimal_day_count_calendar_bz_route() -> Response:
     )
 
 
-def _create_store_events():
-    for item in (
-        'pt-BR|America/Sao_Paulo',
-        'bz|America/Sao_Paulo',
-        'eo-BR|America/Sao_Paulo',
-        'en-BR|America/Sao_Paulo',
+def _create_store_events(itens: list = None):
+    if itens is None:
+        itens = (
+        # 'pt-BR|America/Sao_Paulo',
+        # 'bz|America/Sao_Paulo',
+        # 'eo-BR|America/Sao_Paulo',
+        # 'en-BR|America/Sao_Paulo',
+        #
+        # 'pt-BR|Natural/NT4-03',
+        # 'bz|Natural/NT4-03',
+        # 'eo-BR|Natural/NT4-03',
+        # 'en-BR|Natural/NT4-03',
 
-        'pt-BR|Natural/NT4-03',
-        'bz|Natural/NT4-03',
-        'eo-BR|Natural/NT4-03',
-        'en-BR|Natural/NT4-03',
-
+        # 'en-AU|Australia/Adelaide',
+        # 'en-AU|Australia/Sydney',
+        # 'en-AU|Australia/Brisbane',
+        #
+        # 'en-CA|America/Toronto',
+        #
+        # 'en-GB|Europe/London',
+        # 'en-IE|Europe/Dublin',
+        #
+        # 'en-IN|Asia/Calcutta',
+        #
+        # 'en-MY|Asia/Kuala_Lumpur',
+        #
+        # 'fr-CA|America/Montreal',
+        # 'fr-FR|Europe/Paris',
+        #
+        # 'pt-PT|Europe/Lisbon',
+        # 'it-IT|Europe/Rome',
+        # 'de-DE|Europe/Berlin',
+        # 'es-MX|America/Mexico_City',
+        #
+        # 'en-US|America/Chicago',
+        # 'en-US|America/Denver',
+        # 'en-US|Pacific/Honolulu',
+        # 'en-US|America/Los_Angeles',
+        # 'en-US|America/New_York',
+        #
+        # 'es-US|America/Chicago',
+        # 'es-US|America/Denver',
+        # 'es-US|Pacific/Honolulu',
+        # 'es-US|America/Los_Angeles',
+        # 'es-US|America/New_York',
+        #
         # 'en-US|America/Anchorage',
-        'en-US|America/Chicago',
-        'en-US|America/Denver',
-        'en-US|Pacific/Honolulu',
-        'en-US|America/Los_Angeles',
-        'en-US|America/New_York',
+        # 'es-US|America/Anchorage',
+    )
 
-        'en-AU|Australia/Adelaide',
-        'en-AU|Australia/Sydney',
-        'en-AU|Australia/Brisbane',
-
-        'en-CA|America/Toronto',
-
-        'en-GB|Europe/London',
-
-        'en-IN|Asia/Calcutta',
-
-        'en-MY|Asia/Kuala_Lumpur',
-
-        'fr-CA|America/Montreal',
-        'fr-FR|Europe/Paris',
-
-        'pt-PT|Europe/Lisbon',
-        'it-IT|Europe/Rome',
-        'de-DE|Europe/Berlin',
-        'es-MX|America/Mexico_City',
-    ):
+    for item in itens:
         loc, tz = item.split('|')
-        locale = sezimal_locale(loc)
 
         for base in (10, 14, 20):
-            for calendar in ('SYM', 'ISO', 'DCC'):
-                for year in SezimalRange(213_100, 213_300):
-                    locale.base = base
-                    locale.DEFAULT_TIME_ZONE = tz
-                    locale.calendar_displayed = calendar
+            locale = sezimal_locale(loc)
+            locale.base = base
+            locale.DEFAULT_TIME_ZONE = tz
 
+            for calendar in ('SYM', 'ISO', 'DCC'):
+                locale.calendar_displayed = calendar
+
+                for year in SezimalRange(213_050, 213_231):
                     if base == 10:
                         locale.format_token = ''
                     elif base == 14:
                         locale.format_token = '9'
+                        locale.to_decimal_base()
                     elif base == 20:
                         locale.format_token = '↋'
+                        locale.to_dozenal_base()
 
                     if calendar == 'DCC':
-                        format_token += 'c'
+                        locale.format_token = 'c' + locale.format_token
 
                     context = {
                         'base': locale.base,
                         'format_token': locale.format_token,
                     }
 
-                    print('vai fazer', item, base, calendar, locale.format_token)
-                    _calendar_events(locale, year, context)
+                    print('vai fazer', item, year, base, calendar, locale.format_token)
+                    if calendar == 'ISO':
+                        _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
+
+                        if locale.ISO_TIME_FORMAT[:2] == '%I':
+                            locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                            locale.HOUR_FORMAT = '24h'
+                            _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
+
+                    else:
+                        _calendar_events(locale, year, context, only_check=True)
+
+                        if locale.ISO_TIME_FORMAT[:2] == '%I':
+                            locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                            locale.HOUR_FORMAT = '24h'
+                            _calendar_events(locale, year, context, only_check=True)
+
+        #
+        # DCC is only sezimal
+        #
+        base = 10
+        locale = sezimal_locale(loc)
+        locale.base = base
+        locale.DEFAULT_TIME_ZONE = tz
+        locale.format_token = ''
+        locale.calendar_displayed = 'DCC'
+
+        for year in SezimalRange(213_050, 213_231):
+            context = {
+                'base': locale.base,
+                'format_token': locale.format_token,
+            }
+
+            print('vai fazer', item, year, base, 'DCC', locale.format_token)
+            _calendar_events(locale, year, context, only_check=True)
+
+            if locale.ISO_TIME_FORMAT[:2] == '%I':
+                locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                locale.HOUR_FORMAT = '24h'
+                _calendar_events(locale, year, context, only_check=True)
