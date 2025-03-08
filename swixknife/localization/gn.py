@@ -14,7 +14,7 @@ class SezimalLocaleGN(SezimalLocaleES_PY):
 
     WEEKDAY_NAME = [
         'arakõi',
-        'araꞌapy',
+        'araapy',
         'ararundy',
         'arapo',
         'arapoteĩ',
@@ -23,24 +23,34 @@ class SezimalLocaleGN(SezimalLocaleES_PY):
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'akõ',
-        'aꞌa',
-        'aru',
-        'apo',
-        'apt',
-        'apk',
-        'ate',
+        'A2',
+        'A3',
+        'A4',
+        'A5',
+        'A6',
+        'A7',
+        'A1',
+    ]
+
+    WEEKDAY_SYMBOL = [
+        'A2',
+        'A3',
+        'A4',
+        'A5',
+        'A6',
+        'A7',
+        'A1',
     ]
 
     MONTH_NAME= [
         'jasyteĩ',
         'jasykõi',
-        'jasyꞌapy',
+        'jasyapy',
         'jasyrundy',
         'jasypo',
         'jasypoteĩ',
         'jasypokõi',
-        'jasypoꞌapy',
+        'jasypoapy',
         'jasyporundy',
         'jasypa',
         'jasypateĩ',
@@ -48,18 +58,33 @@ class SezimalLocaleGN(SezimalLocaleES_PY):
     ]
 
     MONTH_ABBREVIATED_NAME = [
-        'jte',
-        'jkõ',
-        'yꞌa',
-        'jru',
-        'jpo',
-        'jpt',
-        'jpk',
-        'jpꞌ',
-        'jpr',
-        'jpa',
-        'jpe',
-        'jpõ',
+        'J1',
+        'J2',
+        'J3',
+        'J4',
+        'J5',
+        'J6',
+        'J7',
+        'J8',
+        'J9',
+        'J10',
+        'J11',
+        'J12',
+    ]
+
+    MONTH_SYMBOL = [
+        'J1',
+        'J2',
+        'J3',
+        'J4',
+        'J5',
+        'J6',
+        'J7',
+        'J8',
+        'J9',
+        'J10',
+        'J11',
+        'J12',
     ]
 
     DATE_SEPARATOR = '/'
