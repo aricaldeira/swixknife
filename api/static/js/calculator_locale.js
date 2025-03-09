@@ -28,6 +28,7 @@ const LANGUAGE_TAGS = {
     'en_gb': 'en-GB',
     'en_gb-metric': 'en-GB-metric',
     'en_ie': 'en-IE',
+    'en_il': 'en-IL',
     'en_in': 'en-IN',
     'en_nyoo_speling': 'en-NYOO-SPELING',
     'en_nz': 'en-NZ',
