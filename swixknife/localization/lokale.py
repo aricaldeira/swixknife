@@ -1389,8 +1389,8 @@ class SezimalLocale:
         #
         # Civil calendars
         #
-        'SEZ': 'Sezimal',
-        'SYM': 'Symmetry454',
+        'SEZ': 'Symmetric',
+        'SYM': 'Symmetric',
         'ISO': 'Gregorian',
         'DCC': 'Day Count',
         'ADC': 'Astronomical Day Count',

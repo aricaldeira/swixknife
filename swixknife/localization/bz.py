@@ -334,7 +334,7 @@ class SezimalLocaleBZ(SezimalLocale):
         #
         # Civil calendars
         #
-        'SEZ': 'Sezimaw',
+        'SEZ': 'Simétriku',
         'SYM': 'Simétriku',
         'ISO': 'Gregorianu',
         'DCC': 'Kwantus‐Dias',

@@ -353,7 +353,7 @@ class SezimalLocalePT(SezimalLocale):
         #
         # Civil calendars
         #
-        'SEZ': 'Sezimal',
+        'SEZ': 'Simétrico',
         'SYM': 'Simétrico',
         'ISO': 'Gregoriano',
         'DCC': 'Quantos‐Dias',

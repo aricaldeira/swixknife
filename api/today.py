@@ -676,6 +676,37 @@ def _read_calendar_cache(locale: str, cache_key: str, only_check: bool = False) 
     return eval(text)
 
 
+def _limit_holidays(events, show_holidays):
+    if not show_holidays:
+        return events
+
+    limited_events = SezimalDictionary()
+
+    limited_events['moon'] = events['moon']
+
+    for month in events:
+        if type(month) == str:
+            continue
+
+        for day in events[month]:
+            for event in events[month][day]:
+                if 'SYM' in event.origin and 'SYM' not in show_holidays:
+                    continue
+
+                if not event.origin_calendar in show_holidays:
+                    continue
+
+                if month not in limited_events:
+                    limited_events[month] = SezimalDictionary()
+
+                if day not in limited_events[month]:
+                    limited_events[month][day] = SezimalList()
+
+                limited_events[month][day].append(event)
+
+    return limited_events
+
+
 def _calendar_events(locale, year, context, only_check: bool = False):
     if locale.calendar_displayed == 'SYM':
         if year >= 0:
@@ -702,6 +733,16 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     cache_key += '|' + str(locale.base) + locale.format_token
 
     if cache_key in EVENTS_CACHE:
+        if locale.SHOW_HOLIDAYS:
+            ck = cache_key + '|' + locale.SHOW_HOLIDAYS
+
+            if ck in EVENTS_CACHE:
+                return EVENTS_CACHE[ck]
+
+            EVENTS_CACHE[ck] = _limit_holidays(EVENTS_CACHE[cache_key], locale.SHOW_HOLIDAYS)
+
+            return EVENTS_CACHE[ck]
+
         return EVENTS_CACHE[cache_key]
 
     cache = _read_calendar_cache(locale.LANGUAGE_TAG, cache_key, only_check=only_check)
@@ -922,7 +963,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                 event_name = event_name.replace('%d', str(event_day).zfill(2))
 
             event = SezimalEvent()
-            event.origin = event_origin.replace('CHR+SYM+', 'CHR+')
+            event.origin = event_origin
             event.emoji = event_emoji
             event.name = event_name
             event.date = event_date
@@ -2160,24 +2201,24 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 def _create_store_events(itens: list = None):
     if itens is None:
         itens = (
-        # 'pt-BR|America/Sao_Paulo',
-        # 'bz|America/Sao_Paulo',
-        # 'eo-BR|America/Sao_Paulo',
-        # 'en-BR|America/Sao_Paulo',
-        #
-        # 'pt-BR|Natural/NT4-03',
-        # 'bz|Natural/NT4-03',
-        # 'eo-BR|Natural/NT4-03',
-        # 'en-BR|Natural/NT4-03',
-        #
-        # 'fr-CA|America/Montreal',
-        # 'fr-FR|Europe/Paris',
-        #
-        # 'pt-PT|Europe/Lisbon',
-        # 'it-IT|Europe/Rome',
-        # 'de-DE|Europe/Berlin',
-        # 'es-MX|America/Mexico_City',
-        #
+        'pt-BR|America/Sao_Paulo',
+        'bz|America/Sao_Paulo',
+        'eo-BR|America/Sao_Paulo',
+        'en-BR|America/Sao_Paulo',
+
+        'pt-BR|Natural/NT4-03',
+        'bz|Natural/NT4-03',
+        'eo-BR|Natural/NT4-03',
+        'en-BR|Natural/NT4-03',
+
+        'fr-CA|America/Montreal',
+        'fr-FR|Europe/Paris',
+
+        'pt-PT|Europe/Lisbon',
+        'it-IT|Europe/Rome',
+        'de-DE|Europe/Berlin',
+        'es-MX|America/Mexico_City',
+
         'en-US|America/Chicago',
         'en-US|America/Denver',
         'en-US|Pacific/Honolulu',

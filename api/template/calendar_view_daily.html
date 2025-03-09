@@ -195,8 +195,7 @@
             {%- if event_month in events -%}
                 {%- if event_day in events[event_month] -%}
                     {%- for event in events[event_month][event_day] -%}
-                        {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                            &nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};
+                        &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};
                     {%- endfor -%}
                 {%- endif -%}
             {%- endif -%}
