@@ -30,33 +30,33 @@ class SezimalLocaleFR_CA(SezimalLocaleFR):
         #
         # Moving Holidays
         #
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Vendredi saint #Sym454'),
-        ('EASTER',     '🐣\ufe0f🌱\ufe0f Pâques #Sym454'),
-        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Lundi de Pâques #Sym454'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Vendredi saint #𝑠𝑦𝑚'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Pâques #𝑠𝑦𝑚'),
+        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Lundi de Pâques #𝑠𝑦𝑚'),
 
         #
         # Public Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Jour de l’An #Sym454'),
-        ('10-40', '🇫🇮\ufe0f Saint-Jean-Baptiste #Sym454'),
-        ('13-44', '🇨🇦\ufe0f Journée de la vérité et de la réconciliation #Sym454'),
-        ('15-15', '🪦\ufe0f🪖\ufe0f Jour du Souvenir #Sym454'),
-        ('20-41', '🌟\ufe0f👼🏼\ufe0f Noël #Sym454'),
-        ('20-42', '🎁\ufe0f Lendemain de Noël #Sym454'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f Jour de l’An #𝑠𝑦𝑚'),
+        ('10-40', '🇫🇮\ufe0f Saint-Jean-Baptiste #𝑠𝑦𝑚'),
+        ('13-44', '🇨🇦\ufe0f Journée de la vérité et de la réconciliation #𝑠𝑦𝑚'),
+        ('15-15', '🪦\ufe0f🪖\ufe0f Jour du Souvenir #𝑠𝑦𝑚'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Noël #𝑠𝑦𝑚'),
+        ('20-42', '🎁\ufe0f Lendemain de Noël #𝑠𝑦𝑚'),
 
         #
         # Fixed day of the week holidays
         #
-        ('13-01', '🐝\ufe0f🐜\ufe0f Fête du travail #Sym454'),
-        ('05-34', '👸\ufe0f🏻\ufe0f Journée nationale des patriotes #Sym454'),
-        ('12-01', '🇨🇦\ufe0f Premier lundi d’août #Sym454'),
-        ('14-12', '🙏\ufe0f Action de grâce #Sym454'),
+        ('13-01', '🐝\ufe0f🐜\ufe0f Fête du travail #𝑠𝑦𝑚'),
+        ('05-34', '👸\ufe0f🏻\ufe0f Journée nationale des patriotes #𝑠𝑦𝑚'),
+        ('12-01', '🇨🇦\ufe0f Premier lundi d’août #𝑠𝑦𝑚'),
+        ('14-12', '🙏\ufe0f Action de grâce #𝑠𝑦𝑚'),
 
         #
         # And the one’s that do have a year of reference
         #
-        ('212_351-11-01', '🇨🇦\ufe0f Fête du Canada (#i) #Sym454'),
+        ('212_351-11-01', '🇨🇦\ufe0f Fête du Canada (#i) #𝑠𝑦𝑚'),
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

@@ -72,9 +72,9 @@ class SezimalLocaleEN_IN(SezimalLocaleEN):
         # National Holidays
         # that occur on a specific date
         #
-        ('213010-01-41', '🇮🇳\ufe0f Republic Day (#i) #Sym454'),
-        ('213003-12-31', '🇮🇳\ufe0f Independence Day (#i) #Sym454'),
-        ('212353-13-43', '🇮🇳\ufe0f👳🏽‍♂️ Gandhi Jayanti (#i) #Sym454'),
+        ('213010-01-41', '🇮🇳\ufe0f Republic Day (#i) #𝑠𝑦𝑚'),
+        ('213003-12-31', '🇮🇳\ufe0f Independence Day (#i) #𝑠𝑦𝑚'),
+        ('212353-13-43', '🇮🇳\ufe0f👳🏽‍♂️ Gandhi Jayanti (#i) #𝑠𝑦𝑚'),
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

@@ -1233,7 +1233,7 @@ class SezimalDate:
         if not CAN_CONVERT_CALENDARS:
             return ''
 
-        year, month, day = gregorian_to_julian(self.gregorian_year, self.gregorian_month, self.gregorian_day)
+        year, month, day = gregorian_to_julian(int(self.gregorian_year), int(self.gregorian_month), int(self.gregorian_day))
 
         if not locale:
             jd = f'{str(year).zfill(4)}-{str(month).zfill(2)}-{str(day).zfill(2)}'
@@ -1372,7 +1372,7 @@ class SezimalDate:
         if not CAN_CONVERT_CALENDARS:
             return ''
 
-        year, month, day = GregorianToHebrew(self.gregorian_year, self.gregorian_month, self.gregorian_day).to_heb().tuple()
+        year, month, day = GregorianToHebrew(int(self.gregorian_year), int(self.gregorian_month), int(self.gregorian_day)).to_heb().tuple()
 
         year = str(year).zfill(4) + ' AM'
 
@@ -1403,12 +1403,16 @@ class SezimalDate:
 
         hd = hd.replace('%d', day).replace('%-d', day)
         hd = hd.replace('%?d', day).replace('%?-d', day)
+        hd = hd.replace('%5d', day).replace('%5-d', day)
         hd = hd.replace('%m', month).replace('%-m', month)
         hd = hd.replace('%?m', month).replace('%?-m', month)
+        hd = hd.replace('%5m', month).replace('%5-m', month)
         hd = hd.replace('%y', year).replace('%-y', year)
         hd = hd.replace('%?y', year).replace('%?-y', year)
+        hd = hd.replace('%5y', year).replace('%5-y', year)
         hd = hd.replace('%Y', year).replace('%-Y', year)
         hd = hd.replace('%?Y', year).replace('%?-Y', year)
+        hd = hd.replace('%5Y', year).replace('%5-Y', year)
         hd = hd.replace('%o', locale.day_ordinal_suffix(SezimalInteger(Decimal(int(day)))))
         hd = hd.replace('%b', month).replace('%B', month)
 
@@ -1418,7 +1422,7 @@ class SezimalDate:
         if not CAN_CONVERT_CALENDARS:
             return ''
 
-        year, month, day = GregorianToHijri(self.gregorian_year, self.gregorian_month, self.gregorian_day).to_hijri().datetuple()
+        year, month, day = GregorianToHijri(int(self.gregorian_year), int(self.gregorian_month), int(self.gregorian_day)).to_hijri().datetuple()
 
         year = str(year).zfill(4) + ' AH'
 
@@ -1449,12 +1453,16 @@ class SezimalDate:
 
         hd = hd.replace('%d', day).replace('%-d', day)
         hd = hd.replace('%?d', day).replace('%?-d', day)
+        hd = hd.replace('%5d', day).replace('%5-d', day)
         hd = hd.replace('%m', month).replace('%-m', month)
         hd = hd.replace('%?m', month).replace('%?-m', month)
+        hd = hd.replace('%5m', month).replace('%5-m', month)
         hd = hd.replace('%y', year).replace('%-y', year)
         hd = hd.replace('%?y', year).replace('%?-y', year)
+        hd = hd.replace('%5y', year).replace('%5-y', year)
         hd = hd.replace('%Y', year).replace('%-Y', year)
         hd = hd.replace('%?Y', year).replace('%?-Y', year)
+        hd = hd.replace('%5Y', year).replace('%5-Y', year)
         hd = hd.replace('%o', locale.day_ordinal_suffix(SezimalInteger(Decimal(int(day)))))
         hd = hd.replace('%b', month).replace('%B', month)
 

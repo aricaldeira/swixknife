@@ -40,24 +40,24 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
         # National Holidays
         # that occur on a specific date
         #
-        ('01-01', '🎆\ufe0f New Year’s Day #sym'),
-        ('212_120-11-04', '🇺🇸\ufe0f Independence Day (#i) #sym'),  # Thursday 212_120-11-04 ~ 1776-07-04_dec
-        ('10-31', '🇺🇸\ufe0f Juneteenth Day #sym'),
-        ('14-44', '🎃\ufe0f🍬\ufe0f Halloween #sym'),
-        ('15-15', '🇺🇸\ufe0f Veterans’ Day #sym'),
-        ('20-41', '🎄\ufe0f Christmas’ Day #sym'),
+        ('01-01', '🎆\ufe0f New Year’s Day #𝑠𝑦𝑚'),
+        ('212_120-11-04', '🇺🇸\ufe0f Independence Day (#i) #𝑠𝑦𝑚'),  # Thursday 212_120-11-04 ~ 1776-07-04_dec
+        ('10-31', '🇺🇸\ufe0f Juneteenth Day #𝑠𝑦𝑚'),
+        ('14-44', '🎃\ufe0f🍬\ufe0f Halloween #𝑠𝑦𝑚'),
+        ('15-15', '🇺🇸\ufe0f Veterans’ Day #𝑠𝑦𝑚'),
+        ('20-41', '🎄\ufe0f Christmas’ Day #𝑠𝑦𝑚'),
 
         #
         # National Holidays
         # that occur on a specific weekday
         #
-        ('01-23', '🇺🇸\ufe0f Martin Luther King, Jr. Day #sym'), # Monday, the 23rd of Jan. ~ Monday, the 15th of Jan.
+        ('01-23', '🇺🇸\ufe0f Martin Luther King, Jr. Day #𝑠𝑦𝑚'), # Monday, the 23rd of Jan. ~ Monday, the 15th of Jan.
         # ('01-32', 'Inauguration Day'),
-        ('02-23', '🇺🇸\ufe0f Presidents’ Day #sym'),   # Third Monday in February
-        ('05-45', '🇺🇸\ufe0f Memorial Day #sym'),      # Last Monday in May
-        ('13-01', '🐝\ufe0f Labour Day #sym'),        # First Monday in September
-        ('14-12', '🇺🇸\ufe0f Columbus Day #sym'),      # Second Monday in October
-        ('15-41', '🦃\ufe0f Thanksgiving Day #sym'),  # Fourth Thursday in November
+        ('02-23', '🇺🇸\ufe0f Presidents’ Day #𝑠𝑦𝑚'),   # Third Monday in February
+        ('05-45', '🇺🇸\ufe0f Memorial Day #𝑠𝑦𝑚'),      # Last Monday in May
+        ('13-01', '🐝\ufe0f Labour Day #𝑠𝑦𝑚'),        # First Monday in September
+        ('14-12', '🇺🇸\ufe0f Columbus Day #𝑠𝑦𝑚'),      # Second Monday in October
+        ('15-41', '🦃\ufe0f Thanksgiving Day #𝑠𝑦𝑚'),  # Fourth Thursday in November
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

@@ -45,33 +45,33 @@ class SezimalLocaleEN_CA(SezimalLocaleEN):
         #
         # Moving Holidays
         #
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Good Friday #Sym454'),
-        ('EASTER',     '🐣\ufe0f🌱\ufe0f Easter #Sym454'),
-        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Easter Monday #Sym454'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Good Friday #𝑠𝑦𝑚'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Easter #𝑠𝑦𝑚'),
+        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Easter Monday #𝑠𝑦𝑚'),
 
         #
         # Public Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day #Sym454'),
-        ('13-44', '🇨🇦\ufe0f Truth and Reconciliation Day #Sym454'),
-        ('10-40', '🇫🇮\ufe0f Saint-Jean-Baptiste #Sym454'),
-        ('15-15', '🪦\ufe0f🪖\ufe0f Rememberance Day #Sym454'),
-        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas Day #Sym454'),
-        ('20-42', '🎁\ufe0f Boxing Day #Sym454'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day #𝑠𝑦𝑚'),
+        ('13-44', '🇨🇦\ufe0f Truth and Reconciliation Day #𝑠𝑦𝑚'),
+        ('10-40', '🇫🇮\ufe0f Saint-Jean-Baptiste #𝑠𝑦𝑚'),
+        ('15-15', '🪦\ufe0f🪖\ufe0f Rememberance Day #𝑠𝑦𝑚'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas Day #𝑠𝑦𝑚'),
+        ('20-42', '🎁\ufe0f Boxing Day #𝑠𝑦𝑚'),
 
         #
         # Fixed day of the week holidays
         #
-        ('13-01', '🐝\ufe0f🐜\ufe0f Labour Day #Sym454'),
-        ('05-34', '👸\ufe0f🏻\ufe0f Victoria Day #Sym454'),
-        ('12-01', '🇨🇦\ufe0f Civic Holiday #Sym454'),
-        ('14-12', '🙏\ufe0f Thanks Giving Day #Sym454'),
+        ('13-01', '🐝\ufe0f🐜\ufe0f Labour Day #𝑠𝑦𝑚'),
+        ('05-34', '👸\ufe0f🏻\ufe0f Victoria Day #𝑠𝑦𝑚'),
+        ('12-01', '🇨🇦\ufe0f Civic Holiday #𝑠𝑦𝑚'),
+        ('14-12', '🙏\ufe0f Thanks Giving Day #𝑠𝑦𝑚'),
 
         #
         # And the one’s that do have a year of reference
         #
-        ('212_351-11-01', '🇨🇦\ufe0f Canada Day (#i) #Sym454'),
+        ('212_351-11-01', '🇨🇦\ufe0f Canada Day (#i) #𝑠𝑦𝑚'),
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

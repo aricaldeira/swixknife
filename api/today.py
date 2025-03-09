@@ -718,9 +718,9 @@ def _calendar_events(locale, year, context, only_check: bool = False):
         all_events += locale.HOLIDAYS
 
     all_events += locale.HOLIDAYS_OTHER_CALENDAR
-    # all_events += locale.CHRISTIAN_HOLIDAYS
-    # all_events += locale.JEWISH_HOLIDAYS
-    # all_events += locale.ISLAMIC_HOLIDAYS
+    all_events += locale.CHRISTIAN_HOLIDAYS
+    all_events += locale.JEWISH_HOLIDAYS
+    all_events += locale.ISLAMIC_HOLIDAYS
 
     _process_events_list(all_events, events, locale.calendar_displayed, year, locale, context)
 
@@ -816,7 +816,12 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
             event_name = event_date.format(f'#{locale.DEFAULT_HEMISPHERE}L ({locale.SHORT_TIME_FORMAT})', locale)
 
             event = SezimalEvent()
-            event.origin = 'ISO-' + str(event_date.gregorian_date)
+
+            if calendar == 'SYM':
+                event.origin = 'SYM+' + str(event_date)
+            else:
+                event.origin = 'ISO-' + str(event_date.gregorian_date)
+
             event.emoji = event_emoji
             event.name = event_name
             event.date = event_date
@@ -852,7 +857,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
     for event_origin, event_name_ in all_events:
         for reference_year in years:
             event_ordinal_date, (event_year, event_month, event_day), age = \
-                other_calendar_date_to_ordinal_date(event_origin, reference_year)
+                other_calendar_date_to_ordinal_date(event_origin.replace('CHR+SYM+', 'SYM+'), reference_year)
 
             event_date = SezimalDate.from_ordinal_date(event_ordinal_date)
 
@@ -866,9 +871,9 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                 if event_date.dcc_year != year:
                     continue
 
-            event_name = event_name_.replace('🕆\ufe0f', '🕇\ufe0f')
+            event_name = event_name_.replace('🕆', '🕇')
 
-            event_emoji = event_name_.split(' ')[0]
+            event_emoji = event_name.split(' ')[0]
             event_name = event_name.replace(event_emoji, '').strip()
 
             if context['base'] == 10:
@@ -917,7 +922,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                 event_name = event_name.replace('%d', str(event_day).zfill(2))
 
             event = SezimalEvent()
-            event.origin = event_origin
+            event.origin = event_origin.replace('CHR+SYM+', 'CHR+')
             event.emoji = event_emoji
             event.name = event_name
             event.date = event_date
@@ -2164,19 +2169,6 @@ def _create_store_events(itens: list = None):
         # 'bz|Natural/NT4-03',
         # 'eo-BR|Natural/NT4-03',
         # 'en-BR|Natural/NT4-03',
-
-        # 'en-AU|Australia/Adelaide',
-        # 'en-AU|Australia/Sydney',
-        # 'en-AU|Australia/Brisbane',
-        #
-        # 'en-CA|America/Toronto',
-        #
-        # 'en-GB|Europe/London',
-        # 'en-IE|Europe/Dublin',
-        #
-        # 'en-IN|Asia/Calcutta',
-        #
-        # 'en-MY|Asia/Kuala_Lumpur',
         #
         # 'fr-CA|America/Montreal',
         # 'fr-FR|Europe/Paris',
@@ -2186,20 +2178,33 @@ def _create_store_events(itens: list = None):
         # 'de-DE|Europe/Berlin',
         # 'es-MX|America/Mexico_City',
         #
-        # 'en-US|America/Chicago',
-        # 'en-US|America/Denver',
-        # 'en-US|Pacific/Honolulu',
-        # 'en-US|America/Los_Angeles',
-        # 'en-US|America/New_York',
-        #
-        # 'es-US|America/Chicago',
-        # 'es-US|America/Denver',
-        # 'es-US|Pacific/Honolulu',
-        # 'es-US|America/Los_Angeles',
-        # 'es-US|America/New_York',
-        #
-        # 'en-US|America/Anchorage',
-        # 'es-US|America/Anchorage',
+        'en-US|America/Chicago',
+        'en-US|America/Denver',
+        'en-US|Pacific/Honolulu',
+        'en-US|America/Los_Angeles',
+        'en-US|America/New_York',
+
+        'en-AU|Australia/Adelaide',
+        'en-AU|Australia/Sydney',
+        'en-AU|Australia/Brisbane',
+
+        'en-CA|America/Toronto',
+
+        'en-GB|Europe/London',
+        'en-IE|Europe/Dublin',
+
+        'en-IN|Asia/Calcutta',
+
+        # 'en-MY|Asia/Kuala_Lumpur',
+
+        'es-US|America/Chicago',
+        'es-US|America/Denver',
+        'es-US|Pacific/Honolulu',
+        'es-US|America/Los_Angeles',
+        'es-US|America/New_York',
+
+        'en-US|America/Anchorage',
+        'es-US|America/Anchorage',
     )
 
     for item in itens:
@@ -2213,7 +2218,7 @@ def _create_store_events(itens: list = None):
             for calendar in ('SYM', 'ISO', 'DCC'):
                 locale.calendar_displayed = calendar
 
-                for year in SezimalRange(213_050, 213_231):
+                for year in SezimalRange(213_210, 213_221):
                     if base == 10:
                         locale.format_token = ''
                     elif base == 14:
@@ -2258,7 +2263,7 @@ def _create_store_events(itens: list = None):
         locale.format_token = ''
         locale.calendar_displayed = 'DCC'
 
-        for year in SezimalRange(213_050, 213_231):
+        for year in SezimalRange(213_210, 213_221):
             context = {
                 'base': locale.base,
                 'format_token': locale.format_token,

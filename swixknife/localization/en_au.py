@@ -23,19 +23,19 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # Moving Holidays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Good Friday'),
-        ('EASTER-1',   '🐣\ufe0f🌱\ufe0f Easter Saturday'),
-        ('EASTER',     '🐣\ufe0f🌱\ufe0f Easter Sunday'),
-        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Easter Monday'),
+        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Good Friday #𝑠𝑦𝑚'),
+        ('EASTER-1',   '🐣\ufe0f🌱\ufe0f Easter Saturday #𝑠𝑦𝑚'),
+        ('EASTER',     '🐣\ufe0f🌱\ufe0f Easter Sunday #𝑠𝑦𝑚'),
+        ('EASTER+1',   '🐣\ufe0f🌱\ufe0f Easter Monday #𝑠𝑦𝑚'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day'),
-        ('20-40', '🥂\ufe0f🍽\ufe0f️  Christmas Eve'),
-        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas'),
-        ('20-55', '🍾\ufe0f🎆\ufe0f New Year’s Eve'),
+        ('01-01', '🕊\ufe0f️ 🌎\ufe0f New Year’s Day #𝑠𝑦𝑚'),
+        ('20-40', '🥂\ufe0f🍽\ufe0f️  Christmas Eve #𝑠𝑦𝑚'),
+        ('20-41', '🌟\ufe0f👼🏼\ufe0f Christmas #𝑠𝑦𝑚'),
+        ('20-55', '🍾\ufe0f🎆\ufe0f New Year’s Eve #𝑠𝑦𝑚'),
 
         #
         # National Holidays
@@ -52,8 +52,8 @@ class SezimalLocaleEN_AU(SezimalLocaleEN):
         # ('130_324-01-43', '🇦🇺\ufe0f Australia Day (#i)'),  # Saturday 130_324-01-43 ~ 1788-01-26_dec
         # ('131_055-04-33', '🇦🇺\ufe0f Anzac Day (#i)'),      # Sunday   131_055-04-33 ~ 1915-04-25_dec
 
-        ('212_140-01-43', '🇦🇺\ufe0f Australia Day (#i)'),  # Saturday 01-42 ~ 01-26_desc
-        ('212_511-04-33', '🇦🇺\ufe0f Anzac Day (#i)'),      # Sunday   04-41 ~ 04-25_dec
+        ('212_140-01-43', '🇦🇺\ufe0f Australia Day (#i) #𝑠𝑦𝑚'),  # Saturday 01-42 ~ 01-26_desc
+        ('212_511-04-33', '🇦🇺\ufe0f Anzac Day (#i) #𝑠𝑦𝑚'),      # Sunday   04-41 ~ 04-25_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

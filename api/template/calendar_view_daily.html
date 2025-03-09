@@ -192,16 +192,11 @@
     </colgroup>
     <tr style="vertical-align: middle; color: {{DAILY_COLORS[shade_01]}}; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EVENTS_LINE_HEIGHT}};">
         <td style="text-align: {{ 'right' if locale.RTL else 'left' }};">
-            {%- set ns = namespace(event_separator='') -%}
             {%- if event_month in events -%}
                 {%- if event_day in events[event_month] -%}
                     {%- for event in events[event_month][event_day] -%}
                         {%- if event.origin_calendar in locale.SHOW_HOLIDAYS -%}
-                            {%- if ns.event_separator == '' -%}&nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
-                            {%- if ns.event_separator == '' -%}
-                                {%- set ns.event_separator = '; ' -%}
-                            {%- endif -%}
-                        {%- endif -%}
+                            &nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};
                     {%- endfor -%}
                 {%- endif -%}
             {%- endif -%}
@@ -209,39 +204,36 @@
             {%- if event_month in events['moon'] -%}
                 {%- if event_day in events['moon'][event_month] -%}
                     {%- for event in events['moon'][event_month][event_day] -%}
-                        {%- if ns.event_separator == '' -%}&nbsp;{%- endif -%}<span class="emoji">{{ event.emoji }}</span> - {{ event.name }}{{ ns.event_separator }}
-                        {%- if ns.event_separator == '' -%}
-                            {%- set ns.event_separator = '; ' -%}
-                        {%- endif -%}
+                        &nbsp;<span class="emoji">{{ event.emoji }}</span> - {{ event.name }};
                     {%- endfor -%}
                 {%- endif -%}
             {%- endif -%}
         </td>
         <td style="text-align: {{ 'left' if locale.RTL else 'right' }};">
             {%- if locale.calendar_displayed == 'SYM' -%}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }}&nbsp; {{date.format(locale.ISO_DATE_FORMAT, locale)}}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }}&nbsp; {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
             {%- elif locale.calendar_displayed == 'ISO' -%}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }}&nbsp; {{date.format(locale.DATE_FORMAT, locale)}}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }} {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }}&nbsp; {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
             {%- elif locale.calendar_displayed == 'DCC' -%}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }} {%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }} {%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
             {%- endif -%}
-            {%- if 'JUL' in locale.SHOW_HOLIDAYS -%}
+            {%- if 'CHR' in locale.SHOW_HOLIDAYS -%}
                 <br/>
-                &nbsp;{{date.julian_date(locale)}}&nbsp;
+                &nbsp;{{date.date.julian_date(locale)}}&nbsp;
             {%- endif -%}
             {%- if 'JEW' in locale.SHOW_HOLIDAYS -%}
                 <br/>
-                &nbsp;{{date.hebrew_date(locale, number=False, short=False)}}&nbsp;
+                &nbsp;{{date.date.hebrew_date(locale, number=False, short=False)}}&nbsp;
             {%- endif -%}
             {%- if 'HIJ' in locale.SHOW_HOLIDAYS -%}
                 <br/>
-                &nbsp;{{date.hijri_date(locale, number=False, short=False)}}&nbsp;
+                &nbsp;{{date.date.hijri_date(locale, number=False, short=False)}}&nbsp;
             {%- endif -%}
         </td>
     </tr>

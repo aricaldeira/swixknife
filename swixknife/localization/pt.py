@@ -370,7 +370,7 @@ class SezimalLocalePT(SezimalLocale):
         'IRN': 'Islâmico Solar',
 
         #
-        # Easter referencial
+        # Páscoa referencial
         #
         'SEZ+EASTER': 'Páscoa Sezimal - 11 de abril',
         'SYM+EASTER': 'Páscoa Simétrica - 7 de abril',
@@ -695,3 +695,83 @@ class SezimalLocalePT(SezimalLocale):
             fmt = fmt.replace(f'&$DEM', self._DE_DO_DA_MES[int(date.dcc_month)])
 
         return fmt
+
+    CHRISTIAN_HOLIDAYS = [
+        ('CHR+01-01',     '🕆\ufe0f Santa Mãe de Deus'),
+        ('CHR+01-06',     '🕆\ufe0f Epifania'),
+        ('CHR+01-06+SUN', '🕆\ufe0f Batismo do Senhor'),
+        # ('CHR+02-02',     '🕆\ufe0f Candelária'),
+        # ('CHR+EASTER-124', '🕆\ufe0f Quinta-feira Gorda'),
+        # ('CHR+EASTER-120', '🕆\ufe0f Segunda-feira Gorda'),
+        ('CHR+EASTER-115', '🕆\ufe0f Terça-feira Gorda'),
+        ('CHR+EASTER-114', '🕆\ufe0f Quarta-feira de Cinzas'),
+        ('CHR+EASTER-11',  '🕆\ufe0f Domingo de Ramos'),
+        # ('CHR+EASTER-4',   '🕆\ufe0f Quarta-feira Santa'),
+        ('CHR+EASTER-3',   '🕆\ufe0f Quinta-feira Santa'),
+        ('CHR+EASTER-2',   '🕆\ufe0f🥀\ufe0f Sexta-feira Santa'),
+        ('CHR+EASTER-1',   '🕆\ufe0f Sábado Santo'),
+        ('CHR+EASTER',     '🕆\ufe0f🐣\ufe0f🌱\ufe0f Páscoa'),
+        # ('CHR+EASTER+1',   '🕆\ufe0f Segunda-feira de Páscoa'),
+        ('CHR+EASTER+11',  '🕆\ufe0f Festa da Misericórdia'),
+        ('CHR+EASTER+103', '🕆\ufe0f Ascensão do Senhor'),
+        ('CHR+EASTER+121', '🕆\ufe0f Pentecostes'),
+        # ('CHR+EASTER+122', '🕆\ufe0f Whit Monday'),
+        ('CHR+EASTER+132', '🕆\ufe0f🛆 Santíssima Trindade'),
+        ('CHR+EASTER+140', '🕆\ufe0f🥖\ufe0f🍷\ufe0f Corpus Christi'),
+        ('CHR+11-01',      '🕆\ufe0f Todos os Santos'),
+        ('CHR+11-02',      '🕆\ufe0f Finados'),
+        ('CHR+12-25-SUN_4','🕆\ufe0f Advento'),
+        ('CHR+12-25',      '🕆\ufe0f🌟\ufe0f👼🏼\ufe0f Natal'),
+
+        ('CHR+SYM+01-01',     '🕆\ufe0f Santa Mãe de Deus #𝑠𝑖𝑚'),
+        ('CHR+SYM+01-06',     '🕆\ufe0f Epifania #𝑠𝑖𝑚'),
+        ('CHR+SYM+01-06+SUN', '🕆\ufe0f Batismo do Senhor #𝑠𝑖𝑚'),
+        # ('CHR+SYM+02-02',     '🕆\ufe0f Candelária #𝑠𝑖𝑚'),
+        # ('CHR+SYM+EASTER-124', '🕆\ufe0f Quinta-feira Gorda #𝑠𝑖𝑚'),
+        # ('CHR+SYM+EASTER-120', '🕆\ufe0f Segunda-feira Gorda #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-115', '🕆\ufe0f Terça-feira Gorda #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-114', '🕆\ufe0f Quarta-feira de Cinzas #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-11',  '🕆\ufe0f Domingo de Ramos #𝑠𝑖𝑚'),
+        # ('CHR+SYM+EASTER-4',   '🕆\ufe0f Quarta-feira Santa #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-3',   '🕆\ufe0f Quinta-feira Santa #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-2',   '🕆\ufe0f🥀\ufe0f Sexta-feira Santa #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER-1',   '🕆\ufe0f Sábado Santo #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER',     '🕆\ufe0f🐣\ufe0f🌱\ufe0f Páscoa #𝑠𝑖𝑚'),
+        # ('CHR+SYM+EASTER+1',   '🕆\ufe0f Segunda-feira de Páscoa #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER+11',  '🕆\ufe0f Festa da Misericórdia #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER+103', '🕆\ufe0f Ascensão do Senhor #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER+121', '🕆\ufe0f Pentecostes #𝑠𝑖𝑚'),
+        # ('CHR+SYM+EASTER+122', '🕆\ufe0f Whit Monday #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER+132', '🕆\ufe0f🛆 Santíssima Trindade #𝑠𝑖𝑚'),
+        ('CHR+SYM+EASTER+140', '🕆\ufe0f🥖\ufe0f🍷\ufe0f Corpus Christi #𝑠𝑖𝑚'),
+        ('CHR+SYM+11-01',      '🕆\ufe0f Todos os Santos #𝑠𝑖𝑚'),
+        ('CHR+SYM+11-02',      '🕆\ufe0f Finados #𝑠𝑖𝑚'),
+        ('CHR+SYM+12-25-SUN_4','🕆\ufe0f Advento #𝑠𝑖𝑚'),
+        ('CHR+SYM+12-25',      '🕆\ufe0f🌟\ufe0f👼🏼\ufe0f Natal #𝑠𝑖𝑚'),
+    ]
+
+    JEWISH_HOLIDAYS = [
+        ('JEW+11-15', '🌳\ufe0f💮\ufe0f Tu biShvat'),
+        # ('JEW+12-14', '🍷\ufe0f🍬\ufe0f Purim'),  # Adar bet (13) in leap years, Adar (12) in regular years
+        ('JEW+13-14', '🍷\ufe0f🍬\ufe0f Purim'),  # Adar bet (13) in leap years, Adar (12) in regular years
+        ('JEW+01-15', '🐑\ufe0f🫓\ufe0f Pesach'),
+        ('JEW+02-14', '🐑\ufe0f🫓\ufe0f Pesach Sheni'),
+        ('JEW+02-18', '🔥\ufe0f Lag baOmer'),
+        ('JEW+03-06', '💐\ufe0f📜\ufe0f Shavuot'),
+        ('JEW+05-09', '🕍\ufe0f🔥\ufe0f Tisha b’Av'),
+
+        ('JEW+07-01', '🍎\ufe0f🍯\ufe0f Rosh haShaná'),
+        ('JEW+07-10', '🤍\ufe0f🙏🏻\ufe0f Yom Kippur'),
+        ('JEW+07-15', '🍋\ufe0f⛺\ufe0f Sukkot'),
+        ('JEW+07-22', '🙏🏻\ufe0f🌧\ufe0f️ Shemini Atzeret'),
+        ('JEW+07-23', '😊📜\ufe0f Simchat Torah'),
+        ('JEW+09-25', '🕯\ufe0f🕍\ufe0f Hanukkah'),
+    ]
+
+    ISLAMIC_HOLIDAYS = [
+        ('HIJ+09-01', '🍯\ufe0f🥙\ufe0f 1º dia do Ramadã'),
+        ('HIJ+09-30', '🍯\ufe0f🥙\ufe0f Laylat ul-Jāʾizah'),
+        ('HIJ+10-01-FRI', '🍯\ufe0f🥙\ufe0f Jumuʿat ul-Widāʿ'),
+        ('HIJ+10-01', '🍯\ufe0f🥙\ufe0f ʻĪd ul-Fiṭr'),
+        ('HIJ+12-10', '🐑\ufe0f🕋\ufe0f ʿĪd ul-ʾAḍḥā'),
+    ]

@@ -26,26 +26,26 @@ class SezimalLocalePT_PT(SezimalLocalePT):
 
         return ''
 
-    _HOLIDAYS = [
+    HOLIDAYS = [
         #
         # Moving Holydays
         # Using fixed Easter day according to Symmetry454 original proposal
         #
-        ('EASTER-115', '🎉\ufe0f Carnaval'),
-        ('EASTER-2',   '🥀\ufe0f Sexta-feira Santa'),
-        ('EASTER',     '🐣\ufe0f Páscoa'),
-        ('EASTER+140', '🥖\ufe0f Corpo de Deus'),
+        ('EASTER-115', '🎉\ufe0f Carnaval #𝑠𝑖𝑚'),
+        ('EASTER-2',   '🥀\ufe0f Sexta-feira Santa #𝑠𝑖𝑚'),
+        ('EASTER',     '🐣\ufe0f Páscoa #𝑠𝑖𝑚'),
+        ('EASTER+140', '🥖\ufe0f Corpo de Deus #𝑠𝑖𝑚'),
 
         #
         # National Holidays
         # that (usually) don’t have a year of reference
         #
-        ('01-01', '⛪\ufe0f Santa Mãe de Deus'),
-        ('05-01', '🐝\ufe0f Dia do Trabalhador'),
-        ('12-23', '⛪\ufe0f Assunção de Nossa Senhora'),
-        ('15-01', '🪦\ufe0f Todos os Santos'),
-        ('20-12', '⛪\ufe0f Imaculada Conceição'),
-        ('20-41', '👼🏼\ufe0f Natal'),
+        ('01-01', '⛪\ufe0f Santa Mãe de Deus #𝑠𝑖𝑚'),
+        ('05-01', '🐝\ufe0f Dia do Trabalhador #𝑠𝑖𝑚'),
+        ('12-23', '⛪\ufe0f Assunção de Nossa Senhora #𝑠𝑖𝑚'),
+        ('15-01', '🪦\ufe0f Todos os Santos #𝑠𝑖𝑚'),
+        ('20-12', '⛪\ufe0f Imaculada Conceição #𝑠𝑖𝑚'),
+        ('20-41', '👼🏼\ufe0f Natal #𝑠𝑖𝑚'),
 
         #
         # National Holidays
@@ -59,15 +59,15 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         # When informing the year, the age is calculated,
         # and can be shown using #i as a format tag
         #
-        # ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira 131_234-04-41 ~ 1974-04-25_dec
-        # ('125_340-10-13', '🇵🇹\ufe0f Dia de Portugal (#i)'),               # terça-feira  125_340-10-13 ~ 1580-06-10_dec
-        # ('131_050-14-03', '🇵🇹\ufe0f Implantação da República (#i)'),      # quarta-feira 131_050-14-03 ~ 1910-10-05_dec
-        # ('125_520-15-54', '🇵🇹\ufe0f Restauração da Independência (#i)'),  # sábado       125_520-15-54 ~ 1640-12-01_dec
+        # ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i) #𝑠𝑖𝑚'),              # quinta-feira 131_234-04-41 ~ 1974-04-25_dec
+        # ('125_340-10-13', '🇵🇹\ufe0f Dia de Portugal (#i) #𝑠𝑖𝑚'),               # terça-feira  125_340-10-13 ~ 1580-06-10_dec
+        # ('131_050-14-03', '🇵🇹\ufe0f Implantação da República (#i) #𝑠𝑖𝑚'),      # quarta-feira 131_050-14-03 ~ 1910-10-05_dec
+        # ('125_520-15-54', '🇵🇹\ufe0f Restauração da Independência (#i) #𝑠𝑖𝑚'),  # sábado       125_520-15-54 ~ 1640-12-01_dec
 
-        ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i)'),              # quinta-feira,  04-41 ~ 04-25_dec
-        ('125_340-10-14', '🇵🇹\ufe0f Dia de Portugal (#i)'),               # quarta-feira,  10-14 ~ 06-10_dec
-        ('131_050-14-05', '🇵🇹\ufe0f Implantação da República (#i)'),      # sexta-feira,   14-05 ~ 10-05_dec
-        ('125_520-20-01', '🇵🇹\ufe0f Restauração da Independência (#i)'),  # segunda-feira, 20-01 ~ 12-01_dec
+        ('131_234-04-41', '🇵🇹\ufe0f Dia da Liberdade (#i) #𝑠𝑖𝑚'),              # quinta-feira,  04-41 ~ 04-25_dec
+        ('125_340-10-14', '🇵🇹\ufe0f Dia de Portugal (#i) #𝑠𝑖𝑚'),               # quarta-feira,  10-14 ~ 06-10_dec
+        ('131_050-14-05', '🇵🇹\ufe0f Implantação da República (#i) #𝑠𝑖𝑚'),      # sexta-feira,   14-05 ~ 10-05_dec
+        ('125_520-20-01', '🇵🇹\ufe0f Restauração da Independência (#i) #𝑠𝑖𝑚'),  # segunda-feira, 20-01 ~ 12-01_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [

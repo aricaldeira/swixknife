@@ -127,8 +127,8 @@ class SezimalLocaleEO(SezimalLocale):
         # ('130_523-20-15', '💚\ufe0f Zamenhof-Tago (#i)'),  # Ĵaŭdo, 130_523-20-15 ~ 1859-12-15_dec
         # ('131_011-11-35', '📗\ufe0f Unua Libro (#i)'),     # Mardo, 131_011-11-35 ~ 1887-07-26_dec
 
-        ('130_523-20-23', '💚\ufe0f Zamenhof-Tago (#i)'),  # Lundo,    20-23 ~ 12-15_dec
-        ('131_011-11-42', '📗\ufe0f Unua Libro (#i)'),     # Vendredo, 11-42 ~ 07-26_dec
+        ('130_523-20-23', '💚\ufe0f Zamenhof-Tago (#i) #𝑠𝑖𝑚'),  # Lundo,    20-23 ~ 12-15_dec
+        ('131_011-11-42', '📗\ufe0f Unua Libro (#i) #𝑠𝑖𝑚'),     # Vendredo, 11-42 ~ 07-26_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
