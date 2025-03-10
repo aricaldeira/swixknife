@@ -168,16 +168,40 @@ class SezimalLocaleHE(SezimalLocale):
         'אדר ב׳',
     ]
 
-    HOLIDAYS_OTHER_CALENDAR = [
-        ('JEW+07-01', '🍎\ufe0f🍯\ufe0f \u202d(%d.%m.%Y)\u202c ראש השנה'),
-        ('JEW+07-10', '🤍\ufe0f🙏🏻\ufe0f \u202d(%d.%m.%Y)\u202c יום כפור‎'),
-        ('JEW+07-15', '🍋\ufe0f⛺\ufe0f \u202d(%d.%m.%Y)\u202c סוכות'),
-        ('JEW+07-22', '🙏🏻\ufe0f🌧\ufe0f️ \u202d(%d.%m.%Y)\u202c שמיני עצרת‎'),
-        ('JEW+07-23', '😊📜\ufe0f \u202d(%d.%m.%Y)\u202c שמחת תורה'),
-        ('JEW+09-25', '🕯\ufe0f🕍\ufe0f \u202d(%d.%m.%Y)\u202c חנכה‎'),
-        ('JEW+11-15', '🌳\ufe0f💮\ufe0f \u202d(%d.%m.%Y)\u202c ט״ו בשבט'),
-        ('JEW+12-14', '🍷\ufe0f🍬\ufe0f \u202d(%d.%m.%Y)\u202c פ   ורים‎'),
-        ('JEW+01-15', '🐑\ufe0f🫓\ufe0f \u202d(%d.%m.%Y)\u202c חג הפסח'),
-        ('JEW+02-18', '🔥\ufe0f \u202d(%d.%m.%Y)\u202c ל״ג בעומר'),
-        ('JEW+03-06', '💐\ufe0f📜\ufe0f \u202d(%d.%m.%Y)\u202c שבועות'),
+    JEWISH_HOLIDAYS = [
+        ('JEW+11-15', '💮\ufe0f🌳\ufe0f ט״ו בשבט'),
+        ('JEW+13-14', '🍬\ufe0f🍷\ufe0f פורים‎'),
+        ('JEW+01-15', '🫓\ufe0f🐑\ufe0f פסח'),
+        ('JEW+02-14', '🫓\ufe0f🐑\ufe0f פסח שני'),
+        ('JEW+02-18', '🔥\ufe0f ל״ג בעומר'),
+        ('JEW+03-06', '📜\ufe0f💐\ufe0f שבועות'),
+        ('JEW+05-09', '🔥\ufe0f🕍\ufe0f תשעה באב'),
+
+        ('JEW+07-01', '🍯\ufe0f🍎\ufe0f ראש השנה'),
+        ('JEW+07-10', '🙏🏻\ufe0f🤍\ufe0f יום כפור‎'),
+        ('JEW+07-15', '⛺\ufe0f🍋\ufe0f סוכות'),
+        ('JEW+07-22', '🌧\ufe0f️🙏🏻\ufe0f שמיני עצרת‎'),
+        ('JEW+07-23', '📜\ufe0f😊 שמחת תורה'),
+        ('JEW+09-25', '🕍\ufe0f🕯\ufe0f חנכה‎'),
     ]
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sym.',
+        'SYM': 'Sym.',
+        'ISO': 'גר׳י',
+        'DCC': 'DCC',
+        'ADC': 'ADC',
+        'ISR': 'Isr.',
+        'IND': 'Ind.',
+        #
+        # Religious calendars
+        #
+        'JUL': 'Jul.',
+        'JEW': 'Jew.',
+        'HIJ': 'Isl.',
+        'IRN': 'Irn.',
+    }
+

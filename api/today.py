@@ -789,6 +789,13 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
             event.date = event_date
             event.obs = season_name
 
+            event_sym = SezimalEvent()
+            event_sym.origin = 'SYM+' + str(event_date)
+            event_sym.emoji = event_emoji
+            event_sym.name = event_name
+            event_sym.date = event_date
+            event_sym.obs = season_name
+
             if calendar == 'SYM':
                 if event.date.month not in events:
                     events[event.date.month] = SezimalDictionary({})
@@ -797,6 +804,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                     events[event.date.month][event.date.day] = SezimalList([])
 
                 events[event.date.month][event.date.day].append(event)
+                events[event.date.month][event.date.day].append(event_sym)
 
             elif calendar == 'ISO':
                 if event.date.gregorian_month not in events:
@@ -806,6 +814,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                     events[event.date.gregorian_month][event.date.gregorian_day] = SezimalList([])
 
                 events[event.date.gregorian_month][event.date.gregorian_day].append(event)
+                events[event.date.gregorian_month][event.date.gregorian_day].append(event_sym)
 
             elif calendar == 'DCC':
                 if event.date.dcc_month not in events:
@@ -815,6 +824,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                     events[event.date.dcc_month][event.date.dcc_day] = SezimalList([])
 
                 events[event.date.dcc_month][event.date.dcc_day].append(event)
+                events[event.date.dcc_month][event.date.dcc_day].append(event_sym)
 
     events['moon'] = SezimalDictionary()
 
@@ -2181,6 +2191,8 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 
 
 def _create_store_events(itens: list = None):
+    year_range = (213_212, 213_221)
+
     if itens is None:
         itens = (
         # 'pt-BR|America/Sao_Paulo',
@@ -2199,6 +2211,8 @@ def _create_store_events(itens: list = None):
         # 'pt-PT|Europe/Lisbon',
         # 'it-IT|Europe/Rome',
         # 'de-DE|Europe/Berlin',
+        # 'es-ES|Europe/Madrid',
+        #
         # 'es-MX|America/Mexico_City',
 
         'en-US|America/Chicago',
@@ -2232,15 +2246,39 @@ def _create_store_events(itens: list = None):
     for item in itens:
         loc, tz = item.split('|')
 
-        for base in (10, 14, 20):
+        #
+        # DCC is only sezimal
+        #
+        base = 10
+        locale = sezimal_locale(loc)
+        locale.base = base
+        locale.DEFAULT_TIME_ZONE = tz
+        locale.format_token = ''
+        locale.calendar_displayed = 'DCC'
+
+        for year in SezimalRange(*year_range):
+            context = {
+                'base': locale.base,
+                'format_token': locale.format_token,
+            }
+
+            print('vai fazer', item, year, base, 'DCC', locale.format_token)
+            _calendar_events(locale, year, context, only_check=True)
+
+            if locale.ISO_TIME_FORMAT[:2] == '%I':
+                locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                locale.HOUR_FORMAT = '24h'
+                _calendar_events(locale, year, context, only_check=True)
+
+        for calendar in ('SYM', 'ISO', 'DCC'):
             locale = sezimal_locale(loc)
-            locale.base = base
             locale.DEFAULT_TIME_ZONE = tz
+            locale.calendar_displayed = calendar
 
-            for calendar in ('SYM', 'ISO', 'DCC'):
-                locale.calendar_displayed = calendar
+            for base in (10, 14, 20):
+                locale.base = base
 
-                for year in SezimalRange(213_210, 213_221):
+                for year in SezimalRange(*year_range):
                     if base == 10:
                         locale.format_token = ''
                     elif base == 14:
@@ -2274,27 +2312,3 @@ def _create_store_events(itens: list = None):
                             locale.ISO_TIME_FORMAT = '%H:%M:%S'
                             locale.HOUR_FORMAT = '24h'
                             _calendar_events(locale, year, context, only_check=True)
-
-        #
-        # DCC is only sezimal
-        #
-        base = 10
-        locale = sezimal_locale(loc)
-        locale.base = base
-        locale.DEFAULT_TIME_ZONE = tz
-        locale.format_token = ''
-        locale.calendar_displayed = 'DCC'
-
-        for year in SezimalRange(213_210, 213_221):
-            context = {
-                'base': locale.base,
-                'format_token': locale.format_token,
-            }
-
-            print('vai fazer', item, year, base, 'DCC', locale.format_token)
-            _calendar_events(locale, year, context, only_check=True)
-
-            if locale.ISO_TIME_FORMAT[:2] == '%I':
-                locale.ISO_TIME_FORMAT = '%H:%M:%S'
-                locale.HOUR_FORMAT = '24h'
-                _calendar_events(locale, year, context, only_check=True)

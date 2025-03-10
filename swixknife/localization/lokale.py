@@ -1419,7 +1419,7 @@ class SezimalLocale:
         #
         # Civil calendars
         #
-        'SEZ': 'Sez.',
+        'SEZ': 'Sym.',
         'SYM': 'Sym.',
         'ISO': 'Gre.',
         'DCC': 'DCC',

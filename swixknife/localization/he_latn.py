@@ -154,5 +154,3 @@ class SezimalLocaleHE_LATN(SezimalLocale):
         'ada',
         'ad2',
     ]
-
-    HOLIDAYS_OTHER_CALENDAR = SezimalLocale.JEWISH_HOLIDAYS
