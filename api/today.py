@@ -445,8 +445,6 @@ def api_calendar_process():
     if dados['hour_format'] != 'locale':
         locale.HOUR_FORMAT = dados['hour_format']
 
-    tds = []
-
     if locale.calendar_displayed == 'SYM':
         context['events'] = _calendar_events(locale, date.year, context) or {}
 
@@ -460,9 +458,6 @@ def api_calendar_process():
                 context['events_next_year'] = _calendar_events(locale, date.year + 1, context) or {}
             else:
                 context['events_next_year'] = context['events']
-
-        # for i in SezimalRange(213_000, 214_000):
-        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
 
     elif locale.calendar_displayed == 'ISO':
         context['events'] = _calendar_events(locale, date.gregorian_year, context) or {}
@@ -478,9 +473,6 @@ def api_calendar_process():
             else:
                 context['events_next_year'] = context['events']
 
-        # for i in range(1944, 2161):
-        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, Decimal(i), context)))
-
     elif locale.calendar_displayed == 'DCC':
         context['events'] = _calendar_events(locale, date.dcc_year, context) or {}
 
@@ -494,17 +486,6 @@ def api_calendar_process():
                 context['events_next_year'] = _calendar_events(locale, date.dcc_year + 1, context) or {}
             else:
                 context['events_next_year'] = context['events']
-
-        # for i in SezimalRange(213_000, 214_000):
-        #     tds.append(threading.Thread(target=_calendar_events, args=(locale, i, context)))
-
-    # for td in tds:
-    #     td.start()
-    #     print('iniciou thread', td)
-
-    # for td in tds:
-    #     td.join()
-    #     print('fechou thread', td)
 
     script = ''
 
@@ -677,12 +658,13 @@ def _read_calendar_cache(locale: str, cache_key: str, only_check: bool = False) 
 
 
 def _limit_holidays(events, show_holidays):
-    if not show_holidays:
+    if (not show_holidays) or (not events) or type(events) == bool:
         return events
 
     limited_events = SezimalDictionary()
 
-    limited_events['moon'] = events['moon']
+    if 'moon' in events:
+        limited_events['moon'] = events['moon']
 
     for month in events:
         if type(month) == str:
@@ -733,23 +715,23 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     cache_key += '|' + str(locale.base) + locale.format_token
 
     if cache_key in EVENTS_CACHE:
-        if locale.SHOW_HOLIDAYS:
-            ck = cache_key + '|' + locale.SHOW_HOLIDAYS
+        show_holidays = getattr(locale, 'SHOW_HOLIDAYS', 'ISO') or 'ISO'
 
-            if ck in EVENTS_CACHE:
-                return EVENTS_CACHE[ck]
+        ck = cache_key + '|' + show_holidays
 
-            EVENTS_CACHE[ck] = _limit_holidays(EVENTS_CACHE[cache_key], locale.SHOW_HOLIDAYS)
-
+        if ck in EVENTS_CACHE:
             return EVENTS_CACHE[ck]
 
-        return EVENTS_CACHE[cache_key]
+        EVENTS_CACHE[ck] = _limit_holidays(EVENTS_CACHE[cache_key], show_holidays)
+
+        return EVENTS_CACHE[ck]
 
     cache = _read_calendar_cache(locale.LANGUAGE_TAG, cache_key, only_check=only_check)
 
     if cache:
         EVENTS_CACHE[cache_key] = cache
-        return cache
+
+        return _calendar_events(locale, year, context, only_check)
 
     events = SezimalDictionary({})
 
@@ -768,7 +750,7 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     EVENTS_CACHE[cache_key] = events
     _write_calendar_cache(locale.LANGUAGE_TAG, cache_key, events)
 
-    return events
+    return _calendar_events(locale, year, context, only_check)
 
 
 def _process_events_list(all_events, events, calendar, year, locale, context):
@@ -2201,23 +2183,23 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 def _create_store_events(itens: list = None):
     if itens is None:
         itens = (
-        'pt-BR|America/Sao_Paulo',
-        'bz|America/Sao_Paulo',
-        'eo-BR|America/Sao_Paulo',
-        'en-BR|America/Sao_Paulo',
-
-        'pt-BR|Natural/NT4-03',
-        'bz|Natural/NT4-03',
-        'eo-BR|Natural/NT4-03',
-        'en-BR|Natural/NT4-03',
-
-        'fr-CA|America/Montreal',
-        'fr-FR|Europe/Paris',
-
-        'pt-PT|Europe/Lisbon',
-        'it-IT|Europe/Rome',
-        'de-DE|Europe/Berlin',
-        'es-MX|America/Mexico_City',
+        # 'pt-BR|America/Sao_Paulo',
+        # 'bz|America/Sao_Paulo',
+        # 'eo-BR|America/Sao_Paulo',
+        # 'en-BR|America/Sao_Paulo',
+        #
+        # 'pt-BR|Natural/NT4-03',
+        # 'bz|Natural/NT4-03',
+        # 'eo-BR|Natural/NT4-03',
+        # 'en-BR|Natural/NT4-03',
+        #
+        # 'fr-CA|America/Montreal',
+        # 'fr-FR|Europe/Paris',
+        #
+        # 'pt-PT|Europe/Lisbon',
+        # 'it-IT|Europe/Rome',
+        # 'de-DE|Europe/Berlin',
+        # 'es-MX|America/Mexico_City',
 
         'en-US|America/Chicago',
         'en-US|America/Denver',
@@ -2233,10 +2215,9 @@ def _create_store_events(itens: list = None):
 
         'en-GB|Europe/London',
         'en-IE|Europe/Dublin',
-
+        'en-IL|Asia/Jerusalem',
         'en-IN|Asia/Calcutta',
-
-        # 'en-MY|Asia/Kuala_Lumpur',
+        'en-MY|Asia/Kuala_Lumpur',
 
         'es-US|America/Chicago',
         'es-US|America/Denver',
