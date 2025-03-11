@@ -711,7 +711,12 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     cache_key += '|' + locale.LANGUAGE_TAG
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
-    cache_key += '|' + locale.HOUR_FORMAT
+
+    if locale.base == 14:
+        cache_key += '|' + locale.HOUR_FORMAT
+    else:
+        cache_key += '|24h'
+
     cache_key += '|' + str(locale.base) + locale.format_token
 
     if cache_key in EVENTS_CACHE:
@@ -2195,31 +2200,67 @@ def _create_store_events(itens: list = None):
 
     if itens is None:
         itens = (
-        # 'pt-BR|America/Sao_Paulo',
-        # 'bz|America/Sao_Paulo',
-        # 'eo-BR|America/Sao_Paulo',
-        # 'en-BR|America/Sao_Paulo',
-        #
-        # 'pt-BR|Natural/NT4-03',
-        # 'bz|Natural/NT4-03',
-        # 'eo-BR|Natural/NT4-03',
-        # 'en-BR|Natural/NT4-03',
-        #
-        # 'fr-CA|America/Montreal',
-        # 'fr-FR|Europe/Paris',
-        #
-        # 'pt-PT|Europe/Lisbon',
-        # 'it-IT|Europe/Rome',
-        # 'de-DE|Europe/Berlin',
-        # 'es-ES|Europe/Madrid',
-        #
-        # 'es-MX|America/Mexico_City',
+        'pt-BR|America/Sao_Paulo',
+        'bz|America/Sao_Paulo',
+        'eo-BR|America/Sao_Paulo',
+        'en-BR|America/Sao_Paulo',
+
+        'pt-BR|Natural/NT4-03',
+        'bz|Natural/NT4-03',
+        'eo-BR|Natural/NT4-03',
+        'en-BR|Natural/NT4-03',
+
+        'pt-BR|Natural/NT6-03',
+        'bz|Natural/NT6-03',
+        'eo-BR|Natural/NT6-03',
+        'en-BR|Natural/NT6-03',
+
+        'pt-BR|Sezimal/SPM-0530',
+        'bz|Sezimal/SPM-0530',
+        'eo-BR|Sezimal/SPM-0530',
+        'en-BR|Sezimal/SPM-0530',
+
+        'pt-BR|Sezimal/SPM-10',
+        'bz|Sezimal/SPM-10',
+        'eo-BR|Sezimal/SPM-10',
+        'en-BR|Sezimal/SPM-10',
+
+        'pt-BR|Sezimal/NT10-0530',
+        'bz|Sezimal/NT10-0530',
+        'eo-BR|Sezimal/NT10-0530',
+        'en-BR|Sezimal/NT10-0530',
+
+        'pt-BR|Sezimal/NT10-10',
+        'bz|Sezimal/NT10-10',
+        'eo-BR|Sezimal/NT10-10',
+        'en-BR|Sezimal/NT10-10',
+
+        'pt-BR|Sezimal/NT13-0530',
+        'bz|Sezimal/NT13-0530',
+        'eo-BR|Sezimal/NT13-0530',
+        'en-BR|Sezimal/NT13-0530',
+
+        'pt-BR|Sezimal/NT13-10',
+        'bz|Sezimal/NT13-10',
+        'eo-BR|Sezimal/NT13-10',
+        'en-BR|Sezimal/NT13-10',
+
+        'fr-CA|America/Montreal',
+        'fr-FR|Europe/Paris',
+
+        'pt-PT|Europe/Lisbon',
+        'it-IT|Europe/Rome',
+        'de-DE|Europe/Berlin',
+        'es-ES|Europe/Madrid',
+
+        'es-MX|America/Mexico_City',
 
         'en-US|America/Chicago',
         'en-US|America/Denver',
         'en-US|Pacific/Honolulu',
         'en-US|America/Los_Angeles',
         'en-US|America/New_York',
+        'en-US|America/Anchorage',
 
         'en-AU|Australia/Adelaide',
         'en-AU|Australia/Sydney',
@@ -2238,9 +2279,23 @@ def _create_store_events(itens: list = None):
         'es-US|Pacific/Honolulu',
         'es-US|America/Los_Angeles',
         'es-US|America/New_York',
-
-        'en-US|America/Anchorage',
         'es-US|America/Anchorage',
+
+        'eo-US|America/Chicago',
+        'eo-US|America/Denver',
+        'eo-US|Pacific/Honolulu',
+        'eo-US|America/Los_Angeles',
+        'eo-US|America/New_York',
+        'eo-US|America/Anchorage',
+
+        'eo-AU|Australia/Adelaide',
+        'eo-AU|Australia/Sydney',
+        'eo-AU|Australia/Brisbane',
+
+        'eo-CA|America/Toronto',
+
+        'ja-JP|Asia/Tokyo',
+        'eo-JP|Asia/Tokyo',
     )
 
     for item in itens:
