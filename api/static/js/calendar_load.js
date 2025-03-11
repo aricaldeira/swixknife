@@ -41,10 +41,11 @@ function calendar_load() {
     /*
     *  First run time zone definition
     */
-    if (localStorage.getItem('sezimal-calendar-time-zone') === null) {
-        localStorage.setItem('sezimal-calendar-time-zone', Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC');
+    var time_zone = localStorage.getItem('sezimal-calendar-time-zone');
+    if (time_zone === null) {
+        time_zone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
     };
-    document.getElementById('time_zone_select').value = localStorage.getItem('sezimal-calendar-time-zone');
+    document.getElementById('time_zone_select').value = time_zone;
 
     /*
     *  First run theme definition
