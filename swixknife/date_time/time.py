@@ -494,7 +494,7 @@ class SezimalTime:
             while as_days < 0:
                 as_days += 1
 
-            while as_days > 1:
+            while as_days >= 1:
                 as_days -= 1
 
             if base in ['@', '@!', 'Z', 'Z?']:
