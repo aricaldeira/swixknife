@@ -84,8 +84,15 @@ class SezimalTime:
 
         self = object.__new__(cls)
 
-        self._day = SezimalInteger(total_agrimas // 1_000_000)
-        total_agrimas -= self._day * 1_000_000
+        self._day = SezimalInteger(0)
+
+        while total_agrimas >= 1_000_000:
+            self._day += 1
+            total_agrimas -= 1_000_000
+
+        while total_agrimas < 0:
+            total_agrimas += 1_000_000
+            self._day -= 1
 
         self._uta = SezimalInteger(total_agrimas // 10_000)
         total_agrimas -= self._uta * 10_000
@@ -125,8 +132,8 @@ class SezimalTime:
         self._time_zone = time_zone
         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone, base_gregorian_date)
 
-        total_seconds = self._total_agrimas
-        total_seconds -= self._day * 1_000_000
+        total_seconds = total_agrimas - (self._day * 1_000_000)
+
         total_seconds = total_seconds.decimal * sezimal_to_decimal_unit(1, 'agm', 's').decimal
 
         hour = int(total_seconds // 60 // 60)
@@ -366,6 +373,8 @@ class SezimalTime:
                 sign = '+'
                 uta = '00'
                 posha = '00'
+                agrima = '00'
+
             else:
                 if self._time_zone_offset > 0:
                     sign = '+'
@@ -480,12 +489,20 @@ class SezimalTime:
         for base, integer, fraction in DAY_FRACTION_FORMAT_TOKEN.findall(fmt):
             regex = re.compile(fr'#{base}{integer}\.{fraction}fD')
 
+            as_days = self.as_days
+
+            while as_days < 0:
+                as_days += 1
+
+            while as_days > 1:
+                as_days -= 1
+
             if base in ['@', '@!', 'Z', 'Z?']:
                 integer = SezimalInteger(niftimal_to_sezimal(integer))
                 fraction = SezimalInteger(niftimal_to_sezimal(fraction))
 
                 text = locale.format_niftimal_number(
-                    self.as_days * (SezimalInteger('100') ** integer),
+                    as_days * (SezimalInteger('100') ** integer),
                     niftimal_places=fraction,
                     sezimal_digits='!' in base,
                     sezimal_punctuation='!' in base,
@@ -497,7 +514,7 @@ class SezimalTime:
                 fraction = SezimalInteger(decimal_to_sezimal(fraction))
 
                 text = locale.format_decimal_number(
-                    self.as_days * (SezimalInteger('14') ** integer),
+                    as_days * (SezimalInteger('14') ** integer),
                     decimal_places=fraction,
                     native_digits='?' in base
                 )
@@ -507,7 +524,7 @@ class SezimalTime:
                 fraction = SezimalInteger(dozenal_to_sezimal(fraction))
 
                 text = locale.format_dozenal_number(
-                    self.as_days * (SezimalInteger('20') ** integer),
+                    as_days * (SezimalInteger('20') ** integer),
                     dozenal_places=fraction,
                     native_digits='?' in base
                 )
@@ -517,7 +534,7 @@ class SezimalTime:
                 fraction = SezimalInteger(fraction)
 
                 text = locale.format_number(
-                    self.as_days * (SezimalInteger('10') ** integer),
+                    as_days * (SezimalInteger('10') ** integer),
                     sezimal_places=fraction,
                     sezimal_digits='!' in base,
                     sezimal_punctuation='!' in base,
