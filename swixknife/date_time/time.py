@@ -513,8 +513,11 @@ class SezimalTime:
                 integer = SezimalInteger(decimal_to_sezimal(integer))
                 fraction = SezimalInteger(decimal_to_sezimal(fraction))
 
+                as_days *= SezimalInteger('14') ** integer
+                as_days = round(as_days.decimal, int(fraction))
+
                 text = locale.format_decimal_number(
-                    as_days * (SezimalInteger('14') ** integer),
+                    as_days,
                     decimal_places=fraction,
                     native_digits='?' in base
                 )
@@ -523,8 +526,11 @@ class SezimalTime:
                 integer = SezimalInteger(dozenal_to_sezimal(integer))
                 fraction = SezimalInteger(dozenal_to_sezimal(fraction))
 
+                as_days *= SezimalInteger('20') ** integer
+                as_days = round(Dozenal(as_days), int(fraction))
+
                 text = locale.format_dozenal_number(
-                    as_days * (SezimalInteger('20') ** integer),
+                    as_days,
                     dozenal_places=fraction,
                     native_digits='?' in base
                 )
@@ -533,8 +539,11 @@ class SezimalTime:
                 integer = SezimalInteger(integer)
                 fraction = SezimalInteger(fraction)
 
+                as_days *= SezimalInteger('10') ** integer
+                as_days = round(as_days, int(fraction))
+
                 text = locale.format_number(
-                    as_days * (SezimalInteger('10') ** integer),
+                    as_days,
                     sezimal_places=fraction,
                     sezimal_digits='!' in base,
                     sezimal_punctuation='!' in base,
@@ -549,7 +558,7 @@ class SezimalTime:
         # Some very basic formatting for ISO time
         #
         if '%' in fmt:
-            fmt = fmt.replace('%%', '__PERCENT__')
+            fmt = fmt.replace('%%', '___PERCENT___')
 
             for regex, token, base, zero, character, value_name, \
                 size_decimal, size_niftimal, size_sezimal in ISO_TIME_NUMBER_FORMAT_TOKENS:
@@ -652,6 +661,8 @@ class SezimalTime:
                     fmt = fmt.replace('%p', locale.upper(locale.AM))
                 else:
                     fmt = fmt.replace('%p', locale.upper(locale.PM))
+
+            fmt = fmt.replace('___PERCENT___', '%')
 
         if skip_strftime:
             return fmt
