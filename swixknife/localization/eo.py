@@ -30,23 +30,23 @@ class SezimalLocaleEO(SezimalLocale):
     CURRENCY_SUBUNIT_DECIMAL_SIZE = 3
 
     WEEKDAY_NAME = [
-        'Lundo',
-        'Mardo',
-        'Merkredo',
-        'Ĵaŭdo',
-        'Vendredo',
-        'Sabato',
-        'Dimanĉo',
+        'lundo',
+        'mardo',
+        'merkredo',
+        'ĵaŭdo',
+        'vendredo',
+        'sabato',
+        'dimanĉo',
     ]
 
     WEEKDAY_ABBREVIATED_NAME = [
-        'Lun',
-        'Mar',
-        'Mer',
-        'Ĵaŭ',
-        'Ven',
-        'Sab',
-        'Dim',
+        'lun',
+        'mar',
+        'mer',
+        'ĵaŭ',
+        'ven',
+        'sab',
+        'dim',
     ]
 
     MONTH_NAME= [

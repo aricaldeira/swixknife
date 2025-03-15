@@ -13,6 +13,7 @@ class SezimalLocaleEO_US(SezimalLocaleEO):
     GROUP_SEPARATOR = SEPARATOR_COMMA
 
     DEFAULT_TIME_ZONE = 'America/Chicago'
+    FIRST_WEEKDAY = 'SUN'
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     CURRENCY_UNIT_SYMBOL = '$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'

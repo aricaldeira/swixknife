@@ -16,6 +16,8 @@ class SezimalLocaleEO_BR(SezimalLocaleEO):
 
     DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
 
+    FIRST_WEEKDAY = 'SUN'
+
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 
     CURRENCY_UNIT_SYMBOL = 'R$'
