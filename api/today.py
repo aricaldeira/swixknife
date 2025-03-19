@@ -1829,7 +1829,7 @@ def today_icon(when: str = None, size: str = None) -> str:
         text = text.replace('width="1632.7559"', f'width="{size}"')
         text = text.replace('height="1632.7559"', f'height="{size}"')
 
-    if locale.calendar_displayed == 'DCC':
+    if getattr(locale, 'calendar_displayed', 'SYM') == 'DCC':
         if now.dcc_weekday in (0, 5):
             text = text.replace('#2a7fff', '#d40000')
 
@@ -1845,7 +1845,7 @@ def today_icon(when: str = None, size: str = None) -> str:
             month = str(now.date.month)
 
     elif base == 14:
-        if locale.calendar_displayed == 'DCC':
+        if getattr(locale, 'calendar_displayed', 'SYM') == 'DCC':
             day = str(now.date.dcc_week) + str(now.date.dcc_weekday)
             month = str(now.date.dcc_month.decimal)
         else:
@@ -1853,7 +1853,7 @@ def today_icon(when: str = None, size: str = None) -> str:
             month = str(now.date.month.decimal)
 
     else:
-        if locale.calendar_displayed == 'DCC':
+        if getattr(locale, 'calendar_displayed', 'SYM') == 'DCC':
             day = str(now.date.dcc_week) + str(now.date.dcc_weekday)
             month = str(now.date.dcc_month.dozenal)
         else:
@@ -2195,56 +2195,12 @@ def sezimal_day_count_calendar_bz_route() -> Response:
     )
 
 
-def _create_store_events(itens: list = None):
-    year_range = (213_212, 213_221)
+def _create_store_events(itens: list = None, year_range: list = None, bases: list = None):
+    if year_range is None:
+        year_range = (213_212, 213_221)
 
     if itens is None:
         itens = (
-        'pt-BR|America/Sao_Paulo',
-        'bz|America/Sao_Paulo',
-        'eo-BR|America/Sao_Paulo',
-        'en-BR|America/Sao_Paulo',
-
-        'pt-BR|Natural/NT4-03',
-        'bz|Natural/NT4-03',
-        'eo-BR|Natural/NT4-03',
-        'en-BR|Natural/NT4-03',
-
-        'pt-BR|Natural/NT6-03',
-        'bz|Natural/NT6-03',
-        'eo-BR|Natural/NT6-03',
-        'en-BR|Natural/NT6-03',
-
-        'pt-BR|Sezimal/SPM-0530',
-        'bz|Sezimal/SPM-0530',
-        'eo-BR|Sezimal/SPM-0530',
-        'en-BR|Sezimal/SPM-0530',
-
-        'pt-BR|Sezimal/SPM-10',
-        'bz|Sezimal/SPM-10',
-        'eo-BR|Sezimal/SPM-10',
-        'en-BR|Sezimal/SPM-10',
-
-        'pt-BR|Sezimal/NT10-0530',
-        'bz|Sezimal/NT10-0530',
-        'eo-BR|Sezimal/NT10-0530',
-        'en-BR|Sezimal/NT10-0530',
-
-        'pt-BR|Sezimal/NT10-10',
-        'bz|Sezimal/NT10-10',
-        'eo-BR|Sezimal/NT10-10',
-        'en-BR|Sezimal/NT10-10',
-
-        'pt-BR|Sezimal/NT13-0530',
-        'bz|Sezimal/NT13-0530',
-        'eo-BR|Sezimal/NT13-0530',
-        'en-BR|Sezimal/NT13-0530',
-
-        'pt-BR|Sezimal/NT13-10',
-        'bz|Sezimal/NT13-10',
-        'eo-BR|Sezimal/NT13-10',
-        'en-BR|Sezimal/NT13-10',
-
         'fr-CA|America/Montreal',
         'fr-FR|Europe/Paris',
 
@@ -2298,6 +2254,9 @@ def _create_store_events(itens: list = None):
         'eo-JP|Asia/Tokyo',
     )
 
+    if bases is None:
+        bases = (10, 14, 20)
+
     for item in itens:
         loc, tz = item.split('|')
 
@@ -2317,31 +2276,41 @@ def _create_store_events(itens: list = None):
                 'format_token': locale.format_token,
             }
 
+            locale.ISO_TIME_FORMAT = '%H:%M:%S'
+            locale.HOUR_FORMAT = '24h'
+
             print('vai fazer', item, year, base, 'DCC', locale.format_token)
             _calendar_events(locale, year, context, only_check=True)
 
-            if locale.ISO_TIME_FORMAT[:2] == '%I':
-                locale.ISO_TIME_FORMAT = '%H:%M:%S'
-                locale.HOUR_FORMAT = '24h'
-                _calendar_events(locale, year, context, only_check=True)
 
         for calendar in ('SYM', 'ISO', 'DCC'):
             locale = sezimal_locale(loc)
             locale.DEFAULT_TIME_ZONE = tz
             locale.calendar_displayed = calendar
 
-            for base in (10, 14, 20):
+            for base in bases:
                 locale.base = base
 
                 for year in SezimalRange(*year_range):
                     if base == 10:
                         locale.format_token = ''
+                        locale.HOUR_FORMAT = '24h'
+
                     elif base == 14:
+                        locale = sezimal_locale(loc)
+                        locale.DEFAULT_TIME_ZONE = tz
+                        locale.calendar_displayed = calendar
+                        locale.base = base
                         locale.format_token = '9'
                         locale.to_decimal_base()
+
+                        if locale.ISO_TIME_FORMAT[:2] == '%I':
+                            locale.HOUR_FORMAT = '12h'
+
                     elif base == 20:
                         locale.format_token = '↋'
                         locale.to_dozenal_base()
+                        locale.HOUR_FORMAT = '24h'
 
                     if calendar == 'DCC':
                         locale.format_token = 'c' + locale.format_token
@@ -2367,3 +2336,35 @@ def _create_store_events(itens: list = None):
                             locale.ISO_TIME_FORMAT = '%H:%M:%S'
                             locale.HOUR_FORMAT = '24h'
                             _calendar_events(locale, year, context, only_check=True)
+
+
+def _create_store_events_br():
+    # year_range = (213_050, 213_231)
+    year_range = (213_210, 213_231)
+
+    for locale in (
+        # 'pt-BR',
+        # 'bz',
+        'eo-BR',
+        'en-BR',
+    ):
+        for tz in (
+            'America/Sao_Paulo',
+            'Natural/NT4-03',
+            'Natural/NT6-03',
+            'UTC',
+            'Sezimal/SPM-0530',
+            'Sezimal/NT10-0530',
+            'Sezimal/NT13-0530',
+            'SPM',
+        ):
+            itens = [locale + '|' + tz]
+
+            bases = (10,)
+            _create_store_events(itens, year_range, bases)
+
+            bases = (14,)
+            _create_store_events(itens, year_range, bases)
+
+            bases = (20,)
+            _create_store_events(itens, year_range, bases)
