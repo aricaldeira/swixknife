@@ -42,8 +42,9 @@ function calendar_load() {
     *  First run time zone definition
     */
     var time_zone = localStorage.getItem('sezimal-calendar-time-zone');
-    if (time_zone === null) {
+    if ((time_zone === null) || (time_zone == 'null')) {
         time_zone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+        localStorage.setItem('sezimal-calendar-time-zone', time_zone);
     };
     document.getElementById('time_zone_select').value = time_zone;
 
