@@ -1,5 +1,5 @@
 <select id="time_zone_select" style="text-align: left; direction:ltr;">
-    {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR') %}
+    {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
             <optgroup name="brazil_sp" label="Braziw - Brazilya (Suw, Sudèsti, Goyás i DF)">
         {% else %}
@@ -15,7 +15,7 @@
             <option value="Sezimal/NT10-10">Hora Natural 4 SPM atrasado</option>
             <option value="Sezimal/NT13-10">Hora Natural 6 SPM atrasado</option>-->
         </optgroup>
-        {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
+        {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR', 'eo-BR', 'en-BR') %}
             <optgroup name="brazil" label="Braziw - Otrus fuzus">
         {% else %}
             <optgroup name="brazil" label="Brasil - Outros fusos">
@@ -441,7 +441,7 @@
         <option value="Australia/West">West</option>
         <option value="Australia/Yancowinna">Yancowinna</option>
     </optgroup>
-    {% if locale.LANGUAGE_TAG not in ('pt-BR', 'bz', 'bz-BR') %}
+    {% if locale.LANGUAGE_TAG not in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}
     <optgroup name="brazil" label="Brasil">
         <option value="America/Sao_Paulo">Brasília (Sul, Sudeste, Goiás e DF)</option>
         <option value="America/Maceio">Alagoas, Sergipe</option>
