@@ -423,7 +423,10 @@ class SezimalDateTime:
         if not time_zone:
             time_zone = system_time_zone()
 
-        t = _datetime.datetime.now(tz=ZoneInfo(time_zone))
+        if time_zone is not None:
+            t = _datetime.datetime.now(tz=ZoneInfo(time_zone))
+        else:
+            t = _datetime.datetime.now()
 
         return cls(t, time_zone=time_zone)
 
