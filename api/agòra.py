@@ -98,6 +98,7 @@ _TRANSLATIONS = {
     'nl': 'Nu',
     'pl': 'Teraz',
     'pt': 'Agora',
+    'qit': 'Wařat',
     'ro': 'Acum',
     'ru': 'Сейчас',
     'sw': 'Sasa',
