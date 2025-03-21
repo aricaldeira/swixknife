@@ -87,10 +87,11 @@ class SezimalLocaleUK(SezimalLocale):
     DST_SHORT_NAME = 'DST'
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'Europe/Kyiv'
-    ISO_DATE_LONG_FORMAT = '%-d. %b %Y'
+    ISO_DATE_LONG_FORMAT = '%-d. %$GM %Y р.'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     TEXT_MONTH_DAY_FORMAT = '#-d-#O #$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y р.'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%$NM %Y р.'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Spring Cross-Quarter',
@@ -361,5 +362,11 @@ class SezimalLocaleUK(SezimalLocale):
 
             if f'#${case}M' in fmt:
                 fmt = fmt.replace(f'#${case}M', self.month_name(date.month, case))
+
+            if f'%${case}M' in fmt:
+                fmt = fmt.replace(f'%${case}M', self.month_name(date.gregorian_month, case))
+
+            if f'%${case}B' in fmt:
+                fmt = fmt.replace(f'%${case}B', self.month_name(date.gregorian_month, case))
 
         return fmt

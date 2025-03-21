@@ -240,10 +240,11 @@ class SezimalLocaleRU(SezimalLocale):
     DST_NAME = 'Летнее Время'
     DST_SHORT_NAME = 'ЛВ'
     DEFAULT_TIME_ZONE = 'Europe/Moscow'
-    ISO_DATE_LONG_FORMAT = '%-d. %b %Y г.'
+    ISO_DATE_LONG_FORMAT = '%-d. %$GM %Y г.'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     TEXT_MONTH_DAY_FORMAT = '#-d-#O #$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y г.'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%$NM %Y г.'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Переход Зима – Весна',
@@ -339,6 +340,12 @@ class SezimalLocaleRU(SezimalLocale):
 
             if f'#${case}M' in fmt:
                 fmt = fmt.replace(f'#${case}M', self.month_name(date.month, case))
+
+            if f'%${case}M' in fmt:
+                fmt = fmt.replace(f'%${case}M', self.month_name(date.gregorian_month, case))
+
+            if f'%${case}B' in fmt:
+                fmt = fmt.replace(f'%${case}B', self.month_name(date.gregorian_month, case))
 
         #
         # Dealing with:

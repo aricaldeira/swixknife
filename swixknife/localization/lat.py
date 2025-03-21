@@ -108,7 +108,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diē Sōlis',
     ]
 
-    WEEKDAY_NAME_UOCATIVE = [
+    WEEKDAY_NAME_VOCATIVE = [
         'diēs Lūnae',
         'diēs Mārtis',
         'diēs Mercuriī',
@@ -188,7 +188,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diē Dominicō',
     # ]
     #
-    # WEEKDAY_NAME_UOCATIVE = [
+    # WEEKDAY_NAME_VOCATIVE = [
     #     'diēs Lūnae',
     #     'diēs Mārtis',
     #     'diēs Mercuriī',
@@ -288,7 +288,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'Decembrī',
     ]
 
-    MONTH_NAME_UOCATIVE = [
+    MONTH_NAME_VOCATIVE = [
         'Iānuārie',
         'Februārie',
         'Mārtie',
@@ -318,9 +318,9 @@ class SezimalLocaleLAT(SezimalLocale):
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     # TEXT_SHORT_MONTH_DAY_FORMAT = '#-d/#3M'
     TEXT_MONTH_DAY_FORMAT = '#-d #$GM'
-    ISO_TEXT_MONTH_DAY_FORMAT = '%-d %B'
+    ISO_TEXT_MONTH_DAY_FORMAT = '%-d %$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y'
-    ISO_YEAR_TEXT_MONTH_FORMAT = '%B %Y'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%$NM %Y'
 
     SEASON_NAME = {
         'spring_cross_quarter': 'Hieme vēr',

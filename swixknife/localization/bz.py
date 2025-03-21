@@ -101,6 +101,8 @@ class SezimalLocaleBZ(SezimalLocale):
     DST_NAME = 'Oraryu di Verawn'
     DST_SHORT_NAME = 'OV'
     DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
+    YEAR_TEXT_MONTH_FORMAT = '#M di #Y'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%B di %Y'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 

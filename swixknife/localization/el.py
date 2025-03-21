@@ -290,7 +290,7 @@ class SezimalLocaleEL(SezimalLocale):
     DST_NAME = 'Θερινή Ώρα'
     DST_SHORT_NAME = 'ΘΏ'
     DEFAULT_TIME_ZONE = 'Europe/Athens'
-    ISO_DATE_LONG_FORMAT = '%-d%O %b. %Y'
+    ISO_DATE_LONG_FORMAT = '%-d%O %$GM %Y'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     TEXT_MONTH_DAY_FORMAT = '#-d#O #$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y'
@@ -517,6 +517,21 @@ class SezimalLocaleEL(SezimalLocale):
 
             if f'#${case}W' in fmt:
                 fmt = fmt.replace(f'#${case}W', self.weekday_name(date.weekday, case))
+
+            if f'%${case}M' in fmt:
+                fmt = fmt.replace(f'%${case}M', self.month_name(date.gregorian_month, case))
+
+            if f'%$C{case}M' in fmt:
+                fmt = fmt.replace(f'%$C{case}M', self.month_name(date.gregorian_month, 'C' + case))
+
+            if f'%${case}B' in fmt:
+                fmt = fmt.replace(f'%${case}B', self.month_name(date.gregorian_month, case))
+
+            if f'%$C{case}B' in fmt:
+                fmt = fmt.replace(f'%$C{case}B', self.month_name(date.gregorian_month, 'C' + case))
+
+            if f'%${case}W' in fmt:
+                fmt = fmt.replace(f'%${case}W', self.weekday_name(date.weekday, case))
 
             #
             # Declension of articles with weekday names (feminine, but Saturday is masculine)

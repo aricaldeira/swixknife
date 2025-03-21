@@ -284,10 +284,11 @@ class SezimalLocalePL(SezimalLocale):
     DST_NAME = 'Czas Letni'
     DST_SHORT_NAME = 'CzL'
     DEFAULT_TIME_ZONE = 'Europe/Warsaw'
-    ISO_DATE_LONG_FORMAT = '%-d. %b. %Y r.'
+    ISO_DATE_LONG_FORMAT = '%-d. %$GM %Y r.'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     TEXT_MONTH_DAY_FORMAT = '#-d. #$GM'
     YEAR_TEXT_MONTH_FORMAT = '#$NM #Y r.'
+    ISO_YEAR_TEXT_MONTH_FORMAT = '%$NM %Y r.'
     # MONTH_DAY_FORMAT = '#d.#m.'
 
     SEASON_NAME = {
@@ -388,6 +389,12 @@ class SezimalLocalePL(SezimalLocale):
 
             if f'#${case}M' in fmt:
                 fmt = fmt.replace(f'#${case}M', self.month_name(date.month, case))
+
+            if f'%${case}M' in fmt:
+                fmt = fmt.replace(f'%${case}M', self.month_name(date.gregorian_month, case))
+
+            if f'%${case}B' in fmt:
+                fmt = fmt.replace(f'%${case}B', self.month_name(date.gregorian_month, case))
 
         #
         # Dealing with:
