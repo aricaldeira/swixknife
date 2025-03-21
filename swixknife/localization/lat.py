@@ -53,7 +53,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diēs Mārtis',
         'diēs Mercuriī ',
         'diēs Iouis',
-        'diēs Ueneris',
+        'diēs Veneris',
         'diēs Sāturnī',
         'diēs Sōlis',
     ]
@@ -63,7 +63,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'Mār',
         'Mer',
         'Iou',
-        'Uen',
+        'Ven',
         'Sat',
         'Sōl',
     ]
@@ -73,7 +73,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diēs Mārtis',
         'diēs Mercuriī',
         'diēs Iouis',
-        'diēs Ueneris',
+        'diēs Veneris',
         'diēs Sāturnī',
         'diēs Sōlis',
     ]
@@ -83,7 +83,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diēī Mārtis',
         'diēī Mercuriī',
         'diēī Iouis',
-        'diēī Ueneris',
+        'diēī Veneris',
         'diēī Sāturnī',
         'diēī Sōlis',
     ]
@@ -93,7 +93,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diem Mārtis',
         'diem Mercuriī',
         'diem Iouis',
-        'diem Ueneris',
+        'diem Veneris',
         'diem Sāturnī',
         'diem Sōlis',
     ]
@@ -103,7 +103,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diē Mārtis',
         'diē Mercuriī',
         'diē Iouis',
-        'diē Ueneris',
+        'diē Veneris',
         'diē Sāturnī',
         'diē Sōlis',
     ]
@@ -113,7 +113,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diēs Mārtis',
         'diēs Mercuriī',
         'diēs Iouis',
-        'diēs Ueneris',
+        'diēs Veneris',
         'diēs Sāturnī',
         'diēs Sōlis',
     ]
@@ -123,7 +123,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diēs Mārtis',
     #     'diēs Mercuriī ',
     #     'diēs Iouis',
-    #     'diēs Ueneris',
+    #     'diēs Veneris',
     #     'diēs Sabbatī',
     #     'diēs Dominicus',
     # ]
@@ -133,7 +133,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'Mār',
     #     'Mer',
     #     'Iou',
-    #     'Uen',
+    #     'Ven',
     #     'Sab',
     #     'Dom',
     # ]
@@ -143,7 +143,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'M',
     #     'M',
     #     'I',
-    #     'U',
+    #     'V',
     #     'S',
     #     'D',
     # ]
@@ -153,7 +153,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diēī Mārtis',
     #     'diēī Mercuriī',
     #     'diēī Iouis',
-    #     'diēī Ueneris',
+    #     'diēī Veneris',
     #     'diēī Sabbatī',
     #     'diēī Dominicī',
     # ]
@@ -163,7 +163,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diēī Mārtis',
     #     'diēī Mercuriī',
     #     'diēī Iouis',
-    #     'diēī Ueneris',
+    #     'diēī Veneris',
     #     'diēī Sabbatī',
     #     'diēī Dominicō',
     # ]
@@ -173,7 +173,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diem Mārtis',
     #     'diem Mercuriī',
     #     'diem Iouis',
-    #     'diem Ueneris',
+    #     'diem Veneris',
     #     'diem Sabbatī',
     #     'diem Dominicum',
     # ]
@@ -183,7 +183,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diē Mārtis',
     #     'diē Mercuriī',
     #     'diē Iouis',
-    #     'diē Ueneris',
+    #     'diē Veneris',
     #     'diē Sabbatī',
     #     'diē Dominicō',
     # ]
@@ -193,7 +193,7 @@ class SezimalLocaleLAT(SezimalLocale):
     #     'diēs Mārtis',
     #     'diēs Mercuriī',
     #     'diēs Iouis',
-    #     'diēs Ueneris',
+    #     'diēs Veneris',
     #     'diēs Sabbatī',
     #     'diēs Dominice',
     # ]
@@ -314,7 +314,7 @@ class SezimalLocaleLAT(SezimalLocale):
     DEFAULT_TIME_ZONE = 'Europe/Rome'
     WEEK_NUMBER_SYMBOL = 'sep'
     DAY_NUMBER_SYMBOL = 'diēs'
-    ISO_DATE_LONG_FORMAT = '%-d %b. %Y'
+    ISO_DATE_LONG_FORMAT = '%$ND %$GM %Y'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     # TEXT_SHORT_MONTH_DAY_FORMAT = '#-d/#3M'
     TEXT_MONTH_DAY_FORMAT = '#-d #$GM'
@@ -439,17 +439,40 @@ class SezimalLocaleLAT(SezimalLocale):
         'Nōnae',
     ]
 
-    def day_name(self, date: SezimalDate, case: str = CASE_NOMINATIVE) -> str:
-        if date.day == 1:
-            day = self.CALENDAE
-        elif (date.is_long_month and date.day == 13) \
-            or ((not date.is_long_month) and date.day == 5):
-            day = self.NONAE
-        elif (date.is_long_month and date.day == 25) \
-            or ((not date.is_long_month) and date.day == 21):
-            day = self.IDUS
-        else:
-            return date.format('#-d')
+    def day_name(self, date: SezimalDate, case: str = CASE_NOMINATIVE, calendar: str = 'SYM') -> str:
+        if calendar == 'SYM':
+            if date.day == 1:
+                day = self.CALENDAE
+            elif (date.is_long_month and date.day == 13) \
+                or ((not date.is_long_month) and date.day == 5):
+                day = self.NONAE
+            elif (date.is_long_month and date.day == 25) \
+                or ((not date.is_long_month) and date.day == 21):
+                day = self.IDUS
+            else:
+                return date.format('#-d')
+
+        elif calendar == 'ISO':
+            if date.gregorian_day == 1:
+                day = self.CALENDAE
+            elif (
+                    date.gregorian_month in (1, 3, 5, 7, 8, 10, 12)
+                    and date.gregorian_day == 7
+                ) or (
+                    date.gregorian_month not in (1, 3, 5, 7, 8, 10, 12)
+                    and date.gregorian_day == 5
+                ):
+                day = self.NONAE
+            elif (
+                    date.gregorian_month in (1, 3, 5, 7, 8, 10, 12)
+                    and date.gregorian_day == 15
+                ) or (
+                    date.gregorian_month not in (1, 3, 5, 7, 8, 10, 12)
+                    and date.gregorian_day == 13
+                ):
+                day = self.IDUS
+            else:
+                return date.format('%-d')
 
         if case:
             case = case.upper()
@@ -477,6 +500,15 @@ class SezimalLocaleLAT(SezimalLocale):
 
             if f'#${case}D' in fmt:
                 fmt = fmt.replace(f'#${case}D', self.day_name(date, case))
+
+            if f'%${case}W' in fmt:
+                fmt = fmt.replace(f'%${case}W', self.weekday_name(date.weekday, case, 'ISO'))
+
+            if f'%${case}M' in fmt:
+                fmt = fmt.replace(f'%${case}M', self.month_name(date.gregorian_month, case))
+
+            if f'%${case}D' in fmt:
+                fmt = fmt.replace(f'%${case}D', self.day_name(date, case, 'ISO'))
 
         return fmt
 
@@ -507,13 +539,13 @@ class SezimalLocaleLAT(SezimalLocale):
 
     DCC_MONTH_NAME = [
         'Mēnsis‐Nihil',
-        'Mēnsis‐Ūnus',
+        'Mēnsis‐V̄nus',
         'Mēnsis‐Duo',
         'Mēnsis‐Trēs',
         'Mēnsis‐Quattuor',
         'Mēnsis‐Quīnque',
         'Mēnsis‐Sex',
-        'Mēnsis‐Sex‐Ūnus',
+        'Mēnsis‐Sex‐V̄nus',
         'Mēnsis‐Sex‐Duo',
         'Mēnsis‐Sex‐Trēs',
         'Mēnsis‐Sex‐Quattuor',
@@ -521,7 +553,7 @@ class SezimalLocaleLAT(SezimalLocale):
 
     DCC_WEEKDAY_NAME = [
         'Diēs‐Sextānae‐Nihil',
-        'Diēs‐Sextānae‐Ūnus',
+        'Diēs‐Sextānae‐V̄nus',
         'Diēs‐Sextānae‐Duo',
         'Diēs‐Sextānae‐Trēs',
         'Diēs‐Sextānae‐Quattuor',
@@ -539,7 +571,7 @@ class SezimalLocaleLAT(SezimalLocale):
 
     DCC_NUMBER = [
         'Nihil',
-        'Ūnus',
+        'V̄nus',
         'Duo',
         'Trēs',
         'Quattuor',
@@ -600,7 +632,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'mēnsis Monōcerotis',
         'mēnsis Hydrae',
         'mēnsis Leōnis',
-        'mēnsis Uirginis',
+        'mēnsis Virginis',
         'mēnsis Serpentis',
         'mēnsis Aquilae',
         'mēnsis Aquāriī',
@@ -614,7 +646,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'Mon',
         'Hyd',
         'Leō',
-        'Uir',
+        'Vir',
         'Ser',
         'Aql',
         'Aqr',
@@ -628,7 +660,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'M',
         'H',
         'Le',
-        'U',
+        'V',
         'S',
         'Al',
         'Ar',
@@ -638,7 +670,7 @@ class SezimalLocaleLAT(SezimalLocale):
     ADC_WEEKDAY_NAME = [
         'diēs Sōlis',
         # 'diēs Mercuriī ',
-        'diēs Ueneris',
+        'diēs Veneris',
         'diēs Mārtis',
         'diēs Iouis',
         'diēs Sāturnī',
@@ -648,7 +680,7 @@ class SezimalLocaleLAT(SezimalLocale):
     ADC_WEEKDAY_ABBREVIATED_NAME = [
         'Sōl',
         # 'Mer',
-        'Uen',
+        'Ven',
         'Mār',
         'Iou',
         'Sat',
@@ -658,7 +690,7 @@ class SezimalLocaleLAT(SezimalLocale):
     ADC_WEEKDAY_SYMBOL = [
         'S',
         # 'M',
-        'U',
+        'V',
         'M',
         'I',
         'S',
