@@ -95,7 +95,8 @@ class SezimalLocaleGA(SezimalLocale):
 
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
-    DATE_LONG_FORMAT = ' #-d#O #M #Y'
+    DATE_LONG_FORMAT = 'an #-d#O lá de #$MHÍM #Y'
+    ISO_DATE_LONG_FORMAT = 'an %-d%O lá de %$MHÍM %Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, an #-d#O lá de #$MHÍM #Y, #u:#p:#a'
@@ -645,5 +646,17 @@ class SezimalLocaleGA(SezimalLocale):
 
                 if f'#@${mutation}{case}M' in fmt:
                     fmt = fmt.replace(f'#@${mutation}{case}M', self.month_abbreviated_name(date.month, mutation, case))
+
+                if f'%${mutation}{case}M' in fmt:
+                    fmt = fmt.replace(f'%${mutation}{case}M', self.month_name(date.gregorian_month, mutation, case))
+
+                if f'%@${mutation}{case}M' in fmt:
+                    fmt = fmt.replace(f'%@${mutation}{case}M', self.month_abbreviated_name(date.gregorian_month, mutation, case))
+
+                if f'%${mutation}{case}B' in fmt:
+                    fmt = fmt.replace(f'%${mutation}{case}B', self.month_name(date.gregorian_month, mutation, case))
+
+                if f'%@${mutation}{case}B' in fmt:
+                    fmt = fmt.replace(f'%@${mutation}{case}B', self.month_abbreviated_name(date.gregorian_month, mutation, case))
 
         return fmt

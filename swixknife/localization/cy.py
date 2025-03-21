@@ -167,6 +167,18 @@ class SezimalLocaleCY(SezimalLocale):
             if f'#@${mutation}M' in fmt:
                 fmt = fmt.replace(f'#@${mutation}M', self.month_abbreviated_name(date.month, mutation))
 
+            if f'%${mutation}M' in fmt:
+                fmt = fmt.replace(f'%${mutation}M', self.month_name(date.gregorian_month, mutation))
+
+            if f'%@${mutation}M' in fmt:
+                fmt = fmt.replace(f'%@${mutation}M', self.month_abbreviated_name(date.gregorian_month, mutation))
+
+            if f'%${mutation}B' in fmt:
+                fmt = fmt.replace(f'%${mutation}B', self.month_name(date.gregorian_month, mutation))
+
+            if f'%@${mutation}B' in fmt:
+                fmt = fmt.replace(f'%@${mutation}B', self.month_abbreviated_name(date.gregorian_month, mutation))
+
         return fmt
 
     def weekday_name(self, weekday: SezimalInteger, mutation: str = '') -> str:
