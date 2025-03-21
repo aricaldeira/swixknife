@@ -184,3 +184,33 @@ class SezimalLocaleTR(SezimalLocale):
         ('HIJ+10-01', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
         ('HIJ+12-10', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
     ]
+
+    HIJRI_CALENDAR_MONTH_NAME = [
+        'Muharrem',
+        'Safer',
+        'Rebiülevvel',
+        'Rebiülahir',
+        'Cemaziyelevvel',
+        'Cemaziyelahir',
+        'Recep',
+        'Şaban',
+        'Ramazan',
+        'Şevval',
+        'Zilkade',
+        'Zilhicce',
+    ]
+
+    HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Muh',
+        'Saf',
+        'Rlv',
+        'Rlh',
+        'Clv',
+        'Clh',
+        'Rec',
+        'Şab',
+        'Ram',
+        'Şev',
+        'Zkd',
+        'Zhc',
+    ]

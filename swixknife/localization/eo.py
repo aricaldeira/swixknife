@@ -416,3 +416,33 @@ class SezimalLocaleEO(SezimalLocale):
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, monato de &cM, tago &-d'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, monato de &cM, semajno &wM, tago de &cW'
+
+    HIJRI_CALENDAR_MONTH_NAME = [
+        'Muharramo',
+        'Safaro',
+        'Rabiaŭo Unua',
+        'Rabiaŭo Dua',
+        'Ĝumado Unua',
+        'Ĝumado Dua',
+        'Raĝabo',
+        'Ŝabano',
+        'Ramadano',
+        'Ŝavalo',
+        'Dulkado',
+        'Dulĥiĝo',
+    ]
+
+    HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [
+        'Muh',
+        'Saf',
+        'Rb1',
+        'Rb2',
+        'Ĝm2',
+        'Ĝm2',
+        'Raĝ',
+        'Ŝab',
+        'Ram',
+        'Ŝav',
+        'Dlk',
+        'Dlĥ',
+    ]
