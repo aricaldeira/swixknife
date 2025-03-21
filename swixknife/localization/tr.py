@@ -134,3 +134,53 @@ class SezimalLocaleTR(SezimalLocale):
         ord('I'): 'ı',
         ord('İ'): 'i',
     }
+
+    HOLIDAYS_CALENDAR = [
+        ('SYM+01-01', '🎆\ufe0f Yılbaşı'),
+        ('SYM+05-01', '🛠️\ufe0f✊\ufe0f Emek ve Dayanışma Günü'),
+
+        # ('ISO+1915-03-18', '🇹🇷\ufe0f🛑\ufe0f Çanakkale Zaferi ve Şehitleri Anma Günü (%i)'),
+        # ('ISO+1920-04-23', '🇹🇷\ufe0f👧\ufe0f Ulusal Egemenlik ve Çocuk Bayramı (%i)'),
+        # ('ISO+1919-05-19', '🇹🇷\ufe0f Atatürk’ü Anma, Gençlik ve Spor Bayramı (%i)'),
+        # ('ISO+2016-07-15', '🇹🇷\ufe0f🕊️\ufe0f Demokrasi ve Milli Birlik Günü (%i)'),
+        # ('ISO+1922-08-30', '🇹🇷\ufe0f🏆\ufe0f Zafer Bayramı (%i)'),
+        # ('ISO+1923-10-29', '🇹🇷\ufe0f🎇\ufe0f Cumhuriyet Bayramı (%i)'),
+        # ('ISO+1938-11-10', '🇹🇷\ufe0f🫡\ufe0f Atatürk’ü Anma Günü (%i)'),
+
+        ('HIJ+SYM+10-01', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+SYM+10-02', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+SYM+10-03', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+SYM+12-10', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+SYM+12-11', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+SYM+12-12', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+SYM+12-13', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+    ]
+
+    HOLIDAYS_OTHER_CALENDAR = [
+        ('ISO+01-01', '🎆\ufe0f Yılbaşı'),
+        ('ISO+05-01', '🛠️\ufe0f✊\ufe0f Emek ve Dayanışma Günü'),
+
+        ('ISO+1915-03-18', '🇹🇷\ufe0f🛑\ufe0f Çanakkale Zaferi ve Şehitleri Anma Günü (%i)'),
+        ('ISO+1920-04-23', '🇹🇷\ufe0f👧\ufe0f Ulusal Egemenlik ve Çocuk Bayramı (%i)'),
+        ('ISO+1919-05-19', '🇹🇷\ufe0f Atatürk’ü Anma, Gençlik ve Spor Bayramı (%i)'),
+        ('ISO+2016-07-15', '🇹🇷\ufe0f🕊️\ufe0f Demokrasi ve Milli Birlik Günü (%i)'),
+        ('ISO+1922-08-30', '🇹🇷\ufe0f🏆\ufe0f Zafer Bayramı (%i)'),
+        ('ISO+1923-10-29', '🇹🇷\ufe0f🎇\ufe0f Cumhuriyet Bayramı (%i)'),
+        ('ISO+1938-11-10', '🇹🇷\ufe0f🫡\ufe0f Atatürk’ü Anma Günü (%i)'),
+
+        ('HIJ+ISO+10-01', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+ISO+10-02', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+ISO+10-03', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+ISO+12-10', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+ISO+12-11', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+ISO+12-12', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+        ('HIJ+ISO+12-13', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+    ]
+
+    ISLAMIC_HOLIDAYS = [
+        ('HIJ+09-01', '🍯\ufe0f🥙\ufe0f 1st day of Ramaḍān'),
+        ('HIJ+09-30', '🍯\ufe0f🥙\ufe0f Laylat ul-Jāʾizah'),
+        ('HIJ+10-01-FRI', '🍯\ufe0f🥙\ufe0f Jumuʿat ul-Widāʿ'),
+        ('HIJ+10-01', '🕌\ufe0f🍬\ufe0f Şeker Bayramı'),
+        ('HIJ+12-10', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
+    ]

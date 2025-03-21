@@ -672,10 +672,17 @@ def _limit_holidays(events, show_holidays):
 
         for day in events[month]:
             for event in events[month][day]:
+                if 'ISO' in event.origin and 'ISO' not in show_holidays:
+                    continue
+
                 if 'SYM' in event.origin and 'SYM' not in show_holidays:
                     continue
 
-                if not event.origin_calendar in show_holidays:
+                if 'ISO' in show_holidays and 'ISO' in event.origin:
+                    pass
+                elif 'SYM' in show_holidays and 'SYM' in event.origin:
+                    pass
+                elif not event.origin_calendar in show_holidays:
                     continue
 
                 if month not in limited_events:
@@ -895,7 +902,10 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
     for event_origin, event_name_ in all_events:
         for reference_year in years:
             event_ordinal_date, (event_year, event_month, event_day), age = \
-                other_calendar_date_to_ordinal_date(event_origin.replace('CHR+SYM+', 'SYM+'), reference_year)
+                other_calendar_date_to_ordinal_date(
+                    event_origin.replace('CHR+ISO+', 'ISO+').replace('CHR+SYM+', 'SYM+').replace('HIJ+ISO+', 'HIJ+').replace('HIJ+SYM+', 'HIJ+').replace('JEW+ISO+', 'JEW+').replace('JEW+SYM+', 'JEW+'),
+                    reference_year,
+                )
 
             event_date = SezimalDate.from_ordinal_date(event_ordinal_date)
 
@@ -2252,6 +2262,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
         'ja-JP|Asia/Tokyo',
         'eo-JP|Asia/Tokyo',
+
+        'tr-TR|Asia/Istanbul',
+        'eo-TR|Asia/Istanbul',
     )
 
     if bases is None:

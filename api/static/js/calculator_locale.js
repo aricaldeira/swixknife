@@ -41,6 +41,7 @@ const LANGUAGE_TAGS = {
     'eo_br': 'eo-BR',
     'eo_ca': 'eo-CA',
     'eo_jp': 'eo-JP',
+    'eo_tr': 'eo-TR',
     'eo_us': 'eo-US',
     'eo': 'eo',
     'es_ar': 'es-AR',
