@@ -58,6 +58,13 @@ EASTER_HEBREW = 4
 # Gregorian, Julian and Hebrew calendars
 #
 def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalInteger = None, return_original_date: bool = False) -> DateConversion:
+    date_time = date_time.replace('CHR+ISO+', 'ISO+')
+    date_time = date_time.replace('CHR+SYM+', 'ISO+')
+    date_time = date_time.replace('JEW+ISO+', 'JEW+')
+    date_time = date_time.replace('JEW+SYM+', 'JEW+')
+    date_time = date_time.replace('HIJ+ISO+', 'HIJ+')
+    date_time = date_time.replace('HIJ+SYM+', 'HIJ+')
+
     #
     # Sets a Gregorian/ISO date as a point of reference for
     # other calendars’ conversion
@@ -378,6 +385,10 @@ def _other_calendar_to_ordinal_date(date_time: str, reference_year: SezimalInteg
         if not year:
             year, *x = gregorian_to_hijri(iso_reference.year, iso_reference.month, iso_reference.day)
 
+        #
+        # gregorian_to_hijri is adding 1 to the year
+        #
+        year -= 1
         original_ymd = (year, month, day)
         ymd = (year, month, day)
 
