@@ -403,6 +403,8 @@ class SezimalLocalePT(SezimalLocale):
     CALENDAR_TIME_ERROR = 'Horário inválido'
     CALENDAR_TIME_AFTER_ERROR = 'Horário inválido: o horário de início do evento não pode vir depois do horário final'
 
+    JEWISH_CALENDAR_ANNO_MUNDI = 'J.K.'
+
     JEWISH_CALENDAR_MONTH_NAME = [
         # 'Nisan ניסן',
         # 'Iyyar אייר‎',
@@ -447,6 +449,8 @@ class SezimalLocalePT(SezimalLocale):
         'Ad1',
         'Ad2',
     ]
+
+    HIJRI_CALENDAR_ANNO_HEGIRAE = 'I.K.'
 
     HIJRI_CALENDAR_MONTH_NAME = [
         # 'Al-muḥarram المحرم',

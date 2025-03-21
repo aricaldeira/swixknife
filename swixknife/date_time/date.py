@@ -1374,7 +1374,10 @@ class SezimalDate:
 
         year, month, day = GregorianToHebrew(int(self.gregorian_year), int(self.gregorian_month), int(self.gregorian_day)).to_heb().tuple()
 
-        year = str(year).zfill(4) + ' AM'
+        if locale:
+            year = str(year).zfill(4) + ' ' + locale.JEWISH_CALENDAR_ANNO_MUNDI
+        else:
+            year = str(year).zfill(4) + ' AM'
 
         if (not locale):
             day = str(day).zfill(2)
@@ -1424,7 +1427,10 @@ class SezimalDate:
 
         year, month, day = GregorianToHijri(int(self.gregorian_year), int(self.gregorian_month), int(self.gregorian_day)).to_hijri().datetuple()
 
-        year = str(year).zfill(4) + ' AH'
+        if locale:
+            year = str(year).zfill(4) + ' ' + locale.HIJRI_CALENDAR_ANNO_HEGIRAE
+        else:
+            year = str(year).zfill(4) + ' AH'
 
         if (not locale):
             day = str(day).zfill(2)

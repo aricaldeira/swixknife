@@ -1238,6 +1238,8 @@ class SezimalLocale:
 
         return lt
 
+    JEWISH_CALENDAR_ANNO_MUNDI = 'AM'
+
     JEWISH_CALENDAR_MONTH_NAME = [
         # 'Nisan ניסן',
         # 'Iyyar אייר‎',
@@ -1283,31 +1285,33 @@ class SezimalLocale:
         'Ad2',
     ]
 
+    HIJRI_CALENDAR_ANNO_HEGIRAE = 'AH'
+
     HIJRI_CALENDAR_MONTH_NAME = [
-        # 'Al-muḥarram المحرم',
-        # 'Ṣafar صفر',
-        # 'Rabīʿ al-ʾawwal ربيع الأول',
-        # 'Rabīʿ al-ʾākhir ربيع الآخر',
-        # 'Jumādā al-ʾūlā جمادى الأولى',
-        # 'Jumādā al-ʾākhirah جمادى الآخرة',
-        # 'Rajab رجب',
-        # 'Shaʿbān شعبان',
-        # 'Ramaḍān رمضان',
-        # 'Shawwāl شوال',
-        # 'Ḏū al-qaʿdah ذو القعدة',
-        # 'Ḏū al-ḥijjah ذو الحجة',
-        'Muḥarram',
-        'Ṣafar',
-        'Rabīʿ I',
-        'Rabīʿ II',
-        'Jumādā I',
-        'Jumādā II',
-        'Rajab',
-        'Shaʿbān',
-        'Ramaḍān',
-        'Shawwāl',
-        'Ḏū al-Qiʿdah',
-        'Ḏū al-Ḥijjah',
+        'Al-muḥarram المحرم',
+        'Ṣafar صفر',
+        'Rabīʿ al-ʾawwal ربيع الأول',
+        'Rabīʿ al-ʾākhir ربيع الآخر',
+        'Jumādā al-ʾūlā جمادى الأولى',
+        'Jumādā al-ʾākhirah جمادى الآخرة',
+        'Rajab رجب',
+        'Shaʿbān شعبان',
+        'Ramaḍān رمضان',
+        'Shawwāl شوال',
+        'Ḏū al-qaʿdah ذو القعدة',
+        'Ḏū al-ḥijjah ذو الحجة',
+        # 'Muḥarram',
+        # 'Ṣafar',
+        # 'Rabīʿ I',
+        # 'Rabīʿ II',
+        # 'Jumādā I',
+        # 'Jumādā II',
+        # 'Rajab',
+        # 'Shaʿbān',
+        # 'Ramaḍān',
+        # 'Shawwāl',
+        # 'Ḏū al-Qiʿdah',
+        # 'Ḏū al-Ḥijjah',
     ]
 
     HIJRI_CALENDAR_MONTH_ABBREVIATED_NAME = [

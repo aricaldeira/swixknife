@@ -185,6 +185,8 @@ class SezimalLocaleTR(SezimalLocale):
         ('HIJ+12-10', '🕌\ufe0f🐏\ufe0f Kurban Bayramı'),
     ]
 
+    HIJRI_CALENDAR_ANNO_HEGIRAE = 'H.'
+
     HIJRI_CALENDAR_MONTH_NAME = [
         'Muharrem',
         'Safer',
