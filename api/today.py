@@ -678,6 +678,15 @@ def _limit_holidays(events, show_holidays):
                 if 'SYM' in event.origin and 'SYM' not in show_holidays:
                     continue
 
+                if 'CHR' in event.origin and 'CHR' not in show_holidays:
+                    continue
+
+                if 'JEW' in event.origin and 'JEW' not in show_holidays:
+                    continue
+
+                if 'HIJ' in event.origin and 'HIJ' not in show_holidays:
+                    continue
+
                 if 'ISO' in show_holidays and 'ISO' in event.origin:
                     pass
                 elif 'SYM' in show_holidays and 'SYM' in event.origin:
