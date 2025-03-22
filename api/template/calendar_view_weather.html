@@ -1,6 +1,6 @@
 {% if base == 10 %}
     <p class="now-weather" onclick="open_close_weather()">
-        {{ locale.format_number(round(weather.temperature, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S  <span id="toggle_weather">▾</span>  <span class="emoji">{{ weather._emoji }}</span>
+        {{ locale.format_number(round(weather.temperature, 0), sezimal_places=0, sezimal_digits='!' in format_token) }} °S  <span id="toggle_weather">▾</span>  {%- if weather._emoji[0] in ('🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘') %}<span class="emoji moon-emoji">{{ weather._emoji }}</span>{% else %}<span class="emoji">{{ weather._emoji }}</span>{% endif -%}
     </p>
     <div id="weather" style="display: none;">
         <p>

@@ -86,6 +86,11 @@ html, body {
 }
 {% endif %}
 </style>
+<style id="moon-style">
+.moon-emoji {
+    display: inline-block;
+}
+</style>
     </head>
     <body>
     <div id="selectors" style="position: absolute; width: 100%">
@@ -1260,5 +1265,27 @@ html, body {
             document.getElementById('now-content').hidden = true;
             document.getElementById('timer-content').hidden = false;
         }
+
+    if (
+        (localStorage.getItem('sezimal-latitude') != null)
+        && (localStorage.getItem('sezimal-latitude') != 'null')
+    ) {
+        const moon_tilt = 90 + parseFloat(localStorage.getItem('sezimal-latitude'));
+        document.getElementById('moon-style').innerHTML = `.moon-emoji {
+    display: inline-block;
+    transform: rotate(${moon_tilt}deg);
+}`;
+
+    } else if (
+        (localStorage.getItem('sezimal-gps-latitude') != null)
+        && (localStorage.getItem('sezimal-gps-latitude') != 'null')
+    ) {
+        const moon_tilt = 90 + parseFloat(localStorage.getItem('sezimal-gps-latitude'));
+
+        document.getElementById('moon-style').innerHTML = `.moon-emoji {
+    display: inline-block;
+    transform: rotate(${moon_tilt}deg);
+}`;
+    };
     </script>
 </html>

@@ -727,3 +727,7 @@ input[type=number] {
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
 }
+
+.moon-emoji {
+    display: inline-block;
+}

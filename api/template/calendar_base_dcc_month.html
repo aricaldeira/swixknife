@@ -325,7 +325,7 @@
                                 {%- if event_month in events['moon'] -%}
                                     {%- if event_day in events['moon'][event_month] -%}
                                         {%- for event in events['moon'][event_month][event_day] -%}
-                                            {{ event.emoji }}
+                                            <span class="emoji moon-emoji">{{ event.emoji }}</span>
                                         {%- endfor -%}
                                     {%- endif -%}
                                 {%- endif -%}
@@ -361,9 +361,9 @@
                     {%- for event in events['moon'][SezimalInteger(dcc_month_number)][event_day] -%}
                         {%- if month_view or 'ing' not in event.obs -%}
                             {%- if base in (14, 20) -%}
-                                {{ event.date.format(' &-wM‐&-w - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                                {{ event.date.format(' &-wM‐&-w - ', locale) }} <span class="emoji moon-emoji">{{ event.emoji }}</span>
                             {%- else -%}
-                                {{ event.date.format(' &' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                                {{ event.date.format(' &' + format_token + '-d - ', locale) }} <span class="emoji moon-emoji">{{ event.emoji }}</span>
                             {%- endif -%}
                         {%- endif -%}
                     {%- endfor -%}
