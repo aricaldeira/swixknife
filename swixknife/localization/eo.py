@@ -446,3 +446,53 @@ class SezimalLocaleEO(SezimalLocale):
         'Dlk',
         'Dlĥ',
     ]
+
+    CALENDAR_TYPE = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Simetria',
+        'SYM': 'Simetria',
+        'ISO': 'Gregoria',
+        'DCC': 'Kiom-da-Tagoj',
+        'ADC': 'Astronomia Kiom-da-Tagoj',
+        'ISR': 'Israela',
+        'IND': 'Indiana',
+
+        #
+        # Religious calendars
+        #
+        'JUL': 'Ortodoxo/Juliano',
+        'JEW': 'Juda',
+        'HIJ': 'Islama',
+        'IRN': 'Islâmico Solar',
+
+        #
+        # Páscoa referencial
+        #
+        'SEZ+EASTER': 'Páscoa Sezimal - 11 de abril',
+        'SYM+EASTER': 'Páscoa Simétrica - 7 de abril',
+        'ISO+EASTER': 'Páscoa (Gregoriano)',
+        'JUL+EASTER': 'Páscoa Ortodoxa (Juliano)',
+        'JEW+EASTER': 'Páscoa Judaica (Pêssach)',
+    }
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': 'Sim.',
+        'SYM': 'Sim.',
+        'ISO': 'Gre.',
+        'DCC': 'KdT',
+        'ADC': 'AKdT',
+        'ISR': 'Isr.',
+        'IND': 'Ind.',
+        #
+        # Religious calendars
+        #
+        'JUL': 'Jul.',
+        'JEW': 'Jud.',
+        'HIJ': 'Isl.',
+        'IRN': 'Irn.',
+    }
