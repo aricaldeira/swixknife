@@ -383,7 +383,7 @@ class SezimalDate:
                 #
                 if '>y' in token and value >= '213100' and value < '214000':
                     value = value[::-1][0:3][::-1]
-                elif '%5Y' in token and value >= '13100' and value < '14000':
+                elif ('%5Y' in token or '%5!Y' in token) and value >= '13100' and value < '14000':
                     value = value[::-1][0:3][::-1]
                     size -= 2
 

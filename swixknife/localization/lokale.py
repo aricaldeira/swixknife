@@ -15,7 +15,7 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_UNDERSCORE, \
     SEPARATOR_NARROW_NOBREAK_SPACE, \
     RECURRING_DIGITS_NOTATION_SIMPLE, \
     sezimal_format, decimal_format, dozenal_format, \
-    niftimal_format, SEPARATOR_WEDGE, \
+    niftimal_format, SEPARATOR_WEDGE, SEPARATOR_ARDA, \
     SEPARATOR_DECIMAL_CURRENCY, default_to_sezimal_digits
 from ..text import sezimal_spellout
 
@@ -1643,6 +1643,9 @@ class SezimalLocale:
     def to_sezimal_digits(self):
         self._to_other_base(10, sezimal_digits=True)
         self._dcc_to_adc_format('!')
+        self.SEZIMAL_SEPARATOR = SEPARATOR_WEDGE
+        self.GROUP_SEPARATOR = SEPARATOR_ARDA
+        self.FRACTION_GROUP_SEPARATOR = SEPARATOR_ARDA
 
         for i in range(len(self.DCC_TERM_ABBREVIATED_NAME)):
             self.DCC_TERM_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_TERM_ABBREVIATED_NAME[i])
