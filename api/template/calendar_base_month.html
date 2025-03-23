@@ -501,7 +501,7 @@
                 {%- for event_day in sorted(events['moon'][sezimal_month_number].keys()) -%}
                     {%- for event in events['moon'][SezimalInteger(sezimal_month_number)][event_day] -%}
                         {%- if month_view or 'ing' not in event.obs -%}
-                            {{ event.date.format(' #' + format_token + '-d - ', locale) }} <span class="emoji moon-emoji">{{ event.emoji }}</div>
+                            {{ event.date.format(' #' + format_token + '-d - ', locale) }} <span class="emoji moon-emoji">{{ event.emoji }}</span>
                         {%- endif -%}
                     {%- endfor -%}
                 {%- endfor -%}
