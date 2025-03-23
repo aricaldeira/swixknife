@@ -9,6 +9,8 @@
                     Locale
                 {% elif locale.LANG == 'bz' %}
                     Lokali
+                {% elif locale.LANG == 'eo' %}
+                    Lokaĵaro
                 {% else %}
                     Locale
                 {% endif %}
@@ -26,6 +28,8 @@
                     Fuso horário
                 {% elif locale.LANG == 'bz' %}
                     Fuzu oraryu
+                {% elif locale.LANG == 'eo' %}
+                    Horzono
                 {% else %}
                     Time zone
                 {% endif %}
@@ -46,6 +50,8 @@
                     Formato de data e hora
                 {% elif locale.LANG == 'bz' %}
                     Formatu di data i òra
+                {% elif locale.LANG == 'eo' %}
+                    Formato de dato kaj tempo
                 {% else %}
                     Date and hour format
                 {% endif %}
@@ -57,6 +63,8 @@
                             Padrão do locale
                         {% elif locale.LANG == 'bz' %}
                             Padrawn du lokali
+                        {% elif locale.LANG == 'eo' %}
+                            Lokaĵara defaŭlto
                         {% else %}
                             Locale’s default
                         {% endif %}
@@ -66,6 +74,8 @@
                             Data: padrão do locale; hora:
                         {% elif locale.LANG == 'bz' %}
                             Data: padrawn du lokali; òra:
+                        {% elif locale.LANG == 'eo' %}
+                            Dato: lokaĵara defaŭlto; tempo:
                         {% else %}
                             Date: locale’s default; hour:
                         {% endif %}
@@ -76,6 +86,8 @@
                             Data: padrão do locale; hora:
                         {% elif locale.LANG == 'bz' %}
                             Data: padrawn du lokali; òra:
+                        {% elif locale.LANG == 'eo' %}
+                            Dato: lokaĵara defaŭlto; tempo:
                         {% else %}
                             Date: locale’s default; hour:
                         {% endif %}
@@ -86,6 +98,8 @@
                             Padrão ISO: AAAA-MM-DD e 24 h
                         {% elif locale.LANG == 'bz' %}
                             Padrawn ISO: AAAA-MM-DD i 24 h
+                        {% elif locale.LANG == 'eo' %}
+                            ISO normo: JJJJ-MM-DD kaj 24 h
                         {% else %}
                             ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}24 h\N{PDI}') }}
                         {% endif %}
@@ -111,6 +125,14 @@
                         {% elif base == 20 %}
                             Mostrar subunidadi di tenpu nu relòjyu •••<b>{{ locale.SEZIMAL_SEPARATOR }}↋</b>?
                         {% endif %}
+                    {% elif locale.LANG == 'eo' %}
+                        {% if base == 10 or base == 100 %}
+                            Montri agrimaojn je la horloĝo ••:••<b>:55</b>?
+                        {% elif base == 14 %}
+                            Montri sekundojn je la horloĝo ••:••<b>:59</b>?
+                        {% elif base == 20 %}
+                            Montri tempo-subunuon je la horloĝo •••<b>{{ locale.SEZIMAL_SEPARATOR }}↋</b>?
+                        {% endif %}
                     {% else %}
                         {% if base == 10 or base == 100 %}
                             Show agrimas on the clock ••:••<b>:55</b>?
@@ -132,6 +154,8 @@
                     Hemisfério
                 {% elif locale.LANG == 'bz' %}
                     Emisfèryu
+                {% elif locale.LANG == 'eo' %}
+                    Hemisfero
                 {% else %}
                     Hemisphere
                 {% endif %}
@@ -142,6 +166,8 @@
                         Padrão do locale
                     {% elif locale.LANG == 'bz' %}
                         Padrawn du lokali
+                    {% elif locale.LANG == 'eo' %}
+                        Lokaĵara defaŭlto
                     {% else %}
                         Locale’s default
                     {% endif %}
@@ -151,6 +177,8 @@
                         Norte
                     {% elif locale.LANG == 'bz' %}
                         Nòrti
+                    {% elif locale.LANG == 'eo' %}
+                        Norda
                     {% else %}
                         Northern
                     {% endif %}
@@ -160,6 +188,8 @@
                         Sul
                     {% elif locale.LANG == 'bz' %}
                         Suw
+                    {% elif locale.LANG == 'eo' %}
+                        Suda
                     {% else %}
                         Southern
                     {% endif %}
@@ -181,6 +211,8 @@
                     Calendário exibido
                 {% elif locale.LANG == 'bz' %}
                     Kalendaryu ezibidu
+                {% elif locale.LANG == 'eo' %}
+                    Kalendaro montrata
                 {% else %}
                     Calendar displayed
                 {% endif %}
@@ -195,69 +227,53 @@
 {% endif %}
 ">
                     <option value="SYM">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['SYM'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 0–5)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 0–5)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 0–5)
                         {% else %}
                             sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
                         {% endif %}
                     </option>
-<!--                    <option value="SYM+!">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                    <option value="SYM+!">
+                        {{ locale.CALENDAR_TYPE['SYM'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 󱸀–󱸅)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 󱸀–󱸅)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 󱸀–󱸅)
                         {% else %}
                             sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
                         {% endif %}
-                    </option>-->
+                    </option>
                     <option value="SYM+9">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['SYM'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             decimal (dez; 0–9)
                         {% elif locale.LANG == 'bz' %}
                             desimaw (dèys; 0–9)
+                        {% elif locale.LANG == 'eo' %}
+                            dekuma (dek; 0–9)
                         {% else %}
                             decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
                         {% endif %}
                     </option>
                     <option value="SYM+↋">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['SYM'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             dozenal (doze; 0–9 ↊↋)
                         {% elif locale.LANG == 'bz' %}
                             dozenaw (dozi; 0–9 ↊↋)
+                        {% elif locale.LANG == 'eo' %}
+                            dekduuma (dek du; 0–9 ↊↋)
                         {% else %}
                             dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
                         {% endif %}
@@ -323,69 +339,53 @@
 {% endif %}
 ">
                     <option value="ISO">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ISO'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 0–5)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 0–5)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 0–5)
                         {% else %}
                             sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
                         {% endif %}
                     </option>
-<!--                    <option value="ISO+!">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% endif %}
+                    <option value="ISO+!">
+                        {{ locale.CALENDAR_TYPE['ISO'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 󱸀–󱸅)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 󱸀–󱸅)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 󱸀–󱸅)
                         {% else %}
                             sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
                         {% endif %}
-                    </option>-->
+                    </option>
                     <option value="ISO+9">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ISO'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             decimal (dez; 0–9)
                         {% elif locale.LANG == 'bz' %}
                             desimaw (dèys; 0–9)
+                        {% elif locale.LANG == 'eo' %}
+                            dekuma (dek; 0–9)
                         {% else %}
                             decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
                         {% endif %}
                     </option>
                     <option value="ISO+↋">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ISO'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ISO'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             dozenal (doze; 0–9 ↊↋)
                         {% elif locale.LANG == 'bz' %}
                             dozenaw (dozi; 0–9 ↊↋)
+                        {% elif locale.LANG == 'eo' %}
+                            dekduuma (dek du; 0–9 ↊↋)
                         {% else %}
                             dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
                         {% endif %}
@@ -451,103 +451,79 @@
 {% endif %}
 ">
                     <option value="DCC">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['DCC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 0–5)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 0–5)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 0–5)
                         {% else %}
                             sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
                         {% endif %}
                     </option>
-<!--                    <option value="DCC+!">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['DCC'] }}
-                        {% endif %}
+                    <option value="DCC+!">
+                        {{ locale.CALENDAR_TYPE['DCC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 󱸀–󱸅)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 󱸀–󱸅)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 󱸀–󱸅)
                         {% else %}
                             sezimal (six; 󱸀–󱸅)
                         {% endif %}
-                    </option>-->
+                    </option>
                     <option value="DCC+c">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ADC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 0–5)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 0–5)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 0–5)
                         {% else %}
                             sezimal (six; {{ locale.digit_replace('\N{LRI}0–5\N{PDI}') }})
                         {% endif %}
                     </option>
-<!--                    <option value="DCC+c!">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% endif %}
+                    <option value="DCC+c!">
+                        {{ locale.CALENDAR_TYPE['ADC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             sezimal (seis; 󱸀–󱸅)
                         {% elif locale.LANG == 'bz' %}
                             sezimaw (sêys; 󱸀–󱸅)
+                        {% elif locale.LANG == 'eo' %}
+                            sesuma (ses; 󱸀–󱸅)
                         {% else %}
                             sezimal (six; {{ '\N{LRI}󱸀–󱸅\N{PDI}' }})
                         {% endif %}
-                    </option>-->
+                    </option>
                     <option value="DCC+c9">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ADC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             decimal (dez; 0–9)
                         {% elif locale.LANG == 'bz' %}
                             desimaw (dèys; 0–9)
+                        {% elif locale.LANG == 'eo' %}
+                            dekuma (dek; 0–9)
                         {% else %}
                             decimal (ten; {{ locale.digit_replace('\N{LRI}0–9\N{PDI}') }})
                         {% endif %}
                     </option>
                     <option value="DCC+c↋">
-                        {% if locale.LANG == 'pt' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% elif locale.LANG == 'bz' %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['ADC'] }}
-                        {% endif %}
+                        {{ locale.CALENDAR_TYPE['ADC'] }}
                         —
                         {% if locale.LANG == 'pt' %}
                             dozenal (doze; 0–9 ↊↋)
                         {% elif locale.LANG == 'bz' %}
                             dozenaw (dozi; 0–9 ↊↋)
+                        {% elif locale.LANG == 'eo' %}
+                            dekduuma (dek du; 0–9 ↊↋)
                         {% else %}
                             dozenal (twelve; {{ '\N{LRI}0–9 ↊↋\N{PDI}' }})
                         {% endif %}
@@ -612,6 +588,8 @@
                         Usar o primeiro dia da semana do locale?
                     {% elif locale.LANG == 'bz' %}
                         Uzar u primeru dia da semana du lokali?
+                    {% elif locale.LANG == 'eo' %}
+                        Uzi unuan semajntagon laŭ lokaĵaro?
                     {% else %}
                         Use locale’s first weekday?
                     {% endif %}
@@ -627,8 +605,10 @@
                     Feriados oficiais
                 {% elif locale.LANG == 'bz' %}
                     Feriadus ofisiays
+                {% elif locale.LANG == 'eo' %}
+                    Publikaj feriotagoj
                 {% else %}
-                    Official Holidays
+                    Public Holidays
                 {% endif %}
             </div>
             <select id="show_holiday_select" style="direction:ltr;">
@@ -637,33 +617,21 @@
                         Mostrar todos
                     {% elif locale.LANG == 'bz' %}
                         Mostrar todus
+                    {% elif locale.LANG == 'eo' %}
+                        Montri ĉiujn
                     {% else %}
                         Show all
                     {% endif %}
                 </option>
                 <option value="SEZ_SYM">
                     {% if locale.LANG == 'pt' %}
-                        Só no calendário
-                        {% if base == 10 or base == 100 %}
-                            {{ locale.CALENDAR_TYPE['SEZ'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                        Só no calendário {{ locale.CALENDAR_TYPE['SYM'] }}
                     {% elif locale.LANG == 'bz' %}
-                        Sò nu kalendaryu
-                        {% if base == 10 or base == 100 %}
-                            {{ locale.CALENDAR_TYPE['SEZ'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
+                        Sò nu kalendaryu {{ locale.CALENDAR_TYPE['SYM'] }}
+                    {% elif locale.LANG == 'eo' %}
+                        Nur de la {{ locale.CALENDAR_TYPE['SYM'] }} kalendaro
                     {% else %}
-                        Only on the
-                        {% if (base == 10) or (base == 100) %}
-                            {{ locale.CALENDAR_TYPE['SEZ'] }}
-                        {% else %}
-                            {{ locale.CALENDAR_TYPE['SYM'] }}
-                        {% endif %}
-                        calendar
+                        Only on the {{ locale.CALENDAR_TYPE['SYM'] }} calendar
                     {% endif %}
                 </option>
                 <option value="ISO">
@@ -671,6 +639,8 @@
                         Só no calendário {{ locale.CALENDAR_TYPE['ISO'] }}
                     {% elif locale.LANG == 'bz' %}
                         Sò nu kalendaryu {{ locale.CALENDAR_TYPE['ISO'] }}
+                    {% elif locale.LANG == 'eo' %}
+                        Nur de la {{ locale.CALENDAR_TYPE['ISO'] }} kalendaro
                     {% else %}
                         Only on the {{ locale.CALENDAR_TYPE['ISO'] }} calendar
                     {% endif %}
@@ -692,13 +662,17 @@
                 {% if locale.LANG == 'pt' %}
                     Latitude e longitude
                 {% elif locale.LANG == 'bz' %}
-                    Latitudi i Lonjitudi
+                    Latitudi i lonjitudi
+                {% elif locale.LANG == 'eo' %}
+                    Latitudo kaj longitudo
                 {% else %}
                     Latitude and longitude
                 {% endif %}
                 {% if base != 14 %}
                     {% if locale.LANG == 'bz' %}
                         (desimaw)
+                    {% elif locale.LANG == 'eo' %}
+                        (dekuma)
                     {% else %}
                         (decimal)
                     {% endif %}
@@ -720,6 +694,8 @@
                     Datas religiosas
                 {% elif locale.LANG == 'bz' %}
                     Datas relijiòzas
+                {% elif locale.LANG == 'eo' %}
+                    Religiaj datoj
                 {% else %}
                     Religious Dates
                 {% endif %}
@@ -731,6 +707,8 @@
                         Cristianismo
                     {% elif locale.LANG == 'bz' %}
                         Kristianismu
+                    {% elif locale.LANG == 'eo' %}
+                        Kristanismo
                     {% else %}
                         Christian
                     {% endif %}
@@ -757,6 +735,8 @@
                         Islamismo
                     {% elif locale.LANG == 'bz' %}
                         Islamismu
+                    {% elif locale.LANG == 'eo' %}
+                        Islamismo
                     {% else %}
                         Islamic
                     {% endif %}
@@ -769,6 +749,8 @@
                         Judaismo
                     {% elif locale.LANG == 'bz' %}
                         Judaismu
+                    {% elif locale.LANG == 'eo' %}
+                        Judismo
                     {% else %}
                         Jewish
                     {% endif %}
@@ -790,6 +772,8 @@
                     Tema
                 {% elif locale.LANG == 'bz' %}
                     Tema
+                {% elif locale.LANG == 'eo' %}
+                    Temo
                 {% else %}
                     Theme
                 {% endif %}
@@ -800,6 +784,8 @@
                         Colorido
                     {% elif locale.LANG == 'bz' %}
                         Koloridu
+                    {% elif locale.LANG == 'eo' %}
+                        Plurkolora
                     {% elif locale.LANGUAGE_TAG == 'en-US' %}
                         Colorful
                     {% else %}
@@ -811,6 +797,8 @@
                         Monocromático
                     {% elif locale.LANG == 'bz' %}
                         Monokromátiku
+                    {% elif locale.LANG == 'eo' %}
+                        Griza
                     {% elif locale.LANGUAGE_TAG == 'en-US' %}
                         Grayscale
                     {% else %}
@@ -829,6 +817,10 @@
         {% endif %}
     </div>
     <p class="center" style="clear: both; width: 100%;">
+        {% if locale.LANG == 'eo' %}
+        <button onclick="apply_settings()">     Bone     </button>
+        {% else %}
         <button onclick="apply_settings()">      Ok      </button>
+        {% endif %}
     </p>
 </div>
