@@ -143,27 +143,42 @@ function calendar_load() {
     document.getElementById('sezimal-latitude-input').value = localStorage.getItem('sezimal-latitude');
     document.getElementById('sezimal-longitude-input').value = localStorage.getItem('sezimal-longitude');
 
+    var latitude = 0;
+    var moon_tilt = 0;
+
     if (
         (localStorage.getItem('sezimal-latitude') != null)
         && (localStorage.getItem('sezimal-latitude') != 'null')
     ) {
-        const moon_tilt = 90 + parseFloat(localStorage.getItem('sezimal-latitude'));
-        document.getElementById('moon-style').innerHTML = `.moon-emoji {
-    display: inline-block;
-    transform: rotate(${moon_tilt}deg);
-}`;
-
+        latitude = parseFloat(localStorage.getItem('sezimal-latitude'));
     } else if (
         (localStorage.getItem('sezimal-gps-latitude') != null)
         && (localStorage.getItem('sezimal-gps-latitude') != 'null')
     ) {
-        const moon_tilt = 90 + parseFloat(localStorage.getItem('sezimal-gps-latitude'));
+        latitude = parseFloat(localStorage.getItem('sezimal-gps-latitude'));
+    };
 
-        document.getElementById('moon-style').innerHTML = `.moon-emoji {
+    if (latitude > 0) {
+        if (localStorage.getItem('sezimal-calendar-hemisphere') == 'S') {
+            latitude = latitude * -1;
+        };
+    } else if (latitude < 0) {
+        if (localStorage.getItem('sezimal-calendar-hemisphere') == 'N') {
+            latitude = latitude * -1;
+        };
+    };
+
+    if (latitude > 0) {
+        moon_tilt = 360 - Math.abs(latitude);
+    } else if (latitude < 0) {
+        moon_tilt = 90 - Math.abs(latitude);
+    };
+
+    document.getElementById('moon-style').innerHTML = `.moon-emoji {
     display: inline-block;
     transform: rotate(${moon_tilt}deg);
 }`;
-    };
+
 
     update_calendar();
 };
