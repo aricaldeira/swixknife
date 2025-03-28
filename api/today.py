@@ -729,7 +729,10 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
 
     if locale.base == 14:
-        cache_key += '|' + locale.HOUR_FORMAT
+        if locale.HOUR_FORMAT == '12h':
+            cache_key += '|12h'
+        else:
+            cache_key += '|24h'
     else:
         cache_key += '|24h'
 
