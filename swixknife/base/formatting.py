@@ -53,6 +53,7 @@ SEPARATOR_ARDA = '󱹭'  # '\U000f1e6d'  # 󱹭
 SEPARATOR_WEDGE = '󱹮'  # '\U000f1e6e'  # 󱹮
 SEPARATOR_REPEATING = '󱹯'  # '\U000f1e6f'  # 󱹯
 SEPARATOR_DECIMAL_CURRENCY = '󱹶'  # '\U000f1e76'  # 󱹶
+SEPARATOR_SEZIMAL_TIME = '󱹷'  # '\U000f1e77'  # 󱹷
 
 TYPOGRAPHICAL_NEGATIVE = '\u2212'
 TYPOGRAPHICAL_FRACTION_SLASH = '\u2044'
@@ -303,7 +304,7 @@ def _apply_sezimal_punctuation(number: str, is_fraction: bool = True, arda_shada
     if is_fraction:
         number = number[::-1]
 
-    if len(number) <= 4:
+    if len(number) <= 3:
         formatted_number = number
     elif arda_shadara:
         formatted_number = _apply_format(number[:-3], SEPARATOR_ARDA, _ARDA_DIGITS_GROUP_FORMAT, False) + SEPARATOR_ARDA + number[-3:]
@@ -329,7 +330,7 @@ def _apply_format(number: str, separator: str, format_pattern: re.Pattern, is_fr
     if is_fraction:
         number = number[::-1]
 
-    if format_pattern == _THREE_DIGITS_GROUP_FORMAT and len(number) <= 4:
+    if format_pattern == _THREE_DIGITS_GROUP_FORMAT and len(number) <= 3:
         formatted_number = number
     else:
         formatted_number = number[::-1]
