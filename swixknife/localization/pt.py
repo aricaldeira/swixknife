@@ -102,7 +102,6 @@ class SezimalLocalePT(SezimalLocale):
     DST_SHORT_NAME = 'HV'
     DEFAULT_TIME_ZONE = 'America/Sao_Paulo'
     YEAR_TEXT_MONTH_FORMAT = '#M de #Y'
-    ISO_YEAR_TEXT_MONTH_FORMAT = '%B de %Y'
 
     DEFAULT_HEMISPHERE = 'S'  # Use 'S' for Southern or 'N' for Northern
 

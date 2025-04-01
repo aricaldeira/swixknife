@@ -47,6 +47,30 @@ class SezimalLocale:
 
     RECURRING_DIGITS_NOTATION = RECURRING_DIGITS_NOTATION_SIMPLE
 
+    @property
+    def DECIMAL_SEPARATOR(self):
+        return getattr(self, '_DECIMAL_SEPARATOR', self.SEZIMAL_SEPARATOR)
+
+    @property
+    def DECIMAL_GROUP_SEPARATOR(self):
+        return getattr(self, '_DECIMAL_GROUP_SEPARATOR', self.GROUP_SEPARATOR)
+
+    @property
+    def DECIMAL_FRACTION_GROUP_SEPARATOR(self):
+        return getattr(self, '_DECIMAL_FRACTION_GROUP_SEPARATOR', self.FRACTION_GROUP_SEPARATOR)
+
+    @property
+    def DOZENAL_SEPARATOR(self):
+        return self.DECIMAL_SEPARATOR
+
+    @property
+    def DOZENAL_GROUP_SEPARATOR(self):
+        return self.DECIMAL_GROUP_SEPARATOR
+
+    @property
+    def DOZENAL_FRACTION_GROUP_SEPARATOR(self):
+        return self.DECIMAL_FRACTION_GROUP_SEPARATOR
+
     #
     # Date and time
     #
@@ -771,14 +795,14 @@ class SezimalLocale:
         wan_man_van_grouping: bool = False,
         native_digits: bool = True,
     ) -> str:
-        group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
-        fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
+        group_separator = self.DECIMAL_GROUP_SEPARATOR if use_group_separator else ''
+        fraction_group_separator = self.DECIMAL_FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
 
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
         res = decimal_format(
-            number, decimal_places, self.SEZIMAL_SEPARATOR,
+            number, decimal_places, self.DECIMAL_SEPARATOR,
             group_separator, fraction_group_separator,
             typographical_negative,
             minimum_size,
@@ -816,16 +840,16 @@ class SezimalLocale:
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         native_digits: bool = True,
     ) -> str:
-        group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
+        group_separator = self.DOZENAL_GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
-        fraction_group_separator = self.FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
+        fraction_group_separator = self.DOZENAL_FRACTION_GROUP_SEPARATOR if use_fraction_group_separator else ''
         fraction_subgroup_separator = self.FRACTION_SUBGROUP_SEPARATOR if use_fraction_subgroup_separator else ''
 
         if recurring_digits_notation and isinstance(recurring_digits_notation, bool):
             recurring_digits_notation = self.RECURRING_DIGITS_NOTATION
 
         res = dozenal_format(
-            number, dozenal_places, self.SEZIMAL_SEPARATOR,
+            number, dozenal_places, self.DOZENAL_SEPARATOR,
             group_separator, subgroup_separator,
             fraction_group_separator, fraction_subgroup_separator,
             typographical_negative,
@@ -1594,6 +1618,11 @@ class SezimalLocale:
         except:
             pass
 
+        try:
+            self.ISO_YEAR_TEXT_MONTH_FORMAT = conversion_function(self.ISO_YEAR_TEXT_MONTH_FORMAT)
+        except:
+            pass
+
         if base == 10:
             self.TIME_FORMAT = conversion_function(self.TIME_FORMAT)
             self.DIGITS = []
@@ -1643,9 +1672,15 @@ class SezimalLocale:
     def to_sezimal_digits(self):
         self._to_other_base(10, sezimal_digits=True)
         self._dcc_to_adc_format('!')
+
+        self._DECIMAL_SEPARATOR = self.SEZIMAL_SEPARATOR
+        self._DECIMAL_GROUP_SEPARATOR = self.GROUP_SEPARATOR
+        self._DECIMAL_FRACTION_GROUP_SEPARATOR = self.FRACTION_GROUP_SEPARATOR
+
         self.SEZIMAL_SEPARATOR = SEPARATOR_WEDGE
         self.GROUP_SEPARATOR = SEPARATOR_ARDA
         self.FRACTION_GROUP_SEPARATOR = SEPARATOR_ARDA
+        self.TIME_SEPARATOR = '󱹷'
 
         for i in range(len(self.DCC_TERM_ABBREVIATED_NAME)):
             self.DCC_TERM_ABBREVIATED_NAME[i] = default_to_sezimal_digits(self.DCC_TERM_ABBREVIATED_NAME[i])
