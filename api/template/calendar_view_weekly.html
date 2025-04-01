@@ -196,6 +196,8 @@ function auto_refresh(){
                 '40': '󱸄󱸀', '41': '󱸄󱸁', '42': '󱸄󱸂', '43': '󱸄󱸃', '44': '󱸄󱸄', '45': '󱸄󱸅',
                 '50': '󱸅󱸀', '51': '󱸅󱸁', '52': '󱸅󱸂', '53': '󱸅󱸃', '54': '󱸅󱸄', '55': '󱸅󱸅',
             };
+            const TIME_SEPARATOR = '󱹷';
+
         {%- elif format_token == '@' -%}
             const PAIRS = {
                 '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
@@ -205,6 +207,8 @@ function auto_refresh(){
                 '40': '0̄', '41': '1̄', '42': '2̄', '43': '3̄', '44': '4̄', '45': '5̄',
                 '50': '0̆', '51': '1̆', '52': '2̆', '53': '3̆', '54': '4̆', '55': '5̆',
             };
+            const TIME_SEPARATOR = '󱹷';
+
         {%- elif format_token == '@!' -%}
             const PAIRS = {
                 '00': '󱸀', '01': '󱸁', '02': '󱸂', '03': '󱸃', '04': '󱸄', '05': '󱸅',
@@ -214,6 +218,7 @@ function auto_refresh(){
                 '40': '󱸘', '41': '󱸙', '42': '󱸚', '43': '󱸛', '44': '󱸜', '45': '󱸝',
                 '50': '󱸞', '51': '󱸟', '52': '󱸠', '53': '󱸡', '54': '󱸢', '55': '󱸣',
             };
+            const TIME_SEPARATOR = '󱹷';
         {%- elif format_token == 'Z' -%}
             const PAIRS = {
                 '00': '0', '01': '1', '02': '2', '03': '3', '04': '4', '05': '5',
@@ -223,6 +228,7 @@ function auto_refresh(){
                 '40': 'O', '41': 'P', '42': 'Q', '43': 'R', '44': 'S', '45': 'T',
                 '50': 'U', '51': 'V', '52': 'W', '53': 'X', '54': 'Y', '55': 'Z',
             };
+            const TIME_SEPARATOR = '{{ locale.TIME_SEPARATOR }}';
         {%- endif -%}
 
         var agrima = seconds * 36 * 36 * 36;
@@ -249,9 +255,9 @@ function auto_refresh(){
         seconds = seconds / (parseInt('30', 6) * 86400 / 36 / 36);
 
         {%- if format_token in ('!', '@', '@!', 'Z') -%}
-            time_display = PAIRS[uta] + '{{ locale.TIME_SEPARATOR }}' + PAIRS[posha];
+            time_display = PAIRS[uta] + TIME_SEPARATOR + PAIRS[posha];
         {%- else -%}
-            time_display = uta + '{{ locale.TIME_SEPARATOR }}' + posha;
+            time_display = uta + TIME_SEPARATOR + posha;
         {%- endif -%}
 
         {%- if locale.RTL -%}

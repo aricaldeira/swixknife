@@ -60,7 +60,6 @@
     {% set sezimal_separator = '󱹮' %}
 {% else %}
     {% set time_separator = locale.TIME_SEPARATOR %}
-    {% set sezimal_separator = locale.SEZIMAL_SEPARATOR %}
 {% endif %}
 <!doctype html>
 <html lang="{{ locale.LANGUAGE_TAG }}" dir="{{ 'rtl' if locale.RTL else 'ltr' }}">
@@ -440,7 +439,7 @@ html, body {
 
                 {% if locale.show_seconds %}
                     time_display = integer_time.toString(12).padStart(3, '0')
-                        + '{{ sezimal_separator }}'
+                        + '{{ locale.DOZENAL_SEPARATOR }}'
                         + dozenal_time.toString(12).padStart(1, '0');
                 {% else %}
                     time_display = integer_time.toString(12).padStart(3, '0');
@@ -623,7 +622,7 @@ html, body {
             var stopwatch_iso_display =
                 hour.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
                 minute.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
-                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                second.toString().padStart(2, '0') + '{{ locale.DECIMAL_SEPARATOR }}' +
                 centisecond.toString().padStart(2, '0');
 
             {% if locale.base == 10 %}
@@ -662,7 +661,7 @@ html, body {
                 var fraction_time = Math.floor(days * 12 * 12 * 12);
 
                 var stopwatch_display =
-                    integer_time.toString(12).padStart(3, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                    integer_time.toString(12).padStart(3, '0') + '{{ locale.DOZENAL_SEPARATOR }}' +
                     fraction_time.toString(12).padStart(3, '0');
 
                 stopwatch_display = stopwatch_display.replaceAll('a', '↊').replaceAll('b', '↋');
@@ -709,9 +708,9 @@ html, body {
                     document.getElementById('stopwatch_display').innerHTML = '00{{ time_separator }}00{{ time_separator }}00{{ sezimal_separator }}00';
                 {% endif %}
             {% else %}
-                document.getElementById('stopwatch_display').innerHTML = '000{{ locale.SEZIMAL_SEPARATOR }}00';
+                document.getElementById('stopwatch_display').innerHTML = '000{{ locale.DECIMAL_SEPARATOR }}00';
             {% endif %}
-            document.getElementById('stopwatch_iso_display').innerHTML = '00{{ locale.TIME_SEPARATOR }}00{{ locale.TIME_SEPARATOR }}00{{ locale.SEZIMAL_SEPARATOR }}00';
+            document.getElementById('stopwatch_iso_display').innerHTML = '00{{ locale.TIME_SEPARATOR }}00{{ locale.TIME_SEPARATOR }}00{{ locale.DECIMAL_SEPARATOR }}00';
         }
 
         function stopwatch_pause() {
@@ -809,8 +808,8 @@ html, body {
             {% endif %}
 
             var timer_iso_display = '&#8200;' +
-                hour.toString().padStart(2, '0') + ':' +
-                minute.toString().padStart(2, '0') + ':' +
+                hour.toString().padStart(2, '0') + '{{ time_separator }}' +
+                minute.toString().padStart(2, '0') + '{{ time_separator }}' +
                 second.toString().padStart(2, '0') + '{{ sezimal_separator }}' +
                 centisecond.toString().padStart(2, '0');
 
@@ -1073,7 +1072,7 @@ html, body {
             var timer_iso_display = sign_iso +
                 hour.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
                 minute.toString().padStart(2, '0') + '{{ locale.TIME_SEPARATOR }}' +
-                second.toString().padStart(2, '0') + '{{ locale.SEZIMAL_SEPARATOR }}' +
+                second.toString().padStart(2, '0') + '{{ locale.DECIMAL_SEPARATOR }}' +
                 centisecond.toString().padStart(2, '0');
 
             {% if locale.base == 10 %}
