@@ -348,6 +348,15 @@ class SezimalTime:
         if not fmt:
             fmt = locale.TIME_FORMAT
 
+        #
+        # Locale’s time separator
+        #
+        if '#:' in fmt:
+            if locale:
+                fmt = fmt.replace('#:', locale.TIME_SEPARATOR)
+            else:
+                fmt = fmt.replace('#:', ':')
+
         for regex, token, base, zero, character, value_name, \
             size, size_niftimal, size_decimal in TIME_NUMBER_FORMAT_TOKENS:
             if not regex.findall(fmt):
