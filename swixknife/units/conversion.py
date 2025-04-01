@@ -211,8 +211,10 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     original_fraction_simplify = sezimal_context.fractions_simplify
     sezimal_context.fractions_simplify = False
 
-    if type(measure) in (str, int, float, Decimal):
+    if type(measure) in (str, int, float):
         measure = Sezimal(measure)
+    elif type(measure) == Decimal:
+        measure = SezimalFraction(measure)
 
     if return_fraction and type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
@@ -263,8 +265,10 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     original_fraction_simplify = sezimal_context.fractions_simplify
     sezimal_context.fractions_simplify = False
 
-    if type(measure) in (str, int, float, Decimal):
+    if type(measure) in (str, int, float):
         measure = Sezimal(measure)
+    elif type(measure) == Decimal:
+        measure = SezimalFraction(measure)
 
     if return_fraction and type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
@@ -313,8 +317,10 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     original_fraction_simplify = sezimal_context.fractions_simplify
     sezimal_context.fractions_simplify = False
 
-    if type(measure) in (str, int, float, Decimal):
+    if type(measure) in (str, int, float):
         measure = Sezimal(measure)
+    elif type(measure) == Decimal:
+        measure = SezimalFraction(measure)
 
     if return_fraction and type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())

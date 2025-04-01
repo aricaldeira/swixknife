@@ -1167,7 +1167,13 @@ class SezimalFraction(Sezimal):
                 numerator, denominator = numerator.split('÷')
 
         elif type(numerator) == Decimal:
-            numerator = decimal_to_sezimal(str(numerator))
+            if denominator is None:
+                n, d = numerator.as_integer_ratio()
+                numerator = decimal_to_sezimal(str(n))
+                denominator = decimal_to_sezimal(str(d))
+
+            else:
+                numerator = decimal_to_sezimal(str(numerator))
 
         cleaned_numerator = validate_clean_sezimal(numerator)
 
