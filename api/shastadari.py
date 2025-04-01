@@ -11,6 +11,16 @@ from decimal import Decimal
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from swixknife import Sezimal, SezimalFraction
+from swixknife.units import \
+    sezimal_to_decimal_unit as sdu, sezimal_to_sezimal_unit as ssu, \
+    decimal_to_sezimal_unit as dsu, decimal_to_decimal_unit as ddu
+from fractions import Fraction
+
+from pybrasil.valor import formata_metros_em_milhas_jardas_pes_polegadas, \
+    converte_metros_para_milhas_jardas_pes_polegadas, \
+    formata_metros_em_pes_polegadas
+
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/shastadari')
@@ -228,3 +238,116 @@ def sezimal_fractions_pt_route() -> Response:
 def sezimal_fractions_bz_route() -> Response:
     # return sezimal_render_template('fractions_bz.html')
     return render_template('fractions_bz.html')
+
+
+@app.route('/en/conversion')
+def shastadari_conversion_en_route() -> Response:
+    if browser_preferred_locale().lower() == 'en-us':
+        return sezimal_render_template('conversion_en_us.html')
+
+    return render_template('conversion_en.html')
+
+@app.route('/pt/conversão')
+def shastadari_conversion_pt_route() -> Response:
+    return render_template('conversion_pt.html')
+
+@app.route('/bz/konversawn')
+def shastadari_conversion_bz_route() -> Response:
+    return render_template('conversion_bz.html')
+
+
+@app.route('/api/shastadari/length/<string:locale>/<string:unit>/<string:value>')
+def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: str = '0') -> dict:
+    locale = sezimal_locale(locale)
+
+    if unit == 'pad':
+        pada = SezimalFraction(value)
+        meter = sdu(pada, 'pad', 'm').decimal
+    else:
+        meter = Decimal(value)
+
+        if unit != 'm':
+            meter = ddu(meter, unit, 'm').decimal
+
+        pada = dsu(meter, 'm', 'pad', True)
+
+    def sf(pada):
+        res = locale.format_number(
+            round(pada, 3),
+            sezimal_places=3,
+            sezimal_punctuation=False,
+            use_fraction_group_separator=True,
+        )
+
+        while res[-1] in ('0', '󱹭', '󱹬', locale.FRACTION_GROUP_SEPARATOR):
+            res = res[0:-1]
+
+        if res.endswith('󱹮'):
+            res = res[0:-1]
+
+        if res.endswith(locale.SEZIMAL_SEPARATOR):
+            res = res[0:-1]
+
+        return res
+
+    def df(meter):
+        try:
+            meter = meter.quantize(Decimal('0.001'))
+        except:
+            return '―'
+
+        res = locale.format_decimal_number(
+            meter,
+            decimal_places=3,
+            use_fraction_group_separator=True,
+        )
+
+        while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
+            res = res[0:-1]
+
+        if res.endswith(locale.DECIMAL_SEPARATOR):
+            res = res[0:-1]
+
+        return res
+
+    mile, yard, feet, inch = converte_metros_para_milhas_jardas_pes_polegadas(meter)
+
+    res = {
+        'xmpad': sf(pada / (Sezimal(10) ** 10)),
+        'pmpad': sf(pada / (Sezimal(10) ** 5)),
+        'cmpad': sf(pada / (Sezimal(10) ** 4)),
+        'tmpad': sf(pada / (Sezimal(10) ** 3)),
+        'dmpad': sf(pada / (Sezimal(10) ** 2)),
+        'empad': sf(pada / (Sezimal(10) ** 1)),
+        'pad': sf(pada),
+        'eipad': sf(pada * (Sezimal(10) ** 1)),
+        'dipad': sf(pada * (Sezimal(10) ** 2)),
+        'tipad': sf(pada * (Sezimal(10) ** 3)),
+        'cipad': sf(pada * (Sezimal(10) ** 4)),
+        'pipad': sf(pada * (Sezimal(10) ** 5)),
+        'xipad': sf(pada * (Sezimal(10) ** 10)),
+
+        'Gm': df(meter / (Decimal(10) ** 6)),
+        'km': df(meter / (Decimal(10) ** 3)),
+        'hm': df(meter / (Decimal(10) ** 2)),
+        'dam': df(meter / (Decimal(10) ** 1)),
+        'm': df(meter),
+        'dm': df(meter * (Decimal(10) ** 1)),
+        'cm': df(meter * (Decimal(10) ** 2)),
+        'mm': df(meter * (Decimal(10) ** 3)),
+        'µm': df(meter * (Decimal(10) ** 6)),
+
+        'ml': df(mile),
+        'yd': df(yard),
+        'ft': df(feet),
+        'in': df(inch),
+
+        'ml_': df(ddu(meter, 'm', 'ml').decimal),
+        'yd_': df(ddu(meter, 'm', 'yd').decimal),
+        'ft_': df(ddu(meter, 'm', 'ft').decimal),
+        'in_': df(ddu(meter, 'm', 'in').decimal),
+        'ml_yd_ft_in': formata_metros_em_milhas_jardas_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
+        'ft_in': formata_metros_em_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
+    }
+
+    return res

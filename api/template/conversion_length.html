@@ -1,0 +1,342 @@
+{%- if LANG == 'pt' -%}
+    {% set prefixes = ['', 'eca', 'di', 'tri', 'char', 'pa', 'xa'] %}
+    {% set SHASTADARI = 'Xastadári' %}
+    {% set SI = 'SI' %}
+    {% set IMPERIAL = 'Imperial/EUA' %}
+{%- elif LANG == 'bz' -%}
+    {% set prefixes = ['', 'eka', 'di', 'tri', 'xar', 'pa', 'xa'] %}
+    {% set SHASTADARI = 'Xastadari' %}
+    {% set SI = 'SI' %}
+    {% set IMPERIAL = 'Inperiaw/EUA' %}
+{%- elif LANG == 'en-US' -%}
+    {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
+    {% set SHASTADARI = 'Shastadari' %}
+    {% set SI = 'SI' %}
+    {% set IMPERIAL = 'USA/Imperial' %}
+{%- else -%}
+    {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
+    {% set SHASTADARI = 'Shastadari' %}
+    {% set SI = 'SI' %}
+    {% set IMPERIAL = 'Imperial/USA' %}
+{%- endif -%}
+<div style="width: 100%; float: left; text-align: left; padding-left: 5px;">
+    <h3 style="text-align: center;">
+        {%- if LANG == 'pt' -%}
+            Comprimento
+        {%- elif LANG == 'bz' -%}
+            Konprimentu
+        {%- else -%}
+            Length
+        {%- endif -%}
+    </h3>
+    <p style="text-align: center;">
+        <input class="unit-input" id="input-pada" type="text" inputmode="decimal" oninput="change_length('pad')" value="0" /> pad
+    </p>
+    {% if LANG == 'en-US' %}
+        <p style="text-align: center;">
+                <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('ml')" value="0" /> ml +
+                <input class="unit-input-small" id="input-yard" type="text" inputmode="decimal" oninput="change_length('yd')" value="0" /> yd +
+                <input class="unit-input-small" id="input-feet" type="text" inputmode="decimal" oninput="change_length('ft')" value="0" /> ft +
+                <input class="unit-input-small" id="input-inch" type="text" inputmode="decimal" oninput="change_length('in')" value="0" /> in
+        </p>
+    {% endif %}
+    <p style="text-align: center;">
+        <input class="unit-input" id="input-meter" type="text" inputmode="decimal" oninput="change_length('m')" value="0" /> m
+    </p>
+    {% if LANG != 'en-US' %}
+        <p style="text-align: center;">
+                <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('ml')" value="0" /> ml +
+                <input class="unit-input-small" id="input-yard" type="text" inputmode="decimal" oninput="change_length('yd')" value="0" /> yd +
+                <input class="unit-input-small" id="input-feet" type="text" inputmode="decimal" oninput="change_length('ft')" value="0" /> ft +
+                <input class="unit-input-small" id="input-inch" type="text" inputmode="decimal" oninput="change_length('in')" value="0" /> in
+        </p>
+    {% endif %}
+    <div style="width: 100%; margin: auto;">
+        <p style="text-align: center;">
+            {{ SHASTADARI }}: <span id="pad">0</span>&#8239;pad pada
+        </p>
+        <div style="width: 50%; float: left;">
+            <table style="width: 100%; margin: auto; table-layout: auto;">
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="empad">0</span>&#8239;<span class="rainbow-ul-orange">E</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-orange">¹</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="dmpad">0</span>&#8239;<span class="rainbow-ul-yellow">D</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-yellow">²</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="tmpad">0</span>&#8239;<span class="rainbow-ul-green">T</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-green">³</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="cmpad">0</span>&#8239;<span class="rainbow-ul-blue">C</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-blue">⁴</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="pmpad">0</span>&#8239;<span class="rainbow-ul-indigo">P</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-indigo">⁵</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-indigo">{{ prefixes[5] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="xmpad">0</span>&#8239;<span class="rainbow-ul-purple">X</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-purple">¹⁰</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ma</span>pada
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width: 50%; float: right;">
+            <table style="width: 100%; margin: auto; table-layout: auto;">
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="eipad">0</span>&#8239;<span class="rainbow-ul-orange">e</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-orange">¹</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="dipad">0</span>&#8239;<span class="rainbow-ul-yellow">d</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-yellow">²</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="tipad">0</span>&#8239;<span class="rainbow-ul-green">t</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-green">³</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="cipad">0</span>&#8239;<span class="rainbow-ul-blue">c</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-blue">⁴</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="pipad">0</span>&#8239;<span class="rainbow-ul-indigo">p</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-indigo">⁵</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-indigo">{{ prefixes[5] }}n</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="xipad">0</span>&#8239;<span class="rainbow-ul-purple">x</span>pad
+                    </td>
+                    <td style="text-align: left; padding-left: 5px;">
+                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-purple">¹⁰</span>
+                    </td>
+                    <td class="hide-in-mobile" style="text-align: left;">
+                        <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ti</span>pada
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div style="width: 100%; float: left; text-align: left; padding-left: 5px;">
+    <div style="width: 100%; margin: auto;">
+        <div style="width: 50%; float: left; text-align: center;">
+            <p>
+                {{ SI }}: <span id="m">0</span>&#8239;m
+            </p>
+            <table style="width: 100%; margin: auto; table-layout: auto;">
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="dam">0</span>&#8239;dam
+                    </td>
+                    <td style="text-align: right; padding-left: 5px;">
+                        <span id="dm">0</span>&#8239;dm
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="hm">0</span>&#8239;hm
+                    </td>
+                    <td style="text-align: right; padding-left: 5px;">
+                        <span id="cm">0</span>&#8239;cm
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="km">0</span>&#8239;km
+                    </td>
+                    <td style="text-align: right; padding-left: 5px;">
+                        <span id="mm">0</span>&#8239;mm
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <span id="Gm">0</span>&#8239;Gm
+                    </td>
+                    <td style="text-align: right; padding-left: 5px;">
+                        <span id="µm">0</span>&#8239;µm
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 50%; float: right; text-align: center;">
+            <p>
+                {{ IMPERIAL }}:
+            </p>
+            <p><span id="ml_yd_ft_in">0</span></p>
+            <p><span id="ft_in">0</span></p>
+            <p><span id="in_">0</span>&#8239;in</p>
+            <p><span id="ft_">0</span>&#8239;ft</p>
+            <p><span id="yd_">0</span>&#8239;yd</p>
+            <p><span id="ml_">0</span>&#8239;ml</p>
+        </div>
+    </div>
+</div>
+<script>
+var in_process = false;
+
+function clear_number(input_name, sezimal = false) {
+    value = document.getElementById(input_name).value || '0';
+
+
+    {%- if LANG in ('pt', 'bz') -%}
+    value = value.replaceAll('.', '');
+    value = value.replaceAll(',', '.');
+    console.log('value', value);
+    {%- else -%}
+    value = value.replaceAll(',', '');
+    {%- endif -%}
+
+    value = value.replaceAll('_', '');
+    value = value.replaceAll('󱹬', '');
+    value = value.replaceAll('󱹭', '');
+    value = value.replaceAll('󱹮', '.');
+
+    if (sezimal) {
+        value = value.replaceAll('6', '');
+        value = value.replaceAll('7', '');
+        value = value.replaceAll('8', '');
+        value = value.replaceAll('9', '');
+    };
+
+    return value;
+};
+
+function change_length(unit='pad') {
+    if (in_process) {
+        return;
+    };
+
+    if (unit == 'pad') {
+        value = clear_number('input-pada', true);
+    } else if (unit == 'm')  {
+        value = clear_number('input-meter');
+    } else if ((unit == 'ml') || (unit == 'yd') || (unit == 'ft') || (unit == 'in')) {
+        value = parseFloat(clear_number('input-mile')) * 63360;
+        value = value + (parseFloat(clear_number('input-yard')) * 36);
+        value = value + (parseFloat(clear_number('input-feet')) * 12);
+        value = value + parseFloat(clear_number('input-inch'));
+        unit = 'in';
+    };
+
+    fetch(`/api/shastadari/length/{{ LANG }}/${unit}/${value}`, {
+        method: 'get',
+        headers: {
+            'Accept': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json; charset=UTF-8'
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((dados) => {
+        Object.keys(dados).forEach((element_id) => {
+            var element = document.getElementById(element_id);
+
+            if (element != null) {
+                element.innerHTML = dados[element_id];
+            };
+        });
+
+        in_process = true;
+
+        if (unit == 'pad') {
+            document.getElementById('input-meter').value = dados['m'];
+            document.getElementById('input-mile').value = dados['ml'];
+            document.getElementById('input-yard').value = dados['yd'];
+            document.getElementById('input-feet').value = dados['ft'];
+            document.getElementById('input-inch').value = dados['in'];
+        } else if (unit == 'm') {
+            document.getElementById('input-pada').value = dados['pad'];
+            document.getElementById('input-mile').value = dados['ml'];
+            document.getElementById('input-yard').value = dados['yd'];
+            document.getElementById('input-feet').value = dados['ft'];
+            document.getElementById('input-inch').value = dados['in'];
+        } else if (unit == 'in') {
+            document.getElementById('input-pada').value = dados['pad'];
+            document.getElementById('input-meter').value = dados['m'];
+        };
+
+        in_process = false;
+    });
+};
+</script>

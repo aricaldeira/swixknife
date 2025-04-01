@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title">Shastadari Units - Conversion</title>
+        <meta name="description" content="Shastadari Units - Conversion" />
+        <meta name="author" content="Ari Caldeira" />
+        {% include 'sezimal_css.html' %}
+    </head>
+    <body>
+<p class="center">
+{% include 'menu_en.html' %} <a href="/bz/konversawn">Brazileru</a> | <a href="/pt/conversão">Português</a>
+</p>
+<p class="center">
+    <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
+</p>
+<h1 class="center">Shastadari - Conversion</h1>
+{% with LANG = 'en-GB' %}
+    {%- include 'conversion_length.html' -%}
+{% endwith %}
+<p> </p>
+    </body>
+</html>

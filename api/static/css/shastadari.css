@@ -374,6 +374,96 @@ mn {
 .rainbow-violet {
     color: #aa00d4;
 }
+.rainbow-bk-red {
+    background-color: #d40000;
+    font-weight: bold;
+}
+.rainbow-bk-orange {
+    background-color: #ff6600;
+    font-weight: bold;
+}
+.rainbow-bk-yellow {
+    background-color: #ffcc00;
+    font-weight: bold;
+    color: black;
+}
+.rainbow-bk-green {
+    background-color: #44aa00;
+    font-weight: bold;
+}
+.rainbow-bk-cyan {
+    background-color: #00aad4;
+    font-weight: bold;
+}
+.rainbow-bk-blue {
+    background-color: #0066ff;
+    font-weight: bold;
+}
+.rainbow-bk-indigo {
+    background-color: #0000ff;
+    font-weight: bold;
+}
+.rainbow-bk-purple {
+    background-color: #5500d4;
+    font-weight: bold;
+}
+.rainbow-bk-magenta {
+    background-color: #d40055;
+    font-weight: bold;
+}
+.rainbow-bk-violet {
+    background-color: #aa00d4;
+    font-weight: bold;
+}
+.rainbow-ul-red {
+    padding: 2px;
+    border: 2px #d40000 solid;
+    background-color: #550000;
+}
+.rainbow-ul-orange {
+    padding: 2px;
+    border: 2px #ff6600 solid;
+    background-color: #552200;
+}
+.rainbow-ul-yellow {
+    padding: 2px;
+    border: 2px #ffcc00 solid;
+    background-color: #806600;
+}
+.rainbow-ul-green {
+    padding: 2px;
+    border: 2px #44aa00 solid;
+    background-color: #225500;
+}
+.rainbow-ul-cyan {
+    padding: 2px;
+    border: 2px #00aad4 solid;
+    background-color: #006680;
+}
+.rainbow-ul-blue {
+    padding: 2px;
+    border: 2px #0066ff solid;
+    background-color: #002255;
+}
+.rainbow-ul-indigo {
+    padding: 2px;
+    border: 2px #0000ff solid;
+    background-color: #000055;
+}
+.rainbow-ul-purple {
+    padding: 2px;
+    border: 2px #5500ff solid;
+    background-color: #220055;
+}
+.rainbow-ul-magenta {
+    border-bottom: 4px #d40055 solid;
+    border-top:    3px #d40055 solid;
+}
+.rainbow-ul-violet {
+    border-bottom: 4px #aa00d4 solid;
+    border-top:    3px #aa00d4 solid;
+}
+
 
 .calendar-time-pointer {
     position: absolute;
@@ -729,5 +819,21 @@ input[type=number] {
 }
 
 .moon-emoji {
+    display: inline-block;
+}
+
+.unit-input {
+    width: 9rem;
+    font-family: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    text-align: right;
+}
+.unit-input-small {
+    width: 5rem;
+    font-family: 'Sezimal Mono', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
+    text-align: right;
+}
+
+.unit-conversion {
+    text-align: right;
     display: inline-block;
 }
