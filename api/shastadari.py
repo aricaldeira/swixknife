@@ -19,7 +19,11 @@ from fractions import Fraction
 
 from pybrasil.valor import formata_metros_em_milhas_jardas_pes_polegadas, \
     converte_metros_para_milhas_jardas_pes_polegadas, \
-    formata_metros_em_pes_polegadas
+    formata_metros_em_pes_polegadas, \
+    formata_quilos_em_stones_libras_oncas, \
+    formata_quilos_em_libras_oncas, \
+    converte_quilos_para_stones_libras_oncas, \
+    converte_quilos_para_libras_oncas
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
@@ -348,6 +352,127 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
         'in_': df(ddu(meter, 'm', 'in').decimal),
         'ml_yd_ft_in': formata_metros_em_milhas_jardas_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
         'ft_in': formata_metros_em_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
+    }
+
+    return res
+
+
+@app.route('/api/shastadari/mass/<string:locale>/<string:unit>/<string:value>')
+def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str = '0') -> dict:
+    locale = sezimal_locale(locale)
+
+    if unit == 'drv':
+        dravya = SezimalFraction(value)
+        gram = sdu(dravya, 'drv', 'g').decimal
+    else:
+        gram = Decimal(value)
+
+        if unit != 'kg':
+            gram = ddu(gram, unit, 'kg', True)
+            gram /= Decimal(1000)
+            gram = gram.decimal
+        else:
+            gram *= 1000
+
+        dravya = dsu(gram, 'g', 'drv', True)
+
+    def sf(dravya):
+        res = locale.format_number(
+            round(dravya, 3),
+            sezimal_places=3,
+            sezimal_punctuation=False,
+            use_fraction_group_separator=True,
+        )
+
+        while res[-1] in ('0', '󱹭', '󱹬', locale.FRACTION_GROUP_SEPARATOR):
+            res = res[0:-1]
+
+        if res.endswith('󱹮'):
+            res = res[0:-1]
+
+        if res.endswith(locale.SEZIMAL_SEPARATOR):
+            res = res[0:-1]
+
+        return res
+
+    def df(gram):
+        try:
+            gram = gram.quantize(Decimal('0.001'))
+        except:
+            return '―'
+
+        res = locale.format_decimal_number(
+            gram,
+            decimal_places=3,
+            use_fraction_group_separator=True,
+        )
+
+        while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
+            res = res[0:-1]
+
+        if res.endswith(locale.DECIMAL_SEPARATOR):
+            res = res[0:-1]
+
+        return res
+
+    st, lb, oz = converte_quilos_para_stones_libras_oncas(gram/1000)
+    us_lb_oz = formata_quilos_em_libras_oncas(gram / 1000, casas_decimais=0)
+    uk_st_lb_oz = formata_quilos_em_stones_libras_oncas(gram / 1000, casas_decimais=0)
+
+    us_lb_oz = us_lb_oz.replace('.', '_')
+    us_lb_oz = us_lb_oz.replace(',', locale.DECIMAL_SEPARATOR)
+    us_lb_oz = us_lb_oz.replace('_', locale.DECIMAL_GROUP_SEPARATOR)
+
+    uk_st_lb_oz = uk_st_lb_oz.replace('.', '_')
+    uk_st_lb_oz = uk_st_lb_oz.replace(',', locale.DECIMAL_SEPARATOR)
+    uk_st_lb_oz = uk_st_lb_oz.replace('_', locale.DECIMAL_GROUP_SEPARATOR)
+
+    res = {
+        'xmdrv': sf(dravya / (Sezimal(10) ** 10)),
+        'pmdrv': sf(dravya / (Sezimal(10) ** 5)),
+        'cmdrv': sf(dravya / (Sezimal(10) ** 4)),
+        'tmdrv': sf(dravya / (Sezimal(10) ** 3)),
+        'dmdrv': sf(dravya / (Sezimal(10) ** 2)),
+        'emdrv': sf(dravya / (Sezimal(10) ** 1)),
+        'drv': sf(dravya),
+        'eidrv': sf(dravya * (Sezimal(10) ** 1)),
+        'didrv': sf(dravya * (Sezimal(10) ** 2)),
+        'tidrv': sf(dravya * (Sezimal(10) ** 3)),
+        'cidrv': sf(dravya * (Sezimal(10) ** 4)),
+        'pidrv': sf(dravya * (Sezimal(10) ** 5)),
+        'xidrv': sf(dravya * (Sezimal(10) ** 10)),
+
+        'Gg': df(gram / (Decimal(10) ** 6)),
+        'kg': df(gram / (Decimal(10) ** 3)),
+        'hg': df(gram / (Decimal(10) ** 2)),
+        'dag': df(gram / (Decimal(10) ** 1)),
+        'g': df(gram),
+        'dg': df(gram * (Decimal(10) ** 1)),
+        'cg': df(gram * (Decimal(10) ** 2)),
+        'mg': df(gram * (Decimal(10) ** 3)),
+        'µg': df(gram * (Decimal(10) ** 6)),
+
+        'gr_': df(ddu(gram / 1000, 'kg', 'gr').decimal),
+        'dr_': df(ddu(gram / 1000, 'kg', 'dr').decimal),
+        'oz_': df(ddu(gram / 1000, 'kg', 'oz').decimal),
+        'lb_': df(ddu(gram / 1000, 'kg', 'lb').decimal),
+        'st_': df(ddu(gram / 1000, 'kg', 'st').decimal),
+        'sl_': df(ddu(gram / 1000, 'kg', 'sl').decimal),
+
+        'imp_qr_': df(ddu(gram / 1000, 'kg', 'imp qr').decimal),
+        'imp_cwt_': df(ddu(gram / 1000, 'kg', 'imp cwt').decimal),
+        'imp_ton_': df(ddu(gram / 1000, 'kg', 'imp ton').decimal),
+
+        'us_qr_': df(ddu(gram / 1000, 'kg', 'US qr').decimal),
+        'us_cwt_': df(ddu(gram / 1000, 'kg', 'US cwt').decimal),
+        'us_ton_': df(ddu(gram / 1000, 'kg', 'US ton').decimal),
+
+        'st': df(st),
+        'lb': df(lb),
+        'oz': df(oz),
+
+        'us_lb_oz': us_lb_oz,
+        'uk_st_lb_oz': uk_st_lb_oz,
     }
 
     return res
