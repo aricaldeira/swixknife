@@ -17,236 +17,229 @@
     {% set USA = 'USA' %}
     {% set DRV = 'dravya' %}
 {%- endif -%}
-<div style="width: 100%; float: left; text-align: left; drvding-left: 5px;">
-    <h3 style="text-align: center;">
-        {%- if LANG == 'pt' -%}
-            Massa
-        {%- elif LANG == 'bz' -%}
-            Masa
-        {%- else -%}
-            Mass
-        {%- endif -%}
-    </h3>
-    <p style="text-align: center;">
-        <input class="unit-input" id="input-dravya" type="text" inputmode="decimal" oninput="change_mass('drv')" value="0" /> drv
-    </p>
-    {% if LANG == 'en-US' %}
+<div id="conversion-mass" hidden>
+    <div style="width: 100%; float: left; text-align: left; padding-left: 5px;">
         <p style="text-align: center;">
-                <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
-                <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
-                <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
+            <input class="unit-input" id="input-dravya" type="text" inputmode="decimal" oninput="change_mass('drv')" value="0" /> drv
         </p>
-    {% endif %}
-    <p style="text-align: center;">
-        <input class="unit-input" id="input-kilogram" type="text" inputmode="decimal" oninput="change_mass('kg')" value="0" /> kg
-    </p>
-    {% if LANG != 'en-US' %}
+        {% if LANG == 'en-US' %}
+            <p style="text-align: center;">
+                    <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
+                    <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
+                    <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
+            </p>
+        {% endif %}
         <p style="text-align: center;">
-                <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
-                <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
-                <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
+            <input class="unit-input" id="input-kilogram" type="text" inputmode="decimal" oninput="change_mass('kg')" value="0" /> kg
         </p>
-    {% endif %}
-    <div style="width: 100%; margin: auto;">
-        <p style="text-align: center;">
-            {{ SHASTADARI }}: <span id="drv">0</span>&#8239;drv {{ DRV }}
-        </p>
-        <div style="width: 50%; float: left;">
-            <table style="width: 100%; margin: auto; table-layout: auto;">
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="emdrv">0</span>&#8239;<span class="rainbow-ul-orange">E</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-orange">¹</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="dmdrv">0</span>&#8239;<span class="rainbow-ul-yellow">D</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-yellow">²</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="tmdrv">0</span>&#8239;<span class="rainbow-ul-green">T</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-green">³</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="cmdrv">0</span>&#8239;<span class="rainbow-ul-blue">C</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-blue">⁴</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="pmdrv">0</span>&#8239;<span class="rainbow-ul-indigo">P</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-indigo">⁵</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-indigo">{{ prefixes[5] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="xmdrv">0</span>&#8239;<span class="rainbow-ul-purple">X</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-purple">¹⁰</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
-                    </td>
-                </tr>
-            </table>
-        </div>
+        {% if LANG != 'en-US' %}
+            <p style="text-align: center;">
+                    <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
+                    <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
+                    <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
+            </p>
+        {% endif %}
+        <div style="width: 100%; margin: auto;">
+            <p style="text-align: center;">
+                {{ SHASTADARI }}: <span id="drv">0</span>&#8239;drv {{ DRV }}
+            </p>
+            <div style="width: 50%; float: left;">
+                <table style="width: 100%; margin: auto; table-layout: auto;">
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="emdrv">0</span>&#8239;<span class="rainbow-ul-orange">E</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-orange">¹</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="dmdrv">0</span>&#8239;<span class="rainbow-ul-yellow">D</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-yellow">²</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="tmdrv">0</span>&#8239;<span class="rainbow-ul-green">T</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-green">³</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="cmdrv">0</span>&#8239;<span class="rainbow-ul-blue">C</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-blue">⁴</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="pmdrv">0</span>&#8239;<span class="rainbow-ul-indigo">P</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-indigo">⁵</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-indigo">{{ prefixes[5] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="xmdrv">0</span>&#8239;<span class="rainbow-ul-purple">X</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁺</span><span class="rainbow-ul-purple">¹⁰</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ma</span>{{ DRV }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-        <div style="width: 50%; float: right;">
-            <table style="width: 100%; margin: auto; table-layout: auto;">
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="eidrv">0</span>&#8239;<span class="rainbow-ul-orange">e</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-orange">¹</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="didrv">0</span>&#8239;<span class="rainbow-ul-yellow">d</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-yellow">²</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="tidrv">0</span>&#8239;<span class="rainbow-ul-green">t</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-green">³</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="cidrv">0</span>&#8239;<span class="rainbow-ul-blue">c</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-blue">⁴</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="pidrv">0</span>&#8239;<span class="rainbow-ul-indigo">p</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-indigo">⁵</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-indigo">{{ prefixes[5] }}n</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="xidrv">0</span>&#8239;<span class="rainbow-ul-purple">x</span>drv
-                    </td>
-                    <td style="text-align: left; drvding-left: 5px;">
-                        10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-purple">¹⁰</span>
-                    </td>
-                    <td class="hide-in-mobile" style="text-align: left;">
-                        <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
-                    </td>
-                </tr>
-            </table>
+            <div style="width: 50%; float: right;">
+                <table style="width: 100%; margin: auto; table-layout: auto;">
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="eidrv">0</span>&#8239;<span class="rainbow-ul-orange">e</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-orange">¹</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-orange">{{ prefixes[1] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="didrv">0</span>&#8239;<span class="rainbow-ul-yellow">d</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-yellow">²</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-yellow">{{ prefixes[2] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="tidrv">0</span>&#8239;<span class="rainbow-ul-green">t</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-green">³</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-green">{{ prefixes[3] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="cidrv">0</span>&#8239;<span class="rainbow-ul-blue">c</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-blue">⁴</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-blue">{{ prefixes[4] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="pidrv">0</span>&#8239;<span class="rainbow-ul-indigo">p</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-indigo">⁵</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-indigo">{{ prefixes[5] }}n</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="xidrv">0</span>&#8239;<span class="rainbow-ul-purple">x</span>drv
+                        </td>
+                        <td style="text-align: left; padding-left: 5px;">
+                            10<span class="rainbow-ul-red">⁻</span><span class="rainbow-ul-purple">¹⁰</span>
+                        </td>
+                        <td class="hide-in-mobile" style="text-align: left;">
+                            <span class="rainbow-ul-purple">{{ prefixes[6] }}</span><span class="rainbow-ul-red">ti</span>{{ DRV }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<div style="width: 100%; float: left; text-align: left; drvding-left: 5px;">
-    <div style="width: 100%; margin: auto;">
-        <div style="width: 50%; float: left; text-align: center;">
-            <p>
-                {{ SI }}:
-            </p>
-            <p>
-                <span id="g">0</span>&#8239;g
-            </p>
-            <table style="width: 100%; margin: auto; table-layout: auto;">
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="dag">0</span>&#8239;dag
-                    </td>
-                    <td style="text-align: right; drvding-left: 5px;">
-                        <span id="dg">0</span>&#8239;dg
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="hg">0</span>&#8239;hg
-                    </td>
-                    <td style="text-align: right; drvding-left: 5px;">
-                        <span id="cg">0</span>&#8239;cg
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="kg">0</span>&#8239;kg
-                    </td>
-                    <td style="text-align: right; drvding-left: 5px;">
-                        <span id="mg">0</span>&#8239;mg
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <span id="Gg">0</span>&#8239;Gg
-                    </td>
-                    <td style="text-align: right; drvding-left: 5px;">
-                        <span id="µg">0</span>&#8239;µg
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div style="width: 50%; float: right; text-align: center;">
-            <p>
-                {{ USA }}:
-            </p>
-            <p><span id="us_lb_oz">0</span></p>
-            <p><span id="oz_">0</span>&#8239;oz</p>
-            <p><span id="lb_">0</span>&#8239;lb</p>
-            <p><span id="tn_">0</span>&#8239;tn</p>
+    <div style="width: 100%; float: left; text-align: left; padding-left: 5px;">
+        <div style="width: 100%; margin: auto;">
+            <div style="width: 50%; float: left; text-align: center;">
+                <p>
+                    {{ SI }}:
+                </p>
+                <p>
+                    <span id="g">0</span>&#8239;g
+                </p>
+                <table style="width: 100%; margin: auto; table-layout: auto;">
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="dag">0</span>&#8239;dag
+                        </td>
+                        <td style="text-align: right; padding-left: 5px;">
+                            <span id="dg">0</span>&#8239;dg
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="hg">0</span>&#8239;hg
+                        </td>
+                        <td style="text-align: right; padding-left: 5px;">
+                            <span id="cg">0</span>&#8239;cg
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="kg">0</span>&#8239;kg
+                        </td>
+                        <td style="text-align: right; padding-left: 5px;">
+                            <span id="mg">0</span>&#8239;mg
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <span id="Gg">0</span>&#8239;Gg
+                        </td>
+                        <td style="text-align: right; padding-left: 5px;">
+                            <span id="µg">0</span>&#8239;µg
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 50%; float: right; text-align: center;">
+                <p>
+                    {{ USA }}:
+                </p>
+                <p><span id="us_lb_oz">0</span></p>
+                <p><span id="oz_">0</span>&#8239;oz</p>
+                <p><span id="lb_">0</span>&#8239;lb</p>
+                <p><span id="tn_">0</span>&#8239;tn</p>
+            </div>
         </div>
     </div>
 </div>

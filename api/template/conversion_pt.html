@@ -11,16 +11,31 @@
     </head>
     <body>
 <p class="center">
-{% include 'menu_pt.html' %} <a href="/bz/konversawn">Brazileru</a> | <a href="/en/conversion">English</a>
+{% include 'menu_pt.html' %} <a href="/bz/xastadari/konversawn">Brazileru</a> | <a href="/en/xastadári/conversion">English</a>
 </p>
 <p class="center">
     <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
 </p>
 <h1 class="center">Xastadári - Conversão</h1>
+<h3 class="center">
+    <span id="conversion-length-menu" class="conversion-active" onclick="select_conversion('length')">Comprimento</span> •
+    <span id="conversion-mass-menu" onclick="select_conversion('mass')">Massa</span>
+</h3>
 {% with LANG = 'pt' %}
     {%- include 'conversion_length.html' -%}
     {%- include 'conversion_mass.html' -%}
 {% endwith %}
 <p> </p>
     </body>
+<script>
+function select_conversion(quantity) {
+    document.getElementById('conversion-length').hidden = true;
+    document.getElementById('conversion-length-menu').setAttribute('class', '');
+    document.getElementById('conversion-mass').hidden = true;
+    document.getElementById('conversion-mass-menu').setAttribute('class', '');
+
+    document.getElementById(`conversion-${quantity}`).hidden = false;
+    document.getElementById(`conversion-${quantity}-menu`).setAttribute('class', 'conversion-active');
+}
+</script>
 </html>

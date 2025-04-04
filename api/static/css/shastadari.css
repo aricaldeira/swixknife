@@ -837,3 +837,8 @@ input[type=number] {
     text-align: right;
     display: inline-block;
 }
+
+.conversion-active {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

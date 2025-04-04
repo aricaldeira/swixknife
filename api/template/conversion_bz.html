@@ -1,26 +1,27 @@
+
 <!doctype html>
-<html lang="en-GB">
+<html lang="bz-BR">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="title">Shastadari Units - Conversion</title>
-        <meta name="description" content="Shastadari Units - Conversion" />
+        <title id="title">Unidadis Xastadari - Konversawn</title>
+        <meta name="description" content="Unidadis Xastadari - Konversawn" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
     </head>
     <body>
 <p class="center">
-{% include 'menu_en.html' %} <a href="/bz/xastadari/konversawn">Brazileru</a> | <a href="/pt/xastadári/conversão">Português</a>
+{% include 'menu_bz.html' %} <a href="/pt/xastadári/conversão">Português</a> | <a href="/en/shastadari/conversion">English</a>
 </p>
 <p class="center">
     <img src="https://midia.tauga.online/img/sezimal/shastadari-logo-white-on-red.svg" width="12.5%"/>
 </p>
-<h1 class="center">Shastadari - Conversion</h1>
+<h1 class="center">Xastadari - Konversawn</h1>
 <h3 class="center">
-    <span id="conversion-length-menu" class="conversion-active" onclick="select_conversion('length')">Length</span> •
-    <span id="conversion-mass-menu" onclick="select_conversion('mass')">Mass</span>
+    <span id="conversion-length-menu" class="conversion-active" onclick="select_conversion('length')">Konprimentu</span> •
+    <span id="conversion-mass-menu" onclick="select_conversion('mass')">Masa</span>
 </h3>
-{% with LANG = 'en-GB' %}
+{% with LANG = 'bz' %}
     {%- include 'conversion_length.html' -%}
     {%- include 'conversion_mass.html' -%}
 {% endwith %}

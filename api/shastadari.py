@@ -237,6 +237,7 @@ def sezimal_fractions_bz_route() -> Response:
 
 
 @app.route('/en/conversion')
+@app.route('/en/shastadari/conversion')
 def shastadari_conversion_en_route() -> Response:
     if browser_preferred_locale().lower() == 'en-us':
         return sezimal_render_template('conversion_en_us.html')
@@ -244,10 +245,12 @@ def shastadari_conversion_en_route() -> Response:
     return render_template('conversion_en.html')
 
 @app.route('/pt/conversão')
+@app.route('/pt/xastadári/conversão')
 def shastadari_conversion_pt_route() -> Response:
     return render_template('conversion_pt.html')
 
 @app.route('/bz/konversawn')
+@app.route('/bz/xastadari/konversawn')
 def shastadari_conversion_bz_route() -> Response:
     return render_template('conversion_bz.html')
 
