@@ -2,25 +2,19 @@
     {% set prefixes = ['', 'eca', 'di', 'tri', 'char', 'pa', 'xa'] %}
     {% set SHASTADARI = 'Xastadári' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Imperial/EUA' %}
+    {% set USA = 'EUA' %}
     {% set DRV = 'drávia' %}
 {%- elif LANG == 'bz' -%}
     {% set prefixes = ['', 'eka', 'di', 'tri', 'xar', 'pa', 'xa'] %}
     {% set SHASTADARI = 'Xastadari' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Inperiaw/EUA' %}
-    {% set DRV = 'dravya' %}
-{%- elif LANG == 'en-US' -%}
-    {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
-    {% set SHASTADARI = 'Shastadari' %}
-    {% set SI = 'SI' %}
-    {% set IMPERIAL = 'USA/Imperial' %}
+    {% set USA = 'EUA' %}
     {% set DRV = 'dravya' %}
 {%- else -%}
     {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
     {% set SHASTADARI = 'Shastadari' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Imperial/USA' %}
+    {% set USA = 'USA' %}
     {% set DRV = 'dravya' %}
 {%- endif -%}
 <div style="width: 100%; float: left; text-align: left; drvding-left: 5px;">
@@ -38,7 +32,7 @@
     </p>
     {% if LANG == 'en-US' %}
         <p style="text-align: center;">
-                <input class="unit-input-small" id="input-stone" type="text" inputmode="decimal" oninput="change_mass('st')" value="0" /> st +
+                <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
                 <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
                 <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
         </p>
@@ -48,7 +42,7 @@
     </p>
     {% if LANG != 'en-US' %}
         <p style="text-align: center;">
-                <input class="unit-input-small" id="input-stone" type="text" inputmode="decimal" oninput="change_mass('st')" value="0" /> st +
+                <input class="unit-input-small" id="input-ton" type="text" inputmode="decimal" oninput="change_mass('tn')" value="0" /> tn +
                 <input class="unit-input-small" id="input-pound" type="text" inputmode="decimal" oninput="change_mass('lb')" value="0" /> lb +
                 <input class="unit-input-small" id="input-ounce" type="text" inputmode="decimal" oninput="change_mass('oz')" value="0" /> oz
         </p>
@@ -247,36 +241,12 @@
         </div>
         <div style="width: 50%; float: right; text-align: center;">
             <p>
-                {{ IMPERIAL }}:
+                {{ USA }}:
             </p>
-            {%- if LANG == 'en-US' -%}
-                <p>US: <span id="us_lb_oz">0</span></p>
-                <p>UK: <span id="uk_st_lb_oz">0</span></p>
-            {%- else -%}
-                <p>Imp.: <span id="uk_st_lb_oz">0</span></p>
-                <p>US: <span id="us_lb_oz">0</span></p>
-            {%- endif -%}
-            <p><span id="gr_">0</span>&#8239;gr</p>
-            <p><span id="dr_">0</span>&#8239;dr</p>
+            <p><span id="us_lb_oz">0</span></p>
             <p><span id="oz_">0</span>&#8239;oz</p>
             <p><span id="lb_">0</span>&#8239;lb</p>
-            <p><span id="st_">0</span>&#8239;st</p>
-            <p><span id="sl_">0</span>&#8239;sl</p>
-            {%- if LANG == 'en-US' -%}
-                <p>US: <span id="us_qr_">0</span>&#8239;qr</p>
-                <p>US: <span id="us_cwt_">0</span>&#8239;cwt</p>
-                <p>US: <span id="us_ton_">0</span>&#8239;ton</p>
-                <p>UK: <span id="imp_qr_">0</span>&#8239;qr</p>
-                <p>UK: <span id="imp_cwt_">0</span>&#8239;cwt</p>
-                <p>UK: <span id="imp_ton_">0</span>&#8239;ton</p>
-            {%- else -%}
-                <p>Imp.: <span id="imp_qr_">0</span>&#8239;qr</p>
-                <p>Imp.: <span id="imp_cwt_">0</span>&#8239;cwt</p>
-                <p>Imp.: <span id="imp_ton_">0</span>&#8239;ton</p>
-                <p>US: <span id="us_qr_">0</span>&#8239;qr</p>
-                <p>US: <span id="us_cwt_">0</span>&#8239;cwt</p>
-                <p>US: <span id="us_ton_">0</span>&#8239;ton</p>
-            {%- endif -%}
+            <p><span id="tn_">0</span>&#8239;tn</p>
         </div>
     </div>
 </div>
@@ -292,8 +262,8 @@ function change_mass(unit='drv') {
         value = clear_number('input-dravya', true);
     } else if (unit == 'kg')  {
         value = clear_number('input-kilogram');
-    } else if ((unit == 'st') || (unit == 'lb') || (unit == 'oz')) {
-        value = parseFloat(clear_number('input-stone')) * 224;
+    } else {
+        value = parseFloat(clear_number('input-ton')) * 2000 * 16;
         value = value + (parseFloat(clear_number('input-pound')) * 16);
         value = value + parseFloat(clear_number('input-ounce'));
         unit = 'oz';
@@ -320,12 +290,12 @@ function change_mass(unit='drv') {
 
         if (unit == 'drv') {
             document.getElementById('input-kilogram').value = dados['kg'];
-            document.getElementById('input-stone').value = dados['st'];
+            document.getElementById('input-ton').value = dados['tn'];
             document.getElementById('input-pound').value = dados['lb'];
             document.getElementById('input-ounce').value = dados['oz'];
         } else if (unit == 'kg') {
             document.getElementById('input-dravya').value = dados['drv'];
-            document.getElementById('input-stone').value = dados['st'];
+            document.getElementById('input-ton').value = dados['tn'];
             document.getElementById('input-pound').value = dados['lb'];
             document.getElementById('input-ounce').value = dados['oz'];
         } else if (unit == 'oz') {

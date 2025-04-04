@@ -2,22 +2,17 @@
     {% set prefixes = ['', 'eca', 'di', 'tri', 'char', 'pa', 'xa'] %}
     {% set SHASTADARI = 'Xastadári' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Imperial/EUA' %}
+    {% set USA = 'EUA' %}
 {%- elif LANG == 'bz' -%}
     {% set prefixes = ['', 'eka', 'di', 'tri', 'xar', 'pa', 'xa'] %}
     {% set SHASTADARI = 'Xastadari' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Inperiaw/EUA' %}
-{%- elif LANG == 'en-US' -%}
-    {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
-    {% set SHASTADARI = 'Shastadari' %}
-    {% set SI = 'SI' %}
-    {% set IMPERIAL = 'USA/Imperial' %}
+    {% set USA = 'EUA' %}
 {%- else -%}
     {% set prefixes = ['', 'eka', 'di', 'tri', 'char', 'pa', 'sha'] %}
     {% set SHASTADARI = 'Shastadari' %}
     {% set SI = 'SI' %}
-    {% set IMPERIAL = 'Imperial/USA' %}
+    {% set USA = 'USA' %}
 {%- endif -%}
 <div style="width: 100%; float: left; text-align: left; padding-left: 5px;">
     <h3 style="text-align: center;">
@@ -242,7 +237,7 @@
         </div>
         <div style="width: 50%; float: right; text-align: center;">
             <p>
-                {{ IMPERIAL }}:
+                {{ USA }}:
             </p>
             <p><span id="ml_yd_ft_in">0</span></p>
             <p><span id="ft_in">0</span></p>
@@ -257,8 +252,11 @@
 var in_process = false;
 
 function clear_number(input_name, sezimal = false) {
-    value = document.getElementById(input_name).value || '0';
+    value = document.getElementById(input_name).value;
 
+    if ((value == '') || (value == null)) {
+        value = '0';
+    };
 
     {%- if LANG in ('pt', 'bz') -%}
     value = value.replaceAll('.', '');

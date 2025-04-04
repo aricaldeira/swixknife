@@ -17,14 +17,6 @@ from swixknife.units import \
     decimal_to_sezimal_unit as dsu, decimal_to_decimal_unit as ddu
 from fractions import Fraction
 
-from pybrasil.valor import formata_metros_em_milhas_jardas_pes_polegadas, \
-    converte_metros_para_milhas_jardas_pes_polegadas, \
-    formata_metros_em_pes_polegadas, \
-    formata_quilos_em_stones_libras_oncas, \
-    formata_quilos_em_libras_oncas, \
-    converte_quilos_para_stones_libras_oncas, \
-    converte_quilos_para_libras_oncas
-
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/shastadari')
@@ -267,11 +259,15 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
     if unit == 'pad':
         pada = SezimalFraction(value)
         meter = sdu(pada, 'pad', 'm').decimal
+        inch = meter / Decimal('0.0254')
     else:
         meter = Decimal(value)
 
         if unit != 'm':
-            meter = ddu(meter, unit, 'm').decimal
+            inch = meter
+            meter = inch * Decimal('0.0254')
+        else:
+            inch = meter / Decimal('0.0254')
 
         pada = dsu(meter, 'm', 'pad', True)
 
@@ -294,27 +290,101 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
 
         return res
 
-    def df(meter):
+    def df(meter, dp=3):
         try:
-            meter = meter.quantize(Decimal('0.001'))
+            meter = meter.quantize(Decimal('10') ** (dp * -1))
         except:
             return '―'
 
         res = locale.format_decimal_number(
             meter,
-            decimal_places=3,
+            decimal_places=dp,
             use_fraction_group_separator=True,
         )
 
-        while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
-            res = res[0:-1]
+        if dp > 0:
+            while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
+                res = res[0:-1]
 
-        if res.endswith(locale.DECIMAL_SEPARATOR):
-            res = res[0:-1]
+            if res.endswith(locale.DECIMAL_SEPARATOR):
+                res = res[0:-1]
 
         return res
 
-    mile, yard, feet, inch = converte_metros_para_milhas_jardas_pes_polegadas(meter)
+    def format_inches(inches, suffix=' in', fraction_of=64):
+        if inches == 0:
+            return ''
+
+        fi = ''
+
+        if inches // 1 != 0:
+            fi += df(inches // 1, 0)
+
+        inches -= inches // 1
+        inches = (inches * fraction_of) // 1
+
+        if inches > 0:
+            num, den = inches, fraction_of
+
+            while (num % 2 == 0) and (den % 2 == 0):
+                num //= 2
+                den //= 2
+
+            fi += ' ' + str(num) + '⁄' + str(den)
+
+        return fi + suffix
+
+    feet = inch / 12
+    yard = inch / 36
+    mile = inch / 63_360
+
+    in_ = Decimal(0)
+    ft_ = Decimal(0)
+    yd_ = Decimal(0)
+    ml_ = Decimal(0)
+
+    inn = inch
+    ml_yd_ft_in = ''
+
+    if inn >= 63_360:
+        ml_ = inn // 63_360
+        ml_yd_ft_in += df(ml_, 0) + ' ml'
+        inn -= ml_ * 63_360
+
+    if inn >= 36:
+        if ml_yd_ft_in:
+            ml_yd_ft_in += ' '
+
+        yd_ = inn // 36
+        ml_yd_ft_in += df(yd_, 0) + ' yd'
+        inn -= yd_ * 36
+
+    if inn >= 12:
+        if ml_yd_ft_in:
+            ml_yd_ft_in += ' '
+
+        ft_ = inn // 12
+        ml_yd_ft_in += df(ft_, 0) + ' ft'
+        inn -= ft_ * 12
+
+    if inn > 0:
+        if ml_yd_ft_in:
+            ml_yd_ft_in += ' '
+        in_ = inn
+        ml_yd_ft_in += format_inches(inn, ' in')
+
+    inn = inch
+    ft_in = ''
+
+    if inn >= 12:
+        ft_in += df(inn // 12, 0) + '′'
+        inn -= (inn // 12).quantize(Decimal('1')) * 12
+
+    if inn > 0:
+        if ft_in:
+            ft_in += ' '
+
+        ft_in += format_inches(inn, '″')
 
     res = {
         'xmpad': sf(pada / (Sezimal(10) ** 10)),
@@ -341,17 +411,17 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
         'mm': df(meter * (Decimal(10) ** 3)),
         'µm': df(meter * (Decimal(10) ** 6)),
 
-        'ml': df(mile),
-        'yd': df(yard),
-        'ft': df(feet),
-        'in': df(inch),
+        'ml': df(ml_),
+        'yd': df(yd_),
+        'ft': df(ft_),
+        'in': df(in_),
 
-        'ml_': df(ddu(meter, 'm', 'ml').decimal),
-        'yd_': df(ddu(meter, 'm', 'yd').decimal),
-        'ft_': df(ddu(meter, 'm', 'ft').decimal),
-        'in_': df(ddu(meter, 'm', 'in').decimal),
-        'ml_yd_ft_in': formata_metros_em_milhas_jardas_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
-        'ft_in': formata_metros_em_pes_polegadas(meter, casas_decimais=3, usa_fracao=True),
+        'ml_': df(mile),
+        'yd_': df(yard),
+        'ft_': df(feet),
+        'in_': df(inch) + ' = ' + format_inches(inch, ''),
+        'ml_yd_ft_in': ml_yd_ft_in,
+        'ft_in': ft_in,
     }
 
     return res
@@ -364,15 +434,16 @@ def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str
     if unit == 'drv':
         dravya = SezimalFraction(value)
         gram = sdu(dravya, 'drv', 'g').decimal
+        oz = gram / Decimal('28.349_523_125')
     else:
         gram = Decimal(value)
 
         if unit != 'kg':
-            gram = ddu(gram, unit, 'kg', True)
-            gram /= Decimal(1000)
-            gram = gram.decimal
+            oz = gram
+            gram = oz * Decimal('28.349_523_125')
         else:
             gram *= 1000
+            oz = gram / Decimal('28.349_523_125')
 
         dravya = dsu(gram, 'g', 'drv', True)
 
@@ -395,37 +466,55 @@ def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str
 
         return res
 
-    def df(gram):
+    def df(gram, dp=3):
         try:
-            gram = gram.quantize(Decimal('0.001'))
+            gram = gram.quantize(Decimal('10') ** (dp * -1))
         except:
             return '―'
 
         res = locale.format_decimal_number(
             gram,
-            decimal_places=3,
+            decimal_places=dp,
             use_fraction_group_separator=True,
         )
 
-        while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
-            res = res[0:-1]
+        if dp > 0:
+            while res[-1] in ('0', locale.FRACTION_GROUP_SEPARATOR):
+                res = res[0:-1]
 
-        if res.endswith(locale.DECIMAL_SEPARATOR):
-            res = res[0:-1]
+            if res.endswith(locale.DECIMAL_SEPARATOR):
+                res = res[0:-1]
 
         return res
 
-    st, lb, oz = converte_quilos_para_stones_libras_oncas(gram/1000)
-    us_lb_oz = formata_quilos_em_libras_oncas(gram / 1000, casas_decimais=0)
-    uk_st_lb_oz = formata_quilos_em_stones_libras_oncas(gram / 1000, casas_decimais=0)
+    oz_ = oz
+    lb_ = oz / 16
+    tn_ = oz / 32_000
 
-    us_lb_oz = us_lb_oz.replace('.', '_')
-    us_lb_oz = us_lb_oz.replace(',', locale.DECIMAL_SEPARATOR)
-    us_lb_oz = us_lb_oz.replace('_', locale.DECIMAL_GROUP_SEPARATOR)
+    us_lb_oz = ''
 
-    uk_st_lb_oz = uk_st_lb_oz.replace('.', '_')
-    uk_st_lb_oz = uk_st_lb_oz.replace(',', locale.DECIMAL_SEPARATOR)
-    uk_st_lb_oz = uk_st_lb_oz.replace('_', locale.DECIMAL_GROUP_SEPARATOR)
+    ozz = oz
+
+    if ozz >= 16:
+        us_lb_oz = df(ozz // 16, 0) + ' lb'
+        ozz -= (ozz // 16) * 16
+
+    if ozz > 0:
+        if us_lb_oz:
+            us_lb_oz += ' '
+
+        us_lb_oz += df(ozz, 0) + ' oz'
+
+    lb = Decimal(0)
+    tn = Decimal(0)
+
+    if oz >= 32_000:
+        tn = oz // 32_000
+        oz -= tn * 32_000
+
+    if oz >= 16:
+        lb = oz // 16
+        oz -= lb * 16
 
     res = {
         'xmdrv': sf(dravya / (Sezimal(10) ** 10)),
@@ -452,27 +541,15 @@ def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str
         'mg': df(gram * (Decimal(10) ** 3)),
         'µg': df(gram * (Decimal(10) ** 6)),
 
-        'gr_': df(ddu(gram / 1000, 'kg', 'gr').decimal),
-        'dr_': df(ddu(gram / 1000, 'kg', 'dr').decimal),
-        'oz_': df(ddu(gram / 1000, 'kg', 'oz').decimal),
-        'lb_': df(ddu(gram / 1000, 'kg', 'lb').decimal),
-        'st_': df(ddu(gram / 1000, 'kg', 'st').decimal),
-        'sl_': df(ddu(gram / 1000, 'kg', 'sl').decimal),
-
-        'imp_qr_': df(ddu(gram / 1000, 'kg', 'imp qr').decimal),
-        'imp_cwt_': df(ddu(gram / 1000, 'kg', 'imp cwt').decimal),
-        'imp_ton_': df(ddu(gram / 1000, 'kg', 'imp ton').decimal),
-
-        'us_qr_': df(ddu(gram / 1000, 'kg', 'US qr').decimal),
-        'us_cwt_': df(ddu(gram / 1000, 'kg', 'US cwt').decimal),
-        'us_ton_': df(ddu(gram / 1000, 'kg', 'US ton').decimal),
-
-        'st': df(st),
-        'lb': df(lb),
-        'oz': df(oz),
+        'oz_': df(oz_),
+        'lb_': df(lb_),
+        'tn_': df(tn_),
 
         'us_lb_oz': us_lb_oz,
-        'uk_st_lb_oz': uk_st_lb_oz,
+
+        'oz': df(oz),
+        'lb': df(lb),
+        'tn': df(tn),
     }
 
     return res
