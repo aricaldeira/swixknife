@@ -130,3 +130,49 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         'Dulcada',
         'Dulrija',
     ]
+
+    ADC_MONTH_NAME = [
+        'peixes',
+        'baleia',
+        'rio',
+        'unicórnio',
+        'hidra',
+        'leão',
+        'virgem',
+        'serpente',
+        'águia',
+        'aquário',
+        # 'libra',
+        'orião',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'pei',
+        'bal',
+        'rio',
+        'uni',
+        'hid',
+        'leã',
+        'vir',
+        'ser',
+        'águ',
+        'aqu',
+        # 'lib',
+        'ori',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'p',
+        'b',
+        'r',
+        'u',
+        'h',
+        # 'le',
+        'l',
+        'v',
+        's',
+        'ág',
+        'aq',
+        # 'lb',
+        'o',
+    ]

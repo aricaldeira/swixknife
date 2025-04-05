@@ -636,7 +636,8 @@ class SezimalLocaleLAT(SezimalLocale):
         'mēnsis Serpentis',
         'mēnsis Aquilae',
         'mēnsis Aquāriī',
-        'mēnsis Lībrae',
+        # 'mēnsis Lībrae',
+        'mēnsis Ōrīōnis',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -650,7 +651,8 @@ class SezimalLocaleLAT(SezimalLocale):
         'Ser',
         'Aql',
         'Aqr',
-        'Līb',
+        # 'Līb',
+        'Ōrī',
     ]
 
     ADC_MONTH_S = [
@@ -659,12 +661,14 @@ class SezimalLocaleLAT(SezimalLocale):
         'Ē',
         'M',
         'H',
-        'Le',
+        # 'Le',
+        'L',
         'V',
         'S',
         'Al',
         'Ar',
-        'Lb',
+        # 'Lb',
+        'Ō',
     ]
 
     ADC_WEEKDAY_NAME = [
