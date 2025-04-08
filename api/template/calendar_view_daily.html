@@ -370,6 +370,8 @@ function auto_refresh(){
                 '50': 'U', '51': 'V', '52': 'W', '53': 'X', '54': 'Y', '55': 'Z',
             };
             const TIME_SEPARATOR = '{{ locale.TIME_SEPARATOR }}';
+        {% else %}
+            const TIME_SEPARATOR = '{{ locale.TIME_SEPARATOR }}';
         {% endif %}
 
         var agrima = seconds * 36 * 36 * 36;
