@@ -42,11 +42,7 @@ from .format_tokens import DATE_NUMBER_FORMAT_TOKENS, \
     YEAR_NUMBER_FORMAT_TOKENS, DATE_TEXT_FORMAT_TOKEN, \
     ISO_DATE_NUMBER_FORMAT_TOKENS
 from .dcc_functions import \
-    ordinal_date_to_year_month_day as ordinal_date_to_dcc_year_month_day, \
-    year_month_day_to_ordinal_date as dcc_year_month_day_to_ordinal_date, \
-    is_leap as dcc_is_leap, is_long_year as dcc_is_long_year, \
-    is_short_year as dcc_is_short_year
-
+    ordinal_date_to_year_month_day as ordinal_date_to_dcc_year_month_day
 
 try:
     from convertdate.julian import \

@@ -8,7 +8,7 @@ from ..localization import SezimalLocale
 from .dcc_functions import \
     ordinal_date_to_year_month_day, \
     year_month_day_to_ordinal_date, \
-    is_leap, is_long_year, is_short_year
+    is_long_year, is_short_year
 from .format_tokens import DCC_DATE_NUMBER_FORMAT_TOKENS, \
     DCC_YEAR_NUMBER_FORMAT_TOKENS, \
     DCC_DATE_TEXT_FORMAT_TOKEN
@@ -81,7 +81,7 @@ date.SezimalDate.dcc_weekday = dcc_weekday
 
 @property
 def dcc_is_short_year(self) -> bool:
-    return is_leap(self.dcc_year)
+    return is_short_year(self.dcc_year)
 
 date.SezimalDate.dcc_is_short_year = dcc_is_short_year
 

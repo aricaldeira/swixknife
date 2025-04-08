@@ -22,7 +22,7 @@ LEAP_EPOCH = SezimalInteger('23_352_315')  # 730_199_d
 #
 # The Holocene epoch adjusts the year counting
 #
-HOLOCENE_EPOCH = SezimalInteger('213_132')
+HOLOCENE_EPOCH = SezimalInteger('213_132')  # 17_552_d
 
 #
 # Considering the Holocene epoch,
@@ -52,21 +52,21 @@ DAYS_IN_LONG_YEAR = SezimalInteger('1410')  # 366_d
 DAYS_IN_SHORT_YEAR = SezimalInteger('1400')  # 360_d
 
 
-def is_leap(year: SezimalInteger) -> bool:
-    is_leap = (
+def is_unleap(year: SezimalInteger) -> bool:
+    is_unleap = (
         (SHORT_YEARS_IN_FULL_CYCLE * ((year - HOLOCENE_EPOCH) + CYCLE_FACTOR))
         % YEARS_IN_FULL_CYCLE
     ) < SHORT_YEARS_IN_FULL_CYCLE
 
-    return is_leap
+    return is_unleap
 
 
 def is_long_year(year: SezimalInteger) -> bool:
-    return not is_leap(year)
+    return not is_unleap(year)
 
 
 def is_short_year(year: SezimalInteger) -> bool:
-    return is_leap(year)
+    return is_unleap(year)
 
 
 def _ordinal_to_year(ordinal_date: SezimalInteger) -> SezimalInteger:
