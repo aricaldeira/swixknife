@@ -10,19 +10,19 @@ from ..sezimal import SezimalInteger, SezimalFraction
 #
 # The leap epoch is corresponding to dates:
 #
-# DCC+213_132-00-00
+# DCC+212_333-00-00
 #
-# ISO+2000-03-20
-# SEZ+213_132-03-23
-# rata die 23_352_315 730_199_d
-# julian day 124_314_035.3 = 2_451_623.5_d
+# ISO+1857-03-20
+# SEZ+212_333-03-31
+# rata die 22_310_425 677_969_d
+# julian day 123_232_145.3 = 2_399_393.5_d
 #
-LEAP_EPOCH = SezimalInteger('23_352_315')  # 730_199_d
+LEAP_EPOCH = SezimalInteger('22_310_425')  # 677_969_d
 
 #
 # The Holocene epoch adjusts the year counting
 #
-HOLOCENE_EPOCH = SezimalInteger('213_132')  # 17_552_d
+HOLOCENE_EPOCH = SezimalInteger('212_333')  # 17_409_d
 
 #
 # Considering the Holocene epoch,
@@ -36,7 +36,8 @@ HOLOCENE_EPOCH = SezimalInteger('213_132')  # 17_552_d
 # julian day -220_505_120.3 = -3_959_112.5_d
 #
 
-CYCLE_FACTOR = SezimalInteger('251')  # 103_d
+CYCLE_YEAR_AJUST = SezimalInteger('200_000')  # 15_552_d
+CYCLE_FACTOR = SezimalInteger('1_024')  # 232_d
 
 YEARS_IN_FULL_CYCLE = SezimalInteger('2123')  # 483_d
 SHORT_YEARS_IN_FULL_CYCLE = SezimalInteger('141')  # 61_d
@@ -53,9 +54,10 @@ DAYS_IN_SHORT_YEAR = SezimalInteger('1400')  # 360_d
 
 
 def is_unleap(year: SezimalInteger) -> bool:
-    is_unleap = (
-        (SHORT_YEARS_IN_FULL_CYCLE * ((year - HOLOCENE_EPOCH) + CYCLE_FACTOR))
-        % YEARS_IN_FULL_CYCLE
+    is_unleap = ((
+        (SHORT_YEARS_IN_FULL_CYCLE * (year - CYCLE_YEAR_AJUST))
+        + CYCLE_FACTOR
+        ) % YEARS_IN_FULL_CYCLE
     ) < SHORT_YEARS_IN_FULL_CYCLE
 
     return is_unleap
