@@ -10,19 +10,19 @@ from ..sezimal import SezimalInteger, SezimalFraction
 #
 # The leap epoch is corresponding to dates:
 #
-# DCC+212_333-00-00
+# DCC+213_024-00-00
 #
-# ISO+1857-03-20
-# SEZ+212_333-03-31
-# rata die 22_310_425 677_969_d
-# julian day 123_232_145.3 = 2_399_393.5_d
+# ISO+1960-03-20
+# SYM+213_024-03-22
+# rata die 23_200_525 715_589_d
+# julian day 124_122_245.3 = 2_437_013.5_d
 #
-LEAP_EPOCH = SezimalInteger('22_310_425')  # 677_969_d
+LEAP_EPOCH = SezimalInteger('23_200_525')  # 715_589_d
 
 #
 # The Holocene epoch adjusts the year counting
 #
-HOLOCENE_EPOCH = SezimalInteger('212_333')  # 17_409_d
+HOLOCENE_EPOCH = SezimalInteger('213_024')  # 17_512_d
 
 #
 # Considering the Holocene epoch,
@@ -31,17 +31,17 @@ HOLOCENE_EPOCH = SezimalInteger('212_333')  # 17_409_d
 # DCC+000_000-00-00
 #
 # ISO −15_552-03-20
-# SEZ−000_000-03-20
+# SYM−000_000-03-20
 # rata die -321_430_441 -5_680_537_d
 # julian day -220_505_120.3 = -3_959_112.5_d
 #
 
 CYCLE_YEAR_AJUST = SezimalInteger('200_000')  # 15_552_d
-CYCLE_FACTOR = SezimalInteger('1_024')  # 232_d
+CYCLE_FACTOR = SezimalInteger('402')  # 146_d
 
-YEARS_IN_FULL_CYCLE = SezimalInteger('2123')  # 483_d
-SHORT_YEARS_IN_FULL_CYCLE = SezimalInteger('141')  # 61_d
-DAYS_IN_FULL_CYCLE = SezimalInteger('3_440_420')  # 176_412_d
+YEARS_IN_FULL_CYCLE = SezimalInteger('1205')  # 293_d
+SHORT_YEARS_IN_FULL_CYCLE = SezimalInteger('101')  # 37_d
+DAYS_IN_FULL_CYCLE = SezimalInteger('2_143_240')  # 107_016_d
 
 YEARS_IN_SUB_CYCLE = SezimalInteger('235')  # 95_d
 DAYS_IN_SUB_CYCLE = SezimalInteger('424_350')  # 34_698_d
@@ -85,10 +85,6 @@ def _ordinal_to_year(ordinal_date: SezimalInteger) -> SezimalInteger:
         year = full_cycles * YEARS_IN_FULL_CYCLE
 
     sub_cycles = ordinal_date // DAYS_IN_SUB_CYCLE
-
-    if sub_cycles == 5:
-        sub_cycles -= 1
-
     ordinal_date -= sub_cycles * DAYS_IN_SUB_CYCLE
     year += sub_cycles * YEARS_IN_SUB_CYCLE
 
@@ -128,10 +124,6 @@ def _year_to_ordinal_first_day(year) -> SezimalInteger:
         year -= full_cycles * YEARS_IN_FULL_CYCLE
 
     sub_cycles = year // YEARS_IN_SUB_CYCLE
-
-    if sub_cycles == 5:
-        sub_cycles -= 1
-
     ordinal_date += sub_cycles * DAYS_IN_SUB_CYCLE
     year -= sub_cycles * YEARS_IN_SUB_CYCLE
 
