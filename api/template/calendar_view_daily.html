@@ -218,9 +218,9 @@
                 <br/>
                 &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['DCC'] }}&nbsp; {{date.format(locale.DCC_DATE_FORMAT, locale)}}&nbsp;
             {%- elif locale.calendar_displayed == 'DCC' -%}
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['ISO'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ date.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.ISO_DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ date.format(', #@W', locale) }}{%- endif -%}&nbsp;
                 <br/>
-                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ now.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ now.format(', #@W', locale) }}{%- endif -%}&nbsp;
+                &nbsp;{{ locale.CALENDAR_TYPE_ABBREVIATION['SYM'] }}&nbsp;{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES != 'B' -%}{{ date.format('#@W, ', locale) }}{%- endif -%}{{date.format(locale.DATE_FORMAT, locale)}}{%- if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' -%}{{ date.format(', #@W', locale) }}{%- endif -%}&nbsp;
             {%- endif -%}
             {%- if 'CHR' in locale.SHOW_HOLIDAYS -%}
                 <br/>
