@@ -929,7 +929,7 @@ class SezimalDate:
 
         if day > 44:
             if month == 20:
-                if not is_leap(year):
+                if not is_leap(year - 200_000):
                     day -= 11
             elif month not in (2, 5, 12, 15):
                 day -= 11
