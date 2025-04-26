@@ -27,10 +27,12 @@ from .time import SezimalTime
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..localization import sezimal_locale, DEFAULT_LOCALE, SezimalLocale
 from .sezimal_functions import *
+from .dcc_functions import \
+    ordinal_date_to_year_month_day as ordinal_date_to_dcc_year_month_day
 
 
 class SezimalDateTime:
-    __slots__ = '_date', '_time', '_iso_date_time'
+    __slots__ = '_date', '_time', '_iso_date_time', '_dcc_date'
 
     def __new__(
         cls,
@@ -123,6 +125,8 @@ class SezimalDateTime:
                 self._time.iso_microsecond,
                 self._time._iso_time.tzinfo,
             )
+
+        self._dcc_date = ordinal_date_to_dcc_year_month_day(self.as_days)
 
         return self
 

@@ -4,27 +4,25 @@
 # Year starts roughly at the week of the March Equinox
 #
 
-from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
+from ..sezimal import SezimalInteger, SezimalFraction
 
 
 #
 # The leap epoch is corresponding to dates:
 #
-# DCC+212_014-00-00 00:00:00:00 NT
+# DCC+213_024-00-00
 #
-# ISO+1738-03-20 03:13:45 UTC
-# SYM+212_014-03-30 04:50:21:30 UTC
-# rata die 21_333_305.045_021_30 634_505.134_548_6..1_d
-# julian day 122_255_025.345_021_30 = 2_355_929.634_548_6..1_d
+# ISO+1960-03-20
+# SYM+213_024-03-22
+# rata die 23_200_525 715_589_d
+# julian day 124_122_245.3 = 2_437_013.5_d
 #
-# LEAP_EPOCH_TIME = Sezimal('21_333_305.045_021_30')  # 634_505.134_548_6..1_d
-LEAP_EPOCH_TIME = Sezimal('21_333_305.1')  # 634_505.1..6_d
-LEAP_EPOCH = Sezimal('21_333_305')  # 634_505.134_548_6..1_d
+LEAP_EPOCH = SezimalInteger('23_200_525')  # 715_589_d
 
 #
 # The Holocene epoch adjusts the year counting
 #
-HOLOCENE_EPOCH = SezimalInteger('212_014')  # 17_506_d
+HOLOCENE_EPOCH = SezimalInteger('213_024')  # 17_512_d
 
 #
 # Considering the Holocene epoch,
@@ -32,14 +30,14 @@ HOLOCENE_EPOCH = SezimalInteger('212_014')  # 17_506_d
 #
 # DCC+000_000-00-00
 #
-# ISO −15_552-03-25
-# SYM−000_000-03-25
-# rata die -321_430_432 -5_680_532_d
-# julian day -220_505_111.3 = -3_959_107.5_d
+# ISO −15_552-03-20
+# SYM−000_000-03-20
+# rata die -321_430_441 -5_680_537_d
+# julian day -220_505_120.3 = -3_959_112.5_d
 #
 
 CYCLE_YEAR_AJUST = SezimalInteger('200_000')  # 15_552_d
-CYCLE_FACTOR = SezimalInteger('420')  # 156_d
+CYCLE_FACTOR = SezimalInteger('402')  # 146_d
 
 YEARS_IN_FULL_CYCLE = SezimalInteger('1205')  # 293_d
 SHORT_YEARS_IN_FULL_CYCLE = SezimalInteger('101')  # 37_d
@@ -73,11 +71,8 @@ def is_short_year(year: SezimalInteger) -> bool:
     return is_unleap(year)
 
 
-def _ordinal_to_year(ordinal_date: SezimalInteger | Sezimal) -> SezimalInteger:
-    if type(ordinal_date) == SezimalInteger:
-        ordinal_date -= LEAP_EPOCH
-    else:
-        ordinal_date -= LEAP_EPOCH_TIME
+def _ordinal_to_year(ordinal_date: SezimalInteger) -> SezimalInteger:
+    ordinal_date -= LEAP_EPOCH
 
     full_cycles = ordinal_date // DAYS_IN_FULL_CYCLE
 
@@ -115,7 +110,7 @@ def _ordinal_to_year(ordinal_date: SezimalInteger | Sezimal) -> SezimalInteger:
     return SezimalInteger(year + HOLOCENE_EPOCH)
 
 
-def _year_to_ordinal_first_day(year) -> SezimalInteger | Sezimal:
+def _year_to_ordinal_first_day(year) -> SezimalInteger:
     year -= HOLOCENE_EPOCH
 
     full_cycles = year // YEARS_IN_FULL_CYCLE
@@ -145,13 +140,12 @@ def _year_to_ordinal_first_day(year) -> SezimalInteger | Sezimal:
 
     ordinal_date += year * DAYS_IN_LONG_YEAR
 
-    ordinal_date += LEAP_EPOCH_TIME
+    ordinal_date += LEAP_EPOCH
 
-    # return SezimalInteger(ordinal_date)
-    return Sezimal(ordinal_date)
+    return SezimalInteger(ordinal_date)
 
 
-def ordinal_date_to_year_month_day(ordinal_date: SezimalInteger | Sezimal) -> (SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger):
+def ordinal_date_to_year_month_day(ordinal_date) -> (SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger, SezimalInteger):
     #
     # First, we find the year corresponding to the ordinal date
     #
@@ -173,12 +167,11 @@ def ordinal_date_to_year_month_day(ordinal_date: SezimalInteger | Sezimal) -> (S
     return year, month, day, day_in_year, week_in_year, day_in_week
 
 
-def year_month_day_to_ordinal_date(year, month, day) -> SezimalInteger | Sezimal:
+def year_month_day_to_ordinal_date(year, month, day) -> SezimalInteger:
     ordinal_date = _year_to_ordinal_first_day(year)
     ordinal_date += month * 100
     ordinal_date += day
-    # return SezimalInteger(ordinal_date)
-    return Sezimal(ordinal_date)
+    return SezimalInteger(ordinal_date)
 
 
 def year_week_weekday_to_ordinal_date(year, week, weekday) -> SezimalInteger:
