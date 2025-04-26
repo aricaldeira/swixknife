@@ -1,0 +1,329 @@
+#
+# SPM - Schleißheim Prime Meridian
+#            Time Zones
+#
+# UTC offsets, considering longitude
+# 11.5625° E = 11° 33′ 45″ E
+# as the Prime Meridian:
+#
+# https://maps.app.goo.gl/cymDnL9LTZRSENRY9
+#
+# International Date Line then sits at
+# -168.4375° = 168° 26′ 15″ W:
+#
+# https://maps.app.goo.gl/zbkKC2Dbq7Z1P9ix6
+#
+# The largest city along that longitude
+# is Munich, in Germany, and the meridian
+# passes over the Cascade Fountain at the
+# Main Garden of the Schleißheim Castle,
+# at 48.2488° N, 11.5625° E,
+# 48° 14′ 55.7″ N, 11° 33′ 45″ E:
+#
+# https://maps.app.goo.gl/BoZqU22LyG8qGK6u5
+#
+# so the new Prime Meridian is named
+# Schleißheim Prime Meridian, or SPM
+#
+
+#
+# Sezimal Time Zones
+# From the Schleißheim Prime Meridian
+#
+# Each 30_s poshas (20_d minutes) = 1⁄2 uta (40_d minutes, sezimal “hour”)
+#
+# Natural Time counts from SPM-10
+#
+Zone Sezimal/SPM-30   -11:13:45 - SPM-30
+Zone Sezimal/SPM-2543 -11:03:45 - SPM-2543
+Zone Sezimal/SPM-2530 -10:53:45 - SPM-2530
+Zone Sezimal/SPM-2513 -10:43:45 - SPM-2513
+Zone Sezimal/SPM-25   -10:33:45 - SPM-25
+Zone Sezimal/SPM-2443 -10:23:45 - SPM-2443
+Zone Sezimal/SPM-2430 -10:13:45 - SPM-2430
+Zone Sezimal/SPM-2413 -10:03:45 - SPM-2413
+Zone Sezimal/SPM-24   -09:53:45 - SPM-24
+Zone Sezimal/SPM-2343 -09:43:45 - SPM-2343
+Zone Sezimal/SPM-2330 -09:33:45 - SPM-2330
+Zone Sezimal/SPM-2313 -09:23:45 - SPM-2313
+Zone Sezimal/SPM-23   -09:13:45 - SPM-23
+Zone Sezimal/SPM-2243 -09:03:45 - SPM-2243
+Zone Sezimal/SPM-2230 -08:53:45 - SPM-2230
+Zone Sezimal/SPM-2213 -08:43:45 - SPM-2213
+Zone Sezimal/SPM-22   -08:33:45 - SPM-22
+Zone Sezimal/SPM-2143 -08:23:45 - SPM-2143
+Zone Sezimal/SPM-2130 -08:13:45 - SPM-2130
+Zone Sezimal/SPM-2113 -08:03:45 - SPM-2113
+Zone Sezimal/SPM-21   -07:53:45 - SPM-21
+Zone Sezimal/SPM-2043 -07:43:45 - SPM-2043
+Zone Sezimal/SPM-2030 -07:33:45 - SPM-2030
+Zone Sezimal/SPM-2013 -07:23:45 - SPM-2013
+Zone Sezimal/SPM-20   -07:13:45 - SPM-20
+Zone Sezimal/SPM-1543 -07:03:45 - SPM-1543
+Zone Sezimal/SPM-1530 -06:53:45 - SPM-1530
+Zone Sezimal/SPM-1513 -06:43:45 - SPM-1513
+Zone Sezimal/SPM-15   -06:33:45 - SPM-15
+Zone Sezimal/SPM-1443 -06:23:45 - SPM-1443
+Zone Sezimal/SPM-1430 -06:13:45 - SPM-1430
+Zone Sezimal/SPM-1413 -06:03:45 - SPM-1413
+Zone Sezimal/SPM-14   -05:53:45 - SPM-14
+Zone Sezimal/SPM-1343 -05:43:45 - SPM-1343
+Zone Sezimal/SPM-1330 -05:33:45 - SPM-1330
+Zone Sezimal/SPM-1313 -05:23:45 - SPM-1313
+Zone Sezimal/SPM-13   -05:13:45 - SPM-13
+Zone Sezimal/SPM-1243 -05:03:45 - SPM-1243
+Zone Sezimal/SPM-1230 -04:53:45 - SPM-1230
+Zone Sezimal/SPM-1213 -04:43:45 - SPM-1213
+Zone Sezimal/SPM-12   -04:33:45 - SPM-12
+Zone Sezimal/SPM-1143 -04:23:45 - SPM-1143
+Zone Sezimal/SPM-1130 -04:13:45 - SPM-1130
+Zone Sezimal/SPM-1113 -04:03:45 - SPM-1113
+Zone Sezimal/SPM-11   -03:53:45 - SPM-11
+Zone Sezimal/SPM-1043 -03:43:45 - SPM-1043
+Zone Sezimal/SPM-1030 -03:33:45 - SPM-1030
+Zone Sezimal/SPM-1013 -03:23:45 - SPM-1013
+Zone Sezimal/SPM-10   -03:13:45 - SPM-10
+Zone Sezimal/SPM-0543 -03:03:45 - SPM-0543
+Zone Sezimal/SPM-0530 -02:53:45 - SPM-0530
+Zone Sezimal/SPM-0513 -02:43:45 - SPM-0513
+Zone Sezimal/SPM-05   -02:33:45 - SPM-05
+Zone Sezimal/SPM-0443 -02:23:45 - SPM-0443
+Zone Sezimal/SPM-0430 -02:13:45 - SPM-0430
+Zone Sezimal/SPM-0413 -02:03:45 - SPM-0413
+Zone Sezimal/SPM-04   -01:53:45 - SPM-04
+Zone Sezimal/SPM-0343 -01:43:45 - SPM-0343
+Zone Sezimal/SPM-0330 -01:33:45 - SPM-0330
+Zone Sezimal/SPM-0313 -01:23:45 - SPM-0313
+Zone Sezimal/SPM-03   -01:13:45 - SPM-03
+Zone Sezimal/SPM-0243 -01:03:45 - SPM-0243
+Zone Sezimal/SPM-0230 -00:53:45 - SPM-0230
+Zone Sezimal/SPM-0213 -00:43:45 - SPM-0213
+Zone Sezimal/SPM-02   -00:33:45 - SPM-02
+Zone Sezimal/SPM-0143 -00:23:45 - SPM-0143
+Zone Sezimal/SPM-0130 -00:13:45 - SPM-0130
+Zone Sezimal/SPM-0113 -00:03:45 - SPM-0113
+Zone Sezimal/SPM-01   +00:06:15 - SPM-01
+Zone Sezimal/SPM-0043 +00:16:15 - SPM-0043
+Zone Sezimal/SPM-0030 +00:26:15 - SPM-0030
+Zone Sezimal/SPM-0013 +00:36:15 - SPM-0013
+Zone Sezimal/SPM      +00:46:15 - SPM
+Zone Sezimal/SPM+0013 +00:56:15 - SPM+0013
+Zone Sezimal/SPM+0030 +01:06:15 - SPM+0030
+Zone Sezimal/SPM+0043 +01:16:15 - SPM+0043
+Zone Sezimal/SPM+01   +01:26:15 - SPM+01
+Zone Sezimal/SPM+0113 +01:36:15 - SPM+0113
+Zone Sezimal/SPM+0130 +01:46:15 - SPM+0130
+Zone Sezimal/SPM+0143 +01:56:15 - SPM+0143
+Zone Sezimal/SPM+02   +02:06:15 - SPM+02
+Zone Sezimal/SPM+0213 +02:16:15 - SPM+0213
+Zone Sezimal/SPM+0230 +02:26:15 - SPM+0230
+Zone Sezimal/SPM+0243 +02:36:15 - SPM+0243
+Zone Sezimal/SPM+03   +02:46:15 - SPM+03
+Zone Sezimal/SPM+0313 +02:56:15 - SPM+0313
+Zone Sezimal/SPM+0330 +03:06:15 - SPM+0330
+Zone Sezimal/SPM+0343 +03:16:15 - SPM+0343
+Zone Sezimal/SPM+04   +03:26:15 - SPM+04
+Zone Sezimal/SPM+0413 +03:36:15 - SPM+0413
+Zone Sezimal/SPM+0430 +03:46:15 - SPM+0430
+Zone Sezimal/SPM+0443 +03:56:15 - SPM+0443
+Zone Sezimal/SPM+05   +04:06:15 - SPM+05
+Zone Sezimal/SPM+0513 +04:16:15 - SPM+0513
+Zone Sezimal/SPM+0530 +04:26:15 - SPM+0530
+Zone Sezimal/SPM+0543 +04:36:15 - SPM+0543
+Zone Sezimal/SPM+10   +04:46:15 - SPM+10
+Zone Sezimal/SPM+1013 +04:56:15 - SPM+1013
+Zone Sezimal/SPM+1030 +05:06:15 - SPM+1030
+Zone Sezimal/SPM+1043 +05:16:15 - SPM+1043
+Zone Sezimal/SPM+11   +05:26:15 - SPM+11
+Zone Sezimal/SPM+1113 +05:36:15 - SPM+1113
+Zone Sezimal/SPM+1130 +05:46:15 - SPM+1130
+Zone Sezimal/SPM+1143 +05:56:15 - SPM+1143
+Zone Sezimal/SPM+12   +06:06:15 - SPM+12
+Zone Sezimal/SPM+1213 +06:16:15 - SPM+1213
+Zone Sezimal/SPM+1230 +06:26:15 - SPM+1230
+Zone Sezimal/SPM+1243 +06:36:15 - SPM+1243
+Zone Sezimal/SPM+13   +06:46:15 - SPM+13
+Zone Sezimal/SPM+1313 +06:56:15 - SPM+1313
+Zone Sezimal/SPM+1330 +07:06:15 - SPM+1330
+Zone Sezimal/SPM+1343 +07:16:15 - SPM+1343
+Zone Sezimal/SPM+14   +07:26:15 - SPM+14
+Zone Sezimal/SPM+1413 +07:36:15 - SPM+1413
+Zone Sezimal/SPM+1430 +07:46:15 - SPM+1430
+Zone Sezimal/SPM+1443 +07:56:15 - SPM+1443
+Zone Sezimal/SPM+15   +08:06:15 - SPM+15
+Zone Sezimal/SPM+1513 +08:16:15 - SPM+1513
+Zone Sezimal/SPM+1530 +08:26:15 - SPM+1530
+Zone Sezimal/SPM+1543 +08:36:15 - SPM+1543
+Zone Sezimal/SPM+20   +08:46:15 - SPM+20
+Zone Sezimal/SPM+2013 +08:56:15 - SPM+2013
+Zone Sezimal/SPM+2030 +09:06:15 - SPM+2030
+Zone Sezimal/SPM+2043 +09:16:15 - SPM+2043
+Zone Sezimal/SPM+21   +09:26:15 - SPM+21
+Zone Sezimal/SPM+2113 +09:36:15 - SPM+2113
+Zone Sezimal/SPM+2130 +09:46:15 - SPM+2130
+Zone Sezimal/SPM+2143 +09:56:15 - SPM+2143
+Zone Sezimal/SPM+22   +10:06:15 - SPM+22
+Zone Sezimal/SPM+2213 +10:16:15 - SPM+2213
+Zone Sezimal/SPM+2230 +10:26:15 - SPM+2230
+Zone Sezimal/SPM+2243 +10:36:15 - SPM+2243
+Zone Sezimal/SPM+23   +10:46:15 - SPM+23
+Zone Sezimal/SPM+2313 +10:56:15 - SPM+2313
+Zone Sezimal/SPM+2330 +11:06:15 - SPM+2330
+Zone Sezimal/SPM+2343 +11:16:15 - SPM+2343
+Zone Sezimal/SPM+24   +11:26:15 - SPM+24
+Zone Sezimal/SPM+2413 +11:36:15 - SPM+2413
+Zone Sezimal/SPM+2430 +11:46:15 - SPM+2430
+Zone Sezimal/SPM+2443 +11:56:15 - SPM+2443
+Zone Sezimal/SPM+25   +12:06:15 - SPM+25
+Zone Sezimal/SPM+2513 +12:16:15 - SPM+2513
+Zone Sezimal/SPM+2530 +12:26:15 - SPM+2530
+Zone Sezimal/SPM+2543 +12:36:15 - SPM+2543
+Zone Sezimal/SPM+30   +12:46:15 - SPM+30
+
+Zone Sezimal/NT-30   -15:13:45 - NT-30
+Zone Sezimal/NT-2543 -15:03:45 - NT-2543
+Zone Sezimal/NT-2530 -14:53:45 - NT-2530
+Zone Sezimal/NT-2513 -14:43:45 - NT-2513
+Zone Sezimal/NT-25   -14:33:45 - NT-25
+Zone Sezimal/NT-2443 -14:23:45 - NT-2443
+Zone Sezimal/NT-2430 -14:13:45 - NT-2430
+Zone Sezimal/NT-2413 -14:03:45 - NT-2413
+Zone Sezimal/NT-24   -13:53:45 - NT-24
+Zone Sezimal/NT-2343 -13:43:45 - NT-2343
+Zone Sezimal/NT-2330 -13:33:45 - NT-2330
+Zone Sezimal/NT-2313 -13:23:45 - NT-2313
+Zone Sezimal/NT-23   -13:13:45 - NT-23
+Zone Sezimal/NT-2243 -13:03:45 - NT-2243
+Zone Sezimal/NT-2230 -12:53:45 - NT-2230
+Zone Sezimal/NT-2213 -12:43:45 - NT-2213
+Zone Sezimal/NT-22   -12:33:45 - NT-22
+Zone Sezimal/NT-2143 -12:23:45 - NT-2143
+Zone Sezimal/NT-2130 -12:13:45 - NT-2130
+Zone Sezimal/NT-2113 -12:03:45 - NT-2113
+Zone Sezimal/NT-21   -11:53:45 - NT-21
+Zone Sezimal/NT-2043 -11:43:45 - NT-2043
+Zone Sezimal/NT-2030 -11:33:45 - NT-2030
+Zone Sezimal/NT-2013 -11:23:45 - NT-2013
+Zone Sezimal/NT-20   -11:13:45 - NT-20
+Zone Sezimal/NT-1543 -11:03:45 - NT-1543
+Zone Sezimal/NT-1530 -10:53:45 - NT-1530
+Zone Sezimal/NT-1513 -10:43:45 - NT-1513
+Zone Sezimal/NT-15   -10:33:45 - NT-15
+Zone Sezimal/NT-1443 -10:23:45 - NT-1443
+Zone Sezimal/NT-1430 -10:13:45 - NT-1430
+Zone Sezimal/NT-1413 -10:03:45 - NT-1413
+Zone Sezimal/NT-14   -09:53:45 - NT-14
+Zone Sezimal/NT-1343 -09:43:45 - NT-1343
+Zone Sezimal/NT-1330 -09:33:45 - NT-1330
+Zone Sezimal/NT-1313 -09:23:45 - NT-1313
+Zone Sezimal/NT-13   -09:13:45 - NT-13
+Zone Sezimal/NT-1243 -09:03:45 - NT-1243
+Zone Sezimal/NT-1230 -08:53:45 - NT-1230
+Zone Sezimal/NT-1213 -08:43:45 - NT-1213
+Zone Sezimal/NT-12   -08:33:45 - NT-12
+Zone Sezimal/NT-1143 -08:23:45 - NT-1143
+Zone Sezimal/NT-1130 -08:13:45 - NT-1130
+Zone Sezimal/NT-1113 -08:03:45 - NT-1113
+Zone Sezimal/NT-11   -07:53:45 - NT-11
+Zone Sezimal/NT-1043 -07:43:45 - NT-1043
+Zone Sezimal/NT-1030 -07:33:45 - NT-1030
+Zone Sezimal/NT-1013 -07:23:45 - NT-1013
+Zone Sezimal/NT-10   -07:13:45 - NT-10
+Zone Sezimal/NT-0543 -07:03:45 - NT-0543
+Zone Sezimal/NT-0530 -06:53:45 - NT-0530
+Zone Sezimal/NT10-0530 -06:53:45 - NT10-0530
+Zone Natural/NT4-03 -06:53:45 - NT10-0530
+Zone Sezimal/NT-0513 -06:43:45 - NT-0513
+Zone Sezimal/NT-05   -06:33:45 - NT-05
+Zone Sezimal/NT-0443 -06:23:45 - NT-0443
+Zone Sezimal/NT-0430 -06:13:45 - NT-0430
+Zone Sezimal/NT-0413 -06:03:45 - NT-0413
+Zone Sezimal/NT-04   -05:53:45 - NT-04
+Zone Sezimal/NT-0343 -05:43:45 - NT-0343
+Zone Sezimal/NT-0330 -05:33:45 - NT-0330
+Zone Sezimal/NT-0313 -05:23:45 - NT-0313
+Zone Sezimal/NT-03   -05:13:45 - NT-03
+Zone Sezimal/NT-0243 -05:03:45 - NT-0243
+Zone Sezimal/NT-0230 -04:53:45 - NT-0230
+Zone Sezimal/NT-0213 -04:43:45 - NT-0213
+Zone Sezimal/NT-02   -04:33:45 - NT-02
+Zone Sezimal/NT-0143 -04:23:45 - NT-0143
+Zone Sezimal/NT-0130 -04:13:45 - NT-0130
+Zone Sezimal/NT-0113 -04:03:45 - NT-0113
+Zone Sezimal/NT-01   -03:53:45 - NT-01
+Zone Sezimal/NT-0043 -03:43:45 - NT-0043
+Zone Sezimal/NT-0030 -03:33:45 - NT-0030
+Zone Sezimal/NT-0013 -03:23:45 - NT-0013
+Zone Sezimal/NT      -03:13:45 - NT
+Zone Sezimal/NT+0013 -03:03:45 - NT+0013
+Zone Sezimal/NT+0030 -02:53:45 - NT+0030
+Zone Sezimal/NT+0043 -02:43:45 - NT+0043
+Zone Sezimal/NT+01   -02:33:45 - NT+01
+Zone Sezimal/NT+0113 -02:23:45 - NT+0113
+Zone Sezimal/NT+0130 -02:13:45 - NT+0130
+Zone Sezimal/NT+0143 -02:03:45 - NT+0143
+Zone Sezimal/NT+02   -01:53:45 - NT+02
+Zone Sezimal/NT+0213 -01:43:45 - NT+0213
+Zone Sezimal/NT+0230 -01:33:45 - NT+0230
+Zone Sezimal/NT+0243 -01:23:45 - NT+0243
+Zone Sezimal/NT+03   -01:13:45 - NT+03
+Zone Sezimal/NT+0313 -01:03:45 - NT+0313
+Zone Sezimal/NT+0330 -00:53:45 - NT+0330
+Zone Sezimal/NT+0343 -00:43:45 - NT+0343
+Zone Sezimal/NT+04   -00:33:45 - NT+04
+Zone Sezimal/NT+0413 -00:23:45 - NT+0413
+Zone Sezimal/NT+0430 -00:13:45 - NT+0430
+Zone Sezimal/NT+0443 -00:03:45 - NT+0443
+Zone Sezimal/NT+05   +00:06:15 - NT+05
+Zone Sezimal/NT+0513 +00:16:15 - NT+0513
+Zone Sezimal/NT+0530 +00:26:15 - NT+0530
+Zone Sezimal/NT+0543 +00:36:15 - NT+0543
+Zone Sezimal/NT+10   +00:46:15 - NT+10
+Zone Sezimal/NT+1013 +00:56:15 - NT+1013
+Zone Sezimal/NT+1030 +01:06:15 - NT+1030
+Zone Sezimal/NT+1043 +01:16:15 - NT+1043
+Zone Sezimal/NT+11   +01:26:15 - NT+11
+Zone Sezimal/NT+1113 +01:36:15 - NT+1113
+Zone Sezimal/NT+1130 +01:46:15 - NT+1130
+Zone Sezimal/NT+1143 +01:56:15 - NT+1143
+Zone Sezimal/NT+12   +02:06:15 - NT+12
+Zone Sezimal/NT+1213 +02:16:15 - NT+1213
+Zone Sezimal/NT+1230 +02:26:15 - NT+1230
+Zone Sezimal/NT+1243 +02:36:15 - NT+1243
+Zone Sezimal/NT+13   +02:46:15 - NT+13
+Zone Sezimal/NT+1313 +02:56:15 - NT+1313
+Zone Sezimal/NT+1330 +03:06:15 - NT+1330
+Zone Sezimal/NT+1343 +03:16:15 - NT+1343
+Zone Sezimal/NT+14   +03:26:15 - NT+14
+Zone Sezimal/NT+1413 +03:36:15 - NT+1413
+Zone Sezimal/NT+1430 +03:46:15 - NT+1430
+Zone Sezimal/NT+1443 +03:56:15 - NT+1443
+Zone Sezimal/NT+15   +04:06:15 - NT+15
+Zone Sezimal/NT+1513 +04:16:15 - NT+1513
+Zone Sezimal/NT+1530 +04:26:15 - NT+1530
+Zone Sezimal/NT+1543 +04:36:15 - NT+1543
+Zone Sezimal/NT+20   +04:46:15 - NT+20
+Zone Sezimal/NT+2013 +04:56:15 - NT+2013
+Zone Sezimal/NT+2030 +05:06:15 - NT+2030
+Zone Sezimal/NT+2043 +05:16:15 - NT+2043
+Zone Sezimal/NT+21   +05:26:15 - NT+21
+Zone Sezimal/NT+2113 +05:36:15 - NT+2113
+Zone Sezimal/NT+2130 +05:46:15 - NT+2130
+Zone Sezimal/NT+2143 +05:56:15 - NT+2143
+Zone Sezimal/NT+22   +06:06:15 - NT+22
+Zone Sezimal/NT+2213 +06:16:15 - NT+2213
+Zone Sezimal/NT+2230 +06:26:15 - NT+2230
+Zone Sezimal/NT+2243 +06:36:15 - NT+2243
+Zone Sezimal/NT+23   +06:46:15 - NT+23
+Zone Sezimal/NT+2313 +06:56:15 - NT+2313
+Zone Sezimal/NT+2330 +07:06:15 - NT+2330
+Zone Sezimal/NT+2343 +07:16:15 - NT+2343
+Zone Sezimal/NT+24   +07:26:15 - NT+24
+Zone Sezimal/NT+2413 +07:36:15 - NT+2413
+Zone Sezimal/NT+2430 +07:46:15 - NT+2430
+Zone Sezimal/NT+2443 +07:56:15 - NT+2443
+Zone Sezimal/NT+25   +08:06:15 - NT+25
+Zone Sezimal/NT+2513 +08:16:15 - NT+2513
+Zone Sezimal/NT+2530 +08:26:15 - NT+2530
+Zone Sezimal/NT+2543 +08:36:15 - NT+2543
+Zone Sezimal/NT+30   +08:46:15 - NT+30

@@ -1,0 +1,185 @@
+#
+# SPM - Schleißheim Prime Meridian
+#            Time Zones
+#
+# UTC offsets, considering longitude
+# 11.5625° E = 11° 33′ 45″ E
+# as the Prime Meridian:
+#
+# https://maps.app.goo.gl/cymDnL9LTZRSENRY9
+#
+# International Date Line then sits at
+# -168.4375° = 168° 26′ 15″ W:
+#
+# https://maps.app.goo.gl/zbkKC2Dbq7Z1P9ix6
+#
+# The largest city along that longitude
+# is Munich, in Germany, and the meridian
+# passes over the Cascade Fountain at the
+# Main Garden of the Schleißheim Castle,
+# at 48.2488° N, 11.5625° E,
+# 48° 14′ 55.7″ N, 11° 33′ 45″ E:
+#
+# https://maps.app.goo.gl/BoZqU22LyG8qGK6u5
+#
+# so the new Prime Meridian is named
+# Schleißheim Prime Meridian, or SPM
+#
+
+#
+# Dozenal Time Zones
+# From the Schleißheim Prime Meridian
+#
+# Each 3 (30_d minutes) = 1⁄4 (120_d minutes, 2 hours, dozenal “hour”)
+#
+# Natural Time counts from SPM-20 for UTC-04 and SMP-30 for UTC-06
+#
+Zone Dozenal/SPM-60   -11:13:45 - SPM-60
+Zone Dozenal/SPM-59   -10:43:45 - SPM-59
+Zone Dozenal/SPM-56   -10:13:45 - SPM-56
+Zone Dozenal/SPM-53   -09:43:45 - SPM-53
+Zone Dozenal/SPM-50   -09:13:45 - SPM-50
+Zone Dozenal/SPM-49   -08:43:45 - SPM-49
+Zone Dozenal/SPM-46   -08:13:45 - SPM-46
+Zone Dozenal/SPM-43   -07:43:45 - SPM-43
+Zone Dozenal/SPM-40   -07:13:45 - SPM-40
+Zone Dozenal/SPM-39   -06:43:45 - SPM-39
+Zone Dozenal/SPM-36   -06:13:45 - SPM-36
+Zone Dozenal/SPM-33   -05:43:45 - SPM-33
+Zone Dozenal/SPM-30   -05:13:45 - SPM-30
+Zone Dozenal/SPM-29   -04:43:45 - SPM-29
+Zone Dozenal/SPM-26   -04:13:45 - SPM-26
+Zone Dozenal/SPM-23   -03:43:45 - SPM-23
+Zone Dozenal/SPM-20   -03:13:45 - SPM-20
+Zone Dozenal/SPM-19   -02:43:45 - SPM-19
+Zone Dozenal/SPM-16   -02:13:45 - SPM-16
+Zone Dozenal/SPM-13   -01:43:45 - SPM-13
+Zone Dozenal/SPM-10   -01:13:45 - SPM-10
+Zone Dozenal/SPM-09   -00:43:45 - SPM-09
+Zone Dozenal/SPM-06   -00:13:45 - SPM-06
+Zone Dozenal/SPM-03   +00:16:15 - SPM-03
+Zone Dozenal/SPM      +00:46:15 - SPM
+Zone Dozenal/SPM+03   +01:16:15 - SPM+03
+Zone Dozenal/SPM+06   +01:46:15 - SPM+06
+Zone Dozenal/SPM+09   +02:16:15 - SPM+09
+Zone Dozenal/SPM+10   +02:46:15 - SPM+10
+Zone Dozenal/SPM+13   +03:16:15 - SPM+13
+Zone Dozenal/SPM+16   +03:46:15 - SPM+16
+Zone Dozenal/SPM+19   +04:16:15 - SPM+19
+Zone Dozenal/SPM+20   +04:46:15 - SPM+20
+Zone Dozenal/SPM+23   +05:16:15 - SPM+23
+Zone Dozenal/SPM+26   +05:46:15 - SPM+26
+Zone Dozenal/SPM+29   +06:16:15 - SPM+29
+Zone Dozenal/SPM+30   +06:46:15 - SPM+30
+Zone Dozenal/SPM+33   +07:16:15 - SPM+33
+Zone Dozenal/SPM+36   +07:46:15 - SPM+36
+Zone Dozenal/SPM+39   +08:16:15 - SPM+39
+Zone Dozenal/SPM+40   +08:46:15 - SPM+40
+Zone Dozenal/SPM+43   +09:16:15 - SPM+43
+Zone Dozenal/SPM+46   +09:46:15 - SPM+46
+Zone Dozenal/SPM+49   +10:16:15 - SPM+49
+Zone Dozenal/SPM+50   +10:46:15 - SPM+50
+Zone Dozenal/SPM+53   +11:16:15 - SPM+53
+Zone Dozenal/SPM+56   +11:46:15 - SPM+56
+Zone Dozenal/SPM+59   +12:16:15 - SPM+59
+Zone Dozenal/SPM+60   +12:46:15 - SPM+60
+
+Zone Dozenal/NT20-60   -15:13:45 - NT20-60
+Zone Dozenal/NT20-59   -14:43:45 - NT20-59
+Zone Dozenal/NT20-56   -14:13:45 - NT20-56
+Zone Dozenal/NT20-53   -13:43:45 - NT20-53
+Zone Dozenal/NT20-50   -13:13:45 - NT20-50
+Zone Dozenal/NT20-49   -12:43:45 - NT20-49
+Zone Dozenal/NT20-46   -12:13:45 - NT20-46
+Zone Dozenal/NT20-43   -11:43:45 - NT20-43
+Zone Dozenal/NT20-40   -11:13:45 - NT20-40
+Zone Dozenal/NT20-39   -10:43:45 - NT20-39
+Zone Dozenal/NT20-36   -10:13:45 - NT20-36
+Zone Dozenal/NT20-33   -09:43:45 - NT20-33
+Zone Dozenal/NT20-30   -09:13:45 - NT20-30
+Zone Dozenal/NT20-29   -08:43:45 - NT20-29
+Zone Dozenal/NT20-26   -08:13:45 - NT20-26
+Zone Dozenal/NT20-23   -07:43:45 - NT20-23
+Zone Dozenal/NT20-20   -07:13:45 - NT20-20
+Zone Dozenal/NT20-19   -06:43:45 - NT20-19
+Zone Dozenal/NT20-16   -06:13:45 - NT20-16
+Zone Dozenal/NT20-13   -05:43:45 - NT20-13
+Zone Dozenal/NT20-10   -05:13:45 - NT20-10
+Zone Dozenal/NT20-09   -04:43:45 - NT20-09
+Zone Dozenal/NT20-06   -04:13:45 - NT20-06
+Zone Dozenal/NT20-03   -03:43:45 - NT20-03
+Zone Dozenal/NT20      -03:13:45 - NT20
+Zone Dozenal/NT20+03   -02:43:45 - NT20+03
+Zone Dozenal/NT20+06   -02:13:45 - NT20+06
+Zone Dozenal/NT20+09   -01:43:45 - NT20+09
+Zone Dozenal/NT20+10   -01:13:45 - NT20+10
+Zone Dozenal/NT20+13   -00:43:45 - NT20+13
+Zone Dozenal/NT20+16   -00:13:45 - NT20+16
+Zone Dozenal/NT20+19   +00:16:15 - NT20+19
+Zone Dozenal/NT20+20   +00:46:15 - NT20+20
+Zone Dozenal/NT20+23   +01:16:15 - NT20+23
+Zone Dozenal/NT20+26   +01:46:15 - NT20+26
+Zone Dozenal/NT20+29   +02:16:15 - NT20+29
+Zone Dozenal/NT20+30   +02:46:15 - NT20+30
+Zone Dozenal/NT20+33   +03:16:15 - NT20+33
+Zone Dozenal/NT20+36   +03:46:15 - NT20+36
+Zone Dozenal/NT20+39   +04:16:15 - NT20+39
+Zone Dozenal/NT20+40   +04:46:15 - NT20+40
+Zone Dozenal/NT20+43   +05:16:15 - NT20+43
+Zone Dozenal/NT20+46   +05:46:15 - NT20+46
+Zone Dozenal/NT20+49   +06:16:15 - NT20+49
+Zone Dozenal/NT20+50   +06:46:15 - NT20+50
+Zone Dozenal/NT20+53   +07:16:15 - NT20+53
+Zone Dozenal/NT20+56   +07:46:15 - NT20+56
+Zone Dozenal/NT20+59   +08:16:15 - NT20+59
+Zone Dozenal/NT20+60   +08:46:15 - NT20+60
+
+Zone Dozenal/NT30-60   -17:13:45 - NT30-60
+Zone Dozenal/NT30-59   -16:43:45 - NT30-59
+Zone Dozenal/NT30-56   -16:13:45 - NT30-56
+Zone Dozenal/NT30-53   -15:43:45 - NT30-53
+Zone Dozenal/NT30-50   -15:13:45 - NT30-50
+Zone Dozenal/NT30-49   -14:43:45 - NT30-49
+Zone Dozenal/NT30-46   -14:13:45 - NT30-46
+Zone Dozenal/NT30-43   -13:43:45 - NT30-43
+Zone Dozenal/NT30-40   -13:13:45 - NT30-40
+Zone Dozenal/NT30-39   -12:43:45 - NT30-39
+Zone Dozenal/NT30-36   -12:13:45 - NT30-36
+Zone Dozenal/NT30-33   -11:43:45 - NT30-33
+Zone Dozenal/NT30-30   -11:13:45 - NT30-30
+Zone Dozenal/NT30-29   -10:43:45 - NT30-29
+Zone Dozenal/NT30-26   -10:13:45 - NT30-26
+Zone Dozenal/NT30-23   -09:43:45 - NT30-23
+Zone Dozenal/NT30-20   -09:13:45 - NT30-20
+Zone Dozenal/NT30-19   -08:43:45 - NT30-19
+Zone Dozenal/NT30-16   -08:13:45 - NT30-16
+Zone Dozenal/NT30-13   -07:43:45 - NT30-13
+Zone Dozenal/NT30-10   -07:13:45 - NT30-10
+Zone Dozenal/NT30-09   -06:43:45 - NT30-09
+Zone Dozenal/NT30-06   -06:13:45 - NT30-06
+Zone Dozenal/NT30-03   -05:43:45 - NT30-03
+Zone Dozenal/NT30      -05:13:45 - NT30
+Zone Dozenal/NT30+03   -04:43:45 - NT30+03
+Zone Dozenal/NT30+06   -04:13:45 - NT30+06
+Zone Dozenal/NT30+09   -03:43:45 - NT30+09
+Zone Dozenal/NT30+10   -03:13:45 - NT30+10
+Zone Dozenal/NT30+13   -02:43:45 - NT30+13
+Zone Dozenal/NT30+16   -02:13:45 - NT30+16
+Zone Dozenal/NT30+19   -01:43:45 - NT30+19
+Zone Dozenal/NT30+20   -01:13:45 - NT30+20
+Zone Dozenal/NT30+23   -00:43:45 - NT30+23
+Zone Dozenal/NT30+26   -00:13:45 - NT30+26
+Zone Dozenal/NT30+29   +00:16:15 - NT30+29
+Zone Dozenal/NT30+30   +00:46:15 - NT30+30
+Zone Dozenal/NT30+33   +01:16:15 - NT30+33
+Zone Dozenal/NT30+36   +01:46:15 - NT30+36
+Zone Dozenal/NT30+39   +02:16:15 - NT30+39
+Zone Dozenal/NT30+40   +02:46:15 - NT30+40
+Zone Dozenal/NT30+43   +03:16:15 - NT30+43
+Zone Dozenal/NT30+46   +03:46:15 - NT30+46
+Zone Dozenal/NT30+49   +04:16:15 - NT30+49
+Zone Dozenal/NT30+50   +04:46:15 - NT30+50
+Zone Dozenal/NT30+53   +05:16:15 - NT30+53
+Zone Dozenal/NT30+56   +05:46:15 - NT30+56
+Zone Dozenal/NT30+59   +06:16:15 - NT30+59
+Zone Dozenal/NT30+60   +06:46:15 - NT30+60
