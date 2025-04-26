@@ -199,7 +199,7 @@ html, body {
 
             var time_passed = Math.floor(seconds * 60 * 24);
 
-            {% if '/NT4' in locale.DEFAULT_TIME_ZONE or '/NT10'  in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
+            {% if 'Sezimal/NT' in locale.DEFAULT_TIME_ZONE or 'SPM/NT' in locale.DEFAULT_TIME_ZONE or 'GPM/NT' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
                 if (time_passed < 120) {
                     document.getElementById('natural_time_sunrise').hidden = false;
                     document.getElementById('natural_time_sun').hidden = true;
