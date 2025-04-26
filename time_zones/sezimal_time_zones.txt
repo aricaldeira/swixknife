@@ -231,8 +231,6 @@ Zone Sezimal/NT-1013 -07:23:45 - NT-1013
 Zone Sezimal/NT-10   -07:13:45 - NT-10
 Zone Sezimal/NT-0543 -07:03:45 - NT-0543
 Zone Sezimal/NT-0530 -06:53:45 - NT-0530
-Zone Sezimal/NT10-0530 -06:53:45 - NT10-0530
-Zone Natural/NT4-03 -06:53:45 - NT10-0530
 Zone Sezimal/NT-0513 -06:43:45 - NT-0513
 Zone Sezimal/NT-05   -06:33:45 - NT-05
 Zone Sezimal/NT-0443 -06:23:45 - NT-0443
