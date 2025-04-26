@@ -2219,20 +2219,10 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 
 def _create_store_events(itens: list = None, year_range: list = None, bases: list = None):
     if year_range is None:
-        year_range = (213_212, 213_221)
+        year_range = (213_220, 213_211, -1)
 
     if itens is None:
         itens = (
-        'fr-CA|America/Montreal',
-        'fr-FR|Europe/Paris',
-
-        'pt-PT|Europe/Lisbon',
-        'it-IT|Europe/Rome',
-        'de-DE|Europe/Berlin',
-        'es-ES|Europe/Madrid',
-
-        'es-MX|America/Mexico_City',
-
         'en-US|America/Chicago',
         'en-US|America/Denver',
         'en-US|Pacific/Honolulu',
@@ -2240,47 +2230,58 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         'en-US|America/New_York',
         'en-US|America/Anchorage',
 
-        'en-AU|Australia/Adelaide',
-        'en-AU|Australia/Sydney',
-        'en-AU|Australia/Brisbane',
-
         'en-CA|America/Toronto',
 
-        'en-GB|Europe/London',
-        'en-IE|Europe/Dublin',
-        'en-IL|Asia/Jerusalem',
-        'en-IN|Asia/Calcutta',
-        'en-MY|Asia/Kuala_Lumpur',
+        # 'en-AU|Australia/Adelaide',
+        # 'en-AU|Australia/Sydney',
+        # 'en-AU|Australia/Brisbane',
 
-        'es-US|America/Chicago',
-        'es-US|America/Denver',
-        'es-US|Pacific/Honolulu',
-        'es-US|America/Los_Angeles',
-        'es-US|America/New_York',
-        'es-US|America/Anchorage',
-
-        'eo-US|America/Chicago',
-        'eo-US|America/Denver',
-        'eo-US|Pacific/Honolulu',
-        'eo-US|America/Los_Angeles',
-        'eo-US|America/New_York',
-        'eo-US|America/Anchorage',
-
-        'eo-AU|Australia/Adelaide',
-        'eo-AU|Australia/Sydney',
-        'eo-AU|Australia/Brisbane',
-
-        'eo-CA|America/Toronto',
-
-        'ja-JP|Asia/Tokyo',
-        'eo-JP|Asia/Tokyo',
-
-        'tr-TR|Asia/Istanbul',
-        'eo-TR|Asia/Istanbul',
+        # 'en-GB|Europe/London',
+        # 'en-IE|Europe/Dublin',
+        # 'en-IL|Asia/Jerusalem',
+        # 'en-IN|Asia/Calcutta',
+        # 'en-MY|Asia/Kuala_Lumpur',
+        #
+        # 'fr-CA|America/Montreal',
+        # 'fr-FR|Europe/Paris',
+        #
+        # 'pt-PT|Europe/Lisbon',
+        # 'it-IT|Europe/Rome',
+        # 'de-DE|Europe/Berlin',
+        # 'es-ES|Europe/Madrid',
+        #
+        # 'es-MX|America/Mexico_City',
+        #
+        # 'es-US|America/Chicago',
+        # 'es-US|America/Denver',
+        # 'es-US|Pacific/Honolulu',
+        # 'es-US|America/Los_Angeles',
+        # 'es-US|America/New_York',
+        # 'es-US|America/Anchorage',
+        #
+        # 'eo-US|America/Chicago',
+        # 'eo-US|America/Denver',
+        # 'eo-US|Pacific/Honolulu',
+        # 'eo-US|America/Los_Angeles',
+        # 'eo-US|America/New_York',
+        # 'eo-US|America/Anchorage',
+        #
+        # 'eo-AU|Australia/Adelaide',
+        # 'eo-AU|Australia/Sydney',
+        # 'eo-AU|Australia/Brisbane',
+        #
+        # 'eo-CA|America/Toronto',
+        #
+        # 'ja-JP|Asia/Tokyo',
+        # 'eo-JP|Asia/Tokyo',
+        #
+        # 'tr-TR|Asia/Istanbul',
+        # 'eo-TR|Asia/Istanbul',
     )
 
     if bases is None:
-        bases = (10, 14, 20)
+        # bases = (10, 14, 20)
+        bases = (10, 14)
 
     for item in itens:
         loc, tz = item.split('|')
@@ -2365,23 +2366,24 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 def _create_store_events_br():
     # year_range = (213_050, 213_231)
-    year_range = (213_210, 213_231)
+    year_range = (213_220, 213_211, -1)
 
     for locale in (
-        # 'pt-BR',
-        # 'bz',
+        'pt-BR',
+        'bz',
         'eo-BR',
         'en-BR',
     ):
         for tz in (
             'America/Sao_Paulo',
-            'Natural/NT4-03',
-            'Natural/NT6-03',
+            'GPM/NT-03',
             'UTC',
+            'Sezimal/SPM',
             'Sezimal/SPM-0530',
-            'Sezimal/NT10-0530',
-            'Sezimal/NT13-0530',
-            'SPM',
+            'Sezimal/NT-0530',
+            'SPM/SPM',
+            'SPM/SPM-0340',
+            'SPM/NT-0340',
         ):
             itens = [locale + '|' + tz]
 
@@ -2391,5 +2393,5 @@ def _create_store_events_br():
             bases = (14,)
             _create_store_events(itens, year_range, bases)
 
-            bases = (20,)
-            _create_store_events(itens, year_range, bases)
+            # bases = (20,)
+            # _create_store_events(itens, year_range, bases)
