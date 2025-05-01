@@ -42,10 +42,15 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
         #
         ('01-01', '🎆\ufe0f New Year’s Day #𝑠𝑦𝑚'),
         ('212_120-11-04', '🇺🇸\ufe0f Independence Day (#i) #𝑠𝑦𝑚'),  # Thursday 212_120-11-04 ~ 1776-07-04_dec
-        ('10-31', '🇺🇸\ufe0f Juneteenth Day #𝑠𝑦𝑚'),
+        ('212_350-10-23', '🇺🇸\ufe0f Juneteenth Day #𝑠𝑦𝑚'),
         ('14-44', '🎃\ufe0f🍬\ufe0f Halloween #𝑠𝑦𝑚'),
         ('15-15', '🇺🇸\ufe0f Veterans’ Day #𝑠𝑦𝑚'),
         ('20-41', '🎄\ufe0f Christmas’ Day #𝑠𝑦𝑚'),
+        ('202_045-03-20', '☘️\ufe0f St. Patrick’s Day #sym'),
+        ('212_342-05-12', '🇲🇽\ufe0f Ocho de Mayo #sym'),
+        ('212_141-11-24', '🇫🇷\ufe0f Bastille Day'),
+        ('213_001-12-12', '🇯🇵\ufe0f Anniversary of Hiroshima Bombing'),
+        ('213_213-13-13', '🇺🇸\ufe0f Patriot Day'),
 
         #
         # National Holidays
@@ -67,10 +72,16 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
         #
         ('ISO-01-01', '🎆\ufe0f New Year’s Day'),
         ('ISO-1776-07-04', '🇺🇸\ufe0f Independence Day (%i)'),  # Thursday 130_304-11-04 ~ 1776-07-04_dec
-        ('ISO-06-19', '🇺🇸\ufe0f Juneteenth Day'),
+        ('ISO-1866-06-19', '🇺🇸\ufe0f Juneteenth Day'),
         ('ISO-10-31', '🎃\ufe0f🍬\ufe0f Halloween'),
         ('ISO-11-11', '🇺🇸\ufe0f Veterans’ Day'),
         ('ISO-12-25', '🎄\ufe0f Christmas’ Day'),
+        # ('JUL-0461-03-17', '☘️\ufe0f St. Patrick’s Day'),
+        ('ISO-03-17', '☘️\ufe0f St. Patrick’s Day'),
+        ('ISO-1862-05-05', '🇲🇽\ufe0f Cinco de Mayo'),
+        ('ISO-1789-07-14', '🇫🇷\ufe0f Bastille Day'),
+        ('ISO-1945-08-06', '🇯🇵\ufe0f Anniversary of Hiroshima Bombing'),
+        ('ISO-2001-09-11', '🇺🇸\ufe0f Patriot Day'),
 
         #
         # National Holidays
