@@ -64,6 +64,8 @@ def other_calendar_date_to_ordinal_date(date_time: str, reference_year: SezimalI
     date_time = date_time.replace('JEW+SYM+', 'JEW+')
     date_time = date_time.replace('HIJ+ISO+', 'HIJ+')
     date_time = date_time.replace('HIJ+SYM+', 'HIJ+')
+    date_time = date_time.replace('JUL+ISO+', 'JUL+')
+    date_time = date_time.replace('JUL+SYM+', 'JUL+')
 
     #
     # Sets a Gregorian/ISO date as a point of reference for

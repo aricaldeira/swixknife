@@ -654,6 +654,8 @@ def _read_calendar_cache(locale: str, cache_key: str, only_check: bool = False) 
 
     text = open(file_path, 'r').read()
 
+    text = text.replace(''' == Decimal('-0')''', '')
+
     return eval(text)
 
 
@@ -915,7 +917,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
         for reference_year in years:
             event_ordinal_date, (event_year, event_month, event_day), age = \
                 other_calendar_date_to_ordinal_date(
-                    event_origin.replace('CHR+ISO+', 'ISO+').replace('CHR+SYM+', 'SYM+').replace('HIJ+ISO+', 'HIJ+').replace('HIJ+SYM+', 'HIJ+').replace('JEW+ISO+', 'JEW+').replace('JEW+SYM+', 'JEW+'),
+                    event_origin.replace('CHR+ISO+', 'ISO+').replace('CHR+SYM+', 'SYM+').replace('HIJ+ISO+', 'HIJ+').replace('HIJ+SYM+', 'HIJ+').replace('JEW+ISO+', 'JEW+').replace('JEW+SYM+', 'JEW+').replace('JUL+ISO+', 'ISO+').replace('JUL+SYM+', 'SYM+'),
                     reference_year,
                 )
 
