@@ -478,7 +478,7 @@
     {%- endfor -%}
     {%- if (not month_view) and (not week_view) -%}
         {%- if (USE_LOCALE_FIRST_WEEKDAY and len(weeks) == 5) or ((not USE_LOCALE_FIRST_WEEKDAY) and len(weeks) == 4) -%}
-            <tr style="vertical-align: middle;">
+            <tr style="vertical-align: middle;" class="hide-in-mobile">
                 <td colspan="8"> </td>
             </tr>
         {%- endif -%}
