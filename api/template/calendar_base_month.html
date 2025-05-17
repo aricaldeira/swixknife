@@ -478,8 +478,8 @@
     {%- endfor -%}
     {%- if (not month_view) and (not week_view) -%}
         {%- if (USE_LOCALE_FIRST_WEEKDAY and len(weeks) == 5) or ((not USE_LOCALE_FIRST_WEEKDAY) and len(weeks) == 4) -%}
-            <tr style="vertical-align: middle;" class="hide-in-mobile">
-                <td colspan="8"> </td>
+            <tr class="hide-in-mobile" style="vertical-align: middle;">
+                <td colspan="8" style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}};">&nbsp;</td>
             </tr>
         {%- endif -%}
         <tr style="vertical-align: middle; font-size: {{EVENTS_FONT_SIZE}}; line-height: {{EMOJI_FONT_SIZE}};">
