@@ -36,11 +36,11 @@ class SezimalLocaleES_US(SezimalLocaleES_MX):
         ('14-44', '🎃\ufe0f🍬\ufe0f Halloween #sym'),
         ('15-15', '🇺🇸\ufe0f Día de los Veteranos #sym'),
         ('20-41', '🎄\ufe0f Navidad #sym'),
-        ('202_045-03-20', '☘️\ufe0f Día de San Patricio #sym'),
-        ('212_342-05-12', '🇲🇽\ufe0f Ocho de Mayo #sym'),
-        ('212_141-11-24', '🇫🇷\ufe0f Fiesta Nacional de Francia'),
-        ('213_001-12-12', '🇯🇵\ufe0f Aniversario del bombardeo de Hiroshima'),
-        ('213_133-13-13', '🇺🇸\ufe0f Día de los Patriotas'),
+        # ('202_045-03-20', '☘️\ufe0f Día de San Patricio #sym'),
+        # ('212_342-05-12', '🇲🇽\ufe0f Ocho de Mayo #sym'),
+        # ('212_141-11-24', '🇫🇷\ufe0f Fiesta Nacional de Francia'),
+        # ('213_001-12-12', '🇯🇵\ufe0f Aniversario del bombardeo de Hiroshima'),
+        # ('213_133-13-13', '🇺🇸\ufe0f Día de los Patriotas'),
 
         #
         # National Holidays
@@ -67,11 +67,11 @@ class SezimalLocaleES_US(SezimalLocaleES_MX):
         ('ISO-11-11', '🇺🇸\ufe0f Día de los Veteranos'),
         ('ISO-12-25', '🎄\ufe0f Navidad'),
         # ('JUL-0461-03-17', '☘️\ufe0f Día de San Patricio'),
-        ('ISO-03-17', '☘️\ufe0f Día de San Patricio'),
-        ('ISO-1862-05-05', '🇲🇽\ufe0f Cinco de Mayo'),
-        ('ISO-1789-07-14', '🇫🇷\ufe0f Fiesta Nacional de Francia'),
-        ('ISO-1945-08-06', '🇯🇵\ufe0f Aniversario del bombardeo de Hiroshima'),
-        ('ISO-2001-09-11', '🇺🇸\ufe0f Día de los Patriotas'),
+        # ('ISO-03-17', '☘️\ufe0f Día de San Patricio'),
+        # ('ISO-1862-05-05', '🇲🇽\ufe0f Cinco de Mayo'),
+        # ('ISO-1789-07-14', '🇫🇷\ufe0f Fiesta Nacional de Francia'),
+        # ('ISO-1945-08-06', '🇯🇵\ufe0f Aniversario del bombardeo de Hiroshima'),
+        # ('ISO-2001-09-11', '🇺🇸\ufe0f Día de los Patriotas'),
 
         #
         # National Holidays
