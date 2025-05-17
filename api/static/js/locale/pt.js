@@ -46,6 +46,8 @@ const sezimal_calculator_pt_text = {
     // 'translation-display-acot': 'acot',
     // 'translation-display-cot': 'cot',
 
+    'translation-display-MN': 'm.n.',
+
     // 'button-sezimal-ln': 'log<sub class="constant">𝑒</sub>',
     // 'button-sezimal-lsez': 'log₁₀',
     // 'button-sezimal-ldec': 'log₁₄',
@@ -399,6 +401,7 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-pad-yard': 'jardas – yd',
     'option-decimal-units-pad-foot': 'pés – ft',
     'option-decimal-units-pad-inch': 'polegadas – in',
+    'option-decimal-units-pad-NM': 'milhas náuticas – m.n.',
 
     'option-units-drv-dravya': 'drávias – drv',
     'option-units-drv-duli': 'dúlis (massa atom.) – dul',
