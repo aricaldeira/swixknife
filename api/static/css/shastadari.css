@@ -8,6 +8,7 @@
     line-height: 1.885em;
 
     text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
 
     font-family: 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
     --font-family-sans-serif: 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif;
@@ -234,9 +235,6 @@ mn {
 }
 
 }
-.mono-text {
-    font-family: 'Sezimal Mono', 'Noto Sans Mono', monospace;
-}
 .center {
     text-align: center;
 }
@@ -301,7 +299,11 @@ mn {
 }
 
 .mono-text {
-    font-family: 'Sezimal Mono', monospace;
+    font-family: 'Sezimal Mono', 'Noto Sans Mono', monospace;
+    -webkit-font-feature-settings: normal;
+    -moz-font-feature-settings: normal;
+    -ms-font-feature-settings: normal;
+    font-feature-settings: normal;
 }
 
 .title {
