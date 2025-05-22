@@ -235,6 +235,13 @@ mn {
 }
 
 }
+.mono-text {
+    font-family: 'Sezimal Mono', 'Noto Sans Mono', monospace;
+    -webkit-font-feature-settings: normal;
+    -moz-font-feature-settings: normal;
+    -ms-font-feature-settings: normal;
+    font-feature-settings: normal;
+}
 .center {
     text-align: center;
 }
