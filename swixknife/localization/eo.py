@@ -124,16 +124,20 @@ class SezimalLocaleEO(SezimalLocale):
     }
 
     HOLIDAYS = [
-        # ('130_523-20-15', '💚\ufe0f Zamenhof-Tago (#i)'),  # Ĵaŭdo, 130_523-20-15 ~ 1859-12-15_dec
-        # ('131_011-11-35', '📗\ufe0f Unua Libro (#i)'),     # Mardo, 131_011-11-35 ~ 1887-07-26_dec
+        ('130_523-20-15', '💚\ufe0f👼🏼\ufe0f Naskiĝo de Zamenhof (#i)'),  # Ĵaŭdo, 130_523-20-15 ~ 1859-12-15_dec
+        ('131_011-11-35', '💚\ufe0f📗\ufe0f Unua Libro (#i)'),     # Mardo, 131_011-11-35 ~ 1887-07-26_dec
+        ('212_513-04-24', '💚\ufe0f🪦\ufe0f Memortago de Zamenhof (#i)'),  # Mardo, 212_513-04-24 ~ 1917-04-17_dec
+        ('212_453-12-10', '💚\ufe0f🌐\ufe0f Unua Universala Kongreso (#i)'),  # Sabato, 212_453-12-10
 
-        ('130_523-20-23', '💚\ufe0f Zamenhof-Tago (#i) #𝑠𝑖𝑚'),  # Lundo,    20-23 ~ 12-15_dec
-        ('131_011-11-42', '📗\ufe0f Unua Libro (#i) #𝑠𝑖𝑚'),     # Vendredo, 11-42 ~ 07-26_dec
+        # ('130_523-20-23', '💚\ufe0f Zamenhof-Tago (#i) #𝑠𝑖𝑚'),  # Lundo,    20-23 ~ 12-15_dec
+        # ('131_011-11-42', '📗\ufe0f Unua Libro (#i) #𝑠𝑖𝑚'),     # Vendredo, 11-42 ~ 07-26_dec
     ]
 
     HOLIDAYS_OTHER_CALENDAR = [
-        ('ISO+1859-12-15', '💚\ufe0f Zamenhof-Tago (%d-%b - %i)'),
-        ('ISO+1887-07-26', '📗\ufe0f Unua Libro (%d-%b - %i)'),
+        ('ISO+1859-12-15', '💚\ufe0f👼🏼\ufe0f Naskiĝo de Zamenhof (%i)'),
+        ('ISO+1887-07-26', '💚\ufe0f📗\ufe0f Unua Libro (%i)'),
+        ('ISO+1917-04-17', '💚\ufe0f🪦\ufe0f Memortago de Zamenhof (%i)'),
+        ('ISO+1905-08-05', '💚\ufe0f🌐\ufe0f Unua Universala Kongreso (%i)'),
     ]
 
     #
