@@ -84,17 +84,17 @@ def index_route():
 
     return redirect('/en', code=302)
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
+@sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/en')
 def index_en_route():
     return sezimal_render_template('sezimal_en.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
+@sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/pt')
 def index_pt_route():
     return sezimal_render_template('sezimal_pt.html')
 
-@sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
+@sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/bz')
 def index_bz_route():
     return sezimal_render_template('sezimal_bz.html')
