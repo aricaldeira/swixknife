@@ -344,37 +344,37 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
     in_ = Decimal(0)
     ft_ = Decimal(0)
     yd_ = Decimal(0)
-    ml_ = Decimal(0)
+    mi_ = Decimal(0)
 
     inn = inch
-    ml_yd_ft_in = ''
+    mi_yd_ft_in = ''
 
     if inn >= 63_360:
-        ml_ = inn // 63_360
-        ml_yd_ft_in += df(ml_, 0) + ' ml'
-        inn -= ml_ * 63_360
+        mi_ = inn // 63_360
+        mi_yd_ft_in += df(mi_, 0) + ' mi'
+        inn -= mi_ * 63_360
 
     if inn >= 36:
-        if ml_yd_ft_in:
-            ml_yd_ft_in += ' '
+        if mi_yd_ft_in:
+            mi_yd_ft_in += ' '
 
         yd_ = inn // 36
-        ml_yd_ft_in += df(yd_, 0) + ' yd'
+        mi_yd_ft_in += df(yd_, 0) + ' yd'
         inn -= yd_ * 36
 
     if inn >= 12:
-        if ml_yd_ft_in:
-            ml_yd_ft_in += ' '
+        if mi_yd_ft_in:
+            mi_yd_ft_in += ' '
 
         ft_ = inn // 12
-        ml_yd_ft_in += df(ft_, 0) + ' ft'
+        mi_yd_ft_in += df(ft_, 0) + ' ft'
         inn -= ft_ * 12
 
     if inn > 0:
-        if ml_yd_ft_in:
-            ml_yd_ft_in += ' '
+        if mi_yd_ft_in:
+            mi_yd_ft_in += ' '
         in_ = inn
-        ml_yd_ft_in += format_inches(inn, ' in')
+        mi_yd_ft_in += format_inches(inn, ' in')
 
     inn = inch
     ft_in = ''
@@ -414,16 +414,16 @@ def shastadari_conversion_length(locale: str = 'en', unit: str = 'pad', value: s
         'mm': df(meter * (Decimal(10) ** 3)),
         'µm': df(meter * (Decimal(10) ** 6)),
 
-        'ml': df(ml_),
+        'mi': df(mi_),
         'yd': df(yd_),
         'ft': df(ft_),
         'in': df(in_),
 
-        'ml_': df(mile),
+        'mi_': df(mile),
         'yd_': df(yard),
         'ft_': df(feet),
         'in_': df(inch) + ' = ' + format_inches(inch, ''),
-        'ml_yd_ft_in': ml_yd_ft_in,
+        'mi_yd_ft_in': mi_yd_ft_in,
         'ft_in': ft_in,
     }
 

@@ -24,6 +24,7 @@ except:
 
 from decimal import Decimal
 
+from ..base import decimal_to_sezimal
 from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 from ..constants import *
 from ..base import sezimal_context
@@ -48,15 +49,13 @@ def _angle_to_mandala_fraction(angle, unit: str = 'mdl') -> SezimalFraction | Sy
 
 
 def _sympy_to_sezimal(result) -> Sezimal:
-    return round(
-        Sezimal(Decimal(str(result.evalf(n=sezimal_context.decimal_precision + 4)))),
-        sezimal_context.sezimal_precision,
-    )
+    res = str(result.evalf(n=sezimal_context.decimal_precision + 4))
+    return Sezimal(decimal_to_sezimal(res, sezimal_precision=sezimal_context.sezimal_precision))
 
 
 def _float_to_sezimal(result: float) -> Sezimal:
     return round(
-        Sezimal(Decimal(str(result))),
+        Sezimal(Decimal(str(result)), _internal=True),
         sezimal_context.sezimal_precision,
     )
 

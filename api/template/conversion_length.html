@@ -21,7 +21,7 @@
         </p>
         {% if LANG == 'en-US' %}
             <p style="text-align: center;">
-                    <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('ml')" value="0" /> ml +
+                    <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('mi')" value="0" /> mi +
                     <input class="unit-input-small" id="input-yard" type="text" inputmode="decimal" oninput="change_length('yd')" value="0" /> yd +
                     <input class="unit-input-small" id="input-feet" type="text" inputmode="decimal" oninput="change_length('ft')" value="0" /> ft +
                     <input class="unit-input-small" id="input-inch" type="text" inputmode="decimal" oninput="change_length('in')" value="0" /> in
@@ -32,7 +32,7 @@
         </p>
         {% if LANG != 'en-US' %}
             <p style="text-align: center;">
-                    <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('ml')" value="0" /> ml +
+                    <input class="unit-input-small" id="input-mile" type="text" inputmode="decimal" oninput="change_length('mi')" value="0" /> mi +
                     <input class="unit-input-small" id="input-yard" type="text" inputmode="decimal" oninput="change_length('yd')" value="0" /> yd +
                     <input class="unit-input-small" id="input-feet" type="text" inputmode="decimal" oninput="change_length('ft')" value="0" /> ft +
                     <input class="unit-input-small" id="input-inch" type="text" inputmode="decimal" oninput="change_length('in')" value="0" /> in
@@ -231,12 +231,12 @@
                 <p>
                     {{ USA }}:
                 </p>
-                <p><span id="ml_yd_ft_in">0</span></p>
+                <p><span id="mi_yd_ft_in">0</span></p>
                 <p><span id="ft_in">0</span></p>
                 <p><span id="in_">0</span>&#8239;in</p>
                 <p><span id="ft_">0</span>&#8239;ft</p>
                 <p><span id="yd_">0</span>&#8239;yd</p>
-                <p><span id="ml_">0</span>&#8239;ml</p>
+                <p><span id="mi_">0</span>&#8239;mi</p>
             </div>
         </div>
     </div>
@@ -283,7 +283,7 @@ function change_length(unit='pad') {
         value = clear_number('input-pada', true);
     } else if (unit == 'm')  {
         value = clear_number('input-meter');
-    } else if ((unit == 'ml') || (unit == 'yd') || (unit == 'ft') || (unit == 'in')) {
+    } else if ((unit == 'mi') || (unit == 'yd') || (unit == 'ft') || (unit == 'in')) {
         value = parseFloat(clear_number('input-mile')) * 63360;
         value = value + (parseFloat(clear_number('input-yard')) * 36);
         value = value + (parseFloat(clear_number('input-feet')) * 12);
@@ -312,13 +312,13 @@ function change_length(unit='pad') {
 
         if (unit == 'pad') {
             document.getElementById('input-meter').value = dados['m'];
-            document.getElementById('input-mile').value = dados['ml'];
+            document.getElementById('input-mile').value = dados['mi'];
             document.getElementById('input-yard').value = dados['yd'];
             document.getElementById('input-feet').value = dados['ft'];
             document.getElementById('input-inch').value = dados['in'];
         } else if (unit == 'm') {
             document.getElementById('input-pada').value = dados['pad'];
-            document.getElementById('input-mile').value = dados['ml'];
+            document.getElementById('input-mile').value = dados['mi'];
             document.getElementById('input-yard').value = dados['yd'];
             document.getElementById('input-feet').value = dados['ft'];
             document.getElementById('input-inch').value = dados['in'];

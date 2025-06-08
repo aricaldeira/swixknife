@@ -195,12 +195,13 @@ def calculate_conversions():
     #
     # PADA_TO_METRE = SezimalFraction('1_415_503_524_325 / 150_223_042_430_000')
     PADA_TO_METRE = GRAVITY * (TIME ** 2)
-    PADA_TO_MILLIMETER = PADA_TO_METRE * 4344
+    PADA_TO_MILLIMETRE = PADA_TO_METRE * 4344
+    PADA_TO_LIGHT_YEAR = PADA_TO_METRE / Sezimal('233_053_143_325_031_520_000')
 
     for unit in ('pad', 'vrp'):
         unit_conversion[unit] = {
             'm': PADA_TO_METRE,
-            'prefixed': ('m', 'au', 'parsec'),
+            'prefixed': ('m', 'au', 'pc'),
             'comparable': ('pad', 'vrp'),
             'pad': ONE_TO_ONE,
             #
@@ -219,25 +220,114 @@ def calculate_conversions():
             'ch': PADA_TO_METRE / SezimalFraction('134_113 / 2_521'),  # 150 ft
             'fur': PADA_TO_METRE / SezimalFraction('312_230 / 325'),  # 3_020 ft
             'cb': PADA_TO_METRE / SezimalFraction('331_000 / 325'),  # 3_200 ft
-            'ml': PADA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
-            'le': PADA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 ml
+            'mi': PADA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
+            'le': PADA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 mi
 
             'nmi': PADA_TO_METRE / 12_324,  # Nautical mile
             'NM': PADA_TO_METRE / 12_324,  # Nautical mile
             'au': PADA_TO_METRE / 152_420_241_314_420,
-            'parsec': PADA_TO_METRE / 152_420_241_314_420 / 4_230_533,
-            'ly': SezimalFraction('10_142_015 / 252_331_101_020_221_154_110_000_000_000'),
+            'pc': PADA_TO_METRE / 1_223_454_515_040_550_511_145,
+            'ly': PADA_TO_LIGHT_YEAR,
             'sly': SezimalFraction('2 / 53_134_100_033_433_015_020_311'),
 
             #
             # Length in pixels
             #
-            'px_72_dpi': PADA_TO_MILLIMETER * SezimalFraction('3200 / 1102'),
-            'px_96_dpi': PADA_TO_MILLIMETER * SezimalFraction('4240 / 1102'),
-            'px_150_dpi': PADA_TO_MILLIMETER * SezimalFraction('10_540 / 1102'),
-            'px_300_dpi': PADA_TO_MILLIMETER * SezimalFraction('21_520 / 1102'),
+            'px_72_dpi': PADA_TO_MILLIMETRE * SezimalFraction('3200 / 1102'),
+            'px_96_dpi': PADA_TO_MILLIMETRE * SezimalFraction('4240 / 1102'),
+            'px_150_dpi': PADA_TO_MILLIMETRE * SezimalFraction('10_540 / 1102'),
+            'px_300_dpi': PADA_TO_MILLIMETRE * SezimalFraction('21_520 / 1102'),
         }
         unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
+
+    #
+    # Astronomical Unit
+    #
+    # Kagola
+    # https://en.wiktionary.org/wiki/%E0%A4%96%E0%A4%97%E0%A5%8B%E0%A4%B2#Sanskrit
+    #
+    KAGOLA_TO_PADA = SezimalFraction('20_134_502_554_253_451 / 1')
+    KAGOLA_TO_METRE = KAGOLA_TO_PADA * PADA_TO_METRE
+
+    unit_conversion['kgl'] = {
+        'prefixed': ('m', 'au', 'pc'),
+        'pad': KAGOLA_TO_PADA,
+        'vrp': KAGOLA_TO_PADA,
+        'comparable': ('pad', 'vrp', 'kgl'),
+        'kgl': ONE_TO_ONE,
+
+        'm': KAGOLA_TO_METRE,
+
+        'in': KAGOLA_TO_METRE / SezimalFraction('331 / 35_052'),
+        'li': KAGOLA_TO_METRE / SezimalFraction('134_113 / 1_201_204'),  # 53/122 ft
+        'ft': KAGOLA_TO_METRE / SezimalFraction('1_433 / 5_442'),  # 20 in
+        'yd': KAGOLA_TO_METRE / SezimalFraction('5_143 / 5_442'),  # 3 ft, 100 in
+        'ftm': KAGOLA_TO_METRE / SezimalFraction('5_143 / 2_521'),  # 2 yd, 10 ft, 200 in
+        'rd': KAGOLA_TO_METRE / SezimalFraction('134_113 / 15_324'),  # 24.3 ft
+        'ch': KAGOLA_TO_METRE / SezimalFraction('134_113 / 2_521'),  # 150 ft
+        'fur': KAGOLA_TO_METRE / SezimalFraction('312_230 / 325'),  # 3_020 ft
+        'cb': KAGOLA_TO_METRE / SezimalFraction('331_000 / 325'),  # 3_200 ft
+        'mi': KAGOLA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
+        'le': KAGOLA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 mi
+
+        'nmi': KAGOLA_TO_METRE / 12_324,  # Nautical mile
+        'NM': KAGOLA_TO_METRE / 12_324,  # Nautical mile
+        'au': KAGOLA_TO_METRE / 152_420_241_314_420,
+        'pc': KAGOLA_TO_METRE / 1_223_454_515_040_550_511_145,
+        'ly': KAGOLA_TO_PADA * PADA_TO_LIGHT_YEAR,
+    }
+    unit_conversion['kgl'] = _set_non_prefixed_units(unit_conversion['kgl'])
+
+    #
+    # Parsec
+    # Lambana
+    # https://en.wiktionary.org/wiki/%E0%A4%B2%E0%A4%AE%E0%A5%8D%E0%A4%AC#Sanskrit
+    #
+    # KAGOLA_TO_PADA / (TAU / 100_000_000)
+    #
+    # TAU / 100_000_000 = 1 xdmdl to radians = tangent(1 xdml)
+    #
+    # SezimalFraction('12_323_530_450_212_111_051_342_530_541_524_334_240_145_410_510_444_420_305_200 / 42_200_453_545_445_435_153_050_222_355_300_001')
+    #
+    LAMBANA_TO_PADA = SezimalFraction('154_152_122_520_402_502_150_554 / 1')
+    LAMBANA_TO_KAGOLA = LAMBANA_TO_PADA / KAGOLA_TO_PADA
+    LAMBANA_TO_METRE = LAMBANA_TO_PADA * PADA_TO_METRE
+
+    unit_conversion['lbn'] = {
+        'prefixed': ('m', 'au', 'pc'),
+        'pad': LAMBANA_TO_PADA,
+        'vrp': LAMBANA_TO_PADA,
+        'kgl': LAMBANA_TO_KAGOLA,
+        'comparable': ('pad', 'vrp', 'lbn', 'kgl'),
+        'lbn': ONE_TO_ONE,
+
+        'm': LAMBANA_TO_METRE,
+
+        'in': LAMBANA_TO_METRE / SezimalFraction('331 / 35_052'),
+        'li': LAMBANA_TO_METRE / SezimalFraction('134_113 / 1_201_204'),  # 53/122 ft
+        'ft': LAMBANA_TO_METRE / SezimalFraction('1_433 / 5_442'),  # 20 in
+        'yd': LAMBANA_TO_METRE / SezimalFraction('5_143 / 5_442'),  # 3 ft, 100 in
+        'ftm': LAMBANA_TO_METRE / SezimalFraction('5_143 / 2_521'),  # 2 yd, 10 ft, 200 in
+        'rd': LAMBANA_TO_METRE / SezimalFraction('134_113 / 15_324'),  # 24.3 ft
+        'ch': LAMBANA_TO_METRE / SezimalFraction('134_113 / 2_521'),  # 150 ft
+        'fur': LAMBANA_TO_METRE / SezimalFraction('312_230 / 325'),  # 3_020 ft
+        'cb': LAMBANA_TO_METRE / SezimalFraction('331_000 / 325'),  # 3_200 ft
+        'mi': LAMBANA_TO_METRE / SezimalFraction('4_151_200 / 325'),  # 40_240 ft
+        'le': LAMBANA_TO_METRE / SezimalFraction('20_534_000 / 325'),  # 3 mi
+
+        'nmi': LAMBANA_TO_METRE / 12_324,  # Nautical mile
+        'NM': LAMBANA_TO_METRE / 12_324,  # Nautical mile
+        'au': LAMBANA_TO_METRE / 152_420_241_314_420,
+        'pc': LAMBANA_TO_METRE / 1_223_454_515_040_550_511_145,
+        'ly': LAMBANA_TO_PADA * PADA_TO_LIGHT_YEAR,
+    }
+    unit_conversion['lbn'] = _set_non_prefixed_units(unit_conversion['lbn'])
+
+    #
+    # Light-year
+    # Prasara
+    # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B8%E0%A4%BE%E0%A4%B0#Sanskrit
+    #
 
     #
     # Image resolution
@@ -285,7 +375,7 @@ def calculate_conversions():
             'ch2': unit_conversion['pad']['ch'] ** 2,
             'fur2': unit_conversion['pad']['fur'] ** 2,
             'cb2': unit_conversion['pad']['cb'] ** 2,
-            'ml2': unit_conversion['pad']['ml'] ** 2,
+            'mi2': unit_conversion['pad']['mi'] ** 2,
             'nmi2': unit_conversion['pad']['nmi'] ** 2,
             'NM2': unit_conversion['pad']['NM'] ** 2,
             'le2': unit_conversion['pad']['le'] ** 2,
@@ -316,7 +406,7 @@ def calculate_conversions():
             'in3': AYTAN_TO_CUBIC_INCH,
             'ft3': unit_conversion['pad']['ft'] ** 3,
             'yd3': unit_conversion['pad']['yd'] ** 3,
-            'ml3': unit_conversion['pad']['ml'] ** 3,
+            'mi3': unit_conversion['pad']['mi'] ** 3,
             'ac⋅ft': (unit_conversion['pad']['ft'] ** 3) / 533_400,
 
             'US min': AYTAN_TO_US_FLUID_DRAM * 140,
@@ -376,8 +466,8 @@ def calculate_conversions():
             # Non S.I. units
             #
             'km/h': VEGA_TO_METRE_PER_SECOND * 30 / 5,
-            'ml/s': VEGA_TO_METRE_PER_SECOND / SezimalFraction('4_151_200 / 325'),
-            'ml/h': VEGA_TO_METRE_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
+            'mi/s': VEGA_TO_METRE_PER_SECOND / SezimalFraction('4_151_200 / 325'),
+            'mi/h': VEGA_TO_METRE_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
             'mph': VEGA_TO_METRE_PER_SECOND * 24_400 / SezimalFraction('4_151_200 / 325'),
             'kn': VEGA_TO_METRE_PER_SECOND * 24_400 / 12_324,
             'c': VEGA_TO_METRE_PER_SECOND / 45_425_332_014,
@@ -1302,16 +1392,16 @@ def calculate_conversions():
     # https://en.wiktionary.org/wiki/%E0%A4%9A%E0%A4%B2%E0%A4%A4%E0%A4%BF#Sanskrit
     #
     CHALATI_TO_KILOMETRE_PER_LITRE = (unit_conversion['pad']['m'] * SezimalFraction('1 / 4344')) / unit_conversion['ayt']['L']
-    CHALATI_TO_US_MPG = unit_conversion['pad']['ml'] / unit_conversion['ayt']['US gal']
-    CHALATI_TO_IMPERIAL_MPG = unit_conversion['pad']['ml'] / unit_conversion['ayt']['imp gal']
+    CHALATI_TO_US_MPG = unit_conversion['pad']['mi'] / unit_conversion['ayt']['US gal']
+    CHALATI_TO_IMPERIAL_MPG = unit_conversion['pad']['mi'] / unit_conversion['ayt']['imp gal']
 
     unit_conversion['clt'] = {
         'km/L': CHALATI_TO_KILOMETRE_PER_LITRE,
         'km/20L': CHALATI_TO_KILOMETRE_PER_LITRE / SezimalFraction('1 / 32'),
         'US mpg': CHALATI_TO_US_MPG,
-        'US ml/gal': CHALATI_TO_US_MPG,
+        'US mi/gal': CHALATI_TO_US_MPG,
         'imp mpg': CHALATI_TO_IMPERIAL_MPG,
-        'imp ml/gal': CHALATI_TO_IMPERIAL_MPG,
+        'imp mi/gal': CHALATI_TO_IMPERIAL_MPG,
         'L/100km': 244 / CHALATI_TO_KILOMETRE_PER_LITRE * -1,
     }
     unit_conversion['clt'] = _set_non_prefixed_units(unit_conversion['clt'])
@@ -1329,9 +1419,9 @@ def calculate_conversions():
         'km/L': CHALATI_TO_KILOMETRE_PER_LITRE * -1,
         'km/20L': CHALATI_TO_KILOMETRE_PER_LITRE / SezimalFraction('1 / 32') * -1,
         'US mpg': CHALATI_TO_US_MPG * -1,
-        'US ml/gal': CHALATI_TO_US_MPG * -1,
+        'US mi/gal': CHALATI_TO_US_MPG * -1,
         'imp mpg': CHALATI_TO_IMPERIAL_MPG * -1,
-        'imp ml/gal': CHALATI_TO_IMPERIAL_MPG * -1,
+        'imp mi/gal': CHALATI_TO_IMPERIAL_MPG * -1,
     }
     unit_conversion['pbt'] = _set_non_prefixed_units(unit_conversion['pbt'])
 

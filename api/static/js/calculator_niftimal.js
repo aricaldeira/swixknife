@@ -6,8 +6,8 @@ function toggle_niftimal() {
     if ((niftimal_type == null) || (niftimal_type == '') || (niftimal_type == '-')) {
         niftimal_type = '5';
     } else if (niftimal_type == '5') {
-        niftimal_type = 'z';
-    } else if (niftimal_type == 'z') {
+    //     niftimal_type = 'z';
+    // } else if (niftimal_type == 'z') {
         niftimal_type = 'Z';
     } else if (niftimal_type == 'Z') {
         niftimal_type = '-';
