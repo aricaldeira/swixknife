@@ -370,6 +370,39 @@ def dcc_next(self,
 date.SezimalDate.dcc_next = dcc_next
 
 
+_ADC_MONTH_SYMBOL = {
+    0: '󱺀',
+    1: '󱺁',
+    2: '󱺂',
+    3: '󱺃',
+    4: '󱺄',
+    5: '󱺅',
+   10: '󱺆',
+   11: '󱺇',
+   12: '󱺈',
+   13: '󱺉',
+   14: '󱺊',
+}
+
+_ADC_WEEK_SYMBOL = {
+    0: '󱺐',
+    1: '󱺑',
+    2: '󱺒',
+    3: '󱺓',
+    4: '󱺔',
+    5: '󱺕',
+}
+
+_ADC_WEEKDAY_SYMBOL = {
+    0: '󱺖',
+    1: '󱺗',
+    2: '󱺘',
+    3: '󱺙',
+    4: '󱺚',
+    5: '󱺛',
+}
+
+
 def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
     for token, value, count in (
         ('dY', 'dcc_day_in_year', 'DCC_DAY_IN_YEAR_COUNT'),
@@ -543,6 +576,15 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
 
     if '&O' in fmt:
         fmt = fmt.replace('&O', locale.dcc_day_ordinal_suffix(self.dcc_day))
+
+    if '&sM' in fmt:
+        fmt = fmt.replace('&sM', _ADC_MONTH_SYMBOL[self.dcc_month])
+
+    if '&sW' in fmt:
+        fmt = fmt.replace('&sW', _ADC_WEEK_SYMBOL[self.dcc_week])
+
+    if '&sD' in fmt:
+        fmt = fmt.replace('&sD', _ADC_WEEKDAY_SYMBOL[self.dcc_weekday])
 
     fmt = locale.apply_dcc_date_format(self, fmt)
 
