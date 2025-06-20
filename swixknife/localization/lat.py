@@ -49,7 +49,7 @@ class SezimalLocaleLAT(SezimalLocale):
     ]
 
     WEEKDAY_NAME = [
-        'diēs Lūnae ',
+        'diēs Lūnae',
         'diēs Mārtis',
         'diēs Mercuriī ',
         'diēs Iouis',
@@ -119,7 +119,7 @@ class SezimalLocaleLAT(SezimalLocale):
     ]
 
     # WEEKDAY_NAME = [
-    #     'diēs Lūnae ',
+    #     'diēs Lūnae',
     #     'diēs Mārtis',
     #     'diēs Mercuriī ',
     #     'diēs Iouis',
@@ -678,7 +678,7 @@ class SezimalLocaleLAT(SezimalLocale):
         'diēs Mārtis',
         'diēs Iouis',
         'diēs Sāturnī',
-        'diēs Lūnae ',
+        'diēs Lūnae',
     ]
 
     ADC_WEEKDAY_ABBREVIATED_NAME = [
