@@ -353,7 +353,8 @@ class SezimalLocaleEO(SezimalLocale):
         'Aglo',
         'Amforo',
         # 'Pesilo',
-        'Oriono',
+        # 'Oriono',
+        'Sekstanto',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -368,7 +369,8 @@ class SezimalLocaleEO(SezimalLocale):
         'Agl',
         'Amf',
         # 'Pes',
-        'Ori',
+        # 'Ori',
+        'Sek',
     ]
 
     ADC_MONTH_SYMBOL = [
@@ -379,11 +381,12 @@ class SezimalLocaleEO(SezimalLocale):
         'H',
         'L',
         'V',
-        'S',
+        'Sr',
         'Ag',
         'Am',
         # 'P',
-        'O',
+        # 'O',
+        'Sk',
     ]
 
     ADC_WEEKDAY_NAME = [

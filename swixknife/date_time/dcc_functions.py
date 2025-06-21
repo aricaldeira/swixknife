@@ -18,7 +18,8 @@ from ..sezimal import Sezimal, SezimalInteger, SezimalFraction
 # julian day 122_255_025.345_021_30 = 2_355_929.634_548_6..1_d
 #
 # LEAP_EPOCH_TIME = Sezimal('21_333_305.045_021_30')  # 634_505.134_548_6..1_d
-LEAP_EPOCH_TIME = Sezimal('21_333_305.1')  # 634_505.1..6_d
+# LEAP_EPOCH_TIME = Sezimal('21_333_305.1')  # 634_505.1..6_d
+LEAP_EPOCH_TIME = Sezimal('21_333_305')  # 634_505.134_548_6..1_d
 LEAP_EPOCH = Sezimal('21_333_305')  # 634_505.134_548_6..1_d
 
 #

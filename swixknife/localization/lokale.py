@@ -2059,7 +2059,8 @@ class SezimalLocale:
         'Aquila',
         'Aquarius',
         # 'Libra',
-        'Orion',
+        # 'Orion',
+        'Sextans',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -2074,7 +2075,8 @@ class SezimalLocale:
         'Aql',
         'Aqr',
         # 'Lib',
-        'Ori',
+        # 'Ori',
+        'Sex',
     ]
 
     ADC_MONTH_SYMBOL = [
@@ -2086,11 +2088,12 @@ class SezimalLocale:
         # 'Le',
         'L',
         'V',
-        'S',
+        'Sr',
         'Al',
         'Ar',
         # 'Lb',
-        'O',
+        # 'O',
+        'Sx',
     ]
 
     ADC_WEEKDAY_NAME = [

@@ -611,7 +611,8 @@ class SezimalLocalePT(SezimalLocale):
         'águia',
         'aquário',
         # 'libra',
-        'órion',
+        # 'órion',
+        'sextante',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -626,7 +627,8 @@ class SezimalLocalePT(SezimalLocale):
         'águ',
         'aqu',
         # 'lib',
-        'óri',
+        # 'óri',
+        'sex',
     ]
 
     ADC_MONTH_SYMBOL = [
@@ -638,11 +640,12 @@ class SezimalLocalePT(SezimalLocale):
         # 'le',
         'l',
         'v',
-        's',
+        'sr',
         'ág',
         'aq',
         # 'lb',
-        'ó',
+        # 'ó',
+        'sx',
     ]
 
     ADC_WEEKDAY_NAME = [
@@ -684,7 +687,7 @@ class SezimalLocalePT(SezimalLocale):
         'da',  # serpente
         'da',  # águia
         'de',  # aquário
-        'de',  # libra
+        'do',  # sextante
     ]
 
     _DE_DO_DA_SEMANA = [

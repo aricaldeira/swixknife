@@ -143,7 +143,8 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         'águia',
         'aquário',
         # 'libra',
-        'orião',
+        # 'orião',
+        'sextante',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -158,7 +159,8 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         'águ',
         'aqu',
         # 'lib',
-        'ori',
+        # 'ori',
+        'sex',
     ]
 
     ADC_MONTH_SYMBOL = [
@@ -170,9 +172,10 @@ class SezimalLocalePT_PT(SezimalLocalePT):
         # 'le',
         'l',
         'v',
-        's',
+        'sr',
         'ág',
         'aq',
         # 'lb',
-        'o',
+        # 'o',
+        'sx',
     ]
