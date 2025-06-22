@@ -190,3 +190,38 @@ function calendar_load() {
 
     update_calendar();
 };
+
+
+function toggle_time_zone_from() {
+    const from_types = [
+        'utc',
+        'spm',
+        'nt_spm',
+        'gpm',
+        'nt_gpm',
+        'spm_sez',
+        'nt_spm_sez',
+        'spm_doz',
+        'nt20_spm_doz',
+        'nt30_spm_doz',
+    ];
+
+    from_types.map(from_type => {
+        var optgroup = document.getElementById(`time_zone_from_${from_type}`);
+        optgroup.hidden = true;
+        for (let i = 0; i < optgroup.children.length; i++) {
+            optgroup.children[i].hidden = true;
+        }
+    });
+
+    var tzf = document.getElementById('time_zone_from_select').value;
+    tzf = tzf.toLowerCase().replaceAll('-', '_');
+
+    var optgroup = document.getElementById(`time_zone_from_${tzf}`);
+    optgroup.hidden = false;
+    for (let i = 0; i < optgroup.children.length; i++) {
+        optgroup.children[i].hidden = false;
+    }
+
+    document.getElementById('time_zone_select').value = null;
+};

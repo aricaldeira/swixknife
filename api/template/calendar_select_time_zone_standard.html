@@ -1,11 +1,11 @@
     {% if locale.LANGUAGE_TAG.startswith('pt') %}
-        <optgroup id="time_zone_from_utc" label="UTC - Tempo coordenado universal"/>
+        <optgroup hidden id="time_zone_from_utc" label="UTC - Tempo coordenado universal">
     {% elif locale.LANGUAGE_TAG.startswith('bz') %}
-        <optgroup id="time_zone_from_utc" label="UTC - Tenpu koordenadu universaw"/>
+        <optgroup hidden id="time_zone_from_utc" label="UTC - Tenpu koordenadu universaw">
     {% elif locale.LANGUAGE_TAG.startswith('eo') %}
-        <optgroup id="time_zone_from_utc" label="UTC - Universala Koordigata Tempo"/>
+        <optgroup hidden id="time_zone_from_utc" label="UTC - Universala Koordigata Tempo">
     {% else %}
-        <optgroup id="time_zone_from_utc" label="UTC - Universal Coordinated Time"/>
+        <optgroup hidden id="time_zone_from_utc" label="UTC - Universal Coordinated Time">
     {% endif %}
         <option value="UTC">UTC</option>
     {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}

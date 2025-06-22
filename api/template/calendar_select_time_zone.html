@@ -44,24 +44,3 @@
     {% include 'calendar_select_time_zone_dozenal.html' %}
     </optgroup>
 </select>
-<script>
-function toggle_time_zone_from() {
-    document.getElementById('time_zone_from_utc').hidden = true;
-    document.getElementById('time_zone_from_spm').hidden = true;
-    document.getElementById('time_zone_from_nt_spm').hidden = true;
-    document.getElementById('time_zone_from_gpm').hidden = true;
-    document.getElementById('time_zone_from_nt_gpm').hidden = true;
-    document.getElementById('time_zone_from_spm_sez').hidden = true;
-    document.getElementById('time_zone_from_nt_spm_sez').hidden = true
-    document.getElementById('time_zone_from_spm_doz').hidden = true;
-    document.getElementById('time_zone_from_nt20_spm_doz').hidden = true;
-    document.getElementById('time_zone_from_nt30_spm_doz').hidden = true;
-
-    var tzf = document.getElementById('time_zone_from_select').value;
-    tzf = tzf.toLowerCase().replaceAll('-', '_');
-
-    document.getElementById(`time_zone_from_${tzf}`).hidden = false;
-
-};
-
-</script>
