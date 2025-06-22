@@ -270,6 +270,7 @@ function open_settings() {
 
 function apply_settings() {
     localStorage.setItem('sezimal-calendar-locale', document.getElementById('calculator-sezimal-locale').value);
+    localStorage.setItem('sezimal-calendar-time-zone-from', document.getElementById('time_zone_from_select').value);
     localStorage.setItem('sezimal-calendar-time-zone', document.getElementById('time_zone_select').value);
     localStorage.setItem('sezimal-calendar-hour-format', document.getElementById('hour_format_select').value);
     localStorage.setItem('sezimal-calendar-show-seconds', document.getElementById('show_seconds_input').checked);

@@ -1,4 +1,72 @@
-    <optgroup name="spm_dozenal_nt20" label="NT20 - Scheleissheim Prime Meridian - Dozenal">
+    {% if locale.LANGUAGE_TAG.startswith('pt') %}
+        <optgroup hidden id="time_zone_from_spm_doz" label="SPM - Meridiano Primário de Schleissheim - Dozenal"/>
+    {% elif locale.LANGUAGE_TAG.startswith('bz') %}
+        <optgroup hidden id="time_zone_from_spm_doz" label="SPM - Meridianu Primaryu di Xiláysrain - Dozenaw"/>
+    {% elif locale.LANGUAGE_TAG.startswith('eo') %}
+        <optgroup hidden id="time_zone_from_spm_doz" label="SPM - Ŝlajsrajna Referenca Meridiano - Dekduuma"/>
+    {% else %}
+        <optgroup hidden id="time_zone_from_spm_doz" label="SPM - Schleissheim Prime Meridian - Dozenal"/>
+    {% endif %}
+        <option value="Dozenal/SPM-60">SPM-60 (UTC-11:13:45)</option>
+        <option value="Dozenal/SPM-59">SPM-59 (UTC-10:43:45)</option>
+        <option value="Dozenal/SPM-56">SPM-56 (UTC-10:13:45)</option>
+        <option value="Dozenal/SPM-53">SPM-53 (UTC-09:43:45)</option>
+        <option value="Dozenal/SPM-50">SPM-50 (UTC-09:13:45)</option>
+        <option value="Dozenal/SPM-49">SPM-49 (UTC-08:43:45)</option>
+        <option value="Dozenal/SPM-46">SPM-46 (UTC-08:13:45)</option>
+        <option value="Dozenal/SPM-43">SPM-43 (UTC-07:43:45)</option>
+        <option value="Dozenal/SPM-40">SPM-40 (UTC-07:13:45)</option>
+        <option value="Dozenal/SPM-39">SPM-39 (UTC-06:43:45)</option>
+        <option value="Dozenal/SPM-36">SPM-36 (UTC-06:13:45)</option>
+        <option value="Dozenal/SPM-33">SPM-33 (UTC-05:43:45)</option>
+        <option value="Dozenal/SPM-30">SPM-30 (UTC-05:13:45)</option>
+        <option value="Dozenal/SPM-29">SPM-29 (UTC-04:43:45)</option>
+        <option value="Dozenal/SPM-26">SPM-26 (UTC-04:13:45)</option>
+        <option value="Dozenal/SPM-23">SPM-23 (UTC-03:43:45)</option>
+        <option value="Dozenal/SPM-20">SPM-20 (UTC-03:13:45)</option>
+        <option value="Dozenal/SPM-19">SPM-19 (UTC-02:43:45)</option>
+        <option value="Dozenal/SPM-16">SPM-16 (UTC-02:13:45)</option>
+        <option value="Dozenal/SPM-13">SPM-13 (UTC-01:43:45)</option>
+        <option value="Dozenal/SPM-10">SPM-10 (UTC-01:13:45)</option>
+        <option value="Dozenal/SPM-09">SPM-09 (UTC-00:43:45)</option>
+        <option value="Dozenal/SPM-06">SPM-06 (UTC-00:13:45)</option>
+        <option value="Dozenal/SPM-03">SPM-03 (UTC+00:16:15)</option>
+        <option value="Dozenal/SPM"   >SPM    (UTC+00:46:15)</option>
+        <option value="Dozenal/SPM+03">SPM+03 (UTC+01:16:15)</option>
+        <option value="Dozenal/SPM+06">SPM+06 (UTC+01:46:15)</option>
+        <option value="Dozenal/SPM+09">SPM+09 (UTC+02:16:15)</option>
+        <option value="Dozenal/SPM+10">SPM+10 (UTC+02:46:15)</option>
+        <option value="Dozenal/SPM+13">SPM+13 (UTC+03:16:15)</option>
+        <option value="Dozenal/SPM+16">SPM+16 (UTC+03:46:15)</option>
+        <option value="Dozenal/SPM+19">SPM+19 (UTC+04:16:15)</option>
+        <option value="Dozenal/SPM+20">SPM+20 (UTC+04:46:15)</option>
+        <option value="Dozenal/SPM+23">SPM+23 (UTC+05:16:15)</option>
+        <option value="Dozenal/SPM+26">SPM+26 (UTC+05:46:15)</option>
+        <option value="Dozenal/SPM+29">SPM+29 (UTC+06:16:15)</option>
+        <option value="Dozenal/SPM+30">SPM+30 (UTC+06:46:15)</option>
+        <option value="Dozenal/SPM+33">SPM+33 (UTC+07:16:15)</option>
+        <option value="Dozenal/SPM+36">SPM+36 (UTC+07:46:15)</option>
+        <option value="Dozenal/SPM+39">SPM+39 (UTC+08:16:15)</option>
+        <option value="Dozenal/SPM+40">SPM+40 (UTC+08:46:15)</option>
+        <option value="Dozenal/SPM+43">SPM+43 (UTC+09:16:15)</option>
+        <option value="Dozenal/SPM+46">SPM+46 (UTC+09:46:15)</option>
+        <option value="Dozenal/SPM+49">SPM+49 (UTC+10:16:15)</option>
+        <option value="Dozenal/SPM+50">SPM+50 (UTC+10:46:15)</option>
+        <option value="Dozenal/SPM+53">SPM+53 (UTC+11:16:15)</option>
+        <option value="Dozenal/SPM+56">SPM+56 (UTC+11:46:15)</option>
+        <option value="Dozenal/SPM+59">SPM+59 (UTC+12:16:15)</option>
+        <option value="Dozenal/SPM+60">SPM+60 (UTC+12:46:15)</option>
+    </optgroup>
+
+    {% if locale.LANGUAGE_TAG.startswith('pt') %}
+        <optgroup hidden id="time_zone_from_nt20_spm_doz" label="NT-SPM - Hora Natural - dia começa às SPM+20 - Dozenal"/>
+    {% elif locale.LANGUAGE_TAG.startswith('bz') %}
+        <optgroup hidden id="time_zone_from_nt20_spm_doz" label="NT-SPM - Òra Naturaw - dia komèsa as SPM+20 - Dozenaw"/>
+    {% elif locale.LANGUAGE_TAG.startswith('eo') %}
+        <optgroup hidden id="time_zone_from_nt20_spm_doz" label="NT-SPM - Natura Horo - tago komencas je SPM+20 - Dekduuma"/>
+    {% else %}
+        <optgroup hidden id="time_zone_from_nt20_spm_doz" label="NT-SPM - Natural Time - day starts at SPM+20 - Dozenal"/>
+    {% endif %}
         <option value="Dozenal/NT20-60">NT20-60 (UTC-15:13:45)</option>
         <option value="Dozenal/NT20-59">NT20-59 (UTC-14:43:45)</option>
         <option value="Dozenal/NT20-56">NT20-56 (UTC-14:13:45)</option>
@@ -49,7 +117,16 @@
         <option value="Dozenal/NT20+59">NT20+59 (UTC+08:16:15)</option>
         <option value="Dozenal/NT20+60">NT20+60 (UTC+08:46:15)</option>
     </optgroup>
-    <optgroup name="spm_dozenal_nt30" label="NT30 - Scheleissheim Prime Meridian - Dozenal">
+
+    {% if locale.LANGUAGE_TAG.startswith('pt') %}
+        <optgroup hidden id="time_zone_from_nt30_spm_doz" label="NT-SPM - Hora Natural - dia começa às SPM+30 - Dozenal"/>
+    {% elif locale.LANGUAGE_TAG.startswith('bz') %}
+        <optgroup hidden id="time_zone_from_nt30_spm_doz" label="NT-SPM - Òra Naturaw - dia komèsa as SPM+30 - Dozenaw"/>
+    {% elif locale.LANGUAGE_TAG.startswith('eo') %}
+        <optgroup hidden id="time_zone_from_nt30_spm_doz" label="NT-SPM - Natura Horo - tago komencas je SPM+30 - Dekduuma"/>
+    {% else %}
+        <optgroup hidden id="time_zone_from_nt30_spm_doz" label="NT-SPM - Natural Time - day starts at SPM+30 - Dozenal"/>
+    {% endif %}
         <option value="Dozenal/NT30-60">NT30-60 (UTC-17:13:45)</option>
         <option value="Dozenal/NT30-59">NT30-59 (UTC-16:43:45)</option>
         <option value="Dozenal/NT30-56">NT30-56 (UTC-16:13:45)</option>
@@ -99,55 +176,4 @@
         <option value="Dozenal/NT30+56">NT30+56 (UTC+05:46:15)</option>
         <option value="Dozenal/NT30+59">NT30+59 (UTC+06:16:15)</option>
         <option value="Dozenal/NT30+60">NT30+60 (UTC+06:46:15)</option>
-    </optgroup>
-    <optgroup name="spm_dozenal" label="SPM - Scheleissheim Prime Meridian - Dozenal">
-        <option value="Dozenal/SPM-60">SPM-60 (UTC-11:13:45)</option>
-        <option value="Dozenal/SPM-59">SPM-59 (UTC-10:43:45)</option>
-        <option value="Dozenal/SPM-56">SPM-56 (UTC-10:13:45)</option>
-        <option value="Dozenal/SPM-53">SPM-53 (UTC-09:43:45)</option>
-        <option value="Dozenal/SPM-50">SPM-50 (UTC-09:13:45)</option>
-        <option value="Dozenal/SPM-49">SPM-49 (UTC-08:43:45)</option>
-        <option value="Dozenal/SPM-46">SPM-46 (UTC-08:13:45)</option>
-        <option value="Dozenal/SPM-43">SPM-43 (UTC-07:43:45)</option>
-        <option value="Dozenal/SPM-40">SPM-40 (UTC-07:13:45)</option>
-        <option value="Dozenal/SPM-39">SPM-39 (UTC-06:43:45)</option>
-        <option value="Dozenal/SPM-36">SPM-36 (UTC-06:13:45)</option>
-        <option value="Dozenal/SPM-33">SPM-33 (UTC-05:43:45)</option>
-        <option value="Dozenal/SPM-30">SPM-30 (UTC-05:13:45)</option>
-        <option value="Dozenal/SPM-29">SPM-29 (UTC-04:43:45)</option>
-        <option value="Dozenal/SPM-26">SPM-26 (UTC-04:13:45)</option>
-        <option value="Dozenal/SPM-23">SPM-23 (UTC-03:43:45)</option>
-        <option value="Dozenal/SPM-20">SPM-20 (UTC-03:13:45)</option>
-        <option value="Dozenal/SPM-19">SPM-19 (UTC-02:43:45)</option>
-        <option value="Dozenal/SPM-16">SPM-16 (UTC-02:13:45)</option>
-        <option value="Dozenal/SPM-13">SPM-13 (UTC-01:43:45)</option>
-        <option value="Dozenal/SPM-10">SPM-10 (UTC-01:13:45)</option>
-        <option value="Dozenal/SPM-09">SPM-09 (UTC-00:43:45)</option>
-        <option value="Dozenal/SPM-06">SPM-06 (UTC-00:13:45)</option>
-        <option value="Dozenal/SPM-03">SPM-03 (UTC+00:16:15)</option>
-        <option value="Dozenal/SPM"   >SPM    (UTC+00:46:15)</option>
-        <option value="Dozenal/SPM+03">SPM+03 (UTC+01:16:15)</option>
-        <option value="Dozenal/SPM+06">SPM+06 (UTC+01:46:15)</option>
-        <option value="Dozenal/SPM+09">SPM+09 (UTC+02:16:15)</option>
-        <option value="Dozenal/SPM+10">SPM+10 (UTC+02:46:15)</option>
-        <option value="Dozenal/SPM+13">SPM+13 (UTC+03:16:15)</option>
-        <option value="Dozenal/SPM+16">SPM+16 (UTC+03:46:15)</option>
-        <option value="Dozenal/SPM+19">SPM+19 (UTC+04:16:15)</option>
-        <option value="Dozenal/SPM+20">SPM+20 (UTC+04:46:15)</option>
-        <option value="Dozenal/SPM+23">SPM+23 (UTC+05:16:15)</option>
-        <option value="Dozenal/SPM+26">SPM+26 (UTC+05:46:15)</option>
-        <option value="Dozenal/SPM+29">SPM+29 (UTC+06:16:15)</option>
-        <option value="Dozenal/SPM+30">SPM+30 (UTC+06:46:15)</option>
-        <option value="Dozenal/SPM+33">SPM+33 (UTC+07:16:15)</option>
-        <option value="Dozenal/SPM+36">SPM+36 (UTC+07:46:15)</option>
-        <option value="Dozenal/SPM+39">SPM+39 (UTC+08:16:15)</option>
-        <option value="Dozenal/SPM+40">SPM+40 (UTC+08:46:15)</option>
-        <option value="Dozenal/SPM+43">SPM+43 (UTC+09:16:15)</option>
-        <option value="Dozenal/SPM+46">SPM+46 (UTC+09:46:15)</option>
-        <option value="Dozenal/SPM+49">SPM+49 (UTC+10:16:15)</option>
-        <option value="Dozenal/SPM+50">SPM+50 (UTC+10:46:15)</option>
-        <option value="Dozenal/SPM+53">SPM+53 (UTC+11:16:15)</option>
-        <option value="Dozenal/SPM+56">SPM+56 (UTC+11:46:15)</option>
-        <option value="Dozenal/SPM+59">SPM+59 (UTC+12:16:15)</option>
-        <option value="Dozenal/SPM+60">SPM+60 (UTC+12:46:15)</option>
     </optgroup>
