@@ -102,7 +102,7 @@
             <p id="time_display" class="now-time-24h">
         {% endif %}
             <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
-                {% if 'Sezimal/NT' in locale.DEFAULT_TIME_ZONE or 'SPM/NT' in locale.DEFAULT_TIME_ZONE or 'GPM/NT' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
+                {% if '/NT' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-4">&nbsp;</div>
 <!--                    <div class="day-tick" style="width:  8.33%;">╵</div>  {# 0󱹮13 #}
                     <div class="day-tick" style="width: 16.67%;">╷</div>  {# 0󱹮20 #}
@@ -111,7 +111,7 @@
                     <div class="day-tick" style="width: 58.33%;">╵</div>  {# 0󱹮43 #}
                     <div class="day-tick" style="width: 66.67%;">╷</div>  {# 0󱹮50 #}
                     <div class="day-tick" style="width: 83.33%;">┃</div>  {# 1󱹮00 #}-->
-                {% elif '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+                {% elif '/MT' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-6">&nbsp;</div>
 <!--                    <div class="day-tick" style="width:  8.33%;">╷</div>  {# 0󱹮20 #}
                     <div class="day-tick" style="width: 25%;"   >┃</div>  {# 0󱹮30 #}

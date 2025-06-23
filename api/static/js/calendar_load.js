@@ -197,13 +197,16 @@ function toggle_time_zone_from() {
         'utc',
         'spm',
         'nt_spm',
+        'mt_spm',
         'gpm',
         'nt_gpm',
+        'mt_gpm',
         'spm_sez',
         'nt_spm_sez',
+        'mt_spm_sez',
         'spm_doz',
-        'nt20_spm_doz',
-        'nt30_spm_doz',
+        'nt_spm_doz',
+        'mt_spm_doz',
     ];
 
     from_types.map(from_type => {
@@ -215,6 +218,11 @@ function toggle_time_zone_from() {
     });
 
     var tzf = document.getElementById('time_zone_from_select').value;
+
+    if ((tzf == '') || (tzf == null)) {
+        tzf = 'UTC';
+    };
+
     tzf = tzf.toLowerCase().replaceAll('-', '_');
 
     var optgroup = document.getElementById(`time_zone_from_${tzf}`);
