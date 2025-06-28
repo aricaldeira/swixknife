@@ -57,23 +57,17 @@
                 {%- elif locale.calendar_displayed == 'DCC' -%}
                     {%- if 'c' in format_token -%}
                         {%- if SHOW_YEAR -%}
-                            {{ first_weekday.format('&' + format_token + '>Y &cM', locale) }}
+                            {{ first_weekday.format('&' + format_token + '>Y &cM &iM', locale) }}
                         {%- else -%}
-                            {{ first_weekday.format('&' + format_token + '>Y, &cM', locale) }}
-                        {%- endif -%}
-                        {%- with dcc_month_number = first_weekday.dcc_month -%}
-                            &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
-                        {%- endwith -%},&nbsp;
+                            {{ first_weekday.format('&' + format_token + '>Y, &cM &iM', locale) }}
+                        {%- endif -%},&nbsp;
                         {%- if base in (14, 20) -%}
                             {{ first_weekday.format('&-wM‐&-w', locale) }} —&nbsp;
                         {%- else -%}
                             {{ first_weekday.format('&' + format_token + '-d', locale) }} —&nbsp;
                         {%- endif -%}
                         {%- if SHOW_YEAR -%}
-                            {{ last_weekday.format('&' + format_token + '>Y&YMDS&cM', locale) }}
-                            {%- with dcc_month_number = last_weekday.dcc_month -%}
-                                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%},&nbsp;
-                            {%- endwith -%}
+                            {{ last_weekday.format('&' + format_token + '>Y&YMDS&cM &iM', locale) }}
                         {%- endif -%}
                         {%- if base in (14, 20) -%}
                             {{ last_weekday.format('&-wM‐&-w', locale) }}

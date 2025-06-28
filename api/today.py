@@ -1598,7 +1598,7 @@ def _prepare_locale(locale, dados):
     format_token = dados['format_token']
 
     if dados['time_zone'] != 'locale':
-        locale.DEFAULT_TIME_ZONE = dados['time_zone']
+        locale.DEFAULT_TIME_ZONE = dados['time_zone'].strip()
 
     if dados['hemisphere'] != 'locale':
         locale.DEFAULT_HEMISPHERE = dados['hemisphere']
@@ -2397,3 +2397,204 @@ def _create_store_events_br():
 
             # bases = (20,)
             # _create_store_events(itens, year_range, bases)
+
+
+def _adc_svg_text(text, locale, now):
+    text = text.replace('00 ― PISCES', f'00 ― {locale.upper(locale.ADC_MONTH_NAME[0])}')
+    text = text.replace('01 ― CETUS', f'01 ― {locale.upper(locale.ADC_MONTH_NAME[1])}')
+    text = text.replace('02 ― ERIDANUS', f'02 ― {locale.upper(locale.ADC_MONTH_NAME[2])}')
+    text = text.replace('03 ― MONOCEROS', f'03 ― {locale.upper(locale.ADC_MONTH_NAME[3])}')
+    text = text.replace('04 ― HYDRA', f'04 ― {locale.upper(locale.ADC_MONTH_NAME[4])}')
+    text = text.replace('05 ― LEO', f'05 ― {locale.upper(locale.ADC_MONTH_NAME[5])}')
+    text = text.replace('10 ― VIRGO', f'10 ― {locale.upper(locale.ADC_MONTH_NAME[6])}')
+    text = text.replace('11 ― SERPENS', f'11 ― {locale.upper(locale.ADC_MONTH_NAME[7])}')
+    text = text.replace('12 ― AQUILA', f'12 ― {locale.upper(locale.ADC_MONTH_NAME[8])}')
+    text = text.replace('13 ― AQUARIUS', f'13 ― {locale.upper(locale.ADC_MONTH_NAME[9])}')
+    text = text.replace('SEXTANS', f'{locale.upper(locale.ADC_MONTH_NAME[10])}')
+    text = text.replace('week', locale.WEEK_NUMBER_SYMBOL)
+
+    #
+    # Month symbol
+    #
+    if now.dcc_month == 0:
+        month_symbol = 'b'
+    elif now.dcc_month == 1:
+        month_symbol = '5'
+    elif now.dcc_month == 2:
+        month_symbol = 'D'
+    elif now.dcc_month == 3:
+        month_symbol = 'W'
+    elif now.dcc_month == 4:
+        month_symbol = 'J'
+    elif now.dcc_month == 5:
+        month_symbol = 'N'
+    elif now.dcc_month == 10:
+        month_symbol = 'v'
+    elif now.dcc_month == 11:
+        month_symbol = 'l'
+    elif now.dcc_month == 12:
+        month_symbol = '%'
+    elif now.dcc_month == 13:
+        month_symbol = '$'
+    elif now.dcc_month == 14:
+        month_symbol = '\\'
+
+    text = text.replace('y="261.95312">D</tspan>', f'y="261.95312">{month_symbol}</tspan>')
+
+    #
+    # Weekday symbol
+    #
+    if now.dcc_weekday == 0:
+        weekday_symbol = '☉'
+    elif now.dcc_weekday == 1:
+        weekday_symbol = '♀'
+    elif now.dcc_weekday == 2:
+        weekday_symbol = '♂'
+    elif now.dcc_weekday == 3:
+        weekday_symbol = '♃'
+    elif now.dcc_weekday == 4:
+        weekday_symbol = '♄'
+    elif now.dcc_weekday == 5:
+        if locale.DEFAULT_HEMISPHERE == 'N':
+            weekday_symbol = '☽'
+        else:
+            weekday_symbol = '☾'
+
+    text = text.replace('y="263.45645">♀</tspan>', f'y="263.45645">{now.dcc_week}{weekday_symbol}</tspan>')
+
+    return text
+
+
+def _dcc_svg_text(text, locale, now):
+    text = text.replace('00 ― PISCES', f'00 ― {locale.upper(locale.DCC_MONTH_NAME[0])}')
+    text = text.replace('01 ― CETUS', f'01 ― {locale.upper(locale.DCC_MONTH_NAME[1])}')
+    text = text.replace('02 ― ERIDANUS', f'02 ― {locale.upper(locale.DCC_MONTH_NAME[2])}')
+    text = text.replace('03 ― MONOCEROS', f'03 ― {locale.upper(locale.DCC_MONTH_NAME[3])}')
+    text = text.replace('04 ― HYDRA', f'04 ― {locale.upper(locale.DCC_MONTH_NAME[4])}')
+    text = text.replace('05 ― LEO', f'05 ― {locale.upper(locale.DCC_MONTH_NAME[5])}')
+    text = text.replace('10 ― VIRGO', f'10 ― {locale.upper(locale.DCC_MONTH_NAME[6])}')
+    text = text.replace('11 ― SERPENS', f'11 ― {locale.upper(locale.DCC_MONTH_NAME[7])}')
+    text = text.replace('12 ― AQUILA', f'12 ― {locale.upper(locale.DCC_MONTH_NAME[8])}')
+    text = text.replace('13 ― AQUARIUS', f'13 ― {locale.upper(locale.DCC_MONTH_NAME[9])}')
+    text = text.replace('SEXTANS', f'{locale.upper(locale.DCC_MONTH_NAME[10])}')
+    text = text.replace('week', locale.WEEK_NUMBER_SYMBOL)
+
+    #
+    # Month symbol
+    #
+    if now.dcc_month == 0:
+        month_symbol = 'b'
+    elif now.dcc_month == 1:
+        month_symbol = '5'
+    elif now.dcc_month == 2:
+        month_symbol = 'D'
+    elif now.dcc_month == 3:
+        month_symbol = 'W'
+    elif now.dcc_month == 4:
+        month_symbol = 'J'
+    elif now.dcc_month == 5:
+        month_symbol = 'N'
+    elif now.dcc_month == 10:
+        month_symbol = 'v'
+    elif now.dcc_month == 11:
+        month_symbol = 'l'
+    elif now.dcc_month == 12:
+        month_symbol = '%'
+    elif now.dcc_month == 13:
+        month_symbol = '$'
+    elif now.dcc_month == 14:
+        month_symbol = '\\'
+
+    text = text.replace('y="261.95312">D</tspan>', f'y="261.95312">{month_symbol}</tspan>')
+
+    #
+    # Weekday symbol
+    #
+    if now.dcc_weekday == 0:
+        weekday_symbol = '☉'
+    elif now.dcc_weekday == 1:
+        weekday_symbol = '♀'
+    elif now.dcc_weekday == 2:
+        weekday_symbol = '♂'
+    elif now.dcc_weekday == 3:
+        weekday_symbol = '♃'
+    elif now.dcc_weekday == 4:
+        weekday_symbol = '♄'
+    elif now.dcc_weekday == 5:
+        if locale.DEFAULT_HEMISPHERE == 'N':
+            weekday_symbol = '☽'
+        else:
+            weekday_symbol = '☾'
+
+    text = text.replace('y="263.45645">♀</tspan>', f'y="263.45645">{now.dcc_week}{weekday_symbol}</tspan>')
+
+    return text
+
+
+def _dcc_adc_rotation_markers(text, now):
+    #
+    # Month marker rotation
+    #
+    if now.dcc_month == 14:
+        text = text.replace('inkscape:label="month_marker">', 'inkscape:label="month_marker" style="display:none">')
+    else:
+        angle = Decimal('-69.686')
+        angle += Decimal('34.839') * now.dcc_month.decimal
+        text = text.replace('transform="rotate(-69.686,256.00001,255.99999)"', f'transform="rotate({angle},256,256)"')
+
+    #
+    # Week marker rotation
+    #
+    angle = Decimal('-69.714')
+    angle += Decimal('5.806') * now.dcc_week_in_year.decimal
+    text = text.replace('transform="rotate(-69.714,255.99999,255.99999)"', f'transform="rotate({angle},256,256)"')
+
+    return text
+
+
+@app.route('/dcc.svg')
+def dcc_circle() -> Response:
+    if 'sezimal' in request.cookies:
+        locale = _prepare_locale_from_cookie()
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+
+    text = open('./template/calendar_circle_southern_hemisphere.svg').read()
+    # text = open('./template/calendar_circle_northern_hemisphere.svg').read()
+
+    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    # now = SezimalDateTime.now(time_zone='SPM/NT')
+
+    text = _dcc_svg_text(text, locale, now)
+    text = _dcc_adc_rotation_markers(text, now)
+
+    text = text.replace('y="236.61728">213</tspan>', f'''y="236.61728">{now.format('&>Y', locale)}</tspan>''')
+    text = text.replace('y="288.06015">02‐21</tspan>', f'''y="288.06015">{now.format('#u#:#p', locale)}</tspan>''')
+
+
+    return Response(text, mimetype='image/svg+xml')
+
+
+@app.route('/adc-<string:hemisphere>.svg')
+def adc_circle(hemisphere: str = 'S') -> Response:
+    if 'sezimal' in request.cookies:
+        locale = _prepare_locale_from_cookie()
+    else:
+        locale = sezimal_locale(browser_preferred_locale())
+
+    if hemisphere.upper()[0] == 'S':
+        text = open('./template/calendar_circle_southern_hemisphere.svg').read()
+    else:
+        text = open('./template/calendar_circle_northern_hemisphere.svg').read()
+
+    # now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
+    now = SezimalDateTime.now(time_zone='SPM/NT')
+
+    text = _adc_svg_text(text, locale, now)
+    text = _dcc_adc_rotation_markers(text, now)
+
+    text = text.replace('y="236.61728">213</tspan>', f'''y="236.61728">{now.format('&>Y', locale)}</tspan>''')
+    text = text.replace('y="288.06015">02‐21</tspan>', f'''y="288.06015">{now.format('#u#:#p', locale)}</tspan>''')
+
+
+    return Response(text, mimetype='image/svg+xml')

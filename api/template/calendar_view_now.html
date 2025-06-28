@@ -66,10 +66,11 @@
 {% elif locale.calendar_displayed == 'DCC' %}
     {% if 'c' in format_token %}
         {% set date_format = locale.ADC_DATE_FORMAT %}
+        {% set weekday_format = '&' + format_token + 'D &iD' %}
     {% else %}
         {% set date_format = locale.DCC_DATE_FORMAT %}
+        {% set weekday_format = '&' + format_token + 'D' %}
     {% endif %}
-    {% set weekday_format = '&' + format_token + 'W' %}
     {% set event_month = date.dcc_month %}
     {% set event_day = date.dcc_day %}
 {% endif %}
@@ -90,11 +91,6 @@
 
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
-        {% if locale.calendar_displayed == 'DCC' and 'c' in format_token %}
-            {% with dcc_weekday_number = date.dcc_weekday %}
-                {% include 'calendar_span_adc_weekday_symbol.html' %}
-            {% endwith %}
-        {% endif %}
         </p>
         {% if base == 14 %}
             <p id="time_display" class="now-time-{{ hour_format }}">
@@ -142,6 +138,9 @@
 
         <p class="now-date" style="clear: both;">
             {{ now.format(date_format, locale) }}
+            {# if base == 10 and date_format == locale.ADC_DATE_FORMAT %}
+            <br/><br/><b>{{ now.format('&>Y&iM&iW&iD', locale) }}</b>
+            {% endif #}
         </p>
         <div id="weather_view" style="display:none;"></div>
         <p clas="now-events">

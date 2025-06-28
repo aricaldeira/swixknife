@@ -167,11 +167,11 @@
         </td>
         <td style="line-height: {{MONTH_LINE_HEIGHT}}; font-size: {{MONTH_FONT_SIZE}};">
             {%- if locale.calendar_displayed == 'DCC' -%}
-                {{ date.format('&' + format_token + 'W', locale) }}
                 {%- if 'c' in format_token -%}
-                    {%- with dcc_weekday_number = date.dcc_weekday -%}
-                        &nbsp;{%- include 'calendar_span_adc_weekday_symbol.html' -%}
-                    {%- endwith -%}
+                    {{ date.format('&' + format_token + 'W &iW &' + format_token + 'D &iD', locale) }}
+                {%- endif -%}
+                {%- if 'c' not in format_token -%}
+                    {{ date.format('&' + format_token + 'D', locale) }}
                 {%- endif -%}
             {%- else -%}
                 {{ date.format('#W', locale) }}

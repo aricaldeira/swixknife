@@ -134,7 +134,7 @@
                 {%- else -%}
                     {{ locale.upper(locale.ADC_MONTH_NAME[int(dcc_month_number)]) }}
                 {%- endif -%}
-                &nbsp;{%- include 'calendar_span_adc_month_symbol.html' -%}
+                &nbsp;{{ locale.ADC_MONTH_ICON[int(dcc_month_number)] }}
             {%- else -%}
                 {%- if now_view -%}
                     {{ now.format(locale.DCC_YEAR_TEXT_MONTH_FORMAT, locale) }}
@@ -195,10 +195,7 @@
                 {%- if 'c' in format_token -%}
                     <span class="hide-in-mobile">{{ locale.upper(locale.adc_weekday_abbreviated_name(i)) }}</span>
                     <span class="show-in-mobile">{{ locale.upper(locale.adc_weekday_symbol(i)) }}</span>
-                    {%- with dcc_weekday_number = i -%}
-                        <span class="hide-in-mobile">&nbsp;</span>
-                        {%- include 'calendar_span_adc_weekday_symbol.html' -%}
-                    {%- endwith -%}
+                    {{ locale.ADC_WEEKDAY_ICON[i] }}
                 {%- else -%}
                     {{ locale.upper(locale.dcc_weekday_abbreviated_name(i)) }}
                 {%- endif -%}
@@ -208,10 +205,7 @@
             {%- for i in SezimalRange(10) -%}
                 <td style="line-height: {{WEEK_LINE_HEIGHT}}; font-size: {{DATE_FONT_SIZE}}; color: {{colors[week_color][SHADES[i]]}}; {%- if date.dcc_month == dcc_month_number and date.dcc_weekday == WEEKDAYS[i] -%}background-color: {{ colors[week_color][BACK_SHADES[i]] }}; color: {{ colors[week_color][TEXT_SHADES[i]] }}; font-weight: bold; font-size: {{TODAY_FONT_SIZE}};{%- endif -%} border-bottom: 1px solid;{%- if WEEKDAYS[i] == WEEKDAY_BORDER_LEFT -%} border-{{ 'right' if locale.RTL else 'left' }}: 3px solid {{colors[week_color][SHADES[i]]}};{%- endif -%}{%- if WEEKDAYS[i] == WEEKDAY_BORDER_RIGHT -%} border-{{ 'left' if locale.RTL else 'right' }}: 3px solid {{colors[week_color][SHADES[i]]}};{%- endif -%}">
                 {%- if 'c' in format_token -%}
-                    {{ locale.upper(locale.adc_weekday_symbol(i)) }}
-                    {%- with dcc_weekday_number = i -%}
-                        {%- include 'calendar_span_adc_weekday_symbol.html' -%}
-                    {%- endwith -%}
+                    {{ locale.upper(locale.adc_weekday_symbol(i)) + locale.ADC_WEEKDAY_ICON[i] }}
                 {%- else -%}
                     {{ locale.upper(locale.dcc_weekday_symbol(i)) }}
                 {%- endif -%}
@@ -263,6 +257,7 @@
                 {%- else -%}
                     <td style="line-height: {{WEEK_LINE_HEIGHT}}; color: {{colors[week_in_year][shade_week_number]}}; font-size: {{WEEK_FONT_SIZE}}; {%- if date.dcc_week_in_year == week_in_year -%}background-color: {{ colors[weeks[week_in_month]][back_shade_week_number] }}; color: {{ colors[weeks[week_in_month]][text_shade_week_number] }}; font-weight: bold;{%- endif -%} border-{{ 'left' if locale.RTL else 'right' }}: 1px solid {{colors[weeks[0]][shade_week_number]}};">
                         {{ '·\u2009' if week_in_year in (11, 34, 101, 124) else '.\u2009' if week_in_year in (23, 50, 113) else '\u2008\u2009' }}{{ NUMBERS[week_in_year] }}{{ '\u2009·' if week_in_year in (11, 34, 101, 124) else '\u2009.' if week_in_year in (22, 45, 112) else '\u2009\u2008' }}
+                        {{ locale.ADC_WEEK_ICON[week_in_month] }}
                     </td>
                 {%- endif -%}
                 {%- for i in SezimalRange(10) -%}
