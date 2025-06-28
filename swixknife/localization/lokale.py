@@ -2096,6 +2096,20 @@ class SezimalLocale:
         'Sx',
     ]
 
+    ADC_MONTH_ICON = [
+        '󱺀',
+        '󱺁',
+        '󱺂',
+        '󱺃',
+        '󱺄',
+        '󱺅',
+        '󱺆',
+        '󱺇',
+        '󱺈',
+        '󱺉',
+        '󱺊',
+    ]
+
     ADC_WEEKDAY_NAME = [
         'Sol',
         # 'Mercury',
@@ -2126,6 +2140,51 @@ class SezimalLocale:
         'L', # ○ ☉
     ]
 
+    ADC_WEEK_NAME = [
+        'Soul',
+        'Fire',
+        'Air',
+        'Water',
+        'Earth',
+        'Body',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'Sou',
+        'Fir',
+        'Air',
+        'Wat',
+        'Ear',
+        'Bod',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'S',
+        'F',
+        'A',
+        'W',
+        'E',
+        'B',
+    ]
+
+    ADC_WEEK_ICON = [
+        '󱺐',
+        '󱺑',
+        '󱺒',
+        '󱺓',
+        '󱺔',
+        '󱺕',
+    ]
+
+    ADC_WEEKDAY_ICON = [
+        '󱺖',
+        '󱺗',
+        '󱺘',
+        '󱺙',
+        '󱺚',
+        '󱺛',
+    ]
+
     def adc_month_name(self, month: SezimalInteger, case: str = None) -> str:
         month = SezimalInteger(month)
 
@@ -2149,6 +2208,30 @@ class SezimalLocale:
             raise ValueError(self.MONTH_ERROR.format(month=month))
 
         return self.ADC_MONTH_SYMBOL[int(month.decimal)]
+
+    def adc_week_name(self, week: SezimalInteger, case: str = None) -> str:
+        week = SezimalInteger(week)
+
+        if week < 0 or week > 5:
+            raise ValueError(self.WEEK_ERROR.format(week=week))
+
+        return self.ADC_WEEK_NAME[int(week.decimal)]
+
+    def adc_week_abbreviated_name(self, week: SezimalInteger, case: str = None) -> str:
+        week = SezimalInteger(week)
+
+        if week < 0 or week > 5:
+            raise ValueError(self.WEEK_ERROR.format(week=week))
+
+        return self.ADC_WEEK_ABBREVIATED_NAME[int(week.decimal)]
+
+    def adc_week_symbol(self, week: SezimalInteger, case: str = None) -> str:
+        week = SezimalInteger(week)
+
+        if week < 0 or week > 5:
+            raise ValueError(self.WEEK_ERROR.format(week=week))
+
+        return self.ADC_WEEK_SYMBOL[int(week.decimal)]
 
     def adc_weekday_name(self, weekday: SezimalInteger, case: str = None) -> str:
         weekday = SezimalInteger(weekday)
@@ -2204,4 +2287,4 @@ class SezimalLocale:
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, month &-m, week &-wM, day &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, month of &cM, day &-d'
-    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week &wM, day of &cW'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week of the &cW, day of &cW'

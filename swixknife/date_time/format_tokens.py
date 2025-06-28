@@ -262,5 +262,5 @@ DCC_YEAR_NUMBER_FORMAT_TOKENS = tuple(
 
 
 DCC_DATE_TEXT_FORMAT_TOKEN = re.compile(
-    r'&(?P<base>Z|9|↋|c|c9|c↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week_term>M|W|T)'
+    r'&(?P<base>Z|9|↋|c|c9|c↋)?(?P<size>@|1|2|3)?(?P<case>\!|\?|\>)?(?P<month_week_term>M|W|D|T)'
 )

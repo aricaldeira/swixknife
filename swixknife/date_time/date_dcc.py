@@ -404,6 +404,36 @@ _ADC_WEEKDAY_SYMBOL = {
 
 
 def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None) -> str:
+    #
+    # Locale’s date separator
+    #
+    if '&DS' in fmt:
+        if locale:
+            fmt = fmt.replace('&DS', locale.DCC_DATE_SEPARATOR)
+        else:
+            fmt = fmt.replace('&DS', '‐')
+
+    if '&DYMS' in fmt:
+        if locale:
+            fmt = fmt.replace('&DYMS', locale.DCC_DATE_YEAR_MONTH_SEPARATOR)
+        else:
+            fmt = fmt.replace('&DYMS', ', ')
+
+    if '&DMDS' in fmt:
+        if locale:
+            fmt = fmt.replace('&DMDS', locale.DCC_DATE_MONTH_DAY_SEPARATOR)
+        else:
+            fmt = fmt.replace('&DMDS', ', ')
+
+    #
+    # Year’s explicit sign
+    #
+    if '&+' in fmt:
+        if self.dcc_year >= 0:
+            fmt = fmt.replace('&+', '+')
+        else:
+            fmt = fmt.replace('&+', '')
+
     for token, value, count in (
         ('dY', 'dcc_day_in_year', 'DCC_DAY_IN_YEAR_COUNT'),
         ('dW', 'dcc_weekday', 'DCC_DAY_IN_WEEK_COUNT'),
@@ -533,6 +563,11 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
                     text = locale.adc_month_abbreviated_name(self.dcc_month)
                 else:
                     text = locale.adc_month_name(self.dcc_month)
+            elif term_month_week == 'W':
+                if size:
+                    text = locale.adc_week_abbreviated_name(self.dcc_week)
+                else:
+                    text = locale.adc_week_name(self.dcc_week)
             else:
                 if size:
                     text = locale.adc_weekday_abbreviated_name(self.dcc_weekday)
@@ -577,14 +612,14 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
     if '&O' in fmt:
         fmt = fmt.replace('&O', locale.dcc_day_ordinal_suffix(self.dcc_day))
 
-    if '&sM' in fmt:
-        fmt = fmt.replace('&sM', _ADC_MONTH_SYMBOL[self.dcc_month])
+    if '&iM' in fmt:
+        fmt = fmt.replace('&iM', locale.ADC_MONTH_ICON[int(self.dcc_month)])
 
-    if '&sW' in fmt:
-        fmt = fmt.replace('&sW', _ADC_WEEK_SYMBOL[self.dcc_week])
+    if '&iW' in fmt:
+        fmt = fmt.replace('&iW', locale.ADC_WEEK_ICON[int(self.dcc_week)])
 
-    if '&sD' in fmt:
-        fmt = fmt.replace('&sD', _ADC_WEEKDAY_SYMBOL[self.dcc_weekday])
+    if '&iD' in fmt:
+        fmt = fmt.replace('&iD', locale.ADC_WEEKDAY_ICON[int(self.dcc_weekday)])
 
     fmt = locale.apply_dcc_date_format(self, fmt)
 

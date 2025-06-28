@@ -477,24 +477,6 @@ class SezimalDate:
             else:
                 fmt = fmt.replace('#/', '-')
 
-        if '&DS' in fmt:
-            if locale:
-                fmt = fmt.replace('&DS', locale.DCC_DATE_SEPARATOR)
-            else:
-                fmt = fmt.replace('&DS', '‐')
-
-        if '&DYMS' in fmt:
-            if locale:
-                fmt = fmt.replace('&DYMS', locale.DCC_DATE_YEAR_MONTH_SEPARATOR)
-            else:
-                fmt = fmt.replace('&DYMS', ', ')
-
-        if '&DMDS' in fmt:
-            if locale:
-                fmt = fmt.replace('&DMDS', locale.DCC_DATE_MONTH_DAY_SEPARATOR)
-            else:
-                fmt = fmt.replace('&DMDS', ', ')
-
         #
         # Year’s explicit sign
         #
@@ -503,12 +485,6 @@ class SezimalDate:
                 fmt = fmt.replace('#+', '+')
             else:
                 fmt = fmt.replace('#+', '')
-
-        if '&+' in fmt:
-            if self.dcc_year >= 0:
-                fmt = fmt.replace('&+', '+')
-            else:
-                fmt = fmt.replace('&+', '')
 
         #
         # Let’s deal first with the numeric formats

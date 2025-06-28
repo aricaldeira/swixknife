@@ -425,7 +425,7 @@ class SezimalLocaleEO(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, monato &-m, semajno &-wM, tago &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, monato de &cM, tago &-d'
-    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, monato de &cM, semajno &wM, tago de &cW'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, monato de &cM, semajno de la &cW, tago de &cD'
 
     HIJRI_CALENDAR_MONTH_NAME = [
         'Muharramo',

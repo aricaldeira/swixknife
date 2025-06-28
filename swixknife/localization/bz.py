@@ -625,6 +625,33 @@ class SezimalLocaleBZ(SezimalLocale):
         'ss',
     ]
 
+    ADC_WEEK_NAME = [
+        'espíritu',
+        'fogu',
+        'ar',
+        'agwa',
+        'tèrra',
+        'korpu',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'esp',
+        'fog',
+        'ar',
+        'agw',
+        'tèr',
+        'kor',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'E',
+        'F',
+        'Ar',
+        'Ag',
+        'T',
+        'K',
+    ]
+
     ADC_WEEKDAY_NAME = [
         'sòw',
         # 'merkuryu',
@@ -651,8 +678,8 @@ class SezimalLocaleBZ(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, semana &-wY, dia &-dW'
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mez &-m, semana &-wM, dia &-dW'
 
-    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mez &$DEM &cM, dia &-d'
-    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mez &$DEM &cM, semana &wM, dia &$DEW &cW'
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mez &$DIM &cM, dia &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mez &$DIM &cM, semana &$DIW &cW, dia &$DID &cD'
 
     _DE_DO_DA_MES = [
         'di',  # pexis
@@ -668,7 +695,7 @@ class SezimalLocaleBZ(SezimalLocale):
         'du',  # sestanti
     ]
 
-    _DE_DO_DA_SEMANA = [
+    _DI_DU_DA_DIA_SEMANA = [
          'du',  # sòw
          'di',  # venus
          'di',  # marti

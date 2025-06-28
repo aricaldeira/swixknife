@@ -648,6 +648,33 @@ class SezimalLocalePT(SezimalLocale):
         'sx',
     ]
 
+    ADC_WEEK_NAME = [
+        'espírito',
+        'fogo',
+        'ar',
+        'água',
+        'terra',
+        'corpo',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'esp',
+        'fog',
+        'ar',
+        'águ',
+        'ter',
+        'cor',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'E',
+        'F',
+        'A',
+        'Á',
+        'T',
+        'C',
+    ]
+
     ADC_WEEKDAY_NAME = [
         'sol',
         # 'mercúrio',
@@ -674,7 +701,7 @@ class SezimalLocalePT(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mês &-m, semana &-wM, dia &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mês &$DEM &cM, dia &-d'
-    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mês &$DEM &cM, semana &wM, dia &$DEW &cW'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mês &$DEM &cM, semana &$DEW &cW, dia &$DED &cD'
 
     _DE_DO_DA_MES = [
         'de',  # peixes
@@ -690,7 +717,7 @@ class SezimalLocalePT(SezimalLocale):
         'do',  # sextante
     ]
 
-    _DE_DO_DA_SEMANA = [
+    _DE_DO_DA_DIA_SEMANA = [
          'do',  # sol
          'de',  # vênus
          'de',  # marte
@@ -700,8 +727,11 @@ class SezimalLocalePT(SezimalLocale):
     ]
 
     def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
+        if f'&$DED' in fmt:
+            fmt = fmt.replace(f'&$DED', self._DE_DO_DA_DIA_SEMANA[int(date.dcc_weekday)])
+
         if f'&$DEW' in fmt:
-            fmt = fmt.replace(f'&$DEW', self._DE_DO_DA_SEMANA[int(date.dcc_weekday)])
+            fmt = fmt.replace(f'&$DEW', self._DE_DO_DA_SEMANA[int(date.dcc_week)])
 
         if f'&$DEM' in fmt:
             fmt = fmt.replace(f'&$DEM', self._DE_DO_DA_MES[int(date.dcc_month)])
