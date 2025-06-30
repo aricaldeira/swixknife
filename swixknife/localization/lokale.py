@@ -263,6 +263,9 @@ class SezimalLocale:
         if self.RTL:
             ihmf = '\N{LRI}' + ihmf + '\N{PDI}'
 
+        if parts[-1].endswith('%P'):
+            ihmf += ' %P'
+
         return ihmf
 
     @property

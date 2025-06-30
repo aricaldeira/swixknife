@@ -1608,17 +1608,13 @@ def _prepare_locale(locale, dados):
     elif dados['hour_format'] == '24h':
         if locale.DIGITS:
             locale.ISO_TIME_FORMAT = '%?H:%?M:%?S'
-            locale.ISO_SHORT_TIME_FORMAT = '%?H:%?M'
         else:
             locale.ISO_TIME_FORMAT = '%H:%M:%S'
-            locale.ISO_SHORT_TIME_FORMAT = '%H:%M'
     elif dados['hour_format'] == '12h':
         if locale.DIGITS:
             locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
-            locale.ISO_SHORT_TIME_FORMAT = '%?I:%?M %P'
         else:
             locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
-            locale.ISO_SHORT_TIME_FORMAT = '%I:%M %P'
 
     if base == 10:
         locale.to_short_year_format()
