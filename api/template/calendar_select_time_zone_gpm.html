@@ -1,11 +1,11 @@
     {% if locale.LANGUAGE_TAG.startswith('pt') %}
-        <optgroup hidden id="time_zone_from_gpm" label="GPM - Meridiano Primário de Greenwich">
+        <optgroup hidden id="time_zone_from_gpm" label="GMT - Meridiano Primário de Greenwich">
     {% elif locale.LANGUAGE_TAG.startswith('bz') %}
-        <optgroup hidden id="time_zone_from_gpm" label="GPM - Meridianu Primaryu di Grênitxi">
+        <optgroup hidden id="time_zone_from_gpm" label="GMT - Meridianu Primaryu di Grênitxi">
     {% elif locale.LANGUAGE_TAG.startswith('eo') %}
-        <optgroup hidden id="time_zone_from_gpm" label="GPM - Grenviĉa Referenca Meridiano">
+        <optgroup hidden id="time_zone_from_gpm" label="GMT - Grenviĉa Referenca Meridiano">
     {% else %}
-        <optgroup hidden id="time_zone_from_gpm" label="GPM - Greenwich Prime Meridian">
+        <optgroup hidden id="time_zone_from_gpm" label="GMT - Greenwich Prime Meridian">
     {% endif %}
     {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
@@ -13,201 +13,201 @@
         {% else %}
             <option disabled value="brazil_sp">      Brasil - São Paulo, Brasília</option>
         {% endif %}
-        <option value="GPM/GPM-0310">GPM-03:10 long. −47,5°</option>
+        <option value="GPM/GPM-0310">GMT-03:10 long. −47,5°</option>
 
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR', 'eo-BR', 'en-BR') %}
             <option disabled value="brazil">      Braziw - Otrus fuzus</option>
         {% else %}
             <option disabled value="brazil">      Brasil - Outros fusos</option>
         {% endif %}
-        <option value="GPM/GPM-05">GPM-05 long. −75°</option>
-        <option value="GPM/GPM-0450">GPM-04:50 long. −72,5°</option>
-        <option value="GPM/GPM-0440">GPM-04:40 long. −70°</option>
-        <option value="GPM/GPM-0430">GPM-04:30 long. −67,5°</option>
-        <option value="GPM/GPM-0420">GPM-04:20 long. −65°</option>
-        <option value="GPM/GPM-0410">GPM-04:10 long. −62,5°</option>
-        <option value="GPM/GPM-04">GPM-04 long. −60°</option>
-        <option value="GPM/GPM-0350">GPM-03:50 long. −57,5°</option>
-        <option value="GPM/GPM-0340">GPM-03:40 long. −55°</option>
-        <option value="GPM/GPM-0330">GPM-03:30 long. −52,5°</option>
-        <option value="GPM/GPM-0320">GPM-03:20 long. −50°</option>
-        <option value="GPM/GPM-0310">GPM-03:10 long. −47,5°</option>
-        <option value="GPM/GPM-03">GPM-03 long. −45°</option>
-        <option value="GPM/GPM-0250">GPM-02:50 long. −42,5°</option>
-        <option value="GPM/GPM-0240">GPM-02:40 long. −40°</option>
-        <option value="GPM/GPM-0230">GPM-02:30 long. −37,5°</option>
-        <option value="GPM/GPM-0220">GPM-02:20 long. −35°</option>
-        <option value="GPM/GPM-0210">GPM-02:10 long. −32,5°</option>
-        <option value="GPM/GPM-02">GPM-02 long. −30°</option>
+        <option value="GPM/GPM-05">GMT-05 long. −75°</option>
+        <option value="GPM/GPM-0450">GMT-04:50 long. −72,5°</option>
+        <option value="GPM/GPM-0440">GMT-04:40 long. −70°</option>
+        <option value="GPM/GPM-0430">GMT-04:30 long. −67,5°</option>
+        <option value="GPM/GPM-0420">GMT-04:20 long. −65°</option>
+        <option value="GPM/GPM-0410">GMT-04:10 long. −62,5°</option>
+        <option value="GPM/GPM-04">GMT-04 long. −60°</option>
+        <option value="GPM/GPM-0350">GMT-03:50 long. −57,5°</option>
+        <option value="GPM/GPM-0340">GMT-03:40 long. −55°</option>
+        <option value="GPM/GPM-0330">GMT-03:30 long. −52,5°</option>
+        <option value="GPM/GPM-0320">GMT-03:20 long. −50°</option>
+        <option value="GPM/GPM-0310">GMT-03:10 long. −47,5°</option>
+        <option value="GPM/GPM-03">GMT-03 long. −45°</option>
+        <option value="GPM/GPM-0250">GMT-02:50 long. −42,5°</option>
+        <option value="GPM/GPM-0240">GMT-02:40 long. −40°</option>
+        <option value="GPM/GPM-0230">GMT-02:30 long. −37,5°</option>
+        <option value="GPM/GPM-0220">GMT-02:20 long. −35°</option>
+        <option value="GPM/GPM-0210">GMT-02:10 long. −32,5°</option>
+        <option value="GPM/GPM-02">GMT-02 long. −30°</option>
     {% endif %}
 
-        <option value="GPM/GPM-12">GPM-12 long. −180°</option>
-        <option value="GPM/GPM-1150">GPM-11:50 long. −177.5°</option>
-        <option value="GPM/GPM-1140">GPM-11:40 long. −175°</option>
-        <option value="GPM/GPM-1130">GPM-11:30 long. −172.5°</option>
-        <option value="GPM/GPM-1120">GPM-11:20 long. −170°</option>
-        <option value="GPM/GPM-1110">GPM-11:10 long. −167.5°</option>
-        <option value="GPM/GPM-11">GPM-11 long. −165°</option>
-        <option value="GPM/GPM-1050">GPM-10:50 long. −162.5°</option>
-        <option value="GPM/GPM-1040">GPM-10:40 long. −160°</option>
-        <option value="GPM/GPM-1030">GPM-10:30 long. −157.5°</option>
-        <option value="GPM/GPM-1020">GPM-10:20 long. −155°</option>
-        <option value="GPM/GPM-1010">GPM-10:10 long. −152.5°</option>
-        <option value="GPM/GPM-10">GPM-10 long. −150°</option>
-        <option value="GPM/GPM-0950">GPM-09:50 long. −147.5°</option>
-        <option value="GPM/GPM-0940">GPM-09:40 long. −145°</option>
-        <option value="GPM/GPM-0930">GPM-09:30 long. −142.5°</option>
-        <option value="GPM/GPM-0920">GPM-09:20 long. −140°</option>
-        <option value="GPM/GPM-0910">GPM-09:10 long. −137.5°</option>
-        <option value="GPM/GPM-09">GPM-09 long. −135°</option>
-        <option value="GPM/GPM-0850">GPM-08:50 long. −132.5°</option>
-        <option value="GPM/GPM-0840">GPM-08:40 long. −130°</option>
-        <option value="GPM/GPM-0830">GPM-08:30 long. −127.5°</option>
-        <option value="GPM/GPM-0820">GPM-08:20 long. −125°</option>
-        <option value="GPM/GPM-0810">GPM-08:10 long. −122.5°</option>
-        <option value="GPM/GPM-08">GPM-08 long. −120°</option>
-        <option value="GPM/GPM-0750">GPM-07:50 long. −117.5°</option>
-        <option value="GPM/GPM-0740">GPM-07:40 long. −115°</option>
-        <option value="GPM/GPM-0730">GPM-07:30 long. −112.5°</option>
-        <option value="GPM/GPM-0720">GPM-07:20 long. −110°</option>
-        <option value="GPM/GPM-0710">GPM-07:10 long. −107.5°</option>
-        <option value="GPM/GPM-07">GPM-07 long. −105°</option>
-        <option value="GPM/GPM-0650">GPM-06:50 long. −102.5°</option>
-        <option value="GPM/GPM-0640">GPM-06:40 long. −100°</option>
-        <option value="GPM/GPM-0630">GPM-06:30 long. −97.5°</option>
-        <option value="GPM/GPM-0620">GPM-06:20 long. −95°</option>
-        <option value="GPM/GPM-0610">GPM-06:10 long. −92.5°</option>
-        <option value="GPM/GPM-06">GPM-06 long. −90°</option>
-        <option value="GPM/GPM-0550">GPM-05:50 long. −87.5°</option>
-        <option value="GPM/GPM-0540">GPM-05:40 long. −85°</option>
-        <option value="GPM/GPM-0530">GPM-05:30 long. −82.5°</option>
-        <option value="GPM/GPM-0520">GPM-05:20 long. −80°</option>
-        <option value="GPM/GPM-0510">GPM-05:10 long. −77.5°</option>
-        <option value="GPM/GPM-05">GPM-05 long. −75°</option>
-        <option value="GPM/GPM-0450">GPM-04:50 long. −72.5°</option>
-        <option value="GPM/GPM-0440">GPM-04:40 long. −70°</option>
-        <option value="GPM/GPM-0430">GPM-04:30 long. −67.5°</option>
-        <option value="GPM/GPM-0420">GPM-04:20 long. −65°</option>
-        <option value="GPM/GPM-0410">GPM-04:10 long. −62.5°</option>
-        <option value="GPM/GPM-04">GPM-04 long. −60°</option>
-        <option value="GPM/GPM-0350">GPM-03:50 long. −57.5°</option>
-        <option value="GPM/GPM-0340">GPM-03:40 long. −55°</option>
-        <option value="GPM/GPM-0330">GPM-03:30 long. −52.5°</option>
-        <option value="GPM/GPM-0320">GPM-03:20 long. −50°</option>
-        <option value="GPM/GPM-0310">GPM-03:10 long. −47.5°</option>
-        <option value="GPM/GPM-03">GPM-03 long. −45°</option>
-        <option value="GPM/GPM-0250">GPM-02:50 long. −42.5°</option>
-        <option value="GPM/GPM-0240">GPM-02:40 long. −40°</option>
-        <option value="GPM/GPM-0230">GPM-02:30 long. −37.5°</option>
-        <option value="GPM/GPM-0220">GPM-02:20 long. −35°</option>
-        <option value="GPM/GPM-0210">GPM-02:10 long. −32.5°</option>
-        <option value="GPM/GPM-02">GPM-02 long. −30°</option>
-        <option value="GPM/GPM-0150">GPM-01:50 long. −27.5°</option>
-        <option value="GPM/GPM-0140">GPM-01:40 long. −25°</option>
-        <option value="GPM/GPM-0130">GPM-01:30 long. −22.5°</option>
-        <option value="GPM/GPM-0120">GPM-01:20 long. −20°</option>
-        <option value="GPM/GPM-0110">GPM-01:10 long. −17.5°</option>
-        <option value="GPM/GPM-01">GPM-01 long. −15°</option>
-        <option value="GPM/GPM-0050">GPM-00:50 long. −12.5°</option>
-        <option value="GPM/GPM-0040">GPM-00:40 long. −10°</option>
-        <option value="GPM/GPM-0030">GPM-00:30 long. −7.5°</option>
-        <option value="GPM/GPM-0020">GPM-00:20 long. −5°</option>
-        <option value="GPM/GPM-0010">GPM-00:10 long. −2.5°</option>
-        <option value="GPM/GPM">GPM long. 0°</option>
-        <option value="GPM/GPM+0010">GPM+00:10 long. +2.5°</option>
-        <option value="GPM/GPM+0020">GPM+00:20 long. +5°</option>
-        <option value="GPM/GPM+0030">GPM+00:30 long. +7.5°</option>
-        <option value="GPM/GPM+0040">GPM+00:40 long. +10°</option>
-        <option value="GPM/GPM+0050">GPM+00:50 long. +12.5°</option>
-        <option value="GPM/GPM+01">GPM+01 long. +15°</option>
-        <option value="GPM/GPM+0110">GPM+01:10 long. +17.5°</option>
-        <option value="GPM/GPM+0120">GPM+01:20 long. +20°</option>
-        <option value="GPM/GPM+0130">GPM+01:30 long. +22.5°</option>
-        <option value="GPM/GPM+0140">GPM+01:40 long. +25°</option>
-        <option value="GPM/GPM+0150">GPM+01:50 long. +27.5°</option>
-        <option value="GPM/GPM+02">GPM+02 long. +30°</option>
-        <option value="GPM/GPM+0210">GPM+02:10 long. +32.5°</option>
-        <option value="GPM/GPM+0220">GPM+02:20 long. +35°</option>
-        <option value="GPM/GPM+0230">GPM+02:30 long. +37.5°</option>
-        <option value="GPM/GPM+0240">GPM+02:40 long. +40°</option>
-        <option value="GPM/GPM+0250">GPM+02:50 long. +42.5°</option>
-        <option value="GPM/GPM+03">GPM+03 long. +45°</option>
-        <option value="GPM/GPM+0310">GPM+03:10 long. +47.5°</option>
-        <option value="GPM/GPM+0320">GPM+03:20 long. +50°</option>
-        <option value="GPM/GPM+0330">GPM+03:30 long. +52.5°</option>
-        <option value="GPM/GPM+0340">GPM+03:40 long. +55°</option>
-        <option value="GPM/GPM+0350">GPM+03:50 long. +57.5°</option>
-        <option value="GPM/GPM+04">GPM+04 long. +60°</option>
-        <option value="GPM/GPM+0410">GPM+04:10 long. +62.5°</option>
-        <option value="GPM/GPM+0420">GPM+04:20 long. +65°</option>
-        <option value="GPM/GPM+0430">GPM+04:30 long. +67.5°</option>
-        <option value="GPM/GPM+0440">GPM+04:40 long. +70°</option>
-        <option value="GPM/GPM+0450">GPM+04:50 long. +72.5°</option>
-        <option value="GPM/GPM+05">GPM+05 long. +75°</option>
-        <option value="GPM/GPM+0510">GPM+05:10 long. +77.5°</option>
-        <option value="GPM/GPM+0520">GPM+05:20 long. +80°</option>
-        <option value="GPM/GPM+0530">GPM+05:30 long. +82.5°</option>
-        <option value="GPM/GPM+0540">GPM+05:40 long. +85°</option>
-        <option value="GPM/GPM+0550">GPM+05:50 long. +87.5°</option>
-        <option value="GPM/GPM+06">GPM+06 long. +90°</option>
-        <option value="GPM/GPM+0610">GPM+06:10 long. +92.5°</option>
-        <option value="GPM/GPM+0620">GPM+06:20 long. +95°</option>
-        <option value="GPM/GPM+0630">GPM+06:30 long. +97.5°</option>
-        <option value="GPM/GPM+0640">GPM+06:40 long. +100°</option>
-        <option value="GPM/GPM+0650">GPM+06:50 long. +102.5°</option>
-        <option value="GPM/GPM+07">GPM+07 long. +105°</option>
-        <option value="GPM/GPM+0710">GPM+07:10 long. +107.5°</option>
-        <option value="GPM/GPM+0720">GPM+07:20 long. +110°</option>
-        <option value="GPM/GPM+0730">GPM+07:30 long. +112.5°</option>
-        <option value="GPM/GPM+0740">GPM+07:40 long. +115°</option>
-        <option value="GPM/GPM+0750">GPM+07:50 long. +117.5°</option>
-        <option value="GPM/GPM+08">GPM+08 long. +120°</option>
-        <option value="GPM/GPM+0810">GPM+08:10 long. +122.5°</option>
-        <option value="GPM/GPM+0820">GPM+08:20 long. +125°</option>
-        <option value="GPM/GPM+0830">GPM+08:30 long. +127.5°</option>
-        <option value="GPM/GPM+0840">GPM+08:40 long. +130°</option>
-        <option value="GPM/GPM+0850">GPM+08:50 long. +132.5°</option>
-        <option value="GPM/GPM+09">GPM+09 long. +135°</option>
-        <option value="GPM/GPM+0910">GPM+09:10 long. +137.5°</option>
-        <option value="GPM/GPM+0920">GPM+09:20 long. +140°</option>
-        <option value="GPM/GPM+0930">GPM+09:30 long. +142.5°</option>
-        <option value="GPM/GPM+0940">GPM+09:40 long. +145°</option>
-        <option value="GPM/GPM+0950">GPM+09:50 long. +147.5°</option>
-        <option value="GPM/GPM+10">GPM+10 long. +150°</option>
-        <option value="GPM/GPM+1010">GPM+10:10 long. +152.5°</option>
-        <option value="GPM/GPM+1020">GPM+10:20 long. +155°</option>
-        <option value="GPM/GPM+1030">GPM+10:30 long. +157.5°</option>
-        <option value="GPM/GPM+1040">GPM+10:40 long. +160°</option>
-        <option value="GPM/GPM+1050">GPM+10:50 long. +162.5°</option>
-        <option value="GPM/GPM+11">GPM+11 long. +165°</option>
-        <option value="GPM/GPM+1110">GPM+11:10 long. +167.5°</option>
-        <option value="GPM/GPM+1120">GPM+11:20 long. +170°</option>
-        <option value="GPM/GPM+1130">GPM+11:30 long. +172.5°</option>
-        <option value="GPM/GPM+1140">GPM+11:40 long. +175°</option>
-        <option value="GPM/GPM+1150">GPM+11:50 long. +177.5°</option>
-        <option value="GPM/GPM+12">GPM+12 long. +180°</option>
-        <option value="GPM/GPM+1210">GPM+12:10 long. −177.5°</option>
-        <option value="GPM/GPM+1220">GPM+12:20 long. −175°</option>
-        <option value="GPM/GPM+1230">GPM+12:30 long. −172.5°</option>
-        <option value="GPM/GPM+1240">GPM+12:40 long. −170°</option>
-        <option value="GPM/GPM+1250">GPM+12:50 long. −167.5°</option>
-        <option value="GPM/GPM+13">GPM+13 long. −165°</option>
-        <option value="GPM/GPM+1310">GPM+13:10 long. −162.5°</option>
-        <option value="GPM/GPM+1320">GPM+13:20 long. −160°</option>
-        <option value="GPM/GPM+1330">GPM+13:30 long. −157.5°</option>
-        <option value="GPM/GPM+1340">GPM+13:40 long. −155°</option>
-        <option value="GPM/GPM+1350">GPM+13:50 long. −152.5°</option>
-        <option value="GPM/GPM+14">GPM+14 long. −150°</option>
+        <option value="GPM/GPM-12">GMT-12 long. −180°</option>
+        <option value="GPM/GPM-1150">GMT-11:50 long. −177.5°</option>
+        <option value="GPM/GPM-1140">GMT-11:40 long. −175°</option>
+        <option value="GPM/GPM-1130">GMT-11:30 long. −172.5°</option>
+        <option value="GPM/GPM-1120">GMT-11:20 long. −170°</option>
+        <option value="GPM/GPM-1110">GMT-11:10 long. −167.5°</option>
+        <option value="GPM/GPM-11">GMT-11 long. −165°</option>
+        <option value="GPM/GPM-1050">GMT-10:50 long. −162.5°</option>
+        <option value="GPM/GPM-1040">GMT-10:40 long. −160°</option>
+        <option value="GPM/GPM-1030">GMT-10:30 long. −157.5°</option>
+        <option value="GPM/GPM-1020">GMT-10:20 long. −155°</option>
+        <option value="GPM/GPM-1010">GMT-10:10 long. −152.5°</option>
+        <option value="GPM/GPM-10">GMT-10 long. −150°</option>
+        <option value="GPM/GPM-0950">GMT-09:50 long. −147.5°</option>
+        <option value="GPM/GPM-0940">GMT-09:40 long. −145°</option>
+        <option value="GPM/GPM-0930">GMT-09:30 long. −142.5°</option>
+        <option value="GPM/GPM-0920">GMT-09:20 long. −140°</option>
+        <option value="GPM/GPM-0910">GMT-09:10 long. −137.5°</option>
+        <option value="GPM/GPM-09">GMT-09 long. −135°</option>
+        <option value="GPM/GPM-0850">GMT-08:50 long. −132.5°</option>
+        <option value="GPM/GPM-0840">GMT-08:40 long. −130°</option>
+        <option value="GPM/GPM-0830">GMT-08:30 long. −127.5°</option>
+        <option value="GPM/GPM-0820">GMT-08:20 long. −125°</option>
+        <option value="GPM/GPM-0810">GMT-08:10 long. −122.5°</option>
+        <option value="GPM/GPM-08">GMT-08 long. −120°</option>
+        <option value="GPM/GPM-0750">GMT-07:50 long. −117.5°</option>
+        <option value="GPM/GPM-0740">GMT-07:40 long. −115°</option>
+        <option value="GPM/GPM-0730">GMT-07:30 long. −112.5°</option>
+        <option value="GPM/GPM-0720">GMT-07:20 long. −110°</option>
+        <option value="GPM/GPM-0710">GMT-07:10 long. −107.5°</option>
+        <option value="GPM/GPM-07">GMT-07 long. −105°</option>
+        <option value="GPM/GPM-0650">GMT-06:50 long. −102.5°</option>
+        <option value="GPM/GPM-0640">GMT-06:40 long. −100°</option>
+        <option value="GPM/GPM-0630">GMT-06:30 long. −97.5°</option>
+        <option value="GPM/GPM-0620">GMT-06:20 long. −95°</option>
+        <option value="GPM/GPM-0610">GMT-06:10 long. −92.5°</option>
+        <option value="GPM/GPM-06">GMT-06 long. −90°</option>
+        <option value="GPM/GPM-0550">GMT-05:50 long. −87.5°</option>
+        <option value="GPM/GPM-0540">GMT-05:40 long. −85°</option>
+        <option value="GPM/GPM-0530">GMT-05:30 long. −82.5°</option>
+        <option value="GPM/GPM-0520">GMT-05:20 long. −80°</option>
+        <option value="GPM/GPM-0510">GMT-05:10 long. −77.5°</option>
+        <option value="GPM/GPM-05">GMT-05 long. −75°</option>
+        <option value="GPM/GPM-0450">GMT-04:50 long. −72.5°</option>
+        <option value="GPM/GPM-0440">GMT-04:40 long. −70°</option>
+        <option value="GPM/GPM-0430">GMT-04:30 long. −67.5°</option>
+        <option value="GPM/GPM-0420">GMT-04:20 long. −65°</option>
+        <option value="GPM/GPM-0410">GMT-04:10 long. −62.5°</option>
+        <option value="GPM/GPM-04">GMT-04 long. −60°</option>
+        <option value="GPM/GPM-0350">GMT-03:50 long. −57.5°</option>
+        <option value="GPM/GPM-0340">GMT-03:40 long. −55°</option>
+        <option value="GPM/GPM-0330">GMT-03:30 long. −52.5°</option>
+        <option value="GPM/GPM-0320">GMT-03:20 long. −50°</option>
+        <option value="GPM/GPM-0310">GMT-03:10 long. −47.5°</option>
+        <option value="GPM/GPM-03">GMT-03 long. −45°</option>
+        <option value="GPM/GPM-0250">GMT-02:50 long. −42.5°</option>
+        <option value="GPM/GPM-0240">GMT-02:40 long. −40°</option>
+        <option value="GPM/GPM-0230">GMT-02:30 long. −37.5°</option>
+        <option value="GPM/GPM-0220">GMT-02:20 long. −35°</option>
+        <option value="GPM/GPM-0210">GMT-02:10 long. −32.5°</option>
+        <option value="GPM/GPM-02">GMT-02 long. −30°</option>
+        <option value="GPM/GPM-0150">GMT-01:50 long. −27.5°</option>
+        <option value="GPM/GPM-0140">GMT-01:40 long. −25°</option>
+        <option value="GPM/GPM-0130">GMT-01:30 long. −22.5°</option>
+        <option value="GPM/GPM-0120">GMT-01:20 long. −20°</option>
+        <option value="GPM/GPM-0110">GMT-01:10 long. −17.5°</option>
+        <option value="GPM/GPM-01">GMT-01 long. −15°</option>
+        <option value="GPM/GPM-0050">GMT-00:50 long. −12.5°</option>
+        <option value="GPM/GPM-0040">GMT-00:40 long. −10°</option>
+        <option value="GPM/GPM-0030">GMT-00:30 long. −7.5°</option>
+        <option value="GPM/GPM-0020">GMT-00:20 long. −5°</option>
+        <option value="GPM/GPM-0010">GMT-00:10 long. −2.5°</option>
+        <option value="GPM/GPM">GMT long. 0°</option>
+        <option value="GPM/GPM+0010">GMT+00:10 long. +2.5°</option>
+        <option value="GPM/GPM+0020">GMT+00:20 long. +5°</option>
+        <option value="GPM/GPM+0030">GMT+00:30 long. +7.5°</option>
+        <option value="GPM/GPM+0040">GMT+00:40 long. +10°</option>
+        <option value="GPM/GPM+0050">GMT+00:50 long. +12.5°</option>
+        <option value="GPM/GPM+01">GMT+01 long. +15°</option>
+        <option value="GPM/GPM+0110">GMT+01:10 long. +17.5°</option>
+        <option value="GPM/GPM+0120">GMT+01:20 long. +20°</option>
+        <option value="GPM/GPM+0130">GMT+01:30 long. +22.5°</option>
+        <option value="GPM/GPM+0140">GMT+01:40 long. +25°</option>
+        <option value="GPM/GPM+0150">GMT+01:50 long. +27.5°</option>
+        <option value="GPM/GPM+02">GMT+02 long. +30°</option>
+        <option value="GPM/GPM+0210">GMT+02:10 long. +32.5°</option>
+        <option value="GPM/GPM+0220">GMT+02:20 long. +35°</option>
+        <option value="GPM/GPM+0230">GMT+02:30 long. +37.5°</option>
+        <option value="GPM/GPM+0240">GMT+02:40 long. +40°</option>
+        <option value="GPM/GPM+0250">GMT+02:50 long. +42.5°</option>
+        <option value="GPM/GPM+03">GMT+03 long. +45°</option>
+        <option value="GPM/GPM+0310">GMT+03:10 long. +47.5°</option>
+        <option value="GPM/GPM+0320">GMT+03:20 long. +50°</option>
+        <option value="GPM/GPM+0330">GMT+03:30 long. +52.5°</option>
+        <option value="GPM/GPM+0340">GMT+03:40 long. +55°</option>
+        <option value="GPM/GPM+0350">GMT+03:50 long. +57.5°</option>
+        <option value="GPM/GPM+04">GMT+04 long. +60°</option>
+        <option value="GPM/GPM+0410">GMT+04:10 long. +62.5°</option>
+        <option value="GPM/GPM+0420">GMT+04:20 long. +65°</option>
+        <option value="GPM/GPM+0430">GMT+04:30 long. +67.5°</option>
+        <option value="GPM/GPM+0440">GMT+04:40 long. +70°</option>
+        <option value="GPM/GPM+0450">GMT+04:50 long. +72.5°</option>
+        <option value="GPM/GPM+05">GMT+05 long. +75°</option>
+        <option value="GPM/GPM+0510">GMT+05:10 long. +77.5°</option>
+        <option value="GPM/GPM+0520">GMT+05:20 long. +80°</option>
+        <option value="GPM/GPM+0530">GMT+05:30 long. +82.5°</option>
+        <option value="GPM/GPM+0540">GMT+05:40 long. +85°</option>
+        <option value="GPM/GPM+0550">GMT+05:50 long. +87.5°</option>
+        <option value="GPM/GPM+06">GMT+06 long. +90°</option>
+        <option value="GPM/GPM+0610">GMT+06:10 long. +92.5°</option>
+        <option value="GPM/GPM+0620">GMT+06:20 long. +95°</option>
+        <option value="GPM/GPM+0630">GMT+06:30 long. +97.5°</option>
+        <option value="GPM/GPM+0640">GMT+06:40 long. +100°</option>
+        <option value="GPM/GPM+0650">GMT+06:50 long. +102.5°</option>
+        <option value="GPM/GPM+07">GMT+07 long. +105°</option>
+        <option value="GPM/GPM+0710">GMT+07:10 long. +107.5°</option>
+        <option value="GPM/GPM+0720">GMT+07:20 long. +110°</option>
+        <option value="GPM/GPM+0730">GMT+07:30 long. +112.5°</option>
+        <option value="GPM/GPM+0740">GMT+07:40 long. +115°</option>
+        <option value="GPM/GPM+0750">GMT+07:50 long. +117.5°</option>
+        <option value="GPM/GPM+08">GMT+08 long. +120°</option>
+        <option value="GPM/GPM+0810">GMT+08:10 long. +122.5°</option>
+        <option value="GPM/GPM+0820">GMT+08:20 long. +125°</option>
+        <option value="GPM/GPM+0830">GMT+08:30 long. +127.5°</option>
+        <option value="GPM/GPM+0840">GMT+08:40 long. +130°</option>
+        <option value="GPM/GPM+0850">GMT+08:50 long. +132.5°</option>
+        <option value="GPM/GPM+09">GMT+09 long. +135°</option>
+        <option value="GPM/GPM+0910">GMT+09:10 long. +137.5°</option>
+        <option value="GPM/GPM+0920">GMT+09:20 long. +140°</option>
+        <option value="GPM/GPM+0930">GMT+09:30 long. +142.5°</option>
+        <option value="GPM/GPM+0940">GMT+09:40 long. +145°</option>
+        <option value="GPM/GPM+0950">GMT+09:50 long. +147.5°</option>
+        <option value="GPM/GPM+10">GMT+10 long. +150°</option>
+        <option value="GPM/GPM+1010">GMT+10:10 long. +152.5°</option>
+        <option value="GPM/GPM+1020">GMT+10:20 long. +155°</option>
+        <option value="GPM/GPM+1030">GMT+10:30 long. +157.5°</option>
+        <option value="GPM/GPM+1040">GMT+10:40 long. +160°</option>
+        <option value="GPM/GPM+1050">GMT+10:50 long. +162.5°</option>
+        <option value="GPM/GPM+11">GMT+11 long. +165°</option>
+        <option value="GPM/GPM+1110">GMT+11:10 long. +167.5°</option>
+        <option value="GPM/GPM+1120">GMT+11:20 long. +170°</option>
+        <option value="GPM/GPM+1130">GMT+11:30 long. +172.5°</option>
+        <option value="GPM/GPM+1140">GMT+11:40 long. +175°</option>
+        <option value="GPM/GPM+1150">GMT+11:50 long. +177.5°</option>
+        <option value="GPM/GPM+12">GMT+12 long. +180°</option>
+        <option value="GPM/GPM+1210">GMT+12:10 long. −177.5°</option>
+        <option value="GPM/GPM+1220">GMT+12:20 long. −175°</option>
+        <option value="GPM/GPM+1230">GMT+12:30 long. −172.5°</option>
+        <option value="GPM/GPM+1240">GMT+12:40 long. −170°</option>
+        <option value="GPM/GPM+1250">GMT+12:50 long. −167.5°</option>
+        <option value="GPM/GPM+13">GMT+13 long. −165°</option>
+        <option value="GPM/GPM+1310">GMT+13:10 long. −162.5°</option>
+        <option value="GPM/GPM+1320">GMT+13:20 long. −160°</option>
+        <option value="GPM/GPM+1330">GMT+13:30 long. −157.5°</option>
+        <option value="GPM/GPM+1340">GMT+13:40 long. −155°</option>
+        <option value="GPM/GPM+1350">GMT+13:50 long. −152.5°</option>
+        <option value="GPM/GPM+14">GMT+14 long. −150°</option>
     </optgroup>
 
     {% if locale.LANGUAGE_TAG.startswith('pt') %}
-        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GPM - Hora Natural - dia começa às GPM−04">
+        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GMT - Hora Natural - dia começa às GPM−04">
     {% elif locale.LANGUAGE_TAG.startswith('bz') %}
-        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GPM - Òra Natural - dia komèsa as GPM−04">
+        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GMT - Òra Natural - dia komèsa as GPM−04">
     {% elif locale.LANGUAGE_TAG.startswith('eo') %}
-        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GPM - Natura Horo - tago komencas je GMT−04">
+        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GMT - Natura Horo - tago komencas je GMT−04">
     {% else %}
-        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GPM - Natural Time - day starts at GMT−04">
+        <optgroup hidden id="time_zone_from_nt_gpm" label="NT-GMT - Natural Time - day starts at GMT−04">
     {% endif %}
     {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}
@@ -403,13 +403,13 @@
     </optgroup>
 
     {% if locale.LANGUAGE_TAG.startswith('pt') %}
-        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GPM - Hora da Manhã - dia começa às GPM−06">
+        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GMT - Hora da Manhã - dia começa às GPM−06">
     {% elif locale.LANGUAGE_TAG.startswith('bz') %}
-        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GPM - Òra da Maỹan - dia komèsa as GPM−06">
+        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GMT - Òra da Maỹan - dia komèsa as GPM−06">
     {% elif locale.LANGUAGE_TAG.startswith('eo') %}
-        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GPM - Matena Horo - tago komencas je GMT−06">
+        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GMT - Matena Horo - tago komencas je GMT−06">
     {% else %}
-        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GPM - Morning Time - day starts at GMT−06">
+        <optgroup hidden id="time_zone_from_mt_gpm" label="MT-GMT - Morning Time - day starts at GMT−06">
     {% endif %}
     {% if locale.LANGUAGE_TAG in ('pt-BR', 'bz', 'bz-BR', 'eo-BR', 'en-BR') %}
         {% if locale.LANGUAGE_TAG in ('bz', 'bz-BR') %}

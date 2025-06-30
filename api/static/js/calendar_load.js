@@ -231,5 +231,61 @@ function toggle_time_zone_from() {
         optgroup.children[i].hidden = false;
     }
 
-    document.getElementById('time_zone_select').value = null;
+    var tz = document.getElementById('time_zone_select').value;
+
+    if ((tzf == 'gpm') || (tzf == 'nt_gpm') || (tzf == 'mt_gpm')) {
+        if (tzf == 'gpm') {
+            tz = tz.replace('/NT', '/GPM');
+            tz = tz.replace('/MT', '/GPM');
+        } else if (tzf == 'nt_gpm') {
+            tz = tz.replace('/GPM', '/NT');
+            tz = tz.replace('/MT', '/NT');
+        } else if (tzf == 'mt_gpm') {
+            tz = tz.replace('/GPM', '/MT');
+            tz = tz.replace('/NT', '/MT');
+        } else {
+            tz = null;
+        };
+    } else if ((tzf == 'spm') || (tzf == 'nt_spm') || (tzf == 'mt_spm')) {
+        if (tzf == 'spm') {
+            tz = tz.replace('/NT', '/SPM');
+            tz = tz.replace('/MT', '/SPM');
+        } else if (tzf == 'nt_spm') {
+            tz = tz.replace('/SPM', '/NT');
+            tz = tz.replace('/MT', '/NT');
+        } else if (tzf == 'mt_spm') {
+            tz = tz.replace('/SPM', '/MT');
+            tz = tz.replace('/NT', '/MT');
+        } else {
+            tz = null;
+        };
+    } else if ((tzf == 'spm_sez') || (tzf == 'nt_spm_sez') || (tzf == 'mt_spm_sez')) {
+        if (tzf == 'spm_sez') {
+            tz = tz.replace('/NT', '/SPM');
+            tz = tz.replace('/MT', '/SPM');
+        } else if (tzf == 'nt_spm_sez') {
+            tz = tz.replace('/SPM', '/NT');
+            tz = tz.replace('/MT', '/NT');
+        } else if (tzf == 'mt_spm_sez') {
+            tz = tz.replace('/SPM', '/MT');
+            tz = tz.replace('/NT', '/MT');
+        } else {
+            tz = null;
+        };
+    } else if ((tzf == 'spm_doz') || (tzf == 'nt_spm_doz') || (tzf == 'mt_spm_doz')) {
+        if (tzf == 'spm_doz') {
+            tz = tz.replace('/NT', '/SPM');
+            tz = tz.replace('/MT', '/SPM');
+        } else if (tzf == 'nt_spm_doz') {
+            tz = tz.replace('/SPM', '/NT');
+            tz = tz.replace('/MT', '/NT');
+        } else if (tzf == 'mt_spm_doz') {
+            tz = tz.replace('/SPM', '/MT');
+            tz = tz.replace('/NT', '/MT');
+        } else {
+            tz = null;
+        };
+    };
+
+    document.getElementById('time_zone_select').value = tz;
 };
