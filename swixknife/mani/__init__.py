@@ -1,2 +1,0 @@
-
-from .mani import Mani

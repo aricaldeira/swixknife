@@ -1,0 +1,167 @@
+#!/usr/bin/env python
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Convert currency rates')
+parser.add_argument('-l', '--locale', dest='locale', nargs='?', default=None, help='Locale')
+parser.add_argument('-dc', '--decimal-currency', dest='decimal_currency', nargs='?', default=None, help='Decimal currency')
+parser.add_argument('-a', '--amount', dest='amount', nargs='?', default=None, help='Amount in sezimal currency')
+parser.add_argument('-ad', '--amount-decimal', dest='amount_decimal', nargs='?', default=None, help='Amount of sezimal currency in decimal')
+# parser.add_argument('-da', '--decimal-amount', dest='decimal_amount', nargs='?', default=None, help='Amount in decimal currency')
+parser.add_argument('-D', '--decimal', dest='decimal', action=argparse.BooleanOptionalAction, help='Use decimal numbers')
+parser.add_argument('-Z', '--dozenal', dest='dozenal', action=argparse.BooleanOptionalAction, help='Use dozenal numbers')
+parser.add_argument('-N', '--niftimal', dest='niftimal', action=argparse.BooleanOptionalAction, help='Use niftimal numbers')
+parser.add_argument('-F', '--financial-niftimal', dest='financial', action=argparse.BooleanOptionalAction, help='Use financial niftimal numbers')
+parser.add_argument('-DAN', '--dana', dest='dana', action=argparse.BooleanOptionalAction, help='Use dana instead of mudra')
+parser.add_argument('-S', '--satoshi', dest='satoshi', action=argparse.BooleanOptionalAction, help='Use satoshi instead of mudra')
+parser.add_argument('-B', '--bitcoin', dest='bitcoin', action=argparse.BooleanOptionalAction, help='Use bitcoin instead of mudra')
+parser.add_argument('-C', '--bits', dest='bits', action=argparse.BooleanOptionalAction, help='Use bits/microbitcoin instead of mudra')
+parser.add_argument('-U', '--usd', dest='usd', action=argparse.BooleanOptionalAction, help='Show also USD rate')
+parser.add_argument('-SD', '--sezimal-digits', dest='sezimal_digits', action=argparse.BooleanOptionalAction, help='Use sezimal digits')
+
+
+from swixknife import sezimal_locale
+from swixknife.currency import *
+from decimal import Decimal
+from swixknife import Sezimal
+
+
+if __name__ == '__main__':
+    arguments = parser.parse_args()
+
+    locale = sezimal_locale(arguments.locale)
+
+    mudra = Mudra(arguments.decimal_currency)
+    mudra.update_rates()
+
+    if arguments.dana:
+        mudra_symbol = 'X₷'
+
+        if arguments.amount:
+            mudra_amount_to_format = Sezimal(str(arguments.amount))
+            mudra_amount = mudra_amount_to_format * DANA_TO_MUDRA
+
+        elif arguments.amount_decimal:
+            mudra_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mudra_amount = mudra_amount_to_format  * DANA_TO_MUDRA
+
+        else:
+            mudra_amount_to_format = 1
+            mudra_amount = DANA_TO_MUDRA
+
+    elif arguments.bitcoin:
+        mudra_symbol = '₿'
+
+        if arguments.amount:
+            mudra_amount_to_format = Sezimal(str(arguments.amount))
+            mudra_amount = mudra_amount_to_format * BITCOIN_TO_MUDRA
+
+        elif arguments.amount_decimal:
+            mudra_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mudra_amount = mudra_amount_to_format * BITCOIN_TO_MUDRA
+
+        else:
+            mudra_amount_to_format = 1
+            mudra_amount = BITCOIN_TO_MUDRA
+
+    elif arguments.bits:
+        mudra_symbol = 'µ₿'
+
+        if arguments.amount:
+            mudra_amount_to_format = Sezimal(str(arguments.amount))
+            mudra_amount = mudra_amount_to_format * Decimal(100)
+
+        elif arguments.amount_decimal:
+            mudra_amount_to_format = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mudra_amount = mudra_amount_to_format * Decimal(100)
+
+        elif arguments.decimal:
+            mudra_amount_to_format = 1
+            mudra_amount = SATOSHI_TO_MUDRA * Decimal(100)
+
+        elif arguments.dozenal:
+            mudra_amount_to_format = 1
+            mudra_amount = SATOSHI_TO_MUDRA * Decimal(100) * Decimal(144)
+
+        else:
+            mudra_amount_to_format = 1
+            mudra_amount = SATOSHI_TO_MUDRA * 100
+
+    else:
+        if arguments.amount:
+            mudra_amount = Sezimal(str(arguments.amount))
+            mudra_amount_to_format = mudra_amount
+
+        elif arguments.amount_decimal:
+            mudra_amount = Sezimal(Decimal(str(arguments.amount_decimal)))
+            mudra_amount_to_format = mudra_amount
+
+        elif arguments.decimal:
+            mudra_amount = SATOSHI_TO_MUDRA * Decimal(10_000)
+            mudra_amount_to_format = Decimal(10_000)
+
+        elif arguments.dozenal:
+            mudra_amount = SATOSHI_TO_MUDRA * Decimal(1728)
+            mudra_amount_to_format = Decimal(1728)
+
+        else:
+            mudra_amount = SATOSHI_TO_MUDRA * 100_000
+            mudra_amount_to_format = 100_000
+
+        if arguments.satoshi:
+            mudra_symbol = 'ș'
+        else:
+            mudra_symbol = '₷'
+
+    if arguments.decimal:
+        if mudra_amount_to_format == 1 or mudra_symbol in ('₷', 'ș'):
+            mudra_formatted = locale.format_decimal_number(mudra_amount_to_format, decimal_places=0, prefix=mudra_symbol)
+        else:
+            mudra_formatted = locale.format_decimal_number(mudra_amount_to_format, prefix=mudra_symbol)
+
+    elif arguments.dozenal:
+        if mudra_amount_to_format == 1 or mudra_symbol in ('₷', 'ș'):
+            mudra_formatted = locale.format_dozenal_number(mudra_amount_to_format, dozenal_places=0, prefix=mudra_symbol)
+        else:
+            mudra_formatted = locale.format_dozenal_number(mudra_amount_to_format, prefix=mudra_symbol)
+
+    elif arguments.niftimal or arguments.financial:
+        if mudra_amount_to_format == 1 or mudra_symbol in ('₷', 'ș'):
+            mudra_formatted = locale.format_niftimal_number(mudra_amount_to_format, niftimal_places=0, prefix=mudra_symbol, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
+        else:
+            mudra_formatted = locale.format_niftimal_number(mudra_amount_to_format, prefix=mudra_symbol, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
+
+    else:
+        if mudra_amount_to_format == 1 or mudra_symbol in ('₷', 'ș'):
+            mudra_formatted = locale.format_number(mudra_amount_to_format, sezimal_places=0, prefix=mudra_symbol, sezimal_digits=arguments.sezimal_digits)
+        else:
+            mudra_formatted = locale.format_number(mudra_amount_to_format, prefix=mudra_symbol, sezimal_digits=arguments.sezimal_digits)
+
+    dc = mudra.mudra_to_decimal_currency(mudra_amount)
+    dc_prefix = mudra.decimal_symbol
+
+    mudra.decimal_currency = 'USD'
+    usd = mudra.mudra_to_decimal_currency(mudra_amount)
+
+    if arguments.decimal:
+        dc_formatted = locale.format_decimal_number(dc.decimal, prefix=dc_prefix)
+        usd_formatted = locale.format_decimal_number(usd.decimal, prefix='US$')
+
+    elif arguments.dozenal:
+        dc_formatted = locale.format_dozenal_number(dc.decimal, prefix=dc_prefix)
+        usd_formatted = locale.format_dozenal_number(usd.decimal, prefix='US$')
+
+    elif arguments.niftimal or arguments.financial:
+        dc_formatted = locale.format_niftimal_number(dc.decimal, prefix=dc_prefix, sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
+        usd_formatted = locale.format_niftimal_number(usd.decimal, prefix='US$', sezimal_digits=arguments.sezimal_digits, financial_digits=arguments.financial)
+
+    else:
+        dc_formatted = locale.format_currency(dc, prefix=dc_prefix, sezimal_digits=arguments.sezimal_digits)
+        usd_formatted = locale.format_currency(usd, prefix='US$', sezimal_digits=arguments.sezimal_digits)
+
+    if arguments.usd:
+        print(f'{mudra_formatted}: <b>{dc_formatted}</b> / {usd_formatted}')
+    else:
+        print(f'{mudra_formatted}: {dc_formatted}')
+
+
