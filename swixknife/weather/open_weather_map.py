@@ -157,7 +157,7 @@ def get_weather_conditions(api_key: str, latitude: float = None, longitude: floa
 
 def fill_sezimal_weather(weather: SezimalWeather, conditions: dict):
     if 'dt' in conditions:
-        weather._reference_date_time = conditions['dt']
+        weather._reference_date_time = SezimalDateTime(conditions['dt'])
 
     if 'weather' in conditions:
         weather._emoji = _EMOJI[conditions['weather'][0]['id']]
