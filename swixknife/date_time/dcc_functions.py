@@ -39,8 +39,9 @@ HOLOCENE_EPOCH = SezimalInteger('212_014')  # 17_506_d
 # julian day -220_505_111.3 = -3_959_107.5_d
 #
 
-CYCLE_YEAR_AJUST = SezimalInteger('200_000')  # 15_552_d
-CYCLE_FACTOR = SezimalInteger('420')  # 156_d
+# CYCLE_YEAR_AJUST = SezimalInteger('200_000')  # 15_552_d
+# CYCLE_FACTOR = SezimalInteger('420')  # 156_d
+CYCLE_FACTOR = SezimalInteger('504')  # 184_d
 
 YEARS_IN_FULL_CYCLE = SezimalInteger('1205')  # 293_d
 SHORT_YEARS_IN_FULL_CYCLE = SezimalInteger('101')  # 37_d
@@ -58,7 +59,7 @@ DAYS_IN_SHORT_YEAR = SezimalInteger('1400')  # 360_d
 
 def is_unleap(year: SezimalInteger) -> bool:
     is_unleap = ((
-        (SHORT_YEARS_IN_FULL_CYCLE * (year - CYCLE_YEAR_AJUST))
+        (SHORT_YEARS_IN_FULL_CYCLE * year)
         + CYCLE_FACTOR
         ) % YEARS_IN_FULL_CYCLE
     ) < SHORT_YEARS_IN_FULL_CYCLE
