@@ -556,3 +556,30 @@ def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str
     }
 
     return res
+
+@app.route('/shastadari/currency')
+def sezimal_currency_route() -> Response:
+    if browser_preferred_locale()[0:2] == 'pt':
+        return redirect('/pt/xastadári/frações', code=302)
+    elif browser_preferred_locale()[0:2] == 'bz':
+        return redirect('/bz/xastadari/frasoyns', code=302)
+
+    return redirect('/en/shastadari/currency', code=302)
+
+@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@app.route('/en/shastadari/currency')
+def sezimal_currency_en_route() -> Response:
+    # return sezimal_render_template('currency_en.html')
+    return render_template('currency_en.html')
+
+@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@app.route('/pt/xastadári/frações')
+def sezimal_currency_pt_route() -> Response:
+    # return sezimal_render_template('currency_pt.html')
+    return render_template('currency_pt.html')
+
+@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@app.route('/bz/xastadari/moèda')
+def sezimal_currency_bz_route() -> Response:
+    # return sezimal_render_template('currency_bz.html')
+    return render_template('currency_bz.html')
