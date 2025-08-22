@@ -2615,23 +2615,38 @@ def adc_circle(hemisphere: str = 'S') -> Response:
 
 for locale in ('en-us', 'pt-br', 'bz', 'en-gb'):
     locale = _prepare_locale_from_cookie(locale)
+    sym_year = SezimalDate.today().year
+    dcc_year = SezimalDate.today().dcc_year
+    iso_year = SezimalDate.today().gregorian_date.year
 
-    for calendar_displayed in ('SYM', 'ISO', 'DCC'):
-        locale.calendar_displayed = calendar_displayed
-        _calendar_events(
-            locale,
-            SezimalDate.today().year,
-            {
-                'base': 10,
-                'format_token': '',
-            },
-        )
-
+    locale.calendar_displayed = 'SYM'
     _calendar_events(
-        locale,
-        SezimalDate.today().year,
-        {
+        locale, sym_year, {
             'base': 10,
-            'format_token': 'c',
+            'format_token': '',
+        },
+    )
+
+    locale.calendar_displayed = 'DCC'
+    _calendar_events(
+        locale, dcc_year, {
+            'base': 10,
+            'format_token': '',
+        },
+    )
+
+    locale.calendar_displayed = 'DCC'
+    _calendar_events(
+        locale, dcc_year, {
+            'base': 10,
+            'format_token': '',
+        },
+    )
+
+    locale.calendar_displayed = 'ISO'
+    _calendar_events(
+        locale, iso_year, {
+            'base': 10,
+            'format_token': '',
         },
     )
