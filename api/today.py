@@ -2613,7 +2613,7 @@ def adc_circle(hemisphere: str = 'S') -> Response:
     return Response(text, mimetype='image/svg+xml')
 
 
-for locale in ('en-us', 'pt-br', 'bz', 'en-gb'):
+for locale in ('pt-br', 'bz-br', 'en', 'en-us', 'en-gb', 'en-ca'):
     locale = _prepare_locale_from_cookie(locale)
     sym_year = SezimalDate.today().year
     dcc_year = SezimalDate.today().dcc_year
