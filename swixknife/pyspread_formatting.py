@@ -18,6 +18,8 @@ def pyspread_format_sezimal(value: Sezimal | SezimalInteger) -> str:
             recurring_digits_notation=sezimal_context.show_recurring_digits,
             minimum_size=sezimal_context.minimum_size,
             use_fraction_group_separator=True,
+            sezimal_digits=sezimal_context.sezimal_digits,
+            sezimal_punctuation=sezimal_context.sezimal_punctuation,
         )
 
     else:
@@ -25,6 +27,8 @@ def pyspread_format_sezimal(value: Sezimal | SezimalInteger) -> str:
             value,
             sezimal_places=0,
             minimum_size=sezimal_context.minimum_size,
+            sezimal_digits=sezimal_context.sezimal_digits,
+            sezimal_punctuation=sezimal_context.sezimal_punctuation,
         )
 
 
@@ -32,10 +36,14 @@ def pyspread_format_sezimal_fraction(value: SezimalFraction) -> str:
     return sezimal_context.locale.format_number(
             value.numerator,
             sezimal_places=0,
+            sezimal_digits=sezimal_context.sezimal_digits,
+            sezimal_punctuation=sezimal_context.sezimal_punctuation,
         ) + ' / ' + sezimal_context.locale.format_number(
             value.denominator,
             minimum_size=sezimal_context.minimum_size,
             sezimal_places=0,
+            sezimal_digits=sezimal_context.sezimal_digits,
+            sezimal_punctuation=sezimal_context.sezimal_punctuation,
         )
 
 

@@ -24,6 +24,7 @@ class SezimalContext:
         self.fractions_precision = None
         self.minimum_size = 0
         self.sezimal_digits = False
+        self.sezimal_punctuation = False
         self.using_ultra_precision = False
         self._regular_precision = 0
         self._regular_fractions_precision = 0

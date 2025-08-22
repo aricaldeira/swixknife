@@ -128,6 +128,7 @@ class Sezimal:
             str(self),
             sezimal_places=decimal_to_sezimal(self._precision),
             sezimal_digits=sezimal_context.sezimal_digits,
+            sezimal_punctuation=sezimal_context.sezimal_punctuation,
         )
 
     @property
