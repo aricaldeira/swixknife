@@ -1541,11 +1541,15 @@ def now_route() -> Response:
     )
 
 
-def _prepare_locale_from_cookie():
-    cookie = urllib.parse.unquote(request.cookies['sezimal'])
+def _prepare_locale_from_cookie(locale='en-us'):
+    try:
+        cookie = urllib.parse.unquote(request.cookies['sezimal'])
+    except:
+        cookie = ''
 
     show_seconds = 'true'
     calendar_displayed = 'SYM'
+    show_holiday = 'ISO'
     locale_first_weekday = 'false'
     local_time_zone = None
 
@@ -1562,8 +1566,17 @@ def _prepare_locale_from_cookie():
                 try:
                     base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
                 except:
-                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
-                    show_holiday = 'ISO_SEZ_SYM'
+                    try:
+                        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                        show_holiday = 'ISO_SEZ_SYM'
+                    except:
+                        base = '10'
+                        format_token = ''
+                        time_zone = 'locale'
+                        hour_format = 'locale'
+                        hemisphere = 'locale'
+                        theme = 'color'
+                        mobile = 'false'
 
     locale = sezimal_locale(locale)
 
@@ -2600,10 +2613,12 @@ def adc_circle(hemisphere: str = 'S') -> Response:
     return Response(text, mimetype='image/svg+xml')
 
 
-sezimal_day_count_calendar_bz_route()
-sezimal_day_count_calendar_en_route()
-sezimal_day_count_calendar_pt_route()
-
-sezimal_calendar_bz_route()
-sezimal_calendar_en_route()
-sezimal_calendar_pt_route()
+for locale in ('en-us', 'pt-br', 'bz', 'en-gb'):
+    _calendar_events(
+        _prepare_locale_from_cookie(locale),
+        SezimalDate.today().year,
+        {
+            'base': 10,
+            'format_token': '',
+        },
+    )
