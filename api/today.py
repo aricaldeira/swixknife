@@ -689,6 +689,9 @@ def _limit_holidays(events, show_holidays):
                 if 'HIJ' in event.origin and 'HIJ' not in show_holidays:
                     continue
 
+                if 'DCC' in event.origin and 'DCC' not in show_holidays:
+                    continue
+
                 if 'ISO' in show_holidays and 'ISO' in event.origin:
                     pass
                 elif 'SYM' in show_holidays and 'SYM' in event.origin:
@@ -1549,7 +1552,7 @@ def _prepare_locale_from_cookie(locale='en-us'):
 
     show_seconds = 'true'
     calendar_displayed = 'SYM'
-    show_holiday = 'ISO'
+    show_holiday = 'ISO_SEZ_SYM_CHR_JEW_HIJ_DCC'
     locale_first_weekday = 'false'
     local_time_zone = None
 
