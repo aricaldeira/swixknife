@@ -681,7 +681,7 @@ class SezimalLocaleBZ(SezimalLocale):
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mez &$DIM &cM, dia &-d'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mez &$DIM &cM, semana &$DIW &cW, dia &$DID &cD'
 
-    _DE_DO_DA_MES = [
+    _DI_DU_DA_MES = [
         'di',  # pexis
         'da',  # baleya
         'du',  # riu
@@ -695,6 +695,15 @@ class SezimalLocaleBZ(SezimalLocale):
         'du',  # sestanti
     ]
 
+    _DI_DU_DA_SEMANA = [
+         'da',  # awma
+         'du',  # fogu
+         'du',  # ar
+         'da',  # agwa
+         'da',  # tèrra
+         'du',  # korpu
+    ]
+
     _DI_DU_DA_DIA_SEMANA = [
          'du',  # sòw
          'di',  # venus
@@ -703,3 +712,15 @@ class SezimalLocaleBZ(SezimalLocale):
          'di',  # saturnu
          'da',  # lua
     ]
+
+    def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
+        if f'&$DED' in fmt:
+            fmt = fmt.replace(f'&$DED', self._DE_DO_DA_DIA_SEMANA[int(date.dcc_weekday)])
+
+        if f'&$DEW' in fmt:
+            fmt = fmt.replace(f'&$DEW', self._DE_DO_DA_SEMANA[int(date.dcc_week)])
+
+        if f'&$DEM' in fmt:
+            fmt = fmt.replace(f'&$DEM', self._DE_DO_DA_MES[int(date.dcc_month)])
+
+        return fmt

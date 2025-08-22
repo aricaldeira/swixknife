@@ -717,6 +717,15 @@ class SezimalLocalePT(SezimalLocale):
         'do',  # sextante
     ]
 
+    _DE_DO_DA_SEMANA = [
+         'da',  # alma
+         'do',  # fogo
+         'do',  # ar
+         'da',  # água
+         'da',  # terra
+         'do',  # corpo
+    ]
+
     _DE_DO_DA_DIA_SEMANA = [
          'do',  # sol
          'de',  # vênus
