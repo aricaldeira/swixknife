@@ -282,6 +282,16 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
         measure -= SezimalInteger('240_234_312')
         measure /= SezimalInteger('100_000')
 
+    #
+    # When using water's maximum density at 3.98°C
+    #
+    # if su_1 == 'tap' and su_2 == 'gtk':
+    #     measure *= SezimalInteger('100_000_0')
+    #     measure += SezimalInteger('240_444_432_3')
+    # elif su_1 == 'gtk' and su_2 == 'tap':
+    #     measure -= SezimalInteger('240_444_432_3')
+    #     measure /= SezimalInteger('100_000_0')
+
     if su_1 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'):
         measure /= UNIT_CONVERSION[su_1]['ang']
 

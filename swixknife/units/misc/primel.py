@@ -6,14 +6,17 @@ from swixknife.base import dozenal_format, decimal_format
 from collections import OrderedDict
 
 TIME = DozenalFraction('21 / 600')
+GRAVITY = DozenalFraction('42_249_605_000 / 5_159_944_12↋')
+DENSITY = DozenalFraction('2↊_↋↊0_016_278_135 / 50_693_74↋_4↊8')
+CALORIE = DozenalFraction('31_05↊_↊↊6_76↋_118_749_166_368 / 13_36↊_7↊4_693_430_016_929')
 
-GRAVITY = DozenalFraction('1_346_690 / 16↊_081')  # Primel’s original
+# GRAVITY = DozenalFraction('1_346_690 / 16↊_081')  # Primel’s original
 # GRAVITY = DozenalFraction('3_670 / 441')  # Shastadari
 
-DENSITY = DozenalFraction('100_809 / 18↊')  # Primel’s original
+# DENSITY = DozenalFraction('100_809 / 18↊')  # Primel’s original
 # DENSITY = DozenalFraction('19_↊49_003_9↊5_307 / 31_↊29_917_168')
 
-CALORIE = DozenalFraction('↋_933_861_837_939 / 4_↊18_548_714')  # Primel’s original
+# CALORIE = DozenalFraction('↋_933_861_837_939 / 4_↊18_548_714')  # Primel’s original
 # CALORIE = DozenalFraction('96_698_↊↊6_↊89_↋9↊.0 / 3↋_396_24↋_↊↋4')
 
 
