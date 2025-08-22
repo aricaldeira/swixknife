@@ -2616,40 +2616,41 @@ def adc_circle(hemisphere: str = 'S') -> Response:
     return Response(text, mimetype='image/svg+xml')
 
 
-for locale in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
-    locale = _prepare_locale_from_cookie(locale)
-    sym_year = SezimalDate.today().year
-    dcc_year = SezimalDate.today().dcc_year
-    iso_year = SezimalDate.today().gregorian_date.year
+for year_diff in (0, 1, -1):
+    for locale in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
+        locale = _prepare_locale_from_cookie(locale)
+        sym_year = SezimalDate.today().year + year_diff
+        dcc_year = SezimalDate.today().dcc_year + year_diff
+        iso_year = SezimalDate.today().gregorian_date.year + year_diff
 
-    locale.calendar_displayed = 'SYM'
-    _calendar_events(
-        locale, sym_year, {
-            'base': 10,
-            'format_token': '',
-        },
-    )
+        locale.calendar_displayed = 'SYM'
+        _calendar_events(
+            locale, sym_year, {
+                'base': 10,
+                'format_token': '',
+            },
+        )
 
-    locale.calendar_displayed = 'DCC'
-    _calendar_events(
-        locale, dcc_year, {
-            'base': 10,
-            'format_token': '',
-        },
-    )
+        locale.calendar_displayed = 'DCC'
+        _calendar_events(
+            locale, dcc_year, {
+                'base': 10,
+                'format_token': '',
+            },
+        )
 
-    locale.calendar_displayed = 'DCC'
-    _calendar_events(
-        locale, dcc_year, {
-            'base': 10,
-            'format_token': '',
-        },
-    )
+        locale.calendar_displayed = 'DCC'
+        _calendar_events(
+            locale, dcc_year, {
+                'base': 10,
+                'format_token': '',
+            },
+        )
 
-    locale.calendar_displayed = 'ISO'
-    _calendar_events(
-        locale, iso_year, {
-            'base': 10,
-            'format_token': '',
-        },
-    )
+        locale.calendar_displayed = 'ISO'
+        _calendar_events(
+            locale, iso_year, {
+                'base': 10,
+                'format_token': '',
+            },
+        )
