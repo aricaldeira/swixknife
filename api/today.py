@@ -1034,7 +1034,7 @@ def sezimal_calendar_en_route() -> Response:
 
     if locale.LANG != 'en':
         hemisphere = locale.DEFAULT_HEMISPHERE
-        locale = sezimal_locale('en-gb')
+        locale = sezimal_locale('en-us')
         locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'SYM'
@@ -2068,7 +2068,7 @@ def sezimal_day_count_calendar_en_route() -> Response:
 
     if locale.LANG != 'en':
         hemisphere = locale.DEFAULT_HEMISPHERE
-        locale = sezimal_locale('en-gb')
+        locale = sezimal_locale('en-us')
         locale.DEFAULT_HEMISPHERE = hemisphere
 
     locale.calendar_displayed = 'DCC'
@@ -2598,3 +2598,12 @@ def adc_circle(hemisphere: str = 'S') -> Response:
 
 
     return Response(text, mimetype='image/svg+xml')
+
+
+sezimal_day_count_calendar_bz_route()
+sezimal_day_count_calendar_en_route()
+sezimal_day_count_calendar_pt_route()
+
+sezimal_calendar_bz_route()
+sezimal_calendar_en_route()
+sezimal_calendar_pt_route()
