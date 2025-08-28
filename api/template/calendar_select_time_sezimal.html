@@ -36,7 +36,6 @@
     <option id="event_time_uta_54_{{ time_start_finish }}" value="54">{{ '󱸅󱸄' if '!' in format_token else '54' }}</option>
     <option id="event_time_uta_55_{{ time_start_finish }}" value="55">{{ '󱸅󱸅' if '!' in format_token else '55' }}</option>
 </select>
-{{ locale.TIME_SEPARATOR }}
 <select id="event_time_posha{{ time_start_finish }}" style="width: 3rem; text-align: center;" onchange="build_date_string()" placeholder="{% if locale.LANG == 'pt' %}
 Poxa
 {% elif locale.LANG == 'bz' %}
