@@ -57,6 +57,7 @@
     {% else %}
         {% set time_separator = locale.TIME_SEPARATOR %}
     {% endif %}
+    {% set time_separator = '󱹷' %}
     {% set sezimal_separator = '󱹮' %}
 {% else %}
     {% set time_separator = locale.TIME_SEPARATOR %}
@@ -199,7 +200,7 @@ html, body {
 
             var time_passed = Math.floor(seconds * 60 * 24);
 
-            {% if 'Sezimal/NT' in locale.DEFAULT_TIME_ZONE or 'SPM/NT' in locale.DEFAULT_TIME_ZONE or 'GPM/NT' in locale.DEFAULT_TIME_ZONE or '/NT20' in locale.DEFAULT_TIME_ZONE %}
+            {% if '/NT' in locale.DEFAULT_TIME_ZONE %}
                 if (time_passed < 120) {
                     document.getElementById('natural_time_sunrise').hidden = false;
                     document.getElementById('natural_time_sun').hidden = true;
@@ -226,7 +227,7 @@ html, body {
                     document.getElementById('natural_time_sunset').hidden = true;
                     document.getElementById('natural_time_stars').hidden = true;
                 };
-            {% elif '/NT6' in locale.DEFAULT_TIME_ZONE or '/NT13'  in locale.DEFAULT_TIME_ZONE or '/NT30' in locale.DEFAULT_TIME_ZONE %}
+            {% elif '/MT' in locale.DEFAULT_TIME_ZONE %}
                 if (time_passed < 60) {
                     document.getElementById('natural_time_sunrise').hidden = false;
                     document.getElementById('natural_time_sun').hidden = true;

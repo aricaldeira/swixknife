@@ -81,8 +81,11 @@
     {% else %}
         {% set time_separator = locale.TIME_SEPARATOR %}
     {% endif %}
+    {% set time_separator = '󱹷' %}
+    {% set sezimal_separator = '󱹮' %}
 {% else %}
     {% set time_separator = locale.TIME_SEPARATOR %}
+    {% set sezimal_separator = locale.SEZIMAL_SEPARATOR %}
 {% endif %}
 
 <div class="center">
@@ -194,9 +197,9 @@
     <p> </p>
     {% if locale.base == 10 %}
         {% if '!' in locale.format_token %}
-            <p id="stopwatch_display" style="font-size: 3rem;">󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ locale.SEZIMAL_SEPARATOR }}󱸀󱸀</p>
+            <p id="stopwatch_display" style="font-size: 3rem;">󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ sezimal_separator }}󱸀󱸀</p>
         {% else %}
-            <p id="stopwatch_display" style="font-size: 3rem;">00{{ time_separator }}00{{ time_separator }}00{{ locale.SEZIMAL_SEPARATOR }}00</p>
+            <p id="stopwatch_display" style="font-size: 3rem;">00{{ time_separator }}00{{ time_separator }}00{{ sezimal_separator }}00</p>
         {% endif %}
     {% else %}
         <p id="stopwatch_display" style="font-size: 3rem;">000{{ locale.DOZENAL_SEPARATOR }}000</p>
@@ -217,9 +220,9 @@
             &#8200;<span id="timer_add_uta" onclick="timer_uta('+')">+</span>&#8199;&#8200;<span id="timer_add_posha" onclick="timer_posha('+')">+</span>&#8199;&#8200;<span id="timer_add_agrima" onclick="timer_agrima('+')">+</span>&#8199;&#8200;<span id="timer_add_anuga" onclick="timer_anuga('+')">+</span>
         </p>
         {% if '!' in locale.format_token %}
-            <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ locale.SEZIMAL_SEPARATOR }}󱸀󱸀</p>
+            <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;󱸀󱸀{{ time_separator }}󱸀󱸀{{ time_separator }}󱸀󱸀{{ sezimal_separator }}󱸀󱸀</p>
         {% else %}
-            <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;00{{ time_separator }}00{{ time_separator }}00{{ locale.SEZIMAL_SEPARATOR }}00</p>
+            <p id="timer_display" class="mono-text" style="font-size: 3rem;">&#8200;00{{ time_separator }}00{{ time_separator }}00{{ sezimal_separator }}00</p>
         {% endif %}
         <p id="timer_subtract" class="mono-text no_selection" style="font-size: 3rem;">
             &#8200;<span id="timer_subtract_uta" onclick="timer_uta('−')">−</span>&#8199;&#8200;<span id="timer_subtract_posha" onclick="timer_posha('−')">−</span>&#8199;&#8200;<span id="timer_subtract_agrima" onclick="timer_agrima('−')">−</span>&#8199;&#8200;<span id="timer_add_anuga" onclick="timer_anuga('−')">−</span>
