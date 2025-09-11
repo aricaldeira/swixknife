@@ -626,19 +626,19 @@ class SezimalLocaleLAT(SezimalLocale):
     DCC_DATE_MONTH_DAY_SEPARATOR = ' et '
 
     ADC_MONTH_NAME = [
-        'mēnsis Piscium',
-        'mēnsis Cētī',
-        'mēnsis Ēridanī',
-        'mēnsis Monōcerotis',
-        'mēnsis Hydrae',
-        'mēnsis Leōnis',
-        'mēnsis Virginis',
-        'mēnsis Serpentis',
-        'mēnsis Aquilae',
-        'mēnsis Aquāriī',
-        # 'mēnsis Lībrae',
-        # 'mēnsis Ōrīōnis',
-        'mēnsis Sextantis',
+        'Piscium',
+        'Cētī',
+        'Ēridanī',
+        'Monōcerotis',
+        'Hydrae',
+        'Leōnis',
+        'Virginis',
+        'Serpentis',
+        'Aquilae',
+        'Aquāriī',
+        # 'Lībrae',
+        # 'Ōrīōnis',
+        'Sextantis',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
