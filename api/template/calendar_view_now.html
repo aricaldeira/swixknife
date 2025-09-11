@@ -81,7 +81,7 @@
     {% else %}
         {% set time_separator = locale.TIME_SEPARATOR %}
     {% endif %}
-    {% set time_separator = '󱹷' %}
+    {# set time_separator = '󱹷' #}
     {% set sezimal_separator = '󱹮' %}
 {% else %}
     {% set time_separator = locale.TIME_SEPARATOR %}
@@ -95,10 +95,13 @@
         <p class="now-weekday">
         {{ now.format(weekday_format, locale) }}
         </p>
+        <div id="watchface_div" hidden>
+        {{ watchface }}
+        </div>
         {% if base == 14 %}
-            <p id="time_display" class="now-time-{{ hour_format }}">
+            <p id="time_display" class="now-time-{{ hour_format }}" onclick="watchface_toggle()"/>
         {% else %}
-            <p id="time_display" class="now-time-24h">
+            <p id="time_display" class="now-time-24h" onclick="watchface_toggle()"/>
         {% endif %}
             <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
                 {% if '/NT' in locale.DEFAULT_TIME_ZONE %}

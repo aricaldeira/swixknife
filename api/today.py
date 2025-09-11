@@ -8,6 +8,7 @@ import threading
 from flask import redirect, Response, request, render_template, jsonify
 from main import app, sitemapper, sezimal_render_template
 from  locale_detection import browser_preferred_locale
+from markupsafe import Markup
 
 from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger, Sezimal
 from swixknife import default_to_sezimal_digits, Dozenal, DozenalInteger
@@ -19,10 +20,11 @@ from swixknife.date_time.calendar import other_calendar_date_to_ordinal_date
 from swixknife.weather import SezimalWeather
 from swixknife.units import sezimal_to_decimal_unit
 
-
 from decimal import Decimal
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+from watchface import watchface
 
 EVENTS_CACHE = SezimalDictionary({})
 
@@ -1529,6 +1531,7 @@ def now_route() -> Response:
     context['format_token'] = format_token
     context['hour_format'] = locale.HOUR_FORMAT
     context['mobile'] = mobile
+    context['watchface'] = Markup(watchface(locale, date))
 
     if locale.calendar_displayed == 'SYM':
         context['events'] = _calendar_events(locale, date.year, context) or {}

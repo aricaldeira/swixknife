@@ -69,6 +69,7 @@ from calculator import *
 from digits import *
 from today import *
 from shastadari import *
+from watchface import *
 
 from  locale_detection import browser_preferred_locale
 

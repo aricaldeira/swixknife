@@ -57,7 +57,7 @@
     {% else %}
         {% set time_separator = locale.TIME_SEPARATOR %}
     {% endif %}
-    {% set time_separator = '󱹷' %}
+    {# set time_separator = '󱹷' #}
     {% set sezimal_separator = '󱹮' %}
 {% else %}
     {% set time_separator = locale.TIME_SEPARATOR %}
@@ -135,6 +135,7 @@ html, body {
             var show_local_time = ({{date.time._time_zone_offset.decimal}} * 50000 / 27) != (date.getTimezoneOffset() * -60 * 1000);
 
             seconds = (seconds + ({{date.time._time_zone_offset.decimal}} * 50000 / 27)) / 1000 / 86400;
+            var seconds_hands = seconds;
             seconds = seconds - Math.floor(seconds);
 
             var sec = Math.floor(seconds * 60 * 60 * 24);
@@ -335,10 +336,20 @@ html, body {
                 }
             };
 
+            {% if locale.base == 14 %}
+                seconds = seconds_hands;
+                var uta_angle = (seconds * 2 * 360);
+                var posha_angle = ((seconds * 24) - Math.trunc(seconds * 24)) * 360;
+                var agrima_angle = ((seconds * 24 * 60) - Math.trunc(seconds * 24 * 60)) * 360;
+                document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
+                document.getElementById('hand_posha').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${agrima_angle})`);
+            {% endif %}
+
             //
             // Update every 1 second
             //
-            setTimeout(auto_refresh_iso_display, 1000);
+            setTimeout(auto_refresh_iso_display, 10);
         };
         auto_refresh_iso_display();
 
@@ -423,7 +434,15 @@ html, body {
                     document.getElementById('time_display').innerHTML = time_display;
                 };
 
-                setTimeout(auto_refresh_sezimal_time, 1851.851851);
+                var uta_angle = (seconds * 360);
+                var posha_angle = ((seconds * 36) - Math.trunc(seconds * 36)) * 360;
+                var agrima_angle = ((seconds * 36 * 36) - Math.trunc(seconds * 36 * 36)) * 360;
+                document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
+                document.getElementById('hand_posha').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${agrima_angle})`);
+
+                // setTimeout(auto_refresh_sezimal_time, 1851.851851);
+                setTimeout(auto_refresh_sezimal_time, 51.440329);
             };
             auto_refresh_sezimal_time();
         {% elif base == 20 %}
@@ -431,6 +450,7 @@ html, body {
                 var seconds = new Date().getTime();
 
                 seconds = (seconds + ({{date.time._time_zone_offset.decimal}}  * 50000 / 27)) / 1000 / 86400;
+                var seconds_hands = seconds
                 seconds = seconds - Math.floor(seconds);
 
                 var integer_time = seconds * 12 * 12 * 12;
@@ -456,7 +476,17 @@ html, body {
                     document.getElementById('time_display').innerHTML = time_display;
                 };
 
-                setTimeout(auto_refresh_dozenal_time, 4166.666666);
+                seconds = seconds_hands;
+                var uta_angle = (seconds * 360);
+                var posha_angle = ((seconds * 12) - Math.trunc(seconds * 12)) * 360;
+                var agrima_angle = ((seconds * 12 * 12) - Math.trunc(seconds * 12 * 12)) * 360;
+                var dozenal_angle = ((seconds * 12 * 12 * 12) - Math.trunc(seconds * 12 * 12 * 12)) * 360;
+                document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
+                document.getElementById('hand_posha').setAttribute('transform', `rotate(${agrima_angle})`);
+                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_dozenal').setAttribute('transform', `rotate(${dozenal_angle})`);
+
+                setTimeout(auto_refresh_dozenal_time, 28.935185);
             };
             auto_refresh_dozenal_time();
         {% endif %}
@@ -1264,6 +1294,12 @@ html, body {
             document.getElementById('stopwatch-content').hidden = true;
             document.getElementById('now-content').hidden = true;
             document.getElementById('timer-content').hidden = false;
+        }
+
+        function watchface_toggle() {
+            document.getElementById('watchface_div').hidden = !document.getElementById('watchface_div').hidden;
+            document.getElementById('time_display').hidden = !document.getElementById('time_display').hidden;
+            document.getElementById('natural_time_container').hidden = !document.getElementById('natural_time_container').hidden;
         }
 
     var latitude = 0;
