@@ -315,27 +315,6 @@ html, body {
                 };
             {% endif %}
 
-            //
-            // Reload page to update the date at midnight
-            //
-            if (hours_24 === '00' && minutes === '00') {
-                location.reload();
-            } else if (sec == '00') {
-                //
-                // Update weather info every 10 minutes
-                //
-                if (
-                    (minutes == '00')
-                    || (minutes == '10')
-                    || (minutes == '20')
-                    || (minutes == '30')
-                    || (minutes == '40')
-                    || (minutes == '50')
-                ) {
-                    update_weather();
-                }
-            };
-
             {% if locale.base == 14 %}
                 seconds = seconds_hands;
                 var uta_angle = (seconds * 2 * 360);
@@ -352,6 +331,22 @@ html, body {
             setTimeout(auto_refresh_iso_display, 10);
         };
         auto_refresh_iso_display();
+
+        async function auto_refresh_date_change(){
+            location.reload();
+            //
+            // Update twice a day
+            //
+            setTimeout(auto_refresh_date_change, 43200000);
+        };
+
+        async function auto_refresh_weather(){
+            update_weather();
+            //
+            // Update every 13 poshas / 10 minutes
+            //
+            setTimeout(auto_refresh_date_change, 600000);
+        };
 
         {% if base == 10 or base == 100 %}
             async function auto_refresh_sezimal_time(){
