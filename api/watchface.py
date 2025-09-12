@@ -16,7 +16,7 @@ from swixknife.base import default_to_sezimal_digits
 from decimal import Decimal as D
 
 
-# FONT_FAMILY = """'Andika', 'Sezimal QP', 'Sezimal Symbols', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif"""
+FONT_FAMILY = """'Andika', 'Sezimal QP', 'Sezimal Symbols', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif"""
 
 
 # @app.route('/watchface.svg')
@@ -210,9 +210,9 @@ def watchface(locale, today) -> str:
 
 def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch):
     if 'c' in locale.format_token:
-        gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{locale.ADC_WEEK_ICON[int(i % 10)]}</textPath></text>\n'''
+        gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{locale.ADC_WEEK_ICON[int(i % 10)]}</textPath></text>\n'''
     else:
-        gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{i % 10}</textPath></text>\n'''
+        gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{i % 10}</textPath></text>\n'''
 
     #
     # Separators between months
@@ -232,11 +232,11 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{month_line}" />\n'''
 
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
 <textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%" textLength="50%">{locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{i // 10} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{i // 10} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
 
     elif i // 10 == 14:
         week_wedge = ring(
@@ -263,22 +263,22 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{leap_week_line}" />\n'''
 
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
 <textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%" textLength="50%">{locale.ADC_MONTH_ICON[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%" textLength="50%">{i // 10}</textPath></text>\n'''
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%" textLength="50%">{i // 10}</textPath></text>\n'''
 
     return gweeks, gtext
 
 
 def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch):
     if locale.base == 10:
-        gtext += f'''<text style="font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1)}</textPath></text>\n'''
+        gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1)}</textPath></text>\n'''
     elif locale.base == 14:
-        gtext += f'''<text style="font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1).decimal}</textPath></text>\n'''
+        gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1).decimal}</textPath></text>\n'''
     elif locale.base == 20:
-        gtext += f'''<text style="font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1).dozenal}</textPath></text>\n'''
+        gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{(i + 1).dozenal}</textPath></text>\n'''
 
     if i <= 3:
         month = SI(1)
@@ -323,11 +323,11 @@ def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{month_line}" />\n'''
 
         if locale.base == 10:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
         elif locale.base == 14:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month.decimal} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month.decimal} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
         elif locale.base == 20:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month.dozenal} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-family:{FONT_FAMILY};font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%" textLength="50%">{month.dozenal} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
 
     if i + 1 == weeks:
         week_wedge = ring(
@@ -555,9 +555,9 @@ def _time_display(locale, colours, gray, today):
                     cy = 108 + 6 + 64 * math.sin(angle / 360 * math.pi * 2)
 
                     if '!' in locale.format_token:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-family:{FONT_FAMILY};font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
                     else:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-family:{FONT_FAMILY};font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
                 else:
                     cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
                     cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
@@ -586,7 +586,7 @@ def _time_display(locale, colours, gray, today):
                     if True:
                         cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
                         cy = 108 + 5 + 66 * math.sin(angle / 360 * math.pi * 2)
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:13px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{(i // 5)}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-family:{FONT_FAMILY};font-size:13px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{(i // 5)}</text>\n'''
                     else:
                         cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
                         cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
@@ -612,7 +612,7 @@ def _time_display(locale, colours, gray, today):
                     if True:
                         cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
                         cy = 108 + 6 + 66 * math.sin(angle / 360 * math.pi * 2)
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:16px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{(i // 5) if i != 0 else '12'}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-family:{FONT_FAMILY};font-size:16px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{(i // 5) if i != 0 else '12'}</text>\n'''
                     else:
                         cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
                         cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
@@ -642,7 +642,7 @@ def _time_display(locale, colours, gray, today):
                 if True:
                     cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
                     cy = 108 + 6 + 66 * math.sin(angle / 360 * math.pi * 2)
-                    display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{DozenalInteger(D(i // 12))}</text>\n'''
+                    display += f'''<text x="{cx}" y="{cy}" style="font-family:{FONT_FAMILY};font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{DozenalInteger(D(i // 12))}</text>\n'''
                 else:
                     cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
                     cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
