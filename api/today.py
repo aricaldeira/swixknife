@@ -2620,40 +2620,54 @@ def adc_circle(hemisphere: str = 'S') -> Response:
 
 
 for year_diff in (0, 1, -1):
-    for locale in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
-        locale = _prepare_locale_from_cookie(locale)
+    for locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
         sym_year = SezimalDate.today().year + year_diff
         dcc_year = SezimalDate.today().dcc_year + year_diff
         iso_year = SezimalDate.today().gregorian_date.year + year_diff
 
-        locale.calendar_displayed = 'SYM'
-        _calendar_events(
-            locale, sym_year, {
-                'base': 10,
-                'format_token': '',
-            },
-        )
+        locale = _prepare_locale_from_cookie(locale_code)
+        time_zones = [locale.DEFAULT_TIME_ZONE]
 
-        locale.calendar_displayed = 'DCC'
-        _calendar_events(
-            locale, dcc_year, {
-                'base': 10,
-                'format_token': '',
-            },
-        )
+        if locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br'):
+            time_zones += ['GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03', 'SPM/SPM-0350', 'SPM/NT-0350', 'SPM/MT-0350']
 
-        locale.calendar_displayed = 'DCC'
-        _calendar_events(
-            locale, dcc_year, {
-                'base': 10,
-                'format_token': '',
-            },
-        )
+        for time_zone in time_zones:
+            locale.DEFAULT_TIME_ZONE = time_zone
 
-        locale.calendar_displayed = 'ISO'
-        _calendar_events(
-            locale, iso_year, {
-                'base': 10,
-                'format_token': '',
-            },
-        )
+            for base in (10, 14, 20):
+                locale.base = base
+                locale.format_token = ''
+
+                locale.calendar_displayed = 'SYM'
+                _calendar_events(
+                    locale, sym_year, {
+                        'base': base,
+                        'format_token': '',
+                    },
+                )
+
+                locale.calendar_displayed = 'DCC'
+                _calendar_events(
+                    locale, dcc_year, {
+                        'base': base,
+                        'format_token': '',
+                    },
+                )
+
+                locale.calendar_displayed = 'DCC'
+                locale.format_token = 'c'
+                _calendar_events(
+                    locale, dcc_year, {
+                        'base': base,
+                        'format_token': 'c',
+                    },
+                )
+                locale.format_token = ''
+
+                locale.calendar_displayed = 'ISO'
+                _calendar_events(
+                    locale, iso_year, {
+                        'base': base,
+                        'format_token': '',
+                    },
+                )
