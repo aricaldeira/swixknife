@@ -33,6 +33,11 @@ def _calendar_context(locale, date=None, gray_scale=False):
     if not date:
         date = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
+    locale.calendar_displayed = getattr(locale, 'calendar_displayed', 'SYM')
+    locale.base = getattr(locale, 'base', 10)
+    locale.format_token = getattr(locale, 'format_token', '')
+    locale.use_first_weekday = getattr(locale, 'use_first_weekday', False)
+
     colors = weekly_season_colors(
         year=date.year,
         hemisphere=locale.DEFAULT_HEMISPHERE,
@@ -1691,6 +1696,11 @@ def _prepare_locale(locale, dados):
 def _now_icon(text: str, locale) -> str:
     now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
 
+    locale.calendar_displayed = getattr(locale, 'calendar_displayed', 'SYM')
+    locale.base = getattr(locale, 'base', 10)
+    locale.format_token = getattr(locale, 'format_token', '')
+    locale.use_first_weekday = getattr(locale, 'use_first_weekday', False)
+
     if locale.calendar_displayed == 'DCC':
         if now.dcc_weekday in (0, 5):
             text = text.replace('#2a7fff', '#d40000')
@@ -2619,55 +2629,57 @@ def adc_circle(hemisphere: str = 'S') -> Response:
     return Response(text, mimetype='image/svg+xml')
 
 
-for year_diff in (0, 1, -1):
-    for locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
-        sym_year = SezimalDate.today().year + year_diff
-        dcc_year = SezimalDate.today().dcc_year + year_diff
-        iso_year = SezimalDate.today().gregorian_date.year + year_diff
+if True:
+    for year_diff in (0, 1, -1):
+        for locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
+            sym_year = SezimalDate.today().year + year_diff
+            dcc_year = SezimalDate.today().dcc_year + year_diff
+            iso_year = SezimalDate.today().gregorian_date.year + year_diff
 
-        locale = _prepare_locale_from_cookie(locale_code)
-        time_zones = [locale.DEFAULT_TIME_ZONE]
+            locale = _prepare_locale_from_cookie(locale_code)
+            time_zones = [locale.DEFAULT_TIME_ZONE]
 
-        if locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br'):
-            time_zones += ['GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03', 'SPM/SPM-0350', 'SPM/NT-0350', 'SPM/MT-0350']
+            if locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br'):
+                time_zones += ['GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03', 'SPM/SPM-0350', 'SPM/NT-0350', 'SPM/MT-0350']
 
-        for time_zone in time_zones:
-            locale.DEFAULT_TIME_ZONE = time_zone
+            for time_zone in time_zones:
+                locale.DEFAULT_TIME_ZONE = time_zone
 
-            for base in (10, 14, 20):
-                locale.base = base
-                locale.format_token = ''
+                for base in (10, 14, 20):
+                    print(iso_year, locale_code, time_zone, base)
+                    locale.base = base
+                    locale.format_token = ''
 
-                locale.calendar_displayed = 'SYM'
-                _calendar_events(
-                    locale, sym_year, {
-                        'base': base,
-                        'format_token': '',
-                    },
-                )
+                    locale.calendar_displayed = 'SYM'
+                    _calendar_events(
+                        locale, sym_year, {
+                            'base': base,
+                            'format_token': '',
+                        },
+                    )
 
-                locale.calendar_displayed = 'DCC'
-                _calendar_events(
-                    locale, dcc_year, {
-                        'base': base,
-                        'format_token': '',
-                    },
-                )
+                    locale.calendar_displayed = 'DCC'
+                    _calendar_events(
+                        locale, dcc_year, {
+                            'base': base,
+                            'format_token': '',
+                        },
+                    )
 
-                locale.calendar_displayed = 'DCC'
-                locale.format_token = 'c'
-                _calendar_events(
-                    locale, dcc_year, {
-                        'base': base,
-                        'format_token': 'c',
-                    },
-                )
-                locale.format_token = ''
+                    locale.calendar_displayed = 'DCC'
+                    locale.format_token = 'c'
+                    _calendar_events(
+                        locale, dcc_year, {
+                            'base': base,
+                            'format_token': 'c',
+                        },
+                    )
+                    locale.format_token = ''
 
-                locale.calendar_displayed = 'ISO'
-                _calendar_events(
-                    locale, iso_year, {
-                        'base': base,
-                        'format_token': '',
-                    },
-                )
+                    locale.calendar_displayed = 'ISO'
+                    _calendar_events(
+                        locale, iso_year, {
+                            'base': base,
+                            'format_token': '',
+                        },
+                    )
