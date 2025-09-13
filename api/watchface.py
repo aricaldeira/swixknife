@@ -85,7 +85,18 @@ def watchface(locale, today) -> str:
     #         weeks = SI(124)
 
     arch = round(D(360) / weeks.decimal, 3)
-    angle = D(270)
+
+    #
+    # Weeks colors start at the same place as
+    #
+    if 'NT' in locale.DEFAULT_TIME_ZONE:
+        angle = D(150)
+    elif 'MT' in locale.DEFAULT_TIME_ZONE:
+        angle = D(180)
+    elif locale.base == 14 or locale.HOUR_FORMAT == '12h':
+        angle = D(270)
+    else:
+        angle = D(90)
 
     # wf = '<svg width="172" height="172" id="watchface" viewBox="0 0 216 216">\n'
     wf = '<svg width="50%" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
@@ -187,6 +198,8 @@ def watchface(locale, today) -> str:
 
     wf += _time_display(locale, colours, gray, today)
     wf += _shastadari_logo(locale, gray, today)
+    wf += _date_display(locale, colours, gray, today)
+
     wf += '</svg>'
 
     return wf
@@ -345,12 +358,15 @@ def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
 
 
 def _shastadari_logo(locale, colours, today):
-    if locale.calendar_displayed == 'DCC':
-        back_colour = colours[today.dcc_week_in_year]['900']
-        front_colour = colours[today.dcc_week_in_year]['700']
-    else:
-        back_colour = colours[today.week_in_year]['900']
-        front_colour = colours[today.week_in_year]['700']
+    # if locale.calendar_displayed == 'DCC':
+    #     back_colour = colours[today.dcc_week_in_year]['900']
+    #     front_colour = colours[today.dcc_week_in_year]['700']
+    # else:
+    #     back_colour = colours[today.week_in_year]['900']
+    #     front_colour = colours[today.week_in_year]['700']
+
+    back_colour = '#000000'
+    front_colour = '#111111'
 
     #
     # Shastadari Symbol
@@ -506,7 +522,7 @@ def _time_display(locale, colours, gray, today):
 
     display = '    <g id="watchface_time_display">\n'
 
-    display += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="90" />\n'''
+    display += f'''        <circle id="base" style="fill:#none;" cx="108" cy="108" r="90" />\n'''
     display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
 
     # for i in range(360):
@@ -541,7 +557,7 @@ def _time_display(locale, colours, gray, today):
         shape_vertices = 3
 
         for i in range(36):
-            if i in (0, 6, 12, 18, 24, 30):
+            if i % 6 == 0:
                 angle = zero_position + ((i / 6) * 60) - 1
                 tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 2)
 
@@ -565,7 +581,11 @@ def _time_display(locale, colours, gray, today):
 
             else:
                 angle = zero_position + (i * 10) - 0.5
-                tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+
+                if i % 3 == 0:
+                    tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                else:
+                    tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -728,6 +748,44 @@ def _time_display(locale, colours, gray, today):
         # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
         display += '    </g>'
 
+    display += '    </g>\n'
+
+    return display
+
+
+def _date_display(locale, colours, gray, today):
+    if locale.calendar_displayed == 'DCC':
+        # time_colours = gray[today.dcc_week_in_year]
+        date_colours = colours[today.dcc_week_in_year]
+    else:
+        # time_colours = gray[today.week_in_year]
+        date_colours = colours[today.week_in_year]
+
+    # time_display_colour = time_colours['600']
+    # agrima_hand_colour = pointer_colours['200']
+    # posha_hand_colour = pointer_colours['500']
+    # uta_hand_colour = pointer_colours['800']
+
+    display = '    <g id="watchface_date_display">\n'
+    display += f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['200']};text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+
+    if locale.calendar_displayed == 'DCC':
+        if 'c' in locale.format_token:
+            display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="108" dy="1.3em">{today.format('&' + locale.format_token + 'D &iD', locale)}</tspan>'''
+        else:
+            display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="108" dy="1.3em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
+
+    elif locale.calendar_displayed == 'SYM':
+        display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="108" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+
+    else:
+        display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="108" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+
+    display += '        </text>\n'
     display += '    </g>\n'
 
     return display

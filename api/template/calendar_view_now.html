@@ -92,18 +92,19 @@
     <div id="now-content" class="now-content">
         <div id="calendar_header" class="calendar-header-now">
 
-        <p class="now-weekday">
+        <p id="weekday" class="now-weekday" hidden>
         {{ now.format(weekday_format, locale) }}
         </p>
+        <p id="filler" hidden>&nbsp;</p>
         <div id="watchface_div" hidden>
         {{ watchface }}
         </div>
         {% if base == 14 %}
-            <p id="time_display" class="now-time-{{ hour_format }}" onclick="watchface_toggle()"/>
+            <p id="time_display" class="now-time-{{ hour_format }}" onclick="watchface_toggle()" hidden/>
         {% else %}
-            <p id="time_display" class="now-time-24h" onclick="watchface_toggle()"/>
+            <p id="time_display" class="now-time-24h" onclick="watchface_toggle()" hidden/>
         {% endif %}
-            <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;">
+            <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;" hidden>
                 {% if '/NT' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-4">&nbsp;</div>
 <!--                    <div class="day-tick" style="width:  8.33%;">╵</div>  {# 0󱹮13 #}
@@ -135,7 +136,7 @@
             </div>
         </p>
 
-        <p class="now-date" style="clear: both;">
+        <p id="date" class="now-date" style="clear: both;" hidden>
             {{ now.format(date_format, locale) }}
             {# if base == 10 and date_format == locale.ADC_DATE_FORMAT %}
             <br/><br/><b>{{ now.format('&>Y&iM&iW&iD', locale) }}</b>

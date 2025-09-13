@@ -187,6 +187,10 @@ function calendar_load() {
     transform: rotate(${moon_tilt}deg);
 }`;
 
+    var watchface = localStorage.getItem('sezimal-watchface');
+    if (watchface === null) {
+        localStorage.setItem('sezimal-watchface', 'digital');
+    };
 
     update_calendar();
 };

@@ -1295,6 +1295,15 @@ html, body {
             document.getElementById('watchface_div').hidden = !document.getElementById('watchface_div').hidden;
             document.getElementById('time_display').hidden = !document.getElementById('time_display').hidden;
             document.getElementById('natural_time_container').hidden = !document.getElementById('natural_time_container').hidden;
+            document.getElementById('weekday').hidden = !document.getElementById('weekday').hidden;
+            document.getElementById('date').hidden = !document.getElementById('date').hidden;
+            document.getElementById('filler').hidden = !document.getElementById('filler').hidden;
+
+            if (document.getElementById('watchface_div').hidden) {
+                localStorage.setItem('sezimal-watchface', 'digital');
+            } else {
+                localStorage.setItem('sezimal-watchface', 'analog');
+            };
         }
 
     var latitude = 0;
@@ -1331,6 +1340,27 @@ html, body {
     document.getElementById('moon-style').innerHTML = `.moon-emoji {
     display: inline-block;
     transform: rotate(${moon_tilt}deg);
+
+
+
 }`;
+
+    var watchface = localStorage.getItem('sezimal-watchface');
+    if ((watchface === null) || (watchface == 'digital')) {
+        document.getElementById('watchface_div').hidden = true;
+        document.getElementById('time_display').hidden = false;
+        document.getElementById('natural_time_container').hidden = false;
+        document.getElementById('weekday').hidden = false;
+        document.getElementById('date').hidden = false;
+        document.getElementById('filler').hidden = true;
+    } else {
+        document.getElementById('watchface_div').hidden = false;
+        document.getElementById('time_display').hidden = true;
+        document.getElementById('natural_time_container').hidden = true;
+        document.getElementById('weekday').hidden = true;
+        document.getElementById('date').hidden = true;
+        document.getElementById('filler').hidden = false;
+    };
+
     </script>
 </html>
