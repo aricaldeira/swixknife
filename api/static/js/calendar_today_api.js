@@ -264,8 +264,19 @@ async function change_date(new_date) {
 
 function open_settings() {
     document.getElementById('calendar_settings').hidden = false;
-    document.getElementById('calendar_view').hidden = true;
-    document.getElementById('calendar_event_view').hidden = true;
+
+    if (document.getElementById('calendar_view')) {
+        document.getElementById('calendar_view').hidden = true;
+    }
+
+    if (document.getElementById('calendar_event_view')) {
+        document.getElementById('calendar_event_view').hidden = true;
+    }
+
+    if (document.getElementById('now_view')) {
+        document.getElementById('selectors').hidden = true;
+        document.getElementById('now_view').hidden = true;
+    }
 };
 
 function apply_settings() {
@@ -335,7 +346,8 @@ function apply_settings() {
     // document.getElementById('calendar_settings').hidden = true;
     // document.getElementById('calendar_view').hidden = false;
     // update_calendar();
-    location.reload();
+    _base_data('', '')
+    location.reload(true);
 };
 
 
