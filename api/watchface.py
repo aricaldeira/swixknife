@@ -199,11 +199,14 @@ def watchface(locale, today) -> str:
     wf += '    <g id="weeks_calendar">'
     wf += gweeks
     wf += gtext
+
+    wf += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="90" />\n'''
+
     wf += '    </g>'
 
-    wf += _time_display(locale, colours, gray, today)
     wf += _shastadari_logo(locale, gray, today)
     wf += _date_display(locale, colours, gray, today)
+    wf += _time_display(locale, colours, gray, today)
 
     wf += '</svg>'
 
@@ -533,7 +536,6 @@ def _time_display(locale, colours, gray, today):
 
     display = '    <g id="watchface_time_display">\n'
 
-    display += f'''        <circle id="base" style="fill:#none;" cx="108" cy="108" r="90" />\n'''
     # display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
 
     # for i in range(360):
