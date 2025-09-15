@@ -30,8 +30,6 @@ def watchface(locale, today) -> str:
     # locale.DEFAULT_HEMISPHERE = 'S'
     # locale.format_token = 'c'
 
-    today = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
-
     #
     # Let's bring the colours first
     #
@@ -86,6 +84,13 @@ def watchface(locale, today) -> str:
 
     arch = round(D(360) / weeks.decimal, 3)
 
+    if locale.calendar_displayed == 'DCC' and weeks == 141:
+        arch_offset = arch / 2
+    elif weeks == 125:
+        arch_offset = arch / 2
+    else:
+        arch_offset = D(0)
+
     #
     # Weeks colors start at the same place as
     #
@@ -109,8 +114,8 @@ def watchface(locale, today) -> str:
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle,
-            end_angle=angle + arch + (D('0.25') if i + 1 < weeks else 0),
+            start_angle=angle + arch_offset,
+            end_angle=angle + arch_offset + arch + (D('0.25') if i + 1 < weeks else 0),
             without_inner=True,
         )
         week_line = ring(
@@ -118,8 +123,8 @@ def watchface(locale, today) -> str:
             outer_radius=93.5,
             x=108,
             y=108,
-            start_angle=angle,
-            end_angle=angle + arch,
+            start_angle=angle + arch_offset,
+            end_angle=angle + arch_offset + arch,
         )
 
         if locale.calendar_displayed == 'DCC':
@@ -128,8 +133,8 @@ def watchface(locale, today) -> str:
                 outer_radius=100.5,
                 x=108,
                 y=108,
-                start_angle=angle,
-                end_angle=angle + arch * D('6'),
+                start_angle=angle + arch_offset,
+                end_angle=angle + arch_offset + arch * D('6'),
             )
         else:
             if i in (0, 13, 21, 34, 42, 55, 103) or (i == 120 and not today.is_leap):
@@ -138,8 +143,8 @@ def watchface(locale, today) -> str:
                     outer_radius=100.5,
                     x=108,
                     y=108,
-                    start_angle=angle,
-                    end_angle=angle + arch * D('4'),
+                    start_angle=angle + arch_offset,
+                    end_angle=angle + arch_offset + arch * D('4'),
                 )
 
             else:
@@ -148,8 +153,8 @@ def watchface(locale, today) -> str:
                     outer_radius=100.5,
                     x=108,
                     y=108,
-                    start_angle=angle,
-                    end_angle=angle + arch * D('5'),
+                    start_angle=angle + arch_offset,
+                    end_angle=angle + arch_offset + arch * D('5'),
                 )
 
         leap_week_line = ring(
@@ -157,22 +162,22 @@ def watchface(locale, today) -> str:
             outer_radius=100.5,
             x=108,
             y=108,
-            start_angle=angle,
-            end_angle=angle + arch,
+            start_angle=angle + arch_offset,
+            end_angle=angle + arch_offset + arch,
         )
 
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
                 shade = '50'
             elif i < today.dcc_week_in_year:
-                shade = '900'
+                shade = '700'
             else:
                 shade = '400'
         else:
             if i + 1 == today.week_in_year:
                 shade = '50'
             elif (i + 1) < today.week_in_year:
-                shade = '900'
+                shade = '700'
             else:
                 shade = '400'
 
@@ -181,10 +186,10 @@ def watchface(locale, today) -> str:
         gtext += f'''        <path id="week_line_{str(i).zfill(3)}" style="fill:none;" d="{week_line}" />\n'''
 
         if locale.calendar_displayed == 'DCC':
-            gweeks, gtext = _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch)
+            gweeks, gtext = _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch)
 
         else:
-            gweeks, gtext = _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch)
+            gweeks, gtext = _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch)
 
         angle += arch
 
@@ -221,7 +226,7 @@ def watchface(locale, today) -> str:
     # return Response(wf, mimetype='image/svg+xml')
 
 
-def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch):
+def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch):
     if 'c' in locale.format_token:
         gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{locale.ADC_WEEK_ICON[int(i % 10)]}</textPath></text>\n'''
     else:
@@ -236,8 +241,8 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle - D('0.25'),
-            end_angle=angle + D('0.25'),
+            start_angle=angle + arch_offset - D('0.25'),
+            end_angle=angle + arch_offset + D('0.25'),
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
@@ -257,8 +262,8 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle - D('0.25'),
-            end_angle=angle + D('0.25'),
+            start_angle=angle + arch_offset - D('0.25'),
+            end_angle=angle + arch_offset + D('0.25'),
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
@@ -267,8 +272,8 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle - D('0.25') + arch,
-            end_angle=angle + D('0.25') + arch,
+            start_angle=angle + arch_offset - D('0.25') + arch,
+            end_angle=angle + arch_offset + D('0.25') + arch,
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}_2" style="fill:#000000;" d="{week_wedge}" />\n'''
@@ -285,7 +290,7 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
     return gweeks, gtext
 
 
-def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch):
+def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch):
     if locale.base == 10:
         gtext += f'''<text style="font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{(i + 1)}</textPath></text>\n'''
     elif locale.base == 14:
@@ -327,8 +332,8 @@ def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle - D('0.25'),
-            end_angle=angle + D('0.25'),
+            start_angle=angle + arch_offset - D('0.25'),
+            end_angle=angle + arch_offset + D('0.25'),
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
@@ -348,8 +353,8 @@ def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle + arch - D('0.25'),
-            end_angle=angle + arch + D('0.25'),
+            start_angle=angle + arch_offset + arch - D('0.25'),
+            end_angle=angle + arch_offset + arch + D('0.25'),
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
@@ -365,13 +370,13 @@ def _shastadari_logo(locale, colours, today):
     #     back_colour = colours[today.week_in_year]['900']
     #     front_colour = colours[today.week_in_year]['700']
 
-    back_colour = '#000000'
-    front_colour = '#111111'
+    back_colour = '#333333aa'
+    front_colour = '#000000'
 
     #
     # Shastadari Symbol
     #
-    shastadari_size = 36
+    shastadari_size = 72
     shastadari_size_hexagon = shastadari_size / 3 * 2
     shastadari_thickness = shastadari_size / 9
 
@@ -379,23 +384,32 @@ def _shastadari_logo(locale, colours, today):
 
     circle = ring(
         inner_radius=0,
-        outer_radius=shastadari_size,
+        outer_radius=shastadari_size_hexagon,
         x=108,
         y=108,
         start_angle=0,
         end_angle=0,
     )
-    xl += f'''        <path id="shastadari_base" style="fill:{back_colour};" d="{circle}" />\n'''
+    xl += f'''        <path id="shastadari_base" style="fill:none;" d="{circle}" />\n'''
 
-    circle = ring(
-        inner_radius=shastadari_size - shastadari_thickness,
-        outer_radius=shastadari_size,
-        x=108,
-        y=108,
-        start_angle=0,
-        end_angle=0,
-    )
-    xl += f'''        <path id="shastadari_circle" style="fill:{front_colour};" d="{circle}" />\n'''
+    if 'pt' in locale.LANG:
+        name = 'Xastadári'
+    elif 'bz' in locale.LANG:
+        name = 'Xastadari'
+    else:
+        name = 'Shastadari'
+
+    xl += f'''<text style="font-size:9px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
+
+    # circle = ring(
+    #     inner_radius=shastadari_size - shastadari_thickness,
+    #     outer_radius=shastadari_size,
+    #     x=108,
+    #     y=108,
+    #     start_angle=0,
+    #     end_angle=0,
+    # )
+    # xl += f'''        <path id="shastadari_circle" style="fill:{front_colour};" d="{circle}" />\n'''
 
     hexagon = polygon(
         x=108,
@@ -515,15 +529,12 @@ def _time_display(locale, colours, gray, today):
         time_colours = gray[today.week_in_year]
         pointer_colours = colours[today.week_in_year]
 
-    time_display_colour = time_colours['600']
-    agrima_hand_colour = pointer_colours['200']
-    posha_hand_colour = pointer_colours['500']
-    uta_hand_colour = pointer_colours['800']
+    time_display_colour = time_colours['600'] + 'aa'
 
     display = '    <g id="watchface_time_display">\n'
 
     display += f'''        <circle id="base" style="fill:#none;" cx="108" cy="108" r="90" />\n'''
-    display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
+    # display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
 
     # for i in range(360):
     #     if DAY_COLOURS[i] == '#000000':
@@ -546,7 +557,7 @@ def _time_display(locale, colours, gray, today):
     elif 'MT' in locale.DEFAULT_TIME_ZONE:
         zero_position = 180
         hand_initial_angle = 30
-    elif locale.base == 14:  # locale.HOUR_FORMAT == '12h':
+    elif locale.base == 14 or locale.HOUR_FORMAT == '12h':
         zero_position = 270
         hand_initial_angle = 0
     else:
@@ -683,7 +694,13 @@ def _time_display(locale, colours, gray, today):
     #
     # Hands
     #
-    display += f'    <g id="hand_posha" cx="108" cy="108" transform-box="fill-box" transform-origin="center">'
+    size = 18
+
+    agrima_hand_colour = pointer_colours['200'] + 'aa'
+    posha_hand_colour = pointer_colours['500'] + 'aa'
+    uta_hand_colour = pointer_colours['800'] + 'aa'
+
+    display += f'    <g id="hand_uta" cx="108" cy="108" transform-box="fill-box" transform-origin="center">'
     display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="108" cy="108" r="60"  />\n'''
 
     cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
@@ -691,7 +708,7 @@ def _time_display(locale, colours, gray, today):
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=18,
+        radius=size,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
@@ -699,7 +716,7 @@ def _time_display(locale, colours, gray, today):
     # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
     display += '    </g>'
 
-    display += '    <g id="hand_uta" transform-origin="center">'
+    display += '    <g id="hand_posha" transform-origin="center">'
     display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="108" cy="108" r="60" />\n'''
 
     cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
@@ -707,7 +724,7 @@ def _time_display(locale, colours, gray, today):
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=12,
+        radius=size / 2,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
@@ -723,7 +740,7 @@ def _time_display(locale, colours, gray, today):
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=6,
+        radius=size / 3,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
@@ -740,7 +757,7 @@ def _time_display(locale, colours, gray, today):
         triangle = polygon(
             x=cx,
             y=cy,
-            radius=shape_vertices,
+            radius=size / 4,
             n=shape_vertices,
             angle=hand_initial_angle,
         )
@@ -761,29 +778,24 @@ def _date_display(locale, colours, gray, today):
         # time_colours = gray[today.week_in_year]
         date_colours = colours[today.week_in_year]
 
-    # time_display_colour = time_colours['600']
-    # agrima_hand_colour = pointer_colours['200']
-    # posha_hand_colour = pointer_colours['500']
-    # uta_hand_colour = pointer_colours['800']
-
     display = '    <g id="watchface_date_display">\n'
-    display += f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['200']};text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+    display += f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['400']}88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
 
     if locale.calendar_displayed == 'DCC':
         if 'c' in locale.format_token:
-            display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
-            display += f'''            <tspan x="108" dy="1.3em">{today.format('&' + locale.format_token + 'D &iD', locale)}</tspan>'''
+            display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('&iM‐&iW‐&iD', locale)}</tspan>'''
         else:
-            display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
-            display += f'''            <tspan x="108" dy="1.3em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
+            display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
 
     elif locale.calendar_displayed == 'SYM':
-        display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
-        display += f'''            <tspan x="108" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('#W', locale)}</tspan>'''
 
     else:
-        display += f'''            <tspan x="108" dy="-0.3em">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
-        display += f'''            <tspan x="108" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('#W', locale)}</tspan>'''
 
     display += '        </text>\n'
     display += '    </g>\n'
