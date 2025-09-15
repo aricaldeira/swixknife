@@ -304,7 +304,7 @@ def _apply_sezimal_punctuation(number: str, is_fraction: bool = True, arda_shada
     if is_fraction:
         number = number[::-1]
 
-    if len(number) <= 3:
+    if len(number) <= 4:
         formatted_number = number
     elif arda_shadara:
         formatted_number = _apply_format(number[:-3], SEPARATOR_ARDA, _ARDA_DIGITS_GROUP_FORMAT, False) + SEPARATOR_ARDA + number[-3:]
@@ -330,7 +330,7 @@ def _apply_format(number: str, separator: str, format_pattern: re.Pattern, is_fr
     if is_fraction:
         number = number[::-1]
 
-    if format_pattern == _THREE_DIGITS_GROUP_FORMAT and len(number) <= 3:
+    if format_pattern == _THREE_DIGITS_GROUP_FORMAT and len(number) <= 4:
         formatted_number = number
     else:
         formatted_number = number[::-1]

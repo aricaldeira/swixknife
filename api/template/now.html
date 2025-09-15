@@ -477,8 +477,8 @@ html, body {
                 var agrima_angle = ((seconds * 12 * 12) - Math.trunc(seconds * 12 * 12)) * 360;
                 var dozenal_angle = ((seconds * 12 * 12 * 12) - Math.trunc(seconds * 12 * 12 * 12)) * 360;
                 document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
-                document.getElementById('hand_posha').setAttribute('transform', `rotate(${agrima_angle})`);
-                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_posha').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${agrima_angle})`);
                 document.getElementById('hand_dozenal').setAttribute('transform', `rotate(${dozenal_angle})`);
 
                 setTimeout(auto_refresh_dozenal_time, 28.935185);
