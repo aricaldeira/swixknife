@@ -192,7 +192,9 @@ function calendar_load() {
         localStorage.setItem('sezimal-watchface', 'digital');
     };
 
-    update_calendar();
+    if (document.getElementById('calendar_view')) {
+        update_calendar();
+    };
 };
 
 

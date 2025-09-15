@@ -93,7 +93,10 @@ html, body {
 </style>
     </head>
     <body>
+    {% include 'calendar_settings.html' %}
     <div id="selectors" style="position: absolute; width: 100%">
+        <span id="open_settings" class="emoji" style="float: left; opacity: 0.5; text-align: left;" onclick="open_settings()"> ☰ </span>
+
         <!-- Stopwatch selectors -->
         <span id="show_stopwath" class="emoji" style="float: left; opacity: 0.5; text-align: left;" onclick="show_stopwath()" hidden> ⏱️ </span>
         <span id="show_clock_stopwatch" class="emoji" style="float: right; opacity: 0.5; text-align: right;" onclick="show_clock()" hidden> ⌚ </span>
@@ -114,6 +117,7 @@ html, body {
     </div>
     </body>
     <script src="/static/js/calendar_today_api.js"></script>
+    <script src="/static/js/calendar_load.js"></script>
     <script>
         if ((navigator.userAgent.toUpperCase().indexOf('MOBILE') > 0) || (navigator.userAgent.toUpperCase().indexOf('ANDROID') > 0)) {
             document.querySelector("body").requestFullscreen();
@@ -125,6 +129,8 @@ html, body {
             localStorage.setItem('sezimal-calendar-base', '20');
             localStorage.setItem('sezimal-calendar-format-token', '↋');
         {% endif %}
+
+        calendar_load();
 
         var time_display = '';
         var iso_time_display = '';
@@ -333,7 +339,7 @@ html, body {
         auto_refresh_iso_display();
 
         async function auto_refresh_date_change(){
-            location.reload();
+            location.reload(true);
             //
             // Update twice a day
             //

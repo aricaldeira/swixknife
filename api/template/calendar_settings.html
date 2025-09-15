@@ -80,6 +80,15 @@
                             Date: locale’s default; hour:
                         {% endif %}
                         {{ locale.digit_replace(' \N{LRI}24 h\N{PDI}') }}
+                        {% if locale.LANG == 'pt' %}
+                            ; 0 abaixo
+                        {% elif locale.LANG == 'bz' %}
+                            ; 0 abaxu
+                        {% elif locale.LANG == 'eo' %}
+                            ; 0 sub
+                        {% else %}
+                            ; 0 at the bottom
+                        {% endif %}
                     </option>
                     <option value="12h">
                         {% if locale.LANG == 'pt' %}
@@ -92,6 +101,15 @@
                             Date: locale’s default; hour:
                         {% endif %}
                         {{ locale.digit_replace(' \N{LRI}12 h\N{PDI}') }}
+                        {% if locale.LANG == 'pt' %}
+                            ; 0 acima
+                        {% elif locale.LANG == 'bz' %}
+                            ; 0 asima
+                        {% elif locale.LANG == 'eo' %}
+                            ; 0 super
+                        {% else %}
+                            ; 0 at the top
+                        {% endif %}
                     </option>
                     <option value="iso">
                         {% if locale.LANG == 'pt' %}
@@ -102,6 +120,15 @@
                             ISO normo: JJJJ-MM-DD kaj 24 h
                         {% else %}
                             ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}24 h\N{PDI}') }}
+                        {% endif %}
+                        {% if locale.LANG == 'pt' %}
+                            ; 0 abaixo
+                        {% elif locale.LANG == 'bz' %}
+                            ; 0 abaxu
+                        {% elif locale.LANG == 'eo' %}
+                            ; 0 sub
+                        {% else %}
+                            ; 0 at the bottom
                         {% endif %}
                     </option>
                 </select>
