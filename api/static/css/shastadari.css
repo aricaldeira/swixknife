@@ -867,3 +867,19 @@ text {
 textPath {
     font-family: 'Andika', 'Sezimal QP', 'Sezimal Symbols', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
 }
+
+.watchface {
+    width: 75%;
+}
+
+@media only screen and (orientation: landscape) {
+    .watchface {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1280px) and (orientation: landscape) {
+    .watchface {
+        width: 75%;
+    }
+}

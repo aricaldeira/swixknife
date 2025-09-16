@@ -104,7 +104,7 @@ def watchface(locale, today) -> str:
         angle = D(90)
 
     # wf = '<svg width="172" height="172" id="watchface" viewBox="0 0 216 216">\n'
-    wf = '<svg width="50%" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
+    wf = '<svg class="watchface" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
     gweeks = '    <g id="weeks_background">\n'
     gtext = '    <g id="weeks_text">\n'
 
