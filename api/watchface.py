@@ -611,34 +611,38 @@ def _time_display(locale, colours, gray, today):
         shape_vertices = 3
 
         if False and locale.HOUR_FORMAT == '24h':
+            for i in range(24):
+                angle = zero_position + (i * 15) - 0.5
+                tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+
+                angle = ((i / 24) * 360) + zero_position
+
+                if angle > 360:
+                    angle -= 360
+
+                if True:
+                    cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + 5 + 66 * math.sin(angle / 360 * math.pi * 2)
+                    display += f'''<text x="{cx}" y="{cy}" style="font-size:13px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
+                else:
+                    cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
+                    display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
+
+                display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
+
             for i in range(120):
                 if i % 5 == 0:
-                    angle = zero_position + ((i / 5) * 15) - 1
-                    tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 2)
+                    continue
 
-                    angle = ((i / 120) * 360) + zero_position
-
-                    if angle > 360:
-                        angle -= 360
-
-                    if True:
-                        cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + 5 + 66 * math.sin(angle / 360 * math.pi * 2)
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:13px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{(i // 5)}</text>\n'''
-                    else:
-                        cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
-                        display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
-
-                else:
-                    angle = zero_position + (i * 7.5) - 0.5
-                    tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                angle = zero_position + (i * 6) - 0.25
+                tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
         else:
             for i in range(60):
-                if i in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55):
+                if i % 5 == 0:
                     angle = zero_position + ((i / 5) * 30) - 1
                     tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 2)
 
