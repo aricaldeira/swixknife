@@ -105,7 +105,7 @@ html, body {
         <span id="show_clock_timer" class="emoji" style="float: left; opacity: 0.5; text-align: right;" onclick="show_clock()" hidden> ⌚ </span>
         <span id="show_timer" class="emoji" style="float: right; opacity: 0.5; text-align: right;" onclick="show_timer()" hidden> ⏳ </span>
     </div>
-    <div id="now_view">
+    <div id="now_view" onclick="open_today()">
     {% include 'calendar_view_now.html' %}
     </div>
     <div style="display: none;">
@@ -1376,6 +1376,10 @@ html, body {
         document.getElementById('weekday').hidden = true;
         document.getElementById('date').hidden = true;
         document.getElementById('filler').hidden = false;
+    };
+
+    function open_today() {
+        window.open('/today', '_blank');
     };
 
     </script>
