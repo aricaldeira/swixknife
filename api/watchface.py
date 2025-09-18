@@ -387,7 +387,7 @@ def _shastadari_logo(locale, colours, today):
 
     circle = ring(
         inner_radius=0,
-        outer_radius=shastadari_size_hexagon,
+        outer_radius=shastadari_size_hexagon - 3,
         x=108,
         y=108,
         start_angle=0,
@@ -399,8 +399,13 @@ def _shastadari_logo(locale, colours, today):
         name = 'Xastadári'
     elif 'bz' in locale.LANG:
         name = 'Xastadari'
+    elif 'eo' in locale.LANG:
+        name = 'Ŝastadari’'
     else:
         name = 'Shastadari'
+
+    # name = 'Swixknife'
+    # name = 'षष्टाधारी'
 
     xl += f'''<text style="font-size:9px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
 
@@ -414,13 +419,13 @@ def _shastadari_logo(locale, colours, today):
     # )
     # xl += f'''        <path id="shastadari_circle" style="fill:{front_colour};" d="{circle}" />\n'''
 
-    hexagon = polygon(
-        x=108,
-        y=108,
-        radius=shastadari_size_hexagon,
-        n=6,
-    )
-    xl += f'''        <path id="shastadari_hexagon_outer" style="fill:{front_colour};" d="{hexagon}" />\n'''
+    # hexagon = polygon(
+    #     x=108,
+    #     y=108,
+    #     radius=shastadari_size_hexagon,
+    #     n=6,
+    # )
+    # xl += f'''        <path id="shastadari_hexagon_outer" style="fill:{front_colour};" d="{hexagon}" />\n'''
     hexagon = polygon(
         x=108,
         y=108,
@@ -781,23 +786,28 @@ def _date_display(locale, colours, gray, today):
         date_colours = colours[today.week_in_year]
 
     display = '    <g id="watchface_date_display">\n'
-    display += f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['400']}88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+    opening = f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['400']}88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+    display += opening
 
     if locale.calendar_displayed == 'DCC':
         if 'c' in locale.format_token:
-            display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
-            display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('&iM‐&iW‐&iD', locale)}</tspan>'''
+            display += f'''            <tspan x="108">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
+            display += '        </text>' + opening
+            display += f'''            <tspan x="108" dy="1em">{today.format('&iM‐&iW‐&iD', locale)}</tspan>'''
         else:
-            display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
-            display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
+            display += f'''            <tspan x="108">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+            display += '        </text>' + opening
+            display += f'''            <tspan x="108" dy="1em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
 
     elif locale.calendar_displayed == 'SYM':
-        display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
-        display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="108">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
+        display += '        </text>' + opening
+        display += f'''            <tspan x="108" dy="1em">{today.format('#W', locale)}</tspan>'''
 
     else:
-        display += f'''            <tspan x="108" dx="+0.1em" dy="-0.3em">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
-        display += f'''            <tspan x="108" dx="+0.1em" dy="1.3em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="108">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
+        display += '        </text>' + opening
+        display += f'''            <tspan x="108" dy="1em">{today.format('#W', locale)}</tspan>'''
 
     display += '        </text>\n'
     display += '    </g>\n'
