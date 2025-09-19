@@ -395,17 +395,26 @@ def _shastadari_logo(locale, colours, today):
     )
     xl += f'''        <path id="shastadari_base" style="fill:none;" d="{circle}" />\n'''
 
-    if 'pt' in locale.LANG:
-        name = 'Xastadári'
-    elif 'bz' in locale.LANG:
-        name = 'Xastadari'
-    elif 'eo' in locale.LANG:
-        name = 'Ŝastadari’'
-    else:
-        name = 'Shastadari'
-
-    # name = 'Swixknife'
+    # if 'pt' in locale.LANG:
+    #     name = 'Xastadári'
+    # elif 'bz' in locale.LANG:
+    #     name = 'Xastadari'
+    # elif 'eo' in locale.LANG:
+    #     name = 'Ŝastadari’'
+    # elif 'es' in locale.LANG:
+    #     name = 'Llastadari'
+    # elif 'it' in locale.LANG:
+    #     name = 'Sciastadari'
+    # elif 'fr' in locale.LANG:
+    #     name = 'Chastadari'
+    # elif 'de' in locale.LANG:
+    #     name = 'Schastadari'
+    # else:
+    #     name = 'Shastadari'
     # name = 'षष्टाधारी'
+
+    # name = "[swɪksˈnaɪf]"
+    name = "swixknife"
 
     xl += f'''<text style="font-size:9px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
 
