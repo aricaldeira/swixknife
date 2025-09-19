@@ -178,6 +178,7 @@
             {% endif %}
         </p>
         <p> </p>
+        <div onclick="open_today()">
         {% set year_view = True %}
         {% set now_view = True %}
         {% if locale.calendar_displayed == 'SYM' %}
@@ -193,6 +194,7 @@
                 {% include 'calendar_base_dcc_month.html' %}
             {% endwith %}
         {% endif %}
+        </div>
     </div>
 </div>
 <div id="stopwatch-content" hidden>
