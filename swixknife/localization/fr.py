@@ -270,3 +270,142 @@ class SezimalLocaleFR(SezimalLocale):
     }
 
     DCC_DATE_MONTH_DAY_SEPARATOR = ' et '
+
+    ADC_MONTH_NAME = [
+        'poissons',
+        'baleine',
+        'éridan',
+        'licorne',
+        'hydre',
+        'lion',
+        'vierge',
+        'serpent',
+        'aigle',
+        'verseau',
+        'sextant',
+    ]
+
+    ADC_MONTH_ABBREVIATED_NAME = [
+        'poi',
+        'bal',
+        'éri',
+        'lic',
+        'hyd',
+        'lio',
+        'vie',
+        'ser',
+        'aig',
+        'ver',
+        'sex',
+    ]
+
+    ADC_MONTH_SYMBOL = [
+        'p',
+        'b',
+        'é',
+        'l',
+        'h',
+        'l',
+        'vi',
+        'sr',
+        'a',
+        've',
+        'sx',
+    ]
+
+    ADC_WEEK_NAME = [
+        'esprit',
+        'feu',
+        'air',
+        'eau',
+        'terre',
+        'corps',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'esp',
+        'feu',
+        'air',
+        'eau',
+        'ter',
+        'cor',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'Es',
+        'F',
+        'A',
+        'Eau',
+        'T',
+        'C',
+    ]
+
+    ADC_WEEKDAY_NAME = [
+        'soleil',
+        'vénus',
+        'mars',
+        'jupiter',
+        'saturne',
+        'lune',
+    ]
+
+    ADC_WEEKDAY_ABBREVIATED_NAME = [
+        'sol',
+        'vén',
+        'mar',
+        'jup',
+        'sat',
+        'lun',
+    ]
+
+    DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mois &-m, jour &-d'
+    DCC_DATE_LONG_FORMAT_ON_DATE_DAYS = '&󱹭>Y, jour &-dY'
+    DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, semaine &-wY, jour &-dW'
+    DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mois &-m, semaine &-wM, jour &-dW'
+
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mois &$DEM &cM, jour &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mois &$DEM &cM, semaine &$DEW &cW, jour &$DED &cD'
+
+    _DE_LE_LA_MOIS = [
+        'de les ',  # poissons
+        'de la ',   # baleine
+        'de l’',    # éridan
+        'de la ',   # licorne
+        'de l’',    # hydre
+        'du ',      # lion
+        'de la ',   # vierge
+        'du ',      # serpent
+        'de l’',    # aigle
+        'du ',      # verseau
+        'du ',      # sextant
+    ]
+
+    _DE_LE_LA_SEMAINE = [
+         'de l’',   # esprit
+         'du ',  # feue
+         'de l’',   # air
+         'de l’',   # eau
+         'de la ',  # terre
+         'du ',  # corps
+    ]
+
+    _DE_LE_LA_JOUR_SEMAINE = [
+         'du ',    # soleil
+         'de ',     # vénus
+         'de ',     # mars
+         'de ',     # jupiter
+         'de ',     # saturne
+         'de la ',  # lune
+    ]
+
+    def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
+        if f'&$DED' in fmt:
+            fmt = fmt.replace(f'&$DED', self._DE_LE_LA_JOUR_SEMAINE[int(date.dcc_weekday)])
+
+        if f'&$DEW' in fmt:
+            fmt = fmt.replace(f'&$DEW', self._DE_LE_LA_SEMAINE[int(date.dcc_week)])
+
+        if f'&$DEM' in fmt:
+            fmt = fmt.replace(f'&$DEM', self._DE_LE_LA_MOIS[int(date.dcc_month)])
+
+        return fmt
