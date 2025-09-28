@@ -326,16 +326,18 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][text_shade]};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number}</textPath></text>\n'''
 
     if (today.dcc_month * 10) <= i < ((today.dcc_month * 10) + 10):
-        day_colours = gray
 
         for day in SR((i * 10), (i * 10) + 10):
             day = day % 100
             day_in_week = int(day % 10)
 
+            day_colours = gray
+
             if i == today.dcc_week_in_year:
                 if day == today.dcc_day:
-                    back_shade = '500'
-                    shade = '900'
+                    back_shade = '600'
+                    shade = '100'
+                    day_colours = colours
                 # elif day < today.dcc_day:
                 else:
                     back_shade = '800' if day % 2 == 0 else '900'
@@ -895,7 +897,7 @@ def _time_display(locale, colours, gray, today):
     )
     display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
 
-    # display += f'''        <circle id="hand_uta_sun" style="fill:{sun_colour};" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+    display += f'''        <circle id="hand_uta_sun" style="fill:#FFEB3B;" cx="{cx}" cy="{cy}" r="{size / 42}"  />\n'''
 
     display += '    </g>'
 
