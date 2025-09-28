@@ -464,12 +464,12 @@ html, body {
                 var integer_time = seconds * 12 * 12 * 12;
                 integer_time = Math.floor(integer_time);
                 seconds = (seconds * 12 * 12 * 12) - integer_time;
-                var dozenal_time = Math.floor(seconds * 12);
+                var dozenal_time = Math.floor(seconds * 12 * 12);
 
                 {% if locale.show_seconds %}
                     time_display = integer_time.toString(12).padStart(3, '0')
                         + '{{ locale.DOZENAL_SEPARATOR }}'
-                        + dozenal_time.toString(12).padStart(1, '0');
+                        + dozenal_time.toString(12).padStart(2, '0');
                 {% else %}
                     time_display = integer_time.toString(12).padStart(3, '0');
                 {% endif %}

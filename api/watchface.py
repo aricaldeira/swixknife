@@ -1,5 +1,14 @@
 
 import math
+import matplotlib as mpl
+import numpy as np
+
+
+def colour_fader(c1, c2, mix=0): #fade (linear interpolate) from color c1 (at mix=0) to c2 (mix=1)
+    c1 = np.array(mpl.colors.to_rgb(c1))
+    c2 = np.array(mpl.colors.to_rgb(c2))
+    return mpl.colors.to_hex(((1 - mix) * c1) + (mix * c2))
+
 
 # from flask import Response, request
 # from main import app, sitemapper, sezimal_render_template
@@ -21,14 +30,7 @@ from decimal import Decimal as D
 
 # @app.route('/watchface.svg')
 def watchface(locale, today) -> str:
-    # if 'sezimal' in request.cookies:
-    #     locale = _prepare_locale_from_cookie()
-    # else:
-    #     locale = sezimal_locale(browser_preferred_locale())
-
-    # locale.calendar_displayed = 'DCC'
-    # locale.DEFAULT_HEMISPHERE = 'S'
-    # locale.format_token = 'c'
+    # today = today.from_days(today.as_days - 22 - 400)
 
     #
     # Let's bring the colours first
@@ -82,15 +84,19 @@ def watchface(locale, today) -> str:
     #     else:
     #         weeks = SI(124)
 
-    arch = round(D(360) / weeks.decimal, 3)
+    wf = '<svg class="watchface" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
 
-    if locale.calendar_displayed == 'DCC' and weeks == 141:
-        arch_offset = arch / 2
-    elif weeks == 125:
-        arch_offset = arch / 2
-    else:
-        arch_offset = D(0)
+    wf += _weeks_display(locale, today, weeks, colours, gray)
+    wf += _shastadari_logo(locale, gray, today)
+    wf += _date_display(locale, colours, gray, today)
+    wf += _time_display(locale, colours, gray, today)
 
+    wf += '</svg>'
+
+    return wf
+
+
+def _angle_zero(locale):
     #
     # Weeks colors start at the same place as
     #
@@ -103,10 +109,27 @@ def watchface(locale, today) -> str:
     else:
         angle = D(90)
 
-    # wf = '<svg width="172" height="172" id="watchface" viewBox="0 0 216 216">\n'
-    wf = '<svg class="watchface" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
+    return angle
+
+
+def _weeks_display(locale, today, weeks, colours, gray):
+    wf = '    <g id="weeks_calendar">'
+
+    arch = round(D(360) / weeks.decimal, 3)
+
+    if locale.calendar_displayed == 'DCC' and weeks == 141:
+        arch_offset = arch / 2
+    elif weeks == 125:
+        arch_offset = arch / 2
+    else:
+        arch_offset = D(0)
+
+    angle = _angle_zero(locale)
+
     gweeks = '    <g id="weeks_background">\n'
     gtext = '    <g id="weeks_text">\n'
+    gdays = '    <g id="days_background">\n'
+    gdaystext = '    <g id="days_text">\n'
 
     for i in SR(weeks):
         week_wedge = ring(
@@ -168,25 +191,32 @@ def watchface(locale, today) -> str:
 
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
-                shade = '50'
-            elif i < today.dcc_week_in_year:
-                shade = '700'
+                shade = '200'
+                text_shade = '900'
+            # elif i < today.dcc_week_in_year:
             else:
-                shade = '400'
+                shade = '600'
+                text_shade = '100'
+            # else:
+            #     shade = '700'
+            #     text_shade = '100'
         else:
             if i + 1 == today.week_in_year:
-                shade = '50'
-            elif (i + 1) < today.week_in_year:
-                shade = '700'
-            else:
                 shade = '400'
+                text_shade = '900'
+            elif (i + 1) < today.week_in_year:
+                shade = '900'
+                text_shade = '700'
+            else:
+                shade = '700'
+                text_shade = '100'
 
         gweeks += f'''        <path id="week_{str(i).zfill(3)}" style="fill:{colours[SI(i + 1)][shade]};" d="{week_wedge}" />\n'''
 
         gtext += f'''        <path id="week_line_{str(i).zfill(3)}" style="fill:none;" d="{week_line}" />\n'''
 
         if locale.calendar_displayed == 'DCC':
-            gweeks, gtext = _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch)
+            gweeks, gtext, gdays, gdaystext = _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch, today, gray, text_shade)
 
         else:
             gweeks, gtext = _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch)
@@ -195,45 +225,31 @@ def watchface(locale, today) -> str:
 
     gtext += '    </g>\n'
     gweeks += '    </g>\n'
+    gdaystext += '    </g>\n'
+    gdays += '    </g>\n'
 
-    wf += '    <g id="weeks_calendar">'
     wf += gweeks
     wf += gtext
-
     wf += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="90" />\n'''
+    wf += gdays
+    wf += gdaystext
+    wf += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="81" />\n'''
 
     wf += '    </g>'
-
-    wf += _shastadari_logo(locale, gray, today)
-    wf += _date_display(locale, colours, gray, today)
-    wf += _time_display(locale, colours, gray, today)
-
-    wf += '</svg>'
-
     return wf
 
-#     text = f'''<html>
-# <head>
-#     <style>
-#         html {{
-#             background-color: #000;
-#         }};
-#     </style>
-# </head>
-# <body>
-# {wf}
-# </body>
-# <script>
-# </script>
-# </html>'''
-    # return Response(wf, mimetype='image/svg+xml')
 
+def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch, today, gray, text_shade):
+    # if 'c' in locale.format_token:
+    #     gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{locale.ADC_WEEK_ICON[int(i % 10)]}</textPath></text>\n'''
+    # else:
 
-def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch):
-    if 'c' in locale.format_token:
-        gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{locale.ADC_WEEK_ICON[int(i % 10)]}</textPath></text>\n'''
-    else:
-        gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{i % 10}</textPath></text>\n'''
+    week_number = str(i % 10)
+
+    if '!' in locale.format_token:
+        week_number = default_to_sezimal_digits(week_number)
+
+    gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][text_shade]};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{week_number}</textPath></text>\n'''
 
     #
     # Separators between months
@@ -252,12 +268,26 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
 
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{month_line}" />\n'''
 
+        month_number = i // 10
+
+        if month_number == today.dcc_month:
+            month_shade = '50'
+        else:
+            month_shade = text_shade
+
+        if locale.base == 14:
+            month_number = month_number.decimal
+        elif locale.base == 20:
+            month_number = month_number.dozenal
+        elif '!' in locale.format_token:
+            month_number = default_to_sezimal_digits(str(month_number))
+
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
-<textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
+            gtext += f'''<text style="font-size:7px;fill:{colours[SI(i + 1)][month_shade]};text-anchor:middle;text-align:center;">
+<textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} {locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{i // 10} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
 
     elif i // 10 == 14:
         week_wedge = ring(
@@ -283,14 +313,114 @@ def _dcc_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
 
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{leap_week_line}" />\n'''
 
+        month_number = str(i // 10)
+
+        if '!' in locale.format_token:
+            month_number = default_to_sezimal_digits(month_number)
+
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;">
+            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)][text_shade]};text-anchor:middle;text-align:center;">
 <textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{locale.ADC_MONTH_ICON[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)]['900']};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{i // 10}</textPath></text>\n'''
+            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][text_shade]};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number}</textPath></text>\n'''
 
-    return gweeks, gtext
+    if (today.dcc_month * 10) <= i < ((today.dcc_month * 10) + 10):
+        day_colours = gray
+
+        for day in SR((i * 10), (i * 10) + 10):
+            day = day % 100
+            day_in_week = int(day % 10)
+
+            if i == today.dcc_week_in_year:
+                if day == today.dcc_day:
+                    back_shade = '500'
+                    shade = '900'
+                # elif day < today.dcc_day:
+                else:
+                    back_shade = '800' if day % 2 == 0 else '900'
+                    shade = '600' if day % 2 == 0 else '700'
+                # else:
+                #     back_shade = '600' if day % 2 == 0 else '700'
+                #     shade = '100' if day % 2 == 0 else '200'
+            # elif i < today.dcc_week_in_year:
+            else:
+                back_shade = '800' if day % 2 == 0 else '900'
+                shade = '600' if day % 2 == 0 else '700'
+            # else:
+            #     back_shade = '600' if day % 2 == 0 else '700'
+            #     shade = '100' if day % 2 == 0 else '200'
+
+            # if today.dcc_month <= 13:
+            day_degrees = 10
+            # day_colour = colour_fader(
+            #     day_colours[SI(today.dcc_month * 10) + 1][back_shade],
+            #     day_colours[SI(today.dcc_month * 10) + 11][back_shade],
+            #     float(((day + 1) / 100).decimal),
+            # )
+            # text_colour = colour_fader(
+            #     day_colours[SI(today.dcc_month * 10) + 1][shade],
+            #     day_colours[SI(today.dcc_month * 10) + 11][shade],
+            #     float(((day + 1) / 100).decimal),
+            # )
+            day_colour = day_colours[i + 1][back_shade]
+            text_colour = day_colours[i + 1][shade]
+            # else:
+            #     day_degrees = 60
+            #     day_colour = colour_fader(
+            #         gray[SI(today.dcc_month * 10)][back_shade],
+            #         gray[SI(1)][back_shade],
+            #         float(((day + 1) / 10).decimal),
+            #     )
+            #     text_colour = colour_fader(
+            #         gray[SI(today.dcc_month * 10)][shade],
+            #         gray[SI(1)][shade],
+            #         float(((day + 1) / 10).decimal),
+            #     )
+
+            # if i < today.dcc_week_in_year:
+            #     day_colour += '66'
+            #     text_colour += '66'
+            # elif day < today.dcc_day:
+            #     day_colour += '66'
+            #     text_colour += '66'
+            # else:
+            #     day_colour += 'cc'
+            #     text_colour += 'cc'
+
+            day_angle = _angle_zero(locale) + day.decimal * day_degrees
+
+            day_wedge = ring(
+                inner_radius=0,
+                outer_radius=90.25,
+                x=108,
+                y=108,
+                start_angle=day_angle,
+                end_angle=day_angle + D('0.1') + day_degrees,
+                without_inner=True,
+            )
+            day_line = ring(
+                inner_radius=83,
+                outer_radius=83.1,
+                x=108,
+                y=108,
+                start_angle=day_angle,
+                end_angle=day_angle + day_degrees,
+            )
+
+            day_number = str(day)
+
+            if '!' in locale.format_token:
+                day_number = default_to_sezimal_digits(day_number)
+            elif locale.base != 10:
+                day_number = day_number.zfill(2)
+                day_number = day_number[0] + '‐' + day_number[1]
+
+            gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
+            gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
+            gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;"><textPath href="#day_line_{str((i * 100) + day).zfill(4)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+
+    return gweeks, gtext, gdays, gdaystext
 
 
 def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch):
@@ -373,13 +503,13 @@ def _shastadari_logo(locale, colours, today):
     #     back_colour = colours[today.week_in_year]['900']
     #     front_colour = colours[today.week_in_year]['700']
 
-    back_colour = '#333333aa'
+    back_colour = '#222222aa'
     front_colour = '#000000'
 
     #
     # Shastadari Symbol
     #
-    shastadari_size = 72
+    shastadari_size = 60
     shastadari_size_hexagon = shastadari_size / 3 * 2
     shastadari_thickness = shastadari_size / 9
 
@@ -416,7 +546,7 @@ def _shastadari_logo(locale, colours, today):
     # name = "[swɪksˈnaɪf]"
     name = "swixknife"
 
-    xl += f'''<text style="font-size:9px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
+    xl += f'''<text style="font-size:{shastadari_size / 8}px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
 
     # circle = ring(
     #     inner_radius=shastadari_size - shastadari_thickness,
@@ -546,9 +676,11 @@ def _time_display(locale, colours, gray, today):
         time_colours = gray[today.week_in_year]
         pointer_colours = colours[today.week_in_year]
 
-    time_display_colour = time_colours['600'] + 'aa'
+    time_display_colour = time_colours['500']
 
     display = '    <g id="watchface_time_display">\n'
+
+    size = 81
 
     # display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
 
@@ -586,7 +718,7 @@ def _time_display(locale, colours, gray, today):
         for i in range(36):
             if i % 6 == 0:
                 angle = zero_position + ((i / 6) * 60) - 1
-                tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 2)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 2)
 
                 angle = ((i / 36) * 360) + zero_position
 
@@ -594,25 +726,25 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + 64 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 6 + 64 * math.sin(angle / 360 * math.pi * 2)
+                    cx = 108 + (size * 32 / 45) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size / 15) + (size * 32 / 45) * math.sin(angle / 360 * math.pi * 2)
 
                     if '!' in locale.format_token:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
                     else:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
+                        display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
                 else:
-                    cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
+                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
             else:
                 angle = zero_position + (i * 10) - 0.5
 
                 if i % 3 == 0:
-                    tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
                 else:
-                    tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -622,7 +754,7 @@ def _time_display(locale, colours, gray, today):
         if False and locale.HOUR_FORMAT == '24h':
             for i in range(24):
                 angle = zero_position + (i * 15) - 0.5
-                tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
 
                 angle = ((i / 24) * 360) + zero_position
 
@@ -630,12 +762,12 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 5 + 66 * math.sin(angle / 360 * math.pi * 2)
-                    display += f'''<text x="{cx}" y="{cy}" style="font-size:13px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
+                    cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size / 18) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                    display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 13 / 90}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
                 else:
-                    cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
+                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
@@ -645,7 +777,7 @@ def _time_display(locale, colours, gray, today):
                     continue
 
                 angle = zero_position + (i * 6) - 0.25
-                tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -653,7 +785,7 @@ def _time_display(locale, colours, gray, today):
             for i in range(60):
                 if i % 5 == 0:
                     angle = zero_position + ((i / 5) * 30) - 1
-                    tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 2)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 2)
 
                     angle = ((i / 60) * 360) + zero_position
 
@@ -661,17 +793,17 @@ def _time_display(locale, colours, gray, today):
                         angle -= 360
 
                     if True:
-                        cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + 6 + 66 * math.sin(angle / 360 * math.pi * 2)
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:16px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{(i // 5) if i != 0 else '12'}</text>\n'''
+                        cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                        cy = 108 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                        display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 8 / 45}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{(i // 5) if i != 0 else '12'}</text>\n'''
                     else:
-                        cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
+                        cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                        cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                         display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 else:
                     angle = zero_position + (i * 6) - 0.5
-                    tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -681,7 +813,7 @@ def _time_display(locale, colours, gray, today):
         for i in range(0, 144):
             if i % 12 == 0:
                 angle = zero_position + 2 + ((i - 1) * 2.5)
-                tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
 
                 display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -691,60 +823,91 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + 66 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 6 + 66 * math.sin(angle / 360 * math.pi * 2)
-                    display += f'''<text x="{cx}" y="{cy}" style="font-size:18px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{DozenalInteger(D(i // 12))}</text>\n'''
+                    cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                    display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{DozenalInteger(D(i // 12))}</text>\n'''
                 else:
-                    cx = 108 + 72 * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + 72 * math.sin(angle / 360 * math.pi * 2)
+                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
             else:
                 angle = zero_position + 2 + ((i - 1) * 2.5)
 
                 if i % 6 == 0:
-                    tick = ring(inner_radius=78, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
                 elif i % 3 == 0:
-                    tick = ring(inner_radius=81, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
                 else:
-                    tick = ring(inner_radius=84, outer_radius=90, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
 
                 display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
     #
     # Hands
     #
-    size = 18
-
-    agrima_hand_colour = pointer_colours['200'] + 'aa'
-    posha_hand_colour = pointer_colours['500'] + 'aa'
-    uta_hand_colour = pointer_colours['800'] + 'aa'
+    # agrima_hand_colour = pointer_colours['800'] + 'dd'
+    # posha_hand_colour = pointer_colours['500'] + 'dd'
+    # uta_hand_colour = pointer_colours['200'] + 'dd'
+    anuga_hand_colour = '#d50000'
+    agrima_hand_colour = '#d50000dd'
+    posha_hand_colour = '#ffffffdd'
+    uta_hand_colour = '#ffffffdd'
+    sun_colour = '#FF8F00'
 
     display += f'    <g id="hand_uta" cx="108" cy="108" transform-box="fill-box" transform-origin="center">'
-    display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="108" cy="108" r="60"  />\n'''
+    display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}"  />\n'''
 
-    cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + 60 * math.sin(zero_position / 360 * math.pi * 2)
+    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size,
+        radius=size / 6,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
     display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
-    display += '    </g>'
 
-    display += '    <g id="hand_posha" transform-origin="center">'
-    display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="108" cy="108" r="60" />\n'''
-
-    cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + 60 * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size / 2,
+        radius=size / 18,
+        n=shape_vertices,
+        angle=hand_initial_angle,
+    )
+    display += f'''        <path id="hand_uta_pointer_2" style="fill:{sun_colour};" d="{triangle}" />\n'''
+    triangle = polygon(
+        x=cx,
+        y=cy,
+        radius=size / 18,
+        n=shape_vertices,
+        angle=hand_initial_angle + 40,
+    )
+    display += f'''        <path id="hand_uta_pointer_3" style="fill:{sun_colour};" d="{triangle}" />\n'''
+    triangle = polygon(
+        x=cx,
+        y=cy,
+        radius=size / 21,
+        n=shape_vertices,
+        angle=hand_initial_angle + 80,
+    )
+    display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
+
+    # display += f'''        <circle id="hand_uta_sun" style="fill:{sun_colour};" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+
+    display += '    </g>'
+
+    display += '    <g id="hand_posha" transform-origin="center">'
+    display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
+
+    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
+    triangle = polygon(
+        x=cx,
+        y=cy,
+        radius=size / 8,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
@@ -753,35 +916,39 @@ def _time_display(locale, colours, gray, today):
     display += '    </g>'
 
     display += '    <g id="hand_agrima" transform-origin="center">'
-    display += f'''        <circle id="hand_agrima_base" style="fill:none;" cx="108" cy="108" r="60" />\n'''
+    display += f'''        <circle id="hand_agrima_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
 
-    cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + 60 * math.sin(zero_position / 360 * math.pi * 2)
+    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size / 3,
+        radius=size / 10,
         n=shape_vertices,
         angle=hand_initial_angle,
     )
-    display += f'''        <path id="hand_agrima_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
+
+    if locale.base == 20:
+        display += f'''        <path id="hand_agrima_pointer" style="fill:{posha_hand_colour};" d="{triangle}" />\n'''
+    else:
+        display += f'''        <path id="hand_agrima_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
     display += '    </g>'
 
     if locale.base == 20:
         display += '    <g id="hand_dozenal" transform-origin="center">'
-        display += f'''        <circle id="hand_dozenal_base" style="fill:none;" cx="108" cy="108" r="60" />\n'''
+        display += f'''        <circle id="hand_dozenal_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
 
-        cx = 108 + 60 * math.cos(zero_position / 360 * math.pi * 2)
-        cy = 108 + 60 * math.sin(zero_position / 360 * math.pi * 2)
+        cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+        cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
         triangle = polygon(
             x=cx,
             y=cy,
-            radius=size / 4,
+            radius=size / 12,
             n=shape_vertices,
             angle=hand_initial_angle,
         )
-        display += f'''        <path id="hand_dozenal_pointer" style="fill:{pointer_colours['100']};" d="{triangle}" />\n'''
+        display += f'''        <path id="hand_dozenal_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
         # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
         display += '    </g>'
 
@@ -791,6 +958,8 @@ def _time_display(locale, colours, gray, today):
 
 
 def _date_display(locale, colours, gray, today):
+    size = 60
+
     if locale.calendar_displayed == 'DCC':
         # time_colours = gray[today.dcc_week_in_year]
         date_colours = colours[today.dcc_week_in_year]
@@ -799,7 +968,7 @@ def _date_display(locale, colours, gray, today):
         date_colours = colours[today.week_in_year]
 
     display = '    <g id="watchface_date_display">\n'
-    opening = f'''        <text x="108" y="108" style="font-size:12px;font-weight:bold;fill:{date_colours['400']}88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+    opening = f'''        <text x="108" y="108" style="font-size:{size / 6}px;font-weight:bold;fill:#ffffff88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
     display += opening
 
     if locale.calendar_displayed == 'DCC':
