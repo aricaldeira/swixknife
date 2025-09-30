@@ -202,13 +202,13 @@ def _weeks_display(locale, today, weeks, colours, gray):
             #     text_shade = '100'
         else:
             if i + 1 == today.week_in_year:
-                shade = '400'
+                shade = '200'
                 text_shade = '900'
-            elif (i + 1) < today.week_in_year:
-                shade = '900'
-                text_shade = '700'
+            # elif (i + 1) < today.week_in_year:
+            #     shade = '900'
+            #     text_shade = '700'
             else:
-                shade = '700'
+                shade = '600'
                 text_shade = '100'
 
         gweeks += f'''        <path id="week_{str(i).zfill(3)}" style="fill:{colours[SI(i + 1)][shade]};" d="{week_wedge}" />\n'''
@@ -219,7 +219,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
             gweeks, gtext, gdays, gdaystext = _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch, today, gray, text_shade)
 
         else:
-            gweeks, gtext = _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch)
+            gweeks, gtext, gdays, gdaystext = _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade)
 
         angle += arch
 
@@ -415,8 +415,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             if '!' in locale.format_token:
                 day_number = default_to_sezimal_digits(day_number)
             elif locale.base != 10:
-                day_number = day_number.zfill(2)
-                day_number = day_number[0] + '‐' + day_number[1]
+                day_number = day_number.zfill(2)[1]
+                # day_number = day_number[0] + '‐' + day_number[1]
 
             gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
             gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
@@ -425,7 +425,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
     return gweeks, gtext, gdays, gdaystext
 
 
-def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch):
+def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade):
     if locale.base == 10:
         gtext += f'''<text style="font-size:5px;fill:{colours[SI(i + 1)]['900']};text-anchor:middle;text-align:center;"><textPath href="#week_line_{str(i).zfill(3)}"  startOffset="25%">{(i + 1)}</textPath></text>\n'''
     elif locale.base == 14:
@@ -494,7 +494,154 @@ def _sym_display(locale, gweeks, gtext, i, colours, angle, week_wedge, month_lin
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
 
-    return gweeks, gtext
+    draw_days = False
+
+    if (today.month == 1 and 1 <= (i + 1) <= 4):
+        draw_days = 44
+        week_in_month = i + 1
+    elif (today.month == 2 and 5 <= (i + 1) <= 13):
+        draw_days = 55
+        week_in_month = i + 1 - 4
+    elif (today.month == 3 and 14 <= (i + 1) <= 21):
+        draw_days = 44
+        week_in_month = i + 1 - 13
+
+    elif (today.month == 4 and 22 <= (i + 1) <= 25):
+        draw_days = 44
+        week_in_month = i + 1 - 21
+    elif (today.month == 5 and 30 <= (i + 1) <= 34):
+        draw_days = 55
+        week_in_month = i + 1 - 25
+    elif (today.month == 10 and 35 <= (i + 1) <= 42):
+        draw_days = 44
+        week_in_month = i + 1 - 34
+
+    elif (today.month == 11 and 43 <= (i + 1) <= 50):
+        draw_days = 44
+        week_in_month = i + 1 - 42
+    elif (today.month == 12 and 51 <= (i + 1) <= 55):
+        draw_days = 55
+        week_in_month = i + 1 - 50
+    elif (today.month == 13 and 100 <= (i + 1) <= 103):
+        draw_days = 44
+        week_in_month = i + 1 - 55
+
+    elif (today.month == 14 and 104 <= (i + 1) <= 111):
+        draw_days = 44
+        week_in_month = i + 1 - 103
+    elif (today.month == 15 and 112 <= (i + 1) <= 120):
+        draw_days = 55
+        week_in_month = i + 1 - 111
+    elif (today.month == 20 and 121 <= (i + 1)):
+        if today.is_long_year:
+            draw_days = 55
+        else:
+            draw_days = 44
+        week_in_month = i + 1 - 120
+
+    if not draw_days:
+        return gweeks, gtext, gdays, gdaystext
+
+    for day in SR(1, 12):
+        day_in_week = int(day)
+        day += (week_in_month - 1) * 11
+
+        day_colours = gray
+
+        if i + 1 == today.week_in_year:
+            if day == today.day:
+                back_shade = '600'
+                shade = '100'
+                day_colours = colours
+            # elif day < today.dcc_day:
+            else:
+                back_shade = '800' if day % 2 == 0 else '900'
+                shade = '600' if day % 2 == 0 else '700'
+            # else:
+            #     back_shade = '600' if day % 2 == 0 else '700'
+            #     shade = '100' if day % 2 == 0 else '200'
+        # elif i < today.dcc_week_in_year:
+        else:
+            back_shade = '800' if day % 2 == 0 else '900'
+            shade = '600' if day % 2 == 0 else '700'
+        # else:
+        #     back_shade = '600' if day % 2 == 0 else '700'
+        #     shade = '100' if day % 2 == 0 else '200'
+
+        # if today.dcc_month <= 13:
+        if draw_days == 44:
+            day_degrees = D(360) / 28
+        else:
+            day_degrees = D(360) / 35
+        # day_colour = colour_fader(
+        #     day_colours[SI(today.dcc_month * 10) + 1][back_shade],
+        #     day_colours[SI(today.dcc_month * 10) + 11][back_shade],
+        #     float(((day + 1) / 100).decimal),
+        # )
+        # text_colour = colour_fader(
+        #     day_colours[SI(today.dcc_month * 10) + 1][shade],
+        #     day_colours[SI(today.dcc_month * 10) + 11][shade],
+        #     float(((day + 1) / 100).decimal),
+        # )
+        day_colour = day_colours[i + 1][back_shade]
+        text_colour = day_colours[i + 1][shade]
+        # else:
+        #     day_degrees = 60
+        #     day_colour = colour_fader(
+        #         gray[SI(today.dcc_month * 10)][back_shade],
+        #         gray[SI(1)][back_shade],
+        #         float(((day + 1) / 10).decimal),
+        #     )
+        #     text_colour = colour_fader(
+        #         gray[SI(today.dcc_month * 10)][shade],
+        #         gray[SI(1)][shade],
+        #         float(((day + 1) / 10).decimal),
+        #     )
+
+        # if i < today.dcc_week_in_year:
+        #     day_colour += '66'
+        #     text_colour += '66'
+        # elif day < today.dcc_day:
+        #     day_colour += '66'
+        #     text_colour += '66'
+        # else:
+        #     day_colour += 'cc'
+        #     text_colour += 'cc'
+
+        day_angle = _angle_zero(locale) + ((day.decimal - 1) * day_degrees)
+
+        day_wedge = ring(
+            inner_radius=0,
+            outer_radius=90.25,
+            x=108,
+            y=108,
+            start_angle=day_angle,
+            end_angle=day_angle + D('0.1') + day_degrees,
+            without_inner=True,
+        )
+        day_line = ring(
+            inner_radius=83,
+            outer_radius=83.1,
+            x=108,
+            y=108,
+            start_angle=day_angle,
+            end_angle=day_angle + day_degrees,
+        )
+
+        day_number = str(day)
+
+        if '!' in locale.format_token:
+            day_number = default_to_sezimal_digits(day_number)
+        elif locale.base == 14:
+            day_number = day.decimal
+        elif locale.base == 20:
+            day_number = day.dozenal
+
+        gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
+        gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
+        gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;"><textPath href="#day_line_{str((i * 100) + day).zfill(4)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+
+    return gweeks, gtext, gdays, gdaystext
 
 
 def _shastadari_logo(locale, colours, today):
@@ -854,8 +1001,12 @@ def _time_display(locale, colours, gray, today):
     anuga_hand_colour = '#d50000'
     agrima_hand_colour = '#d50000dd'
     posha_hand_colour = '#ffffffdd'
-    uta_hand_colour = '#ffffffdd'
-    sun_colour = '#FF8F00'
+
+    if locale.base == 14:
+        uta_hand_colour = '#ffffffdd'
+    else:
+        uta_hand_colour = '#FFA726dd'
+        sun_colour = '#FFA726dd'
 
     display += f'    <g id="hand_uta" cx="108" cy="108" transform-box="fill-box" transform-origin="center">'
     display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}"  />\n'''
@@ -872,32 +1023,34 @@ def _time_display(locale, colours, gray, today):
     display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
 
-    triangle = polygon(
-        x=cx,
-        y=cy,
-        radius=size / 18,
-        n=shape_vertices,
-        angle=hand_initial_angle,
-    )
-    display += f'''        <path id="hand_uta_pointer_2" style="fill:{sun_colour};" d="{triangle}" />\n'''
-    triangle = polygon(
-        x=cx,
-        y=cy,
-        radius=size / 18,
-        n=shape_vertices,
-        angle=hand_initial_angle + 40,
-    )
-    display += f'''        <path id="hand_uta_pointer_3" style="fill:{sun_colour};" d="{triangle}" />\n'''
-    triangle = polygon(
-        x=cx,
-        y=cy,
-        radius=size / 21,
-        n=shape_vertices,
-        angle=hand_initial_angle + 80,
-    )
-    display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
+    if locale.base != 14:
+        # triangle = polygon(
+        #     x=cx,
+        #     y=cy,
+        #     radius=size / 6,
+        #     n=shape_vertices,
+        #     angle=hand_initial_angle,
+        # )
+        # display += f'''        <path id="hand_uta_pointer_2" style="fill:{sun_colour};" d="{triangle}" />\n'''
+        # triangle = polygon(
+        #     x=cx,
+        #     y=cy,
+        #     radius=size / 7,
+        #     n=shape_vertices,
+        #     angle=hand_initial_angle + 40,
+        # )
+        # display += f'''        <path id="hand_uta_pointer_3" style="fill:{sun_colour};" d="{triangle}" />\n'''
+        # triangle = polygon(
+        #     x=cx,
+        #     y=cy,
+        #     radius=size / 6.5,
+        #     n=shape_vertices,
+        #     angle=hand_initial_angle + 80,
+        # )
+        # display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
 
-    display += f'''        <circle id="hand_uta_sun" style="fill:#FFEB3B;" cx="{cx}" cy="{cy}" r="{size / 42}"  />\n'''
+        display += f'''        <circle id="hand_uta_sun" style="fill:#FDD835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+        display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
 
     display += '    </g>'
 
