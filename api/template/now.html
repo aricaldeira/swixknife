@@ -1314,6 +1314,7 @@ html, body {
             document.getElementById('weekday').hidden = !document.getElementById('weekday').hidden;
             document.getElementById('date').hidden = !document.getElementById('date').hidden;
             document.getElementById('filler').hidden = !document.getElementById('filler').hidden;
+            document.getElementById('now-calendar').hidden = !document.getElementById('now-calendar').hidden;
 
             if (document.getElementById('watchface_div').hidden) {
                 localStorage.setItem('sezimal-watchface', 'digital');
@@ -1369,6 +1370,7 @@ html, body {
         document.getElementById('weekday').hidden = false;
         document.getElementById('date').hidden = false;
         document.getElementById('filler').hidden = true;
+        document.getElementById('now-calendar').hidden = false;
     } else {
         document.getElementById('watchface_div').hidden = false;
         document.getElementById('time_display').hidden = true;
@@ -1376,6 +1378,7 @@ html, body {
         document.getElementById('weekday').hidden = true;
         document.getElementById('date').hidden = true;
         document.getElementById('filler').hidden = false;
+        document.getElementById('now-calendar').hidden = true;
     };
 
     function open_today() {
