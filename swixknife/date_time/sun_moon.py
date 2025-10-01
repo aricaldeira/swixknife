@@ -310,6 +310,125 @@ def _apply_season_format(self, fmt: str, locale: SezimalLocale, time_zone: str |
 
     return fmt
 
+
+_SEASONS_CACHE = {}
+_SEASONS_4_CACHE = {}
+_SEASONS_WEEKS_CACHE = {}
+_SEASONS_4_WEEKS_CACHE = {}
+
+
+def _list_seasons_dates(self) -> list:
+    if self.year in _SEASONS_CACHE:
+        return _SEASONS_CACHE[self.year]
+
+    seasons = []
+    seasons_weeks = []
+
+    for event_date, _, event_name in list_sun_moon(
+        self.year,
+        time_zone=self.time_zone,
+        only_sun=True,
+        only_four=False,
+    ):
+        seasons.append(event_date)
+        seasons_weeks.append(event_date.week_in_year)
+
+    _SEASONS_CACHE[self.year] = seasons
+    _SEASONS_WEEKS_CACHE[self.year] = seasons_weeks
+
+    seasons_4 = []
+    seasons_weeks_4 = []
+
+    for i in (1, 3, 5, 7):
+        seasons_4.append(seasons[i])
+        seasons_weeks_4.append(seasons[i].week_in_year)
+
+    _SEASONS_4_CACHE[self.year] = seasons_4
+    _SEASONS_4_WEEKS_CACHE[self.year] = seasons_weeks_4
+
+    return seasons
+
+def _list_4_seasons_dates(self) -> list:
+    if self.year in _SEASONS_4_CACHE:
+        return _SEASONS_4_CACHE[self.year]
+
+    self.list_seasons_dates()
+    return _SEASONS_4_CACHE[self.year]
+
+def _list_seasons_weeks(self) -> list:
+    if self.year in _SEASONS_WEEKS_CACHE:
+        return _SEASONS_WEEKS_CACHE[self.year]
+
+    self.list_seasons_dates()
+    return _SEASONS_WEEKS_CACHE[self.year]
+
+def _list_4_seasons_weeks(self) -> list:
+    if self.year in _SEASONS_4_WEEKS_CACHE:
+        return _SEASONS_4_WEEKS_CACHE[self.year]
+
+    self.list_seasons_dates()
+    return _SEASONS_4_WEEKS_CACHE[self.year]
+
+
+_DCC_SEASONS_CACHE = {}
+_DCC_SEASONS_4_CACHE = {}
+_DCC_SEASONS_WEEKS_CACHE = {}
+_DCC_SEASONS_4_WEEKS_CACHE = {}
+
+def _list_dcc_seasons_dates(self) -> list:
+    if self.dcc_year in _DCC_SEASONS_CACHE:
+        return _DCC_SEASONS_CACHE[self.dcc_year]
+
+    seasons = []
+    seasons_weeks = []
+
+    for event_date, _, event_name in list_sun_moon(
+        self.year,
+        time_zone=self.time_zone,
+        only_sun=True,
+        only_four=False,
+        dcc_year=self.dcc_year,
+    ):
+        seasons.append(event_date)
+        seasons_weeks.append(event_date.dcc_week_in_year)
+
+    _DCC_SEASONS_CACHE[self.dcc_year] = seasons
+    _DCC_SEASONS_WEEKS_CACHE[self.dcc_year] = seasons_weeks
+
+    seasons_4 = []
+    seasons_weeks_4 = []
+
+    for i in (0, 2, 4, 6):
+        seasons_4.append(seasons[i])
+        seasons_weeks_4.append(seasons[i].dcc_week_in_year)
+
+    _DCC_SEASONS_4_CACHE[self.dcc_year] = seasons_4
+    _DCC_SEASONS_4_WEEKS_CACHE[self.dcc_year] = seasons_weeks_4
+
+    return seasons
+
+def _list_dcc_4_seasons_dates(self) -> list:
+    if self.dcc_year in _DCC_SEASONS_4_CACHE:
+        return _DCC_SEASONS_4_CACHE[self.dcc_year]
+
+    self.list_dcc_seasons_dates()
+    return _DCC_SEASONS_4_CACHE[self.dcc_year]
+
+def _list_dcc_seasons_weeks(self) -> list:
+    if self.dcc_year in _DCC_SEASONS_WEEKS_CACHE:
+        return _DCC_SEASONS_WEEKS_CACHE[self.dcc_year]
+
+    self.list_dcc_seasons_dates()
+    return _DCC_SEASONS_WEEKS_CACHE[self.dcc_year]
+
+def _list_dcc_4_seasons_weeks(self) -> list:
+    if self.dcc_year in _DCC_SEASONS_4_WEEKS_CACHE:
+        return _DCC_SEASONS_4_WEEKS_CACHE[self.dcc_year]
+
+    self.list_dcc_seasons_dates()
+    return _DCC_SEASONS_4_WEEKS_CACHE[self.dcc_year]
+
+
 SezimalDate._sun_moon_search = _sun_moon_search
 SezimalDate._season_name = _season_name
 SezimalDate._season_emoji = _season_emoji
@@ -319,8 +438,18 @@ SezimalDate._moon_emoji = _moon_emoji
 SezimalDate._moon_time = _moon_time
 SezimalDate._apply_season_format = _apply_season_format
 
+SezimalDateTime.list_seasons_dates = _list_seasons_dates
+SezimalDateTime.list_4_seasons_dates = _list_4_seasons_dates
+SezimalDateTime.list_dcc_seasons_dates = _list_dcc_seasons_dates
+SezimalDateTime.list_dcc_4_seasons_dates = _list_dcc_4_seasons_dates
 
-def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone: str | ZoneInfo = None, only_sun: bool = False, only_moon: bool = False, event: str = None, only_four: bool = False) -> list[str]:
+SezimalDateTime.list_seasons_weeks = _list_seasons_weeks
+SezimalDateTime.list_4_seasons_weeks = _list_4_seasons_weeks
+SezimalDateTime.list_dcc_seasons_weeks = _list_dcc_seasons_weeks
+SezimalDateTime.list_dcc_4_seasons_weeks = _list_dcc_4_seasons_weeks
+
+
+def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone: str | ZoneInfo = None, only_sun: bool = False, only_moon: bool = False, event: str = None, only_four: bool = False, dcc_year: SezimalInteger = None) -> list[str]:
     connection = sqlite3.connect(DB_NAME)
     cursor = connection.cursor()
 
@@ -331,7 +460,16 @@ def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone:
         date_start = SezimalDate(year, 1, 1)
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_start.gregorian_isoformat)
         search_start = date_start.as_days - days_offset
-        date_end = SezimalDate(year, 20, 55) if date_start.is_leap else SezimalDate(year, 20, 44)
+
+        if dcc_year:
+            date_end = SezimalDate(year + 1, 20, 44)
+
+            if date_end.is_leap:
+                date_end = SezimalDate(year + 1, 20, 55)
+
+        else:
+            date_end = SezimalDate(year, 20, 55) if date_start.is_leap else SezimalDate(year, 20, 44)
+
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
         search_end = date_end.as_days - days_offset + Sezimal('0.555_555_555_555_555_555')
 
@@ -339,7 +477,16 @@ def list_sun_moon(year: SezimalInteger, month: SezimalInteger = None, time_zone:
         date_start = SezimalDate(year, month, 1)
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_start.gregorian_isoformat)
         search_start = date_start.as_days - days_offset
-        date_end = SezimalDate(year, month, 55) if date_start.is_long_month else SezimalDate(year, month, 44)
+
+        if dcc_year:
+            date_end = SezimalDate(year + 1, 20, 44)
+
+            if date_end.is_leap:
+                date_end = SezimalDate(year + 1, 20, 55)
+
+        else:
+            date_end = SezimalDate(year, month, 55) if date_start.is_long_month else SezimalDate(year, month, 44)
+
         days_offset, days_offset_dst = tz_days_offset(time_zone, date_end.gregorian_isoformat)
         search_end = date_end.as_days - days_offset + Sezimal('0.555_555_555_555_555_555')
 
@@ -380,10 +527,19 @@ order by
     for sun_moon, name, date_time_as_days in res:
         date_time_as_days = Sezimal(date_time_as_days)
         date = SezimalDateTime.from_days(date_time_as_days, 'UTC').at_time_zone(time_zone)
-        events +=  [[
-            date,
-            sun_moon,
-            name,
-        ]]
+
+        if dcc_year:
+            if date.dcc_year == dcc_year:
+                events +=  [[
+                    date,
+                    sun_moon,
+                    name,
+                ]]
+        elif date.year == year:
+            events +=  [[
+                date,
+                sun_moon,
+                name,
+            ]]
 
     return events
