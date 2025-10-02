@@ -193,7 +193,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
-                shade = '200'
+                shade = '300'
                 text_shade = '900'
             elif i in today.list_dcc_seasons_weeks():
                 shade = '900'
@@ -203,7 +203,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
                 text_shade = '100'
         else:
             if i + 1 == today.week_in_year:
-                shade = '200'
+                shade = '300'
                 text_shade = '900'
             elif i + 1 in today.list_seasons_weeks():
                 shade = '900'
@@ -247,7 +247,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_number = default_to_sezimal_digits(week_number)
 
     if i == today.dcc_week_in_year:
-        week_style = 'font-weight:bold;'
+        week_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][text_shade]};stroke-width:0.25;'
     else:
         week_style = ''
 
@@ -274,8 +274,10 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if month_number == today.dcc_month:
             month_shade = '50'
+            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
         else:
             month_shade = text_shade
+            month_style = ''
 
         if locale.base == 14:
             month_number = month_number.decimal
@@ -285,11 +287,11 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             month_number = default_to_sezimal_digits(str(month_number))
 
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:7px;fill:{colours[SI(i + 1)][month_shade]};text-anchor:middle;text-align:center;">
+            gtext += f'''<text style="font-size:7px;fill:{colours[SI(i + 1)][month_shade]};text-anchor:middle;text-align:center;{month_style}">
 <textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} {locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
+            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
 
     elif i // 10 == 14:
         week_wedge = ring(
@@ -317,15 +319,22 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         month_number = str(i // 10)
 
+        if month_number == today.dcc_month:
+            month_shade = '50'
+            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
+        else:
+            month_shade = text_shade
+            month_style = ''
+
         if '!' in locale.format_token:
             month_number = default_to_sezimal_digits(month_number)
 
         if 'c' in locale.format_token:
-            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)][text_shade]};text-anchor:middle;text-align:center;">
+            gtext += f'''<text style="font-size:8px;fill:{colours[SI(i + 1)][month_shade]};text-anchor:middle;text-align:center;{month_style}">
 <textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{locale.ADC_MONTH_ICON[int(i // 10)]}</textPath>
 </text>\n'''
         else:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][text_shade]};text-align:center;text-anchor:middle;"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number}</textPath></text>\n'''
+            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number}</textPath></text>\n'''
 
     if (today.dcc_month * 10) <= i < ((today.dcc_month * 10) + 10):
         for day in SR((i * 10), (i * 10) + 10):
@@ -340,7 +349,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                     back_shade = '600'
                     shade = '100'
                     day_colours = colours
-                    day_style = 'font-weight:bold;'
+                    day_style = f'font-weight:bold;stroke:{day_colours[SI(i + 1)][shade]};stroke-width:0.25;'
                 else:
                     back_shade = '800' if day % 2 == 0 else '900'
                     shade = '600' if day % 2 == 0 else '700'
@@ -391,7 +400,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade):
 
     if i + 1 == today.week_in_year:
-        week_style = 'font-weight:bold;'
+        week_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][text_shade]};stroke-width:0.25;'
     else:
         week_style = ''
 
@@ -450,7 +459,7 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if month == today.month:
             month_shade = '50'
-            month_style = 'font-weight:bold;'
+            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
         else:
             month_shade = text_shade
             month_style = ''
@@ -534,7 +543,7 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                 back_shade = '600'
                 shade = '100'
                 day_colours = colours
-                day_style = 'font-weight:bold;'
+                day_style = f'font-weight:bold;stroke:{day_colours[SI(i + 1)][shade]};stroke-width:0.25;'
             else:
                 back_shade = '800' if day % 2 == 0 else '900'
                 shade = '600' if day % 2 == 0 else '700'
