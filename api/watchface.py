@@ -483,6 +483,15 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''
 
+    if locale.calendar_displayed == 'SYM':
+        gdays, gdaystext = _sym_days_display(today, locale, i, gray, colours, gdays, gdaystext)
+    else:
+        gdays, gdaystext = _iso_days_display(today, locale, i, gray, colours, gdays, gdaystext)
+
+    return gweeks, gtext, gdays, gdaystext
+
+
+def _sym_days_display(today, locale, i, gray, colours, gdays, gdaystext):
     draw_days = False
 
     if (today.month == 1 and 1 <= (i + 1) <= 4):
@@ -529,7 +538,7 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_in_month = i + 1 - 120
 
     if not draw_days:
-        return gweeks, gtext, gdays, gdaystext
+        return gdays, gdaystext
 
     for day in SR(1, 12):
         day_in_week = int(day)
@@ -592,7 +601,77 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
         gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str((i * 100) + day).zfill(4)}"  startOffset="25%">{day_number}</textPath></text>\n'''
 
-    return gweeks, gtext, gdays, gdaystext
+    return gdays, gdaystext
+
+
+def _iso_days_display(today, locale, i, gray, colours, gdays, gdaystext):
+    if 'day_01' in gdays:
+        return gdays, gdaystext
+
+    if (i + 1).decimal != today.gregorian_week_in_year:
+        return gdays, gdaystext
+
+    if today.gregorian_month in (1, 3, 5, 7, 8, 10, 12):
+        draw_days = 51
+    elif today.gregorian_month in (4, 6, 9, 11):
+        draw_days = 50
+    elif today.gregorian_is_leap:
+        draw_days = 45
+    else:
+        draw_days = 44
+
+    for day in SR(1, SI(draw_days) + 1):
+        day_colours = gray
+        day_style = ''
+
+        if day.decimal == today.gregorian_day:
+            back_shade = '600'
+            shade = '100'
+            day_colours = colours
+            day_style = f'font-weight:bold;stroke:{day_colours[SI(i + 1)][shade]};stroke-width:0.25;'
+        else:
+            back_shade = '800' if day % 2 == 0 else '900'
+            shade = '600' if day % 2 == 0 else '700'
+
+        day_degrees = D(360) / SI(draw_days).decimal
+
+        day_colour = day_colours[i + 1][back_shade]
+        text_colour = day_colours[i + 1][shade]
+
+        day_angle = _angle_zero(locale) + ((day.decimal - 1) * day_degrees)
+
+        day_wedge = ring(
+            inner_radius=0,
+            outer_radius=90.25,
+            x=108,
+            y=108,
+            start_angle=day_angle,
+            end_angle=day_angle + D('0.1') + day_degrees,
+            without_inner=True,
+        )
+        day_line = ring(
+            inner_radius=83,
+            outer_radius=83.1,
+            x=108,
+            y=108,
+            start_angle=day_angle,
+            end_angle=day_angle + day_degrees,
+        )
+
+        day_number = str(day)
+
+        if '!' in locale.format_token:
+            day_number = default_to_sezimal_digits(day_number)
+        elif locale.base == 14:
+            day_number = day.decimal
+        elif locale.base == 20:
+            day_number = day.dozenal
+
+        gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
+        gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
+        gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str((i * 100) + day).zfill(4)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+
+    return gdays, gdaystext
 
 
 def _shastadari_logo(locale, colours, today):

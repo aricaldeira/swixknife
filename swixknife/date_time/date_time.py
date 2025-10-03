@@ -241,6 +241,22 @@ class SezimalDateTime:
         return self._date.gregorian_day
 
     @property
+    def gregorian_is_leap(self) -> bool:
+        return self._date.gregorian_is_leap
+
+    @property
+    def gregorian_day_in_year(self) -> int:
+        return self._date.gregorian_day_in_year
+
+    @property
+    def gregorian_week_in_year(self) -> int:
+        return self._date.gregorian_week_in_year
+
+    @property
+    def gregorian_total_days_in_year(self) -> int:
+        return self._date.gregorian_total_days_in_year
+
+    @property
     def gregorian_isoformat(self) -> str:
         return self._date.gregorian_isoformat
 

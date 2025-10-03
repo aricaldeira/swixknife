@@ -744,6 +744,10 @@ class SezimalDate:
         return int(self.ordinal_date - last_years_last_ordinal_date)
 
     @property
+    def gregorian_week_in_year(self) -> int:
+        return self.gregorian_date.isocalendar().week
+
+    @property
     def gregorian_total_days_in_year(self) -> int:
         if self.gregorian_is_leap:
             return 366
