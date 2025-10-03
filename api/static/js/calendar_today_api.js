@@ -8,7 +8,7 @@ const LANGUAGE_TAGS = {
     'bn_nu_latn': 'bn-u-nu-Latn',
     'bz_br': 'bz-BR',
     'bz_pt': 'bz-PT',
-    'bz': 'bz',
+    'bz': 'bz-BR',
     'ca': 'ca',
     'code': 'code',
     'da': 'da',
