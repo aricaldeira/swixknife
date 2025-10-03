@@ -636,6 +636,9 @@ class SezimalEvent:
 
 
 def _write_calendar_cache(locale: str, cache_key: str, events: SezimalDictionary) -> None:
+    if locale == 'bz':
+        locale = 'bz-BR'
+
     file_path = pathlib.Path.home().joinpath(f'.sezimal/{locale}/')
     file_path.mkdir(parents=True, exist_ok=True)
     file_path = file_path.joinpath(f"{cache_key.replace('|', '_').replace('/', '_')}.json")
@@ -649,6 +652,9 @@ def _write_calendar_cache(locale: str, cache_key: str, events: SezimalDictionary
 
 
 def _read_calendar_cache(locale: str, cache_key: str, only_check: bool = False) -> SezimalDictionary | None | bool:
+    if locale == 'bz':
+        locale = 'bz-BR'
+
     file_path = pathlib.Path.home().joinpath(
         f".sezimal/{locale}/{cache_key.replace('|', '_').replace('/', '_')}.json"
     )
@@ -2250,7 +2256,8 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 
 def _create_store_events(itens: list = None, year_range: list = None, bases: list = None):
     if year_range is None:
-        year_range = (213_220, 213_211, -1)
+        year_range = (213_000, 214_001)
+        # year_range = (213_220, 213_211, -1)
 
     if itens is None:
         itens = (
@@ -2270,7 +2277,7 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         # 'en-GB|Europe/London',
         # 'en-IE|Europe/Dublin',
         # 'en-IL|Asia/Jerusalem',
-        # 'en-IN|Asia/Calcutta',
+        # 'en-IN|Asia/Kolkata',
         # 'en-MY|Asia/Kuala_Lumpur',
         #
         # 'fr-CA|America/Montreal',
@@ -2308,11 +2315,14 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         #
         # 'tr-TR|Asia/Istanbul',
         # 'eo-TR|Asia/Istanbul',
+        #
+        # 'ro|Europe/Bucharest',
+        # 'uk|Europe/Kiev',
     )
 
     if bases is None:
-        # bases = (10, 14, 20)
-        bases = (10, 14)
+        bases = (10, 14, 20)
+        # bases = (10, 14)
 
     for item in itens:
         loc, tz = item.split('|')
@@ -2396,25 +2406,26 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 
 def _create_store_events_br():
-    # year_range = (213_050, 213_231)
-    year_range = (213_220, 213_211, -1)
+    year_range = (213_000, 214_000)
+    # year_range = (213_220, 213_211, -1)
 
     for locale in (
-        'pt-BR',
-        'bz',
-        'eo-BR',
-        'en-BR',
+        # 'pt-BR',
+        'bz-BR',
+        # 'eo-BR',
+        # 'en-BR',
     ):
         for tz in (
             'America/Sao_Paulo',
+            'GPM/GPM-03',
             'GPM/NT-03',
-            'UTC',
-            'Sezimal/SPM',
-            'Sezimal/SPM-0530',
-            'Sezimal/NT-0530',
-            'SPM/SPM',
+            'GPM/MT-03',
+            'SPM/SPM-0350',
+            'SPM/NT-0350',
+            'SPM/MT-0350',
             'SPM/SPM-0340',
             'SPM/NT-0340',
+            'SPM/MT-0340',
         ):
             itens = [locale + '|' + tz]
 
@@ -2424,8 +2435,8 @@ def _create_store_events_br():
             bases = (14,)
             _create_store_events(itens, year_range, bases)
 
-            # bases = (20,)
-            # _create_store_events(itens, year_range, bases)
+            bases = (20,)
+            _create_store_events(itens, year_range, bases)
 
 
 def _adc_svg_text(text, locale, now):
@@ -2629,9 +2640,9 @@ def adc_circle(hemisphere: str = 'S') -> Response:
     return Response(text, mimetype='image/svg+xml')
 
 
-if True:
+if False:
     for year_diff in (0, 1, -1):
-        for locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo'):
+        for locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en', 'en-us', 'en-gb', 'en-ca', 'eo', 'en-in', 'en-au', 'es-us'):
             sym_year = SezimalDate.today().year + year_diff
             dcc_year = SezimalDate.today().dcc_year + year_diff
             iso_year = SezimalDate.today().gregorian_date.year + year_diff
