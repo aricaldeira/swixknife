@@ -17,6 +17,7 @@ from ..base import SEPARATOR_COMMA, SEPARATOR_DOT, \
 class SezimalLocaleBZ(SezimalLocale):
     LANG = 'bz'
     LANGUAGE = 'brazileru'
+    LANGUAGE_TAG = 'bz-BR'
 
     SEZIMAL_SEPARATOR = SEPARATOR_COMMA
 
