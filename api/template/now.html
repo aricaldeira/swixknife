@@ -323,7 +323,12 @@ html, body {
 
             {% if locale.base == 14 %}
                 seconds = seconds_hands;
+
+                {% if locale.HOUR_FORMAT == '12h' %}
                 var uta_angle = (seconds * 2 * 360);
+                {% else %}
+                var uta_angle = (seconds * 360);
+                {% endif %}
                 var posha_angle = ((seconds * 24) - Math.trunc(seconds * 24)) * 360;
                 var agrima_angle = ((seconds * 24 * 60) - Math.trunc(seconds * 24 * 60)) * 360;
                 document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
