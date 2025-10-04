@@ -1630,6 +1630,13 @@ def _prepare_locale(locale, dados):
     if dados['time_zone'] != 'locale':
         locale.DEFAULT_TIME_ZONE = dados['time_zone'].strip()
 
+        if locale.DEFAULT_TIME_ZONE == 'US/Central':
+            locale.DEFAULT_TIME_ZONE == 'America/Chicago'
+        elif locale.DEFAULT_TIME_ZONE == 'US/Eastern':
+            locale.DEFAULT_TIME_ZONE == 'America/New_York'
+        elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
+            locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
+
     if dados['hemisphere'] != 'locale':
         locale.DEFAULT_HEMISPHERE = dados['hemisphere']
 
@@ -2262,10 +2269,10 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
     if itens is None:
         itens = (
         'en-US|America/Chicago',
-        'en-US|America/Denver',
-        'en-US|Pacific/Honolulu',
         'en-US|America/Los_Angeles',
         'en-US|America/New_York',
+        'en-US|America/Denver',
+        'en-US|Pacific/Honolulu',
         'en-US|America/Anchorage',
 
         'en-CA|America/Toronto',
@@ -2406,26 +2413,51 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 
 def _create_store_events_br():
-    year_range = (213_000, 214_000)
+    year_range = (213_000, 214_001)
     # year_range = (213_220, 213_211, -1)
 
     for locale in (
-        # 'pt-BR',
+        'pt-BR',
         'bz-BR',
-        # 'eo-BR',
-        # 'en-BR',
+        'eo-BR',
+        'en-BR',
     ):
         for tz in (
             'America/Sao_Paulo',
-            'GPM/GPM-03',
+            # 'GPM/GPM-03',
             'GPM/NT-03',
             'GPM/MT-03',
             'SPM/SPM-0350',
             'SPM/NT-0350',
             'SPM/MT-0350',
-            'SPM/SPM-0340',
-            'SPM/NT-0340',
-            'SPM/MT-0340',
+        ):
+            itens = [locale + '|' + tz]
+
+            bases = (10,)
+            _create_store_events(itens, year_range, bases)
+
+            bases = (14,)
+            _create_store_events(itens, year_range, bases)
+
+            bases = (20,)
+            _create_store_events(itens, year_range, bases)
+
+
+def _create_store_events_us():
+    year_range = (213_000, 214_001)
+    # year_range = (213_220, 213_211, -1)
+
+    for locale in (
+        'en-US',
+        'es-US',
+    ):
+        for tz in (
+            'America/Chicago',
+            'America/Los_Angeles',
+            'America/New_York',
+            # 'America/Denver',
+            # 'Pacific/Honolulu',
+            # 'America/Anchorage',
         ):
             itens = [locale + '|' + tz]
 
