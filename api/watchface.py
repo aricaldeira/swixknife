@@ -66,7 +66,7 @@ def watchface(locale, today) -> str:
             calendar='SYM'
         )
 
-        if today.is_leap:
+        if today.is_leap or locale.calendar_displayed == 'ISO':
             weeks = SI(125)
         else:
             weeks = SI(124)
@@ -104,7 +104,7 @@ def _angle_zero(locale):
         angle = D(150)
     elif 'MT' in locale.DEFAULT_TIME_ZONE:
         angle = D(180)
-    elif locale.base == 14 or locale.HOUR_FORMAT == '12h':
+    elif locale.HOUR_FORMAT == '12h':
         angle = D(270)
     else:
         angle = D(90)
@@ -243,7 +243,9 @@ def _weeks_display(locale, today, weeks, colours, gray):
 def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch, today, gray, text_shade):
     week_number = str(i % 10)
 
-    if '!' in locale.format_token:
+    if 'c' in locale.format_token:
+        week_number = locale.ADC_WEEK_ICON[int(week_number)]
+    elif '!' in locale.format_token:
         week_number = default_to_sezimal_digits(week_number)
 
     if i == today.dcc_week_in_year:
@@ -274,7 +276,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if month_number == today.dcc_month:
             month_shade = '50'
-            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
+            month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
             month_shade = text_shade
             month_style = ''
@@ -288,7 +290,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if 'c' in locale.format_token:
             gtext += f'''<text style="font-size:7px;fill:{colours[SI(i + 1)][month_shade]};text-anchor:middle;text-align:center;{month_style}">
-<textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} {locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
+<textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{locale.ADC_MONTH_ICON[int(i // 10)]} • {locale.ADC_MONTH_NAME[int(i // 10)]}</textPath>
 </text>\n'''
         else:
             gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number} • {locale.DCC_MONTH_NAME[int(i // 10)]}</textPath></text>\n'''
@@ -321,7 +323,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if month_number == today.dcc_month:
             month_shade = '50'
-            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
+            month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
             month_shade = text_shade
             month_style = ''
@@ -382,12 +384,14 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                 end_angle=day_angle + day_degrees,
             )
 
-            day_number = str(day)
-
-            if '!' in locale.format_token:
-                day_number = default_to_sezimal_digits(day_number)
-            elif locale.base != 10:
-                day_number = day_number.zfill(2)[1]
+            if 'c' in locale.format_token:
+                day_number = locale.ADC_WEEKDAY_ICON[int(day % 10)]
+            elif '!' in locale.format_token:
+                day_number = default_to_sezimal_digits(str(day))
+            elif locale.base == 10:
+                day_number = day
+            else:
+                day_number = str(day).zfill(2)[1]
                 # day_number = day_number[0] + '‐' + day_number[1]
 
             gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
@@ -459,13 +463,16 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
         if month == today.month:
             month_shade = '50'
-            month_style = f'font-weight:bold;stroke:stroke:{colours[SI(i + 1)][month_shade]};stroke-width:1;'
+            month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
             month_shade = text_shade
             month_style = ''
 
         if locale.base == 10:
-            gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%">{month} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
+            if '!' in locale.format_token:
+                gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%">{default_to_sezimal_digits(str(month))} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
+            else:
+                gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%">{month} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
         elif locale.base == 14:
             gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}"  startOffset="25%">{month.decimal} • {locale.MONTH_NAME[int(month - 1)]}</textPath></text>\n'''
         elif locale.base == 20:
@@ -884,7 +891,7 @@ def _time_display(locale, colours, gray, today):
     elif 'MT' in locale.DEFAULT_TIME_ZONE:
         zero_position = 180
         hand_initial_angle = 30
-    elif locale.base == 14 or locale.HOUR_FORMAT == '12h':
+    elif locale.HOUR_FORMAT == '12h':
         zero_position = 270
         hand_initial_angle = 0
     else:
@@ -930,7 +937,7 @@ def _time_display(locale, colours, gray, today):
     elif locale.base == 14:
         shape_vertices = 3
 
-        if False and locale.HOUR_FORMAT == '24h':
+        if locale.HOUR_FORMAT == '24h':
             for i in range(24):
                 angle = zero_position + (i * 15) - 0.5
                 tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
@@ -955,8 +962,8 @@ def _time_display(locale, colours, gray, today):
                 if i % 5 == 0:
                     continue
 
-                angle = zero_position + (i * 6) - 0.25
-                tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                angle = zero_position + (i * 6) - 0.2
+                tick = ring(inner_radius=size * 18 / 19, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.4)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1032,7 +1039,7 @@ def _time_display(locale, colours, gray, today):
     agrima_hand_colour = '#d50000dd'
     posha_hand_colour = '#ffffffdd'
 
-    if locale.base == 14:
+    if locale.base == 14 and locale.HOUR_FORMAT == '12h':
         uta_hand_colour = '#ffffffdd'
     else:
         uta_hand_colour = '#FFA726dd'
@@ -1053,7 +1060,7 @@ def _time_display(locale, colours, gray, today):
     display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
 
-    if locale.base != 14:
+    if locale.base != 14 or locale.HOUR_FORMAT == '24h':
         # triangle = polygon(
         #     x=cx,
         #     y=cy,
@@ -1158,18 +1165,33 @@ def _date_display(locale, colours, gray, today):
 
     if locale.calendar_displayed == 'DCC':
         if 'c' in locale.format_token:
-            display += f'''            <tspan x="108">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
-            display += '        </text>' + opening
-            display += f'''            <tspan x="108" dy="1em">{today.format('&iM‐&iW‐&iD', locale)}</tspan>'''
+            # display += f'''            <tspan x="108" dy="-1.5em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
+            if '!' in locale.format_token:
+                display += f'''            <tspan x="108" dy="-1.5em">{today.format('&!>Y', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="-0.25em">{today.format('&!-m &iM &cM', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="+1em">{today.format('&!-wM &iW &cW', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="+2.25em">{today.format('&!-dW &iD &cD', locale)}</tspan>'''
+            else:
+                display += f'''            <tspan x="108" dy="-1.5em">{today.format('&>Y', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="-0.25em">{today.format('&-m &iM &cM', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="+1em">{today.format('&-wM &iW &cW', locale)}</tspan>'''
+                display += '        </text>' + opening
+                display += f'''            <tspan x="108" dy="+2.25em">{today.format('&-dW &iD &cD', locale)}</tspan>'''
         else:
-            display += f'''            <tspan x="108">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
-            display += '        </text>' + opening
-            display += f'''            <tspan x="108" dy="1em">{today.format('&' + locale.format_token + 'D', locale)}</tspan>'''
+            display += f'''            <tspan x="108" dy="0.5em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+
+            # display += '        </text>' + opening
+            # display += f'''            <tspan x="108" dy="1em">{today.format('&D', locale)}</tspan>'''
 
     elif locale.calendar_displayed == 'SYM':
-        display += f'''            <tspan x="108">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="108" dy="-0.125em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
         display += '        </text>' + opening
-        display += f'''            <tspan x="108" dy="1em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="108" dy="1.125em">{today.format('#W', locale)}</tspan>'''
 
     else:
         display += f'''            <tspan x="108">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''

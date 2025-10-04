@@ -131,6 +131,26 @@
                             ; 0 at the bottom
                         {% endif %}
                     </option>
+                    <option value="iso-12h">
+                        {% if locale.LANG == 'pt' %}
+                            Padrão ISO: AAAA-MM-DD e 12 h
+                        {% elif locale.LANG == 'bz' %}
+                            Padrawn ISO: AAAA-MM-DD i 12 h
+                        {% elif locale.LANG == 'eo' %}
+                            ISO normo: JJJJ-MM-DD kaj 12 h
+                        {% else %}
+                            ISO standard: YYYY-MM-DD and {{ locale.digit_replace('\N{LRI}12 h\N{PDI}') }}
+                        {% endif %}
+                        {% if locale.LANG == 'pt' %}
+                            ; 0 acima
+                        {% elif locale.LANG == 'bz' %}
+                            ; 0 asima
+                        {% elif locale.LANG == 'eo' %}
+                            ; 0 super
+                        {% else %}
+                            ; 0 at the top
+                        {% endif %}
+                    </option>
                 </select>
             </div>
             <div>
