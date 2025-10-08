@@ -66,7 +66,7 @@ def watchface(locale, today) -> str:
             calendar='SYM'
         )
 
-        if today.is_leap or locale.calendar_displayed == 'ISO':
+        if today.is_leap:  # or locale.calendar_displayed == 'ISO':
             weeks = SI(125)
         else:
             weeks = SI(124)
@@ -131,6 +131,15 @@ def _weeks_display(locale, today, weeks, colours, gray):
     gdays = '    <g id="days_background">\n'
     gdaystext = '    <g id="days_text">\n'
 
+    month_angle_start = _angle_zero(locale) + arch_offset
+    month_angle_end = _angle_zero(locale) + arch_offset
+
+    if locale.calendar_displayed == 'ISO':
+        if today.gregorian_is_leap:
+            total_days = D(366)
+        else:
+            total_days = D(365)
+
     for i in SR(weeks):
         week_wedge = ring(
             inner_radius=0,
@@ -151,34 +160,35 @@ def _weeks_display(locale, today, weeks, colours, gray):
         )
 
         if locale.calendar_displayed == 'DCC':
-            month_line = ring(
-                inner_radius=100,
-                outer_radius=100.5,
-                x=108,
-                y=108,
-                start_angle=angle + arch_offset,
-                end_angle=angle + arch_offset + arch * D('6'),
-            )
-        else:
-            if i in (0, 13, 21, 34, 42, 55, 103) or (i == 120 and not today.is_leap):
-                month_line = ring(
-                    inner_radius=100,
-                    outer_radius=100.5,
-                    x=108,
-                    y=108,
-                    start_angle=angle + arch_offset,
-                    end_angle=angle + arch_offset + arch * D('4'),
-                )
+            if i % 10 == 0 and i // 10 != 14:
+                month_angle_end += arch * 6
 
-            else:
-                month_line = ring(
-                    inner_radius=100,
-                    outer_radius=100.5,
-                    x=108,
-                    y=108,
-                    start_angle=angle + arch_offset,
-                    end_angle=angle + arch_offset + arch * D('5'),
-                )
+        elif locale.calendar_displayed == 'SYM':
+            if i in (0, 13, 21, 34, 42, 55, 103) or (i == 120 and not today.is_leap):
+                month_angle_end += arch * 4
+            elif i in (4, 25, 50, 111) or (i == 120 and today.is_leap):
+                month_angle_end += arch * 5
+
+        else:
+            if i == 4:
+                if today.gregorian_is_leap:
+                    month_angle_end += D(360) / total_days * 29
+                else:
+                    month_angle_end += D(360) / total_days * 28
+
+            elif i in (0, 13, 25, 42, 50, 103, 120):
+                month_angle_end += D(360) / total_days * 31
+            elif i in (21, 34, 55, 111):
+                month_angle_end += D(360) / total_days * 30
+
+        month_line = ring(
+            inner_radius=100,
+            outer_radius=100.5,
+            x=108,
+            y=108,
+            start_angle=month_angle_start,
+            end_angle=month_angle_end,
+        )
 
         leap_week_line = ring(
             inner_radius=100,
@@ -219,8 +229,14 @@ def _weeks_display(locale, today, weeks, colours, gray):
         if locale.calendar_displayed == 'DCC':
             gweeks, gtext, gdays, gdaystext = _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, leap_week_line, arch_offset, arch, today, gray, text_shade)
 
+            if i % 10 == 0 and i // 10 != 14:
+                month_angle_start = month_angle_end
+
         else:
-            gweeks, gtext, gdays, gdaystext = _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade)
+            gweeks, gtext, gdays, gdaystext = _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade, month_angle_start, month_angle_end)
+
+            if i in (0, 4, 13, 21, 25, 34, 42, 50, 55, 103, 111, 120):
+                month_angle_start = month_angle_end
 
         angle += arch
 
@@ -401,7 +417,7 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
     return gweeks, gtext, gdays, gdaystext
 
 
-def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade):
+def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, week_wedge, month_line, week_line, weeks, arch_offset, arch, today, gray, text_shade, month_angle_start, month_angle_end):
 
     if i + 1 == today.week_in_year:
         week_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][text_shade]};stroke-width:0.25;'
@@ -453,8 +469,8 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             outer_radius=108,
             x=108,
             y=108,
-            start_angle=angle + arch_offset - D('0.25'),
-            end_angle=angle + arch_offset + D('0.25'),
+            start_angle=month_angle_start - D('0.25'),
+            end_angle=month_angle_start + D('0.25'),
             without_inner=True,
         )
         gweeks += f'''        <path id="month_separator_{str(i).zfill(3)}" style="fill:#000000;" d="{week_wedge}" />\n'''

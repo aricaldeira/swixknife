@@ -747,7 +747,7 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
 
     if locale.base == 14:
-        if locale.HOUR_FORMAT == '12h':
+        if locale.HOUR_FORMAT == '12h' and getattr(locale, 'ORIGINAL_HOUR_FORMAT', '24h') == '12h':
             cache_key += '|12h'
         else:
             cache_key += '|24h'
@@ -1571,7 +1571,7 @@ def _prepare_locale_from_cookie(locale='en-us'):
     local_time_zone = None
 
     try:
-            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
 
     except:
         try:
@@ -1640,25 +1640,36 @@ def _prepare_locale(locale, dados):
     if dados['hemisphere'] != 'locale':
         locale.DEFAULT_HEMISPHERE = dados['hemisphere']
 
+    locale.ORIGINAL_HOUR_FORMAT = locale.HOUR_FORMAT
+
     if dados['hour_format'] == 'iso':
         locale.to_iso_format()
+        locale.HOUR_FORMAT = '24h'
+
     elif dados['hour_format'] == '24h':
+        locale.HOUR_FORMAT = '24h'
+
         if locale.DIGITS:
             locale.ISO_TIME_FORMAT = '%?H:%?M:%?S'
         else:
             locale.ISO_TIME_FORMAT = '%H:%M:%S'
+
     elif dados['hour_format'] == '12h':
-        if locale.DIGITS:
-            locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
-        else:
-            locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
+        locale.HOUR_FORMAT = '12h'
+
+        # if locale.DIGITS:
+        #     locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
+        # else:
+        #     locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
+
     elif dados['hour_format'] == 'iso-12h':
         locale.to_iso_format()
+        locale.HOUR_FORMAT = '12h'
 
-        if locale.DIGITS:
-            locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
-        else:
-            locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
+        # if locale.DIGITS:
+        #     locale.ISO_TIME_FORMAT = '%?I:%?M:%?S %P'
+        # else:
+        #     locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
 
     if base == 10:
         locale.to_short_year_format()
