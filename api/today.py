@@ -743,6 +743,14 @@ def _calendar_events(locale, year, context, only_check: bool = False):
             cache_key = 'DCC' + str(year)
 
     cache_key += '|' + locale.LANGUAGE_TAG
+
+    if locale.DEFAULT_TIME_ZONE == 'US/Central':
+        locale.DEFAULT_TIME_ZONE == 'America/Chicago'
+    elif locale.DEFAULT_TIME_ZONE == 'US/Eastern':
+        locale.DEFAULT_TIME_ZONE == 'America/New_York'
+    elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
+        locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
+
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
 
@@ -2426,17 +2434,19 @@ def _create_store_events_br():
     for locale in (
         'pt-BR',
         'bz-BR',
-        'eo-BR',
         'en-BR',
+        'eo-BR',
     ):
         for tz in (
             'America/Sao_Paulo',
-            # 'GPM/GPM-03',
+
+            'GPM/GPM-03',
             'GPM/NT-03',
             'GPM/MT-03',
-            'SPM/SPM-0350',
-            'SPM/NT-0350',
-            'SPM/MT-0350',
+
+            'SPM/SPM-0340',
+            'SPM/NT-0340',
+            'SPM/MT-0340',
         ):
             itens = [locale + '|' + tz]
 
@@ -2456,7 +2466,7 @@ def _create_store_events_us():
 
     for locale in (
         'en-US',
-        'es-US',
+        # 'es-US',
     ):
         for tz in (
             'America/Chicago',
