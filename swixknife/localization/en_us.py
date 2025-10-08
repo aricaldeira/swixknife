@@ -13,7 +13,7 @@ class SezimalLocaleEN_US(SezimalLocaleEN):
     CURRENCY_UNIT_SYMBOL = '$'
     CURRENCY_SUBUNIT_SYMBOL = '¢'
 
-    DEFAULT_TIME_ZONE = 'America/Chicago'
+    DEFAULT_TIME_ZONE = 'America/New_York'
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#m/#d/#Y'
     DATE_LONG_FORMAT = '#M #-d, #Y'
