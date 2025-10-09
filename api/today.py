@@ -1680,7 +1680,7 @@ def _prepare_locale(locale, dados):
         #     locale.ISO_TIME_FORMAT = '%I:%M:%S %P'
 
     if base == 10:
-        locale.to_short_year_format()
+        locale.to_short_year_format(force=True)
 
         if '!' in format_token:
             locale.to_sezimal_digits()
@@ -1748,7 +1748,7 @@ def _now_icon(text: str, locale) -> str:
         text = text.replace('#2a7fff', '#d40000')
 
     if locale.base == 10 or locale.base == 100:
-        locale.to_short_year_format()
+        locale.to_short_year_format(force=True)
         uta_angle = now.time.as_days
         posha_angle = (now.time.as_days * 100) - round(now.time.as_days * 100, 0)
         agrima_angle = (now.time.as_days * 10_000) - round(now.time.as_days * 10_000, 0)
