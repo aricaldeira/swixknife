@@ -10,6 +10,7 @@
         'ee': 'Täna',
         'el': 'Σήμερα',
         'en': 'Today',
+        'en-Shaw': '𐑑𐑩𐑛𐑱',
         'eo': 'Hodiaŭ',
         'es': 'Hoy',
         'fa': 'امروز',
@@ -49,7 +50,7 @@
         'zh': '今天',
     }
 %}
-{% set TITLE = TODAY_TRANSLATIONS[locale.LANG] if locale.LANG in TODAY_TRANSLATIONS else 'Today' %}
+{% set TITLE = TODAY_TRANSLATIONS.get(locale.LANGUAGE_TAG, TODAY_TRANSLATIONS.get(locale.LAN, 'Today')) %}
 <!doctype html>
 <html lang="{{ locale.LANGUAGE_TAG }}">
     <head>

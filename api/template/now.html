@@ -10,6 +10,7 @@
         'ee': 'Nüüd',
         'el': 'Τώρα',
         'en': 'Now',
+        'en-Shaw': '𐑯𐑬',
         'eo': 'Nun',
         'es': 'Ahora',
         'fa': 'حالا',
@@ -50,7 +51,7 @@
         'zh_CN': '现在',
     }
 %}
-{% set TITLE = NOW_TRANSLATIONS[locale.LANG] if locale.LANG in NOW_TRANSLATIONS else 'Now' %}
+{% set TITLE = NOW_TRANSLATIONS.get(locale.LANGUAGE_TAG, NOW_TRANSLATIONS.get(locale.LAN, 'Now')) %}
 {% if locale.base == 10 %}
     {% if '!' in locale.format_token %}
         {% set time_separator = '󱹷' %}

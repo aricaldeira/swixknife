@@ -746,7 +746,11 @@ def _shastadari_logo(locale, colours, today):
     # name = 'षष्टाधारी'
 
     # name = "[swɪksˈnaɪf]"
-    name = "swixknife"
+
+    if locale.LANGUAGE_TAG == 'en-Shaw':
+        name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
+    else:
+        name = "swixknife"
 
     xl += f'''<text style="font-size:{shastadari_size / 8}px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
 
