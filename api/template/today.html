@@ -50,7 +50,7 @@
         'zh': '今天',
     }
 %}
-{% set TITLE = TODAY_TRANSLATIONS.get(locale.LANGUAGE_TAG, TODAY_TRANSLATIONS.get(locale.LAN, 'Today')) %}
+{% set TITLE = TODAY_TRANSLATIONS.get(locale.LANGUAGE_TAG, TODAY_TRANSLATIONS.get(locale.LANG, 'Today')) %}
 <!doctype html>
 <html lang="{{ locale.LANGUAGE_TAG }}">
     <head>

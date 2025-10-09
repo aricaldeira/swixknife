@@ -50,7 +50,7 @@
         'zh_CN': '现在',
     }
 %}
-{% set TITLE = NOW_TRANSLATIONS[locale.LANG] if locale.LANG in NOW_TRANSLATIONS else 'Now' %}
+{% set TITLE = NOW_TRANSLATIONS.get(locale.LANGUAGE_TAG, NOW_TRANSLATIONS.get(locale.LANG, 'Now')) %}
 {
     "name": "{{ TITLE }}",
     "short_name": "{{ TITLE }}",

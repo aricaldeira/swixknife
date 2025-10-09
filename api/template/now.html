@@ -51,7 +51,7 @@
         'zh_CN': '现在',
     }
 %}
-{% set TITLE = NOW_TRANSLATIONS.get(locale.LANGUAGE_TAG, NOW_TRANSLATIONS.get(locale.LAN, 'Now')) %}
+{% set TITLE = NOW_TRANSLATIONS.get(locale.LANGUAGE_TAG, NOW_TRANSLATIONS.get(locale.LANG, 'Now')) %}
 {% if locale.base == 10 %}
     {% if '!' in locale.format_token %}
         {% set time_separator = '󱹷' %}

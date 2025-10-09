@@ -49,7 +49,7 @@
         'zh': '今天',
     }
 %}
-{% set TITLE = TODAY_TRANSLATIONS[locale.LANG] if locale.LANG in TODAY_TRANSLATIONS else 'Today' %}
+{% set TITLE = TODAY_TRANSLATIONS.get(locale.LANGUAGE_TAG, TODAY_TRANSLATIONS.get(locale.LANG, 'Now')) %}
 {
     "name": "{{ TITLE }}",
     "short_name": "{{ TITLE }}",
