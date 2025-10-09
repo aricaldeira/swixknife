@@ -1484,8 +1484,8 @@ class SezimalLocale:
     def HOUR_FORMAT(self, value):
         self._hour_format = value
 
-    def to_short_year_format(self):
-        if self.ISO_MODE:
+    def to_short_year_format(self, force=False):
+        if self.ISO_MODE and (not force):
             return
 
         def _to_short_year_format(fmt) -> str:
