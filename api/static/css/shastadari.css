@@ -869,17 +869,17 @@ textPath {
 }
 
 .watchface {
-    width: 80%;
+    width: 82%;
 }
 
 @media only screen and (orientation: landscape) {
     .watchface {
-        width: 50%;
+        width: 52%;
     }
 }
 
 @media only screen and (min-width: 1280px) and (orientation: landscape) {
     .watchface {
-        width: 80%;
+        width: 82%;
     }
 }
