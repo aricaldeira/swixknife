@@ -30,7 +30,7 @@ from decimal import Decimal as D
 
 # @app.route('/watchface.svg')
 def watchface(locale, today) -> str:
-    # today = today.from_days(today.as_days - 22 - 400)
+    # today = today.from_days(today.replace(year=213214, month=20, day=55).as_days)
 
     #
     # Let's bring the colours first
@@ -143,20 +143,43 @@ def _weeks_display(locale, today, weeks, colours, gray):
     for i in SR(weeks):
         outer_radius = 108
 
+        extra_start = D(0)
+        if (i + 1) < weeks:
+            extra_end = D('0.25')
+        else:
+            extra_end = D('0')
+
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
                 outer_radius = 110
+
+                if i == 140:
+                    extra_start = D('0.25')
+                    extra_end = D('-0.25')
+                elif i % 10 == 0:
+                    extra_start = D('0.25')
+                elif i % 10 == 5:
+                    extra_end = D('-0.25')
         else:
             if i + 1 == today.week_in_year:
                 outer_radius = 110
+
+                if i in (0, 4, 13, 21, 25, 34, 42, 50, 55, 103, 111, 120):
+                    extra_start = D('0.25')
+                elif i in (3, 12, 20, 24, 33, 41, 45, 54, 102, 110):
+                    extra_end = D('-0.25')
+                elif i == 123 and (not today.is_leap):
+                    extra_end = D('-0.25')
+                elif i == 124 and today.is_leap:
+                    extra_end = D('-0.25')
 
         week_wedge = ring(
             inner_radius=0,
             outer_radius=outer_radius,
             x=112,
             y=112,
-            start_angle=angle + arch_offset,
-            end_angle=angle + arch_offset + arch + (D('0.25') if i + 1 < weeks else 0),
+            start_angle=angle + arch_offset + extra_start,
+            end_angle=angle + arch_offset + arch + extra_end,
             without_inner=True,
         )
         week_line = ring(
@@ -562,7 +585,7 @@ def _sym_days_display(today, locale, i, gray, colours, gdays, gdaystext):
         draw_days = 55
         week_in_month = i + 1 - 111
     elif (today.month == 20 and 121 <= (i + 1)):
-        if today.is_long_year:
+        if today.is_leap:
             draw_days = 55
         else:
             draw_days = 44
