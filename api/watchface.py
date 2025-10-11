@@ -84,7 +84,7 @@ def watchface(locale, today) -> str:
     #     else:
     #         weeks = SI(124)
 
-    wf = '<svg class="watchface" id="watchface" viewBox="0 0 216 216" onclick="watchface_toggle()">\n'
+    wf = '<svg class="watchface" id="watchface" viewBox="0 0 224 224" onclick="watchface_toggle()">\n'
 
     wf += _weeks_display(locale, today, weeks, colours, gray)
     wf += _shastadari_logo(locale, gray, today)
@@ -141,11 +141,20 @@ def _weeks_display(locale, today, weeks, colours, gray):
             total_days = D(365)
 
     for i in SR(weeks):
+        outer_radius = 108
+
+        if locale.calendar_displayed == 'DCC':
+            if i == today.dcc_week_in_year:
+                outer_radius = 110
+        else:
+            if i + 1 == today.week_in_year:
+                outer_radius = 110
+
         week_wedge = ring(
             inner_radius=0,
-            outer_radius=108,
-            x=108,
-            y=108,
+            outer_radius=outer_radius,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset,
             end_angle=angle + arch_offset + arch + (D('0.25') if i + 1 < weeks else 0),
             without_inner=True,
@@ -153,11 +162,12 @@ def _weeks_display(locale, today, weeks, colours, gray):
         week_line = ring(
             inner_radius=93,
             outer_radius=93.5,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset,
             end_angle=angle + arch_offset + arch,
         )
+        this_week_wedge = None
 
         if locale.calendar_displayed == 'DCC':
             if i % 10 == 0 and i // 10 != 14:
@@ -184,8 +194,8 @@ def _weeks_display(locale, today, weeks, colours, gray):
         month_line = ring(
             inner_radius=100,
             outer_radius=100.5,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=month_angle_start,
             end_angle=month_angle_end,
         )
@@ -193,13 +203,11 @@ def _weeks_display(locale, today, weeks, colours, gray):
         leap_week_line = ring(
             inner_radius=100,
             outer_radius=100.5,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset,
             end_angle=angle + arch_offset + arch,
         )
-
-        week_style = ''
 
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
@@ -247,10 +255,10 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
     wf += gweeks
     wf += gtext
-    wf += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="90" />\n'''
+    wf += f'''        <circle id="base" style="fill:#000000;" cx="112" cy="112" r="90" />\n'''
     wf += gdays
     wf += gdaystext
-    wf += f'''        <circle id="base" style="fill:#000000;" cx="108" cy="108" r="81" />\n'''
+    wf += f'''        <circle id="base" style="fill:#000000;" cx="112" cy="112" r="81" />\n'''
 
     wf += '    </g>'
     return wf
@@ -278,8 +286,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_wedge = ring(
             inner_radius=0,
             outer_radius=108,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset - D('0.25'),
             end_angle=angle + arch_offset + D('0.25'),
             without_inner=True,
@@ -315,8 +323,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_wedge = ring(
             inner_radius=0,
             outer_radius=108,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset - D('0.25'),
             end_angle=angle + arch_offset + D('0.25'),
             without_inner=True,
@@ -325,8 +333,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_wedge = ring(
             inner_radius=0,
             outer_radius=108,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset - D('0.25') + arch,
             end_angle=angle + arch_offset + D('0.25') + arch,
             without_inner=True,
@@ -385,8 +393,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             day_wedge = ring(
                 inner_radius=0,
                 outer_radius=90.25,
-                x=108,
-                y=108,
+                x=112,
+                y=112,
                 start_angle=day_angle,
                 end_angle=day_angle + D('0.1') + day_degrees,
                 without_inner=True,
@@ -394,8 +402,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             day_line = ring(
                 inner_radius=83,
                 outer_radius=83.1,
-                x=108,
-                y=108,
+                x=112,
+                y=112,
                 start_angle=day_angle,
                 end_angle=day_angle + day_degrees,
             )
@@ -467,8 +475,8 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_wedge = ring(
             inner_radius=0,
             outer_radius=108,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=month_angle_start - D('0.25'),
             end_angle=month_angle_start + D('0.25'),
             without_inner=True,
@@ -498,8 +506,8 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         week_wedge = ring(
             inner_radius=0,
             outer_radius=108,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=angle + arch_offset + arch - D('0.25'),
             end_angle=angle + arch_offset + arch + D('0.25'),
             without_inner=True,
@@ -596,8 +604,8 @@ def _sym_days_display(today, locale, i, gray, colours, gdays, gdaystext):
         day_wedge = ring(
             inner_radius=0,
             outer_radius=90.25,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=day_angle,
             end_angle=day_angle + D('0.1') + day_degrees,
             without_inner=True,
@@ -605,8 +613,8 @@ def _sym_days_display(today, locale, i, gray, colours, gdays, gdaystext):
         day_line = ring(
             inner_radius=83,
             outer_radius=83.1,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=day_angle,
             end_angle=day_angle + day_degrees,
         )
@@ -666,8 +674,8 @@ def _iso_days_display(today, locale, i, gray, colours, gdays, gdaystext):
         day_wedge = ring(
             inner_radius=0,
             outer_radius=90.25,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=day_angle,
             end_angle=day_angle + D('0.1') + day_degrees,
             without_inner=True,
@@ -675,8 +683,8 @@ def _iso_days_display(today, locale, i, gray, colours, gdays, gdaystext):
         day_line = ring(
             inner_radius=83,
             outer_radius=83.1,
-            x=108,
-            y=108,
+            x=112,
+            y=112,
             start_angle=day_angle,
             end_angle=day_angle + day_degrees,
         )
@@ -720,8 +728,8 @@ def _shastadari_logo(locale, colours, today):
     circle = ring(
         inner_radius=0,
         outer_radius=shastadari_size_hexagon - 3,
-        x=108,
-        y=108,
+        x=112,
+        y=112,
         start_angle=0,
         end_angle=0,
     )
@@ -757,31 +765,31 @@ def _shastadari_logo(locale, colours, today):
     # circle = ring(
     #     inner_radius=shastadari_size - shastadari_thickness,
     #     outer_radius=shastadari_size,
-    #     x=108,
-    #     y=108,
+    #     x=112,
+    #     y=112,
     #     start_angle=0,
     #     end_angle=0,
     # )
     # xl += f'''        <path id="shastadari_circle" style="fill:{front_colour};" d="{circle}" />\n'''
 
     # hexagon = polygon(
-    #     x=108,
-    #     y=108,
+    #     x=112,
+    #     y=112,
     #     radius=shastadari_size_hexagon,
     #     n=6,
     # )
     # xl += f'''        <path id="shastadari_hexagon_outer" style="fill:{front_colour};" d="{hexagon}" />\n'''
     hexagon = polygon(
-        x=108,
-        y=108,
+        x=112,
+        y=112,
         radius=shastadari_size_hexagon - shastadari_thickness,
         n=6,
     )
     xl += f'''        <path id="shastadari_hexagon_inner" style="fill:{back_colour};" d="{hexagon}" />\n'''
 
     tripod = star(
-        x=108,
-        y=108,
+        x=112,
+        y=112,
         n=3,
         outer_radius=shastadari_size_hexagon - shastadari_thickness,
         inner_radius=shastadari_thickness,
@@ -790,16 +798,16 @@ def _shastadari_logo(locale, colours, today):
     xl += f'''        <path id="shastadari_halves" style="fill:{front_colour};" d="{tripod}" />\n'''
 
     triangle = polygon(
-        x=108,
-        y=108,
+        x=112,
+        y=112,
         radius=shastadari_size_hexagon / 2,
         n=3,
         angle=180,
     )
     xl += f'''        <path id="shastadari_triangle" style="fill:{front_colour};" d="{triangle}" />\n'''
     triangle = polygon(
-        x=108,
-        y=108,
+        x=112,
+        y=112,
         radius=(shastadari_size_hexagon / 2) - (shastadari_thickness * 1.5),
         n=3,
         angle=180,
@@ -888,7 +896,7 @@ def _time_display(locale, colours, gray, today):
 
     size = 81
 
-    # display += f'''        <circle id="number_base" style="fill:none;" cx="108" cy="108" r="66" />\n'''
+    # display += f'''        <circle id="number_base" style="fill:none;" cx="112" cy="112" r="66" />\n'''
 
     # for i in range(360):
     #     if DAY_COLOURS[i] == '#000000':
@@ -897,8 +905,8 @@ def _time_display(locale, colours, gray, today):
     #     time_wedge = ring(
     #         inner_radius=0,
     #         outer_radius=90,
-    #         x=108,
-    #         y=108,
+    #         x=112,
+    #         y=112,
     #         start_angle=90 + i,
     #         end_angle=90 + i + 1.25,
     #         without_inner=True,
@@ -924,7 +932,7 @@ def _time_display(locale, colours, gray, today):
         for i in range(36):
             if i % 6 == 0:
                 angle = zero_position + ((i / 6) * 60) - 1
-                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 2)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 2)
 
                 angle = ((i / 36) * 360) + zero_position
 
@@ -932,25 +940,25 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + (size * 32 / 45) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size / 15) + (size * 32 / 45) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 32 / 45) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size / 15) + (size * 32 / 45) * math.sin(angle / 360 * math.pi * 2)
 
                     if '!' in locale.format_token:
                         display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
                     else:
                         display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
                 else:
-                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
             else:
                 angle = zero_position + (i * 10) - 0.5
 
                 if i % 3 == 0:
-                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
                 else:
-                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -960,7 +968,7 @@ def _time_display(locale, colours, gray, today):
         if locale.HOUR_FORMAT == '24h':
             for i in range(24):
                 angle = zero_position + (i * 15) - 0.5
-                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                 angle = ((i / 24) * 360) + zero_position
 
@@ -968,12 +976,12 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size / 18) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size / 18) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 13 / 90}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
                 else:
-                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
@@ -983,7 +991,7 @@ def _time_display(locale, colours, gray, today):
                     continue
 
                 angle = zero_position + (i * 6) - 0.2
-                tick = ring(inner_radius=size * 18 / 19, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.4)
+                tick = ring(inner_radius=size * 18 / 19, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.4)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -991,7 +999,7 @@ def _time_display(locale, colours, gray, today):
             for i in range(60):
                 if i % 5 == 0:
                     angle = zero_position + ((i / 5) * 30) - 1
-                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 2)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 2)
 
                     angle = ((i / 60) * 360) + zero_position
 
@@ -999,17 +1007,17 @@ def _time_display(locale, colours, gray, today):
                         angle -= 360
 
                     if True:
-                        cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                        cx = 112 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                        cy = 112 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
                         display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 8 / 45}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{(i // 5) if i != 0 else '12'}</text>\n'''
                     else:
-                        cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
-                        cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
+                        cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                        cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                         display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 else:
                     angle = zero_position + (i * 6) - 0.5
-                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1019,7 +1027,7 @@ def _time_display(locale, colours, gray, today):
         for i in range(0, 144):
             if i % 12 == 0:
                 angle = zero_position + 2 + ((i - 1) * 2.5)
-                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 1)
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                 display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1029,23 +1037,23 @@ def _time_display(locale, colours, gray, today):
                     angle -= 360
 
                 if True:
-                    cx = 108 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size / 15) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{DozenalInteger(D(i // 12))}</text>\n'''
                 else:
-                    cx = 108 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
-                    cy = 108 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
+                    cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+                    cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
             else:
                 angle = zero_position + 2 + ((i - 1) * 2.5)
 
                 if i % 6 == 0:
-                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
                 elif i % 3 == 0:
-                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
                 else:
-                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=108, y=108, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
 
                 display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1065,11 +1073,11 @@ def _time_display(locale, colours, gray, today):
         uta_hand_colour = '#FFA726dd'
         sun_colour = '#FFA726dd'
 
-    display += f'    <g id="hand_uta" cx="108" cy="108" transform-box="fill-box" transform-origin="center">'
-    display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}"  />\n'''
+    display += f'    <g id="hand_uta" cx="112" cy="112" transform-box="fill-box" transform-origin="center">'
+    display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}"  />\n'''
 
-    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
+    cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
@@ -1112,10 +1120,10 @@ def _time_display(locale, colours, gray, today):
     display += '    </g>'
 
     display += '    <g id="hand_posha" transform-origin="center">'
-    display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
+    display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
-    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
+    cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
@@ -1128,10 +1136,10 @@ def _time_display(locale, colours, gray, today):
     display += '    </g>'
 
     display += '    <g id="hand_agrima" transform-origin="center">'
-    display += f'''        <circle id="hand_agrima_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
+    display += f'''        <circle id="hand_agrima_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
-    cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
-    cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
+    cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+    cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
@@ -1149,10 +1157,10 @@ def _time_display(locale, colours, gray, today):
 
     if locale.base == 20:
         display += '    <g id="hand_dozenal" transform-origin="center">'
-        display += f'''        <circle id="hand_dozenal_base" style="fill:none;" cx="108" cy="108" r="{size * 2 / 3}" />\n'''
+        display += f'''        <circle id="hand_dozenal_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
-        cx = 108 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
-        cy = 108 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
+        cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
+        cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
         triangle = polygon(
             x=cx,
             y=cy,
@@ -1180,43 +1188,43 @@ def _date_display(locale, colours, gray, today):
         date_colours = colours[today.week_in_year]
 
     display = '    <g id="watchface_date_display">\n'
-    opening = f'''        <text x="108" y="108" style="font-size:{size / 6}px;font-weight:bold;fill:#ffffff88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
+    opening = f'''        <text x="112" y="112" style="font-size:{size / 6}px;font-weight:bold;fill:#ffffff88;text-anchor:middle;text-align:center;alignment-baseline:middle;">'''
     display += opening
 
     if locale.calendar_displayed == 'DCC':
         if 'c' in locale.format_token:
-            # display += f'''            <tspan x="108" dy="-1.5em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
+            # display += f'''            <tspan x="112" dy="-1.5em">{today.format(locale.ADC_DATE_FORMAT, locale)}</tspan>'''
             if '!' in locale.format_token:
-                display += f'''            <tspan x="108" dy="-1.5em">{today.format('&!>Y', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-1.5em">{today.format('&!>Y', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="-0.25em">{today.format('&!-m &iM &cM', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-0.25em">{today.format('&!-m &iM &cM', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="+1em">{today.format('&!-wM &iW &cW', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="+1em">{today.format('&!-wM &iW &cW', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="+2.25em">{today.format('&!-dW &iD &cD', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="+2.25em">{today.format('&!-dW &iD &cD', locale)}</tspan>'''
             else:
-                display += f'''            <tspan x="108" dy="-1.5em">{today.format('&>Y', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-1.5em">{today.format('&>Y', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="-0.25em">{today.format('&-m &iM &cM', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-0.25em">{today.format('&-m &iM &cM', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="+1em">{today.format('&-wM &iW &cW', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="+1em">{today.format('&-wM &iW &cW', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="108" dy="+2.25em">{today.format('&-dW &iD &cD', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="+2.25em">{today.format('&-dW &iD &cD', locale)}</tspan>'''
         else:
-            display += f'''            <tspan x="108" dy="0.5em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="112" dy="0.5em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
 
             # display += '        </text>' + opening
-            # display += f'''            <tspan x="108" dy="1em">{today.format('&D', locale)}</tspan>'''
+            # display += f'''            <tspan x="112" dy="1em">{today.format('&D', locale)}</tspan>'''
 
     elif locale.calendar_displayed == 'SYM':
-        display += f'''            <tspan x="108" dy="-0.125em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="112" dy="-0.125em">{today.format(locale.DATE_FORMAT, locale)}</tspan>'''
         display += '        </text>' + opening
-        display += f'''            <tspan x="108" dy="1.125em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="112" dy="1.125em">{today.format('#W', locale)}</tspan>'''
 
     else:
-        display += f'''            <tspan x="108">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
+        display += f'''            <tspan x="112">{today.format(locale.ISO_DATE_FORMAT, locale)}</tspan>'''
         display += '        </text>' + opening
-        display += f'''            <tspan x="108" dy="1em">{today.format('#W', locale)}</tspan>'''
+        display += f'''            <tspan x="112" dy="1em">{today.format('#W', locale)}</tspan>'''
 
     display += '        </text>\n'
     display += '    </g>\n'
