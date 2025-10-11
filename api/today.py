@@ -750,6 +750,8 @@ def _calendar_events(locale, year, context, only_check: bool = False):
         locale.DEFAULT_TIME_ZONE == 'America/New_York'
     elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
         locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
+    elif locale.DEFAULT_TIME_ZONE == 'Asia/Calcutta':
+        locale.DEFAULT_TIME_ZONE == 'Asia/Kolkata'
 
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
@@ -1644,6 +1646,8 @@ def _prepare_locale(locale, dados):
             locale.DEFAULT_TIME_ZONE == 'America/New_York'
         elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
             locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
+        elif locale.DEFAULT_TIME_ZONE == 'Asia/Calcutta':
+            locale.DEFAULT_TIME_ZONE == 'Asia/Kolkata'
 
     if dados['hemisphere'] != 'locale':
         locale.DEFAULT_HEMISPHERE = dados['hemisphere']
