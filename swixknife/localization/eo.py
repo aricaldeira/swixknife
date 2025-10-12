@@ -389,6 +389,33 @@ class SezimalLocaleEO(SezimalLocale):
         'Sk',
     ]
 
+    ADC_WEEK_NAME = [
+        'Animo',
+        'Fajro',
+        'Aero',
+        'Akvo',
+        'Tero',
+        'Korpo',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'Ani',
+        'Faj',
+        'Aer',
+        'Akv',
+        'Ter',
+        'Kor',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'An',
+        'F',
+        'Ae',
+        'Ak',
+        'T',
+        'K',
+    ]
+
     ADC_WEEKDAY_NAME = [
         'Suno',
         # 'Merkuro',

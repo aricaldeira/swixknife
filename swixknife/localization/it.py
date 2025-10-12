@@ -298,63 +298,63 @@ class SezimalLocaleIT(SezimalLocale):
     DCC_DATE_MONTH_DAY_SEPARATOR = ' e '
 
     ADC_MONTH_NAME = [
-        'pesci',
-        'balena',
-        'eridano',
-        'unicornio',
-        'idra',
-        'leone',
-        'vergine',
-        'serpente',
-        'aquila',
-        'acquario',
-        'sestante',
+        'Pesci',
+        'Balena',
+        'Eridano',
+        'Unicornio',
+        'Idra',
+        'Leone',
+        'Vergine',
+        'Serpente',
+        'Aquila',
+        'Acquario',
+        'Sestante',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
-        'pes',
-        'bal',
-        'eri',
-        'uni',
-        'idr',
-        'leo',
-        'ver',
-        'ser',
-        'aqu',
-        'acq',
-        'ses',
+        'Pes',
+        'Bal',
+        'Eri',
+        'Uni',
+        'Idr',
+        'Leo',
+        'Ver',
+        'Ser',
+        'Aqu',
+        'Acq',
+        'Ses',
     ]
 
     ADC_MONTH_SYMBOL = [
-        'p',
-        'b',
-        'e',
-        'u',
-        'i',
-        'l',
-        'v',
-        'sr',
-        'aq',
-        'ac',
-        'ss',
+        'P',
+        'B',
+        'E',
+        'U',
+        'I',
+        'L',
+        'V',
+        'Sr',
+        'Aq',
+        'Ac',
+        'Ss',
     ]
 
     ADC_WEEK_NAME = [
-        'spirito',
-        'fuoco',
-        'aria',
-        'acqua',
-        'terra',
-        'corpo',
+        'Spirito',
+        'Fuoco',
+        'Aria',
+        'Acqua',
+        'Terra',
+        'Corpo',
     ]
 
     ADC_WEEK_ABBREVIATED_NAME = [
-        'spi',
-        'fuo',
-        'ari',
-        'acq',
-        'ter',
-        'cor',
+        'Spi',
+        'Fuo',
+        'Ari',
+        'Acq',
+        'Ter',
+        'Cor',
     ]
 
     ADC_WEEK_SYMBOL = [
@@ -367,21 +367,21 @@ class SezimalLocaleIT(SezimalLocale):
     ]
 
     ADC_WEEKDAY_NAME = [
-        'sole',
-        'venere',
-        'marte',
-        'giove',
-        'saturno',
-        'luna',
+        'Sole',
+        'Venere',
+        'Marte',
+        'Giove',
+        'Saturno',
+        'Luna',
     ]
 
     ADC_WEEKDAY_ABBREVIATED_NAME = [
-        'sol',
-        'ven',
-        'mar',
-        'gio',
-        'sat',
-        'lun',
+        'Sol',
+        'Ven',
+        'Mar',
+        'Gio',
+        'Sat',
+        'Lun',
     ]
 
     DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mese &-m, giorno &-d'
