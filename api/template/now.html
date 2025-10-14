@@ -135,6 +135,7 @@ html, body {
 
         var time_display = '';
         var iso_time_display = '';
+        var todays_day = {{ date.gregorian_day }};
 
         async function auto_refresh_iso_display(){
             var date = new Date();
@@ -341,19 +342,13 @@ html, body {
             // Update every ten milliseconds
             //
             setTimeout(auto_refresh_iso_display, 10);
+
+            if ((hours_24 === '00') && (date.getDay() != todays_day)) {
+                todays_day = date.getDay();
+                location.reload(true);
+            };
         };
         auto_refresh_iso_display();
-
-        async function auto_refresh_date_change(execute_now = true){
-            if (execute_now) {
-                location.reload(true);
-            }
-            //
-            // Update twice a day
-            //
-            setTimeout(auto_refresh_date_change, 12 * 60 * 60 * 1000);
-        };
-        auto_refresh_date_change(false);
 
         async function auto_refresh_weather(){
             update_weather();
