@@ -1933,7 +1933,7 @@ def today_icon(when: str = None, size: str = None) -> str:
         text = text.replace('#2a7fff', '#d40000')
 
     if base == 10 or base == 100:
-        if locale.calendar_displayed == 'DCC':
+        if getattr(locale, 'calendar_displayed', 'SYM') == 'DCC':
             day = str(now.date.dcc_day)
             month = str(now.date.dcc_month)
         else:
