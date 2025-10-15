@@ -72,6 +72,7 @@
         <meta name="description" content="{{ TITLE }}" />
         <meta name="author" content="Ari Caldeira" />
         {% include 'sezimal_css.html' %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
         <link rel="manifest" href="https://sezimal.tauga.online/now/manifest.json?{{ date.format('%Y%m%d%H%M%S') }}" crossorigin="use-credentials" />
         <link rel="icon" type="image/svg+xml" href="https://sezimal.tauga.online/now/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}" />
 <style>
@@ -1386,5 +1387,23 @@ html, body {
         window.open('/today', '_blank');
     };
 
-    </script>
+// Ajusta padding dinamicamente com VisualViewport (Chrome 104+)
+if ('visualViewport' in window) {
+  const vp = window.visualViewport;
+  function adjustSafeAreas() {
+    const bottomInset = window.innerHeight - vp.height;
+    document.body.style.paddingBottom = `${bottomInset}px`;
+    // Log para debug: console.log('Bottom inset ajustado:', bottomInset);
+  }
+  vp.addEventListener('resize', adjustSafeAreas);
+  vp.addEventListener('scroll', adjustSafeAreas);
+  adjustSafeAreas();  // Roda na load
+}
+
+// Força fullscreen se detectado PWA
+if (window.matchMedia('(display-mode: fullscreen)').matches) {
+  document.documentElement.requestFullscreen().catch(() => {});  // Ignora erros
+}
+
+  </script>
 </html>
