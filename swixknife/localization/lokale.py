@@ -2290,4 +2290,4 @@ class SezimalLocale:
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, month &-m, week &-wM, day &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, month of &cM, day &-d'
-    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week of the &cW, day of &cW'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week of the &cW, day of &cD'

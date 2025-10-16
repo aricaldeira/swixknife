@@ -715,13 +715,13 @@ class SezimalLocaleBZ(SezimalLocale):
     ]
 
     def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
-        if f'&$DED' in fmt:
-            fmt = fmt.replace(f'&$DED', self._DE_DO_DA_DIA_SEMANA[int(date.dcc_weekday)])
+        if f'&$DID' in fmt:
+            fmt = fmt.replace(f'&$DID', self._DI_DU_DA_DIA_SEMANA[int(date.dcc_weekday)])
 
-        if f'&$DEW' in fmt:
-            fmt = fmt.replace(f'&$DEW', self._DE_DO_DA_SEMANA[int(date.dcc_week)])
+        if f'&$DIW' in fmt:
+            fmt = fmt.replace(f'&$DIW', self._DI_DU_DA_SEMANA[int(date.dcc_week)])
 
-        if f'&$DEM' in fmt:
-            fmt = fmt.replace(f'&$DEM', self._DE_DO_DA_MES[int(date.dcc_month)])
+        if f'&$DIM' in fmt:
+            fmt = fmt.replace(f'&$DIM', self._DI_DU_DA_MES[int(date.dcc_month)])
 
         return fmt
