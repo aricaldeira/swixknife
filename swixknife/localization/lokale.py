@@ -1820,6 +1820,13 @@ class SezimalLocale:
         ('JEW+09-25', '🕯\ufe0f🕍\ufe0f Hanukkah'),
     ]
 
+    SPIRITIST_HOLIDAYS = [
+        ('SPI+ISO+1804-10-03', f'🍇\ufe0f🕇\ufe0f Birth of Allan Kardec (%i)'),
+        ('SPI+ISO+1857-04-18', f'🍇\ufe0f🕇\ufe0f Publication of The Spirits’ Book (%i)'),
+        ('SPI+ISO+1910-04-02', f'🍇\ufe0f🕇\ufe0f Birth of Chico Xavier (%i)'),
+        ('SPI+ISO+1922-10-22', f'🍇\ufe0f🕇\ufe0f Birth of Meimei (#i)'),
+    ]
+
     ISLAMIC_HOLIDAYS = [
         ('HIJ+09-01', '🍯\ufe0f🥙\ufe0f 1st day of Ramaḍān'),
         ('HIJ+09-30', '🍯\ufe0f🥙\ufe0f Laylat ul-Jāʾizah'),

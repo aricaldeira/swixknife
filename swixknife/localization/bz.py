@@ -475,6 +475,13 @@ class SezimalLocaleBZ(SezimalLocale):
         'Drj',
     ]
 
+    SPIRITIST_HOLIDAYS = [
+        ('SPI+ISO+1804-10-03', f'🍇\ufe0f🕇\ufe0f Nasimentu di Allan Kardec (%i)'),
+        ('SPI+ISO+1857-04-18', f'🍇\ufe0f🕇\ufe0f Publikasawn du Livru dus Espíritus (%i)'),
+        ('SPI+ISO+1910-04-02', f'🍇\ufe0f🕇\ufe0f Nasimentu di Xiko Xavièr (%i)'),
+        ('SPI+ISO+1922-10-22', f'🍇\ufe0f🕇\ufe0f Nasimentu di Meymey (%i)'),
+    ]
+
     DCC_TERM_NAME = [
         'bimèstri‐zèru',
         'bimèstri‐un',

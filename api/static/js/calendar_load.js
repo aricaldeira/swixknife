@@ -123,12 +123,12 @@ function calendar_load() {
     //     || (localStorage.getItem('sezimal-calendar-show-holiday-orthodox') == 'true')
     // );
 
-    if (localStorage.getItem('sezimal-calendar-show-holiday-islamic') === null) {
-        localStorage.setItem('sezimal-calendar-show-holiday-islamic', false);
+    if (localStorage.getItem('sezimal-calendar-show-holiday-spiritist') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday-spiritist', false);
     };
-    document.getElementById('religious_calendar_input_islamic').checked = (
-        (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == true)
-        || (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == 'true')
+    document.getElementById('religious_calendar_input_spiritist').checked = (
+        (localStorage.getItem('sezimal-calendar-show-holiday-spiritist') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-spiritist') == 'true')
     );
 
     if (localStorage.getItem('sezimal-calendar-show-holiday-jewish') === null) {
@@ -137,6 +137,14 @@ function calendar_load() {
     document.getElementById('religious_calendar_input_jewish').checked = (
         (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == true)
         || (localStorage.getItem('sezimal-calendar-show-holiday-jewish') == 'true')
+    );
+
+    if (localStorage.getItem('sezimal-calendar-show-holiday-islamic') === null) {
+        localStorage.setItem('sezimal-calendar-show-holiday-islamic', false);
+    };
+    document.getElementById('religious_calendar_input_islamic').checked = (
+        (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == true)
+        || (localStorage.getItem('sezimal-calendar-show-holiday-islamic') == 'true')
     );
 
     if (navigator.geolocation) {

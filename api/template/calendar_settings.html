@@ -761,6 +761,34 @@
                     {% endif %}
                 </label>
             </div>
+            <div>
+                <input id="religious_calendar_input_spiritist" name="religious_calendar_input_spiritist" type="checkbox">
+                <label for="religious_calendar_input_spiritist">
+                    {% if locale.LANG == 'pt' %}
+                        Espiritisto
+                    {% elif locale.LANG == 'bz' %}
+                        Espiritistu
+                    {% elif locale.LANG == 'eo' %}
+                        Spiritismo
+                    {% else %}
+                        Spiritism
+                    {% endif %}
+                </label>
+            </div>
+            <div>
+                <input id="religious_calendar_input_jewish" name="religious_calendar_input_jewish" type="checkbox">
+                <label for="religious_calendar_input_jewish">
+                    {% if locale.LANG == 'pt' %}
+                        Judaismo
+                    {% elif locale.LANG == 'bz' %}
+                        Judaismu
+                    {% elif locale.LANG == 'eo' %}
+                        Judismo
+                    {% else %}
+                        Jewish
+                    {% endif %}
+                </label>
+            </div>
             {#
             <div>
                 <input id="religious_calendar_input_orthodox" name="religious_calendar_input_orthodox" type="checkbox">
@@ -786,20 +814,6 @@
                         Islamismo
                     {% else %}
                         Islamic
-                    {% endif %}
-                </label>
-            </div>
-            <div>
-                <input id="religious_calendar_input_jewish" name="religious_calendar_input_jewish" type="checkbox">
-                <label for="religious_calendar_input_jewish">
-                    {% if locale.LANG == 'pt' %}
-                        Judaismo
-                    {% elif locale.LANG == 'bz' %}
-                        Judaismu
-                    {% elif locale.LANG == 'eo' %}
-                        Judismo
-                    {% else %}
-                        Jewish
                     {% endif %}
                 </label>
             </div>
