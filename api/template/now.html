@@ -76,11 +76,6 @@
         <link rel="manifest" href="https://sezimal.tauga.online/now/manifest.json?{{ date.format('%Y%m%d%H%M%S') }}" crossorigin="use-credentials" />
         <link rel="icon" type="image/svg+xml" href="https://sezimal.tauga.online/now/icon-64.svg?{{ date.format('%Y%m%d%H%M%S') }}" />
 <style>
-html, body {
-    max-width: 100%;
-    width: 100%;
-    margin: auto;
-}
 {% if locale.LANGUAGE_TAG == 'en-Shaw' %}
 :root {
     font-family: 'Inter Alia', 'Noto Sans Shavian', 'Andika', 'Sezimal QP', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif !important;
@@ -94,6 +89,26 @@ html, body {
 }
 </style>
     </head>
+<script>
+    // Ajusta padding dinamicamente com VisualViewport (Chrome 104+)
+    if ('visualViewport' in window) {
+        const vp = window.visualViewport;
+
+        function adjustSafeAreas() {
+            const bottomInset = window.innerHeight - vp.height;
+            document.body.style.paddingBottom = `${bottomInset}px`;
+            // Log para debug: console.log('Bottom inset ajustado:', bottomInset);
+        }
+        vp.addEventListener('resize', adjustSafeAreas);
+        vp.addEventListener('scroll', adjustSafeAreas);
+        adjustSafeAreas();  // Roda na load
+    }
+
+    // Força fullscreen se detectado PWA
+    if (window.matchMedia('(display-mode: fullscreen)').matches) {
+        document.documentElement.requestFullscreen().catch(() => {});  // Ignora erros
+    }
+</script>
     <body>
     {% include 'calendar_settings.html' %}
     <div id="selectors" style="position: absolute; width: 100%">
@@ -1387,23 +1402,5 @@ html, body {
         window.open('/today', '_blank');
     };
 
-// Ajusta padding dinamicamente com VisualViewport (Chrome 104+)
-if ('visualViewport' in window) {
-  const vp = window.visualViewport;
-  function adjustSafeAreas() {
-    const bottomInset = window.innerHeight - vp.height;
-    document.body.style.paddingBottom = `${bottomInset}px`;
-    // Log para debug: console.log('Bottom inset ajustado:', bottomInset);
-  }
-  vp.addEventListener('resize', adjustSafeAreas);
-  vp.addEventListener('scroll', adjustSafeAreas);
-  adjustSafeAreas();  // Roda na load
-}
-
-// Força fullscreen se detectado PWA
-if (window.matchMedia('(display-mode: fullscreen)').matches) {
-  document.documentElement.requestFullscreen().catch(() => {});  // Ignora erros
-}
-
-  </script>
+    </script>
 </html>

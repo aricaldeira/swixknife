@@ -590,7 +590,7 @@ class SezimalEvent:
 
         if self.origin[0:3] in ('SYM', 'SEZ',
             'ISO', 'GRE', 'ISR', 'IND',
-            'JUL', 'HEB', 'JEW', 'HIJ', 'IRN', 'CHR', 'ORT', 'ISL'):
+            'JUL', 'HEB', 'JEW', 'HIJ', 'IRN', 'CHR', 'ORT', 'ISL', 'SPI'):
             return self.origin[0:3]
 
         return 'SEZ'
@@ -696,6 +696,9 @@ def _limit_holidays(events, show_holidays):
                 if 'CHR' in event.origin and 'CHR' not in show_holidays:
                     continue
 
+                if 'SPI' in event.origin and 'SPI' not in show_holidays:
+                    continue
+
                 if 'JEW' in event.origin and 'JEW' not in show_holidays:
                     continue
 
@@ -796,6 +799,7 @@ def _calendar_events(locale, year, context, only_check: bool = False):
     all_events += locale.CHRISTIAN_HOLIDAYS
     all_events += locale.JEWISH_HOLIDAYS
     all_events += locale.ISLAMIC_HOLIDAYS
+    all_events += locale.SPIRITIST_HOLIDAYS
 
     _process_events_list(all_events, events, locale.calendar_displayed, year, locale, context)
 
@@ -943,7 +947,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
         for reference_year in years:
             event_ordinal_date, (event_year, event_month, event_day), age = \
                 other_calendar_date_to_ordinal_date(
-                    event_origin.replace('CHR+ISO+', 'ISO+').replace('CHR+SYM+', 'SYM+').replace('HIJ+ISO+', 'HIJ+').replace('HIJ+SYM+', 'HIJ+').replace('JEW+ISO+', 'JEW+').replace('JEW+SYM+', 'JEW+').replace('JUL+ISO+', 'ISO+').replace('JUL+SYM+', 'SYM+'),
+                    event_origin.replace('CHR+ISO+', 'ISO+').replace('CHR+SYM+', 'SYM+').replace('HIJ+ISO+', 'HIJ+').replace('HIJ+SYM+', 'HIJ+').replace('JEW+ISO+', 'JEW+').replace('JEW+SYM+', 'JEW+').replace('JUL+ISO+', 'ISO+').replace('JUL+SYM+', 'SYM+').replace('SPI+ISO+', 'ISO+').replace('SPI+SYM+', 'SYM+'),
                     reference_year,
                 )
 
@@ -1576,7 +1580,7 @@ def _prepare_locale_from_cookie(locale='en-us'):
 
     show_seconds = 'true'
     calendar_displayed = 'SYM'
-    show_holiday = 'ISO_SEZ_SYM_CHR_JEW_HIJ_DCC'
+    show_holiday = 'ISO_SEZ_SYM_CHR_JEW_HIJ_DCC_SPI'
     locale_first_weekday = 'false'
     local_time_zone = None
 
