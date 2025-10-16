@@ -2447,8 +2447,8 @@ def _create_store_events_br():
     # year_range = (213_220, 213_211, -1)
 
     for locale in (
-        'pt-BR',
-        'bz-BR',
+        # 'pt-BR',
+        # 'bz-BR',
         'en-BR',
         'eo-BR',
     ):
@@ -2475,26 +2475,106 @@ def _create_store_events_br():
             _create_store_events(itens, year_range, bases)
 
 
-def _create_store_events_us():
-    year_range = (213_000, 214_001)
-    # year_range = (213_220, 213_211, -1)
+def _create_store_events_en():
+    # year_range = (213_000, 214_001)
+    year_range = (213_214, 213_211, -1)
 
-    for locale in (
-        'en-US',
-        # 'es-US',
-    ):
-        for tz in (
-            'America/New_York',
-            'America/Chicago',
-            'America/Los_Angeles',
-            'America/Denver',
-            'Pacific/Honolulu',
+    LOCALE_TIME_ZONE = {
+        'en-US': [
+            'America/Adak',
             'America/Anchorage',
-            # 'America/Panama',
-            # 'America/Puerto_Rico',
-            # 'US/Central',
-            # 'America/Indianapolis',
-        ):
+            'America/Boise',
+            'America/Chicago',
+            'America/Denver',
+            'America/Detroit',
+            'America/Indianapolis',
+            # 'America/Indiana/Indianapolis',
+            # 'America/Indiana/Knox',
+            # 'America/Indiana/Marengo',
+            # 'America/Indiana/Petersburg',
+            # 'America/Indiana/Tell_City',
+            # 'America/Indiana/Vevay',
+            # 'America/Indiana/Vincennes',
+            # 'America/Indiana/Winamac',
+            'America/Juneau',
+            # 'America/Kentucky/Louisville',
+            # 'America/Kentucky/Monticello',
+            'America/Knox_IN',
+            'America/Los_Angeles',
+            'America/Louisville',
+            'America/Menominee',
+            'America/Metlakatla',
+            'America/New_York',
+            'America/Nome',
+            # 'America/North_Dakota/Beulah',
+            # 'America/North_Dakota/Center',
+            # 'America/North_Dakota/New_Salem',
+            'America/Phoenix',
+            'America/Sitka',
+            'America/Yakutat',
+            'Pacific/Honolulu',
+        ],
+        'en-CA': [
+            'America/Atikokan',
+            'America/Blanc-Sablon',
+            'America/Cambridge_Bay',
+            'America/Coral_Harbour',
+            'America/Creston',
+            'America/Dawson',
+            'America/Dawson_Creek',
+            'America/Edmonton',
+            'America/Fort_Nelson',
+            'America/Glace_Bay',
+            'America/Halifax',
+            'America/Inuvik',
+            'America/Iqaluit',
+            'America/Moncton',
+            'America/Montreal',
+            'America/Nipigon',
+            'America/Pangnirtung',
+            'America/Rainy_River',
+            'America/Rankin_Inlet',
+            'America/Regina',
+            'America/Resolute',
+            'America/St_Johns',
+            'America/Swift_Current',
+            'America/Thunder_Bay',
+            'America/Toronto',
+            'America/Vancouver',
+            'America/Whitehorse',
+            'America/Winnipeg',
+            'America/Yellowknife',
+        ],
+        'en-AU': [
+            'Antarctica/Macquarie',
+            'Australia/Adelaide',
+            'Australia/Brisbane',
+            'Australia/Broken_Hill',
+            'Australia/Darwin',
+            'Australia/Eucla',
+            'Australia/Hobart',
+            'Australia/Lindeman',
+            'Australia/Lord_Howe',
+            'Australia/Melbourne',
+            'Australia/Perth',
+            'Australia/Sydney',
+        ],
+        'en-IN': [
+            'Asia/Kolkata',
+        ],
+        'en-GB': [
+            'Europe/London',
+        ],
+        'en-IE': [
+            'Europe/Dublin',
+        ],
+        'en-IL': [
+            'Asia/Jerusalem',
+        ],
+    }
+
+    for locale in LOCALE_TIME_ZONE:
+        for tz in LOCALE_TIME_ZONE[locale]:
             itens = [locale + '|' + tz]
 
             bases = (10,)
@@ -2709,35 +2789,57 @@ def adc_circle(hemisphere: str = 'S') -> Response:
 
 
 def _preload_calendars(locales=[]):
+
+    LOCALE_TIME_ZONE = {
+        'pt-BR': [
+            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+        ],
+        'bz-BR': [
+            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+        ],
+        'en-BR': [
+            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+        ],
+        'eo-BR': [
+            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+        ],
+        'en-US': [
+            'America/Chicago',
+            'America/Denver',
+            'America/Los_Angeles',
+            'America/Phoenix',
+            'US/Central',
+        ],
+        'en-CA': [
+            'America/Edmonton',
+            'America/Montreal',
+            'America/Vancouver',
+            'America/Winnipeg',
+        ],
+        'en-AU': [
+            'Australia/Adelaide',
+            'Australia/Brisbane',
+            'Australia/Melbourne',
+            'Australia/Perth',
+        ],
+        'en-IN': [],
+        'en-GB': [],
+        'en-IE': [],
+        'en-IL': [],
+    }
+
     for year_diff in (0,):  # (0, 1, -1):
-        for locale_code in locales or ('pt-br', 'bz-br', 'eo-br', 'en-br', 'en-us', 'en-gb', 'en-ca', 'en-in', 'en-au'):
+        for locale_code in LOCALE_TIME_ZONE:
             sym_year = SezimalDate.today().year + year_diff
             dcc_year = SezimalDate.today().dcc_year + year_diff
             iso_year = SezimalDate.today().gregorian_date.year + year_diff
 
             locale = _prepare_locale_from_cookie(locale_code)
-            time_zones = [locale.DEFAULT_TIME_ZONE]
-
-            if locale_code in ('pt-br', 'bz-br', 'eo-br', 'en-br'):
-                time_zones += ['GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03', 'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340']
-
-            elif locale_code == 'en-us':
-                time_zones += [
-                    'America/Chicago',
-                    'America/Los_Angeles',
-                    'America/New_York',
-                    'US/Central',
-                    'America/Denver',
-                    'Pacific/Honolulu',
-                    'America/Anchorage',
-                ]
-
-            elif locale_code == 'en-au':
-                time_zones += [
-                    'Australia/Adelaide',
-                    'Australia/Sydney',
-                    'Australia/Brisbane',
-                ]
+            time_zones = [locale.DEFAULT_TIME_ZONE] + LOCALE_TIME_ZONE[locale_code]
 
             for time_zone in time_zones:
                 locale.DEFAULT_TIME_ZONE = time_zone
