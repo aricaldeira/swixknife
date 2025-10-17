@@ -2963,7 +2963,7 @@ def _preload_calendars(locales=[]):
                         locale.format_token = '!'
                         print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
                         _calendar_events(
-                            locale, sym_year, {
+                            locale, dcc_year, {
                                 'base': base,
                                 'format_token': locale.format_token,
                             },
@@ -2990,7 +2990,7 @@ def _preload_calendars(locales=[]):
                         locale.format_token = 'c!'
                         print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
                         _calendar_events(
-                            locale, sym_year, {
+                            locale, dcc_year, {
                                 'base': base,
                                 'format_token': locale.format_token,
                             },
@@ -3017,7 +3017,7 @@ def _preload_calendars(locales=[]):
                         locale.format_token = '!'
                         print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
                         _calendar_events(
-                            locale, sym_year, {
+                            locale, iso_year, {
                                 'base': base,
                                 'format_token': locale.format_token,
                             },
