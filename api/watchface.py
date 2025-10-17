@@ -983,6 +983,27 @@ def _time_display(locale, colours, gray, today):
                 else:
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
+            if i == 35:
+                highlight = ring(
+                    inner_radius=size * 14 / 15,
+                    outer_radius=size,
+                    x=112,
+                    y=112,
+                    start_angle=zero_position + (i * 10) + 0.25,
+                    end_angle=zero_position + (i * 10) + 10 - 1,
+                )
+            else:
+                highlight = ring(
+                    inner_radius=size * 14 / 15,
+                    outer_radius=size,
+                    x=112,
+                    y=112,
+                    start_angle=zero_position + (i * 10) + 0.25,
+                    end_angle=zero_position + (i * 10) + 10 - 0.25,
+                )
+
+            display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:#000;" d="{highlight}" />\n'''
+
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
     elif locale.base == 14:
@@ -1093,8 +1114,8 @@ def _time_display(locale, colours, gray, today):
     if locale.base == 14 and locale.HOUR_FORMAT == '12h':
         uta_hand_colour = '#ffffffdd'
     else:
-        uta_hand_colour = '#FFA726dd'
-        sun_colour = '#FFA726dd'
+        uta_hand_colour = '#ffa726dd'
+        sun_colour = '#ffa726dd'
 
     display += f'    <g id="hand_uta" cx="112" cy="112" transform-box="fill-box" transform-origin="center">'
     display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}"  />\n'''
