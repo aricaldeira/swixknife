@@ -447,12 +447,16 @@
                 //
                 for (let number_1 = 0; number_1 <= 5; number_1++) {
                     for (let number_2 = 0; number_2 <= 5; number_2++) {
+                        document.getElementById(`highlight_${number_1}${number_2}`).style = 'fill:#000;'
                         document.getElementById(`tick_${number_1}${number_2}`).style = 'fill:#9e9e9e;'
                     }
                 }
-                document.getElementById(`tick_${uta}`).style = 'fill:#ffffff;'
+                document.getElementById(`highlight_${uta}`).style = 'fill:#ffa726;'
+                document.getElementById(`tick_${uta}`).style = 'fill:#ffa726;'
+                document.getElementById(`highlight_${posha}`).style = 'fill:#ffffff;'
                 document.getElementById(`tick_${posha}`).style = 'fill:#ffffff;'
-                document.getElementById(`tick_${agrima}`).style = 'fill:#ffffff;'
+                document.getElementById(`highlight_${agrima}`).style = 'fill:#d50000;'
+                document.getElementById(`tick_${agrima}`).style = 'fill:#d50000;'
 
                 //
                 // Update every anuga
