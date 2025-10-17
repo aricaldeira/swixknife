@@ -2362,7 +2362,7 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
     )
 
     if bases is None:
-        bases = (10, 14, 20)
+        bases = (14, 20)
         # bases = (10, 14)
 
     for item in itens:
@@ -2371,25 +2371,90 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         #
         # DCC is only sezimal
         #
-        base = 10
-        locale = sezimal_locale(loc)
-        locale.base = base
-        locale.DEFAULT_TIME_ZONE = tz
-        locale.format_token = ''
-        locale.calendar_displayed = 'DCC'
-
-        for year in SezimalRange(*year_range):
-            context = {
-                'base': locale.base,
-                'format_token': locale.format_token,
-            }
-
+        if 10 in bases:
+            base = 10
+            locale = sezimal_locale(loc)
+            locale.base = base
+            locale.DEFAULT_TIME_ZONE = tz
+            locale.format_token = ''
             locale.ISO_TIME_FORMAT = '%H:%M:%S'
             locale.HOUR_FORMAT = '24h'
 
-            print('vai fazer', item, year, base, 'DCC', locale.format_token)
-            _calendar_events(locale, year, context, only_check=True)
+            for year in SezimalRange(*year_range):
+                locale.calendar_displayed = 'DCC'
+                locale.format_token = ''
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'DCC', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
 
+                locale.calendar_displayed = 'DCC'
+                locale.format_token = '!'
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
+
+                locale.calendar_displayed = 'DCC'
+                locale.format_token = 'c'
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'ADC', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
+
+                locale.calendar_displayed = 'DCC'
+                locale.format_token = 'c!'
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
+
+                locale.calendar_displayed = 'SYM'
+                locale.format_token = ''
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'SYM', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
+
+                locale.calendar_displayed = 'SYM'
+                locale.format_token = '!'
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, year, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅', locale.format_token)
+                _calendar_events(locale, year, context, only_check=True)
+
+                locale.calendar_displayed = 'ISO'
+                locale.format_token = ''
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, (year - 200_000).decimal, base, 'ISO', locale.format_token)
+                _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
+
+                locale.calendar_displayed = 'ISO'
+                locale.format_token = '!'
+                context = {
+                    'base': locale.base,
+                    'format_token': locale.format_token,
+                }
+                print('vai fazer', item, (year - 200_000).decimal, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅', locale.format_token)
+                _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
+
+        if bases == (10,):
+            continue
 
         for calendar in ('SYM', 'ISO', 'DCC'):
             locale = sezimal_locale(loc)
@@ -2400,11 +2465,10 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
                 locale.base = base
 
                 for year in SezimalRange(*year_range):
-                    if base == 10:
-                        locale.format_token = ''
-                        locale.HOUR_FORMAT = '24h'
-
-                    elif base == 14:
+                    # if base == 10:
+                    #     locale.format_token = ''
+                    #     locale.HOUR_FORMAT = '24h'
+                    if base == 14:
                         locale = sezimal_locale(loc)
                         locale.DEFAULT_TIME_ZONE = tz
                         locale.calendar_displayed = calendar
@@ -2447,12 +2511,12 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 
 def _create_store_events_br():
-    year_range = (213_000, 214_001)
-    # year_range = (213_220, 213_211, -1)
+    # year_range = (213_000, 214_001)
+    year_range = (213_220, 213_211, -1)
 
     for locale in (
-        # 'pt-BR',
-        # 'bz-BR',
+        'pt-BR',
+        'bz-BR',
         'en-BR',
         'eo-BR',
     ):
@@ -2849,42 +2913,114 @@ def _preload_calendars(locales=[]):
                 locale.DEFAULT_TIME_ZONE = time_zone
 
                 for base in (10, 14, 20):
-                    print(iso_year, locale_code, time_zone, base)
                     locale.base = base
-                    locale.format_token = ''
 
                     locale.calendar_displayed = 'SYM'
+
+                    if base == 10:
+                        locale.format_token = ''
+                    elif base == 14:
+                        locale.format_token = '9'
+                    elif base == 20:
+                        locale.format_token = '↋'
+
+                    print(iso_year, locale_code, time_zone, base, 'SYM')
                     _calendar_events(
                         locale, sym_year, {
                             'base': base,
-                            'format_token': '',
+                            'format_token': locale.format_token,
                         },
                     )
 
+                    if base == 10:
+                        locale.format_token = '!'
+                        print(iso_year, locale_code, time_zone, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        _calendar_events(
+                            locale, sym_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                            },
+                        )
+
                     locale.calendar_displayed = 'DCC'
+
+                    if base == 10:
+                        locale.format_token = ''
+                    elif base == 14:
+                        locale.format_token = '9'
+                    elif base == 20:
+                        locale.format_token = '↋'
+
+                    print(iso_year, locale_code, time_zone, base, 'DCC')
                     _calendar_events(
                         locale, dcc_year, {
                             'base': base,
-                            'format_token': '',
+                            'format_token': locale.format_token,
                         },
                     )
 
+                    if base == 10:
+                        locale.format_token = '!'
+                        print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        _calendar_events(
+                            locale, sym_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                            },
+                        )
+
                     locale.calendar_displayed = 'DCC'
-                    locale.format_token = 'c'
+
+                    if base == 10:
+                        locale.format_token = 'c'
+                    elif base == 14:
+                        locale.format_token = 'c9'
+                    elif base == 20:
+                        locale.format_token = 'c↋'
+
+                    print(iso_year, locale_code, time_zone, base, 'ADC')
                     _calendar_events(
                         locale, dcc_year, {
                             'base': base,
-                            'format_token': 'c',
+                            'format_token': locale.format_token,
                         },
                     )
-                    locale.format_token = ''
+
+                    if base == 10:
+                        locale.format_token = 'c!'
+                        print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        _calendar_events(
+                            locale, sym_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                            },
+                        )
 
                     locale.calendar_displayed = 'ISO'
+
+                    if base == 10:
+                        locale.format_token = ''
+                    elif base == 14:
+                        locale.format_token = '9'
+                    elif base == 20:
+                        locale.format_token = '↋'
+
+                    print(iso_year, locale_code, time_zone, base, 'ISO')
                     _calendar_events(
                         locale, iso_year, {
                             'base': base,
-                            'format_token': '',
+                            'format_token': locale.format_token,
                         },
                     )
+
+                    if base == 10:
+                        locale.format_token = '!'
+                        print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        _calendar_events(
+                            locale, sym_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                            },
+                        )
 
 _preload_calendars()
