@@ -967,9 +967,9 @@ def _time_display(locale, colours, gray, today):
                     cy = 112 + (size / 15) + (size * 32 / 45) * math.sin(angle / 360 * math.pi * 2)
 
                     if '!' in locale.format_token:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
+                        display += f'''<text id="uta_{str(SI(D(i))).zfill(2)}" x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{default_to_sezimal_digits(str(SI(D(i))))}</text>\n'''
                     else:
-                        display += f'''<text x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
+                        display += f'''<text id="uta_{str(SI(D(i))).zfill(2)}" x="{cx}" y="{cy}" style="font-size:{size / 5}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:bold;">{SI(D(i))}</text>\n'''
                 else:
                     cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
                     cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
@@ -985,21 +985,21 @@ def _time_display(locale, colours, gray, today):
 
             if i == 35:
                 highlight = ring(
-                    inner_radius=size * 14 / 15,
+                    inner_radius=size * 14 / 15 + 3,
                     outer_radius=size,
                     x=112,
                     y=112,
-                    start_angle=zero_position + (i * 10) + 0.25,
-                    end_angle=zero_position + (i * 10) + 10 - 1,
+                    start_angle=zero_position + (i * 10) + 0.25 - 5,
+                    end_angle=zero_position + (i * 10) - 1 + 5,
                 )
             else:
                 highlight = ring(
-                    inner_radius=size * 14 / 15,
+                    inner_radius=size * 14 / 15 + 3,
                     outer_radius=size,
                     x=112,
                     y=112,
-                    start_angle=zero_position + (i * 10) + 0.25,
-                    end_angle=zero_position + (i * 10) + 10 - 0.25,
+                    start_angle=zero_position + (i * 10) + 0.25 - 5,
+                    end_angle=zero_position + (i * 10) - 0.25 + 5,
                 )
 
             display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:#000;" d="{highlight}" />\n'''
@@ -1158,7 +1158,7 @@ def _time_display(locale, colours, gray, today):
         # )
         # display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
 
-        display += f'''        <circle id="hand_uta_sun" style="fill:#FDD835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+        display += f'''        <circle id="hand_uta_sun" style="fill:#fdd835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
         display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
 
     display += '    </g>'
