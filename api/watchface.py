@@ -1272,9 +1272,9 @@ def _date_display(locale, colours, gray, today):
                 display += '        </text>' + opening
                 display += f'''            <tspan x="112" dy="+2.25em">{today.format('&!-dW &iD &cD', locale)}</tspan>'''
             else:
-                display += f'''            <tspan x="112" dy="-1.5em">{today.format('&>Y', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-1.5em">{today.format('&' + locale.format_token + '>Y', locale)}</tspan>'''
                 display += '        </text>' + opening
-                display += f'''            <tspan x="112" dy="-0.25em">{today.format('&-m &iM &cM', locale)}</tspan>'''
+                display += f'''            <tspan x="112" dy="-0.25em">{today.format('&' + locale.format_token + '-m &iM &cM', locale)}</tspan>'''
                 display += '        </text>' + opening
                 display += f'''            <tspan x="112" dy="+1em">{today.format('&-wM &iW &cW', locale)}</tspan>'''
                 display += '        </text>' + opening
