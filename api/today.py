@@ -19,6 +19,7 @@ from swixknife.functions import SezimalList, SezimalDictionary, SezimalRange
 from swixknife.date_time.calendar import other_calendar_date_to_ordinal_date
 from swixknife.weather import SezimalWeather
 from swixknife.units import sezimal_to_decimal_unit
+from swixknife.date_time.spm_time_zones import TIME_ZONE_EQUIVALENCE
 
 from decimal import Decimal
 from datetime import datetime
@@ -746,16 +747,6 @@ def _calendar_events(locale, year, context, only_check: bool = False):
             cache_key = 'DCC' + str(year)
 
     cache_key += '|' + locale.LANGUAGE_TAG
-
-    if locale.DEFAULT_TIME_ZONE == 'US/Central':
-        locale.DEFAULT_TIME_ZONE == 'America/Chicago'
-    elif locale.DEFAULT_TIME_ZONE == 'US/Eastern':
-        locale.DEFAULT_TIME_ZONE == 'America/New_York'
-    elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
-        locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
-    elif locale.DEFAULT_TIME_ZONE == 'Asia/Calcutta':
-        locale.DEFAULT_TIME_ZONE == 'Asia/Kolkata'
-
     cache_key += '|' + locale.DEFAULT_TIME_ZONE
     cache_key += '|' + locale.DEFAULT_HEMISPHERE
 
@@ -1644,14 +1635,8 @@ def _prepare_locale(locale, dados):
     if dados['time_zone'] != 'locale':
         locale.DEFAULT_TIME_ZONE = dados['time_zone'].strip()
 
-        if locale.DEFAULT_TIME_ZONE == 'US/Central':
-            locale.DEFAULT_TIME_ZONE == 'America/Chicago'
-        elif locale.DEFAULT_TIME_ZONE == 'US/Eastern':
-            locale.DEFAULT_TIME_ZONE == 'America/New_York'
-        elif locale.DEFAULT_TIME_ZONE == 'GPM/GPM-03':
-            locale.DEFAULT_TIME_ZONE == 'America/Sao_Paulo'
-        elif locale.DEFAULT_TIME_ZONE == 'Asia/Calcutta':
-            locale.DEFAULT_TIME_ZONE == 'Asia/Kolkata'
+        if locale.DEFAULT_TIME_ZONE in TIME_ZONE_EQUIVALENCE:
+            locale.DEFAULT_TIME_ZONE = TIME_ZONE_EQUIVALENCE[locale.DEFAULT_TIME_ZONE]
 
     if dados['hemisphere'] != 'locale':
         locale.DEFAULT_HEMISPHERE = dados['hemisphere']
@@ -2368,6 +2353,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
     for item in itens:
         loc, tz = item.split('|')
 
+        if tz and tz in TIME_ZONE_EQUIVALENCE:
+            tz = TIME_ZONE_EQUIVALENCE[tz]
+
         #
         # DCC is only sezimal
         #
@@ -2464,50 +2452,62 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
             for base in bases:
                 locale.base = base
 
+                if base == 14:
+                    hour_formats = ('24h', '12h')
+                else:
+                    hour_formats = ('24h',)
+
                 for year in SezimalRange(*year_range):
                     # if base == 10:
                     #     locale.format_token = ''
                     #     locale.HOUR_FORMAT = '24h'
-                    if base == 14:
-                        locale = sezimal_locale(loc)
-                        locale.DEFAULT_TIME_ZONE = tz
-                        locale.calendar_displayed = calendar
-                        locale.base = base
-                        locale.format_token = '9'
-                        locale.to_decimal_base()
 
-                        if locale.ISO_TIME_FORMAT[:2] == '%I':
-                            locale.HOUR_FORMAT = '12h'
+                    for hour_format in hour_formats:
+                        if base == 14:
+                            locale = sezimal_locale(loc)
+                            locale.DEFAULT_TIME_ZONE = tz
+                            locale.calendar_displayed = calendar
+                            locale.base = base
+                            locale.format_token = '9'
+                            locale.to_decimal_base()
 
-                    elif base == 20:
-                        locale.format_token = '↋'
-                        locale.to_dozenal_base()
-                        locale.HOUR_FORMAT = '24h'
+                        elif base == 20:
+                            locale = sezimal_locale(loc)
+                            locale.DEFAULT_TIME_ZONE = tz
+                            locale.calendar_displayed = calendar
+                            locale.base = base
+                            locale.format_token = '↋'
+                            locale.to_dozenal_base()
 
-                    if calendar == 'DCC':
-                        locale.format_token = 'c' + locale.format_token
+                        locale.HOUR_FORMAT = hour_format
 
-                    context = {
-                        'base': locale.base,
-                        'format_token': locale.format_token,
-                    }
-
-                    print('vai fazer', item, year, base, calendar, locale.format_token)
-                    if calendar == 'ISO':
-                        _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
-
-                        if locale.ISO_TIME_FORMAT[:2] == '%I':
+                        if hour_format == '24h':
                             locale.ISO_TIME_FORMAT = '%H:%M:%S'
-                            locale.HOUR_FORMAT = '24h'
+
+                        # if calendar == 'DCC':
+                        #     locale.format_token = 'c' + locale.format_token
+
+                        context = {
+                            'base': locale.base,
+                            'format_token': locale.format_token,
+                        }
+
+                        print('vai fazer', item, year, base, calendar, locale.format_token)
+                        if calendar == 'ISO':
                             _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
 
-                    else:
-                        _calendar_events(locale, year, context, only_check=True)
+                            if locale.ISO_TIME_FORMAT[:2] == '%I':
+                                locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                                locale.HOUR_FORMAT = '24h'
+                                _calendar_events(locale, (year - 200_000).decimal, context, only_check=True)
 
-                        if locale.ISO_TIME_FORMAT[:2] == '%I':
-                            locale.ISO_TIME_FORMAT = '%H:%M:%S'
-                            locale.HOUR_FORMAT = '24h'
+                        else:
                             _calendar_events(locale, year, context, only_check=True)
+
+                            if locale.ISO_TIME_FORMAT[:2] == '%I':
+                                locale.ISO_TIME_FORMAT = '%H:%M:%S'
+                                locale.HOUR_FORMAT = '24h'
+                                _calendar_events(locale, year, context, only_check=True)
 
 
 def _create_store_events_br():
@@ -2521,15 +2521,50 @@ def _create_store_events_br():
         'eo-BR',
     ):
         for tz in (
+            'UTC',
+
             'America/Sao_Paulo',
 
             'GPM/GPM-03',
             'GPM/NT-03',
             'GPM/MT-03',
 
+            'SPM/SPM',
             'SPM/SPM-0340',
             'SPM/NT-0340',
             'SPM/MT-0340',
+
+            'SPM/SPM-0350',
+            'SPM/NT-0350',
+            'SPM/MT-0350',
+
+            'SPM/SPM-04',
+            'SPM/NT-04',
+            'SPM/MT-04',
+
+            'Sezimal/SPM-0530',
+            'Sezimal/NT-0530',
+            'Sezimal/MT-0530',
+
+            'Sezimal/SPM-0543',
+            'Sezimal/NT-0543',
+            'Sezimal/MT-0543',
+
+            'Sezimal/SPM-10',
+            'Sezimal/NT-10',
+            'Sezimal/MT-10',
+
+            'Dozenal/SPM-1B',
+            'Dozenal/NT-1B',
+            'Dozenal/MT-1B',
+
+            'Dozenal/SPM-1A',
+            'Dozenal/NT-1A',
+            'Dozenal/MT-1A',
+
+            'Dozenal/SPM-20',
+            'Dozenal/NT-20',
+            'Dozenal/MT-20',
         ):
             itens = [locale + '|' + tz]
 
@@ -2581,6 +2616,7 @@ def _create_store_events_en():
             'America/Sitka',
             'America/Yakutat',
             'Pacific/Honolulu',
+            'US/Central',
         ],
         'en-CA': [
             'America/Atikokan',
@@ -2642,7 +2678,7 @@ def _create_store_events_en():
     }
 
     for locale in LOCALE_TIME_ZONE:
-        for tz in LOCALE_TIME_ZONE[locale]:
+        for tz in LOCALE_TIME_ZONE[locale] + ['UTC', 'SPM/SPM']:
             itens = [locale + '|' + tz]
 
             bases = (10,)
@@ -2860,27 +2896,27 @@ def _preload_calendars(locales=[]):
 
     LOCALE_TIME_ZONE = {
         'pt-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'bz-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'en-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
-        'eo-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', 'SPM/MT-0340',
-        ],
+        # 'eo-BR': [
+        #     'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+        #     # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+        # ],
         'en-US': [
             'America/Chicago',
             # 'America/Denver',
             'America/Los_Angeles',
             # 'America/Phoenix',
-            'US/Central',
+            # 'US/Central',
         ],
         'en-CA': [
             # 'America/Edmonton',
@@ -2913,6 +2949,9 @@ def _preload_calendars(locales=[]):
             time_zones = [locale.DEFAULT_TIME_ZONE] + LOCALE_TIME_ZONE[locale_code]
 
             for time_zone in time_zones:
+                if time_zone in TIME_ZONE_EQUIVALENCE:
+                    time_zone = TIME_ZONE_EQUIVALENCE[time_zone]
+
                 locale.DEFAULT_TIME_ZONE = time_zone
 
                 for base in (10, 14, 20):
@@ -2935,15 +2974,15 @@ def _preload_calendars(locales=[]):
                         },
                     )
 
-                    if base == 10:
-                        locale.format_token = '!'
-                        print(iso_year, locale_code, time_zone, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅')
-                        _calendar_events(
-                            locale, sym_year, {
-                                'base': base,
-                                'format_token': locale.format_token,
-                            },
-                        )
+                    # if base == 10:
+                    #     locale.format_token = '!'
+                    #     print(iso_year, locale_code, time_zone, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅')
+                    #     _calendar_events(
+                    #         locale, sym_year, {
+                    #             'base': base,
+                    #             'format_token': locale.format_token,
+                    #         },
+                    #     )
 
                     locale.calendar_displayed = 'DCC'
 
@@ -2962,15 +3001,15 @@ def _preload_calendars(locales=[]):
                         },
                     )
 
-                    if base == 10:
-                        locale.format_token = '!'
-                        print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
-                        _calendar_events(
-                            locale, dcc_year, {
-                                'base': base,
-                                'format_token': locale.format_token,
-                            },
-                        )
+                    # if base == 10:
+                    #     locale.format_token = '!'
+                    #     print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                    #     _calendar_events(
+                    #         locale, dcc_year, {
+                    #             'base': base,
+                    #             'format_token': locale.format_token,
+                    #         },
+                    #     )
 
                     locale.calendar_displayed = 'DCC'
 
@@ -2989,15 +3028,15 @@ def _preload_calendars(locales=[]):
                         },
                     )
 
-                    if base == 10:
-                        locale.format_token = 'c!'
-                        print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
-                        _calendar_events(
-                            locale, dcc_year, {
-                                'base': base,
-                                'format_token': locale.format_token,
-                            },
-                        )
+                    # if base == 10:
+                    #     locale.format_token = 'c!'
+                    #     print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                    #     _calendar_events(
+                    #         locale, dcc_year, {
+                    #             'base': base,
+                    #             'format_token': locale.format_token,
+                    #         },
+                    #     )
 
                     locale.calendar_displayed = 'ISO'
 
@@ -3016,14 +3055,14 @@ def _preload_calendars(locales=[]):
                         },
                     )
 
-                    if base == 10:
-                        locale.format_token = '!'
-                        print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
-                        _calendar_events(
-                            locale, iso_year, {
-                                'base': base,
-                                'format_token': locale.format_token,
-                            },
-                        )
+                    # if base == 10:
+                    #     locale.format_token = '!'
+                    #     print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
+                    #     _calendar_events(
+                    #         locale, iso_year, {
+                    #             'base': base,
+                    #             'format_token': locale.format_token,
+                    #         },
+                    #     )
 
 _preload_calendars()
