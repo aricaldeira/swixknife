@@ -1574,6 +1574,106 @@ class SezimalDate:
 
         return SezimalDate.from_ordinal_date(ordinal_date)
 
+    @property
+    def list_weeks_in_month(self) -> [SezimalInteger]:
+        if self.month == 1:
+            return [
+                SezimalInteger(1),
+                SezimalInteger(2),
+                SezimalInteger(3),
+                SezimalInteger(4),
+            ]
+        elif self.month == 2:
+            return [
+                SezimalInteger(5),
+                SezimalInteger(10),
+                SezimalInteger(11),
+                SezimalInteger(12),
+                SezimalInteger(13),
+            ]
+        elif self.month == 3:
+            return [
+                SezimalInteger(14),
+                SezimalInteger(15),
+                SezimalInteger(20),
+                SezimalInteger(21),
+            ]
+        elif self.month == 4:
+            return [
+                SezimalInteger(22),
+                SezimalInteger(23),
+                SezimalInteger(24),
+                SezimalInteger(25),
+            ]
+        elif self.month == 5:
+            return [
+                SezimalInteger(30),
+                SezimalInteger(31),
+                SezimalInteger(32),
+                SezimalInteger(33),
+                SezimalInteger(34),
+            ]
+        elif self.month == 10:
+            return [
+                SezimalInteger(35),
+                SezimalInteger(40),
+                SezimalInteger(41),
+                SezimalInteger(42),
+            ]
+        elif self.month == 11:
+            return [
+                SezimalInteger(43),
+                SezimalInteger(44),
+                SezimalInteger(45),
+                SezimalInteger(50),
+            ]
+        elif self.month == 12:
+            return [
+                SezimalInteger(51),
+                SezimalInteger(52),
+                SezimalInteger(53),
+                SezimalInteger(54),
+                SezimalInteger(55),
+            ]
+        elif self.month == 13:
+            return [
+                SezimalInteger(100),
+                SezimalInteger(101),
+                SezimalInteger(102),
+                SezimalInteger(103),
+            ]
+        elif self.month == 14:
+            return [
+                SezimalInteger(104),
+                SezimalInteger(105),
+                SezimalInteger(110),
+                SezimalInteger(111),
+            ]
+        elif self.month == 15:
+            return [
+                SezimalInteger(112),
+                SezimalInteger(113),
+                SezimalInteger(114),
+                SezimalInteger(115),
+                SezimalInteger(120),
+            ]
+        elif self.month == 20:
+            if self.is_leap:
+                return [
+                    SezimalInteger(121),
+                    SezimalInteger(122),
+                    SezimalInteger(123),
+                    SezimalInteger(124),
+                    SezimalInteger(125),
+                ]
+            else:
+                return [
+                    SezimalInteger(121),
+                    SezimalInteger(122),
+                    SezimalInteger(123),
+                    SezimalInteger(124),
+                ]
+
 
 SezimalDate.min = SezimalDate(1, 1, 1)
 SezimalDate.max = SezimalDate(MAXYEAR, 20, 44)

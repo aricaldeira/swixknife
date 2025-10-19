@@ -487,6 +487,10 @@ class SezimalDateTime:
     def time(self) -> SezimalTime:
         return self._time
 
+    @property
+    def list_weeks_in_month(self) -> [SezimalInteger]:
+        return self.date.list_weeks_in_month
+
     def at_time_zone(self, time_zone: str | ZoneInfo = 'UTC') -> Self:
         if not time_zone:
             time_zone = 'UTC'
@@ -634,6 +638,10 @@ class SezimalDateTime:
     @property
     def dcc_week_in_year(self) -> SezimalInteger:
         return self._date.dcc_week_in_year
+
+    @property
+    def dcc_list_weeks_in_month(self) -> [SezimalInteger]:
+        return self._date.dcc_list_weeks_in_month
 
     @property
     def dcc_weekday(self) -> SezimalInteger:

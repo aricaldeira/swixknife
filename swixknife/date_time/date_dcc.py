@@ -73,6 +73,23 @@ date.SezimalDate.dcc_week_in_year = dcc_week_in_year
 
 
 @property
+def dcc_list_weeks_in_month(self) -> [SezimalInteger]:
+    if self.dcc_month == 14:
+        return [140]
+
+    return [
+        self.dcc_month * 10,
+        self.dcc_month * 10 + 1,
+        self.dcc_month * 10 + 2,
+        self.dcc_month * 10 + 3,
+        self.dcc_month * 10 + 4,
+        self.dcc_month * 10 + 5,
+    ]
+
+date.SezimalDate.dcc_list_weeks_in_month = dcc_list_weeks_in_month
+
+
+@property
 def dcc_weekday(self) -> SezimalInteger:
     return self._dcc_date[5]
 
