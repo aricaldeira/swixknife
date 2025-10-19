@@ -236,22 +236,36 @@ def _weeks_display(locale, today, weeks, colours, gray):
             if i == today.dcc_week_in_year:
                 shade = '300'
                 text_shade = '900'
+            elif i in today.dcc_list_weeks_in_month:
+                if i in today.list_dcc_seasons_weeks():
+                    shade = '500'
+                    text_shade = '900'
+                else:
+                    shade = '400'
+                    text_shade = '900'
             elif i in today.list_dcc_seasons_weeks():
-                shade = '900'
+                shade = '800'
                 text_shade = '100'
             else:
-                shade = '600'
-                text_shade = '100'
+                shade = '900'
+                text_shade = '300'
         else:
             if i + 1 == today.week_in_year:
                 shade = '300'
                 text_shade = '900'
+            elif i + 1 in today.list_weeks_in_month:
+                if i + 1 in today.list_seasons_weeks():
+                    shade = '500'
+                    text_shade = '900'
+                else:
+                    shade = '400'
+                    text_shade = '900'
             elif i + 1 in today.list_seasons_weeks():
-                shade = '900'
+                shade = '800'
                 text_shade = '100'
             else:
-                shade = '600'
-                text_shade = '100'
+                shade = '900'
+                text_shade = '300'
 
         gweeks += f'''        <path id="week_{str(i).zfill(3)}" style="fill:{colours[SI(i + 1)][shade]};" d="{week_wedge}" />\n'''
 
@@ -322,10 +336,10 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         month_number = i // 10
 
         if month_number == today.dcc_month:
-            month_shade = '50'
+            month_shade = '900'
             month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
-            month_shade = text_shade
+            month_shade = '300'
             month_style = ''
 
         if locale.base == 14:
@@ -369,10 +383,10 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         month_number = str(i // 10)
 
         if month_number == today.dcc_month:
-            month_shade = '50'
+            month_shade = '900'
             month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
-            month_shade = text_shade
+            month_shade = '300'
             month_style = ''
 
         if '!' in locale.format_token:
@@ -509,10 +523,10 @@ def _sym_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
         gtext += f'''        <path id="month_line_{str(i).zfill(3)}" style="fill:none;" d="{month_line}" />\n'''
 
         if month == today.month:
-            month_shade = '50'
+            month_shade = '900'
             month_style = f'font-weight:bold;stroke:{colours[SI(i + 1)][month_shade]};stroke-width:0.25;'
         else:
-            month_shade = text_shade
+            month_shade = '300'
             month_style = ''
 
         if locale.base == 10:
