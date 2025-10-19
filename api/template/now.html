@@ -130,7 +130,7 @@
 
         var time_display = '';
         var iso_time_display = '';
-        var todays_day = {{ date.gregorian_day }};
+        var todays_day = new Date().getDate();
 
         async function auto_refresh_iso_display(){
             var date = new Date();
@@ -338,8 +338,8 @@
             //
             setTimeout(auto_refresh_iso_display, 10);
 
-            if ((hours_24 === '00') && (date.getDay() != todays_day)) {
-                todays_day = date.getDay();
+            if ((hours_24 === '00') && (date.getDate() != todays_day)) {
+                todays_day = date.getDate();
                 location.reload(true);
             };
         };
@@ -447,7 +447,7 @@
                 //
                 for (let number_1 = 0; number_1 <= 5; number_1++) {
                     for (let number_2 = 0; number_2 <= 5; number_2++) {
-                        document.getElementById(`highlight_${number_1}${number_2}`).style = 'fill:#000;'
+                        document.getElementById(`highlight_${number_1}${number_2}`).style = 'fill:none;'
                         document.getElementById(`tick_${number_1}${number_2}`).style = 'fill:#9e9e9e;'
                     }
                     document.getElementById(`uta_${number_1}0`).style['fill'] = '#9e9e9e';
@@ -461,7 +461,7 @@
                 // document.getElementById(`highlight_${agrima}`).style = 'fill:#d50000;'
                 // document.getElementById(`tick_${agrima}`).style = 'fill:#d50000;'
 
-                if (uta in ['00', '10', '20', '30', '40', '50']) {
+                if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
                     document.getElementById(`uta_${uta}`).style['fill'] = '#ffffff';
                 }
 

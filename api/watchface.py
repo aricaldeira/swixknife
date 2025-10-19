@@ -916,6 +916,7 @@ def _time_display(locale, colours, gray, today):
     time_display_colour = time_colours['500']
 
     display = '    <g id="watchface_time_display">\n'
+    hl_display = '    <g><g id="watchface_highlight_display">\n'
 
     size = 81
 
@@ -983,26 +984,16 @@ def _time_display(locale, colours, gray, today):
                 else:
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
-            if i == 35:
-                highlight = ring(
-                    inner_radius=size * 14 / 15 + 3,
-                    outer_radius=size,
-                    x=112,
-                    y=112,
-                    start_angle=zero_position + (i * 10) + 0.25 - 5,
-                    end_angle=zero_position + (i * 10) - 1 + 5,
-                )
-            else:
-                highlight = ring(
-                    inner_radius=size * 14 / 15 + 3,
-                    outer_radius=size,
-                    x=112,
-                    y=112,
-                    start_angle=zero_position + (i * 10) + 0.25 - 5,
-                    end_angle=zero_position + (i * 10) - 0.25 + 5,
-                )
+            highlight = ring(
+                inner_radius=size * 14 / 15 + 3,
+                outer_radius=size,
+                x=112,
+                y=112,
+                start_angle=zero_position + (i * 10),
+                end_angle=zero_position + (i * 10) + 10,
+            )
 
-            display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:#000;" d="{highlight}" />\n'''
+            hl_display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight}" />\n'''
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1162,6 +1153,7 @@ def _time_display(locale, colours, gray, today):
         display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
 
     display += '    </g>'
+    hl_display += '    </g>'
 
     display += '    <g id="hand_posha" transform-origin="center">'
     display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
@@ -1216,9 +1208,9 @@ def _time_display(locale, colours, gray, today):
         # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
         display += '    </g>'
 
-    display += '    </g>\n'
+    display += '    </g>\n</g>\n'
 
-    return display
+    return hl_display + display
 
 
 def _date_display(locale, colours, gray, today):
