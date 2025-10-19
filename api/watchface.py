@@ -990,22 +990,41 @@ def _time_display(locale, colours, gray, today):
                     cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
+                highlight = ring(
+                    inner_radius=size * 13 / 15 - 1,
+                    outer_radius=size,
+                    x=112,
+                    y=112,
+                    start_angle=angle - 1,
+                    end_angle=angle + 1,
+                )
+
             else:
                 angle = zero_position + (i * 10) - 0.5
 
                 if i % 3 == 0:
                     tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+
+                    highlight = ring(
+                        inner_radius=size * 13 / 15 - 1,
+                        outer_radius=size,
+                        x=112,
+                        y=112,
+                        start_angle=angle - 0.5,
+                        end_angle=angle + 1.5,
+                    )
+
                 else:
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
-            highlight = ring(
-                inner_radius=size * 14 / 15 + 3,
-                outer_radius=size,
-                x=112,
-                y=112,
-                start_angle=zero_position + (i * 10),
-                end_angle=zero_position + (i * 10) + 10,
-            )
+                    highlight = ring(
+                        inner_radius=size * 14 / 15 - 1,
+                        outer_radius=size,
+                        x=112,
+                        y=112,
+                        start_angle=angle - 0.5,
+                        end_angle=angle + 1.5,
+                    )
 
             hl_display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight}" />\n'''
 
