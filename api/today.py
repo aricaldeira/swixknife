@@ -2444,6 +2444,8 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         if bases == (10,):
             continue
 
+        bases = (b for b in bases if b != 10)
+
         for calendar in ('SYM', 'ISO', 'DCC'):
             locale = sezimal_locale(loc)
             locale.DEFAULT_TIME_ZONE = tz
