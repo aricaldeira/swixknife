@@ -459,13 +459,15 @@
                 document.getElementById(`highlight_${agrima}`).style = 'fill:#d50000;'
                 document.getElementById(`tick_${agrima}`).style = 'fill:#d50000;'
 
+                if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
+                    document.getElementById(`uta_${uta}`).style['fill'] = '#fdd835';
+                };
+                if (['00', '10', '20', '30', '40', '50'].includes(posha)) {
+                    document.getElementById(`uta_${posha}`).style['fill'] = '#ffffff';
+                };
                 if (['00', '10', '20', '30', '40', '50'].includes(agrima)) {
                     document.getElementById(`uta_${agrima}`).style['fill'] = '#d50000';
-                } else if (['00', '10', '20', '30', '40', '50'].includes(posha)) {
-                    document.getElementById(`uta_${posha}`).style['fill'] = '#ffffff';
-                } else if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
-                    document.getElementById(`uta_${uta}`).style['fill'] = '#fdd835';
-                }
+                };
 
                 //
                 // Update every anuga

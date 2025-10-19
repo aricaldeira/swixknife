@@ -2898,16 +2898,16 @@ def _preload_calendars(locales=[]):
 
     LOCALE_TIME_ZONE = {
         'pt-BR': [
-            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
-            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'bz-BR': [
-            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
-            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'en-BR': [
-            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
-            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
+            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         # 'eo-BR': [
         #     'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
@@ -3067,4 +3067,4 @@ def _preload_calendars(locales=[]):
                     #         },
                     #     )
 
-_preload_calendars()
+# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR'])
