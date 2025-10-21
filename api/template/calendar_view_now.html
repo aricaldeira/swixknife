@@ -104,28 +104,22 @@
         {% else %}
             <p id="time_display" class="now-time-24h" onclick="watchface_toggle()" hidden/>
         {% endif %}
+{#
             <div id="natural_time_container" style="width: 50%; margin: auto; line-height: 0.8rem; font-size: 0.8rem; margin-top: -0.8rem;" hidden>
                 {% if '/NT' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-4">&nbsp;</div>
-<!--                    <div class="day-tick" style="width:  8.33%;">╵</div>  {# 0󱹮13 #}
-                    <div class="day-tick" style="width: 16.67%;">╷</div>  {# 0󱹮20 #}
-                    <div class="day-tick" style="width: 33.33%;">┃</div>  {# 0󱹮30 #}
-                    <div class="day-tick" style="width: 50%;"   >╷</div>  {# 0󱹮40 #}
-                    <div class="day-tick" style="width: 58.33%;">╵</div>  {# 0󱹮43 #}
-                    <div class="day-tick" style="width: 66.67%;">╷</div>  {# 0󱹮50 #}
-                    <div class="day-tick" style="width: 83.33%;">┃</div>  {# 1󱹮00 #}-->
                 {% elif '/MT' in locale.DEFAULT_TIME_ZONE %}
                     <div id="natural_time" class="full-day-color-6">&nbsp;</div>
                 {% else %}
                     <div id="natural_time" class="full-day-color-0">&nbsp;</div>
                 {% endif %}
-                <div class="day-tick" style="width: 16.67%;">╷</div>  {# 0󱹮10 #}
-                <div class="day-tick" style="width: 25%;"   >╵</div>  {# 0󱹮13 #}
-                <div class="day-tick" style="width: 33.33%;">╷</div>  {# 0󱹮20 #}
-                <div class="day-tick" style="width: 50%;"   >┃</div>  {# 0󱹮30 #}
-                <div class="day-tick" style="width: 66.67%;">╷</div>  {# 0󱹮40 #}
-                <div class="day-tick" style="width: 75%;"   >╵</div>  {# 0󱹮43 #}
-                <div class="day-tick" style="width: 83.33%;">╷</div>  {# 0󱹮50 #}
+                <div class="day-tick" style="width: 16.67%;">╷</div>  <!-- 0󱹮10 -->
+                <div class="day-tick" style="width: 25%;"   >╵</div>  <!-- 0󱹮13 -->
+                <div class="day-tick" style="width: 33.33%;">╷</div>  <!-- 0󱹮20 -->
+                <div class="day-tick" style="width: 50%;"   >┃</div>  <!-- 0󱹮30 -->
+                <div class="day-tick" style="width: 66.67%;">╷</div>  <!-- 0󱹮40 -->
+                <div class="day-tick" style="width: 75%;"   >╵</div>  <!-- 0󱹮43 -->
+                <div class="day-tick" style="width: 83.33%;">╷</div>  <!-- 0󱹮50 -->
                 <div id="natural_time_passed" class="day-time-passed">
                     {{ ' ' }}
                     <span id="natural_time_sunrise" class="emoji" hidden>🌅</span>
@@ -134,6 +128,7 @@
                     <span id="natural_time_stars" class="emoji" hidden>🌌</span>
                 </div>
             </div>
+#}
         </p>
 
         <p id="date" class="now-date" style="clear: both;" hidden>

@@ -202,6 +202,8 @@
                 {% endif %}
             };
 
+{#
+
             var time_passed = Math.floor(seconds * 60 * 24);
 
             {% if '/NT' in locale.DEFAULT_TIME_ZONE %}
@@ -294,6 +296,8 @@
             };
 
             document.getElementById('natural_time_passed').style = 'width: ' + proportion.toString() + '%;';
+
+#}
 
             {% if locale.DIGITS %}
                 iso_time_display = iso_time_display.replaceAll('0', '{{ locale.DIGITS[0] }}');
@@ -1333,7 +1337,7 @@
         function watchface_toggle() {
             document.getElementById('watchface_div').hidden = !document.getElementById('watchface_div').hidden;
             document.getElementById('time_display').hidden = !document.getElementById('time_display').hidden;
-            document.getElementById('natural_time_container').hidden = !document.getElementById('natural_time_container').hidden;
+            // document.getElementById('natural_time_container').hidden = !document.getElementById('natural_time_container').hidden;
             document.getElementById('weekday').hidden = !document.getElementById('weekday').hidden;
             document.getElementById('date').hidden = !document.getElementById('date').hidden;
             document.getElementById('filler').hidden = !document.getElementById('filler').hidden;
@@ -1389,7 +1393,7 @@
     if ((watchface === null) || (watchface == 'digital')) {
         document.getElementById('watchface_div').hidden = true;
         document.getElementById('time_display').hidden = false;
-        document.getElementById('natural_time_container').hidden = false;
+        // document.getElementById('natural_time_container').hidden = false;
         document.getElementById('weekday').hidden = false;
         document.getElementById('date').hidden = false;
         document.getElementById('filler').hidden = true;
@@ -1397,7 +1401,7 @@
     } else {
         document.getElementById('watchface_div').hidden = false;
         document.getElementById('time_display').hidden = true;
-        document.getElementById('natural_time_container').hidden = true;
+        // document.getElementById('natural_time_container').hidden = true;
         document.getElementById('weekday').hidden = true;
         document.getElementById('date').hidden = true;
         document.getElementById('filler').hidden = false;
