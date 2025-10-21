@@ -1133,8 +1133,7 @@ def _time_display(locale, colours, gray, today):
     if locale.base == 14 and locale.HOUR_FORMAT == '12h':
         uta_hand_colour = '#ffffffdd'
     else:
-        uta_hand_colour = '#ffa726dd'
-        sun_colour = '#ffa726dd'
+        uta_hand_colour = '#fdd835dd'
 
     display += f'    <g id="hand_uta" cx="112" cy="112" transform-box="fill-box" transform-origin="center">'
     display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}"  />\n'''
@@ -1151,34 +1150,10 @@ def _time_display(locale, colours, gray, today):
     display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
 
-    if locale.base != 14 or locale.HOUR_FORMAT == '24h':
-        # triangle = polygon(
-        #     x=cx,
-        #     y=cy,
-        #     radius=size / 6,
-        #     n=shape_vertices,
-        #     angle=hand_initial_angle,
-        # )
-        # display += f'''        <path id="hand_uta_pointer_2" style="fill:{sun_colour};" d="{triangle}" />\n'''
-        # triangle = polygon(
-        #     x=cx,
-        #     y=cy,
-        #     radius=size / 7,
-        #     n=shape_vertices,
-        #     angle=hand_initial_angle + 40,
-        # )
-        # display += f'''        <path id="hand_uta_pointer_3" style="fill:{sun_colour};" d="{triangle}" />\n'''
-        # triangle = polygon(
-        #     x=cx,
-        #     y=cy,
-        #     radius=size / 6.5,
-        #     n=shape_vertices,
-        #     angle=hand_initial_angle + 80,
-        # )
-        # display += f'''        <path id="hand_uta_pointer_4" style="fill:{sun_colour};" d="{triangle}" />\n'''
-
-        display += f'''        <circle id="hand_uta_sun" style="fill:#fdd835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
-        display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
+    # if locale.base != 14 or locale.HOUR_FORMAT == '24h':
+    #     display += f'''<text id="hand_uta_sun" x="{cx}" y="{cy + 3}" style="font-size:8px;text-anchor:middle;text-align:center;">☀️️</text>\n'''
+    #     display += f'''        <circle id="hand_uta_sun" style="fill:#fdd835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+    #     display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
 
     display += '    </g>'
     hl_display += '    </g>'
