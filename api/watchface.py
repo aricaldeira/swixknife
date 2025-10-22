@@ -1123,9 +1123,11 @@ def _time_display(locale, colours, gray, today):
     #
     # Hands
     #
+    # anuga_hand_colour = pointer_colours['900'] + 'dd'
     # agrima_hand_colour = pointer_colours['800'] + 'dd'
     # posha_hand_colour = pointer_colours['500'] + 'dd'
     # uta_hand_colour = pointer_colours['200'] + 'dd'
+
     anuga_hand_colour = '#d50000'
     agrima_hand_colour = '#d50000dd'
     posha_hand_colour = '#ffffffdd'
