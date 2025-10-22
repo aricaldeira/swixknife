@@ -283,7 +283,7 @@ Event’s title
 <textarea rows="18" cols="60">
 {
     &quot;origin&quot;: &quot;{{ event.origin }}&quot;,
-    &quot;emoji&quot;: &quot;{{ event.emoji }}&quot;,
+    &quot;emoji&quot;: &quot;{{ event.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') }}&quot;,
     &quot;name&quot;: &quot;{{ event.name }}&quot;,
     &quot;date&quot;: &quot;{{ event.date.format('#y-#m-#d') }}&quot;,
     &quot;full_day&quot;: {{ 'true' if event.full_day else 'false' }},
