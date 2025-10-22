@@ -313,7 +313,7 @@
                                 {%- if event_month in events -%}
                                     {%- if event_day in events[event_month] -%}
                                         {%- for event in events[event_month][event_day] -%}
-                                            {{ event.emoji }}
+                                            {{ event.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') }}
                                         {%- endfor -%}
                                     {%- endif -%}
                                 {%- endif -%}
@@ -339,9 +339,9 @@
                 {%- for event_day in sorted(events[dcc_month_number].keys()) -%}
                     {%- for event in events[SezimalInteger(dcc_month_number)][event_day] -%}
                         {%- if base in (14, 20) -%}
-                            {{ event.date.format(' &-wM‐&-w - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                            {{ event.date.format(' &-wM‐&-w - ', locale) }} <span class="emoji">{{ event.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') }}</span>
                         {%- else -%}
-                            {{ event.date.format(' &' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji }}</span>
+                            {{ event.date.format(' &' + format_token + '-d - ', locale) }} <span class="emoji">{{ event.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') }}</span>
                         {%- endif -%}
                     {%- endfor -%}
                 {%- endfor -%}

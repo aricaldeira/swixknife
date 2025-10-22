@@ -643,7 +643,7 @@
                                     {%- if event_month in events -%}
                                         {%- if event_day in events[event_month] -%}
                                             {%- for event in events[event_month][event_day] -%}
-                                                {{ event.emoji }}
+                                                {{ event.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') }}
                                             {%- endfor -%}
                                         {%- endif -%}
                                     {%- endif -%}
