@@ -1023,6 +1023,10 @@ def _time_display(locale, colours, gray, today):
 
             hl_display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight}" />\n'''
 
+            cx = 112 + (size - 0.75) * math.cos((angle + 5.325) / 360 * math.pi * 2)
+            cy = 112 + (size - 0.75) * math.sin((angle + 5.325) / 360 * math.pi * 2)
+            hl_display += f'''        <circle id="highlight_{str(SI(D(i))).zfill(2)}_3" style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="0.75" />\n'''
+
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
     elif locale.base == 14:
