@@ -539,7 +539,7 @@ class SezimalEvent:
         else:
             self.origin = origin
 
-        self.emoji = emoji
+        self.emoji = emoji.replace('🕇️', '✝️').replace('🕆', '✝️')
         self.name = name
 
         self.full_day = full_day
@@ -575,7 +575,7 @@ class SezimalEvent:
     @property
     def daily_view(self):
         if self.emoji:
-            line = self.emoji + ' - '
+            line = self.emoji.replace('🕇️', '✝️').replace('🕆', '✝️') + ' - '
         else:
             line = ''
 
@@ -954,7 +954,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
                 if event_date.dcc_year != year:
                     continue
 
-            event_name = event_name_.replace('🕆', '🕇')
+            event_name = event_name_.replace('🕇️', '✝️').replace('🕆', '✝️')
 
             event_emoji = event_name.split(' ')[0]
             event_name = event_name.replace(event_emoji, '').strip()
@@ -962,19 +962,24 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
             if context['base'] == 10:
                 if context['format_token'] == '!':
                     event_name = event_name.replace('#i', default_to_sezimal_digits(str(age)))
+                    event_name = event_name.replace('%i', default_to_sezimal_digits(str(age)))
                     # event_name = locale.to_sezimal_digits(event_name)
 
                 elif '?' in context['format_token'] and locale.DIGITS:
                     event_name = event_name.replace('#i', locale.digit_replace(str(age)))
+                    event_name = event_name.replace('%i', locale.digit_replace(str(age)))
 
                 else:
                     event_name = event_name.replace('#i', str(age))
+                    event_name = event_name.replace('%i', str(age))
 
             elif context['base'] == 14:
                 if '?' in context['format_token'] and locale.DIGITS:
                     event_name = event_name.replace('#i', locale.digit_replace(str(age.decimal)))
+                    event_name = event_name.replace('%i', locale.digit_replace(str(age.decimal)))
                 else:
                     event_name = event_name.replace('#i', str(age.decimal))
+                    event_name = event_name.replace('%i', str(age.decimal))
 
                 if locale.HOUR_FORMAT == '12h':
                     event_name = event_name.replace('#u', '%I')
@@ -986,8 +991,10 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
             elif context['base'] == 20:
                 if '?' in context['format_token'] and locale.DIGITS:
                     event_name = event_name.replace('#i', locale.digit_replace(age.dozenal))
+                    event_name = event_name.replace('%i', locale.digit_replace(age.dozenal))
                 else:
                     event_name = event_name.replace('#i', age.dozenal)
+                    event_name = event_name.replace('%i', age.dozenal)
 
                 event_name = locale._to_other_base(20, event_name)
                 event_name = event_name.replace('#u', '.#↋↋u')
@@ -1006,7 +1013,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
 
             event = SezimalEvent()
             event.origin = event_origin
-            event.emoji = event_emoji
+            event.emoji = event_emoji.replace('🕇️', '✝️').replace('🕆', '✝️')
             event.name = event_name
             event.date = event_date
 
@@ -1157,7 +1164,7 @@ def sezimal_calendar_bz_route() -> Response:
         # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
         ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
         # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER-2',   '✝️\ufe0f🥀\ufe0f Paxawn di Kristu'),
         ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
         ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
@@ -2220,7 +2227,7 @@ def sezimal_day_count_calendar_bz_route() -> Response:
         # ('EASTER-120', '🎉\ufe0f🎭\ufe0f Karnavaw'),
         ('EASTER-115', '🎉\ufe0f🎭\ufe0f Karnavaw'),
         # ('EASTER-114', '🎉\ufe0f🎭\ufe0f Kwarta-fera di Sinzas'),
-        ('EASTER-2',   '🕆\ufe0f🥀\ufe0f Paxawn di Kristu'),
+        ('EASTER-2',   '✝️\ufe0f🥀\ufe0f Paxawn di Kristu'),
         ('EASTER',     '🐣\ufe0f🌱\ufe0f Paskwa'),
         ('EASTER+140', '🥖\ufe0f🍷\ufe0f Corpus Christi'),
 
@@ -2282,8 +2289,8 @@ def sezimal_day_count_calendar_bz_route() -> Response:
 
 def _create_store_events(itens: list = None, year_range: list = None, bases: list = None):
     if year_range is None:
-        year_range = (213_000, 214_001)
-        # year_range = (213_220, 213_211, -1)
+        # year_range = (213_000, 214_001)
+        year_range = (213_220, 213_211, -1)
 
     if itens is None:
         itens = (
@@ -2347,8 +2354,7 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
     )
 
     if bases is None:
-        bases = (14, 20)
-        # bases = (10, 14)
+        bases = (10, 14, 20)
 
     for item in itens:
         loc, tz = item.split('|')
@@ -2444,12 +2450,11 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
         if bases == (10,):
             continue
 
-        bases = (b for b in bases if b != 10)
+        bases = tuple(b for b in bases if b != 10)
 
-        for calendar in ('SYM', 'ISO', 'DCC'):
+        for calendar in ('SYM', 'ISO', 'DCC', 'ADC'):
             locale = sezimal_locale(loc)
             locale.DEFAULT_TIME_ZONE = tz
-            locale.calendar_displayed = calendar
 
             for base in bases:
                 locale.base = base
@@ -2468,26 +2473,23 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
                         if base == 14:
                             locale = sezimal_locale(loc)
                             locale.DEFAULT_TIME_ZONE = tz
-                            locale.calendar_displayed = calendar
+                            locale.calendar_displayed = 'DCC' if calendar == 'ADC' else calendar
                             locale.base = base
-                            locale.format_token = '9'
+                            locale.format_token = 'c9' if calendar == 'ADC' else '9'
                             locale.to_decimal_base()
 
                         elif base == 20:
                             locale = sezimal_locale(loc)
                             locale.DEFAULT_TIME_ZONE = tz
-                            locale.calendar_displayed = calendar
+                            locale.calendar_displayed = 'DCC' if calendar == 'ADC' else calendar
                             locale.base = base
-                            locale.format_token = '↋'
+                            locale.format_token = 'c↋' if calendar == 'ADC' else '↋'
                             locale.to_dozenal_base()
 
                         locale.HOUR_FORMAT = hour_format
 
                         if hour_format == '24h':
                             locale.ISO_TIME_FORMAT = '%H:%M:%S'
-
-                        # if calendar == 'DCC':
-                        #     locale.format_token = 'c' + locale.format_token
 
                         context = {
                             'base': locale.base,
@@ -2514,7 +2516,7 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 def _create_store_events_br():
     # year_range = (213_000, 214_001)
-    year_range = (213_220, 213_211, -1)
+    year_range = (213_214, 213_211, -1)
 
     for locale in (
         'pt-BR',
@@ -2523,15 +2525,12 @@ def _create_store_events_br():
         'eo-BR',
     ):
         for tz in (
-            'UTC',
-
             'America/Sao_Paulo',
 
             'GPM/GPM-03',
             'GPM/NT-03',
             'GPM/MT-03',
 
-            'SPM/SPM',
             'SPM/SPM-0340',
             'SPM/NT-0340',
             'SPM/MT-0340',
@@ -2544,29 +2543,8 @@ def _create_store_events_br():
             'SPM/NT-04',
             'SPM/MT-04',
 
-            'Sezimal/SPM-0530',
-            'Sezimal/NT-0530',
-            'Sezimal/MT-0530',
-
-            'Sezimal/SPM-0543',
-            'Sezimal/NT-0543',
-            'Sezimal/MT-0543',
-
-            'Sezimal/SPM-10',
-            'Sezimal/NT-10',
-            'Sezimal/MT-10',
-
-            'Dozenal/SPM-1B',
-            'Dozenal/NT-1B',
-            'Dozenal/MT-1B',
-
-            'Dozenal/SPM-1A',
-            'Dozenal/NT-1A',
-            'Dozenal/MT-1A',
-
-            'Dozenal/SPM-20',
-            'Dozenal/NT-20',
-            'Dozenal/MT-20',
+            'UTC',
+            'SPM/SPM',
         ):
             itens = [locale + '|' + tz]
 
@@ -2585,6 +2563,16 @@ def _create_store_events_en():
     year_range = (213_214, 213_211, -1)
 
     LOCALE_TIME_ZONE = {
+        'iso': [],
+        'en-IN': [
+            'Asia/Kolkata',
+            'SPM/SPM+05',
+        ],
+        'en-GB': [
+            'Europe/London',
+            'Asia/Kolkata',
+            'SPM/SPM+05',
+        ],
         'en-US': [
             'America/Adak',
             'America/Anchorage',
@@ -2665,17 +2653,20 @@ def _create_store_events_en():
             'Australia/Perth',
             'Australia/Sydney',
         ],
-        'en-IN': [
-            'Asia/Kolkata',
-        ],
-        'en-GB': [
-            'Europe/London',
-        ],
         'en-IE': [
             'Europe/Dublin',
         ],
         'en-IL': [
             'Asia/Jerusalem',
+        ],
+        'zh-CN': [
+            'Asia/Shanghai',
+        ],
+        'uk': [
+            'Europe/Kyiv',
+        ],
+        'tr': [
+            'Europe/Istanbul',
         ],
     }
 
@@ -2693,221 +2684,19 @@ def _create_store_events_en():
             _create_store_events(itens, year_range, bases)
 
 
-def _adc_svg_text(text, locale, now):
-    text = text.replace('00 ― PISCES', f'00 ― {locale.upper(locale.ADC_MONTH_NAME[0])}')
-    text = text.replace('01 ― CETUS', f'01 ― {locale.upper(locale.ADC_MONTH_NAME[1])}')
-    text = text.replace('02 ― ERIDANUS', f'02 ― {locale.upper(locale.ADC_MONTH_NAME[2])}')
-    text = text.replace('03 ― MONOCEROS', f'03 ― {locale.upper(locale.ADC_MONTH_NAME[3])}')
-    text = text.replace('04 ― HYDRA', f'04 ― {locale.upper(locale.ADC_MONTH_NAME[4])}')
-    text = text.replace('05 ― LEO', f'05 ― {locale.upper(locale.ADC_MONTH_NAME[5])}')
-    text = text.replace('10 ― VIRGO', f'10 ― {locale.upper(locale.ADC_MONTH_NAME[6])}')
-    text = text.replace('11 ― SERPENS', f'11 ― {locale.upper(locale.ADC_MONTH_NAME[7])}')
-    text = text.replace('12 ― AQUILA', f'12 ― {locale.upper(locale.ADC_MONTH_NAME[8])}')
-    text = text.replace('13 ― AQUARIUS', f'13 ― {locale.upper(locale.ADC_MONTH_NAME[9])}')
-    text = text.replace('SEXTANS', f'{locale.upper(locale.ADC_MONTH_NAME[10])}')
-    text = text.replace('week', locale.WEEK_NUMBER_SYMBOL)
-
-    #
-    # Month symbol
-    #
-    if now.dcc_month == 0:
-        month_symbol = 'b'
-    elif now.dcc_month == 1:
-        month_symbol = '5'
-    elif now.dcc_month == 2:
-        month_symbol = 'D'
-    elif now.dcc_month == 3:
-        month_symbol = 'W'
-    elif now.dcc_month == 4:
-        month_symbol = 'J'
-    elif now.dcc_month == 5:
-        month_symbol = 'N'
-    elif now.dcc_month == 10:
-        month_symbol = 'v'
-    elif now.dcc_month == 11:
-        month_symbol = 'l'
-    elif now.dcc_month == 12:
-        month_symbol = '%'
-    elif now.dcc_month == 13:
-        month_symbol = '$'
-    elif now.dcc_month == 14:
-        month_symbol = '\\'
-
-    text = text.replace('y="261.95312">D</tspan>', f'y="261.95312">{month_symbol}</tspan>')
-
-    #
-    # Weekday symbol
-    #
-    if now.dcc_weekday == 0:
-        weekday_symbol = '☉'
-    elif now.dcc_weekday == 1:
-        weekday_symbol = '♀'
-    elif now.dcc_weekday == 2:
-        weekday_symbol = '♂'
-    elif now.dcc_weekday == 3:
-        weekday_symbol = '♃'
-    elif now.dcc_weekday == 4:
-        weekday_symbol = '♄'
-    elif now.dcc_weekday == 5:
-        if locale.DEFAULT_HEMISPHERE == 'N':
-            weekday_symbol = '☽'
-        else:
-            weekday_symbol = '☾'
-
-    text = text.replace('y="263.45645">♀</tspan>', f'y="263.45645">{now.dcc_week}{weekday_symbol}</tspan>')
-
-    return text
-
-
-def _dcc_svg_text(text, locale, now):
-    text = text.replace('00 ― PISCES', f'00 ― {locale.upper(locale.DCC_MONTH_NAME[0])}')
-    text = text.replace('01 ― CETUS', f'01 ― {locale.upper(locale.DCC_MONTH_NAME[1])}')
-    text = text.replace('02 ― ERIDANUS', f'02 ― {locale.upper(locale.DCC_MONTH_NAME[2])}')
-    text = text.replace('03 ― MONOCEROS', f'03 ― {locale.upper(locale.DCC_MONTH_NAME[3])}')
-    text = text.replace('04 ― HYDRA', f'04 ― {locale.upper(locale.DCC_MONTH_NAME[4])}')
-    text = text.replace('05 ― LEO', f'05 ― {locale.upper(locale.DCC_MONTH_NAME[5])}')
-    text = text.replace('10 ― VIRGO', f'10 ― {locale.upper(locale.DCC_MONTH_NAME[6])}')
-    text = text.replace('11 ― SERPENS', f'11 ― {locale.upper(locale.DCC_MONTH_NAME[7])}')
-    text = text.replace('12 ― AQUILA', f'12 ― {locale.upper(locale.DCC_MONTH_NAME[8])}')
-    text = text.replace('13 ― AQUARIUS', f'13 ― {locale.upper(locale.DCC_MONTH_NAME[9])}')
-    text = text.replace('SEXTANS', f'{locale.upper(locale.DCC_MONTH_NAME[10])}')
-    text = text.replace('week', locale.WEEK_NUMBER_SYMBOL)
-
-    #
-    # Month symbol
-    #
-    if now.dcc_month == 0:
-        month_symbol = 'b'
-    elif now.dcc_month == 1:
-        month_symbol = '5'
-    elif now.dcc_month == 2:
-        month_symbol = 'D'
-    elif now.dcc_month == 3:
-        month_symbol = 'W'
-    elif now.dcc_month == 4:
-        month_symbol = 'J'
-    elif now.dcc_month == 5:
-        month_symbol = 'N'
-    elif now.dcc_month == 10:
-        month_symbol = 'v'
-    elif now.dcc_month == 11:
-        month_symbol = 'l'
-    elif now.dcc_month == 12:
-        month_symbol = '%'
-    elif now.dcc_month == 13:
-        month_symbol = '$'
-    elif now.dcc_month == 14:
-        month_symbol = '\\'
-
-    text = text.replace('y="261.95312">D</tspan>', f'y="261.95312">{month_symbol}</tspan>')
-
-    #
-    # Weekday symbol
-    #
-    if now.dcc_weekday == 0:
-        weekday_symbol = '☉'
-    elif now.dcc_weekday == 1:
-        weekday_symbol = '♀'
-    elif now.dcc_weekday == 2:
-        weekday_symbol = '♂'
-    elif now.dcc_weekday == 3:
-        weekday_symbol = '♃'
-    elif now.dcc_weekday == 4:
-        weekday_symbol = '♄'
-    elif now.dcc_weekday == 5:
-        if locale.DEFAULT_HEMISPHERE == 'N':
-            weekday_symbol = '☽'
-        else:
-            weekday_symbol = '☾'
-
-    text = text.replace('y="263.45645">♀</tspan>', f'y="263.45645">{now.dcc_week}{weekday_symbol}</tspan>')
-
-    return text
-
-
-def _dcc_adc_rotation_markers(text, now):
-    #
-    # Month marker rotation
-    #
-    if now.dcc_month == 14:
-        text = text.replace('inkscape:label="month_marker">', 'inkscape:label="month_marker" style="display:none">')
-    else:
-        angle = Decimal('-69.686')
-        angle += Decimal('34.839') * now.dcc_month.decimal
-        text = text.replace('transform="rotate(-69.686,256.00001,255.99999)"', f'transform="rotate({angle},256,256)"')
-
-    #
-    # Week marker rotation
-    #
-    angle = Decimal('-69.714')
-    angle += Decimal('5.806') * now.dcc_week_in_year.decimal
-    text = text.replace('transform="rotate(-69.714,255.99999,255.99999)"', f'transform="rotate({angle},256,256)"')
-
-    return text
-
-
-@app.route('/dcc.svg')
-def dcc_circle() -> Response:
-    if 'sezimal' in request.cookies:
-        locale = _prepare_locale_from_cookie()
-    else:
-        locale = sezimal_locale(browser_preferred_locale())
-
-    text = open('./template/calendar_circle_southern_hemisphere.svg').read()
-    # text = open('./template/calendar_circle_northern_hemisphere.svg').read()
-
-    now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
-    # now = SezimalDateTime.now(time_zone='SPM/NT')
-
-    text = _dcc_svg_text(text, locale, now)
-    text = _dcc_adc_rotation_markers(text, now)
-
-    text = text.replace('y="236.61728">213</tspan>', f'''y="236.61728">{now.format('&>Y', locale)}</tspan>''')
-    text = text.replace('y="288.06015">02‐21</tspan>', f'''y="288.06015">{now.format('#u#:#p', locale)}</tspan>''')
-
-
-    return Response(text, mimetype='image/svg+xml')
-
-
-@app.route('/adc-<string:hemisphere>.svg')
-def adc_circle(hemisphere: str = 'S') -> Response:
-    if 'sezimal' in request.cookies:
-        locale = _prepare_locale_from_cookie()
-    else:
-        locale = sezimal_locale(browser_preferred_locale())
-
-    if hemisphere.upper()[0] == 'S':
-        text = open('./template/calendar_circle_southern_hemisphere.svg').read()
-    else:
-        text = open('./template/calendar_circle_northern_hemisphere.svg').read()
-
-    # now = SezimalDateTime.now(time_zone=locale.DEFAULT_TIME_ZONE)
-    now = SezimalDateTime.now(time_zone='SPM/NT')
-
-    text = _adc_svg_text(text, locale, now)
-    text = _dcc_adc_rotation_markers(text, now)
-
-    text = text.replace('y="236.61728">213</tspan>', f'''y="236.61728">{now.format('&>Y', locale)}</tspan>''')
-    text = text.replace('y="288.06015">02‐21</tspan>', f'''y="288.06015">{now.format('#u#:#p', locale)}</tspan>''')
-
-
-    return Response(text, mimetype='image/svg+xml')
-
-
 def _preload_calendars(locales=[]):
-
     LOCALE_TIME_ZONE = {
         'pt-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'bz-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         'en-BR': [
-            'GPM/GPM-03', 'GPM/NT-03', # 'GPM/MT-03',
-            'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
         # 'eo-BR': [
         #     'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
@@ -2932,10 +2721,17 @@ def _preload_calendars(locales=[]):
             # 'Australia/Melbourne',
             # 'Australia/Perth',
         ],
-        'en-IN': [],
-        # 'en-GB': [],
+        'en-IN': [
+            'SPM/SPM+05',
+        ],
+        'en-GB': [
+            'Asia/Kolkata',
+            'SPM/SPM+05',
+        ],
         # 'en-IE': [],
         # 'en-IL': [],
+        # 'zh-CN': [],
+        # 'uk': [],
     }
 
     if not locales:
@@ -2959,112 +2755,127 @@ def _preload_calendars(locales=[]):
                 for base in (10, 14, 20):
                     locale.base = base
 
-                    locale.calendar_displayed = 'SYM'
+                    if locale_code in ['pt-BR', 'bz-BR', 'en-US']:
+                        hemispheres = ['S', 'N']
+                    else:
+                        hemispheres = [locale.DEFAULT_HEMISPHERE]
 
-                    if base == 10:
-                        locale.format_token = ''
-                    elif base == 14:
-                        locale.format_token = '9'
-                    elif base == 20:
-                        locale.format_token = '↋'
+                    for hemisphere in hemispheres:
+                        locale.DEFAULT_HEMISPHERE = hemisphere
+                        locale.calendar_displayed = 'SYM'
 
-                    print(iso_year, locale_code, time_zone, base, 'SYM')
-                    _calendar_events(
-                        locale, sym_year, {
-                            'base': base,
-                            'format_token': locale.format_token,
-                        },
-                    )
+                        if base == 10:
+                            locale.format_token = ''
+                        elif base == 14:
+                            locale.format_token = '9'
+                        elif base == 20:
+                            locale.format_token = '↋'
 
-                    # if base == 10:
-                    #     locale.format_token = '!'
-                    #     print(iso_year, locale_code, time_zone, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅')
-                    #     _calendar_events(
-                    #         locale, sym_year, {
-                    #             'base': base,
-                    #             'format_token': locale.format_token,
-                    #         },
-                    #     )
+                        print(iso_year, locale_code, time_zone, base, 'SYM')
+                        _calendar_events(
+                            locale, sym_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                                'hemisphere': locale.DEFAULT_HEMISPHERE,
+                            },
+                        )
 
-                    locale.calendar_displayed = 'DCC'
+                        # if base == 10:
+                        #     locale.format_token = '!'
+                        #     print(iso_year, locale_code, time_zone, base, 'SYM 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        #     _calendar_events(
+                        #         locale, sym_year, {
+                        #             'base': base,
+                        #             'format_token': locale.format_token,
+                        #             'hemisphere': locale.DEFAULT_HEMISPHERE,
+                        #         },
+                        #     )
 
-                    if base == 10:
-                        locale.format_token = ''
-                    elif base == 14:
-                        locale.format_token = '9'
-                    elif base == 20:
-                        locale.format_token = '↋'
+                        locale.calendar_displayed = 'DCC'
 
-                    print(iso_year, locale_code, time_zone, base, 'DCC')
-                    _calendar_events(
-                        locale, dcc_year, {
-                            'base': base,
-                            'format_token': locale.format_token,
-                        },
-                    )
+                        if base == 10:
+                            locale.format_token = ''
+                        elif base == 14:
+                            locale.format_token = '9'
+                        elif base == 20:
+                            locale.format_token = '↋'
 
-                    # if base == 10:
-                    #     locale.format_token = '!'
-                    #     print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
-                    #     _calendar_events(
-                    #         locale, dcc_year, {
-                    #             'base': base,
-                    #             'format_token': locale.format_token,
-                    #         },
-                    #     )
+                        print(iso_year, locale_code, time_zone, base, 'DCC')
+                        _calendar_events(
+                            locale, dcc_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                                'hemisphere': locale.DEFAULT_HEMISPHERE,
+                            },
+                        )
 
-                    locale.calendar_displayed = 'DCC'
+                        # if base == 10:
+                        #     locale.format_token = '!'
+                        #     print(iso_year, locale_code, time_zone, base, 'DCC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        #     _calendar_events(
+                        #         locale, dcc_year, {
+                        #             'base': base,
+                        #             'format_token': locale.format_token,
+                        #             'hemisphere': locale.DEFAULT_HEMISPHERE,
+                        #         },
+                        #     )
 
-                    if base == 10:
-                        locale.format_token = 'c'
-                    elif base == 14:
-                        locale.format_token = 'c9'
-                    elif base == 20:
-                        locale.format_token = 'c↋'
+                        locale.calendar_displayed = 'DCC'
 
-                    print(iso_year, locale_code, time_zone, base, 'ADC')
-                    _calendar_events(
-                        locale, dcc_year, {
-                            'base': base,
-                            'format_token': locale.format_token,
-                        },
-                    )
+                        if base == 10:
+                            locale.format_token = 'c'
+                        elif base == 14:
+                            locale.format_token = 'c9'
+                        elif base == 20:
+                            locale.format_token = 'c↋'
 
-                    # if base == 10:
-                    #     locale.format_token = 'c!'
-                    #     print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
-                    #     _calendar_events(
-                    #         locale, dcc_year, {
-                    #             'base': base,
-                    #             'format_token': locale.format_token,
-                    #         },
-                    #     )
+                        print(iso_year, locale_code, time_zone, base, 'ADC')
+                        _calendar_events(
+                            locale, dcc_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                                'hemisphere': locale.DEFAULT_HEMISPHERE,
+                            },
+                        )
 
-                    locale.calendar_displayed = 'ISO'
+                        # if base == 10:
+                        #     locale.format_token = 'c!'
+                        #     print(iso_year, locale_code, time_zone, base, 'ADC 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        #     _calendar_events(
+                        #         locale, dcc_year, {
+                        #             'base': base,
+                        #             'format_token': locale.format_token,
+                        #             'hemisphere': locale.DEFAULT_HEMISPHERE,
+                        #         },
+                        #     )
 
-                    if base == 10:
-                        locale.format_token = ''
-                    elif base == 14:
-                        locale.format_token = '9'
-                    elif base == 20:
-                        locale.format_token = '↋'
+                        locale.calendar_displayed = 'ISO'
 
-                    print(iso_year, locale_code, time_zone, base, 'ISO')
-                    _calendar_events(
-                        locale, iso_year, {
-                            'base': base,
-                            'format_token': locale.format_token,
-                        },
-                    )
+                        if base == 10:
+                            locale.format_token = ''
+                        elif base == 14:
+                            locale.format_token = '9'
+                        elif base == 20:
+                            locale.format_token = '↋'
 
-                    # if base == 10:
-                    #     locale.format_token = '!'
-                    #     print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
-                    #     _calendar_events(
-                    #         locale, iso_year, {
-                    #             'base': base,
-                    #             'format_token': locale.format_token,
-                    #         },
-                    #     )
+                        print(iso_year, locale_code, time_zone, base, 'ISO')
+                        _calendar_events(
+                            locale, iso_year, {
+                                'base': base,
+                                'format_token': locale.format_token,
+                                'hemisphere': locale.DEFAULT_HEMISPHERE,
+                            },
+                        )
 
-# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR'])
+                        # if base == 10:
+                        #     locale.format_token = '!'
+                        #     print(iso_year, locale_code, time_zone, base, 'ISO 󱸀󱸁󱸂󱸃󱸄󱸅')
+                        #     _calendar_events(
+                        #         locale, iso_year, {
+                        #             'base': base,
+                        #             'format_token': locale.format_token,
+                        #             'hemisphere': locale.DEFAULT_HEMISPHERE,
+                        #         },
+                        #     )
+
+_preload_calendars()
