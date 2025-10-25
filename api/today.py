@@ -7,7 +7,8 @@ import threading
 
 from flask import redirect, Response, request, render_template, jsonify
 from main import app, sitemapper, sezimal_render_template
-from  locale_detection import browser_preferred_locale
+import main
+from locale_detection import browser_preferred_locale
 from markupsafe import Markup
 
 from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger, Sezimal
@@ -277,6 +278,8 @@ def dozenal_today_route() -> Response:
 
 @app.route('/today')
 def today_route() -> Response:
+    main.log_access('/today')
+
     if 'sezimal' in request.cookies:
         locale = _prepare_locale_from_cookie()
         mobile = locale.mobile
@@ -1048,6 +1051,7 @@ def _process_events_list(all_events, events, calendar, year, locale, context):
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/calendar')
 def sezimal_calendar_route() -> Response:
+    main.log_access('/shastadari/calendar')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/calendário', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -1058,6 +1062,7 @@ def sezimal_calendar_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/calendar')
 def sezimal_calendar_en_route() -> Response:
+    main.log_access('/en/shastadari/calendar')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'en':
@@ -1094,6 +1099,7 @@ def sezimal_calendar_en_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/calendário')
 def sezimal_calendar_pt_route() -> Response:
+    main.log_access('/pt/xastadári/calendário')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'pt':
@@ -1130,6 +1136,7 @@ def sezimal_calendar_pt_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/kalendaryu')
 def sezimal_calendar_bz_route() -> Response:
+    main.log_access('/bz/xastadari/kalendaryu')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'bz':
@@ -1530,6 +1537,8 @@ def api_calendar_build_date_string() -> dict:
 
 @app.route('/now')
 def now_route() -> Response:
+    main.log_access('/now')
+
     if 'sezimal' in request.cookies:
         locale = _prepare_locale_from_cookie()
         base = locale.base
@@ -1847,6 +1856,8 @@ def _now_icon(text: str, locale) -> str:
 @app.route('/now/icon.svg')
 @app.route('/now/icon-<string:size>.svg')
 def now_icon(when: str = None, size: str = None) -> str:
+    main.log_access('/now/icon.svg')
+
     if 'sezimal' in request.cookies:
         locale = _prepare_locale_from_cookie()
     else:
@@ -1905,6 +1916,8 @@ def now_service_js() -> Response:
 @app.route('/today/icon.svg')
 @app.route('/today/icon-<string:size>.svg')
 def today_icon(when: str = None, size: str = None) -> str:
+    main.log_access('/today/icon.svg')
+
     if 'sezimal' in request.cookies:
         locale = _prepare_locale_from_cookie()
         base = locale.base
@@ -2088,6 +2101,9 @@ def api_weather_process():
             longitude=dados['longitude'],
         )
         context['weather'] = weather
+        main.log_access(f"/weather/process/{dados['latitude']};{dados['longitude']}")
+    else:
+        main.log_access(f"/weather/process")
 
     if locale.DIGITS:
         context['format_token'] += '?'
@@ -2122,6 +2138,7 @@ def api_weather_process():
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/day-count-calendar')
 def sezimal_day_count_calendar_route() -> Response:
+    main.log_access('/shastadari/day-count-calendar')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/calendário-quantos-dias', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -2132,6 +2149,7 @@ def sezimal_day_count_calendar_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/day-count-calendar')
 def sezimal_day_count_calendar_en_route() -> Response:
+    main.log_access('/en/shastadari/day-count-calendar')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'en':
@@ -2167,6 +2185,7 @@ def sezimal_day_count_calendar_en_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/calendário-quantos-dias')
 def sezimal_day_count_calendar_pt_route() -> Response:
+    main.log_access('/pt/xastadári/calendário-quantos-dias')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'pt':
@@ -2202,6 +2221,7 @@ def sezimal_day_count_calendar_pt_route() -> Response:
 @sitemapper.include(lastmod='2025-02-19', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/kalendaryu-kwantus-dias')
 def sezimal_day_count_calendar_bz_route() -> Response:
+    main.log_access('/bz/xastadari/kalendaryu-kwantus-dias')
     locale = sezimal_locale(browser_preferred_locale())
 
     if locale.LANG != 'bz':
@@ -2878,4 +2898,5 @@ def _preload_calendars(locales=[]):
                         #         },
                         #     )
 
+# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US'])
 _preload_calendars()

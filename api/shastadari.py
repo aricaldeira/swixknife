@@ -1,6 +1,7 @@
 
 from flask import redirect, Response, render_template
 from main import app, sitemapper, sezimal_render_template
+import main
 from  locale_detection import browser_preferred_locale
 
 from swixknife import sezimal_locale, sezimal_spellout, SezimalInteger
@@ -21,6 +22,7 @@ from fractions import Fraction
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/shastadari')
 def shastadari_route() -> Response:
+    main.log_access('/shastadari')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -31,22 +33,26 @@ def shastadari_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/en/shastadari')
 def shastadari_en_route() -> Response:
+    main.log_access('/en/shastadari')
     return sezimal_render_template('shastadari_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/pt/xastadári')
 def shastadari_pt_route() -> Response:
+    main.log_access('/pt/xastadári')
     return sezimal_render_template('shastadari_pt.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/bz/xastadari')
 def shastadari_bz_route() -> Response:
+    main.log_access('/bz/xastadari')
     return sezimal_render_template('shastadari_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/prefixes')
 def shastadari_prefixes_route() -> Response:
+    main.log_access('/shastadari/prefixes')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/prefixos', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -57,22 +63,26 @@ def shastadari_prefixes_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/prefixes')
 def shastadari_prefixes_en_route() -> Response:
+    main.log_access('/en/shastadari/prefixes')
     return sezimal_render_template('prefixes_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/prefixos')
 def shastadari_prefixes_pt_route() -> Response:
+    main.log_access('/pt/xastadári/prefixos')
     return sezimal_render_template('prefixes_pt.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/prefiksus')
 def shastadari_prefixes_bz_route() -> Response:
+    main.log_access('/bz/xastadari/prefiksus')
     return sezimal_render_template('prefixes_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/base-units')
 def shastadari_base_units_route() -> Response:
+    main.log_access('/shastadari/base-units')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/unidades-fundamentais', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -83,11 +93,13 @@ def shastadari_base_units_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/base-units')
 def shastadari_base_units_en_route() -> Response:
+    main.log_access('/en/shastadari/base-units')
     return sezimal_render_template('base_units_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/unidades-fundamentais')
 def shastadari_base_units_pt_route() -> Response:
+    main.log_access('/pt/xastadári/unidades-fundamentais')
     if browser_preferred_locale()[-2:] in ('BR', 'br'):
         return sezimal_render_template('base_units_pt_br.html')
 
@@ -96,12 +108,14 @@ def shastadari_base_units_pt_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/unidadis-fundamentays')
 def shastadari_base_units_bz_route() -> Response:
+    main.log_access('/bz/xastadari/unidadis-fundamentays')
     return sezimal_render_template('base_units_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/time-units')
 def shastadari_time_units_route() -> Response:
+    main.log_access('/shastadari/time-units')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/unidades-de-tempo', code=302)
     elif browser_preferred_locale()[0:2] == 'bf':
@@ -112,22 +126,26 @@ def shastadari_time_units_route() -> Response:
 @sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/time-units')
 def shastadari_time_units_en_route() -> Response:
+    main.log_access('/en/shastadari/time-units')
     return sezimal_render_template('time_units_en.html')
 
 @sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/unidades-de-tempo')
 def shastadari_time_units_pt_route() -> Response:
+    main.log_access('/pt/xastadári/unidades-de-tempo')
     return sezimal_render_template('time_units_pt.html')
 
 @sitemapper.include(lastmod='2024-09-16', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/unidadis-di-tenpu')
 def shastadari_time_units_bz_route() -> Response:
+    main.log_access('/bz/xastadari/unidadis-di-tenpu')
     return sezimal_render_template('time_units_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/derived-units')
 def shastadari_derived_units_route() -> Response:
+    main.log_access('/shastadari/derived-units')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/unidades-derivadas', code=302)
 
@@ -136,11 +154,13 @@ def shastadari_derived_units_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/derived-units')
 def shastadari_derived_units_en_route() -> Response:
+    main.log_access('/en/shastadari/derived-units')
     return sezimal_render_template('derived_units_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/unidades-derivadas')
 def shastadari_derived_units_pt_route() -> Response:
+    main.log_access('/pt/xastadári/unidades-derivadas')
     if browser_preferred_locale()[-2:] in ('BR', 'br'):
         return sezimal_render_template('derived_units_pt_br.html')
 
@@ -149,12 +169,14 @@ def shastadari_derived_units_pt_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/unidadis-derivadas')
 def shastadari_derived_units_bz_route() -> Response:
+    main.log_access('/bz/xastadari/unidadis-derivadas')
     return sezimal_render_template('derived_units_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/other-units')
 def shastadari_other_units_route() -> Response:
+    main.log_access('/shastadari/other-units')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/outras-unidades', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -165,22 +187,26 @@ def shastadari_other_units_route() -> Response:
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/other-units')
 def shastadari_other_units_en_route() -> Response:
+    main.log_access('/en/shastadari/other-units')
     return sezimal_render_template('other_units_en.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/outras-unidades')
 def shastadari_other_units_pt_route() -> Response:
+    main.log_access('/pt/xastadári/outras-unidades')
     return sezimal_render_template('other_units_pt.html')
 
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/otras-unidadis')
 def shastadari_other_units_bz_route() -> Response:
+    main.log_access('/bz/xastadari/otras-unidadis')
     return sezimal_render_template('other_units_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/scales')
 def shastadari_scales_route() -> Response:
+    main.log_access('/shastadari/scales')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/escalas', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -191,6 +217,7 @@ def shastadari_scales_route() -> Response:
 @sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/scales')
 def shastadari_scales_en_route() -> Response:
+    main.log_access('/en/shastadari/scales')
     if browser_preferred_locale().lower() == 'en-us':
         return sezimal_render_template('scales_en_us.html')
 
@@ -199,17 +226,20 @@ def shastadari_scales_en_route() -> Response:
 @sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/escalas')
 def shastadari_scales_pt_route() -> Response:
+    main.log_access('/pt/xastadári/escalas')
     return sezimal_render_template('scales_pt.html')
 
 @sitemapper.include(lastmod='2024-09-13', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/iskalas')
 def shastadari_scales_bz_route() -> Response:
+    main.log_access('/bz/xastadari/iskalas')
     return sezimal_render_template('scales_bz.html')
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=0.8)
 @app.route('/shastadari/fractions')
 def sezimal_fractions_route() -> Response:
+    main.log_access('/shastadari/fractions')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/frações', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -220,18 +250,21 @@ def sezimal_fractions_route() -> Response:
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/fractions')
 def sezimal_fractions_en_route() -> Response:
+    main.log_access('/en/shastadari/fractions')
     # return sezimal_render_template('fractions_en.html')
     return render_template('fractions_en.html')
 
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/frações')
 def sezimal_fractions_pt_route() -> Response:
+    main.log_access('/pt/xastadári/frações')
     # return sezimal_render_template('fractions_pt.html')
     return render_template('fractions_pt.html')
 
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/frasoyns')
 def sezimal_fractions_bz_route() -> Response:
+    main.log_access('/bz/xastadari/frasoyns')
     # return sezimal_render_template('fractions_bz.html')
     return render_template('fractions_bz.html')
 
@@ -239,6 +272,7 @@ def sezimal_fractions_bz_route() -> Response:
 @app.route('/en/conversion')
 @app.route('/en/shastadari/conversion')
 def shastadari_conversion_en_route() -> Response:
+    main.log_access('/en/conversion')
     if browser_preferred_locale().lower() == 'en-us':
         return sezimal_render_template('conversion_en_us.html')
 
@@ -247,11 +281,13 @@ def shastadari_conversion_en_route() -> Response:
 @app.route('/pt/conversão')
 @app.route('/pt/xastadári/conversão')
 def shastadari_conversion_pt_route() -> Response:
+    main.log_access('/pt/conversão')
     return render_template('conversion_pt.html')
 
 @app.route('/bz/konversawn')
 @app.route('/bz/xastadari/konversawn')
 def shastadari_conversion_bz_route() -> Response:
+    main.log_access('/bz/konversawn')
     return render_template('conversion_bz.html')
 
 
@@ -559,6 +595,7 @@ def shastadari_conversion_mass(locale: str = 'en', unit: str = 'drv', value: str
 
 @app.route('/shastadari/currency')
 def sezimal_currency_route() -> Response:
+    main.log_access('/shastadari/currency')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/xastadári/frações', code=302)
     elif browser_preferred_locale()[0:2] == 'bz':
@@ -569,17 +606,20 @@ def sezimal_currency_route() -> Response:
 @sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/currency')
 def sezimal_currency_en_route() -> Response:
+    main.log_access('/en/shastadari/currency')
     # return sezimal_render_template('currency_en.html')
     return render_template('currency_en.html')
 
 @sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
-@app.route('/pt/xastadári/frações')
+@app.route('/pt/xastadári/moeda')
 def sezimal_currency_pt_route() -> Response:
+    main.log_access('/pt/xastadári/moeda')
     # return sezimal_render_template('currency_pt.html')
     return render_template('currency_pt.html')
 
 @sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/moèda')
 def sezimal_currency_bz_route() -> Response:
+    main.log_access('/bz/xastadari/moèda')
     # return sezimal_render_template('currency_bz.html')
     return render_template('currency_bz.html')

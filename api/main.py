@@ -2,9 +2,16 @@
 import pathlib
 
 TEMPLATE_PATH = pathlib.Path(__file__).parent.resolve().joinpath('template')
+LOG_PATH = pathlib.Path('~/.sezimal/access.log').expanduser()
+
 
 from flask import Flask, request, render_template, redirect
+from flask import has_request_context
 from flask_sitemapper import Sitemapper
+
+import logging
+from logging.handlers import RotatingFileHandler
+from datetime import datetime
 
 from swixknife.localization import sezimal_locale, SezimalLocale
 from swixknife import SezimalDate, SezimalDateTime, SezimalTime
@@ -12,9 +19,9 @@ from decimal import Decimal
 from swixknife import Sezimal, SezimalRange, SezimalInteger
 from swixknife.weather.weather import SezimalWeather
 
-
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.middleware.profiler import ProfilerMiddleware
+
 
 app = Flask(__name__)
 app.json.sort_keys = False
@@ -25,6 +32,11 @@ app.wsgi_app = ProxyFix(
 #     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 # ))
 app.template_folder = TEMPLATE_PATH
+
+log_handler = RotatingFileHandler(LOG_PATH, maxBytes=10000, backupCount=1)
+log_handler.setLevel(logging.INFO)
+app.logger.addHandler(log_handler)
+
 
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
@@ -63,8 +75,8 @@ def sezimal_render_template(template_name_or_list, **context) -> str:
 
 from locale_info import *
 from number_conversion import *
-from now import *
-from agòra import *
+# from now import *
+# from agòra import *
 from calculator import *
 from digits import *
 from today import *
@@ -72,6 +84,21 @@ from shastadari import *
 from watchface import *
 
 from  locale_detection import browser_preferred_locale
+
+
+def log_access(f):
+    msg = f
+    msg += '||'
+    msg += browser_preferred_locale()
+    msg += '||'
+
+    if 'sezimal' in request.cookies:
+        msg += str(request.cookies['sezimal'])
+
+    if app.debug:
+        print(datetime.now(), msg)
+    else:
+        app.logger.info(msg)
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
@@ -88,21 +115,25 @@ def index_route():
 @sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/en')
 def index_en_route():
+    log_access('/en')
     return sezimal_render_template('sezimal_en.html')
 
 @sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/pt')
 def index_pt_route():
+    log_access('/pt')
     return sezimal_render_template('sezimal_pt.html')
 
 @sitemapper.include(lastmod='2025-05-26', changefreq='weekly', priority=1)
 @app.route('/bz')
 def index_bz_route():
+    log_access('/bz')
     return sezimal_render_template('sezimal_bz.html')
 
 
 @app.route('/comparing-fractions')
 def comparing_fractions_route():
+    log_access('/comparing-fractions')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/comparando-frações', code=302)
 
@@ -114,21 +145,25 @@ def comparing_fractions_route():
 @sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
 @app.route('/en/comparing-fractions')
 def comparing_fractions_en_route():
+    log_access('/en/comparing-fractions')
     return sezimal_render_template('comparing_fractions_en.html')
 
 @sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
 @app.route('/pt/comparando-frações')
 def comparing_fractions_pt_route():
+    log_access('/pt/comparando-frações')
     return sezimal_render_template('comparing_fractions_pt.html')
 
 @sitemapper.include(lastmod='2024-09-21', changefreq='weekly', priority=1)
 @app.route('/bz/konparandu-frasoyns')
 def comparing_fractions_bz_route():
+    log_access('/bz/konparandu-frasoyns')
     return sezimal_render_template('comparing_fractions_bz.html')
 
 
 @app.route('/comparing-bases')
 def comparing_bases_route():
+    log_access('/comparing-bases')
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/comparando-bases', code=302)
 
@@ -140,16 +175,19 @@ def comparing_bases_route():
 @sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
 @app.route('/en/comparing-bases')
 def comparing_bases_en_route():
+    log_access('/en/comparing-bases')
     return sezimal_render_template('comparing_bases_en.html')
 
 @sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
 @app.route('/pt/comparando-bases')
 def comparing_bases_pt_route():
+    log_access('/pt/comparando-bases')
     return sezimal_render_template('comparing_bases_pt.html')
 
 @sitemapper.include(lastmod='2024-09-27', changefreq='weekly', priority=1)
 @app.route('/bz/konparandu-bazis')
 def comparing_bases_bz_route():
+    log_access('/bz/konparandu-bazis')
     return sezimal_render_template('comparing_bases_bz.html')
 
 

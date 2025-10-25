@@ -1,12 +1,15 @@
 
 from flask import redirect, Response
 from main import app, sitemapper, sezimal_render_template
+import main
 from  locale_detection import browser_preferred_locale
 
 
 # @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=1)
 @app.route('/digits')
 def digits_route() -> Response:
+    main.log_access('/digits')
+
     if browser_preferred_locale()[0:2] == 'pt':
         return redirect('/pt/dígitos', code=302)
 
@@ -18,14 +21,17 @@ def digits_route() -> Response:
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=1)
 @app.route('/en/digits')
 def digits_en_route() -> Response:
+    main.log_access('/en/digits')
     return sezimal_render_template('digits_en.html')
 
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=1)
 @app.route('/pt/dígitos')
 def digits_pt_route() -> Response:
+    main.log_access('/pt/dígitos')
     return sezimal_render_template('digits_pt.html')
 
 @sitemapper.include(lastmod='2024-10-09', changefreq='weekly', priority=1)
 @app.route('/bz/díjitus')
 def digits_bz_route() -> Response:
+    main.log_access('/bz/díjitus')
     return sezimal_render_template('digits_bz.html')
