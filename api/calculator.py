@@ -16,6 +16,7 @@ from swixknife.calculator import SezimalCalculator
 from swixknife import Sezimal
 
 from main import app, sitemapper
+import main
 from  locale_detection import browser_preferred_locale
 
 
@@ -50,6 +51,8 @@ UNIT_SIMPLIFIED_SYMBOL = {
 @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
 @app.route('/calculator')
 def api_calculator() -> Response:
+    main.log_access('/calculator')
+
     text = open(TEMPLATE_PATH.joinpath('calculator.html'), 'r').read()
     templates = _get_calculator_templates()
     local_variables = locals()
