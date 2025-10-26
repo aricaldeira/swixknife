@@ -603,21 +603,21 @@ def sezimal_currency_route() -> Response:
 
     return redirect('/en/shastadari/currency', code=302)
 
-@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-10-26', changefreq='weekly', priority=0.8)
 @app.route('/en/shastadari/currency')
 def sezimal_currency_en_route() -> Response:
     main.log_access('/en/shastadari/currency')
     # return sezimal_render_template('currency_en.html')
     return render_template('currency_en.html')
 
-@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-10-26', changefreq='weekly', priority=0.8)
 @app.route('/pt/xastadári/moeda')
 def sezimal_currency_pt_route() -> Response:
     main.log_access('/pt/xastadári/moeda')
     # return sezimal_render_template('currency_pt.html')
     return render_template('currency_pt.html')
 
-@sitemapper.include(lastmod='2025-08-11', changefreq='weekly', priority=0.8)
+@sitemapper.include(lastmod='2025-10-26', changefreq='weekly', priority=0.8)
 @app.route('/bz/xastadari/moèda')
 def sezimal_currency_bz_route() -> Response:
     main.log_access('/bz/xastadari/moèda')
