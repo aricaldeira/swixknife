@@ -458,26 +458,26 @@
                     }
                     document.getElementById(`uta_${number_1}0`).style['fill'] = '#9e9e9e';
                 }
-                document.getElementById(`highlight_${uta}`).style = 'fill:#fdd835;'
-                document.getElementById(`tick_${uta}`).style = 'fill:#fdd835;'
-                document.getElementById(`highlight_${posha}`).style = 'fill:#ffffff;'
-                document.getElementById(`tick_${posha}`).style = 'fill:#ffffff;'
+                document.getElementById(`highlight_${uta}`).style = 'fill:#ffecb3;'
+                document.getElementById(`tick_${uta}`).style = 'fill:#ffc107;'
+                document.getElementById(`highlight_${posha}`).style = 'fill:#b3e5fc;'
+                document.getElementById(`tick_${posha}`).style = 'fill:#03a9f4;'
 
                 if (anuga >= '30') {
-                    document.getElementById(`highlight_${agrima}_3`).style = 'fill:#d50000;'
+                    document.getElementById(`highlight_${agrima}_3`).style = 'fill:#f44336;'
                 } else {
-                    document.getElementById(`highlight_${agrima}`).style = 'fill:#d50000;'
-                    document.getElementById(`tick_${agrima}`).style = 'fill:#d50000;'
+                    document.getElementById(`highlight_${agrima}`).style = 'fill:#ffcdd2;'
+                    document.getElementById(`tick_${agrima}`).style = 'fill:#f44336;'
                 };
 
                 if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
-                    document.getElementById(`uta_${uta}`).style['fill'] = '#fdd835';
+                    document.getElementById(`uta_${uta}`).style['fill'] = '#ffc107';
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(posha)) {
-                    document.getElementById(`uta_${posha}`).style['fill'] = '#ffffff';
+                    document.getElementById(`uta_${posha}`).style['fill'] = '#03a9f4';
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(agrima)) {
-                    document.getElementById(`uta_${agrima}`).style['fill'] = '#d50000';
+                    document.getElementById(`uta_${agrima}`).style['fill'] = '#f44336';
                 };
 
                 //

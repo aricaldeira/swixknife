@@ -140,6 +140,9 @@ def _weeks_display(locale, today, weeks, colours, gray):
         else:
             total_days = D(365)
 
+    dark_month_angle_start = None
+    dark_month_angle_end = None
+
     for i in SR(weeks):
         outer_radius = 108
 
@@ -219,9 +222,20 @@ def _weeks_display(locale, today, weeks, colours, gray):
         if locale.calendar_displayed == 'DCC':
             if i in today.dcc_list_weeks_in_month:
                 month_outer_radius = 102.5
+
+                if i == today.dcc_list_weeks_in_month[0]:
+                    dark_month_angle_end = month_angle_start
+                elif i == today.dcc_list_weeks_in_month[-1]:
+                    dark_month_angle_start = month_angle_end
+
         else:
             if i + 1 in today.list_weeks_in_month:
                 month_outer_radius = 102.5
+
+                if i + 1 == today.list_weeks_in_month[0]:
+                    dark_month_angle_end = month_angle_start
+                elif i + 1 == today.list_weeks_in_month[-1]:
+                    dark_month_angle_start = month_angle_end
 
         month_line = ring(
             inner_radius=month_outer_radius - 0.5,
@@ -243,23 +257,23 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
         if locale.calendar_displayed == 'DCC':
             if i == today.dcc_week_in_year:
-                shade = '300'
+                shade = '200'
                 text_shade = '900'
             elif i in today.list_dcc_seasons_weeks():
                 shade = '800'
                 text_shade = '200'
             else:
-                shade = '600'
+                shade = '500'
                 text_shade = '900'
         else:
             if i + 1 == today.week_in_year:
-                shade = '300'
+                shade = '200'
                 text_shade = '900'
             elif i + 1 in today.list_seasons_weeks():
                 shade = '800'
                 text_shade = '200'
             else:
-                shade = '600'
+                shade = '500'
                 text_shade = '900'
 
         gweeks += f'''        <path id="week_{str(i).zfill(3)}" style="fill:{colours[SI(i + 1)][shade]};" d="{week_wedge}" />\n'''
@@ -287,6 +301,32 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
     wf += gweeks
     wf += gtext
+
+    if dark_month_angle_start < dark_month_angle_end:
+        dark_wedge = ring(
+            inner_radius=0,
+            outer_radius=112,
+            x=112,
+            y=112,
+            start_angle=dark_month_angle_end,
+            end_angle=dark_month_angle_start,
+            without_inner=True,
+        )
+
+    else:
+        dark_wedge = ring(
+            inner_radius=0,
+            outer_radius=112,
+            x=112,
+            y=112,
+            start_angle=dark_month_angle_start - 360,
+            end_angle=dark_month_angle_end,
+            without_inner=True,
+        )
+
+
+    wf += f'''        <path id="darkening" style="fill:#00000055;" d="{dark_wedge}" />\n'''
+
     wf += f'''        <circle id="base" style="fill:#000000;" cx="112" cy="112" r="90" />\n'''
     wf += gdays
     wf += gdaystext
@@ -924,8 +964,8 @@ def _time_display(locale, colours, gray, today):
 
     time_display_colour = time_colours['500']
 
-    display = '    <g id="watchface_time_display">\n'
-    hl_display = '    <g><g id="watchface_highlight_display">\n'
+    display = '<g id="watchface_time_display">\n'
+    hl_display = '<g id="watchface_highlight_display">\n'
 
     size = 81
 
@@ -986,12 +1026,12 @@ def _time_display(locale, colours, gray, today):
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 highlight = ring(
-                    inner_radius=size * 13 / 15 - 1,
+                    inner_radius=size * 13 / 15 - 1.5,
                     outer_radius=size,
                     x=112,
                     y=112,
-                    start_angle=angle - 1,
-                    end_angle=angle + 1,
+                    start_angle=angle - 2,
+                    end_angle=angle + 2,
                 )
 
             else:
@@ -1001,24 +1041,24 @@ def _time_display(locale, colours, gray, today):
                     tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                     highlight = ring(
-                        inner_radius=size * 13 / 15 - 1,
+                        inner_radius=size * 13 / 15 - 1.5,
                         outer_radius=size,
                         x=112,
                         y=112,
-                        start_angle=angle - 0.5,
-                        end_angle=angle + 1.5,
+                        start_angle=angle - 1,
+                        end_angle=angle + 2,
                     )
 
                 else:
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                     highlight = ring(
-                        inner_radius=size * 14 / 15 - 1,
+                        inner_radius=size * 14 / 15 - 1.5,
                         outer_radius=size,
                         x=112,
                         y=112,
-                        start_angle=angle - 0.5,
-                        end_angle=angle + 1.5,
+                        start_angle=angle - 1,
+                        end_angle=angle + 2,
                     )
 
             hl_display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight}" />\n'''
@@ -1132,14 +1172,22 @@ def _time_display(locale, colours, gray, today):
     # posha_hand_colour = pointer_colours['500'] + 'dd'
     # uta_hand_colour = pointer_colours['200'] + 'dd'
 
-    anuga_hand_colour = '#d50000'
-    agrima_hand_colour = '#d50000dd'
-    posha_hand_colour = '#ffffffdd'
 
-    if locale.base == 14 and locale.HOUR_FORMAT == '12h':
-        uta_hand_colour = '#ffffffdd'
+    if locale.base == 10:
+        anuga_hand_colour = '#f44336'
+        agrima_hand_colour = '#f44336dd'
+        posha_hand_colour = '#03a9f4dd'
+        uta_hand_colour = '#ffc107dd'
+    elif locale.base == 20 or (locale.base == 14 and locale.HOUR_FORMAT == '24h'):
+        anuga_hand_colour = '#d50000'
+        agrima_hand_colour = '#d50000dd'
+        posha_hand_colour = '#ffffffdd'
+        uta_hand_colour = '#ffc107dd'
     else:
-        uta_hand_colour = '#fdd835dd'
+        anuga_hand_colour = '#d50000'
+        agrima_hand_colour = '#d50000dd'
+        posha_hand_colour = '#ffffffdd'
+        uta_hand_colour = '#ffffffdd'
 
     display += f'    <g id="hand_uta" cx="112" cy="112" transform-box="fill-box" transform-origin="center">'
     display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}"  />\n'''
@@ -1158,7 +1206,7 @@ def _time_display(locale, colours, gray, today):
 
     # if locale.base != 14 or locale.HOUR_FORMAT == '24h':
     #     display += f'''<text id="hand_uta_sun" x="{cx}" y="{cy + 3}" style="font-size:8px;text-anchor:middle;text-align:center;">☀️️</text>\n'''
-    #     display += f'''        <circle id="hand_uta_sun" style="fill:#fdd835;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
+    #     display += f'''        <circle id="hand_uta_sun" style="fill:#ffff00;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
     #     display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
 
     display += '    </g>'
@@ -1215,11 +1263,11 @@ def _time_display(locale, colours, gray, today):
         )
         display += f'''        <path id="hand_dozenal_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
         # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
-        display += '    </g>'
+        display += '</g>'
 
-    display += '    </g>\n</g>\n'
+    display += '</g>\n'
 
-    return hl_display + display
+    return '<g>\n' + hl_display + display + '</g>\n'
 
 
 def _date_display(locale, colours, gray, today):
