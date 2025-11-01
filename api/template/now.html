@@ -458,26 +458,71 @@
                     }
                     document.getElementById(`uta_${number_1}0`).style['fill'] = '#9e9e9e';
                 }
-                document.getElementById(`highlight_${uta}`).style = 'fill:#ffecb3;'
-                document.getElementById(`tick_${uta}`).style = 'fill:#ffc107;'
-                document.getElementById(`highlight_${posha}`).style = 'fill:#b3e5fc;'
-                document.getElementById(`tick_${posha}`).style = 'fill:#03a9f4;'
+
+                /*
+
+                    Choose the highligts and hands’ colour
+
+                */
+                var
+                    // uta_highlight = '#ffecb3',
+                    // uta_colour = '#ffc107',
+                    uta_highlight = '#fff9c4',
+                    uta_colour = '#ffeb3b',
+                    posha_highlight = '#b3e5fc',
+                    posha_colour = '#03a9f4',
+                    agrima_highlight = '#ffcdd2',
+                    agrima_colour = '#f44336';
+
+                if ((uta == posha) && (uta == agrima)) {
+                    uta_highlight = '#ffffff';
+                    uta_colour = '#ffffff';
+                    posha_highlight = '#ffffff';
+                    posha_colour = '#ffffff';
+                    agrima_highlight = '#ffffff';
+                    agrima_colour = '#ffffff';
+                } else if (uta == posha) {
+                    uta_highlight = '#dcedc8';
+                    uta_colour = '#8bc34a';
+                    posha_highlight = '#dcedc8';
+                    posha_colour = '#8bc34a';
+                } else if (uta == agrima) {
+                    uta_highlight = '#ffe0b2';
+                    uta_colour = '#ff9800';
+                    agrima_highlight = '#ffe0b2';
+                    agrima_colour = '#ff9800';
+                } else if (posha == agrima) {
+                    posha_highlight = '#e1bee7';
+                    posha_colour = '#9c27b0';
+                    agrima_highlight = '#e1bee7';
+                    agrima_colour = '#9c27b0';
+                };
+
+                document.getElementById(`hand_uta_pointer`).style = `fill:${uta_colour}dd;`
+                document.getElementById(`tick_${uta}`).style = `fill:${uta_colour};`
+                document.getElementById(`highlight_${uta}`).style = `fill:${uta_highlight};`
+
+                document.getElementById(`hand_posha_pointer`).style = `fill:${posha_colour}dd;`
+                document.getElementById(`tick_${posha}`).style = `fill:${posha_colour};`
+                document.getElementById(`highlight_${posha}`).style = `fill:${posha_highlight};`
+
+                document.getElementById(`hand_agrima_pointer`).style = `fill:${agrima_colour}dd;`
 
                 if (anuga >= '30') {
-                    document.getElementById(`highlight_${agrima}_3`).style = 'fill:#f44336;'
+                    document.getElementById(`highlight_${agrima}_3`).style = `fill:${agrima_colour};`
                 } else {
-                    document.getElementById(`highlight_${agrima}`).style = 'fill:#ffcdd2;'
-                    document.getElementById(`tick_${agrima}`).style = 'fill:#f44336;'
+                    document.getElementById(`tick_${agrima}`).style = `fill:${agrima_colour};`
+                    document.getElementById(`highlight_${agrima}`).style = `fill:${agrima_highlight};`
                 };
 
                 if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
-                    document.getElementById(`uta_${uta}`).style['fill'] = '#ffc107';
+                    document.getElementById(`uta_${uta}`).style['fill'] = uta_colour;
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(posha)) {
-                    document.getElementById(`uta_${posha}`).style['fill'] = '#03a9f4';
+                    document.getElementById(`uta_${posha}`).style['fill'] = posha_colour;
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(agrima)) {
-                    document.getElementById(`uta_${agrima}`).style['fill'] = '#f44336';
+                    document.getElementById(`uta_${agrima}`).style['fill'] = agrima_colour;
                 };
 
                 //

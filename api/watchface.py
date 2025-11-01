@@ -1177,12 +1177,12 @@ def _time_display(locale, colours, gray, today):
         anuga_hand_colour = '#f44336'
         agrima_hand_colour = '#f44336dd'
         posha_hand_colour = '#03a9f4dd'
-        uta_hand_colour = '#ffc107dd'
+        uta_hand_colour = '#ffeb3bdd'
     elif locale.base == 20 or (locale.base == 14 and locale.HOUR_FORMAT == '24h'):
         anuga_hand_colour = '#d50000'
         agrima_hand_colour = '#d50000dd'
         posha_hand_colour = '#ffffffdd'
-        uta_hand_colour = '#ffc107dd'
+        uta_hand_colour = '#ffeb3bdd'
     else:
         anuga_hand_colour = '#d50000'
         agrima_hand_colour = '#d50000dd'
