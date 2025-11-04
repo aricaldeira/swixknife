@@ -15,8 +15,7 @@ def colour_fader(c1, c2, mix=0): #fade (linear interpolate) from color c1 (at mi
 # from locale_detection import browser_preferred_locale
 # from today import _prepare_locale_from_cookie
 
-from pydreamplet.shapes import ring, arc, star, polygon
-from pydreamplet.core import TextOnPath
+from pydreamplet.shapes import ring, arc, star, polygon, cross
 from swixknife.date_time.seasons_colors import weekly_season_colors
 from swixknife.date_time import SezimalDateTime
 from swixknife import SezimalInteger as SI, SezimalRange as SR
@@ -217,7 +216,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
             elif i in (21, 34, 55, 111):
                 month_angle_end += D(360) / total_days * 30
 
-        month_outer_radius = 100.5
+        month_outer_radius = 100.25
 
         if locale.calendar_displayed == 'DCC':
             if i in today.dcc_list_weeks_in_month:
@@ -238,7 +237,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
                     dark_month_angle_start = month_angle_end
 
         month_line = ring(
-            inner_radius=month_outer_radius - 0.5,
+            inner_radius=month_outer_radius - 0.25,
             outer_radius=month_outer_radius,
             x=112,
             y=112,
@@ -247,7 +246,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
         )
 
         leap_week_line = ring(
-            inner_radius=month_outer_radius - 0.5,
+            inner_radius=month_outer_radius - 0.25,
             outer_radius=month_outer_radius,
             x=112,
             y=112,
@@ -785,7 +784,7 @@ def _shastadari_logo(locale, colours, today):
     #     back_colour = colours[today.week_in_year]['900']
     #     front_colour = colours[today.week_in_year]['700']
 
-    back_colour = '#222222aa'
+    back_colour = '#333333aa'
     front_colour = '#000000'
 
     #
@@ -1035,7 +1034,7 @@ def _time_display(locale, colours, gray, today):
                 )
 
             else:
-                angle = zero_position + (i * 10) - 0.5
+                angle = zero_position + (i * 10) - 0.25
 
                 if i % 3 == 0:
                     tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
@@ -1074,7 +1073,7 @@ def _time_display(locale, colours, gray, today):
 
         if locale.HOUR_FORMAT == '24h':
             for i in range(24):
-                angle = zero_position + (i * 15) - 0.5
+                angle = zero_position + (i * 15) - 0.25
                 tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                 angle = ((i / 24) * 360) + zero_position
@@ -1123,7 +1122,7 @@ def _time_display(locale, colours, gray, today):
                         display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
                 else:
-                    angle = zero_position + (i * 6) - 0.5
+                    angle = zero_position + (i * 6) - 0.25
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
 
                 display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
@@ -1156,11 +1155,11 @@ def _time_display(locale, colours, gray, today):
                 angle = zero_position + 2 + ((i - 1) * 2.5)
 
                 if i % 6 == 0:
-                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
                 elif i % 3 == 0:
-                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
                 else:
-                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.5)
+                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
 
                 display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
@@ -1190,7 +1189,6 @@ def _time_display(locale, colours, gray, today):
         uta_hand_colour = '#ffffffdd'
 
     display += f'    <g id="hand_uta" cx="112" cy="112" transform-box="fill-box" transform-origin="center">'
-    display += f'''        <circle id="hand_uta_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}"  />\n'''
 
     cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
     cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
@@ -1201,19 +1199,24 @@ def _time_display(locale, colours, gray, today):
         n=shape_vertices,
         angle=hand_initial_angle,
     )
-    display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
-    # display += '''        <animateTransform id="animate_uta_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="86400s" repeatCount="indefinite" />\n'''
 
-    # if locale.base != 14 or locale.HOUR_FORMAT == '24h':
-    #     display += f'''<text id="hand_uta_sun" x="{cx}" y="{cy + 3}" style="font-size:8px;text-anchor:middle;text-align:center;">☀️️</text>\n'''
-    #     display += f'''        <circle id="hand_uta_sun" style="fill:#ffff00;" cx="{cx}" cy="{cy}" r="{size / 18}"  />\n'''
-    #     display += f'''        <circle id="hand_uta_sun" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 54}"  />\n'''
+    if locale.base == 10:
+        sun = ring(
+            inner_radius=size / 8 / 4,
+            outer_radius=size / 8,
+            x=cx,
+            y=cy,
+        )
+        display += f'''        <path id="hand_uta_sun" style="fill:{uta_hand_colour};" d="{sun}" />\n'''
+        display += f'''        <circle id="hand_uta_sun_1" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 8 / 4}" />\n'''
+
+    else:
+        display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
 
     display += '    </g>'
     hl_display += '    </g>'
 
     display += '    <g id="hand_posha" transform-origin="center">'
-    display += f'''        <circle id="hand_posha_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
     cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
     cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
@@ -1224,19 +1227,66 @@ def _time_display(locale, colours, gray, today):
         n=shape_vertices,
         angle=hand_initial_angle,
     )
-    display += f'''        <path id="hand_posha_pointer" style="fill:{posha_hand_colour};" d="{triangle}" />\n'''
-    # display += '''        <animateTransform id="animate_posha_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="2400s" repeatCount="indefinite" />\n'''
+
+    if locale.base == 10:
+        earth = ring(
+            inner_radius=0,
+            outer_radius=(size / 10) - 1.5,
+            x=cx - 0.75,
+            y=cy - 0.75,
+            start_angle = 180,
+            end_angle = 270,
+        )
+        display += f'''        <path id="hand_posha_earth_2" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+        earth = ring(
+            inner_radius=0,
+            outer_radius=(size / 10) - 1.5,
+            x=cx + 0.75,
+            y=cy - 0.75,
+            start_angle = 270,
+            end_angle = 0,
+        )
+        display += f'''        <path id="hand_posha_earth_1" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+        earth = ring(
+            inner_radius=0,
+            outer_radius=(size / 10) - 1.5,
+            x=cx + 0.75,
+            y=cy + 0.75,
+            start_angle = 0,
+            end_angle = 90,
+        )
+        display += f'''        <path id="hand_posha_earth_4" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+        earth = ring(
+            inner_radius=0,
+            outer_radius=(size / 10) - 1.5,
+            x=cx - 0.75,
+            y=cy + 0.75,
+            start_angle = 90,
+            end_angle = 180,
+        )
+        display += f'''        <path id="hand_posha_earth_3" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+        earth = cross(
+            x=cx,
+            y=cy,
+            size=(size / 10 * 2) - 1.5,
+            thickness=2,
+        )
+        display += f'''        <path id="hand_posha_earth_5" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+
+
+    else:
+        display += f'''        <path id="hand_posha_pointer" style="fill:{posha_hand_colour};" d="{triangle}" />\n'''
+
     display += '    </g>'
 
     display += '    <g id="hand_agrima" transform-origin="center">'
-    display += f'''        <circle id="hand_agrima_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
     cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
     cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size / 10,
+        radius=size / (12 if locale.base == 10 else 10),
         n=shape_vertices,
         angle=hand_initial_angle,
     )
@@ -1267,7 +1317,9 @@ def _time_display(locale, colours, gray, today):
 
     display += '</g>\n'
 
-    return '<g>\n' + hl_display + display + '</g>\n'
+    time_display = f'''        <text id="inner_time_display" x="112" y="156.5" style="font-size:8px;font-weight:bold;fill:#333333aa;text-anchor:middle;text-align:center;">55:55</text>'''
+
+    return '<g>\n' + hl_display + display + time_display + '</g>\n'
 
 
 def _date_display(locale, colours, gray, today):
@@ -1304,7 +1356,7 @@ def _date_display(locale, colours, gray, today):
                 display += '        </text>' + opening
                 display += f'''            <tspan x="112" dy="+2.25em">{today.format('&-dW &iD &cD', locale)}</tspan>'''
         else:
-            display += f'''            <tspan x="112" dy="0.5em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
+            display += f'''            <tspan x="112" dy="0.25em">{today.format(locale.DCC_DATE_FORMAT, locale)}</tspan>'''
 
             # display += '        </text>' + opening
             # display += f'''            <tspan x="112" dy="1em">{today.format('&D', locale)}</tspan>'''
