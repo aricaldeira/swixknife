@@ -464,6 +464,13 @@
                         document.getElementById(`highlight_${number_1}${number_2}`).style = 'fill:none;'
                         document.getElementById(`highlight_${number_1}${number_2}_3`).style = 'fill:none;'
                         document.getElementById(`tick_${number_1}${number_2}`).style = 'fill:#9e9e9e;'
+
+                        {% if locale.calendar_displayed in ('DCC', 'ADC') %}
+                        document.getElementById(`day_highlight_${number_1}${number_2}`).style = 'fill:none;';
+                        document.getElementById(`day_text_highlight_${number_1}${number_2}`).style['fill'] = 'none';
+                        {% else %}
+                        document.getElementById(`highlight_uta_posha_${number_1}${number_2}`).style = 'fill:none;';
+                        {% endif %}
                     }
                     document.getElementById(`uta_${number_1}0`).style['fill'] = '#9e9e9e';
                     document.getElementById(`uta_${number_1}0`).style['filter'] = 'none';
@@ -491,12 +498,12 @@
                 // };
 
                 // if ((uta == posha) && (uta == agrima)) {
-                //     uta_highlight = '#f5f5f5';
-                //     uta_colour = '#9e9e9e';
-                //     posha_highlight = '#f5f5f5';
-                //     posha_colour = '#9e9e9e';
-                //     agrima_highlight = '#f5f5f5';
-                //     agrima_colour = '#9e9e9e';
+                // uta_highlight = '#f5f5f5';
+                // uta_colour = '#BDBDBD';
+                // posha_highlight = '#f5f5f5';
+                // posha_colour = '#BDBDBD';
+                // agrima_highlight = '#f5f5f5';
+                // agrima_colour = '#BDBDBD';
                 // } else if (uta == posha) {
                 //     uta_highlight = '#dcedc8';
                 //     uta_colour = '#8bc34a';
@@ -528,9 +535,19 @@
                 document.getElementById(`hand_uta_sun_1`).style['fill'] = `${uta_highlight}${transparency}`;
                 document.getElementById(`hand_uta_sun_1`).style['filter'] = `drop-shadow(0 0 3px ${uta_colour}${transparency})`;
 
-                document.getElementById(`tick_${uta}`).style['fill'] = `${uta_highlight}${transparency}`
-                document.getElementById(`highlight_${uta}`).style['fill'] = `${uta_colour}${transparency}`
-                document.getElementById(`highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}${transparency})`;
+                document.getElementById(`tick_${uta}`).style['fill'] = `${uta_highlight}`
+                document.getElementById(`highlight_${uta}`).style['fill'] = `${uta_colour}`
+                document.getElementById(`highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
+
+                {% if locale.calendar_displayed in ('DCC', 'ADC') %}
+                document.getElementById(`day_highlight_${uta}`).style['fill'] = `${uta_colour}`
+                // document.getElementById(`day_highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
+                document.getElementById(`day_text_highlight_${uta}`).style['fill'] = `#000000`;
+                // document.getElementById(`day_text_highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
+                {% else %}
+                document.getElementById(`highlight_uta_posha_${uta}`).style['fill'] = `${uta_colour}`
+                document.getElementById(`highlight_uta_posha_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
+                {% endif %}
 
                 // document.getElementById(`hand_posha_pointer`).style['fill'] = `${posha_colour}`;
                 // document.getElementById(`hand_posha_pointer`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
@@ -545,33 +562,43 @@
                 document.getElementById(`hand_posha_earth_5`).style['fill'] = `${posha_highlight}${transparency}`;
                 document.getElementById(`hand_posha_earth_5`).style['filter'] = `drop-shadow(0 0 3px ${posha_colour}${transparency})`;
 
-                document.getElementById(`tick_${posha}`).style['fill'] = `${posha_highlight}${transparency}`
-                document.getElementById(`highlight_${posha}`).style['fill'] = `${posha_colour}${transparency}`
-                document.getElementById(`highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                document.getElementById(`tick_${posha}`).style['fill'] = `${posha_highlight}`
+                document.getElementById(`highlight_${posha}`).style['fill'] = `${posha_colour}`
+                document.getElementById(`highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
+
+                {% if locale.calendar_displayed in ('DCC', 'ADC') %}
+                document.getElementById(`day_highlight_${posha}`).style['fill'] = `${posha_colour}`
+                // document.getElementById(`day_highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
+                document.getElementById(`day_text_highlight_${posha}`).style['fill'] = `#000000`;
+                // document.getElementById(`day_text_highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
+                {% else %}
+                document.getElementById(`highlight_uta_posha_${posha}`).style['fill'] = `${posha_colour}`
+                document.getElementById(`highlight_uta_posha_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
+                {% endif %}
 
                 document.getElementById(`hand_agrima_pointer`).style['fill'] = `${agrima_colour}${transparency}`;
                 document.getElementById(`hand_agrima_pointer`).style['filter'] = `drop-shadow(0 0 3px ${agrima_highlight}${transparency})`;
 
                 if (anuga >= '30') {
-                    document.getElementById(`highlight_${agrima}_3`).style['fill'] = `${agrima_colour}${transparency}`
-                    document.getElementById(`highlight_${agrima}_3`).style['filter'] = `drop-shadow(0 0 3px ${agrima_highlight}${transparency})`;
+                    document.getElementById(`highlight_${agrima}_3`).style['fill'] = `${agrima_colour}`
+                    document.getElementById(`highlight_${agrima}_3`).style['filter'] = `drop-shadow(0 0 3px ${agrima_highlight})`;
 
                 } else {
-                    document.getElementById(`tick_${agrima}`).style['fill'] = `${agrima_highlight}${transparency}`
-                    document.getElementById(`highlight_${agrima}`).style['fill'] = `${agrima_colour}${transparency}`
-                    document.getElementById(`highlight_${agrima}`).style['filter'] = `drop-shadow(0 0 3px ${agrima_highlight}${transparency})`;
+                    document.getElementById(`tick_${agrima}`).style['fill'] = `${agrima_highlight}`
+                    document.getElementById(`highlight_${agrima}`).style['fill'] = `${agrima_colour}`
+                    document.getElementById(`highlight_${agrima}`).style['filter'] = `drop-shadow(0 0 3px ${agrima_highlight})`;
                 };
 
                 if (['00', '10', '20', '30', '40', '50'].includes(uta)) {
-                    document.getElementById(`uta_${uta}`).style['fill'] = uta_colour;
+                    document.getElementById(`uta_${uta}`).style['fill'] = uta_highlight;
                     document.getElementById(`uta_${uta}`).style['filter'] =  `drop-shadow(0 0 3px ${uta_highlight})`;
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(posha)) {
-                    document.getElementById(`uta_${posha}`).style['fill'] = posha_colour;
+                    document.getElementById(`uta_${posha}`).style['fill'] = posha_highlight;
                     document.getElementById(`uta_${posha}`).style['filter'] =  `drop-shadow(0 0 3px ${posha_highlight})`;
                 };
                 if (['00', '10', '20', '30', '40', '50'].includes(agrima)) {
-                    document.getElementById(`uta_${agrima}`).style['fill'] = agrima_colour;
+                    document.getElementById(`uta_${agrima}`).style['fill'] = agrima_highlight;
                     document.getElementById(`uta_${agrima}`).style['filter'] =  `drop-shadow(0 0 3px ${agrima_highlight})`;
                 };
 

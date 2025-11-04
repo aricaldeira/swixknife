@@ -489,9 +489,13 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                 day_number = str(day).zfill(2)[1]
                 # day_number = day_number[0] + '‐' + day_number[1]
 
-            gdays += f'''        <path id="day_{str((i * 100) + day).zfill(4)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
-            gdaystext += f'''        <path id="day_line_{str((i * 100) + day).zfill(4)}" style="fill:none;" d="{day_line}" />\n'''
-            gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str((i * 100) + day).zfill(4)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+            gdays += f'''        <path id="day_{str(day).zfill(2)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
+            gdays += f'''        <path id="day_highlight_{str(day).zfill(2)}" style="fill:none;" d="{day_wedge}" />\n'''
+
+            gdaystext += f'''        <path id="day_line_{str(day).zfill(2)}" style="fill:none;" d="{day_line}" />\n'''
+
+            gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str(day).zfill(2)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+            gdaystext += f'''<text id="day_text_highlight_{str(day).zfill(2)}" style="font-size:6px;fill:none;text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#day_line_{str(day).zfill(2)}"  startOffset="25%">{day_number}</textPath></text>\n'''
 
     return gweeks, gtext, gdays, gdaystext
 
@@ -1032,6 +1036,14 @@ def _time_display(locale, colours, gray, today):
                     start_angle=angle - 2,
                     end_angle=angle + 2,
                 )
+                highlight_2 = ring(
+                    inner_radius=size - 3,
+                    outer_radius=size,
+                    x=112,
+                    y=112,
+                    start_angle=angle,
+                    end_angle=angle + 10,
+                )
 
             else:
                 angle = zero_position + (i * 10) - 0.25
@@ -1047,6 +1059,14 @@ def _time_display(locale, colours, gray, today):
                         start_angle=angle - 1,
                         end_angle=angle + 2,
                     )
+                    highlight_2 = ring(
+                        inner_radius=size - 3,
+                        outer_radius=size,
+                        x=112,
+                        y=112,
+                        start_angle=angle,
+                        end_angle=angle + 10,
+                    )
 
                 else:
                     tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
@@ -1059,7 +1079,16 @@ def _time_display(locale, colours, gray, today):
                         start_angle=angle - 1,
                         end_angle=angle + 2,
                     )
+                    highlight_2 = ring(
+                        inner_radius=size - 3,
+                        outer_radius=size,
+                        x=112,
+                        y=112,
+                        start_angle=angle,
+                        end_angle=angle + 10,
+                    )
 
+            hl_display += f'''        <path id="highlight_uta_posha_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight_2}" />\n'''
             hl_display += f'''        <path id="highlight_{str(SI(D(i))).zfill(2)}" style="fill:none;" d="{highlight}" />\n'''
 
             cx = 112 + (size - 0.75) * math.cos((angle + 5.325) / 360 * math.pi * 2)
