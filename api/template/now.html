@@ -479,61 +479,117 @@
                 /*
                     Choose the highligts and hands’ colour
                 */
+
+    // _highlight = '#ff8a80',
+    // _colour = '#ff1744',
+    // _highlight = '#ff80ab',
+    // _colour = '#f50057',
+    // _highlight = '#ea80fc',
+    // _colour = '#d500f9',
+    // _highlight = '#b388ff',
+    // _colour = '#651fff',
+    // _highlight = '#8c9eff',
+    // _colour = '#3d5afe',
+    // _highlight = '#82b1ff',
+    // _colour = '#2979ff',
+    // _highlight = '#80d8ff',
+    // _colour = '#00b0ff',
+    // _highlight = '#84ffff',
+    // _colour = '#00e5ff',
+    // text_colour = '#000000',
+    // _highlight = '#a7ffeb',
+    // _colour = '#1de9b6',
+    // text_colour = '#000000',
+    // _highlight = '#b9f6ca',
+    // _colour = '#00e676',
+    // text_colour = '#000000',
+    // _highlight = '#ccff90',
+    // _colour = '#76ff03',
+    // text_colour = '#000000',
+    // _highlight = '#f4ff81',
+    // _colour = '#c6ff00',
+    // text_colour = '#000000',
+    // _highlight = '#ffff8d',
+    // _colour = '#ffea00',
+    // text_colour = '#000000',
+    // _highlight = '#ffe57f',
+    // _colour = '#ffc400',
+    // text_colour = '#000000',
+    // _highlight = '#ffd180',
+    // _colour = '#ff9100',
+    // text_colour = '#000000',
+    // _highlight = '#ff9e80',
+    // _colour = '#ff3d00',
+    // text_colour = '#000000',
+    // _highlight = '#ff9e80',
+    // _colour = '#ff3d00',
+
                 var
-                    uta_highlight = '#ffecb3',
-                    uta_colour = '#ffc107',
-                    // uta_highlight = '#fff9c4',
-                    // uta_colour = '#ffeb3b',
-                    posha_highlight = '#bbdefb',
-                    posha_colour = '#2196f3',
-                    // posha_highlight = '#b3e5fc',
-                    // posha_colour = '#03a9f4',
-                    agrima_highlight = '#ffcdd2',
-                    agrima_colour = '#f44336',
-                    transparency = 'cc';
+                    text_colour = '#000000',
+                    uta_highlight = '#ffff8d',
+                    uta_colour = '#ffea00',
+                    posha_highlight = '#80d8ff',
+                    posha_colour = '#00b0ff',
+                    agrima_highlight = '#ff8a80',
+                    agrima_colour = '#ff1744',
+                    transparency = '99';
 
-                // if ((uta < '13') || (uta >= '43')) {
-                //     uta_highlight = '#E8EAF6';
-                //     uta_colour = '#5C6BC0';
-                // };
+                // var
+                //     text_colour = '#000000',
+                //     uta_highlight = '#f4ff81',
+                //     uta_colour = '#c6ff00',
+                //     posha_highlight = '#ccff90',
+                //     posha_colour = '#76ff03',
+                //     agrima_highlight = '#ff8a80',
+                //     agrima_colour = '#ff1744',
+                //     transparency = 'cc';
 
-                // if ((uta == posha) && (uta == agrima)) {
-                // uta_highlight = '#f5f5f5';
-                // uta_colour = '#BDBDBD';
-                // posha_highlight = '#f5f5f5';
-                // posha_colour = '#BDBDBD';
-                // agrima_highlight = '#f5f5f5';
-                // agrima_colour = '#BDBDBD';
-                // } else if (uta == posha) {
-                //     uta_highlight = '#dcedc8';
-                //     uta_colour = '#8bc34a';
-                //     posha_highlight = '#dcedc8';
-                //     posha_colour = '#8bc34a';
-                // } else if (uta == agrima) {
-                //     uta_highlight = '#ffe0b2';
-                //     uta_colour = '#ff9800';
-                //     agrima_highlight = '#ffe0b2';
-                //     agrima_colour = '#ff9800';
-                // } else if (posha == agrima) {
-                //     posha_highlight = '#e1bee7';
-                //     posha_colour = '#9c27b0';
-                //     agrima_highlight = '#e1bee7';
-                //     agrima_colour = '#9c27b0';
-                // };
+                // var
+                //     text_colour = '#000000',
+                //     uta_highlight = '#84ffff',
+                //     uta_colour = '#00e5ff',
+                //     posha_highlight = '#a7ffeb',
+                //     posha_colour = '#1de9b6',
+                //     agrima_highlight = '#ff8a80',
+                //     agrima_colour = '#ff1744',
+                //     transparency = 'cc';
 
-                // uta_highlight = '#ffffff';
-                // uta_colour = '#ffffff';
-                // posha_highlight = '#ffecb3';
-                // posha_colour = '#ffc107';
-                // agrima_highlight = '#ffcdd2';
-                // agrima_colour = '#f44336';
+                // var
+                //     text_colour = '#000000',
+                //     uta_highlight = '#ffff8d',
+                //     uta_colour = '#ffea00',
+                //     posha_highlight = '#ffd180',
+                //     posha_colour = '#ff9100',
+                //     agrima_highlight = '#ff8a80',
+                //     agrima_colour = '#ff1744',
+                //     transparency = 'cc';
+                //
+                // var
+                //     text_colour = '#ffffff',
+                //     uta_highlight = '#80d8ff',
+                //     uta_colour = '#00b0ff',
+                //     posha_highlight = '#82b1ff',
+                //     posha_colour = '#2979ff',
+                //     agrima_highlight = '#ff8a80',
+                //     agrima_colour = '#ff1744',
+                //     transparency = 'cc';
 
-                // document.getElementById(`hand_uta_pointer`).style['fill'] = `${uta_colour}dd`;
-                // document.getElementById(`hand_uta_pointer`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}dd)`;
-                document.getElementById(`hand_uta_sun`).style['fill'] = `${uta_colour}${transparency}`;
-                document.getElementById(`hand_uta_sun`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}${transparency})`;
-                document.getElementById(`hand_uta_sun_1`).style['fill'] = `${uta_highlight}${transparency}`;
-                document.getElementById(`hand_uta_sun_1`).style['filter'] = `drop-shadow(0 0 3px ${uta_colour}${transparency})`;
+                // var
+                //     text_colour = '#000000',
+                //     uta_highlight = '#ffffff',
+                //     uta_colour = '#FAFAFA',
+                //     posha_highlight = '#ffffff',
+                //     posha_colour = '#FAFAFA',
+                //     agrima_highlight = '#ff8a80',
+                //     agrima_colour = '#ff1744',
+                //     transparency = '99';
+
+                document.getElementById(`hand_uta_pointer`).style['fill'] = `${uta_colour}${transparency}`;
+                document.getElementById(`hand_uta_pointer`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}${transparency})`;
+                // document.getElementById(`hand_uta_sun`).style['fill'] = `${uta_colour}${transparency}`;
+                // document.getElementById(`hand_uta_sun`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}${transparency})`;
+                // document.getElementById(`hand_uta_sun_1`).style['fill'] = `${uta_highlight}${transparency}`;
+                // document.getElementById(`hand_uta_sun_1`).style['filter'] = `drop-shadow(0 0 3px ${uta_colour}${transparency})`;
 
                 document.getElementById(`tick_${uta}`).style['fill'] = `${uta_highlight}`
                 document.getElementById(`highlight_${uta}`).style['fill'] = `${uta_colour}`
@@ -542,25 +598,25 @@
                 {% if locale.calendar_displayed in ('DCC', 'ADC') %}
                 document.getElementById(`day_highlight_${uta}`).style['fill'] = `${uta_colour}`
                 // document.getElementById(`day_highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
-                document.getElementById(`day_text_highlight_${uta}`).style['fill'] = `#000000`;
-                // document.getElementById(`day_text_highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
+                document.getElementById(`day_text_highlight_${uta}`).style['fill'] = `${text_colour}`;
+                document.getElementById(`day_text_highlight_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
                 {% else %}
                 document.getElementById(`highlight_uta_posha_${uta}`).style['fill'] = `${uta_colour}`
                 document.getElementById(`highlight_uta_posha_${uta}`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight})`;
                 {% endif %}
 
-                // document.getElementById(`hand_posha_pointer`).style['fill'] = `${posha_colour}`;
-                // document.getElementById(`hand_posha_pointer`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
-                document.getElementById(`hand_posha_earth_1`).style['fill'] = `${posha_colour}${transparency}`;
-                document.getElementById(`hand_posha_earth_1`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
-                document.getElementById(`hand_posha_earth_2`).style['fill'] = `${posha_colour}${transparency}`;
-                document.getElementById(`hand_posha_earth_2`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
-                document.getElementById(`hand_posha_earth_3`).style['fill'] = `${posha_colour}${transparency}`;
-                document.getElementById(`hand_posha_earth_3`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
-                document.getElementById(`hand_posha_earth_4`).style['fill'] = `${posha_colour}${transparency}`;
-                document.getElementById(`hand_posha_earth_4`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
-                document.getElementById(`hand_posha_earth_5`).style['fill'] = `${posha_highlight}${transparency}`;
-                document.getElementById(`hand_posha_earth_5`).style['filter'] = `drop-shadow(0 0 3px ${posha_colour}${transparency})`;
+                document.getElementById(`hand_posha_pointer`).style['fill'] = `${posha_colour}${transparency}`;
+                document.getElementById(`hand_posha_pointer`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                // document.getElementById(`hand_posha_earth_1`).style['fill'] = `${posha_colour}${transparency}`;
+                // document.getElementById(`hand_posha_earth_1`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                // document.getElementById(`hand_posha_earth_2`).style['fill'] = `${posha_colour}${transparency}`;
+                // document.getElementById(`hand_posha_earth_2`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                // document.getElementById(`hand_posha_earth_3`).style['fill'] = `${posha_colour}${transparency}`;
+                // document.getElementById(`hand_posha_earth_3`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                // document.getElementById(`hand_posha_earth_4`).style['fill'] = `${posha_colour}${transparency}`;
+                // document.getElementById(`hand_posha_earth_4`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight}${transparency})`;
+                // document.getElementById(`hand_posha_earth_5`).style['fill'] = `${posha_highlight}${transparency}`;
+                // document.getElementById(`hand_posha_earth_5`).style['filter'] = `drop-shadow(0 0 3px ${posha_colour}${transparency})`;
 
                 document.getElementById(`tick_${posha}`).style['fill'] = `${posha_highlight}`
                 document.getElementById(`highlight_${posha}`).style['fill'] = `${posha_colour}`
@@ -569,8 +625,8 @@
                 {% if locale.calendar_displayed in ('DCC', 'ADC') %}
                 document.getElementById(`day_highlight_${posha}`).style['fill'] = `${posha_colour}`
                 // document.getElementById(`day_highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
-                document.getElementById(`day_text_highlight_${posha}`).style['fill'] = `#000000`;
-                // document.getElementById(`day_text_highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
+                document.getElementById(`day_text_highlight_${posha}`).style['fill'] = `${text_colour}`;
+                document.getElementById(`day_text_highlight_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
                 {% else %}
                 document.getElementById(`highlight_uta_posha_${posha}`).style['fill'] = `${posha_colour}`
                 document.getElementById(`highlight_uta_posha_${posha}`).style['filter'] = `drop-shadow(0 0 3px ${posha_highlight})`;
