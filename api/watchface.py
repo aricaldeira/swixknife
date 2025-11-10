@@ -315,7 +315,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
     else:
         dark_wedge = ring(
             inner_radius=0,
-            outer_radius=112,
+            outer_radius=108,
             x=112,
             y=112,
             start_angle=dark_month_angle_start - 360,
@@ -324,7 +324,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
         )
 
 
-    wf += f'''        <path id="darkening" style="fill:#00000099;" d="{dark_wedge}" />\n'''
+    wf += f'''        <path id="darkening" style="fill:#21212199;" d="{dark_wedge}" />\n'''
 
     wf += f'''        <circle id="base" style="fill:#000000;" cx="112" cy="112" r="90" />\n'''
     wf += gdays
@@ -440,6 +440,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
 
             day_colours = gray
             day_style = ''
+            day_highlight = ''
+            text_highlight = ''
 
             if i == today.dcc_week_in_year:
                 if day == today.dcc_day:
@@ -447,6 +449,8 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                     shade = '100'
                     day_colours = colours
                     day_style = f'font-weight:bold;'
+                    day_highlight = f"filter: drop-shadow(0 0 3px {day_colours[i + 1]['600']});"
+                    text_highlight = f"filter: drop-shadow(0 0 3px {day_colours[i + 1]['100']});"
                 else:
                     back_shade = '800' if day % 2 == 0 else '900'
                     shade = '600' if day % 2 == 0 else '700'
@@ -489,12 +493,12 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
                 day_number = str(day).zfill(2)[1]
                 # day_number = day_number[0] + '‐' + day_number[1]
 
-            gdays += f'''        <path id="day_{str(day).zfill(2)}" style="fill:{day_colour};" d="{day_wedge}" />\n'''
+            gdays += f'''        <path id="day_{str(day).zfill(2)}" style="fill:{day_colour};{day_highlight}" d="{day_wedge}" />\n'''
             gdays += f'''        <path id="day_highlight_{str(day).zfill(2)}" style="fill:none;" d="{day_wedge}" />\n'''
 
             gdaystext += f'''        <path id="day_line_{str(day).zfill(2)}" style="fill:none;" d="{day_line}" />\n'''
 
-            gdaystext += f'''<text style="font-size:6px;fill:{text_colour};text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str(day).zfill(2)}"  startOffset="25%">{day_number}</textPath></text>\n'''
+            gdaystext += f'''<text style="font-size:6px;fill:{text_colour};{text_highlight}text-anchor:middle;text-align:center;{day_style}"><textPath href="#day_line_{str(day).zfill(2)}"  startOffset="25%">{day_number}</textPath></text>\n'''
             gdaystext += f'''<text id="day_text_highlight_{str(day).zfill(2)}" style="font-size:6px;fill:none;text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#day_line_{str(day).zfill(2)}"  startOffset="25%">{day_number}</textPath></text>\n'''
 
     return gweeks, gtext, gdays, gdaystext
