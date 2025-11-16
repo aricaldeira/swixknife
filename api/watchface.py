@@ -153,7 +153,8 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
         if locale.calendar_displayed == 'DCC':
             if i in today.dcc_list_weeks_in_month:
-                outer_radius = 110
+                if i == today.dcc_week_in_year:
+                    outer_radius = 110
 
                 if i == 140:
                     extra_start = D('0.25')
@@ -164,7 +165,8 @@ def _weeks_display(locale, today, weeks, colours, gray):
                     extra_end = D('-0.25')
         else:
             if i + 1 in today.list_weeks_in_month:
-                outer_radius = 110
+                if i + 1 == today.week_in_year:
+                    outer_radius = 110
 
                 if i in (0, 4, 13, 21, 25, 34, 42, 50, 55, 103, 111, 120):
                     extra_start = D('0.25')
@@ -220,7 +222,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
         if locale.calendar_displayed == 'DCC':
             if i in today.dcc_list_weeks_in_month:
-                month_outer_radius = 102.5
+                # month_outer_radius = 102.5
 
                 if i == today.dcc_list_weeks_in_month[0]:
                     dark_month_angle_end = month_angle_start
@@ -229,7 +231,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
         else:
             if i + 1 in today.list_weeks_in_month:
-                month_outer_radius = 102.5
+                # month_outer_radius = 102.5
 
                 if i + 1 == today.list_weeks_in_month[0]:
                     dark_month_angle_end = month_angle_start
@@ -324,7 +326,7 @@ def _weeks_display(locale, today, weeks, colours, gray):
         )
 
 
-    wf += f'''        <path id="darkening" style="fill:#21212199;" d="{dark_wedge}" />\n'''
+    wf += f'''        <path id="darkening" style="fill:#21212155;" d="{dark_wedge}" />\n'''
 
     wf += f'''        <circle id="base" style="fill:#000000;" cx="112" cy="112" r="90" />\n'''
     wf += gdays
