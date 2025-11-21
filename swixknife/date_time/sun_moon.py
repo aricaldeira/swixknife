@@ -382,15 +382,18 @@ def _list_dcc_seasons_dates(self) -> list:
     seasons = []
     seasons_weeks = []
 
-    for event_date, _, event_name in list_sun_moon(
-        self.year,
-        time_zone=self.time_zone,
-        only_sun=True,
-        only_four=False,
-        dcc_year=self.dcc_year,
-    ):
-        seasons.append(event_date)
-        seasons_weeks.append(event_date.dcc_week_in_year)
+    for i in (-1, 0, 1):
+        for event_date, _, event_name in list_sun_moon(
+            self.year + i,
+            time_zone=self.time_zone,
+            only_sun=True,
+            only_four=False,
+        ):
+            if event_date.dcc_year != self.dcc_year:
+                continue
+
+            seasons.append(event_date)
+            seasons_weeks.append(event_date.dcc_week_in_year)
 
     _DCC_SEASONS_CACHE[self.dcc_year] = seasons
     _DCC_SEASONS_WEEKS_CACHE[self.dcc_year] = seasons_weeks

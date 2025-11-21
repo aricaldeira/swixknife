@@ -29,7 +29,7 @@ from decimal import Decimal as D
 
 # @app.route('/watchface.svg')
 def watchface(locale, today) -> str:
-    # today = today.from_days(today.replace(year=213214, month=20, day=55).as_days)
+    # today = today.from_days(today.replace(year=213214, month=3, day=23).as_days + 1410)
 
     #
     # Let's bring the colours first
@@ -226,6 +226,10 @@ def _weeks_display(locale, today, weeks, colours, gray):
 
                 if i == today.dcc_list_weeks_in_month[0]:
                     dark_month_angle_end = month_angle_start
+
+                    if i == 140:
+                        dark_month_angle_start = month_angle_start + arch
+
                 elif i == today.dcc_list_weeks_in_month[-1]:
                     dark_month_angle_start = month_angle_end
 
@@ -436,7 +440,12 @@ def _dcc_display(locale, gweeks, gtext, gdays, gdaystext, i, colours, angle, wee
             gtext += f'''<text style="font-size:6px;fill:{colours[SI(i + 1)][month_shade]};text-align:center;text-anchor:middle;{month_style}"><textPath href="#month_line_{str(i).zfill(3)}" startOffset="25%">{month_number}</textPath></text>\n'''
 
     if (today.dcc_month * 10) <= i < ((today.dcc_month * 10) + 10):
-        for day in SR((i * 10), (i * 10) + 10):
+        if i == 140:
+            last_day = (i * 10) + 100
+        else:
+            last_day = (i * 10) + 10
+
+        for day in SR((i * 10), last_day):
             day = day % 100
             day_in_week = int(day % 10)
 
