@@ -158,25 +158,73 @@ cbrt\( raiz kúbika di
 (1)(\d{18}) trixadara$(:\2)$2
 (1)(\d{24}) xarxadara$(:\2)$2
 (1)(\d{30}) panxadara$(:\2)$2
-(1)(\d{36}) xaxadara$(:\2)$2
-(1)(\d{42}) xaekaxadara$(:\2)$2
-(1)(\d{48}) xadixadara$(:\2)$2
-(1)(\d{54}) xatrixadara$(:\2)$2
-(1)(\d{60}) xaxarxadara$(:\2)$2
-(1)(\d{66}) xapanxadara$(:\2)$2
-(1)(\d{72}) dixaxadara$(:\2)$2
+(1)(\d{36}) nidara$(:\2)$2
+(1)(\d{42}) nixadara$(:\2)$2
+(1)(\d{48}) nidixadara$(:\2)$2
+(1)(\d{54}) nitrixadara$(:\2)$2
+(1)(\d{60}) nixarxadara$(:\2)$2
+(1)(\d{66}) nipanxadara$(:\2)$2
+(1)(\d{72}) dinidara$(:\2)$2
+(1)(\d{78}) dinixadara$(:\2)$2
+(1)(\d{84}) dinidixadara$(:\2)$2
+(1)(\d{90}) dinitrixadara$(:\2)$2
+(1)(\d{96}) dinixarxadara$(:\2)$2
+(1)(\d{102}) dinipanxadara$(:\2)$2
+(1)(\d{108}) trinidara$(:\2)$2
+(1)(\d{114}) trinixadara$(:\2)$2
+(1)(\d{120}) trinidixadara$(:\2)$2
+(1)(\d{126}) trinitrixadara$(:\2)$2
+(1)(\d{132}) trinixarxadara$(:\2)$2
+(1)(\d{138}) trinipanxadara$(:\2)$2
+(1)(\d{144}) xarnidara$(:\2)$2
+(1)(\d{150}) xarnixadara$(:\2)$2
+(1)(\d{156}) xarnidixadara$(:\2)$2
+(1)(\d{162}) xarnitrixadara$(:\2)$2
+(1)(\d{168}) xarnixarxadara$(:\2)$2
+(1)(\d{174}) xarnipanxadara$(:\2)$2
+(1)(\d{180}) panidara$(:\2)$2
+(1)(\d{186}) panixadara$(:\2)$2
+(1)(\d{192}) panidixadara$(:\2)$2
+(1)(\d{198}) panitrixadara$(:\2)$2
+(1)(\d{204}) panixarxadara$(:\2)$2
+(1)(\d{210}) panipanxadara$(:\2)$2
+(1)(\d{216}) ardara$(:\2)$2
 
 (\d{1,6})(\d{12}) $1 dixadara$(:\2)$2
 (\d{1,6})(\d{18}) $1 trixadara$(:\2)$2
 (\d{1,6})(\d{24}) $1 xarxadara$(:\2)$2
 (\d{1,6})(\d{30}) $1 panxadara$(:\2)$2
-(\d{1,6})(\d{36}) $1 xaxadara$(:\2)$2
-(\d{1,6})(\d{42}) $1 xaekaxadara$(:\2)$2
-(\d{1,6})(\d{48}) $1 xadixadara$(:\2)$2
-(\d{1,6})(\d{54}) $1 xatrixadara$(:\2)$2
-(\d{1,6})(\d{60}) $1 xaxarxadara$(:\2)$2
-(\d{1,6})(\d{66}) $1 xapanxadara$(:\2)$2
-(\d{1,6})(\d{72}) $1 dixaxadara$(:\2)$2
+(\d{1,6})(\d{36}) $1 nidara$(:\2)$2
+(\d{1,6})(\d{42}) $1 nixadara$(:\2)$2
+(\d{1,6})(\d{48}) $1 nidixadara$(:\2)$2
+(\d{1,6})(\d{54}) $1 nitrixadara$(:\2)$2
+(\d{1,6})(\d{60}) $1 nixarxadara$(:\2)$2
+(\d{1,6})(\d{66}) $1 nipanxadara$(:\2)$2
+(\d{1,6})(\d{72}) $1 dinidara$(:\2)$2
+(\d{1,6})(\d{78}) $1 dinixadara$(:\2)$2
+(\d{1,6})(\d{84}) $1 dinidixadara$(:\2)$2
+(\d{1,6})(\d{90}) $1 dinitrixadara$(:\2)$2
+(\d{1,6})(\d{96}) $1 dinixarxadara$(:\2)$2
+(\d{1,6})(\d{102}) $1 dinipanxadara$(:\2)$2
+(\d{1,6})(\d{108}) $1 trinidara$(:\2)$2
+(\d{1,6})(\d{114}) $1 trinixadara$(:\2)$2
+(\d{1,6})(\d{120}) $1 trinidixadara$(:\2)$2
+(\d{1,6})(\d{126}) $1 trinitrixadara$(:\2)$2
+(\d{1,6})(\d{132}) $1 trinixarxadara$(:\2)$2
+(\d{1,6})(\d{138}) $1 trinipanxadara$(:\2)$2
+(\d{1,6})(\d{144}) $1 xarnidara$(:\2)$2
+(\d{1,6})(\d{150}) $1 xarnixadara$(:\2)$2
+(\d{1,6})(\d{156}) $1 xarnidixadara$(:\2)$2
+(\d{1,6})(\d{162}) $1 xarnitrixadara$(:\2)$2
+(\d{1,6})(\d{168}) $1 xarnixarxadara$(:\2)$2
+(\d{1,6})(\d{174}) $1 xarnipanxadara$(:\2)$2
+(\d{1,6})(\d{180}) $1 panidara$(:\2)$2
+(\d{1,6})(\d{186}) $1 panixadara$(:\2)$2
+(\d{1,6})(\d{192}) $1 panidixadara$(:\2)$2
+(\d{1,6})(\d{198}) $1 panitrixadara$(:\2)$2
+(\d{1,6})(\d{204}) $1 panixarxadara$(:\2)$2
+(\d{1,6})(\d{210}) $1 panipanxadara$(:\2)$2
+(\d{1,6})(\d{216}) $1 ardara$(:\2)$2
 
 #
 # Númerus negativus

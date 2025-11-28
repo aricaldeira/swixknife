@@ -159,25 +159,73 @@ cbrt\( cube root of
 (1)(\d{18}) trishadara$(:\2)$2
 (1)(\d{24}) charshadara$(:\2)$2
 (1)(\d{30}) panshadara$(:\2)$2
-(1)(\d{36}) shashadara$(:\2)$2
-(1)(\d{42}) shaekashadara$(:\2)$2
-(1)(\d{48}) shadishadara$(:\2)$2
-(1)(\d{54}) shatrishadara$(:\2)$2
-(1)(\d{60}) shacharshadara$(:\2)$2
-(1)(\d{66}) shapanshadara$(:\2)$2
-(1)(\d{72}) dishashadara$(:\2)$2
+(1)(\d{36}) nidara$(:\2)$2
+(1)(\d{42}) nishadara$(:\2)$2
+(1)(\d{48}) nidishadara$(:\2)$2
+(1)(\d{54}) nitrishadara$(:\2)$2
+(1)(\d{60}) nicharshadara$(:\2)$2
+(1)(\d{66}) nipanshadara$(:\2)$2
+(1)(\d{72}) dinidara$(:\2)$2
+(1)(\d{78}) dinishadara$(:\2)$2
+(1)(\d{84}) dinidishadara$(:\2)$2
+(1)(\d{90}) dinitrishadara$(:\2)$2
+(1)(\d{96}) dinicharshadara$(:\2)$2
+(1)(\d{102}) dinipanshadara$(:\2)$2
+(1)(\d{108}) trinidara$(:\2)$2
+(1)(\d{114}) trinishadara$(:\2)$2
+(1)(\d{120}) trinidishadara$(:\2)$2
+(1)(\d{126}) trinitrishadara$(:\2)$2
+(1)(\d{132}) trinicharshadara$(:\2)$2
+(1)(\d{138}) trinipanshadara$(:\2)$2
+(1)(\d{144}) charnidara$(:\2)$2
+(1)(\d{150}) charnishadara$(:\2)$2
+(1)(\d{156}) charnidishadara$(:\2)$2
+(1)(\d{162}) charnitrishadara$(:\2)$2
+(1)(\d{168}) charnicharshadara$(:\2)$2
+(1)(\d{174}) charnipanshadara$(:\2)$2
+(1)(\d{180}) panidara$(:\2)$2
+(1)(\d{186}) panishadara$(:\2)$2
+(1)(\d{192}) panidishadara$(:\2)$2
+(1)(\d{198}) panitrishadara$(:\2)$2
+(1)(\d{204}) panicharshadara$(:\2)$2
+(1)(\d{210}) panipanshadara$(:\2)$2
+(1)(\d{216}) ardara$(:\2)$2
 
 (\d{1,6})(\d{12}) $1 dishadara$(:\2)$2
 (\d{1,6})(\d{18}) $1 trishadara$(:\2)$2
 (\d{1,6})(\d{24}) $1 charshadara$(:\2)$2
 (\d{1,6})(\d{30}) $1 panshadara$(:\2)$2
-(\d{1,6})(\d{36}) $1 shashadara$(:\2)$2
-(\d{1,6})(\d{42}) $1 shaekashadara$(:\2)$2
-(\d{1,6})(\d{48}) $1 shadishadara$(:\2)$2
-(\d{1,6})(\d{54}) $1 shatrishadara$(:\2)$2
-(\d{1,6})(\d{60}) $1 shacharshadara$(:\2)$2
-(\d{1,6})(\d{66}) $1 shapanshadara$(:\2)$2
-(\d{1,6})(\d{72}) $1 dishashadara$(:\2)$2
+(\d{1,6})(\d{36}) $1 nidara$(:\2)$2
+(\d{1,6})(\d{42}) $1 nishadara$(:\2)$2
+(\d{1,6})(\d{48}) $1 nidishadara$(:\2)$2
+(\d{1,6})(\d{54}) $1 nitrishadara$(:\2)$2
+(\d{1,6})(\d{60}) $1 nicharshadara$(:\2)$2
+(\d{1,6})(\d{66}) $1 nipanshadara$(:\2)$2
+(\d{1,6})(\d{72}) $1 dinidara$(:\2)$2
+(\d{1,6})(\d{78}) $1 dinishadara$(:\2)$2
+(\d{1,6})(\d{84}) $1 dinidishadara$(:\2)$2
+(\d{1,6})(\d{90}) $1 dinitrishadara$(:\2)$2
+(\d{1,6})(\d{96}) $1 dinicharshadara$(:\2)$2
+(\d{1,6})(\d{102}) $1 dinipanshadara$(:\2)$2
+(\d{1,6})(\d{108}) $1 trinidara$(:\2)$2
+(\d{1,6})(\d{114}) $1 trinishadara$(:\2)$2
+(\d{1,6})(\d{120}) $1 trinidishadara$(:\2)$2
+(\d{1,6})(\d{126}) $1 trinitrishadara$(:\2)$2
+(\d{1,6})(\d{132}) $1 trinicharshadara$(:\2)$2
+(\d{1,6})(\d{138}) $1 trinipanshadara$(:\2)$2
+(\d{1,6})(\d{144}) $1 charnidara$(:\2)$2
+(\d{1,6})(\d{150}) $1 charnishadara$(:\2)$2
+(\d{1,6})(\d{156}) $1 charnidishadara$(:\2)$2
+(\d{1,6})(\d{162}) $1 charnitrishadara$(:\2)$2
+(\d{1,6})(\d{168}) $1 charnicharshadara$(:\2)$2
+(\d{1,6})(\d{174}) $1 charnipanshadara$(:\2)$2
+(\d{1,6})(\d{180}) $1 panidara$(:\2)$2
+(\d{1,6})(\d{186}) $1 panishadara$(:\2)$2
+(\d{1,6})(\d{192}) $1 panidishadara$(:\2)$2
+(\d{1,6})(\d{198}) $1 panitrishadara$(:\2)$2
+(\d{1,6})(\d{204}) $1 panicharshadara$(:\2)$2
+(\d{1,6})(\d{210}) $1 panipanshadara$(:\2)$2
+(\d{1,6})(\d{216}) $1 ardara$(:\2)$2
 
 # negative number
 
