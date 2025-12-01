@@ -240,7 +240,7 @@ def sezimal_format(
         if recurring:
             if fraction and fraction_group_separator:
                 if sezimal_punctuation:
-                    fraction = _apply_sezimal_punctuation(fraction, False)
+                    fraction = _apply_sezimal_punctuation(fraction)
                 else:
                     fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
@@ -265,7 +265,7 @@ def sezimal_format(
     if fraction:
         if fraction_group_separator:
             if sezimal_punctuation:
-                fraction = _apply_sezimal_punctuation(fraction, False)
+                fraction = _apply_sezimal_punctuation(fraction)
             else:
                 fraction = _apply_format(fraction, fraction_group_separator, group_format)
 
