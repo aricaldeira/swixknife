@@ -78,15 +78,8 @@ auto_refresh();
 // When first loading the page, makes
 // shure today’s date is visible
 //
-function center_today() {
-    const today_rect = document.getElementById('today').getBoundingClientRect();
-    window.scrollTo(
-        0,
-        //
-        // Page middle
-        //
-        (today_rect.top + window.pageYOffset) - (window.innerHeight / 2)
-    );
-};
-center_today();
+document.getElementById('today').scrollIntoView({
+    block: 'center',
+    inline: 'center'
+});
 </script>

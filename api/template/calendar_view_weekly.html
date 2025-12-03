@@ -181,6 +181,8 @@ function auto_refresh(){
     hours = hours.toString().padStart(2, '0');
 
     {%- if base == 10 or base == 100 -%}
+        const TIME_SEPARATOR = ':';
+
         {%- if '!' in format_token -%}
             const PAIRS = {
                 '00': '󱸀󱸀', '01': '󱸀󱸁', '02': '󱸀󱸂', '03': '󱸀󱸃', '04': '󱸀󱸄', '05': '󱸀󱸅',
@@ -355,19 +357,13 @@ function auto_refresh(){
     };
 };
 auto_refresh();
+
 //
 // When first loading the page, makes
 // shure the current time is visible
 //
-function center_time_pointer() {
-    const time_pointer_rect = document.getElementById('time_pointer').getBoundingClientRect();
-    window.scrollTo(
-        0,
-        //
-        // Page middle
-        //
-        (time_pointer_rect.top + window.pageYOffset) - (window.innerHeight / 2)
-    );
-};
-center_time_pointer();
+document.getElementById('time_pointer').scrollIntoView({
+    block: 'center',
+    inline: 'center'
+});
 </script>

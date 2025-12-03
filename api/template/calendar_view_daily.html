@@ -504,19 +504,13 @@ function auto_refresh(){
     };
 };
 auto_refresh();
+
 //
 // When first loading the page, makes
 // shure the current time is visible
 //
-function center_time_pointer() {
-    const time_pointer_rect = document.getElementById('time_pointer').getBoundingClientRect();
-    window.scrollTo(
-        0,
-        //
-        // Page middle
-        //
-        (time_pointer_rect.top + window.pageYOffset) - (window.innerHeight / 2)
-    );
-};
-center_time_pointer();
+document.getElementById('time_pointer').scrollIntoView({
+    block: 'center',
+    inline: 'center'
+});
 </script>
