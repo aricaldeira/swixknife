@@ -892,6 +892,7 @@ class SezimalLocale:
         negative_format: str = '-{prefix}{value}{suffix}',
         recurring_digits_notation: bool | str | int | Decimal | Sezimal | SezimalInteger = False,
         native_digits: bool = True,
+        grouping_digits: int = 3,
     ) -> str:
         group_separator = self.GROUP_SEPARATOR if use_group_separator else ''
         subgroup_separator = self.SUBGROUP_SEPARATOR if use_subgroup_separator else ''
@@ -917,6 +918,7 @@ class SezimalLocale:
             positive_format,
             negative_format,
             recurring_digits_notation,
+            grouping_digits,
         )
 
         if (not sezimal_digits) and native_digits and self.DIGITS:

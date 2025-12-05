@@ -376,6 +376,7 @@ class SezimalCalculator:
             # 'niftimal_separator': '󱹮',
             # 'group_separator': ' ',
             # 'fraction_group_separator': ' ',
+            'grouping_digits': 2 if self.grouping_digits == 4 else 3,
         }
 
         if type(number) == str:
