@@ -2629,4 +2629,5 @@ TIME_ZONE_EQUIVALENCE.update({
     'US/Eastern': 'America/New_York',
     'GPM/GPM-03': 'America/Sao_Paulo',
     'Asia/Calcutta': 'Asia/Kolkata',
+    'Europe/Kiev': 'Europe/Kyiv',
 })
