@@ -9,8 +9,6 @@ from flask import Flask, request, render_template, redirect
 from flask import has_request_context
 from flask_sitemapper import Sitemapper
 
-import logging
-from logging.handlers import RotatingFileHandler
 from datetime import datetime
 
 from swixknife.localization import sezimal_locale, SezimalLocale
@@ -32,11 +30,6 @@ app.wsgi_app = ProxyFix(
 #     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 # ))
 app.template_folder = TEMPLATE_PATH
-
-log_handler = RotatingFileHandler(LOG_PATH, maxBytes=10000, backupCount=1)
-log_handler.setLevel(logging.INFO)
-app.logger.addHandler(log_handler)
-
 
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
@@ -87,7 +80,19 @@ from  locale_detection import browser_preferred_locale
 
 
 def log_access(f):
-    msg = f
+    if request.headers.get('X-Forwarded-For', '') == '177.139.219.194':
+        return
+
+    now = SezimalDateTime.now()
+    msg = now.format('#>Y-#m-#d #u:#p:#a')
+    msg += '||'
+    msg += now.format('&>Y-&m-&d #u:#p:#a')
+    msg += '||'
+    msg += now.format('%Y-%m-%d %H:%M:%S')
+    msg += '||'
+    msg += request.headers.get('X-Forwarded-For', '')
+    msg += '||'
+    msg += f
     msg += '||'
     msg += browser_preferred_locale()
     msg += '||'
@@ -95,10 +100,12 @@ def log_access(f):
     if 'sezimal' in request.cookies:
         msg += str(request.cookies['sezimal'])
 
-    if app.debug:
-        print(datetime.now(), msg)
-    else:
-        app.logger.info(msg)
+    print(msg)
+
+    if not app.debug:
+        with open(LOG_PATH, 'a') as log:
+            log.write(msg + '\n')
+            log.close()
 
 
 # @sitemapper.include(lastmod='2024-09-11', changefreq='weekly', priority=1)
