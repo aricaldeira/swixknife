@@ -135,11 +135,18 @@ date.SezimalDate.dcc_week_in_term = dcc_week_in_term
 
 
 @property
+def dcc_month_in_term(self) -> SezimalInteger:
+    return self.dcc_month - (self.dcc_term * 2)
+
+date.SezimalDate.dcc_month_in_term = dcc_month_in_term
+
+
+@property
 def dcc_total_days_in_year(self):
     if self.dcc_is_long_year:
-        return SezimalInteger(1405)
+        return SezimalInteger(1410)
 
-    return SezimalInteger(1355)
+    return SezimalInteger(1400)
 
 date.SezimalDate.dcc_total_days_in_year = dcc_total_days_in_year
 
@@ -147,9 +154,9 @@ date.SezimalDate.dcc_total_days_in_year = dcc_total_days_in_year
 @property
 def dcc_total_days_in_term(self):
     if self.dcc_is_long_year and self.dcc_term == 4:
-        return SezimalInteger(205)
+        return SezimalInteger(210)
 
-    return SezimalInteger(155)
+    return SezimalInteger(200)
 
 date.SezimalDate.dcc_total_days_in_term = dcc_total_days_in_term
 
@@ -157,16 +164,16 @@ date.SezimalDate.dcc_total_days_in_term = dcc_total_days_in_term
 @property
 def dcc_total_days_in_month(self):
     if self.dcc_month == 14:
-        return SezimalInteger(5)
+        return SezimalInteger(10)
 
-    return SezimalInteger(55)
+    return SezimalInteger(100)
 
 date.SezimalDate.dcc_total_days_in_month = dcc_total_days_in_month
 
 
 @property
 def dcc_total_days_in_week(self):
-    return SezimalInteger(5)
+    return SezimalInteger(10)
 
 date.SezimalDate.dcc_total_days_in_week = dcc_total_days_in_week
 
@@ -174,9 +181,9 @@ date.SezimalDate.dcc_total_days_in_week = dcc_total_days_in_week
 @property
 def dcc_total_weeks_in_year(self):
     if self.dcc_is_long_year:
-        return SezimalInteger(140)
+        return SezimalInteger(141)
 
-    return SezimalInteger(135)
+    return SezimalInteger(140)
 
 date.SezimalDate.dcc_total_weeks_in_year = dcc_total_weeks_in_year
 
@@ -184,18 +191,19 @@ date.SezimalDate.dcc_total_weeks_in_year = dcc_total_weeks_in_year
 @property
 def dcc_total_weeks_in_term(self):
     if self.dcc_is_long_year and self.dcc_term == 4:
-        return SezimalInteger(20)
+        return SezimalInteger(21)
 
-    return SezimalInteger(15)
+    return SezimalInteger(20)
 
 date.SezimalDate.dcc_total_weeks_in_term = dcc_total_weeks_in_term
 
 
+@property
 def dcc_total_weeks_in_month(self):
     if self.dcc_month == 14:
-        return SezimalInteger(0)
+        return SezimalInteger(1)
 
-    return SezimalInteger(5)
+    return SezimalInteger(10)
 
 date.SezimalDate.dcc_total_weeks_in_month = dcc_total_weeks_in_month
 
@@ -203,9 +211,9 @@ date.SezimalDate.dcc_total_weeks_in_month = dcc_total_weeks_in_month
 @property
 def dcc_total_months_in_year(self):
     if self.dcc_is_long_year:
-        return SezimalInteger(14)
+        return SezimalInteger(15)
 
-    return SezimalInteger(13)
+    return SezimalInteger(14)
 
 date.SezimalDate.dcc_total_months_in_year = dcc_total_months_in_year
 
@@ -213,9 +221,9 @@ date.SezimalDate.dcc_total_months_in_year = dcc_total_months_in_year
 @property
 def dcc_total_months_in_term(self):
     if self.dcc_is_long_year and self.dcc_term == 4:
-        return SezimalInteger(2)
+        return SezimalInteger(3)
 
-    return SezimalInteger(1)
+    return SezimalInteger(2)
 
 date.SezimalDate.dcc_total_months_in_term = dcc_total_months_in_term
 
@@ -229,7 +237,7 @@ date.SezimalDate.dcc_total_terms_in_year = dcc_total_terms_in_year
 
 @property
 def dcc_week_proportion_ellapsed(self) -> Sezimal:
-    return self.dcc_weekday / 5
+    return self.dcc_weekday / 10
 
 date.SezimalDate.dcc_week_proportion_ellapsed = dcc_week_proportion_ellapsed
 
@@ -456,6 +464,7 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
         ('dW', 'dcc_weekday', 'DCC_DAY_IN_WEEK_COUNT'),
         ('wY', 'dcc_week_in_year', 'DCC_WEEK_IN_YEAR_COUNT'),
         ('y', 'dcc_year', 'DCC_YEAR_COUNT'),
+        ('Y', 'dcc_year', 'DCC_YEAR_COUNT'),
         ('t', 'dcc_term', 'DCC_TERM_COUNT'),
         ('m', 'dcc_month', 'DCC_MONTH_COUNT'),
         ('w', 'dcc_week', 'DCC_WEEK_COUNT'),
@@ -593,9 +602,9 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
         else:
             if term_month_week == 'T':
                 if size == '@':
-                    text = locale.dcc_term_abbreviated_name(self.dcc_month)
+                    text = locale.dcc_term_abbreviated_name(self.dcc_term)
                 else:
-                    text = locale.dcc_term_name(self.dcc_month)
+                    text = locale.dcc_term_name(self.dcc_term)
             elif term_month_week == 'M':
                 if size == '@':
                     text = locale.dcc_month_abbreviated_name(self.dcc_month)

@@ -102,8 +102,8 @@ TIME_NUMBER_FORMAT_TOKENS = tuple(
 
 TIME_ZONE_OFFSET_FORMAT_TOKENS = tuple(
     (
-        re.compile(f'#{base}{colon}t'),
-        f'#{base}{colon}t'.replace('\\', ''), base.replace('\\', ''), colon.replace('\\', '')
+        re.compile(f'#{base}{colon}[tß]'),
+        f'#{base}{colon}[tß]'.replace('\\', ''), base.replace('\\', ''), colon.replace('\\', '')
     )
     for base, colon in product(
         ('', '@', '\\!', '@\\!', 'Z', '9', '↋', '99', '↋↋', '\\?', '9\\?', '↋\\?', 'Z\\?', '99\\?', '↋↋\\?'),
