@@ -90,20 +90,13 @@ cbrt\( cube root of
 3 three
 4 four
 5 five
-10 six
-11 seven
-12 eight
-13 nine
-14 ten
-15 eleven
-20 twelve
 
-2(\d) dozen $1 # [:en-US:]
-2(\d) dozen-$1
+10 six
+20 dozen
 30 thirsy
 40 foursy
 50 fifsy
-(\d)(\d) $(\10) $2 # [:en-US:]
+(\d)(\d) $(\10) $2 # [:en_US:]
 (\d)(\d) $(\10)-$2
 
 100 nif
