@@ -138,9 +138,11 @@ class SezimalLocaleZH(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#Y/#m/#d'
     DATE_LONG_FORMAT = '#Y年#m月#d日'
+    DATE_FULL_FORMAT = '#Y/#m/#d #@W'
+    DATE_FULL_LONG_FORMAT = '#Y年#m月#d日#W'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
-    DATE_TIME_LONG_FORMAT = '#Y年#-m月#-d日#W #u:#p:#a'
+    DATE_TIME_LONG_FORMAT = '#Y年#m月#d日#W#@W #u:#p:#a'
     DST_NAME = '夏时制'  # xià shí zhì
     DST_SHORT_NAME = '夏时制'
 

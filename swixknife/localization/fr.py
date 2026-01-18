@@ -93,6 +93,8 @@ class SezimalLocaleFR(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
+    DATE_FULL_FORMAT = '#@W, #d/#m/#Y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
@@ -230,8 +232,8 @@ class SezimalLocaleFR(SezimalLocale):
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y années',
-        SezimalInteger('1'): '&>Y année',
+        None: '&󱹭>Y années',
+        SezimalInteger('1'): '&󱹭>Y année',
     }
 
     DCC_TERM_COUNT = {
@@ -364,6 +366,7 @@ class SezimalLocaleFR(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mois &-m, semaine &-wM, jour &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mois &$DEM &cM, jour &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, mois &$DEM &cM, semaine &-wM, jour &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mois &$DEM &cM, semaine &$DEW &cW, jour &$DED &cD'
 
     _DE_LE_LA_MOIS = [

@@ -93,6 +93,8 @@ class SezimalLocaleEO(SezimalLocale):
     DATE_SEPARATOR = '-'
     DATE_FORMAT = '#d-#m-#Y'
     DATE_LONG_FORMAT = 'la #-d-an de #M #Y'
+    DATE_FULL_FORMAT = '#@W, #d-#m-#Y'
+    DATE_FULL_LONG_FORMAT = '#W, la #-d-an de #M #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d-#m-#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, la #-d-an de #M #Y, #u:#p:#a'
@@ -300,8 +302,8 @@ class SezimalLocaleEO(SezimalLocale):
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y jaroj',
-        SezimalInteger('1'): '&>Y jaro',
+        None: '&󱹭>Y jaroj',
+        SezimalInteger('1'): '&󱹭>Y jaro',
     }
 
     DCC_TERM_COUNT = {
@@ -452,6 +454,7 @@ class SezimalLocaleEO(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, monato &-m, semajno &-wM, tago &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, monato de &cM, tago &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, monato de &cM, semajno &-wM, tago &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, monato de &cM, semajno de la &cW, tago de &cD'
 
     HIJRI_CALENDAR_MONTH_NAME = [

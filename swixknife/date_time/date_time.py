@@ -668,6 +668,10 @@ class SezimalDateTime:
         return self._date.dcc_week_in_term
 
     @property
+    def dcc_month_in_term(self) -> SezimalInteger:
+        return self._date.dcc_month_in_term
+
+    @property
     def dcc_total_days_in_year(self):
         return self._date.dcc_total_days_in_year
 
@@ -691,6 +695,7 @@ class SezimalDateTime:
     def dcc_total_weeks_in_term(self):
         return self._date.dcc_total_weeks_in_term
 
+    @property
     def dcc_total_weeks_in_month(self):
         return self._date.dcc_total_weeks_in_month
 

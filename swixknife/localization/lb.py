@@ -73,6 +73,8 @@ class SezimalLocaleLB(SezimalLocaleFR_LU):
     DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#y'
     DATE_LONG_FORMAT = '#-d #M #y'
+    DATE_FULL_FORMAT = '#@W, #d.#m.#y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d #M #y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d.#m.#y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d #M #y, #u:#p:#a'

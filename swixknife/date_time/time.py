@@ -37,7 +37,7 @@ from .format_tokens import TIME_NUMBER_FORMAT_TOKENS, \
 
 
 class SezimalTime:
-    __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_shaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset'
+    __slots__ = '_uta', '_posha', '_agrima', '_anuga', '_boda', '_shaditiboda', '_day', '_time_zone', '_total_agrimas', '_iso_time', '_time_zone_offset', '_dst_offset', '_time_zone_spm_offset', '_dst_spm_offset'
 
     def __new__(
         cls,
@@ -131,6 +131,7 @@ class SezimalTime:
 
         self._time_zone = time_zone
         self._time_zone_offset, self._dst_offset = tz_agrimas_offset(time_zone, base_gregorian_date)
+        self._time_zone_spm_offset, self._dst_spm_offset = tz_agrimas_offset(time_zone, base_gregorian_date, from_spm=True)
 
         total_seconds = total_agrimas - (self._day * 1_000_000)
 
@@ -348,15 +349,6 @@ class SezimalTime:
         if not fmt:
             fmt = locale.TIME_FORMAT
 
-        #
-        # Locale’s time separator
-        #
-        if '#:' in fmt:
-            if locale:
-                fmt = fmt.replace('#:', locale.TIME_SEPARATOR)
-            else:
-                fmt = fmt.replace('#:', ':')
-
         for regex, token, base, zero, character, value_name, \
             size, size_niftimal, size_decimal in TIME_NUMBER_FORMAT_TOKENS:
             if not regex.findall(fmt):
@@ -378,21 +370,45 @@ class SezimalTime:
             if not regex.findall(fmt):
                 continue
 
-            if self._time_zone_offset == 0:
-                sign = '+'
-                uta = '00'
-                posha = '00'
-                agrima = '00'
+            tz_is_spm = 'SPM' in self.time_zone or 'Sezimal' in self.time_zone or 'Dozenal' in self.time_zone
+
+            if 'ß' in fmt:
+                if self._time_zone_spm_offset == 0:
+                    sign = '+'
+                    uta = '00'
+                    posha = '00'
+                    agrima = '00'
+                    anuga = '00'
+
+                else:
+                    if self._time_zone_spm_offset > 0:
+                        sign = '+'
+                    else:
+                        sign = '−'
+
+                    uta = str(SezimalInteger(abs(self._time_zone_spm_offset / 10000))).zfill(4)[-2:]
+                    posha = str(SezimalInteger(abs(self._time_zone_spm_offset / 100))).zfill(4)[-2:]
+                    agrima = str(SezimalInteger(round(self._time_zone_spm_offset, 0))).zfill(6)[-2:]
+                    anuga = str(SezimalInteger(round(self._time_zone_spm_offset * 100, 0))).zfill(8)[-2:]
 
             else:
-                if self._time_zone_offset > 0:
+                if self._time_zone_offset == 0:
                     sign = '+'
-                else:
-                    sign = '−'
+                    uta = '00'
+                    posha = '00'
+                    agrima = '00'
+                    anuga = '00'
 
-                uta = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[0:2]
-                posha = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[2:4]
-                agrima = str(SezimalInteger(round(self._time_zone_offset, 0))).zfill(6)[4:6]
+                else:
+                    if self._time_zone_offset > 0:
+                        sign = '+'
+                    else:
+                        sign = '−'
+
+                    uta = str(SezimalInteger(abs(self._time_zone_offset / 10000))).zfill(4)[-2:]
+                    posha = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[-2:]
+                    agrima = str(SezimalInteger(round(self._time_zone_offset, 0))).zfill(6)[-2:]
+                    anuga = str(SezimalInteger(round(self._time_zone_offset * 100, 0))).zfill(8)[-2:]
 
             if '@' in base or 'Z' in base:
                 uta = locale.format_niftimal_number(
@@ -413,55 +429,76 @@ class SezimalTime:
                     sezimal_digits='!' in base,
                     regularized_digits='@' in base,
                 )
+                anuga = locale.format_niftimal_number(
+                    SezimalInteger(anuga),
+                    niftimal_places=0,
+                    sezimal_digits='!' in base,
+                    regularized_digits='@' in base,
+                )
 
-            elif '9' in base and '99' not in base:
-                uta = locale.format_decimal_number(
-                    SezimalInteger(uta),
-                    decimal_places=0,
-                ).zfill(2)
-                posha = locale.format_decimal_number(
-                    SezimalInteger(posha),
-                    decimal_places=0,
-                ).zfill(2)
-                agrima = locale.format_decimal_number(
-                    SezimalInteger(agrima),
-                    decimal_places=0,
-                ).zfill(2)
+            # elif '9' in base and '99' not in base:
+            #     uta = locale.format_decimal_number(
+            #         SezimalInteger(uta),
+            #         decimal_places=0,
+            #     ).zfill(2)
+            #     posha = locale.format_decimal_number(
+            #         SezimalInteger(posha),
+            #         decimal_places=0,
+            #     ).zfill(2)
+            #     agrima = locale.format_decimal_number(
+            #         SezimalInteger(agrima),
+            #         decimal_places=0,
+            #     ).zfill(2)
+            #     anuga = locale.format_decimal_number(
+            #         SezimalInteger(anuga),
+            #         decimal_places=0,
+            #     ).zfill(2)
+            #
+            # elif '↋' in base and '↋↋' not in base:
+            #     uta = locale.format_dozenal_number(
+            #         SezimalInteger(uta),
+            #         dozenal_places=0,
+            #     ).zfill(2)
+            #     posha = locale.format_dozenal_number(
+            #         SezimalInteger(posha),
+            #         dozenal_places=0,
+            #     ).zfill(2)
+            #     agrima = locale.format_dozenal_number(
+            #         SezimalInteger(agrima),
+            #         dozenal_places=0,
+            #     ).zfill(2)
+            #     anuga = locale.format_dozenal_number(
+            #         SezimalInteger(anuga),
+            #         dozenal_places=0,
+            #     ).zfill(2)
 
-            elif '↋' in base and '↋↋' not in base:
-                uta = locale.format_dozenal_number(
-                    SezimalInteger(uta),
-                    dozenal_places=0,
-                ).zfill(2)
-                posha = locale.format_dozenal_number(
-                    SezimalInteger(posha),
-                    dozenal_places=0,
-                ).zfill(2)
-                agrima = locale.format_dozenal_number(
-                    SezimalInteger(agrima),
-                    dozenal_places=0,
-                ).zfill(2)
-
-            elif '99' in base:
-                decimal_time = str(Sezimal(f'0.{uta}{posha}').decimal).split('.')[1][0:6]
+            # elif '99' in base:
+            elif '9' in base:
+                decimal_time = str(
+                    round(Sezimal(f'0.{uta}{posha}{agrima}{anuga}').decimal, 8)
+                ).split('.')[1]
                 uta = decimal_time[0:2]
                 posha = decimal_time[2:4]
                 agrima = decimal_time[4:6]
+                anuga = decimal_time[6:8]
 
-            elif '↋↋' in base:
-                dozenal_time = locale.format_dozenal_number(
-                    Sezimal(f'0.{uta}{posha}'),
-                    dozenal_places=10,
-                    use_fraction_group_separator=False,
-                ).split(locale.SEZIMAL_SEPARATOR)[1]
+            # elif '↋↋' in base:
+            elif '↋' in base:
+                dozenal_time = str(
+                    round(Dozenal(Sezimal(f'0.{uta}{posha}{agrima}{anuga}')), 8)
+                ).split('.')[1]
                 uta = dozenal_time[0:2]
                 posha = dozenal_time[2:4]
                 agrima = dozenal_time[4:6]
+                anuga = dozenal_time[6:8]
 
             text = f'{sign}{uta}{colon}{posha}'
 
             if agrima != '00':
                 text += f'{colon}{agrima}'
+
+            if anuga != '00':
+                text += f'{colon}{anuga}'
 
             if '!' in token:
                 text = default_to_sezimal_digits(text)
@@ -473,6 +510,15 @@ class SezimalTime:
                 text = '\N{LRI}' + text + '\N{PDI}'
 
             fmt = regex.sub(text, fmt)
+
+        #
+        # Locale’s time separator
+        #
+        if '#:' in fmt:
+            if locale:
+                fmt = fmt.replace('#:', locale.TIME_SEPARATOR)
+            else:
+                fmt = fmt.replace('#:', ':')
 
         if '#T' in fmt:
             fmt = fmt.replace('#T', self.time_zone)
@@ -586,75 +632,148 @@ class SezimalTime:
 
                 fmt = regex.sub(value, fmt)
 
-            if '%z' in fmt or '%5z':
-                if self._time_zone_offset == 0:
+            if '%z' in fmt or '%5z' in fmt or '%↋z' in fmt \
+                or '%:z' in fmt or '%5:z' in fmt or '%↋:z' in fmt \
+                or '%ß' in fmt or '%5ß' in fmt or '%↋ß' in fmt \
+                or '%:ß' in fmt or '%5:ß' in fmt or '%↋:ß' in fmt:
+
+                if 'z' in fmt and self._time_zone_offset == 0:
                     if locale and locale.RTL:
                         fmt = fmt.replace('%z', '\N{LRI}+0000\N{PDI}')
                         fmt = fmt.replace('%5z', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%↋z', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%:z', '\N{LRI}+00:00\N{PDI}')
+                        fmt = fmt.replace('%:5z', '\N{LRI}+00:00\N{PDI}')
+                        fmt = fmt.replace('%:↋z', '\N{LRI}+00:00\N{PDI}')
                     else:
                         fmt = fmt.replace('%z', '+0000')
                         fmt = fmt.replace('%5z', '+0000')
-                else:
-                    if self._time_zone_offset > 0:
-                        text = '+'
-                    else:
-                        text = '−'
-
-                    tzo = SezimalInteger(abs(self._time_zone_offset / 100))
-                    tzo /= 100
-                    tzo = sezimal_to_decimal_unit(tzo, 'uta', 'h')
-                    tzo_hour = int(tzo.decimal)
-                    tzo_minute = int((tzo.decimal - tzo_hour) * 60)
-
-                    if '%5z' in fmt:
-                        text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
-
-                        if locale and locale.RTL:
-                            text = '\N{LRI}' + text + '\N{PDI}'
-
-                        fmt = fmt.replace('%5z', text)
-                    else:
-                        text += str(tzo_hour).zfill(2) + str(tzo_minute).zfill(2)
-
-                        if locale and locale.RTL:
-                            text = '\N{LRI}' + text + '\N{PDI}'
-
-                        fmt = fmt.replace('%z', text)
-
-            if '%:z' in fmt or '%:5z' in fmt:
-                if self._time_zone_offset == 0:
-                    if locale and locale.RTL:
-                        fmt = fmt.replace('%:z', '\N{LRI}+00:00\N{PDI}')
-                        fmt = fmt.replace('%:5z', '\N{LRI}+00:00\N{PDI}')
-                    else:
+                        fmt = fmt.replace('%↋z', '+0000')
                         fmt = fmt.replace('%:z', '+00:00')
-                        fmt = fmt.replace('%:5z', '+00:00')
+                        fmt = fmt.replace('%5:z', '+00:00')
+                        fmt = fmt.replace('%↋:z', '+00:00')
+
+                elif 'ß' in fmt and self._time_zone_spm_offset == 0:
+                    if locale and locale.RTL:
+                        fmt = fmt.replace('%ß', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%5ß', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%↋ß', '\N{LRI}+0000\N{PDI}')
+                        fmt = fmt.replace('%:ß', '\N{LRI}+00:00\N{PDI}')
+                        fmt = fmt.replace('%:5ß', '\N{LRI}+00:00\N{PDI}')
+                        fmt = fmt.replace('%:↋ß', '\N{LRI}+00:00\N{PDI}')
+                    else:
+                        fmt = fmt.replace('%ß', '+0000')
+                        fmt = fmt.replace('%5ß', '+0000')
+                        fmt = fmt.replace('%↋ß', '+0000')
+                        fmt = fmt.replace('%:ß', '+00:00')
+                        fmt = fmt.replace('%5:ß', '+00:00')
+                        fmt = fmt.replace('%↋:ß', '+00:00')
+
                 else:
-                    if self._time_zone_offset > 0:
-                        text = '+'
+                    if 'z' in fmt:
+                        tzo = (abs(self._time_zone_offset) / 1_000_000).decimal
+
+                        if self._time_zone_offset > 0:
+                            text = '+'
+                        else:
+                            text = '−'
                     else:
-                        text = '−'
+                        tzo = (abs(self._time_zone_spm_offset) / 1_000_000).decimal
 
-                    tzo = SezimalInteger(abs(self._time_zone_offset / 100))
-                    tzo /= 100
-                    tzo = sezimal_to_decimal_unit(tzo, 'uta', 'h')
-                    tzo_hour = int(tzo.decimal)
-                    tzo_minute = int((tzo.decimal - tzo_hour) * 60)
+                        if self._time_zone_spm_offset > 0:
+                            text = '+'
+                        else:
+                            text = '−'
 
-                    if '%:5z' in fmt:
-                        text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2) + ':' + str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+                    tzo_hour = int(tzo * 24)
+                    tzo = (tzo * 24) - tzo_hour
+                    tzo_minute = int(tzo * 60)
+                    tzo = (tzo * 60) - tzo_minute
+                    tzo_second = int(tzo * 60)
+
+                    if '%5' in fmt:
+                        text += str(SezimalInteger(Decimal(tzo_hour))).zfill(2)
+
+                        if ':' in fmt:
+                            text += ':'
+
+                        text += str(SezimalInteger(Decimal(tzo_minute))).zfill(3)
+
+                        if tzo_second > 0:
+                            if ':' in fmt:
+                                text += ':'
+
+                            text += str(SezimalInteger(Decimal(tzo_second))).zfill(3)
 
                         if locale and locale.RTL:
                             text = '\N{LRI}' + text + '\N{PDI}'
 
-                        fmt = fmt.replace('%:5z', text)
-                    else:
-                        text += str(tzo_hour).zfill(2) + ':' + str(tzo_minute).zfill(2)
+                        if 'z' in fmt:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%5:z', text)
+                            else:
+                                fmt = fmt.replace('%5z', text)
+                        else:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%5:ß', text)
+                            else:
+                                fmt = fmt.replace('%5ß', text)
+
+                    elif '%↋' in fmt:
+                        text += str(DozenalInteger(Decimal(tzo_hour))).zfill(2)
+
+                        if ':' in fmt:
+                            text += ':'
+
+                        text += str(DozenalInteger(Decimal(tzo_minute))).zfill(2)
+
+                        if tzo_second > 0:
+                            if ':' in fmt:
+                                text += ':'
+
+                            text += str(DozenalInteger(Decimal(tzo_second))).zfill(2)
 
                         if locale and locale.RTL:
                             text = '\N{LRI}' + text + '\N{PDI}'
 
-                        fmt = fmt.replace('%:z', text)
+                        if 'z' in fmt:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%↋:z', text)
+                            else:
+                                fmt = fmt.replace('%↋z', text)
+                        else:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%↋:ß', text)
+                            else:
+                                fmt = fmt.replace('%↋ß', text)
+
+                    else:
+                        text += str(tzo_hour).zfill(2)
+
+                        if ':' in fmt:
+                            text += ':'
+
+                        text += str(tzo_minute).zfill(2)
+
+                        if tzo_second > 0:
+                            if ':' in fmt:
+                                text += ':'
+
+                            text += str(tzo_second).zfill(2)
+
+                        if locale and locale.RTL:
+                            text = '\N{LRI}' + text + '\N{PDI}'
+
+                        if 'z' in fmt:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%:z', text)
+                            else:
+                                fmt = fmt.replace('%z', text)
+                        else:
+                            if ':' in fmt:
+                                fmt = fmt.replace('%:ß', text)
+                            else:
+                                fmt = fmt.replace('%ß', text)
 
             if '%Z' in fmt:
                 fmt = fmt.replace('%Z', self.time_zone)

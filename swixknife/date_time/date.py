@@ -1193,19 +1193,19 @@ class SezimalDate:
 
     @property
     def week_proportion_ellapsed(self) -> Sezimal:
-        return self.weekday / 11
+        return (self.weekday - 1) / 11
 
     @property
     def month_proportion_ellapsed(self) -> Sezimal:
-        return self.day / self.total_days_in_month
+        return (self.day - 1) / self.total_days_in_month
 
     @property
     def quarter_proportion_ellapsed(self) -> Sezimal:
-        return self.day_in_quarter / self.total_days_in_quarter
+        return (self.day_in_quarter - 1) / self.total_days_in_quarter
 
     @property
     def year_proportion_ellapsed(self) -> Sezimal:
-        return self.day_in_year / self.total_days_in_year
+        return (self.day_in_year - 1) / self.total_days_in_year
 
     def julian_date(self, locale: SezimalLocale = None):
         if not CAN_CONVERT_CALENDARS:

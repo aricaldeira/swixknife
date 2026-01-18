@@ -77,6 +77,8 @@ class SezimalLocaleHU(SezimalLocale):
     DATE_SEPARATOR = '. '
     DATE_FORMAT = '#y. #m. #d.'
     DATE_LONG_FORMAT = '#y. #M #-d.'
+    DATE_FULL_FORMAT = '#y. #m. #d. #@W'
+    DATE_FULL_LONG_FORMAT = '#y. #M #-d., #W'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#y. #m. #d. #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#y. #M #-d., #W, #u:#p:#a'

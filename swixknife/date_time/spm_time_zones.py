@@ -5,6 +5,7 @@
 
 
 TO_SEZIMAL_TIME_ZONE = {
+    'SPM': 'SPM/SPM',
     'SPM/SPM-12': 'Sezimal/SPM-30',
     'SPM/SPM-1150': 'Sezimal/SPM-2543',
     'SPM/SPM-1140': 'Sezimal/SPM-2530',
@@ -878,6 +879,7 @@ TO_SEZIMAL_TIME_ZONE = {
 }
 
 TO_SPM_TIME_ZONE = {
+    'SPM': 'SPM/SPM',
     'Sezimal/SPM-30': 'SPM/SPM-12',
     'Sezimal/SPM-2543': 'SPM/SPM-1150',
     'Sezimal/SPM-2530': 'SPM/SPM-1140',
@@ -1751,6 +1753,7 @@ TO_SPM_TIME_ZONE = {
 }
 
 TO_DOZENAL_TIME_ZONE = {
+    'SPM': 'SPM/SPM',
     'Sezimal/SPM-30': 'Dozenal/SPM-60',
     'Sezimal/SPM-2543': 'Dozenal/SPM-5B',
     'Sezimal/SPM-2530': 'Dozenal/SPM-5A',

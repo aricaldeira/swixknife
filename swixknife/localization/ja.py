@@ -134,8 +134,10 @@ class SezimalLocaleJA(SezimalLocale):
     ]
 
     DATE_SEPARATOR = '/'
-    DATE_FORMAT = '#Y/#m/#d'
-    DATE_LONG_FORMAT = '#Y年#m月#d日'
+    DATE_FORMAT = '#Y/#m/#d #@W'
+    DATE_LONG_FORMAT = '#Y年#m月#d日#W'
+    DATE_FULL_FORMAT = '#Y/#m/#d'
+    DATE_FULL_LONG_FORMAT = '#Y年#m月#d日'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#Y年#-m月#-d日#W #u:#p:#a'
