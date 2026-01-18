@@ -89,6 +89,8 @@ class SezimalLocaleFA_LATN(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O e #M e #Y'
+    DATE_FULL_FORMAT = '#@W, #d/#m/#Y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d#O e #M e #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d/#m/#Y #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #d#O e #M e #Y, #u:#p:#a'

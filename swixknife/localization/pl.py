@@ -278,6 +278,8 @@ class SezimalLocalePL(SezimalLocale):
     DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#Y'
     DATE_LONG_FORMAT = '#-d. #$GM #Y r.'
+    DATE_FULL_FORMAT = '#@W, #d.#m.#Y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d. #$GM #Y r.'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d. #$GM #Y r., #u:#p:#a'

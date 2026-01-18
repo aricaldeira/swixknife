@@ -306,6 +306,8 @@ class SezimalLocaleLAT(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#$ND #$GM #Y'
+    DATE_FULL_FORMAT = '#@W, #d/#m/#Y'
+    DATE_FULL_LONG_FORMAT = '#W, #$ND #$GM #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #$ND #$GM #Y, #u:#p:#a'
@@ -584,8 +586,8 @@ class SezimalLocaleLAT(SezimalLocale):
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y annī',
-        SezimalInteger('1'): '&>Y annus',
+        None: '&󱹭>Y annī',
+        SezimalInteger('1'): '&󱹭>Y annus',
     }
 
     DCC_TERM_COUNT = {

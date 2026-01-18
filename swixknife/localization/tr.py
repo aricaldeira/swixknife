@@ -88,6 +88,8 @@ class SezimalLocaleTR(SezimalLocale):
     DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#X'
     DATE_LONG_FORMAT = '#-d #M #Y'
+    DATE_FULL_FORMAT = '#d.#m.#X, #@W'
+    DATE_FULL_LONG_FORMAT = '#-d #M #Y, #W'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#d.#m.#X, #@W, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#-d #M #Y, #W, #u:#p:#a'

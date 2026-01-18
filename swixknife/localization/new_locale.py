@@ -82,6 +82,8 @@ class SezimalLocale{locale_class}(SezimalLocale):
 
     DATE_FORMAT = '{locale.DATE_FORMAT}'
     DATE_LONG_FORMAT = '{locale.DATE_LONG_FORMAT}'
+    DATE_FULL_FORMAT = '{locale.DATE_FULL_FORMAT}'
+    DATE_FULL_LONG_FORMAT = '{locale.DATE_FULL_LONG_FORMAT}'
     TIME_FORMAT = '{locale.TIME_FORMAT}'
     DATE_TIME_FORMAT = '{locale.DATE_TIME_FORMAT}'
     DATE_TIME_LONG_FORMAT = '{locale.DATE_TIME_LONG_FORMAT}'

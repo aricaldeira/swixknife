@@ -22,6 +22,8 @@ class SezimalLocaleISO(SezimalLocale):
     DATE_SEPARATOR = '-'
     DATE_FORMAT = '#y-#m-#d'
     DATE_LONG_FORMAT = '#y-W#wY-#w'
+    DATE_FULL_FORMAT = '#y-#m-#d'
+    DATE_FULL_LONG_FORMAT = '#y-W#wY-#w'
     TIME_FORMAT = '#u:#p:#a#:t'
     DATE_TIME_FORMAT = '#y-#m-#dT#u:#p:#a#:t'
     DATE_TIME_LONG_FORMAT = '#y-W#wY-#w #u:#p:#a#:t'

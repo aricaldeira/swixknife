@@ -73,6 +73,8 @@ class SezimalLocaleSV(SezimalLocale):
     DATE_SEPARATOR = '-'
     DATE_FORMAT = '#Y-#m-#d'
     DATE_LONG_FORMAT = '#-d #M #Y'
+    DATE_FULL_FORMAT = '#Y-#m-#d'
+    DATE_FULL_LONG_FORMAT = '#-d #M #Y'
     TIME_SEPARATOR = '.'
     TIME_FORMAT = '#u.#p.#a'
     DATE_TIME_FORMAT = '#Y-#m-#d #u.#p.#a'

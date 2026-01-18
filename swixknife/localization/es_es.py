@@ -11,6 +11,7 @@ class SezimalLocaleES_ES(SezimalLocaleES):
     LANGUAGE = 'español de España'
 
     DATE_LONG_FORMAT = '#-d de #M de #Y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d de #M de #Y'
     DATE_TIME_LONG_FORMAT = '#W, #-d de #M de #Y, #u:#p:#a'
 
     CURRENCY_UNIT_SYMBOL = '€'

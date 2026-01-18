@@ -126,6 +126,8 @@ class SezimalLocaleKO(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#Y/#m/#d'
     DATE_LONG_FORMAT = '#Y년 #M #-d일'
+    DATE_FULL_FORMAT = '#Y/#m/#d #@W'
+    DATE_FULL_LONG_FORMAT = '#Y년 #M #-d일 #W'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y/#m/#d #@W #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#Y년 #M #-d일 #W #u:#p:#a'

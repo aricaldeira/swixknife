@@ -93,6 +93,8 @@ class SezimalLocaleAR(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#?d/#?m/#?Y'
     DATE_LONG_FORMAT = '#?-d #M #?Y'
+    DATE_FULL_FORMAT = '#?d/#?m/#?Y #@W'
+    DATE_FULL_LONG_FORMAT = '#?-d #M #?Y #W'
     TIME_FORMAT = '\N{LRI}#?u:#?p:#?a\N{PDI}'
     DATE_TIME_FORMAT = '#?-d/#?m/#?Y \N{LRI}#?u:#?p:#?a\N{PDI}'
     DATE_TIME_LONG_FORMAT = '#?d/#?m/#?Y #@W \N{LRI}#?u:#?p:#?a\N{PDI}'

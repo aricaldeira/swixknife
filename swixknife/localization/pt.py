@@ -95,6 +95,8 @@ class SezimalLocalePT(SezimalLocale):
     DATE_SEPARATOR = '/'
     DATE_FORMAT = '#d/#m/#Y'
     DATE_LONG_FORMAT = '#-d#O de #M de #Y'
+    DATE_FULL_FORMAT = '#@W, #d/#m/#Y'
+    DATE_FULL_LONG_FORMAT = '#W, #-d#O de #M de #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d/#m/#Y, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O de #M de #Y, #u:#p:#a'
@@ -701,6 +703,7 @@ class SezimalLocalePT(SezimalLocale):
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mês &-m, semana &-wM, dia &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mês &$DEM &cM, dia &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, mês &$DEM &cM, semana &-wM, dia &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mês &$DEM &cM, semana &$DEW &cW, dia &$DED &cD'
 
     _DE_DO_DA_MES = [

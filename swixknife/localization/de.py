@@ -89,6 +89,8 @@ class SezimalLocaleDE(SezimalLocale):
     DATE_SEPARATOR = '.'
     DATE_FORMAT = '#d.#m.#X'
     DATE_LONG_FORMAT = '#-d#O #M #Y'
+    DATE_FULL_FORMAT = '#@W, #d.#m.#X'
+    DATE_FULL_LONG_FORMAT = '#W, #-d#O #M #Y'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#@W, #d.#m.#X, #u:#p:#a'
     DATE_TIME_LONG_FORMAT = '#W, #-d#O #M #Y, #u:#p:#a'
@@ -200,8 +202,8 @@ class SezimalLocaleDE(SezimalLocale):
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y Jahre',
-        SezimalInteger('1'): '&>Y Jahr',
+        None: '&󱹭>Y Jahre',
+        SezimalInteger('1'): '&󱹭>Y Jahr',
     }
 
     DCC_TERM_COUNT = {

@@ -163,6 +163,8 @@ class SezimalLocale:
     DATE_SEPARATOR = '-'
     DATE_FORMAT = '#Y-#m-#d'
     DATE_LONG_FORMAT = '#Y-#m-#d'
+    DATE_FULL_FORMAT = '#Y-#m-#d #@W'
+    DATE_FULL_LONG_FORMAT = '#Y-#m-#d #@W'
     TIME_SEPARATOR = ':'
     TIME_FORMAT = '#u:#p:#a'
     DATE_TIME_FORMAT = '#Y-#m-#d #@W #u:#p:#a'
@@ -178,6 +180,14 @@ class SezimalLocale:
     @property
     def ISO_DATE_LONG_FORMAT(self):
         return self._to_iso_date_format(self.DATE_LONG_FORMAT)
+
+    @property
+    def ISO_DATE_FULL_FORMAT(self):
+        return self._to_iso_date_format(self.DATE_FULL_FORMAT)
+
+    @property
+    def ISO_DATE_FULL_LONG_FORMAT(self):
+        return self._to_iso_date_format(self.DATE_FULL_LONG_FORMAT)
 
     ISO_TIME_FORMAT = '%H:%M:%S'
 
@@ -436,6 +446,7 @@ class SezimalLocale:
 
     DEFAULT_HEMISPHERE = 'N'  # Use 'S' for Southern or 'N' for Northern
     DEFAULT_TIME_ZONE = 'UTC'
+    DEFAULT_SPM_TIME_ZONE = 'SPM/SPM'
     AM = 'am'
     PM = 'pm'
 
@@ -1199,7 +1210,7 @@ class SezimalLocale:
         number = str(number)
 
         if lang is None:
-            lang = self.LANG
+            lang = self.LANGUAGE_TAG
 
         return sezimal_spellout(number, lang)
 
@@ -1504,6 +1515,8 @@ class SezimalLocale:
 
         self.DATE_FORMAT = _to_short_year_format(self.DATE_FORMAT)
         self.DATE_LONG_FORMAT = _to_short_year_format(self.DATE_LONG_FORMAT)
+        self.DATE_FULL_FORMAT = _to_short_year_format(self.DATE_FULL_FORMAT)
+        self.DATE_FULL_LONG_FORMAT = _to_short_year_format(self.DATE_FULL_LONG_FORMAT)
         self.DATE_TIME_FORMAT = _to_short_year_format(self.DATE_TIME_FORMAT)
         self.DATE_TIME_LONG_FORMAT = _to_short_year_format(self.DATE_TIME_LONG_FORMAT)
 
@@ -1516,6 +1529,9 @@ class SezimalLocale:
         for attr in (
             'DCC_DATE_FORMAT',
             'DCC_DATE_LONG_FORMAT',
+            'DCC_DATE_LONG_FORMAT_DAYS',
+            'DCC_DATE_LONG_FORMAT_WEEKS',
+            'DCC_DATE_LONG_FORMAT_MONTHS_WEEKS',
             'DCC_YEAR_FORMAT',
             'DCC_YEAR_TEXT_MONTH_FORMAT',
             'DCC_TEXT_SHORT_MONTH_DAY_FORMAT',
@@ -1524,6 +1540,13 @@ class SezimalLocale:
             'ADC_DATE_FORMAT',
             'ADC_DATE_LONG_FORMAT',
             'ADC_YEAR_TEXT_MONTH_FORMAT',
+            'ADC_DATE_LONG_FORMAT_ON_DATE',
+            'ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS',
+            'ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY',
+            'DCC_DATE_LONG_FORMAT_ON_DATE',
+            'DCC_DATE_LONG_FORMAT_ON_DATE_DAYS',
+            'DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS',
+            'DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS',
         ):
             value = getattr(self, attr)
             value = value.replace('&', '&' + token)
@@ -1615,6 +1638,8 @@ class SezimalLocale:
 
         self.DATE_FORMAT = conversion_function(self.DATE_FORMAT)
         self.DATE_LONG_FORMAT = conversion_function(self.DATE_LONG_FORMAT)
+        self.DATE_FULL_FORMAT = conversion_function(self.DATE_FULL_FORMAT)
+        self.DATE_FULL_LONG_FORMAT = conversion_function(self.DATE_FULL_LONG_FORMAT)
         self.DATE_TIME_FORMAT = conversion_function(self.DATE_TIME_FORMAT)
         self.DATE_TIME_LONG_FORMAT = conversion_function(self.DATE_TIME_LONG_FORMAT)
 
@@ -1642,21 +1667,22 @@ class SezimalLocale:
             self.TIME_FORMAT = self.ISO_TIME_FORMAT
             self._dcc_to_adc_format('c9')
             self.DCC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
-            self.ADC_DATE_FORMAT = self.ADC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
-            self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c9d', '&-wM&DS&-w')
-            self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            self.ADC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            # self.DCC_DATE_LONG_FORMAT = self.DCC_DATE_LONG_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            # self.ADC_DATE_FORMAT = self.ADC_DATE_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            # self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c9d', '&-wM&DS&-w')
+            # self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c9d', '&-wM&DS&-w')
 
         elif base == 20:
             self.DIGITS = []
-            self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
-            self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, '#3.2fD')
-            self.TIME_FORMAT = '#3.2fD'
+            self.DATE_TIME_FORMAT = self.DATE_TIME_FORMAT.replace(self.TIME_FORMAT, '#↋3.2fD')
+            self.DATE_TIME_LONG_FORMAT = self.DATE_TIME_LONG_FORMAT.replace(self.TIME_FORMAT, '#↋3.2fD')
+            self.TIME_FORMAT = '#↋3.2fD'
             self._dcc_to_adc_format('c↋')
             self.DCC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w').replace('&c↋m', '&c↋-m')
             self.ADC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w').replace('&c↋m', '&c↋-m')
-            self.ADC_DATE_FORMAT = self.DCC_DATE_FORMAT.replace('&c↋d', '&-wM&DS&-w')
-            self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c↋d', '&-wM&DS&-w')
-            self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c↋d', '&-wM&DS&-w')
+            # self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT = self.DCC_DATE_TEXT_SHORT_MONTH_FORMAT.replace('&c↋d', '&-wM&DS&-w')
+            # self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT = self.DCC_TEXT_SHORT_MONTH_DAY_FORMAT.replace('&c↋d', '&-wM&DS&-w')
 
         if base == 14 or base == 20:
             self.MONTH_NAME = self.ISO_MONTH_NAME
@@ -2020,8 +2046,8 @@ class SezimalLocale:
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y years',
-        SezimalInteger('1'): '&>Y year',
+        None: '&󱹭>Y years',
+        SezimalInteger('1'): '&󱹭>Y year',
     }
 
     DCC_TERM_COUNT = {
@@ -2299,4 +2325,5 @@ class SezimalLocale:
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, month &-m, week &-wM, day &-dW'
 
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, month of &cM, day &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, month of &cM, week &-wM, day &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, month of &cM, week of the &cW, day of &cD'

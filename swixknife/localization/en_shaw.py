@@ -189,8 +189,8 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ]
 
     DCC_YEAR_COUNT = {
-        None: '&>Y 𐑘𐑼𐑟',
-        SezimalInteger('1'): '&>Y 𐑘𐑼',
+        None: '&󱹭>Y 𐑘𐑼𐑟',
+        SezimalInteger('1'): '&󱹭>Y 𐑘𐑼',
     }
 
     DCC_TERM_COUNT = {
@@ -336,4 +336,5 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, 𐑢𐑰𐑒 &-wY, 𐑛𐑱 &-dW'
     DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, 𐑥𐑩𐑯𐑔 &-m, 𐑢𐑰𐑒 &-wM, 𐑛𐑱 &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑛𐑱 &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑢𐑰𐑒 &-wM, 𐑛𐑱 &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑢𐑰𐑒 𐑝 &cW, 𐑛𐑱 𐑝 &cD'
