@@ -345,6 +345,37 @@ def from_sezimal_rata_die(rata_die: float = None, locale: str ='en', time_zone: 
     return _date_to_json(sdt, locale)
 
 
+@app.route('/api/decimal/date-time')
+@app.route('/api/decimal/date-time/from-rata-die')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die')
+@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>')
+@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>/<string:locale>')
+@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/<string:locale>')
+@app.route('/api/decimal/date-time/from-rata-die/<string:locale>')
+@app.route('/api/decimal/date-time/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/from-rata-die/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die/<string:locale>')
+@app.route('/api/decimal/date-time/from-sezimal-rata-die/<string:locale>/<path:time_zone>')
+def from_sezimal_decimal_rata_die(rata_die: float = None, locale: str ='en', time_zone: str = None) -> dict:
+    locale = sezimal_locale(locale)
+    locale.to_decimal_base()
+    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
+
+    if rata_die is None:
+        return _date_to_json(SezimalDateTime.now(time_zone), locale)
+
+    rata_die = Sezimal(str(rata_die))
+
+    sdt = SezimalDateTime.from_days(rata_die, 'UTC')
+    sdt = sdt.at_time_zone(time_zone)
+
+    return _date_to_json(sdt, locale)
+
+
 @app.route('/api/format/<string:locale>/<path:time_zone>')
 def api_date(locale: str = None, time_zone: str = None) -> str:
     locale = sezimal_locale(locale or 'en')

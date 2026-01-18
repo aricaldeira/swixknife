@@ -36,6 +36,11 @@ VALID_MONTH_DAY_OTHER_CALENDAR_STRING = re.compile(r'^SEZ[+-−][0-5]{2}-[0-5]{2
 VALID_EASTER_DATE_STRING = re.compile(r'(SEZ[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-5]{1,4})?|((SYM|ISO|GRE|JUL|HEB|JEW|CHR|ORT)[+-−])?(EASTER|PESACH|PASCHA|PASKHA)([+-][0-9]{1,4})?')
 
 #
+# SPM time offset
+#
+SPM_OFFSET_AGRIMAS = Sezimal('10_534.3') # 1498.5_dec → 2775_dec seconds
+
+#
 # ISO Epoch
 #
 ISO_EPOCH = SezimalInteger('1')
@@ -356,7 +361,13 @@ def timestamp_to_ordinal_date_and_agrima(timestamp: int | float | Decimal | Sezi
     return ordinal_date, agrimas
 
 
-def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None):
+def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None, from_spm: bool = False):
+    if from_spm:
+        total_agrimas, total_agrimas_dst = tz_agrimas_offset(
+            time_zone, base_gregorian_date, from_spm=False
+        )
+        return total_agrimas - SPM_OFFSET_AGRIMAS, total_agrimas_dst - SPM_OFFSET_AGRIMAS
+
     if not time_zone:
         time_zone = system_time_zone()
 
@@ -386,8 +397,8 @@ def tz_agrimas_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: st
     return total_agrimas, total_agrimas_dst
 
 
-def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None):
-    total_agrimas, total_agrimas_dst = tz_agrimas_offset(time_zone, base_gregorian_date)
+def tz_days_offset(time_zone: str | ZoneInfo = 'UTC', base_gregorian_date: str | _datetime.datetime | _datetime.date = None, from_spm: bool = False):
+    total_agrimas, total_agrimas_dst = tz_agrimas_offset(time_zone, base_gregorian_date, from_spm=from_spm)
 
     return total_agrimas / 1_000_000, total_agrimas_dst / 1_000_000
 
