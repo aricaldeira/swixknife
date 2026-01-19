@@ -208,45 +208,42 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
         locale.to_dozenal_base()
 
     res = {
-        #
-        # Date and time
-        #
         'date_time': {
             'utc': {
                 'iso':
-                    sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
-                    sdt.format('%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                    sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
+                    sdt.format('ISO%+%5>Y-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('ISO%+%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('ISO%+%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
                 'sym':
-                    sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
-                    sdt.format('#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                    sdt.format('#↋sY-#↋m-#↋d #↋3.2fD UTC#↋↋t', 'en'),
+                    sdt.format('SYM#+#_Y-#m-#d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
+                    sdt.format('SYM#9+#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('SYM#↋+#↋sY-#↋m-#↋d #↋3.2fD UTC#↋↋t', 'en'),
                 'dcc':
-                    sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
-                    sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                    sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD UTC#↋↋t', 'en'),
+                    sdt.format('DCC&+&_Y&DS&m&DS&d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
+                    sdt.format('DCC&9+&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('DCC&↋+&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD UTC#↋↋t', 'en'),
                 'hol':
-                    sdt.format('#_ghY-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
-                    sdt.format('#9_ghY-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                    sdt.format('#↋_ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
+                    sdt.format('HOL%h+#_ghY-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('HOL%h+#9_ghY-%m-%d %H:%M:%S.%f UTC%:z', 'en').replace(',', '_', 1) if base == 14 else
+                    sdt.format('HOL%h+#↋_ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en').replace(',', '_', 1),
             },
             'spm': {
                 'iso':
-                    sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
-                    sdt.format('%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                    sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
+                    sdt.format('ISO%+%5>Y-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('ISO%+%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('ISO%+%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
                 'sym':
-                    sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
-                    sdt.format('#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                    sdt.format('#↋sY-#↋m-#↋d #↋3.2fD SPM#↋↋ß', 'en'),
+                    sdt.format('SYM#+#_Y-#m-#d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
+                    sdt.format('SYM#9+#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('SYM#↋+#↋sY-#↋m-#↋d #↋3.2fD SPM#↋↋ß', 'en'),
                 'dcc':
-                    sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
-                    sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                    sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD SPM#↋↋ß', 'en'),
+                    sdt.format('DCC&+&_Y&DS&m&DS&d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
+                    sdt.format('DCC&9+&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('DCC&↋+&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD SPM#↋↋ß', 'en'),
                 'hol':
-                    sdt.format('#ghY-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
-                    sdt.format('#9ghY-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                    sdt.format('#↋ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
+                    sdt.format('HOL%h+#ghY-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('HOL%h+#9ghY-%m-%d %H:%M:%S.%f SPM%:ß', 'en').replace(',', '_', 1) if base == 14 else
+                    sdt.format('HOL%h+#↋ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en').replace(',', '_', 1),
             },
             'julian_day':
                 float(str(sdt.julian_day)) if base == 10 else

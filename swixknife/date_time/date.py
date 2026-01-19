@@ -486,6 +486,12 @@ class SezimalDate:
             else:
                 fmt = fmt.replace('#+', '')
 
+        if '#9+' in fmt:
+            if self.year - 200_000 >= 0:
+                fmt = fmt.replace('#9+', '+')
+            else:
+                fmt = fmt.replace('#9+', '')
+
         #
         # Let’s deal first with the numeric formats
         #
@@ -650,6 +656,18 @@ class SezimalDate:
         #
         if '%' in fmt:
             fmt = fmt.replace('%%', '__PERCENT__')
+
+            if '%+' in fmt:
+                if self.gregorian_year >= 0:
+                    fmt = fmt.replace('%+', '+')
+                else:
+                    fmt = fmt.replace('%+', '')
+
+            if '%h+' in fmt:
+                if self.gregorian_holocene_year >= 0:
+                    fmt = fmt.replace('%h+', '+')
+                else:
+                    fmt = fmt.replace('%h+', '')
 
             for regex, token, base, zero, character, value_name, \
                 size_decimal, size_niftimal, size_sezimal in ISO_DATE_NUMBER_FORMAT_TOKENS:

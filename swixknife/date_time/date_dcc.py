@@ -459,6 +459,18 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
         else:
             fmt = fmt.replace('&+', '')
 
+    if '&9+' in fmt:
+        if (self.dcc_year - 200_000) >= 0:
+            fmt = fmt.replace('&9+', '+')
+        else:
+            fmt = fmt.replace('&9+', '')
+
+    if '&↋+' in fmt:
+        if (self.dcc_year - 200_000) >= 0:
+            fmt = fmt.replace('&↋+', '+')
+        else:
+            fmt = fmt.replace('&↋+', '')
+
     for token, _value, count in (
         ('dY', 'dcc_day_in_year', 'DCC_DAY_IN_YEAR_COUNT'),
         ('dW', 'dcc_weekday', 'DCC_DAY_IN_WEEK_COUNT'),
