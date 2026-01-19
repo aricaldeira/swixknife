@@ -705,7 +705,7 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
                 'shaditiboda': locale.spellout(sdt.shaditiboda),
             }
 
-            if sdt.gregorian_year < 1980 or sdt.year >= 2160:
+            if sdt.gregorian_year < 1980 or sdt.gregorian_year >= 2160:
                 del res['date']['iso']['format']['full_year']
                 res['date']['iso']['year'] = res['date']['iso']['full_year']
                 del res['date']['iso']['full_year']
@@ -769,6 +769,12 @@ def from_iso_date_time(
     base: int = 10,
 ) -> dict:
     locale = sezimal_locale(locale)
+
+    if base == 14:
+        locale.to_decimal_base()
+    elif base == 20:
+        locale.to_dozenal_base()
+
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
     if time_zone == 'SPM':
@@ -777,7 +783,7 @@ def from_iso_date_time(
     sdt = SezimalDateTime.now(time_zone)
 
     if year is None and negative_year is None:
-        return _date_to_json(sdt, locale)
+        return _date_to_json(sdt, locale, base)
 
     if negative_year:
         year = int(negative_year) * -1

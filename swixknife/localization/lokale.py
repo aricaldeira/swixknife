@@ -2302,7 +2302,7 @@ class SezimalLocale:
     def apply_dcc_date_format(self, date: SezimalDate, fmt: str) -> str:
         return fmt
 
-    DCC_DATE_SEPARATOR = '–'
+    DCC_DATE_SEPARATOR = '-'
     DCC_DATE_YEAR_MONTH_SEPARATOR = ', '
     DCC_DATE_MONTH_DAY_SEPARATOR = ' and '
     DCC_DATE_FORMAT = '&󱹭>Y&DS&m&DS&d'

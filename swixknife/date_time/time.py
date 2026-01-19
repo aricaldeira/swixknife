@@ -384,7 +384,7 @@ class SezimalTime:
                     if self._time_zone_spm_offset > 0:
                         sign = '+'
                     else:
-                        sign = '−'
+                        sign = '-'
 
                     uta = str(SezimalInteger(abs(self._time_zone_spm_offset / 10000))).zfill(4)[-2:]
                     posha = str(SezimalInteger(abs(self._time_zone_spm_offset / 100))).zfill(4)[-2:]
@@ -403,7 +403,7 @@ class SezimalTime:
                     if self._time_zone_offset > 0:
                         sign = '+'
                     else:
-                        sign = '−'
+                        sign = '-'
 
                     uta = str(SezimalInteger(abs(self._time_zone_offset / 10000))).zfill(4)[-2:]
                     posha = str(SezimalInteger(abs(self._time_zone_offset / 100))).zfill(4)[-2:]
@@ -673,17 +673,17 @@ class SezimalTime:
                     if 'z' in fmt:
                         tzo = (abs(self._time_zone_offset) / 1_000_000).decimal
 
-                        if self._time_zone_offset > 0:
+                        if self._time_zone_offset >= 0:
                             text = '+'
                         else:
-                            text = '−'
+                            text = '-'
                     else:
                         tzo = (abs(self._time_zone_spm_offset) / 1_000_000).decimal
 
-                        if self._time_zone_spm_offset > 0:
+                        if self._time_zone_spm_offset >= 0:
                             text = '+'
                         else:
-                            text = '−'
+                            text = '-'
 
                     tzo_hour = int(tzo * 24)
                     tzo = (tzo * 24) - tzo_hour
