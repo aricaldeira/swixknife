@@ -826,6 +826,13 @@ class SezimalTime:
         agrimas = Sezimal(days) * 1_000_000
         return cls(agrima=agrimas, time_zone=time_zone)
 
+    @classmethod
+    def from_hour_minute_second(cls, hour: int | Decimal = 0, minute: int | Decimal = 0, second: int | Decimal = 0, time_zone: str | ZoneInfo = None) -> Self:
+        days = Decimal(str(hour)) / 24
+        days += Decimal(str(minute)) / 60 / 24
+        days += Decimal(str(second)) / 60 / 60 / 24
+        return cls.from_days(days, time_zone)
+
     def replace(self,
         uta: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         posha: str | int | float | Decimal | Sezimal | SezimalInteger = None,

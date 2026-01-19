@@ -459,7 +459,7 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
         else:
             fmt = fmt.replace('&+', '')
 
-    for token, value, count in (
+    for token, _value, count in (
         ('dY', 'dcc_day_in_year', 'DCC_DAY_IN_YEAR_COUNT'),
         ('dW', 'dcc_weekday', 'DCC_DAY_IN_WEEK_COUNT'),
         ('wY', 'dcc_week_in_year', 'DCC_WEEK_IN_YEAR_COUNT'),
@@ -470,7 +470,7 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
         ('w', 'dcc_week', 'DCC_WEEK_COUNT'),
         ('d', 'dcc_day', 'DCC_DAY_COUNT'),
     ):
-        value = getattr(self, value)
+        value = getattr(self, _value)
         count = getattr(locale, count)
 
         for fmttk in ('', '!', '@', '!@', '9', '↋', 'c', 'c!', 'c9', 'c↋'):
@@ -483,6 +483,10 @@ def _apply_dcc_formats(self, fmt: str = None, locale: str | SezimalLocale = None
                     tkfmt = count[None]
 
                 tkfmt = tkfmt.replace('&', '&' + fmttk)
+
+                if _value == 'dcc_year' \
+                    and self.dcc_year < 213_100 or self.dcc_year >= 214_000:
+                    tkfmt = tkfmt.replace('<', '')
 
                 fmt = fmt.replace(tk, tkfmt)
 

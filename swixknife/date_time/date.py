@@ -896,7 +896,7 @@ class SezimalDate:
         month: str | int | float | Decimal | Sezimal | SezimalInteger = None,
         day: str | int | float | Decimal | Sezimal | SezimalInteger = None,
     ) -> Self:
-        if year is None or not year:
+        if year is None:
             year = self._year
 
         if month is None or not month:

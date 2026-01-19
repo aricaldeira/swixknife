@@ -21,6 +21,9 @@ SOUTHERN_EQUATOR_HEMISPHERE = 'SE'
 
 
 def _sun_moon_search(self, sun_moon: str, hemisphere: str = '', only_four: bool = False, nearest: bool = False, time_zone: str | ZoneInfo = None):
+    if self.year < 212_500:
+        return '', None
+
     connection = sqlite3.connect(DB_NAME)
     cursor = connection.cursor()
 
