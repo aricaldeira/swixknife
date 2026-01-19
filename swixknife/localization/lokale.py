@@ -1552,6 +1552,7 @@ class SezimalLocale:
             value = value.replace('&', '&' + token)
             value = value.replace('&' + token + 'D', '&D')
             value = value.replace('&' + token + 'c', '&c')
+            value = value.replace('&' + token + '$', '&$')
             setattr(self, attr, value)
 
     def _to_other_base(self, base: int, fmt: str = None,
