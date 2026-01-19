@@ -768,6 +768,7 @@ def from_iso_date_time(
     locale: str ='en', time_zone: str = None,
     base: int = 10,
 ) -> dict:
+    log_access(request.path)
     locale = sezimal_locale(locale)
 
     if base == 14:
