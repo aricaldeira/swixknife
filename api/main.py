@@ -777,8 +777,8 @@ def from_iso_date_time(
 
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
+    if time_zone and time_zone.startswith('SPM') and 'SPM/' not in time_zone:
+        time_zone = 'SPM/' + time_zone
 
     sdt = SezimalDateTime.now(time_zone)
 
@@ -864,8 +864,8 @@ def api_date(locale: str = None, time_zone: str = None) -> str:
     locale = sezimal_locale(locale or 'en')
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
+    if time_zone and time_zone.startswith('SPM') and 'SPM/' not in time_zone:
+        time_zone = 'SPM/' + time_zone
 
     date_time = SezimalDateTime.now(time_zone=time_zone.rstrip('/'))
 
