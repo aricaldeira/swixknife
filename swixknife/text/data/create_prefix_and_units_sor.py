@@ -653,3 +653,9 @@ if __name__ == '__main__':
     arq.write(create_prefixes(lang='eo'))
     arq.write(create_rules(conjunction='kaj', preposition='el unu', plural_marker='j', exponent_first=True, exponent_plural='j'))
     arq.close()
+
+    arq = open('lat_units_and_prefixes.sor', 'w')
+    arq.write(create_units(lang='lat'))
+    arq.write(create_prefixes(lang='lat'))
+    arq.write(create_rules(conjunction='et', preposition='el unu', plural_marker='s', exponent_first=True, exponent_plural='s'))
+    arq.close()

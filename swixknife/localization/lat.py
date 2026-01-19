@@ -317,6 +317,7 @@ class SezimalLocaleLAT(SezimalLocale):
     WEEK_NUMBER_SYMBOL = 'sep'
     DAY_NUMBER_SYMBOL = 'diēs'
     ISO_DATE_LONG_FORMAT = '%$ND %$GM %Y'
+    ISO_DATE_FULL_LONG_FORMAT = '#W, #$ND %$GM %Y'
     DATE_TEXT_SHORT_MONTH_FORMAT = '#$GM'
     # TEXT_SHORT_MONTH_DAY_FORMAT = '#-d/#3M'
     TEXT_MONTH_DAY_FORMAT = '#-d #$GM'
@@ -676,6 +677,33 @@ class SezimalLocaleLAT(SezimalLocale):
         'Sx',
     ]
 
+    ADC_WEEK_NAME = [
+        'Spīritūs',
+        'Ignis',
+        'Āeris',
+        'Acquae',
+        'Terrae',
+        'Corporis',
+    ]
+
+    ADC_WEEK_ABBREVIATED_NAME = [
+        'Spī',
+        'Ign',
+        'Āer',
+        'Acq',
+        'Ter',
+        'Cor',
+    ]
+
+    ADC_WEEK_SYMBOL = [
+        'S',
+        'I',
+        'Ā',
+        'A',
+        'T',
+        'C',
+    ]
+
     ADC_WEEKDAY_NAME = [
         'diēs Sōlis',
         # 'diēs Mercuriī ',
@@ -705,3 +733,12 @@ class SezimalLocaleLAT(SezimalLocale):
         'S',
         'L',
     ]
+
+    DCC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mēnsis &-m, diēs &-d'
+    DCC_DATE_LONG_FORMAT_ON_DATE_DAYS = '&󱹭>Y, diēs &-dY'
+    DCC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, sextāna &-wY, diēs &-dW'
+    DCC_DATE_LONG_FORMAT_ON_DATE_MONTHS_WEEKS = '&󱹭>Y, mēnsis &-m, sextāna &-wM, diēs &-dW'
+
+    ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, mēnsis &cM, diēs &-d'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, mēnsis &cM, sextāna &-wM, diēs &-dW'
+    ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, mēnsis &cM, sextāna &cW, &cD'

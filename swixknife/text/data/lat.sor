@@ -1,0 +1,362 @@
+\+ plus
+\- minus
+− minus
+\^ elevadu a
+\*\* elevadu a
+\* vezis
+× vezis
+/ divididu pur
+÷ divididu pur
+([-−]?1)[/⁄](\d+) $1 $(fractional \\2)
+([-−]?\d+)[/⁄](\d+) $1 $(fractional-plural \\2)
+([-−]?\d+|[-−]?[πτφ])[/⁄] $1 sobri
+([-−]?\d+|[-−]?[πτφ])[/⁄]([-−]?\d+|[-−]?[πτφ]) $1 sobri $2
+⁄ sobri
+m[oó]d módulu
+([-−]?\d+|[-−]?[πτφ])! fatoriaw di $1
+[.,󱹮]{2}|[‥„󱹯] y si repèti
+e e
+π pi
+τ tau
+φ phi
+\( abri parêntezis
+\) fèxa parêntezis
+ln\((.*)\) logarítimu natural di $1
+ln\((.*) logarítimu natural di $1
+ln\( logarítimu natural di
+lsez\((.*)\) logarítimu sezimal di $1
+lsez\((.*) logarítimu sezimal di $1
+lsez\( logarítimu sezimal di
+ldec\((.*)\) logarítimu desimal di $1
+ldec\((.*) logarítimu desimal di $1
+ldec\( logarítimu desimal di
+ldes\((.*)\) logarítimu desimal di $1
+ldes\((.*) logarítimu desimal di $1
+ldes\( logarítimu desimal di
+sqrt\((.*)\) raiz kwadrada di $1
+sqrt\((.*) raiz kwadrada di $1
+sqrt\( raiz kwadrada di
+cbrt\((.*)\) raiz kúbika di $1
+cbrt\((.*) raiz kúbika di $1
+cbrt\( raiz kúbika di
+\u200b?² aw kwadradu
+\u200b?³ aw kubu
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?² $1 aw kwadradu
+([-−]?\d+|[-−]?\d+[.,󱹮]\d*|[eπτφ])\u200b?³ $1 aw kubu
+[Ss][IiEe][Nn]\((.*)\) senu di $1
+[Ss][IiEe][Nn]\((.*) senu di $1
+[Ss][IiEe][Nn]\( senu di
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*)\) arkusenu di $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\((.*) arkusenu di $1
+[Aa][Rr]?[CcKk]?[Ss][IiEe][Nn]\( arkusenu di
+[CcKk][Ss][CcKk]\((.*)\) kosekanti di $1
+[CcKk][Ss][CcKk]\((.*) kosekanti di $1
+[CcKk][Ss][CcKk]\( kosekanti di
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*)\) arkukosekanti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\((.*) arkukosekanti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Ss][CcKk]\( arkukosekanti di
+[CcKk][Oo][Ss]\((.*)\) kosenu di $1
+[CcKk][Oo][Ss]\((.*) kosenu di $1
+[CcKk][Oo][Ss]\( kosenu di
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*)\) arkukosenu di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\((.*) arkukosenu di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Ss]\( arkukosenu di
+[Ss][Ee][CcKk]\((.*)\) sekanti di $1
+[Ss][Ee][CcKk]\((.*) sekanti di $1
+[Ss][Ee][CcKk]\( sekanti di
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*)\) arkusekanti di $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\((.*) arkusekanti di $1
+[Aa][Rr]?[CcKk]?[Ss][Ee][CcKk]\( arkusekanti di
+[Tt][Aa][Nn]\((.*)\) tanjenti di $1
+[Tt][Aa][Nn]\((.*) tanjenti di $1
+[Tt][Aa][Nn]\( tanjenti di
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*)\) arkutanjenti di $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\((.*) arkutanjenti di $1
+[Aa][Rr]?[CcKk]?[Tt][Aa][Nn]\( arkutanjenti di
+[CcKk][Oo][Tt]\((.*)\) kotanjenti di $1
+[CcKk][Oo][Tt]\((.*) kotanjenti di $1
+[CcKk][Oo][Tt]\( kotanjenti di
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*)\) arkukotanjenti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\((.*) arkukotanjenti di $1
+[Aa][Rr]?[CcKk]?[CcKk][Oo][Tt]\( arkukotanjenti di
+
+^0 nihil
+1 ūnus
+2 duo
+3 trēs
+4 quattuor
+5 quīnque
+
+10 sex
+1(\d) sex $1
+20 duossex
+2(\d) duossex $1
+30 trēssex
+3(\d) trēssex $1
+40 quassex
+4(\d) quassex $1
+50  quīnsex
+5(\d) quīnsex $1
+
+100 nīfem
+200 duonīfem
+300 trēnīfem
+400 quattuornīfem
+500 quīnnīfem
+
+(\d)(0\d) $(\100) $2
+(\d)(1\d) $(\100) $2
+(\d)(\d0) $(\100) $2
+(\d)(\d\d) $(\100) $2
+
+1000 ardus
+100(\d) ardus $1
+10(1\d) ardus $1
+10(\d0) ardus $1
+1(\d00) ardus $1
+1(\d\d\d) ardus $1
+
+1000000 sciadārus
+100000(\d) sciadārus $1
+10000(1\d) sciadārus $1
+10000(\d0) sciadārus $1
+1000(\d00) sciadārus $1
+100(\d000) sciadārus $1
+10(\d0000) sciadārus $1
+1(\d00000) sciadārus $1
+1(\d{6}) sciadārus, $1
+
+(\d{1,3})000 $1 ardus
+(\d{1,3})00(\d) $1 ardus $2
+(\d{1,3})0(1\d) $1 ardus $2
+(\d{1,3})0(\d0) $1 ardus $2
+(\d{1,3})(\d00) $1 ardus $2
+(\d{1,3})(\d\d\d) $1 ardus, $2
+
+(\d{1,6})000000 $1 sciadārus
+(\d{1,6})00000(\d) $1 sciadārus $2
+(\d{1,6})0000(1\d) $1 sciadārus $2
+(\d{1,6})0000(\d0) $1 sciadārus $2
+(\d{1,6})000(\d00) $1 sciadārus $2
+(\d{1,6})00(\d000) $1 sciadārus $2
+(\d{1,6})0(\d0000) $1 sciadārus $2
+(\d{1,6})(\d00000) $1 sciadārus $2
+(\d{1,6})(\d{6}) $1 sciadārus, $2
+
+#
+# Nas règras abaixu, u númeru ki entra
+# è us prósimus 3 díjitus depoys di un
+# grupu
+#
+:0+
+:0*[12345] " et "
+:0*[12345]0+ " et "
+:0*[12345]00+ " et "
+:\d+ ", "
+
+(1)(\d{12}) disciadārus$(:\2)$2
+(1)(\d{18}) trisciadārus$(:\2)$2
+(1)(\d{24}) ciarsciadārus$(:\2)$2
+(1)(\d{30}) pansciadārus$(:\2)$2
+(1)(\d{36}) nidārus$(:\2)$2
+(1)(\d{42}) nisciadārus$(:\2)$2
+(1)(\d{48}) nidisciadārus$(:\2)$2
+(1)(\d{54}) nitrisciadārus$(:\2)$2
+(1)(\d{60}) niciarsciadārus$(:\2)$2
+(1)(\d{66}) nipansciadārus$(:\2)$2
+(1)(\d{72}) dinidārus$(:\2)$2
+(1)(\d{78}) dinisciadārus$(:\2)$2
+(1)(\d{84}) dinidisciadārus$(:\2)$2
+(1)(\d{90}) dinitrisciadārus$(:\2)$2
+(1)(\d{96}) diniciarsciadārus$(:\2)$2
+(1)(\d{102}) dinipansciadārus$(:\2)$2
+(1)(\d{108}) trinidārus$(:\2)$2
+(1)(\d{114}) trinisciadārus$(:\2)$2
+(1)(\d{120}) trinidisciadārus$(:\2)$2
+(1)(\d{126}) trinitrisciadārus$(:\2)$2
+(1)(\d{132}) triniciarsciadārus$(:\2)$2
+(1)(\d{138}) trinipansciadārus$(:\2)$2
+(1)(\d{144}) ciarnidārus$(:\2)$2
+(1)(\d{150}) ciarnisciadārus$(:\2)$2
+(1)(\d{156}) ciarnidisciadārus$(:\2)$2
+(1)(\d{162}) ciarnitrisciadārus$(:\2)$2
+(1)(\d{168}) ciarniciarsciadārus$(:\2)$2
+(1)(\d{174}) ciarnipansciadārus$(:\2)$2
+(1)(\d{180}) panidārus$(:\2)$2
+(1)(\d{186}) panisciadārus$(:\2)$2
+(1)(\d{192}) panidisciadārus$(:\2)$2
+(1)(\d{198}) panitrisciadārus$(:\2)$2
+(1)(\d{204}) paniciarsciadārus$(:\2)$2
+(1)(\d{210}) panipansciadārus$(:\2)$2
+(1)(\d{216}) ardārus$(:\2)$2
+
+(\d{1,6})(\d{12}) $1 disciadārus$(:\2)$2
+(\d{1,6})(\d{18}) $1 trisciadārus$(:\2)$2
+(\d{1,6})(\d{24}) $1 ciarsciadārus$(:\2)$2
+(\d{1,6})(\d{30}) $1 pansciadārus$(:\2)$2
+(\d{1,6})(\d{36}) $1 nidārus$(:\2)$2
+(\d{1,6})(\d{42}) $1 nisciadārus$(:\2)$2
+(\d{1,6})(\d{48}) $1 nidisciadārus$(:\2)$2
+(\d{1,6})(\d{54}) $1 nitrisciadārus$(:\2)$2
+(\d{1,6})(\d{60}) $1 niciarsciadārus$(:\2)$2
+(\d{1,6})(\d{66}) $1 nipansciadārus$(:\2)$2
+(\d{1,6})(\d{72}) $1 dinidārus$(:\2)$2
+(\d{1,6})(\d{78}) $1 dinisciadārus$(:\2)$2
+(\d{1,6})(\d{84}) $1 dinidisciadārus$(:\2)$2
+(\d{1,6})(\d{90}) $1 dinitrisciadārus$(:\2)$2
+(\d{1,6})(\d{96}) $1 diniciarsciadārus$(:\2)$2
+(\d{1,6})(\d{102}) $1 dinipansciadārus$(:\2)$2
+(\d{1,6})(\d{108}) $1 trinidārus$(:\2)$2
+(\d{1,6})(\d{114}) $1 trinisciadārus$(:\2)$2
+(\d{1,6})(\d{120}) $1 trinidisciadārus$(:\2)$2
+(\d{1,6})(\d{126}) $1 trinitrisciadārus$(:\2)$2
+(\d{1,6})(\d{132}) $1 triniciarsciadārus$(:\2)$2
+(\d{1,6})(\d{138}) $1 trinipansciadārus$(:\2)$2
+(\d{1,6})(\d{144}) $1 ciarnidārus$(:\2)$2
+(\d{1,6})(\d{150}) $1 ciarnisciadārus$(:\2)$2
+(\d{1,6})(\d{156}) $1 ciarnidisciadārus$(:\2)$2
+(\d{1,6})(\d{162}) $1 ciarnitrisciadārus$(:\2)$2
+(\d{1,6})(\d{168}) $1 ciarniciarsciadārus$(:\2)$2
+(\d{1,6})(\d{174}) $1 ciarnipansciadārus$(:\2)$2
+(\d{1,6})(\d{180}) $1 panidārus$(:\2)$2
+(\d{1,6})(\d{186}) $1 panisciadārus$(:\2)$2
+(\d{1,6})(\d{192}) $1 panidisciadārus$(:\2)$2
+(\d{1,6})(\d{198}) $1 panitrisciadārus$(:\2)$2
+(\d{1,6})(\d{204}) $1 paniciarsciadārus$(:\2)$2
+(\d{1,6})(\d{210}) $1 panipansciadārus$(:\2)$2
+(\d{1,6})(\d{216}) $1 ardārus$(:\2)$2
+
+#
+# Númerus negativus
+#
+[-−](\d\d*) menus |$1
+
+#
+# Frasoyns
+#
+([-−]?\d+)[󱹮] $1| kuỹa
+([-−]?\d+)[,.] $1| vírgula
+([-−]?\d+[.,󱹮])([^0]\d{1,2}) $1| |$2
+([-−]?\d+[.,󱹮]\d*)(\d) $1| |$2
+
+### UNITS_AND_PREFIXES ###
+
+== feminine ==
+
+([-−]?\d+) $(feminine $1)
+
+(.*)ūnus \1ūna
+(.*)duo(.*)   $(feminine \1duae\2)
+(.*)trēs(.*)  $(feminine \1tres\2)
+(.*) \1
+
+== neuter ==
+
+([-−]?\d+) $(neuter $1)
+
+(.*)ūnus \1ūnum
+(.*)trēs(.*)  $(feminine \1tria\2)
+(.*) \1
+
+== masculine ==
+
+([-−]?\d+) $1
+
+== ordinal(-masculine)? ==
+
+0 zerézimu
+1 primeru
+2 segundu
+3 terseru
+4 kwartu
+5 kintu
+10 sestu
+11 sétimu
+12 oytavu
+13 nonu
+14 désimu
+15 ônzimu
+20 dôzimu
+30 tresestu
+40 kwasestu
+50 kinsestu
+(\d)(\d) $(ordinal \20) $(ordinal \3)
+100 nifézimu
+200 dunifézimu
+300 trenifézimu
+400 kwatrunifézimu
+500 kinifézimu
+(\d)(\d\d) $(ordinal \200) $(ordinal \3)
+1(\d{3}) ardézimu[ $(ordinal \2)]
+(\d{1,3})(\d{3}) $(ordinal \2) ardézimu[ $(ordinal \3)]
+1(\d{6}) xadarézimu[ $(ordinal \2)]
+(\d{1,5})(\d{6}) $(ordinal \2) xadarézimu[ $(ordinal \3)]
+1(\d{12}) dixadarézimu[ $(ordinal \2)]
+(\d{1,5})(\d{12}) $(ordinal \2) dixadarézimu[ $(ordinal \3)]
+
+== ordinal-feminine ==
+
+([-−]?\d+) $(ordinal-feminine $(ordinal-masculine \1))
+(.*)u\b(.*)  $(ordinal-feminine \1a\2)
+(.*)   \1
+
+== (ordinal)-number(-feminine|-masculine)? ==
+
+([-−]?\d+) \3$(ordinal-number $(\1\2 \3))
+.*a ᵃ̱
+.*u ᵘ̱
+
+== fractional ==
+
+2 meyu
+3 tersu
+4 kwartu
+5 kintu
+10 sestu
+11 sétimu
+12 oytavu
+13 nonu
+14 désimu
+15 ônzimu
+20 dusestu
+30 tresestu
+40 kwasestu
+50 kinsestu
+100 nifézimu
+200 dunifézimu
+300 trenifézimu
+400 kwatrunifézimu
+500 kinifézimu
+1000 ardézimu
+1000000 xadarézimu
+(\d+) $(\\1) avus
+
+== fractional-plural ==
+
+2 meyus
+3 tersus
+4 kwartus
+5 kintus
+10 sestus
+11 sétimus
+12 oytavus
+13 nonus
+14 désimus
+15 ônzimus
+20 dusestus
+30 tresestus
+40 kwasestus
+50 kinsestus
+100 nifézimus
+200 dunifézimus
+300 trenifézimus
+400 kwatrunifézimus
+500 kinifézimus
+1000 ardézimus
+1000000 xadarézimus
+(\d+) $(\\1) avus
+
+== help ==
+
+"" $(1)|, $(2), $(3)\n$(\0 feminine)$(\0 masculine)$(\0 ordinal-feminine)$(\0 ordinal-masculine)$(\0 ordinal-number-feminine)$(\0 ordinal-number-masculine)
+(feminine|masculine|ordinal(-number)?(-feminine|-masculine)?) \1: $(\1 1), $(\1 2), $(\1 3)\n
