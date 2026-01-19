@@ -212,30 +212,42 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
         # Date and time
         #
         'date_time': {
-            'iso_utc':
-                sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
-                sdt.format('%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
-            'sym_utc':
-                sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
-                sdt.format('#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                sdt.format('#↋sY-#↋m-#↋d #↋3.2fD UTC#↋↋t', 'en'),
-            'dcc_utc':
-                sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
-                sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
-                sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD UTC#↋↋t', 'en'),
-            'iso_spm':
-                sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
-                sdt.format('%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
-            'sym_spm':
-                sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
-                sdt.format('#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                sdt.format('#↋sY-#↋m-#↋d #↋3.2fD SPM#↋↋ß', 'en'),
-            'dcc_spm':
-                sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
-                sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
-                sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD SPM#↋↋ß', 'en'),
+            'utc': {
+                'iso':
+                    sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
+                'sym':
+                    sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
+                    sdt.format('#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('#↋sY-#↋m-#↋d #↋3.2fD UTC#↋↋t', 'en'),
+                'dcc':
+                    sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x UTC#:t', 'en') if base == 10 else
+                    sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD UTC#↋↋t', 'en'),
+                'hol':
+                    sdt.format('#_ghY-%5m-%5d %5H:%5M:%5S.%5f UTC%5:z', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('#9_ghY-%m-%d %H:%M:%S.%f UTC%:z', 'en') if base == 14 else
+                    sdt.format('#↋_ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f UTC%↋:z', 'en'),
+            },
+            'spm': {
+                'iso':
+                    sdt.format('%5>Y-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('%↋>Y-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
+                'sym':
+                    sdt.format('#_Y-#m-#d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
+                    sdt.format('#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('#↋sY-#↋m-#↋d #↋3.2fD SPM#↋↋ß', 'en'),
+                'dcc':
+                    sdt.format('&_Y&DS&m&DS&d #u:#p:#a.#n#b#x SPM#:ß', 'en') if base == 10 else
+                    sdt.format('&9Y&DS&9m&DS&9wM&DS&9dW %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('&↋Y&DS&↋m&DS&↋wM&DS&↋dW #↋3.2fD SPM#↋↋ß', 'en'),
+                'hol':
+                    sdt.format('#ghY-%5m-%5d %5H:%5M:%5S.%5f SPM%:ß', 'en').replace(',', '_', 1) if base == 10 else
+                    sdt.format('#9ghY-%m-%d %H:%M:%S.%f SPM%:ß', 'en') if base == 14 else
+                    sdt.format('#↋ghY-%↋m-%↋d %↋H:%↋M:%↋S.%↋f SPM%↋:ß', 'en'),
+            },
             'julian_day':
                 float(str(sdt.julian_day)) if base == 10 else
                 float(str(sdt.julian_day.decimal)) if base == 14 else
@@ -598,42 +610,38 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
                 # 'astronomical_day_icon': sdt.format('&iD', locale),
             },
         },
-        #
-        # Time
-        #
-        'time':
-            {
-                'format': sdt.format(locale.TIME_FORMAT, locale),
-                'uta': int(str(sdt.uta)),
-                'posha': int(str(sdt.posha)),
-                'agrima': int(str(sdt.agrima)),
-                'anuga': int(str(sdt.anuga)),
-                'boda': int(str(sdt.boda)),
-                'shaditiboda': int(str(sdt.shaditiboda)),
-                'time_zone': str(sdt.time_zone),
-                'utc_offset': sdt.format('#:t'),
-                'spm_offset': sdt.format('#:ß'),
-                'dst': sdt.is_dst,
-            } if base == 10 else
-            {
-                'format': sdt.format(locale.TIME_FORMAT, locale),
-                'hour': sdt.iso_time.hour,
-                'hour_12': sdt.iso_time.hour if sdt.iso_time.hour <= 12 else sdt.iso_time.hour - 12,
-                'hour_am_pm': 'am' if sdt.iso_time.hour <= 12 else 'pm',
-                'minute': sdt.iso_time.minute,
-                'second': sdt.iso_time.second,
-                'time_zone': str(sdt.time_zone),
-                'utc_offset': sdt.format('%:z'),
-                'spm_offset': sdt.format('%:ß'),
-                'dst': sdt.is_dst,
-            } if base == 14 else
-            {
-                'format': sdt.format(locale.TIME_FORMAT, locale),
-                'time_zone': str(sdt.time_zone),
-                'utc_offset': sdt.format('#↋↋t'),
-                'spm_offset': sdt.format('#↋↋ß'),
-                'dst': sdt.is_dst,
-            },
+        'time': {
+            'format': sdt.format(locale.TIME_FORMAT, locale),
+            'uta': int(str(sdt.uta)),
+            'posha': int(str(sdt.posha)),
+            'agrima': int(str(sdt.agrima)),
+            'anuga': int(str(sdt.anuga)),
+            'boda': int(str(sdt.boda)),
+            'shaditiboda': int(str(sdt.shaditiboda)),
+            'time_zone': str(sdt.time_zone),
+            'utc_offset': sdt.format('#:t'),
+            'spm_offset': sdt.format('#:ß'),
+            'dst': sdt.is_dst,
+        } if base == 10 else
+        {
+            'format': sdt.format(locale.TIME_FORMAT, locale),
+            'hour': sdt.iso_time.hour,
+            'hour_12': sdt.iso_time.hour if sdt.iso_time.hour <= 12 else sdt.iso_time.hour - 12,
+            'hour_am_pm': 'am' if sdt.iso_time.hour <= 12 else 'pm',
+            'minute': sdt.iso_time.minute,
+            'second': sdt.iso_time.second,
+            'time_zone': str(sdt.time_zone),
+            'utc_offset': sdt.format('%:z'),
+            'spm_offset': sdt.format('%:ß'),
+            'dst': sdt.is_dst,
+        } if base == 14 else
+        {
+            'format': sdt.format(locale.TIME_FORMAT, locale),
+            'time_zone': str(sdt.time_zone),
+            'utc_offset': sdt.format('#↋↋t'),
+            'spm_offset': sdt.format('#↋↋ß'),
+            'dst': sdt.is_dst,
+        },
         'astronomical': {
             'season_name': sdt.format(f'#~{locale.DEFAULT_HEMISPHERE}S', locale),
             'season_emoji': sdt.format(f'#@~{locale.DEFAULT_HEMISPHERE}S', locale),
@@ -666,19 +674,7 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
         del res['date']['dcc']['term_name']
         del res['date']['dcc']['term_abbreviation']
 
-    if base != 14:
-        res['date_time']['decimal'] = {
-            'iso_utc': sdt.format('%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en'),
-            'sym_utc': sdt.format('#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en'),
-            'dcc_utc': sdt.format('&9Y-&9m-&9wM-&9dW %H:%M:%S.%f UTC%:z', 'en'),
-            'iso_spm': sdt.format('%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en'),
-            'sym_spm': sdt.format('#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en'),
-            'dcc_spm': sdt.format('&9Y-&9m-&9wM-&9dW %H:%M:%S.%f SPM%:ß', 'en'),
-            'julian_day': float(sdt.julian_day.decimal),
-            'rata_die': float(sdt.as_days.decimal),
-        }
-
-        if base == 10:
+    else:
             res['date']['iso']['spellout'] = {
                 'year': locale.spellout(str(SezimalInteger(sdt.gregorian_year))[-3:]),
                 'full_year': locale.spellout(SezimalInteger(sdt.gregorian_year)),
@@ -695,7 +691,7 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
             }
             res['date']['dcc']['spellout'] = {
                 'year': locale.spellout(str(sdt.dcc_year)[-3:]),
-                'year_full': locale.spellout(sdt.dcc_year),
+                'full_year': locale.spellout(sdt.dcc_year),
                 'month': locale.spellout(sdt.dcc_month),
                 'day': locale.spellout(sdt.dcc_day),
                 'day_in_year': locale.spellout(sdt.dcc_day_in_year),
@@ -712,179 +708,152 @@ def _date_to_json(sdt: SezimalDateTime, locale: SezimalLocale, base=10) -> dict:
                 'shaditiboda': locale.spellout(sdt.shaditiboda),
             }
 
+            if sdt.gregorian_year < 1980 or sdt.year >= 2160:
+                del res['date']['iso']['format']['full_year']
+                res['date']['iso']['year'] = res['date']['iso']['full_year']
+                del res['date']['iso']['full_year']
+                res['date']['iso']['spellout']['year'] = res['date']['iso']['spellout']['full_year']
+                del res['date']['iso']['spellout']['full_year']
+
+            if sdt.year < 213_100 or sdt.year >= 214_000:
+                del res['date']['sym']['format']['full_year']
+                res['date']['sym']['year'] = res['date']['sym']['full_year']
+                del res['date']['sym']['full_year']
+                res['date']['sym']['spellout']['year'] = res['date']['sym']['spellout']['full_year']
+                del res['date']['sym']['spellout']['full_year']
+
+            if sdt.dcc_year < 213_100 or sdt.dcc_year >= 214_000:
+                del res['date']['dcc']['format']['full_year']
+                res['date']['dcc']['year'] = res['date']['dcc']['full_year']
+                del res['date']['dcc']['full_year']
+                res['date']['dcc']['spellout']['year'] = res['date']['dcc']['spellout']['full_year']
+                del res['date']['dcc']['spellout']['full_year']
+
+    if base != 14:
+        res['date_time']['decimal'] = {
+            'utc': {
+                'iso': sdt.format('%Y-%m-%d %H:%M:%S.%f UTC%:z', 'en'),
+                'sym': sdt.format('#9sY-#9m-#9d %H:%M:%S.%f UTC%:z', 'en'),
+                'dcc': sdt.format('&9Y-&9m-&9wM-&9dW %H:%M:%S.%f UTC%:z', 'en'),
+                'hol': sdt.format('#9_ghY-%m-%d %H:%M:%S.%f UTC%:z', 'en'),
+            },
+            'spm': {
+                'iso': sdt.format('%Y-%m-%d %H:%M:%S.%f SPM%:ß', 'en'),
+                'sym': sdt.format('#9sY-#9m-#9d %H:%M:%S.%f SPM%:ß', 'en'),
+                'dcc': sdt.format('&9Y-&9m-&9wM-&9dW %H:%M:%S.%f SPM%:ß', 'en'),
+                'hol': sdt.format('#9_ghY-%m-%d %H:%M:%S.%f SPM%:ß', 'en'),
+            },
+            'julian_day': float(sdt.julian_day.decimal),
+            'rata_die': float(sdt.as_days.decimal),
+        }
 
     return res
 
 
-@app.route('/api/date-time/from-julian-day')
-@app.route('/api/date-time/from-julian-date')
-@app.route('/api/date-time/from-sezimal-julian-day')
-@app.route('/api/date-time/from-sezimal-julian-date')
-@app.route('/api/date-time/from-julian-day/<float:julian_date>')
-@app.route('/api/date-time/from-julian-day/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-julian-day/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-julian-date/<float:julian_date>')
-@app.route('/api/date-time/from-julian-date/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-julian-date/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-julian-day/<float:julian_date>')
-@app.route('/api/date-time/from-sezimal-julian-day/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-sezimal-julian-day/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-julian-date/<float:julian_date>')
-@app.route('/api/date-time/from-sezimal-julian-date/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-sezimal-julian-date/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-julian-day/<string:locale>')
-@app.route('/api/date-time/from-julian-day/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-julian-date/<string:locale>')
-@app.route('/api/date-time/from-julian-date/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-julian-day/<string:locale>')
-@app.route('/api/date-time/from-sezimal-julian-day/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-julian-date/<string:locale>')
-@app.route('/api/date-time/from-sezimal-julian-date/<string:locale>/<path:time_zone>')
-def from_sezimal_julian_date(julian_date: float = None, locale: str ='en', time_zone: str = None) -> dict:
-    locale = sezimal_locale(locale)
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
-
-    if julian_date is None:
-        return _date_to_json(SezimalDateTime.now(time_zone), locale)
-
-    julian_date = Sezimal(str(julian_date))
-
-    sdt = SezimalDateTime.from_julian_date(julian_date, 'UTC')
-    sdt = sdt.at_time_zone(time_zone)
-
-    return _date_to_json(sdt, locale)
-
-
-@app.route('/api/date-time/from-decimal-julian-day')
-@app.route('/api/date-time/from-decimal-julian-date')
-@app.route('/api/date-time/from-decimal-julian-day/<float:julian_date>')
-@app.route('/api/date-time/from-decimal-julian-day/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-decimal-julian-day/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-decimal-julian-date/<float:julian_date>')
-@app.route('/api/date-time/from-decimal-julian-date/<float:julian_date>/<string:locale>')
-@app.route('/api/date-time/from-decimal-julian-date/<float:julian_date>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-decimal-julian-day/<string:locale>')
-@app.route('/api/date-time/from-decimal-julian-day/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-decimal-julian-date/<string:locale>')
-@app.route('/api/date-time/from-decimal-julian-date/<string:locale>/<path:time_zone>')
-def from_decimal_julian_date(julian_date: float = None, locale: str ='en', time_zone: str = None) -> dict:
-    locale = sezimal_locale(locale)
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
-
-    if julian_date is None:
-        return _date_to_json(SezimalDateTime.now(time_zone), locale)
-
-    julian_date = Sezimal(Decimal(str(julian_date)))
-
-    sdt = SezimalDateTime.from_julian_date(julian_date, 'UTC')
-    sdt = sdt.at_time_zone(time_zone)
-
-    return _date_to_json(sdt, locale)
-
-
 @app.route('/api/date-time')
-@app.route('/api/date-time/from-rata-die')
-@app.route('/api/date-time/from-sezimal-rata-die')
-@app.route('/api/date-time/from-rata-die/<float:rata_die>')
-@app.route('/api/date-time/from-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/date-time/from-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-rata-die/<float:rata_die>')
-@app.route('/api/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
 @app.route('/api/date-time/<string:locale>')
-@app.route('/api/date-time/from-rata-die/<string:locale>')
 @app.route('/api/date-time/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-rata-die/<string:locale>/<path:time_zone>')
-@app.route('/api/date-time/from-sezimal-rata-die/<string:locale>')
-@app.route('/api/date-time/from-sezimal-rata-die/<string:locale>/<path:time_zone>')
-def from_sezimal_rata_die(rata_die: float = None, locale: str ='en', time_zone: str = None) -> dict:
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>')
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+def from_iso_date_time(
+    year: str = None, negative_year: str = None, month: str = None, day: str = None,
+    hour: str = None, minute: str = None, second: str = None,
+    locale: str ='en', time_zone: str = None,
+    base: int = 10,
+) -> dict:
     locale = sezimal_locale(locale)
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
     if time_zone == 'SPM':
         time_zone = 'SPM/SPM'
 
-    if rata_die is None:
-        return _date_to_json(SezimalDateTime.now(time_zone), locale)
+    sdt = SezimalDateTime.now(time_zone)
 
-    rata_die = Sezimal(str(rata_die))
+    if year is None and negative_year is None:
+        return _date_to_json(sdt, locale)
 
-    sdt = SezimalDateTime.from_days(rata_die, 'UTC')
-    sdt = sdt.at_time_zone(time_zone)
+    if negative_year:
+        year = int(negative_year) * -1
 
-    return _date_to_json(sdt, locale)
+    sd = SezimalDate.from_gregorian(int(year), int(month), int(day))
+    sdt = sdt.replace(year=sd.year, month=sd.month, day=sd.day)
+
+    if hour is not None:
+        st = SezimalTime.from_hour_minute_second(int(hour), int(minute), int(second), time_zone)
+        sdt = sdt.replace(
+            uta=st.uta, posha=st.posha, agrima=st.agrima,
+            anuga=st.anuga, boda=st.boda, shaditiboda=st.shaditiboda
+        )
+
+    return _date_to_json(sdt, locale, base)
 
 
 @app.route('/api/decimal/date-time')
-@app.route('/api/decimal/date-time/from-rata-die')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die')
-@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>')
-@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/decimal/date-time/from-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
 @app.route('/api/decimal/date-time/<string:locale>')
-@app.route('/api/decimal/date-time/from-rata-die/<string:locale>')
 @app.route('/api/decimal/date-time/<string:locale>/<path:time_zone>')
-@app.route('/api/decimal/date-time/from-rata-die/<string:locale>/<path:time_zone>')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die/<string:locale>')
-@app.route('/api/decimal/date-time/from-sezimal-rata-die/<string:locale>/<path:time_zone>')
-def from_sezimal_decimal_rata_die(rata_die: float = None, locale: str ='en', time_zone: str = None) -> dict:
-    locale = sezimal_locale(locale)
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
-
-    if rata_die is None:
-        return _date_to_json(SezimalDateTime.now(time_zone), locale, base=14)
-
-    rata_die = Sezimal(str(rata_die))
-
-    sdt = SezimalDateTime.from_days(rata_die, 'UTC')
-    sdt = sdt.at_time_zone(time_zone)
-
-    return _date_to_json(sdt, locale, base=14)
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>')
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/decimal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/decimal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+def from_iso_date_time_decimal(
+    year: str = None, negative_year: str = None, month: str = None, day: str = None,
+    hour: str = None, minute: str = None, second: str = None,
+    locale: str ='en', time_zone: str = None,
+    base: int = 10,
+) -> dict:
+    return from_iso_date_time(
+        year, negative_year, month, day,
+        hour, minute, second,
+        locale, time_zone,
+        base=14,
+    )
 
 
 @app.route('/api/dozenal/date-time')
-@app.route('/api/dozenal/date-time/from-rata-die')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die')
-@app.route('/api/dozenal/date-time/from-rata-die/<float:rata_die>')
-@app.route('/api/dozenal/date-time/from-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/dozenal/date-time/from-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die/<float:rata_die>')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die/<float:rata_die>/<string:locale>/<path:time_zone>')
 @app.route('/api/dozenal/date-time/<string:locale>')
-@app.route('/api/dozenal/date-time/from-rata-die/<string:locale>')
 @app.route('/api/dozenal/date-time/<string:locale>/<path:time_zone>')
-@app.route('/api/dozenal/date-time/from-rata-die/<string:locale>/<path:time_zone>')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die/<string:locale>')
-@app.route('/api/dozenal/date-time/from-sezimal-rata-die/<string:locale>/<path:time_zone>')
-def from_sezimal_dozenal_rata_die(rata_die: float = None, locale: str ='en', time_zone: str = None) -> dict:
-    locale = sezimal_locale(locale)
-    time_zone = time_zone or locale.DEFAULT_TIME_ZONE
-
-    if time_zone == 'SPM':
-        time_zone = 'SPM/SPM'
-
-    if rata_die is None:
-        return _date_to_json(SezimalDateTime.now(time_zone), locale, base=20)
-
-    rata_die = Sezimal(str(rata_die))
-
-    sdt = SezimalDateTime.from_days(rata_die, 'UTC')
-    sdt = sdt.at_time_zone(time_zone)
-
-    return _date_to_json(sdt, locale, base=20)
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>')
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/dozenal/date-time/<string:year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>/<string:locale>/<path:time_zone>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>')
+@app.route('/api/dozenal/date-time/-<string:negative_year>-<string:month>-<string:day>T<string:hour>:<string:minute>:<string:second>/<string:locale>/<path:time_zone>')
+def from_iso_date_time_dozenal(
+    year: str = None, negative_year: str = None, month: str = None, day: str = None,
+    hour: str = None, minute: str = None, second: str = None,
+    locale: str ='en', time_zone: str = None,
+    base: int = 10,
+) -> dict:
+    return from_iso_date_time(
+        year, negative_year, month, day,
+        hour, minute, second,
+        locale, time_zone,
+        base=14,
+    )
 
 
 @app.route('/api/format/<string:locale>/<path:time_zone>')
