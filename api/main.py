@@ -778,8 +778,13 @@ def from_iso_date_time(
 
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
-    if time_zone and time_zone.startswith('SPM') and 'SPM/' not in time_zone:
-        time_zone = 'SPM/' + time_zone
+    if time_zone:
+        if time_zone.startswith('SPM') and 'SPM/' not in time_zone:
+            time_zone = 'SPM/' + time_zone
+        elif time_zone.startswith('SEZ') and 'Sezimal/' not in time_zone:
+            time_zone = 'Sezimal/' + time_zone.replace('SEZ', 'SPM')
+        elif time_zone.startswith('DOZ') and 'Dozenal/' not in time_zone:
+            time_zone = 'Dozenal/' + time_zone.replace('DOZ', 'SPM')
 
     sdt = SezimalDateTime.now(time_zone)
 
@@ -865,8 +870,13 @@ def api_date(locale: str = None, time_zone: str = None) -> str:
     locale = sezimal_locale(locale or 'en')
     time_zone = time_zone or locale.DEFAULT_TIME_ZONE
 
-    if time_zone and time_zone.startswith('SPM') and 'SPM/' not in time_zone:
-        time_zone = 'SPM/' + time_zone
+    if time_zone:
+        if time_zone.startswith('SPM') and 'SPM/' not in time_zone:
+            time_zone = 'SPM/' + time_zone
+        elif time_zone.startswith('SEZ') and 'Sezimal/' not in time_zone:
+            time_zone = 'Sezimal/' + time_zone.replace('SEZ', 'SPM')
+        elif time_zone.startswith('DOZ') and 'Dozenal/' not in time_zone:
+            time_zone = 'Dozenal/' + time_zone.replace('DOZ', 'SPM')
 
     date_time = SezimalDateTime.now(time_zone=time_zone.rstrip('/'))
 
