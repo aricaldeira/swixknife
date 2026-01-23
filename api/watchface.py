@@ -48,7 +48,7 @@ def watchface(locale, today) -> str:
             gray_scale=True,
             calendar='DCC',
         )
-        weeks = today.dcc_total_weeks_in_year + 1
+        weeks = today.dcc_total_weeks_in_year
 
     else:
         colours = weekly_season_colors(
