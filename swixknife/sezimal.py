@@ -191,6 +191,15 @@ class Sezimal:
         return self._value
 
     def __compare__(self, other_number: Self) -> IntegerSelf:
+        if isinstance(other_number, Decimal):
+            other_number = Sezimal(other_number)
+
+        if type(other_number) not in (Sezimal, SezimalInteger, SezimalFraction):
+            try:
+                other_number = Sezimal(other_number)
+            except:
+                other_number = Sezimal(Decimal(other_number or 0))
+
         #
         # If the sign of both numbers are not equal,
         # they can be compared only by their sign, unless
@@ -224,27 +233,18 @@ class Sezimal:
             return -1 if this > other else 1
 
     def __eq__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
-        if type(other_number) != Sezimal:
-            other_number = Sezimal(other_number)
-
         return self.__compare__(other_number) == 0
 
     def __ne__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
         return not self.__eq__(other_number)
 
     def __lt__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
-        if type(other_number) != Sezimal:
-            other_number = Sezimal(other_number)
-
         return self.__compare__(other_number) < 0
 
     def __ge__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
         return not self.__lt__(other_number)
 
     def __gt__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
-        if type(other_number) != Sezimal:
-            other_number = Sezimal(other_number)
-
         return self.__compare__(other_number) > 0
 
     def __le__(self, other_number: str | int | float | Decimal | Self | IntegerSelf | FractionSelf | DecimalUnitSelf | Dozenal | DozenalInteger | DozenalFraction) -> bool:
@@ -1126,6 +1126,21 @@ class Sezimal:
         # denominator //= gcd
 
         return numerator, denominator
+
+    def _isnan(self):
+        return False
+
+    def _isinfinity(self):
+        return False
+
+    def quantize(self, value, *args, **kwargs):
+        try:
+            precision = Sezimal(value.log10()) * -1
+            res = round(self, precision)
+        except:
+            res = self
+
+        return res
 
 
 class SezimalInteger(Sezimal):
