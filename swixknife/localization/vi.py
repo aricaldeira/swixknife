@@ -61,7 +61,7 @@ class SezimalLocaleVI(SezimalLocale):
     ]
 
     MONTH_NAME= [
-        'tháng giêng',
+        'tháng một',
         'tháng hai',
         'tháng ba',
         'tháng tư',
