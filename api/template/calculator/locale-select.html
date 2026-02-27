@@ -1,162 +1,163 @@
 <select id="calculator-sezimal-locale" style="text-align: {{ 'right' if locale.RTL else 'left' }};{% if mobile %} width: 100%;{% endif %} direction:ltr;">
     {% if '-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz' %}
         {% if locale.LANG == 'bz' %}
-            <optgroup name="brazil" label="Braziw">
+            <optgroup name="brazil" label="Braziw 🇧🇷">
         {% elif locale.LANG == 'en' %}
-            <optgroup name="brazil" label="Brazil">
+            <optgroup name="brazil" label="Brazil 🇧🇷">
         {% elif locale.LANG == 'eo' %}
-            <optgroup name="brazil" label="Brazilo">
+            <optgroup name="brazil" label="Brazilo 🇧🇷">
         {% else %}
-            <optgroup name="brazil" label="Brasil">
+            <optgroup name="brazil" label="Brasil 🇧🇷">
         {% endif %}
-            <option value="bz">Brazileru (bz)</option>
-            <option value="en_br">English - Brazil (en_BR)</option>
-            <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
-            <option value="pt_br">Português - Brasil (pt_BR)</option>
+            <option value="bz">Brazileru - Braziw 🇧🇷 (bz)</option>
+            <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
+            <option value="eo_br">Esperanto - Brazilo 🇧🇷 (eo_BR)</option>
+            <option value="pt_br">Português - Brasil 🇧🇷 (pt_BR)</option>
         </optgroup>
         {% if locale.LANG == 'bz' %}
-            <optgroup name="world" label="Otrus lokalis">
+            <optgroup name="world" label="Otrus lokalis 🌎">
         {% elif locale.LANG == 'en' %}
-            <optgroup name="world" label="Other locales">
+            <optgroup name="world" label="Other locales 🌎">
         {% elif locale.LANG == 'eo' %}
-            <optgroup name="world" label="Aliaj lokaloj">
+            <optgroup name="world" label="Aliaj lokaloj 🌎">
         {% else %}
-            <optgroup name="world" label="Outros locales">
+            <optgroup name="world" label="Outros locales 🌎">
         {% endif %}
     {% endif %}
-    <option value="gn">Avañeꞌẽ (gn)</option>
-    <option value="bn_latn">Bangla (bn_Latn)</option>
+    <option value="gn">Avañeꞌẽ - Paraguái 🇵🇾 (gn)</option>
+    <option value="bn_latn">Bangla - Bangladesh 🇧🇩 (bn_Latn)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="bz">Brazileru (bz)</option>
+        <option value="bz">Brazileru - Braziw 🇧🇷 (bz)</option>
     {% endif %}
-    <option value="ca">Català (ca_ES)</option>
+    <option value="ca">Català - Espanya 🇪🇸 (ca_ES)</option>
 <!--     <option value="code">Code (English 123_450.054_321)</option> -->
-    <option value="cy">Cymraeg (cy_GB)</option>
-    <option value="da">Dansk (da_DK)</option>
-    <option value="de_be">Deutsch - Belgien (de_BE)</option>
-    <option value="de_de">Deutsch - Deutschland (de_DE)</option>
-    <option value="de_li">Deutsch - Liechtenstein (de_LI)</option>
-    <option value="de_lu">Deutsch - Luxemburg (de_LU)</option>
-    <option value="de_at">Deutsch - Österreich (de_AT)</option>
-    <option value="de_it">Deutsch - Südtirol (de_IT)</option>
-    <option value="et">Eesti (et_EE)</option>
-    <option value="ar_latn">El-għàràbí (ar_Latn)</option>
-    <option value="en_au">English - Australia (en_AU)</option>
+    <option value="cy">Cymraeg - Cymru 🏴󠁧󠁢󠁷󠁬󠁳󠁿 (cy_GB)</option>
+    <option value="da">Dansk - Danmark 🇩🇰 (da_DK)</option>
+    <option value="de_be">Deutsch - Belgien 🇧🇪 (de_BE)</option>
+    <option value="de_de">Deutsch - Deutschland 🇩🇪 (de_DE)</option>
+    <option value="de_li">Deutsch - Liechtenstein 🇱🇮 (de_LI)</option>
+    <option value="de_lu">Deutsch - Luxemburg 🇱🇺 (de_LU)</option>
+    <option value="de_at">Deutsch - Österreich 🇦🇹 (de_AT)</option>
+    <option value="de_ch">Deutsch - Schweizer 🇨🇭 (de_CH)</option>
+    <option value="de_it">Deutsch - Südtirol 🇮🇹 (de_IT)</option>
+    <option value="et">Eesti - Eesti 🇪🇪 (et_EE)</option>
+    <option value="ar_latn">El-għàràbí - Màsr 🇪🇬 (ar_Latn)</option>
+    <option value="en_au">English - Australia 🇦🇺 (en_AU)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="en_br">English - Brazil (en_BR)</option>
+        <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
     {% endif %}
-    <option value="en_ca">English - Canada (en_CA)</option>
-    <option value="en_gb">English - GB (en_GB)</option>
-    <option value="en_gb-metric">English - GB - °C, km, km/h (en_GB)</option>
-    <option value="en_in">English - India (en_IN)</option>
-    <option value="en_il">English - Israel (en_IL)</option>
-    <option value="en_ie">English - Ireland (en_IE)</option>
-    <option value="en_my">English - Malaysia (en_MY)</option>
-    <option value="en_nz">English - New Zealand (en_NZ)</option>
-    <option value="en_za">English - South Africa (en_ZA)</option>
-    <option value="en_us">English - USA (en_US)</option>
-    <option value="en_us-metric">English - USA - °C, km, km/h (en_US)</option>
-    <option value="es_ar">Español - Argentina (es_AR)</option>
-    <option value="es_bo">Español - Bolivia (es_BO)</option>
-    <option value="es_cl">Español - Chile (es_CL)</option>
-    <option value="es_co">Español - Colombia (es_CO)</option>
-    <option value="es_ec">Español - Ecuador (es_EC)</option>
-    <option value="es_es">Español - España (es_ES)</option>
-    <option value="es_mx">Español - Méjico (es_MX)</option>
-    <option value="es_py">Español - Paraguay (es_PY)</option>
-    <option value="es_pe">Español - Perú (es_PE)</option>
-    <option value="es_us">Español - Estados Unidos (es_US)</option>
-    <option value="es_uy">Español - Uruguay (es_UY)</option>
-    <option value="eo_au">Esperanto - Aŭstralio (eo_AU)</option>
+    <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+    <option value="en_gb">English - UK 🇬🇧 (en_GB)</option>
+    <option value="en_gb-metric">English - UK 🇬🇧 - °C, km, km/h (en_GB)</option>
+    <option value="en_in">English - India 🇮🇳 (en_IN)</option>
+    <option value="en_il">English - Israel 🇮🇱 (en_IL)</option>
+    <option value="en_ie">English - Ireland 🇮🇪 (en_IE)</option>
+    <option value="en_my">English - Malaysia 🇲🇾 (en_MY)</option>
+    <option value="en_nz">English - New Zealand 🇳🇿 (en_NZ)</option>
+    <option value="en_za">English - South Africa 🇿🇦 (en_ZA)</option>
+    <option value="en_us">English - USA 🇺🇸 (en_US)</option>
+    <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+    <option value="es_ar">Español - Argentina 🇦🇷 (es_AR)</option>
+    <option value="es_bo">Español - Bolivia 🇧🇴 (es_BO)</option>
+    <option value="es_cl">Español - Chile 🇨🇱 (es_CL)</option>
+    <option value="es_co">Español - Colombia 🇨🇴 (es_CO)</option>
+    <option value="es_ec">Español - Ecuador 🇪🇨 (es_EC)</option>
+    <option value="es_es">Español - España 🇪🇸 (es_ES)</option>
+    <option value="es_mx">Español - Méjico 🇲🇽 (es_MX)</option>
+    <option value="es_py">Español - Paraguay 🇵🇾 (es_PY)</option>
+    <option value="es_pe">Español - Perú 🇵🇪 (es_PE)</option>
+    <option value="es_us">Español - Estados Unidos 🇺🇸 (es_US)</option>
+    <option value="es_uy">Español - Uruguay 🇺🇾 (es_UY)</option>
+    <option value="eo_au">Esperanto - Aŭstralio 🇦🇺 (eo_AU)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="eo_br">Esperanto - Brazilo (eo_BR)</option>
+        <option value="eo_br">Esperanto - Brazilo 🇧🇷 (eo_BR)</option>
     {% endif %}
-    <option value="eo_ca">Esperanto - Kanado (eo_CA)</option>
-    <option value="eo_jp">Esperanto - Japanio (eo_JP)</option>
-    <option value="eo_tr">Esperanto - Turkio (eo_TR)</option>
-    <option value="eo_us">Esperanto - Usono (eo_US)</option>
-    <option value="eo">Esperanto (eo)</option>
-    <option value="fa_latn">Fârsi (fa_Latn)</option>
-    <option value="fr_be">Français - Belgique (fr_BE)</option>
-    <option value="fr_ca">Français - Canada (fr_CA)</option>
-    <option value="fr_fr">Français - France (fr_FR)</option>
-    <option value="fr_fr">Français - Luxembourg (fr_LU)</option>
-    <option value="fr_ch">Français - Suisse (fr_CH)</option>
-    <option value="fr_ortograf">Fransè ortograf (fr_Ortograf)</option>
-    <option value="ga">Gaeilge (ga)</option>
-    <option value="ga_traditional">Gaeilge mh ->ṁ (ga_Traditional)</option>
-    <option value="ga_clo_gaelach">Ᵹɑeılᵹe cló Ᵹɑelɑċ (ga_Clo_Gaelach)</option>
-    <option value="gl">Galego (gl)</option>
-    <option value="hi_latn">Hindi (hi_Latn)</option>
-    <option value="id">Indonesia (id)</option>
-    <option value="iu_latn">Inuktitut (iu_Latn)</option>
-    <option value="is">Íslenska (is)</option>
+    <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
+    <option value="eo_jp">Esperanto - Japanio 🇯🇵 (eo_JP)</option>
+    <option value="eo_tr">Esperanto - Turkio 🇹🇷 (eo_TR)</option>
+    <option value="eo_us">Esperanto - Usono 🇺🇸 (eo_US)</option>
+    <option value="eo">Esperanto - Mondo 🌎 (eo)</option>
+    <option value="fa_latn">Fârsi - Irân 🇮🇷 (fa_Latn)</option>
+    <option value="fr_be">Français - Belgique 🇧🇪 (fr_BE)</option>
+    <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
+    <option value="fr_fr">Français - France 🇫🇷 (fr_FR)</option>
+    <option value="fr_fr">Français - Luxembourg 🇱🇺 (fr_LU)</option>
+    <option value="fr_ch">Français - Suisse 🇨🇭 (fr_CH)</option>
+    <option value="fr_ortograf">Fransè ortograf - Frans 🇫🇷 (fr_Ortograf)</option>
+    <option value="ga">Gaeilge - Éire 🇮🇪 (ga)</option>
+    <option value="ga_traditional">Gaeilge mh ->ṁ - Éire 🇮🇪 (ga_Traditional)</option>
+    <option value="ga_clo_gaelach">Ᵹɑeılᵹe cló Ᵹɑelɑċ - Éıꞃe 🇮🇪 (ga_Clo_Gaelach)</option>
+    <option value="gl">Galego - España 🇪🇸 (gl)</option>
+    <option value="hi_latn">Hindi - Bharat 🇮🇳 (hi_Latn)</option>
+    <option value="id">Indonesia - Indonesia 🇮🇩 (id)</option>
+    <option value="iu_latn">Inuktitut - Kanada 🇨🇦 (iu_Latn)</option>
+    <option value="is">Íslenska - Ísland 🇮🇸 (is)</option>
 <!--    <option value="iso">ISO (French 123 450,054 321)</option>
     <option value="iso_dot">ISO (English 123 450.054 321)</option>-->
-    <option value="it">Italiano (it)</option>
-    <option value="he_latn">Ivrít (he_Latn)</option>
-    <option value="kea">Kabuverdianu (kea)</option>
+    <option value="it">Italiano - Italia 🇮🇹 (it)</option>
+    <option value="he_latn">Ivrít - Israel 🇮🇱 (he_Latn)</option>
+    <option value="kea">Kabuverdianu - Kabu Verdi 🇨🇻 (kea)</option>
     <option value="sw">Kiswahili (sw)</option>
     <option value="sw_traditional">Kiswahili - traditional month names (sw_Traditional)</option>
     <option value="lat">Latīnum (lat)</option>
-    <option value="lb">Lëtzebuergesch (lb)</option>
-    <option value="hu">Magyar (hu)</option>
-    <option value="mt">Malti (mt)</option>
-    <option value="nl_be">Nederlands - België (nl_BE)</option>
-    <option value="nl">Nederlands - Nederlanden (nl_NL)</option>
-    <option value="nb">Norsk bokmål (nb_NO)</option>
-    <option value="nn">Norsk nynorsk (nn_NO)</option>
-    <option value="pl">Polski (pl)</option>
-    <option value="pt_ao">Português - Angola (pt_AO)</option>
+    <option value="lb">Lëtzebuergesch - Lëtzebuerg 🇱🇺 (lb)</option>
+    <option value="hu">Magyar - Magyarország 🇭🇺 (hu)</option>
+    <option value="mt">Malti - Malta 🇲🇹 (mt)</option>
+    <option value="nl_be">Nederlands - België 🇧🇪 (nl_BE)</option>
+    <option value="nl">Nederlands - Nederland 🇳🇱 (nl_NL)</option>
+    <option value="nb">Norsk bokmål - Norge 🇳🇴 (nb_NO)</option>
+    <option value="nn">Norsk nynorsk - Noreg 🇳🇴 (nn_NO)</option>
+    <option value="pl">Polski - Polska 🇵🇱 (pl)</option>
+    <option value="pt_ao">Português - Angola 🇦🇴 (pt_AO)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="pt_br">Português - Brasil (pt_BR)</option>
+        <option value="pt_br">Português - Brasil 🇧🇷 (pt_BR)</option>
     {% endif %}
-    <option value="pt_cv">Português - Cabo-Verde (pt_CV)</option>
-    <option value="pt_gq">Português - Guiné Equatorial (pt_GQ)</option>
-    <option value="pt_gw">Português - Guiné‐Bissau (pt_GW)</option>
-    <option value="pt_lu">Português - Luxemburgo (pt_LU)</option>
-    <option value="pt_mo">Português - Macau (pt_MO)</option>
-    <option value="pt_mz">Português - Moçambique (pt_MZ)</option>
-    <option value="pt_pt">Português - Portugal (pt_PT)</option>
-    <option value="pt_st">Português - São‐Tomé e Príncipe (pt_ST)</option>
-    <option value="pt_ch">Português - Suíça (pt_CH)</option>
-    <option value="pt_tl">Português - Timor‐Leste (pt_TL)</option>
-    <option value="ro">Română (ro)</option>
-    <option value="fi">Suomi (fi)</option>
-    <option value="sv">Svenska - Finland (sv_FI)</option>
-    <option value="sv">Svenska - Sverige (sv_SE)</option>
-    <option value="vi">Tiếng Việt (vi)</option>
-    <option value="tr">Türkçe (tr)</option>
-    <option value="yo">Yorùbá (yo)</option>
-    <option value="yrl">Ỹengatu (yrl)</option>
-    <option value="zh_latn">Zhōngwén (zh_Latn)</option>
-    <option value="haw">ʻŌlelo Hawaiʻi (haw)</option>
-    <option value="el">Ελληνικά (el_GR)</option>
-    <option value="el_colloquial">Ελληνικά - colloquial month names (el_Colloquial)</option>
-    <option value="ru">Русский (ru)</option>
-    <option value="uk">Українська (uk)</option>
-    <option value="he">{{ '\N{RLI}עברית\N{PDI} (he)' }}</option>
-    <option value="ar">{{ '\N{RLI}العربية\N{PDI} \N{LRI}[٠١٢٣٤٥٦٧٨٩]\N{PDI} (ar)' }}</option>
-    <option value="ar_nu_latn">{{ '\N{RLI}العربية\N{PDI} \N{LRI}[0123456789]\N{PDI} (ar-nu-Latn)' }}</option>
-    <option value="fa">{{ '\N{RLI}فارسی\N{PDI} \N{LRI}[⁦۰۱۲۳۴۵۶۷۸۹⁩]\N{PDI} (fa)' }}</option>
-    <option value="fa_nu_latn">{{ '\N{RLI}فارسی\N{PDI} \N{LRI}[0123456789]\N{PDI} (fa-nu-Latn)' }}</option>
-    <option value="hi">हिन्दी [⁦०१२३४५६७८९⁩] (hi)</option>
-    <option value="hi_nu_latn">हिन्दी [0123456789] (hi-nu-Latn)</option>
-    <option value="bn">বাংলা [⁦০১২৩৪৫৬৭৮৯⁩] (bn)</option>
-    <option value="bn_nu_latn">বাংলা [0123456789] (bn-nu-Latn)</option>
-    <option value="iu">ᐃᓄᒃᑎᑐᑦ (iu)</option>
-    <option value="ko">한국어 (ko)</option>
-    <option value="kn">ಕನ್ನಡ [೦೧೨೩೪೫೬೭೮೯] (kn)</option>
-    <option value="kn_nu_latn">ಕನ್ನಡ [0123456789] (kn-nu-Latn)</option>
+    <option value="pt_cv">Português - Cabo-Verde 🇨🇻 (pt_CV)</option>
+    <option value="pt_gq">Português - Guiné Equatorial 🇬🇶 (pt_GQ)</option>
+    <option value="pt_gw">Português - Guiné‐Bissau 🇬🇼 (pt_GW)</option>
+    <option value="pt_lu">Português - Luxemburgo 🇱🇺 (pt_LU)</option>
+    <option value="pt_mo">Português - Macau 🇨🇳 (pt_MO)</option>
+    <option value="pt_mz">Português - Moçambique 🇲🇿 (pt_MZ)</option>
+    <option value="pt_pt">Português - Portugal 🇵🇹 (pt_PT)</option>
+    <option value="pt_st">Português - São‐Tomé e Príncipe 🇸🇹 (pt_ST)</option>
+    <option value="pt_ch">Português - Suíça 🇨🇭 (pt_CH)</option>
+    <option value="pt_tl">Português - Timor‐Leste 🇹🇱 (pt_TL)</option>
+    <option value="ro">Română - România 🇷🇴 (ro)</option>
+    <option value="fi">Suomi - Suomen 🇫🇮 (fi)</option>
+    <option value="sv">Svenska - Finland 🇫🇮 (sv_FI)</option>
+    <option value="sv">Svenska - Sverige 🇸🇪 (sv_SE)</option>
+    <option value="vi">Tiếng Việt - Việt Nam 🇻🇳 (vi)</option>
+    <option value="tr">Türkçe - Türkiye 🇹🇷 (tr)</option>
+    <option value="yo">Yorùbá - Nàìjíríà 🇳🇬 (yo)</option>
+    <option value="yrl">Ỹengatu - Braziw 🇧🇷 (yrl)</option>
+    <option value="zh_latn">Zhōngwén - Zhōngguó 🇨🇳 (zh_Latn)</option>
+    <option value="haw">ʻŌlelo Hawaiʻi - ʻAmelika Hui Pū ʻia 🇺🇸 (haw)</option>
+    <option value="el">Ελληνικά - Ελλάδα 🇬🇷 (el_GR)</option>
+    <option value="el_colloquial">Ελληνικά - Ελλάδα 🇬🇷 - colloquial month names (el_Colloquial)</option>
+    <option value="ru">Русский - Россия 🇷🇺 (ru)</option>
+    <option value="uk">Українська - Україна 🇺🇦 (uk)</option>
+    <option value="he">{{ '\N{RLI}עברית\N{PDI} - \N{RLI}ישראל\N{PDI} 🇮🇱 (he)' }}</option>
+    <option value="ar">{{ '\N{RLI}العربية\N{PDI} \N{LRI}[٠١٢٣٤٥٦٧٨٩]\N{PDI} - \N{RLI}مصر\N{PDI} 🇪🇬 (ar)' }}</option>
+    <option value="ar_nu_latn">{{ '\N{RLI}العربية\N{PDI} \N{LRI}[0123456789]\N{PDI} - \N{RLI}مصر\N{PDI} 🇪🇬 (ar-nu-Latn)' }}</option>
+    <option value="fa">{{ '\N{RLI}فارسی\N{PDI} \N{LRI}[⁦۰۱۲۳۴۵۶۷۸۹⁩]\N{PDI} - \N{RLI}\N{RLI}فارسی\N{PDI}\N{PDI} 🇮🇷 (fa)' }}</option>
+    <option value="fa_nu_latn">{{ '\N{RLI}فارسی\N{PDI} \N{LRI}[0123456789]\N{PDI} - \N{RLI}\N{RLI}فارسی\N{PDI}\N{PDI} 🇮🇷 (fa-nu-Latn)' }}</option>
+    <option value="hi">हिन्दी [⁦०१२३४५६७८९⁩] - भारत 🇮🇳 (hi)</option>
+    <option value="hi_nu_latn">हिन्दी [0123456789] - भारत 🇮🇳 (hi-nu-Latn)</option>
+    <option value="bn">বাংলা [⁦০১২৩৪৫৬৭৮৯⁩] - বাংলাদেশ 🇧🇩  (bn)</option>
+    <option value="bn_nu_latn">বাংলা [0123456789] - বাংলাদেশ 🇧🇩  (bn-nu-Latn)</option>
+    <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
+    <option value="ko">한국어 - 한국 🇰🇷 (ko)</option>
+    <option value="kn">ಕನ್ನಡ [೦೧೨೩೪೫೬೭೮೯] - ಭಾರತ 🇮🇳 (kn)</option>
+    <option value="kn_nu_latn">ಕನ್ನಡ [0123456789] - ಭಾರತ 🇮🇳 (kn-nu-Latn)</option>
     <option value="en_shaw">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shaw)</option>
-    <option value="zh_cn">中文 - 中国 (zh_CN)</option>
-    <option value="zh_sg">中文 - 新加坡 (zh_SG)</option>
-    <option value="zh_hant">中文 - 正體 (zh_HanT)</option>
-    <option value="zh_mo">中文 - 澳門 (zh_MO)</option>
-    <option value="zh_hans">中文 - 简体 (zh_HanS)</option>
-    <option value="zh_tw">中文 - 臺灣 (zh_TW)</option>
-    <option value="zh_hk">中文 - 香港 (zh_HK)</option>
-    <option value="ja">日本語 (ja)</option>
+    <option value="zh_cn">中文 - 中国 🇨🇳 (zh_CN)</option>
+    <option value="zh_sg">中文 - 新加坡 🇸🇬 (zh_SG)</option>
+    <option value="zh_hant">中文 - 正體 🇹🇼 (zh_HanT)</option>
+    <option value="zh_mo">中文 - 澳門 🇲🇴 (zh_MO)</option>
+    <option value="zh_hans">中文 - 简体 🇨🇳 (zh_HanS)</option>
+    <option value="zh_tw">中文 - 臺灣 🇹🇼 (zh_TW)</option>
+    <option value="zh_hk">中文 - 香港 🇨🇳 (zh_HK)</option>
+    <option value="ja">日本語 - 日本 🇯🇵 (ja)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
         </optgroup>
     {% endif %}
