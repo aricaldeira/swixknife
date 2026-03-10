@@ -825,32 +825,37 @@ def _shastadari_logo(locale, colours, today):
     )
     xl += f'''        <path id="shastadari_base" style="fill:none;" d="{circle}" />\n'''
 
-    # if 'pt' in locale.LANG:
-    #     name = 'Xastadári'
-    # elif 'bz' in locale.LANG:
-    #     name = 'Xastadari'
-    # elif 'eo' in locale.LANG:
-    #     name = 'Ŝastadari’'
-    # elif 'es' in locale.LANG:
-    #     name = 'Llastadari'
-    # elif 'it' in locale.LANG:
-    #     name = 'Sciastadari'
-    # elif 'fr' in locale.LANG:
-    #     name = 'Chastadari'
-    # elif 'de' in locale.LANG:
-    #     name = 'Schastadari'
-    # else:
-    #     name = 'Shastadari'
-    # name = 'षष्टाधारी'
+    if 'pt' in locale.LANG:
+        name = 'xastadári'
+    elif 'bz' in locale.LANG:
+        name = 'xastadari'
+    elif 'eo' in locale.LANG:
+        name = 'ŝastadari’'
+    elif 'es' in locale.LANG:
+        name = 'llastadari'
+    elif 'it' in locale.LANG:
+        name = 'sciastadari'
+    elif 'fr' in locale.LANG:
+        name = 'chastadari'
+    elif 'de' in locale.LANG:
+        name = 'schastadari'
+    else:
+        if '-IN' in locale.LANGUAGE_TAG:
+            name = 'ṣaṣṭādhārī'
+        else:
+            name = 'shastadari'
+            name = 'ṣaṣṭādhārī'
 
     # name = "[swɪksˈnaɪf]"
 
-    if locale.LANGUAGE_TAG == 'en-Shaw':
-        name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
-    else:
-        name = "swixknife"
+    # if locale.LANGUAGE_TAG == 'en-Shaw':
+    # name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
+    # else:
+    # name = 'swixknife'
+    name = 'षष्टाधारी'
+    # name = '𑀱𑀱𑁆𑀝𑁂𑀥𑁂𑀭𑀻'
 
-    xl += f'''<text style="font-size:{shastadari_size / 8}px;fill:{back_colour};text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
+    xl += f'''<text style="font-size:{shastadari_size / 8}px;fill:#9e9e9e;text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
 
     # circle = ring(
     #     inner_radius=shastadari_size - shastadari_thickness,
@@ -1357,7 +1362,7 @@ def _time_display(locale, colours, gray, today):
 
     display += '</g>\n'
 
-    time_display = f'''        <text id="inner_time_display" x="112" y="156.5" style="font-size:8px;font-weight:bold;fill:#333333aa;text-anchor:middle;text-align:center;">55:55</text>'''
+    time_display = f'''        <text id="inner_time_display" x="112" y="156.5" style="font-size:8px;font-weight:bold;fill:#9e9e9e;text-anchor:middle;text-align:center;">55:55</text>'''
 
     return '<g>\n'  + time_display + hl_display + display + '</g>\n'
 
