@@ -1130,7 +1130,7 @@ def _time_display(locale, colours, gray, today):
                 if angle > 360:
                     angle -= 360
 
-                if True:
+                if i % 2 == 0:
                     cx = 112 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
                     cy = 112 + (size / 18) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 13 / 90}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
