@@ -826,33 +826,51 @@ def _shastadari_logo(locale, colours, today):
     xl += f'''        <path id="shastadari_base" style="fill:none;" d="{circle}" />\n'''
 
     if 'pt' in locale.LANG:
-        name = 'xastadári'
+        name = 'Xastadári'
     elif 'bz' in locale.LANG:
-        name = 'xastadari'
+        name = 'Xastadari'
     elif 'eo' in locale.LANG:
-        name = 'ŝastadari’'
+        name = 'Ŝastadari’'
     elif 'es' in locale.LANG:
-        name = 'llastadari'
+        name = 'Llastadari'
     elif 'it' in locale.LANG:
-        name = 'sciastadari'
+        name = 'Sciastadari'
     elif 'fr' in locale.LANG:
-        name = 'chastadari'
+        name = 'Chastadari'
     elif 'de' in locale.LANG:
-        name = 'schastadari'
+        name = 'Schastadari'
+    elif 'ja' in locale.LANG:
+        # name = 'シャスタダーリ'
+        name = '六進法'
+        # name = 'ろくしんほう'
+    elif 'zh' in locale.LANG:
+        if '-TW' in locale.LANGUAGE_TAG:
+            name = '六進制'
+        else:
+            name = '六进制'
+    elif 'ko' in locale.LANG:
+        name = '육진법'
+    elif 'ru' in locale.LANG:
+        name = 'Шастадарий'
+    elif 'uk' in locale.LANG:
+        name = 'Шастадарії'
+    elif 'pl' in locale.LANG:
+        name = 'Szastadari'
     else:
         if '-IN' in locale.LANGUAGE_TAG:
-            name = 'ṣaṣṭādhārī'
+            # name = 'Ṣaṣṭādhārī'
+            name = 'षष्टाधारी'
         else:
-            name = 'shastadari'
-            name = 'ṣaṣṭādhārī'
+            name = 'Shastadari'
+            # name = 'ṣaṣṭādhārī'
 
     # name = "[swɪksˈnaɪf]"
 
-    # if locale.LANGUAGE_TAG == 'en-Shaw':
-    # name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
+    if locale.LANGUAGE_TAG == 'en-Shaw':
+        # name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
+        name = '·𐑖𐑩𐑕𐑑𐑩𐑛𐑭𐑮𐑦'
     # else:
     # name = 'swixknife'
-    name = 'षष्टाधारी'
     # name = '𑀱𑀱𑁆𑀝𑁂𑀥𑁂𑀭𑀻'
 
     xl += f'''<text style="font-size:{shastadari_size / 8}px;fill:#9e9e9e;text-anchor:middle;text-align:center;font-weight:bold;"><textPath href="#shastadari_base" startOffset="75%">{name}</textPath></text>\n'''
