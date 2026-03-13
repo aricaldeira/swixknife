@@ -14,12 +14,12 @@
     --font-family-sans-serif: 'Andika', 'Sezimal QP', 'Sezimal Symbols', 'Noto Sans Hebrew', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Bengali UI', 'Inter Alia', 'Noto Sans Shavian', 'Noto Sans Symbols', 'Noto Sans Symbols2', sans-serif;
     --font-family-monospace: 'Sezimal Mono', 'Sezimal Symbols', 'Noto Sans Symbols', 'Noto Sans Symbols2', 'Noto Sans Mono', monospace;
 
-    -webkit-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
-    -moz-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
-    -ms-font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
-    font-feature-settings: "ss01", "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
-/*
-    font-feature-settings: "dlig", "tnum", "ss03", "cv06", "cv08", "cv05";*/
+    -webkit-font-feature-settings: "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    -moz-font-feature-settings: "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    -ms-font-feature-settings: "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+    font-feature-settings: "cv31", "cv35", "cv39", "cv75", "cv70" 0, "cv01" 0, "cv04" 1, "cv06" 0, "cv07" 1;
+
+/*     font-feature-settings: "dlig", "tnum", "ss03", "cv06", "cv08", "cv05"; */
 
 }
 html, body {

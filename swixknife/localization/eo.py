@@ -422,8 +422,8 @@ class SezimalLocaleEO(SezimalLocale):
         'Suno',
         # 'Merkuro',
         'Venuso',
-        'Marsu',
-        'Jupiteru',
+        'Marso',
+        'Jupitero',
         'Saturno',
         'Luno',
     ]

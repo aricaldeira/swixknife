@@ -574,15 +574,17 @@
                 //     agrima_colour = '#ff1744',
                 //     transparency = 'cc';
 
-                // var
-                //     text_colour = '#000000',
-                //     uta_highlight = '#ffffff',
-                //     uta_colour = '#FAFAFA',
-                //     posha_highlight = '#ffffff',
-                //     posha_colour = '#FAFAFA',
-                //     agrima_highlight = '#ff8a80',
-                //     agrima_colour = '#ff1744',
-                //     transparency = '99';
+                {% if gray_scale %}
+                var
+                    text_colour = '#000000',
+                    uta_highlight = '#ffffff',
+                    uta_colour = '#FAFAFA',
+                    posha_highlight = '#ffffff',
+                    posha_colour = '#FAFAFA',
+                    agrima_highlight = '#ff8a80',
+                    agrima_colour = '#ff1744',
+                    transparency = '99';
+                {% endif %}
 
                 document.getElementById(`hand_uta_pointer`).style['fill'] = `${uta_colour}${transparency}`;
                 document.getElementById(`hand_uta_pointer`).style['filter'] = `drop-shadow(0 0 3px ${uta_highlight}${transparency})`;
