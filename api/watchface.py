@@ -28,7 +28,7 @@ from decimal import Decimal as D
 
 
 # @app.route('/watchface.svg')
-def watchface(locale, today) -> str:
+def watchface(locale, today, gray_scale=False) -> str:
     # today = today.from_days(today.replace(year=213214, month=3, day=23).as_days + 1410)
 
     #
@@ -39,6 +39,7 @@ def watchface(locale, today) -> str:
             today.dcc_year,
             locale.DEFAULT_HEMISPHERE,
             locale.DEFAULT_TIME_ZONE,
+            gray_scale=gray_scale,
             calendar='DCC',
         )
         gray = weekly_season_colors(
@@ -55,6 +56,7 @@ def watchface(locale, today) -> str:
             today.year,
             locale.DEFAULT_HEMISPHERE,
             locale.DEFAULT_TIME_ZONE,
+            gray_scale=gray_scale,
             calendar='SYM'
         )
         gray = weekly_season_colors(
@@ -827,6 +829,8 @@ def _shastadari_logo(locale, colours, today):
 
     if 'pt' in locale.LANG:
         name = 'Xastadári'
+    elif 'ca' in locale.LANG:
+        name = 'Xastadári'
     elif 'bz' in locale.LANG:
         name = 'Xastadari'
     elif 'eo' in locale.LANG:
@@ -839,17 +843,23 @@ def _shastadari_logo(locale, colours, today):
         name = 'Chastadari'
     elif 'de' in locale.LANG:
         name = 'Schastadari'
+    elif 'ro' in locale.LANG:
+        name = 'Șăstadari'
+    elif 'tr' in locale.LANG:
+        name = 'Şastadari'
     elif 'ja' in locale.LANG:
         # name = 'シャスタダーリ'
         name = '六進法'
         # name = 'ろくしんほう'
     elif 'zh' in locale.LANG:
-        if '-TW' in locale.LANGUAGE_TAG:
-            name = '六進制'
-        else:
+        if '-CN' in locale.LANGUAGE_TAG or '-HanS' in locale.LANGUAGE_TAG:
             name = '六进制'
+        else:
+            name = '六進制'
     elif 'ko' in locale.LANG:
         name = '육진법'
+    elif 'vi' in locale.LANG:
+        name = 'Hệ lục phân'
     elif 'ru' in locale.LANG:
         name = 'Шастадарий'
     elif 'uk' in locale.LANG:
