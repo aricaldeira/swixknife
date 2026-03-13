@@ -1563,7 +1563,7 @@ def now_route() -> Response:
     context['format_token'] = format_token
     context['hour_format'] = locale.HOUR_FORMAT
     context['mobile'] = mobile
-    context['watchface'] = Markup(watchface(locale, date))
+    context['watchface'] = Markup(watchface(locale, date, gray_scale=theme == 'GRAY'))
 
     if locale.calendar_displayed == 'SYM':
         context['events'] = _calendar_events(locale, date.year, context) or {}
@@ -2704,7 +2704,7 @@ def _create_store_events_en():
             _create_store_events(itens, year_range, bases)
 
 
-def _preload_calendars(locales=[]):
+def _preload_calendars(locales=[], bases=[]):
     LOCALE_TIME_ZONE = {
         'pt-BR': [
             'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
@@ -2718,10 +2718,10 @@ def _preload_calendars(locales=[]):
             'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
             # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
-        # 'eo-BR': [
-        #     'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
-        #     # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
-        # ],
+        'eo-BR': [
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
+        ],
         'en-US': [
             'America/Chicago',
             # 'America/Denver',
@@ -2772,10 +2772,13 @@ def _preload_calendars(locales=[]):
 
                 locale.DEFAULT_TIME_ZONE = time_zone
 
-                for base in (10, 14, 20):
+                if not bases:
+                    bases = (10, 14, 20)
+
+                for base in bases:
                     locale.base = base
 
-                    if locale_code in ['pt-BR', 'bz-BR', 'en-US']:
+                    if locale_code in ['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR']:
                         hemispheres = ['S', 'N']
                     else:
                         hemispheres = [locale.DEFAULT_HEMISPHERE]
@@ -2791,7 +2794,7 @@ def _preload_calendars(locales=[]):
                         elif base == 20:
                             locale.format_token = '↋'
 
-                        print(iso_year, locale_code, time_zone, base, 'SYM')
+                        print(iso_year, locale_code, time_zone, base, hemisphere, 'SYM')
                         _calendar_events(
                             locale, sym_year, {
                                 'base': base,
@@ -2820,7 +2823,7 @@ def _preload_calendars(locales=[]):
                         elif base == 20:
                             locale.format_token = '↋'
 
-                        print(iso_year, locale_code, time_zone, base, 'DCC')
+                        print(iso_year, locale_code, time_zone, base, hemisphere, 'DCC')
                         _calendar_events(
                             locale, dcc_year, {
                                 'base': base,
@@ -2849,7 +2852,7 @@ def _preload_calendars(locales=[]):
                         elif base == 20:
                             locale.format_token = 'c↋'
 
-                        print(iso_year, locale_code, time_zone, base, 'ADC')
+                        print(iso_year, locale_code, time_zone, base, hemisphere, 'ADC')
                         _calendar_events(
                             locale, dcc_year, {
                                 'base': base,
@@ -2878,7 +2881,7 @@ def _preload_calendars(locales=[]):
                         elif base == 20:
                             locale.format_token = '↋'
 
-                        print(iso_year, locale_code, time_zone, base, 'ISO')
+                        print(iso_year, locale_code, time_zone, base, hemisphere, 'ISO')
                         _calendar_events(
                             locale, iso_year, {
                                 'base': base,
@@ -2898,5 +2901,5 @@ def _preload_calendars(locales=[]):
                         #         },
                         #     )
 
-# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US'])
-_preload_calendars()
+# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR'])
+# _preload_calendars()
