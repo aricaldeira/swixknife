@@ -2902,4 +2902,4 @@ def _preload_calendars(locales=[], bases=[]):
                         #     )
 
 # _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR'])
-# _preload_calendars()
+_preload_calendars()
