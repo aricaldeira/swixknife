@@ -2728,6 +2728,8 @@ def _preload_calendars(locales=[], bases=[]):
             'America/Los_Angeles',
             # 'America/Phoenix',
             # 'US/Central',
+            'Asia/Kolkata',
+            'SPM/SPM+05',
         ],
         'en-CA': [
             # 'America/Edmonton',
