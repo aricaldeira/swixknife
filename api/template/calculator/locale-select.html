@@ -13,6 +13,7 @@
             <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
             <option value="eo_br">Esperanto - Brazilo 🇧🇷 (eo_BR)</option>
             <option value="pt_br">Português - Brasil 🇧🇷 (pt_BR)</option>
+            <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - 𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
         </optgroup>
         {% if locale.LANG == 'bz' %}
             <optgroup name="world" label="Otrus lokalis 🌎">
@@ -149,7 +150,24 @@
     <option value="ko">한국어 - 한국 🇰🇷 (ko)</option>
     <option value="kn">ಕನ್ನಡ [೦೧೨೩೪೫೬೭೮೯] - ಭಾರತ 🇮🇳 (kn)</option>
     <option value="kn_nu_latn">ಕನ್ನಡ [0123456789] - ಭಾರತ 🇮🇳 (kn-nu-Latn)</option>
-    <option value="en_shaw">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shaw)</option>
+<!--     <option value="en_shaw">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shaw)</option> -->
+
+    <option value="en_shaw_au">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑪𐑕𐑑𐑮𐑱𐑤𐑾 🇦🇺 (en_AU)</option>
+    {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
+        <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
+    {% endif %}
+    <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+    <option value="en_shaw_gb">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 (en_GB)</option>
+    <option value="en_shaw_gb-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 - °C, km, km/h (en_GB)</option>
+    <option value="en_shaw_in">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑯𐑛𐑾 🇮🇳 (en_IN)</option>
+    <option value="en_shaw_il">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑟𐑮𐑱𐑤 🇮🇱 (en_IL)</option>
+    <option value="en_shaw_ie">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑲𐑼𐑤𐑩𐑯𐑛 🇮🇪 (en_IE)</option>
+    <option value="en_shaw_my">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑥𐑩𐑤𐑱𐑠𐑩 🇲🇾 (en_MY)</option>
+    <option value="en_shaw_nz">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑯𐑿 ·𐑟𐑰𐑤𐑩𐑯𐑛 🇳🇿 (en_NZ)</option>
+    <option value="en_shaw_za">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑕𐑬𐑔 ·𐑨𐑓𐑮𐑦𐑒𐑩 🇿🇦 (en_ZA)</option>
+    <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
+    <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+
     <option value="zh_cn">中文 - 中国 🇨🇳 (zh_CN)</option>
     <option value="zh_sg">中文 - 新加坡 🇸🇬 (zh_SG)</option>
     <option value="zh_hant">中文 - 正體 🇹🇼 (zh_HanT)</option>

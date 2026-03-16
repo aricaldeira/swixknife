@@ -62,8 +62,8 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ]
 
     DATE_TIME_LONG_FORMAT = '#W, 𐑞 #-d#O #M #Y, #u:#p:#a'
-    ISO_TIME_FORMAT = '%I:%M:%S %P'
-    ISO_SHORT_TIME_FORMAT = '%I:%M %P'
+    # ISO_TIME_FORMAT = '%I:%M:%S %P'
+    # ISO_SHORT_TIME_FORMAT = '%I:%M %P'
     # AM = '𐑱𐑧𐑥'
     # PM = '𐑐𐑰𐑧𐑥'
     AM = '⸰𐑱𐑥'

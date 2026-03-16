@@ -876,7 +876,7 @@ def _shastadari_logo(locale, colours, today):
 
     # name = "[swɪksˈnaɪf]"
 
-    if locale.LANGUAGE_TAG == 'en-Shaw':
+    if 'Shaw' in locale.LANGUAGE_TAG:
         # name = '𐑕𐑢𐑦𐑒𐑕𐑯𐑲𐑓'
         name = '·𐑖𐑩𐑕𐑑𐑩𐑛𐑭𐑮𐑦'
     # else:

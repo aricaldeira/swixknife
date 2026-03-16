@@ -1270,6 +1270,9 @@ class SezimalLocale:
         elif len(parts) == 2:
             lt = parts[0].lower() + '-' + parts[1].capitalize()
 
+        elif len(parts) == 3:
+            lt = parts[0].lower() + '-' + parts[1].capitalize() + '-' + parts[2].upper()
+
         else:
             lt = '-'.join(parts)
 
