@@ -338,3 +338,23 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ADC_DATE_LONG_FORMAT_ON_DATE = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑛𐑱 &-d'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKS = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑢𐑰𐑒 &-wM, 𐑛𐑱 &-dW'
     ADC_DATE_LONG_FORMAT_ON_DATE_WEEKDAY = '&󱹭>Y, 𐑥𐑩𐑯𐑔 𐑝 &cM, 𐑢𐑰𐑒 𐑝 &cW, 𐑛𐑱 𐑝 &cD'
+
+    CALENDAR_TYPE_ABBREVIATION = {
+        #
+        # Civil calendars
+        #
+        'SEZ': '◦𐑕𐑦𐑥',
+        'SYM': '◦𐑕𐑦𐑥',
+        'ISO': '◦𐑜𐑮𐑧',
+        'DCC': '◦𐑛𐑒𐑒',
+        'ADC': '◦𐑨𐑛𐑒',
+        'ISR': '◦𐑦𐑟𐑮',
+        'IND': '◦𐑦𐑯𐑛',
+        #
+        # Religious calendars
+        #
+        'JUL': '◦𐑠𐑫𐑤',
+        'JEW': '◦𐑡𐑧𐑢',
+        'HIJ': '◦𐑦𐑟𐑤',
+        'IRN': '◦𐑦𐑮𐑯',
+    }
