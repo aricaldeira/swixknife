@@ -2536,35 +2536,36 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
 
 def _create_store_events_br():
     # year_range = (213_000, 214_001)
-    year_range = (213_214, 213_211, -1)
+    year_range = (213_222, 213_155, -1)
 
     for locale in (
         'pt-BR',
         'bz-BR',
         'en-BR',
         'eo-BR',
+        'en-Shaw-BR',
     ):
         for tz in (
             'America/Sao_Paulo',
 
-            'GPM/GPM-03',
-            'GPM/NT-03',
-            'GPM/MT-03',
-
-            'SPM/SPM-0340',
-            'SPM/NT-0340',
-            'SPM/MT-0340',
-
-            'SPM/SPM-0350',
-            'SPM/NT-0350',
-            'SPM/MT-0350',
-
-            'SPM/SPM-04',
-            'SPM/NT-04',
-            'SPM/MT-04',
-
-            'UTC',
-            'SPM/SPM',
+#             'GPM/GPM-03',
+#             'GPM/NT-03',
+#             'GPM/MT-03',
+#
+#             'SPM/SPM-0340',
+#             'SPM/NT-0340',
+#             'SPM/MT-0340',
+#
+#             'SPM/SPM-0350',
+#             'SPM/NT-0350',
+#             'SPM/MT-0350',
+#
+#             'SPM/SPM-04',
+#             'SPM/NT-04',
+#             'SPM/MT-04',
+#
+#             'UTC',
+#             'SPM/SPM',
         ):
             itens = [locale + '|' + tz]
 
@@ -2580,18 +2581,21 @@ def _create_store_events_br():
 
 def _create_store_events_en():
     # year_range = (213_000, 214_001)
-    year_range = (213_214, 213_211, -1)
+    year_range = (213_220, 213_205, -1)
 
     LOCALE_TIME_ZONE = {
         'iso': [],
         'en-IN': [
             'Asia/Kolkata',
-            'SPM/SPM+05',
+            # 'SPM/SPM+05',
         ],
         'en-GB': [
             'Europe/London',
             'Asia/Kolkata',
-            'SPM/SPM+05',
+            # 'SPM/SPM+05',
+        ],
+        'en-Shaw-GB': [
+            'Europe/London',
         ],
         'en-US': [
             'America/Adak',
@@ -2628,6 +2632,24 @@ def _create_store_events_en():
             'Pacific/Honolulu',
             'US/Central',
         ],
+        'en-Shaw-US': [
+            'America/Chicago',
+            'America/Los_Angeles',
+            'America/New_York',
+            'US/Central',
+        ],
+        'eo-US': [
+            'America/Chicago',
+            'America/Los_Angeles',
+            'America/New_York',
+            'US/Central',
+        ],
+        'es-US': [
+            'America/Chicago',
+            'America/Los_Angeles',
+            'America/New_York',
+            'US/Central',
+        ],
         'en-CA': [
             'America/Atikokan',
             'America/Blanc-Sablon',
@@ -2659,6 +2681,14 @@ def _create_store_events_en():
             'America/Winnipeg',
             'America/Yellowknife',
         ],
+        'en-Shaw-CA': [
+            'America/Toronto',
+            'America/Vancouver',
+        ],
+        'eo-CA': [
+            'America/Toronto',
+            'America/Vancouver',
+        ],
         'en-AU': [
             'Antarctica/Macquarie',
             'Australia/Adelaide',
@@ -2673,14 +2703,24 @@ def _create_store_events_en():
             'Australia/Perth',
             'Australia/Sydney',
         ],
+        'en-Shaw-AU': [
+            'Australia/Brisbane',
+            'Australia/Melbourne',
+            'Australia/Sydney',
+        ],
+        'eo-AU': [
+            'Australia/Brisbane',
+            'Australia/Melbourne',
+            'Australia/Sydney',
+        ],
         'en-IE': [
+            'Europe/Dublin',
+        ],
+        'en-Shaw-IE': [
             'Europe/Dublin',
         ],
         'en-IL': [
             'Asia/Jerusalem',
-        ],
-        'zh-CN': [
-            'Asia/Shanghai',
         ],
         'uk': [
             'Europe/Kyiv',
@@ -2688,10 +2728,40 @@ def _create_store_events_en():
         'tr': [
             'Europe/Istanbul',
         ],
+        'eo-TR': [
+            'Europe/Istanbul',
+        ],
+        'de-DE': [
+            'Europe/Berlin',
+        ],
+        'fr-FR': [
+            'Europe/Paris',
+        ],
+        'it-IT': [
+            'Europe/Rome',
+        ],
+        'es-ES': [
+            'Europe/Madrid',
+        ],
+        'zh-CN': [
+            'Asia/Shanghai',
+        ],
+        'ko': [
+            'Asia/Seoul',
+        ],
+        'ja': [
+            'Asia/Tokyo',
+        ],
+        'vi': [
+            'Asia/Ho_Chi_Minh',
+        ],
+        'ro': [
+            'Europe_Bucharest',
+        ],
     }
 
     for locale in LOCALE_TIME_ZONE:
-        for tz in LOCALE_TIME_ZONE[locale] + ['UTC', 'SPM/SPM']:
+        for tz in LOCALE_TIME_ZONE[locale]: # + ['UTC', 'SPM/SPM']:
             itens = [locale + '|' + tz]
 
             bases = (10,)
@@ -2718,6 +2788,10 @@ def _preload_calendars(locales=[], bases=[]):
             'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
             # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
         ],
+        'en-Shaw-BR': [
+            'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
+            # 'SPM/SPM-0340', # 'SPM/NT-0340', # 'SPM/MT-0340',
+        ],
         'eo-BR': [
             'GPM/GPM-03', # 'GPM/NT-03', # 'GPM/MT-03',
             # 'SPM/SPM-0340', 'SPM/NT-0340', # 'SPM/MT-0340',
@@ -2729,9 +2803,42 @@ def _preload_calendars(locales=[], bases=[]):
             # 'America/Phoenix',
             # 'US/Central',
             'Asia/Kolkata',
-            'SPM/SPM+05',
+            # 'SPM/SPM+05',
+        ],
+        'en-Shaw-US': [
+            'America/Chicago',
+            # 'America/Denver',
+            'America/Los_Angeles',
+            # 'America/Phoenix',
+            # 'US/Central',
+        ],
+        # 'es-US': [
+        #     'America/Chicago',
+        #     # 'America/Denver',
+        #     'America/Los_Angeles',
+        #     # 'America/Phoenix',
+        #     # 'US/Central',
+        # ],
+        'eo-US': [
+            'America/Chicago',
+            # 'America/Denver',
+            'America/Los_Angeles',
+            # 'America/Phoenix',
+            # 'US/Central',
         ],
         'en-CA': [
+            # 'America/Edmonton',
+            # 'America/Montreal',
+            # 'America/Vancouver',
+            # 'America/Winnipeg',
+        ],
+        'en-Shaw-CA': [
+            # 'America/Edmonton',
+            # 'America/Montreal',
+            # 'America/Vancouver',
+            # 'America/Winnipeg',
+        ],
+        'eo-CA': [
             # 'America/Edmonton',
             # 'America/Montreal',
             # 'America/Vancouver',
@@ -2743,12 +2850,26 @@ def _preload_calendars(locales=[], bases=[]):
             # 'Australia/Melbourne',
             # 'Australia/Perth',
         ],
+        'en-Shaw-AU': [
+            # 'Australia/Adelaide',
+            'Australia/Brisbane',
+            # 'Australia/Melbourne',
+            # 'Australia/Perth',
+        ],
+        'eo-AU': [
+            # 'Australia/Adelaide',
+            'Australia/Brisbane',
+            # 'Australia/Melbourne',
+            # 'Australia/Perth',
+        ],
         'en-IN': [
-            'SPM/SPM+05',
+            # 'SPM/SPM+05',
         ],
         'en-GB': [
             'Asia/Kolkata',
-            'SPM/SPM+05',
+            # 'SPM/SPM+05',
+        ],
+        'en-Shaw-GB': [
         ],
         # 'en-IE': [],
         # 'en-IL': [],
@@ -2760,6 +2881,7 @@ def _preload_calendars(locales=[], bases=[]):
         locales = LOCALE_TIME_ZONE.keys()
 
     for year_diff in (0,):  # (0, 1, -1):
+    # for year_diff in (0, 1, -1):
         for locale_code in locales:
             sym_year = SezimalDate.today().year + year_diff
             dcc_year = SezimalDate.today().dcc_year + year_diff
@@ -2780,7 +2902,8 @@ def _preload_calendars(locales=[], bases=[]):
                 for base in bases:
                     locale.base = base
 
-                    if locale_code in ['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR']:
+                    # if locale_code in ['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR', 'en-Shaw-US']:
+                    if locale_code in ['en-US', 'en-Shaw-US']:
                         hemispheres = ['S', 'N']
                     else:
                         hemispheres = [locale.DEFAULT_HEMISPHERE]
