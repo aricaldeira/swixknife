@@ -23,9 +23,9 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     ]
     WEEKDAY_ABBREVIATED_NAME = [
         '𐑥𐑳𐑯',
-        '𐑑𐑿𐑟',
+        '𐑑𐑿',
         '𐑢𐑧𐑯',
-        '𐑔𐑻𐑟',
+        '𐑔𐑻',
         '𐑓𐑮𐑲',
         '𐑕𐑨𐑑',
         '𐑕𐑳𐑯',
@@ -49,7 +49,7 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
     MONTH_ABBREVIATED_NAME = [
         '𐑡𐑨𐑯',
         '𐑓𐑧𐑚',
-        '𐑥𐑸𐑗',
+        '𐑥𐑸',
         '𐑱𐑐𐑮',
         '𐑥𐑱',
         '𐑡𐑵𐑯',
