@@ -25,6 +25,122 @@
             <optgroup name="world" label="Outros locales 🌎">
         {% endif %}
     {% endif %}
+    {% if '-US' in locale.LANGUAGE_TAG %}
+        {% if 'Shaw' in locale.LANG %}
+            <optgroup name="usa" label="⸰⁠𐑿𐑕𐑩 🇺🇸">
+                <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
+                <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+                <option value="en_us">English - USA 🇺🇸 (en_US)</option>
+                <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+                <option value="es_us">Español - Estados Unidos 🇺🇸 (es_US)</option>
+                <option value="eo_us">Esperanto - Usono 🇺🇸 (eo_US)</option>
+            </optgroup>
+            <optgroup name="world" label="𐑳𐑞𐑼 𐑤𐑴𐑒𐑨𐑤𐑟 🌎">
+        {% else %}
+            <optgroup name="usa" label="USA 🇺🇸">
+                <option value="en_us">English - USA 🇺🇸 (en_US)</option>
+                <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+                <option value="es_us">Español - Estados Unidos 🇺🇸 (es_US)</option>
+                <option value="eo_us">Esperanto - Usono 🇺🇸 (eo_US)</option>
+                <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
+                <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+            </optgroup>
+            <optgroup name="world" label="Other locales 🌎">
+        {% endif %}
+    {% endif %}
+    {% if '-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu' %}
+        {% if 'Shaw' in locale.LANG %}
+            <optgroup name="canada" label="·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦">
+                <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+                <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+                <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
+                <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
+                <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
+            </optgroup>
+            <optgroup name="world" label="𐑳𐑞𐑼 𐑤𐑴𐑒𐑨𐑤𐑟 🌎">
+        {% elif 'fr' in locale.LANG %}
+            <optgroup name="canada" label="Canada 🇨🇦">
+                <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
+                <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+                <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
+                <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
+                <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+            </optgroup>
+            <optgroup name="world" label="Autres lieux 🌎">
+        {% else %}
+            <optgroup name="canada" label="Canada 🇨🇦">
+                <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+                <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
+                <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
+                <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
+                <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+            </optgroup>
+            <optgroup name="world" label="Other locales 🌎">
+        {% endif %}
+    {% endif %}
+    {% if locale.LANG == 'en' and '-BR' not in locale.LANGUAGE_TAG and '-US' not in locale.LANGUAGE_TAG and '-CA' not in locale.LANGUAGE_TAG %}
+        {% if 'Shaw' in locale.LANG %}
+            <optgroup name="english" label="𐑦𐑙𐑜𐑤𐑦𐑖">
+                <option value="en_shaw_au">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑪𐑕𐑑𐑮𐑱𐑤𐑾 🇦🇺 (en_AU)</option>
+                <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
+                <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+                <option value="en_shaw_gb">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 (en_GB)</option>
+                <option value="en_shaw_gb-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 - °C, km, km/h (en_GB)</option>
+                <option value="en_shaw_in">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑯𐑛𐑾 🇮🇳 (en_IN)</option>
+                <option value="en_shaw_il">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑟𐑮𐑱𐑤 🇮🇱 (en_IL)</option>
+                <option value="en_shaw_ie">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑲𐑼𐑤𐑩𐑯𐑛 🇮🇪 (en_IE)</option>
+                <option value="en_shaw_my">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑥𐑩𐑤𐑱𐑠𐑩 🇲🇾 (en_MY)</option>
+                <option value="en_shaw_nz">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑯𐑿 ·𐑟𐑰𐑤𐑩𐑯𐑛 🇳🇿 (en_NZ)</option>
+                <option value="en_shaw_za">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑕𐑬𐑔 ·𐑨𐑓𐑮𐑦𐑒𐑩 🇿🇦 (en_ZA)</option>
+                <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
+                <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+                <option value="en_au">English - Australia 🇦🇺 (en_AU)</option>
+                <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
+                <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+                <option value="en_gb">English - UK 🇬🇧 (en_GB)</option>
+                <option value="en_gb-metric">English - UK 🇬🇧 - °C, km, km/h (en_GB)</option>
+                <option value="en_in">English - India 🇮🇳 (en_IN)</option>
+                <option value="en_il">English - Israel 🇮🇱 (en_IL)</option>
+                <option value="en_ie">English - Ireland 🇮🇪 (en_IE)</option>
+                <option value="en_my">English - Malaysia 🇲🇾 (en_MY)</option>
+                <option value="en_nz">English - New Zealand 🇳🇿 (en_NZ)</option>
+                <option value="en_za">English - South Africa 🇿🇦 (en_ZA)</option>
+                <option value="en_us">English - USA 🇺🇸 (en_US)</option>
+                <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+            </optgroup>
+            <optgroup name="world" label="𐑳𐑞𐑼 𐑤𐑴𐑒𐑨𐑤𐑟 🌎">
+        {% else %}
+            <optgroup name="english" label="English">
+                <option value="en_au">English - Australia 🇦🇺 (en_AU)</option>
+                <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
+                <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+                <option value="en_gb">English - UK 🇬🇧 (en_GB)</option>
+                <option value="en_gb-metric">English - UK 🇬🇧 - °C, km, km/h (en_GB)</option>
+                <option value="en_in">English - India 🇮🇳 (en_IN)</option>
+                <option value="en_il">English - Israel 🇮🇱 (en_IL)</option>
+                <option value="en_ie">English - Ireland 🇮🇪 (en_IE)</option>
+                <option value="en_my">English - Malaysia 🇲🇾 (en_MY)</option>
+                <option value="en_nz">English - New Zealand 🇳🇿 (en_NZ)</option>
+                <option value="en_za">English - South Africa 🇿🇦 (en_ZA)</option>
+                <option value="en_us">English - USA 🇺🇸 (en_US)</option>
+                <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+                <option value="en_shaw_au">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑪𐑕𐑑𐑮𐑱𐑤𐑾 🇦🇺 (en_AU)</option>
+                <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
+                <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
+                <option value="en_shaw_gb">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 (en_GB)</option>
+                <option value="en_shaw_gb-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 - °C, km, km/h (en_GB)</option>
+                <option value="en_shaw_in">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑯𐑛𐑾 🇮🇳 (en_IN)</option>
+                <option value="en_shaw_il">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑦𐑟𐑮𐑱𐑤 🇮🇱 (en_IL)</option>
+                <option value="en_shaw_ie">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑲𐑼𐑤𐑩𐑯𐑛 🇮🇪 (en_IE)</option>
+                <option value="en_shaw_my">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑥𐑩𐑤𐑱𐑠𐑩 🇲🇾 (en_MY)</option>
+                <option value="en_shaw_nz">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑯𐑿 ·𐑟𐑰𐑤𐑩𐑯𐑛 🇳🇿 (en_NZ)</option>
+                <option value="en_shaw_za">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑕𐑬𐑔 ·𐑨𐑓𐑮𐑦𐑒𐑩 🇿🇦 (en_ZA)</option>
+                <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
+                <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+            </optgroup>
+            <optgroup name="world" label="Other locales 🌎">
+        {% endif %}
+    {% endif %}
     <option value="gn">Avañeꞌẽ - Paraguái 🇵🇾 (gn)</option>
     <option value="bn_latn">Bangla - Bangladesh 🇧🇩 (bn_Latn)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
@@ -43,11 +159,14 @@
     <option value="de_it">Deutsch - Südtirol 🇮🇹 (de_IT)</option>
     <option value="et">Eesti - Eesti 🇪🇪 (et_EE)</option>
     <option value="ar_latn">El-għàràbí - Màsr 🇪🇬 (ar_Latn)</option>
+    {% if not (locale.LANG == 'en' and '-BR' not in locale.LANGUAGE_TAG and '-US' not in locale.LANGUAGE_TAG and '-CA' not in locale.LANGUAGE_TAG) %}
     <option value="en_au">English - Australia 🇦🇺 (en_AU)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
+    <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
     {% endif %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
     <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
+    {% endif %}
     <option value="en_gb">English - UK 🇬🇧 (en_GB)</option>
     <option value="en_gb-metric">English - UK 🇬🇧 - °C, km, km/h (en_GB)</option>
     <option value="en_in">English - India 🇮🇳 (en_IN)</option>
@@ -56,8 +175,11 @@
     <option value="en_my">English - Malaysia 🇲🇾 (en_MY)</option>
     <option value="en_nz">English - New Zealand 🇳🇿 (en_NZ)</option>
     <option value="en_za">English - South Africa 🇿🇦 (en_ZA)</option>
+    {% if not ('-US' in locale.LANGUAGE_TAG) %}
     <option value="en_us">English - USA 🇺🇸 (en_US)</option>
     <option value="en_us-metric">English - USA 🇺🇸 - °C, km, km/h (en_US)</option>
+    {% endif %}
+    {% endif %}
     <option value="es_ar">Español - Argentina 🇦🇷 (es_AR)</option>
     <option value="es_bo">Español - Bolivia 🇧🇴 (es_BO)</option>
     <option value="es_cl">Español - Chile 🇨🇱 (es_CL)</option>
@@ -67,20 +189,28 @@
     <option value="es_mx">Español - Méjico 🇲🇽 (es_MX)</option>
     <option value="es_py">Español - Paraguay 🇵🇾 (es_PY)</option>
     <option value="es_pe">Español - Perú 🇵🇪 (es_PE)</option>
+    {% if not ('-US' in locale.LANGUAGE_TAG) %}
     <option value="es_us">Español - Estados Unidos 🇺🇸 (es_US)</option>
+    {% endif %}
     <option value="es_uy">Español - Uruguay 🇺🇾 (es_UY)</option>
     <option value="eo_au">Esperanto - Aŭstralio 🇦🇺 (eo_AU)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
         <option value="eo_br">Esperanto - Brazilo 🇧🇷 (eo_BR)</option>
     {% endif %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
     <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
+    {% endif %}
     <option value="eo_jp">Esperanto - Japanio 🇯🇵 (eo_JP)</option>
     <option value="eo_tr">Esperanto - Turkio 🇹🇷 (eo_TR)</option>
+    {% if not ('-US' in locale.LANGUAGE_TAG) %}
     <option value="eo_us">Esperanto - Usono 🇺🇸 (eo_US)</option>
+    {% endif %}
     <option value="eo">Esperanto - Mondo 🌎 (eo)</option>
     <option value="fa_latn">Fârsi - Irân 🇮🇷 (fa_Latn)</option>
     <option value="fr_be">Français - Belgique 🇧🇪 (fr_BE)</option>
+    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
     <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
+    {% endif %}
     <option value="fr_fr">Français - France 🇫🇷 (fr_FR)</option>
     <option value="fr_fr">Français - Luxembourg 🇱🇺 (fr_LU)</option>
     <option value="fr_ch">Français - Suisse 🇨🇭 (fr_CH)</option>
@@ -146,15 +276,18 @@
     <option value="hi_nu_latn">हिन्दी [0123456789] - भारत 🇮🇳 (hi-nu-Latn)</option>
     <option value="bn">বাংলা [⁦০১২৩৪৫৬৭৮৯⁩] - বাংলাদেশ 🇧🇩  (bn)</option>
     <option value="bn_nu_latn">বাংলা [0123456789] - বাংলাদেশ 🇧🇩  (bn-nu-Latn)</option>
+    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
     <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
+    {% endif %}
     <option value="ko">한국어 - 한국 🇰🇷 (ko)</option>
     <option value="kn">ಕನ್ನಡ [೦೧೨೩೪೫೬೭೮೯] - ಭಾರತ 🇮🇳 (kn)</option>
     <option value="kn_nu_latn">ಕನ್ನಡ [0123456789] - ಭಾರತ 🇮🇳 (kn-nu-Latn)</option>
-<!--     <option value="en_shaw">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shaw)</option> -->
 
+    {% if not (locale.LANG == 'en' and '-BR' not in locale.LANGUAGE_TAG and '-US' not in locale.LANGUAGE_TAG and '-CA' not in locale.LANGUAGE_TAG) %}
+<!--     <option value="en_shaw">𐑦𐑙𐑜𐑤𐑦𐑖 (en_Shaw)</option> -->
     <option value="en_shaw_au">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑪𐑕𐑑𐑮𐑱𐑤𐑾 🇦🇺 (en_AU)</option>
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
-        <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
+    <option value="en_shaw_br">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑚𐑮𐑩𐑟𐑦𐑤 🇧🇷 (en_BR)</option>
     {% endif %}
     <option value="en_shaw_ca">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑒𐑨𐑯𐑩𐑛𐑩 🇨🇦 (en_CA)</option>
     <option value="en_shaw_gb">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑒 🇬🇧 (en_GB)</option>
@@ -165,8 +298,11 @@
     <option value="en_shaw_my">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑥𐑩𐑤𐑱𐑠𐑩 🇲🇾 (en_MY)</option>
     <option value="en_shaw_nz">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑯𐑿 ·𐑟𐑰𐑤𐑩𐑯𐑛 🇳🇿 (en_NZ)</option>
     <option value="en_shaw_za">𐑦𐑙𐑜𐑤𐑦𐑖 - ·𐑕𐑬𐑔 ·𐑨𐑓𐑮𐑦𐑒𐑩 🇿🇦 (en_ZA)</option>
+    {% if not ('-US' in locale.LANGUAGE_TAG) %}
     <option value="en_shaw_us">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 (en_US)</option>
     <option value="en_shaw_us-metric">𐑦𐑙𐑜𐑤𐑦𐑖 - ⸰⁠𐑿𐑕𐑩 🇺🇸 - °C, km, km/h (en_US)</option>
+    {% endif %}
+    {% endif %}
 
     <option value="zh_cn">中文 - 中国 🇨🇳 (zh_CN)</option>
     <option value="zh_sg">中文 - 新加坡 🇸🇬 (zh_SG)</option>
@@ -179,5 +315,10 @@
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
         </optgroup>
     {% endif %}
-
+    {% if '-US' in locale.LANGUAGE_TAG %}
+        </optgroup>
+    {% endif %}
+    {% if '-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu' %}
+        </optgroup>
+    {% endif %}
 </select>
