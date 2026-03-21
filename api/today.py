@@ -2902,8 +2902,7 @@ def _preload_calendars(locales=[], bases=[]):
                 for base in bases:
                     locale.base = base
 
-                    # if locale_code in ['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR', 'en-Shaw-US']:
-                    if locale_code in ['en-US', 'en-Shaw-US']:
+                    if locale_code in ['en-BR', 'en-US', 'en-Shaw-BR', 'en-Shaw-US']:
                         hemispheres = ['S', 'N']
                     else:
                         hemispheres = [locale.DEFAULT_HEMISPHERE]
@@ -3026,5 +3025,5 @@ def _preload_calendars(locales=[], bases=[]):
                         #         },
                         #     )
 
-# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR'])
+# _preload_calendars(['pt-BR', 'bz-BR', 'en-BR', 'en-US', 'eo-BR', 'en-Shaw-BR', 'en-Shaw-US'])
 _preload_calendars()
