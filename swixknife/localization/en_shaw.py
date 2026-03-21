@@ -343,18 +343,18 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
         #
         # Civil calendars
         #
-        'SEZ': '◦𐑕𐑦𐑥',
-        'SYM': '◦𐑕𐑦𐑥',
-        'ISO': '◦𐑜𐑮𐑧',
-        'DCC': '◦𐑛𐑒𐑒',
-        'ADC': '◦𐑨𐑛𐑒',
-        'ISR': '◦𐑦𐑟𐑮',
-        'IND': '◦𐑦𐑯𐑛',
+        'SEZ': '⸰𐑕𐑦𐑥',
+        'SYM': '⸰𐑕𐑦𐑥',
+        'ISO': '⸰𐑜𐑮𐑧',
+        'DCC': '⸰𐑛𐑒𐑒',
+        'ADC': '⸰𐑨𐑛𐑒',
+        'ISR': '⸰𐑦𐑟𐑮',
+        'IND': '⸰𐑦𐑯𐑛',
         #
         # Religious calendars
         #
-        'JUL': '◦𐑠𐑫𐑤',
-        'JEW': '◦𐑡𐑧𐑢',
-        'HIJ': '◦𐑦𐑟𐑤',
-        'IRN': '◦𐑦𐑮𐑯',
+        'JUL': '⸰𐑠𐑫𐑤',
+        'JEW': '⸰𐑡𐑧𐑢',
+        'HIJ': '⸰𐑦𐑟𐑤',
+        'IRN': '⸰𐑦𐑮𐑯',
     }

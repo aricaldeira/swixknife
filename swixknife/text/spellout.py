@@ -72,8 +72,12 @@ def sezimal_spellout(number: str | int | float | Decimal | Sezimal | SezimalInte
             units_and_prefixes = open(f'{CURDIR}/data/{lang}_units_and_prefixes.sor', 'r').read()
         except:
             try:
-                lang_file = open(f'{CURDIR}/data/{lang[:2]}.sor', 'r').read()
-                units_and_prefixes = open(f'{CURDIR}/data/{lang[:2]}_units_and_prefixes.sor', 'r').read()
+                if 'shaw' in lang.lower():
+                    lang_file = open(f'{CURDIR}/data/en-Shaw.sor', 'r').read()
+                    units_and_prefixes = open(f'{CURDIR}/data/en_units_and_prefixes.sor', 'r').read()
+                else:
+                    lang_file = open(f'{CURDIR}/data/{lang[:2]}.sor', 'r').read()
+                    units_and_prefixes = open(f'{CURDIR}/data/{lang[:2]}_units_and_prefixes.sor', 'r').read()
             except:
                 lang_file = open(f'{CURDIR}/data/en.sor', 'r').read()
                 units_and_prefixes = open(f'{CURDIR}/data/en_units_and_prefixes.sor', 'r').read()

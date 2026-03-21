@@ -12,10 +12,10 @@
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
 
-    font-family: 'Sezimal QP' !important;
+    font-family: 'Sezimal QP', 'Iotacism #43 Linked Shavian' !important;
 /*     font-family: "Andika", "Iosevka Sezimal Extended"; */
-    --font-family-sans-serif: 'Sezimal QP', monospace;
-    --font-family-monospace: 'Sezimal QP', monospace;
+    --font-family-sans-serif: 'Sezimal QP', 'Iotacism #43 Linked Shavian', monospace;
+    --font-family-monospace: 'Sezimal QP', 'Iotacism #43 Linked Shavian', monospace;
 }
 html, body {
     height: 100%;
