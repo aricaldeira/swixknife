@@ -164,7 +164,7 @@
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
     <option value="en_br">English - Brazil 🇧🇷 (en_BR)</option>
     {% endif %}
-    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu') %}
     <option value="en_ca">English - Canada 🇨🇦 (en_CA)</option>
     {% endif %}
     <option value="en_gb">English - UK 🇬🇧 (en_GB)</option>
@@ -197,7 +197,7 @@
     {% if not ('-BR' in locale.LANGUAGE_TAG or locale.LANG == 'bz') %}
         <option value="eo_br">Esperanto - Brazilo 🇧🇷 (eo_BR)</option>
     {% endif %}
-    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu') %}
     <option value="eo_ca">Esperanto - Kanado 🇨🇦 (eo_CA)</option>
     {% endif %}
     <option value="eo_jp">Esperanto - Japanio 🇯🇵 (eo_JP)</option>
@@ -208,7 +208,7 @@
     <option value="eo">Esperanto - Mondo 🌎 (eo)</option>
     <option value="fa_latn">Fârsi - Irân 🇮🇷 (fa_Latn)</option>
     <option value="fr_be">Français - Belgique 🇧🇪 (fr_BE)</option>
-    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu') %}
     <option value="fr_ca">Français - Canada 🇨🇦 (fr_CA)</option>
     {% endif %}
     <option value="fr_fr">Français - France 🇫🇷 (fr_FR)</option>
@@ -276,7 +276,7 @@
     <option value="hi_nu_latn">हिन्दी [0123456789] - भारत 🇮🇳 (hi-nu-Latn)</option>
     <option value="bn">বাংলা [⁦০১২৩৪৫৬৭৮৯⁩] - বাংলাদেশ 🇧🇩  (bn)</option>
     <option value="bn_nu_latn">বাংলা [0123456789] - বাংলাদেশ 🇧🇩  (bn-nu-Latn)</option>
-    {% if not ('-CA' in locale.LANGUAGE_TAG) %}
+    {% if not ('-CA' in locale.LANGUAGE_TAG or locale.LANG == 'iu') %}
     <option value="iu">ᐃᓄᒃᑎᑐᑦ - ᑲᓇᑕ 🇨🇦 (iu)</option>
     {% endif %}
     <option value="ko">한국어 - 한국 🇰🇷 (ko)</option>
