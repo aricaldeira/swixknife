@@ -240,7 +240,7 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
         '𐑨𐑒𐑢𐑩𐑤𐑩',
         '𐑩𐑒𐑢𐑧𐑮𐑰𐑩𐑕',
         # '𐑤𐑲𐑚𐑮𐑩',
-        '𐑷𐑮𐑲𐑩𐑯',
+        '𐑕𐑧𐑒𐑕𐑑𐑩𐑯𐑑',
     ]
 
     ADC_MONTH_ABBREVIATED_NAME = [
@@ -255,7 +255,7 @@ class SezimalLocaleEN_SHAW(SezimalLocaleEN):
         '𐑨𐑒𐑤',
         '𐑩𐑒𐑮',
         # '𐑤𐑲𐑚',
-        '𐑷𐑮𐑲',
+        '𐑕𐑧𐑒',
     ]
 
     ADC_MONTH_SYMBOL = [
