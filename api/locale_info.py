@@ -78,6 +78,7 @@ LOCALE_LIST = [
     'pt_st',
     'pt_tl',
     'pt',
+    'qit',
     'ro',
     'ru',
     'sw_traditional',
