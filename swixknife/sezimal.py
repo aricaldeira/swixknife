@@ -693,8 +693,8 @@ class Sezimal:
         # Uses Python’s native (fast) big integer division instead of
         # repeated subtraction
         #
-        dividend int(dividend._integer, 6)
-        divisor int(divisor._integer, 6)
+        dividend = int(dividend._integer, 6)
+        divisor = int(divisor._integer, 6)
 
         quotient, remainder = divmod(dividend, divisor)
 
