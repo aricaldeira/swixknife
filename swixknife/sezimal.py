@@ -169,14 +169,59 @@ class Sezimal:
         if not self._fraction:
             return niftimal_format(self, niftimal_places=0, group_separator='')
         else:
-            return niftimal_format(self, group_separator='')
+            niftimal_places = len(self._fraction) // 2
+
+            if len(self._fraction) % 2 > 0:
+                niftimal_places += 1
+
+            return niftimal_format(
+                self,
+                niftimal_places=Decimal(niftimal_places),
+                group_separator='',
+                fraction_group_separator='',
+            )
 
     @property
     def niftimal_formatted_number(self) -> str:
         if not self._fraction:
             return niftimal_format(self, niftimal_places=0)
         else:
-            return niftimal_format(self)
+            niftimal_places = len(self._fraction) // 2
+
+            if len(self._fraction) % 2 > 0:
+                niftimal_places += 1
+
+            return niftimal_format(self, niftimal_places=Decimal(niftimal_places))
+
+    @property
+    def niftimal_alpha(self) -> str:
+        if not self._fraction:
+            return niftimal_format(self, niftimal_places=0, group_separator='', regularized_digits=False)
+        else:
+            niftimal_places = len(self._fraction) // 2
+
+            if len(self._fraction) % 2 > 0:
+                niftimal_places += 1
+
+            return niftimal_format(
+                self,
+                niftimal_places=Decimal(niftimal_places),
+                group_separator='',
+                fraction_group_separator='',
+                regularized_digits=False,
+            )
+
+    @property
+    def niftimal_alpha_formatted_number(self) -> str:
+        if not self._fraction:
+            return niftimal_format(self, niftimal_places=0, regularized_digits=False)
+        else:
+            niftimal_places = len(self._fraction) // 2
+
+            if len(self._fraction) % 2 > 0:
+                niftimal_places += 1
+
+            return niftimal_format(self, niftimal_places=Decimal(niftimal_places), regularized_digits=False)
 
     def __int__(self) -> int:
         return int(sezimal_to_decimal(self._integer)) * self._sign
