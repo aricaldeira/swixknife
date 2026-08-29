@@ -251,7 +251,7 @@ class Sezimal:
         # it is 0 and -0
         #
         if self._sign != other_number._sign:
-            if self._value == 0 and other_number._value == 0:
+            if all(d == '0' for d in self._digits) and all(d == '0' for d in other_number._digits):
                 return 0
 
             return self._sign
@@ -711,14 +711,16 @@ class Sezimal:
 
         elif self._sign == 1 and other_number._sign == -1:
             res = self.__multiplication(other_number)
-            res = '-' + res
+            if res != '0':
+                res = '-' + res
 
         elif self._sign == -1 and other_number._sign == -1:
             res = self.__multiplication(other_number)
 
         elif self._sign == -1 and other_number._sign == 1:
             res = self.__multiplication(other_number)
-            res = '-' + res
+            if res != '0':
+                res = '-' + res
 
         return Sezimal(res, _internal=True)._mult_div_finalizing()
 
@@ -732,12 +734,17 @@ class Sezimal:
         return other_number.__mul__(self)
 
     def __basic_division(self, dividend: Self, divisor: Self) -> tuple[Self]:
-        remainder = dividend
-        quotient = Sezimal('0', _internal=True)
+        #
+        # Uses Python’s native (fast) big integer division instead of
+        # repeated subtraction
+        #
+        dividend = int(dividend._integer, 6)
+        divisor = int(divisor._integer, 6)
 
-        while remainder >= divisor:
-            remainder -= divisor
-            quotient += 1
+        quotient, remainder = divmod(dividend, divisor)
+
+        quotient = Sezimal(decimal_to_sezimal(quotient), _internal=True)
+        remainder = Sezimal(decimal_to_sezimal(remainder), _internal=True)
 
         return quotient, remainder
 
@@ -934,9 +941,6 @@ class Sezimal:
 
         if divisor == 0:
             raise ZeroDivisionError('Division by zero')
-
-        if divisor == 1:
-            return dividend, Sezimal(0, _internal=True)
 
         quotient, remainder = self.__basic_division(dividend, divisor)
 
