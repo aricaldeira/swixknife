@@ -144,12 +144,32 @@
 
         async function auto_refresh_iso_display(){
             var date = new Date();
+            var midnight = new Date(
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate(),
+                0,0,0,0
+            );
             var seconds = date.getTime();
             var show_local_time = ({{date.time._time_zone_offset.decimal}} * 50000 / 27) != (date.getTimezoneOffset() * -60 * 1000);
 
             seconds = (seconds + ({{date.time._time_zone_offset.decimal}} * 50000 / 27)) / 1000 / 86400;
             var seconds_hands = seconds;
             seconds = seconds - Math.floor(seconds);
+
+            var based_decimal_time = (date.getTime() - midnight.getTime()) / 1000 / 86400;
+            based_decimal_time = based_decimal_time * 10;
+            var decimal_hours = Math.floor(based_decimal_time);
+            based_decimal_time = based_decimal_time - decimal_hours;
+            based_decimal_time = based_decimal_time * 100;
+            var decimal_minutes = Math.floor(based_decimal_time);
+            based_decimal_time = based_decimal_time - decimal_minutes;
+            based_decimal_time = based_decimal_time * 100;
+            var decimal_seconds = Math.floor(based_decimal_time);
+            based_decimal_time = decimal_hours.toString().padStart(1, '0') + ':' + decimal_minutes.toString().padStart(2, '0');
+            {% if locale.show_seconds %}
+                based_decimal_time = based_decimal_time + ':' + decimal_seconds.toString().padStart(2, '0');
+            {% endif %}
 
             var sec = Math.floor(seconds * 60 * 60 * 24);
 
@@ -323,19 +343,30 @@
             {% endif %}
 
             {% if base == 14 %}
+                {% if locale.show_based_time %}
+                if (document.getElementById('time_display')) {
+                    document.getElementById('time_display').innerHTML = based_decimal_time;
+                };
+                if (document.getElementById('inner_time_display')) {
+                    document.getElementById('inner_time_display').innerHTML = based_decimal_time;
+                };
+                {% else %}
                 if (document.getElementById('time_display')) {
                     document.getElementById('time_display').innerHTML = iso_time_display;
                 };
                 if (document.getElementById('inner_time_display')) {
                     document.getElementById('inner_time_display').innerHTML = iso_time_display;
                 };
-            {% else %}
-                if (document.getElementById('iso_time_display')) {
-                    document.getElementById('iso_time_display').innerHTML = iso_time_display;
-                };
+                {% endif %}
             {% endif %}
 
-            {% if locale.base == 14 %}
+            {% if base != 14 or locale.show_based_time %}
+            if (document.getElementById('iso_time_display')) {
+                document.getElementById('iso_time_display').innerHTML = iso_time_display;
+            };
+            {% endif %}
+
+            {% if locale.base == 14 and not locale.show_based_time %}
                 seconds = seconds_hands;
 
                 {% if locale.HOUR_FORMAT == '12h' %}
@@ -345,6 +376,18 @@
                 {% endif %}
                 var posha_angle = ((seconds * 24) - Math.trunc(seconds * 24)) * 360;
                 var agrima_angle = ((seconds * 24 * 60) - Math.trunc(seconds * 24 * 60)) * 360;
+                document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
+                document.getElementById('hand_posha').setAttribute('transform', `rotate(${posha_angle})`);
+                document.getElementById('hand_agrima').setAttribute('transform', `rotate(${agrima_angle})`);
+
+            {% elif locale.base == 14 and locale.show_based_time %}
+                based_decimal_time = (date.getTime() - midnight.getTime()) / 1000 / 86400;
+                console.log('bdt', based_decimal_time);
+                var uta_angle = based_decimal_time * 360;
+                based_decimal_time = (based_decimal_time * 10) - decimal_hours;
+                var posha_angle = based_decimal_time * 360;
+                based_decimal_time = (based_decimal_time * 100) - decimal_minutes;
+                var agrima_angle = based_decimal_time * 360;
                 document.getElementById('hand_uta').setAttribute('transform', `rotate(${uta_angle})`);
                 document.getElementById('hand_posha').setAttribute('transform', `rotate(${posha_angle})`);
                 document.getElementById('hand_agrima').setAttribute('transform', `rotate(${agrima_angle})`);

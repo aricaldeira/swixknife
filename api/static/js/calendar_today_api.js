@@ -162,6 +162,7 @@ function _base_data(direction = '', direction_type = '') {
     const theme = localStorage.getItem('sezimal-calendar-theme');
     const mobile = (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     let show_holiday = localStorage.getItem('sezimal-calendar-show-holiday');
+    const show_based_time = localStorage.getItem('sezimal-calendar-show-based-time');
     const show_seconds = localStorage.getItem('sezimal-calendar-show-seconds');
     const locale_first_weekday = localStorage.getItem('sezimal-calendar-locale-first-weekday');
     let calendar_displayed = localStorage.getItem('sezimal-calendar-displayed');
@@ -207,7 +208,7 @@ function _base_data(direction = '', direction_type = '') {
     };
 
     document.documentElement.lang = LANGUAGE_TAGS[locale];
-    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${calendar_displayed}|${locale_first_weekday}|${local_time_zone};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
+    document.cookie = `sezimal=${base}|${encodeURI(format_token)}|${locale}|${time_zone}|${hour_format}|${hemisphere}|${theme}|${mobile}|${show_holiday}|${show_seconds}|${calendar_displayed}|${locale_first_weekday}|${local_time_zone}|${show_based_time};Domain=.sezimal.tauga.online;Path=/;Secure;SameSite=none;Expires=${expiration.toUTCString()}; `;
 
     if ((locale == 'ar') || (locale == 'ar_nu_latn') ||
         (locale == 'fa') || (locale == 'fa_nu_latn') ||
@@ -231,6 +232,7 @@ function _base_data(direction = '', direction_type = '') {
         direction_type: direction_type,
         mobile: mobile,
         show_holiday: show_holiday,
+        show_based_time: show_based_time,
         show_seconds: show_seconds,
         calendar_displayed: calendar_displayed,
         locale_first_weekday: locale_first_weekday,
@@ -305,6 +307,7 @@ function apply_settings() {
     localStorage.setItem('sezimal-calendar-time-zone-from', document.getElementById('time_zone_from_select').value);
     localStorage.setItem('sezimal-calendar-time-zone', document.getElementById('time_zone_select').value);
     localStorage.setItem('sezimal-calendar-hour-format', document.getElementById('hour_format_select').value);
+    localStorage.setItem('sezimal-calendar-show-based-time', document.getElementById('show_based_time_input').checked);
     localStorage.setItem('sezimal-calendar-show-seconds', document.getElementById('show_seconds_input').checked);
     localStorage.setItem('sezimal-calendar-locale-first-weekday', document.getElementById('locale_first_weekday_input').checked);
     localStorage.setItem('sezimal-calendar-hemisphere', document.getElementById('hemisphere_select').value);

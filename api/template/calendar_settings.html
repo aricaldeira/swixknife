@@ -154,6 +154,42 @@
                 </select>
             </div>
             <div>
+                <input id="show_based_time_input" name="show_based_time_input" type="checkbox" checked {% if base != 14 %}hidden{% endif %}>
+                <label for="show_based_time_input" {% if base != 14 %}hidden{% endif %}>
+                    {% if locale.LANG == 'pt' %}
+                        {% if base == 10 or base == 100 %}
+                            Mostrar tempo sezimal (<b>55:55:55</b>)?
+                        {% elif base == 14 %}
+                            Mostrar tempo decimal (<b>9:99:99</b>)?
+                        {% elif base == 20 %}
+                            Mostrar tempo dozenal (<b>↋↋↋{{ locale.DOZENAL_SEPARATOR }}↋↋</b>)?
+                        {% endif %}
+                    {% elif locale.LANG == 'bz' %}
+                        {% if base == 10 or base == 100 %}
+                            Mostrar tenpu sezimaw (<b>55:55:55</b>)?
+                        {% elif base == 14 %}
+                            Mostrar tenpu desimaw (<b>9:99:99</b>)?
+                        {% elif base == 20 %}
+                            Mostrar tenpu dozenaw (<b>↋↋↋{{ locale.DOZENAL_SEPARATOR }}↋↋</b>)?
+                        {% endif %}
+                    {% elif locale.LANG == 'eo' %}
+                        {% if base == 10 or base == 100 %}
+                            Montri tempon sesume (<b>55:55:55</b>)?
+                        {% elif base == 14 %}
+                            Montri tempon dekume (<b>9:99:99</b>)?
+                        {% elif base == 20 %}
+                            Montri tempon dekduume (<b>↋↋↋{{ locale.DOZENAL_SEPARATOR }}↋↋</b>)?
+                        {% endif %}
+                    {% else %}
+                        {% if base == 10 or base == 100 %}
+                            Show sezimal time (<b>55:55:55</b>)?
+                        {% elif base == 14 %}
+                            Show decimal time (<b>9:99:99</b>)?
+                        {% elif base == 20 %}
+                            Show dozenal time (<b>↋↋↋{{ locale.DOZENAL_SEPARATOR }}↋↋</b>)?
+                        {% endif %}
+                    {% endif %}
+                </label>
                 <input id="show_seconds_input" name="show_seconds_input" type="checkbox" checked>
                 <label for="show_seconds_input">
                     {% if locale.LANG == 'pt' %}

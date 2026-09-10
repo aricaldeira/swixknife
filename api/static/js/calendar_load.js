@@ -81,6 +81,11 @@ function calendar_load() {
     };
     document.getElementById('hour_format_select').value = localStorage.getItem('sezimal-calendar-hour-format');
 
+    if (localStorage.getItem('sezimal-calendar-show-based-time') === null) {
+        localStorage.setItem('sezimal-calendar-show-based-time', 'true');
+    };
+    document.getElementById('show_based_time_input').checked = localStorage.getItem('sezimal-calendar-show-based-time') == 'true';
+
     if (localStorage.getItem('sezimal-calendar-show-seconds') === null) {
         localStorage.setItem('sezimal-calendar-show-seconds', 'true');
     };

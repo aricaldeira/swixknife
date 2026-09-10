@@ -562,19 +562,23 @@ def _prepare_locale_from_cookie():
     locale = 'iso'
 
     try:
-            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone, show_based_time = cookie.split('|')
 
     except:
         try:
-            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+
         except:
             try:
-                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
             except:
                 try:
-                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
                 except:
-                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
-                    show_holiday = 'ISO_SEZ_SYM'
+                    try:
+                        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                    except:
+                        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                        show_holiday = 'ISO_SEZ_SYM'
 
     return sezimal_locale(locale)

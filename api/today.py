@@ -233,6 +233,7 @@ def decimal_today_route() -> Response:
             'calendar_displayed': 'SYM',
             'mobile': 'false',
             'theme': 'FULL_COLOR',
+            'show_based_time': 'true',
             'show_seconds': 'true',
             'locale_first_weekday': 'false',
         })
@@ -295,6 +296,7 @@ def today_route() -> Response:
             'calendar_displayed': 'SYM',
             'mobile': 'false',
             'theme': 'FULL_COLOR',
+            'show_based_time': 'true',
             'show_seconds': 'true',
             'locale_first_weekday': 'false',
         })
@@ -1585,6 +1587,7 @@ def _prepare_locale_from_cookie(locale='en-us'):
     except:
         cookie = ''
 
+    show_based_time = 'true'
     show_seconds = 'true'
     calendar_displayed = 'SYM'
     show_holiday = 'ISO_SEZ_SYM_CHR_JEW_HIJ_DCC_SPI'
@@ -1592,29 +1595,33 @@ def _prepare_locale_from_cookie(locale='en-us'):
     local_time_zone = None
 
     try:
-        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone, show_based_time = cookie.split('|')
 
     except:
         try:
-            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
+            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday, local_time_zone = cookie.split('|')
+
         except:
             try:
-                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
+                base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed, locale_first_weekday = cookie.split('|')
             except:
                 try:
-                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
+                    base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday, show_seconds, calendar_displayed = cookie.split('|')
                 except:
                     try:
-                        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
-                        show_holiday = 'ISO_SEZ_SYM'
+                        base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile, show_holiday = cookie.split('|')
                     except:
-                        base = '10'
-                        format_token = ''
-                        time_zone = 'locale'
-                        hour_format = 'locale'
-                        hemisphere = 'locale'
-                        theme = 'color'
-                        mobile = 'false'
+                        try:
+                            base, format_token, locale, time_zone, hour_format, hemisphere, theme, mobile = cookie.split('|')
+                            show_holiday = 'ISO_SEZ_SYM'
+                        except:
+                            base = '10'
+                            format_token = ''
+                            time_zone = 'locale'
+                            hour_format = 'locale'
+                            hemisphere = 'locale'
+                            theme = 'color'
+                            mobile = 'false'
 
     locale = sezimal_locale(locale)
 
@@ -1633,6 +1640,7 @@ def _prepare_locale_from_cookie(locale='en-us'):
         'theme': theme,
         'mobile': mobile,
         'show_holiday': show_holiday,
+        'show_based_time': show_based_time,
         'show_seconds': show_seconds,
         'calendar_displayed': calendar_displayed,
         'locale_first_weekday': locale_first_weekday,
@@ -1729,6 +1737,7 @@ def _prepare_locale(locale, dados):
     locale.base = int(dados['base'])
     locale.theme = dados['theme']
 
+    locale.show_based_time = dados['show_based_time'] == 'true'
     locale.show_seconds = dados['show_seconds'] == 'true'
     locale.use_first_weekday = dados['locale_first_weekday'] == 'true'
     locale.calendar_displayed = dados['calendar_displayed'] or 'SYM'

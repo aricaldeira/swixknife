@@ -1145,7 +1145,44 @@ def _time_display(locale, colours, gray, today):
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
-    elif locale.base == 14:
+    elif locale.base == 14 and locale.show_based_time:
+        shape_vertices = 3
+
+        for i in range(10):
+            angle = zero_position + (i * 36) - 0.25
+            tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+
+            angle = ((i / 10) * 360) + zero_position
+
+            if angle > 360:
+                angle -= 360
+
+            if True:
+                cx = 112 + (size * 11 / 15) * math.cos(angle / 360 * math.pi * 2)
+                cy = 112 + (size / 18) + (size * 11 / 15) * math.sin(angle / 360 * math.pi * 2)
+                display += f'''<text x="{cx}" y="{cy}" style="font-size:{size * 13 / 90}px;fill:{time_display_colour};text-anchor:middle;text-align:center;font-weight:normal;">{i}</text>\n'''
+            # else:
+            #     cx = 112 + (size * 4 / 5) * math.cos(angle / 360 * math.pi * 2)
+            #     cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
+            #     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
+
+            display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
+
+        for i in range(100):
+            if i % 10 == 0:
+                continue
+
+            if i % 5 == 0:
+                angle = zero_position + (i * 3.6) - 0.25
+                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+
+            else:
+                angle = zero_position + (i * 3.6) - 0.25
+                tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+
+            display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
+
+    elif locale.base == 14 and not locale.show_based_time:
         shape_vertices = 3
 
         if locale.HOUR_FORMAT == '24h':

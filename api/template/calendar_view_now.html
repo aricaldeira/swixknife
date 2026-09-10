@@ -165,11 +165,13 @@
                 {% if locale.calendar_displayed == 'DCC' and locale.DATE_ENDIANNES == 'B' %}
                     {{ now.format(', #@W', locale) }}
                 {% endif %}
-                {% if base != 14 %} — {% endif %}
+                {% if base != 14 or locale.show_based_time %} — {% endif %}
             {% endif %}
             {% if base != 14 %}
                 <span id="iso_time_display"></span>
                 <span id="decimal_weather_display" style="display:none;"></span>
+            {% elif locale.show_based_time %}
+                <span id="iso_time_display"></span>
             {% endif %}
         </p>
         <p> </p>
