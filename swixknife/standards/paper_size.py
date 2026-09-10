@@ -31,7 +31,7 @@ from swixknife.sezimal import Sezimal
 # SA02 : 2_305 dpad (392 mm) ×  3_323 dpad (  555 mm) =  1_300 ktr   (217_560 mm²)
 # SA03 : 1_441 dpad (277 mm) ×  2_305 dpad (  392 mm) =    430 ktr   (108_584 mm²)
 # SA04 : 1_132 dpad (196 mm) ×  1_441 dpad (  277 mm) =    213 ktr   ( 54_292 mm²)
-# SA05 :   520 dpad (138 mm) ×  1_132 dpad (  196 mm) =    104 ktr   ( 27_048 mm²)
+# SA05 :   520 dpad (138 mm) ×  1_132 dpad (  196 mm) =    104 ktr   ( 27_084 mm²)
 # SA10 :   344 dpad ( 98 mm) ×    520 dpad (  138 mm) =     32 ktr   ( 13_524 mm²)
 # SA11 :   240 dpad ( 69 mm) ×    344 dpad (   98 mm) =     14 ktr   (  6_762 mm²)
 # SA12 :   152 dpad ( 49 mm) ×    240 dpad (   69 mm) =      5 ktr   (  3_381 mm²)
