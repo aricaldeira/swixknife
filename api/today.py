@@ -2316,7 +2316,7 @@ def sezimal_day_count_calendar_bz_route() -> Response:
     )
 
 
-def _create_store_events(itens: list = None, year_range: list = None, bases: list = None):
+def _create_store_events(itens: list = None, year_range: list = None, bases: list = None, hemisphere=None):
     if year_range is None:
         # year_range = (213_000, 214_001)
         year_range = (213_220, 213_211, -1)
@@ -2403,6 +2403,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
             locale.ISO_TIME_FORMAT = '%H:%M:%S'
             locale.HOUR_FORMAT = '24h'
 
+            if hemisphere:
+                locale.DEFAULT_HEMISPHERE = hemisphere
+
             for year in SezimalRange(*year_range):
                 locale.calendar_displayed = 'DCC'
                 locale.format_token = ''
@@ -2485,6 +2488,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
             locale = sezimal_locale(loc)
             locale.DEFAULT_TIME_ZONE = tz
 
+            if hemisphere:
+                locale.DEFAULT_HEMISPHERE = hemisphere
+
             for base in bases:
                 locale.base = base
 
@@ -2507,6 +2513,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
                             locale.format_token = 'c9' if calendar == 'ADC' else '9'
                             locale.to_decimal_base()
 
+                            if hemisphere:
+                                locale.DEFAULT_HEMISPHERE = hemisphere
+
                         elif base == 20:
                             locale = sezimal_locale(loc)
                             locale.DEFAULT_TIME_ZONE = tz
@@ -2514,6 +2523,9 @@ def _create_store_events(itens: list = None, year_range: list = None, bases: lis
                             locale.base = base
                             locale.format_token = 'c↋' if calendar == 'ADC' else '↋'
                             locale.to_dozenal_base()
+
+                            if hemisphere:
+                                locale.DEFAULT_HEMISPHERE = hemisphere
 
                         locale.HOUR_FORMAT = hour_format
 
@@ -2593,194 +2605,275 @@ def _create_store_events_en():
     year_range = (213_220, 213_205, -1)
 
     LOCALE_TIME_ZONE = {
-        'iso': [],
-        'en-IN': [
-            'Asia/Kolkata',
+        # 'iso': [],
+        # 'en-IN': [
+        #     'Asia/Kolkata',
+        #     # 'SPM/SPM+05',
+        # ],
+        # 'en-GB': [
+            # 'Europe/London',
+            # 'Asia/Kolkata',
             # 'SPM/SPM+05',
-        ],
-        'en-GB': [
-            'Europe/London',
-            'Asia/Kolkata',
-            # 'SPM/SPM+05',
-        ],
-        'en-Shaw-GB': [
-            'Europe/London',
-        ],
-        'en-US': [
-            'America/Adak',
-            'America/Anchorage',
-            'America/Boise',
-            'America/Chicago',
-            'America/Denver',
-            'America/Detroit',
-            'America/Indianapolis',
-            # 'America/Indiana/Indianapolis',
-            # 'America/Indiana/Knox',
-            # 'America/Indiana/Marengo',
-            # 'America/Indiana/Petersburg',
-            # 'America/Indiana/Tell_City',
-            # 'America/Indiana/Vevay',
-            # 'America/Indiana/Vincennes',
-            # 'America/Indiana/Winamac',
-            'America/Juneau',
-            # 'America/Kentucky/Louisville',
-            # 'America/Kentucky/Monticello',
-            'America/Knox_IN',
-            'America/Los_Angeles',
-            'America/Louisville',
-            'America/Menominee',
-            'America/Metlakatla',
-            'America/New_York',
-            'America/Nome',
-            # 'America/North_Dakota/Beulah',
-            # 'America/North_Dakota/Center',
-            # 'America/North_Dakota/New_Salem',
-            'America/Phoenix',
-            'America/Sitka',
-            'America/Yakutat',
-            'Pacific/Honolulu',
-            'US/Central',
-        ],
-        'en-Shaw-US': [
-            'America/Chicago',
-            'America/Los_Angeles',
-            'America/New_York',
-            'US/Central',
-        ],
-        'eo-US': [
-            'America/Chicago',
-            'America/Los_Angeles',
-            'America/New_York',
-            'US/Central',
-        ],
-        'es-US': [
-            'America/Chicago',
-            'America/Los_Angeles',
-            'America/New_York',
-            'US/Central',
-        ],
-        'en-CA': [
-            'America/Atikokan',
-            'America/Blanc-Sablon',
-            'America/Cambridge_Bay',
-            'America/Coral_Harbour',
-            'America/Creston',
-            'America/Dawson',
-            'America/Dawson_Creek',
-            'America/Edmonton',
-            'America/Fort_Nelson',
-            'America/Glace_Bay',
-            'America/Halifax',
-            'America/Inuvik',
-            'America/Iqaluit',
-            'America/Moncton',
-            'America/Montreal',
-            'America/Nipigon',
-            'America/Pangnirtung',
-            'America/Rainy_River',
-            'America/Rankin_Inlet',
-            'America/Regina',
-            'America/Resolute',
-            'America/St_Johns',
-            'America/Swift_Current',
-            'America/Thunder_Bay',
-            'America/Toronto',
-            'America/Vancouver',
-            'America/Whitehorse',
-            'America/Winnipeg',
-            'America/Yellowknife',
-        ],
-        'en-Shaw-CA': [
-            'America/Toronto',
-            'America/Vancouver',
-        ],
-        'eo-CA': [
-            'America/Toronto',
-            'America/Vancouver',
-        ],
+            # 'Europe/Berlin',
+            # 'Asia/Singapore',
+        # ],
+        # 'en-Shaw-GB': [
+        #     'Europe/London',
+        # ],
+        # 'en-US': [
+            # 'UTC',
+            # 'America/Chicago',
+            # 'America/Los_Angeles',
+            # 'America/New_York',
+            # 'America/Phoenix',
+            # 'US/Central',
+
+            # 'America/Vancouver',
+            # 'Europe/Amsterdam',
+            # 'Asia/Singapore',
+            # 'Asia/Ulaanbaatar',
+            # 'Atlantic/Reykjavik',
+
+            # 'America/Adak',
+            # 'America/Anchorage',
+            # 'America/Boise',
+            # 'America/Chicago',
+            # 'America/Denver',
+            # 'America/Detroit',
+            # 'America/Indianapolis',
+            # # 'America/Indiana/Indianapolis',
+            # # 'America/Indiana/Knox',
+            # # 'America/Indiana/Marengo',
+            # # 'America/Indiana/Petersburg',
+            # # 'America/Indiana/Tell_City',
+            # # 'America/Indiana/Vevay',
+            # # 'America/Indiana/Vincennes',
+            # # 'America/Indiana/Winamac',
+            # 'America/Juneau',
+            # # 'America/Kentucky/Louisville',
+            # # 'America/Kentucky/Monticello',
+            # 'America/Knox_IN',
+            # 'America/Los_Angeles',
+            # 'America/Louisville',
+            # 'America/Menominee',
+            # 'America/Metlakatla',
+            # 'America/New_York',
+            # 'America/Nome',
+            # # 'America/North_Dakota/Beulah',
+            # # 'America/North_Dakota/Center',
+            # # 'America/North_Dakota/New_Salem',
+            # 'America/Phoenix',
+            # 'America/Sitka',
+            # 'America/Yakutat',
+            # 'Pacific/Honolulu',
+            # 'US/Central',
+        # ],
+        # 'en-Shaw-US': [
+        #     'UTC',
+        #     'America/Chicago',
+        #     'America/Los_Angeles',
+        #     'America/New_York',
+        #     'America/Phoenix',
+        #     'US/Central',
+        # ],
+        # 'eo-US': [
+        #     'UTC',
+        #     'America/Chicago',
+        #     'America/Los_Angeles',
+        #     'America/New_York',
+        #     'America/Phoenix',
+        #     'US/Central',
+        # ],
+        # 'es-US': [
+        #     'America/Chicago',
+        #     'America/Los_Angeles',
+        #     'America/New_York',
+        #     'America/Phoenix',
+        #     'US/Central',
+        # ],
+        # 'en-CA': [
+        #     'America/Atikokan',
+        #     'America/Blanc-Sablon',
+        #     'America/Cambridge_Bay',
+        #     'America/Coral_Harbour',
+        #     'America/Creston',
+        #     'America/Dawson',
+        #     'America/Dawson_Creek',
+        #     'America/Edmonton',
+        #     'America/Fort_Nelson',
+        #     'America/Glace_Bay',
+        #     'America/Halifax',
+        #     'America/Inuvik',
+        #     'America/Iqaluit',
+        #     'America/Moncton',
+        #     'America/Montreal',
+        #     'America/Nipigon',
+        #     'America/Pangnirtung',
+        #     'America/Rainy_River',
+        #     'America/Rankin_Inlet',
+        #     'America/Regina',
+        #     'America/Resolute',
+        #     'America/St_Johns',
+        #     'America/Swift_Current',
+        #     'America/Thunder_Bay',
+        #     'America/Toronto',
+        #     'America/Vancouver',
+        #     'America/Whitehorse',
+        #     'America/Winnipeg',
+        #     'America/Yellowknife',
+        # ],
+        # 'en-Shaw-CA': [
+        #     'America/Toronto',
+        #     'America/Vancouver',
+        # ],
+        # 'fr-CA': [
+        #     'America/Montreal',
+        # ],
+        # 'eo-CA': [
+            # 'America/Toronto',
+            # 'America/Vancouver',
+            # 'America/Montreal',
+        # ],
         'en-AU': [
-            'Antarctica/Macquarie',
-            'Australia/Adelaide',
             'Australia/Brisbane',
-            'Australia/Broken_Hill',
-            'Australia/Darwin',
-            'Australia/Eucla',
-            'Australia/Hobart',
-            'Australia/Lindeman',
-            'Australia/Lord_Howe',
             'Australia/Melbourne',
             'Australia/Perth',
             'Australia/Sydney',
+        #     'Antarctica/Macquarie',
+        #     'Australia/Adelaide',
+        #     'Australia/Broken_Hill',
+        #     'Australia/Darwin',
+        #     'Australia/Eucla',
+        #     'Australia/Hobart',
+        #     'Australia/Lindeman',
+        #     'Australia/Lord_Howe',
         ],
         'en-Shaw-AU': [
             'Australia/Brisbane',
             'Australia/Melbourne',
+            'Australia/Perth',
             'Australia/Sydney',
         ],
         'eo-AU': [
             'Australia/Brisbane',
             'Australia/Melbourne',
+            'Australia/Perth',
             'Australia/Sydney',
         ],
-        'en-IE': [
-            'Europe/Dublin',
+        # 'en-IE': [
+        #     'Europe/Dublin',
+        # ],
+        # 'en-Shaw-IE': [
+        #     'Europe/Dublin',
+        # ],
+        # 'en-IL': [
+        #     'Asia/Jerusalem',
+        # ],
+        # 'uk': [
+        #     'Europe/Kyiv',
+        # ],
+        # 'tr': [
+        #     'Europe/Istanbul',
+        # ],
+        # 'eo-TR': [
+        #     'Europe/Istanbul',
+        # ],
+        # 'de-DE': [
+        #     'Europe/Berlin',
+        # ],
+        # 'fr-FR': [
+        #     'Europe/Paris',
+        # ],
+        # 'it-IT': [
+        #     'Europe/Rome',
+        # ],
+        # 'es-ES': [
+        #     'Europe/Madrid',
+        # ],
+        # 'zh-CN': [
+        #     'Asia/Shanghai',
+        # ],
+        # 'ko': [
+        #     'Asia/Seoul',
+        # ],
+        # 'ja': [
+        #     'Asia/Tokyo',
+        # ],
+        # 'vi': [
+        #     'Asia/Ho_Chi_Minh',
+        # ],
+        # 'ro': [
+        #     'Europe/Bucharest',
+        # ],
+        'ru': [
+            'Europe/Moscow',
+            'Asia/Yekaterinburg',
+            'Asia/Krasnoyarsk',
+            'Asia/Novosibirsk',
+            'Asia/Tomsk',
+            'Europe/Samara',
+            'Asia/Omsk',
+
+            # 'Europe/Kaliningrad',
+            # 'Europe/Simferopol',
+            # 'Europe/Kirov',
+            # 'Europe/Volgograd',
+            # 'Europe/Astrakhan',
+            # 'Europe/Saratov',
+            # 'Europe/Ulyanovsk',
+            # 'Asia/Barnaul',
+            # 'Asia/Novokuznetsk',
+            # 'Asia/Irkutsk',
+            # 'Asia/Chita',
+            # 'Asia/Yakutsk',
+            # 'Asia/Khandyga',
+            # 'Asia/Vladivostok',
+            # 'Asia/Ust-Nera',
+            # 'Asia/Magadan',
+            # 'Asia/Sakhalin',
+            # 'Asia/Srednekolymsk',
+            # 'Asia/Kamchatka',
+            # 'Asia/Anadyr',
         ],
-        'en-Shaw-IE': [
-            'Europe/Dublin',
-        ],
-        'en-IL': [
-            'Asia/Jerusalem',
-        ],
-        'uk': [
-            'Europe/Kyiv',
-        ],
-        'tr': [
-            'Europe/Istanbul',
-        ],
-        'eo-TR': [
-            'Europe/Istanbul',
-        ],
-        'de-DE': [
-            'Europe/Berlin',
-        ],
-        'fr-FR': [
-            'Europe/Paris',
-        ],
-        'it-IT': [
-            'Europe/Rome',
-        ],
-        'es-ES': [
-            'Europe/Madrid',
-        ],
-        'zh-CN': [
-            'Asia/Shanghai',
-        ],
-        'ko': [
-            'Asia/Seoul',
-        ],
-        'ja': [
-            'Asia/Tokyo',
-        ],
-        'vi': [
-            'Asia/Ho_Chi_Minh',
-        ],
-        'ro': [
-            'Europe_Bucharest',
-        ],
+        # 'pl': [
+        #     'Europe/Warsaw',
+        # ],
+        # 'gr': [
+        #     'Europe/Athens',
+        # ],
+        # 'de': [
+        #     'Europe/Berlin',
+        #     'Europe/Vienna',
+        #     'Europe/Zurich',
+        # ],
+        # 'fr': [
+        #     'Europe/Paris',
+        #     'America/Montreal',
+        #     'Europe/Zurich',
+        # ],
+        # 'it': [
+        #     'Europe/Rome',
+        #     'Europe/Zurich',
+        # ],
     }
 
     for locale in LOCALE_TIME_ZONE:
         for tz in LOCALE_TIME_ZONE[locale]: # + ['UTC', 'SPM/SPM']:
             itens = [locale + '|' + tz]
 
+            if 'AU' in locale:
+                hemisphere = 'S'
+            else:
+                hemisphere = 'N'
+
             bases = (10,)
-            _create_store_events(itens, year_range, bases)
+            _create_store_events(itens, year_range, bases, hemisphere)
 
             bases = (14,)
-            _create_store_events(itens, year_range, bases)
+            _create_store_events(itens, year_range, bases, hemisphere)
 
             bases = (20,)
-            _create_store_events(itens, year_range, bases)
+            _create_store_events(itens, year_range, bases, hemisphere)
 
 
 def _preload_calendars(locales=[], bases=[]):
@@ -2809,7 +2902,7 @@ def _preload_calendars(locales=[], bases=[]):
             'America/Chicago',
             # 'America/Denver',
             'America/Los_Angeles',
-            # 'America/Phoenix',
+            'America/Phoenix',
             # 'US/Central',
             'Asia/Kolkata',
             # 'SPM/SPM+05',
@@ -2818,7 +2911,7 @@ def _preload_calendars(locales=[], bases=[]):
             'America/Chicago',
             # 'America/Denver',
             'America/Los_Angeles',
-            # 'America/Phoenix',
+            'America/Phoenix',
             # 'US/Central',
         ],
         # 'es-US': [
@@ -2832,7 +2925,7 @@ def _preload_calendars(locales=[], bases=[]):
             'America/Chicago',
             # 'America/Denver',
             'America/Los_Angeles',
-            # 'America/Phoenix',
+            'America/Phoenix',
             # 'US/Central',
         ],
         'en-CA': [
@@ -2857,25 +2950,26 @@ def _preload_calendars(locales=[], bases=[]):
             # 'Australia/Adelaide',
             'Australia/Brisbane',
             # 'Australia/Melbourne',
-            # 'Australia/Perth',
+            'Australia/Perth',
         ],
         'en-Shaw-AU': [
             # 'Australia/Adelaide',
             'Australia/Brisbane',
             # 'Australia/Melbourne',
-            # 'Australia/Perth',
+            'Australia/Perth',
         ],
         'eo-AU': [
             # 'Australia/Adelaide',
             'Australia/Brisbane',
             # 'Australia/Melbourne',
-            # 'Australia/Perth',
+            'Australia/Perth',
         ],
         'en-IN': [
             # 'SPM/SPM+05',
         ],
         'en-GB': [
             'Asia/Kolkata',
+            'Australia/Perth',
             # 'SPM/SPM+05',
         ],
         'en-Shaw-GB': [
@@ -2884,6 +2978,9 @@ def _preload_calendars(locales=[], bases=[]):
         # 'en-IL': [],
         # 'zh-CN': [],
         # 'uk': [],
+        'ru': [
+            'Asia/Tomsk',
+        ],
     }
 
     if not locales:

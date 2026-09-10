@@ -2633,4 +2633,23 @@ TIME_ZONE_EQUIVALENCE.update({
     'GPM/GPM-03': 'America/Sao_Paulo',
     'Asia/Calcutta': 'Asia/Kolkata',
     'Europe/Kiev': 'Europe/Kyiv',
+
+    'America/Araguaina': 'America/Sao_Paulo',
+    'America/Bahia': 'America/Sao_Paulo',
+    'America/Belem': 'America/Sao_Paulo',
+    'America/Fortaleza': 'America/Sao_Paulo',
+    'America/Maceio': 'America/Sao_Paulo',
+    'America/Recife': 'America/Sao_Paulo',
+
+    # 'America/Noronha': 'America/Sao_Paulo',
+
+    'America/Boa_Vista': 'America/Cuiaba',
+    'America/Campo_Grande': 'America/Cuiaba',
+    'America/Cuiaba': 'America/Cuiaba',
+    'America/Manaus': 'America/Cuiaba',
+    'America/Porto_Velho': 'America/Cuiaba',
+    'America/Santarem': 'America/Cuiaba',
+
+    'America/Eirunepe': 'America/Rio_Branco',
+    'America/Rio_Branco': 'America/Rio_Branco',
 })
