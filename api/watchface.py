@@ -1396,7 +1396,7 @@ def _time_display(locale, colours, gray, today):
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size / (12 if (locale.base == 10) or (locale.base == 14 and locale.show_based_time) else 10),
+        radius=size / (12 if (locale.base == 10) or (locale.base == 14 and (locale.show_based_time or locale.HOUR_FORMAT == '24h')) else 10),
         n=shape_vertices,
         angle=hand_initial_angle,
     )
