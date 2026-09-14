@@ -1286,12 +1286,12 @@ def _time_display(locale, colours, gray, today):
     # uta_hand_colour = pointer_colours['200'] + 'dd'
 
 
-    if locale.base == 10:
+    if locale.base == 10 or (locale.base == 14 and (locale.show_based_time or locale.HOUR_FORMAT == '24h')):
         anuga_hand_colour = '#e53935'
         agrima_hand_colour = '#e53935cc'
         posha_hand_colour = '#1e88e5cc'
         uta_hand_colour = '#fdd835cc'
-    elif locale.base == 20 or (locale.base == 14 and locale.HOUR_FORMAT == '24h'):
+    elif locale.base == 20:
         anuga_hand_colour = '#e53935'
         agrima_hand_colour = '#e53935cc'
         posha_hand_colour = '#1e88e5cc'
@@ -1396,7 +1396,7 @@ def _time_display(locale, colours, gray, today):
     triangle = polygon(
         x=cx,
         y=cy,
-        radius=size / (12 if locale.base == 10 else 10),
+        radius=size / (12 if (locale.base == 10) or (locale.base == 14 and locale.show_based_time) else 10),
         n=shape_vertices,
         angle=hand_initial_angle,
     )
