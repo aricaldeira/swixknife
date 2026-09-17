@@ -1200,20 +1200,20 @@ function refresh_base_12(day_proportion) {
     document.getElementById('hand_seconds_base_12').setAttribute('transform', `rotate(${seconds_angle})`);
 
     var time_12 =
-             ' <span class="hour">' + hours.toString(12).padStart(1, '0') + '</span>: '
-         + '<span class="minute_10">' + minutes_10.toString(12).padStart(1, '0') + '</span>'
-         + '<span class="minute">' + minutes.toString(12).padStart(1, '0') + '</span>: '
-         + '<span class="second">' + seconds.toString(12).padStart(2, '0') + '</span>';
+             ' <span class="hour">' + hours.toString(12).padStart(1, '0').toUpperCase() + '</span>: '
+         + '<span class="minute_10">' + minutes_10.toString(12).padStart(1, '0').toUpperCase() + '</span>'
+         + '<span class="minute">' + minutes.toString(12).padStart(1, '0').toUpperCase() + '</span>: '
+         + '<span class="second">' + seconds.toString(12).padStart(2, '0').toUpperCase() + '</span>';
     var number_12 = '0.'
-          + hours.toString(12).padStart(1, '0')
-        + minutes_10.toString(12).padStart(1, '0')
-        + minutes.toString(12).padStart(1, '0')
-        + seconds.toString(12).padStart(2, '0');
+          + hours.toString(12).padStart(1, '0').toUpperCase()
+        + minutes_10.toString(12).padStart(1, '0').toUpperCase()
+        + minutes.toString(12).padStart(1, '0').toUpperCase()
+        + seconds.toString(12).padStart(2, '0').toUpperCase();
     var proportion_12 =
-            hours.toString(12).padStart(1, '0')
-        + minutes_10.toString(12).padStart(1, '0')  + '.'
-        + minutes.toString(12).padStart(1, '0')
-        + seconds.toString(12).padStart(2, '0')
+            hours.toString(12).padStart(1, '0').toUpperCase()
+        + minutes_10.toString(12).padStart(1, '0').toUpperCase()  + '.'
+        + minutes.toString(12).padStart(1, '0').toUpperCase()
+        + seconds.toString(12).padStart(2, '0').toUpperCase()
         + '%';
     var time_10 =
              hours.toString().padStart(2, ' ') + ':'
@@ -1221,10 +1221,10 @@ function refresh_base_12(day_proportion) {
          + seconds.toString().padStart(3, ' ');
 
     document.getElementById('time_base_12').innerHTML =
-        '<br/>' + time_12.toUpperCase() + '<br/>'
+        '<br/>' + time_12 + '<br/>'
         + '<i>   ' + time_10 + '<sub>dec</sub></i><br/>    '
-        + number_12.toUpperCase() + ' day<br/>    '
-        + proportion_12.toUpperCase() + ' day';
+        + number_12 + ' day<br/>    '
+        + proportion_12 + ' day';
 };
 
 function refresh_base_16(day_proportion) {
@@ -1249,20 +1249,20 @@ function refresh_base_16(day_proportion) {
     document.getElementById('hand_seconds_base_16').setAttribute('transform', `rotate(${seconds_angle})`);
 
     var time_16 =
-             ' <span class="hour">' + hours.toString(16).padStart(1, '0') + '</span>: '
-         + '<span class="minute_10">' + minutes_10.toString(16).padStart(1, '0') + '</span>'
-         + '<span class="minute">' + minutes.toString(16).padStart(1, '0') + '</span>: '
-         + '<span class="second">' + seconds.toString(16).padStart(1, '0') + '</span>';
+             ' <span class="hour">' + hours.toString(16).padStart(1, '0').toUpperCase() + '</span>: '
+         + '<span class="minute_10">' + minutes_10.toString(16).padStart(1, '0').toUpperCase() + '</span>'
+         + '<span class="minute">' + minutes.toString(16).padStart(1, '0').toUpperCase() + '</span>: '
+         + '<span class="second">' + seconds.toString(16).padStart(1, '0').toUpperCase() + '</span>';
     var number_16 = '0.'
-          + hours.toString(16).padStart(1, '0')
-        + minutes_10.toString(16).padStart(1, '0')
-        + minutes.toString(16).padStart(1, '0')
-        + seconds.toString(16).padStart(1, '0');
+          + hours.toString(16).padStart(1, '0').toUpperCase()
+        + minutes_10.toString(16).padStart(1, '0').toUpperCase()
+        + minutes.toString(16).padStart(1, '0').toUpperCase()
+        + seconds.toString(16).padStart(1, '0').toUpperCase();
     var proportion_16 =
-            hours.toString(16).padStart(1, '0')
-        + minutes_10.toString(16).padStart(1, '0')  + '.'
-        + minutes.toString(16).padStart(1, '0')
-        + seconds.toString(16).padStart(1, '0')
+            hours.toString(16).padStart(1, '0').toUpperCase()
+        + minutes_10.toString(16).padStart(1, '0').toUpperCase()  + '.'
+        + minutes.toString(16).padStart(1, '0').toUpperCase()
+        + seconds.toString(16).padStart(1, '0').toUpperCase()
         + '%';
     var time_10 =
              hours.toString().padStart(2, ' ') + ':'
@@ -1270,10 +1270,10 @@ function refresh_base_16(day_proportion) {
          + seconds.toString().padStart(2, ' ');
 
     document.getElementById('time_base_16').innerHTML =
-        '<br/>' + time_16.toUpperCase() + '<br/>'
+        '<br/>' + time_16 + '<br/>'
         + '<i>   ' + time_10 + '<sub>dec</sub></i><br/>    '
-        + number_16.toUpperCase() + ' day<br/>    '
-        + proportion_16.toUpperCase() + ' day';
+        + number_16 + ' day<br/>    '
+        + proportion_16 + ' day';
 };
 
 async function refresh_display(){
