@@ -896,3 +896,9 @@ def robots():
 Sitemap: https://sezimal.tauga.online/sitemap.xml
 '''
     return Response(text, status=200, mimetype='text/plain')
+
+@sitemapper.include(lastmod='2026-09-17', changefreq='weekly', priority=1)
+@app.route('/based-time')
+def index_based_time_route():
+    log_access('/based-time')
+    return sezimal_render_template('based_time.html')

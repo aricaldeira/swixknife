@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    font-family: sans-serif;
+    color: #222222;
+}
+table {
+    width: 100%;
+    align: center;
+}
+tr {
+     align: center;
+}
+td, th {
+    text-align: center;
+}
+.hour {
+    text-decoration: overline #0091EA;
+    text-decoration-thickness: 0.25rem;
+}
+.minute_10 {
+    text-decoration: overline #00C853;
+    text-decoration-thickness: 0.25rem;
+}
+.minute {
+    text-decoration: overline #FFAB00;
+    text-decoration-thickness: 0.25rem;
+}
+.second {
+    text-decoration: overline #D50000;
+    text-decoration-thickness: 0.25rem;
+}
+.mono {
+    font-family: mono;
+}
+</style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="15%" rowspan="3"> </td>
+            <th width="20%"><a href="https://en.wikipedia.org/wiki/24-hour_clock" target="new">Standard Full Day</a></th>
+            <td style="text-align:justify; vertical-align: top; hyphens: auto;" rowspan="3" width="30%">
+            <h2 style="text-align: center;">Standard Time x Based Time</h2>
+            <p>      Based time is counting daytime as a fraction or proportion of the day, in a certain number base, usually decimal; see <a href="https://en.wikipedia.org/wiki/Decimal_time" target="new">Decimal Time</a></p>
+            <p>      For the Standard Full Day display, and all the bases, 0 is midnight, and the bottom hafl of the display roughly represents night, and the top half, day; the top center number in each case is noon; this also means that the “hour” hand roughly indicates the Sun’s position in the sky.</p>
+            </td>
+            <th width="20%"><a href="https://en.wikipedia.org/wiki/12-hour_clock" target="new">Standard Half Day</a></th>
+            <td width="15%" rowspan="3"> </td>
+        </tr>
+        <tr>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#111111;" d="M 101.40,179.99 A 80.00 80.00 0 0 1 98.60,179.99 L 98.79,169.32 A 69.33 69.33 0 0 0 101.21,169.32 Z" />
+<text id="hour_00" x="100.0" y="162.22222222222223" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">0</text>
+        <path id="tick_01" style="fill:#111111;" d="M 80.65,177.62 A 80.00 80.00 0 0 1 77.95,176.90 L 80.89,166.65 A 69.33 69.33 0 0 0 83.23,167.27 Z" />
+        <path id="tick_02" style="fill:#111111;" d="M 61.22,169.97 A 80.00 80.00 0 0 1 58.80,168.57 L 64.29,159.43 A 69.33 69.33 0 0 0 66.39,160.64 Z" />
+<text id="hour_02" x="71.55555555555557" y="154.6005563041814" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">2</text>
+        <path id="tick_03" style="fill:#111111;" d="M 44.43,157.55 A 80.00 80.00 0 0 1 42.45,155.57 L 50.13,148.16 A 69.33 69.33 0 0 0 51.84,149.87 Z" />
+        <path id="tick_04" style="fill:#111111;" d="M 31.43,141.20 A 80.00 80.00 0 0 1 30.03,138.78 L 39.36,133.61 A 69.33 69.33 0 0 0 40.57,135.71 Z" />
+<text id="hour_04" x="50.73277702915193" y="133.77777777777777" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">4</text>
+        <path id="tick_05" style="fill:#111111;" d="M 23.10,122.05 A 80.00 80.00 0 0 1 22.38,119.35 L 32.73,116.77 A 69.33 69.33 0 0 0 33.35,119.11 Z" />
+        <path id="tick_06" style="fill:#111111;" d="M 20.01,101.40 A 80.00 80.00 0 0 1 20.01,98.60 L 30.68,98.79 A 69.33 69.33 0 0 0 30.68,101.21 Z" />
+<text id="hour_06" x="43.111111111111114" y="105.33333333333333" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">6</text>
+        <path id="tick_07" style="fill:#111111;" d="M 22.38,80.65 A 80.00 80.00 0 0 1 23.10,77.95 L 33.35,80.89 A 69.33 69.33 0 0 0 32.73,83.23 Z" />
+        <path id="tick_08" style="fill:#111111;" d="M 30.03,61.22 A 80.00 80.00 0 0 1 31.43,58.80 L 40.57,64.29 A 69.33 69.33 0 0 0 39.36,66.39 Z" />
+<text id="hour_08" x="50.73277702915194" y="76.88888888888889" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">8</text>
+        <path id="tick_09" style="fill:#111111;" d="M 42.45,44.43 A 80.00 80.00 0 0 1 44.43,42.45 L 51.84,50.13 A 69.33 69.33 0 0 0 50.13,51.84 Z" />
+        <path id="tick_10" style="fill:#111111;" d="M 58.80,31.43 A 80.00 80.00 0 0 1 61.22,30.03 L 66.39,39.36 A 69.33 69.33 0 0 0 64.29,40.57 Z" />
+<text id="hour_10" x="71.55555555555553" y="56.06611036248528" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">10</text>
+        <path id="tick_11" style="fill:#111111;" d="M 77.95,23.10 A 80.00 80.00 0 0 1 80.65,22.38 L 83.23,32.73 A 69.33 69.33 0 0 0 80.89,33.35 Z" />
+        <path id="tick_12" style="fill:#111111;" d="M 98.60,20.01 A 80.00 80.00 0 0 1 101.40,20.01 L 101.21,30.68 A 69.33 69.33 0 0 0 98.79,30.68 Z" />
+<text id="hour_12" x="99.99999999999999" y="48.44444444444444" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">12</text>
+        <path id="tick_13" style="fill:#111111;" d="M 119.35,22.38 A 80.00 80.00 0 0 1 122.05,23.10 L 119.11,33.35 A 69.33 69.33 0 0 0 116.77,32.73 Z" />
+        <path id="tick_14" style="fill:#111111;" d="M 138.78,30.03 A 80.00 80.00 0 0 1 141.20,31.43 L 135.71,40.57 A 69.33 69.33 0 0 0 133.61,39.36 Z" />
+<text id="hour_14" x="128.44444444444446" y="56.06611036248527" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">14</text>
+        <path id="tick_15" style="fill:#111111;" d="M 155.57,42.45 A 80.00 80.00 0 0 1 157.55,44.43 L 149.87,51.84 A 69.33 69.33 0 0 0 148.16,50.13 Z" />
+        <path id="tick_16" style="fill:#111111;" d="M 168.57,58.80 A 80.00 80.00 0 0 1 169.97,61.22 L 160.64,66.39 A 69.33 69.33 0 0 0 159.43,64.29 Z" />
+<text id="hour_16" x="149.26722297084805" y="76.88888888888886" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">16</text>
+        <path id="tick_17" style="fill:#111111;" d="M 176.90,77.95 A 80.00 80.00 0 0 1 177.62,80.65 L 167.27,83.23 A 69.33 69.33 0 0 0 166.65,80.89 Z" />
+        <path id="tick_18" style="fill:#111111;" d="M 179.99,98.60 A 80.00 80.00 0 0 1 179.99,101.40 L 169.32,101.21 A 69.33 69.33 0 0 0 169.32,98.79 Z" />
+<text id="hour_18" x="156.88888888888889" y="105.33333333333331" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">18</text>
+        <path id="tick_19" style="fill:#111111;" d="M 177.62,119.35 A 80.00 80.00 0 0 1 176.90,122.05 L 166.65,119.11 A 69.33 69.33 0 0 0 167.27,116.77 Z" />
+        <path id="tick_20" style="fill:#111111;" d="M 169.97,138.78 A 80.00 80.00 0 0 1 168.57,141.20 L 159.43,135.71 A 69.33 69.33 0 0 0 160.64,133.61 Z" />
+<text id="hour_20" x="149.26722297084808" y="133.77777777777777" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">20</text>
+        <path id="tick_21" style="fill:#111111;" d="M 157.55,155.57 A 80.00 80.00 0 0 1 155.57,157.55 L 148.16,149.87 A 69.33 69.33 0 0 0 149.87,148.16 Z" />
+        <path id="tick_22" style="fill:#111111;" d="M 141.20,168.57 A 80.00 80.00 0 0 1 138.78,169.97 L 133.61,160.64 A 69.33 69.33 0 0 0 135.71,159.43 Z" />
+<text id="hour_22" x="128.44444444444446" y="154.6005563041814" style="font-family:sans-serif;font-size:16.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">22</text>
+        <path id="tick_23" style="fill:#111111;" d="M 122.05,176.90 A 80.00 80.00 0 0 1 119.35,177.62 L 116.77,167.27 A 69.33 69.33 0 0 0 119.11,166.65 Z" />
+        <path id="minute_00" style="fill:#111111;" d="M 100.65,200.00 A 100.00 100.00 0 0 1 99.35,200.00 L 99.43,186.66 A 86.67 86.67 0 0 0 100.57,186.66 Z" />
+        <path id="minute_01" style="fill:#111111;" d="M 90.20,199.52 A 100.00 100.00 0 0 1 88.90,199.38 L 89.64,192.76 A 93.33 93.33 0 0 0 90.85,192.88 Z" />
+        <path id="minute_02" style="fill:#111111;" d="M 79.85,197.95 A 100.00 100.00 0 0 1 78.57,197.68 L 80.00,191.16 A 93.33 93.33 0 0 0 81.19,191.42 Z" />
+        <path id="minute_03" style="fill:#111111;" d="M 69.72,195.31 A 100.00 100.00 0 0 1 68.48,194.90 L 70.58,188.57 A 93.33 93.33 0 0 0 71.74,188.95 Z" />
+        <path id="minute_04" style="fill:#111111;" d="M 59.93,191.62 A 100.00 100.00 0 0 1 58.73,191.09 L 61.48,185.01 A 93.33 93.33 0 0 0 62.60,185.51 Z" />
+        <path id="minute_05" style="fill:#111111;" d="M 50.57,186.93 A 100.00 100.00 0 0 1 49.43,186.27 L 56.18,174.77 A 86.67 86.67 0 0 0 57.16,175.34 Z" />
+        <path id="minute_06" style="fill:#111111;" d="M 41.75,181.28 A 100.00 100.00 0 0 1 40.69,180.52 L 44.65,175.15 A 93.33 93.33 0 0 0 45.64,175.87 Z" />
+        <path id="minute_07" style="fill:#111111;" d="M 33.57,174.75 A 100.00 100.00 0 0 1 32.60,173.87 L 37.10,168.95 A 93.33 93.33 0 0 0 38.00,169.77 Z" />
+        <path id="minute_08" style="fill:#111111;" d="M 26.13,167.40 A 100.00 100.00 0 0 1 25.25,166.43 L 30.23,162.00 A 93.33 93.33 0 0 0 31.05,162.90 Z" />
+        <path id="minute_09" style="fill:#111111;" d="M 19.48,159.31 A 100.00 100.00 0 0 1 18.72,158.25 L 24.13,154.36 A 93.33 93.33 0 0 0 24.85,155.35 Z" />
+        <path id="minute_10" style="fill:#111111;" d="M 13.73,150.57 A 100.00 100.00 0 0 1 13.07,149.43 L 24.66,142.84 A 86.67 86.67 0 0 0 25.23,143.82 Z" />
+        <path id="minute_11" style="fill:#111111;" d="M 8.91,141.27 A 100.00 100.00 0 0 1 8.38,140.07 L 14.49,137.40 A 93.33 93.33 0 0 0 14.99,138.52 Z" />
+        <path id="minute_12" style="fill:#111111;" d="M 5.10,131.52 A 100.00 100.00 0 0 1 4.69,130.28 L 11.05,128.26 A 93.33 93.33 0 0 0 11.43,129.42 Z" />
+        <path id="minute_13" style="fill:#111111;" d="M 2.32,121.43 A 100.00 100.00 0 0 1 2.05,120.15 L 8.58,118.81 A 93.33 93.33 0 0 0 8.84,120.00 Z" />
+        <path id="minute_14" style="fill:#111111;" d="M 0.62,111.10 A 100.00 100.00 0 0 1 0.48,109.80 L 7.12,109.15 A 93.33 93.33 0 0 0 7.24,110.36 Z" />
+        <path id="minute_15" style="fill:#111111;" d="M 0.00,100.65 A 100.00 100.00 0 0 1 0.00,99.35 L 13.34,99.43 A 86.67 86.67 0 0 0 13.34,100.57 Z" />
+        <path id="minute_16" style="fill:#111111;" d="M 0.48,90.20 A 100.00 100.00 0 0 1 0.62,88.90 L 7.24,89.64 A 93.33 93.33 0 0 0 7.12,90.85 Z" />
+        <path id="minute_17" style="fill:#111111;" d="M 2.05,79.85 A 100.00 100.00 0 0 1 2.32,78.57 L 8.84,80.00 A 93.33 93.33 0 0 0 8.58,81.19 Z" />
+        <path id="minute_18" style="fill:#111111;" d="M 4.69,69.72 A 100.00 100.00 0 0 1 5.10,68.48 L 11.43,70.58 A 93.33 93.33 0 0 0 11.05,71.74 Z" />
+        <path id="minute_19" style="fill:#111111;" d="M 8.38,59.93 A 100.00 100.00 0 0 1 8.91,58.73 L 14.99,61.48 A 93.33 93.33 0 0 0 14.49,62.60 Z" />
+        <path id="minute_20" style="fill:#111111;" d="M 13.07,50.57 A 100.00 100.00 0 0 1 13.73,49.43 L 25.23,56.18 A 86.67 86.67 0 0 0 24.66,57.16 Z" />
+        <path id="minute_21" style="fill:#111111;" d="M 18.72,41.75 A 100.00 100.00 0 0 1 19.48,40.69 L 24.85,44.65 A 93.33 93.33 0 0 0 24.13,45.64 Z" />
+        <path id="minute_22" style="fill:#111111;" d="M 25.25,33.57 A 100.00 100.00 0 0 1 26.13,32.60 L 31.05,37.10 A 93.33 93.33 0 0 0 30.23,38.00 Z" />
+        <path id="minute_23" style="fill:#111111;" d="M 32.60,26.13 A 100.00 100.00 0 0 1 33.57,25.25 L 38.00,30.23 A 93.33 93.33 0 0 0 37.10,31.05 Z" />
+        <path id="minute_24" style="fill:#111111;" d="M 40.69,19.48 A 100.00 100.00 0 0 1 41.75,18.72 L 45.64,24.13 A 93.33 93.33 0 0 0 44.65,24.85 Z" />
+        <path id="minute_25" style="fill:#111111;" d="M 49.43,13.73 A 100.00 100.00 0 0 1 50.57,13.07 L 57.16,24.66 A 86.67 86.67 0 0 0 56.18,25.23 Z" />
+        <path id="minute_26" style="fill:#111111;" d="M 58.73,8.91 A 100.00 100.00 0 0 1 59.93,8.38 L 62.60,14.49 A 93.33 93.33 0 0 0 61.48,14.99 Z" />
+        <path id="minute_27" style="fill:#111111;" d="M 68.48,5.10 A 100.00 100.00 0 0 1 69.72,4.69 L 71.74,11.05 A 93.33 93.33 0 0 0 70.58,11.43 Z" />
+        <path id="minute_28" style="fill:#111111;" d="M 78.57,2.32 A 100.00 100.00 0 0 1 79.85,2.05 L 81.19,8.58 A 93.33 93.33 0 0 0 80.00,8.84 Z" />
+        <path id="minute_29" style="fill:#111111;" d="M 88.90,0.62 A 100.00 100.00 0 0 1 90.20,0.48 L 90.85,7.12 A 93.33 93.33 0 0 0 89.64,7.24 Z" />
+        <path id="minute_30" style="fill:#111111;" d="M 99.35,0.00 A 100.00 100.00 0 0 1 100.65,0.00 L 100.57,13.34 A 86.67 86.67 0 0 0 99.43,13.34 Z" />
+        <path id="minute_31" style="fill:#111111;" d="M 109.80,0.48 A 100.00 100.00 0 0 1 111.10,0.62 L 110.36,7.24 A 93.33 93.33 0 0 0 109.15,7.12 Z" />
+        <path id="minute_32" style="fill:#111111;" d="M 120.15,2.05 A 100.00 100.00 0 0 1 121.43,2.32 L 120.00,8.84 A 93.33 93.33 0 0 0 118.81,8.58 Z" />
+        <path id="minute_33" style="fill:#111111;" d="M 130.28,4.69 A 100.00 100.00 0 0 1 131.52,5.10 L 129.42,11.43 A 93.33 93.33 0 0 0 128.26,11.05 Z" />
+        <path id="minute_34" style="fill:#111111;" d="M 140.07,8.38 A 100.00 100.00 0 0 1 141.27,8.91 L 138.52,14.99 A 93.33 93.33 0 0 0 137.40,14.49 Z" />
+        <path id="minute_35" style="fill:#111111;" d="M 149.43,13.07 A 100.00 100.00 0 0 1 150.57,13.73 L 143.82,25.23 A 86.67 86.67 0 0 0 142.84,24.66 Z" />
+        <path id="minute_36" style="fill:#111111;" d="M 158.25,18.72 A 100.00 100.00 0 0 1 159.31,19.48 L 155.35,24.85 A 93.33 93.33 0 0 0 154.36,24.13 Z" />
+        <path id="minute_37" style="fill:#111111;" d="M 166.43,25.25 A 100.00 100.00 0 0 1 167.40,26.13 L 162.90,31.05 A 93.33 93.33 0 0 0 162.00,30.23 Z" />
+        <path id="minute_38" style="fill:#111111;" d="M 173.87,32.60 A 100.00 100.00 0 0 1 174.75,33.57 L 169.77,38.00 A 93.33 93.33 0 0 0 168.95,37.10 Z" />
+        <path id="minute_39" style="fill:#111111;" d="M 180.52,40.69 A 100.00 100.00 0 0 1 181.28,41.75 L 175.87,45.64 A 93.33 93.33 0 0 0 175.15,44.65 Z" />
+        <path id="minute_40" style="fill:#111111;" d="M 186.27,49.43 A 100.00 100.00 0 0 1 186.93,50.57 L 175.34,57.16 A 86.67 86.67 0 0 0 174.77,56.18 Z" />
+        <path id="minute_41" style="fill:#111111;" d="M 191.09,58.73 A 100.00 100.00 0 0 1 191.62,59.93 L 185.51,62.60 A 93.33 93.33 0 0 0 185.01,61.48 Z" />
+        <path id="minute_42" style="fill:#111111;" d="M 194.90,68.48 A 100.00 100.00 0 0 1 195.31,69.72 L 188.95,71.74 A 93.33 93.33 0 0 0 188.57,70.58 Z" />
+        <path id="minute_43" style="fill:#111111;" d="M 197.68,78.57 A 100.00 100.00 0 0 1 197.95,79.85 L 191.42,81.19 A 93.33 93.33 0 0 0 191.16,80.00 Z" />
+        <path id="minute_44" style="fill:#111111;" d="M 199.38,88.90 A 100.00 100.00 0 0 1 199.52,90.20 L 192.88,90.85 A 93.33 93.33 0 0 0 192.76,89.64 Z" />
+        <path id="minute_45" style="fill:#111111;" d="M 200.00,99.35 A 100.00 100.00 0 0 1 200.00,100.65 L 186.66,100.57 A 86.67 86.67 0 0 0 186.66,99.43 Z" />
+        <path id="minute_46" style="fill:#111111;" d="M 199.52,109.80 A 100.00 100.00 0 0 1 199.38,111.10 L 192.76,110.36 A 93.33 93.33 0 0 0 192.88,109.15 Z" />
+        <path id="minute_47" style="fill:#111111;" d="M 197.95,120.15 A 100.00 100.00 0 0 1 197.68,121.43 L 191.16,120.00 A 93.33 93.33 0 0 0 191.42,118.81 Z" />
+        <path id="minute_48" style="fill:#111111;" d="M 195.31,130.28 A 100.00 100.00 0 0 1 194.90,131.52 L 188.57,129.42 A 93.33 93.33 0 0 0 188.95,128.26 Z" />
+        <path id="minute_49" style="fill:#111111;" d="M 191.62,140.07 A 100.00 100.00 0 0 1 191.09,141.27 L 185.01,138.52 A 93.33 93.33 0 0 0 185.51,137.40 Z" />
+        <path id="minute_50" style="fill:#111111;" d="M 186.93,149.43 A 100.00 100.00 0 0 1 186.27,150.57 L 174.77,143.82 A 86.67 86.67 0 0 0 175.34,142.84 Z" />
+        <path id="minute_51" style="fill:#111111;" d="M 181.28,158.25 A 100.00 100.00 0 0 1 180.52,159.31 L 175.15,155.35 A 93.33 93.33 0 0 0 175.87,154.36 Z" />
+        <path id="minute_52" style="fill:#111111;" d="M 174.75,166.43 A 100.00 100.00 0 0 1 173.87,167.40 L 168.95,162.90 A 93.33 93.33 0 0 0 169.77,162.00 Z" />
+        <path id="minute_53" style="fill:#111111;" d="M 167.40,173.87 A 100.00 100.00 0 0 1 166.43,174.75 L 162.00,169.77 A 93.33 93.33 0 0 0 162.90,168.95 Z" />
+        <path id="minute_54" style="fill:#111111;" d="M 159.31,180.52 A 100.00 100.00 0 0 1 158.25,181.28 L 154.36,175.87 A 93.33 93.33 0 0 0 155.35,175.15 Z" />
+        <path id="minute_55" style="fill:#111111;" d="M 150.57,186.27 A 100.00 100.00 0 0 1 149.43,186.93 L 142.84,175.34 A 86.67 86.67 0 0 0 143.82,174.77 Z" />
+        <path id="minute_56" style="fill:#111111;" d="M 141.27,191.09 A 100.00 100.00 0 0 1 140.07,191.62 L 137.40,185.51 A 93.33 93.33 0 0 0 138.52,185.01 Z" />
+        <path id="minute_57" style="fill:#111111;" d="M 131.52,194.90 A 100.00 100.00 0 0 1 130.28,195.31 L 128.26,188.95 A 93.33 93.33 0 0 0 129.42,188.57 Z" />
+        <path id="minute_58" style="fill:#111111;" d="M 121.43,197.68 A 100.00 100.00 0 0 1 120.15,197.95 L 118.81,191.42 A 93.33 93.33 0 0 0 120.00,191.16 Z" />
+        <path id="minute_59" style="fill:#111111;" d="M 111.10,199.38 A 100.00 100.00 0 0 1 109.80,199.52 L 109.15,192.88 A 93.33 93.33 0 0 0 110.36,192.76 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_standard_24" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 91.64,95.44 A 80.00 80.00 0 0 1 108.36,95.44 L 100.00,175.00 A 0.00 0.00 0 0 0 100.00,175.00 Z" />
+    </g>
+    <g id="hand_minutes_standard_24" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_seconds_standard_24" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 98.15,94.02 A 106.00 106.00 0 0 1 101.85,94.02 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#444444;" d="M 98.25,0.02 A 100.00 100.00 0 0 1 101.75,0.02 L 101.51,13.35 A 86.67 86.67 0 0 0 98.49,13.35 Z" />
+<text id="hour_12" x="99.99999999999999" y="35.55555555555556" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">12</text>
+        <path id="tick_01" style="fill:#444444;" d="M 148.48,12.54 A 100.00 100.00 0 0 1 151.50,14.28 L 144.64,25.71 A 86.67 86.67 0 0 0 142.02,24.20 Z" />
+<text id="hour_01" x="135.55555555555557" y="45.08263795310659" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">1</text>
+        <path id="tick_02" style="fill:#444444;" d="M 185.72,48.50 A 100.00 100.00 0 0 1 187.46,51.52 L 175.80,57.98 A 86.67 86.67 0 0 0 174.29,55.36 Z" />
+<text id="hour_02" x="161.58402871356006" y="71.11111111111109" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">2</text>
+        <path id="tick_03" style="fill:#444444;" d="M 199.98,98.25 A 100.00 100.00 0 0 1 199.98,101.75 L 186.65,101.51 A 86.67 86.67 0 0 0 186.65,98.49 Z" />
+<text id="hour_03" x="171.11111111111111" y="106.66666666666666" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">3</text>
+        <path id="tick_04" style="fill:#444444;" d="M 187.46,148.48 A 100.00 100.00 0 0 1 185.72,151.50 L 174.29,144.64 A 86.67 86.67 0 0 0 175.80,142.02 Z" />
+<text id="hour_04" x="161.5840287135601" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">4</text>
+        <path id="tick_05" style="fill:#444444;" d="M 151.50,185.72 A 100.00 100.00 0 0 1 148.48,187.46 L 142.02,175.80 A 86.67 86.67 0 0 0 144.64,174.29 Z" />
+<text id="hour_05" x="135.55555555555557" y="168.25069538022674" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">5</text>
+        <path id="tick_06" style="fill:#444444;" d="M 101.75,199.98 A 100.00 100.00 0 0 1 98.25,199.98 L 98.49,186.65 A 86.67 86.67 0 0 0 101.51,186.65 Z" />
+<text id="hour_06" x="100.0" y="177.77777777777777" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">6</text>
+        <path id="tick_07" style="fill:#444444;" d="M 51.52,187.46 A 100.00 100.00 0 0 1 48.50,185.72 L 55.36,174.29 A 86.67 86.67 0 0 0 57.98,175.80 Z" />
+<text id="hour_07" x="64.44444444444446" y="168.25069538022677" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">7</text>
+        <path id="tick_08" style="fill:#444444;" d="M 14.28,151.50 A 100.00 100.00 0 0 1 12.54,148.48 L 24.20,142.02 A 86.67 86.67 0 0 0 25.71,144.64 Z" />
+<text id="hour_08" x="38.41597128643991" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">8</text>
+        <path id="tick_09" style="fill:#444444;" d="M 0.02,101.75 A 100.00 100.00 0 0 1 0.02,98.25 L 13.35,98.49 A 86.67 86.67 0 0 0 13.35,101.51 Z" />
+<text id="hour_09" x="28.888888888888886" y="106.66666666666669" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">9</text>
+        <path id="tick_10" style="fill:#444444;" d="M 12.54,51.52 A 100.00 100.00 0 0 1 14.28,48.50 L 25.71,55.36 A 86.67 86.67 0 0 0 24.20,57.98 Z" />
+<text id="hour_10" x="38.41597128643992" y="71.11111111111111" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">10</text>
+        <path id="tick_11" style="fill:#444444;" d="M 48.50,14.28 A 100.00 100.00 0 0 1 51.52,12.54 L 57.98,24.20 A 86.67 86.67 0 0 0 55.36,25.71 Z" />
+<text id="hour_11" x="64.44444444444441" y="45.082637953106605" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">11</text>
+        <path id="minute_00" style="fill:#444444;" d="M 99.35,0.00 A 100.00 100.00 0 0 1 100.65,0.00 L 100.57,13.34 A 86.67 86.67 0 0 0 99.43,13.34 Z" />
+        <path id="minute_01" style="fill:#444444;" d="M 109.80,0.48 A 100.00 100.00 0 0 1 111.10,0.62 L 110.36,7.24 A 93.33 93.33 0 0 0 109.15,7.12 Z" />
+        <path id="minute_02" style="fill:#444444;" d="M 120.15,2.05 A 100.00 100.00 0 0 1 121.43,2.32 L 120.00,8.84 A 93.33 93.33 0 0 0 118.81,8.58 Z" />
+        <path id="minute_03" style="fill:#444444;" d="M 130.28,4.69 A 100.00 100.00 0 0 1 131.52,5.10 L 129.42,11.43 A 93.33 93.33 0 0 0 128.26,11.05 Z" />
+        <path id="minute_04" style="fill:#444444;" d="M 140.07,8.38 A 100.00 100.00 0 0 1 141.27,8.91 L 138.52,14.99 A 93.33 93.33 0 0 0 137.40,14.49 Z" />
+        <path id="minute_05" style="fill:#444444;" d="M 149.43,13.07 A 100.00 100.00 0 0 1 150.57,13.73 L 143.82,25.23 A 86.67 86.67 0 0 0 142.84,24.66 Z" />
+        <path id="minute_06" style="fill:#444444;" d="M 158.25,18.72 A 100.00 100.00 0 0 1 159.31,19.48 L 155.35,24.85 A 93.33 93.33 0 0 0 154.36,24.13 Z" />
+        <path id="minute_07" style="fill:#444444;" d="M 166.43,25.25 A 100.00 100.00 0 0 1 167.40,26.13 L 162.90,31.05 A 93.33 93.33 0 0 0 162.00,30.23 Z" />
+        <path id="minute_08" style="fill:#444444;" d="M 173.87,32.60 A 100.00 100.00 0 0 1 174.75,33.57 L 169.77,38.00 A 93.33 93.33 0 0 0 168.95,37.10 Z" />
+        <path id="minute_09" style="fill:#444444;" d="M 180.52,40.69 A 100.00 100.00 0 0 1 181.28,41.75 L 175.87,45.64 A 93.33 93.33 0 0 0 175.15,44.65 Z" />
+        <path id="minute_10" style="fill:#444444;" d="M 186.27,49.43 A 100.00 100.00 0 0 1 186.93,50.57 L 175.34,57.16 A 86.67 86.67 0 0 0 174.77,56.18 Z" />
+        <path id="minute_11" style="fill:#444444;" d="M 191.09,58.73 A 100.00 100.00 0 0 1 191.62,59.93 L 185.51,62.60 A 93.33 93.33 0 0 0 185.01,61.48 Z" />
+        <path id="minute_12" style="fill:#444444;" d="M 194.90,68.48 A 100.00 100.00 0 0 1 195.31,69.72 L 188.95,71.74 A 93.33 93.33 0 0 0 188.57,70.58 Z" />
+        <path id="minute_13" style="fill:#444444;" d="M 197.68,78.57 A 100.00 100.00 0 0 1 197.95,79.85 L 191.42,81.19 A 93.33 93.33 0 0 0 191.16,80.00 Z" />
+        <path id="minute_14" style="fill:#444444;" d="M 199.38,88.90 A 100.00 100.00 0 0 1 199.52,90.20 L 192.88,90.85 A 93.33 93.33 0 0 0 192.76,89.64 Z" />
+        <path id="minute_15" style="fill:#444444;" d="M 200.00,99.35 A 100.00 100.00 0 0 1 200.00,100.65 L 186.66,100.57 A 86.67 86.67 0 0 0 186.66,99.43 Z" />
+        <path id="minute_16" style="fill:#444444;" d="M 199.52,109.80 A 100.00 100.00 0 0 1 199.38,111.10 L 192.76,110.36 A 93.33 93.33 0 0 0 192.88,109.15 Z" />
+        <path id="minute_17" style="fill:#444444;" d="M 197.95,120.15 A 100.00 100.00 0 0 1 197.68,121.43 L 191.16,120.00 A 93.33 93.33 0 0 0 191.42,118.81 Z" />
+        <path id="minute_18" style="fill:#444444;" d="M 195.31,130.28 A 100.00 100.00 0 0 1 194.90,131.52 L 188.57,129.42 A 93.33 93.33 0 0 0 188.95,128.26 Z" />
+        <path id="minute_19" style="fill:#444444;" d="M 191.62,140.07 A 100.00 100.00 0 0 1 191.09,141.27 L 185.01,138.52 A 93.33 93.33 0 0 0 185.51,137.40 Z" />
+        <path id="minute_20" style="fill:#444444;" d="M 186.93,149.43 A 100.00 100.00 0 0 1 186.27,150.57 L 174.77,143.82 A 86.67 86.67 0 0 0 175.34,142.84 Z" />
+        <path id="minute_21" style="fill:#444444;" d="M 181.28,158.25 A 100.00 100.00 0 0 1 180.52,159.31 L 175.15,155.35 A 93.33 93.33 0 0 0 175.87,154.36 Z" />
+        <path id="minute_22" style="fill:#444444;" d="M 174.75,166.43 A 100.00 100.00 0 0 1 173.87,167.40 L 168.95,162.90 A 93.33 93.33 0 0 0 169.77,162.00 Z" />
+        <path id="minute_23" style="fill:#444444;" d="M 167.40,173.87 A 100.00 100.00 0 0 1 166.43,174.75 L 162.00,169.77 A 93.33 93.33 0 0 0 162.90,168.95 Z" />
+        <path id="minute_24" style="fill:#444444;" d="M 159.31,180.52 A 100.00 100.00 0 0 1 158.25,181.28 L 154.36,175.87 A 93.33 93.33 0 0 0 155.35,175.15 Z" />
+        <path id="minute_25" style="fill:#444444;" d="M 150.57,186.27 A 100.00 100.00 0 0 1 149.43,186.93 L 142.84,175.34 A 86.67 86.67 0 0 0 143.82,174.77 Z" />
+        <path id="minute_26" style="fill:#444444;" d="M 141.27,191.09 A 100.00 100.00 0 0 1 140.07,191.62 L 137.40,185.51 A 93.33 93.33 0 0 0 138.52,185.01 Z" />
+        <path id="minute_27" style="fill:#444444;" d="M 131.52,194.90 A 100.00 100.00 0 0 1 130.28,195.31 L 128.26,188.95 A 93.33 93.33 0 0 0 129.42,188.57 Z" />
+        <path id="minute_28" style="fill:#444444;" d="M 121.43,197.68 A 100.00 100.00 0 0 1 120.15,197.95 L 118.81,191.42 A 93.33 93.33 0 0 0 120.00,191.16 Z" />
+        <path id="minute_29" style="fill:#444444;" d="M 111.10,199.38 A 100.00 100.00 0 0 1 109.80,199.52 L 109.15,192.88 A 93.33 93.33 0 0 0 110.36,192.76 Z" />
+        <path id="minute_30" style="fill:#444444;" d="M 100.65,200.00 A 100.00 100.00 0 0 1 99.35,200.00 L 99.43,186.66 A 86.67 86.67 0 0 0 100.57,186.66 Z" />
+        <path id="minute_31" style="fill:#444444;" d="M 90.20,199.52 A 100.00 100.00 0 0 1 88.90,199.38 L 89.64,192.76 A 93.33 93.33 0 0 0 90.85,192.88 Z" />
+        <path id="minute_32" style="fill:#444444;" d="M 79.85,197.95 A 100.00 100.00 0 0 1 78.57,197.68 L 80.00,191.16 A 93.33 93.33 0 0 0 81.19,191.42 Z" />
+        <path id="minute_33" style="fill:#444444;" d="M 69.72,195.31 A 100.00 100.00 0 0 1 68.48,194.90 L 70.58,188.57 A 93.33 93.33 0 0 0 71.74,188.95 Z" />
+        <path id="minute_34" style="fill:#444444;" d="M 59.93,191.62 A 100.00 100.00 0 0 1 58.73,191.09 L 61.48,185.01 A 93.33 93.33 0 0 0 62.60,185.51 Z" />
+        <path id="minute_35" style="fill:#444444;" d="M 50.57,186.93 A 100.00 100.00 0 0 1 49.43,186.27 L 56.18,174.77 A 86.67 86.67 0 0 0 57.16,175.34 Z" />
+        <path id="minute_36" style="fill:#444444;" d="M 41.75,181.28 A 100.00 100.00 0 0 1 40.69,180.52 L 44.65,175.15 A 93.33 93.33 0 0 0 45.64,175.87 Z" />
+        <path id="minute_37" style="fill:#444444;" d="M 33.57,174.75 A 100.00 100.00 0 0 1 32.60,173.87 L 37.10,168.95 A 93.33 93.33 0 0 0 38.00,169.77 Z" />
+        <path id="minute_38" style="fill:#444444;" d="M 26.13,167.40 A 100.00 100.00 0 0 1 25.25,166.43 L 30.23,162.00 A 93.33 93.33 0 0 0 31.05,162.90 Z" />
+        <path id="minute_39" style="fill:#444444;" d="M 19.48,159.31 A 100.00 100.00 0 0 1 18.72,158.25 L 24.13,154.36 A 93.33 93.33 0 0 0 24.85,155.35 Z" />
+        <path id="minute_40" style="fill:#444444;" d="M 13.73,150.57 A 100.00 100.00 0 0 1 13.07,149.43 L 24.66,142.84 A 86.67 86.67 0 0 0 25.23,143.82 Z" />
+        <path id="minute_41" style="fill:#444444;" d="M 8.91,141.27 A 100.00 100.00 0 0 1 8.38,140.07 L 14.49,137.40 A 93.33 93.33 0 0 0 14.99,138.52 Z" />
+        <path id="minute_42" style="fill:#444444;" d="M 5.10,131.52 A 100.00 100.00 0 0 1 4.69,130.28 L 11.05,128.26 A 93.33 93.33 0 0 0 11.43,129.42 Z" />
+        <path id="minute_43" style="fill:#444444;" d="M 2.32,121.43 A 100.00 100.00 0 0 1 2.05,120.15 L 8.58,118.81 A 93.33 93.33 0 0 0 8.84,120.00 Z" />
+        <path id="minute_44" style="fill:#444444;" d="M 0.62,111.10 A 100.00 100.00 0 0 1 0.48,109.80 L 7.12,109.15 A 93.33 93.33 0 0 0 7.24,110.36 Z" />
+        <path id="minute_45" style="fill:#444444;" d="M 0.00,100.65 A 100.00 100.00 0 0 1 0.00,99.35 L 13.34,99.43 A 86.67 86.67 0 0 0 13.34,100.57 Z" />
+        <path id="minute_46" style="fill:#444444;" d="M 0.48,90.20 A 100.00 100.00 0 0 1 0.62,88.90 L 7.24,89.64 A 93.33 93.33 0 0 0 7.12,90.85 Z" />
+        <path id="minute_47" style="fill:#444444;" d="M 2.05,79.85 A 100.00 100.00 0 0 1 2.32,78.57 L 8.84,80.00 A 93.33 93.33 0 0 0 8.58,81.19 Z" />
+        <path id="minute_48" style="fill:#444444;" d="M 4.69,69.72 A 100.00 100.00 0 0 1 5.10,68.48 L 11.43,70.58 A 93.33 93.33 0 0 0 11.05,71.74 Z" />
+        <path id="minute_49" style="fill:#444444;" d="M 8.38,59.93 A 100.00 100.00 0 0 1 8.91,58.73 L 14.99,61.48 A 93.33 93.33 0 0 0 14.49,62.60 Z" />
+        <path id="minute_50" style="fill:#444444;" d="M 13.07,50.57 A 100.00 100.00 0 0 1 13.73,49.43 L 25.23,56.18 A 86.67 86.67 0 0 0 24.66,57.16 Z" />
+        <path id="minute_51" style="fill:#444444;" d="M 18.72,41.75 A 100.00 100.00 0 0 1 19.48,40.69 L 24.85,44.65 A 93.33 93.33 0 0 0 24.13,45.64 Z" />
+        <path id="minute_52" style="fill:#444444;" d="M 25.25,33.57 A 100.00 100.00 0 0 1 26.13,32.60 L 31.05,37.10 A 93.33 93.33 0 0 0 30.23,38.00 Z" />
+        <path id="minute_53" style="fill:#444444;" d="M 32.60,26.13 A 100.00 100.00 0 0 1 33.57,25.25 L 38.00,30.23 A 93.33 93.33 0 0 0 37.10,31.05 Z" />
+        <path id="minute_54" style="fill:#444444;" d="M 40.69,19.48 A 100.00 100.00 0 0 1 41.75,18.72 L 45.64,24.13 A 93.33 93.33 0 0 0 44.65,24.85 Z" />
+        <path id="minute_55" style="fill:#444444;" d="M 49.43,13.73 A 100.00 100.00 0 0 1 50.57,13.07 L 57.16,24.66 A 86.67 86.67 0 0 0 56.18,25.23 Z" />
+        <path id="minute_56" style="fill:#444444;" d="M 58.73,8.91 A 100.00 100.00 0 0 1 59.93,8.38 L 62.60,14.49 A 93.33 93.33 0 0 0 61.48,14.99 Z" />
+        <path id="minute_57" style="fill:#444444;" d="M 68.48,5.10 A 100.00 100.00 0 0 1 69.72,4.69 L 71.74,11.05 A 93.33 93.33 0 0 0 70.58,11.43 Z" />
+        <path id="minute_58" style="fill:#444444;" d="M 78.57,2.32 A 100.00 100.00 0 0 1 79.85,2.05 L 81.19,8.58 A 93.33 93.33 0 0 0 80.00,8.84 Z" />
+        <path id="minute_59" style="fill:#444444;" d="M 88.90,0.62 A 100.00 100.00 0 0 1 90.20,0.48 L 90.85,7.12 A 93.33 93.33 0 0 0 89.64,7.24 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_standard_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 107.32,109.62 A 70.00 70.00 0 0 1 92.68,109.62 L 100.00,40.00 A 0.00 0.00 0 0 0 100.00,40.00 Z" />
+    </g>
+    <g id="hand_minutes_standard_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 104.71,109.88 A 90.00 90.00 0 0 1 95.29,109.88 L 100.00,20.00 A 0.00 0.00 0 0 0 100.00,20.00 Z" />
+    </g>
+    <g id="hand_seconds_standard_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 101.75,109.98 A 100.00 100.00 0 0 1 98.25,109.98 L 100.00,10.00 A 0.00 0.00 0 0 0 100.00,10.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+        <tr>
+            <td class="mono" id="time_standard_24"></td>
+            <td class="mono" id="time_standard_12"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th width="25%"><a href="https://en.wikipedia.org/wiki/Decimal" target="new">Base 10</a></th>
+            <th width="25%"><a href="https://en.wikipedia.org/wiki/Senary" target="new">Base 6</a></th>
+            <th width="25%"><a href="https://en.wikipedia.org/wiki/Duodecimal" target="new">Base 12</a></th>
+            <th width="25%"><a href="https://en.wikipedia.org/wiki/Hexadecimal" target="new">Base 16</a></th>
+        </tr>
+        <tr>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#444444;" d="M 101.75,199.98 A 100.00 100.00 0 0 1 98.25,199.98 L 98.49,186.65 A 86.67 86.67 0 0 0 101.51,186.65 Z" />
+<text id="hour_00" x="100.0" y="177.77777777777777" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">0</text>
+        <path id="tick_01" style="fill:#444444;" d="M 42.64,181.92 A 100.00 100.00 0 0 1 39.82,179.86 L 47.84,169.22 A 86.67 86.67 0 0 0 50.29,170.99 Z" />
+<text id="hour_01" x="58.20193761475747" y="164.19676404444073" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">1</text>
+        <path id="tick_02" style="fill:#444444;" d="M 5.45,132.56 A 100.00 100.00 0 0 1 4.37,129.24 L 17.12,125.34 A 86.67 86.67 0 0 0 18.06,128.22 Z" />
+<text id="hour_02" x="32.36931439678908" y="128.64120848888516" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">2</text>
+        <path id="tick_03" style="fill:#444444;" d="M 4.37,70.76 A 100.00 100.00 0 0 1 5.45,67.44 L 18.06,71.78 A 86.67 86.67 0 0 0 17.12,74.66 Z" />
+<text id="hour_03" x="32.36931439678908" y="84.69212484444816" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">3</text>
+        <path id="tick_04" style="fill:#444444;" d="M 39.82,20.14 A 100.00 100.00 0 0 1 42.64,18.08 L 50.29,29.01 A 86.67 86.67 0 0 0 47.84,30.78 Z" />
+<text id="hour_04" x="58.201937614757455" y="49.13656928889264" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">4</text>
+        <path id="tick_05" style="fill:#444444;" d="M 98.25,0.02 A 100.00 100.00 0 0 1 101.75,0.02 L 101.51,13.35 A 86.67 86.67 0 0 0 98.49,13.35 Z" />
+<text id="hour_05" x="99.99999999999999" y="35.55555555555556" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">5</text>
+        <path id="tick_06" style="fill:#444444;" d="M 157.36,18.08 A 100.00 100.00 0 0 1 160.18,20.14 L 152.16,30.78 A 86.67 86.67 0 0 0 149.71,29.01 Z" />
+<text id="hour_06" x="141.79806238524253" y="49.13656928889262" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">6</text>
+        <path id="tick_07" style="fill:#444444;" d="M 194.55,67.44 A 100.00 100.00 0 0 1 195.63,70.76 L 182.88,74.66 A 86.67 86.67 0 0 0 181.94,71.78 Z" />
+<text id="hour_07" x="167.6306856032109" y="84.69212484444817" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">7</text>
+        <path id="tick_08" style="fill:#444444;" d="M 195.63,129.24 A 100.00 100.00 0 0 1 194.55,132.56 L 181.94,128.22 A 86.67 86.67 0 0 0 182.88,125.34 Z" />
+<text id="hour_08" x="167.6306856032109" y="128.64120848888516" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">8</text>
+        <path id="tick_09" style="fill:#444444;" d="M 160.18,179.86 A 100.00 100.00 0 0 1 157.36,181.92 L 149.71,170.99 A 86.67 86.67 0 0 0 152.16,169.22 Z" />
+<text id="hour_09" x="141.79806238524253" y="164.19676404444073" style="font-family:sans-serif;font-size:20.0px;fill:#444444;text-anchor:middle;text-align:center;font-weight:bold;">9</text>
+        <path id="minute_00" style="fill:#444444;" d="M 100.65,200.00 A 100.00 100.00 0 0 1 99.35,200.00 L 99.43,186.66 A 86.67 86.67 0 0 0 100.57,186.66 Z" />
+        <path id="minute_01" style="fill:#444444;" d="M 94.37,199.84 A 100.00 100.00 0 0 1 93.07,199.76 L 93.53,193.11 A 93.33 93.33 0 0 0 94.75,193.19 Z" />
+        <path id="minute_02" style="fill:#444444;" d="M 88.12,199.29 A 100.00 100.00 0 0 1 86.82,199.13 L 87.70,192.52 A 93.33 93.33 0 0 0 88.91,192.67 Z" />
+        <path id="minute_03" style="fill:#444444;" d="M 81.91,198.35 A 100.00 100.00 0 0 1 80.62,198.10 L 81.91,191.56 A 93.33 93.33 0 0 0 83.11,191.79 Z" />
+        <path id="minute_04" style="fill:#444444;" d="M 75.77,197.02 A 100.00 100.00 0 0 1 74.50,196.69 L 76.20,190.25 A 93.33 93.33 0 0 0 77.38,190.55 Z" />
+        <path id="minute_05" style="fill:#444444;" d="M 69.72,195.31 A 100.00 100.00 0 0 1 68.48,194.90 L 72.68,182.25 A 86.67 86.67 0 0 0 73.76,182.60 Z" />
+        <path id="minute_06" style="fill:#444444;" d="M 63.80,193.22 A 100.00 100.00 0 0 1 62.58,192.73 L 65.07,186.55 A 93.33 93.33 0 0 0 66.21,187.00 Z" />
+        <path id="minute_07" style="fill:#444444;" d="M 58.02,190.76 A 100.00 100.00 0 0 1 56.83,190.20 L 59.71,184.19 A 93.33 93.33 0 0 0 60.81,184.71 Z" />
+        <path id="minute_08" style="fill:#444444;" d="M 52.40,187.94 A 100.00 100.00 0 0 1 51.25,187.31 L 54.50,181.49 A 93.33 93.33 0 0 0 55.57,182.08 Z" />
+        <path id="minute_09" style="fill:#444444;" d="M 46.97,184.78 A 100.00 100.00 0 0 1 45.87,184.08 L 49.47,178.47 A 93.33 93.33 0 0 0 50.51,179.13 Z" />
+        <path id="minute_10" style="fill:#444444;" d="M 41.75,181.28 A 100.00 100.00 0 0 1 40.69,180.52 L 48.60,169.78 A 86.67 86.67 0 0 0 49.52,170.45 Z" />
+        <path id="minute_11" style="fill:#444444;" d="M 36.76,177.47 A 100.00 100.00 0 0 1 35.75,176.63 L 40.04,171.52 A 93.33 93.33 0 0 0 40.98,172.30 Z" />
+        <path id="minute_12" style="fill:#444444;" d="M 32.02,173.34 A 100.00 100.00 0 0 1 31.07,172.45 L 35.67,167.62 A 93.33 93.33 0 0 0 36.56,168.45 Z" />
+        <path id="minute_13" style="fill:#444444;" d="M 27.55,168.93 A 100.00 100.00 0 0 1 26.66,167.98 L 31.55,163.44 A 93.33 93.33 0 0 0 32.38,164.33 Z" />
+        <path id="minute_14" style="fill:#444444;" d="M 23.37,164.25 A 100.00 100.00 0 0 1 22.53,163.24 L 27.70,159.02 A 93.33 93.33 0 0 0 28.48,159.96 Z" />
+        <path id="minute_15" style="fill:#444444;" d="M 19.48,159.31 A 100.00 100.00 0 0 1 18.72,158.25 L 29.55,150.48 A 86.67 86.67 0 0 0 30.22,151.40 Z" />
+        <path id="minute_16" style="fill:#444444;" d="M 15.92,154.13 A 100.00 100.00 0 0 1 15.22,153.03 L 20.87,149.49 A 93.33 93.33 0 0 0 21.53,150.53 Z" />
+        <path id="minute_17" style="fill:#444444;" d="M 12.69,148.75 A 100.00 100.00 0 0 1 12.06,147.60 L 17.92,144.43 A 93.33 93.33 0 0 0 18.51,145.50 Z" />
+        <path id="minute_18" style="fill:#444444;" d="M 9.80,143.17 A 100.00 100.00 0 0 1 9.24,141.98 L 15.29,139.19 A 93.33 93.33 0 0 0 15.81,140.29 Z" />
+        <path id="minute_19" style="fill:#444444;" d="M 7.27,137.42 A 100.00 100.00 0 0 1 6.78,136.20 L 13.00,133.79 A 93.33 93.33 0 0 0 13.45,134.93 Z" />
+        <path id="minute_20" style="fill:#444444;" d="M 5.10,131.52 A 100.00 100.00 0 0 1 4.69,130.28 L 17.40,126.24 A 86.67 86.67 0 0 0 17.75,127.32 Z" />
+        <path id="minute_21" style="fill:#444444;" d="M 3.31,125.50 A 100.00 100.00 0 0 1 2.98,124.23 L 9.45,122.62 A 93.33 93.33 0 0 0 9.75,123.80 Z" />
+        <path id="minute_22" style="fill:#444444;" d="M 1.90,119.38 A 100.00 100.00 0 0 1 1.65,118.09 L 8.21,116.89 A 93.33 93.33 0 0 0 8.44,118.09 Z" />
+        <path id="minute_23" style="fill:#444444;" d="M 0.87,113.18 A 100.00 100.00 0 0 1 0.71,111.88 L 7.33,111.09 A 93.33 93.33 0 0 0 7.48,112.30 Z" />
+        <path id="minute_24" style="fill:#444444;" d="M 0.24,106.93 A 100.00 100.00 0 0 1 0.16,105.63 L 6.81,105.25 A 93.33 93.33 0 0 0 6.89,106.47 Z" />
+        <path id="minute_25" style="fill:#444444;" d="M 0.00,100.65 A 100.00 100.00 0 0 1 0.00,99.35 L 13.34,99.43 A 86.67 86.67 0 0 0 13.34,100.57 Z" />
+        <path id="minute_26" style="fill:#444444;" d="M 0.16,94.37 A 100.00 100.00 0 0 1 0.24,93.07 L 6.89,93.53 A 93.33 93.33 0 0 0 6.81,94.75 Z" />
+        <path id="minute_27" style="fill:#444444;" d="M 0.71,88.12 A 100.00 100.00 0 0 1 0.87,86.82 L 7.48,87.70 A 93.33 93.33 0 0 0 7.33,88.91 Z" />
+        <path id="minute_28" style="fill:#444444;" d="M 1.65,81.91 A 100.00 100.00 0 0 1 1.90,80.62 L 8.44,81.91 A 93.33 93.33 0 0 0 8.21,83.11 Z" />
+        <path id="minute_29" style="fill:#444444;" d="M 2.98,75.77 A 100.00 100.00 0 0 1 3.31,74.50 L 9.75,76.20 A 93.33 93.33 0 0 0 9.45,77.38 Z" />
+        <path id="minute_30" style="fill:#444444;" d="M 4.69,69.72 A 100.00 100.00 0 0 1 5.10,68.48 L 17.75,72.68 A 86.67 86.67 0 0 0 17.40,73.76 Z" />
+        <path id="minute_31" style="fill:#444444;" d="M 6.78,63.80 A 100.00 100.00 0 0 1 7.27,62.58 L 13.45,65.07 A 93.33 93.33 0 0 0 13.00,66.21 Z" />
+        <path id="minute_32" style="fill:#444444;" d="M 9.24,58.02 A 100.00 100.00 0 0 1 9.80,56.83 L 15.81,59.71 A 93.33 93.33 0 0 0 15.29,60.81 Z" />
+        <path id="minute_33" style="fill:#444444;" d="M 12.06,52.40 A 100.00 100.00 0 0 1 12.69,51.25 L 18.51,54.50 A 93.33 93.33 0 0 0 17.92,55.57 Z" />
+        <path id="minute_34" style="fill:#444444;" d="M 15.22,46.97 A 100.00 100.00 0 0 1 15.92,45.87 L 21.53,49.47 A 93.33 93.33 0 0 0 20.87,50.51 Z" />
+        <path id="minute_35" style="fill:#444444;" d="M 18.72,41.75 A 100.00 100.00 0 0 1 19.48,40.69 L 30.22,48.60 A 86.67 86.67 0 0 0 29.55,49.52 Z" />
+        <path id="minute_36" style="fill:#444444;" d="M 22.53,36.76 A 100.00 100.00 0 0 1 23.37,35.75 L 28.48,40.04 A 93.33 93.33 0 0 0 27.70,40.98 Z" />
+        <path id="minute_37" style="fill:#444444;" d="M 26.66,32.02 A 100.00 100.00 0 0 1 27.55,31.07 L 32.38,35.67 A 93.33 93.33 0 0 0 31.55,36.56 Z" />
+        <path id="minute_38" style="fill:#444444;" d="M 31.07,27.55 A 100.00 100.00 0 0 1 32.02,26.66 L 36.56,31.55 A 93.33 93.33 0 0 0 35.67,32.38 Z" />
+        <path id="minute_39" style="fill:#444444;" d="M 35.75,23.37 A 100.00 100.00 0 0 1 36.76,22.53 L 40.98,27.70 A 93.33 93.33 0 0 0 40.04,28.48 Z" />
+        <path id="minute_40" style="fill:#444444;" d="M 40.69,19.48 A 100.00 100.00 0 0 1 41.75,18.72 L 49.52,29.55 A 86.67 86.67 0 0 0 48.60,30.22 Z" />
+        <path id="minute_41" style="fill:#444444;" d="M 45.87,15.92 A 100.00 100.00 0 0 1 46.97,15.22 L 50.51,20.87 A 93.33 93.33 0 0 0 49.47,21.53 Z" />
+        <path id="minute_42" style="fill:#444444;" d="M 51.25,12.69 A 100.00 100.00 0 0 1 52.40,12.06 L 55.57,17.92 A 93.33 93.33 0 0 0 54.50,18.51 Z" />
+        <path id="minute_43" style="fill:#444444;" d="M 56.83,9.80 A 100.00 100.00 0 0 1 58.02,9.24 L 60.81,15.29 A 93.33 93.33 0 0 0 59.71,15.81 Z" />
+        <path id="minute_44" style="fill:#444444;" d="M 62.58,7.27 A 100.00 100.00 0 0 1 63.80,6.78 L 66.21,13.00 A 93.33 93.33 0 0 0 65.07,13.45 Z" />
+        <path id="minute_45" style="fill:#444444;" d="M 68.48,5.10 A 100.00 100.00 0 0 1 69.72,4.69 L 73.76,17.40 A 86.67 86.67 0 0 0 72.68,17.75 Z" />
+        <path id="minute_46" style="fill:#444444;" d="M 74.50,3.31 A 100.00 100.00 0 0 1 75.77,2.98 L 77.38,9.45 A 93.33 93.33 0 0 0 76.20,9.75 Z" />
+        <path id="minute_47" style="fill:#444444;" d="M 80.62,1.90 A 100.00 100.00 0 0 1 81.91,1.65 L 83.11,8.21 A 93.33 93.33 0 0 0 81.91,8.44 Z" />
+        <path id="minute_48" style="fill:#444444;" d="M 86.82,0.87 A 100.00 100.00 0 0 1 88.12,0.71 L 88.91,7.33 A 93.33 93.33 0 0 0 87.70,7.48 Z" />
+        <path id="minute_49" style="fill:#444444;" d="M 93.07,0.24 A 100.00 100.00 0 0 1 94.37,0.16 L 94.75,6.81 A 93.33 93.33 0 0 0 93.53,6.89 Z" />
+        <path id="minute_50" style="fill:#444444;" d="M 99.35,0.00 A 100.00 100.00 0 0 1 100.65,0.00 L 100.57,13.34 A 86.67 86.67 0 0 0 99.43,13.34 Z" />
+        <path id="minute_51" style="fill:#444444;" d="M 105.63,0.16 A 100.00 100.00 0 0 1 106.93,0.24 L 106.47,6.89 A 93.33 93.33 0 0 0 105.25,6.81 Z" />
+        <path id="minute_52" style="fill:#444444;" d="M 111.88,0.71 A 100.00 100.00 0 0 1 113.18,0.87 L 112.30,7.48 A 93.33 93.33 0 0 0 111.09,7.33 Z" />
+        <path id="minute_53" style="fill:#444444;" d="M 118.09,1.65 A 100.00 100.00 0 0 1 119.38,1.90 L 118.09,8.44 A 93.33 93.33 0 0 0 116.89,8.21 Z" />
+        <path id="minute_54" style="fill:#444444;" d="M 124.23,2.98 A 100.00 100.00 0 0 1 125.50,3.31 L 123.80,9.75 A 93.33 93.33 0 0 0 122.62,9.45 Z" />
+        <path id="minute_55" style="fill:#444444;" d="M 130.28,4.69 A 100.00 100.00 0 0 1 131.52,5.10 L 127.32,17.75 A 86.67 86.67 0 0 0 126.24,17.40 Z" />
+        <path id="minute_56" style="fill:#444444;" d="M 136.20,6.78 A 100.00 100.00 0 0 1 137.42,7.27 L 134.93,13.45 A 93.33 93.33 0 0 0 133.79,13.00 Z" />
+        <path id="minute_57" style="fill:#444444;" d="M 141.98,9.24 A 100.00 100.00 0 0 1 143.17,9.80 L 140.29,15.81 A 93.33 93.33 0 0 0 139.19,15.29 Z" />
+        <path id="minute_58" style="fill:#444444;" d="M 147.60,12.06 A 100.00 100.00 0 0 1 148.75,12.69 L 145.50,18.51 A 93.33 93.33 0 0 0 144.43,17.92 Z" />
+        <path id="minute_59" style="fill:#444444;" d="M 153.03,15.22 A 100.00 100.00 0 0 1 154.13,15.92 L 150.53,21.53 A 93.33 93.33 0 0 0 149.49,20.87 Z" />
+        <path id="minute_60" style="fill:#444444;" d="M 158.25,18.72 A 100.00 100.00 0 0 1 159.31,19.48 L 151.40,30.22 A 86.67 86.67 0 0 0 150.48,29.55 Z" />
+        <path id="minute_61" style="fill:#444444;" d="M 163.24,22.53 A 100.00 100.00 0 0 1 164.25,23.37 L 159.96,28.48 A 93.33 93.33 0 0 0 159.02,27.70 Z" />
+        <path id="minute_62" style="fill:#444444;" d="M 167.98,26.66 A 100.00 100.00 0 0 1 168.93,27.55 L 164.33,32.38 A 93.33 93.33 0 0 0 163.44,31.55 Z" />
+        <path id="minute_63" style="fill:#444444;" d="M 172.45,31.07 A 100.00 100.00 0 0 1 173.34,32.02 L 168.45,36.56 A 93.33 93.33 0 0 0 167.62,35.67 Z" />
+        <path id="minute_64" style="fill:#444444;" d="M 176.63,35.75 A 100.00 100.00 0 0 1 177.47,36.76 L 172.30,40.98 A 93.33 93.33 0 0 0 171.52,40.04 Z" />
+        <path id="minute_65" style="fill:#444444;" d="M 180.52,40.69 A 100.00 100.00 0 0 1 181.28,41.75 L 170.45,49.52 A 86.67 86.67 0 0 0 169.78,48.60 Z" />
+        <path id="minute_66" style="fill:#444444;" d="M 184.08,45.87 A 100.00 100.00 0 0 1 184.78,46.97 L 179.13,50.51 A 93.33 93.33 0 0 0 178.47,49.47 Z" />
+        <path id="minute_67" style="fill:#444444;" d="M 187.31,51.25 A 100.00 100.00 0 0 1 187.94,52.40 L 182.08,55.57 A 93.33 93.33 0 0 0 181.49,54.50 Z" />
+        <path id="minute_68" style="fill:#444444;" d="M 190.20,56.83 A 100.00 100.00 0 0 1 190.76,58.02 L 184.71,60.81 A 93.33 93.33 0 0 0 184.19,59.71 Z" />
+        <path id="minute_69" style="fill:#444444;" d="M 192.73,62.58 A 100.00 100.00 0 0 1 193.22,63.80 L 187.00,66.21 A 93.33 93.33 0 0 0 186.55,65.07 Z" />
+        <path id="minute_70" style="fill:#444444;" d="M 194.90,68.48 A 100.00 100.00 0 0 1 195.31,69.72 L 182.60,73.76 A 86.67 86.67 0 0 0 182.25,72.68 Z" />
+        <path id="minute_71" style="fill:#444444;" d="M 196.69,74.50 A 100.00 100.00 0 0 1 197.02,75.77 L 190.55,77.38 A 93.33 93.33 0 0 0 190.25,76.20 Z" />
+        <path id="minute_72" style="fill:#444444;" d="M 198.10,80.62 A 100.00 100.00 0 0 1 198.35,81.91 L 191.79,83.11 A 93.33 93.33 0 0 0 191.56,81.91 Z" />
+        <path id="minute_73" style="fill:#444444;" d="M 199.13,86.82 A 100.00 100.00 0 0 1 199.29,88.12 L 192.67,88.91 A 93.33 93.33 0 0 0 192.52,87.70 Z" />
+        <path id="minute_74" style="fill:#444444;" d="M 199.76,93.07 A 100.00 100.00 0 0 1 199.84,94.37 L 193.19,94.75 A 93.33 93.33 0 0 0 193.11,93.53 Z" />
+        <path id="minute_75" style="fill:#444444;" d="M 200.00,99.35 A 100.00 100.00 0 0 1 200.00,100.65 L 186.66,100.57 A 86.67 86.67 0 0 0 186.66,99.43 Z" />
+        <path id="minute_76" style="fill:#444444;" d="M 199.84,105.63 A 100.00 100.00 0 0 1 199.76,106.93 L 193.11,106.47 A 93.33 93.33 0 0 0 193.19,105.25 Z" />
+        <path id="minute_77" style="fill:#444444;" d="M 199.29,111.88 A 100.00 100.00 0 0 1 199.13,113.18 L 192.52,112.30 A 93.33 93.33 0 0 0 192.67,111.09 Z" />
+        <path id="minute_78" style="fill:#444444;" d="M 198.35,118.09 A 100.00 100.00 0 0 1 198.10,119.38 L 191.56,118.09 A 93.33 93.33 0 0 0 191.79,116.89 Z" />
+        <path id="minute_79" style="fill:#444444;" d="M 197.02,124.23 A 100.00 100.00 0 0 1 196.69,125.50 L 190.25,123.80 A 93.33 93.33 0 0 0 190.55,122.62 Z" />
+        <path id="minute_80" style="fill:#444444;" d="M 195.31,130.28 A 100.00 100.00 0 0 1 194.90,131.52 L 182.25,127.32 A 86.67 86.67 0 0 0 182.60,126.24 Z" />
+        <path id="minute_81" style="fill:#444444;" d="M 193.22,136.20 A 100.00 100.00 0 0 1 192.73,137.42 L 186.55,134.93 A 93.33 93.33 0 0 0 187.00,133.79 Z" />
+        <path id="minute_82" style="fill:#444444;" d="M 190.76,141.98 A 100.00 100.00 0 0 1 190.20,143.17 L 184.19,140.29 A 93.33 93.33 0 0 0 184.71,139.19 Z" />
+        <path id="minute_83" style="fill:#444444;" d="M 187.94,147.60 A 100.00 100.00 0 0 1 187.31,148.75 L 181.49,145.50 A 93.33 93.33 0 0 0 182.08,144.43 Z" />
+        <path id="minute_84" style="fill:#444444;" d="M 184.78,153.03 A 100.00 100.00 0 0 1 184.08,154.13 L 178.47,150.53 A 93.33 93.33 0 0 0 179.13,149.49 Z" />
+        <path id="minute_85" style="fill:#444444;" d="M 181.28,158.25 A 100.00 100.00 0 0 1 180.52,159.31 L 169.78,151.40 A 86.67 86.67 0 0 0 170.45,150.48 Z" />
+        <path id="minute_86" style="fill:#444444;" d="M 177.47,163.24 A 100.00 100.00 0 0 1 176.63,164.25 L 171.52,159.96 A 93.33 93.33 0 0 0 172.30,159.02 Z" />
+        <path id="minute_87" style="fill:#444444;" d="M 173.34,167.98 A 100.00 100.00 0 0 1 172.45,168.93 L 167.62,164.33 A 93.33 93.33 0 0 0 168.45,163.44 Z" />
+        <path id="minute_88" style="fill:#444444;" d="M 168.93,172.45 A 100.00 100.00 0 0 1 167.98,173.34 L 163.44,168.45 A 93.33 93.33 0 0 0 164.33,167.62 Z" />
+        <path id="minute_89" style="fill:#444444;" d="M 164.25,176.63 A 100.00 100.00 0 0 1 163.24,177.47 L 159.02,172.30 A 93.33 93.33 0 0 0 159.96,171.52 Z" />
+        <path id="minute_90" style="fill:#444444;" d="M 159.31,180.52 A 100.00 100.00 0 0 1 158.25,181.28 L 150.48,170.45 A 86.67 86.67 0 0 0 151.40,169.78 Z" />
+        <path id="minute_91" style="fill:#444444;" d="M 154.13,184.08 A 100.00 100.00 0 0 1 153.03,184.78 L 149.49,179.13 A 93.33 93.33 0 0 0 150.53,178.47 Z" />
+        <path id="minute_92" style="fill:#444444;" d="M 148.75,187.31 A 100.00 100.00 0 0 1 147.60,187.94 L 144.43,182.08 A 93.33 93.33 0 0 0 145.50,181.49 Z" />
+        <path id="minute_93" style="fill:#444444;" d="M 143.17,190.20 A 100.00 100.00 0 0 1 141.98,190.76 L 139.19,184.71 A 93.33 93.33 0 0 0 140.29,184.19 Z" />
+        <path id="minute_94" style="fill:#444444;" d="M 137.42,192.73 A 100.00 100.00 0 0 1 136.20,193.22 L 133.79,187.00 A 93.33 93.33 0 0 0 134.93,186.55 Z" />
+        <path id="minute_95" style="fill:#444444;" d="M 131.52,194.90 A 100.00 100.00 0 0 1 130.28,195.31 L 126.24,182.60 A 86.67 86.67 0 0 0 127.32,182.25 Z" />
+        <path id="minute_96" style="fill:#444444;" d="M 125.50,196.69 A 100.00 100.00 0 0 1 124.23,197.02 L 122.62,190.55 A 93.33 93.33 0 0 0 123.80,190.25 Z" />
+        <path id="minute_97" style="fill:#444444;" d="M 119.38,198.10 A 100.00 100.00 0 0 1 118.09,198.35 L 116.89,191.79 A 93.33 93.33 0 0 0 118.09,191.56 Z" />
+        <path id="minute_98" style="fill:#444444;" d="M 113.18,199.13 A 100.00 100.00 0 0 1 111.88,199.29 L 111.09,192.67 A 93.33 93.33 0 0 0 112.30,192.52 Z" />
+        <path id="minute_99" style="fill:#444444;" d="M 106.93,199.76 A 100.00 100.00 0 0 1 105.63,199.84 L 105.25,193.19 A 93.33 93.33 0 0 0 106.47,193.11 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_base_10" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 91.64,95.44 A 80.00 80.00 0 0 1 108.36,95.44 L 100.00,175.00 A 0.00 0.00 0 0 0 100.00,175.00 Z" />
+    </g>
+    <g id="hand_minutes_10_base_10" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_10_minutes" style="fill:#00C853;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_minutes_base_10" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_seconds_base_10" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 98.15,94.02 A 106.00 106.00 0 0 1 101.85,94.02 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#111111;" d="M 101.75,199.98 A 100.00 100.00 0 0 1 98.25,199.98 L 98.49,186.65 A 86.67 86.67 0 0 0 101.51,186.65 Z" />
+<text id="hour_00" x="100.0" y="177.77777777777777" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">0</text>
+        <path id="tick_01" style="fill:#111111;" d="M 14.28,151.50 A 100.00 100.00 0 0 1 12.54,148.48 L 24.20,142.02 A 86.67 86.67 0 0 0 25.71,144.64 Z" />
+<text id="hour_01" x="38.41597128643991" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">10</text>
+        <path id="tick_02" style="fill:#111111;" d="M 12.54,51.52 A 100.00 100.00 0 0 1 14.28,48.50 L 25.71,55.36 A 86.67 86.67 0 0 0 24.20,57.98 Z" />
+<text id="hour_02" x="38.41597128643992" y="71.11111111111111" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">20</text>
+        <path id="tick_03" style="fill:#111111;" d="M 98.25,0.02 A 100.00 100.00 0 0 1 101.75,0.02 L 101.51,13.35 A 86.67 86.67 0 0 0 98.49,13.35 Z" />
+<text id="hour_03" x="99.99999999999999" y="35.55555555555556" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">30</text>
+        <path id="tick_04" style="fill:#111111;" d="M 185.72,48.50 A 100.00 100.00 0 0 1 187.46,51.52 L 175.80,57.98 A 86.67 86.67 0 0 0 174.29,55.36 Z" />
+<text id="hour_04" x="161.58402871356006" y="71.11111111111109" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">40</text>
+        <path id="tick_05" style="fill:#111111;" d="M 187.46,148.48 A 100.00 100.00 0 0 1 185.72,151.50 L 174.29,144.64 A 86.67 86.67 0 0 0 175.80,142.02 Z" />
+<text id="hour_05" x="161.5840287135601" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#111111;text-anchor:middle;text-align:center;font-weight:bold;">50</text>
+        <path id="minute_00" style="fill:#111111;" d="M 100.87,200.00 A 100.00 100.00 0 0 1 99.13,200.00 L 99.24,186.66 A 86.67 86.67 0 0 0 100.76,186.66 Z" />
+        <path id="minute_01" style="fill:#111111;" d="M 83.50,198.63 A 100.00 100.00 0 0 1 81.78,198.33 L 82.99,191.77 A 93.33 93.33 0 0 0 84.60,192.05 Z" />
+        <path id="minute_02" style="fill:#111111;" d="M 66.62,194.26 A 100.00 100.00 0 0 1 64.98,193.67 L 67.31,187.42 A 93.33 93.33 0 0 0 68.84,187.98 Z" />
+        <path id="minute_03" style="fill:#111111;" d="M 50.76,187.04 A 100.00 100.00 0 0 1 49.25,186.16 L 56.01,174.67 A 86.67 86.67 0 0 0 57.32,175.43 Z" />
+        <path id="minute_04" style="fill:#111111;" d="M 36.39,177.16 A 100.00 100.00 0 0 1 35.06,176.04 L 39.38,170.97 A 93.33 93.33 0 0 0 40.63,172.02 Z" />
+        <path id="minute_05" style="fill:#111111;" d="M 23.96,164.94 A 100.00 100.00 0 0 1 22.84,163.61 L 27.98,159.37 A 93.33 93.33 0 0 0 29.03,160.62 Z" />
+        <path id="minute_06" style="fill:#111111;" d="M 13.84,150.75 A 100.00 100.00 0 0 1 12.96,149.24 L 24.57,142.68 A 86.67 86.67 0 0 0 25.33,143.99 Z" />
+        <path id="minute_07" style="fill:#111111;" d="M 6.33,135.02 A 100.00 100.00 0 0 1 5.74,133.38 L 12.02,131.16 A 93.33 93.33 0 0 0 12.58,132.69 Z" />
+        <path id="minute_08" style="fill:#111111;" d="M 1.67,118.22 A 100.00 100.00 0 0 1 1.37,116.50 L 7.95,115.40 A 93.33 93.33 0 0 0 8.23,117.01 Z" />
+        <path id="minute_09" style="fill:#111111;" d="M 0.00,100.87 A 100.00 100.00 0 0 1 0.00,99.13 L 13.34,99.24 A 86.67 86.67 0 0 0 13.34,100.76 Z" />
+        <path id="minute_10" style="fill:#111111;" d="M 1.37,83.50 A 100.00 100.00 0 0 1 1.67,81.78 L 8.23,82.99 A 93.33 93.33 0 0 0 7.95,84.60 Z" />
+        <path id="minute_11" style="fill:#111111;" d="M 5.74,66.62 A 100.00 100.00 0 0 1 6.33,64.98 L 12.58,67.31 A 93.33 93.33 0 0 0 12.02,68.84 Z" />
+        <path id="minute_12" style="fill:#111111;" d="M 12.96,50.76 A 100.00 100.00 0 0 1 13.84,49.25 L 25.33,56.01 A 86.67 86.67 0 0 0 24.57,57.32 Z" />
+        <path id="minute_13" style="fill:#111111;" d="M 22.84,36.39 A 100.00 100.00 0 0 1 23.96,35.06 L 29.03,39.38 A 93.33 93.33 0 0 0 27.98,40.63 Z" />
+        <path id="minute_14" style="fill:#111111;" d="M 35.06,23.96 A 100.00 100.00 0 0 1 36.39,22.84 L 40.63,27.98 A 93.33 93.33 0 0 0 39.38,29.03 Z" />
+        <path id="minute_15" style="fill:#111111;" d="M 49.25,13.84 A 100.00 100.00 0 0 1 50.76,12.96 L 57.32,24.57 A 86.67 86.67 0 0 0 56.01,25.33 Z" />
+        <path id="minute_16" style="fill:#111111;" d="M 64.98,6.33 A 100.00 100.00 0 0 1 66.62,5.74 L 68.84,12.02 A 93.33 93.33 0 0 0 67.31,12.58 Z" />
+        <path id="minute_17" style="fill:#111111;" d="M 81.78,1.67 A 100.00 100.00 0 0 1 83.50,1.37 L 84.60,7.95 A 93.33 93.33 0 0 0 82.99,8.23 Z" />
+        <path id="minute_18" style="fill:#111111;" d="M 99.13,0.00 A 100.00 100.00 0 0 1 100.87,0.00 L 100.76,13.34 A 86.67 86.67 0 0 0 99.24,13.34 Z" />
+        <path id="minute_19" style="fill:#111111;" d="M 116.50,1.37 A 100.00 100.00 0 0 1 118.22,1.67 L 117.01,8.23 A 93.33 93.33 0 0 0 115.40,7.95 Z" />
+        <path id="minute_20" style="fill:#111111;" d="M 133.38,5.74 A 100.00 100.00 0 0 1 135.02,6.33 L 132.69,12.58 A 93.33 93.33 0 0 0 131.16,12.02 Z" />
+        <path id="minute_21" style="fill:#111111;" d="M 149.24,12.96 A 100.00 100.00 0 0 1 150.75,13.84 L 143.99,25.33 A 86.67 86.67 0 0 0 142.68,24.57 Z" />
+        <path id="minute_22" style="fill:#111111;" d="M 163.61,22.84 A 100.00 100.00 0 0 1 164.94,23.96 L 160.62,29.03 A 93.33 93.33 0 0 0 159.37,27.98 Z" />
+        <path id="minute_23" style="fill:#111111;" d="M 176.04,35.06 A 100.00 100.00 0 0 1 177.16,36.39 L 172.02,40.63 A 93.33 93.33 0 0 0 170.97,39.38 Z" />
+        <path id="minute_24" style="fill:#111111;" d="M 186.16,49.25 A 100.00 100.00 0 0 1 187.04,50.76 L 175.43,57.32 A 86.67 86.67 0 0 0 174.67,56.01 Z" />
+        <path id="minute_25" style="fill:#111111;" d="M 193.67,64.98 A 100.00 100.00 0 0 1 194.26,66.62 L 187.98,68.84 A 93.33 93.33 0 0 0 187.42,67.31 Z" />
+        <path id="minute_26" style="fill:#111111;" d="M 198.33,81.78 A 100.00 100.00 0 0 1 198.63,83.50 L 192.05,84.60 A 93.33 93.33 0 0 0 191.77,82.99 Z" />
+        <path id="minute_27" style="fill:#111111;" d="M 200.00,99.13 A 100.00 100.00 0 0 1 200.00,100.87 L 186.66,100.76 A 86.67 86.67 0 0 0 186.66,99.24 Z" />
+        <path id="minute_28" style="fill:#111111;" d="M 198.63,116.50 A 100.00 100.00 0 0 1 198.33,118.22 L 191.77,117.01 A 93.33 93.33 0 0 0 192.05,115.40 Z" />
+        <path id="minute_29" style="fill:#111111;" d="M 194.26,133.38 A 100.00 100.00 0 0 1 193.67,135.02 L 187.42,132.69 A 93.33 93.33 0 0 0 187.98,131.16 Z" />
+        <path id="minute_30" style="fill:#111111;" d="M 187.04,149.24 A 100.00 100.00 0 0 1 186.16,150.75 L 174.67,143.99 A 86.67 86.67 0 0 0 175.43,142.68 Z" />
+        <path id="minute_31" style="fill:#111111;" d="M 177.16,163.61 A 100.00 100.00 0 0 1 176.04,164.94 L 170.97,160.62 A 93.33 93.33 0 0 0 172.02,159.37 Z" />
+        <path id="minute_32" style="fill:#111111;" d="M 164.94,176.04 A 100.00 100.00 0 0 1 163.61,177.16 L 159.37,172.02 A 93.33 93.33 0 0 0 160.62,170.97 Z" />
+        <path id="minute_33" style="fill:#111111;" d="M 150.75,186.16 A 100.00 100.00 0 0 1 149.24,187.04 L 142.68,175.43 A 86.67 86.67 0 0 0 143.99,174.67 Z" />
+        <path id="minute_34" style="fill:#111111;" d="M 135.02,193.67 A 100.00 100.00 0 0 1 133.38,194.26 L 131.16,187.98 A 93.33 93.33 0 0 0 132.69,187.42 Z" />
+        <path id="minute_35" style="fill:#111111;" d="M 118.22,198.33 A 100.00 100.00 0 0 1 116.50,198.63 L 115.40,192.05 A 93.33 93.33 0 0 0 117.01,191.77 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_base_6" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 91.64,95.44 A 80.00 80.00 0 0 1 108.36,95.44 L 100.00,175.00 A 0.00 0.00 0 0 0 100.00,175.00 Z" />
+    </g>
+    <g id="hand_minutes_base_6" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_seconds_base_6" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 98.15,94.02 A 106.00 106.00 0 0 1 101.85,94.02 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#666666;" d="M 101.75,199.98 A 100.00 100.00 0 0 1 98.25,199.98 L 98.49,186.65 A 86.67 86.67 0 0 0 101.51,186.65 Z" />
+<text id="hour_00" x="100.0" y="177.77777777777777" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">0</text>
+        <path id="tick_01" style="fill:#666666;" d="M 51.52,187.46 A 100.00 100.00 0 0 1 48.50,185.72 L 55.36,174.29 A 86.67 86.67 0 0 0 57.98,175.80 Z" />
+<text id="hour_01" x="64.44444444444446" y="168.25069538022677" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">1</text>
+        <path id="tick_02" style="fill:#666666;" d="M 14.28,151.50 A 100.00 100.00 0 0 1 12.54,148.48 L 24.20,142.02 A 86.67 86.67 0 0 0 25.71,144.64 Z" />
+<text id="hour_02" x="38.41597128643991" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">2</text>
+        <path id="tick_03" style="fill:#666666;" d="M 0.02,101.75 A 100.00 100.00 0 0 1 0.02,98.25 L 13.35,98.49 A 86.67 86.67 0 0 0 13.35,101.51 Z" />
+<text id="hour_03" x="28.888888888888886" y="106.66666666666669" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">3</text>
+        <path id="tick_04" style="fill:#666666;" d="M 12.54,51.52 A 100.00 100.00 0 0 1 14.28,48.50 L 25.71,55.36 A 86.67 86.67 0 0 0 24.20,57.98 Z" />
+<text id="hour_04" x="38.41597128643992" y="71.11111111111111" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">4</text>
+        <path id="tick_05" style="fill:#666666;" d="M 48.50,14.28 A 100.00 100.00 0 0 1 51.52,12.54 L 57.98,24.20 A 86.67 86.67 0 0 0 55.36,25.71 Z" />
+<text id="hour_05" x="64.44444444444441" y="45.082637953106605" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">5</text>
+        <path id="tick_06" style="fill:#666666;" d="M 98.25,0.02 A 100.00 100.00 0 0 1 101.75,0.02 L 101.51,13.35 A 86.67 86.67 0 0 0 98.49,13.35 Z" />
+<text id="hour_06" x="99.99999999999999" y="35.55555555555556" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">6</text>
+        <path id="tick_07" style="fill:#666666;" d="M 148.48,12.54 A 100.00 100.00 0 0 1 151.50,14.28 L 144.64,25.71 A 86.67 86.67 0 0 0 142.02,24.20 Z" />
+<text id="hour_07" x="135.55555555555557" y="45.08263795310659" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">7</text>
+        <path id="tick_08" style="fill:#666666;" d="M 185.72,48.50 A 100.00 100.00 0 0 1 187.46,51.52 L 175.80,57.98 A 86.67 86.67 0 0 0 174.29,55.36 Z" />
+<text id="hour_08" x="161.58402871356006" y="71.11111111111109" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">8</text>
+        <path id="tick_09" style="fill:#666666;" d="M 199.98,98.25 A 100.00 100.00 0 0 1 199.98,101.75 L 186.65,101.51 A 86.67 86.67 0 0 0 186.65,98.49 Z" />
+<text id="hour_09" x="171.11111111111111" y="106.66666666666666" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">9</text>
+        <path id="tick_10" style="fill:#666666;" d="M 187.46,148.48 A 100.00 100.00 0 0 1 185.72,151.50 L 174.29,144.64 A 86.67 86.67 0 0 0 175.80,142.02 Z" />
+<text id="hour_10" x="161.5840287135601" y="142.22222222222223" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">A</text>
+        <path id="tick_11" style="fill:#666666;" d="M 151.50,185.72 A 100.00 100.00 0 0 1 148.48,187.46 L 142.02,175.80 A 86.67 86.67 0 0 0 144.64,174.29 Z" />
+<text id="hour_11" x="135.55555555555557" y="168.25069538022674" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">B</text>
+        <path id="minute_00" style="fill:#666666;" d="M 100.65,200.00 A 100.00 100.00 0 0 1 99.35,200.00 L 99.43,186.66 A 86.67 86.67 0 0 0 100.57,186.66 Z" />
+        <path id="minute_01" style="fill:#666666;" d="M 96.29,199.93 A 100.00 100.00 0 0 1 94.98,199.87 L 95.32,193.22 A 93.33 93.33 0 0 0 96.54,193.27 Z" />
+        <path id="minute_02" style="fill:#666666;" d="M 91.94,199.67 A 100.00 100.00 0 0 1 90.63,199.56 L 91.26,192.92 A 93.33 93.33 0 0 0 92.47,193.03 Z" />
+        <path id="minute_03" style="fill:#666666;" d="M 87.60,199.23 A 100.00 100.00 0 0 1 86.30,199.06 L 87.21,192.45 A 93.33 93.33 0 0 0 88.42,192.61 Z" />
+        <path id="minute_04" style="fill:#666666;" d="M 83.28,198.59 A 100.00 100.00 0 0 1 81.99,198.37 L 83.19,191.81 A 93.33 93.33 0 0 0 84.39,192.02 Z" />
+        <path id="minute_05" style="fill:#666666;" d="M 79.00,197.77 A 100.00 100.00 0 0 1 77.72,197.49 L 79.20,190.99 A 93.33 93.33 0 0 0 80.40,191.25 Z" />
+        <path id="minute_06" style="fill:#666666;" d="M 74.75,196.76 A 100.00 100.00 0 0 1 73.49,196.42 L 77.02,183.56 A 86.67 86.67 0 0 0 78.12,183.86 Z" />
+        <path id="minute_07" style="fill:#666666;" d="M 70.55,195.57 A 100.00 100.00 0 0 1 69.31,195.17 L 71.35,188.83 A 93.33 93.33 0 0 0 72.52,189.20 Z" />
+        <path id="minute_08" style="fill:#666666;" d="M 66.41,194.19 A 100.00 100.00 0 0 1 65.18,193.74 L 67.50,187.49 A 93.33 93.33 0 0 0 68.65,187.91 Z" />
+        <path id="minute_09" style="fill:#666666;" d="M 62.34,192.64 A 100.00 100.00 0 0 1 61.13,192.14 L 63.72,185.99 A 93.33 93.33 0 0 0 64.85,186.46 Z" />
+        <path id="minute_10" style="fill:#666666;" d="M 58.33,190.91 A 100.00 100.00 0 0 1 57.15,190.35 L 60.00,184.33 A 93.33 93.33 0 0 0 61.11,184.85 Z" />
+        <path id="minute_11" style="fill:#666666;" d="M 54.41,189.00 A 100.00 100.00 0 0 1 53.25,188.40 L 56.36,182.50 A 93.33 93.33 0 0 0 57.45,183.07 Z" />
+        <path id="minute_12" style="fill:#666666;" d="M 50.57,186.93 A 100.00 100.00 0 0 1 49.43,186.27 L 56.18,174.77 A 86.67 86.67 0 0 0 57.16,175.34 Z" />
+        <path id="minute_13" style="fill:#666666;" d="M 46.82,184.69 A 100.00 100.00 0 0 1 45.72,183.99 L 49.34,178.39 A 93.33 93.33 0 0 0 50.37,179.04 Z" />
+        <path id="minute_14" style="fill:#666666;" d="M 43.18,182.29 A 100.00 100.00 0 0 1 42.11,181.54 L 45.97,176.10 A 93.33 93.33 0 0 0 46.97,176.80 Z" />
+        <path id="minute_15" style="fill:#666666;" d="M 39.64,179.73 A 100.00 100.00 0 0 1 38.61,178.94 L 42.70,173.67 A 93.33 93.33 0 0 0 43.67,174.42 Z" />
+        <path id="minute_16" style="fill:#666666;" d="M 36.22,177.02 A 100.00 100.00 0 0 1 35.22,176.18 L 39.54,171.10 A 93.33 93.33 0 0 0 40.48,171.89 Z" />
+        <path id="minute_17" style="fill:#666666;" d="M 32.92,174.17 A 100.00 100.00 0 0 1 31.96,173.28 L 36.50,168.40 A 93.33 93.33 0 0 0 37.40,169.22 Z" />
+        <path id="minute_18" style="fill:#666666;" d="M 29.75,171.17 A 100.00 100.00 0 0 1 28.83,170.25 L 38.32,160.88 A 86.67 86.67 0 0 0 39.12,161.68 Z" />
+        <path id="minute_19" style="fill:#666666;" d="M 26.72,168.04 A 100.00 100.00 0 0 1 25.83,167.08 L 30.78,162.60 A 93.33 93.33 0 0 0 31.60,163.50 Z" />
+        <path id="minute_20" style="fill:#666666;" d="M 23.82,164.78 A 100.00 100.00 0 0 1 22.98,163.78 L 28.11,159.52 A 93.33 93.33 0 0 0 28.90,160.46 Z" />
+        <path id="minute_21" style="fill:#666666;" d="M 21.06,161.39 A 100.00 100.00 0 0 1 20.27,160.36 L 25.58,156.33 A 93.33 93.33 0 0 0 26.33,157.30 Z" />
+        <path id="minute_22" style="fill:#666666;" d="M 18.46,157.89 A 100.00 100.00 0 0 1 17.71,156.82 L 23.20,153.03 A 93.33 93.33 0 0 0 23.90,154.03 Z" />
+        <path id="minute_23" style="fill:#666666;" d="M 16.01,154.28 A 100.00 100.00 0 0 1 15.31,153.18 L 20.96,149.63 A 93.33 93.33 0 0 0 21.61,150.66 Z" />
+        <path id="minute_24" style="fill:#666666;" d="M 13.73,150.57 A 100.00 100.00 0 0 1 13.07,149.43 L 24.66,142.84 A 86.67 86.67 0 0 0 25.23,143.82 Z" />
+        <path id="minute_25" style="fill:#666666;" d="M 11.60,146.75 A 100.00 100.00 0 0 1 11.00,145.59 L 16.93,142.55 A 93.33 93.33 0 0 0 17.50,143.64 Z" />
+        <path id="minute_26" style="fill:#666666;" d="M 9.65,142.85 A 100.00 100.00 0 0 1 9.09,141.67 L 15.15,138.89 A 93.33 93.33 0 0 0 15.67,140.00 Z" />
+        <path id="minute_27" style="fill:#666666;" d="M 7.86,138.87 A 100.00 100.00 0 0 1 7.36,137.66 L 13.54,135.15 A 93.33 93.33 0 0 0 14.01,136.28 Z" />
+        <path id="minute_28" style="fill:#666666;" d="M 6.26,134.82 A 100.00 100.00 0 0 1 5.81,133.59 L 12.09,131.35 A 93.33 93.33 0 0 0 12.51,132.50 Z" />
+        <path id="minute_29" style="fill:#666666;" d="M 4.83,130.69 A 100.00 100.00 0 0 1 4.43,129.45 L 10.80,127.48 A 93.33 93.33 0 0 0 11.17,128.65 Z" />
+        <path id="minute_30" style="fill:#666666;" d="M 3.58,126.51 A 100.00 100.00 0 0 1 3.24,125.25 L 16.14,121.88 A 86.67 86.67 0 0 0 16.44,122.98 Z" />
+        <path id="minute_31" style="fill:#666666;" d="M 2.51,122.28 A 100.00 100.00 0 0 1 2.23,121.00 L 8.75,119.60 A 93.33 93.33 0 0 0 9.01,120.80 Z" />
+        <path id="minute_32" style="fill:#666666;" d="M 1.63,118.01 A 100.00 100.00 0 0 1 1.41,116.72 L 7.98,115.61 A 93.33 93.33 0 0 0 8.19,116.81 Z" />
+        <path id="minute_33" style="fill:#666666;" d="M 0.94,113.70 A 100.00 100.00 0 0 1 0.77,112.40 L 7.39,111.58 A 93.33 93.33 0 0 0 7.55,112.79 Z" />
+        <path id="minute_34" style="fill:#666666;" d="M 0.44,109.37 A 100.00 100.00 0 0 1 0.33,108.06 L 6.97,107.53 A 93.33 93.33 0 0 0 7.08,108.74 Z" />
+        <path id="minute_35" style="fill:#666666;" d="M 0.13,105.02 A 100.00 100.00 0 0 1 0.07,103.71 L 6.73,103.46 A 93.33 93.33 0 0 0 6.78,104.68 Z" />
+        <path id="minute_36" style="fill:#666666;" d="M 0.00,100.65 A 100.00 100.00 0 0 1 0.00,99.35 L 13.34,99.43 A 86.67 86.67 0 0 0 13.34,100.57 Z" />
+        <path id="minute_37" style="fill:#666666;" d="M 0.07,96.29 A 100.00 100.00 0 0 1 0.13,94.98 L 6.78,95.32 A 93.33 93.33 0 0 0 6.73,96.54 Z" />
+        <path id="minute_38" style="fill:#666666;" d="M 0.33,91.94 A 100.00 100.00 0 0 1 0.44,90.63 L 7.08,91.26 A 93.33 93.33 0 0 0 6.97,92.47 Z" />
+        <path id="minute_39" style="fill:#666666;" d="M 0.77,87.60 A 100.00 100.00 0 0 1 0.94,86.30 L 7.55,87.21 A 93.33 93.33 0 0 0 7.39,88.42 Z" />
+        <path id="minute_40" style="fill:#666666;" d="M 1.41,83.28 A 100.00 100.00 0 0 1 1.63,81.99 L 8.19,83.19 A 93.33 93.33 0 0 0 7.98,84.39 Z" />
+        <path id="minute_41" style="fill:#666666;" d="M 2.23,79.00 A 100.00 100.00 0 0 1 2.51,77.72 L 9.01,79.20 A 93.33 93.33 0 0 0 8.75,80.40 Z" />
+        <path id="minute_42" style="fill:#666666;" d="M 3.24,74.75 A 100.00 100.00 0 0 1 3.58,73.49 L 16.44,77.02 A 86.67 86.67 0 0 0 16.14,78.12 Z" />
+        <path id="minute_43" style="fill:#666666;" d="M 4.43,70.55 A 100.00 100.00 0 0 1 4.83,69.31 L 11.17,71.35 A 93.33 93.33 0 0 0 10.80,72.52 Z" />
+        <path id="minute_44" style="fill:#666666;" d="M 5.81,66.41 A 100.00 100.00 0 0 1 6.26,65.18 L 12.51,67.50 A 93.33 93.33 0 0 0 12.09,68.65 Z" />
+        <path id="minute_45" style="fill:#666666;" d="M 7.36,62.34 A 100.00 100.00 0 0 1 7.86,61.13 L 14.01,63.72 A 93.33 93.33 0 0 0 13.54,64.85 Z" />
+        <path id="minute_46" style="fill:#666666;" d="M 9.09,58.33 A 100.00 100.00 0 0 1 9.65,57.15 L 15.67,60.00 A 93.33 93.33 0 0 0 15.15,61.11 Z" />
+        <path id="minute_47" style="fill:#666666;" d="M 11.00,54.41 A 100.00 100.00 0 0 1 11.60,53.25 L 17.50,56.36 A 93.33 93.33 0 0 0 16.93,57.45 Z" />
+        <path id="minute_48" style="fill:#666666;" d="M 13.07,50.57 A 100.00 100.00 0 0 1 13.73,49.43 L 25.23,56.18 A 86.67 86.67 0 0 0 24.66,57.16 Z" />
+        <path id="minute_49" style="fill:#666666;" d="M 15.31,46.82 A 100.00 100.00 0 0 1 16.01,45.72 L 21.61,49.34 A 93.33 93.33 0 0 0 20.96,50.37 Z" />
+        <path id="minute_50" style="fill:#666666;" d="M 17.71,43.18 A 100.00 100.00 0 0 1 18.46,42.11 L 23.90,45.97 A 93.33 93.33 0 0 0 23.20,46.97 Z" />
+        <path id="minute_51" style="fill:#666666;" d="M 20.27,39.64 A 100.00 100.00 0 0 1 21.06,38.61 L 26.33,42.70 A 93.33 93.33 0 0 0 25.58,43.67 Z" />
+        <path id="minute_52" style="fill:#666666;" d="M 22.98,36.22 A 100.00 100.00 0 0 1 23.82,35.22 L 28.90,39.54 A 93.33 93.33 0 0 0 28.11,40.48 Z" />
+        <path id="minute_53" style="fill:#666666;" d="M 25.83,32.92 A 100.00 100.00 0 0 1 26.72,31.96 L 31.60,36.50 A 93.33 93.33 0 0 0 30.78,37.40 Z" />
+        <path id="minute_54" style="fill:#666666;" d="M 28.83,29.75 A 100.00 100.00 0 0 1 29.75,28.83 L 39.12,38.32 A 86.67 86.67 0 0 0 38.32,39.12 Z" />
+        <path id="minute_55" style="fill:#666666;" d="M 31.96,26.72 A 100.00 100.00 0 0 1 32.92,25.83 L 37.40,30.78 A 93.33 93.33 0 0 0 36.50,31.60 Z" />
+        <path id="minute_56" style="fill:#666666;" d="M 35.22,23.82 A 100.00 100.00 0 0 1 36.22,22.98 L 40.48,28.11 A 93.33 93.33 0 0 0 39.54,28.90 Z" />
+        <path id="minute_57" style="fill:#666666;" d="M 38.61,21.06 A 100.00 100.00 0 0 1 39.64,20.27 L 43.67,25.58 A 93.33 93.33 0 0 0 42.70,26.33 Z" />
+        <path id="minute_58" style="fill:#666666;" d="M 42.11,18.46 A 100.00 100.00 0 0 1 43.18,17.71 L 46.97,23.20 A 93.33 93.33 0 0 0 45.97,23.90 Z" />
+        <path id="minute_59" style="fill:#666666;" d="M 45.72,16.01 A 100.00 100.00 0 0 1 46.82,15.31 L 50.37,20.96 A 93.33 93.33 0 0 0 49.34,21.61 Z" />
+        <path id="minute_60" style="fill:#666666;" d="M 49.43,13.73 A 100.00 100.00 0 0 1 50.57,13.07 L 57.16,24.66 A 86.67 86.67 0 0 0 56.18,25.23 Z" />
+        <path id="minute_61" style="fill:#666666;" d="M 53.25,11.60 A 100.00 100.00 0 0 1 54.41,11.00 L 57.45,16.93 A 93.33 93.33 0 0 0 56.36,17.50 Z" />
+        <path id="minute_62" style="fill:#666666;" d="M 57.15,9.65 A 100.00 100.00 0 0 1 58.33,9.09 L 61.11,15.15 A 93.33 93.33 0 0 0 60.00,15.67 Z" />
+        <path id="minute_63" style="fill:#666666;" d="M 61.13,7.86 A 100.00 100.00 0 0 1 62.34,7.36 L 64.85,13.54 A 93.33 93.33 0 0 0 63.72,14.01 Z" />
+        <path id="minute_64" style="fill:#666666;" d="M 65.18,6.26 A 100.00 100.00 0 0 1 66.41,5.81 L 68.65,12.09 A 93.33 93.33 0 0 0 67.50,12.51 Z" />
+        <path id="minute_65" style="fill:#666666;" d="M 69.31,4.83 A 100.00 100.00 0 0 1 70.55,4.43 L 72.52,10.80 A 93.33 93.33 0 0 0 71.35,11.17 Z" />
+        <path id="minute_66" style="fill:#666666;" d="M 73.49,3.58 A 100.00 100.00 0 0 1 74.75,3.24 L 78.12,16.14 A 86.67 86.67 0 0 0 77.02,16.44 Z" />
+        <path id="minute_67" style="fill:#666666;" d="M 77.72,2.51 A 100.00 100.00 0 0 1 79.00,2.23 L 80.40,8.75 A 93.33 93.33 0 0 0 79.20,9.01 Z" />
+        <path id="minute_68" style="fill:#666666;" d="M 81.99,1.63 A 100.00 100.00 0 0 1 83.28,1.41 L 84.39,7.98 A 93.33 93.33 0 0 0 83.19,8.19 Z" />
+        <path id="minute_69" style="fill:#666666;" d="M 86.30,0.94 A 100.00 100.00 0 0 1 87.60,0.77 L 88.42,7.39 A 93.33 93.33 0 0 0 87.21,7.55 Z" />
+        <path id="minute_70" style="fill:#666666;" d="M 90.63,0.44 A 100.00 100.00 0 0 1 91.94,0.33 L 92.47,6.97 A 93.33 93.33 0 0 0 91.26,7.08 Z" />
+        <path id="minute_71" style="fill:#666666;" d="M 94.98,0.13 A 100.00 100.00 0 0 1 96.29,0.07 L 96.54,6.73 A 93.33 93.33 0 0 0 95.32,6.78 Z" />
+        <path id="minute_72" style="fill:#666666;" d="M 99.35,0.00 A 100.00 100.00 0 0 1 100.65,0.00 L 100.57,13.34 A 86.67 86.67 0 0 0 99.43,13.34 Z" />
+        <path id="minute_73" style="fill:#666666;" d="M 103.71,0.07 A 100.00 100.00 0 0 1 105.02,0.13 L 104.68,6.78 A 93.33 93.33 0 0 0 103.46,6.73 Z" />
+        <path id="minute_74" style="fill:#666666;" d="M 108.06,0.33 A 100.00 100.00 0 0 1 109.37,0.44 L 108.74,7.08 A 93.33 93.33 0 0 0 107.53,6.97 Z" />
+        <path id="minute_75" style="fill:#666666;" d="M 112.40,0.77 A 100.00 100.00 0 0 1 113.70,0.94 L 112.79,7.55 A 93.33 93.33 0 0 0 111.58,7.39 Z" />
+        <path id="minute_76" style="fill:#666666;" d="M 116.72,1.41 A 100.00 100.00 0 0 1 118.01,1.63 L 116.81,8.19 A 93.33 93.33 0 0 0 115.61,7.98 Z" />
+        <path id="minute_77" style="fill:#666666;" d="M 121.00,2.23 A 100.00 100.00 0 0 1 122.28,2.51 L 120.80,9.01 A 93.33 93.33 0 0 0 119.60,8.75 Z" />
+        <path id="minute_78" style="fill:#666666;" d="M 125.25,3.24 A 100.00 100.00 0 0 1 126.51,3.58 L 122.98,16.44 A 86.67 86.67 0 0 0 121.88,16.14 Z" />
+        <path id="minute_79" style="fill:#666666;" d="M 129.45,4.43 A 100.00 100.00 0 0 1 130.69,4.83 L 128.65,11.17 A 93.33 93.33 0 0 0 127.48,10.80 Z" />
+        <path id="minute_80" style="fill:#666666;" d="M 133.59,5.81 A 100.00 100.00 0 0 1 134.82,6.26 L 132.50,12.51 A 93.33 93.33 0 0 0 131.35,12.09 Z" />
+        <path id="minute_81" style="fill:#666666;" d="M 137.66,7.36 A 100.00 100.00 0 0 1 138.87,7.86 L 136.28,14.01 A 93.33 93.33 0 0 0 135.15,13.54 Z" />
+        <path id="minute_82" style="fill:#666666;" d="M 141.67,9.09 A 100.00 100.00 0 0 1 142.85,9.65 L 140.00,15.67 A 93.33 93.33 0 0 0 138.89,15.15 Z" />
+        <path id="minute_83" style="fill:#666666;" d="M 145.59,11.00 A 100.00 100.00 0 0 1 146.75,11.60 L 143.64,17.50 A 93.33 93.33 0 0 0 142.55,16.93 Z" />
+        <path id="minute_84" style="fill:#666666;" d="M 149.43,13.07 A 100.00 100.00 0 0 1 150.57,13.73 L 143.82,25.23 A 86.67 86.67 0 0 0 142.84,24.66 Z" />
+        <path id="minute_85" style="fill:#666666;" d="M 153.18,15.31 A 100.00 100.00 0 0 1 154.28,16.01 L 150.66,21.61 A 93.33 93.33 0 0 0 149.63,20.96 Z" />
+        <path id="minute_86" style="fill:#666666;" d="M 156.82,17.71 A 100.00 100.00 0 0 1 157.89,18.46 L 154.03,23.90 A 93.33 93.33 0 0 0 153.03,23.20 Z" />
+        <path id="minute_87" style="fill:#666666;" d="M 160.36,20.27 A 100.00 100.00 0 0 1 161.39,21.06 L 157.30,26.33 A 93.33 93.33 0 0 0 156.33,25.58 Z" />
+        <path id="minute_88" style="fill:#666666;" d="M 163.78,22.98 A 100.00 100.00 0 0 1 164.78,23.82 L 160.46,28.90 A 93.33 93.33 0 0 0 159.52,28.11 Z" />
+        <path id="minute_89" style="fill:#666666;" d="M 167.08,25.83 A 100.00 100.00 0 0 1 168.04,26.72 L 163.50,31.60 A 93.33 93.33 0 0 0 162.60,30.78 Z" />
+        <path id="minute_90" style="fill:#666666;" d="M 170.25,28.83 A 100.00 100.00 0 0 1 171.17,29.75 L 161.68,39.12 A 86.67 86.67 0 0 0 160.88,38.32 Z" />
+        <path id="minute_91" style="fill:#666666;" d="M 173.28,31.96 A 100.00 100.00 0 0 1 174.17,32.92 L 169.22,37.40 A 93.33 93.33 0 0 0 168.40,36.50 Z" />
+        <path id="minute_92" style="fill:#666666;" d="M 176.18,35.22 A 100.00 100.00 0 0 1 177.02,36.22 L 171.89,40.48 A 93.33 93.33 0 0 0 171.10,39.54 Z" />
+        <path id="minute_93" style="fill:#666666;" d="M 178.94,38.61 A 100.00 100.00 0 0 1 179.73,39.64 L 174.42,43.67 A 93.33 93.33 0 0 0 173.67,42.70 Z" />
+        <path id="minute_94" style="fill:#666666;" d="M 181.54,42.11 A 100.00 100.00 0 0 1 182.29,43.18 L 176.80,46.97 A 93.33 93.33 0 0 0 176.10,45.97 Z" />
+        <path id="minute_95" style="fill:#666666;" d="M 183.99,45.72 A 100.00 100.00 0 0 1 184.69,46.82 L 179.04,50.37 A 93.33 93.33 0 0 0 178.39,49.34 Z" />
+        <path id="minute_96" style="fill:#666666;" d="M 186.27,49.43 A 100.00 100.00 0 0 1 186.93,50.57 L 175.34,57.16 A 86.67 86.67 0 0 0 174.77,56.18 Z" />
+        <path id="minute_97" style="fill:#666666;" d="M 188.40,53.25 A 100.00 100.00 0 0 1 189.00,54.41 L 183.07,57.45 A 93.33 93.33 0 0 0 182.50,56.36 Z" />
+        <path id="minute_98" style="fill:#666666;" d="M 190.35,57.15 A 100.00 100.00 0 0 1 190.91,58.33 L 184.85,61.11 A 93.33 93.33 0 0 0 184.33,60.00 Z" />
+        <path id="minute_99" style="fill:#666666;" d="M 192.14,61.13 A 100.00 100.00 0 0 1 192.64,62.34 L 186.46,64.85 A 93.33 93.33 0 0 0 185.99,63.72 Z" />
+        <path id="minute_100" style="fill:#666666;" d="M 193.74,65.18 A 100.00 100.00 0 0 1 194.19,66.41 L 187.91,68.65 A 93.33 93.33 0 0 0 187.49,67.50 Z" />
+        <path id="minute_101" style="fill:#666666;" d="M 195.17,69.31 A 100.00 100.00 0 0 1 195.57,70.55 L 189.20,72.52 A 93.33 93.33 0 0 0 188.83,71.35 Z" />
+        <path id="minute_102" style="fill:#666666;" d="M 196.42,73.49 A 100.00 100.00 0 0 1 196.76,74.75 L 183.86,78.12 A 86.67 86.67 0 0 0 183.56,77.02 Z" />
+        <path id="minute_103" style="fill:#666666;" d="M 197.49,77.72 A 100.00 100.00 0 0 1 197.77,79.00 L 191.25,80.40 A 93.33 93.33 0 0 0 190.99,79.20 Z" />
+        <path id="minute_104" style="fill:#666666;" d="M 198.37,81.99 A 100.00 100.00 0 0 1 198.59,83.28 L 192.02,84.39 A 93.33 93.33 0 0 0 191.81,83.19 Z" />
+        <path id="minute_105" style="fill:#666666;" d="M 199.06,86.30 A 100.00 100.00 0 0 1 199.23,87.60 L 192.61,88.42 A 93.33 93.33 0 0 0 192.45,87.21 Z" />
+        <path id="minute_106" style="fill:#666666;" d="M 199.56,90.63 A 100.00 100.00 0 0 1 199.67,91.94 L 193.03,92.47 A 93.33 93.33 0 0 0 192.92,91.26 Z" />
+        <path id="minute_107" style="fill:#666666;" d="M 199.87,94.98 A 100.00 100.00 0 0 1 199.93,96.29 L 193.27,96.54 A 93.33 93.33 0 0 0 193.22,95.32 Z" />
+        <path id="minute_108" style="fill:#666666;" d="M 200.00,99.35 A 100.00 100.00 0 0 1 200.00,100.65 L 186.66,100.57 A 86.67 86.67 0 0 0 186.66,99.43 Z" />
+        <path id="minute_109" style="fill:#666666;" d="M 199.93,103.71 A 100.00 100.00 0 0 1 199.87,105.02 L 193.22,104.68 A 93.33 93.33 0 0 0 193.27,103.46 Z" />
+        <path id="minute_110" style="fill:#666666;" d="M 199.67,108.06 A 100.00 100.00 0 0 1 199.56,109.37 L 192.92,108.74 A 93.33 93.33 0 0 0 193.03,107.53 Z" />
+        <path id="minute_111" style="fill:#666666;" d="M 199.23,112.40 A 100.00 100.00 0 0 1 199.06,113.70 L 192.45,112.79 A 93.33 93.33 0 0 0 192.61,111.58 Z" />
+        <path id="minute_112" style="fill:#666666;" d="M 198.59,116.72 A 100.00 100.00 0 0 1 198.37,118.01 L 191.81,116.81 A 93.33 93.33 0 0 0 192.02,115.61 Z" />
+        <path id="minute_113" style="fill:#666666;" d="M 197.77,121.00 A 100.00 100.00 0 0 1 197.49,122.28 L 190.99,120.80 A 93.33 93.33 0 0 0 191.25,119.60 Z" />
+        <path id="minute_114" style="fill:#666666;" d="M 196.76,125.25 A 100.00 100.00 0 0 1 196.42,126.51 L 183.56,122.98 A 86.67 86.67 0 0 0 183.86,121.88 Z" />
+        <path id="minute_115" style="fill:#666666;" d="M 195.57,129.45 A 100.00 100.00 0 0 1 195.17,130.69 L 188.83,128.65 A 93.33 93.33 0 0 0 189.20,127.48 Z" />
+        <path id="minute_116" style="fill:#666666;" d="M 194.19,133.59 A 100.00 100.00 0 0 1 193.74,134.82 L 187.49,132.50 A 93.33 93.33 0 0 0 187.91,131.35 Z" />
+        <path id="minute_117" style="fill:#666666;" d="M 192.64,137.66 A 100.00 100.00 0 0 1 192.14,138.87 L 185.99,136.28 A 93.33 93.33 0 0 0 186.46,135.15 Z" />
+        <path id="minute_118" style="fill:#666666;" d="M 190.91,141.67 A 100.00 100.00 0 0 1 190.35,142.85 L 184.33,140.00 A 93.33 93.33 0 0 0 184.85,138.89 Z" />
+        <path id="minute_119" style="fill:#666666;" d="M 189.00,145.59 A 100.00 100.00 0 0 1 188.40,146.75 L 182.50,143.64 A 93.33 93.33 0 0 0 183.07,142.55 Z" />
+        <path id="minute_120" style="fill:#666666;" d="M 186.93,149.43 A 100.00 100.00 0 0 1 186.27,150.57 L 174.77,143.82 A 86.67 86.67 0 0 0 175.34,142.84 Z" />
+        <path id="minute_121" style="fill:#666666;" d="M 184.69,153.18 A 100.00 100.00 0 0 1 183.99,154.28 L 178.39,150.66 A 93.33 93.33 0 0 0 179.04,149.63 Z" />
+        <path id="minute_122" style="fill:#666666;" d="M 182.29,156.82 A 100.00 100.00 0 0 1 181.54,157.89 L 176.10,154.03 A 93.33 93.33 0 0 0 176.80,153.03 Z" />
+        <path id="minute_123" style="fill:#666666;" d="M 179.73,160.36 A 100.00 100.00 0 0 1 178.94,161.39 L 173.67,157.30 A 93.33 93.33 0 0 0 174.42,156.33 Z" />
+        <path id="minute_124" style="fill:#666666;" d="M 177.02,163.78 A 100.00 100.00 0 0 1 176.18,164.78 L 171.10,160.46 A 93.33 93.33 0 0 0 171.89,159.52 Z" />
+        <path id="minute_125" style="fill:#666666;" d="M 174.17,167.08 A 100.00 100.00 0 0 1 173.28,168.04 L 168.40,163.50 A 93.33 93.33 0 0 0 169.22,162.60 Z" />
+        <path id="minute_126" style="fill:#666666;" d="M 171.17,170.25 A 100.00 100.00 0 0 1 170.25,171.17 L 160.88,161.68 A 86.67 86.67 0 0 0 161.68,160.88 Z" />
+        <path id="minute_127" style="fill:#666666;" d="M 168.04,173.28 A 100.00 100.00 0 0 1 167.08,174.17 L 162.60,169.22 A 93.33 93.33 0 0 0 163.50,168.40 Z" />
+        <path id="minute_128" style="fill:#666666;" d="M 164.78,176.18 A 100.00 100.00 0 0 1 163.78,177.02 L 159.52,171.89 A 93.33 93.33 0 0 0 160.46,171.10 Z" />
+        <path id="minute_129" style="fill:#666666;" d="M 161.39,178.94 A 100.00 100.00 0 0 1 160.36,179.73 L 156.33,174.42 A 93.33 93.33 0 0 0 157.30,173.67 Z" />
+        <path id="minute_130" style="fill:#666666;" d="M 157.89,181.54 A 100.00 100.00 0 0 1 156.82,182.29 L 153.03,176.80 A 93.33 93.33 0 0 0 154.03,176.10 Z" />
+        <path id="minute_131" style="fill:#666666;" d="M 154.28,183.99 A 100.00 100.00 0 0 1 153.18,184.69 L 149.63,179.04 A 93.33 93.33 0 0 0 150.66,178.39 Z" />
+        <path id="minute_132" style="fill:#666666;" d="M 150.57,186.27 A 100.00 100.00 0 0 1 149.43,186.93 L 142.84,175.34 A 86.67 86.67 0 0 0 143.82,174.77 Z" />
+        <path id="minute_133" style="fill:#666666;" d="M 146.75,188.40 A 100.00 100.00 0 0 1 145.59,189.00 L 142.55,183.07 A 93.33 93.33 0 0 0 143.64,182.50 Z" />
+        <path id="minute_134" style="fill:#666666;" d="M 142.85,190.35 A 100.00 100.00 0 0 1 141.67,190.91 L 138.89,184.85 A 93.33 93.33 0 0 0 140.00,184.33 Z" />
+        <path id="minute_135" style="fill:#666666;" d="M 138.87,192.14 A 100.00 100.00 0 0 1 137.66,192.64 L 135.15,186.46 A 93.33 93.33 0 0 0 136.28,185.99 Z" />
+        <path id="minute_136" style="fill:#666666;" d="M 134.82,193.74 A 100.00 100.00 0 0 1 133.59,194.19 L 131.35,187.91 A 93.33 93.33 0 0 0 132.50,187.49 Z" />
+        <path id="minute_137" style="fill:#666666;" d="M 130.69,195.17 A 100.00 100.00 0 0 1 129.45,195.57 L 127.48,189.20 A 93.33 93.33 0 0 0 128.65,188.83 Z" />
+        <path id="minute_138" style="fill:#666666;" d="M 126.51,196.42 A 100.00 100.00 0 0 1 125.25,196.76 L 121.88,183.86 A 86.67 86.67 0 0 0 122.98,183.56 Z" />
+        <path id="minute_139" style="fill:#666666;" d="M 122.28,197.49 A 100.00 100.00 0 0 1 121.00,197.77 L 119.60,191.25 A 93.33 93.33 0 0 0 120.80,190.99 Z" />
+        <path id="minute_140" style="fill:#666666;" d="M 118.01,198.37 A 100.00 100.00 0 0 1 116.72,198.59 L 115.61,192.02 A 93.33 93.33 0 0 0 116.81,191.81 Z" />
+        <path id="minute_141" style="fill:#666666;" d="M 113.70,199.06 A 100.00 100.00 0 0 1 112.40,199.23 L 111.58,192.61 A 93.33 93.33 0 0 0 112.79,192.45 Z" />
+        <path id="minute_142" style="fill:#666666;" d="M 109.37,199.56 A 100.00 100.00 0 0 1 108.06,199.67 L 107.53,193.03 A 93.33 93.33 0 0 0 108.74,192.92 Z" />
+        <path id="minute_143" style="fill:#666666;" d="M 105.02,199.87 A 100.00 100.00 0 0 1 103.71,199.93 L 103.46,193.27 A 93.33 93.33 0 0 0 104.68,193.22 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_base_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 91.64,95.44 A 80.00 80.00 0 0 1 108.36,95.44 L 100.00,175.00 A 0.00 0.00 0 0 0 100.00,175.00 Z" />
+    </g>
+    <g id="hand_minutes_10_base_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_10_minutes" style="fill:#00C853;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_minutes_base_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_seconds_base_12" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 98.15,94.02 A 106.00 106.00 0 0 1 101.85,94.02 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+            <td>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+<svg class="clock_base_{base}" id="clock_base_{base}" viewBox="0 0 200 200" height="200" width="200">
+<g id="watchface_time_display">
+    <g id="watchface_numbers">
+        <path id="tick_00" style="fill:#666666;" d="M 101.75,199.98 A 100.00 100.00 0 0 1 98.25,199.98 L 98.49,186.65 A 86.67 86.67 0 0 0 101.51,186.65 Z" />
+<text id="hour_00" x="100.0" y="177.77777777777777" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">0</text>
+        <path id="tick_01" style="fill:#666666;" d="M 63.35,193.04 A 100.00 100.00 0 0 1 60.13,191.71 L 65.44,179.48 A 86.67 86.67 0 0 0 68.24,180.64 Z" />
+<text id="hour_01" x="72.78695592070473" y="172.36476675635816" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">1</text>
+        <path id="tick_02" style="fill:#666666;" d="M 30.53,171.93 A 100.00 100.00 0 0 1 28.07,169.47 L 37.66,160.20 A 86.67 86.67 0 0 0 39.80,162.34 Z" />
+<text id="hour_02" x="49.71685111562329" y="156.9498155510434" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">2</text>
+        <path id="tick_03" style="fill:#666666;" d="M 8.29,139.87 A 100.00 100.00 0 0 1 6.96,136.65 L 19.36,131.76 A 86.67 86.67 0 0 0 20.52,134.56 Z" />
+<text id="hour_03" x="34.30189991030849" y="133.87971074596194" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">3</text>
+        <path id="tick_04" style="fill:#666666;" d="M 0.02,101.75 A 100.00 100.00 0 0 1 0.02,98.25 L 13.35,98.49 A 86.67 86.67 0 0 0 13.35,101.51 Z" />
+<text id="hour_04" x="28.888888888888886" y="106.66666666666669" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">4</text>
+        <path id="tick_05" style="fill:#666666;" d="M 6.96,63.35 A 100.00 100.00 0 0 1 8.29,60.13 L 20.52,65.44 A 86.67 86.67 0 0 0 19.36,68.24 Z" />
+<text id="hour_05" x="34.30189991030849" y="79.4536225873714" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">5</text>
+        <path id="tick_06" style="fill:#666666;" d="M 28.07,30.53 A 100.00 100.00 0 0 1 30.53,28.07 L 39.80,37.66 A 86.67 86.67 0 0 0 37.66,39.80 Z" />
+<text id="hour_06" x="49.71685111562327" y="56.383517782289964" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">6</text>
+        <path id="tick_07" style="fill:#666666;" d="M 60.13,8.29 A 100.00 100.00 0 0 1 63.35,6.96 L 68.24,19.36 A 86.67 86.67 0 0 0 65.44,20.52 Z" />
+<text id="hour_07" x="72.78695592070468" y="40.96856657697518" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">7</text>
+        <path id="tick_08" style="fill:#666666;" d="M 98.25,0.02 A 100.00 100.00 0 0 1 101.75,0.02 L 101.51,13.35 A 86.67 86.67 0 0 0 98.49,13.35 Z" />
+<text id="hour_08" x="99.99999999999999" y="35.55555555555556" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">8</text>
+        <path id="tick_09" style="fill:#666666;" d="M 136.65,6.96 A 100.00 100.00 0 0 1 139.87,8.29 L 134.56,20.52 A 86.67 86.67 0 0 0 131.76,19.36 Z" />
+<text id="hour_09" x="127.21304407929529" y="40.96856657697518" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">9</text>
+        <path id="tick_10" style="fill:#666666;" d="M 169.47,28.07 A 100.00 100.00 0 0 1 171.93,30.53 L 162.34,39.80 A 86.67 86.67 0 0 0 160.20,37.66 Z" />
+<text id="hour_10" x="150.28314888437671" y="56.38351778228994" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">A</text>
+        <path id="tick_11" style="fill:#666666;" d="M 191.71,60.13 A 100.00 100.00 0 0 1 193.04,63.35 L 180.64,68.24 A 86.67 86.67 0 0 0 179.48,65.44 Z" />
+<text id="hour_11" x="165.69810008969148" y="79.45362258737136" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">B</text>
+        <path id="tick_12" style="fill:#666666;" d="M 199.98,98.25 A 100.00 100.00 0 0 1 199.98,101.75 L 186.65,101.51 A 86.67 86.67 0 0 0 186.65,98.49 Z" />
+<text id="hour_12" x="171.11111111111111" y="106.66666666666666" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">C</text>
+        <path id="tick_13" style="fill:#666666;" d="M 193.04,136.65 A 100.00 100.00 0 0 1 191.71,139.87 L 179.48,134.56 A 86.67 86.67 0 0 0 180.64,131.76 Z" />
+<text id="hour_13" x="165.6981000896915" y="133.87971074596194" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">D</text>
+        <path id="tick_14" style="fill:#666666;" d="M 171.93,169.47 A 100.00 100.00 0 0 1 169.47,171.93 L 160.20,162.34 A 86.67 86.67 0 0 0 162.34,160.20 Z" />
+<text id="hour_14" x="150.28314888437671" y="156.94981555104337" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">E</text>
+        <path id="tick_15" style="fill:#666666;" d="M 139.87,191.71 A 100.00 100.00 0 0 1 136.65,193.04 L 131.76,180.64 A 86.67 86.67 0 0 0 134.56,179.48 Z" />
+<text id="hour_15" x="127.21304407929529" y="172.36476675635816" style="font-family:sans-serif;font-size:20.0px;fill:#666666;text-anchor:middle;text-align:center;font-weight:bold;">F</text>
+        <path id="minute_00" style="fill:#666666;" d="M 100.65,200.00 A 100.00 100.00 0 0 1 99.35,200.00 L 99.43,186.66 A 86.67 86.67 0 0 0 100.57,186.66 Z" />
+        <path id="minute_01" style="fill:#666666;" d="M 98.20,199.98 A 100.00 100.00 0 0 1 96.89,199.95 L 97.10,193.29 A 93.33 93.33 0 0 0 98.32,193.32 Z" />
+        <path id="minute_02" style="fill:#666666;" d="M 95.75,199.91 A 100.00 100.00 0 0 1 94.44,199.85 L 94.81,193.19 A 93.33 93.33 0 0 0 96.03,193.25 Z" />
+        <path id="minute_03" style="fill:#666666;" d="M 93.30,199.78 A 100.00 100.00 0 0 1 91.99,199.68 L 92.52,193.03 A 93.33 93.33 0 0 0 93.74,193.12 Z" />
+        <path id="minute_04" style="fill:#666666;" d="M 90.85,199.58 A 100.00 100.00 0 0 1 89.55,199.45 L 90.24,192.82 A 93.33 93.33 0 0 0 91.46,192.94 Z" />
+        <path id="minute_05" style="fill:#666666;" d="M 88.41,199.33 A 100.00 100.00 0 0 1 87.11,199.17 L 87.97,192.55 A 93.33 93.33 0 0 0 89.18,192.70 Z" />
+        <path id="minute_06" style="fill:#666666;" d="M 85.97,199.01 A 100.00 100.00 0 0 1 84.68,198.82 L 85.70,192.23 A 93.33 93.33 0 0 0 86.91,192.41 Z" />
+        <path id="minute_07" style="fill:#666666;" d="M 83.55,198.64 A 100.00 100.00 0 0 1 82.26,198.41 L 83.44,191.85 A 93.33 93.33 0 0 0 84.65,192.06 Z" />
+        <path id="minute_08" style="fill:#666666;" d="M 81.13,198.20 A 100.00 100.00 0 0 1 79.85,197.95 L 82.54,184.89 A 86.67 86.67 0 0 0 83.65,185.11 Z" />
+        <path id="minute_09" style="fill:#666666;" d="M 78.73,197.71 A 100.00 100.00 0 0 1 77.45,197.42 L 78.95,190.93 A 93.33 93.33 0 0 0 80.15,191.20 Z" />
+        <path id="minute_10" style="fill:#666666;" d="M 76.34,197.16 A 100.00 100.00 0 0 1 75.07,196.84 L 76.73,190.39 A 93.33 93.33 0 0 0 77.91,190.68 Z" />
+        <path id="minute_11" style="fill:#666666;" d="M 73.96,196.55 A 100.00 100.00 0 0 1 72.70,196.20 L 74.52,189.79 A 93.33 93.33 0 0 0 75.70,190.11 Z" />
+        <path id="minute_12" style="fill:#666666;" d="M 71.60,195.88 A 100.00 100.00 0 0 1 70.35,195.50 L 72.32,189.14 A 93.33 93.33 0 0 0 73.49,189.49 Z" />
+        <path id="minute_13" style="fill:#666666;" d="M 69.25,195.16 A 100.00 100.00 0 0 1 68.01,194.75 L 70.14,188.43 A 93.33 93.33 0 0 0 71.30,188.81 Z" />
+        <path id="minute_14" style="fill:#666666;" d="M 66.93,194.37 A 100.00 100.00 0 0 1 65.70,193.93 L 67.98,187.67 A 93.33 93.33 0 0 0 69.13,188.08 Z" />
+        <path id="minute_15" style="fill:#666666;" d="M 64.62,193.53 A 100.00 100.00 0 0 1 63.40,193.06 L 65.84,186.86 A 93.33 93.33 0 0 0 66.98,187.30 Z" />
+        <path id="minute_16" style="fill:#666666;" d="M 62.34,192.64 A 100.00 100.00 0 0 1 61.13,192.14 L 66.31,179.85 A 86.67 86.67 0 0 0 67.36,180.28 Z" />
+        <path id="minute_17" style="fill:#666666;" d="M 60.08,191.68 A 100.00 100.00 0 0 1 58.88,191.15 L 61.62,185.08 A 93.33 93.33 0 0 0 62.74,185.57 Z" />
+        <path id="minute_18" style="fill:#666666;" d="M 57.84,190.68 A 100.00 100.00 0 0 1 56.65,190.12 L 59.54,184.11 A 93.33 93.33 0 0 0 60.65,184.63 Z" />
+        <path id="minute_19" style="fill:#666666;" d="M 55.62,189.61 A 100.00 100.00 0 0 1 54.46,189.03 L 57.49,183.09 A 93.33 93.33 0 0 0 58.58,183.64 Z" />
+        <path id="minute_20" style="fill:#666666;" d="M 53.44,188.50 A 100.00 100.00 0 0 1 52.28,187.88 L 55.47,182.02 A 93.33 93.33 0 0 0 56.54,182.60 Z" />
+        <path id="minute_21" style="fill:#666666;" d="M 51.28,187.33 A 100.00 100.00 0 0 1 50.14,186.68 L 53.47,180.91 A 93.33 93.33 0 0 0 54.53,181.51 Z" />
+        <path id="minute_22" style="fill:#666666;" d="M 49.15,186.11 A 100.00 100.00 0 0 1 48.03,185.43 L 51.49,179.74 A 93.33 93.33 0 0 0 52.54,180.37 Z" />
+        <path id="minute_23" style="fill:#666666;" d="M 47.05,184.83 A 100.00 100.00 0 0 1 45.95,184.13 L 49.55,178.52 A 93.33 93.33 0 0 0 50.58,179.18 Z" />
+        <path id="minute_24" style="fill:#666666;" d="M 44.99,183.51 A 100.00 100.00 0 0 1 43.90,182.78 L 51.38,171.74 A 86.67 86.67 0 0 0 52.32,172.37 Z" />
+        <path id="minute_25" style="fill:#666666;" d="M 42.96,182.13 A 100.00 100.00 0 0 1 41.89,181.38 L 45.76,175.95 A 93.33 93.33 0 0 0 46.76,176.66 Z" />
+        <path id="minute_26" style="fill:#666666;" d="M 40.96,180.71 A 100.00 100.00 0 0 1 39.91,179.93 L 43.91,174.60 A 93.33 93.33 0 0 0 44.89,175.33 Z" />
+        <path id="minute_27" style="fill:#666666;" d="M 38.99,179.24 A 100.00 100.00 0 0 1 37.96,178.43 L 42.10,173.20 A 93.33 93.33 0 0 0 43.06,173.95 Z" />
+        <path id="minute_28" style="fill:#666666;" d="M 37.07,177.71 A 100.00 100.00 0 0 1 36.06,176.88 L 40.32,171.76 A 93.33 93.33 0 0 0 41.26,172.53 Z" />
+        <path id="minute_29" style="fill:#666666;" d="M 35.18,176.15 A 100.00 100.00 0 0 1 34.19,175.29 L 38.58,170.27 A 93.33 93.33 0 0 0 39.50,171.07 Z" />
+        <path id="minute_30" style="fill:#666666;" d="M 33.33,174.53 A 100.00 100.00 0 0 1 32.36,173.65 L 36.87,168.74 A 93.33 93.33 0 0 0 37.78,169.56 Z" />
+        <path id="minute_31" style="fill:#666666;" d="M 31.52,172.87 A 100.00 100.00 0 0 1 30.57,171.97 L 35.20,167.17 A 93.33 93.33 0 0 0 36.09,168.02 Z" />
+        <path id="minute_32" style="fill:#666666;" d="M 29.75,171.17 A 100.00 100.00 0 0 1 28.83,170.25 L 38.32,160.88 A 86.67 86.67 0 0 0 39.12,161.68 Z" />
+        <path id="minute_33" style="fill:#666666;" d="M 28.03,169.43 A 100.00 100.00 0 0 1 27.13,168.48 L 31.98,163.91 A 93.33 93.33 0 0 0 32.83,164.80 Z" />
+        <path id="minute_34" style="fill:#666666;" d="M 26.35,167.64 A 100.00 100.00 0 0 1 25.47,166.67 L 30.44,162.22 A 93.33 93.33 0 0 0 31.26,163.13 Z" />
+        <path id="minute_35" style="fill:#666666;" d="M 24.71,165.81 A 100.00 100.00 0 0 1 23.85,164.82 L 28.93,160.50 A 93.33 93.33 0 0 0 29.73,161.42 Z" />
+        <path id="minute_36" style="fill:#666666;" d="M 23.12,163.94 A 100.00 100.00 0 0 1 22.29,162.93 L 27.47,158.74 A 93.33 93.33 0 0 0 28.24,159.68 Z" />
+        <path id="minute_37" style="fill:#666666;" d="M 21.57,162.04 A 100.00 100.00 0 0 1 20.76,161.01 L 26.05,156.94 A 93.33 93.33 0 0 0 26.80,157.90 Z" />
+        <path id="minute_38" style="fill:#666666;" d="M 20.07,160.09 A 100.00 100.00 0 0 1 19.29,159.04 L 24.67,155.11 A 93.33 93.33 0 0 0 25.40,156.09 Z" />
+        <path id="minute_39" style="fill:#666666;" d="M 18.62,158.11 A 100.00 100.00 0 0 1 17.87,157.04 L 23.34,153.24 A 93.33 93.33 0 0 0 24.05,154.24 Z" />
+        <path id="minute_40" style="fill:#666666;" d="M 17.22,156.10 A 100.00 100.00 0 0 1 16.49,155.01 L 27.63,147.68 A 86.67 86.67 0 0 0 28.26,148.62 Z" />
+        <path id="minute_41" style="fill:#666666;" d="M 15.87,154.05 A 100.00 100.00 0 0 1 15.17,152.95 L 20.82,149.42 A 93.33 93.33 0 0 0 21.48,150.45 Z" />
+        <path id="minute_42" style="fill:#666666;" d="M 14.57,151.97 A 100.00 100.00 0 0 1 13.89,150.85 L 19.63,147.46 A 93.33 93.33 0 0 0 20.26,148.51 Z" />
+        <path id="minute_43" style="fill:#666666;" d="M 13.32,149.86 A 100.00 100.00 0 0 1 12.67,148.72 L 18.49,145.47 A 93.33 93.33 0 0 0 19.09,146.53 Z" />
+        <path id="minute_44" style="fill:#666666;" d="M 12.12,147.72 A 100.00 100.00 0 0 1 11.50,146.56 L 17.40,143.46 A 93.33 93.33 0 0 0 17.98,144.53 Z" />
+        <path id="minute_45" style="fill:#666666;" d="M 10.97,145.54 A 100.00 100.00 0 0 1 10.39,144.38 L 16.36,141.42 A 93.33 93.33 0 0 0 16.91,142.51 Z" />
+        <path id="minute_46" style="fill:#666666;" d="M 9.88,143.35 A 100.00 100.00 0 0 1 9.32,142.16 L 15.37,139.35 A 93.33 93.33 0 0 0 15.89,140.46 Z" />
+        <path id="minute_47" style="fill:#666666;" d="M 8.85,141.12 A 100.00 100.00 0 0 1 8.32,139.92 L 14.43,137.26 A 93.33 93.33 0 0 0 14.92,138.38 Z" />
+        <path id="minute_48" style="fill:#666666;" d="M 7.86,138.87 A 100.00 100.00 0 0 1 7.36,137.66 L 19.72,132.64 A 86.67 86.67 0 0 0 20.15,133.69 Z" />
+        <path id="minute_49" style="fill:#666666;" d="M 6.94,136.60 A 100.00 100.00 0 0 1 6.47,135.38 L 12.70,133.02 A 93.33 93.33 0 0 0 13.14,134.16 Z" />
+        <path id="minute_50" style="fill:#666666;" d="M 6.07,134.30 A 100.00 100.00 0 0 1 5.63,133.07 L 11.92,130.87 A 93.33 93.33 0 0 0 12.33,132.02 Z" />
+        <path id="minute_51" style="fill:#666666;" d="M 5.25,131.99 A 100.00 100.00 0 0 1 4.84,130.75 L 11.19,128.70 A 93.33 93.33 0 0 0 11.57,129.86 Z" />
+        <path id="minute_52" style="fill:#666666;" d="M 4.50,129.65 A 100.00 100.00 0 0 1 4.12,128.40 L 10.51,126.51 A 93.33 93.33 0 0 0 10.86,127.68 Z" />
+        <path id="minute_53" style="fill:#666666;" d="M 3.80,127.30 A 100.00 100.00 0 0 1 3.45,126.04 L 9.89,124.30 A 93.33 93.33 0 0 0 10.21,125.48 Z" />
+        <path id="minute_54" style="fill:#666666;" d="M 3.16,124.93 A 100.00 100.00 0 0 1 2.84,123.66 L 9.32,122.09 A 93.33 93.33 0 0 0 9.61,123.27 Z" />
+        <path id="minute_55" style="fill:#666666;" d="M 2.58,122.55 A 100.00 100.00 0 0 1 2.29,121.27 L 8.80,119.85 A 93.33 93.33 0 0 0 9.07,121.05 Z" />
+        <path id="minute_56" style="fill:#666666;" d="M 2.05,120.15 A 100.00 100.00 0 0 1 1.80,118.87 L 14.89,116.35 A 86.67 86.67 0 0 0 15.11,117.46 Z" />
+        <path id="minute_57" style="fill:#666666;" d="M 1.59,117.74 A 100.00 100.00 0 0 1 1.36,116.45 L 7.94,115.35 A 93.33 93.33 0 0 0 8.15,116.56 Z" />
+        <path id="minute_58" style="fill:#666666;" d="M 1.18,115.32 A 100.00 100.00 0 0 1 0.99,114.03 L 7.59,113.09 A 93.33 93.33 0 0 0 7.77,114.30 Z" />
+        <path id="minute_59" style="fill:#666666;" d="M 0.83,112.89 A 100.00 100.00 0 0 1 0.67,111.59 L 7.30,110.82 A 93.33 93.33 0 0 0 7.45,112.03 Z" />
+        <path id="minute_60" style="fill:#666666;" d="M 0.55,110.45 A 100.00 100.00 0 0 1 0.42,109.15 L 7.06,108.54 A 93.33 93.33 0 0 0 7.18,109.76 Z" />
+        <path id="minute_61" style="fill:#666666;" d="M 0.32,108.01 A 100.00 100.00 0 0 1 0.22,106.70 L 6.88,106.26 A 93.33 93.33 0 0 0 6.97,107.48 Z" />
+        <path id="minute_62" style="fill:#666666;" d="M 0.15,105.56 A 100.00 100.00 0 0 1 0.09,104.25 L 6.75,103.97 A 93.33 93.33 0 0 0 6.81,105.19 Z" />
+        <path id="minute_63" style="fill:#666666;" d="M 0.05,103.11 A 100.00 100.00 0 0 1 0.02,101.80 L 6.68,101.68 A 93.33 93.33 0 0 0 6.71,102.90 Z" />
+        <path id="minute_64" style="fill:#666666;" d="M 0.00,100.65 A 100.00 100.00 0 0 1 0.00,99.35 L 13.34,99.43 A 86.67 86.67 0 0 0 13.34,100.57 Z" />
+        <path id="minute_65" style="fill:#666666;" d="M 0.02,98.20 A 100.00 100.00 0 0 1 0.05,96.89 L 6.71,97.10 A 93.33 93.33 0 0 0 6.68,98.32 Z" />
+        <path id="minute_66" style="fill:#666666;" d="M 0.09,95.75 A 100.00 100.00 0 0 1 0.15,94.44 L 6.81,94.81 A 93.33 93.33 0 0 0 6.75,96.03 Z" />
+        <path id="minute_67" style="fill:#666666;" d="M 0.22,93.30 A 100.00 100.00 0 0 1 0.32,91.99 L 6.97,92.52 A 93.33 93.33 0 0 0 6.88,93.74 Z" />
+        <path id="minute_68" style="fill:#666666;" d="M 0.42,90.85 A 100.00 100.00 0 0 1 0.55,89.55 L 7.18,90.24 A 93.33 93.33 0 0 0 7.06,91.46 Z" />
+        <path id="minute_69" style="fill:#666666;" d="M 0.67,88.41 A 100.00 100.00 0 0 1 0.83,87.11 L 7.45,87.97 A 93.33 93.33 0 0 0 7.30,89.18 Z" />
+        <path id="minute_70" style="fill:#666666;" d="M 0.99,85.97 A 100.00 100.00 0 0 1 1.18,84.68 L 7.77,85.70 A 93.33 93.33 0 0 0 7.59,86.91 Z" />
+        <path id="minute_71" style="fill:#666666;" d="M 1.36,83.55 A 100.00 100.00 0 0 1 1.59,82.26 L 8.15,83.44 A 93.33 93.33 0 0 0 7.94,84.65 Z" />
+        <path id="minute_72" style="fill:#666666;" d="M 1.80,81.13 A 100.00 100.00 0 0 1 2.05,79.85 L 15.11,82.54 A 86.67 86.67 0 0 0 14.89,83.65 Z" />
+        <path id="minute_73" style="fill:#666666;" d="M 2.29,78.73 A 100.00 100.00 0 0 1 2.58,77.45 L 9.07,78.95 A 93.33 93.33 0 0 0 8.80,80.15 Z" />
+        <path id="minute_74" style="fill:#666666;" d="M 2.84,76.34 A 100.00 100.00 0 0 1 3.16,75.07 L 9.61,76.73 A 93.33 93.33 0 0 0 9.32,77.91 Z" />
+        <path id="minute_75" style="fill:#666666;" d="M 3.45,73.96 A 100.00 100.00 0 0 1 3.80,72.70 L 10.21,74.52 A 93.33 93.33 0 0 0 9.89,75.70 Z" />
+        <path id="minute_76" style="fill:#666666;" d="M 4.12,71.60 A 100.00 100.00 0 0 1 4.50,70.35 L 10.86,72.32 A 93.33 93.33 0 0 0 10.51,73.49 Z" />
+        <path id="minute_77" style="fill:#666666;" d="M 4.84,69.25 A 100.00 100.00 0 0 1 5.25,68.01 L 11.57,70.14 A 93.33 93.33 0 0 0 11.19,71.30 Z" />
+        <path id="minute_78" style="fill:#666666;" d="M 5.63,66.93 A 100.00 100.00 0 0 1 6.07,65.70 L 12.33,67.98 A 93.33 93.33 0 0 0 11.92,69.13 Z" />
+        <path id="minute_79" style="fill:#666666;" d="M 6.47,64.62 A 100.00 100.00 0 0 1 6.94,63.40 L 13.14,65.84 A 93.33 93.33 0 0 0 12.70,66.98 Z" />
+        <path id="minute_80" style="fill:#666666;" d="M 7.36,62.34 A 100.00 100.00 0 0 1 7.86,61.13 L 20.15,66.31 A 86.67 86.67 0 0 0 19.72,67.36 Z" />
+        <path id="minute_81" style="fill:#666666;" d="M 8.32,60.08 A 100.00 100.00 0 0 1 8.85,58.88 L 14.92,61.62 A 93.33 93.33 0 0 0 14.43,62.74 Z" />
+        <path id="minute_82" style="fill:#666666;" d="M 9.32,57.84 A 100.00 100.00 0 0 1 9.88,56.65 L 15.89,59.54 A 93.33 93.33 0 0 0 15.37,60.65 Z" />
+        <path id="minute_83" style="fill:#666666;" d="M 10.39,55.62 A 100.00 100.00 0 0 1 10.97,54.46 L 16.91,57.49 A 93.33 93.33 0 0 0 16.36,58.58 Z" />
+        <path id="minute_84" style="fill:#666666;" d="M 11.50,53.44 A 100.00 100.00 0 0 1 12.12,52.28 L 17.98,55.47 A 93.33 93.33 0 0 0 17.40,56.54 Z" />
+        <path id="minute_85" style="fill:#666666;" d="M 12.67,51.28 A 100.00 100.00 0 0 1 13.32,50.14 L 19.09,53.47 A 93.33 93.33 0 0 0 18.49,54.53 Z" />
+        <path id="minute_86" style="fill:#666666;" d="M 13.89,49.15 A 100.00 100.00 0 0 1 14.57,48.03 L 20.26,51.49 A 93.33 93.33 0 0 0 19.63,52.54 Z" />
+        <path id="minute_87" style="fill:#666666;" d="M 15.17,47.05 A 100.00 100.00 0 0 1 15.87,45.95 L 21.48,49.55 A 93.33 93.33 0 0 0 20.82,50.58 Z" />
+        <path id="minute_88" style="fill:#666666;" d="M 16.49,44.99 A 100.00 100.00 0 0 1 17.22,43.90 L 28.26,51.38 A 86.67 86.67 0 0 0 27.63,52.32 Z" />
+        <path id="minute_89" style="fill:#666666;" d="M 17.87,42.96 A 100.00 100.00 0 0 1 18.62,41.89 L 24.05,45.76 A 93.33 93.33 0 0 0 23.34,46.76 Z" />
+        <path id="minute_90" style="fill:#666666;" d="M 19.29,40.96 A 100.00 100.00 0 0 1 20.07,39.91 L 25.40,43.91 A 93.33 93.33 0 0 0 24.67,44.89 Z" />
+        <path id="minute_91" style="fill:#666666;" d="M 20.76,38.99 A 100.00 100.00 0 0 1 21.57,37.96 L 26.80,42.10 A 93.33 93.33 0 0 0 26.05,43.06 Z" />
+        <path id="minute_92" style="fill:#666666;" d="M 22.29,37.07 A 100.00 100.00 0 0 1 23.12,36.06 L 28.24,40.32 A 93.33 93.33 0 0 0 27.47,41.26 Z" />
+        <path id="minute_93" style="fill:#666666;" d="M 23.85,35.18 A 100.00 100.00 0 0 1 24.71,34.19 L 29.73,38.58 A 93.33 93.33 0 0 0 28.93,39.50 Z" />
+        <path id="minute_94" style="fill:#666666;" d="M 25.47,33.33 A 100.00 100.00 0 0 1 26.35,32.36 L 31.26,36.87 A 93.33 93.33 0 0 0 30.44,37.78 Z" />
+        <path id="minute_95" style="fill:#666666;" d="M 27.13,31.52 A 100.00 100.00 0 0 1 28.03,30.57 L 32.83,35.20 A 93.33 93.33 0 0 0 31.98,36.09 Z" />
+        <path id="minute_96" style="fill:#666666;" d="M 28.83,29.75 A 100.00 100.00 0 0 1 29.75,28.83 L 39.12,38.32 A 86.67 86.67 0 0 0 38.32,39.12 Z" />
+        <path id="minute_97" style="fill:#666666;" d="M 30.57,28.03 A 100.00 100.00 0 0 1 31.52,27.13 L 36.09,31.98 A 93.33 93.33 0 0 0 35.20,32.83 Z" />
+        <path id="minute_98" style="fill:#666666;" d="M 32.36,26.35 A 100.00 100.00 0 0 1 33.33,25.47 L 37.78,30.44 A 93.33 93.33 0 0 0 36.87,31.26 Z" />
+        <path id="minute_99" style="fill:#666666;" d="M 34.19,24.71 A 100.00 100.00 0 0 1 35.18,23.85 L 39.50,28.93 A 93.33 93.33 0 0 0 38.58,29.73 Z" />
+        <path id="minute_100" style="fill:#666666;" d="M 36.06,23.12 A 100.00 100.00 0 0 1 37.07,22.29 L 41.26,27.47 A 93.33 93.33 0 0 0 40.32,28.24 Z" />
+        <path id="minute_101" style="fill:#666666;" d="M 37.96,21.57 A 100.00 100.00 0 0 1 38.99,20.76 L 43.06,26.05 A 93.33 93.33 0 0 0 42.10,26.80 Z" />
+        <path id="minute_102" style="fill:#666666;" d="M 39.91,20.07 A 100.00 100.00 0 0 1 40.96,19.29 L 44.89,24.67 A 93.33 93.33 0 0 0 43.91,25.40 Z" />
+        <path id="minute_103" style="fill:#666666;" d="M 41.89,18.62 A 100.00 100.00 0 0 1 42.96,17.87 L 46.76,23.34 A 93.33 93.33 0 0 0 45.76,24.05 Z" />
+        <path id="minute_104" style="fill:#666666;" d="M 43.90,17.22 A 100.00 100.00 0 0 1 44.99,16.49 L 52.32,27.63 A 86.67 86.67 0 0 0 51.38,28.26 Z" />
+        <path id="minute_105" style="fill:#666666;" d="M 45.95,15.87 A 100.00 100.00 0 0 1 47.05,15.17 L 50.58,20.82 A 93.33 93.33 0 0 0 49.55,21.48 Z" />
+        <path id="minute_106" style="fill:#666666;" d="M 48.03,14.57 A 100.00 100.00 0 0 1 49.15,13.89 L 52.54,19.63 A 93.33 93.33 0 0 0 51.49,20.26 Z" />
+        <path id="minute_107" style="fill:#666666;" d="M 50.14,13.32 A 100.00 100.00 0 0 1 51.28,12.67 L 54.53,18.49 A 93.33 93.33 0 0 0 53.47,19.09 Z" />
+        <path id="minute_108" style="fill:#666666;" d="M 52.28,12.12 A 100.00 100.00 0 0 1 53.44,11.50 L 56.54,17.40 A 93.33 93.33 0 0 0 55.47,17.98 Z" />
+        <path id="minute_109" style="fill:#666666;" d="M 54.46,10.97 A 100.00 100.00 0 0 1 55.62,10.39 L 58.58,16.36 A 93.33 93.33 0 0 0 57.49,16.91 Z" />
+        <path id="minute_110" style="fill:#666666;" d="M 56.65,9.88 A 100.00 100.00 0 0 1 57.84,9.32 L 60.65,15.37 A 93.33 93.33 0 0 0 59.54,15.89 Z" />
+        <path id="minute_111" style="fill:#666666;" d="M 58.88,8.85 A 100.00 100.00 0 0 1 60.08,8.32 L 62.74,14.43 A 93.33 93.33 0 0 0 61.62,14.92 Z" />
+        <path id="minute_112" style="fill:#666666;" d="M 61.13,7.86 A 100.00 100.00 0 0 1 62.34,7.36 L 67.36,19.72 A 86.67 86.67 0 0 0 66.31,20.15 Z" />
+        <path id="minute_113" style="fill:#666666;" d="M 63.40,6.94 A 100.00 100.00 0 0 1 64.62,6.47 L 66.98,12.70 A 93.33 93.33 0 0 0 65.84,13.14 Z" />
+        <path id="minute_114" style="fill:#666666;" d="M 65.70,6.07 A 100.00 100.00 0 0 1 66.93,5.63 L 69.13,11.92 A 93.33 93.33 0 0 0 67.98,12.33 Z" />
+        <path id="minute_115" style="fill:#666666;" d="M 68.01,5.25 A 100.00 100.00 0 0 1 69.25,4.84 L 71.30,11.19 A 93.33 93.33 0 0 0 70.14,11.57 Z" />
+        <path id="minute_116" style="fill:#666666;" d="M 70.35,4.50 A 100.00 100.00 0 0 1 71.60,4.12 L 73.49,10.51 A 93.33 93.33 0 0 0 72.32,10.86 Z" />
+        <path id="minute_117" style="fill:#666666;" d="M 72.70,3.80 A 100.00 100.00 0 0 1 73.96,3.45 L 75.70,9.89 A 93.33 93.33 0 0 0 74.52,10.21 Z" />
+        <path id="minute_118" style="fill:#666666;" d="M 75.07,3.16 A 100.00 100.00 0 0 1 76.34,2.84 L 77.91,9.32 A 93.33 93.33 0 0 0 76.73,9.61 Z" />
+        <path id="minute_119" style="fill:#666666;" d="M 77.45,2.58 A 100.00 100.00 0 0 1 78.73,2.29 L 80.15,8.80 A 93.33 93.33 0 0 0 78.95,9.07 Z" />
+        <path id="minute_120" style="fill:#666666;" d="M 79.85,2.05 A 100.00 100.00 0 0 1 81.13,1.80 L 83.65,14.89 A 86.67 86.67 0 0 0 82.54,15.11 Z" />
+        <path id="minute_121" style="fill:#666666;" d="M 82.26,1.59 A 100.00 100.00 0 0 1 83.55,1.36 L 84.65,7.94 A 93.33 93.33 0 0 0 83.44,8.15 Z" />
+        <path id="minute_122" style="fill:#666666;" d="M 84.68,1.18 A 100.00 100.00 0 0 1 85.97,0.99 L 86.91,7.59 A 93.33 93.33 0 0 0 85.70,7.77 Z" />
+        <path id="minute_123" style="fill:#666666;" d="M 87.11,0.83 A 100.00 100.00 0 0 1 88.41,0.67 L 89.18,7.30 A 93.33 93.33 0 0 0 87.97,7.45 Z" />
+        <path id="minute_124" style="fill:#666666;" d="M 89.55,0.55 A 100.00 100.00 0 0 1 90.85,0.42 L 91.46,7.06 A 93.33 93.33 0 0 0 90.24,7.18 Z" />
+        <path id="minute_125" style="fill:#666666;" d="M 91.99,0.32 A 100.00 100.00 0 0 1 93.30,0.22 L 93.74,6.88 A 93.33 93.33 0 0 0 92.52,6.97 Z" />
+        <path id="minute_126" style="fill:#666666;" d="M 94.44,0.15 A 100.00 100.00 0 0 1 95.75,0.09 L 96.03,6.75 A 93.33 93.33 0 0 0 94.81,6.81 Z" />
+        <path id="minute_127" style="fill:#666666;" d="M 96.89,0.05 A 100.00 100.00 0 0 1 98.20,0.02 L 98.32,6.68 A 93.33 93.33 0 0 0 97.10,6.71 Z" />
+        <path id="minute_128" style="fill:#666666;" d="M 99.35,0.00 A 100.00 100.00 0 0 1 100.65,0.00 L 100.57,13.34 A 86.67 86.67 0 0 0 99.43,13.34 Z" />
+        <path id="minute_129" style="fill:#666666;" d="M 101.80,0.02 A 100.00 100.00 0 0 1 103.11,0.05 L 102.90,6.71 A 93.33 93.33 0 0 0 101.68,6.68 Z" />
+        <path id="minute_130" style="fill:#666666;" d="M 104.25,0.09 A 100.00 100.00 0 0 1 105.56,0.15 L 105.19,6.81 A 93.33 93.33 0 0 0 103.97,6.75 Z" />
+        <path id="minute_131" style="fill:#666666;" d="M 106.70,0.22 A 100.00 100.00 0 0 1 108.01,0.32 L 107.48,6.97 A 93.33 93.33 0 0 0 106.26,6.88 Z" />
+        <path id="minute_132" style="fill:#666666;" d="M 109.15,0.42 A 100.00 100.00 0 0 1 110.45,0.55 L 109.76,7.18 A 93.33 93.33 0 0 0 108.54,7.06 Z" />
+        <path id="minute_133" style="fill:#666666;" d="M 111.59,0.67 A 100.00 100.00 0 0 1 112.89,0.83 L 112.03,7.45 A 93.33 93.33 0 0 0 110.82,7.30 Z" />
+        <path id="minute_134" style="fill:#666666;" d="M 114.03,0.99 A 100.00 100.00 0 0 1 115.32,1.18 L 114.30,7.77 A 93.33 93.33 0 0 0 113.09,7.59 Z" />
+        <path id="minute_135" style="fill:#666666;" d="M 116.45,1.36 A 100.00 100.00 0 0 1 117.74,1.59 L 116.56,8.15 A 93.33 93.33 0 0 0 115.35,7.94 Z" />
+        <path id="minute_136" style="fill:#666666;" d="M 118.87,1.80 A 100.00 100.00 0 0 1 120.15,2.05 L 117.46,15.11 A 86.67 86.67 0 0 0 116.35,14.89 Z" />
+        <path id="minute_137" style="fill:#666666;" d="M 121.27,2.29 A 100.00 100.00 0 0 1 122.55,2.58 L 121.05,9.07 A 93.33 93.33 0 0 0 119.85,8.80 Z" />
+        <path id="minute_138" style="fill:#666666;" d="M 123.66,2.84 A 100.00 100.00 0 0 1 124.93,3.16 L 123.27,9.61 A 93.33 93.33 0 0 0 122.09,9.32 Z" />
+        <path id="minute_139" style="fill:#666666;" d="M 126.04,3.45 A 100.00 100.00 0 0 1 127.30,3.80 L 125.48,10.21 A 93.33 93.33 0 0 0 124.30,9.89 Z" />
+        <path id="minute_140" style="fill:#666666;" d="M 128.40,4.12 A 100.00 100.00 0 0 1 129.65,4.50 L 127.68,10.86 A 93.33 93.33 0 0 0 126.51,10.51 Z" />
+        <path id="minute_141" style="fill:#666666;" d="M 130.75,4.84 A 100.00 100.00 0 0 1 131.99,5.25 L 129.86,11.57 A 93.33 93.33 0 0 0 128.70,11.19 Z" />
+        <path id="minute_142" style="fill:#666666;" d="M 133.07,5.63 A 100.00 100.00 0 0 1 134.30,6.07 L 132.02,12.33 A 93.33 93.33 0 0 0 130.87,11.92 Z" />
+        <path id="minute_143" style="fill:#666666;" d="M 135.38,6.47 A 100.00 100.00 0 0 1 136.60,6.94 L 134.16,13.14 A 93.33 93.33 0 0 0 133.02,12.70 Z" />
+        <path id="minute_144" style="fill:#666666;" d="M 137.66,7.36 A 100.00 100.00 0 0 1 138.87,7.86 L 133.69,20.15 A 86.67 86.67 0 0 0 132.64,19.72 Z" />
+        <path id="minute_145" style="fill:#666666;" d="M 139.92,8.32 A 100.00 100.00 0 0 1 141.12,8.85 L 138.38,14.92 A 93.33 93.33 0 0 0 137.26,14.43 Z" />
+        <path id="minute_146" style="fill:#666666;" d="M 142.16,9.32 A 100.00 100.00 0 0 1 143.35,9.88 L 140.46,15.89 A 93.33 93.33 0 0 0 139.35,15.37 Z" />
+        <path id="minute_147" style="fill:#666666;" d="M 144.38,10.39 A 100.00 100.00 0 0 1 145.54,10.97 L 142.51,16.91 A 93.33 93.33 0 0 0 141.42,16.36 Z" />
+        <path id="minute_148" style="fill:#666666;" d="M 146.56,11.50 A 100.00 100.00 0 0 1 147.72,12.12 L 144.53,17.98 A 93.33 93.33 0 0 0 143.46,17.40 Z" />
+        <path id="minute_149" style="fill:#666666;" d="M 148.72,12.67 A 100.00 100.00 0 0 1 149.86,13.32 L 146.53,19.09 A 93.33 93.33 0 0 0 145.47,18.49 Z" />
+        <path id="minute_150" style="fill:#666666;" d="M 150.85,13.89 A 100.00 100.00 0 0 1 151.97,14.57 L 148.51,20.26 A 93.33 93.33 0 0 0 147.46,19.63 Z" />
+        <path id="minute_151" style="fill:#666666;" d="M 152.95,15.17 A 100.00 100.00 0 0 1 154.05,15.87 L 150.45,21.48 A 93.33 93.33 0 0 0 149.42,20.82 Z" />
+        <path id="minute_152" style="fill:#666666;" d="M 155.01,16.49 A 100.00 100.00 0 0 1 156.10,17.22 L 148.62,28.26 A 86.67 86.67 0 0 0 147.68,27.63 Z" />
+        <path id="minute_153" style="fill:#666666;" d="M 157.04,17.87 A 100.00 100.00 0 0 1 158.11,18.62 L 154.24,24.05 A 93.33 93.33 0 0 0 153.24,23.34 Z" />
+        <path id="minute_154" style="fill:#666666;" d="M 159.04,19.29 A 100.00 100.00 0 0 1 160.09,20.07 L 156.09,25.40 A 93.33 93.33 0 0 0 155.11,24.67 Z" />
+        <path id="minute_155" style="fill:#666666;" d="M 161.01,20.76 A 100.00 100.00 0 0 1 162.04,21.57 L 157.90,26.80 A 93.33 93.33 0 0 0 156.94,26.05 Z" />
+        <path id="minute_156" style="fill:#666666;" d="M 162.93,22.29 A 100.00 100.00 0 0 1 163.94,23.12 L 159.68,28.24 A 93.33 93.33 0 0 0 158.74,27.47 Z" />
+        <path id="minute_157" style="fill:#666666;" d="M 164.82,23.85 A 100.00 100.00 0 0 1 165.81,24.71 L 161.42,29.73 A 93.33 93.33 0 0 0 160.50,28.93 Z" />
+        <path id="minute_158" style="fill:#666666;" d="M 166.67,25.47 A 100.00 100.00 0 0 1 167.64,26.35 L 163.13,31.26 A 93.33 93.33 0 0 0 162.22,30.44 Z" />
+        <path id="minute_159" style="fill:#666666;" d="M 168.48,27.13 A 100.00 100.00 0 0 1 169.43,28.03 L 164.80,32.83 A 93.33 93.33 0 0 0 163.91,31.98 Z" />
+        <path id="minute_160" style="fill:#666666;" d="M 170.25,28.83 A 100.00 100.00 0 0 1 171.17,29.75 L 161.68,39.12 A 86.67 86.67 0 0 0 160.88,38.32 Z" />
+        <path id="minute_161" style="fill:#666666;" d="M 171.97,30.57 A 100.00 100.00 0 0 1 172.87,31.52 L 168.02,36.09 A 93.33 93.33 0 0 0 167.17,35.20 Z" />
+        <path id="minute_162" style="fill:#666666;" d="M 173.65,32.36 A 100.00 100.00 0 0 1 174.53,33.33 L 169.56,37.78 A 93.33 93.33 0 0 0 168.74,36.87 Z" />
+        <path id="minute_163" style="fill:#666666;" d="M 175.29,34.19 A 100.00 100.00 0 0 1 176.15,35.18 L 171.07,39.50 A 93.33 93.33 0 0 0 170.27,38.58 Z" />
+        <path id="minute_164" style="fill:#666666;" d="M 176.88,36.06 A 100.00 100.00 0 0 1 177.71,37.07 L 172.53,41.26 A 93.33 93.33 0 0 0 171.76,40.32 Z" />
+        <path id="minute_165" style="fill:#666666;" d="M 178.43,37.96 A 100.00 100.00 0 0 1 179.24,38.99 L 173.95,43.06 A 93.33 93.33 0 0 0 173.20,42.10 Z" />
+        <path id="minute_166" style="fill:#666666;" d="M 179.93,39.91 A 100.00 100.00 0 0 1 180.71,40.96 L 175.33,44.89 A 93.33 93.33 0 0 0 174.60,43.91 Z" />
+        <path id="minute_167" style="fill:#666666;" d="M 181.38,41.89 A 100.00 100.00 0 0 1 182.13,42.96 L 176.66,46.76 A 93.33 93.33 0 0 0 175.95,45.76 Z" />
+        <path id="minute_168" style="fill:#666666;" d="M 182.78,43.90 A 100.00 100.00 0 0 1 183.51,44.99 L 172.37,52.32 A 86.67 86.67 0 0 0 171.74,51.38 Z" />
+        <path id="minute_169" style="fill:#666666;" d="M 184.13,45.95 A 100.00 100.00 0 0 1 184.83,47.05 L 179.18,50.58 A 93.33 93.33 0 0 0 178.52,49.55 Z" />
+        <path id="minute_170" style="fill:#666666;" d="M 185.43,48.03 A 100.00 100.00 0 0 1 186.11,49.15 L 180.37,52.54 A 93.33 93.33 0 0 0 179.74,51.49 Z" />
+        <path id="minute_171" style="fill:#666666;" d="M 186.68,50.14 A 100.00 100.00 0 0 1 187.33,51.28 L 181.51,54.53 A 93.33 93.33 0 0 0 180.91,53.47 Z" />
+        <path id="minute_172" style="fill:#666666;" d="M 187.88,52.28 A 100.00 100.00 0 0 1 188.50,53.44 L 182.60,56.54 A 93.33 93.33 0 0 0 182.02,55.47 Z" />
+        <path id="minute_173" style="fill:#666666;" d="M 189.03,54.46 A 100.00 100.00 0 0 1 189.61,55.62 L 183.64,58.58 A 93.33 93.33 0 0 0 183.09,57.49 Z" />
+        <path id="minute_174" style="fill:#666666;" d="M 190.12,56.65 A 100.00 100.00 0 0 1 190.68,57.84 L 184.63,60.65 A 93.33 93.33 0 0 0 184.11,59.54 Z" />
+        <path id="minute_175" style="fill:#666666;" d="M 191.15,58.88 A 100.00 100.00 0 0 1 191.68,60.08 L 185.57,62.74 A 93.33 93.33 0 0 0 185.08,61.62 Z" />
+        <path id="minute_176" style="fill:#666666;" d="M 192.14,61.13 A 100.00 100.00 0 0 1 192.64,62.34 L 180.28,67.36 A 86.67 86.67 0 0 0 179.85,66.31 Z" />
+        <path id="minute_177" style="fill:#666666;" d="M 193.06,63.40 A 100.00 100.00 0 0 1 193.53,64.62 L 187.30,66.98 A 93.33 93.33 0 0 0 186.86,65.84 Z" />
+        <path id="minute_178" style="fill:#666666;" d="M 193.93,65.70 A 100.00 100.00 0 0 1 194.37,66.93 L 188.08,69.13 A 93.33 93.33 0 0 0 187.67,67.98 Z" />
+        <path id="minute_179" style="fill:#666666;" d="M 194.75,68.01 A 100.00 100.00 0 0 1 195.16,69.25 L 188.81,71.30 A 93.33 93.33 0 0 0 188.43,70.14 Z" />
+        <path id="minute_180" style="fill:#666666;" d="M 195.50,70.35 A 100.00 100.00 0 0 1 195.88,71.60 L 189.49,73.49 A 93.33 93.33 0 0 0 189.14,72.32 Z" />
+        <path id="minute_181" style="fill:#666666;" d="M 196.20,72.70 A 100.00 100.00 0 0 1 196.55,73.96 L 190.11,75.70 A 93.33 93.33 0 0 0 189.79,74.52 Z" />
+        <path id="minute_182" style="fill:#666666;" d="M 196.84,75.07 A 100.00 100.00 0 0 1 197.16,76.34 L 190.68,77.91 A 93.33 93.33 0 0 0 190.39,76.73 Z" />
+        <path id="minute_183" style="fill:#666666;" d="M 197.42,77.45 A 100.00 100.00 0 0 1 197.71,78.73 L 191.20,80.15 A 93.33 93.33 0 0 0 190.93,78.95 Z" />
+        <path id="minute_184" style="fill:#666666;" d="M 197.95,79.85 A 100.00 100.00 0 0 1 198.20,81.13 L 185.11,83.65 A 86.67 86.67 0 0 0 184.89,82.54 Z" />
+        <path id="minute_185" style="fill:#666666;" d="M 198.41,82.26 A 100.00 100.00 0 0 1 198.64,83.55 L 192.06,84.65 A 93.33 93.33 0 0 0 191.85,83.44 Z" />
+        <path id="minute_186" style="fill:#666666;" d="M 198.82,84.68 A 100.00 100.00 0 0 1 199.01,85.97 L 192.41,86.91 A 93.33 93.33 0 0 0 192.23,85.70 Z" />
+        <path id="minute_187" style="fill:#666666;" d="M 199.17,87.11 A 100.00 100.00 0 0 1 199.33,88.41 L 192.70,89.18 A 93.33 93.33 0 0 0 192.55,87.97 Z" />
+        <path id="minute_188" style="fill:#666666;" d="M 199.45,89.55 A 100.00 100.00 0 0 1 199.58,90.85 L 192.94,91.46 A 93.33 93.33 0 0 0 192.82,90.24 Z" />
+        <path id="minute_189" style="fill:#666666;" d="M 199.68,91.99 A 100.00 100.00 0 0 1 199.78,93.30 L 193.12,93.74 A 93.33 93.33 0 0 0 193.03,92.52 Z" />
+        <path id="minute_190" style="fill:#666666;" d="M 199.85,94.44 A 100.00 100.00 0 0 1 199.91,95.75 L 193.25,96.03 A 93.33 93.33 0 0 0 193.19,94.81 Z" />
+        <path id="minute_191" style="fill:#666666;" d="M 199.95,96.89 A 100.00 100.00 0 0 1 199.98,98.20 L 193.32,98.32 A 93.33 93.33 0 0 0 193.29,97.10 Z" />
+        <path id="minute_192" style="fill:#666666;" d="M 200.00,99.35 A 100.00 100.00 0 0 1 200.00,100.65 L 186.66,100.57 A 86.67 86.67 0 0 0 186.66,99.43 Z" />
+        <path id="minute_193" style="fill:#666666;" d="M 199.98,101.80 A 100.00 100.00 0 0 1 199.95,103.11 L 193.29,102.90 A 93.33 93.33 0 0 0 193.32,101.68 Z" />
+        <path id="minute_194" style="fill:#666666;" d="M 199.91,104.25 A 100.00 100.00 0 0 1 199.85,105.56 L 193.19,105.19 A 93.33 93.33 0 0 0 193.25,103.97 Z" />
+        <path id="minute_195" style="fill:#666666;" d="M 199.78,106.70 A 100.00 100.00 0 0 1 199.68,108.01 L 193.03,107.48 A 93.33 93.33 0 0 0 193.12,106.26 Z" />
+        <path id="minute_196" style="fill:#666666;" d="M 199.58,109.15 A 100.00 100.00 0 0 1 199.45,110.45 L 192.82,109.76 A 93.33 93.33 0 0 0 192.94,108.54 Z" />
+        <path id="minute_197" style="fill:#666666;" d="M 199.33,111.59 A 100.00 100.00 0 0 1 199.17,112.89 L 192.55,112.03 A 93.33 93.33 0 0 0 192.70,110.82 Z" />
+        <path id="minute_198" style="fill:#666666;" d="M 199.01,114.03 A 100.00 100.00 0 0 1 198.82,115.32 L 192.23,114.30 A 93.33 93.33 0 0 0 192.41,113.09 Z" />
+        <path id="minute_199" style="fill:#666666;" d="M 198.64,116.45 A 100.00 100.00 0 0 1 198.41,117.74 L 191.85,116.56 A 93.33 93.33 0 0 0 192.06,115.35 Z" />
+        <path id="minute_200" style="fill:#666666;" d="M 198.20,118.87 A 100.00 100.00 0 0 1 197.95,120.15 L 184.89,117.46 A 86.67 86.67 0 0 0 185.11,116.35 Z" />
+        <path id="minute_201" style="fill:#666666;" d="M 197.71,121.27 A 100.00 100.00 0 0 1 197.42,122.55 L 190.93,121.05 A 93.33 93.33 0 0 0 191.20,119.85 Z" />
+        <path id="minute_202" style="fill:#666666;" d="M 197.16,123.66 A 100.00 100.00 0 0 1 196.84,124.93 L 190.39,123.27 A 93.33 93.33 0 0 0 190.68,122.09 Z" />
+        <path id="minute_203" style="fill:#666666;" d="M 196.55,126.04 A 100.00 100.00 0 0 1 196.20,127.30 L 189.79,125.48 A 93.33 93.33 0 0 0 190.11,124.30 Z" />
+        <path id="minute_204" style="fill:#666666;" d="M 195.88,128.40 A 100.00 100.00 0 0 1 195.50,129.65 L 189.14,127.68 A 93.33 93.33 0 0 0 189.49,126.51 Z" />
+        <path id="minute_205" style="fill:#666666;" d="M 195.16,130.75 A 100.00 100.00 0 0 1 194.75,131.99 L 188.43,129.86 A 93.33 93.33 0 0 0 188.81,128.70 Z" />
+        <path id="minute_206" style="fill:#666666;" d="M 194.37,133.07 A 100.00 100.00 0 0 1 193.93,134.30 L 187.67,132.02 A 93.33 93.33 0 0 0 188.08,130.87 Z" />
+        <path id="minute_207" style="fill:#666666;" d="M 193.53,135.38 A 100.00 100.00 0 0 1 193.06,136.60 L 186.86,134.16 A 93.33 93.33 0 0 0 187.30,133.02 Z" />
+        <path id="minute_208" style="fill:#666666;" d="M 192.64,137.66 A 100.00 100.00 0 0 1 192.14,138.87 L 179.85,133.69 A 86.67 86.67 0 0 0 180.28,132.64 Z" />
+        <path id="minute_209" style="fill:#666666;" d="M 191.68,139.92 A 100.00 100.00 0 0 1 191.15,141.12 L 185.08,138.38 A 93.33 93.33 0 0 0 185.57,137.26 Z" />
+        <path id="minute_210" style="fill:#666666;" d="M 190.68,142.16 A 100.00 100.00 0 0 1 190.12,143.35 L 184.11,140.46 A 93.33 93.33 0 0 0 184.63,139.35 Z" />
+        <path id="minute_211" style="fill:#666666;" d="M 189.61,144.38 A 100.00 100.00 0 0 1 189.03,145.54 L 183.09,142.51 A 93.33 93.33 0 0 0 183.64,141.42 Z" />
+        <path id="minute_212" style="fill:#666666;" d="M 188.50,146.56 A 100.00 100.00 0 0 1 187.88,147.72 L 182.02,144.53 A 93.33 93.33 0 0 0 182.60,143.46 Z" />
+        <path id="minute_213" style="fill:#666666;" d="M 187.33,148.72 A 100.00 100.00 0 0 1 186.68,149.86 L 180.91,146.53 A 93.33 93.33 0 0 0 181.51,145.47 Z" />
+        <path id="minute_214" style="fill:#666666;" d="M 186.11,150.85 A 100.00 100.00 0 0 1 185.43,151.97 L 179.74,148.51 A 93.33 93.33 0 0 0 180.37,147.46 Z" />
+        <path id="minute_215" style="fill:#666666;" d="M 184.83,152.95 A 100.00 100.00 0 0 1 184.13,154.05 L 178.52,150.45 A 93.33 93.33 0 0 0 179.18,149.42 Z" />
+        <path id="minute_216" style="fill:#666666;" d="M 183.51,155.01 A 100.00 100.00 0 0 1 182.78,156.10 L 171.74,148.62 A 86.67 86.67 0 0 0 172.37,147.68 Z" />
+        <path id="minute_217" style="fill:#666666;" d="M 182.13,157.04 A 100.00 100.00 0 0 1 181.38,158.11 L 175.95,154.24 A 93.33 93.33 0 0 0 176.66,153.24 Z" />
+        <path id="minute_218" style="fill:#666666;" d="M 180.71,159.04 A 100.00 100.00 0 0 1 179.93,160.09 L 174.60,156.09 A 93.33 93.33 0 0 0 175.33,155.11 Z" />
+        <path id="minute_219" style="fill:#666666;" d="M 179.24,161.01 A 100.00 100.00 0 0 1 178.43,162.04 L 173.20,157.90 A 93.33 93.33 0 0 0 173.95,156.94 Z" />
+        <path id="minute_220" style="fill:#666666;" d="M 177.71,162.93 A 100.00 100.00 0 0 1 176.88,163.94 L 171.76,159.68 A 93.33 93.33 0 0 0 172.53,158.74 Z" />
+        <path id="minute_221" style="fill:#666666;" d="M 176.15,164.82 A 100.00 100.00 0 0 1 175.29,165.81 L 170.27,161.42 A 93.33 93.33 0 0 0 171.07,160.50 Z" />
+        <path id="minute_222" style="fill:#666666;" d="M 174.53,166.67 A 100.00 100.00 0 0 1 173.65,167.64 L 168.74,163.13 A 93.33 93.33 0 0 0 169.56,162.22 Z" />
+        <path id="minute_223" style="fill:#666666;" d="M 172.87,168.48 A 100.00 100.00 0 0 1 171.97,169.43 L 167.17,164.80 A 93.33 93.33 0 0 0 168.02,163.91 Z" />
+        <path id="minute_224" style="fill:#666666;" d="M 171.17,170.25 A 100.00 100.00 0 0 1 170.25,171.17 L 160.88,161.68 A 86.67 86.67 0 0 0 161.68,160.88 Z" />
+        <path id="minute_225" style="fill:#666666;" d="M 169.43,171.97 A 100.00 100.00 0 0 1 168.48,172.87 L 163.91,168.02 A 93.33 93.33 0 0 0 164.80,167.17 Z" />
+        <path id="minute_226" style="fill:#666666;" d="M 167.64,173.65 A 100.00 100.00 0 0 1 166.67,174.53 L 162.22,169.56 A 93.33 93.33 0 0 0 163.13,168.74 Z" />
+        <path id="minute_227" style="fill:#666666;" d="M 165.81,175.29 A 100.00 100.00 0 0 1 164.82,176.15 L 160.50,171.07 A 93.33 93.33 0 0 0 161.42,170.27 Z" />
+        <path id="minute_228" style="fill:#666666;" d="M 163.94,176.88 A 100.00 100.00 0 0 1 162.93,177.71 L 158.74,172.53 A 93.33 93.33 0 0 0 159.68,171.76 Z" />
+        <path id="minute_229" style="fill:#666666;" d="M 162.04,178.43 A 100.00 100.00 0 0 1 161.01,179.24 L 156.94,173.95 A 93.33 93.33 0 0 0 157.90,173.20 Z" />
+        <path id="minute_230" style="fill:#666666;" d="M 160.09,179.93 A 100.00 100.00 0 0 1 159.04,180.71 L 155.11,175.33 A 93.33 93.33 0 0 0 156.09,174.60 Z" />
+        <path id="minute_231" style="fill:#666666;" d="M 158.11,181.38 A 100.00 100.00 0 0 1 157.04,182.13 L 153.24,176.66 A 93.33 93.33 0 0 0 154.24,175.95 Z" />
+        <path id="minute_232" style="fill:#666666;" d="M 156.10,182.78 A 100.00 100.00 0 0 1 155.01,183.51 L 147.68,172.37 A 86.67 86.67 0 0 0 148.62,171.74 Z" />
+        <path id="minute_233" style="fill:#666666;" d="M 154.05,184.13 A 100.00 100.00 0 0 1 152.95,184.83 L 149.42,179.18 A 93.33 93.33 0 0 0 150.45,178.52 Z" />
+        <path id="minute_234" style="fill:#666666;" d="M 151.97,185.43 A 100.00 100.00 0 0 1 150.85,186.11 L 147.46,180.37 A 93.33 93.33 0 0 0 148.51,179.74 Z" />
+        <path id="minute_235" style="fill:#666666;" d="M 149.86,186.68 A 100.00 100.00 0 0 1 148.72,187.33 L 145.47,181.51 A 93.33 93.33 0 0 0 146.53,180.91 Z" />
+        <path id="minute_236" style="fill:#666666;" d="M 147.72,187.88 A 100.00 100.00 0 0 1 146.56,188.50 L 143.46,182.60 A 93.33 93.33 0 0 0 144.53,182.02 Z" />
+        <path id="minute_237" style="fill:#666666;" d="M 145.54,189.03 A 100.00 100.00 0 0 1 144.38,189.61 L 141.42,183.64 A 93.33 93.33 0 0 0 142.51,183.09 Z" />
+        <path id="minute_238" style="fill:#666666;" d="M 143.35,190.12 A 100.00 100.00 0 0 1 142.16,190.68 L 139.35,184.63 A 93.33 93.33 0 0 0 140.46,184.11 Z" />
+        <path id="minute_239" style="fill:#666666;" d="M 141.12,191.15 A 100.00 100.00 0 0 1 139.92,191.68 L 137.26,185.57 A 93.33 93.33 0 0 0 138.38,185.08 Z" />
+        <path id="minute_240" style="fill:#666666;" d="M 138.87,192.14 A 100.00 100.00 0 0 1 137.66,192.64 L 132.64,180.28 A 86.67 86.67 0 0 0 133.69,179.85 Z" />
+        <path id="minute_241" style="fill:#666666;" d="M 136.60,193.06 A 100.00 100.00 0 0 1 135.38,193.53 L 133.02,187.30 A 93.33 93.33 0 0 0 134.16,186.86 Z" />
+        <path id="minute_242" style="fill:#666666;" d="M 134.30,193.93 A 100.00 100.00 0 0 1 133.07,194.37 L 130.87,188.08 A 93.33 93.33 0 0 0 132.02,187.67 Z" />
+        <path id="minute_243" style="fill:#666666;" d="M 131.99,194.75 A 100.00 100.00 0 0 1 130.75,195.16 L 128.70,188.81 A 93.33 93.33 0 0 0 129.86,188.43 Z" />
+        <path id="minute_244" style="fill:#666666;" d="M 129.65,195.50 A 100.00 100.00 0 0 1 128.40,195.88 L 126.51,189.49 A 93.33 93.33 0 0 0 127.68,189.14 Z" />
+        <path id="minute_245" style="fill:#666666;" d="M 127.30,196.20 A 100.00 100.00 0 0 1 126.04,196.55 L 124.30,190.11 A 93.33 93.33 0 0 0 125.48,189.79 Z" />
+        <path id="minute_246" style="fill:#666666;" d="M 124.93,196.84 A 100.00 100.00 0 0 1 123.66,197.16 L 122.09,190.68 A 93.33 93.33 0 0 0 123.27,190.39 Z" />
+        <path id="minute_247" style="fill:#666666;" d="M 122.55,197.42 A 100.00 100.00 0 0 1 121.27,197.71 L 119.85,191.20 A 93.33 93.33 0 0 0 121.05,190.93 Z" />
+        <path id="minute_248" style="fill:#666666;" d="M 120.15,197.95 A 100.00 100.00 0 0 1 118.87,198.20 L 116.35,185.11 A 86.67 86.67 0 0 0 117.46,184.89 Z" />
+        <path id="minute_249" style="fill:#666666;" d="M 117.74,198.41 A 100.00 100.00 0 0 1 116.45,198.64 L 115.35,192.06 A 93.33 93.33 0 0 0 116.56,191.85 Z" />
+        <path id="minute_250" style="fill:#666666;" d="M 115.32,198.82 A 100.00 100.00 0 0 1 114.03,199.01 L 113.09,192.41 A 93.33 93.33 0 0 0 114.30,192.23 Z" />
+        <path id="minute_251" style="fill:#666666;" d="M 112.89,199.17 A 100.00 100.00 0 0 1 111.59,199.33 L 110.82,192.70 A 93.33 93.33 0 0 0 112.03,192.55 Z" />
+        <path id="minute_252" style="fill:#666666;" d="M 110.45,199.45 A 100.00 100.00 0 0 1 109.15,199.58 L 108.54,192.94 A 93.33 93.33 0 0 0 109.76,192.82 Z" />
+        <path id="minute_253" style="fill:#666666;" d="M 108.01,199.68 A 100.00 100.00 0 0 1 106.70,199.78 L 106.26,193.12 A 93.33 93.33 0 0 0 107.48,193.03 Z" />
+        <path id="minute_254" style="fill:#666666;" d="M 105.56,199.85 A 100.00 100.00 0 0 1 104.25,199.91 L 103.97,193.25 A 93.33 93.33 0 0 0 105.19,193.19 Z" />
+        <path id="minute_255" style="fill:#666666;" d="M 103.11,199.95 A 100.00 100.00 0 0 1 101.80,199.98 L 101.68,193.32 A 93.33 93.33 0 0 0 102.90,193.29 Z" />
+    </g>
+    <g id="watchface_hands">
+    <g id="hand_hours_base_16" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_hour" style="fill:#0091EA;" d="M 91.64,95.44 A 80.00 80.00 0 0 1 108.36,95.44 L 100.00,175.00 A 0.00 0.00 0 0 0 100.00,175.00 Z" />
+    </g>
+    <g id="hand_minutes_10_base_16" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_10_minutes" style="fill:#00C853;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_minutes_base_16" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_minute" style="fill:#FFAB00;" d="M 94.45,94.15 A 106.00 106.00 0 0 1 105.55,94.15 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    <g id="hand_seconds_base_16" cx="100" cy="100" transform-box="fill-box" transform-origin="center">        <path id="hand_second" style="fill:#D50000;" d="M 98.15,94.02 A 106.00 106.00 0 0 1 101.85,94.02 L 100.00,200.00 A 0.00 0.00 0 0 0 100.00,200.00 Z" />
+    </g>
+    </g>
+    </g>
+</svg>
+</div></td>
+        <tr>
+            <td class="mono" id="time_base_10"></td>
+            <td class="mono" id="time_base_6"></td>
+            <td class="mono" id="time_base_12"></td>
+            <td class="mono" id="time_base_16"></td>
+        </tr>
+        <tr>
+            <td>1 day = 10:100:100</td>
+            <td>1 day = 36:36:36</td>
+            <td>1 day = 12:144:144</td>
+            <td>1 day = 16:256:16</td>
+        </tr>
+        <tr>
+            <td>1 “hour” = 02:24:00 = 12⁄5 h = 2.4 h</td>
+            <td>1 “hour” = 00:40:00 = 2⁄3 h = 0‥6 h</td>
+            <td>1 “hour” = 02:00:00 = 2 h</td>
+            <td>1 “hour” = 01:30:00 = 3⁄2 h = 1.5 h</td>
+        </tr>
+        <tr>
+            <td>1 “minute” = 00:01:26.40 = 36⁄25 = 1.44 min</td>
+            <td>1 “minute” = 00:01:06..6 = 10⁄9 = 1‥1 min</td>
+            <td>1 “minute” = 00:00:50 = 5⁄6 = 0.8‥3 min</td>
+            <td>1 “minute” = 00:00:21.09375 = 45⁄128 min = 0.3515625 min</td>
+        </tr>
+        <tr>
+            <td>1 “second” = 00:00:00.864 = 108⁄125 = 0.865 s</td>
+            <td>1 “second” = 00:00:01..851 = 50⁄27 = 1‥851 s</td>
+            <td>1 “second” = 00:00:00.347..2 = 25⁄72 = 0.347‥2 s</td>
+            <td>1 “second” = 675⁄512 s = 1.318 359 375 s</td>
+        </tr>
+        <tr>
+            <td>12⁄5 h × 3⁄5 = 36⁄25 min × 3⁄5 = 108⁄125 s</td>
+            <td>2⁄3 h × 5⁄3 = 10⁄9 min × 5⁄3 = 50⁄27 s</td>
+            <td>2 h × 5⁄12 = 5⁄6 min × 5⁄12 = 25⁄72 s<⁄td>
+            <td>1⁄2 h × 45⁄64 = 45⁄128 min × 15⁄4 = 675⁄512 s</td>
+        </tr>
+    </table>
+</body>
+<script>
+function refresh_standard_12(day_proportion) {
+    var hours_angle = (day_proportion * 2) * 360;
+    var hours = Math.floor(day_proportion * 24);
+    day_proportion = (day_proportion * 24) - hours;
+
+    if (hours < 12) {
+        var am_pm = 'a.m.';
+
+        if (hours == 0) {
+            hours = 12;
+        };
+    } else {
+        var am_pm = 'p.m.';
+
+        if (hours > 12) {
+            hours = hours - 12;
+        };
+    }
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 60);
+    day_proportion = (day_proportion * 60) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 60);
+
+    document.getElementById('hand_hours_standard_12').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_standard_12').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_standard_12').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    document.getElementById('time_standard_12').innerHTML =
+        ' <br/>     <span class="hour">' + hours.toString().padStart(2, '0')
+        + '</span>:<span class="minute">'
+        + minutes.toString().padStart(2, '0')
+        + '</span>:<span class="second">'
+        + seconds.toString().padStart(2, '0')
+        + '</span> ' + am_pm
+        + '<br/> ';
+}
+
+function refresh_standard_24(day_proportion) {
+    var hours_angle = day_proportion * 360;
+    var hours = Math.floor(day_proportion * 24);
+    day_proportion = (day_proportion * 24) - hours;
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 60);
+    day_proportion = (day_proportion * 60) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 60);
+
+    document.getElementById('hand_hours_standard_24').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_standard_24').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_standard_24').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    document.getElementById('time_standard_24').innerHTML =
+        ' <br/><span class="hour">' + hours.toString().padStart(2, '0')
+        + '</span>:<span class="minute">'
+        + minutes.toString().padStart(2, '0')
+        + '</span>:<span class="second">'
+        + seconds.toString().padStart(2, '0')
+        + '</span><br/> ';
+}
+
+function refresh_base_6(day_proportion) {
+    var hours_angle = day_proportion * 360;
+    var hours = Math.floor(day_proportion * 36);
+    day_proportion = (day_proportion * 36) - hours;
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 36);
+    day_proportion = (day_proportion * 36) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 36);
+
+    document.getElementById('hand_hours_base_6').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_base_6').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_base_6').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    var time_6 =
+         '<span class="hour">' + hours.toString(6).padStart(2, '0') + '</span>:'
+         + '<span class="minute">' + minutes.toString(6).padStart(2, '0') + '</span>:'
+         + '<span class="second">' + seconds.toString(6).padStart(2, '0') + '</span>';
+    var number_6 = '0.'
+          + hours.toString(6).padStart(2, '0')
+        + minutes.toString(6).padStart(2, '0')
+        + seconds.toString(6).padStart(2, '0');
+    var proportion_6 =
+            hours.toString(6).padStart(1, '0') + '.'
+        + minutes.toString(6).padStart(2, '0')
+        + seconds.toString(6).padStart(2, '0')
+        + '%';
+    var time_10 =
+             hours.toString().padStart(2, '0') + ':'
+         + minutes.toString().padStart(2, '0') + ':'
+         + seconds.toString().padStart(2, '0');
+
+    document.getElementById('time_base_6').innerHTML =
+        '<br/>' + time_6 + '<br/>'
+        + '<i>   ' + time_10 + '<sub>dec</sub></i><br/>    '
+        + number_6 + ' day<br/>    '
+        + proportion_6 + ' day';
+};
+
+function refresh_base_10(day_proportion) {
+    var hours_angle = day_proportion * 360;
+    var hours = Math.floor(day_proportion * 10);
+    day_proportion = (day_proportion * 10) - hours;
+
+    var minutes_10_angle = day_proportion * 360;
+    var minutes_10 = Math.floor(day_proportion * 10);
+    day_proportion = (day_proportion * 10) - minutes_10;
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 10);
+    day_proportion = (day_proportion * 10) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 100);
+
+    document.getElementById('hand_hours_base_10').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_10_base_10').setAttribute('transform', `rotate(${minutes_10_angle})`);
+    document.getElementById('hand_minutes_base_10').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_base_10').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    console.log(hours, minutes_10, minutes, seconds);
+
+    var time_10 =
+         '<span class="hour">' + hours.toString().padStart(1, '0') + '</span>:'
+         + '<span class="minute_10">' + minutes_10.toString().padStart(1, '0') + '</span>'
+         + '<span class="minute">' + minutes.toString().padStart(1, '0') + '</span>:'
+         + '<span class="second">' + seconds.toString().padStart(2, '0') + '</span>';
+    var number_10 = '0.'
+          + hours.toString().padStart(1, '0')
+        + minutes_10.toString().padStart(1, '0')
+        + minutes.toString().padStart(1, '0')
+        + seconds.toString().padStart(2, '0');
+    var proportion_10 =
+            hours.toString().padStart(1, '0')
+        + minutes_10.toString().padStart(1, '0')  + '.'
+        + minutes.toString().padStart(1, '0')
+        + seconds.toString().padStart(2, '0')
+        + '%';
+
+    document.getElementById('time_base_10').innerHTML =
+        '<br/>' + time_10 + '<br/> <br/>    '
+        + number_10 + ' day<br/>    '
+        + proportion_10 + ' day<br/> <br/>';
+};
+
+function refresh_base_12(day_proportion) {
+    var hours_angle = day_proportion * 360;
+    var hours = Math.floor(day_proportion * 12);
+    day_proportion = (day_proportion * 12) - hours;
+
+    var minutes_10_angle = day_proportion * 360;
+    var minutes_10 = Math.floor(day_proportion * 12);
+    day_proportion = (day_proportion * 12) - minutes_10;
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 12);
+    day_proportion = (day_proportion * 12) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 144);
+
+    document.getElementById('hand_hours_base_12').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_10_base_12').setAttribute('transform', `rotate(${minutes_10_angle})`);
+    document.getElementById('hand_minutes_base_12').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_base_12').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    var time_12 =
+             ' <span class="hour">' + hours.toString(12).padStart(1, '0') + '</span>: '
+         + '<span class="minute_10">' + minutes_10.toString(12).padStart(1, '0') + '</span>'
+         + '<span class="minute">' + minutes.toString(12).padStart(1, '0') + '</span>: '
+         + '<span class="second">' + seconds.toString(12).padStart(2, '0') + '</span>';
+    var number_12 = '0.'
+          + hours.toString(12).padStart(1, '0')
+        + minutes_10.toString(12).padStart(1, '0')
+        + minutes.toString(12).padStart(1, '0')
+        + seconds.toString(12).padStart(2, '0');
+    var proportion_12 =
+            hours.toString(12).padStart(1, '0')
+        + minutes_10.toString(12).padStart(1, '0')  + '.'
+        + minutes.toString(12).padStart(1, '0')
+        + seconds.toString(12).padStart(2, '0')
+        + '%';
+    var time_10 =
+             hours.toString().padStart(2, ' ') + ':'
+         + ((minutes_10 * 12) + minutes).toString().padStart(3, ' ') + ':'
+         + seconds.toString().padStart(3, ' ');
+
+    document.getElementById('time_base_12').innerHTML =
+        '<br/>' + time_12.toUpperCase() + '<br/>'
+        + '<i>   ' + time_10 + '<sub>dec</sub></i><br/>    '
+        + number_12.toUpperCase() + ' day<br/>    '
+        + proportion_12.toUpperCase() + ' day';
+};
+
+function refresh_base_16(day_proportion) {
+    var hours_angle = day_proportion * 360;
+    var hours = Math.floor(day_proportion * 16);
+    day_proportion = (day_proportion * 16) - hours;
+
+    var minutes_10_angle = day_proportion * 360;
+    var minutes_10 = Math.floor(day_proportion * 16);
+    day_proportion = (day_proportion * 16) - minutes_10;
+
+    var minutes_angle = day_proportion * 360;
+    var minutes = Math.floor(day_proportion * 16);
+    day_proportion = (day_proportion * 16) - minutes;
+
+    var seconds_angle = day_proportion * 360;
+    var seconds = Math.floor(day_proportion * 16);
+
+    document.getElementById('hand_hours_base_16').setAttribute('transform', `rotate(${hours_angle})`);
+    document.getElementById('hand_minutes_10_base_16').setAttribute('transform', `rotate(${minutes_10_angle})`);
+    document.getElementById('hand_minutes_base_16').setAttribute('transform', `rotate(${minutes_angle})`);
+    document.getElementById('hand_seconds_base_16').setAttribute('transform', `rotate(${seconds_angle})`);
+
+    var time_16 =
+             ' <span class="hour">' + hours.toString(16).padStart(1, '0') + '</span>: '
+         + '<span class="minute_10">' + minutes_10.toString(16).padStart(1, '0') + '</span>'
+         + '<span class="minute">' + minutes.toString(16).padStart(1, '0') + '</span>: '
+         + '<span class="second">' + seconds.toString(16).padStart(1, '0') + '</span>';
+    var number_16 = '0.'
+          + hours.toString(16).padStart(1, '0')
+        + minutes_10.toString(16).padStart(1, '0')
+        + minutes.toString(16).padStart(1, '0')
+        + seconds.toString(16).padStart(1, '0');
+    var proportion_16 =
+            hours.toString(16).padStart(1, '0')
+        + minutes_10.toString(16).padStart(1, '0')  + '.'
+        + minutes.toString(16).padStart(1, '0')
+        + seconds.toString(16).padStart(1, '0')
+        + '%';
+    var time_10 =
+             hours.toString().padStart(2, ' ') + ':'
+         + ((minutes_10 * 16) + minutes).toString().padStart(3, ' ') + ':'
+         + seconds.toString().padStart(2, ' ');
+
+    document.getElementById('time_base_16').innerHTML =
+        '<br/>' + time_16.toUpperCase() + '<br/>'
+        + '<i>   ' + time_10 + '<sub>dec</sub></i><br/>    '
+        + number_16.toUpperCase() + ' day<br/>    '
+        + proportion_16.toUpperCase() + ' day';
+};
+
+async function refresh_display(){
+    var now = new Date();
+    var midnight = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        0,0,0,0
+    );
+
+    var day_proportion = (now.getTime() - midnight.getTime()) / 1000 / 86400;
+    refresh_standard_12(day_proportion);
+    refresh_standard_24(day_proportion);
+    refresh_base_6(day_proportion);
+    refresh_base_10(day_proportion);
+    refresh_base_12(day_proportion);
+    refresh_base_16(day_proportion);
+
+    //
+    // Update every ten milliseconds
+    //
+    setTimeout(refresh_display, 10);
+};
+refresh_display();
+</script>
+</html>
