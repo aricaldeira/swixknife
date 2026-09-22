@@ -897,8 +897,32 @@ Sitemap: https://sezimal.tauga.online/sitemap.xml
 '''
     return Response(text, status=200, mimetype='text/plain')
 
-@sitemapper.include(lastmod='2026-09-17', changefreq='weekly', priority=1)
+@sitemapper.include(lastmod='2026-09-22', changefreq='weekly', priority=1)
 @app.route('/based-time')
 def index_based_time_route():
     log_access('/based-time')
     return sezimal_render_template('based_time.html')
+
+@sitemapper.include(lastmod='2026-09-22', changefreq='weekly', priority=1)
+@app.route('/base-6-time')
+def index_based_time_6_route():
+    log_access('/base-6-time')
+    return sezimal_render_template('based_time_6.html')
+
+@sitemapper.include(lastmod='2026-09-22', changefreq='weekly', priority=1)
+@app.route('/base-10-time')
+def index_based_time_10_route():
+    log_access('/base-10-time')
+    return sezimal_render_template('based_time_10.html')
+
+@sitemapper.include(lastmod='2026-09-22', changefreq='weekly', priority=1)
+@app.route('/base-12-time')
+def index_based_time_12_route():
+    log_access('/base-12-time')
+    return sezimal_render_template('based_time_12.html')
+
+@sitemapper.include(lastmod='2026-09-22', changefreq='weekly', priority=1)
+@app.route('/base-16-time')
+def index_based_time_16_route():
+    log_access('/base-16-time')
+    return sezimal_render_template('based_time_16.html')
