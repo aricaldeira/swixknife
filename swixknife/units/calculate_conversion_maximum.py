@@ -1148,11 +1148,11 @@ def calculate_conversions():
     #
     # Angular velocity
     #
-    unit_conversion['kvg'] = {
+    unit_conversion['gmn'] = {
         'rad/s': unit_conversion['mdl']['rad'] / unit_conversion['ang']['s'],
         'prefixed': ('rad/s',),
     }
-    unit_conversion['kvg'] = _set_non_prefixed_units(unit_conversion['kvg'])
+    unit_conversion['gmn'] = _set_non_prefixed_units(unit_conversion['gmn'])
 
     #
     # Angular Acceleration
