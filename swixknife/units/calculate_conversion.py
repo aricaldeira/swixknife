@@ -1132,18 +1132,25 @@ def calculate_conversions():
     # Mandala
     # https://en.wiktionary.org/wiki/%E0%A4%AE%E0%A4%A3%E0%A5%8D%E0%A4%A1%E0%A4%B2#Sanskrit
     #
-    unit_conversion['mdl'] = {
-        'rad': TAU,
-        'tau_rad': ONE_TO_ONE,
-        'pi_rad': SezimalFraction('2 / 1'),
-        'deg': SezimalFraction('1400 / 1'),
-        'turn': ONE_TO_ONE,
-        'gon': SezimalFraction('1504 / 1'),
-        'arcmin': SezimalFraction('244_000 / 1'),
-        'arcsec': SezimalFraction('43_440_000 / 1'),
-        'prefixed': ('rad', 'tau_rad', 'pi_rad', 'turn', 'gon', 'arcmin', 'arcsec'),
-    }
-    unit_conversion['mdl'] = _set_non_prefixed_units(unit_conversion['mdl'])
+    # Disha (compass direction)
+    # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A4%BF%E0%A4%B6%E0%A4%BE#Sanskrit
+    #
+    for unit in ('mdl', 'dix'):
+        unit_conversion[unit] = {
+            'rad': TAU,
+            'tau_rad': ONE_TO_ONE,
+            'comparable': ('mdl', 'dix'),
+            'mdl': ONE_TO_ONE,
+            'dix': ONE_TO_ONE,
+            'pi_rad': SezimalFraction('2 / 1'),
+            'deg': SezimalFraction('1400 / 1'),
+            'turn': ONE_TO_ONE,
+            'gon': SezimalFraction('1504 / 1'),
+            'arcmin': SezimalFraction('244_000 / 1'),
+            'arcsec': SezimalFraction('43_440_000 / 1'),
+            'prefixed': ('rad', 'tau_rad', 'pi_rad', 'turn', 'gon', 'arcmin', 'arcsec'),
+        }
+        unit_conversion[unit] = _set_non_prefixed_units(unit_conversion[unit])
 
     #
     # Angular velocity
