@@ -1152,9 +1152,25 @@ class Sezimal:
         return result._mult_div_finalizing()
 
     def sqrt(self) -> Self:
+        if type(self) == SezimalFraction:
+            num = self.numerator ** Sezimal('0.3')
+            den = self.denominator ** Sezimal('0.3')
+
+            if num == SezimalInteger(num) \
+                and den == SezimalInteger(den):
+                return SezimalFraction(num, den).simplify()
+
         return self ** Sezimal('0.3')
 
     def cbrt(self) -> Self:
+        if type(self) == SezimalFraction:
+            num = self.numerator ** Sezimal('0.2')
+            den = self.denominator ** Sezimal('0.2')
+
+            if num == SezimalInteger(num) \
+                and den == SezimalInteger(den):
+                return SezimalFraction(num, den).simplify()
+
         return self ** Sezimal('0.2')
 
     def _find_gcd(self, numerator: Self, denominator: Self) -> Self:
