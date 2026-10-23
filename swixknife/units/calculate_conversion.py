@@ -985,16 +985,17 @@ def calculate_conversions():
     # electric_charge = (mass * length²) / time / IMPEDANCE_FREE_SPACE
     #
     electric_charge_vidyuta = (DRAVYA_TO_KILOGRAM * KETRA_TO_SQUARE_METRE) / ANUGA_TO_SECOND / IMPEDANCE_FREE_SPACE
-    number_elementary_charges_in_vidyutas = round(electric_charge_vidyuta.sqrt() / ELEMENTARY_CHARGE_IN_COULOMBS, 0)
+    number_elementary_charges_in_vidyutas = round(electric_charge_vidyuta.sqrt() / ELEMENTARY_CHARGE_IN_COULOMBS, 0) - 1  # This -1 simplifies things further down
 
     VIDYUTA_TO_COULOMB = ELEMENTARY_CHARGE_IN_COULOMBS * number_elementary_charges_in_vidyutas
-    PRATIBADA_TO_OHM = IMPEDANCE_FREE_SPACE
     DARA_TO_AMPERE = VIDYUTA_TO_COULOMB / ANUGA_TO_SECOND
+    PRATIBADA_TO_OHM = (VARCHA_TO_JOULE * ANUGA_TO_SECOND) / VIDYUTA_TO_COULOMB ** 2
+    # PRATIBADA_TO_OHM = IMPEDANCE_FREE_SPACE
 
     #
     # Electric charge
     #
-    # https://en.wiktionary.org/wiki/%E0%A4%AD%E0%A4%B0%E0%A4%A3#Sanskrit
+    # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%A6%E0%A5%8D%E0%A4%AF%E0%A5%81%E0%A4%A4%E0%A5%8D#Hindi
     #
     unit_conversion['vdt'] = {
         'C': VIDYUTA_TO_COULOMB,
