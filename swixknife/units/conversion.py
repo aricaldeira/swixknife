@@ -219,7 +219,7 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     elif type(measure) == Decimal:
         measure = SezimalFraction(measure)
 
-    if return_fraction and type(measure) != SezimalFraction:
+    if type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
 
     if factor >= 0:
@@ -234,6 +234,8 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     sezimal_context.fractions_simplify = original_fraction_simplify
 
     if not return_fraction:
+        measure = measure.simplify()
+
         if precision is not None:
             measure = round(measure, precision)
         else:
@@ -278,7 +280,7 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     elif type(measure) == Decimal:
         measure = SezimalFraction(measure)
 
-    if return_fraction and type(measure) != SezimalFraction:
+    if type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
 
     measure *= spf_1
@@ -321,6 +323,8 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     sezimal_context.back_to_regular_precision()
 
     if not return_fraction:
+        measure = measure.simplify()
+
         if precision is not None:
             measure = round(measure, precision)
         else:
@@ -344,7 +348,7 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     elif type(measure) == Decimal:
         measure = SezimalFraction(measure)
 
-    if return_fraction and type(measure) != SezimalFraction:
+    if type(measure) != SezimalFraction:
         measure = SezimalFraction(*measure.as_integer_ratio())
 
     if adjust:
@@ -356,6 +360,8 @@ def decimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     sezimal_context.fractions_simplify = original_fraction_simplify
 
     if not return_fraction:
+        measure = measure.simplify()
+
         if precision is not None:
             measure = round(measure, precision)
         else:
@@ -401,6 +407,8 @@ def decimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
     measure = sezimal_to_decimal_unit(measure, sezimal_unit_2, decimal_unit_2, return_fraction=True, simplify_fraction=False)
 
     if not return_fraction:
+        measure = measure.simplify()
+
         if precision is not None:
             measure = round(measure, precision)
         else:
