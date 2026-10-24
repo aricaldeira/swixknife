@@ -71,7 +71,7 @@ ELEMENTARY_CHARGE_IN_COULOMBS = SezimalFraction('211_254_034_113 / 252_412_511_4
 # fraction form:
 # https://en.wikipedia.org/wiki/Luminous_efficiency_function
 #
-LUMINOUS_EFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
+LUMINOUS_EFFICACY = SezimalFraction('151_435_021_012 / 33_233_341')
 
 
 ONE_TO_ONE = SezimalFraction('1 / 1')
@@ -906,6 +906,43 @@ def calculate_conversions():
     unit_conversion['tap'] = _set_non_prefixed_units(unit_conversion['tap'])
 
     #
+    # Temperature difference
+    #
+    unit_conversion['Δgtk'] = {
+        'ΔK': GATIKA_TO_KELVIN,
+        'ΔC': GATIKA_TO_KELVIN,
+        'Δ°C': GATIKA_TO_KELVIN,
+
+        'prefixed': ('ΔK',),
+
+        #
+        # Non S.I. units
+        #
+        'ΔF': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        'Δ°F': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        'ΔR': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+        'Δ°R': GATIKA_TO_KELVIN / SezimalFraction('5 / 13'),
+    }
+    unit_conversion['Δgtk'] = _set_non_prefixed_units(unit_conversion['Δgtk'])
+
+    unit_conversion['Δtap'] = {
+        'ΔC': TAPA_TO_CELSIUS,
+        '°ΔC': TAPA_TO_CELSIUS,
+        'ΔK': TAPA_TO_CELSIUS,
+
+        'prefixed': ('ΔK',),
+
+        #
+        # Non S.I. units
+        #
+        'ΔF': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        'Δ°F': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        'ΔR': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+        'Δ°R': TAPA_TO_CELSIUS / SezimalFraction('5 / 13'),
+    }
+    unit_conversion['Δtap'] = _set_non_prefixed_units(unit_conversion['Δtap'])
+
+    #
     # Heat capacity (agini) / Entropy (parivartana)
     #
     # Agni
@@ -1218,7 +1255,7 @@ def calculate_conversions():
     # Prakasha
     # https://en.wiktionary.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A4%BE%E0%A4%B6#Sanskrit
     #
-    PRAKASHA_TO_CANDELA = LUMINOUS_EFICACY * SHAKITI_TO_WATT / GOLA_TO_STERADIAN
+    PRAKASHA_TO_CANDELA = LUMINOUS_EFFICACY * SHAKITI_TO_WATT / GOLA_TO_STERADIAN
 
     unit_conversion['pkx'] = {
         'cd': PRAKASHA_TO_CANDELA,
@@ -1259,7 +1296,7 @@ def calculate_conversions():
     # Drishiti
     # https://en.wiktionary.org/wiki/%E0%A4%A6%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BF
     #
-    DRISHITI_TO_LUMEN_PER_WATT = LUMINOUS_EFICACY
+    DRISHITI_TO_LUMEN_PER_WATT = LUMINOUS_EFFICACY
 
     unit_conversion['dxt'] = {
         'lm/W': DRISHITI_TO_LUMEN_PER_WATT,

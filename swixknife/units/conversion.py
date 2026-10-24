@@ -60,6 +60,9 @@ def _identify_validate_sezimal_unit(sezimal_unit: str) -> (str, str, SezimalFrac
     if 'p/' in sezimal_unit:
         sp, su = sezimal_unit.split('p/')
         su = 'p/' + su
+    elif 'Δ' in sezimal_unit:
+        su = sezimal_unit[-4:]
+        sp = sezimal_unit[0:-4]
     else:
         su = sezimal_unit[-3:]
         sp = sezimal_unit[0:-3]
@@ -241,6 +244,11 @@ def sezimal_to_decimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
     return measure
 
+INTERCHANGEABLE_UNITS = {
+    'temperature': ('tap', 'gtk', 'Δtap', 'Δgtk'),
+    'time': ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod'),
+    'fuel_consumption': ('clt', 'pbt'),
+}
 
 def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | SezimalInteger | SezimalFraction | Dozenal | DozenalInteger | DozenalFraction, sezimal_unit_1: str, sezimal_unit_2, return_fraction: bool = False, simplify_fraction: bool = True, precision: str | int | Decimal | Sezimal | SezimalInteger = None) -> Sezimal | SezimalInteger | SezimalFraction:
     sp_1, su_1, spf_1 = _identify_validate_sezimal_unit(sezimal_unit_1)
@@ -248,16 +256,16 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
 
     if su_1 != su_2 \
         and (not (
-            su_1 in ('tap', 'gtk')
-            and su_2 in ('tap', 'gtk')
+            su_1 in INTERCHANGEABLE_UNITS['temperature']
+            and su_2 in INTERCHANGEABLE_UNITS['temperature']
         )) \
         and (not (
-            su_1 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
-            and su_2 in ('xad', 'nrd', 'srd', 'ard', 'nif', 'sez', 'vrx', 'mas', 'spt', 'din', 'uta', 'pox', 'agm', 'ang', 'bod')
+            su_1 in INTERCHANGEABLE_UNITS['time']
+            and su_2 in INTERCHANGEABLE_UNITS['time']
         )) \
         and (not (
-            su_1 in ('clt', 'pbt')
-            and su_2 in ('clt', 'pbt')
+            su_1 in INTERCHANGEABLE_UNITS['fuel_consumption']
+            and su_2 in INTERCHANGEABLE_UNITS['fuel_consumption']
         )):
         raise ValueError(f'Invalid conversion between units [{sezimal_unit_1}] and [{sezimal_unit_2}]')
 
@@ -280,6 +288,10 @@ def sezimal_to_sezimal_unit(measure: str | int | float | Decimal | Sezimal | Sez
         measure += SezimalInteger('240_234_312')
     elif su_1 == 'gtk' and su_2 == 'tap':
         measure -= SezimalInteger('240_234_312')
+        measure /= SezimalInteger('100_000')
+    elif su_1 == 'Δtap' and su_2 == 'Δgtk':
+        measure *= SezimalInteger('100_000')
+    elif su_1 == 'Δgtk' and su_2 == 'Δtap':
         measure /= SezimalInteger('100_000')
 
     #
