@@ -1571,7 +1571,10 @@ class SezimalFraction(Sezimal):
                 y = den.decimal
 
                 while y:
-                    x, y = y, x % y
+                    try:
+                        x, y = y, x % y
+                    except:
+                        break
 
                 x = abs(x)
 
