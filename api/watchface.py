@@ -1168,19 +1168,19 @@ def _time_display(locale, colours, gray, today):
 
             display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
-        for i in range(100):
-            if i % 10 == 0:
-                continue
-
-            if i % 5 == 0:
-                angle = zero_position + (i * 3.6) - 0.25
-                tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
-
-            else:
-                angle = zero_position + (i * 3.6) - 0.25
-                tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
-
-            display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
+        # for i in range(100):
+        #     if i % 10 == 0:
+        #         continue
+        #
+        #     if i % 5 == 0:
+        #         angle = zero_position + (i * 3.6) - 0.25
+        #         tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+        #
+        #     else:
+        #         angle = zero_position + (i * 3.6) - 0.25
+        #         tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 1)
+        #
+        #     display += f'''        <path id="tick_{str(SI(D(i))).zfill(2)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
     elif locale.base == 14 and not locale.show_based_time:
         shape_vertices = 3
@@ -1265,39 +1265,32 @@ def _time_display(locale, colours, gray, today):
                     cy = 112 + (size * 4 / 5) * math.sin(angle / 360 * math.pi * 2)
                     display += f'''        <circle style="fill:{time_display_colour};" cx="{cx}" cy="{cy}" r="2" />\n'''
 
-            else:
-                angle = zero_position + 2 + ((i - 1) * 2.5)
-
-                if i % 6 == 0:
-                    tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
-                elif i % 3 == 0:
-                    tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
-                else:
-                    tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
-
-                display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
+            # else:
+            #     angle = zero_position + 2 + ((i - 1) * 2.5)
+            #
+            #     if i % 6 == 0:
+            #         tick = ring(inner_radius=size * 13 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
+            #     elif i % 3 == 0:
+            #         tick = ring(inner_radius=size * 9 / 10, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
+            #     else:
+            #         tick = ring(inner_radius=size * 14 / 15, outer_radius=size, x=112, y=112, start_angle=angle, end_angle=angle + 0.25)
+            #
+            #     display += f'''        <path id="tick_{str(i).zfill(3)}" style="fill:{time_display_colour};" d="{tick}" />\n'''
 
     #
     # Hands
     #
-    # anuga_hand_colour = pointer_colours['900'] + 'dd'
-    # agrima_hand_colour = pointer_colours['800'] + 'dd'
-    # posha_hand_colour = pointer_colours['500'] + 'dd'
-    # uta_hand_colour = pointer_colours['200'] + 'dd'
-
+    dozenal_hand_colour = '#26c6dacc'
 
     if locale.base == 10 or (locale.base == 14 and (locale.show_based_time or locale.HOUR_FORMAT == '24h')):
-        anuga_hand_colour = '#e53935'
         agrima_hand_colour = '#e53935cc'
         posha_hand_colour = '#1e88e5cc'
         uta_hand_colour = '#fdd835cc'
     elif locale.base == 20:
-        anuga_hand_colour = '#e53935'
         agrima_hand_colour = '#e53935cc'
         posha_hand_colour = '#1e88e5cc'
         uta_hand_colour = '#fdd835cc'
     else:
-        anuga_hand_colour = '#e53935'
         agrima_hand_colour = '#e53935cc'
         posha_hand_colour = '#ffffffcc'
         uta_hand_colour = '#ffffffcc'
@@ -1315,15 +1308,15 @@ def _time_display(locale, colours, gray, today):
     )
     display += f'''        <path id="hand_uta_pointer" style="fill:{uta_hand_colour};" d="{triangle}" />\n'''
 
-    if locale.base == 100:
-        sun = ring(
-            inner_radius=size / 8 / 4,
-            outer_radius=size / 8,
-            x=cx,
-            y=cy,
-        )
-        display += f'''        <path id="hand_uta_sun" style="fill:{uta_hand_colour};" d="{sun}" />\n'''
-        display += f'''        <circle id="hand_uta_sun_1" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 8 / 4}" />\n'''
+    # if locale.base == 100:
+    #     sun = ring(
+    #         inner_radius=size / 8 / 4,
+    #         outer_radius=size / 8,
+    #         x=cx,
+    #         y=cy,
+    #     )
+    #     display += f'''        <path id="hand_uta_sun" style="fill:{uta_hand_colour};" d="{sun}" />\n'''
+    #     display += f'''        <circle id="hand_uta_sun_1" style="fill:{uta_hand_colour};" cx="{cx}" cy="{cy}" r="{size / 8 / 4}" />\n'''
 
     display += '    </g>'
     hl_display += '    </g>'
@@ -1342,50 +1335,50 @@ def _time_display(locale, colours, gray, today):
 
     display += f'''        <path id="hand_posha_pointer" style="fill:{posha_hand_colour};" d="{triangle}" />\n'''
 
-    if locale.base == 100:
-        earth = ring(
-            inner_radius=0,
-            outer_radius=(size / 10) - 1.5,
-            x=cx - 0.75,
-            y=cy - 0.75,
-            start_angle = 180,
-            end_angle = 270,
-        )
-        display += f'''        <path id="hand_posha_earth_2" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
-        earth = ring(
-            inner_radius=0,
-            outer_radius=(size / 10) - 1.5,
-            x=cx + 0.75,
-            y=cy - 0.75,
-            start_angle = 270,
-            end_angle = 0,
-        )
-        display += f'''        <path id="hand_posha_earth_1" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
-        earth = ring(
-            inner_radius=0,
-            outer_radius=(size / 10) - 1.5,
-            x=cx + 0.75,
-            y=cy + 0.75,
-            start_angle = 0,
-            end_angle = 90,
-        )
-        display += f'''        <path id="hand_posha_earth_4" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
-        earth = ring(
-            inner_radius=0,
-            outer_radius=(size / 10) - 1.5,
-            x=cx - 0.75,
-            y=cy + 0.75,
-            start_angle = 90,
-            end_angle = 180,
-        )
-        display += f'''        <path id="hand_posha_earth_3" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
-        earth = cross(
-            x=cx,
-            y=cy,
-            size=(size / 10 * 2) - 1.5,
-            thickness=2,
-        )
-        display += f'''        <path id="hand_posha_earth_5" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+    # if locale.base == 100:
+    #     earth = ring(
+    #         inner_radius=0,
+    #         outer_radius=(size / 10) - 1.5,
+    #         x=cx - 0.75,
+    #         y=cy - 0.75,
+    #         start_angle = 180,
+    #         end_angle = 270,
+    #     )
+    #     display += f'''        <path id="hand_posha_earth_2" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+    #     earth = ring(
+    #         inner_radius=0,
+    #         outer_radius=(size / 10) - 1.5,
+    #         x=cx + 0.75,
+    #         y=cy - 0.75,
+    #         start_angle = 270,
+    #         end_angle = 0,
+    #     )
+    #     display += f'''        <path id="hand_posha_earth_1" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+    #     earth = ring(
+    #         inner_radius=0,
+    #         outer_radius=(size / 10) - 1.5,
+    #         x=cx + 0.75,
+    #         y=cy + 0.75,
+    #         start_angle = 0,
+    #         end_angle = 90,
+    #     )
+    #     display += f'''        <path id="hand_posha_earth_4" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+    #     earth = ring(
+    #         inner_radius=0,
+    #         outer_radius=(size / 10) - 1.5,
+    #         x=cx - 0.75,
+    #         y=cy + 0.75,
+    #         start_angle = 90,
+    #         end_angle = 180,
+    #     )
+    #     display += f'''        <path id="hand_posha_earth_3" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
+    #     earth = cross(
+    #         x=cx,
+    #         y=cy,
+    #         size=(size / 10 * 2) - 1.5,
+    #         thickness=2,
+    #     )
+    #     display += f'''        <path id="hand_posha_earth_5" style="fill:{posha_hand_colour};" d="{earth}" />\n'''
 
     display += '    </g>'
 
@@ -1393,22 +1386,30 @@ def _time_display(locale, colours, gray, today):
 
     cx = 112 + (size * 2 / 3) * math.cos(zero_position / 360 * math.pi * 2)
     cy = 112 + (size * 2 / 3) * math.sin(zero_position / 360 * math.pi * 2)
-    triangle = polygon(
-        x=cx,
-        y=cy,
-        radius=size / (12 if (locale.base == 10) or (locale.base == 14 and (locale.show_based_time or locale.HOUR_FORMAT == '24h')) else 10),
-        n=shape_vertices,
-        angle=hand_initial_angle,
-    )
 
-    if locale.base == 20:
-        display += f'''        <path id="hand_agrima_pointer" style="fill:{posha_hand_colour};" d="{triangle}" />\n'''
+    if locale.base == 20 or (locale.base == 14 and locale.show_based_time):
+        triangle = polygon(
+            x=cx,
+            y=cy,
+            radius=size / 14,
+            n=shape_vertices,
+            angle=hand_initial_angle,
+        )
+
     else:
-        display += f'''        <path id="hand_agrima_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
+        triangle = polygon(
+            x=cx,
+            y=cy,
+            radius=size / 12,
+            n=shape_vertices,
+            angle=hand_initial_angle,
+        )
+
+    display += f'''        <path id="hand_agrima_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
     # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
     display += '    </g>'
 
-    if locale.base == 20:
+    if locale.base == 20 or (locale.base == 14 and locale.show_based_time):
         display += '    <g id="hand_dozenal" transform-origin="center">'
         display += f'''        <circle id="hand_dozenal_base" style="fill:none;" cx="112" cy="112" r="{size * 2 / 3}" />\n'''
 
@@ -1417,11 +1418,11 @@ def _time_display(locale, colours, gray, today):
         triangle = polygon(
             x=cx,
             y=cy,
-            radius=size / 12,
+            radius=size / 10,
             n=shape_vertices,
             angle=hand_initial_angle,
         )
-        display += f'''        <path id="hand_dozenal_pointer" style="fill:{agrima_hand_colour};" d="{triangle}" />\n'''
+        display += f'''        <path id="hand_dozenal_pointer" style="fill:{dozenal_hand_colour};" d="{triangle}" />\n'''
         # display += '''        <animateTransform id="animate_agrima_pointer" attributeType="xml" attributeName="transform" type="rotate" from="0" to="360" begin="0" dur="60606ms" repeatCount="indefinite" />\n'''
         display += '</g>'
 
