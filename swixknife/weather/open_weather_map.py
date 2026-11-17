@@ -60,7 +60,7 @@ def get_weather_conditions(api_key: str, latitude: float = None, longitude: floa
                 Decimal(str(observation['main']['pressure'])) * 100,
                 244,
             ),
-            'hPa', 'Xpdn',
+            'hPa', 'pdn',
         )
         observation['main']['humidity'] = decimal_to_sezimal_unit(
             SezimalFraction(
@@ -74,14 +74,14 @@ def get_weather_conditions(api_key: str, latitude: float = None, longitude: floa
                 Decimal(str(observation['main']['sea_level'])) * 100,
                 244,
             ),
-            'hPa', 'Xpdn',
+            'hPa', 'pdn',
         )
         observation['main']['grnd_level'] = decimal_to_sezimal_unit(
             SezimalFraction(
                 Decimal(str(observation['main']['grnd_level'])) * 100,
                 244,
             ),
-            'hPa', 'Xpdn',
+            'hPa', 'pdn',
         )
 
     if 'visibility' in observation:

@@ -38,8 +38,8 @@ UNIT-trg taranga
 UNIT-bht barruta
 UNIT-bal bala
 UNIT-bar bara
-UNIT-pdn pidana
-UNIT-vay váiu
+UNIT-pdn pídana
+UNIT-vay vaiú
 UNIT-pbl pratibala
 UNIT-vrc varcha
 UNIT-xrm xarama
@@ -139,8 +139,8 @@ UNIT-trg taranga
 UNIT-bht barruta
 UNIT-bal bala
 UNIT-bar bara
-UNIT-pdn pidana
-UNIT-vay vayu
+UNIT-pdn pídana
+UNIT-vay vayú
 UNIT-pbl pratibala
 UNIT-vrc varxa
 UNIT-xrm xarama

@@ -554,8 +554,8 @@ const sezimal_calculator_pt_text = {
     'option-decimal-units-bar-lbf': 'libras-força – lbf',
     'option-decimal-units-bar-lbfts2': 'libras-pés por segundo ao quad. – lb·ft/s²',
 
-    'option-units-pdn-pidana': 'pidanas – pdn',
-    'option-units-pdn-vayu': 'váius (atmosfera) – vay',
+    'option-units-pdn-pidana': 'pídanas – pdn',
+    'option-units-pdn-vayu': 'vaiús (atmosfera) – vay',
     'option-units-pdn-pratibala': 'pratibala (tensão) – pbl',
     'option-decimal-units-pdn-pa': 'pascais – Pa',
     'option-decimal-units-pdn-atm': 'atmosferas –  atm',
