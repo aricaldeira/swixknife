@@ -649,7 +649,7 @@ def calculate_conversions():
     # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BE%E0%A4%AF%E0%A5%81%E0%A4%AE%E0%A4%A3%E0%A5%8D%E0%A4%A1%E0%A4%B2#Sanskrit
     # https://en.wiktionary.org/wiki/%E0%A4%B5%E0%A4%BE%E0%A4%AF%E0%A5%81#Sanskrit
     #
-    DABA_TO_PASCAL = DRAVYA_TO_KILOGRAM / TEVARAN_TO_METRE_PER_SQUARE_SECOND
+    DABA_TO_PASCAL = BALA_TO_NEWTON / KETRA_TO_SQUARE_METRE
     VAYU_TO_PASCAL = SezimalFraction('2_101_033 / 1')
 
     for unit in (
